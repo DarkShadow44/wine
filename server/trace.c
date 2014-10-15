@@ -1236,8 +1236,12 @@ static void dump_new_process_request( const struct new_process_request *req )
     fprintf( stderr, ", thread_attr=%08x", req->thread_attr );
     dump_cpu_type( ", cpu=", &req->cpu );
     fprintf( stderr, ", info_size=%u", req->info_size );
+    fprintf( stderr, ", env_size=%u", req->env_size );
+    fprintf( stderr, ", process_sd_size=%u", req->process_sd_size );
     dump_varargs_startup_info( ", info=", min(cur_size,req->info_size) );
-    dump_varargs_unicode_str( ", env=", cur_size );
+    dump_varargs_unicode_str( ", env=", min(cur_size,req->env_size) );
+    dump_varargs_security_descriptor( ", process_sd=", min(cur_size,req->process_sd_size) );
+    dump_varargs_security_descriptor( ", thread_sd=", cur_size );
 }
 
 static void dump_new_process_reply( const struct new_process_reply *req )
