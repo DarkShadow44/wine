@@ -968,6 +968,8 @@ struct get_thread_times_reply
     struct reply_header __header;
     timeout_t    creation_time;
     timeout_t    exit_time;
+    int          unix_pid;
+    int          unix_tid;
 };
 
 
@@ -6675,6 +6677,6 @@ union generic_reply
     struct get_system_info_reply get_system_info_reply;
 };
 
-#define SERVER_PROTOCOL_VERSION 573
+#define SERVER_PROTOCOL_VERSION 574
 
 #endif /* __WINE_WINE_SERVER_PROTOCOL_H */
