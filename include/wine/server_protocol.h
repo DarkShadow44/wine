@@ -1735,6 +1735,7 @@ struct get_socket_info_reply
     int type;
     int protocol;
     char __pad_20[4];
+    timeout_t connect_time;
 };
 
 
@@ -6810,6 +6811,6 @@ union generic_reply
     struct resume_process_reply resume_process_reply;
 };
 
-#define SERVER_PROTOCOL_VERSION 589
+#define SERVER_PROTOCOL_VERSION 590
 
 #endif /* __WINE_WINE_SERVER_PROTOCOL_H */
