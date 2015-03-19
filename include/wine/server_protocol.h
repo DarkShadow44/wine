@@ -55,7 +55,7 @@ struct request_max_size
 
 typedef struct
 {
-    int dummy;
+    unsigned int last_input_time;
 } shmglobal_t;
 
 typedef struct
@@ -6769,6 +6769,6 @@ union generic_reply
     struct resume_process_reply resume_process_reply;
 };
 
-#define SERVER_PROTOCOL_VERSION 582
+#define SERVER_PROTOCOL_VERSION 583
 
 #endif /* __WINE_WINE_SERVER_PROTOCOL_H */
