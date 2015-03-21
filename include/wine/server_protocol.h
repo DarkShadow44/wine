@@ -53,10 +53,13 @@ struct request_max_size
 #define FIRST_USER_HANDLE 0x0020
 #define LAST_USER_HANDLE  0xffef
 
+
 typedef struct
 {
     unsigned int last_input_time;
+    unsigned int foreground_wnd_epoch;
 } shmglobal_t;
+
 
 typedef struct
 {
@@ -6772,6 +6775,6 @@ union generic_reply
     struct resume_process_reply resume_process_reply;
 };
 
-#define SERVER_PROTOCOL_VERSION 584
+#define SERVER_PROTOCOL_VERSION 585
 
 #endif /* __WINE_WINE_SERVER_PROTOCOL_H */
