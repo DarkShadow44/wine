@@ -60,7 +60,10 @@ typedef struct
 
 typedef struct
 {
-    int queue_bits;
+    int             queue_bits;
+    user_handle_t   input_focus;
+    user_handle_t   input_capture;
+    user_handle_t   input_active;
 } shmlocal_t;
 
 
@@ -6769,6 +6772,6 @@ union generic_reply
     struct resume_process_reply resume_process_reply;
 };
 
-#define SERVER_PROTOCOL_VERSION 583
+#define SERVER_PROTOCOL_VERSION 584
 
 #endif /* __WINE_WINE_SERVER_PROTOCOL_H */
