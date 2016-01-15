@@ -500,3 +500,14 @@ void WINAPI DbgUiRemoteBreakin( void *arg )
 {
     FIXME("stub\n");
 }
+
+/*********************************************************************
+ *                  ApiSetQueryApiSetPresence   (NTDLL.@)
+ */
+BOOL WINAPI ApiSetQueryApiSetPresence(const UNICODE_STRING *namespace, BOOLEAN *present)
+{
+    FIXME("(%s, %p) stub!\n", debugstr_us(namespace), present);
+
+    *present = TRUE;
+    return TRUE;
+}
