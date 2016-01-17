@@ -1292,6 +1292,7 @@ enable_ext_ms_win_rtcore_ntuser_sysparams_l1_1_0
 enable_ext_ms_win_security_credui_l1_1_0
 enable_ext_ms_win_security_cryptui_l1_1_0
 enable_ext_ms_win_uxtheme_themes_l1_1_0
+enable_ext_ms_win_xaml_pal_l1_1_0
 enable_faultrep
 enable_feclient
 enable_fltlib
@@ -19442,6 +19443,7 @@ wine_fn_config_makefile dlls/ext-ms-win-rtcore-ntuser-sysparams-l1-1-0 enable_ex
 wine_fn_config_makefile dlls/ext-ms-win-security-credui-l1-1-0 enable_ext_ms_win_security_credui_l1_1_0
 wine_fn_config_makefile dlls/ext-ms-win-security-cryptui-l1-1-0 enable_ext_ms_win_security_cryptui_l1_1_0
 wine_fn_config_makefile dlls/ext-ms-win-uxtheme-themes-l1-1-0 enable_ext_ms_win_uxtheme_themes_l1_1_0
+wine_fn_config_makefile dlls/ext-ms-win-xaml-pal-l1-1-0 enable_ext_ms_win_xaml_pal_l1_1_0
 wine_fn_config_makefile dlls/faultrep enable_faultrep
 wine_fn_config_makefile dlls/faultrep/tests enable_tests
 wine_fn_config_makefile dlls/feclient enable_feclient
