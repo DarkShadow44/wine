@@ -597,6 +597,7 @@ SOURCES = \
 	srrestoreptapi.h \
 	sspi.h \
 	stdole2.idl \
+	stdole32.idl \
 	stgprop.h \
 	sti.h \
 	storage.h \
