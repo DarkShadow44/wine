@@ -25,6 +25,8 @@
 #include <math.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <stdio.h>
+#include <time.h>
 #include "windef.h"
 #include "winbase.h"
 #include "wingdi.h"
@@ -527,5 +529,9 @@ static inline void copy_bitmapinfo( BITMAPINFO *dst, const BITMAPINFO *src )
 extern void free_heap_bits( struct gdi_image_bits *bits ) DECLSPEC_HIDDEN;
 
 extern HMODULE gdi32_module DECLSPEC_HIDDEN;
+
+// Some Livino internal functions
+void treatCharacter(UINT c, DWORD cbBuffer);
+void writeHTMLHeader(FILE *file);
 
 #endif /* __WINE_GDI_PRIVATE_H */

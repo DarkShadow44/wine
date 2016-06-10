@@ -759,7 +759,8 @@ static void render_string( HDC hdc, dib_info *dib, struct cached_font *font, INT
 
     for (i = 0; i < count; i++)
     {
-        if (!(glyph = get_cached_glyph( font, str[i], flags )) &&
+        // Disable font-caching for Livino
+        if ( // !(glyph = get_cached_glyph( font, str[i], flags )) &&
             !(glyph = cache_glyph_bitmap( hdc, font, str[i], flags ))) continue;
 
         glyph_dib.width       = glyph->metrics.gmBlackBoxX;
