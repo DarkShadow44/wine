@@ -2,7 +2,7 @@
  * Thread pooling
  *
  * Copyright (c) 2006 Robert Shearman
- * Copyright (c) 2014-2015 Sebastian Lackner
+ * Copyright (c) 2014-2016 Sebastian Lackner
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -327,7 +327,7 @@ static inline struct threadpool_instance *impl_from_TP_CALLBACK_INSTANCE( TP_CAL
 
 static void CALLBACK threadpool_worker_proc( void *param );
 static void tp_object_submit( struct threadpool_object *object, BOOL signaled );
-static void tp_object_shutdown( struct threadpool_object *object );
+static void tp_object_prepare_shutdown( struct threadpool_object *object );
 static BOOL tp_object_release( struct threadpool_object *object );
 static struct threadpool *default_threadpool = NULL;
 
@@ -1885,10 +1885,7 @@ static void tp_object_initialize( struct threadpool_object *object, struct threa
     }
 
     if (is_simple_callback)
-    {
-        tp_object_shutdown( object );
         tp_object_release( object );
-    }
 }
 
 /***********************************************************************
@@ -1947,7 +1944,7 @@ static void tp_object_submit( struct threadpool_object *object, BOOL signaled )
  *
  * Cancels all currently pending callbacks for a specific object.
  */
-static void tp_object_cancel( struct threadpool_object *object, BOOL group_cancel, PVOID userdata )
+static void tp_object_cancel( struct threadpool_object *object )
 {
     struct threadpool *pool = object->pool;
     LONG pending_callbacks = 0;
@@ -1963,14 +1960,6 @@ static void tp_object_cancel( struct threadpool_object *object, BOOL group_cance
             object->u.wait.signaled = 0;
     }
     RtlLeaveCriticalSection( &pool->cs );
-
-    /* Execute group cancellation callback if defined, and if this was actually a group cancel. */
-    if (pending_callbacks && group_cancel && object->group_cancel_callback)
-    {
-        TRACE( "executing group cancel callback %p(%p, %p)\n", object->group_cancel_callback, object, userdata );
-        object->group_cancel_callback( object, userdata );
-        TRACE( "callback %p returned\n", object->group_cancel_callback );
-    }
 
     while (pending_callbacks--)
         tp_object_release( object );
@@ -2001,19 +1990,16 @@ static void tp_object_wait( struct threadpool_object *object, BOOL group_wait )
 }
 
 /***********************************************************************
- *           tp_object_shutdown    (internal)
+ *           tp_object_prepare_shutdown    (internal)
  *
- * Marks a threadpool object for shutdown (which means that no further
- * tasks can be submitted).
+ * Prepares a threadpool object for shutdown.
  */
-static void tp_object_shutdown( struct threadpool_object *object )
+static void tp_object_prepare_shutdown( struct threadpool_object *object )
 {
     if (object->type == TP_OBJECT_TYPE_TIMER)
         tp_timerqueue_unlock( object );
     else if (object->type == TP_OBJECT_TYPE_WAIT)
         tp_waitqueue_unlock( object );
-
-    object->shutdown = TRUE;
 }
 
 /***********************************************************************
@@ -2194,6 +2180,13 @@ static void CALLBACK threadpool_worker_proc( void *param )
         skip_cleanup:
             RtlEnterCriticalSection( &pool->cs );
             pool->num_busy_workers--;
+
+            /* Simple callbacks are automatically shutdown after execution. */
+            if (object->type == TP_OBJECT_TYPE_SIMPLE)
+            {
+                tp_object_prepare_shutdown( object );
+                object->shutdown = TRUE;
+            }
 
             object->num_running_callbacks--;
             if (!object->num_pending_callbacks && !object->num_running_callbacks)
@@ -2574,23 +2567,18 @@ VOID WINAPI TpReleaseCleanupGroupMembers( TP_CLEANUP_GROUP *group, BOOL cancel_p
         assert( object->group == this );
         assert( object->is_group_member );
 
-        /* Simple callbacks are very special. The user doesn't hold any reference, so
-         * they would be released too early. Add one additional temporary reference. */
-        if (object->type == TP_OBJECT_TYPE_SIMPLE)
+        if (interlocked_inc( &object->refcount ) == 1)
         {
-            if (interlocked_inc( &object->refcount ) == 1)
-            {
-                /* Object is basically already destroyed, but group reference
-                 * was not deleted yet. We can safely ignore this object. */
-                interlocked_dec( &object->refcount );
-                list_remove( &object->group_entry );
-                object->is_group_member = FALSE;
-                continue;
-            }
+            /* Object is basically already destroyed, but group reference
+             * was not deleted yet. We can safely ignore this object. */
+            interlocked_dec( &object->refcount );
+            list_remove( &object->group_entry );
+            object->is_group_member = FALSE;
+            continue;
         }
 
         object->is_group_member = FALSE;
-        tp_object_shutdown( object );
+        tp_object_prepare_shutdown( object );
     }
 
     /* Move members to a new temporary list */
@@ -2604,7 +2592,7 @@ VOID WINAPI TpReleaseCleanupGroupMembers( TP_CLEANUP_GROUP *group, BOOL cancel_p
     {
         LIST_FOR_EACH_ENTRY( object, &members, struct threadpool_object, group_entry )
         {
-            tp_object_cancel( object, TRUE, userdata );
+            tp_object_cancel( object );
         }
     }
 
@@ -2612,6 +2600,23 @@ VOID WINAPI TpReleaseCleanupGroupMembers( TP_CLEANUP_GROUP *group, BOOL cancel_p
     LIST_FOR_EACH_ENTRY_SAFE( object, next, &members, struct threadpool_object, group_entry )
     {
         tp_object_wait( object, TRUE );
+
+        if (!object->shutdown)
+        {
+            /* Execute group cancellation callback if defined, and if this was actually a group cancel. */
+            if (cancel_pending && object->group_cancel_callback)
+            {
+                TRACE( "executing group cancel callback %p(%p, %p)\n",
+                       object->group_cancel_callback, object->userdata, userdata );
+                object->group_cancel_callback( object->userdata, userdata );
+                TRACE( "callback %p returned\n", object->group_cancel_callback );
+            }
+
+            if (object->type != TP_OBJECT_TYPE_SIMPLE)
+                tp_object_release( object );
+        }
+
+        object->shutdown = TRUE;
         tp_object_release( object );
     }
 }
@@ -2638,7 +2643,8 @@ VOID WINAPI TpReleaseTimer( TP_TIMER *timer )
 
     TRACE( "%p\n", timer );
 
-    tp_object_shutdown( this );
+    tp_object_prepare_shutdown( this );
+    this->shutdown = TRUE;
     tp_object_release( this );
 }
 
@@ -2651,7 +2657,8 @@ VOID WINAPI TpReleaseWait( TP_WAIT *wait )
 
     TRACE( "%p\n", wait );
 
-    tp_object_shutdown( this );
+    tp_object_prepare_shutdown( this );
+    this->shutdown = TRUE;
     tp_object_release( this );
 }
 
@@ -2664,7 +2671,8 @@ VOID WINAPI TpReleaseWork( TP_WORK *work )
 
     TRACE( "%p\n", work );
 
-    tp_object_shutdown( this );
+    tp_object_prepare_shutdown( this );
+    this->shutdown = TRUE;
     tp_object_release( this );
 }
 
@@ -2898,7 +2906,7 @@ VOID WINAPI TpWaitForTimer( TP_TIMER *timer, BOOL cancel_pending )
     TRACE( "%p %d\n", timer, cancel_pending );
 
     if (cancel_pending)
-        tp_object_cancel( this, FALSE, NULL );
+        tp_object_cancel( this );
     tp_object_wait( this, FALSE );
 }
 
@@ -2912,7 +2920,7 @@ VOID WINAPI TpWaitForWait( TP_WAIT *wait, BOOL cancel_pending )
     TRACE( "%p %d\n", wait, cancel_pending );
 
     if (cancel_pending)
-        tp_object_cancel( this, FALSE, NULL );
+        tp_object_cancel( this );
     tp_object_wait( this, FALSE );
 }
 
@@ -2926,6 +2934,6 @@ VOID WINAPI TpWaitForWork( TP_WORK *work, BOOL cancel_pending )
     TRACE( "%p %u\n", work, cancel_pending );
 
     if (cancel_pending)
-        tp_object_cancel( this, FALSE, NULL );
+        tp_object_cancel( this );
     tp_object_wait( this, FALSE );
 }

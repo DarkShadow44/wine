@@ -107,6 +107,7 @@ static const struct object_ops master_socket_ops =
     no_link_name,                  /* link_name */
     NULL,                          /* unlink_name */
     no_open_file,                  /* open_file */
+    no_alloc_handle,               /* alloc_handle */
     no_close_handle,               /* close_handle */
     master_socket_destroy          /* destroy */
 };
@@ -220,6 +221,13 @@ const void *get_req_data_after_objattr( const struct object_attributes *attr, da
     return ptr;
 }
 
+static inline int should_retry( int err )
+{
+    if (err == EWOULDBLOCK) return 1;
+    if (err == EAGAIN) return 1;
+    return 0;
+}
+
 /* write the remaining part of the reply */
 void write_reply( struct thread *thread )
 {
@@ -241,7 +249,7 @@ void write_reply( struct thread *thread )
     }
     if (errno == EPIPE)
         kill_thread( thread, 0 );  /* normal death */
-    else if (errno != EWOULDBLOCK && errno != EAGAIN)
+    else if (!should_retry( errno ))
         fatal_protocol_error( thread, "reply write: %s\n", strerror( errno ));
 }
 
@@ -368,7 +376,7 @@ error:
         kill_thread( thread, 0 );
     else if (ret > 0)
         fatal_protocol_error( thread, "partial read %d\n", ret );
-    else if (errno != EWOULDBLOCK && errno != EAGAIN)
+    else if (!should_retry( errno ))
         fatal_protocol_error( thread, "read: %s\n", strerror( errno ));
 }
 
@@ -449,7 +457,7 @@ int receive_fd( struct process *process )
     }
     else
     {
-        if (errno != EWOULDBLOCK && errno != EAGAIN)
+        if (!should_retry( errno ))
         {
             fprintf( stderr, "Protocol error: process %04x: ", process->id );
             perror( "recvmsg" );
