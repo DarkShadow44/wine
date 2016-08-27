@@ -448,6 +448,20 @@ static int GLXErrorHandler(Display *dpy, XErrorEvent *event, void *arg)
     return 1;
 }
 
+static BOOL isSupportedAttrib(int testAttribute, int testValue)
+{
+    int i;
+    for(i=0; i<nb_pixel_formats; i++)
+    {
+        int value;
+        pglXGetFBConfigAttrib(gdi_display, pixel_formats[i].fbconfig, testAttribute, &value);
+
+        if(value == testValue)
+            return TRUE;
+    }
+    return FALSE;
+}
+
 static BOOL X11DRV_WineGL_InitOpenglInfo(void)
 {
     static const char legacy_extensions[] = " WGL_EXT_extensions_string WGL_EXT_swap_control";
@@ -757,6 +771,15 @@ static BOOL WINAPI init_opengl( INIT_ONCE *once, void *param, void **context )
 
     X11DRV_WineGL_LoadExtensions();
     init_pixel_formats( gdi_display );
+
+    if(has_swap_method)
+    {
+        BOOL supportSwapExchange = isSupportedAttrib(GLX_SWAP_METHOD_OML, GLX_SWAP_EXCHANGE_OML);
+        BOOL supportSwapCopy = isSupportedAttrib(GLX_SWAP_METHOD_OML, GLX_SWAP_COPY_OML);
+        if(!supportSwapExchange || !supportSwapCopy)
+            has_swap_method = FALSE; //No point in allowing a swap attribute if we can't set those two variables
+    }
+
     return TRUE;
 
 failed:
