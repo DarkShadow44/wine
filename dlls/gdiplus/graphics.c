@@ -3360,6 +3360,7 @@ GpStatus WINGDIPAPI GdipDrawPath(GpGraphics *graphics, GpPen *pen, GpPath *path)
     INT save_state;
     GpStatus retval;
     HRGN hrgn=NULL;
+    BOOL hdcWasEmpty = FALSE;
 
     TRACE("(%p, %p, %p)\n", graphics, pen, path);
 
@@ -3371,8 +3372,12 @@ GpStatus WINGDIPAPI GdipDrawPath(GpGraphics *graphics, GpPen *pen, GpPath *path)
 
     if (!graphics->hdc)
     {
-        FIXME("graphics object has no HDC\n");
-        return Ok;
+        TRACE("graphics object has no HDC, creating it temporarily\n");
+
+        if(GdipGetDC(graphics, &graphics->hdc) == Ok)
+            hdcWasEmpty = TRUE;
+        else
+            ERR("HDC could not be created\n");
     }
 
     save_state = prepare_dc(graphics, pen);
@@ -3391,6 +3396,12 @@ GpStatus WINGDIPAPI GdipDrawPath(GpGraphics *graphics, GpPen *pen, GpPath *path)
 end:
     restore_dc(graphics, save_state);
     DeleteObject(hrgn);
+
+    if(hdcWasEmpty)
+    {
+        GdipReleaseDC(graphics, graphics->hdc);
+        graphics->hdc = NULL;
+    }
 
     return retval;
 }
