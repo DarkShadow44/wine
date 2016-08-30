@@ -78,17 +78,67 @@ HRESULT WINAPI D3DX10CreateEffectFromFileA(const char *filename, const D3D10_SHA
     return E_NOTIMPL;
 }
 
+HRESULT map_view_of_file(const WCHAR *filename, void **buffer, DWORD *length)
+{
+    HANDLE hfile, hmapping = NULL;
+
+    hfile = CreateFileW(filename, GENERIC_READ, FILE_SHARE_READ, 0, OPEN_EXISTING, 0, 0);
+    if(hfile == INVALID_HANDLE_VALUE) goto error;
+
+    *length = GetFileSize(hfile, NULL);
+    if(*length == INVALID_FILE_SIZE) goto error;
+
+    hmapping = CreateFileMappingW(hfile, NULL, PAGE_READONLY, 0, 0, NULL);
+    if(!hmapping) goto error;
+
+    *buffer = MapViewOfFile(hmapping, FILE_MAP_READ, 0, 0, 0);
+    if(*buffer == NULL) goto error;
+
+    CloseHandle(hmapping);
+    CloseHandle(hfile);
+
+    return S_OK;
+
+error:
+    CloseHandle(hmapping);
+    CloseHandle(hfile);
+    return HRESULT_FROM_WIN32(GetLastError());
+}
+
 HRESULT WINAPI D3DX10CreateEffectFromFileW(const WCHAR *filename, const D3D10_SHADER_MACRO *defines,
         ID3D10Include *include, const char *profile, UINT hlslflags, UINT fxflags, ID3D10Device *device,
         ID3D10EffectPool *effectpool, ID3DX10ThreadPump *pump, ID3D10Effect **effect, ID3D10Blob **errors,
         HRESULT *hresult)
 {
-    FIXME("filename %s, defines %p, include %p, profile %s, hlslflags %#x, fxflags %#x, "
+
+    void *buffer;
+    HRESULT ret;
+    DWORD size;
+
+    TRACE("filename %s, defines %p, include %p, profile %s, hlslflags %#x, fxflags %#x, "
             "device %p, effectpool %p, pump %p, effect %p, errors %p, hresult %p\n",
             debugstr_w(filename), defines, include, debugstr_a(profile), hlslflags, fxflags, device,
             effectpool, pump, effect, errors, hresult);
 
-    return E_NOTIMPL;
+    if (!device || !filename)
+        return E_FAIL;
+
+    ret = map_view_of_file(filename, &buffer, &size);
+
+    if (FAILED(ret))
+        return D3D10_ERROR_FILE_NOT_FOUND;
+
+
+    ret = D3DCompile(buffer, size, NULL, defines, include, "main", profile,
+            hlslflags, fxflags, effect, errors);
+
+    UnmapViewOfFile(buffer);
+
+
+
+
+
+    return ret;
 }
 
 HRESULT WINAPI D3DX10CreateEffectFromMemory(const void *data, SIZE_T datasize, const char *filename,

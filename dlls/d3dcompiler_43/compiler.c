@@ -510,7 +510,7 @@ static const struct target_info targets_info[] = {
     { "cs_5_0",            ST_UNKNOWN, 5, 0, 0, 0, FALSE, FALSE },
     { "ds_5_0",            ST_UNKNOWN, 5, 0, 0, 0, FALSE, FALSE },
     { "fx_2_0",            ST_UNKNOWN, 2, 0, 0, 0, FALSE, FALSE },
-    { "fx_4_0",            ST_UNKNOWN, 4, 0, 0, 0, FALSE, FALSE },
+    { "fx_4_0",            ST_UNKNOWN, 4, 0, 0, 0, FALSE, TRUE },
     { "fx_4_1",            ST_UNKNOWN, 4, 1, 0, 0, FALSE, FALSE },
     { "fx_5_0",            ST_UNKNOWN, 5, 0, 0, 0, FALSE, FALSE },
     { "gs_4_0",            ST_UNKNOWN, 4, 0, 0, 0, FALSE, FALSE },
