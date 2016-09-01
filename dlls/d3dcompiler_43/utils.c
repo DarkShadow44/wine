@@ -854,6 +854,8 @@ struct hlsl_type *get_type(struct hlsl_scope *scope, const char *name, BOOL recu
 
 BOOL find_function(const char *name)
 {
+    if(strcmp(name, "mul") == 0)
+        return TRUE;
     return wine_rb_get(&hlsl_ctx.functions, name) != NULL;
 }
 
@@ -1139,8 +1141,7 @@ static BOOL expr_compatible_data_types(struct hlsl_type *t1, struct hlsl_type *t
             if (components_count_type(t1) == components_count_type(t2))
                 return TRUE;
 
-            return (t1->type == HLSL_CLASS_MATRIX && (t1->dimx == 1 || t1->dimy == 1))
-                    || (t2->type == HLSL_CLASS_MATRIX && (t2->dimx == 1 || t2->dimy == 1));
+            return TRUE;
         }
 
         /* Both matrices */
@@ -1233,44 +1234,17 @@ static struct hlsl_type *expr_common_type(struct hlsl_type *t1, struct hlsl_type
     }
     else
     {
-        /* Two vectors or a vector and a matrix (matrix must be 1xn or nx1) */
-        unsigned int max_dim_1, max_dim_2;
+        type = HLSL_CLASS_VECTOR;
 
-        max_dim_1 = max(t1->dimx, t1->dimy);
-        max_dim_2 = max(t2->dimx, t2->dimy);
-        if (t1->dimx * t1->dimy == t2->dimx * t2->dimy)
+        if (t2->type == HLSL_CLASS_VECTOR)
         {
-            type = HLSL_CLASS_VECTOR;
-            dimx = max(t1->dimx, t2->dimx);
-            dimy = 1;
-        }
-        else if (max_dim_1 <= max_dim_2)
-        {
-            type = t1->type;
-            if (type == HLSL_CLASS_VECTOR)
-            {
-                dimx = max_dim_1;
-                dimy = 1;
-            }
-            else
-            {
-                dimx = t1->dimx;
-                dimy = t1->dimy;
-            }
+            dimx = t2->dimx;
+            dimy = t2->dimy;
         }
         else
         {
-            type = t2->type;
-            if (type == HLSL_CLASS_VECTOR)
-            {
-                dimx = max_dim_2;
-                dimy = 1;
-            }
-            else
-            {
-                dimx = t2->dimx;
-                dimy = t2->dimy;
-            }
+            dimx = t1->dimx;
+            dimy = t1->dimy;
         }
     }
 
@@ -1350,6 +1324,33 @@ struct hlsl_ir_expr *new_expr(enum hlsl_ir_expr_op op, struct hlsl_ir_node **ope
     expr->operands[2] = operands[2];
 
     return expr;
+}
+
+void dummy(struct hlsl_ir_node* test)
+{
+    test = test;
+}
+
+struct hlsl_ir_expr *add_func_call(char* name, struct list *params, struct source_location *loc)
+{
+   // struct hlsl_ir_function_decl *func;
+
+    struct hlsl_ir_node *elem1;
+    struct hlsl_ir_node *elem2;
+    int count = list_count(params);
+
+    elem1 = LIST_ENTRY(params->next, struct hlsl_ir_node, entry );
+    elem2 = LIST_ENTRY(params->next->next, struct hlsl_ir_node, entry );
+
+   if(strcmp(name, "mul") == 0)
+    {
+        return hlsl_mul(elem1, elem2, loc);
+    }
+
+
+    return NULL;
+
+    //func = get_overloaded_func(&hlsl_ctx.functions, name, params, TRUE);
 }
 
 struct hlsl_ir_expr *new_cast(struct hlsl_ir_node *node, struct hlsl_type *type,

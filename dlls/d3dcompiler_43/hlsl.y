@@ -900,6 +900,7 @@ static const struct hlsl_ir_function_decl *get_overloaded_func(struct wine_rb_tr
     return NULL;
 }
 
+
 %}
 
 %locations
@@ -1049,6 +1050,8 @@ static const struct hlsl_ir_function_decl *get_overloaded_func(struct wine_rb_tr
 %type <list> field
 %type <list> parameters
 %type <list> param_list
+%type <list> func_parameters
+%type <instr> func_parameter
 %type <instr> expr
 %type <var> variable
 %type <intval> array
@@ -1474,6 +1477,10 @@ type:                     base_type
                                 }
 
                                 $$ = new_hlsl_type(NULL, HLSL_CLASS_MATRIX, $3->base_type, $5, $7);
+                            }
+                        | KW_MATRIX
+                            {
+                                $$ = new_hlsl_type(NULL, HLSL_CLASS_MATRIX, HLSL_TYPE_FLOAT, 4, 4);
                             }
 
 base_type:                KW_VOID
@@ -2133,6 +2140,24 @@ postfix_expr:             primary_expr
                                 $$ = &constructor->node;
                             }
 
+func_parameter:           unary_expr
+                            {
+                                $$ = $1;
+                                dummy($1);
+                            }
+                            
+func_parameters:           func_parameter
+                            {
+                                $$ = d3dcompiler_alloc(sizeof(*$$));
+                                list_init($$);
+                                list_add_head($$, &$1->entry);
+                            }
+                        | func_parameters ',' func_parameter
+                            {
+                                $$ = $1;
+                                list_add_tail($$, &$3->entry);
+                            }                        
+
 unary_expr:               postfix_expr
                             {
                                 $$ = $1;
@@ -2219,6 +2244,14 @@ unary_expr:               postfix_expr
 
                                 expr = new_cast($6, dst_type, &loc);
                                 $$ = expr ? &expr->node : NULL;
+                            }
+                        | VAR_IDENTIFIER '(' func_parameters ')'
+                            {
+                                struct source_location loc;
+
+                                set_location(&loc, &@1);
+
+                               $$ = add_func_call($1, $3, &loc);
                             }
 
 unary_op:                 '+'

@@ -1119,6 +1119,8 @@ static inline struct hlsl_ir_loop *loop_from_node(const struct hlsl_ir_node *nod
 }
 
 BOOL add_declaration(struct hlsl_scope *scope, struct hlsl_ir_var *decl, BOOL local_var) DECLSPEC_HIDDEN;
+struct hlsl_ir_expr *add_func_call(char* name, struct list *params, struct source_location *loc);
+void dummy(struct hlsl_ir_node* test);
 struct hlsl_ir_var *get_variable(struct hlsl_scope *scope, const char *name) DECLSPEC_HIDDEN;
 void free_declaration(struct hlsl_ir_var *decl) DECLSPEC_HIDDEN;
 struct hlsl_type *new_hlsl_type(const char *name, enum hlsl_type_class type_class,
