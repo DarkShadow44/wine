@@ -764,6 +764,26 @@ static struct hlsl_type *new_struct_type(const char *name, DWORD modifiers, stru
     return type;
 }
 
+static struct hlsl_type *new_cbuffer_type(const char *name, struct list *fields)
+{
+    struct hlsl_type *type = d3dcompiler_alloc(sizeof(*type));
+
+    if (!type)
+    {
+        ERR("Out of memory.\n");
+        return NULL;
+    }
+    type->type = HLSL_CLASS_CBUFFER;
+    type->name = name;
+    type->dimx = type->dimy = 1;
+    type->modifiers = 0;
+    type->e.elements = fields;
+
+    list_add_tail(&hlsl_ctx.types, &type->entry);
+
+    return type;
+}
+
 static BOOL add_typedef(DWORD modifiers, struct hlsl_type *orig_type, struct list *list,
         struct source_location *loc)
 {
@@ -1040,6 +1060,7 @@ static const struct hlsl_ir_function_decl *get_overloaded_func(struct wine_rb_tr
 %type <list> struct_declaration
 %type <type> struct_spec
 %type <type> named_struct_spec
+%type <type> cbuffer_declaration
 %type <type> unnamed_struct_spec
 %type <list> type_specs
 %type <variable_def> type_spec
@@ -1538,6 +1559,31 @@ base_type:                KW_VOID
                                 d3dcompiler_free($2);
                             }
 
+cbuffer_declaration:    KW_CBUFFER any_identifier '{' fields_list '}'
+                            {
+                                BOOL ret;
+                                struct source_location loc;
+
+                                TRACE("cbuffer %s declaration.\n", debugstr_a($2));
+                                set_location(&loc, &@1);
+                                $$ = new_cbuffer_type($2, $4);
+
+                                if (get_variable(hlsl_ctx.cur_scope, $2))
+                                {
+                                    hlsl_report_message(hlsl_ctx.source_file, @2.first_line, @2.first_column,
+                                            HLSL_LEVEL_ERROR, "redefinition of '%s'", $2);
+                                    return 1;
+                                }
+
+                                ret = add_type_to_scope(hlsl_ctx.cur_scope, $$);
+                                if (!ret)
+                                {
+                                    hlsl_report_message(hlsl_ctx.source_file, @2.first_line, @2.first_column,
+                                            HLSL_LEVEL_ERROR, "redefinition of cbuffer '%s'", $2);
+                                    return 1;
+                                }
+                            }
+
 declaration_statement:    declaration
                         | struct_declaration
                         | typedef
@@ -1549,6 +1595,10 @@ declaration_statement:    declaration
                                     return -1;
                                 }
                                 list_init($$);
+                            }
+                        | cbuffer_declaration
+                            {
+                                $$ = declare_vars($1, 0, NULL);
                             }
 
 typedef:                  KW_TYPEDEF var_modifiers type type_specs ';'
