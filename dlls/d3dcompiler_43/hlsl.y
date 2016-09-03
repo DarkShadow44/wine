@@ -1069,6 +1069,7 @@ static const struct hlsl_ir_function_decl *get_overloaded_func(struct wine_rb_tr
 %type <instr> initializer_expr
 %type <modifiers> var_modifiers
 %type <list> field
+%type <list> cbuffer_field
 %type <list> parameters
 %type <list> param_list
 %type <list> func_parameters
@@ -1085,6 +1086,7 @@ static const struct hlsl_ir_function_decl *get_overloaded_func(struct wine_rb_tr
 %type <function> func_declaration
 %type <function> func_prototype
 %type <list> fields_list
+%type <list> cbuffer_fields_list
 %type <parameter> parameter
 %type <colon_attribute> colon_attribute
 %type <name> semantic
@@ -1559,7 +1561,37 @@ base_type:                KW_VOID
                                 d3dcompiler_free($2);
                             }
 
-cbuffer_declaration:    KW_CBUFFER any_identifier '{' fields_list '}'
+
+cbuffer_fields_list:      /* Empty */
+                            {
+                                $$ = d3dcompiler_alloc(sizeof(*$$));
+                                list_init($$);
+                            }
+                        | cbuffer_fields_list cbuffer_field
+                            {
+                                BOOL ret;
+                                struct hlsl_struct_field *field, *next;
+
+                                $$ = $1;
+                                LIST_FOR_EACH_ENTRY_SAFE(field, next, $2, struct hlsl_struct_field, entry)
+                                {
+                                    ret = add_struct_field($$, field);
+                                    if (ret == FALSE)
+                                    {
+                                        hlsl_report_message(hlsl_ctx.source_file, @2.first_line, @2.first_column,
+                                                HLSL_LEVEL_ERROR, "redefinition of '%s'", field->name);
+                                        d3dcompiler_free(field);
+                                    }
+                                }
+                                d3dcompiler_free($2);
+                            }
+
+cbuffer_field:            type variables_def ';'
+                            {
+                                $$ = declare_vars($1, 0, $2);
+                            }
+                            
+cbuffer_declaration:    KW_CBUFFER any_identifier '{' cbuffer_fields_list '}'
                             {
                                 BOOL ret;
                                 struct source_location loc;
@@ -2193,7 +2225,6 @@ postfix_expr:             primary_expr
 func_parameter:           unary_expr
                             {
                                 $$ = $1;
-                                dummy($1);
                             }
                             
 func_parameters:           func_parameter
@@ -2301,7 +2332,7 @@ unary_expr:               postfix_expr
 
                                 set_location(&loc, &@1);
 
-                               $$ = add_func_call($1, $3, &loc);
+                               $$ = &add_func_call($1, $3, &loc)->node;
                             }
 
 unary_op:                 '+'

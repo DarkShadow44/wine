@@ -495,8 +495,23 @@ HRESULT WINAPI D3DAssemble(const void *data, SIZE_T datasize, const char *filena
 struct bwriter_shader *create_shader_from_parse_context(void)
 {
     struct bwriter_shader *shader = d3dcompiler_alloc(sizeof(struct bwriter_shader));
-    struct hlsl_scope *scope;
+    //struct hlsl_scope *scope;
     struct hlsl_ir_var *var;
+
+
+  /* LIST_FOR_EACH_ENTRY(scope, &hlsl_ctx.scopes, struct hlsl_scope, entry)
+   {
+       LIST_FOR_EACH_ENTRY(var, &scope->vars, struct hlsl_ir_var, scope_entry)
+       {
+
+       }
+   }*/
+
+    LIST_FOR_EACH_ENTRY(var, &hlsl_ctx.globals->vars, struct hlsl_ir_var, scope_entry)
+    {
+        var->name = var->name;
+       // shader->inputs
+    }
 
     return shader;
 }
