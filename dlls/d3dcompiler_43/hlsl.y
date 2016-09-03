@@ -2553,6 +2553,7 @@ static void dump_function(struct wine_rb_entry *entry, void *context)
 struct bwriter_shader *parse_hlsl(enum shader_type type, DWORD major, DWORD minor,
         const char *entrypoint, char **messages)
 {
+    struct bwriter_shader *shader = NULL;
     struct hlsl_scope *scope, *next_scope;
     struct hlsl_type *hlsl_type, *next_type;
     struct hlsl_ir_var *var, *next_var;
@@ -2598,6 +2599,11 @@ struct bwriter_shader *parse_hlsl(enum shader_type type, DWORD major, DWORD mino
             d3dcompiler_free(hlsl_ctx.messages.string);
     }
 
+    if(hlsl_ctx.status != PARSE_ERR)
+    {
+        shader = create_shader_from_parse_context();
+    }
+
     for (i = 0; i < hlsl_ctx.source_files_count; ++i)
         d3dcompiler_free((void *)hlsl_ctx.source_files[i]);
     d3dcompiler_free(hlsl_ctx.source_files);
@@ -2622,5 +2628,5 @@ struct bwriter_shader *parse_hlsl(enum shader_type type, DWORD major, DWORD mino
         free_hlsl_type(hlsl_type);
     }
 
-    return NULL;
+    return shader;
 }

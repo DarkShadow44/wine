@@ -1170,6 +1170,7 @@ void add_function_decl(struct wine_rb_tree *funcs, char *name, struct hlsl_ir_fu
         BOOL intrinsic) DECLSPEC_HIDDEN;
 struct bwriter_shader *parse_hlsl_shader(const char *text, enum shader_type type, DWORD major, DWORD minor,
         const char *entrypoint, char **messages) DECLSPEC_HIDDEN;
+struct bwriter_shader *create_shader_from_parse_context(void);
 
 const char *debug_hlsl_type(const struct hlsl_type *type) DECLSPEC_HIDDEN;
 const char *debug_modifiers(DWORD modifiers) DECLSPEC_HIDDEN;
