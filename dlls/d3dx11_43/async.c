@@ -54,16 +54,53 @@ HRESULT WINAPI D3DX11CompileFromFileA(const char *filename, const D3D10_SHADER_M
     return E_NOTIMPL;
 }
 
+HRESULT map_view_of_file(const WCHAR *filename, void **buffer, DWORD *length)
+{
+    HANDLE hfile, hmapping = NULL;
+
+    hfile = CreateFileW(filename, GENERIC_READ, FILE_SHARE_READ, 0, OPEN_EXISTING, 0, 0);
+    if(hfile == INVALID_HANDLE_VALUE) goto error;
+
+    *length = GetFileSize(hfile, NULL);
+    if(*length == INVALID_FILE_SIZE) goto error;
+
+    hmapping = CreateFileMappingW(hfile, NULL, PAGE_READONLY, 0, 0, NULL);
+    if(!hmapping) goto error;
+
+    *buffer = MapViewOfFile(hmapping, FILE_MAP_READ, 0, 0, 0);
+    if(*buffer == NULL) goto error;
+
+    CloseHandle(hmapping);
+    CloseHandle(hfile);
+
+    return S_OK;
+
+error:
+    CloseHandle(hmapping);
+    CloseHandle(hfile);
+    return HRESULT_FROM_WIN32(GetLastError());
+}
+
 HRESULT WINAPI D3DX11CompileFromFileW(const WCHAR *filename, const D3D10_SHADER_MACRO *defines,
         ID3D10Include *include, const char *entry_point, const char *target, UINT sflags, UINT eflags,
         ID3DX11ThreadPump *pump, ID3D10Blob **shader, ID3D10Blob **error_messages, HRESULT *hresult)
 {
-    FIXME("filename %s, defines %p, include %p, entry_point %s, target %s, sflags %#x, "
-            "eflags %#x, pump %p, shader %p, error_messages %p, hresult %p stub.\n",
-            debugstr_w(filename), defines, include, debugstr_a(entry_point), debugstr_a(target),
-            sflags, eflags, pump, shader, error_messages, hresult);
+    void *buffer;
+    HRESULT ret;
+    DWORD size;
 
-    return E_NOTIMPL;
+    ret = map_view_of_file(filename, &buffer, &size);
+
+    if (FAILED(ret))
+        return E_FAIL;
+
+
+    ret = D3DCompile(buffer, size, NULL, defines, include, entry_point, target,
+            sflags, sflags, shader, error_messages);
+
+    UnmapViewOfFile(buffer);
+
+    return S_OK;
 }
 
 HRESULT WINAPI D3DX11CreateTextureFromMemory(ID3D11Device *device, const void *data,
