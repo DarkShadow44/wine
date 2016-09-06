@@ -856,54 +856,6 @@ static D3DFORMAT dds_rgb_to_d3dformat(const struct dds_pixel_format *pixel_forma
     return D3DFMT_UNKNOWN;
 }
 
-HRESULT load_texture_from_dds(BYTE *src_data, BYTE *dst_data, D3DXIMAGE_INFO *src_info)
-{
-    HRESULT hr;
-    UINT src_pitch;
-    UINT mip_level;
-    UINT mip_levels;
-    UINT mip_level_size;
-    UINT width, height;
-    const struct dds_header *header = (struct dds_header*)src_data;
-    const BYTE *pixels = (BYTE *)(header + 1);
-    struct volume volume_srcdst;
-
-    /* Loading a cube texture as a simple texture is also supported
-     * (only first face texture is taken). Same with volume textures. */
-    if ((src_info->ResourceType != D3DRTYPE_TEXTURE)
-            && (src_info->ResourceType != D3DRTYPE_CUBETEXTURE)
-            && (src_info->ResourceType != D3DRTYPE_VOLUMETEXTURE))
-    {
-        WARN("Trying to load a %u resource as a 2D texture, returning failure.\n", src_info->ResourceType);
-        return (HRESULT)-1;
-    }
-
-    width = src_info->Width;
-    height = src_info->Height;
-    mip_levels = 1; /* only take first mipmap */
-
-    volume_srcdst.depth = 0;
-    volume_srcdst.width = width;
-    volume_srcdst.height = height;
-
-    for (mip_level = 0; mip_level < mip_levels; ++mip_level)
-    {
-        hr = calculate_dds_surface_size(src_info->Format, width, height, &src_pitch, &mip_level_size);
-        if (FAILED(hr)) return hr;
-
-        convert_argb_pixels(src_data, src_pitch, 0, &volume_srcdst, get_format_info(dds_rgb_to_d3dformat(&header->pixel_format)), dst_data, width*4, 0, &volume_srcdst, get_format_info(D3DFMT_A8B8G8R8), 0, NULL);
-
-        pixels += mip_level_size;
-        width = max(1, width / 2);
-        height = max(1, height / 2);
-    }
-
-    return (HRESULT)0;
-}
-
-
-
-
 static D3DFORMAT dds_luminance_to_d3dformat(const struct dds_pixel_format *pixel_format)
 {
     if (pixel_format->bpp == 8)
@@ -1060,21 +1012,82 @@ static HRESULT get_image_info_from_dds(const void *buffer, UINT length, D3DXIMAG
     info->ImageFileFormat = D3DXIFF_DDS;
     return 0;
 }
+
+
+HRESULT load_texture_from_dds(BYTE *src_data, BYTE *dst_data, D3DXIMAGE_INFO *src_info)
+{
+    HRESULT hr;
+    UINT src_pitch;
+    UINT mip_level;
+    UINT mip_levels;
+    UINT mip_level_size;
+    UINT width, height;
+    const struct dds_header *header = (struct dds_header*)src_data;
+    const BYTE *pixels = (BYTE *)(header + 1);
+    struct volume volume_srcdst;
+
+    /* Loading a cube texture as a simple texture is also supported
+     * (only first face texture is taken). Same with volume textures. */
+    if ((src_info->ResourceType != D3DRTYPE_TEXTURE)
+            && (src_info->ResourceType != D3DRTYPE_CUBETEXTURE)
+            && (src_info->ResourceType != D3DRTYPE_VOLUMETEXTURE))
+    {
+        WARN("Trying to load a %u resource as a 2D texture, returning failure.\n", src_info->ResourceType);
+        return (HRESULT)-1;
+    }
+
+    width = src_info->Width;
+    height = src_info->Height;
+    mip_levels = 1; /* only take first mipmap */
+
+    volume_srcdst.depth = 1;
+    volume_srcdst.width = width;
+    volume_srcdst.height = height;
+
+    for (mip_level = 0; mip_level < mip_levels; ++mip_level)
+    {
+        hr = calculate_dds_surface_size(src_info->Format, width, height, &src_pitch, &mip_level_size);
+        if (FAILED(hr)) return hr;
+
+        //!!!handle compressed textures + DX10 textures
+        convert_argb_pixels(pixels, src_pitch, 0, &volume_srcdst, get_format_info(dds_rgb_to_d3dformat(&header->pixel_format)), dst_data, width*4, 0, &volume_srcdst, get_format_info(D3DFMT_A8B8G8R8), 0, NULL);
+
+        pixels += mip_level_size;
+        width = max(1, width / 2);
+        height = max(1, height / 2);
+    }
+
+    return (HRESULT)0;
+}
 /*
  * Turns an image (png/jpg/dds/...) into raw bgr data
  *
  */
-static void get_raw_image(BYTE *image_data, UINT data_len,  BYTE **bgr_data, UINT *width, UINT *height)
+static void get_raw_image(BYTE *image_data, UINT data_len,  BYTE **rgba_data, UINT *width, UINT *height)
 {
     D3DXIMAGE_INFO image_info;
+    int i;
+    BYTE *data;
 
     get_image_info_from_dds(image_data, data_len, &image_info);
 
+    data = HeapAlloc(GetProcessHeap(), 0, image_info.Width * image_info.Height * 4);
+
+    load_texture_from_dds(image_data, data, &image_info);
+
+
+    /* swap abgr -> rgba */
+    /*for(i = 0; i < image_info.Width*image_info.Height*4; i += 4)
+    {
+
+        BYTE temp         = data[i+2];
+        data[i+2] = data[i+0];
+        data[i+0] = temp;
+    }*/
+
     *width = image_info.Width;
     *height = image_info.Height;
-    *bgr_data = HeapAlloc(GetProcessHeap(), 0, image_info.Width * image_info.Height * 4);
-
-    load_texture_from_dds(image_data, *bgr_data, &image_info);
+    *rgba_data = data;
 }
 
 
@@ -1102,14 +1115,15 @@ HRESULT WINAPI D3DX11CreateShaderResourceViewFromFileW(ID3D11Device *iface,
 
     get_raw_image(buffer, size, &raw_image, &image_width, &image_height);
 
+
     //!!!add trace
     //fill desc
     //handle load_info
 
     desc_texture.Height = image_height;
     desc_texture.Width = image_width;
-    desc_texture.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
-    desc_texture.MipLevels = 0;
+    desc_texture.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+    desc_texture.MipLevels = 1;
     desc_texture.Usage = D3D11_USAGE_DEFAULT;
     desc_texture.BindFlags = D3D11_BIND_SHADER_RESOURCE;
     desc_texture.CPUAccessFlags = 0;
@@ -1132,7 +1146,7 @@ HRESULT WINAPI D3DX11CreateShaderResourceViewFromFileW(ID3D11Device *iface,
     desc_view.Format = desc_texture.Format;
     desc_view.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
 
-    desc_view.Texture2D.MipLevels = 0;
+    desc_view.Texture2D.MipLevels = 1;
     desc_view.Texture2D.MostDetailedMip = 0;
 
     HeapFree(GetProcessHeap(), 0, raw_image);
