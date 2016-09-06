@@ -16,7 +16,7 @@
 @ stub D3DX11CreateAsyncTextureInfoProcessor
 @ stub D3DX11CreateAsyncTextureProcessor
 @ stub D3DX11CreateShaderResourceViewFromFileA
-@ stub D3DX11CreateShaderResourceViewFromFileW
+@ stdcall D3DX11CreateShaderResourceViewFromFileW(ptr wstr ptr ptr ptr ptr)
 @ stub D3DX11CreateShaderResourceViewFromMemory
 @ stub D3DX11CreateShaderResourceViewFromResourceA
 @ stub D3DX11CreateShaderResourceViewFromResourceW
