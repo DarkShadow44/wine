@@ -94,9 +94,10 @@ HRESULT WINAPI D3DX11CompileFromFileW(const WCHAR *filename, const D3D10_SHADER_
     if (FAILED(ret))
         return E_FAIL;
 
+    //!!!fix path, convert to char*
 
-    ret = D3DCompile(buffer, size, NULL, defines, include, entry_point, target,
-            sflags, sflags, shader, error_messages);
+    ret = D3DX11CompileFromMemory(buffer, size, NULL, defines, include, entry_point, target,
+            sflags, eflags, pump, shader, error_messages, hresult);
 
     UnmapViewOfFile(buffer);
 
