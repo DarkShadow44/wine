@@ -8,6 +8,7 @@ C_SRCS = \
 	buffer.c \
 	context.c \
 	cs.c \
+	d3dtexture.c \
 	device.c \
 	directx.c \
 	drawprim.c \
