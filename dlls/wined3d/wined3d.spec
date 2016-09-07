@@ -294,3 +294,6 @@
 @ cdecl wined3d_dxt3_encode(ptr ptr long long long long long)
 @ cdecl wined3d_dxt5_decode(ptr ptr long long long long long)
 @ cdecl wined3d_dxt5_encode(ptr ptr long long long long long)
+
+@ cdecl wined3d_map_view_of_file(wstr ptr ptr)
+@ cdecl wined3d_load_imagedata_from_file_in_memory(ptr long ptr long ptr ptr)

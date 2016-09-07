@@ -2651,4 +2651,7 @@ BOOL wined3d_dxt5_encode(const BYTE *src, BYTE *dst, DWORD pitch_in, DWORD pitch
                          enum wined3d_format_id format, unsigned int w, unsigned int h);
 BOOL wined3d_dxtn_supported(void);
 
+HRESULT CDECL wined3d_map_view_of_file(const WCHAR *filename, void **buffer, DWORD *length);
+HRESULT CDECL wined3d_load_imagedata_from_file_in_memory (const void *pSrcData, UINT SrcDataSize, void **pDstData, DWORD Colorkey, UINT *width, UINT *height);
+
 #endif /* __WINE_WINED3D_H */

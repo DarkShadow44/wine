@@ -1,6 +1,6 @@
 EXTRADEFS = -DSTAGING_CSMT
 MODULE    = wined3d-csmt.dll
-IMPORTS   = uuid opengl32 user32 gdi32 advapi32
+IMPORTS   = uuid opengl32 user32 gdi32 advapi32 ole32
 PARENTSRC = ../wined3d
 PARENTSPEC = ../wined3d/wined3d.spec
 
@@ -10,6 +10,7 @@ C_SRCS = \
 	buffer.c \
 	context.c \
 	cs.c \
+	d3dtexture.c \
 	device.c \
 	directx.c \
 	drawprim.c \

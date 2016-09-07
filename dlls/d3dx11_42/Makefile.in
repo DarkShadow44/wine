@@ -1,5 +1,5 @@
 MODULE = d3dx11_42.dll
-IMPORTS = d3dcompiler
+IMPORTS = d3dcompiler wined3d
 PARENTSRC = ../d3dx11_43
 
 C_SRCS = \

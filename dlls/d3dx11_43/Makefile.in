@@ -1,6 +1,6 @@
 MODULE = d3dx11_43.dll
 IMPORTLIB = d3dx11
-IMPORTS   = d3dcompiler
+IMPORTS   = d3dcompiler wined3d
 
 C_SRCS = \
 	async.c \
