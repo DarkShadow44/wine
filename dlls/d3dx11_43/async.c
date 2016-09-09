@@ -112,7 +112,7 @@ HRESULT WINAPI D3DX11CreateShaderResourceViewFromFileW(ID3D11Device *iface,
     if (FAILED(ret))
         return E_FAIL;
 
-    wined3d_load_imagedata_from_file_in_memory(buffer, size, &raw_image, 0, &image_width, &image_height);
+    wined3d_load_imagedata_from_file_in_memory(buffer, size, &raw_image, 0, wined3d_wined3dformat_from_dxgi_format(load_info->Format), &image_width, &image_height);
 
 
     //!!!add trace
@@ -121,7 +121,7 @@ HRESULT WINAPI D3DX11CreateShaderResourceViewFromFileW(ID3D11Device *iface,
 
     desc_texture.Height = image_height;
     desc_texture.Width = image_width;
-    desc_texture.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+    desc_texture.Format = load_info->Format;
     desc_texture.MipLevels = 1;
     desc_texture.Usage = D3D11_USAGE_DEFAULT;
     desc_texture.BindFlags = D3D11_BIND_SHADER_RESOURCE;

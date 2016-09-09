@@ -67,7 +67,7 @@ static HRESULT d3d11_input_layout_to_wined3d_declaration(const D3D11_INPUT_ELEME
         const D3D11_INPUT_ELEMENT_DESC *f = &element_descs[i];
         UINT j;
 
-        e->format = wined3dformat_from_dxgi_format(f->Format);
+        e->format = wined3d_wined3dformat_from_dxgi_format(f->Format);
         e->input_slot = f->InputSlot;
         e->offset = f->AlignedByteOffset;
         e->output_slot = WINED3D_OUTPUT_SLOT_UNUSED;

@@ -363,7 +363,7 @@ static void STDMETHODCALLTYPE d3d11_immediate_context_IASetIndexBuffer(ID3D11Dev
     wined3d_mutex_lock();
     wined3d_device_set_index_buffer(device->wined3d_device,
             buffer_impl ? buffer_impl->wined3d_buffer : NULL,
-            wined3dformat_from_dxgi_format(format), offset);
+            wined3d_wined3dformat_from_dxgi_format(format), offset);
     wined3d_mutex_unlock();
 }
 
@@ -1411,7 +1411,7 @@ static void STDMETHODCALLTYPE d3d11_immediate_context_IAGetIndexBuffer(ID3D11Dev
 
     wined3d_mutex_lock();
     wined3d_buffer = wined3d_device_get_index_buffer(device->wined3d_device, &wined3d_format, offset);
-    *format = dxgi_format_from_wined3dformat(wined3d_format);
+    *format = wined3d_dxgi_format_from_wined3dformat(wined3d_format);
     if (!wined3d_buffer)
     {
         wined3d_mutex_unlock();
@@ -2736,7 +2736,7 @@ static HRESULT STDMETHODCALLTYPE d3d11_device_CheckMultisampleQualityLevels(ID3D
     wined3d = wined3d_device_get_wined3d(device->wined3d_device);
     wined3d_device_get_creation_parameters(device->wined3d_device, &params);
     hr = wined3d_check_device_multisample_type(wined3d, params.adapter_idx, params.device_type,
-            wined3dformat_from_dxgi_format(format), TRUE, sample_count, quality_level_count);
+            wined3d_wined3dformat_from_dxgi_format(format), TRUE, sample_count, quality_level_count);
     wined3d_mutex_unlock();
 
     if (hr == WINED3DERR_INVALIDCALL)
@@ -3227,7 +3227,7 @@ static void STDMETHODCALLTYPE d3d10_device_IASetIndexBuffer(ID3D10Device1 *iface
     wined3d_mutex_lock();
     wined3d_device_set_index_buffer(device->wined3d_device,
             buffer_impl ? buffer_impl->wined3d_buffer : NULL,
-            wined3dformat_from_dxgi_format(format), offset);
+            wined3d_wined3dformat_from_dxgi_format(format), offset);
     wined3d_mutex_unlock();
 }
 
@@ -3890,7 +3890,7 @@ static void STDMETHODCALLTYPE d3d10_device_IAGetIndexBuffer(ID3D10Device1 *iface
 
     wined3d_mutex_lock();
     wined3d_buffer = wined3d_device_get_index_buffer(device->wined3d_device, &wined3d_format, offset);
-    *format = dxgi_format_from_wined3dformat(wined3d_format);
+    *format = wined3d_dxgi_format_from_wined3dformat(wined3d_format);
     if (!wined3d_buffer)
     {
         wined3d_mutex_unlock();
@@ -5209,7 +5209,7 @@ static HRESULT CDECL device_parent_create_swapchain_texture(struct wined3d_devic
     desc.Height = wined3d_desc->height;
     desc.MipLevels = 1;
     desc.ArraySize = 1;
-    desc.Format = dxgi_format_from_wined3dformat(wined3d_desc->format);
+    desc.Format = wined3d_dxgi_format_from_wined3dformat(wined3d_desc->format);
     desc.SampleDesc.Count = wined3d_desc->multisample_type ? wined3d_desc->multisample_type : 1;
     desc.SampleDesc.Quality = wined3d_desc->multisample_quality;
     desc.Usage = D3D10_USAGE_DEFAULT;

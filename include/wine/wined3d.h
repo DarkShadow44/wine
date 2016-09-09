@@ -31,6 +31,7 @@
 #endif
 
 #include "wine/list.h"
+#include "dxgiformat.h"
 
 #define WINED3D_OK                                              S_OK
 
@@ -2652,6 +2653,9 @@ BOOL wined3d_dxt5_encode(const BYTE *src, BYTE *dst, DWORD pitch_in, DWORD pitch
 BOOL wined3d_dxtn_supported(void);
 
 HRESULT CDECL wined3d_map_view_of_file(const WCHAR *filename, void **buffer, DWORD *length);
-HRESULT CDECL wined3d_load_imagedata_from_file_in_memory (const void *pSrcData, UINT SrcDataSize, void **pDstData, DWORD Colorkey, UINT *width, UINT *height);
+HRESULT CDECL wined3d_load_imagedata_from_file_in_memory (const void *pSrcData, UINT SrcDataSize, void **pDstData, enum wined3d_format_id dstFormat, DWORD Colorkey, UINT *width, UINT *height);
+
+DXGI_FORMAT wined3d_dxgi_format_from_wined3dformat(enum wined3d_format_id format);
+enum wined3d_format_id wined3d_wined3dformat_from_dxgi_format(DXGI_FORMAT format);
 
 #endif /* __WINE_WINED3D_H */

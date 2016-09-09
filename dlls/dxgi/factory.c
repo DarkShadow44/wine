@@ -241,7 +241,7 @@ static HRESULT STDMETHODCALLTYPE dxgi_factory_CreateSwapChain(IDXGIFactory1 *ifa
 
     wined3d_desc.backbuffer_width = desc->BufferDesc.Width;
     wined3d_desc.backbuffer_height = desc->BufferDesc.Height;
-    wined3d_desc.backbuffer_format = wined3dformat_from_dxgi_format(desc->BufferDesc.Format);
+    wined3d_desc.backbuffer_format = wined3d_wined3dformat_from_dxgi_format(desc->BufferDesc.Format);
     wined3d_desc.backbuffer_count = desc->BufferCount;
     wined3d_sample_desc_from_dxgi(&wined3d_desc.multisample_type,
             &wined3d_desc.multisample_quality, &desc->SampleDesc);

@@ -173,7 +173,7 @@ static HRESULT STDMETHODCALLTYPE dxgi_output_GetDisplayModeList(IDXGIOutput *ifa
     }
 
     wined3d = This->adapter->factory->wined3d;
-    wined3d_format = wined3dformat_from_dxgi_format(format);
+    wined3d_format = wined3d_wined3dformat_from_dxgi_format(format);
 
     wined3d_mutex_lock();
     max_count = wined3d_get_adapter_mode_count(wined3d, This->adapter->ordinal,

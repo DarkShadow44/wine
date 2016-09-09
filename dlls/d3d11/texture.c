@@ -216,7 +216,7 @@ static void STDMETHODCALLTYPE d3d11_texture2d_GetDesc(ID3D11Texture2D *iface, D3
      * there (yet). */
     desc->Width = wined3d_desc.width;
     desc->Height = wined3d_desc.height;
-    desc->Format = dxgi_format_from_wined3dformat(wined3d_desc.format);
+    desc->Format = wined3d_dxgi_format_from_wined3dformat(wined3d_desc.format);
     desc->SampleDesc.Count = wined3d_desc.multisample_type == WINED3D_MULTISAMPLE_NONE
         ? 1 : wined3d_desc.multisample_type;
     desc->SampleDesc.Quality = wined3d_desc.multisample_quality;
@@ -461,7 +461,7 @@ static HRESULT d3d_texture2d_init(struct d3d_texture2d *texture, struct d3d_devi
         FIXME("Multisampled textures not implemented.\n");
 
     wined3d_desc.resource_type = WINED3D_RTYPE_TEXTURE_2D;
-    wined3d_desc.format = wined3dformat_from_dxgi_format(desc->Format);
+    wined3d_desc.format = wined3d_wined3dformat_from_dxgi_format(desc->Format);
     wined3d_desc.multisample_type = desc->SampleDesc.Count > 1 ? desc->SampleDesc.Count : WINED3D_MULTISAMPLE_NONE;
     wined3d_desc.multisample_quality = desc->SampleDesc.Quality;
     wined3d_desc.usage = wined3d_usage_from_d3d11(desc->BindFlags, desc->Usage);
@@ -915,7 +915,7 @@ static HRESULT d3d_texture3d_init(struct d3d_texture3d *texture, struct d3d_devi
     texture->desc = *desc;
 
     wined3d_desc.resource_type = WINED3D_RTYPE_TEXTURE_3D;
-    wined3d_desc.format = wined3dformat_from_dxgi_format(desc->Format);
+    wined3d_desc.format = wined3d_wined3dformat_from_dxgi_format(desc->Format);
     wined3d_desc.multisample_type = WINED3D_MULTISAMPLE_NONE;
     wined3d_desc.multisample_quality = 0;
     wined3d_desc.usage = wined3d_usage_from_d3d11(desc->BindFlags, desc->Usage);

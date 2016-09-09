@@ -31,11 +31,227 @@
 
 #include "wine/wined3d.h"
 
-
-
-//DEFINE_GUID(IID_IWICImagingFactory, 0xec5ec8a9, 0xc395, 0x4314, 0x9c,0x77, 0x54,0xd7,0xa9,0x35,0xff,0x70)
-
 WINE_DEFAULT_DEBUG_CHANNEL(d3d);
+
+DXGI_FORMAT wined3d_dxgi_format_from_wined3dformat(enum wined3d_format_id format)
+{
+    switch(format)
+    {
+        case WINED3DFMT_UNKNOWN: return DXGI_FORMAT_UNKNOWN;
+        case WINED3DFMT_R32G32B32A32_TYPELESS: return DXGI_FORMAT_R32G32B32A32_TYPELESS;
+        case WINED3DFMT_R32G32B32A32_FLOAT: return DXGI_FORMAT_R32G32B32A32_FLOAT;
+        case WINED3DFMT_R32G32B32A32_UINT: return DXGI_FORMAT_R32G32B32A32_UINT;
+        case WINED3DFMT_R32G32B32A32_SINT: return DXGI_FORMAT_R32G32B32A32_SINT;
+        case WINED3DFMT_R32G32B32_TYPELESS: return DXGI_FORMAT_R32G32B32_TYPELESS;
+        case WINED3DFMT_R32G32B32_FLOAT: return DXGI_FORMAT_R32G32B32_FLOAT;
+        case WINED3DFMT_R32G32B32_UINT: return DXGI_FORMAT_R32G32B32_UINT;
+        case WINED3DFMT_R32G32B32_SINT: return DXGI_FORMAT_R32G32B32_SINT;
+        case WINED3DFMT_R16G16B16A16_TYPELESS: return DXGI_FORMAT_R16G16B16A16_TYPELESS;
+        case WINED3DFMT_R16G16B16A16_FLOAT: return DXGI_FORMAT_R16G16B16A16_FLOAT;
+        case WINED3DFMT_R16G16B16A16_UNORM: return DXGI_FORMAT_R16G16B16A16_UNORM;
+        case WINED3DFMT_R16G16B16A16_UINT: return DXGI_FORMAT_R16G16B16A16_UINT;
+        case WINED3DFMT_R16G16B16A16_SNORM: return DXGI_FORMAT_R16G16B16A16_SNORM;
+        case WINED3DFMT_R16G16B16A16_SINT: return DXGI_FORMAT_R16G16B16A16_SINT;
+        case WINED3DFMT_R32G32_TYPELESS: return DXGI_FORMAT_R32G32_TYPELESS;
+        case WINED3DFMT_R32G32_FLOAT: return DXGI_FORMAT_R32G32_FLOAT;
+        case WINED3DFMT_R32G32_UINT: return DXGI_FORMAT_R32G32_UINT;
+        case WINED3DFMT_R32G32_SINT: return DXGI_FORMAT_R32G32_SINT;
+        case WINED3DFMT_R32G8X24_TYPELESS: return DXGI_FORMAT_R32G8X24_TYPELESS;
+        case WINED3DFMT_D32_FLOAT_S8X24_UINT: return DXGI_FORMAT_D32_FLOAT_S8X24_UINT;
+        case WINED3DFMT_R32_FLOAT_X8X24_TYPELESS: return DXGI_FORMAT_R32_FLOAT_X8X24_TYPELESS;
+        case WINED3DFMT_X32_TYPELESS_G8X24_UINT: return DXGI_FORMAT_X32_TYPELESS_G8X24_UINT;
+        case WINED3DFMT_R10G10B10A2_TYPELESS: return DXGI_FORMAT_R10G10B10A2_TYPELESS;
+        case WINED3DFMT_R10G10B10A2_UNORM: return DXGI_FORMAT_R10G10B10A2_UNORM;
+        case WINED3DFMT_R10G10B10A2_UINT: return DXGI_FORMAT_R10G10B10A2_UINT;
+        case WINED3DFMT_R11G11B10_FLOAT: return DXGI_FORMAT_R11G11B10_FLOAT;
+        case WINED3DFMT_R8G8B8A8_TYPELESS: return DXGI_FORMAT_R8G8B8A8_TYPELESS;
+        case WINED3DFMT_R8G8B8A8_UNORM: return DXGI_FORMAT_R8G8B8A8_UNORM;
+        case WINED3DFMT_R8G8B8A8_UNORM_SRGB: return DXGI_FORMAT_R8G8B8A8_UNORM_SRGB;
+        case WINED3DFMT_R8G8B8A8_UINT: return DXGI_FORMAT_R8G8B8A8_UINT;
+        case WINED3DFMT_R8G8B8A8_SNORM: return DXGI_FORMAT_R8G8B8A8_SNORM;
+        case WINED3DFMT_R8G8B8A8_SINT: return DXGI_FORMAT_R8G8B8A8_SINT;
+        case WINED3DFMT_R16G16_TYPELESS: return DXGI_FORMAT_R16G16_TYPELESS;
+        case WINED3DFMT_R16G16_FLOAT: return DXGI_FORMAT_R16G16_FLOAT;
+        case WINED3DFMT_R16G16_UNORM: return DXGI_FORMAT_R16G16_UNORM;
+        case WINED3DFMT_R16G16_UINT: return DXGI_FORMAT_R16G16_UINT;
+        case WINED3DFMT_R16G16_SNORM: return DXGI_FORMAT_R16G16_SNORM;
+        case WINED3DFMT_R16G16_SINT: return DXGI_FORMAT_R16G16_SINT;
+        case WINED3DFMT_R32_TYPELESS: return DXGI_FORMAT_R32_TYPELESS;
+        case WINED3DFMT_D32_FLOAT: return DXGI_FORMAT_D32_FLOAT;
+        case WINED3DFMT_R32_FLOAT: return DXGI_FORMAT_R32_FLOAT;
+        case WINED3DFMT_R32_UINT: return DXGI_FORMAT_R32_UINT;
+        case WINED3DFMT_R32_SINT: return DXGI_FORMAT_R32_SINT;
+        case WINED3DFMT_R24G8_TYPELESS: return DXGI_FORMAT_R24G8_TYPELESS;
+        case WINED3DFMT_D24_UNORM_S8_UINT: return DXGI_FORMAT_D24_UNORM_S8_UINT;
+        case WINED3DFMT_R24_UNORM_X8_TYPELESS: return DXGI_FORMAT_R24_UNORM_X8_TYPELESS;
+        case WINED3DFMT_X24_TYPELESS_G8_UINT: return DXGI_FORMAT_X24_TYPELESS_G8_UINT;
+        case WINED3DFMT_R8G8_TYPELESS: return DXGI_FORMAT_R8G8_TYPELESS;
+        case WINED3DFMT_R8G8_UNORM: return DXGI_FORMAT_R8G8_UNORM;
+        case WINED3DFMT_R8G8_UINT: return DXGI_FORMAT_R8G8_UINT;
+        case WINED3DFMT_R8G8_SNORM: return DXGI_FORMAT_R8G8_SNORM;
+        case WINED3DFMT_R8G8_SINT: return DXGI_FORMAT_R8G8_SINT;
+        case WINED3DFMT_R16_TYPELESS: return DXGI_FORMAT_R16_TYPELESS;
+        case WINED3DFMT_R16_FLOAT: return DXGI_FORMAT_R16_FLOAT;
+        case WINED3DFMT_D16_UNORM: return DXGI_FORMAT_D16_UNORM;
+        case WINED3DFMT_R16_UNORM: return DXGI_FORMAT_R16_UNORM;
+        case WINED3DFMT_R16_UINT: return DXGI_FORMAT_R16_UINT;
+        case WINED3DFMT_R16_SNORM: return DXGI_FORMAT_R16_SNORM;
+        case WINED3DFMT_R16_SINT: return DXGI_FORMAT_R16_SINT;
+        case WINED3DFMT_R8_TYPELESS: return DXGI_FORMAT_R8_TYPELESS;
+        case WINED3DFMT_R8_UNORM: return DXGI_FORMAT_R8_UNORM;
+        case WINED3DFMT_R8_UINT: return DXGI_FORMAT_R8_UINT;
+        case WINED3DFMT_R8_SNORM: return DXGI_FORMAT_R8_SNORM;
+        case WINED3DFMT_R8_SINT: return DXGI_FORMAT_R8_SINT;
+        case WINED3DFMT_A8_UNORM: return DXGI_FORMAT_A8_UNORM;
+        case WINED3DFMT_R1_UNORM: return DXGI_FORMAT_R1_UNORM;
+        case WINED3DFMT_R9G9B9E5_SHAREDEXP: return DXGI_FORMAT_R9G9B9E5_SHAREDEXP;
+        case WINED3DFMT_R8G8_B8G8_UNORM: return DXGI_FORMAT_R8G8_B8G8_UNORM;
+        case WINED3DFMT_G8R8_G8B8_UNORM: return DXGI_FORMAT_G8R8_G8B8_UNORM;
+        case WINED3DFMT_BC1_TYPELESS: return DXGI_FORMAT_BC1_TYPELESS;
+        case WINED3DFMT_BC1_UNORM: return DXGI_FORMAT_BC1_UNORM;
+        case WINED3DFMT_BC1_UNORM_SRGB: return DXGI_FORMAT_BC1_UNORM_SRGB;
+        case WINED3DFMT_BC2_TYPELESS: return DXGI_FORMAT_BC2_TYPELESS;
+        case WINED3DFMT_BC2_UNORM: return DXGI_FORMAT_BC2_UNORM;
+        case WINED3DFMT_BC2_UNORM_SRGB: return DXGI_FORMAT_BC2_UNORM_SRGB;
+        case WINED3DFMT_BC3_TYPELESS: return DXGI_FORMAT_BC3_TYPELESS;
+        case WINED3DFMT_BC3_UNORM: return DXGI_FORMAT_BC3_UNORM;
+        case WINED3DFMT_BC3_UNORM_SRGB: return DXGI_FORMAT_BC3_UNORM_SRGB;
+        case WINED3DFMT_BC4_TYPELESS: return DXGI_FORMAT_BC4_TYPELESS;
+        case WINED3DFMT_BC4_UNORM: return DXGI_FORMAT_BC4_UNORM;
+        case WINED3DFMT_BC4_SNORM: return DXGI_FORMAT_BC4_SNORM;
+        case WINED3DFMT_BC5_TYPELESS: return DXGI_FORMAT_BC5_TYPELESS;
+        case WINED3DFMT_BC5_UNORM: return DXGI_FORMAT_BC5_UNORM;
+        case WINED3DFMT_BC5_SNORM: return DXGI_FORMAT_BC5_SNORM;
+        case WINED3DFMT_B5G6R5_UNORM: return DXGI_FORMAT_B5G6R5_UNORM;
+        case WINED3DFMT_B5G5R5A1_UNORM: return DXGI_FORMAT_B5G5R5A1_UNORM;
+        case WINED3DFMT_B8G8R8A8_UNORM: return DXGI_FORMAT_B8G8R8A8_UNORM;
+        case WINED3DFMT_B8G8R8X8_UNORM: return DXGI_FORMAT_B8G8R8X8_UNORM;
+        case WINED3DFMT_R10G10B10_XR_BIAS_A2_UNORM: return DXGI_FORMAT_R10G10B10_XR_BIAS_A2_UNORM;
+        case WINED3DFMT_B8G8R8A8_TYPELESS: return DXGI_FORMAT_B8G8R8A8_TYPELESS;
+        case WINED3DFMT_B8G8R8A8_UNORM_SRGB: return DXGI_FORMAT_B8G8R8A8_UNORM_SRGB;
+        case WINED3DFMT_B8G8R8X8_TYPELESS: return DXGI_FORMAT_B8G8R8X8_TYPELESS;
+        case WINED3DFMT_B8G8R8X8_UNORM_SRGB: return DXGI_FORMAT_B8G8R8X8_UNORM_SRGB;
+        case WINED3DFMT_BC6H_TYPELESS: return DXGI_FORMAT_BC6H_TYPELESS;
+        case WINED3DFMT_BC6H_UF16: return DXGI_FORMAT_BC6H_UF16;
+        case WINED3DFMT_BC6H_SF16: return DXGI_FORMAT_BC6H_SF16;
+        case WINED3DFMT_BC7_TYPELESS: return DXGI_FORMAT_BC7_TYPELESS;
+        case WINED3DFMT_BC7_UNORM: return DXGI_FORMAT_BC7_UNORM;
+        case WINED3DFMT_BC7_UNORM_SRGB: return DXGI_FORMAT_BC7_UNORM_SRGB;
+        default:
+            FIXME("Unhandled wined3d format %#x.\n", format);
+            return DXGI_FORMAT_UNKNOWN;
+    }
+}
+
+enum wined3d_format_id wined3d_wined3dformat_from_dxgi_format(DXGI_FORMAT format)
+{
+    switch(format)
+    {
+        case DXGI_FORMAT_UNKNOWN: return WINED3DFMT_UNKNOWN;
+        case DXGI_FORMAT_R32G32B32A32_TYPELESS: return WINED3DFMT_R32G32B32A32_TYPELESS;
+        case DXGI_FORMAT_R32G32B32A32_FLOAT: return WINED3DFMT_R32G32B32A32_FLOAT;
+        case DXGI_FORMAT_R32G32B32A32_UINT: return WINED3DFMT_R32G32B32A32_UINT;
+        case DXGI_FORMAT_R32G32B32A32_SINT: return WINED3DFMT_R32G32B32A32_SINT;
+        case DXGI_FORMAT_R32G32B32_TYPELESS: return WINED3DFMT_R32G32B32_TYPELESS;
+        case DXGI_FORMAT_R32G32B32_FLOAT: return WINED3DFMT_R32G32B32_FLOAT;
+        case DXGI_FORMAT_R32G32B32_UINT: return WINED3DFMT_R32G32B32_UINT;
+        case DXGI_FORMAT_R32G32B32_SINT: return WINED3DFMT_R32G32B32_SINT;
+        case DXGI_FORMAT_R16G16B16A16_TYPELESS: return WINED3DFMT_R16G16B16A16_TYPELESS;
+        case DXGI_FORMAT_R16G16B16A16_FLOAT: return WINED3DFMT_R16G16B16A16_FLOAT;
+        case DXGI_FORMAT_R16G16B16A16_UNORM: return WINED3DFMT_R16G16B16A16_UNORM;
+        case DXGI_FORMAT_R16G16B16A16_UINT: return WINED3DFMT_R16G16B16A16_UINT;
+        case DXGI_FORMAT_R16G16B16A16_SNORM: return WINED3DFMT_R16G16B16A16_SNORM;
+        case DXGI_FORMAT_R16G16B16A16_SINT: return WINED3DFMT_R16G16B16A16_SINT;
+        case DXGI_FORMAT_R32G32_TYPELESS: return WINED3DFMT_R32G32_TYPELESS;
+        case DXGI_FORMAT_R32G32_FLOAT: return WINED3DFMT_R32G32_FLOAT;
+        case DXGI_FORMAT_R32G32_UINT: return WINED3DFMT_R32G32_UINT;
+        case DXGI_FORMAT_R32G32_SINT: return WINED3DFMT_R32G32_SINT;
+        case DXGI_FORMAT_R32G8X24_TYPELESS: return WINED3DFMT_R32G8X24_TYPELESS;
+        case DXGI_FORMAT_D32_FLOAT_S8X24_UINT: return WINED3DFMT_D32_FLOAT_S8X24_UINT;
+        case DXGI_FORMAT_R32_FLOAT_X8X24_TYPELESS: return WINED3DFMT_R32_FLOAT_X8X24_TYPELESS;
+        case DXGI_FORMAT_X32_TYPELESS_G8X24_UINT: return WINED3DFMT_X32_TYPELESS_G8X24_UINT;
+        case DXGI_FORMAT_R10G10B10A2_TYPELESS: return WINED3DFMT_R10G10B10A2_TYPELESS;
+        case DXGI_FORMAT_R10G10B10A2_UNORM: return WINED3DFMT_R10G10B10A2_UNORM;
+        case DXGI_FORMAT_R10G10B10A2_UINT: return WINED3DFMT_R10G10B10A2_UINT;
+        case DXGI_FORMAT_R11G11B10_FLOAT: return WINED3DFMT_R11G11B10_FLOAT;
+        case DXGI_FORMAT_R8G8B8A8_TYPELESS: return WINED3DFMT_R8G8B8A8_TYPELESS;
+        case DXGI_FORMAT_R8G8B8A8_UNORM: return WINED3DFMT_R8G8B8A8_UNORM;
+        case DXGI_FORMAT_R8G8B8A8_UNORM_SRGB: return WINED3DFMT_R8G8B8A8_UNORM_SRGB;
+        case DXGI_FORMAT_R8G8B8A8_UINT: return WINED3DFMT_R8G8B8A8_UINT;
+        case DXGI_FORMAT_R8G8B8A8_SNORM: return WINED3DFMT_R8G8B8A8_SNORM;
+        case DXGI_FORMAT_R8G8B8A8_SINT: return WINED3DFMT_R8G8B8A8_SINT;
+        case DXGI_FORMAT_R16G16_TYPELESS: return WINED3DFMT_R16G16_TYPELESS;
+        case DXGI_FORMAT_R16G16_FLOAT: return WINED3DFMT_R16G16_FLOAT;
+        case DXGI_FORMAT_R16G16_UNORM: return WINED3DFMT_R16G16_UNORM;
+        case DXGI_FORMAT_R16G16_UINT: return WINED3DFMT_R16G16_UINT;
+        case DXGI_FORMAT_R16G16_SNORM: return WINED3DFMT_R16G16_SNORM;
+        case DXGI_FORMAT_R16G16_SINT: return WINED3DFMT_R16G16_SINT;
+        case DXGI_FORMAT_R32_TYPELESS: return WINED3DFMT_R32_TYPELESS;
+        case DXGI_FORMAT_D32_FLOAT: return WINED3DFMT_D32_FLOAT;
+        case DXGI_FORMAT_R32_FLOAT: return WINED3DFMT_R32_FLOAT;
+        case DXGI_FORMAT_R32_UINT: return WINED3DFMT_R32_UINT;
+        case DXGI_FORMAT_R32_SINT: return WINED3DFMT_R32_SINT;
+        case DXGI_FORMAT_R24G8_TYPELESS: return WINED3DFMT_R24G8_TYPELESS;
+        case DXGI_FORMAT_D24_UNORM_S8_UINT: return WINED3DFMT_D24_UNORM_S8_UINT;
+        case DXGI_FORMAT_R24_UNORM_X8_TYPELESS: return WINED3DFMT_R24_UNORM_X8_TYPELESS;
+        case DXGI_FORMAT_X24_TYPELESS_G8_UINT: return WINED3DFMT_X24_TYPELESS_G8_UINT;
+        case DXGI_FORMAT_R8G8_TYPELESS: return WINED3DFMT_R8G8_TYPELESS;
+        case DXGI_FORMAT_R8G8_UNORM: return WINED3DFMT_R8G8_UNORM;
+        case DXGI_FORMAT_R8G8_UINT: return WINED3DFMT_R8G8_UINT;
+        case DXGI_FORMAT_R8G8_SNORM: return WINED3DFMT_R8G8_SNORM;
+        case DXGI_FORMAT_R8G8_SINT: return WINED3DFMT_R8G8_SINT;
+        case DXGI_FORMAT_R16_TYPELESS: return WINED3DFMT_R16_TYPELESS;
+        case DXGI_FORMAT_R16_FLOAT: return WINED3DFMT_R16_FLOAT;
+        case DXGI_FORMAT_D16_UNORM: return WINED3DFMT_D16_UNORM;
+        case DXGI_FORMAT_R16_UNORM: return WINED3DFMT_R16_UNORM;
+        case DXGI_FORMAT_R16_UINT: return WINED3DFMT_R16_UINT;
+        case DXGI_FORMAT_R16_SNORM: return WINED3DFMT_R16_SNORM;
+        case DXGI_FORMAT_R16_SINT: return WINED3DFMT_R16_SINT;
+        case DXGI_FORMAT_R8_TYPELESS: return WINED3DFMT_R8_TYPELESS;
+        case DXGI_FORMAT_R8_UNORM: return WINED3DFMT_R8_UNORM;
+        case DXGI_FORMAT_R8_UINT: return WINED3DFMT_R8_UINT;
+        case DXGI_FORMAT_R8_SNORM: return WINED3DFMT_R8_SNORM;
+        case DXGI_FORMAT_R8_SINT: return WINED3DFMT_R8_SINT;
+        case DXGI_FORMAT_A8_UNORM: return WINED3DFMT_A8_UNORM;
+        case DXGI_FORMAT_R1_UNORM: return WINED3DFMT_R1_UNORM;
+        case DXGI_FORMAT_R9G9B9E5_SHAREDEXP: return WINED3DFMT_R9G9B9E5_SHAREDEXP;
+        case DXGI_FORMAT_R8G8_B8G8_UNORM: return WINED3DFMT_R8G8_B8G8_UNORM;
+        case DXGI_FORMAT_G8R8_G8B8_UNORM: return WINED3DFMT_G8R8_G8B8_UNORM;
+        case DXGI_FORMAT_BC1_TYPELESS: return WINED3DFMT_BC1_TYPELESS;
+        case DXGI_FORMAT_BC1_UNORM: return WINED3DFMT_BC1_UNORM;
+        case DXGI_FORMAT_BC1_UNORM_SRGB: return WINED3DFMT_BC1_UNORM_SRGB;
+        case DXGI_FORMAT_BC2_TYPELESS: return WINED3DFMT_BC2_TYPELESS;
+        case DXGI_FORMAT_BC2_UNORM: return WINED3DFMT_BC2_UNORM;
+        case DXGI_FORMAT_BC2_UNORM_SRGB: return WINED3DFMT_BC2_UNORM_SRGB;
+        case DXGI_FORMAT_BC3_TYPELESS: return WINED3DFMT_BC3_TYPELESS;
+        case DXGI_FORMAT_BC3_UNORM: return WINED3DFMT_BC3_UNORM;
+        case DXGI_FORMAT_BC3_UNORM_SRGB: return WINED3DFMT_BC3_UNORM_SRGB;
+        case DXGI_FORMAT_BC4_TYPELESS: return WINED3DFMT_BC4_TYPELESS;
+        case DXGI_FORMAT_BC4_UNORM: return WINED3DFMT_BC4_UNORM;
+        case DXGI_FORMAT_BC4_SNORM: return WINED3DFMT_BC4_SNORM;
+        case DXGI_FORMAT_BC5_TYPELESS: return WINED3DFMT_BC5_TYPELESS;
+        case DXGI_FORMAT_BC5_UNORM: return WINED3DFMT_BC5_UNORM;
+        case DXGI_FORMAT_BC5_SNORM: return WINED3DFMT_BC5_SNORM;
+        case DXGI_FORMAT_B5G6R5_UNORM: return WINED3DFMT_B5G6R5_UNORM;
+        case DXGI_FORMAT_B5G5R5A1_UNORM: return WINED3DFMT_B5G5R5A1_UNORM;
+        case DXGI_FORMAT_B8G8R8A8_UNORM: return WINED3DFMT_B8G8R8A8_UNORM;
+        case DXGI_FORMAT_B8G8R8X8_UNORM: return WINED3DFMT_B8G8R8X8_UNORM;
+        case DXGI_FORMAT_R10G10B10_XR_BIAS_A2_UNORM: return WINED3DFMT_R10G10B10_XR_BIAS_A2_UNORM;
+        case DXGI_FORMAT_B8G8R8A8_TYPELESS: return WINED3DFMT_B8G8R8A8_TYPELESS;
+        case DXGI_FORMAT_B8G8R8A8_UNORM_SRGB: return WINED3DFMT_B8G8R8A8_UNORM_SRGB;
+        case DXGI_FORMAT_B8G8R8X8_TYPELESS: return WINED3DFMT_B8G8R8X8_TYPELESS;
+        case DXGI_FORMAT_B8G8R8X8_UNORM_SRGB: return WINED3DFMT_B8G8R8X8_UNORM_SRGB;
+        case DXGI_FORMAT_BC6H_TYPELESS: return WINED3DFMT_BC6H_TYPELESS;
+        case DXGI_FORMAT_BC6H_UF16: return WINED3DFMT_BC6H_UF16;
+        case DXGI_FORMAT_BC6H_SF16: return WINED3DFMT_BC6H_SF16;
+        case DXGI_FORMAT_BC7_TYPELESS: return WINED3DFMT_BC7_TYPELESS;
+        case DXGI_FORMAT_BC7_UNORM: return WINED3DFMT_BC7_UNORM;
+        case DXGI_FORMAT_BC7_UNORM_SRGB: return WINED3DFMT_BC7_UNORM_SRGB;
+        default:
+            FIXME("Unhandled DXGI_FORMAT %#x.\n", format);
+            return WINED3DFMT_UNKNOWN;
+    }
+}
 
 /* dummy defines */
 
@@ -1124,7 +1340,7 @@ void convert_argb_pixels(const BYTE *src, UINT src_row_pitch, UINT src_slice_pit
 }
 
 static HRESULT wined3d_convert_memory_to_rgba(int width, int height, const void *src_memory, void *dst_memory,
-        enum wined3d_format_id src_format, UINT src_pitch, const PALETTEENTRY *src_palette, D3DCOLOR color_key)
+        enum wined3d_format_id src_format, enum wined3d_format_id dst_format, UINT src_pitch, const PALETTEENTRY *src_palette, D3DCOLOR color_key)
 {
     const struct pixel_format_desc *srcformatdesc, *destformatdesc;
     struct volume size;
@@ -1153,11 +1369,11 @@ static HRESULT wined3d_convert_memory_to_rgba(int width, int height, const void 
 
 
     srcformatdesc = get_format_info(src_format);
-    destformatdesc = get_format_info(WINED3DFMT_R8G8B8A8_UNORM);
+    destformatdesc = get_format_info(dst_format);
 
     if (srcformatdesc->type == FORMAT_UNKNOWN)
     {
-        FIXME("Unsupported pixel format conversion %#x -> %#x\n", src_format, WINED3DFMT_R8G8B8A8_UNORM);
+        FIXME("Unsupported pixel format conversion %#x -> %#x\n", src_format, dst_format);
         return E_NOTIMPL;
     }
 
@@ -1165,7 +1381,7 @@ static HRESULT wined3d_convert_memory_to_rgba(int width, int height, const void 
 
     if (!pre_convert && (srcformatdesc->type != FORMAT_ARGB) && (srcformatdesc->type != FORMAT_INDEX))
     {
-        FIXME("Format conversion missing %#x -> %#x\n", src_format, WINED3DFMT_R8G8B8A8_UNORM);
+        FIXME("Format conversion missing %#x -> %#x\n", src_format, dst_format);
         return E_NOTIMPL;
     }
 
@@ -1332,7 +1548,7 @@ HRESULT wined3d_get_imageinfo_from_file_in_memory(const void *data, UINT datasiz
     return D3D_OK;
 }
 
-static HRESULT load_surface_from_dds(const void *src_data, void *dst_data, D3DCOLOR color_key, const D3DXIMAGE_INFO *src_info)
+static HRESULT load_surface_from_dds(const void *src_data, void *dst_data, enum wined3d_format_id dstFormat, D3DCOLOR color_key, const D3DXIMAGE_INFO *src_info)
 {
     UINT size;
     UINT src_pitch;
@@ -1345,11 +1561,11 @@ static HRESULT load_surface_from_dds(const void *src_data, void *dst_data, D3DCO
     if (FAILED(calculate_dds_surface_size(src_info->Format, src_info->Width, src_info->Height, &src_pitch, &size)))
         return E_NOTIMPL;
 
-    return wined3d_convert_memory_to_rgba(src_info->Width, src_info->Height, pixels, dst_data, src_info->Format,
+    return wined3d_convert_memory_to_rgba(src_info->Width, src_info->Height, pixels, dst_data, src_info->Format, dstFormat,
         src_pitch, NULL, color_key);
 }
 
-HRESULT CDECL wined3d_load_imagedata_from_file_in_memory (const void *pSrcData, UINT SrcDataSize, void **pDstData, DWORD Colorkey, UINT *width, UINT *height)
+HRESULT CDECL wined3d_load_imagedata_from_file_in_memory (const void *pSrcData, UINT SrcDataSize, void **pDstData, enum wined3d_format_id dstFormat, DWORD Colorkey, UINT *width, UINT *height)
 {
     D3DXIMAGE_INFO imginfo;
     HRESULT hr, com_init;
@@ -1385,7 +1601,7 @@ HRESULT CDECL wined3d_load_imagedata_from_file_in_memory (const void *pSrcData, 
 
     if (imginfo.ImageFileFormat == D3DXIFF_DDS)
     {
-        hr = load_surface_from_dds(pSrcData, *pDstData, Colorkey, &imginfo);
+        hr = load_surface_from_dds(pSrcData, *pDstData, dstFormat, Colorkey, &imginfo);
         if (FAILED(hr))
         {
             HeapFree(GetProcessHeap(), 0, *pDstData);
@@ -1481,7 +1697,7 @@ HRESULT CDECL wined3d_load_imagedata_from_file_in_memory (const void *pSrcData, 
 
         if (SUCCEEDED(hr))
         {
-            hr = wined3d_convert_memory_to_rgba(wicrect.Width, wicrect.Height, buffer, *pDstData, imginfo.Format, pitch,
+            hr = wined3d_convert_memory_to_rgba(wicrect.Width, wicrect.Height, buffer, *pDstData, imginfo.Format, dstFormat, pitch,
                                            palette, Colorkey);
         }
 

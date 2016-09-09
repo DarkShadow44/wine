@@ -1212,7 +1212,7 @@ static const struct ID3D10DepthStencilViewVtbl d3d10_depthstencil_view_vtbl =
 static void wined3d_depth_stencil_view_desc_from_d3d11(struct wined3d_rendertarget_view_desc *wined3d_desc,
         const D3D11_DEPTH_STENCIL_VIEW_DESC *desc)
 {
-    wined3d_desc->format_id = wined3dformat_from_dxgi_format(desc->Format);
+    wined3d_desc->format_id = wined3d_wined3dformat_from_dxgi_format(desc->Format);
 
     if (desc->Flags)
         FIXME("Unhandled depth stencil view flags %#x.\n", desc->Flags);
@@ -1627,7 +1627,7 @@ static const struct ID3D10RenderTargetViewVtbl d3d10_rendertarget_view_vtbl =
 static void wined3d_rendertarget_view_desc_from_d3d11(struct wined3d_rendertarget_view_desc *wined3d_desc,
         const D3D11_RENDER_TARGET_VIEW_DESC *desc)
 {
-    wined3d_desc->format_id = wined3dformat_from_dxgi_format(desc->Format);
+    wined3d_desc->format_id = wined3d_wined3dformat_from_dxgi_format(desc->Format);
 
     switch (desc->ViewDimension)
     {
@@ -2064,7 +2064,7 @@ static const struct ID3D10ShaderResourceView1Vtbl d3d10_shader_resource_view_vtb
 static HRESULT wined3d_shader_resource_view_desc_from_d3d11(struct wined3d_shader_resource_view_desc *wined3d_desc,
         const D3D11_SHADER_RESOURCE_VIEW_DESC *desc)
 {
-    wined3d_desc->format_id = wined3dformat_from_dxgi_format(desc->Format);
+    wined3d_desc->format_id = wined3d_wined3dformat_from_dxgi_format(desc->Format);
     wined3d_desc->flags = 0;
 
     switch (desc->ViewDimension)
@@ -2384,7 +2384,7 @@ static const struct ID3D11UnorderedAccessViewVtbl d3d11_unordered_access_view_vt
 static HRESULT wined3d_unordered_access_view_desc_from_d3d11(struct wined3d_unordered_access_view_desc *wined3d_desc,
         const D3D11_UNORDERED_ACCESS_VIEW_DESC *desc)
 {
-    wined3d_desc->format_id = wined3dformat_from_dxgi_format(desc->Format);
+    wined3d_desc->format_id = wined3d_wined3dformat_from_dxgi_format(desc->Format);
     wined3d_desc->flags = 0;
 
     switch (desc->ViewDimension)

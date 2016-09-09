@@ -174,7 +174,7 @@ static HRESULT STDMETHODCALLTYPE dxgi_surface_GetDesc(IDXGISurface1 *iface, DXGI
     wined3d_mutex_unlock();
     desc->Width = wined3d_desc.width;
     desc->Height = wined3d_desc.height;
-    desc->Format = dxgi_format_from_wined3dformat(wined3d_desc.format);
+    desc->Format = wined3d_dxgi_format_from_wined3dformat(wined3d_desc.format);
     dxgi_sample_desc_from_wined3d(&desc->SampleDesc, wined3d_desc.multisample_type, wined3d_desc.multisample_quality);
 
     return S_OK;

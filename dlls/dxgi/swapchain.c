@@ -283,7 +283,7 @@ static HRESULT STDMETHODCALLTYPE dxgi_swapchain_GetDesc(IDXGISwapChain *iface, D
     desc->BufferDesc.Height = wined3d_desc.backbuffer_height;
     desc->BufferDesc.RefreshRate.Numerator = wined3d_desc.refresh_rate;
     desc->BufferDesc.RefreshRate.Denominator = 1;
-    desc->BufferDesc.Format = dxgi_format_from_wined3dformat(wined3d_desc.backbuffer_format);
+    desc->BufferDesc.Format = wined3d_dxgi_format_from_wined3dformat(wined3d_desc.backbuffer_format);
     desc->BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
     desc->BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
     dxgi_sample_desc_from_wined3d(&desc->SampleDesc, wined3d_desc.multisample_type, wined3d_desc.multisample_quality);
@@ -326,7 +326,7 @@ static HRESULT STDMETHODCALLTYPE dxgi_swapchain_ResizeBuffers(IDXGISwapChain *if
         }
     }
     if (format != DXGI_FORMAT_UNKNOWN)
-        wined3d_desc.backbuffer_format = wined3dformat_from_dxgi_format(format);
+        wined3d_desc.backbuffer_format = wined3d_wined3dformat_from_dxgi_format(format);
     hr = wined3d_swapchain_resize_buffers(swapchain->wined3d_swapchain, buffer_count, width, height,
             wined3d_desc.backbuffer_format, wined3d_desc.multisample_type, wined3d_desc.multisample_quality);
     wined3d_mutex_unlock();
@@ -354,7 +354,7 @@ static HRESULT STDMETHODCALLTYPE dxgi_swapchain_ResizeTarget(IDXGISwapChain *ifa
     mode.width = target_mode_desc->Width;
     mode.height = target_mode_desc->Height;
     mode.refresh_rate = dxgi_rational_to_uint(&target_mode_desc->RefreshRate);
-    mode.format_id = wined3dformat_from_dxgi_format(target_mode_desc->Format);
+    mode.format_id = wined3d_wined3dformat_from_dxgi_format(target_mode_desc->Format);
     mode.scanline_ordering = wined3d_scanline_ordering_from_dxgi(target_mode_desc->ScanlineOrdering);
 
     wined3d_mutex_lock();
