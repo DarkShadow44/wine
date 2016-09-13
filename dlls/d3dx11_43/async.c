@@ -34,63 +34,6 @@
 
 WINE_DEFAULT_DEBUG_CHANNEL(d3dx);
 
-/* temporary defines to not break compilation */
-
-#define IDirect3DSurface9_GetDesc(p,a)                 (p)->lpVtbl->GetDesc(p,a)
-#define IDirect3DSurface9_LockRect(p,a,b,c)            (p)->lpVtbl->LockRect(p,a,b,c)
-#define IDirect3DSurface9_UnlockRect(p)                (p)->lpVtbl->UnlockRect(p)
-
-typedef struct _D3DSURFACE_DESC {
-    DWORD           Format;
-    DWORD     Type;
-    DWORD               Usage;
-    DWORD             Pool;
-    DWORD MultiSampleType;
-    DWORD               MultiSampleQuality;
-    UINT                Width;
-    UINT                Height;
-} D3DSURFACE_DESC;
-
-typedef struct _D3DLOCKED_RECT {
-    INT                 Pitch;
-    void*               pBits;
-} D3DLOCKED_RECT;
-
-
-#define INTERFACE IDirect3DSurface9
-DECLARE_INTERFACE_(IDirect3DSurface9,IDirect3DResource9)
-{
-    /*** IUnknown methods ***/
-    STDMETHOD_(HRESULT,QueryInterface)(THIS_ REFIID riid, void** ppvObject) PURE;
-    STDMETHOD_(ULONG,AddRef)(THIS) PURE;
-    STDMETHOD_(ULONG,Release)(THIS) PURE;
-    /*** IDirect3DResource9 methods ***/
-    STDMETHOD(GetDevice)(THIS_ struct IDirect3DDevice9** ppDevice) PURE;
-    STDMETHOD(SetPrivateData)(THIS_ REFGUID guid, const void *data, DWORD data_size, DWORD flags) PURE;
-    STDMETHOD(GetPrivateData)(THIS_ REFGUID refguid, void* pData, DWORD* pSizeOfData) PURE;
-    STDMETHOD(FreePrivateData)(THIS_ REFGUID refguid) PURE;
-    STDMETHOD_(DWORD, SetPriority)(THIS_ DWORD PriorityNew) PURE;
-    STDMETHOD_(DWORD, GetPriority)(THIS) PURE;
-    STDMETHOD_(void, PreLoad)(THIS) PURE;
-    STDMETHOD_(DWORD, GetType)(THIS) PURE;
-    /*** IDirect3DSurface9 methods ***/
-    STDMETHOD(GetContainer)(THIS_ REFIID riid, void** ppContainer) PURE;
-    STDMETHOD(GetDesc)(THIS_ D3DSURFACE_DESC* pDesc) PURE;
-    STDMETHOD(LockRect)(THIS_ D3DLOCKED_RECT *locked_rect, const RECT *rect, DWORD flags) PURE;
-    STDMETHOD(UnlockRect)(THIS) PURE;
-    STDMETHOD(GetDC)(THIS_ HDC* phdc) PURE;
-    STDMETHOD(ReleaseDC)(THIS_ HDC hdc) PURE;
-};
-#undef INTERFACE
-
-
-#ifndef MAKEFOURCC
-#define MAKEFOURCC(ch0, ch1, ch2, ch3)  \
-    ((DWORD)(BYTE)(ch0) | ((DWORD)(BYTE)(ch1) << 8) |  \
-    ((DWORD)(BYTE)(ch2) << 16) | ((DWORD)(BYTE)(ch3) << 24 ))
-#endif
-
-
 /* currently taken from dxgi */
 
 DXGI_FORMAT dxgi_format_from_wined3dformat(enum wined3d_format_id format)
@@ -1094,7 +1037,7 @@ static BOOL convert_dib_to_bmp(void **data, UINT *size)
 }
 
 /************************************************************
- * helper functions for D3DXLoadSurfaceFromMemory
+ * helper functions for load_image_from_memory
  */
 struct argb_conversion_info
 {
@@ -1489,7 +1432,7 @@ void point_filter_argb_pixels(const BYTE *src, UINT src_row_pitch, UINT src_slic
 }
 
 /************************************************************
- * D3DXGetImageInfoFromFileInMemory
+ * load_imageinfo_from_file_in_memory
  *
  * Fills a D3DXIMAGE_INFO structure with info about an image
  *
@@ -1509,7 +1452,7 @@ void point_filter_argb_pixels(const BYTE *src, UINT src_row_pitch, UINT src_slic
  *   datasize may be bigger than the actual file size
  *
  */
-HRESULT WINAPI D3DXGetImageInfoFromFileInMemory(const void *data, UINT datasize, D3DXIMAGE_INFO *info)
+HRESULT WINAPI load_imageinfo_from_file_in_memory(const void *data, UINT datasize, D3DXIMAGE_INFO *info)
 {
     IWICImagingFactory *factory;
     IWICBitmapDecoder *decoder = NULL;
@@ -1637,7 +1580,7 @@ HRESULT WINAPI D3DXGetImageInfoFromFileInMemory(const void *data, UINT datasize,
 }
 
 /************************************************************
- * D3DXLoadSurfaceFromMemory
+ * load_image_from_memory
  *
  * Loads data from a given memory chunk into a surface,
  * applying any of the specified filters.
@@ -1668,21 +1611,20 @@ HRESULT WINAPI D3DXGetImageInfoFromFileInMemory(const void *data, UINT datasize,
  *   negative values for pSrcRect are allowed as we're only looking at the width and height anyway.
  *
  */
-HRESULT WINAPI D3DXLoadSurfaceFromMemory(IDirect3DSurface9 *dst_surface,
+HRESULT WINAPI load_image_from_memory(void *dst_data,
         const PALETTEENTRY *dst_palette, const RECT *dst_rect, const void *src_memory,
         enum wined3d_format_id src_format, UINT src_pitch, const PALETTEENTRY *src_palette, const RECT *src_rect,
-        DWORD filter, D3DCOLOR color_key)
+        DWORD filter, D3DCOLOR color_key, enum wined3d_format_id dst_format, UINT dst_pitch)
 {
     const struct pixel_format_desc *srcformatdesc, *destformatdesc;
-    D3DSURFACE_DESC surfdesc;
-    D3DLOCKED_RECT lockrect;
+
     struct volume src_size, dst_size;
 
-    TRACE("(%p, %p, %s, %p, %#x, %u, %p, %s, %#x, 0x%08x)\n",
-            dst_surface, dst_palette, wine_dbgstr_rect(dst_rect), src_memory, src_format,
-            src_pitch, src_palette, wine_dbgstr_rect(src_rect), filter, color_key);
+    TRACE("(%p, %p, %s, %p, %#x, %u, %p, %s, %#x, 0x%08x, %#x, %d)\n",
+            dst_data, dst_palette, wine_dbgstr_rect(dst_rect), src_memory, src_format,
+            src_pitch, src_palette, wine_dbgstr_rect(src_rect), filter, color_key, dst_format, dst_pitch);
 
-    if (!dst_surface || !src_memory || !src_rect)
+    if (!dst_data || !src_memory || !src_rect)
     {
         WARN("Invalid argument specified.\n");
         return D3DERR_INVALIDCALL;
@@ -1698,80 +1640,60 @@ HRESULT WINAPI D3DXLoadSurfaceFromMemory(IDirect3DSurface9 *dst_surface,
     if (filter == D3DX_DEFAULT)
         filter = D3DX_FILTER_TRIANGLE | D3DX_FILTER_DITHER;
 
-    IDirect3DSurface9_GetDesc(dst_surface, &surfdesc);
-
     src_size.width = src_rect->right - src_rect->left;
     src_size.height = src_rect->bottom - src_rect->top;
     src_size.depth = 1;
-    if (!dst_rect)
+
+    if (dst_rect->left > dst_rect->right
+            || dst_rect->top > dst_rect->bottom
+            || dst_rect->left < 0 || dst_rect->top < 0)
     {
-        dst_size.width = surfdesc.Width;
-        dst_size.height = surfdesc.Height;
+        WARN("Invalid dst_rect specified.\n");
+        return D3DERR_INVALIDCALL;
     }
-    else
-    {
-        if (dst_rect->left > dst_rect->right || dst_rect->right > surfdesc.Width
-                || dst_rect->top > dst_rect->bottom || dst_rect->bottom > surfdesc.Height
-                || dst_rect->left < 0 || dst_rect->top < 0)
-        {
-            WARN("Invalid dst_rect specified.\n");
-            return D3DERR_INVALIDCALL;
-        }
-        dst_size.width = dst_rect->right - dst_rect->left;
-        dst_size.height = dst_rect->bottom - dst_rect->top;
-        if (!dst_size.width || !dst_size.height)
-            return D3D_OK;
-    }
+    dst_size.width = dst_rect->right - dst_rect->left;
+    dst_size.height = dst_rect->bottom - dst_rect->top;
+    if (!dst_size.width || !dst_size.height)
+        return D3D_OK;
+
     dst_size.depth = 1;
 
     srcformatdesc = get_format_info(src_format);
-    destformatdesc = get_format_info(surfdesc.Format);
+    destformatdesc = get_format_info(dst_format);
     if (srcformatdesc->type == FORMAT_UNKNOWN || destformatdesc->type == FORMAT_UNKNOWN)
     {
-        FIXME("Unsupported pixel format conversion %#x -> %#x\n", src_format, surfdesc.Format);
+        FIXME("Unsupported pixel format conversion %#x -> %#x\n", src_format, dst_format);
         return E_NOTIMPL;
     }
 
-    if (src_format == surfdesc.Format
+    if (src_format == dst_format
             && dst_size.width == src_size.width
             && dst_size.height == src_size.height
             && color_key == 0) /* Simple copy. */
     {
         if (src_rect->left & (srcformatdesc->block_width - 1)
-                || src_rect->top & (srcformatdesc->block_height - 1)
-                || (src_rect->right & (srcformatdesc->block_width - 1)
-                    && src_size.width != surfdesc.Width)
-                || (src_rect->bottom & (srcformatdesc->block_height - 1)
-                    && src_size.height != surfdesc.Height))
+                || src_rect->top & (srcformatdesc->block_height - 1))
         {
             WARN("Source rect %s is misaligned.\n", wine_dbgstr_rect(src_rect));
             return D3DXERR_INVALIDDATA;
         }
 
-        if (FAILED(IDirect3DSurface9_LockRect(dst_surface, &lockrect, dst_rect, 0)))
-            return D3DXERR_INVALIDDATA;
-
-        copy_pixels(src_memory, src_pitch, 0, lockrect.pBits, lockrect.Pitch, 0,
+        copy_pixels(src_memory, src_pitch, 0, dst_data, dst_pitch, 0,
                 &src_size, srcformatdesc);
-
-        IDirect3DSurface9_UnlockRect(dst_surface);
     }
     else /* Stretching or format conversion. */
     {
         if (((srcformatdesc->type != FORMAT_ARGB) && (srcformatdesc->type != FORMAT_INDEX)) ||
             (destformatdesc->type != FORMAT_ARGB))
         {
-            FIXME("Format conversion missing %#x -> %#x\n", src_format, surfdesc.Format);
+            FIXME("Format conversion missing %#x -> %#x\n", src_format, dst_format);
             return E_NOTIMPL;
         }
-
-        if (FAILED(IDirect3DSurface9_LockRect(dst_surface, &lockrect, dst_rect, 0)))
-            return D3DXERR_INVALIDDATA;
 
         if ((filter & 0xf) == D3DX_FILTER_NONE)
         {
             convert_argb_pixels(src_memory, src_pitch, 0, &src_size, srcformatdesc,
-                    lockrect.pBits, lockrect.Pitch, 0, &dst_size, destformatdesc, color_key, src_palette);
+                    dst_data, dst_pitch, 0, &dst_size, destformatdesc, color_key, src_palette);
         }
         else /* if ((filter & 0xf) == D3DX_FILTER_POINT) */
         {
@@ -1781,18 +1703,16 @@ HRESULT WINAPI D3DXLoadSurfaceFromMemory(IDirect3DSurface9 *dst_surface,
             /* Always apply a point filter until D3DX_FILTER_LINEAR,
              * D3DX_FILTER_TRIANGLE and D3DX_FILTER_BOX are implemented. */
             point_filter_argb_pixels(src_memory, src_pitch, 0, &src_size, srcformatdesc,
-                    lockrect.pBits, lockrect.Pitch, 0, &dst_size, destformatdesc, color_key, src_palette);
+                    dst_data, dst_pitch, 0, &dst_size, destformatdesc, color_key, src_palette);
         }
-
-        IDirect3DSurface9_UnlockRect(dst_surface);
     }
 
     return D3D_OK;
 }
 
-static HRESULT load_surface_from_dds(IDirect3DSurface9 *dst_surface, const PALETTEENTRY *dst_palette,
+static HRESULT load_surface_from_dds(void *dst_data, const PALETTEENTRY *dst_palette,
     const RECT *dst_rect, const void *src_data, const RECT *src_rect, DWORD filter, D3DCOLOR color_key,
-    const D3DXIMAGE_INFO *src_info)
+    const D3DXIMAGE_INFO *src_info, enum wined3d_format_id dst_format, UINT dst_pitch)
 {
     UINT size;
     UINT src_pitch;
@@ -1805,12 +1725,12 @@ static HRESULT load_surface_from_dds(IDirect3DSurface9 *dst_surface, const PALET
     if (FAILED(calculate_dds_surface_size(src_info->Format, src_info->Width, src_info->Height, &src_pitch, &size)))
         return E_NOTIMPL;
 
-    return D3DXLoadSurfaceFromMemory(dst_surface, dst_palette, dst_rect, pixels, src_info->Format,
-        src_pitch, NULL, src_rect, filter, color_key);
+    return load_image_from_memory(dst_data, dst_palette, dst_rect, pixels, src_info->Format,
+        src_pitch, NULL, src_rect, filter, color_key, dst_format, dst_pitch);
 }
 
 /************************************************************
- * D3DXLoadSurfaceFromFileInMemory
+ * load_imagedata_from_file_in_memory
  *
  * Loads data from a given buffer into a surface and fills a given
  * D3DXIMAGE_INFO structure with info about the source data.
@@ -1832,9 +1752,9 @@ static HRESULT load_surface_from_dds(IDirect3DSurface9 *dst_surface, const PALET
  *            D3DXERR_INVALIDDATA, if pSrcData is no valid image file
  *
  */
-HRESULT WINAPI D3DXLoadSurfaceFromFileInMemory(IDirect3DSurface9 *pDestSurface,
+HRESULT WINAPI load_imagedata_from_file_in_memory(void *pDstData,
         const PALETTEENTRY *pDestPalette, const RECT *pDestRect, const void *pSrcData, UINT SrcDataSize,
-        const RECT *pSrcRect, DWORD dwFilter, D3DCOLOR Colorkey, D3DXIMAGE_INFO *pSrcInfo)
+        const RECT *pSrcRect, DWORD dwFilter, D3DCOLOR Colorkey, D3DXIMAGE_INFO *pSrcInfo, enum wined3d_format_id dst_format, UINT dst_pitch)
 {
     D3DXIMAGE_INFO imginfo;
     HRESULT hr, com_init;
@@ -1848,15 +1768,15 @@ HRESULT WINAPI D3DXLoadSurfaceFromFileInMemory(IDirect3DSurface9 *pDestSurface,
     WICRect wicrect;
     RECT rect;
 
-    TRACE("dst_surface %p, dst_palette %p, dst_rect %s, src_data %p, src_data_size %u, "
-            "src_rect %s, filter %#x, color_key 0x%08x, src_info %p.\n",
-            pDestSurface, pDestPalette, wine_dbgstr_rect(pDestRect), pSrcData, SrcDataSize,
-            wine_dbgstr_rect(pSrcRect), dwFilter, Colorkey, pSrcInfo);
+    TRACE("dst_data %p, dst_palette %p, dst_rect %s, src_data %p, src_data_size %u, "
+            "src_rect %s, filter %#x, color_key 0x%08x, src_info %p, dst_format: %#x, dst_pitch: %d.\n",
+            pDstData, pDestPalette, wine_dbgstr_rect(pDestRect), pSrcData, SrcDataSize,
+            wine_dbgstr_rect(pSrcRect), dwFilter, Colorkey, pSrcInfo, dst_format, dst_pitch);
 
-    if (!pDestSurface || !pSrcData || !SrcDataSize)
+    if (!pDstData || !pSrcData || !SrcDataSize)
         return D3DERR_INVALIDCALL;
 
-    hr = D3DXGetImageInfoFromFileInMemory(pSrcData, SrcDataSize, &imginfo);
+    hr = load_imageinfo_from_file_in_memory(pSrcData, SrcDataSize, &imginfo);
 
     if (FAILED(hr))
         return hr;
@@ -1880,8 +1800,8 @@ HRESULT WINAPI D3DXLoadSurfaceFromFileInMemory(IDirect3DSurface9 *pDestSurface,
 
     if (imginfo.ImageFileFormat == D3DXIFF_DDS)
     {
-        hr = load_surface_from_dds(pDestSurface, pDestPalette, pDestRect, pSrcData, &rect,
-            dwFilter, Colorkey, &imginfo);
+        hr = load_surface_from_dds(pDstData, pDestPalette, pDestRect, pSrcData, &rect,
+            dwFilter, Colorkey, &imginfo, dst_format, dst_pitch);
         if (SUCCEEDED(hr) && pSrcInfo)
             *pSrcInfo = imginfo;
         return hr;
@@ -1974,9 +1894,9 @@ HRESULT WINAPI D3DXLoadSurfaceFromFileInMemory(IDirect3DSurface9 *pDestSurface,
 
         if (SUCCEEDED(hr))
         {
-            hr = D3DXLoadSurfaceFromMemory(pDestSurface, pDestPalette, pDestRect,
+            hr = load_image_from_memory(pDstData, pDestPalette, pDestRect,
                                            buffer, imginfo.Format, pitch,
-                                           palette, &rect, dwFilter, Colorkey);
+                                           palette, &rect, dwFilter, Colorkey, dst_format, dst_pitch);
         }
 
         HeapFree(GetProcessHeap(), 0, colors);
