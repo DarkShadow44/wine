@@ -1928,6 +1928,38 @@ cleanup_err:
     return D3D_OK;
 }
 
+UINT get_minium_pitch_from_wined3dformat(enum wined3d_format_id format, UINT width)
+{
+    const struct pixel_format_desc * pixel_format = get_format_info(format);
+    return pixel_format->bytes_per_pixel * width;
+}
+
+D3DX11_IMAGE_FILE_FORMAT dx11_fileformat_from_d3dximage(D3DXIMAGE_FILEFORMAT format)
+{
+    switch(format)
+    {
+        case D3DXIFF_BMP:
+            return D3DX11_IFF_BMP;
+        case D3DXIFF_JPG:
+            return D3DX11_IFF_JPG;
+        case D3DXIFF_PNG:
+            return D3DX11_IFF_PNG;
+        case D3DXIFF_DDS:
+            return D3DX11_IFF_DDS;
+        case D3DXIFF_FORCE_DWORD:
+            return D3DX11_IFF_FORCE_DWORD;
+        case D3DXIFF_TGA:
+        case D3DXIFF_PPM:
+        case D3DXIFF_DIB:
+        case D3DXIFF_HDR:
+        case D3DXIFF_PFM:
+        default:
+            ERR("Missing format mapping for format %d", format);
+            return 0;
+    }
+
+}
+
 HRESULT WINAPI D3DX11CompileFromMemory(const char *data, SIZE_T data_size, const char *filename,
         const D3D10_SHADER_MACRO *defines, ID3D10Include *include, const char *entry_point,
         const char *target, UINT sflags, UINT eflags, ID3DX11ThreadPump *pump, ID3D10Blob **shader,
@@ -1977,4 +2009,145 @@ HRESULT WINAPI D3DX11CreateTextureFromMemory(ID3D11Device *device, const void *d
             device, data, data_size, load_info, pump, texture, hresult);
 
     return E_NOTIMPL;
+}
+
+HRESULT WINAPI D3DX11CreateShaderResourceViewFromFileW(ID3D11Device *iface,
+        WCHAR *filename, D3DX11_IMAGE_LOAD_INFO *load_info_original, ID3DX11ThreadPump *pump, ID3D11ShaderResourceView **view, HRESULT *hresult)
+{
+    D3DX11_IMAGE_LOAD_INFO load_info;
+    D3D11_SHADER_RESOURCE_VIEW_DESC desc_view;
+    D3D11_TEXTURE2D_DESC desc_texture;
+    D3D11_SUBRESOURCE_DATA data_texture;
+    ID3D11Texture2D *texture;
+    enum wined3d_format_id dst_format;
+    UINT dst_pitch;
+    D3DXIMAGE_INFO image_info;
+    void *file_buffer = NULL;
+    DWORD file_size;
+    void *image_data = NULL;
+    RECT rectSize;
+    HRESULT hr;
+
+    TRACE("iface %p, filename %s, load_info_original %p, pump %p, view %p, hresult %p.\n",
+            iface, debugstr_w(filename), load_info_original, pump, view, hresult);
+
+    if (pump)
+        FIXME("Unimplemented ID3DX11ThreadPump handling.\n");
+
+    if(!filename || !view)
+        return E_INVALIDARG;
+
+    if (FAILED(hr = map_view_of_file(filename, &file_buffer, &file_size)))
+        goto error;
+
+    if(FAILED(hr = load_imageinfo_from_file_in_memory(file_buffer, file_size, &image_info)))
+        goto error;
+
+    if(load_info_original)
+        load_info = *load_info_original;
+    else
+    {
+        memset(&load_info, 0xFF, sizeof(load_info)); //Set everything to D3DX11_DEFAULT
+    }
+
+    if(load_info.BindFlags == D3DX11_DEFAULT)
+        load_info.BindFlags = D3D11_BIND_SHADER_RESOURCE;
+
+    if(load_info.CpuAccessFlags == D3DX11_DEFAULT)
+        load_info.CpuAccessFlags = 0;
+
+    if(load_info.Usage == D3DX11_DEFAULT)
+        load_info.Usage = D3D11_USAGE_DEFAULT;
+
+    if(load_info.Height == D3DX11_DEFAULT)
+        load_info.Height = image_info.Height;
+
+    if(load_info.Width == D3DX11_DEFAULT)
+        load_info.Width = image_info.Width;
+
+    if(load_info.Format == D3DX11_DEFAULT)
+        load_info.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+
+    if(load_info.MiscFlags == D3DX11_DEFAULT)
+        load_info.MiscFlags = 0;
+
+    if(load_info.Depth != D3DX11_DEFAULT
+            || load_info.FirstMipLevel != D3DX11_DEFAULT
+            || load_info.MipFilter != D3DX11_DEFAULT)
+    {
+        WARN("Mipmaps not yet implemented.\n");
+    }
+
+    if(load_info.Filter != D3DX11_DEFAULT)
+    {
+        WARN("Filter not yet implemented.\n");
+    }
+
+    dst_format = wined3dformat_from_dxgi_format(load_info.Format);
+
+    rectSize.left = 0;
+    rectSize.top = 0;
+    rectSize.right = load_info.Width;
+    rectSize.bottom = load_info.Height;
+
+    dst_pitch = get_minium_pitch_from_wined3dformat(dst_format, load_info.Width);
+
+    image_data = HeapAlloc(GetProcessHeap(), 0, dst_pitch * load_info.Height);
+
+    if(FAILED(hr = load_imagedata_from_file_in_memory(image_data, NULL, &rectSize, file_buffer,
+                        file_size, &rectSize, D3DX_FILTER_NONE, 0, NULL, dst_format, dst_pitch)))
+    {
+        goto error;
+    }
+
+    desc_texture.Height = load_info.Height;
+    desc_texture.Width = load_info.Width;
+    desc_texture.Format = load_info.Format;
+    desc_texture.MipLevels = 1;
+    desc_texture.Usage = load_info.Usage;
+    desc_texture.BindFlags = load_info.BindFlags;
+    desc_texture.CPUAccessFlags = load_info.CpuAccessFlags;
+    desc_texture.MiscFlags = load_info.MiscFlags;
+    desc_texture.ArraySize = 1;
+    desc_texture.SampleDesc.Count = 1;
+    desc_texture.SampleDesc.Quality = 0;
+
+    data_texture.pSysMem = image_data;
+    data_texture.SysMemSlicePitch = 0;
+    data_texture.SysMemPitch = dst_pitch;
+
+    if (FAILED(hr = iface->lpVtbl->CreateTexture2D(iface, &desc_texture, &data_texture, &texture)))
+        goto error;
+
+    desc_view.Format = desc_texture.Format;
+    desc_view.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
+    desc_view.Texture2D.MipLevels = 1;
+    desc_view.Texture2D.MostDetailedMip = 0;
+
+    if (FAILED(hr = iface->lpVtbl->CreateShaderResourceView(iface, (ID3D11Resource*)texture, &desc_view, view)))
+        goto error;
+
+    if(load_info_original && load_info_original->pSrcInfo != NULL)
+    {
+        D3DX11_IMAGE_INFO *pSrcInfo = load_info_original->pSrcInfo;
+
+        pSrcInfo->Height = image_info.Height;
+        pSrcInfo->Width = image_info.Width;
+        pSrcInfo->Depth = 1;
+        pSrcInfo->Format = dxgi_format_from_wined3dformat(image_info.Format);
+        pSrcInfo->MipLevels = 1;
+        pSrcInfo->MiscFlags = 0;
+        pSrcInfo->ResourceDimension = D3D11_RTV_DIMENSION_TEXTURE2D;
+        pSrcInfo->ArraySize = 1;
+        pSrcInfo->ImageFileFormat = dx11_fileformat_from_d3dximage(image_info.ImageFileFormat);
+    }
+
+error:
+    if(file_buffer)
+        UnmapViewOfFile(file_buffer);
+
+    if(image_data)
+        HeapFree(GetProcessHeap(), 0, image_data);
+
+    return hr;
 }
