@@ -1989,16 +1989,36 @@ HRESULT WINAPI D3DX11CompileFromFileA(const char *filename, const D3D10_SHADER_M
     return E_NOTIMPL;
 }
 
+
 HRESULT WINAPI D3DX11CompileFromFileW(const WCHAR *filename, const D3D10_SHADER_MACRO *defines,
         ID3D10Include *include, const char *entry_point, const char *target, UINT sflags, UINT eflags,
         ID3DX11ThreadPump *pump, ID3D10Blob **shader, ID3D10Blob **error_messages, HRESULT *hresult)
 {
-    FIXME("filename %s, defines %p, include %p, entry_point %s, target %s, sflags %#x, "
+    void *file_buffer;
+    HRESULT hr;
+    DWORD file_size;
+    LPSTR filename_converted;
+    UINT filename_converted_len;
+
+    TRACE("filename %s, defines %p, include %p, entry_point %s, target %s, sflags %#x, "
             "eflags %#x, pump %p, shader %p, error_messages %p, hresult %p stub.\n",
             debugstr_w(filename), defines, include, debugstr_a(entry_point), debugstr_a(target),
             sflags, eflags, pump, shader, error_messages, hresult);
 
-    return E_NOTIMPL;
+    if (FAILED(hr = map_view_of_file(filename, &file_buffer, &file_size)))
+        return hr;
+
+    filename_converted_len = WideCharToMultiByte(CP_ACP, 0, filename, -1, NULL, 0, NULL, NULL);
+    filename_converted = HeapAlloc(GetProcessHeap(), 0, filename_converted_len);
+    WideCharToMultiByte(CP_ACP, 0, filename, -1, filename_converted, filename_converted_len, NULL, NULL);
+
+    hr = D3DX11CompileFromMemory(file_buffer, file_size, filename_converted, defines, include, entry_point, target,
+            sflags, eflags, pump, shader, error_messages, hresult);
+
+    HeapFree(GetProcessHeap(), 0, filename_converted);
+    UnmapViewOfFile(file_buffer);
+
+    return hr;
 }
 
 HRESULT WINAPI D3DX11CreateTextureFromMemory(ID3D11Device *device, const void *data,
