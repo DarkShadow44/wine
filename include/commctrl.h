@@ -5228,6 +5228,38 @@ typedef struct _TASKDIALOG_BUTTON
     PCWSTR  pszButtonText;
 } TASKDIALOG_BUTTON;
 
+enum _TASKDIALOG_NOTIFICATIONS
+{
+    TDN_CREATED                = 0,
+    TDN_NAVIGATED              = 1,
+    TDN_BUTTON_CLICKED         = 2,
+    TDN_HYPERLINK_CLICKED      = 3,
+    TDN_TIMER                  = 4,
+    TDN_DESTROYED              = 5,
+    TDN_RADIO_BUTTON_CLICKED   = 6,
+    TDN_DIALOG_CONSTRUCTED     = 7,
+    TDN_VERIFICATION_CLICKED   = 8,
+    TDN_HELP                   = 9,
+    TDN_EXPANDO_BUTTON_CLICKED = 10
+};
+
+/* Taskdialog messages */
+#define TDM_NAVIGATE_PAGE                       (WM_USER + 101)
+#define TDM_CLICK_BUTTON                        (WM_USER + 102)
+#define TDM_SET_MARQUEE_PROGRESS_BAR            (WM_USER + 103)
+#define TDM_SET_PROGRESS_BAR_STATE              (WM_USER + 104)
+#define TDM_SET_PROGRESS_BAR_RANGE              (WM_USER + 105)
+#define TDM_SET_PROGRESS_BAR_POS                (WM_USER + 106)
+#define TDM_SET_PROGRESS_BAR_MARQUEE            (WM_USER + 107)
+#define TDM_SET_ELEMENT_TEXT                    (WM_USER + 108)
+#define TDM_CLICK_RADIO_BUTTON                  (WM_USER + 110)
+#define TDM_ENABLE_BUTTON                       (WM_USER + 111)
+#define TDM_ENABLE_RADIO_BUTTON                 (WM_USER + 112)
+#define TDM_CLICK_VERIFICATION                  (WM_USER + 113)
+#define TDM_UPDATE_ELEMENT_TEXT                 (WM_USER + 114)
+#define TDM_SET_BUTTON_ELEVATION_REQUIRED_STATE (WM_USER + 115)
+#define TDM_UPDATE_ICON                         (WM_USER + 116)
+
 typedef HRESULT (CALLBACK *PFTASKDIALOGCALLBACK)(HWND, UINT, WPARAM, LPARAM, LONG_PTR);
 
 typedef struct _TASKDIALOGCONFIG
