@@ -4458,6 +4458,16 @@ static void dump_set_fd_compl_info_request( const struct set_fd_compl_info_reque
     fprintf( stderr, ", flags=%d", req->flags );
 }
 
+static void dump_get_fd_compl_info_request( const struct get_fd_compl_info_request *req )
+{
+    fprintf( stderr, " handle=%04x", req->handle );
+}
+
+static void dump_get_fd_compl_info_reply( const struct get_fd_compl_info_reply *req )
+{
+    fprintf( stderr, " flags=%d", req->flags );
+}
+
 static void dump_set_fd_disp_info_request( const struct set_fd_disp_info_request *req )
 {
     fprintf( stderr, " handle=%04x", req->handle );
@@ -4894,6 +4904,7 @@ static const dump_func req_dumpers[REQ_NB_REQUESTS] = {
     (dump_func)dump_set_completion_info_request,
     (dump_func)dump_add_fd_completion_request,
     (dump_func)dump_set_fd_compl_info_request,
+    (dump_func)dump_get_fd_compl_info_request,
     (dump_func)dump_set_fd_disp_info_request,
     (dump_func)dump_set_fd_name_info_request,
     (dump_func)dump_get_window_layered_info_request,
@@ -5194,6 +5205,7 @@ static const dump_func reply_dumpers[REQ_NB_REQUESTS] = {
     NULL,
     NULL,
     NULL,
+    (dump_func)dump_get_fd_compl_info_reply,
     NULL,
     NULL,
     (dump_func)dump_get_window_layered_info_reply,
@@ -5494,6 +5506,7 @@ static const char * const req_names[REQ_NB_REQUESTS] = {
     "set_completion_info",
     "add_fd_completion",
     "set_fd_compl_info",
+    "get_fd_compl_info",
     "set_fd_disp_info",
     "set_fd_name_info",
     "get_window_layered_info",
