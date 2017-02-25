@@ -29,6 +29,40 @@
 
 static HRESULT (WINAPI *pTaskDialogIndirect)(const TASKDIALOGCONFIG *, int *, int *, BOOL *);
 
+static HRESULT CALLBACK TaskDialogCallbackProc(HWND hwnd, UINT uNotification, WPARAM wParam,
+                                               LPARAM lParam, LONG_PTR dwRefData)
+{
+    if(uNotification == TDN_CREATED)
+    {
+        PostMessageW(hwnd, WM_KEYDOWN, VK_RETURN, 0);
+    }
+    return S_OK;
+}
+
+static void test_TaskDialogIndirect(void)
+{
+    TASKDIALOGCONFIG info = {0};
+    HRESULT ret;
+
+    ret = pTaskDialogIndirect(NULL, NULL, NULL, NULL);
+    ok(ret == E_INVALIDARG, "Expected E_INVALIDARG, got %x\n", ret);
+
+    ret = pTaskDialogIndirect(&info, NULL, NULL, NULL);
+    ok(ret == E_INVALIDARG, "Expected E_INVALIDARG, got %x\n", ret);
+
+    info.cbSize = sizeof(TASKDIALOGCONFIG);
+    info.pfCallback = TaskDialogCallbackProc;
+
+    /* Skip this test on wine, because it doesn't really fail,
+     * it would displays a dialog that doesn't automatically close */
+    if (strcmp(winetest_platform, "wine"))
+    {
+        ret = pTaskDialogIndirect(&info, NULL, NULL, NULL);
+        ok(ret == S_OK, "Expected S_OK, got %x\n", ret);
+    }
+
+}
+
 START_TEST(taskdialog)
 {
     ULONG_PTR ctx_cookie;
@@ -52,6 +86,8 @@ START_TEST(taskdialog)
     ptr_ordinal = GetProcAddress(hinst, (const CHAR*)345);
     ok(pTaskDialogIndirect == ptr_ordinal, "got wrong pointer for ordinal 345, %p expected %p\n",
                                             ptr_ordinal, pTaskDialogIndirect);
+
+    test_TaskDialogIndirect();
 
     unload_v6_module(ctx_cookie, hCtx);
 }
