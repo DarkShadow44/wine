@@ -19,11 +19,18 @@
  *
  */
 
+/* Fonts according to MSDN UI Guidelines:
+ * Main Instructions      - Segoe UI, blue  (#003399), 12pt
+ * Secondary Instructions - Segoe UI, black (#000000),  9pt
+ * Normal Text            - Segoe UI, black (#000000),  9pt
+ */
+
 #include <stdarg.h>
 #include <string.h>
 
 #include "windef.h"
 #include "winbase.h"
+#include "wingdi.h"
 #include "winuser.h"
 #include "commctrl.h"
 #include "winerror.h"
@@ -36,6 +43,13 @@ WINE_DEFAULT_DEBUG_CHANNEL(commctrl);
 
 /* Roughly fitting TaskDialog size */
 static const UINT DIALOG_DEFAULT_WIDTH = 180;
+
+static const UINT DIALOG_SPACING = 5;
+
+#define ID_START 0xF000
+
+static const int ID_TEXTMAIN    = ID_START + 1;
+static const int ID_TEXTCONTENT = ID_START + 2;
 
 typedef struct
 {
@@ -74,9 +88,11 @@ typedef struct
 {
     const TASKDIALOGCONFIG *task_config;
     HWND hwnd;
+    HFONT font_default, font_main;
 }taskdialog_info;
 
 #define MEMCPY_MOVEPTR(target, source, size) memcpy(target, source, size); target += size;
+#define STR_EMPTY(str) (str == NULL || str[0] == 0)
 
 static void* align_pointer(void *ptr, unsigned int boundary)
 {
@@ -116,6 +132,22 @@ static void get_desktop_size(RECT *desktop, HWND hwndWindow)
 
     /* Convert pixels to dialog units */
     pixels_to_dialogunits(&desktop->right, &desktop->bottom);
+}
+
+/* used to calculate size for the static controls */
+static RECT text_get_rect(HDC hdc, const WCHAR *text, UINT dialog_width)
+{
+    RECT rect = {0, 0, dialog_width - DIALOG_SPACING*2, 0}; /* padding left and right of the control */
+
+    dialogunits_to_pixels(&rect.right, NULL);
+
+    DrawTextW(hdc, text, -1, &rect, DT_LEFT | DT_EXPANDTABS | DT_CALCRECT | DT_WORDBREAK);
+
+    pixels_to_dialogunits(&rect.right, &rect.bottom);
+
+    rect.bottom += DIALOG_SPACING;
+
+    return rect;
 }
 
 /* Functions for turning our dialog structures into a usable dialog template
@@ -201,6 +233,12 @@ static void controls_add(struct list *controls, WORD id, const WCHAR *class, con
 
 /* DialogProc and helper functions */
 
+static BOOL CALLBACK SetFont(HWND window, LPARAM font_default)
+{
+    SendMessageW(window, WM_SETFONT, font_default, TRUE);
+    return TRUE;
+}
+
 static HRESULT callback(taskdialog_info *dialog_info, UINT uNotification, WPARAM wParam, LPARAM lParam)
 {
     const TASKDIALOGCONFIG *task_config = dialog_info->task_config;
@@ -226,10 +264,24 @@ static INT_PTR CALLBACK DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARA
             dialog_info->hwnd = hwndDlg;
             SetPropW(hwndDlg, taskdialog_info_propnameW, dialog_info);
 
+            EnumChildWindows(hwndDlg, (WNDENUMPROC)SetFont, (LPARAM)dialog_info->font_default);
+            SendDlgItemMessageW(hwndDlg, ID_TEXTMAIN, WM_SETFONT, (WPARAM)dialog_info->font_main, TRUE);
+
             callback(dialog_info, TDN_DIALOG_CONSTRUCTED, 0, 0);
             callback(dialog_info, TDN_CREATED, 0, 0);
 
             return TRUE;
+        case WM_CTLCOLORSTATIC:
+               if((HWND)lParam == GetDlgItem(hwndDlg, ID_TEXTMAIN))
+               {
+                   HDC hdc = (HDC) wParam;
+
+                   SetTextColor(hdc, RGB(0, 0x33, 0x99));
+                   SetBkColor(hdc, GetSysColor(COLOR_3DFACE));
+
+                   return (INT_PTR)GetSysColorBrush(COLOR_3DFACE);
+               }
+               break;
         case WM_COMMAND:
             if(HIWORD(wParam) == BN_CLICKED)
             {
@@ -251,6 +303,32 @@ static INT_PTR CALLBACK DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARA
     return FALSE;
 }
 
+static void taskdialog_info_init(taskdialog_info *dialog_info, const TASKDIALOGCONFIG *task_config, HDC dc_dummy)
+{
+    NONCLIENTMETRICSW ncm;
+    int font_size_default;
+    int font_size_main;
+
+    ncm.cbSize = sizeof(ncm);
+    SystemParametersInfoW(SPI_GETNONCLIENTMETRICS, ncm.cbSize, &ncm, 0);
+
+    /* Convert pt size to font height needed for CreateFontW */
+    font_size_default = -MulDiv ( 9, GetDeviceCaps (dc_dummy, LOGPIXELSY), 72);
+    font_size_main    = -MulDiv (12, GetDeviceCaps (dc_dummy, LOGPIXELSY), 72);
+
+    dialog_info->task_config = task_config;
+    dialog_info->font_default = CreateFontW (font_size_default, 0, 0, 0, FW_DONTCARE, FALSE, FALSE, FALSE, DEFAULT_CHARSET,
+                                    0, 0, CLEARTYPE_QUALITY,  FF_DONTCARE, ncm.lfMessageFont.lfFaceName);
+    dialog_info->font_main    = CreateFontW (font_size_main,    0, 0, 0, FW_DONTCARE, FALSE, FALSE, FALSE, DEFAULT_CHARSET,
+                                    0, 0, CLEARTYPE_QUALITY,  FF_DONTCARE, ncm.lfMessageFont.lfFaceName);
+}
+
+static void taskdialog_info_destroy(taskdialog_info *dialog_info)
+{
+    DeleteObject(dialog_info->font_main);
+    DeleteObject(dialog_info->font_default);
+}
+
 /***********************************************************************
  * TaskDialogIndirect [COMCTL32.@]
  */
@@ -266,16 +344,21 @@ HRESULT WINAPI TaskDialogIndirect(const TASKDIALOGCONFIG *pTaskConfig, int *pnBu
     LPDLGTEMPLATEW template_data;
     dialog_header header = {0};
     struct list controls;
+    HDC dc_dummy;
 
     TRACE("%p, %p, %p, %p\n", pTaskConfig, pnButton, pnRadioButton, pfVerificationFlagChecked);
 
     if (!pTaskConfig || pTaskConfig->cbSize != sizeof(TASKDIALOGCONFIG))
         return E_INVALIDARG;
 
+    dc_dummy = CreateCompatibleDC(NULL);
     list_init(&controls);
+    taskdialog_info_init(&dialog_info, pTaskConfig, dc_dummy);
+
+    SelectObject(dc_dummy, dialog_info.font_default);
 
     get_desktop_size(&desktop, pTaskConfig->hwndParent);
-    dialog_height = 100;
+    dialog_height = DIALOG_SPACING;
     dialog_width = pTaskConfig->cxWidth;
 
     /* Dialog can't be smaller than default size and not bigger than screen
@@ -287,7 +370,33 @@ HRESULT WINAPI TaskDialogIndirect(const TASKDIALOGCONFIG *pTaskConfig, int *pnBu
 
     /* Start creating controls */
 
-    controls_add(&controls, IDOK, WC_BUTTONW, text_ok, WS_CHILD | WS_VISIBLE, 105, 85, 40, 10);
+    if(!IS_INTRESOURCE(pTaskConfig->pszContent) && !STR_EMPTY(pTaskConfig->pszMainInstruction))
+    {
+        RECT rect;
+
+        SelectObject(dc_dummy, dialog_info.font_main);
+        rect = text_get_rect(dc_dummy, pTaskConfig->pszMainInstruction, dialog_width);
+
+        controls_add(&controls, ID_TEXTMAIN, WC_STATICW, pTaskConfig->pszMainInstruction,
+                     WS_CHILD | WS_VISIBLE, DIALOG_SPACING, dialog_height, rect.right, rect.bottom);
+
+        dialog_height += rect.bottom;
+        SelectObject(dc_dummy, dialog_info.font_default);
+    }
+
+    if(!IS_INTRESOURCE(pTaskConfig->pszContent) && !STR_EMPTY(pTaskConfig->pszContent))
+    {
+        RECT rect = text_get_rect(dc_dummy, pTaskConfig->pszContent, dialog_width);
+
+        controls_add(&controls, ID_TEXTCONTENT, WC_STATICW, pTaskConfig->pszContent,
+                     WS_CHILD | WS_VISIBLE, DIALOG_SPACING, dialog_height, rect.right, rect.bottom);
+
+        dialog_height += rect.bottom;
+    }
+
+    controls_add(&controls, IDOK, WC_BUTTONW, text_ok,
+                 WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON, dialog_width - 40 - 10, dialog_height, 40, 10);
+    dialog_height += DIALOG_SPACING*2;
 
     header.title = pTaskConfig->pszWindowTitle;
     if(!header.title)
@@ -306,13 +415,15 @@ HRESULT WINAPI TaskDialogIndirect(const TASKDIALOGCONFIG *pTaskConfig, int *pnBu
     /* Turn template information into a dialog template to display it */
     template_data = dialog_template_create(header, &controls);
 
-    dialog_info.task_config = pTaskConfig;
     DialogBoxIndirectParamW(pTaskConfig->hInstance, template_data, pTaskConfig->hwndParent, DialogProc, (LPARAM)&dialog_info);
 
     /* Cleanup */
 
     Free(template_data);
     controls_destroy(&controls);
+    DeleteDC(dc_dummy);
+
+    taskdialog_info_destroy(&dialog_info);
 
     return S_OK;
 }
