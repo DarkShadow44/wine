@@ -147,16 +147,40 @@ static void controls_add(struct list *controls, WORD id, const WCHAR *class, con
     list_add_tail(controls, &data->entry);
 }
 
+/* FIXME: Make thread safe */
+static const TASKDIALOGCONFIG *task_config = 0;
+static HRESULT callback(HWND hwnd, UINT uNotification, WPARAM wParam, LPARAM lParam)
+{
+    if(task_config->pfCallback)
+        return task_config->pfCallback(hwnd, uNotification, wParam, lParam, task_config->lpCallbackData);
+    return S_OK;
+}
+
 static INT_PTR CALLBACK DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
+    HRESULT ret_callback;
+
     switch (uMsg)
     {
+        case WM_INITDIALOG:
+            callback(hwndDlg, TDN_DIALOG_CONSTRUCTED, 0, 0);
+            callback(hwndDlg, TDN_CREATED, 0, 0);
+            return TRUE;
         case WM_COMMAND:
-            if(HIWORD(wParam) == BN_CLICKED && LOWORD(wParam) == IDOK)
+            if(HIWORD(wParam) == BN_CLICKED)
             {
-                EndDialog(hwndDlg, 0);
+                WORD command_id = LOWORD(wParam);
+
+                ret_callback = callback(hwndDlg, TDN_BUTTON_CLICKED, command_id, 0);
+                if(ret_callback == S_OK) /* FIXME */
+                {
+                    EndDialog(hwndDlg, command_id);
+                }
                 return TRUE;
             }
+            break;
+        case WM_DESTROY:
+            callback(hwndDlg, TDN_DESTROYED, 0, 0);
             break;
     }
     return FALSE;
@@ -179,6 +203,7 @@ HRESULT WINAPI TaskDialogIndirect(const TASKDIALOGCONFIG *pTaskConfig, int *pnBu
     if (!pTaskConfig || pTaskConfig->cbSize != sizeof(TASKDIALOGCONFIG))
         return E_INVALIDARG;
 
+    task_config = pTaskConfig;
     list_init(&controls);
 
     /* Start creating controls */
