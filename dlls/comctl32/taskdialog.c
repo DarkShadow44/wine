@@ -34,6 +34,9 @@
 
 WINE_DEFAULT_DEBUG_CHANNEL(commctrl);
 
+/* Roughly fitting TaskDialog size */
+static const UINT DIALOG_DEFAULT_WIDTH = 180;
+
 typedef struct
 {
     DLGITEMTEMPLATE template;
@@ -64,6 +67,40 @@ static void* align_pointer(void *ptr, unsigned int boundary)
 {
     boundary--;
     return (void *)(((UINT_PTR)ptr + boundary) & ~boundary);
+}
+
+static void pixels_to_dialogunits(LONG *width, LONG *height)
+{
+    UINT baseunits = GetDialogBaseUnits();
+
+    if(width)
+        *width = MulDiv(*width, 4, LOWORD(baseunits));
+    if(height)
+        *height = MulDiv(*height, 8, HIWORD(baseunits));
+}
+
+static void dialogunits_to_pixels(LONG *width, LONG *height)
+{
+    UINT baseunits = GetDialogBaseUnits();
+
+    if(width)
+        *width = MulDiv(*width, LOWORD(baseunits), 4);
+    if(height)
+        *height = MulDiv(*height, HIWORD(baseunits), 8);
+}
+
+static void get_desktop_size(RECT *desktop, HWND hwndWindow)
+{
+    HMONITOR monitor;
+    MONITORINFO mon_info;
+
+    monitor = MonitorFromWindow(hwndWindow ? hwndWindow : GetActiveWindow(), MONITOR_DEFAULTTOPRIMARY);
+    mon_info.cbSize = sizeof(mon_info);
+    GetMonitorInfoW(monitor, &mon_info);
+    *desktop = mon_info.rcWork;
+
+    /* Convert pixels to dialog units */
+    pixels_to_dialogunits(&desktop->right, &desktop->bottom);
 }
 
 /* Functions for turning our dialog structures into a usable dialog template
@@ -194,6 +231,9 @@ HRESULT WINAPI TaskDialogIndirect(const TASKDIALOGCONFIG *pTaskConfig, int *pnBu
 {
     static const WCHAR empty_string[] = {0};
     static const WCHAR text_ok[] = {'O','K',0};
+    RECT desktop;
+    UINT dialog_width; /* In dialog units */
+    UINT dialog_height; /* In dialog units */
     LPDLGTEMPLATEW template_data;
     dialog_header header = {0};
     struct list controls;
@@ -206,6 +246,17 @@ HRESULT WINAPI TaskDialogIndirect(const TASKDIALOGCONFIG *pTaskConfig, int *pnBu
     task_config = pTaskConfig;
     list_init(&controls);
 
+    get_desktop_size(&desktop, pTaskConfig->hwndParent);
+    dialog_height = 100;
+    dialog_width = pTaskConfig->cxWidth;
+
+    /* Dialog can't be smaller than default size and not bigger than screen
+     * Note: Long text doesn't seem to make the dialog grow in width */
+    if(dialog_width < DIALOG_DEFAULT_WIDTH)
+        dialog_width = DIALOG_DEFAULT_WIDTH;
+    if(dialog_width > desktop.right)
+        dialog_width = desktop.right;
+
     /* Start creating controls */
 
     controls_add(&controls, IDOK, WC_BUTTONW, text_ok, WS_CHILD | WS_VISIBLE, 105, 85, 40, 10);
@@ -217,10 +268,12 @@ HRESULT WINAPI TaskDialogIndirect(const TASKDIALOGCONFIG *pTaskConfig, int *pnBu
 
     header.template.style = DS_MODALFRAME | WS_CAPTION | WS_VISIBLE;
     header.template.cdit = list_count(&controls);
-    header.template.x = 10;
-    header.template.y = 10;
-    header.template.cx = 150;
-    header.template.cy = 100;
+
+    /* TaskDialogs are always desktop centered */
+    header.template.cx = dialog_width;
+    header.template.cy = dialog_height;
+    header.template.x = (desktop.right - dialog_width)/2;
+    header.template.y = (desktop.bottom - dialog_height)/2;
 
     /* Turn template information into a dialog template to display it */
     template_data = dialog_template_create(header, &controls);
