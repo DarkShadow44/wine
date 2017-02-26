@@ -61,6 +61,21 @@ typedef struct
     UINT titleSize; /* Length in bytes including null-terminator */
 }dialog_header;
 
+typedef struct
+{
+    int id;
+    const WCHAR *text;
+    UINT width;
+    UINT x;
+    UINT y;
+}button_info;
+
+typedef struct
+{
+    const TASKDIALOGCONFIG *task_config;
+    HWND hwnd;
+}taskdialog_info;
+
 #define MEMCPY_MOVEPTR(target, source, size) memcpy(target, source, size); target += size;
 
 static void* align_pointer(void *ptr, unsigned int boundary)
@@ -184,31 +199,43 @@ static void controls_add(struct list *controls, WORD id, const WCHAR *class, con
     list_add_tail(controls, &data->entry);
 }
 
-/* FIXME: Make thread safe */
-static const TASKDIALOGCONFIG *task_config = 0;
-static HRESULT callback(HWND hwnd, UINT uNotification, WPARAM wParam, LPARAM lParam)
+/* DialogProc and helper functions */
+
+static HRESULT callback(taskdialog_info *dialog_info, UINT uNotification, WPARAM wParam, LPARAM lParam)
 {
+    const TASKDIALOGCONFIG *task_config = dialog_info->task_config;
+
     if(task_config->pfCallback)
-        return task_config->pfCallback(hwnd, uNotification, wParam, lParam, task_config->lpCallbackData);
+        return task_config->pfCallback(dialog_info->hwnd, uNotification, wParam, lParam, task_config->lpCallbackData);
     return S_OK;
 }
 
 static INT_PTR CALLBACK DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
+    static const WCHAR taskdialog_info_propnameW[] = {'T','a','s','k','D','i','a','l','o','g','I','n','f','o',0};
     HRESULT ret_callback;
+    taskdialog_info *dialog_info;
+
+    if(uMsg != WM_INITDIALOG && uMsg != WM_NCDESTROY)
+        dialog_info = GetPropW(hwndDlg, taskdialog_info_propnameW);
 
     switch (uMsg)
     {
         case WM_INITDIALOG:
-            callback(hwndDlg, TDN_DIALOG_CONSTRUCTED, 0, 0);
-            callback(hwndDlg, TDN_CREATED, 0, 0);
+            dialog_info = (taskdialog_info *)lParam;
+            dialog_info->hwnd = hwndDlg;
+            SetPropW(hwndDlg, taskdialog_info_propnameW, dialog_info);
+
+            callback(dialog_info, TDN_DIALOG_CONSTRUCTED, 0, 0);
+            callback(dialog_info, TDN_CREATED, 0, 0);
+
             return TRUE;
         case WM_COMMAND:
             if(HIWORD(wParam) == BN_CLICKED)
             {
                 WORD command_id = LOWORD(wParam);
 
-                ret_callback = callback(hwndDlg, TDN_BUTTON_CLICKED, command_id, 0);
+                ret_callback = callback(dialog_info, TDN_BUTTON_CLICKED, command_id, 0);
                 if(ret_callback == S_OK) /* FIXME */
                 {
                     EndDialog(hwndDlg, command_id);
@@ -217,7 +244,8 @@ static INT_PTR CALLBACK DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARA
             }
             break;
         case WM_DESTROY:
-            callback(hwndDlg, TDN_DESTROYED, 0, 0);
+            callback(dialog_info, TDN_DESTROYED, 0, 0);
+            RemovePropW(hwndDlg, taskdialog_info_propnameW);
             break;
     }
     return FALSE;
@@ -231,6 +259,7 @@ HRESULT WINAPI TaskDialogIndirect(const TASKDIALOGCONFIG *pTaskConfig, int *pnBu
 {
     static const WCHAR empty_string[] = {0};
     static const WCHAR text_ok[] = {'O','K',0};
+    taskdialog_info dialog_info;
     RECT desktop;
     UINT dialog_width; /* In dialog units */
     UINT dialog_height; /* In dialog units */
@@ -243,7 +272,6 @@ HRESULT WINAPI TaskDialogIndirect(const TASKDIALOGCONFIG *pTaskConfig, int *pnBu
     if (!pTaskConfig || pTaskConfig->cbSize != sizeof(TASKDIALOGCONFIG))
         return E_INVALIDARG;
 
-    task_config = pTaskConfig;
     list_init(&controls);
 
     get_desktop_size(&desktop, pTaskConfig->hwndParent);
@@ -278,7 +306,8 @@ HRESULT WINAPI TaskDialogIndirect(const TASKDIALOGCONFIG *pTaskConfig, int *pnBu
     /* Turn template information into a dialog template to display it */
     template_data = dialog_template_create(header, &controls);
 
-    DialogBoxIndirectParamW(pTaskConfig->hInstance, template_data, pTaskConfig->hwndParent, DialogProc, 0);
+    dialog_info.task_config = pTaskConfig;
+    DialogBoxIndirectParamW(pTaskConfig->hInstance, template_data, pTaskConfig->hwndParent, DialogProc, (LPARAM)&dialog_info);
 
     /* Cleanup */
 
