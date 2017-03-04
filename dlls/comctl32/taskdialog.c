@@ -256,10 +256,20 @@ static HRESULT callback(taskdialog_info *dialog_info, UINT uNotification, WPARAM
     return S_OK;
 }
 
+ static void click_button(taskdialog_info *dialog_info, WORD command_id)
+ {
+    HRESULT ret_callback;
+
+    ret_callback = callback(dialog_info, TDN_BUTTON_CLICKED, command_id, 0);
+    if(ret_callback == S_OK)
+    {
+        EndDialog(dialog_info->hwnd, command_id);
+    }
+ }
+
 static INT_PTR CALLBACK DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
     static const WCHAR taskdialog_info_propnameW[] = {'T','a','s','k','D','i','a','l','o','g','I','n','f','o',0};
-    HRESULT ret_callback;
     taskdialog_info *dialog_info;
 
     if(uMsg != WM_INITDIALOG && uMsg != WM_NCDESTROY)
@@ -296,18 +306,19 @@ static INT_PTR CALLBACK DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARA
             if(HIWORD(wParam) == BN_CLICKED)
             {
                 WORD command_id = LOWORD(wParam);
-
-                ret_callback = callback(dialog_info, TDN_BUTTON_CLICKED, command_id, 0);
-                if(ret_callback == S_OK) /* FIXME */
-                {
-                    EndDialog(hwndDlg, command_id);
-                }
+                click_button(dialog_info, command_id);
                 return TRUE;
             }
             break;
         case WM_DESTROY:
             callback(dialog_info, TDN_DESTROYED, 0, 0);
             RemovePropW(hwndDlg, taskdialog_info_propnameW);
+            break;
+
+        /* Custom messages*/
+
+        case TDM_CLICK_BUTTON:
+            click_button(dialog_info, wParam);
             break;
     }
     return FALSE;

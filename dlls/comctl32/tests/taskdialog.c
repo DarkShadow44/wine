@@ -72,6 +72,18 @@ static const struct message_info mes_simple_show[] = {
     { 0 }
 };
 
+static const struct message_info mes_cancel_button_press[] = {
+    { TDN_CREATED, 0, 0, S_OK, {
+        { TDM_CLICK_BUTTON, IDOK, 0, TRUE },
+        { TDM_CLICK_BUTTON, IDOK, 0, TRUE },
+        { TDM_CLICK_BUTTON, IDOK, 0, TRUE },
+        { 0 }}},
+    { TDN_BUTTON_CLICKED, IDOK, 0, S_FALSE, {{ 0 }}},
+    { TDN_BUTTON_CLICKED, IDOK, 0, 0xFF, {{ 0 }}}, /* Random return value tested here */
+    { TDN_BUTTON_CLICKED, IDOK, 0, S_OK, {{ 0 }}},
+    { 0 }
+};
+
 
 /* Create a message to test against */
 static struct message create_test_message(UINT message, WPARAM wParam, LPARAM lParam)
@@ -210,6 +222,7 @@ static void test_TaskDialogIndirect(void)
     info.lpCallbackData = backup_ref_data = 0x12345678; /* Set data for callback tests */
 
     run_test(&info, IDOK, 0, FALSE, mes_simple_show, "Simple test with parameters null");
+    run_test(&info, IDOK, 0, FALSE, mes_cancel_button_press, "Simple test for cancelling button press");
 }
 
 START_TEST(taskdialog)
