@@ -52,6 +52,14 @@ extern HBRUSH  COMCTL32_hPattern55AABrush DECLSPEC_HIDDEN;
 
 #define IDS_CLOSE	  4160
 
+/* Taskdialog */
+#define IDS_OK            1000
+#define IDS_AMP_YES       1001
+#define IDS_AMP_NO        1002
+#define IDS_AMP_RETRY     1003
+#define IDS_CANCEL        1004
+#define IDS_AMP_CLOSE     1005
+
 /* Toolbar customization dialog */
 #define IDD_TBCUSTOMIZE     200
 

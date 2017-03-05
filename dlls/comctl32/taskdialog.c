@@ -45,11 +45,17 @@ WINE_DEFAULT_DEBUG_CHANNEL(commctrl);
 static const UINT DIALOG_DEFAULT_WIDTH = 180;
 
 static const UINT DIALOG_SPACING = 5;
+static const UINT DIALOG_SPACING_BUTTONS_LEFT = 40; /* minimum distance from the left dialog border */
+static const UINT DIALOG_SPACING_BUTTON_H = 1; /* Distance between buttons */
+static const UINT DIALOG_SPACING_BUTTON_W = 4; /* Distance between buttons */
+static const UINT DIALOG_BUTTON_HEIGHT = 10;
 
 #define ID_START 0xF000
 
 static const int ID_TEXTMAIN    = ID_START + 1;
 static const int ID_TEXTCONTENT = ID_START + 2;
+
+static const int MIN_SIZE_BUTTON = 30;
 
 typedef struct
 {
@@ -211,7 +217,7 @@ static void controls_destroy(struct list *controls)
 }
 
 /* Adds a control for the TaskDialog into our list */
-static void controls_add(struct list *controls, WORD id, const WCHAR *class, const WCHAR *text,
+static DLGITEMTEMPLATE* controls_add(struct list *controls, WORD id, const WCHAR *class, const WCHAR *text,
                        DWORD style, short x, short y, short cx, short cy)
 {
     control_info *data = Alloc(sizeof(control_info));
@@ -229,6 +235,8 @@ static void controls_add(struct list *controls, WORD id, const WCHAR *class, con
     data->text_size = (lstrlenW(text) + 1) * sizeof(WCHAR);
 
     list_add_tail(controls, &data->entry);
+
+    return &data->template;
 }
 
 /* DialogProc and helper functions */
@@ -255,7 +263,9 @@ static INT_PTR CALLBACK DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARA
     taskdialog_info *dialog_info;
 
     if(uMsg != WM_INITDIALOG && uMsg != WM_NCDESTROY)
+    {
         dialog_info = GetPropW(hwndDlg, taskdialog_info_propnameW);
+    }
 
     switch (uMsg)
     {
@@ -329,6 +339,130 @@ static void taskdialog_info_destroy(taskdialog_info *dialog_info)
     DeleteObject(dialog_info->font_default);
 }
 
+static button_info make_button(HDC hdc, UINT dialog_width, int id, const WCHAR *text)
+{
+    RECT rect;
+    button_info button;
+
+    button.id = id;
+    button.text = text;
+    rect = text_get_rect(hdc, text, dialog_width);
+    button.width = rect.right + 10;
+    if(button.width < MIN_SIZE_BUTTON)
+        button.width = MIN_SIZE_BUTTON;
+
+    return button;
+}
+
+static UINT add_buttons(HDC hdc, const TASKDIALOGCONFIG *task_config, struct list *controls,
+                        UINT dialog_width, UINT dialog_height)
+{
+    static const WCHAR class_button[] = WC_BUTTONW; /* Can't use WC_BUTTONW directy, need to store it into a static variable since it goes out of scope */
+    static WCHAR text_ok    [20] = {0};
+    static WCHAR text_yes   [20] = {0};
+    static WCHAR text_no    [20] = {0};
+    static WCHAR text_cancel[20] = {0};
+    static WCHAR text_retry [20] = {0};
+    static WCHAR text_close [20] = {0};
+    static BOOL text_initialized = 0;
+    UINT alignment = DIALOG_SPACING_BUTTONS_LEFT; /* minimum distance from the left dialog border */
+    UINT location_x;
+    BOOL first_row = TRUE;
+    button_info *buttons;
+    int count = 0;
+    int i;
+
+    if(!text_initialized)
+    {
+        text_initialized = TRUE;
+        LoadStringW(COMCTL32_hModule, IDS_OK,        text_ok,     sizeof(text_ok)     / sizeof(WCHAR));
+        LoadStringW(COMCTL32_hModule, IDS_AMP_YES,   text_yes,    sizeof(text_yes)    / sizeof(WCHAR));
+        LoadStringW(COMCTL32_hModule, IDS_AMP_NO,    text_no,     sizeof(text_no)     / sizeof(WCHAR));
+        LoadStringW(COMCTL32_hModule, IDS_CANCEL,    text_cancel, sizeof(text_cancel) / sizeof(WCHAR));
+        LoadStringW(COMCTL32_hModule, IDS_AMP_RETRY, text_retry,  sizeof(text_retry)  / sizeof(WCHAR));
+        LoadStringW(COMCTL32_hModule, IDS_AMP_CLOSE, text_close,  sizeof(text_close)  / sizeof(WCHAR));
+    }
+
+    /* Allocate enough memory for the custom and the default buttons */
+    if(task_config->cButtons && task_config->pButtons)
+        buttons = HeapAlloc(GetProcessHeap(), 0, (task_config->cButtons + 6)*sizeof(button_info));
+    else
+    {
+        buttons = HeapAlloc(GetProcessHeap(), 0, 6*sizeof(button_info));
+    }
+
+    /* Custom buttons */
+    if(task_config->cButtons && task_config->pButtons)
+    {
+        for(i=0; i<task_config->cButtons; i++)
+        {
+            buttons[count++] = make_button(hdc, dialog_width, task_config->pButtons[i].nButtonID,
+                                           task_config->pButtons[i].pszButtonText);
+        }
+    }
+
+    /* Default buttons */
+    if(task_config->dwCommonButtons & TDCBF_OK_BUTTON)
+        buttons[count++] = make_button(hdc, dialog_width, IDOK, text_ok);
+    if(task_config->dwCommonButtons & TDCBF_YES_BUTTON)
+        buttons[count++] = make_button(hdc, dialog_width, IDYES, text_yes);
+    if(task_config->dwCommonButtons & TDCBF_NO_BUTTON)
+        buttons[count++] = make_button(hdc, dialog_width, IDNO, text_no);
+    if(task_config->dwCommonButtons & TDCBF_RETRY_BUTTON)
+        buttons[count++] = make_button(hdc, dialog_width, IDRETRY, text_retry);
+    if(task_config->dwCommonButtons & TDCBF_CANCEL_BUTTON)
+        buttons[count++] = make_button(hdc, dialog_width, IDCANCEL, text_cancel);
+    if(task_config->dwCommonButtons & TDCBF_CLOSE_BUTTON)
+        buttons[count++] = make_button(hdc, dialog_width, IDCLOSE, text_close);
+
+    /* There must be at least one button */
+    if(!(task_config->cButtons && task_config->pButtons) && !task_config->dwCommonButtons)
+        buttons[count++] = make_button(hdc, dialog_width, IDOK, text_ok);
+
+    /* Position buttons */
+    location_x = alignment;
+    for(i=0; i<count; i++)
+    {
+        if(location_x + buttons[i].width + DIALOG_SPACING_BUTTON_W > dialog_width) /* When beginning new row, align the first */
+        {
+            if(first_row)
+            {
+                int diff = dialog_width - location_x;
+
+                first_row = FALSE;
+                for(int j=0; j<i; j++) /* Align first row to the right */
+                    buttons[j].x += diff;
+                alignment = buttons[0].x; /* left-align all coming rows to the first row */
+            }
+            location_x = alignment;
+            dialog_height += DIALOG_BUTTON_HEIGHT + DIALOG_SPACING_BUTTON_H;
+        }
+
+        buttons[i].x = location_x;
+        buttons[i].y = dialog_height;
+
+        location_x += buttons[i].width + DIALOG_SPACING_BUTTON_W;
+    }
+    if(first_row) /* Always align first row to the right */
+    {
+        int diff = dialog_width -(buttons[count-1].x + buttons[count-1].width + DIALOG_SPACING_BUTTON_W);
+        for(int i=0; i<count; i++)
+            buttons[i].x += diff;
+    }
+
+     /* Now that we got them all positioned, create all buttons */
+    for(i=0; i<count; i++)
+    {
+        controls_add(controls, buttons[i].id, class_button, buttons[i].text, WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+                                buttons[i].x, buttons[i].y, buttons[i].width, DIALOG_BUTTON_HEIGHT);
+    }
+
+    dialog_height += DIALOG_BUTTON_HEIGHT*2;
+
+    HeapFree(GetProcessHeap(), 0, buttons);
+    return dialog_height;
+}
+
 /***********************************************************************
  * TaskDialogIndirect [COMCTL32.@]
  */
@@ -336,7 +470,6 @@ HRESULT WINAPI TaskDialogIndirect(const TASKDIALOGCONFIG *pTaskConfig, int *pnBu
                                   int *pnRadioButton, BOOL *pfVerificationFlagChecked)
 {
     static const WCHAR empty_string[] = {0};
-    static const WCHAR text_ok[] = {'O','K',0};
     taskdialog_info dialog_info;
     RECT desktop;
     UINT dialog_width; /* In dialog units */
@@ -345,6 +478,7 @@ HRESULT WINAPI TaskDialogIndirect(const TASKDIALOGCONFIG *pTaskConfig, int *pnBu
     dialog_header header = {0};
     struct list controls;
     HDC dc_dummy;
+    int ret;
 
     TRACE("%p, %p, %p, %p\n", pTaskConfig, pnButton, pnRadioButton, pfVerificationFlagChecked);
 
@@ -394,9 +528,10 @@ HRESULT WINAPI TaskDialogIndirect(const TASKDIALOGCONFIG *pTaskConfig, int *pnBu
         dialog_height += rect.bottom;
     }
 
-    controls_add(&controls, IDOK, WC_BUTTONW, text_ok,
-                 WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON, dialog_width - 40 - 10, dialog_height, 40, 10);
-    dialog_height += DIALOG_SPACING*2;
+    dialog_height += DIALOG_SPACING;
+
+    /* Create buttons */
+    dialog_height = add_buttons(dc_dummy, pTaskConfig, &controls, dialog_width, dialog_height);
 
     header.title = pTaskConfig->pszWindowTitle;
     if(!header.title)
@@ -415,7 +550,16 @@ HRESULT WINAPI TaskDialogIndirect(const TASKDIALOGCONFIG *pTaskConfig, int *pnBu
     /* Turn template information into a dialog template to display it */
     template_data = dialog_template_create(header, &controls);
 
-    DialogBoxIndirectParamW(pTaskConfig->hInstance, template_data, pTaskConfig->hwndParent, DialogProc, (LPARAM)&dialog_info);
+    ret = DialogBoxIndirectParamW(pTaskConfig->hInstance, template_data, pTaskConfig->hwndParent, DialogProc, (LPARAM)&dialog_info);
+
+    if(pnButton)
+        *pnButton = ret;
+
+    if(pnRadioButton)
+        *pnRadioButton = 0;
+
+    if(pfVerificationFlagChecked)
+        *pfVerificationFlagChecked = FALSE;
 
     /* Cleanup */
 

@@ -32,6 +32,16 @@ STRINGTABLE
 
 STRINGTABLE
 {
+    IDS_OK        "OK"
+    IDS_AMP_YES   "&Yes"
+    IDS_AMP_NO    "&No"
+    IDS_AMP_RETRY "&Retry"
+    IDS_CANCEL    "Cancel"
+    IDS_AMP_CLOSE "&Close"
+}
+
+STRINGTABLE
+{
     IDM_TODAY    "Today:"
     IDM_GOTODAY  "Go to today"
 }
