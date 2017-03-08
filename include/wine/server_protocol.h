@@ -2412,9 +2412,10 @@ struct next_thread_reply
     int          count;
     process_id_t pid;
     thread_id_t  tid;
+    char __pad_20[4];
+    timeout_t    creation_time;
     int          base_pri;
     int          delta_pri;
-    char __pad_28[4];
 };
 
 
@@ -6677,6 +6678,6 @@ union generic_reply
     struct get_system_info_reply get_system_info_reply;
 };
 
-#define SERVER_PROTOCOL_VERSION 574
+#define SERVER_PROTOCOL_VERSION 575
 
 #endif /* __WINE_WINE_SERVER_PROTOCOL_H */
