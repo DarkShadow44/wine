@@ -5029,6 +5029,7 @@ struct handle_info
     process_id_t owner;
     obj_handle_t handle;
     unsigned int access;
+    unsigned int type;
 };
 
 
@@ -6793,6 +6794,6 @@ union generic_reply
     struct resume_process_reply resume_process_reply;
 };
 
-#define SERVER_PROTOCOL_VERSION 587
+#define SERVER_PROTOCOL_VERSION 588
 
 #endif /* __WINE_WINE_SERVER_PROTOCOL_H */
