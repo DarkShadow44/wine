@@ -5207,9 +5207,9 @@ struct get_object_type_request
 struct get_object_type_reply
 {
     struct reply_header __header;
+    unsigned int   index;
     data_size_t    total;
     /* VARARG(type,unicode_str); */
-    char __pad_12[4];
 };
 
 
@@ -6793,6 +6793,6 @@ union generic_reply
     struct resume_process_reply resume_process_reply;
 };
 
-#define SERVER_PROTOCOL_VERSION 586
+#define SERVER_PROTOCOL_VERSION 587
 
 #endif /* __WINE_WINE_SERVER_PROTOCOL_H */
