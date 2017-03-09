@@ -2417,6 +2417,8 @@ struct next_thread_reply
     timeout_t    creation_time;
     int          base_pri;
     int          delta_pri;
+    int          unix_tid;
+    char __pad_44[4];
 };
 
 
@@ -6679,6 +6681,6 @@ union generic_reply
     struct get_system_info_reply get_system_info_reply;
 };
 
-#define SERVER_PROTOCOL_VERSION 576
+#define SERVER_PROTOCOL_VERSION 577
 
 #endif /* __WINE_WINE_SERVER_PROTOCOL_H */
