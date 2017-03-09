@@ -2393,8 +2393,9 @@ struct next_process_reply
     int          priority;
     int          handles;
     int          unix_pid;
-    /* VARARG(filename,unicode_str); */
     char __pad_36[4];
+    timeout_t    start_time;
+    /* VARARG(filename,unicode_str); */
 };
 
 
@@ -6678,6 +6679,6 @@ union generic_reply
     struct get_system_info_reply get_system_info_reply;
 };
 
-#define SERVER_PROTOCOL_VERSION 575
+#define SERVER_PROTOCOL_VERSION 576
 
 #endif /* __WINE_WINE_SERVER_PROTOCOL_H */
