@@ -34,6 +34,12 @@
 #define NUM_MSG_SEQUENCES     1
 #define TASKDIALOG_SEQ_INDEX  0
 
+#define TEST_NUM_BUTTONS 20 /* Number of custom buttons to test with */
+
+#define ID_START 20 /* Lower IDs might be used by the system */
+#define ID_START_BUTTON (ID_START + 0)
+#define ID_START_RADIO (ID_START + 1000)
+
 static HRESULT (WINAPI *pTaskDialogIndirect)(const TASKDIALOGCONFIG *, int *, int *, BOOL *);
 
 static struct msg_sequence *sequences[NUM_MSG_SEQUENCES];
@@ -64,7 +70,7 @@ struct message_info
 static const struct message_info *current_message_info;
 
 
-static const struct message_info mes_simple_show[] = {
+static const struct message_info mes_return_press_ok[] = {
     { TDN_CREATED, 0, 0, S_OK, {
         { WM_KEYDOWN, VK_RETURN, 0, TRUE },
         { 0 }}},
@@ -81,6 +87,30 @@ static const struct message_info mes_cancel_button_press[] = {
     { TDN_BUTTON_CLICKED, IDOK, 0, S_FALSE, {{ 0 }}},
     { TDN_BUTTON_CLICKED, IDOK, 0, 0xFF, {{ 0 }}}, /* Random return value tested here */
     { TDN_BUTTON_CLICKED, IDOK, 0, S_OK, {{ 0 }}},
+    { 0 }
+};
+
+static const struct message_info mes_return_press_custom1[] = {
+    { TDN_CREATED, 0, 0, S_OK, {
+        { WM_KEYDOWN, VK_RETURN, 0, TRUE },
+        { 0 }}},
+    { TDN_BUTTON_CLICKED, ID_START_BUTTON, 0, S_OK, {{ 0 }}},
+    { 0 }
+};
+
+static const struct message_info mes_return_press_custom4[] = {
+    { TDN_CREATED, 0, 0, S_OK, {
+        { WM_KEYDOWN, VK_RETURN, 0, TRUE },
+        { 0 }}},
+    { TDN_BUTTON_CLICKED, ID_START_BUTTON + 3, 0, S_OK, {{ 0 }}},
+    { 0 }
+};
+
+static const struct message_info mes_return_press_retry[] = {
+    { TDN_CREATED, 0, 0, S_OK, {
+        { WM_KEYDOWN, VK_RETURN, 0, TRUE },
+        { 0 }}},
+    { TDN_BUTTON_CLICKED, IDRETRY, 0, S_OK, {{ 0 }}},
     { 0 }
 };
 
@@ -206,10 +236,33 @@ static HRESULT CALLBACK TaskDialogCallbackProc(HWND hwnd, UINT uNotification, WP
     return S_OK;
 }
 
+
+
+static TASKDIALOG_BUTTON* buttons_make(void)
+{
+    static const WCHAR str_format[] = {'%','0','2','d',0};
+    static TASKDIALOG_BUTTON buttons[TEST_NUM_BUTTONS];
+    static WCHAR titles[TEST_NUM_BUTTONS * 3]; /* Each button has two digits as title, plus null-terminator */
+    int i;
+
+    for(i=0; i<TEST_NUM_BUTTONS; i++)
+    {
+        WCHAR *text = &titles[i * 3];
+        wsprintfW(text, str_format, i);
+
+        buttons[i].pszButtonText = text;
+        buttons[i].nButtonID = ID_START_BUTTON + i;
+    }
+    return buttons;
+}
+
 static void test_TaskDialogIndirect(void)
 {
     TASKDIALOGCONFIG info = {0};
+    TASKDIALOG_BUTTON *custom_buttons;
     HRESULT ret;
+
+    custom_buttons = buttons_make();
 
     ret = pTaskDialogIndirect(NULL, NULL, NULL, NULL);
     ok(ret == E_INVALIDARG, "Expected E_INVALIDARG, got %x\n", ret);
@@ -221,8 +274,36 @@ static void test_TaskDialogIndirect(void)
     info.pfCallback = TaskDialogCallbackProc;
     info.lpCallbackData = backup_ref_data = 0x12345678; /* Set data for callback tests */
 
-    run_test(&info, IDOK, 0, FALSE, mes_simple_show, "Simple test with parameters null");
+    run_test(&info, IDOK, 0, FALSE, mes_return_press_ok, "Simple test with parameters null");
     run_test(&info, IDOK, 0, FALSE, mes_cancel_button_press, "Simple test for cancelling button press");
+
+     /* Test nDefaultButton */
+
+    /* Test with all common buttons and invalid default ID */
+    info.nDefaultButton = 0; /* Should default to first created button */
+    info.dwCommonButtons = TDCBF_OK_BUTTON | TDCBF_YES_BUTTON | TDCBF_NO_BUTTON
+                           | TDCBF_CANCEL_BUTTON | TDCBF_RETRY_BUTTON | TDCBF_CLOSE_BUTTON;
+    run_test(&info, IDOK, 0, FALSE, mes_return_press_ok, "");
+
+    /* Test with all common and custom buttons and invalid default ID */
+    info.nDefaultButton = 0xff; /* Random ID, should also default to first created button */
+    info.cButtons = 10;
+    info.pButtons = custom_buttons;
+    run_test(&info, ID_START_BUTTON, 0, FALSE, mes_return_press_custom1, "nDefaultButton: all buttons, invalid default");
+
+    /* Test with only custom buttons and invalid default ID */
+    info.dwCommonButtons = 0;
+    run_test(&info, ID_START_BUTTON, 0, FALSE, mes_return_press_custom1, "nDefaultButton: custom buttons, invalid default");
+
+    /* Test with common and custom buttons and valid default ID */
+    info.dwCommonButtons = TDCBF_OK_BUTTON | TDCBF_YES_BUTTON | TDCBF_NO_BUTTON
+                               | TDCBF_CANCEL_BUTTON | TDCBF_RETRY_BUTTON | TDCBF_CLOSE_BUTTON;
+    info.nDefaultButton = IDRETRY;
+    run_test(&info, IDRETRY, 0, FALSE, mes_return_press_retry, "nDefaultButton: all buttons, valid default 1");
+
+    /* Test with common and custom buttons and valid default ID */
+    info.nDefaultButton = ID_START_BUTTON + 3;
+    run_test(&info, ID_START_BUTTON + 3, 0, FALSE, mes_return_press_custom4, "nDefaultButton: all buttons, valid default 2");
 }
 
 START_TEST(taskdialog)

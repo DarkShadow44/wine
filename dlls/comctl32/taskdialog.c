@@ -366,7 +366,7 @@ static button_info make_button(HDC hdc, UINT dialog_width, int id, const WCHAR *
 }
 
 static UINT add_buttons(HDC hdc, const TASKDIALOGCONFIG *task_config, struct list *controls,
-                        UINT dialog_width, UINT dialog_height)
+                        UINT dialog_width, UINT dialog_height, int default_button)
 {
     static const WCHAR class_button[] = WC_BUTTONW; /* Can't use WC_BUTTONW directy, need to store it into a static variable since it goes out of scope */
     static WCHAR text_ok    [20] = {0};
@@ -379,6 +379,7 @@ static UINT add_buttons(HDC hdc, const TASKDIALOGCONFIG *task_config, struct lis
     UINT alignment = DIALOG_SPACING_BUTTONS_LEFT; /* minimum distance from the left dialog border */
     UINT location_x;
     BOOL first_row = TRUE;
+    BOOL found_default = FALSE; /* Whether the default button ID is valid or not */
     button_info *buttons;
     int count = 0;
     int i;
@@ -461,11 +462,21 @@ static UINT add_buttons(HDC hdc, const TASKDIALOGCONFIG *task_config, struct lis
             buttons[i].x += diff;
     }
 
+    for(i=0; i<count; i++)
+        if(buttons[i].id == default_button)
+            found_default = TRUE;
+
      /* Now that we got them all positioned, create all buttons */
     for(i=0; i<count; i++)
     {
-        controls_add(controls, buttons[i].id, class_button, buttons[i].text, WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
-                                buttons[i].x, buttons[i].y, buttons[i].width, DIALOG_BUTTON_HEIGHT);
+        DWORD style = 0;
+        if((!found_default && i==0) || buttons[i].id == default_button)
+            style = BS_DEFPUSHBUTTON;
+        else
+            style = BS_PUSHBUTTON;
+
+        controls_add(controls, buttons[i].id, class_button, buttons[i].text, WS_CHILD | WS_VISIBLE | style,
+                               buttons[i].x, buttons[i].y, buttons[i].width, DIALOG_BUTTON_HEIGHT);
     }
 
     dialog_height += DIALOG_BUTTON_HEIGHT*2;
@@ -542,7 +553,7 @@ HRESULT WINAPI TaskDialogIndirect(const TASKDIALOGCONFIG *pTaskConfig, int *pnBu
     dialog_height += DIALOG_SPACING;
 
     /* Create buttons */
-    dialog_height = add_buttons(dc_dummy, pTaskConfig, &controls, dialog_width, dialog_height);
+    dialog_height = add_buttons(dc_dummy, pTaskConfig, &controls, dialog_width, dialog_height, pTaskConfig->nDefaultButton);
 
     header.title = pTaskConfig->pszWindowTitle;
     if(!header.title)
