@@ -95,6 +95,7 @@ typedef struct
     const TASKDIALOGCONFIG *task_config;
     HWND hwnd;
     HFONT font_default, font_main;
+    BOOL has_cancel;
 }taskdialog_info;
 
 #define MEMCPY_MOVEPTR(target, source, size) memcpy(target, source, size); target += size;
@@ -260,6 +261,9 @@ static HRESULT callback(taskdialog_info *dialog_info, UINT uNotification, WPARAM
  {
     HRESULT ret_callback;
 
+    if(command_id == IDCANCEL && !dialog_info->has_cancel)
+        return;
+
     ret_callback = callback(dialog_info, TDN_BUTTON_CLICKED, command_id, 0);
     if(ret_callback == S_OK)
     {
@@ -314,6 +318,9 @@ static INT_PTR CALLBACK DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARA
             callback(dialog_info, TDN_DESTROYED, 0, 0);
             RemovePropW(hwndDlg, taskdialog_info_propnameW);
             break;
+        case WM_CLOSE:
+            click_button(dialog_info, IDCANCEL);
+            return FALSE;
 
         /* Custom messages*/
 
@@ -342,6 +349,10 @@ static void taskdialog_info_init(taskdialog_info *dialog_info, const TASKDIALOGC
                                     0, 0, CLEARTYPE_QUALITY,  FF_DONTCARE, ncm.lfMessageFont.lfFaceName);
     dialog_info->font_main    = CreateFontW (font_size_main,    0, 0, 0, FW_DONTCARE, FALSE, FALSE, FALSE, DEFAULT_CHARSET,
                                     0, 0, CLEARTYPE_QUALITY,  FF_DONTCARE, ncm.lfMessageFont.lfFaceName);
+
+    dialog_info->has_cancel = (task_config->dwFlags & TDF_ALLOW_DIALOG_CANCELLATION)
+                               || (task_config->dwFlags & TDF_CAN_BE_MINIMIZED)
+                               || (task_config->dwCommonButtons & TDCBF_CANCEL_BUTTON);
 }
 
 static void taskdialog_info_destroy(taskdialog_info *dialog_info)
@@ -560,7 +571,12 @@ HRESULT WINAPI TaskDialogIndirect(const TASKDIALOGCONFIG *pTaskConfig, int *pnBu
         header.title = empty_string; /* FIXME: Set to exe path instead */
     header.titleSize = (lstrlenW(header.title) + 1) * sizeof(WCHAR);
 
-    header.template.style = DS_MODALFRAME | WS_CAPTION | WS_VISIBLE;
+    header.template.style = DS_MODALFRAME | WS_OVERLAPPED | WS_CAPTION | WS_VISIBLE;
+    if(dialog_info.has_cancel)
+        header.template.style |= WS_SYSMENU;
+    if(pTaskConfig->dwFlags & TDF_CAN_BE_MINIMIZED)
+        header.template.style |= WS_SYSMENU | WS_MINIMIZEBOX;
+
     header.template.cdit = list_count(&controls);
 
     /* TaskDialogs are always desktop centered */

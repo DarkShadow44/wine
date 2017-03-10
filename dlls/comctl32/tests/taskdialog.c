@@ -114,6 +114,62 @@ static const struct message_info mes_return_press_retry[] = {
     { 0 }
 };
 
+static const struct message_info mes_cancel_esc_button_ok[] = {
+    { TDN_CREATED, 0, 0, S_OK, {
+        { WM_KEYDOWN, VK_ESCAPE, 0, TRUE },
+        { WM_KEYDOWN, VK_RETURN, 0, TRUE },
+        { 0 }}},
+    { TDN_BUTTON_CLICKED, IDOK, 0, S_OK, {{ 0 }}},
+    { 0 }
+};
+
+static const struct message_info mes_cancel_close_button_ok[] = {
+    { TDN_CREATED, 0, 0, S_OK, {
+        { WM_CLOSE, 0, 0, TRUE },
+        { WM_KEYDOWN, VK_RETURN, 0, TRUE },
+        { 0 }}},
+    { TDN_BUTTON_CLICKED, IDOK, 0, S_OK, {{ 0 }}},
+    { 0 }
+};
+
+static const struct message_info mes_cancel_esc_button_cancel[] = {
+    { TDN_CREATED, 0, 0, S_OK, {
+        { WM_KEYDOWN, VK_ESCAPE, 0, TRUE },
+        { 0 }}},
+    { TDN_BUTTON_CLICKED, IDCANCEL, 0, S_OK, {{ 0 }}},
+    { 0 }
+};
+
+static const struct message_info mes_cancel_close_button_cancel[] = {
+    { TDN_CREATED, 0, 0, S_OK, {
+        { WM_CLOSE, 0, 0, TRUE },
+        { 0 }}},
+    { TDN_BUTTON_CLICKED, IDCANCEL, 0, S_OK, {{ 0 }}},
+    { 0 }
+};
+
+static const struct message_info mes_cancel_esc_callback[] = {
+    { TDN_CREATED, 0, 0, S_OK, {
+        { WM_KEYDOWN, VK_ESCAPE, 0, TRUE},
+        { 0 }}},
+    { TDN_BUTTON_CLICKED, IDCANCEL, 0, S_FALSE, {
+        { TDM_CLICK_BUTTON, IDOK, 0, TRUE },
+        { 0 }}},
+    { TDN_BUTTON_CLICKED, IDOK, 0, S_OK, {{ 0 }}},
+    { 0 }
+};
+
+static const struct message_info mes_cancel_close_callback[] = {
+    { TDN_CREATED, 0, 0, S_OK, {
+        { WM_CLOSE, 0, 0, TRUE },
+        { 0 }}},
+    { TDN_BUTTON_CLICKED, IDCANCEL, 0, S_FALSE, {
+        { TDM_CLICK_BUTTON, IDOK, 0, TRUE },
+        { 0 }}},
+    { TDN_BUTTON_CLICKED, IDOK, 0, S_OK, {{ 0 }}},
+    { 0 }
+};
+
 
 /* Create a message to test against */
 static struct message create_test_message(UINT message, WPARAM wParam, LPARAM lParam)
@@ -304,6 +360,45 @@ static void test_TaskDialogIndirect(void)
     /* Test with common and custom buttons and valid default ID */
     info.nDefaultButton = ID_START_BUTTON + 3;
     run_test(&info, ID_START_BUTTON + 3, 0, FALSE, mes_return_press_custom4, "nDefaultButton: all buttons, valid default 2");
+
+    /* Test ability to cancel dialog */
+    info.nDefaultButton = IDOK;
+
+    /* Test with TDF_ALLOW_DIALOG_CANCELLATION and without cancel button */
+    info.dwFlags = TDF_ALLOW_DIALOG_CANCELLATION;
+    info.dwCommonButtons = TDCBF_OK_BUTTON;
+    run_test(&info, IDCANCEL, 0, 0, mes_cancel_esc_button_cancel, "Cancellation: cancel flag but no cancel button 1");
+    run_test(&info, IDCANCEL, 0, 0, mes_cancel_close_button_cancel, "Cancellation: cancel flag but no cancel button 2");
+
+    /* Test with TDF_ALLOW_DIALOG_CANCELLATION and without cancel button */
+    info.dwFlags = TDF_CAN_BE_MINIMIZED;
+    info.dwCommonButtons = TDCBF_OK_BUTTON;
+    run_test(&info, IDCANCEL, 0, 0, mes_cancel_esc_button_cancel, "Cancellation: cancel flag but no cancel button 3");
+    run_test(&info, IDCANCEL, 0, 0, mes_cancel_close_button_cancel, "Cancellation: cancel flag but no cancel button 4");
+
+    /* Test without allow-cancel flag and with cancel button */
+    info.dwFlags = 0;
+    info.dwCommonButtons = TDCBF_OK_BUTTON | TDCBF_CANCEL_BUTTON;
+    run_test(&info, IDCANCEL, 0, 0, mes_cancel_esc_button_cancel, "Cancellation: no cancel flag but cancel button 1");
+    run_test(&info, IDCANCEL, 0, 0, mes_cancel_close_button_cancel, "Cancellation: no cancel flag but cancel button 2");
+
+    /* Test without allow-cancel flag and without cancel button */
+    info.dwFlags = 0;
+    info.dwCommonButtons = TDCBF_OK_BUTTON;
+    run_test(&info, IDOK, 0, 0, mes_cancel_esc_button_ok, "Cancellation: no cancel flag and no cancel button 1");
+    run_test(&info, IDOK, 0, 0, mes_cancel_close_button_ok, "Cancellation: no cancel flag and no cancel button 2");
+
+    /* Test if the callback can disable the cancellation with cancel button */
+    info.dwFlags = 0;
+    info.dwCommonButtons = TDCBF_OK_BUTTON | TDCBF_CANCEL_BUTTON;
+    run_test(&info, IDOK, 0, 0, mes_cancel_esc_callback, "Cancellation: stopped by callback 1");
+    run_test(&info, IDOK, 0, 0, mes_cancel_close_callback, "Cancellation: stopped by callback 2");
+
+    /* Test if the callback can disable the cancellation without cancel button */
+    info.dwFlags = TDF_ALLOW_DIALOG_CANCELLATION;
+    info.dwCommonButtons = TDCBF_OK_BUTTON;
+    run_test(&info, IDOK, 0, 0, mes_cancel_esc_callback, "Cancellation: stopped by callback 3");
+    run_test(&info, IDOK, 0, 0, mes_cancel_close_callback, "Cancellation: stopped by callback 4");
 }
 
 START_TEST(taskdialog)
