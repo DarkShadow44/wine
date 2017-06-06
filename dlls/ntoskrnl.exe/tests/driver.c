@@ -143,6 +143,22 @@ static void winetest_end_todo(void)
 #define todo_wine               todo_if(running_under_wine)
 #define todo_wine_if(is_todo)   todo_if((is_todo) && running_under_wine)
 
+static void *get_proc_address(const char *name)
+{
+    UNICODE_STRING name_u;
+    ANSI_STRING name_a;
+    NTSTATUS status;
+    void *ret;
+
+    RtlInitAnsiString(&name_a, name);
+    status = RtlAnsiStringToUnicodeString(&name_u, &name_a, TRUE);
+    if (status) return NULL;
+
+    ret = MmGetSystemRoutineAddress(&name_u);
+    RtlFreeUnicodeString(&name_u);
+    return ret;
+}
+
 static void test_currentprocess(void)
 {
     PEPROCESS current;
@@ -187,6 +203,19 @@ static void test_init_funcs(void)
     ok(timer2.Header.SignalState == 0, "got: %u\n", timer2.Header.SignalState);
 }
 
+static void test_version(void)
+{
+    USHORT *pNtBuildNumber;
+    ULONG build;
+
+    pNtBuildNumber = get_proc_address("NtBuildNumber");
+    ok(!!pNtBuildNumber, "Could not get pointer to NtBuildNumber\n");
+
+    PsGetVersion(NULL, NULL, &build, NULL);
+    ok(*pNtBuildNumber == build, "Expected build number %u, got %u\n", build, *pNtBuildNumber);
+    return;
+}
+
 static NTSTATUS main_test(IRP *irp, IO_STACK_LOCATION *stack, ULONG_PTR *info)
 {
     ULONG length = stack->Parameters.DeviceIoControl.OutputBufferLength;
@@ -213,6 +242,7 @@ static NTSTATUS main_test(IRP *irp, IO_STACK_LOCATION *stack, ULONG_PTR *info)
     test_currentprocess();
     test_mdl_map();
     test_init_funcs();
+    test_version();
 
     /* print process report */
     if (test_input->winetest_debug)
