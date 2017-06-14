@@ -4450,6 +4450,7 @@ static void dump_add_fd_completion_request( const struct add_fd_completion_reque
     dump_uint64( ", cvalue=", &req->cvalue );
     dump_uint64( ", information=", &req->information );
     fprintf( stderr, ", status=%08x", req->status );
+    fprintf( stderr, ", force=%d", req->force );
 }
 
 static void dump_set_fd_compl_info_request( const struct set_fd_compl_info_request *req )
