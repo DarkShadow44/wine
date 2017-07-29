@@ -910,3 +910,9 @@ LRESULT WINAPI ImeWndProcW( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
 
     return DefWindowProcW(hwnd, msg, wParam, lParam);
 }
+
+// has 3-6 parameters
+DWORD WINAPI CalcMenuBar(DWORD unk1, DWORD unk2, DWORD unk3, DWORD unk4, DWORD unk5, DWORD unk6)
+{
+    return 0;
+}
