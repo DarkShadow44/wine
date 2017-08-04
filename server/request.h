@@ -378,6 +378,7 @@ DECL_HANDLER(delete_device);
 DECL_HANDLER(get_next_device_request);
 DECL_HANDLER(make_process_system);
 DECL_HANDLER(get_token_statistics);
+DECL_HANDLER(get_token_elevation_type);
 DECL_HANDLER(create_completion);
 DECL_HANDLER(open_completion);
 DECL_HANDLER(add_completion);
@@ -674,6 +675,7 @@ static const req_handler req_handlers[REQ_NB_REQUESTS] =
     (req_handler)req_get_next_device_request,
     (req_handler)req_make_process_system,
     (req_handler)req_get_token_statistics,
+    (req_handler)req_get_token_elevation_type,
     (req_handler)req_create_completion,
     (req_handler)req_open_completion,
     (req_handler)req_add_completion,
@@ -2303,6 +2305,10 @@ C_ASSERT( FIELD_OFFSET(struct get_token_statistics_reply, impersonation_level) =
 C_ASSERT( FIELD_OFFSET(struct get_token_statistics_reply, group_count) == 32 );
 C_ASSERT( FIELD_OFFSET(struct get_token_statistics_reply, privilege_count) == 36 );
 C_ASSERT( sizeof(struct get_token_statistics_reply) == 40 );
+C_ASSERT( FIELD_OFFSET(struct get_token_elevation_type_request, handle) == 12 );
+C_ASSERT( sizeof(struct get_token_elevation_type_request) == 16 );
+C_ASSERT( FIELD_OFFSET(struct get_token_elevation_type_reply, elevation) == 8 );
+C_ASSERT( sizeof(struct get_token_elevation_type_reply) == 16 );
 C_ASSERT( FIELD_OFFSET(struct create_completion_request, access) == 12 );
 C_ASSERT( FIELD_OFFSET(struct create_completion_request, concurrent) == 16 );
 C_ASSERT( sizeof(struct create_completion_request) == 24 );
