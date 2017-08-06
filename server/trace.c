@@ -1238,6 +1238,7 @@ static void dump_new_process_request( const struct new_process_request *req )
     fprintf( stderr, ", info_size=%u", req->info_size );
     fprintf( stderr, ", env_size=%u", req->env_size );
     fprintf( stderr, ", process_sd_size=%u", req->process_sd_size );
+    fprintf( stderr, ", token=%04x", req->token );
     dump_varargs_startup_info( ", info=", min(cur_size,req->info_size) );
     dump_varargs_unicode_str( ", env=", min(cur_size,req->env_size) );
     dump_varargs_security_descriptor( ", process_sd=", min(cur_size,req->process_sd_size) );
@@ -5489,6 +5490,7 @@ static const struct
     { "ALIAS_EXISTS",                STATUS_ALIAS_EXISTS },
     { "BAD_DEVICE_TYPE",             STATUS_BAD_DEVICE_TYPE },
     { "BAD_IMPERSONATION_LEVEL",     STATUS_BAD_IMPERSONATION_LEVEL },
+    { "BAD_TOKEN_TYPE",              STATUS_BAD_TOKEN_TYPE },
     { "BREAKPOINT",                  STATUS_BREAKPOINT },
     { "BUFFER_OVERFLOW",             STATUS_BUFFER_OVERFLOW },
     { "BUFFER_TOO_SMALL",            STATUS_BUFFER_TOO_SMALL },

@@ -750,6 +750,7 @@ C_ASSERT( FIELD_OFFSET(struct new_process_request, cpu) == 44 );
 C_ASSERT( FIELD_OFFSET(struct new_process_request, info_size) == 48 );
 C_ASSERT( FIELD_OFFSET(struct new_process_request, env_size) == 52 );
 C_ASSERT( FIELD_OFFSET(struct new_process_request, process_sd_size) == 56 );
+C_ASSERT( FIELD_OFFSET(struct new_process_request, token) == 60 );
 C_ASSERT( sizeof(struct new_process_request) == 64 );
 C_ASSERT( FIELD_OFFSET(struct new_process_reply, info) == 8 );
 C_ASSERT( FIELD_OFFSET(struct new_process_reply, pid) == 12 );

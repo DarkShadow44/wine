@@ -734,11 +734,11 @@ struct new_process_request
     data_size_t  info_size;
     data_size_t  env_size;
     data_size_t  process_sd_size;
+    obj_handle_t token;
     /* VARARG(info,startup_info,info_size); */
     /* VARARG(env,unicode_str,env_size); */
     /* VARARG(process_sd,security_descriptor,process_sd_size); */
     /* VARARG(thread_sd,security_descriptor); */
-    char __pad_60[4];
 };
 struct new_process_reply
 {
@@ -6602,6 +6602,6 @@ union generic_reply
     struct terminate_job_reply terminate_job_reply;
 };
 
-#define SERVER_PROTOCOL_VERSION 567
+#define SERVER_PROTOCOL_VERSION 568
 
 #endif /* __WINE_WINE_SERVER_PROTOCOL_H */
