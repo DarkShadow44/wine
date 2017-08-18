@@ -190,6 +190,7 @@ struct wined3d_d3d_info
     BOOL vs_clipping;
     BOOL shader_color_key;
     DWORD valid_rt_mask;
+    DWORD valid_dual_rt_mask;
     DWORD wined3d_creation_flags;
     BOOL shader_double_precision;
     enum wined3d_feature_level feature_level;
@@ -1351,7 +1352,8 @@ struct ps_compile_args
     DWORD flatshading : 1;
     DWORD alpha_test_func : 3;
     DWORD render_offscreen : 1;
-    DWORD padding : 26;
+    DWORD dual_source_blend : 1;
+    DWORD padding : 25;
 };
 
 enum fog_src_type
@@ -1911,7 +1913,8 @@ struct wined3d_context
     DWORD transform_feedback_paused : 1;
     DWORD shader_update_mask : 6; /* WINED3D_SHADER_TYPE_COUNT, 6 */
     DWORD clip_distance_mask : 8; /* MAX_CLIP_DISTANCES, 8 */
-    DWORD padding : 9;
+    DWORD last_was_dual_blend : 1;
+    DWORD padding : 8;
 
     DWORD constant_update_mask;
     DWORD numbered_array_mask;
@@ -2538,6 +2541,7 @@ struct wined3d_fbo_ops
 struct wined3d_gl_limits
 {
     UINT buffers;
+    UINT dual_buffers;
     UINT lights;
     UINT textures;
     UINT texture_coords;
@@ -2878,6 +2882,22 @@ struct wined3d_state
     struct wined3d_blend_state *blend_state;
     struct wined3d_rasterizer_state *rasterizer_state;
 };
+
+static inline BOOL wined3d_dualblend_enabled(const struct wined3d_state *state, const struct wined3d_gl_info *gl_info)
+{
+    if (!state->fb->render_targets[0]) return FALSE;
+    if (!state->render_states[WINED3D_RS_ALPHABLENDENABLE]) return FALSE;
+    if (!gl_info->supported[ARB_BLEND_FUNC_EXTENDED]) return FALSE;
+
+#define IS_DUAL_SOURCE_BLEND(x) ((x) >= WINED3D_BLEND_SRC1COLOR && (x) <= WINED3D_BLEND_INVSRC1ALPHA)
+    if (IS_DUAL_SOURCE_BLEND(state->render_states[WINED3D_RS_SRCBLEND]))  return TRUE;
+    if (IS_DUAL_SOURCE_BLEND(state->render_states[WINED3D_RS_DESTBLEND])) return TRUE;
+    if (IS_DUAL_SOURCE_BLEND(state->render_states[WINED3D_RS_SRCBLENDALPHA]))  return TRUE;
+    if (IS_DUAL_SOURCE_BLEND(state->render_states[WINED3D_RS_DESTBLENDALPHA])) return TRUE;
+#undef IS_DUAL_SOURCE_BLEND
+
+    return FALSE;
+}
 
 struct wined3d_dummy_textures
 {
