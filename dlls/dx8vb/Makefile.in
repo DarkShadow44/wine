@@ -2,6 +2,7 @@ MODULE    = dx8vb.dll
 IMPORTS   = uuid ole32
 
 C_SRCS = \
+	d3dx8.c \
 	main.c
 
 IDL_SRCS = dx8vb.idl

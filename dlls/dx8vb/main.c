@@ -20,18 +20,11 @@
 
 #include "config.h"
 
-#include <stdarg.h>
-#include <string.h>
-
-#include "windef.h"
-#include "winbase.h"
-#include "winuser.h"
-#include "winreg.h"
-
 #include "ole2.h"
 #include "rpcproxy.h"
 
-#include "unknwn.h"
+#include "initguid.h"
+#include "dx8vb_private.h"
 
 #include "wine/debug.h"
 
@@ -76,7 +69,7 @@ struct object_creation_info
 
 static const struct object_creation_info object_creation[] =
 {
-    { &GUID_NULL, 0 },
+    { &CLSID_D3DX8, d3dx8_create },
 };
 
 static HRESULT WINAPI classfactory_QueryInterface(IClassFactory *iface, REFIID riid, void **ppobj)
