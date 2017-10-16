@@ -35,6 +35,7 @@
 #include "dx8vb.h"
 
 HRESULT d3dx8_create(IUnknown *outer_unk, void **ppv) DECLSPEC_HIDDEN;
+HRESULT directx8_create(IUnknown *outer_unk, void **ppv) DECLSPEC_HIDDEN;
 
 
 #endif /* __DX8VB_PRIVATE_INCLUDED__ */

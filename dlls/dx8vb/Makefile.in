@@ -3,6 +3,7 @@ IMPORTS   = uuid ole32
 
 C_SRCS = \
 	d3dx8.c \
+	directx8.c \
 	main.c
 
 IDL_SRCS = dx8vb.idl

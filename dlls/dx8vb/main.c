@@ -70,6 +70,7 @@ struct object_creation_info
 static const struct object_creation_info object_creation[] =
 {
     { &CLSID_D3DX8, d3dx8_create },
+    { &CLSID_DirectX8, directx8_create },
 };
 
 static HRESULT WINAPI classfactory_QueryInterface(IClassFactory *iface, REFIID riid, void **ppobj)
