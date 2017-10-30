@@ -21,6 +21,9 @@
 #include "config.h"
 
 #include "dx8vb_private.h"
+#define __WINE_D3D8TYPES_H
+#define __WINE_D3D8CAPS_H
+#include "d3d8.h"
 #include "ocidl.h"
 
 #include "wine/debug.h"
@@ -36,6 +39,7 @@ typedef struct
 typedef struct
 {
     Direct3D8 Direct3D8_iface;
+    IDirect3D8 *direct3d8;
     LONG ref;
 } direct3d8;
 
@@ -95,7 +99,10 @@ static ULONG WINAPI direct3d8_Release(Direct3D8 *iface)
     TRACE("(%p/%p)->(): new ref %d\n", iface, This, ref);
 
     if (!ref)
+    {
+        IDirect3D8_Release(This->direct3d8);
         HeapFree(GetProcessHeap(), 0, This);
+    }
 
     return ref;
 }
@@ -104,91 +111,145 @@ static ULONG WINAPI direct3d8_Release(Direct3D8 *iface)
 
 static HRESULT WINAPI direct3d8_RegisterSoftwareDevice(Direct3D8 *iface, void *initializeFunction)
 {
-    FIXME("(%p): stub!\n", initializeFunction);
+    direct3d8 *This = impl_from_Direct3D8(iface);
 
-    return E_NOTIMPL;
+    HRESULT ret = IDirect3D8_RegisterSoftwareDevice(This->direct3d8, initializeFunction);
+
+    FIXME("(%p) -> (%x)\n", initializeFunction, ret);
+
+    return ret;
 }
 
 static int WINAPI direct3d8_GetAdapterCount(Direct3D8 *iface)
 {
-    FIXME("(): stub!\n");
+    direct3d8 *This = impl_from_Direct3D8(iface);
 
-    return 0;
+    int ret = IDirect3D8_GetAdapterCount(This->direct3d8);
+
+    FIXME("() -> (%i)\n", ret);
+
+    return ret;
 }
 
 static HRESULT WINAPI direct3d8_GetAdapterIdentifier(Direct3D8 *iface, int adapter,
         LONG flags, D3DADAPTER_IDENTIFIER8 *identifier)
 {
-    FIXME("(%i, %i, %p): stub!\n", adapter, flags, identifier);
+    direct3d8 *This = impl_from_Direct3D8(iface);
 
-    return E_NOTIMPL;
+    HRESULT ret = IDirect3D8_GetAdapterIdentifier(This->direct3d8, adapter, flags, identifier);
+
+    FIXME("(%i, %i, %p) -> (%x)\n", adapter, flags, identifier, ret);
+
+    return ret;
 }
 
 static int WINAPI direct3d8_GetAdapterModeCount(Direct3D8 *iface, int adapter)
 {
-    FIXME("(%i): stub!\n", adapter);
+    direct3d8 *This = impl_from_Direct3D8(iface);
 
-    return 0;
+    int ret = IDirect3D8_GetAdapterModeCount(This->direct3d8, adapter);
+
+    FIXME("(%i) -> (%i)\n", adapter, ret);
+
+    return ret;
 }
 
 static HRESULT WINAPI direct3d8_EnumAdapterModes(Direct3D8 *iface, int adapter, int mode, D3DDISPLAYMODE *displayMode)
 {
-    FIXME("(%i, %i, %p): stub!\n", adapter, mode, displayMode);
+    direct3d8 *This = impl_from_Direct3D8(iface);
 
-    return E_NOTIMPL;
+    HRESULT ret = IDirect3D8_EnumAdapterModes(This->direct3d8, adapter, mode, displayMode);
+
+    FIXME("(%i, %i, %p) -> (%x)\n", adapter, mode, displayMode, ret);
+
+    return ret;
 }
 
 static HRESULT WINAPI direct3d8_GetAdapterDisplayMode(Direct3D8 *iface, int adapter, D3DDISPLAYMODE *displayMode)
 {
-    FIXME("(%i, %p): stub!\n", adapter, displayMode);
+    direct3d8 *This = impl_from_Direct3D8(iface);
+    HRESULT ret;
 
-    return E_NOTIMPL;
+    ret = IDirect3D8_GetAdapterDisplayMode(This->direct3d8, adapter, displayMode);
+
+    TRACE("(%i, %p) -> (%x)\n", adapter, displayMode, ret);
+
+    return ret;
 }
 
 static LONG WINAPI direct3d8_CheckDeviceType(Direct3D8 *iface, int adapter, D3DDEVTYPE checkType,
         D3DFORMAT displayFormat, D3DFORMAT backBufferFormat, LONG bWindowed)
 {
-    FIXME("(%i, %u, %u, %u, %i): stub!\n", adapter, checkType, displayFormat, backBufferFormat, bWindowed);
+    direct3d8 *This = impl_from_Direct3D8(iface);
 
-    return 0;
+    LONG ret = IDirect3D8_CheckDeviceType(This->direct3d8, adapter, checkType,
+            displayFormat, backBufferFormat, bWindowed);
+
+    FIXME("(%i, %u, %u, %u, %i) -> (%i)\n", adapter, checkType, displayFormat, backBufferFormat, bWindowed, ret);
+
+    return ret;
 }
 
 static LONG WINAPI direct3d8_CheckDeviceFormat(Direct3D8 *iface, int adapter, D3DDEVTYPE deviceType,
         D3DFORMAT adapterFormat, LONG usage, D3DRESOURCETYPE rType, D3DFORMAT checkFormat)
 {
-    FIXME("(%i, %u, %u, %i, %u, %u): stub!\n", adapter, deviceType, adapterFormat, usage, rType, checkFormat);
+    direct3d8 *This = impl_from_Direct3D8(iface);
 
-    return 0;
+    LONG ret = IDirect3D8_CheckDeviceFormat(This->direct3d8, adapter, deviceType,
+            adapterFormat, usage, rType, checkFormat);
+
+    FIXME("(%i, %u, %u, %i, %u, %u) -> (%i)\n", adapter, deviceType, adapterFormat, usage, rType, checkFormat, ret);
+
+    return ret;
 }
 
 static LONG WINAPI direct3d8_CheckDeviceMultiSampleType(Direct3D8 *iface, int adapter, D3DDEVTYPE deviceType,
         D3DFORMAT renderTargetFormat, LONG windowed, D3DMULTISAMPLE_TYPE multiSampleType)
 {
-    FIXME("(%i, %u, %u, %i, %u): stub!\n", adapter, deviceType, renderTargetFormat, windowed, multiSampleType);
+    direct3d8 *This = impl_from_Direct3D8(iface);
 
-    return 0;
+    LONG ret = IDirect3D8_CheckDeviceMultiSampleType(This->direct3d8, adapter, deviceType,
+            renderTargetFormat, windowed, multiSampleType);
+
+    FIXME("(%i, %u, %u, %i, %u) -> (%i)\n", adapter, deviceType, renderTargetFormat, windowed, multiSampleType, ret);
+
+    return ret;
 }
 
 static LONG WINAPI direct3d8_CheckDepthStencilMatch(Direct3D8 *iface, int adapter, D3DDEVTYPE deviceType,
         D3DFORMAT adapterFormat, D3DFORMAT renderTargetFormat, D3DFORMAT depthStencilFormat)
 {
-    FIXME("(%i, %u, %u, %u, %u): stub!\n", adapter, deviceType, adapterFormat, renderTargetFormat, depthStencilFormat);
+    direct3d8 *This = impl_from_Direct3D8(iface);
 
-    return 0;
+    LONG ret = IDirect3D8_CheckDepthStencilMatch(This->direct3d8, adapter, deviceType, adapterFormat,
+            renderTargetFormat, depthStencilFormat);
+
+    TRACE("(%i, %u, %u, %u, %u) ->(%i)\n", adapter, deviceType, adapterFormat,
+            renderTargetFormat, depthStencilFormat, ret);
+
+    return ret;
 }
 
 static HRESULT WINAPI direct3d8_GetDeviceCaps(Direct3D8 *iface, int adapter, D3DDEVTYPE deviceType, D3DCAPS8 *caps)
 {
-    FIXME("(%i, %u, %p): stub!\n", adapter, deviceType, caps);
+    direct3d8 *This = impl_from_Direct3D8(iface);
 
-    return E_NOTIMPL;
+    HRESULT ret = IDirect3D8_GetDeviceCaps(This->direct3d8, adapter, deviceType, caps);
+
+    TRACE("(%i, %u, %p) -> (%x)\n", adapter, deviceType, caps, ret);
+
+    return ret;
 }
 
 static LONG WINAPI direct3d8_GetAdapterMonitor(Direct3D8 *iface, int adapter)
 {
-    FIXME("(%i): stub!\n", adapter);
+    direct3d8 *This = impl_from_Direct3D8(iface);
 
-    return 0;
+    LONG ret = (LONG)IDirect3D8_GetAdapterMonitor(This->direct3d8, adapter);
+
+    TRACE("(%i) -> (%i)!\n", adapter, ret);
+
+    return ret;
 }
 
 static HRESULT WINAPI direct3d8_CreateDevice(Direct3D8 *iface, int adapter, D3DDEVTYPE deviceType, HWND hFocusWindow,
@@ -235,6 +296,9 @@ HRESULT direct3d8_create(Direct3D8 **ppv)
 
     object->Direct3D8_iface.lpVtbl = &Direct3D8_Vtbl;
     object->ref = 1;
+    object->direct3d8 = Direct3DCreate8(D3D_SDK_VERSION);
+    if(!object->direct3d8)
+        ERR("Can't create D3D8 object\n");
 
     *ppv = &object->Direct3D8_iface;
 

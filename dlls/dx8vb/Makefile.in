@@ -1,5 +1,5 @@
 MODULE    = dx8vb.dll
-IMPORTS   = uuid ole32
+IMPORTS   = uuid ole32 d3d8
 
 C_SRCS = \
 	d3dx8.c \
