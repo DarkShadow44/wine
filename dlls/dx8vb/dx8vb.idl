@@ -37,7 +37,14 @@ interface D3DXBaseMesh;
 interface D3DXSkinMesh;
 interface D3DXSprite;
 interface D3DXRenderToSurface;
+interface Direct3D8;
 interface Direct3DBaseTexture8;
+interface Direct3DCubeTexture8;
+interface Direct3DIndexBuffer8;
+interface Direct3DSurface8;
+interface Direct3DSwapChain8;
+interface Direct3DVertexBuffer8;
+interface Direct3DVolumeTexture8;
 interface DirectSound8;
 interface DirectSoundCapture8;
 interface DirectSoundEnum8;
@@ -78,6 +85,13 @@ typedef enum {
     D3DCREATE_MIXED_VERTEXPROCESSING = 128
 } D3DCREATEFLAGS;
 
+typedef enum {
+    D3DUCURSOR_DEFAULT = 0,
+    D3DUCURSOR_IMMEDIATE_UPDATE = 1
+} D3DSCPFLAGS;
+
+typedef DWORD D3DCLEARFLAGS;
+
 typedef struct tagD3DXDECLARATOR {
     LONG value[32];
 } D3DXDECLARATOR;
@@ -95,6 +109,13 @@ typedef struct tagD3DXBONECOMBINATION {
     LONG VertexCount;
     LONG pBones;
 } D3DXBONECOMBINATION;
+
+typedef struct tagD3DPLANE {
+    float a;
+    float b;
+    float c;
+    float d;
+} D3DPLANE;
 
 [
     object,
@@ -727,6 +748,422 @@ interface ID3DX8 : IUnknown {
         [in] D3DXIMAGE_FILEFORMAT destFormat,
         [in] Direct3DBaseTexture8 *srcTexture,
         [in] PALETTEENTRY *srcPalette
+    );
+};
+
+[
+    object,
+    uuid(7385e5df-8fe8-41d5-86b6-d7b48547b6cf),
+    local
+]
+interface Direct3DDevice8 : IUnknown {
+    LONG TestCooperativeLevel(
+    );
+    int GetAvailableTextureMem(
+        [in] D3DPOOL pool
+    );
+    HRESULT ResourceManagerDiscardBytes(
+        [in] LONG numberOfBytes
+    );
+    HRESULT GetDirect3D(
+        [out, retval] Direct3D8 **pD3D8
+    );
+    HRESULT GetDeviceCaps(
+        [out] D3DCAPS8 *caps
+    );
+    HRESULT GetDisplayMode(
+        [out] D3DDISPLAYMODE *pMode
+    );
+    HRESULT GetCreationParameters(
+        [out] D3DDEVICE_CREATION_PARAMETERS *pCreationParams
+    );
+    HRESULT SetCursorProperties(
+        [in] int xHotSpot,
+        [in] int yHotSpot,
+        [in] Direct3DSurface8 *cursorSurface
+    );
+    void SetCursorPosition(
+        [in] int xScreenSpace,
+        [in] int yScreenSpace,
+        [in] D3DSCPFLAGS flags
+    );
+    LONG ShowCursor(
+        [in] LONG bShow
+    );
+    HRESULT CreateAdditionalSwapChain(
+        [in] D3DPRESENT_PARAMETERS *presentationParameters,
+        [out, retval] Direct3DSwapChain8 **ppSwapChain
+    );
+    HRESULT Reset(
+        [in] D3DPRESENT_PARAMETERS *presentationParameters
+    );
+    HRESULT Present(
+        [in] void *pSourceRect,
+        [in] void *pDestRect,
+        [in] LONG hWndDestWindowOverride,
+        [in] void *pDirtyRegion
+    );
+    HRESULT GetBackBuffer(
+        [in] LONG backBuffer,
+        [in] D3DBACKBUFFER_TYPE bufferType,
+        [out, retval] Direct3DSurface8 **ppBackBuffer
+    );
+    D3DRASTER_STATUS GetRasterStatus(
+    );
+    void SetGammaRamp(
+        [in] LONG dwFlags,
+        [in] D3DGAMMARAMP *pRamp
+    );
+    void GetGammaRamp(
+        [in, out] D3DGAMMARAMP *pRamp
+    );
+    HRESULT CreateTexture(
+        [in] int width,
+        [in] int height,
+        [in] int levels,
+        [in] LONG usage,
+        [in] D3DFORMAT format,
+        [in] D3DPOOL pool,
+        [out, retval] Direct3DTexture8 **ppMipMap
+    );
+    HRESULT CreateVolumeTexture(
+        [in] int width,
+        [in] int height,
+        [in] int depth,
+        [in] int levels,
+        [in] LONG usage,
+        [in] D3DFORMAT format,
+        [in] D3DPOOL pool,
+        [out, retval] Direct3DVolumeTexture8 **ppMipMap
+    );
+    HRESULT CreateCubeTexture(
+        [in] int edgeLength,
+        [in] int levels,
+        [in] LONG usage,
+        [in] D3DFORMAT format,
+        [in] D3DPOOL pool,
+        [out, retval] Direct3DCubeTexture8 **ppCubeMap
+    );
+    HRESULT CreateVertexBuffer(
+        [in] int lengthInBytes,
+        [in] LONG usage,
+        [in] LONG fvf,
+        [in] D3DPOOL pool,
+        [out, retval] Direct3DVertexBuffer8 **ppVertexBuffer
+    );
+    HRESULT CreateIndexBuffer(
+        [in] int lengthInBytes,
+        [in] LONG usage,
+        [in] D3DFORMAT format,
+        [in] D3DPOOL pool,
+        [out, retval] Direct3DIndexBuffer8 **ppIndexBuffer
+    );
+    HRESULT CreateRenderTarget(
+        [in] int width,
+        [in] int height,
+        [in] D3DFORMAT format,
+        [in] D3DMULTISAMPLE_TYPE multiSample,
+        [in] LONG lockable,
+        [out, retval] Direct3DSurface8 **ppSurface
+    );
+    HRESULT CreateDepthStencilSurface(
+        [in] int width,
+        [in] int height,
+        [in] D3DFORMAT format,
+        [in] D3DMULTISAMPLE_TYPE multiSample,
+        [out, retval] Direct3DSurface8 **ppSurface
+    );
+    HRESULT CreateImageSurface(
+        [in] int width,
+        [in] int height,
+        [in] D3DFORMAT format,
+        [out, retval] Direct3DSurface8 **ppSurface
+    );
+    HRESULT CopyRects(
+        [in] Direct3DSurface8 *sourceSurface,
+        [in] void *firstElementOfSourceRectsArray,
+        [in] int numberOfRects,
+        [in] Direct3DSurface8 *destinationSurface,
+        [in] void *firstElementofDestPointArray
+    );
+    HRESULT UpdateTexture(
+        [in] Direct3DBaseTexture8 *sourceTexture,
+        Direct3DBaseTexture8 *pDestinationTexture
+    );
+    HRESULT GetFrontBuffer(
+        [in] Direct3DSurface8 *pDestSurface
+    );
+    HRESULT SetRenderTarget(
+        [in] Direct3DSurface8 *renderTarget,
+        [in] Direct3DSurface8 *newZStencil,
+        [in] LONG flags
+    );
+    HRESULT GetRenderTarget(
+        [out, retval] Direct3DSurface8 **ppRenderTarget
+    );
+    HRESULT GetDepthStencilSurface(
+        [out, retval] Direct3DSurface8 **zStencilSurface
+    );
+    HRESULT BeginScene(
+    );
+    HRESULT EndScene(
+    );
+    HRESULT Clear(
+        [in] LONG clearRectCount,
+        [in] void *clearD3DRect,
+        [in] D3DCLEARFLAGS flags,
+        [in] LONG color,
+        [in] float z,
+        [in] LONG stencil
+    );
+    HRESULT SetTransform(
+        [in] D3DTRANSFORMSTATETYPE transformType,
+        [in] D3DMATRIX *matrix
+    );
+    HRESULT GetTransform(
+        [in] D3DTRANSFORMSTATETYPE transformType,
+        [out] D3DMATRIX *matrix
+    );
+    HRESULT MultiplyTransform(
+        [in] D3DTRANSFORMSTATETYPE transformType,
+        [in] D3DMATRIX *matrix
+    );
+    HRESULT SetViewport(
+        [in] D3DVIEWPORT8 *viewport
+    );
+    HRESULT GetViewport(
+        [out] D3DVIEWPORT8 *viewport
+    );
+    HRESULT SetMaterial(
+        [in] D3DMATERIAL8 *material
+    );
+    HRESULT GetMaterial(
+        [out] D3DMATERIAL8 *material
+    );
+    HRESULT SetLight(
+        [in] LONG index,
+        [in] D3DLIGHT8 *light
+    );
+    HRESULT GetLight(
+        [in] LONG index,
+        [out] D3DLIGHT8 *light
+    );
+    HRESULT LightEnable(
+        [in] LONG index,
+        [in] LONG enabled
+    );
+    HRESULT GetLightEnable(
+        [in] LONG index,
+        [out, retval] LONG *enabled
+    );
+    HRESULT SetClipPlane(
+        [in] LONG index,
+        [in] D3DPLANE *plane
+    );
+    HRESULT GetClipPlane(
+        [in] LONG index,
+        [out] D3DPLANE *plane
+    );
+    HRESULT SetRenderState(
+        [in] D3DRENDERSTATETYPE stateType,
+        [in] LONG value
+    );
+    HRESULT GetRenderState(
+        [in] D3DRENDERSTATETYPE stateType,
+        [out, retval] LONG *value
+    );
+    HRESULT BeginStateBlock(
+    );
+    HRESULT EndStateBlock(
+        [out, retval] LONG *blockid
+    );
+    HRESULT ApplyStateBlock(
+        [in] LONG blockid
+    );
+    HRESULT CaptureStateBlock(
+        [in] LONG blockid
+    );
+    HRESULT DeleteStateBlock(
+        [in] LONG blockid
+    );
+    HRESULT CreateStateBlock(
+        [in] D3DSTATEBLOCKTYPE blocktype,
+        [out, retval] LONG *blockid
+    );
+    HRESULT SetClipStatus(
+        [in] D3DCLIPSTATUS8 *clipstatus
+    );
+    HRESULT GetClipStatus(
+        [out] D3DCLIPSTATUS8 *clipstatus
+    );
+    HRESULT GetTexture(
+        [in] LONG stage,
+        [out, retval] Direct3DBaseTexture8 **texture
+    );
+    HRESULT SetTexture(
+        [in] LONG stage,
+        [in] Direct3DBaseTexture8 *texture
+    );
+    HRESULT GetTextureStageState(
+        [in] LONG stage,
+        [in] D3DTEXTURESTAGESTATETYPE stateType,
+        [out, retval] LONG *state
+    );
+    HRESULT SetTextureStageState(
+        [in] LONG stage,
+        [in] D3DTEXTURESTAGESTATETYPE stateType,
+        [in] LONG state
+    );
+    HRESULT ValidateDevice(
+        [out, retval] LONG *ret
+    );
+    HRESULT GetInfo(
+        [in] LONG flags,
+        [in, out] void *info,
+        [in] LONG size
+    );
+    HRESULT SetPaletteEntries(
+        [in] int paletteNumber,
+        [in] void *arrayOfEntries
+    );
+    HRESULT GetPaletteEntries(
+        [in] int paletteNumber,
+        [in, out] void *arrayOfEntries
+    );
+    HRESULT SetCurrentTexturePalette(
+        [in] int paletteNumber
+    );
+    HRESULT GetCurrentTexturePalette(
+        [out, retval] int *paletteNumber
+    );
+    HRESULT DrawPrimitive(
+        [in] D3DPRIMITIVETYPE primitiveType,
+        [in] int startVertex,
+        [in] int primitiveCount
+    );
+    HRESULT DrawIndexedPrimitive(
+        [in] D3DPRIMITIVETYPE primitiveType,
+        [in] int minIndex,
+        [in] int numIndices,
+        [in] int startIndex,
+        [in] int primitiveCount
+    );
+    HRESULT DrawPrimitiveUP(
+        [in] D3DPRIMITIVETYPE primitiveType,
+        [in] int primitiveCount,
+        [in] void *vertexStreamZeroDataArray,
+        [in] int vertexStreamZeroStride
+    );
+    HRESULT DrawIndexedPrimitiveUP(
+        [in] D3DPRIMITIVETYPE primitiveType,
+        [in] int minVertexIndex,
+        [in] int numVertexIndices,
+        [in] int primitiveCount,
+        [in] void *IndexDataArray,
+        [in] D3DFORMAT indexDataFormat,
+        [in] void *vertexStreamZeroDataArray,
+        [in] int vertexStreamZeroStride
+    );
+    HRESULT ProcessVertices(
+        [in] int srcStartIndex,
+        [in] int destIndex,
+        [in] int vertexCount,
+        [in] Direct3DVertexBuffer8 *destBuffer,
+        [in] LONG flags
+    );
+    HRESULT CreateVertexShader(
+        [in] LONG *declarationTokenArray,
+        [in, out] void *functionTokenArray,
+        [in, out] LONG *retHandle,
+        [in] LONG usage
+    );
+    HRESULT SetVertexShader(
+        [in] LONG vertexShaderHandle
+    );
+    HRESULT GetVertexShader(
+        [out, retval] LONG *pdwHandle
+    );
+    HRESULT DeleteVertexShader(
+        [in] LONG vertexShaderHandle
+    );
+    HRESULT SetVertexShaderConstant(
+        [in] LONG register,
+        [in] void *pConstantData,
+        [in] LONG constantCount
+    );
+    HRESULT GetVertexShaderConstant(
+        [in] LONG register,
+        [in, out] void *pConstantData,
+        [in] LONG constantCount
+    );
+    HRESULT GetVertexShaderDeclaration(
+        [in] LONG handle,
+        [in] void *data,
+        [in, out] LONG *sizeOfData
+    );
+    HRESULT GetVertexShaderFunction(
+        [in] LONG handle,
+        [in] void *pData,
+        [in, out] LONG *sizeOfData
+    );
+    HRESULT SetStreamSource(
+        [in] int streamNumber,
+        [in] Direct3DVertexBuffer8 *streamData,
+        [in] int stride
+    );
+    HRESULT GetStreamSource(
+        [in] int streamNumber,
+        [in, out] Direct3DVertexBuffer8 **retStreamData,
+        [in, out] int *retStride
+    );
+    HRESULT SetIndices(
+        [in] Direct3DIndexBuffer8 *indexData,
+        [in] int baseVertexIndex
+    );
+    HRESULT GetIndices(
+        [out] Direct3DIndexBuffer8 **retIndexData,
+        [out] int *retBaseVertexIndex
+    );
+    HRESULT CreatePixelShader(
+        [in] LONG *functionTokenArray,
+        [out, retval] LONG *pdwHandle
+    );
+    HRESULT SetPixelShader(
+        [in] LONG pixelShaderHandle
+    );
+    HRESULT GetPixelShader(
+        [out, retval] LONG *pdwHandle
+    );
+    HRESULT DeletePixelShader(
+        [in] LONG pixelShaderHandle
+    );
+    HRESULT SetPixelShaderConstant(
+        [in] LONG register,
+        [in] void *pConstantData,
+        [in] LONG constantCount
+    );
+    HRESULT GetPixelShaderConstant(
+        [in] LONG register,
+        [in, out] void *pConstantData,
+        [in] LONG constantCount
+    );
+    HRESULT GetPixelShaderFunction(
+        [in] LONG handle,
+        [in] void *pData,
+        [in, out] LONG *sizeOfData
+    );
+    HRESULT DrawRectPatch(
+        [in] LONG handle,
+        [in, out] float *numSegments,
+        void *surf
+    );
+    HRESULT DrawTriPatch(
+        [in] LONG handle,
+        [in, out] float *numSegments,
+        void *surf
+    );
+    HRESULT DeletePatch(
+        [in] LONG handle
     );
 };
 

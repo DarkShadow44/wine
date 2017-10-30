@@ -43,6 +43,13 @@ typedef struct
     LONG ref;
 } direct3d8;
 
+typedef struct
+{
+    Direct3DDevice8 Direct3DDevice8_iface;
+    IDirect3DDevice8 *direct3ddevice8;
+    LONG ref;
+} direct3ddevice8;
+
 static inline directx8 *impl_from_IDirectX8(IDirectX8 *iface)
 {
     return CONTAINING_RECORD(iface, directx8, IDirectX8_iface);
@@ -51,6 +58,891 @@ static inline directx8 *impl_from_IDirectX8(IDirectX8 *iface)
 static inline direct3d8 *impl_from_Direct3D8(Direct3D8 *iface)
 {
     return CONTAINING_RECORD(iface, direct3d8, Direct3D8_iface);
+}
+
+static inline direct3ddevice8 *impl_from_Direct3DDevice8(Direct3DDevice8 *iface)
+{
+    return CONTAINING_RECORD(iface, direct3ddevice8, Direct3DDevice8_iface);
+}
+
+/*** directd3ddevice8 - IUnknown methods ***/
+
+static HRESULT WINAPI direct3ddevice8_QueryInterface(Direct3DDevice8 *iface, REFIID riid, void **ppv)
+{
+    direct3ddevice8 *This = impl_from_Direct3DDevice8(iface);
+
+    TRACE("(%p/%p)->(%s,%p)\n", iface, This, debugstr_guid(riid), ppv);
+
+    *ppv = NULL;
+
+    if (IsEqualGUID(riid, &IID_IUnknown))
+        *ppv = &This->Direct3DDevice8_iface;
+     else if(IsEqualGUID(riid, &IID_ISupportErrorInfo))
+        FIXME("No interface for IID_ISupportErrorInfo\n");
+    else
+        FIXME("No interface for %s\n", debugstr_guid(riid));
+
+    if (*ppv)
+    {
+        IUnknown_AddRef((IUnknown *)(*ppv));
+        return S_OK;
+    }
+
+    return E_NOINTERFACE;
+}
+
+static ULONG WINAPI direct3ddevice8_AddRef(Direct3DDevice8 *iface)
+{
+    direct3ddevice8 *This = impl_from_Direct3DDevice8(iface);
+    ULONG ref = InterlockedIncrement(&This->ref);
+
+    TRACE("(%p/%p)->(): new ref %d\n", iface, This, ref);
+
+    return ref;
+}
+
+static ULONG WINAPI direct3ddevice8_Release(Direct3DDevice8 *iface)
+{
+    direct3ddevice8 *This = impl_from_Direct3DDevice8(iface);
+    ULONG ref = InterlockedDecrement(&This->ref);
+
+    TRACE("(%p/%p)->(): new ref %d\n", iface, This, ref);
+
+    if (!ref)
+    {
+        IDirect3DDevice8_Release(This->direct3ddevice8);
+        HeapFree(GetProcessHeap(), 0, This);
+    }
+
+    return ref;
+}
+
+/*** directd3ddevice8 - Direct3DDevice8 methods ***/
+
+LONG WINAPI direct3ddevice8_TestCooperativeLevel(Direct3DDevice8 *iface)
+{
+    FIXME("(): stub!\n");
+
+    return 0;
+}
+
+static int WINAPI direct3ddevice8_GetAvailableTextureMem(Direct3DDevice8 *iface, D3DPOOL pool)
+{
+    FIXME("(%x): stub!\n", pool);
+
+    return 0;
+}
+
+static HRESULT WINAPI direct3ddevice8_ResourceManagerDiscardBytes(Direct3DDevice8 *iface, LONG numberOfBytes)
+{
+    FIXME("(%i): stub!\n", numberOfBytes);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetDirect3D(Direct3DDevice8 *iface, Direct3D8 **pD3D8)
+{
+    FIXME("(%p): stub!\n", pD3D8);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetDeviceCaps(Direct3DDevice8 *iface, D3DCAPS8 *caps)
+{
+    FIXME("(%p): stub!\n", caps);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetDisplayMode(Direct3DDevice8 *iface, D3DDISPLAYMODE *pMode)
+{
+    FIXME("(%p): stub!\n", pMode);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetCreationParameters(Direct3DDevice8 *iface,
+        D3DDEVICE_CREATION_PARAMETERS *pCreationParams)
+{
+    FIXME("(%p): stub!\n", pCreationParams);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_SetCursorProperties(Direct3DDevice8 *iface,
+        int xHotSpot, int yHotSpot, Direct3DSurface8 *cursorSurface)
+{
+    FIXME("(%i, %i, %p): stub!\n", xHotSpot, yHotSpot, cursorSurface);
+
+    return E_NOTIMPL;
+}
+
+static void WINAPI direct3ddevice8_SetCursorPosition(Direct3DDevice8 *iface,
+        int xScreenSpace, int yScreenSpace, D3DSCPFLAGS flags)
+{
+    FIXME("(%i, %i, %x): stub!\n", xScreenSpace, yScreenSpace, flags);
+}
+
+static LONG WINAPI direct3ddevice8_ShowCursor(Direct3DDevice8 *iface, LONG bShow)
+{
+    FIXME("(%i): stub!\n", bShow);
+
+    return 0;
+}
+
+static HRESULT WINAPI direct3ddevice8_CreateAdditionalSwapChain(Direct3DDevice8 *iface,
+        D3DPRESENT_PARAMETERS *presentationParameters, Direct3DSwapChain8 **ppSwapChain)
+{
+    FIXME("(%p, %p): stub!\n", presentationParameters, ppSwapChain);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_Reset(Direct3DDevice8 *iface, D3DPRESENT_PARAMETERS *presentationParameters)
+{
+    FIXME("(%p): stub!\n", presentationParameters);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_Present(Direct3DDevice8 *iface, void *pSourceRect, void *pDestRect,
+        LONG hWndDestWindowOverride, void *pDirtyRegion)
+{
+    FIXME("(%p, %p, %i, %p): stub!\n", pSourceRect, pDestRect, hWndDestWindowOverride, pDirtyRegion);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetBackBuffer(Direct3DDevice8 *iface, LONG backBuffer,
+        D3DBACKBUFFER_TYPE bufferType, Direct3DSurface8 **ppBackBuffer)
+{
+    FIXME("(%i, %x, %p): stub!\n", backBuffer, bufferType, ppBackBuffer);
+
+    return E_NOTIMPL;
+}
+
+static D3DRASTER_STATUS* WINAPI direct3ddevice8_GetRasterStatus(Direct3DDevice8 *iface, D3DRASTER_STATUS *__ret)
+{
+    D3DRASTER_STATUS ret = {0};
+
+    *__ret = ret;
+
+    FIXME("(): stub!\n");
+
+    return __ret;
+}
+
+static void WINAPI direct3ddevice8_SetGammaRamp(Direct3DDevice8 *iface, LONG dwFlags, D3DGAMMARAMP *pRamp)
+{
+    FIXME("(%i, %p): stub!\n", dwFlags, pRamp);
+}
+
+static void WINAPI direct3ddevice8_GetGammaRamp(Direct3DDevice8 *iface, D3DGAMMARAMP *pRamp)
+{
+    FIXME("(%p): stub!\n", pRamp);
+}
+
+static HRESULT WINAPI direct3ddevice8_CreateTexture(Direct3DDevice8 *iface, int width, int height,
+        int levels, LONG usage, D3DFORMAT format, D3DPOOL pool, Direct3DTexture8 **ppMipMap)
+{
+    FIXME("(%i, %i, %i, %i, %x, %x, %p): stub!\n", width, height, levels, usage, format, pool, ppMipMap);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_CreateVolumeTexture(Direct3DDevice8 *iface, int width, int height, int depth,
+        int levels, LONG usage, D3DFORMAT format, D3DPOOL pool, Direct3DVolumeTexture8 **ppMipMap)
+{
+    FIXME("(%i, %i, %i, %i, %i, %x, %x, %p): stub!\n", width, height, depth, levels, usage, format, pool, ppMipMap);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_CreateCubeTexture(Direct3DDevice8 *iface, int edgeLength, int levels,
+        LONG usage, D3DFORMAT format, D3DPOOL pool, Direct3DCubeTexture8 **ppCubeMap)
+{
+    FIXME("(%i, %i, %i, %x, %x, %p): stub!\n", edgeLength, levels, usage, format, pool, ppCubeMap);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_CreateVertexBuffer(Direct3DDevice8 *iface, int lengthInBytes, LONG usage,
+        LONG fvf, D3DPOOL pool, Direct3DVertexBuffer8 **ppVertexBuffer)
+{
+    FIXME("(%i, %i, %i, %x, %p): stub!\n", lengthInBytes, usage, fvf, pool, ppVertexBuffer);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_CreateIndexBuffer(Direct3DDevice8 *iface, int lengthInBytes, LONG usage,
+        D3DFORMAT format, D3DPOOL pool, Direct3DIndexBuffer8 **ppIndexBuffer)
+{
+    FIXME("(%i, %i, %x, %x, %p): stub!\n", lengthInBytes, usage, format, pool, ppIndexBuffer);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_CreateRenderTarget(Direct3DDevice8 *iface, int width, int height,
+        D3DFORMAT format, D3DMULTISAMPLE_TYPE multiSample, LONG lockable, Direct3DSurface8 **ppSurface)
+{
+    FIXME("(%i, %i, %x, %x, %i, %p): stub!\n", width, height, format, multiSample, lockable, ppSurface);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_CreateDepthStencilSurface(Direct3DDevice8 *iface, int width, int height,
+        D3DFORMAT format, D3DMULTISAMPLE_TYPE multiSample, Direct3DSurface8 **ppSurface)
+{
+    FIXME("(%i, %i, %x, %x, %p): stub!\n", width, height, format, multiSample, ppSurface);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_CreateImageSurface(Direct3DDevice8 *iface, int width, int height,
+        D3DFORMAT format, Direct3DSurface8 **ppSurface)
+{
+    FIXME("(%i, %i, %x, %p): stub!\n", width, height, format, ppSurface);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_CopyRects(Direct3DDevice8 *iface, Direct3DSurface8 *sourceSurface,
+        void *firstElementOfSourceRectsArray, int numberOfRects, Direct3DSurface8 *destinationSurface,
+        void *firstElementofDestPointArray)
+{
+    FIXME("(%p, %p, %i, %p, %p): stub!\n", sourceSurface, firstElementOfSourceRectsArray, numberOfRects,
+            destinationSurface, firstElementofDestPointArray);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_UpdateTexture(Direct3DDevice8 *iface, Direct3DBaseTexture8 *sourceTexture,
+        Direct3DBaseTexture8 *pDestinationTexture)
+{
+    FIXME("(%p, %p): stub!\n", sourceTexture, pDestinationTexture);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetFrontBuffer(Direct3DDevice8 *iface, Direct3DSurface8 *pDestSurface)
+{
+    FIXME("(%p): stub!\n", pDestSurface);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_SetRenderTarget(Direct3DDevice8 *iface, Direct3DSurface8 *renderTarget,
+        Direct3DSurface8 *newZStencil, LONG flags)
+{
+    FIXME("(%p, %p, %i): stub!\n", renderTarget, newZStencil, flags);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetRenderTarget(Direct3DDevice8 *iface, Direct3DSurface8 **ppRenderTarget)
+{
+    FIXME("(%p): stub!\n", ppRenderTarget);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetDepthStencilSurface(Direct3DDevice8 *iface, Direct3DSurface8 **zStencilSurface)
+{
+    FIXME("(%p): stub!\n", zStencilSurface);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_BeginScene(Direct3DDevice8 *iface)
+{
+    FIXME("(): stub!\n");
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_EndScene(Direct3DDevice8 *iface)
+{
+    FIXME("(): stub!\n");
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_Clear(Direct3DDevice8 *iface, LONG clearRectCount, void *clearD3DRect,
+        D3DCLEARFLAGS flags, LONG color, float z, LONG stencil)
+{
+    FIXME("(%i, %p, %x, %i, %f, %i): stub!\n", clearRectCount, clearD3DRect, flags, color, z, stencil);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_SetTransform(Direct3DDevice8 *iface,
+        D3DTRANSFORMSTATETYPE transformType, D3DMATRIX *matrix)
+{
+    FIXME("(%x, %p): stub!\n", transformType, matrix);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetTransform(Direct3DDevice8 *iface,
+        D3DTRANSFORMSTATETYPE transformType, D3DMATRIX *matrix)
+{
+    FIXME("(%x, %p): stub!\n", transformType, matrix);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_MultiplyTransform(Direct3DDevice8 *iface,
+        D3DTRANSFORMSTATETYPE transformType, D3DMATRIX *matrix)
+{
+    FIXME("(%x, %p): stub!\n", transformType, matrix);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_SetViewport(Direct3DDevice8 *iface, D3DVIEWPORT8 *viewport)
+{
+    FIXME("(%p): stub!\n", viewport);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetViewport(Direct3DDevice8 *iface, D3DVIEWPORT8 *viewport)
+{
+    FIXME("(%p): stub!\n", viewport);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_SetMaterial(Direct3DDevice8 *iface, D3DMATERIAL8 *material)
+{
+    FIXME("(%p): stub!\n", material);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetMaterial(Direct3DDevice8 *iface, D3DMATERIAL8 *material)
+{
+    FIXME("(%p): stub!\n", material);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_SetLight(Direct3DDevice8 *iface, LONG index, D3DLIGHT8 *light)
+{
+    FIXME("(%i, %p): stub!\n", index, light);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetLight(Direct3DDevice8 *iface, LONG index, D3DLIGHT8 *light)
+{
+    FIXME("(%i, %p): stub!\n", index, light);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_LightEnable(Direct3DDevice8 *iface, LONG index, LONG enabled)
+{
+    FIXME("(%i, %i): stub!\n", index, enabled);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetLightEnable(Direct3DDevice8 *iface, LONG index, LONG *enabled)
+{
+    FIXME("(%i, %p): stub!\n", index, enabled);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_SetClipPlane(Direct3DDevice8 *iface, LONG index, D3DPLANE *plane)
+{
+    FIXME("(%i, %p): stub!\n", index, plane);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetClipPlane(Direct3DDevice8 *iface, LONG index, D3DPLANE *plane)
+{
+    FIXME("(%i, %p): stub!\n", index, plane);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_SetRenderState(Direct3DDevice8 *iface, D3DRENDERSTATETYPE stateType, LONG value)
+{
+    FIXME("(%i, %i): stub!\n", stateType, value);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetRenderState(Direct3DDevice8 *iface, D3DRENDERSTATETYPE stateType, LONG *value)
+{
+    FIXME("(%i, %p): stub!\n", stateType, value);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_BeginStateBlock(Direct3DDevice8 *iface)
+{
+    FIXME("(): stub!\n");
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_EndStateBlock(Direct3DDevice8 *iface, LONG *blockid)
+{
+    FIXME("(%p): stub!\n", blockid);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_ApplyStateBlock(Direct3DDevice8 *iface, LONG blockid)
+{
+    FIXME("(%i): stub!\n", blockid);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_CaptureStateBlock(Direct3DDevice8 *iface, LONG blockid)
+{
+    FIXME("(%i): stub!\n", blockid);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_DeleteStateBlock(Direct3DDevice8 *iface, LONG blockid)
+{
+    FIXME("(%i): stub!\n", blockid);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_CreateStateBlock(Direct3DDevice8 *iface,
+        D3DSTATEBLOCKTYPE blocktype, LONG *blockid)
+{
+    FIXME("(%x, %p): stub!\n", blocktype, blockid);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_SetClipStatus(Direct3DDevice8 *iface, D3DCLIPSTATUS8 *clipstatus)
+{
+    FIXME("(%p): stub!\n", clipstatus);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetClipStatus(Direct3DDevice8 *iface, D3DCLIPSTATUS8 *clipstatus)
+{
+    FIXME("(%p): stub!\n", clipstatus);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetTexture(Direct3DDevice8 *iface, LONG stage, Direct3DBaseTexture8 **texture)
+{
+    FIXME("(%i, %p): stub!\n", stage, texture);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_SetTexture(Direct3DDevice8 *iface, LONG stage, Direct3DBaseTexture8 *texture)
+{
+    FIXME("(%i, %p): stub!\n", stage, texture);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetTextureStageState(Direct3DDevice8 *iface, LONG stage,
+        D3DTEXTURESTAGESTATETYPE stateType, LONG *state)
+{
+    FIXME("(%i, %x, %p): stub!\n", stage, stateType, state);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_SetTextureStageState(Direct3DDevice8 *iface, LONG stage,
+        D3DTEXTURESTAGESTATETYPE stateType, LONG state)
+{
+    FIXME("(%i, %x, %i): stub!\n", stage, stateType, state);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_ValidateDevice(Direct3DDevice8 *iface, LONG *ret)
+{
+    FIXME("(%p): stub!\n", ret);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetInfo(Direct3DDevice8 *iface, LONG flags, void *info, LONG size)
+{
+    FIXME("(%i, %p, %i): stub!\n", flags, info, size);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_SetPaletteEntries(Direct3DDevice8 *iface, int paletteNumber, void *arrayOfEntries)
+{
+    FIXME("(%i, %p): stub!\n", paletteNumber, arrayOfEntries);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetPaletteEntries(Direct3DDevice8 *iface, int paletteNumber, void *arrayOfEntries)
+{
+    FIXME("(%i, %p): stub!\n", paletteNumber, arrayOfEntries);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_SetCurrentTexturePalette(Direct3DDevice8 *iface, int paletteNumber)
+{
+    FIXME("(%i): stub!\n", paletteNumber);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetCurrentTexturePalette(Direct3DDevice8 *iface, int *paletteNumber)
+{
+    FIXME("(%p): stub!\n", paletteNumber);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_DrawPrimitive(Direct3DDevice8 *iface, D3DPRIMITIVETYPE primitiveType,
+        int startVertex, int primitiveCount)
+{
+    FIXME("(%x, %i, %i): stub!\n", primitiveType, startVertex, primitiveCount);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_DrawIndexedPrimitive(Direct3DDevice8 *iface, D3DPRIMITIVETYPE primitiveType,
+        int minIndex, int numIndices, int startIndex, int primitiveCount)
+{
+    FIXME("(%x, %i, %i, %i, %i): stub!\n", primitiveType, minIndex, numIndices, startIndex, primitiveCount);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_DrawPrimitiveUP(Direct3DDevice8 *iface, D3DPRIMITIVETYPE primitiveType,
+        int primitiveCount, void *vertexStreamZeroDataArray, int vertexStreamZeroStride)
+{
+    FIXME("(%x, %i, %p, %i): stub!\n", primitiveType, primitiveCount,
+            vertexStreamZeroDataArray,vertexStreamZeroStride);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_DrawIndexedPrimitiveUP(Direct3DDevice8 *iface, D3DPRIMITIVETYPE primitiveType,
+        int minVertexIndex, int numVertexIndices, int primitiveCount, void *IndexDataArray, D3DFORMAT indexDataFormat,
+        void *vertexStreamZeroDataArray, int vertexStreamZeroStride)
+{
+    FIXME("(%x, %i, %i, %i, %p, %x, %p, %i): stub!\n", primitiveType, minVertexIndex, numVertexIndices,primitiveCount,
+            IndexDataArray, indexDataFormat, vertexStreamZeroDataArray, vertexStreamZeroStride);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_ProcessVertices(Direct3DDevice8 *iface, int srcStartIndex, int destIndex,
+        int vertexCount, Direct3DVertexBuffer8 *destBuffer, LONG flags)
+{
+    FIXME("(%i, %i, %i, %p, %i): stub!\n", srcStartIndex, destIndex, vertexCount, destBuffer, flags);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_CreateVertexShader(Direct3DDevice8 *iface, LONG *declarationTokenArray,
+        void *functionTokenArray, LONG *retHandle, LONG usage)
+{
+    FIXME("(%p, %p, %p, %i): stub!\n", declarationTokenArray, functionTokenArray, retHandle, usage);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_SetVertexShader(Direct3DDevice8 *iface, LONG vertexShaderHandle)
+{
+    FIXME("(%i): stub!\n", vertexShaderHandle);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetVertexShader(Direct3DDevice8 *iface, LONG *pdwHandle)
+{
+    FIXME("(%p): stub!\n", pdwHandle);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_DeleteVertexShader(Direct3DDevice8 *iface, LONG vertexShaderHandle)
+{
+    FIXME("(%i): stub!\n", vertexShaderHandle);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_SetVertexShaderConstant(Direct3DDevice8 *iface, LONG startRegister,
+        void *pConstantData, LONG constantCount)
+{
+    FIXME("(%i, %p, %i): stub!\n", startRegister, pConstantData, constantCount);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetVertexShaderConstant(Direct3DDevice8 *iface, LONG startRegister,
+        void *pConstantData, LONG constantCount)
+{
+     FIXME("(%i, %p, %i): stub!\n", startRegister, pConstantData, constantCount);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetVertexShaderDeclaration(Direct3DDevice8 *iface, LONG handle,
+        void *data, LONG *sizeOfData)
+{
+    FIXME("(%i, %p, %p): stub!\n", handle, data, sizeOfData);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetVertexShaderFunction(Direct3DDevice8 *iface, LONG handle,
+        void *pData, LONG *sizeOfData)
+{
+    FIXME("(%i, %p, %p): stub!\n", handle, pData, sizeOfData);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_SetStreamSource(Direct3DDevice8 *iface, int streamNumber,
+        Direct3DVertexBuffer8 *streamData, int stride)
+{
+    FIXME("(%i, %p, %i): stub!\n", streamNumber, streamData, stride);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetStreamSource(Direct3DDevice8 *iface, int streamNumber,
+        Direct3DVertexBuffer8 **retStreamData, int *retStride)
+{
+    FIXME("(%i, %p, %p): stub!\n", streamNumber, retStreamData, retStride);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_SetIndices(Direct3DDevice8 *iface,
+        Direct3DIndexBuffer8 *indexData, int baseVertexIndex)
+{
+    FIXME("(%p, %i): stub!\n", indexData, baseVertexIndex);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetIndices(Direct3DDevice8 *iface,
+        Direct3DIndexBuffer8 **retIndexData, int *retBaseVertexIndex)
+{
+    FIXME("(%p, %p): stub!\n", retIndexData, retBaseVertexIndex);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_CreatePixelShader(Direct3DDevice8 *iface,
+        LONG *functionTokenArray, LONG *pdwHandle)
+{
+    FIXME("(%p, %p): stub!\n", functionTokenArray, pdwHandle);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_SetPixelShader(Direct3DDevice8 *iface, LONG pixelShaderHandle)
+{
+    FIXME("(%i): stub!\n", pixelShaderHandle);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetPixelShader(Direct3DDevice8 *iface, LONG *pdwHandle)
+{
+    FIXME("(%p): stub!\n", pdwHandle);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_DeletePixelShader(Direct3DDevice8 *iface, LONG pixelShaderHandle)
+{
+    FIXME("(%i): stub!\n", pixelShaderHandle);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_SetPixelShaderConstant(Direct3DDevice8 *iface, LONG startRegister,
+        void *pConstantData, LONG constantCount)
+{
+    FIXME("(%i, %p, %i): stub!\n", startRegister, pConstantData, constantCount);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetPixelShaderConstant(Direct3DDevice8 *iface, LONG startRegister,
+        void *pConstantData, LONG constantCount)
+{
+    FIXME("(%i, %p, %i): stub!\n", startRegister, pConstantData, constantCount);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_GetPixelShaderFunction(Direct3DDevice8 *iface, LONG handle,
+        void *pData, LONG *sizeOfData)
+{
+    FIXME("(%i, %p, %p): stub!\n", handle, pData, sizeOfData);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_DrawRectPatch(Direct3DDevice8 *iface, LONG handle, float *numSegments, void *surf)
+{
+    FIXME("(%i, %p, %p): stub!\n", handle, numSegments, surf);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_DrawTriPatch(Direct3DDevice8 *iface, LONG handle, float *numSegments, void *surf)
+{
+    FIXME("(%i, %p, %p): stub!\n", handle, numSegments, surf);
+
+    return E_NOTIMPL;
+}
+
+static HRESULT WINAPI direct3ddevice8_DeletePatch(Direct3DDevice8 *iface, LONG handle)
+{
+    FIXME("(%i): stub!\n", handle);
+
+    return E_NOTIMPL;
+}
+
+static const Direct3DDevice8Vtbl Direct3DDevice8_Vtbl =
+{
+    /*** IUnknown methods ***/
+    direct3ddevice8_QueryInterface,
+    direct3ddevice8_AddRef,
+    direct3ddevice8_Release,
+    /*** Direct3DDevice8 methods ***/
+    direct3ddevice8_TestCooperativeLevel,
+    direct3ddevice8_GetAvailableTextureMem,
+    direct3ddevice8_ResourceManagerDiscardBytes,
+    direct3ddevice8_GetDirect3D,
+    direct3ddevice8_GetDeviceCaps,
+    direct3ddevice8_GetDisplayMode,
+    direct3ddevice8_GetCreationParameters,
+    direct3ddevice8_SetCursorProperties,
+    direct3ddevice8_SetCursorPosition,
+    direct3ddevice8_ShowCursor,
+    direct3ddevice8_CreateAdditionalSwapChain,
+    direct3ddevice8_Reset,
+    direct3ddevice8_Present,
+    direct3ddevice8_GetBackBuffer,
+    direct3ddevice8_GetRasterStatus,
+    direct3ddevice8_SetGammaRamp,
+    direct3ddevice8_GetGammaRamp,
+    direct3ddevice8_CreateTexture,
+    direct3ddevice8_CreateVolumeTexture,
+    direct3ddevice8_CreateCubeTexture,
+    direct3ddevice8_CreateVertexBuffer,
+    direct3ddevice8_CreateIndexBuffer,
+    direct3ddevice8_CreateRenderTarget,
+    direct3ddevice8_CreateDepthStencilSurface,
+    direct3ddevice8_CreateImageSurface,
+    direct3ddevice8_CopyRects,
+    direct3ddevice8_UpdateTexture,
+    direct3ddevice8_GetFrontBuffer,
+    direct3ddevice8_SetRenderTarget,
+    direct3ddevice8_GetRenderTarget,
+    direct3ddevice8_GetDepthStencilSurface,
+    direct3ddevice8_BeginScene,
+    direct3ddevice8_EndScene,
+    direct3ddevice8_Clear,
+    direct3ddevice8_SetTransform,
+    direct3ddevice8_GetTransform,
+    direct3ddevice8_MultiplyTransform,
+    direct3ddevice8_SetViewport,
+    direct3ddevice8_GetViewport,
+    direct3ddevice8_SetMaterial,
+    direct3ddevice8_GetMaterial,
+    direct3ddevice8_SetLight,
+    direct3ddevice8_GetLight,
+    direct3ddevice8_LightEnable,
+    direct3ddevice8_GetLightEnable,
+    direct3ddevice8_SetClipPlane,
+    direct3ddevice8_GetClipPlane,
+    direct3ddevice8_SetRenderState,
+    direct3ddevice8_GetRenderState,
+    direct3ddevice8_BeginStateBlock,
+    direct3ddevice8_EndStateBlock,
+    direct3ddevice8_ApplyStateBlock,
+    direct3ddevice8_CaptureStateBlock,
+    direct3ddevice8_DeleteStateBlock,
+    direct3ddevice8_CreateStateBlock,
+    direct3ddevice8_SetClipStatus,
+    direct3ddevice8_GetClipStatus,
+    direct3ddevice8_GetTexture,
+    direct3ddevice8_SetTexture,
+    direct3ddevice8_GetTextureStageState,
+    direct3ddevice8_SetTextureStageState,
+    direct3ddevice8_ValidateDevice,
+    direct3ddevice8_GetInfo,
+    direct3ddevice8_SetPaletteEntries,
+    direct3ddevice8_GetPaletteEntries,
+    direct3ddevice8_SetCurrentTexturePalette,
+    direct3ddevice8_GetCurrentTexturePalette,
+    direct3ddevice8_DrawPrimitive,
+    direct3ddevice8_DrawIndexedPrimitive,
+    direct3ddevice8_DrawPrimitiveUP,
+    direct3ddevice8_DrawIndexedPrimitiveUP,
+    direct3ddevice8_ProcessVertices,
+    direct3ddevice8_CreateVertexShader,
+    direct3ddevice8_SetVertexShader,
+    direct3ddevice8_GetVertexShader,
+    direct3ddevice8_DeleteVertexShader,
+    direct3ddevice8_SetVertexShaderConstant,
+    direct3ddevice8_GetVertexShaderConstant,
+    direct3ddevice8_GetVertexShaderDeclaration,
+    direct3ddevice8_GetVertexShaderFunction,
+    direct3ddevice8_SetStreamSource,
+    direct3ddevice8_GetStreamSource,
+    direct3ddevice8_SetIndices,
+    direct3ddevice8_GetIndices,
+    direct3ddevice8_CreatePixelShader,
+    direct3ddevice8_SetPixelShader,
+    direct3ddevice8_GetPixelShader,
+    direct3ddevice8_DeletePixelShader,
+    direct3ddevice8_SetPixelShaderConstant,
+    direct3ddevice8_GetPixelShaderConstant,
+    direct3ddevice8_GetPixelShaderFunction,
+    direct3ddevice8_DrawRectPatch,
+    direct3ddevice8_DrawTriPatch,
+    direct3ddevice8_DeletePatch
+};
+
+HRESULT direct3ddevice8_create(Direct3DDevice8 **ppv, IDirect3DDevice8 *device)
+{
+    direct3ddevice8 *object;
+
+    TRACE("(%p, %p)\n", ppv, device);
+
+    *ppv = NULL;
+    object = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, sizeof(direct3ddevice8));
+    if (!object)
+        return E_OUTOFMEMORY;
+
+    object->Direct3DDevice8_iface.lpVtbl = &Direct3DDevice8_Vtbl;
+    object->ref = 1;
+    object->direct3ddevice8 = device;
+
+    *ppv = &object->Direct3DDevice8_iface;
+
+    return S_OK;
 }
 
 /*** direct3d8 - IUnknown methods ***/
@@ -256,10 +1148,18 @@ static HRESULT WINAPI direct3d8_CreateDevice(Direct3D8 *iface, int adapter, D3DD
         D3DCREATEFLAGS behaviorFlags, D3DPRESENT_PARAMETERS *presentationParameters,
         Direct3DDevice8 **ppReturnedDeviceInterface)
 {
-    FIXME("(%i, %u, %p, %u, %p, %p): stub!\n", adapter, deviceType, hFocusWindow, behaviorFlags,
-            presentationParameters, ppReturnedDeviceInterface);
+    direct3d8 *This = impl_from_Direct3D8(iface);
+    HRESULT ret;
+    IDirect3DDevice8 *device;
 
-    return E_NOTIMPL;
+    ret = IDirect3D8_CreateDevice(This->direct3d8, adapter, deviceType, hFocusWindow, behaviorFlags,
+            presentationParameters, &device);
+    ret = direct3ddevice8_create(ppReturnedDeviceInterface, device);
+
+    TRACE("(%i, %u, %p, %u, %p, %p) -> (%x)\n", adapter, deviceType, hFocusWindow, behaviorFlags,
+            presentationParameters, ppReturnedDeviceInterface, ret);
+
+    return ret;
 }
 
 static const Direct3D8Vtbl Direct3D8_Vtbl =
