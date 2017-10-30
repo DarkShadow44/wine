@@ -21,6 +21,7 @@
 #include "unknwn.idl"
 
 #include "d3d8types.h"
+#include "d3d8caps.h"
 
 interface Direct3DDevice8;
 interface D3DXFont;
@@ -54,7 +55,6 @@ interface DirectPlay8Peer;
 interface DirectPlay8Server;
 interface DirectPlay8Client;
 interface DirectPlay8Address;
-interface Direct3D8;
 interface DirectPlay8LobbyClient;
 interface DirectPlay8LobbiedApplication;
 
@@ -68,6 +68,15 @@ typedef enum {
     D3DXIFF_DIB = 6,
     D3DXIFF_FORCE_DWORD = 0x7fffffff
 } D3DXIMAGE_FILEFORMAT;
+
+typedef enum {
+    D3DCREATE_FPU_PRESERVE = 2,
+    D3DCREATE_MULTITHREADED = 4,
+    D3DCREATE_PUREDEVICE = 16,
+    D3DCREATE_SOFTWARE_VERTEXPROCESSING = 32,
+    D3DCREATE_HARDWARE_VERTEXPROCESSING = 64,
+    D3DCREATE_MIXED_VERTEXPROCESSING = 128
+} D3DCREATEFLAGS;
 
 typedef struct tagD3DXDECLARATOR {
     LONG value[32];
@@ -718,6 +727,81 @@ interface ID3DX8 : IUnknown {
         [in] D3DXIMAGE_FILEFORMAT destFormat,
         [in] Direct3DBaseTexture8 *srcTexture,
         [in] PALETTEENTRY *srcPalette
+    );
+};
+
+[
+    object,
+    uuid(1dd9e8da-1c77-4d40-b0cf-98fefdff9512),
+    local
+]
+interface Direct3D8 : IUnknown {
+    HRESULT RegisterSoftwareDevice(
+        [in] void *initializeFunction
+    );
+    int GetAdapterCount(
+    );
+    HRESULT GetAdapterIdentifier(
+        [in] int adapter,
+        [in] LONG flags,
+        [in, out] D3DADAPTER_IDENTIFIER8 *identifier
+    );
+    int GetAdapterModeCount(
+        [in] int adapter
+    );
+    HRESULT EnumAdapterModes(
+        [in] int adapter,
+        [in] int mode,
+        [in, out] D3DDISPLAYMODE *displayMode
+    );
+    HRESULT GetAdapterDisplayMode(
+        [in] int adapter,
+        [in, out] D3DDISPLAYMODE *displayMode
+    );
+    LONG CheckDeviceType(
+        [in] int adapter,
+        [in] D3DDEVTYPE checkType,
+        [in] D3DFORMAT displayFormat,
+        [in] D3DFORMAT backBufferFormat,
+        [in] LONG bWindowed
+    );
+    LONG CheckDeviceFormat(
+        [in] int adapter,
+        [in] D3DDEVTYPE deviceType,
+        [in] D3DFORMAT adapterFormat,
+        [in] LONG usage,
+        [in] D3DRESOURCETYPE rType,
+        [in] D3DFORMAT checkFormat
+    );
+    LONG CheckDeviceMultiSampleType(
+        [in] int adapter,
+        [in] D3DDEVTYPE deviceType,
+        [in] D3DFORMAT renderTargetFormat,
+        [in] LONG windowed,
+        [in] D3DMULTISAMPLE_TYPE multiSampleType
+    );
+    LONG CheckDepthStencilMatch(
+        [in] int adapter,
+        [in] D3DDEVTYPE deviceType,
+        [in] D3DFORMAT adapterFormat,
+        [in] D3DFORMAT renderTargetFormat,
+        [in] D3DFORMAT depthStencilFormat
+    );
+    HRESULT GetDeviceCaps(
+        [in] int adapter,
+        [in] D3DDEVTYPE deviceType,
+        [in, out] D3DCAPS8 *caps
+    );
+    LONG GetAdapterMonitor(
+        [in] int adapter
+    );
+    HRESULT CreateDevice(
+        [in] int adapter,
+        [in] D3DDEVTYPE deviceType,
+        [in] HWND hFocusWindow,
+        [in] D3DCREATEFLAGS behaviorFlags,
+        [in] D3DPRESENT_PARAMETERS *presentationParameters,
+        [out, retval] Direct3DDevice8 **ppReturnedDeviceInterface
     );
 };
 
