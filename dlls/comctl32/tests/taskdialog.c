@@ -28,6 +28,7 @@
 #include "wine/test.h"
 #include "v6util.h"
 #include "msg.h"
+#include "resources.h"
 
 #define WM_TD_CALLBACK (WM_APP) /* Custom dummy message to wrap callback notifications */
 
@@ -374,6 +375,61 @@ static void test_timer(void)
     pTaskDialogIndirect(&info, NULL, NULL, NULL);
 }
 
+/* Caller must free the buffer */
+static WCHAR* control_get_text(HWND hdlg, int id_control)
+{
+    HWND hwnd_control = GetDlgItem(hdlg, id_control);
+    int text_length = GetWindowTextLengthW(hwnd_control);
+    WCHAR *text = heap_alloc((text_length + 1) * sizeof(WCHAR));
+    GetWindowTextW(hwnd_control, text, text_length + 1);
+    return text;
+}
+
+static void taskdialog_creator_create(HWND hdlg)
+{
+    TASKDIALOGCONFIG info = { 0 };
+    WCHAR *text_title;
+    WCHAR *text_main_instruction;
+    WCHAR *text_content;
+
+    text_title = control_get_text(hdlg, IDC_TASKDIALOG_TEXT_TITLE);
+    text_main_instruction = control_get_text(hdlg, IDC_TASKDIALOG_TEXT_MAIN);
+    text_content = control_get_text(hdlg, IDC_TASKDIALOG_TEXT_CONTENT);
+
+    info.cbSize = sizeof(TASKDIALOGCONFIG);
+    info.hwndParent = hdlg;
+    info.pszWindowTitle = text_title;
+    info.pszMainInstruction = text_main_instruction;
+    info.pszContent = text_content;
+
+    pTaskDialogIndirect(&info, NULL, NULL, NULL);
+
+    heap_free(text_title);
+    heap_free(text_main_instruction);
+    heap_free(text_content);
+}
+
+static INT_PTR CALLBACK taskdialog_creator_proc(HWND hdlg, UINT msg, WPARAM wparam, LPARAM lparam)
+{
+    switch (msg)
+    {
+        case WM_COMMAND:
+            if (HIWORD(wparam) == BN_CLICKED && LOWORD(wparam) == IDC_TASKDIALOG_CREATE)
+            {
+                taskdialog_creator_create(hdlg);
+            }
+            break;
+        case WM_CLOSE:
+            EndDialog(hdlg, 0);
+            break;
+
+        default:
+            break;
+    }
+
+    return FALSE;
+}
+
 START_TEST(taskdialog)
 {
     ULONG_PTR ctx_cookie;
@@ -404,6 +460,12 @@ START_TEST(taskdialog)
     ptr_ordinal = GetProcAddress(hinst, (const char *)345);
     ok(pTaskDialogIndirect == ptr_ordinal, "got wrong pointer for ordinal 345, %p expected %p\n",
                                             ptr_ordinal, pTaskDialogIndirect);
+
+    if (winetest_interactive)
+    {
+        DialogBoxParamA(GetModuleHandleA(NULL), "TAKDIALOG_CREATOR", NULL, taskdialog_creator_proc, 0);
+        return;
+    }
 
     init_msg_sequences(sequences, NUM_MSG_SEQUENCES);
 
