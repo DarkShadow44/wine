@@ -23,6 +23,7 @@
 #include "winbase.h"
 #include "winuser.h"
 #include "commctrl.h"
+#include "shlwapi.h"
 
 #include "wine/heap.h"
 #include "wine/test.h"
@@ -375,7 +376,7 @@ static void test_timer(void)
     pTaskDialogIndirect(&info, NULL, NULL, NULL);
 }
 
-/* Caller must free the buffer */
+/* Caller must free the string */
 static WCHAR* control_get_text(HWND hdlg, int id_control)
 {
     HWND hwnd_control = GetDlgItem(hdlg, id_control);
@@ -385,12 +386,51 @@ static WCHAR* control_get_text(HWND hdlg, int id_control)
     return text;
 }
 
+static int control_get_int(HWND hdlg, int id_control)
+{
+    int ret;
+    WCHAR *text = control_get_text(hdlg, id_control);
+
+    StrToIntExW(text, 0, &ret);
+    heap_free(text);
+
+    return ret;
+}
+
+/* Caller must free the structure */
+static TASKDIALOG_BUTTON* taskdialog_creator_make_buttons(HWND hdlg, DWORD listview_id, UINT *count)
+{
+    HWND listview = GetDlgItem(hdlg, listview_id);
+    TASKDIALOG_BUTTON *buttons;
+    int i;
+
+    *count = ListView_GetItemCount(listview);
+    buttons = heap_alloc(*count * sizeof(TASKDIALOG_BUTTON));
+
+    for (i = 0; i < *count; i++)
+    {
+        WCHAR *id = heap_alloc(10 * sizeof(WCHAR));
+        WCHAR *text = heap_alloc(4096 * sizeof(WCHAR));
+
+        ListView_GetItemTextW(listview, i, 0, id, 10);
+        ListView_GetItemTextW(listview, i, 1, text, 4096);
+
+        StrToIntExW(id, 0, &buttons[i].nButtonID);
+        buttons[i].pszButtonText = text;
+
+        heap_free(id);
+    }
+    return buttons;
+}
+
 static void taskdialog_creator_create(HWND hdlg)
 {
     TASKDIALOGCONFIG info = { 0 };
     WCHAR *text_title;
     WCHAR *text_main_instruction;
     WCHAR *text_content;
+    int i;
+    int selected_button_style;
 
     text_title = control_get_text(hdlg, IDC_TASKDIALOG_TEXT_TITLE);
     text_main_instruction = control_get_text(hdlg, IDC_TASKDIALOG_TEXT_MAIN);
@@ -401,22 +441,106 @@ static void taskdialog_creator_create(HWND hdlg)
     info.pszWindowTitle = text_title;
     info.pszMainInstruction = text_main_instruction;
     info.pszContent = text_content;
+    info.pButtons = taskdialog_creator_make_buttons(hdlg, IDC_TASKDIALOG_TEXT_LIST_BUTTONS, &info.cButtons);
+
+#define COMMONBUTTON(id, flag) \
+        IsDlgButtonChecked(hdlg, id) == BST_CHECKED ? flag : 0
+
+    info.dwCommonButtons |= COMMONBUTTON(IDC_TASKDIALOG_CHECKBOX_OK,     TDCBF_OK_BUTTON);
+    info.dwCommonButtons |= COMMONBUTTON(IDC_TASKDIALOG_CHECKBOX_YES,    TDCBF_YES_BUTTON);
+    info.dwCommonButtons |= COMMONBUTTON(IDC_TASKDIALOG_CHECKBOX_NO,     TDCBF_NO_BUTTON);
+    info.dwCommonButtons |= COMMONBUTTON(IDC_TASKDIALOG_CHECKBOX_CANCEL, TDCBF_CANCEL_BUTTON);
+    info.dwCommonButtons |= COMMONBUTTON(IDC_TASKDIALOG_CHECKBOX_RETRY,  TDCBF_RETRY_BUTTON);
+    info.dwCommonButtons |= COMMONBUTTON(IDC_TASKDIALOG_CHECKBOX_CLOSE,  TDCBF_CLOSE_BUTTON);
+
+    selected_button_style = SendMessageA(GetDlgItem(hdlg, IDC_TASKDIALOG_COMBO_BUTTONSTYLE), CB_GETCURSEL, 0, 0);
+    info.dwFlags |= selected_button_style == 1 ? TDF_USE_COMMAND_LINKS : 0;
+    info.dwFlags |= selected_button_style == 2 ? TDF_USE_COMMAND_LINKS_NO_ICON : 0;
+    info.nDefaultButton = control_get_int(hdlg, IDC_TASKDIALOG_TEXT_BUTTONDEFAULT);
 
     pTaskDialogIndirect(&info, NULL, NULL, NULL);
 
     heap_free(text_title);
     heap_free(text_main_instruction);
     heap_free(text_content);
+    for (i = 0; i< info.cButtons; i++)
+        heap_free((void*)info.pButtons[i].pszButtonText);
+    heap_free((void*)info.pButtons);
+}
+
+static void taskdialog_creator_addbutton(HWND hdlg)
+{
+    LVITEMW item;
+    HWND listview = GetDlgItem(hdlg, IDC_TASKDIALOG_TEXT_LIST_BUTTONS);
+    DWORD index = ListView_GetItemCount(listview);
+    WCHAR *button_text = control_get_text(hdlg, IDC_TASKDIALOG_TEXT_BUTTONTEXT);
+    WCHAR *button_id = control_get_text(hdlg, IDC_TASKDIALOG_TEXT_BUTTONID);
+
+    item.mask = LVIF_TEXT;
+    item.iItem = index;
+
+    item.iSubItem = 0;
+    item.pszText = button_id;
+    ListView_InsertItemW(listview, &item);
+
+    item.iSubItem = 1;
+    item.pszText = button_text;
+    ListView_SetItemW(listview, &item);
+
+    heap_free(button_text);
+    heap_free(button_id);
+}
+
+static void taskdialog_creator_removebutton(HWND hdlg)
+{
+    HWND listview = GetDlgItem(hdlg, IDC_TASKDIALOG_TEXT_LIST_BUTTONS);
+    int selected_index = ListView_GetNextItem(listview, -1, LVNI_SELECTED);
+    if (selected_index != -1)
+        ListView_DeleteItem(listview, selected_index);
 }
 
 static INT_PTR CALLBACK taskdialog_creator_proc(HWND hdlg, UINT msg, WPARAM wparam, LPARAM lparam)
 {
+    HWND list_buttons = GetDlgItem(hdlg, IDC_TASKDIALOG_TEXT_LIST_BUTTONS);
+    HWND combo_buttonstyle = GetDlgItem(hdlg, IDC_TASKDIALOG_COMBO_BUTTONSTYLE);
+    LVCOLUMNW listview_column;
+    static WCHAR column_id[] = {'I', 'D',0};
+    static WCHAR column_text[] = {'T', 'e','x','t',0};
+
     switch (msg)
     {
+        case WM_INITDIALOG:
+            listview_column.mask = LVCF_WIDTH | LVCF_TEXT;
+            listview_column.cx = 50;
+            listview_column.pszText = column_id;
+            ListView_InsertColumnW(list_buttons, 0, &listview_column);
+            listview_column.cx = 300;
+            listview_column.pszText = column_text;
+            ListView_InsertColumnW(list_buttons, 1, &listview_column);
+            ListView_SetExtendedListViewStyle(list_buttons, LVS_EX_FULLROWSELECT);
+
+            SendMessageA(combo_buttonstyle, CB_ADDSTRING, 0, (LPARAM)"Normal");
+            SendMessageA(combo_buttonstyle, CB_ADDSTRING, 0, (LPARAM)"Commandlink (with icon)");
+            SendMessageA(combo_buttonstyle, CB_ADDSTRING, 0, (LPARAM)"Commandlink (without icon)");
+            SendMessageA(combo_buttonstyle, CB_SETCURSEL, 0, 0);
+            break;
         case WM_COMMAND:
-            if (HIWORD(wparam) == BN_CLICKED && LOWORD(wparam) == IDC_TASKDIALOG_CREATE)
+            if (HIWORD(wparam) == BN_CLICKED)
             {
-                taskdialog_creator_create(hdlg);
+                switch(LOWORD(wparam))
+                {
+                    case IDC_TASKDIALOG_BUTTON_CREATE:
+                        taskdialog_creator_create(hdlg);
+                        break;
+
+                    case IDC_TASKDIALOG_BUTTON_ADDBUTTON:
+                        taskdialog_creator_addbutton(hdlg);
+                        break;
+                    case IDC_TASKDIALOG_BUTTON_REMOVEBUTTON:
+                        taskdialog_creator_removebutton(hdlg);
+                        break;
+                }
+
             }
             break;
         case WM_CLOSE:
