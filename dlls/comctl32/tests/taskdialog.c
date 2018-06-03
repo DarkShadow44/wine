@@ -499,6 +499,77 @@ static void taskdialog_creator_removebutton(HWND hdlg)
         ListView_DeleteItem(listview, selected_index);
 }
 
+
+static void listview_set_rowheight(HANDLE listview, int height)
+{
+    HFONT font, font_old;
+    HANDLE header;
+
+    font_old = (HFONT)SendMessageA(listview, WM_GETFONT, 0, 0);
+    SetWindowLongPtrW(listview, GWLP_USERDATA, (LONG_PTR)font_old);
+
+    font = CreateFontA(height, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    SendMessageA(listview, WM_SETFONT, (WPARAM)font, 0);
+    DeleteObject(font);
+
+    header = ListView_GetHeader(listview);
+    SendMessageA(header, WM_SETFONT, (WPARAM)font_old , 0);
+}
+
+static BOOL listview_multiline_proc(HWND hdlg, UINT msg, WPARAM wparam, LPARAM lparam)
+{
+    if (msg ==  WM_NOTIFY && ((NMHDR *)lparam)->code == NM_CUSTOMDRAW)
+    {
+        NMLVCUSTOMDRAW *info = (NMLVCUSTOMDRAW *)lparam;
+        switch(info->nmcd.dwDrawStage)
+        {
+            case CDDS_PREPAINT:
+                SetWindowLongPtrW(hdlg, DWLP_MSGRESULT, CDRF_NOTIFYITEMDRAW+CDRF_NEWFONT);
+                return TRUE;
+
+            case CDDS_ITEMPREPAINT:
+                SetWindowLongPtrW(hdlg, DWLP_MSGRESULT, CDRF_NOTIFYSUBITEMDRAW);
+                return TRUE;
+
+            case CDDS_ITEMPREPAINT | CDDS_SUBITEM:
+                SetWindowLongPtrW(hdlg, DWLP_MSGRESULT, CDRF_NOTIFYPOSTPAINT);
+                return TRUE;
+
+            case CDDS_ITEMPOSTPAINT | CDDS_SUBITEM:
+            {
+                RECT rect;
+                WCHAR text[4096];
+                BOOL selected, has_focus;
+                HWND listview = info->nmcd.hdr.hwndFrom;
+                HDC hdc = info->nmcd.hdc;
+                int index = info->nmcd.dwItemSpec;
+                int subitem = info->iSubItem;
+                HFONT font = (HFONT)GetWindowLongPtrW(listview, GWLP_USERDATA);
+
+                has_focus = GetFocus() == listview;
+                selected = SendMessageA(listview, LVM_GETITEMSTATE, index, LVIS_SELECTED);
+                ListView_GetItemTextW(listview, index, subitem, text, sizeof(text));
+
+                rect.top = subitem;
+                rect.left = subitem ? LVIR_BOUNDS : LVIR_LABEL;
+                SendMessageA(listview, LVM_GETSUBITEMRECT, index, (LPARAM)&rect);
+
+                FillRect(hdc, &rect, selected ? GetSysColorBrush(has_focus ? COLOR_HIGHLIGHT : COLOR_BTNFACE) : GetStockObject(WHITE_BRUSH));
+
+                SelectObject(info->nmcd.hdc, font);
+                SetTextColor(hdc, (selected && has_focus) ? 0xFFFFFF : 0x000000);
+                SetBkMode(hdc, TRANSPARENT);
+                rect.top += 4;
+                rect.left +=4;
+                DrawTextW(hdc, text, -1, &rect, DT_WORD_ELLIPSIS);
+
+                return TRUE;
+            }
+        }
+    }
+    return FALSE;
+}
+
 static INT_PTR CALLBACK taskdialog_creator_proc(HWND hdlg, UINT msg, WPARAM wparam, LPARAM lparam)
 {
     HWND list_buttons = GetDlgItem(hdlg, IDC_TASKDIALOG_TEXT_LIST_BUTTONS);
@@ -518,6 +589,7 @@ static INT_PTR CALLBACK taskdialog_creator_proc(HWND hdlg, UINT msg, WPARAM wpar
             listview_column.pszText = column_text;
             ListView_InsertColumnW(list_buttons, 1, &listview_column);
             ListView_SetExtendedListViewStyle(list_buttons, LVS_EX_FULLROWSELECT);
+            listview_set_rowheight(list_buttons, 44);
 
             SendMessageA(combo_buttonstyle, CB_ADDSTRING, 0, (LPARAM)"Normal");
             SendMessageA(combo_buttonstyle, CB_ADDSTRING, 0, (LPARAM)"Commandlink (with icon)");
@@ -550,6 +622,9 @@ static INT_PTR CALLBACK taskdialog_creator_proc(HWND hdlg, UINT msg, WPARAM wpar
         default:
             break;
     }
+
+    if (listview_multiline_proc(hdlg, msg, wparam, lparam))
+        return TRUE;
 
     return FALSE;
 }
