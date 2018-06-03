@@ -3884,7 +3884,7 @@ typedef struct NMLVSCROLL
 
 
 #define ListView_GetNextItem(hwnd,nItem,flags) \
-    (INT)SNDMSG((hwnd),LVM_GETNEXTITEM,(WPARAM)(INT)(nItem),(LPARAM)(MAKELPARAM(flags,0)))
+    (INT)SNDMSGA((hwnd),LVM_GETNEXTITEM,(WPARAM)(INT)(nItem),(LPARAM)(MAKELPARAM(flags,0)))
 #define ListView_FindItemA(hwnd,nItem,plvfi) \
     (INT)SNDMSGA((hwnd),LVM_FINDITEMA,(WPARAM)(INT)(nItem),(LPARAM)(LVFINDINFOA*)(plvfi))
 #define ListView_FindItemW(hwnd,nItem,plvfi) \
@@ -3934,7 +3934,7 @@ typedef struct NMLVSCROLL
 #define ListView_SetImageList(hwnd,himl,iImageList) \
     (HIMAGELIST)SNDMSG((hwnd),LVM_SETIMAGELIST,(WPARAM)(iImageList),(LPARAM)(HIMAGELIST)(himl))
 #define ListView_GetItemCount(hwnd) \
-    (INT)SNDMSG((hwnd), LVM_GETITEMCOUNT, 0, 0)
+    (INT)SNDMSGA((hwnd), LVM_GETITEMCOUNT, 0, 0)
 #define ListView_RedrawItems(hwnd,first,last) \
     (BOOL)SNDMSG((hwnd),LVM_REDRAWITEMS,(WPARAM)(INT)(first),(LPARAM)(INT)(last))
 #define ListView_GetEditControl(hwnd) \
@@ -4015,7 +4015,7 @@ typedef struct NMLVSCROLL
 #define ListView_SetItemText WINELIB_NAME_AW(ListView_SetItemText)
 
 #define ListView_DeleteItem(hwndLV, i) \
-    (BOOL)SNDMSG(hwndLV, LVM_DELETEITEM, (WPARAM)(int)(i), 0)
+    (BOOL)SNDMSGA(hwndLV, LVM_DELETEITEM, (WPARAM)(int)(i), 0)
 #define ListView_Update(hwndLV, i) \
     (BOOL)SNDMSG((hwndLV), LVM_UPDATE, (WPARAM)(i), 0)
 #define ListView_GetColumnOrderArray(hwndLV, iCount, pi) \
@@ -4036,7 +4036,7 @@ typedef struct NMLVSCROLL
 #define ListView_SetColumnOrderArray(hwndLV, iCount, pi) \
     (BOOL)SNDMSG((hwndLV), LVM_SETCOLUMNORDERARRAY, (WPARAM)iCount, (LPARAM)(LPINT)pi)
 #define ListView_SetExtendedListViewStyle(hwndLV, dw) \
-    (DWORD)SNDMSG((hwndLV), LVM_SETEXTENDEDLISTVIEWSTYLE, 0, (LPARAM)dw)
+    (DWORD)SNDMSGA((hwndLV), LVM_SETEXTENDEDLISTVIEWSTYLE, 0, (LPARAM)dw)
 #define ListView_SetExtendedListViewStyleEx(hwndLV, dwMask, dw) \
     (DWORD)SNDMSG((hwndLV), LVM_SETEXTENDEDLISTVIEWSTYLE, (WPARAM)dwMask, (LPARAM)dw)
 #define ListView_SetHotCursor(hwndLV, hcur) \
@@ -4056,7 +4056,7 @@ typedef struct NMLVSCROLL
 #define ListView_GetViewRect(hwndLV, prc) \
     (BOOL)SNDMSG((hwndLV),LVM_GETVIEWRECT,0,(LPARAM)(LPRECT)(prc))
 #define ListView_GetHeader(hwndLV) \
-    (HWND)SNDMSG((hwndLV), LVM_GETHEADER, 0, 0)
+    (HWND)SNDMSGA((hwndLV), LVM_GETHEADER, 0, 0)
 #define ListView_SetSelectedColumn(hwnd, iCol) \
     SNDMSG((hwnd), LVM_SETSELECTEDCOLUMN, (WPARAM)iCol, 0)
 #define ListView_SetTileWidth(hwnd, cpWidth) \
