@@ -3128,6 +3128,12 @@ HRESULT CDECL wined3d_texture_blt(struct wined3d_texture *dst_texture, unsigned 
         return WINED3DERR_INVALIDCALL;
     }
 
+    if (dst_texture->resource.device != src_texture->resource.device)
+    {
+        ERR("Rejecting blit.\n");
+        return WINED3DERR_INVALIDCALL;
+    }
+
     wined3d_cs_emit_blt_sub_resource(dst_texture->resource.device->cs, &dst_texture->resource, dst_sub_resource_idx,
             &dst_box, &src_texture->resource, src_sub_resource_idx, &src_box, flags, fx, filter);
 
