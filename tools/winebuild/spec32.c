@@ -478,19 +478,15 @@ static void output_syscall_thunks_x64( DLLSPEC *spec )
         output( "\t%s\n", func_declaration(name) );
         output( "%s\n", asm_globl(name) );
         output_cfi( ".cfi_startproc" );
-        output( "\t.byte 0xb8\n" );                                         /* mov eax, SYSCALL */
-        output( "\t.long %d\n", i );
-        if (target_platform == PLATFORM_APPLE)
-        {
-            output( "\t.byte 0xff,0x14,0x25\n" );                           /* call [0x7ffe1000] */
-            output( "\t.long 0x7ffe1000\n" );
-        }
-        else
-        {
-            output( "\t.byte 0x65,0xff,0x14,0x25\n" );                      /* call qword ptr gs:[0x100] */
-            output( "\t.long 0x100\n");
-        }
-        output( "\t.byte 0xc3\n" );                                        /* ret */
+        output ("\t.byte 0x4c,0x8b,0xd1\n" );           /* mov r10, rcx */
+        output( "\t.byte 0xb8\n" );                     /* mov eax, SYSCALL */
+        output( "\t.long %d\n", i );                    /* mov eax, SYSCALL */
+        output( "\ttestb $0x1,0x7ffe0308\n" );          /* test byte ptr SharedUserData.SystemCallPad, 1 */
+        output( "\t.byte 0x75,0x03\n" );                /* jne (over syscall) */
+        output( "\tsyscall\n" );
+        output( "\tret\n" );
+        output( "\tint $0x2e\n" );
+        output( "\tret\n" );
         output_cfi( ".cfi_endproc" );
         output_function_size( name );
     }

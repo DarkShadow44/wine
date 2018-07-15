@@ -3701,6 +3701,8 @@ static void user_shared_data_init(void)
     user_shared_data->u.TickCount.High2Time  = 0;
     user_shared_data->u.TickCount.High1Time  = -1;
 
+    user_shared_data->SystemCallPad[0] = 1;
+
     /* copy to correct address and make it non accessible */
     memcpy(user_shared_data_external, user_shared_data, sizeof(*user_shared_data));
     NtProtectVirtualMemory( NtCurrentProcess(), &addr, &data_size, PAGE_NOACCESS, &old_prot );

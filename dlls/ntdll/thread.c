@@ -446,6 +446,7 @@ HANDLE thread_init(void)
     NTSTATUS status;
     struct ntdll_thread_data *thread_data;
     static struct debug_info debug_info;  /* debug info for initial thread */
+    u_int8_t* system_call_pad;
 
     virtual_init();
     signal_init_early();
@@ -462,6 +463,8 @@ HANDLE thread_init(void)
         exit(1);
     }
     user_shared_data_external = addr;
+    system_call_pad = (u_int8_t*)user_shared_data_external + 0x308;
+    *system_call_pad = 1;
     memcpy( user_shared_data->NtSystemRoot, default_windirW, sizeof(default_windirW) );
 
     /* allocate and initialize the PEB */

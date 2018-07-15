@@ -3037,6 +3037,32 @@ static inline BOOL handle_interrupt( unsigned int interrupt, EXCEPTION_RECORD *r
     }
 }
 
+extern void *__wine_syscall_table;
+extern void __wine_syscall_dispatcher(void);
+
+static BOOL handle_syscall(void *sigcontext)
+{
+    ucontext_t *context = (ucontext_t *)sigcontext;
+
+    void **pointer_eip_void = (void**)&context->uc_mcontext.gregs[REG_RIP];
+    u_int8_t **pointer_eip = (u_int8_t**)&context->uc_mcontext.gregs[REG_RIP];
+    int interrupt_number = context->uc_mcontext.gregs[REG_RAX];
+
+    /* If it's "int 0x2e", route executing to the actual function */
+    if ((*pointer_eip)[0] == 0xCD && (*pointer_eip)[1] == 0x2e)
+    {
+       void **syscalls = &__wine_syscall_table;
+       *pointer_eip_void = syscalls[interrupt_number];
+       return TRUE;
+    }
+    return FALSE;
+}
+
+static void segv_handler_syscall(int signal, siginfo_t *siginfo, void *sigcontext)
+{
+    handle_syscall(sigcontext);
+}
+
 
 /**********************************************************************
  *		segv_handler
@@ -3063,6 +3089,9 @@ static void segv_handler( int signal, siginfo_t *siginfo, void *sigcontext )
         }
         return;
     }
+
+    if (handle_syscall(sigcontext))
+        return;
 
     rec = setup_exception( sigcontext, raise_segv_exception );
 
@@ -3446,6 +3475,10 @@ void signal_init_process(void)
  */
 void signal_init_early(void)
 {
+    struct sigaction action;
+    action.sa_sigaction = &segv_handler_syscall;
+    action.sa_flags = SA_SIGINFO;
+    sigaction(SIGSEGV, &action, NULL);
 }
 
 /**********************************************************************
