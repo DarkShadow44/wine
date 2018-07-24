@@ -340,3 +340,8 @@ void __wine_spec_unimplemented_stub( const char *module, const char *function )
     record.ExceptionInformation[1] = (ULONG_PTR)function;
     for (;;) RtlRaiseException( &record );
 }
+
+void WINAPI RtlSetUnhandledExceptionFilter( void *handler )
+{
+    FIXME( "(%p) stub!\n", handler );
+}
