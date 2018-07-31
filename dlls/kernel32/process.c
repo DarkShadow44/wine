@@ -520,6 +520,7 @@ static void set_additional_environment(void)
     static const WCHAR computernameW[] = {'C','O','M','P','U','T','E','R','N','A','M','E',0};
     static const WCHAR allusersW[] = {'A','L','L','U','S','E','R','S','P','R','O','F','I','L','E',0};
     static const WCHAR programdataW[] = {'P','r','o','g','r','a','m','D','a','t','a',0};
+    static const WCHAR publicW[] = {'P','U','B','L','I','C',0};
     OBJECT_ATTRIBUTES attr;
     UNICODE_STRING nameW;
     WCHAR *profile_dir = NULL, *all_users_dir = NULL, *program_data_dir = NULL;
@@ -560,6 +561,7 @@ static void set_additional_environment(void)
         if (p > value && p[-1] != '\\') *p++ = '\\';
         strcpyW( p, all_users_dir );
         SetEnvironmentVariableW( allusersW, value );
+        SetEnvironmentVariableW( publicW, value );
         HeapFree( GetProcessHeap(), 0, value );
     }
 
