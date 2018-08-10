@@ -4536,3 +4536,13 @@ BOOL WINAPI BaseFlushAppcompatCache(void)
     SetLastError(ERROR_CALL_NOT_IMPLEMENTED);
     return FALSE;
 }
+
+/**********************************************************************
+ *           SetProcessMitigationPolicy     (KERNEL32.@)
+ */
+BOOL WINAPI SetProcessMitigationPolicy(PROCESS_MITIGATION_POLICY migitation_policy, void *buffer, SIZE_T length)
+{
+    FIXME("(%d, %p, %lu): stub\n", migitation_policy, buffer, length);
+
+    return TRUE;
+}
