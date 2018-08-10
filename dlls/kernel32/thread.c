@@ -35,6 +35,7 @@
 #include "winbase.h"
 #include "winerror.h"
 #include "winternl.h"
+#include "processthreadsapi.h"
 #include "wine/exception.h"
 #include "wine/library.h"
 #include "wine/server.h"
@@ -1189,6 +1190,16 @@ BOOL WINAPI TrySubmitThreadpoolCallback( PTP_SIMPLE_CALLBACK callback, PVOID use
         SetLastError( RtlNtStatusToDosError(status) );
         return FALSE;
     }
+
+    return TRUE;
+}
+
+/**********************************************************************
+ *              SetThreadInformation [KERNEL32.@]
+ */
+BOOL WINAPI SetThreadInformation(HANDLE hthread, THREAD_INFORMATION_CLASS thread_information_class, void *thread_information, DWORD thread_information_size)
+{
+    FIXME("(%p, %d, %p, %d): stub\n", hthread, thread_information_class, thread_information, thread_information_size);
 
     return TRUE;
 }
