@@ -511,3 +511,12 @@ BOOL WINAPI ApiSetQueryApiSetPresence(const UNICODE_STRING *namespace, BOOLEAN *
     *present = TRUE;
     return TRUE;
 }
+
+NTSTATUS WINAPI NtCreateLowBoxToken(HANDLE *token_handle, HANDLE existing_token_handle, ACCESS_MASK desired_access,
+                                    OBJECT_ATTRIBUTES *object_attributes, SID *package_sid, ULONG capability_count,
+                                    SID_AND_ATTRIBUTES *capabilities, ULONG handle_count, HANDLE *handle)
+{
+    /* We need to return a NULL handle since later it will be passed to CloseHandle and that must not fail */
+    *token_handle = NULL;
+    return STATUS_SUCCESS;
+}
