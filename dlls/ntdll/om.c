@@ -166,14 +166,19 @@ NTSTATUS WINAPI NtQueryObject(IN HANDLE handle,
                 {
                     if (!reply->total)  /* no name */
                     {
-                        if (sizeof(*p) > len) status = STATUS_INFO_LENGTH_MISMATCH;
-                        else memset( p, 0, sizeof(*p) );
-                        if (used_len) *used_len = sizeof(*p);
+                        p->TypeName.Buffer = (WCHAR *)(p + 1);
+                        p->TypeName.Length = 0;
+                        p->TypeName.MaximumLength = 0 + sizeof(WCHAR);
+                        p->TypeName.Buffer[0] = 0;
+                        if (used_len) *used_len = sizeof(*p) + p->TypeName.MaximumLength;
                     }
                     else if (sizeof(*p) + reply->total + sizeof(WCHAR) > len)
                     {
-                        if (used_len) *used_len = sizeof(*p) + reply->total + sizeof(WCHAR);
-                        status = STATUS_INFO_LENGTH_MISMATCH;
+                        p->TypeName.Buffer = (WCHAR *)(p + 1);
+                        p->TypeName.Length = 0;
+                        p->TypeName.MaximumLength = 0 + sizeof(WCHAR);
+                        p->TypeName.Buffer[0] = 0;
+                        if (used_len) *used_len = sizeof(*p) + p->TypeName.MaximumLength;
                     }
                     else
                     {
@@ -184,6 +189,7 @@ NTSTATUS WINAPI NtQueryObject(IN HANDLE handle,
                         p->TypeName.Buffer[res / sizeof(WCHAR)] = 0;
                         if (used_len) *used_len = sizeof(*p) + p->TypeName.MaximumLength;
                     }
+
                     if (status == STATUS_SUCCESS)
                     {
                         WORD version = MAKEWORD(NtCurrentTeb()->Peb->OSMinorVersion,
