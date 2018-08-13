@@ -4370,6 +4370,9 @@ BOOL WINAPI UpdateProcThreadAttribute(struct _PROC_THREAD_ATTRIBUTE_LIST *list,
        }
        break;
 
+    case PROC_THREAD_ATTRIBUTE_MIGITATION_POLICY:
+        break;
+
     default:
         SetLastError(ERROR_NOT_SUPPORTED);
         FIXME("Unhandled attribute number %lu\n", attr & PROC_THREAD_ATTRIBUTE_NUMBER);
