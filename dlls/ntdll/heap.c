@@ -130,6 +130,20 @@ C_ASSERT( sizeof(ARENA_LARGE) % LARGE_ALIGNMENT == 0 );
 /* number of free lists */
 #define HEAP_NB_FREE_LISTS  128
 
+typedef struct _heap_win10 {
+    void *unknown1[2];
+    ULONG segment_signature;
+    ULONG segment_flags;
+    LIST_ENTRY segment_list_entry;
+    struct _heap_win10* heap;
+    ULONG unknown2a[2];
+    void *unknown2b[7];
+    DWORD flags;
+    ULONG unknown3a[5];
+    void *unknown3b[2];
+    DWORD signature;
+} heap_win10;
+
 struct tagHEAP;
 
 typedef struct tagSUBHEAP
@@ -164,6 +178,10 @@ typedef struct tagHEAP
     struct list     *freeList;      /* Free lists */
     struct wine_rb_tree freeTree;   /* Free tree */
     unsigned long    freeMask[HEAP_NB_FREE_LISTS / (8 * sizeof(unsigned long))];
+    union
+    {
+        heap_win10 win10;
+    } fake_heaps;
 } HEAP;
 
 #define HEAP_FREEMASK_BLOCK    (8 * sizeof(unsigned long))
@@ -497,6 +515,46 @@ static void HEAP_DumpEntry( LPPROCESS_HEAP_ENTRY entry )
     }
 }
 
+static void HEAP_create_fake_heaps_if_needed(ULONG count, HANDLE *heaps)
+{
+    int i;
+
+    if (NtCurrentTeb()->Peb->OSMajorVersion == 10)
+    {
+        for (i = 0; i < count; i++)
+        {
+            HEAP *heap = (HEAP *)heaps[i];
+            heap_win10 *fake = &heap->fake_heaps.win10;
+            fake->signature = 0xeeffeeff;
+            fake->segment_signature = 0xffeeffee;
+            fake->heap = fake;
+            fake->flags = heap->flags;
+            heaps[i] = (HANDLE)fake;
+        }
+    }
+}
+
+static HEAP *HEAP_get_ptr_from_fake_heap(HANDLE heap)
+{
+    HEAP *ptr;
+    HEAP *ret = NULL;
+
+    if (!heap)
+        return NULL;
+
+    if (NtCurrentTeb()->Peb->OSMajorVersion == 10)
+    {
+        enter_critical_section(&processHeap->critSection);
+        LIST_FOR_EACH_ENTRY(ptr, &processHeap->entry, HEAP, entry)
+        {
+            if (&ptr->fake_heaps.win10 == heap)
+                ret = ptr;
+        }
+        leave_critical_section(&processHeap->critSection);
+    }
+    return ret;
+}
+
 /***********************************************************************
  *           HEAP_GetPtr
  * RETURNS
@@ -509,8 +567,12 @@ static HEAP *HEAP_GetPtr(
     HEAP *heapPtr = heap;
     if (!heapPtr || (heapPtr->magic != HEAP_MAGIC))
     {
-        ERR("Invalid heap %p!\n", heap );
-        return NULL;
+        heapPtr = HEAP_get_ptr_from_fake_heap(heap);
+        if (!heapPtr || (heapPtr->magic != HEAP_MAGIC))
+        {
+            ERR("Invalid heap %p!\n", heap );
+            return NULL;
+        }
     }
     if ((heapPtr->flags & HEAP_VALIDATE_ALL) && !HEAP_IsRealArena( heapPtr, 0, NULL, NOISY ))
     {
@@ -2346,7 +2408,6 @@ HW_end:
     return ret;
 }
 
-
 /***********************************************************************
  *           RtlGetProcessHeaps    (NTDLL.@)
  *
@@ -2364,6 +2425,7 @@ ULONG WINAPI RtlGetProcessHeaps( ULONG count, HANDLE *heaps )
 {
     ULONG total = 1;  /* main heap */
     struct list *ptr;
+    HANDLE *heaps_orig = heaps;
 
     enter_critical_section( &processHeap->critSection );
     LIST_FOR_EACH( ptr, &processHeap->entry ) total++;
@@ -2372,6 +2434,8 @@ ULONG WINAPI RtlGetProcessHeaps( ULONG count, HANDLE *heaps )
         *heaps++ = processHeap;
         LIST_FOR_EACH( ptr, &processHeap->entry )
             *heaps++ = LIST_ENTRY( ptr, HEAP, entry );
+
+        HEAP_create_fake_heaps_if_needed(count, heaps_orig);
     }
     leave_critical_section( &processHeap->critSection );
     return total;

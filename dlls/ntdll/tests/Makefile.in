@@ -10,6 +10,7 @@ C_SRCS = \
 	exception.c \
 	file.c \
 	generated.c \
+	heap.c \
 	info.c \
 	large_int.c \
 	om.c \

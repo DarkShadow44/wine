@@ -546,6 +546,11 @@ HANDLE thread_init(void)
         exit(1);
     }
 
+    if(!RtlCreateHeap(HEAP_SHARED | 0x00008000 | HEAP_GROWABLE, NULL, 0, 0, NULL, NULL))
+    {
+        ERR("failed to create the csrss heap\n");
+    }
+
     /* allocate user parameters */
     if (info_size)
     {
