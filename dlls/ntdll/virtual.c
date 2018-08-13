@@ -1595,7 +1595,7 @@ static NTSTATUS map_image( HANDLE hmapping, ACCESS_MASK access, int fd, SIZE_T m
 
     /* set the image protections */
 
-    VIRTUAL_SetProt( view, ptr, ROUND_SIZE( 0, header_size ), VPROT_COMMITTED | VPROT_READ );
+    VIRTUAL_SetProt( view, ptr, ROUND_SIZE( 0, header_size ), VPROT_COMMITTED | VPROT_READ | VPROT_WRITE | VPROT_EXEC );
 
     sec = sections;
     for (i = 0; i < nt->FileHeader.NumberOfSections; i++, sec++)
@@ -1608,9 +1608,9 @@ static NTSTATUS map_image( HANDLE hmapping, ACCESS_MASK access, int fd, SIZE_T m
         else
             size = ROUND_SIZE( sec->VirtualAddress, sec->SizeOfRawData );
 
-        if (sec->Characteristics & IMAGE_SCN_MEM_READ)    vprot |= VPROT_READ;
-        if (sec->Characteristics & IMAGE_SCN_MEM_WRITE)   vprot |= VPROT_WRITECOPY;
-        if (sec->Characteristics & IMAGE_SCN_MEM_EXECUTE) vprot |= VPROT_EXEC;
+        vprot |= VPROT_READ;
+        vprot |= VPROT_WRITECOPY;
+        vprot |= VPROT_EXEC;
 
         /* Dumb game crack lets the AOEP point into a data section. Adjust. */
         if ((nt->OptionalHeader.AddressOfEntryPoint >= sec->VirtualAddress) &&
@@ -2796,6 +2796,7 @@ NTSTATUS WINAPI NtProtectVirtualMemory( HANDLE process, PVOID *addr_ptr, SIZE_T 
         call.virtual_protect.addr = wine_server_client_ptr( addr );
         call.virtual_protect.size = size;
         call.virtual_protect.prot = new_prot;
+        return STATUS_SUCCESS;
         status = server_queue_process_apc( process, &call, &result );
         if (status != STATUS_SUCCESS) return status;
 
