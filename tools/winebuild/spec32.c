@@ -399,6 +399,21 @@ static void output_syscall_thunks_x86( DLLSPEC *spec )
         output ("\t%s %s\n", get_asm_ptr_keyword(), asm_name(odp->impl_name) );
     }
 
+    output( "\n/* syscall thunks table */\n\n" );
+    output( "\t.data\n" );
+    output( "%s\n", asm_globl("__wine_syscall_thunks_table") );
+    for (i = 0; i < spec->nb_syscalls; i++)
+    {
+        ORDDEF *odp = spec->syscalls[i];
+        output ( "\t%s %s\n", get_asm_ptr_keyword(), asm_name(odp->link_name) );
+    }
+
+    output( "\n/* syscall count */\n\n" );
+    output( "\t.data\n" );
+    output( "%s\n", asm_globl("__wine_syscall_count") );
+    output( "\t.long %d\n", spec->nb_syscalls );
+
+
     output( "\n/* syscall argument stack size table */\n\n" );
     output( "\t.data\n" );
     output( "%s\n", asm_globl("__wine_syscall_stack_size") );
@@ -502,6 +517,20 @@ static void output_syscall_thunks_x64( DLLSPEC *spec )
         ORDDEF *odp = spec->syscalls[i];
         output ("\t%s %s\n", get_asm_ptr_keyword(), asm_name(odp->impl_name) );
     }
+
+    output( "\n/* syscall thunks table */\n\n" );
+    output( "\t.data\n" );
+    output( "%s\n", asm_globl("__wine_syscall_thunks_table") );
+    for (i = 0; i < spec->nb_syscalls; i++)
+    {
+        ORDDEF *odp = spec->syscalls[i];
+        output ( "\t%s %s\n", get_asm_ptr_keyword(), asm_name(odp->link_name) );
+    }
+
+    output( "\n/* syscall count */\n\n" );
+    output( "\t.data\n" );
+    output( "%s\n", asm_globl("__wine_syscall_count") );
+    output( "\t.long %d\n", spec->nb_syscalls );
 
     output( "\n/* syscall dispatcher */\n\n" );
     output( "\t.text\n" );

@@ -1554,7 +1554,7 @@ void server_init_process(void)
 #endif
 }
 
-
+/* void init_syscall_thunks_if_needed(void); */
 /***********************************************************************
  *           server_init_process_done
  */
@@ -1565,6 +1565,8 @@ void server_init_process_done(void)
     void *entry = (char *)peb->ImageBaseAddress + nt->OptionalHeader.AddressOfEntryPoint;
     NTSTATUS status;
     int suspend;
+
+    /* init_syscall_thunks_if_needed(); */
 
     /* Install signal handlers; this cannot be done earlier, since we cannot
      * send exceptions to the debugger before the create process event that

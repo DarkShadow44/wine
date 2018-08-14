@@ -1734,7 +1734,90 @@ static void hidden_exports_init( const WCHAR *appname )
 
     NtClose( config_key );
 }
+#if 0
+extern void *__wine_syscall_thunks_table;
+extern DWORD __wine_syscall_count;
 
+void init_syscall_thunks_if_needed(void)
+{
+    static BOOL initialized = FALSE;
+    const int SYSCALL_THUNK_POS_RET = 19;
+
+    if (!initialized)
+    {
+        DWORD i;
+        LDR_MODULE *ntdll;
+        BOOL is_wow;
+        ULONG_PTR pbi;
+        char *data = NULL;
+        int data_size = 0;
+        int data_pos_syscall = 0;
+        int data_pos_ret = 0;
+        void **syscalls = &__wine_syscall_thunks_table;
+        WORD version = MAKEWORD(NtCurrentTeb()->Peb->OSMinorVersion, NtCurrentTeb()->Peb->OSMajorVersion);
+
+        NtQueryInformationProcess((HANDLE)~(ULONG_PTR)0, ProcessWow64Information, &pbi, sizeof(pbi), NULL );
+        is_wow = pbi != 0;
+
+       /* LdrFindEntryForAddress(module, &ntdll);
+
+        if (ntdll->BaseAddress != module)
+            return;
+
+        if (strncmp(name->Buffer, "Nt", 2) && strncmp(name->Buffer, "Zw", 2))
+            return; */
+
+        initialized = TRUE;
+
+#ifdef _WIN64
+#else
+        if (is_wow)
+        {
+            /*if (version == 0x0602)*/ /* Win 8, Win 8.1 */
+            {
+                static char data_win8[] =
+                {
+                    0xb8,    0,    0,    0,    0,               /* mov eax, SYSCALL             */
+                    0x64, 0xff, 0x15, 0xc0, 0x00, 0x00, 0x00,   /* call dword ptr fs:[0xc0]     */
+                    0xc2,    0,    0,                           /* ret 0x2c                     */
+                    0x90
+                };
+                data_size = sizeof(data_win8);
+                data = data_win8;
+                data_pos_syscall = 1;
+                data_pos_ret = 13;
+            }
+        }
+#endif
+        return;
+        if (data && data_size)
+        {
+            ERR("Initializing syscall thunks for current windows version! \n");
+
+            for (i = 0; i < __wine_syscall_count; i++)
+            {
+                char *syscall = syscalls[i];
+                SIZE_T protect_size = data_size;
+                void *protect_addr = syscall;
+                DWORD protect_old;
+                WORD ret;
+
+                memcpy(&ret, &syscall[SYSCALL_THUNK_POS_RET], 2);
+
+                NtProtectVirtualMemory((HANDLE)~(ULONG_PTR)0, &protect_addr, &protect_size, PAGE_EXECUTE_READWRITE, &protect_old);
+                memcpy(&data[data_pos_syscall], &i, 4);
+                memcpy(&data[data_pos_ret], &ret, 2);
+                memcpy(syscall, data, data_size);
+                NtProtectVirtualMemory((HANDLE)~(ULONG_PTR)0, &protect_addr, &protect_size, protect_old, &protect_old);
+
+                /*
+                ((void(*)())syscall)();
+                */
+            }
+        }
+    }
+}
+#endif
 
 /***********************************************************************
  *           is_hidden_export
