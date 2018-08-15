@@ -377,10 +377,7 @@ static void output_syscall_thunks_x86( DLLSPEC *spec )
         output_cfi( ".cfi_startproc" );
         output( "\t.byte 0xb8\n" );                               /* mov eax, SYSCALL */
         output( "\t.long %d\n", i );
-        output( "\t.byte 0x33,0xc9\n" );                          /* xor ecx, ecx */
-        output( "\t.byte 0x8d,0x54,0x24,0x04\n" );                /* lea edx, [esp + 4] */
         output( "\t.byte 0x64,0xff,0x15,0xc0,0x00,0x00,0x00\n" ); /* call dword ptr fs:[0C0h] */
-        output( "\t.byte 0x83,0xc4,0x04\n" );                     /* add esp, 4 */
         output( "\t.byte 0xc2\n" );                               /* ret X */
         output( "\t.short %d\n", get_args_size(odp) );
         output_cfi( ".cfi_endproc" );
@@ -429,6 +426,7 @@ static void output_syscall_thunks_x86( DLLSPEC *spec )
     output( "\t%s\n", func_declaration("__wine_syscall_dispatcher") );
     output( "%s\n", asm_globl("__wine_syscall_dispatcher") );
     output_cfi( ".cfi_startproc" );
+    output( "\t.byte 0x8d,0x54,0x24,0x08\n" );                /* lea edx, [esp + 8] */
     output( "\tpushl %%ebp\n" );
     output( "\tmovl %%esp,%%ebp\n" );
     output( "\tpushl %%esi\n" );
@@ -454,7 +452,7 @@ static void output_syscall_thunks_x86( DLLSPEC *spec )
     output( "\tpop %%edi\n" );
     output( "\tpop %%esi\n" );
     output( "\tleave\n" );
-    output( "\tjmp *(%%esp)\n" );
+    output( "\tret\n" );
     output_cfi( ".cfi_endproc" );
     output_function_size( "__wine_syscall_dispatcher" );
 }
