@@ -28,6 +28,7 @@ static const WCHAR tmp_prefix[] = {'t','s','t',0};
 
 typedef void (*mangle_func_proto)(const BYTE *input, int input_len, BYTE **output, int *output_len);
 
+
 static void read_all_from_handle(HANDLE handle, BYTE **str, int *len)
 {
     char buffer[4096];
@@ -61,6 +62,35 @@ static void write_to_handle(HANDLE handle, const BYTE *str, int len)
         bytes_written_sum += bytes_written;
     } while (bytes_written_sum < len);
 }
+
+static void mangle_unicode(const BYTE *input, int input_len, BYTE **output, int *output_len)
+{
+    WCHAR temp[200];
+    static BYTE buffer[200];
+    int count_wchar;
+
+    count_wchar = MultiByteToWideChar(GetConsoleCP(), 0, (char *)input, input_len, temp, ARRAY_SIZE(buffer));
+    *output_len = WideCharToMultiByte(GetConsoleCP(), 0, temp, count_wchar, (char *)buffer, ARRAY_SIZE(buffer), NULL, NULL);
+    *output = buffer;
+}
+
+static void mangle_unicode16(const BYTE *input, int input_len, BYTE **output, int *output_len)
+{
+    BYTE buffer[200];
+    WCHAR temp[200];
+    int buffer_count = 0;
+    int i;
+
+    /* Copy utf16le into a WCHAR array, stripping the BOM */
+    for (i = 2; i < input_len; i += 2)
+    {
+        temp[buffer_count++] = input[i] + (input[i + 1] << 8);
+    }
+
+    *output_len = WideCharToMultiByte(GetConsoleCP(), 0, temp, buffer_count, (char *)buffer, ARRAY_SIZE(buffer), NULL, NULL);
+    *output = buffer;
+}
+
 
 static void check_find_output(mangle_func_proto mangle_func, const BYTE *child_output, int child_output_len, const BYTE *out_expected, int out_expected_len, const char *file, int line)
 {
@@ -122,32 +152,28 @@ static void check_find_output(mangle_func_proto mangle_func, const BYTE *child_o
     heap_free(out_expected_copy);
 }
 
-static void mangle_unicode(const BYTE *input, int input_len, BYTE **output, int *output_len)
+static void make_expected_file_output(const BYTE *out_expected, int out_expected_len, WCHAR **files_to_create, int files_to_create_len, BYTE **file_expected, int *file_expected_len)
 {
-    WCHAR temp[200];
-    static BYTE buffer[200];
-    int count_wchar;
-
-    count_wchar = MultiByteToWideChar(GetConsoleCP(), 0, (char *)input, input_len, temp, ARRAY_SIZE(buffer));
-    *output_len = WideCharToMultiByte(GetConsoleCP(), 0, temp, count_wchar, (char *)buffer, ARRAY_SIZE(buffer), NULL, NULL);
-    *output = buffer;
-}
-
-static void mangle_unicode16(const BYTE *input, int input_len, BYTE **output, int *output_len)
-{
-    BYTE buffer[200];
-    WCHAR temp[200];
-    int buffer_count = 0;
+    static BYTE buffer[2048];
+    int buffer_pos = 0;
     int i;
 
-    /* Copy utf16le into a WCHAR array, stripping the BOM */
-    for (i = 2; i < input_len; i += 2)
+    for (i = 0; i < files_to_create_len; i++)
     {
-        temp[buffer_count++] = input[i] + (input[i + 1] << 8);
-    }
+        char filenameA[MAX_PATH];
+        char header[MAX_PATH + 20];
+        WideCharToMultiByte(CP_UTF8, 0, files_to_create[i], -1, filenameA, ARRAY_SIZE(filenameA), NULL, NULL);
+        CharUpperA(filenameA);
+        sprintf(header, "\r\n---------- %s\r\n", filenameA);
 
-    *output_len = WideCharToMultiByte(GetConsoleCP(), 0, temp, buffer_count, (char *)buffer, ARRAY_SIZE(buffer), NULL, NULL);
-    *output = buffer;
+        memcpy(buffer + buffer_pos, header, lstrlenA(header));
+        buffer_pos += lstrlenA(header);
+
+        memcpy(buffer + buffer_pos, out_expected, out_expected_len);
+        buffer_pos += out_expected_len;
+    }
+    *file_expected_len = buffer_pos;
+    *file_expected = buffer;
 }
 
 static void run_find_(const WCHAR *commandline, WCHAR *files_to_search,
@@ -209,6 +235,13 @@ static void run_find_(const WCHAR *commandline, WCHAR *files_to_search,
     GetExitCodeProcess(process_info.hProcess, &exitcode);
     CloseHandle(process_info.hProcess);
     CloseHandle(process_info.hThread);
+
+    if (files_to_create_len > 0)
+    {
+        BYTE *out_expected_file;
+        make_expected_file_output(out_expected, out_expected_len, files_to_create, files_to_create_len, &out_expected_file, &out_expected_len);
+        out_expected = out_expected_file;
+    }
 
     check_find_output(mangle_func, child_output, child_output_len, out_expected, out_expected_len, file, line);
 
@@ -303,7 +336,7 @@ static const BYTE str_en_utf8_bom[]       = { 0xEF,0xBB,0xBF,'e','n','t','e','s'
 static const BYTE str_en_utf8_nobom[]     = {                't','e','s','t','\r','\n' };
 
 static const WCHAR wstr_quoted_test[] = { '"','t', 'e', 's', 't','"',0 };
-static const WCHAR wstr_quoted_watashi_utf8[] = {'"',0xE7,0xA7,0x81,'"' };
+static const WCHAR wstr_quoted_watashi_utf8[] = {'"',0xE7,0xA7,0x81,'"',0 };
 
 static void test_unicode_support(void)
 {
@@ -338,7 +371,7 @@ static void test_unicode_support(void)
     /* Test unicode support in files */
 
     /* Test UTF-8 BOM */
-    run_find_files_bytes(wstr_quoted_test, path_tmp_default, str_en_utf8_nobom, str_empty, mangle_unicode, 0, path_tmp_default_array, 1);
+    run_find_files_bytes(wstr_quoted_test, path_tmp_default, str_en_utf8_nobom, str_en_utf8_nobom, mangle_unicode, 0, path_tmp_default_array, 1);
 }
 
 START_TEST(find)
