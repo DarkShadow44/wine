@@ -91,13 +91,29 @@ static void mangle_unicode16(const BYTE *input, int input_len, BYTE **output, in
     *output = buffer;
 }
 
+static char* copy_string_with_escaped_characters(const BYTE *str, int len)
+{
+    int i, pos;
+    char *copy = heap_alloc_zero(len * 4 + 1);
+
+    for (i = 0, pos = 0; i < len; i++)
+    {
+        if (str[i] && str[i] != '\r' && str[i] < 128)
+            copy[pos++] = str[i];
+        else
+        {
+            sprintf(&copy[pos], "\\x%02x", str[i]);
+            pos += 4;
+        }
+    }
+   return copy;
+}
 
 static void check_find_output(mangle_func_proto mangle_func, const BYTE *child_output, int child_output_len, const BYTE *out_expected, int out_expected_len, const char *file, int line)
 {
     BOOL strings_are_equal;
     char *child_output_copy;
     char *out_expected_copy;
-    int i, pos;
 
     if (mangle_func)
     {
@@ -114,31 +130,8 @@ static void check_find_output(mangle_func_proto mangle_func, const BYTE *child_o
     }
 
     /* Format strings for debug printing */
-    child_output_copy = heap_alloc_zero(child_output_len * 4 + 1);
-    out_expected_copy = heap_alloc_zero(out_expected_len * 4 + 1);
-
-    for (i = 0, pos = 0; i < child_output_len; i++)
-    {
-        if (child_output[i] && child_output[i] != '\r' && child_output[i] < 128)
-            child_output_copy[pos++] = child_output[i];
-        else
-        {
-            sprintf(&child_output_copy[pos], "\\x%02x", child_output[i]);
-            pos += 4;
-        }
-    }
-
-    for (i = 0, pos = 0; i < out_expected_len; i++)
-    {
-        if (out_expected[i] && out_expected[i] != '\r' && out_expected[i] < 128)
-            out_expected_copy[pos++] = out_expected[i];
-        else
-        {
-            sprintf(&out_expected_copy[pos], "\\x%02x", out_expected[i]);
-            pos += 4;
-        }
-
-    }
+    child_output_copy = copy_string_with_escaped_characters(child_output, child_output_len);
+    out_expected_copy = copy_string_with_escaped_characters(out_expected, out_expected_len);
 
     todo_wine_if(out_expected_len != 0)
     ok_(file, line)(strings_are_equal, "\n#################### Expected:\n"
@@ -176,12 +169,8 @@ static void make_expected_file_output(const BYTE *out_expected, int out_expected
     *file_expected = buffer;
 }
 
-static void run_find_(const WCHAR *commandline, WCHAR *files_to_search,
-        const BYTE *input, int input_len, const BYTE *out_expected, int out_expected_len, mangle_func_proto mangle_func,
-        int exitcode_expected, WCHAR **files_to_create, int files_to_create_len, const char *file, int line)
+static void run_process(WCHAR *cmd, const BYTE *input, int input_len, BYTE **child_output, int *child_output_len, DWORD *exitcode)
 {
-    static const WCHAR find_exe[] = { 'f','i','n','d','.','e','x','e',' ','%','s',' ','%','s',0 };
-    static const WCHAR str_empty[] = {0};
     HANDLE child_stdin_read;
     HANDLE child_stdout_write;
     HANDLE parent_stdin_write;
@@ -189,11 +178,6 @@ static void run_find_(const WCHAR *commandline, WCHAR *files_to_search,
     STARTUPINFOW startup_info = {0};
     SECURITY_ATTRIBUTES security_attributes;
     PROCESS_INFORMATION process_info = {0};
-    BYTE *child_output = NULL;
-    int child_output_len;
-    WCHAR cmd[4096];
-    DWORD exitcode;
-    int i;
 
     security_attributes.nLength = sizeof(SECURITY_ATTRIBUTES);
     security_attributes.bInheritHandle = TRUE;
@@ -211,7 +195,32 @@ static void run_find_(const WCHAR *commandline, WCHAR *files_to_search,
     startup_info.hStdError = NULL;
     startup_info.dwFlags |= STARTF_USESTDHANDLES;
 
-    wsprintfW(cmd, find_exe, commandline, files_to_search ? files_to_search : str_empty);
+    CreateProcessW(NULL, cmd, NULL, NULL, TRUE, 0, NULL, NULL, &startup_info, &process_info);
+    CloseHandle(child_stdin_read);
+    CloseHandle(child_stdout_write);
+
+    write_to_handle(parent_stdin_write, input, input_len);
+    CloseHandle(parent_stdin_write);
+
+    read_all_from_handle(parent_stdout_read, child_output, child_output_len);
+    CloseHandle(parent_stdout_read);
+
+    GetExitCodeProcess(process_info.hProcess, exitcode);
+    CloseHandle(process_info.hProcess);
+    CloseHandle(process_info.hThread);
+}
+
+static void run_find_(const WCHAR *commandline, WCHAR *files_to_search,
+        const BYTE *input, int input_len, const BYTE *out_expected, int out_expected_len, mangle_func_proto mangle_func,
+        int exitcode_expected, WCHAR **files_to_create, int files_to_create_len, const char *file, int line)
+{
+    static const WCHAR find_exe[] = { 'f','i','n','d','.','e','x','e',' ','%','s',' ','%','s',0 };
+    static const WCHAR str_empty[] = {0};
+    BYTE *child_output;
+    int child_output_len;
+    WCHAR cmd[4096];
+    DWORD exitcode;
+    int i;
 
     for (i = 0; i < files_to_create_len; i++)
     {
@@ -222,19 +231,12 @@ static void run_find_(const WCHAR *commandline, WCHAR *files_to_search,
         CloseHandle(handle_file);
     }
 
-    CreateProcessW(NULL, cmd, NULL, NULL, TRUE, 0, NULL, NULL, &startup_info, &process_info);
-    CloseHandle(child_stdin_read);
-    CloseHandle(child_stdout_write);
+    wsprintfW(cmd, find_exe, commandline, files_to_search ? files_to_search : str_empty);
 
-    write_to_handle(parent_stdin_write, input, input_len);
-    CloseHandle(parent_stdin_write);
+    run_process(cmd, input, input_len, &child_output, &child_output_len, &exitcode);
 
-    read_all_from_handle(parent_stdout_read, &child_output, &child_output_len);
-    CloseHandle(parent_stdout_read);
-
-    GetExitCodeProcess(process_info.hProcess, &exitcode);
-    CloseHandle(process_info.hProcess);
-    CloseHandle(process_info.hThread);
+    todo_wine_if(exitcode_expected  != 0)
+        ok_(file, line)(exitcode == exitcode_expected, "Expected exitcode %d, got %d\n", exitcode_expected, exitcode);
 
     if (files_to_create_len > 0)
     {
@@ -244,9 +246,6 @@ static void run_find_(const WCHAR *commandline, WCHAR *files_to_search,
     }
 
     check_find_output(mangle_func, child_output, child_output_len, out_expected, out_expected_len, file, line);
-
-    todo_wine_if(exitcode_expected  != 0)
-    ok_(file, line)(exitcode == exitcode_expected, "Expected exitcode %d, got %d\n", exitcode_expected, exitcode);
 
     for (i = 0; i < files_to_create_len; i++)
     {
