@@ -22,7 +22,13 @@
 #include "wine/heap.h"
 #include "wine/test.h"
 
-void read_all_from_handle(HANDLE handle, BYTE **str, int *len)
+static WCHAR path_tmp_default[MAX_PATH];
+static WCHAR *path_tmp_default_array[] = { path_tmp_default };
+static const WCHAR tmp_prefix[] = {'t','s','t',0};
+
+typedef void (*mangle_func_proto)(const BYTE *input, int input_len, BYTE **output, int *output_len);
+
+static void read_all_from_handle(HANDLE handle, BYTE **str, int *len)
 {
     char buffer[4096];
     DWORD bytes_read;
@@ -44,7 +50,7 @@ void read_all_from_handle(HANDLE handle, BYTE **str, int *len)
     *len = length;
 }
 
-void write_to_handle(HANDLE handle, const BYTE *str, int len)
+static void write_to_handle(HANDLE handle, const BYTE *str, int len)
 {
     DWORD bytes_written_sum = 0;
 
@@ -56,12 +62,19 @@ void write_to_handle(HANDLE handle, const BYTE *str, int len)
     } while (bytes_written_sum < len);
 }
 
-void check_find_output(const BYTE *child_output, int child_output_len, const BYTE *out_expected, int out_expected_len, const char *file, int line)
+static void check_find_output(mangle_func_proto mangle_func, const BYTE *child_output, int child_output_len, const BYTE *out_expected, int out_expected_len, const char *file, int line)
 {
     BOOL strings_are_equal;
     char *child_output_copy;
     char *out_expected_copy;
     int i, pos;
+
+    if (mangle_func)
+    {
+        BYTE *out_expected_mangled;
+        mangle_func(out_expected, out_expected_len, &out_expected_mangled, &out_expected_len);
+        out_expected = out_expected_mangled;
+    }
 
     if (child_output_len != out_expected_len)
         strings_are_equal = FALSE;
@@ -109,12 +122,40 @@ void check_find_output(const BYTE *child_output, int child_output_len, const BYT
     heap_free(out_expected_copy);
 }
 
-#define run_find_stdin_bytes(commandline, input, out_expected, exitcode_expected) \
-        run_find_stdin_(commandline, input, sizeof(input), out_expected, sizeof(out_expected), exitcode_expected, __FILE__, __LINE__)
-
-static void run_find_stdin_(const WCHAR *commandline, const BYTE *input, int input_len, const BYTE *out_expected, int out_expected_len, int exitcode_expected, const char *file, int line)
+static void mangle_unicode(const BYTE *input, int input_len, BYTE **output, int *output_len)
 {
-    static const WCHAR find_exe[] = { 'f','i','n','d','.','e','x','e',' ','%','s' };
+    WCHAR temp[200];
+    static BYTE buffer[200];
+    int count_wchar;
+
+    count_wchar = MultiByteToWideChar(GetConsoleCP(), 0, (char *)input, input_len, temp, ARRAY_SIZE(buffer));
+    *output_len = WideCharToMultiByte(GetConsoleCP(), 0, temp, count_wchar, (char *)buffer, ARRAY_SIZE(buffer), NULL, NULL);
+    *output = buffer;
+}
+
+static void mangle_unicode16(const BYTE *input, int input_len, BYTE **output, int *output_len)
+{
+    BYTE buffer[200];
+    WCHAR temp[200];
+    int buffer_count = 0;
+    int i;
+
+    /* Copy utf16le into a WCHAR array, stripping the BOM */
+    for (i = 2; i < input_len; i += 2)
+    {
+        temp[buffer_count++] = input[i] + (input[i + 1] << 8);
+    }
+
+    *output_len = WideCharToMultiByte(GetConsoleCP(), 0, temp, buffer_count, (char *)buffer, ARRAY_SIZE(buffer), NULL, NULL);
+    *output = buffer;
+}
+
+static void run_find_(const WCHAR *commandline, WCHAR *files_to_search,
+        const BYTE *input, int input_len, const BYTE *out_expected, int out_expected_len, mangle_func_proto mangle_func,
+        int exitcode_expected, WCHAR **files_to_create, int files_to_create_len, const char *file, int line)
+{
+    static const WCHAR find_exe[] = { 'f','i','n','d','.','e','x','e',' ','%','s',' ','%','s',0 };
+    static const WCHAR str_empty[] = {0};
     HANDLE child_stdin_read;
     HANDLE child_stdout_write;
     HANDLE parent_stdin_write;
@@ -126,6 +167,7 @@ static void run_find_stdin_(const WCHAR *commandline, const BYTE *input, int inp
     int child_output_len;
     WCHAR cmd[4096];
     DWORD exitcode;
+    int i;
 
     security_attributes.nLength = sizeof(SECURITY_ATTRIBUTES);
     security_attributes.bInheritHandle = TRUE;
@@ -143,7 +185,16 @@ static void run_find_stdin_(const WCHAR *commandline, const BYTE *input, int inp
     startup_info.hStdError = NULL;
     startup_info.dwFlags |= STARTF_USESTDHANDLES;
 
-    wsprintfW(cmd, find_exe, commandline);
+    wsprintfW(cmd, find_exe, commandline, files_to_search ? files_to_search : str_empty);
+
+    for (i = 0; i < files_to_create_len; i++)
+    {
+        DWORD written;
+        HANDLE handle_file = CreateFileW(files_to_create[i], GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 0, NULL);
+        ok(handle_file != NULL, "Failed to open file, %d\n", GetLastError());
+        WriteFile(handle_file, input, input_len, &written, NULL);
+        CloseHandle(handle_file);
+    }
 
     CreateProcessW(NULL, cmd, NULL, NULL, TRUE, 0, NULL, NULL, &startup_info, &process_info);
     CloseHandle(child_stdin_read);
@@ -159,66 +210,49 @@ static void run_find_stdin_(const WCHAR *commandline, const BYTE *input, int inp
     CloseHandle(process_info.hProcess);
     CloseHandle(process_info.hThread);
 
-    check_find_output(child_output, child_output_len, out_expected, out_expected_len, file, line);
+    check_find_output(mangle_func, child_output, child_output_len, out_expected, out_expected_len, file, line);
 
     todo_wine_if(exitcode_expected  != 0)
     ok_(file, line)(exitcode == exitcode_expected, "Expected exitcode %d, got %d\n", exitcode_expected, exitcode);
+
+    for (i = 0; i < files_to_create_len; i++)
+    {
+        BOOL success = DeleteFileW(files_to_create[i]);
+        ok(success, "DeleteFileW failed for %s: %d\n", wine_dbgstr_w(files_to_create[i]), GetLastError());
+    }
 
     heap_free(child_output);
 }
 
 #define run_find_stdin_str(commandline, input, out_expected, exitcode_expected) \
-        run_find_stdin_str_(commandline, input, lstrlenA(input), out_expected, lstrlenA(out_expected), exitcode_expected, __FILE__, __LINE__)
+        run_find_stdin_str_(commandline, input, out_expected, exitcode_expected, __FILE__, __LINE__)
 
-static void run_find_stdin_str_(const char *commandline, const char *input, int input_len, const char *out_expected, int out_expected_len, int exitcode_expected, const char *file, int line)
+static void run_find_stdin_str_(const char *commandline, const char *input, const char *out_expected, int exitcode_expected, const char *file, int line)
 {
-    WCHAR *commandlineW;
-    int len_commandlineW;
+    WCHAR commandlineW[200];
 
-    len_commandlineW = MultiByteToWideChar(CP_UTF8, 0, commandline, -1, 0, 0);
-    commandlineW = heap_alloc(len_commandlineW * sizeof(WCHAR));
-    MultiByteToWideChar(CP_UTF8, 0, commandline, -1, commandlineW, len_commandlineW);
+    MultiByteToWideChar(CP_UTF8, 0, commandline, -1, commandlineW, ARRAY_SIZE(commandlineW));
 
-    run_find_stdin_(commandlineW, (BYTE *)input, lstrlenA(input), (BYTE *)out_expected, lstrlenA(out_expected), exitcode_expected, file, line);
-
-    heap_free(commandlineW);
+    run_find_(commandlineW, NULL, (BYTE *)input, lstrlenA(input), (BYTE *)out_expected, lstrlenA(out_expected), NULL, exitcode_expected, NULL, 0, file, line);
 }
 
-#define run_find_unicode(commandline, input, exitcode_expected) \
-        run_find_unicode_(commandline, input, sizeof(input), exitcode_expected, __FILE__, __LINE__)
+#define run_find_stdin_bytes(commandline, input, out_expected, mangle_func, exitcode_expected) \
+        run_find_stdin_bytes_(commandline, input, sizeof(input), out_expected, sizeof(out_expected), mangle_func, exitcode_expected, __FILE__, __LINE__)
 
-static void run_find_unicode_(const WCHAR *commandline, const BYTE *input, int input_len, int exitcode_expected, const char* file, int line)
+static void run_find_stdin_bytes_(const WCHAR *commandline, const BYTE *input, int input_len, const BYTE *out_expected, int out_expected_len,
+        mangle_func_proto mangle_func, int exitcode_expected, const char *file, int line)
 {
-    WCHAR buffer[200];
-    BYTE expected[200];
-    int count_wchar;
-    int count_expected;
-
-    count_wchar = MultiByteToWideChar(GetConsoleCP(), 0, (char *)input, input_len, buffer, ARRAY_SIZE(expected));
-    count_expected = WideCharToMultiByte(GetConsoleCP(), 0, buffer, count_wchar, (char *)expected, ARRAY_SIZE(expected), NULL, NULL);
-
-    run_find_stdin_(commandline, input, input_len, expected, count_expected, exitcode_expected, file, line);
+    run_find_(commandline, NULL, input, input_len, out_expected, out_expected_len, mangle_func, exitcode_expected, NULL, 0, file, line);
 }
 
-#define run_find_unicode16(commandline, input) \
-        run_find_unicode16_(commandline, input, sizeof(input), __FILE__, __LINE__)
+#define run_find_files_bytes(commandline, files_to_search, input, out_expected, mangle_func, exitcode_expected, files_to_create, files_to_create_len) \
+        run_find_files_bytes_(commandline, files_to_search, input, sizeof(input), out_expected, sizeof(out_expected),  mangle_func, exitcode_expected, files_to_create, files_to_create_len,  __FILE__, __LINE__)
 
-static void run_find_unicode16_(const WCHAR *commandline, const BYTE *input, int input_len, const char* file, int line)
+static void run_find_files_bytes_(const WCHAR *commandline, WCHAR *files_to_search, const BYTE *input,
+        int input_len, const BYTE *out_expected, int out_expected_len, mangle_func_proto mangle_func,
+        int exitcode_expected, WCHAR **files_to_create, int files_to_create_len, const char *file, int line)
 {
-    BYTE expected[200];
-    WCHAR buffer[200];
-    int count_expected;
-    int buffer_count = 0;
-    int i;
-
-    /* Copy utf16le into a WCHAR array, stripping the BOM */
-    for (i = 2; i < input_len; i += 2)
-    {
-        buffer[buffer_count++] = input[i] + (input[i + 1] << 8);
-    }
-
-    count_expected = WideCharToMultiByte(GetConsoleCP(), 0, buffer, buffer_count, (char *)expected, ARRAY_SIZE(expected), NULL, NULL);
-    run_find_stdin_(commandline, input, input_len, expected, count_expected, 0, file, line);
+    run_find_(commandline, files_to_search, input, input_len, out_expected, out_expected_len, mangle_func, exitcode_expected, files_to_create, files_to_create_len, file, line);
 }
 
 static void test_errors(void)
@@ -271,40 +305,49 @@ static const BYTE str_en_utf8_nobom[]     = {                't','e','s','t','\r
 static const WCHAR wstr_quoted_test[] = { '"','t', 'e', 's', 't','"',0 };
 static const WCHAR wstr_quoted_watashi_utf8[] = {'"',0xE7,0xA7,0x81,'"' };
 
-
 static void test_unicode_support(void)
 {
     /* Test unicode support on STDIN */
 
     /* Test UTF-8 BOM */
-    run_find_unicode(wstr_quoted_test, str_en_utf8_nobom, 0);
-    run_find_unicode(wstr_quoted_test, str_en_utf8_bom,   0);
+    run_find_stdin_bytes(wstr_quoted_test, str_en_utf8_nobom, str_en_utf8_nobom, mangle_unicode, 0);
+    run_find_stdin_bytes(wstr_quoted_test, str_en_utf8_bom,   str_en_utf8_bom,   mangle_unicode, 0);
 
     /* Test russian character */
-    run_find_unicode(wstr_quoted_test, str_rus_utf8_bom,   0);
-    run_find_unicode(wstr_quoted_test, str_rus_utf8_nobom, 0);
+    run_find_stdin_bytes(wstr_quoted_test, str_rus_utf8_bom,   str_rus_utf8_bom,   mangle_unicode, 0);
+    run_find_stdin_bytes(wstr_quoted_test, str_rus_utf8_nobom, str_rus_utf8_nobom, mangle_unicode, 0);
 
     /* Test japanese characters */
-    run_find_unicode(wstr_quoted_test, str_jap_utf8_nobom,  0);
-    run_find_unicode(wstr_quoted_test, str_jap_utf8_bom,    0);
-    run_find_unicode(wstr_quoted_test, str_jap_shiftjis,    0);
+    run_find_stdin_bytes(wstr_quoted_test, str_jap_utf8_nobom, str_jap_utf8_nobom, mangle_unicode, 0);
+    run_find_stdin_bytes(wstr_quoted_test, str_jap_utf8_bom,   str_jap_utf8_bom,   mangle_unicode, 0);
+    run_find_stdin_bytes(wstr_quoted_test, str_jap_shiftjis,   str_jap_shiftjis,   mangle_unicode, 0);
 
     /* Test unsupported encodings */
-    run_find_stdin_bytes(wstr_quoted_test, str_jap_utf16le_nobom, str_empty, 1);
-    run_find_stdin_bytes(wstr_quoted_test, str_jap_utf16be_bom,   str_empty, 1);
-    run_find_stdin_bytes(wstr_quoted_test, str_jap_utf16be_nobom, str_empty, 1);
+    run_find_stdin_bytes(wstr_quoted_test, str_jap_utf16le_nobom, str_empty, NULL, 1);
+    run_find_stdin_bytes(wstr_quoted_test, str_jap_utf16be_bom,   str_empty, NULL, 1);
+    run_find_stdin_bytes(wstr_quoted_test, str_jap_utf16be_nobom, str_empty, NULL, 1);
 
     /* Test utf16le */
-    run_find_unicode16(wstr_quoted_test, str_jap_utf16le_bom);
+    run_find_stdin_bytes(wstr_quoted_test, str_jap_utf16le_bom, str_jap_utf16le_bom, mangle_unicode16, 0);
 
     /* Test unicode search parameter */
-    run_find_unicode(wstr_quoted_watashi_utf8, str_empty, 1);
-    run_find_unicode(wstr_quoted_watashi_utf8, str_empty, 1);
-    run_find_unicode(wstr_quoted_watashi_utf8, str_empty, 1);
+    run_find_stdin_bytes(wstr_quoted_watashi_utf8, str_jap_utf8_bom,   str_empty, mangle_unicode, 1);
+    run_find_stdin_bytes(wstr_quoted_watashi_utf8, str_jap_utf8_nobom, str_empty, mangle_unicode, 1);
+    run_find_stdin_bytes(wstr_quoted_watashi_utf8, str_jap_shiftjis,   str_empty, mangle_unicode, 1);
+
+    /* Test unicode support in files */
+
+    /* Test UTF-8 BOM */
+    run_find_files_bytes(wstr_quoted_test, path_tmp_default, str_en_utf8_nobom, str_empty, mangle_unicode, 0, path_tmp_default_array, 1);
 }
 
 START_TEST(find)
 {
+    WCHAR path_temp[MAX_PATH];
+
+    GetTempPathW(ARRAY_SIZE(path_temp), path_temp);
+    GetTempFileNameW(path_temp, tmp_prefix, 0, path_tmp_default);
+
     if (PRIMARYLANGID(GetUserDefaultUILanguage()) != LANG_ENGLISH)
     {
         skip("Error tests only work with english locale.\n");
