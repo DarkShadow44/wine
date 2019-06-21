@@ -987,15 +987,17 @@ static BOOL import_dll32( HMODULE module, const IMAGE_IMPORT_DESCRIPTOR *descr, 
         }
         else  /* import by name */
         {
+            char buffer[255];
             IMAGE_IMPORT_BY_NAME *pe_name;
             ULONG_PTR func;
             pe_name = get_rva( module, (DWORD)import_list->u1.AddressOfData );
+            sprintf(buffer, "wine32_%s", pe_name->Name);
             func = (ULONG_PTR)find_named_export( imp_mod, exports, exp_size,
-                                                                    (const char*)pe_name->Name,
-                                                                    pe_name->Hint, load_path );
+                                buffer,
+                                pe_name->Hint, load_path );
 
             thunk_list->u1.Function = create_import_stub(&input_stubs[pos], (void *)func);
-            if (!thunk_list->u1.Function)
+            if (!func)
             {
                 thunk_list->u1.Function = allocate_stub( name, (const char*)pe_name->Name );
                 WARN("No implementation for %s.%s imported from %s, setting to %x\n",

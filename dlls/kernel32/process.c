@@ -1261,8 +1261,9 @@ __ASM_GLOBAL_FUNC( call_process_entry2,
                     ".byte 0x55\n"              /* push ebp */
                     ".byte 0x89, 0xE5\n"        /* movl %esp,%ebp */
                     ".byte 0xFF, 0xD2\n"        /* call ebx (entry) */
-                    "leave\n\t"
-                    "ret"
+                    ".byte 0x5D\n"              /* pop ebp */
+                    ASM_SWITCH_x86_to_x64()
+                    "ret\n"
                   )
 
 static inline DWORD call_process_entry( PEB *peb, LPTHREAD_START_ROUTINE entry )
