@@ -65,9 +65,11 @@
 #include "wine/unicode.h"
 #include "wine/asm.h"
 #include "wine/debug.h"
+#include "wine/wine32.h"
 
 WINE_DEFAULT_DEBUG_CHANNEL(process);
 WINE_DECLARE_DEBUG_CHANNEL(relay);
+
 
 #ifdef __APPLE__
 extern char **__wine_get_main_environment(void);
@@ -1251,6 +1253,18 @@ __ASM_GLOBAL_FUNC( start_process_wrapper,
                    "pushl %eax\n\t"  /* entry */
                    "call " __ASM_NAME("start_process") )
 #else
+extern DWORD call_process_entry2( PEB *peb, LPTHREAD_START_ROUTINE entry );
+__ASM_GLOBAL_FUNC( call_process_entry2,
+                    ASM_SWITCH_x64_to_x86()
+                    ".byte 0x6A, 0x2B\n"        /* push   0x2B */
+                    ".byte 0x1F\n"              /* pop DS */
+                    ".byte 0x55\n"              /* push ebp */
+                    ".byte 0x89, 0xE5\n"        /* movl %esp,%ebp */
+                    ".byte 0xFF, 0xD2\n"        /* call ebx (entry) */
+                    "leave\n\t"
+                    "ret"
+                  )
+
 static inline DWORD call_process_entry( PEB *peb, LPTHREAD_START_ROUTINE entry )
 {
     return entry( peb );
@@ -1285,7 +1299,16 @@ void WINAPI start_process( LPTHREAD_START_ROUTINE entry, PEB *peb )
 
         SetLastError( 0 );  /* clear error code */
         if (being_debugged) DbgBreakPoint();
-        ExitThread( call_process_entry( peb, entry ));
+
+        if (is_wow64)
+        {
+            ExitThread( call_process_entry2( peb, entry ));
+        }
+        else
+        {
+            ExitThread( call_process_entry( peb, entry ));
+        }
+
     }
     __EXCEPT(UnhandledExceptionFilter)
     {
@@ -1482,6 +1505,8 @@ void * CDECL __wine_kernel_init(void)
         MESSAGE( "wine: %s", msg );
         ExitProcess( error );
     }
+
+    IsWow64Process( GetCurrentProcess(), &is_wow64 );
 
     if (!params->CurrentDirectory.Handle) chdir("/"); /* avoid locking removable devices */
 

@@ -44,6 +44,7 @@
 #include "wine/server.h"
 #include "ntdll_misc.h"
 #include "ddk/wdm.h"
+#include "wine/wine32.h"
 
 WINE_DEFAULT_DEBUG_CHANNEL(module);
 WINE_DECLARE_DEBUG_CHANNEL(relay);
@@ -102,6 +103,7 @@ typedef struct _wine_modref
     int                   alloc_deps;
     int                   nDeps;
     struct _wine_modref **deps;
+    int                   is64;
 } WINE_MODREF;
 
 /* info about the current builtin dll load */
@@ -717,14 +719,13 @@ static FARPROC find_named_export( HMODULE module, const IMAGE_EXPORT_DIRECTORY *
 
 }
 
-
 /*************************************************************************
  *		import_dll
  *
  * Import the dll specified by the given import descriptor.
  * The loader_section must be locked while calling this function.
  */
-static BOOL import_dll( HMODULE module, const IMAGE_IMPORT_DESCRIPTOR *descr, LPCWSTR load_path, WINE_MODREF **pwm )
+static BOOL import_dll64( HMODULE module, const IMAGE_IMPORT_DESCRIPTOR *descr, LPCWSTR load_path, WINE_MODREF **pwm )
 {
     NTSTATUS status;
     WINE_MODREF *wmImp;
@@ -855,6 +856,158 @@ static BOOL import_dll( HMODULE module, const IMAGE_IMPORT_DESCRIPTOR *descr, LP
         }
         import_list++;
         thunk_list++;
+    }
+
+done:
+    /* restore old protection of the import address table */
+    NtProtectVirtualMemory( NtCurrentProcess(), &protect_base, &protect_size, protect_old, &protect_old );
+    *pwm = wmImp;
+    return TRUE;
+}
+
+static BOOL import_dll32( HMODULE module, const IMAGE_IMPORT_DESCRIPTOR *descr, LPCWSTR load_path, WINE_MODREF **pwm )
+{
+    NTSTATUS status;
+    WINE_MODREF *wmImp;
+    HMODULE imp_mod;
+    const IMAGE_EXPORT_DIRECTORY *exports;
+    DWORD exp_size;
+    const IMAGE_THUNK_DATA32 *import_list;
+    IMAGE_THUNK_DATA32 *thunk_list;
+    WCHAR buffer[32];
+    const char *name = get_rva( module, descr->Name );
+    DWORD len = strlen(name);
+    PVOID protect_base;
+    DWORD count_imports = 0;
+    SIZE_T protect_size = 0;
+    DWORD protect_old;
+    char *input_stubs;
+    int pos;
+
+    thunk_list = get_rva( module, (DWORD)descr->FirstThunk );
+    if (descr->u.OriginalFirstThunk)
+        import_list = get_rva( module, (DWORD)descr->u.OriginalFirstThunk );
+    else
+        import_list = thunk_list;
+
+    if (!import_list->u1.Ordinal)
+    {
+        WARN( "Skipping unused import %s\n", name );
+        *pwm = NULL;
+        return TRUE;
+    }
+
+    while (len && name[len-1] == ' ') len--;  /* remove trailing spaces */
+
+    if (len * sizeof(WCHAR) < sizeof(buffer))
+    {
+        ascii_to_unicode( buffer, name, len );
+        buffer[len] = 0;
+        status = load_dll( load_path, buffer, 0, &wmImp );
+    }
+    else  /* need to allocate a larger buffer */
+    {
+        WCHAR *ptr = RtlAllocateHeap( GetProcessHeap(), 0, (len + 1) * sizeof(WCHAR) );
+        if (!ptr) return FALSE;
+        ascii_to_unicode( ptr, name, len );
+        ptr[len] = 0;
+        status = load_dll( load_path, ptr, 0, &wmImp );
+        RtlFreeHeap( GetProcessHeap(), 0, ptr );
+    }
+
+    if (status)
+    {
+        if (status == STATUS_DLL_NOT_FOUND)
+            ERR("Library %s (which is needed by %s) not found\n",
+                name, debugstr_w(current_modref->ldr.FullDllName.Buffer));
+        else
+            ERR("Loading library %s (which is needed by %s) failed (error %x).\n",
+                name, debugstr_w(current_modref->ldr.FullDllName.Buffer), status);
+        return FALSE;
+    }
+
+    /* unprotect the import address table since it can be located in
+     * readonly section */
+    while (import_list[count_imports].u1.Ordinal) count_imports++;
+    protect_base = thunk_list;
+    protect_size = count_imports * sizeof(*thunk_list);
+    NtProtectVirtualMemory( NtCurrentProcess(), &protect_base,
+                            &protect_size, PAGE_READWRITE, &protect_old );
+
+    imp_mod = wmImp->ldr.BaseAddress;
+    exports = RtlImageDirectoryEntryToData( imp_mod, TRUE, IMAGE_DIRECTORY_ENTRY_EXPORT, &exp_size );
+
+    if (!exports)
+    {
+        /* set all imported function to deadbeef */
+        while (import_list->u1.Ordinal)
+        {
+            if (IMAGE_SNAP_BY_ORDINAL(import_list->u1.Ordinal))
+            {
+                int ordinal = IMAGE_ORDINAL(import_list->u1.Ordinal);
+                WARN("No implementation for %s.%d", name, ordinal );
+                thunk_list->u1.Function = allocate_stub( name, IntToPtr(ordinal) );
+            }
+            else
+            {
+                IMAGE_IMPORT_BY_NAME *pe_name = get_rva( module, (DWORD)import_list->u1.AddressOfData );
+                WARN("No implementation for %s.%s", name, pe_name->Name );
+                thunk_list->u1.Function = allocate_stub( name, (const char*)pe_name->Name );
+            }
+            WARN(" imported from %s, allocating stub %x\n",
+                 debugstr_w(current_modref->ldr.FullDllName.Buffer),
+                 thunk_list->u1.Function );
+            import_list++;
+            thunk_list++;
+        }
+        goto done;
+    }
+
+    protect_size = count_imports * get_import_stub_size();
+    input_stubs = RtlAllocateHeap( GetProcessHeap(), 0, protect_size);
+    protect_base = input_stubs;
+    NtProtectVirtualMemory( NtCurrentProcess(), &protect_base, &protect_size, PAGE_EXECUTE_READWRITE, &protect_old );
+    pos = 0;
+    while (import_list->u1.Ordinal)
+    {
+        if (IMAGE_SNAP_BY_ORDINAL(import_list->u1.Ordinal))
+        {
+            int ordinal = IMAGE_ORDINAL(import_list->u1.Ordinal);
+
+            thunk_list->u1.Function = (ULONG_PTR)find_ordinal_export( imp_mod, exports, exp_size,
+                                                                      ordinal - exports->Base, load_path );
+            if (!thunk_list->u1.Function)
+            {
+                thunk_list->u1.Function = allocate_stub( name, IntToPtr(ordinal) );
+                WARN("No implementation for %s.%d imported from %s, setting to %x\n",
+                     name, ordinal, debugstr_w(current_modref->ldr.FullDllName.Buffer),
+                     thunk_list->u1.Function );
+            }
+            TRACE_(imports)("--- Ordinal %s.%d = %x\n", name, ordinal, thunk_list->u1.Function );
+        }
+        else  /* import by name */
+        {
+            IMAGE_IMPORT_BY_NAME *pe_name;
+            ULONG_PTR func;
+            pe_name = get_rva( module, (DWORD)import_list->u1.AddressOfData );
+            func = (ULONG_PTR)find_named_export( imp_mod, exports, exp_size,
+                                                                    (const char*)pe_name->Name,
+                                                                    pe_name->Hint, load_path );
+
+            thunk_list->u1.Function = create_import_stub(&input_stubs[pos], (void *)func);
+            if (!thunk_list->u1.Function)
+            {
+                thunk_list->u1.Function = allocate_stub( name, (const char*)pe_name->Name );
+                WARN("No implementation for %s.%s imported from %s, setting to %x\n",
+                     name, pe_name->Name, debugstr_w(current_modref->ldr.FullDllName.Buffer),
+                     thunk_list->u1.Function );
+            }
+            TRACE_(imports)("--- %s %s.%d = %x\n",
+                            pe_name->Name, name, pe_name->Hint, thunk_list->u1.Function);
+        }
+        import_list++;
+        thunk_list++;
+        pos += get_import_stub_size();
     }
 
 done:
@@ -1121,9 +1274,19 @@ static NTSTATUS fixup_imports( WINE_MODREF *wm, LPCWSTR load_path )
     status = STATUS_SUCCESS;
     for (i = 0; i < nb_imports; i++)
     {
+        int success;
         dep = wm->nDeps++;
 
-        if (!import_dll( wm->ldr.BaseAddress, &imports[i], load_path, &imp ))
+        if (wm->is64)
+        {
+            success = import_dll64( wm->ldr.BaseAddress, &imports[i], load_path, &imp );
+        }
+        else
+        {
+            success = import_dll32( wm->ldr.BaseAddress, &imports[i], load_path, &imp );
+        }
+
+        if (!success)
         {
             imp = NULL;
             status = STATUS_DLL_NOT_FOUND;
@@ -1155,6 +1318,7 @@ static WINE_MODREF *alloc_module( HMODULE hModule, const UNICODE_STRING *nt_name
     wm->ldr.Flags         = LDR_DONT_RESOLVE_REFS | (builtin ? LDR_WINE_INTERNAL : 0);
     wm->ldr.TlsIndex      = -1;
     wm->ldr.LoadCount     = 1;
+    wm->is64 = (nt->FileHeader.Machine != IMAGE_FILE_MACHINE_I386);
 
     RtlCreateUnicodeString( &wm->ldr.FullDllName, nt_name->Buffer + 4 /* \??\ prefix */ );
     if ((p = strrchrW( wm->ldr.FullDllName.Buffer, '\\' ))) p++;
@@ -1982,7 +2146,9 @@ static NTSTATUS perform_relocations( void *module, IMAGE_NT_HEADERS *nt, SIZE_T 
 /* convert PE header to 64-bit when loading a 32-bit IL-only module into a 64-bit process */
 static BOOL convert_to_pe64( HMODULE module, const pe_image_info_t *info )
 {
-    static const ULONG copy_dirs[] = { IMAGE_DIRECTORY_ENTRY_RESOURCE,
+    static const ULONG copy_dirs[] = { IMAGE_DIRECTORY_ENTRY_EXPORT,
+                                       IMAGE_DIRECTORY_ENTRY_IMPORT,
+                                       IMAGE_DIRECTORY_ENTRY_RESOURCE,
                                        IMAGE_DIRECTORY_ENTRY_SECURITY,
                                        IMAGE_DIRECTORY_ENTRY_BASERELOC,
                                        IMAGE_DIRECTORY_ENTRY_DEBUG,
@@ -2010,7 +2176,7 @@ static BOOL convert_to_pe64( HMODULE module, const pe_image_info_t *info )
     memcpy( &hdr32, &nt->OptionalHeader, hdr_size );
     memcpy( &hdr64, &hdr32, offsetof( IMAGE_OPTIONAL_HEADER64, SizeOfStackReserve ));
     hdr64.Magic               = IMAGE_NT_OPTIONAL_HDR64_MAGIC;
-    hdr64.AddressOfEntryPoint = 0;
+    hdr64.AddressOfEntryPoint = hdr32.AddressOfEntryPoint;
     hdr64.ImageBase           = hdr32.ImageBase;
     hdr64.SizeOfStackReserve  = hdr32.SizeOfStackReserve;
     hdr64.SizeOfStackCommit   = hdr32.SizeOfStackCommit;
@@ -2029,6 +2195,8 @@ static BOOL convert_to_pe64( HMODULE module, const pe_image_info_t *info )
 }
 #endif
 
+extern BOOL is_wow64;
+
 /* On WoW64 setups, an image mapping can also be created for the other 32/64 CPU */
 /* but it cannot necessarily be loaded as a dll, so we need some additional checks */
 static BOOL is_valid_binary( HMODULE module, const pe_image_info_t *info )
@@ -2041,7 +2209,13 @@ static BOOL is_valid_binary( HMODULE module, const pe_image_info_t *info )
            info->machine == IMAGE_FILE_MACHINE_ARMNT;
 #elif defined(_WIN64)  /* support 32-bit IL-only images on 64-bit */
 #ifdef __x86_64__
-    if (info->machine == IMAGE_FILE_MACHINE_AMD64) return TRUE;
+    if (info->machine == IMAGE_FILE_MACHINE_I386)
+    {
+        is_wow64 = TRUE;
+        ntdll_get_thread_data()->wow64_redir = is_wow64;
+        return TRUE;
+    }
+    if (info->machine == IMAGE_FILE_MACHINE_AMD64 || info->machine == IMAGE_FILE_MACHINE_I386) return TRUE;
 #else
     if (info->machine == IMAGE_FILE_MACHINE_ARM64) return TRUE;
 #endif
@@ -2161,6 +2335,11 @@ static NTSTATUS load_native_dll( LPCWSTR load_path, const UNICODE_STRING *nt_nam
     WINE_MODREF *wm;
     NTSTATUS status;
     const char *dll_type = (image_info->image_flags & IMAGE_FLAGS_WineBuiltin) ? "PE builtin" : "native";
+
+    if (image_info->machine == IMAGE_FILE_MACHINE_I386)
+    {
+        convert_to_pe64(*module, image_info);
+    }
 
     TRACE("Trying %s dll %s\n", dll_type, debugstr_us(nt_name) );
 
