@@ -1,0 +1,5 @@
+MODULE    = winethunks.dll
+IMPORTLIB = winethunks
+
+C_SRCS = \
+	main.c

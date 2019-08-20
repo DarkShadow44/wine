@@ -44,7 +44,7 @@
 #include "wine/server.h"
 #include "ntdll_misc.h"
 #include "ddk/wdm.h"
-#include "wine/wine32.h"
+#include "wine/winethunks.h"
 
 WINE_DEFAULT_DEBUG_CHANNEL(module);
 WINE_DECLARE_DEBUG_CHANNEL(relay);
@@ -987,17 +987,15 @@ static BOOL import_dll32( HMODULE module, const IMAGE_IMPORT_DESCRIPTOR *descr, 
         }
         else  /* import by name */
         {
-            char buffer[255];
             IMAGE_IMPORT_BY_NAME *pe_name;
             ULONG_PTR func;
             pe_name = get_rva( module, (DWORD)import_list->u1.AddressOfData );
-            sprintf(buffer, "wine32_%s", pe_name->Name);
             func = (ULONG_PTR)find_named_export( imp_mod, exports, exp_size,
-                                buffer,
-                                pe_name->Hint, load_path );
+                    (const char*)pe_name->Name,
+                    pe_name->Hint, load_path );
 
             thunk_list->u1.Function = create_import_stub(&input_stubs[pos], (void *)func);
-            if (!func)
+            if (!thunk_list->u1.Function)
             {
                 thunk_list->u1.Function = allocate_stub( name, (const char*)pe_name->Name );
                 WARN("No implementation for %s.%s imported from %s, setting to %x\n",
@@ -1006,6 +1004,11 @@ static BOOL import_dll32( HMODULE module, const IMAGE_IMPORT_DESCRIPTOR *descr, 
             }
             TRACE_(imports)("--- %s %s.%d = %x\n",
                             pe_name->Name, name, pe_name->Hint, thunk_list->u1.Function);
+        }
+
+        if (thunk_list->u1.Function)
+        {
+            thunk_list->u1.Function = wine_get_thunk_function(thunk_list->u1.Function);
         }
         import_list++;
         thunk_list++;

@@ -44,3 +44,6 @@ static DWORD create_import_stub(void *address, void *function)
 
     return (DWORD)(ULONGLONG)address + 8;
 }
+
+
+WINAPI DWORD wine_get_thunk_function(DWORD func);

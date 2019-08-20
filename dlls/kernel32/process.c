@@ -65,7 +65,7 @@
 #include "wine/unicode.h"
 #include "wine/asm.h"
 #include "wine/debug.h"
-#include "wine/wine32.h"
+#include "wine/winethunks.h"
 
 WINE_DEFAULT_DEBUG_CHANNEL(process);
 WINE_DECLARE_DEBUG_CHANNEL(relay);
