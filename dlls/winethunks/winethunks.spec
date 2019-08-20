@@ -1,1 +1,1 @@
-@ stdcall wine_get_thunk_function(long)
+@ stdcall wine_make_thunk_function(ptr long)

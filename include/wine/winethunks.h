@@ -32,7 +32,7 @@ static const unsigned char stub_buffer[] = {
 };
 const int stub_buffer_addr = 14;
 
-int get_import_stub_size(void)
+static int get_import_stub_size(void)
 {
     return sizeof(stub_buffer);
 }
@@ -46,4 +46,4 @@ static DWORD create_import_stub(void *address, void *function)
 }
 
 
-WINAPI DWORD wine_get_thunk_function(DWORD func);
+WINAPI DWORD wine_make_thunk_function(void* addr, DWORD func);

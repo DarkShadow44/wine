@@ -388,48 +388,6 @@ INT WINAPI MessageBoxA(HWND hWnd, LPCSTR text, LPCSTR title, UINT type)
     return MessageBoxExA(hWnd, text, title, type, LANG_NEUTRAL);
 }
 
-#define GetStack(var) \
-    asm("pop %%rax\n" \
-        "mov %%rax, %0\n" \
-        : "=m" (var) :: "rax");
-
-
-INT WINAPI wine32b_MessageBoxA(HWND hWnd, LPCSTR text, LPCSTR title, UINT type)
-{
-    /* void *rcx, *rdx, *r8, *r9; */
-    /*asm ("movq %%rcx, %0\n"
-         "movq %%rdx, %1\n"
-         "movq %%r8, %2\n"
-         "movq %%r9, %3\n"
-         : "=m" (rcx), "=m" (rdx), "=m" (r8), "=m" (r9)
-         ::);*/
-
-    return MessageBoxExA(hWnd, text, title, type, LANG_NEUTRAL);
-}
-
-extern WINAPI void wine32_MessageBoxA( PEB *peb, LPTHREAD_START_ROUTINE entry );
-__ASM_GLOBAL_FUNC( wine32_MessageBoxA,
-        "push %rbp\n"
-        "mov %rsp, %rbp\n"
-        "movl 0x14(%rsp), %ecx \n"
-        "movl 0x18(%rsp), %edx \n"
-        "movl 0x1C(%rsp), %r8d \n"
-        "movl 0x20(%rsp), %r9d \n"
-        "sub $0x100, %rsp\n"
-        "call " __ASM_NAME("wine32b_MessageBoxA") "\n"
-        "add $0x100, %rsp\n"
-        "pop %rbp\n"
-        "movl 0x00(%rsp), %ecx \n"
-        "movl 0x04(%rsp), %edx \n"
-        "movl 0x08(%rsp), %r8d \n"
-        "addq $0x10, %rsp\n"
-        "movl %ecx, 0x00(%rsp) \n"
-        "movl %edx, 0x04(%rsp) \n"
-        "movl %r8d, 0x08(%rsp) \n"
-        "ret\n"
-)
-
-
 
 /**************************************************************************
  *		MessageBoxW (USER32.@)

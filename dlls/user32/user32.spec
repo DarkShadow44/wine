@@ -527,7 +527,6 @@
 @ stub MenuWindowProcW
 @ stdcall MessageBeep(long)
 @ stdcall MessageBoxA(long str str long)
-@ stdcall wine32_MessageBoxA()
 @ stdcall MessageBoxExA(long str str long long)
 @ stdcall MessageBoxExW(long wstr wstr long long)
 @ stdcall MessageBoxIndirectA(ptr)

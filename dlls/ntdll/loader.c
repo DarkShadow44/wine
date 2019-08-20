@@ -970,13 +970,14 @@ static BOOL import_dll32( HMODULE module, const IMAGE_IMPORT_DESCRIPTOR *descr, 
     pos = 0;
     while (import_list->u1.Ordinal)
     {
+        ULONG_PTR func;
         if (IMAGE_SNAP_BY_ORDINAL(import_list->u1.Ordinal))
         {
             int ordinal = IMAGE_ORDINAL(import_list->u1.Ordinal);
 
-            thunk_list->u1.Function = (ULONG_PTR)find_ordinal_export( imp_mod, exports, exp_size,
+            func = (ULONG_PTR)find_ordinal_export( imp_mod, exports, exp_size,
                                                                       ordinal - exports->Base, load_path );
-            if (!thunk_list->u1.Function)
+            if (!func)
             {
                 thunk_list->u1.Function = allocate_stub( name, IntToPtr(ordinal) );
                 WARN("No implementation for %s.%d imported from %s, setting to %x\n",
@@ -988,14 +989,12 @@ static BOOL import_dll32( HMODULE module, const IMAGE_IMPORT_DESCRIPTOR *descr, 
         else  /* import by name */
         {
             IMAGE_IMPORT_BY_NAME *pe_name;
-            ULONG_PTR func;
             pe_name = get_rva( module, (DWORD)import_list->u1.AddressOfData );
             func = (ULONG_PTR)find_named_export( imp_mod, exports, exp_size,
                     (const char*)pe_name->Name,
                     pe_name->Hint, load_path );
 
-            thunk_list->u1.Function = create_import_stub(&input_stubs[pos], (void *)func);
-            if (!thunk_list->u1.Function)
+            if (!func)
             {
                 thunk_list->u1.Function = allocate_stub( name, (const char*)pe_name->Name );
                 WARN("No implementation for %s.%s imported from %s, setting to %x\n",
@@ -1006,9 +1005,10 @@ static BOOL import_dll32( HMODULE module, const IMAGE_IMPORT_DESCRIPTOR *descr, 
                             pe_name->Name, name, pe_name->Hint, thunk_list->u1.Function);
         }
 
-        if (thunk_list->u1.Function)
+        if (func)
         {
-            thunk_list->u1.Function = wine_get_thunk_function(thunk_list->u1.Function);
+
+            thunk_list->u1.Function = wine_make_thunk_function(&input_stubs[pos], func);
         }
         import_list++;
         thunk_list++;
