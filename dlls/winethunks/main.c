@@ -2,16 +2,14 @@
 #include "wine/winethunks.h"
 #include "user32.h"
 
-INT WINAPI (*pMessageBoxA)(HWND hWnd, LPCSTR text, LPCSTR title, UINT type);
+static BOOL initialized = FALSE;
 
-INT WINAPI wine32b_MessageBoxA(HWND hWnd, LPCSTR text, LPCSTR title, UINT type)
+WINAPI DWORD wine_make_thunk_function(void *addr, DWORD func)
 {
-    pMessageBoxA = GetProcAddress(LoadLibraryA("user32"), "MessageBoxA");
-    return pMessageBoxA(hWnd, text, title, type);
-}
-
-
-WINAPI DWORD wine_make_thunk_function(void* addr, DWORD func)
-{
+    if (!initialized)
+    {
+        initialized = TRUE;
+        init_user32();
+    }
     return create_import_stub(addr, wine32a_MessageBoxA);
 }
