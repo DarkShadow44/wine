@@ -1,7 +1,7 @@
 #include "windows.h"
 #include "wine/asm.h"
 #include "wine/debug.h"
-WINE_DECLARE_DEBUG_CHANNEL(thunks);
+WINE_DEFAULT_DEBUG_CHANNEL(thunks);
 
 static WINAPI INT (*pMessageBoxA)(HWND, LPCSTR, LPCSTR, UINT);
 static WINAPI INT (*pMessageBoxW)(HWND, LPCWSTR, LPCWSTR, UINT);
@@ -14,7 +14,7 @@ static WINAPI INT (*pMessageBoxIndirectW)(LPMSGBOXPARAMSW);
 
 extern WINAPI INT wine32b_MessageBoxA(HWND hWnd, LPCSTR text, LPCSTR title, UINT type)
 {
-	TRACE_(thunks)("Enter MessageBoxA\n");
+	TRACE("Enter MessageBoxA\n");
 	return pMessageBoxA(hWnd, text, title, type);
 }
 
@@ -42,7 +42,7 @@ __ASM_GLOBAL_FUNC(wine32a_MessageBoxA,
 
 extern WINAPI INT wine32b_MessageBoxW(HWND hwnd, LPCWSTR text, LPCWSTR title, UINT type)
 {
-	TRACE_(thunks)("Enter\n");
+	TRACE("Enter MessageBoxW\n");
 	return pMessageBoxW(hwnd, text, title, type);
 }
 
@@ -70,7 +70,7 @@ __ASM_GLOBAL_FUNC(wine32a_MessageBoxW,
 
 extern WINAPI INT wine32b_MessageBoxExA(HWND hWnd, LPCSTR text, LPCSTR title, UINT type, WORD langid)
 {
-	TRACE_(thunks)("Enter MessageBoxExA\n");
+	TRACE("Enter MessageBoxExA\n");
 	return pMessageBoxExA(hWnd, text, title, type, langid);
 }
 
@@ -98,7 +98,7 @@ __ASM_GLOBAL_FUNC(wine32a_MessageBoxExA,
 
 extern WINAPI INT wine32b_MessageBoxExW(HWND hWnd, LPCWSTR text, LPCWSTR title, UINT type, WORD langid)
 {
-	TRACE_(thunks)("Enter MessageBoxExW\n");
+	TRACE("Enter MessageBoxExW\n");
 	return pMessageBoxExW(hWnd, text, title, type, langid);
 }
 
@@ -126,7 +126,7 @@ __ASM_GLOBAL_FUNC(wine32a_MessageBoxExW,
 
 extern WINAPI INT wine32b_MessageBoxTimeoutA(HWND hWnd, LPCSTR text, LPCSTR title, UINT type, WORD langid, DWORD timeout)
 {
-	TRACE_(thunks)("Enter MessageBoxTimeoutA\n");
+	TRACE("Enter MessageBoxTimeoutA\n");
 	return pMessageBoxTimeoutA(hWnd, text, title, type, langid, timeout);
 }
 
@@ -154,7 +154,7 @@ __ASM_GLOBAL_FUNC(wine32a_MessageBoxTimeoutA,
 
 extern WINAPI INT wine32b_MessageBoxTimeoutW(HWND hWnd, LPCWSTR text, LPCWSTR title, UINT type, WORD langid, DWORD timeout)
 {
-	TRACE_(thunks)("Enter MessageBoxTimeoutW\n");
+	TRACE("Enter MessageBoxTimeoutW\n");
 	return pMessageBoxTimeoutW(hWnd, text, title, type, langid, timeout);
 }
 
@@ -182,7 +182,7 @@ __ASM_GLOBAL_FUNC(wine32a_MessageBoxTimeoutW,
 
 extern WINAPI INT wine32b_MessageBoxIndirectA(LPMSGBOXPARAMSA msgbox)
 {
-	TRACE_(thunks)("Enter MessageBoxIndirectA\n");
+	TRACE("Enter MessageBoxIndirectA\n");
 	return pMessageBoxIndirectA(msgbox);
 }
 
@@ -207,7 +207,7 @@ __ASM_GLOBAL_FUNC(wine32a_MessageBoxIndirectA,
 
 extern WINAPI INT wine32b_MessageBoxIndirectW(LPMSGBOXPARAMSW msgbox)
 {
-	TRACE_(thunks)("Enter MessageBoxIndirectW\n");
+	TRACE("Enter MessageBoxIndirectW\n");
 	return pMessageBoxIndirectW(msgbox);
 }
 
@@ -230,7 +230,9 @@ __ASM_GLOBAL_FUNC(wine32a_MessageBoxIndirectW,
 	"ret \n"
 )
 
-void init_user32(void)
+static BOOL initialized = FALSE;
+
+void wine_thunk_initialize_user32(void)
 {
 	HMODULE library = LoadLibraryA("user32.dll");
 	pMessageBoxA = (void *)GetProcAddress(library, "MessageBoxA");
@@ -241,4 +243,31 @@ void init_user32(void)
 	pMessageBoxTimeoutW = (void *)GetProcAddress(library, "MessageBoxTimeoutW");
 	pMessageBoxIndirectA = (void *)GetProcAddress(library, "MessageBoxIndirectA");
 	pMessageBoxIndirectW = (void *)GetProcAddress(library, "MessageBoxIndirectW");
+	initialized = TRUE;
+}
+
+void* wine_thunk_get_for_user32(void *func)
+{
+	if (!initialized)
+		return NULL;
+
+	if (func == pMessageBoxA)
+		return wine32a_MessageBoxA;
+	if (func == pMessageBoxW)
+		return wine32a_MessageBoxW;
+	if (func == pMessageBoxExA)
+		return wine32a_MessageBoxExA;
+	if (func == pMessageBoxExW)
+		return wine32a_MessageBoxExW;
+	if (func == pMessageBoxTimeoutA)
+		return wine32a_MessageBoxTimeoutA;
+	if (func == pMessageBoxTimeoutW)
+		return wine32a_MessageBoxTimeoutW;
+	if (func == pMessageBoxIndirectA)
+		return wine32a_MessageBoxIndirectA;
+	if (func == pMessageBoxIndirectW)
+		return wine32a_MessageBoxIndirectW;
+
+	ERR("Missing thunk!\n");
+	return NULL;
 }

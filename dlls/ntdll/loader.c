@@ -970,12 +970,12 @@ static BOOL import_dll32( HMODULE module, const IMAGE_IMPORT_DESCRIPTOR *descr, 
     pos = 0;
     while (import_list->u1.Ordinal)
     {
-        ULONG_PTR func;
+        void *func;
         if (IMAGE_SNAP_BY_ORDINAL(import_list->u1.Ordinal))
         {
             int ordinal = IMAGE_ORDINAL(import_list->u1.Ordinal);
 
-            func = (ULONG_PTR)find_ordinal_export( imp_mod, exports, exp_size,
+            func = find_ordinal_export( imp_mod, exports, exp_size,
                                                                       ordinal - exports->Base, load_path );
             if (!func)
             {
@@ -990,7 +990,7 @@ static BOOL import_dll32( HMODULE module, const IMAGE_IMPORT_DESCRIPTOR *descr, 
         {
             IMAGE_IMPORT_BY_NAME *pe_name;
             pe_name = get_rva( module, (DWORD)import_list->u1.AddressOfData );
-            func = (ULONG_PTR)find_named_export( imp_mod, exports, exp_size,
+            func = find_named_export( imp_mod, exports, exp_size,
                     (const char*)pe_name->Name,
                     pe_name->Hint, load_path );
 
@@ -2930,6 +2930,27 @@ done:
     return status;
 }
 
+static void init_dll (UNICODE_STRING name)
+{
+    static BOOL initialized = FALSE;
+    ANSI_STRING ansi_name;
+
+    RtlUnicodeStringToAnsiString(&ansi_name, &name, TRUE);
+    if (strcasecmp(ansi_name.Buffer, "kernelbase.dll")
+            && strcasecmp(ansi_name.Buffer, "kernel32.dll")
+            && strcasecmp(ansi_name.Buffer, "winethunks.dll"))
+    {
+        if (!initialized)
+        {
+            initialized = TRUE;
+            wine_thunk_initialize_any("kernelbase.dll");
+            wine_thunk_initialize_any("kernel32.dll");
+        }
+        wine_thunk_initialize_any(ansi_name.Buffer);
+    }
+
+    RtlFreeAnsiString(&ansi_name);
+}
 
 /***********************************************************************
  *	load_dll  (internal)
@@ -3057,7 +3078,10 @@ static NTSTATUS load_dll( LPCWSTR load_path, LPCWSTR libname, DWORD flags, WINE_
 
 done:
     if (nts == STATUS_SUCCESS)
+    {
+        init_dll((*pwm)->ldr.BaseDllName);
         TRACE("Loaded module %s at %p\n", debugstr_us(&nt_name), (*pwm)->ldr.BaseAddress);
+    }
     else
         WARN("Failed to load module %s; status=%x\n", debugstr_w(libname), nts);
 

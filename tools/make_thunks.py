@@ -46,11 +46,9 @@ def get_makefile_sources(path):
 # 4 - param 1
 # 4 - param 2
 # ...
-def make_thunk_callingconvention_32_to_64_a(contents_source, contents_include, node):
+def make_thunk_callingconvention_32_to_64_a(contents_source, node):
 	funcname = node.spelling
 	num_params = len(list(node.get_arguments()))
-	contents_include.append(f'WINAPI void wine32a_{funcname}(void);')
-	contents_include.append("")
 	contents_source.append(f'extern WINAPI void wine32a_{funcname}(void);')
 	contents_source.append(f'__ASM_GLOBAL_FUNC(wine32a_{funcname},')
 	#Setup own stackframe
@@ -86,13 +84,13 @@ def make_thunk_callingconvention_32_to_64_a(contents_source, contents_include, n
 	contents_source.append(")")
 	contents_source.append("")
 
-def make_thunk_callingconvention_32_to_64_b(contents_source, contents_include, node):
+def make_thunk_callingconvention_32_to_64_b(contents_source, node):
 	funcname = node.spelling
 	arguments_decl = [f'{arg.type.spelling} {arg.spelling}' for arg in node.get_arguments()]
 	arguments_calling = [f'{arg.spelling}' for arg in node.get_arguments()]
 	contents_source.append(f'extern WINAPI {node.result_type.spelling} wine32b_{funcname}({", ".join(arguments_decl)})')
 	contents_source.append('{')
-	contents_source.append(f'\tTRACE_(thunks)("Enter {funcname}\\n");')
+	contents_source.append(f'\tTRACE("Enter {funcname}\\n");')
 	contents_source.append(f'\treturn p{funcname}({", ".join(arguments_calling)});')
 	contents_source.append('}')
 	contents_source.append("")
@@ -106,7 +104,7 @@ def find_typerefs(node, ret_nodes, funcs, source):
 	for c in node.get_children():
 		find_typerefs(c, ret_nodes, funcs, source)
 
-def handle_dll_source(dll_path, source, funcs, contents_source, contents_include, ret_func_pointers):
+def handle_dll_source(dll_path, source, funcs, contents_source, ret_func_pointers):
 	path_file = dll_path + "/" + source
 
 	index = clang.cindex.Index.create()
@@ -128,8 +126,8 @@ def handle_dll_source(dll_path, source, funcs, contents_source, contents_include
 
 	for node in nodes:
 		print(node.displayname + " " + str(node.location.file) + ":" + str(node.location.line) )
-		make_thunk_callingconvention_32_to_64_b(contents_source, contents_include, node)
-		make_thunk_callingconvention_32_to_64_a(contents_source, contents_include, node)
+		make_thunk_callingconvention_32_to_64_b(contents_source, node)
+		make_thunk_callingconvention_32_to_64_a(contents_source, node)
 
 def handle_dll(name):
 	dll_path = "../dlls/" + name
@@ -140,9 +138,8 @@ def handle_dll(name):
 	contents_source.append('#include "windows.h"');
 	contents_source.append('#include "wine/asm.h"');
 	contents_source.append('#include "wine/debug.h"')
-	contents_source.append('WINE_DECLARE_DEBUG_CHANNEL(thunks);')
+	contents_source.append('WINE_DEFAULT_DEBUG_CHANNEL(thunks);')
 	contents_source.append("")
-	contents_include = []
 
 	funcs = get_specfile_funcs(path_spec)
 	sources = get_makefile_sources(path_makefile)
@@ -151,14 +148,32 @@ def handle_dll(name):
 	for source in sources:
 		if not source.endswith("msgbox.c"):
 			continue
-		handle_dll_source(dll_path, source, funcs, contents_source, contents_include, ret_func_pointers)
+		handle_dll_source(dll_path, source, funcs, contents_source, ret_func_pointers)
 
-		# Make init function
-	contents_source.append(f'void init_{name}(void)')
+	# Make init function
+	contents_source.append('static BOOL initialized = FALSE;')
+	contents_source.append("")
+	contents_source.append(f'void wine_thunk_initialize_{name}(void)')
 	contents_source.append('{')
 	contents_source.append(f'\tHMODULE library = LoadLibraryA("{name}.dll");')
 	for func in ret_func_pointers:
 		contents_source.append(f'\tp{func} = (void *)GetProcAddress(library, "{func}");')
+	contents_source.append('\tinitialized = TRUE;')
+	contents_source.append('}')
+	contents_source.append("")
+
+	# Make get function
+	contents_source.append(f'void* wine_thunk_get_for_{name}(void *func)')
+	contents_source.append('{')
+	contents_source.append('\tif (!initialized)')
+	contents_source.append('\t\treturn NULL;')
+	contents_source.append("")
+	for func in ret_func_pointers:
+		contents_source.append(f'\tif (func == p{func})')
+		contents_source.append(f'\t\treturn wine32a_{func};')
+	contents_source.append("")
+	contents_source.append('\tERR("Missing thunk!\\n");')
+	contents_source.append('\treturn NULL;')
 	contents_source.append('}')
 	contents_source.append("")
 
@@ -166,9 +181,50 @@ def handle_dll(name):
 	file_source.write('\n'.join(contents_source))
 	file_source.close()
 
-	file_include = open(f'../dlls/winethunks/{name}.h', 'w')
-	file_include.write('\n'.join(contents_include))
-	file_include.close()
+def handle_all_dlls():
+	dlls = []
+	dlls.append("user32")
+	
+	for dll in dlls:
+		handle_dll(dll)
+
+	contents_shared = []
+	contents_shared.append('#include <windows.h>')
+	contents_shared.append("")
+
+	for dll in dlls:
+		contents_shared.append(f'void* wine_thunk_get_for_{dll}(void *func);')
+	contents_shared.append("")
+
+	# wine_thunk_get_for_any
+	contents_shared.append('WINAPI void *wine_thunk_get_for_any(void *func)')
+	contents_shared.append('{')
+	contents_shared.append('\tvoid *ret;')
+	for dll in dlls:
+		contents_shared.append(f'\tif ((ret = wine_thunk_get_for_{dll}(func)) != NULL)')
+		contents_shared.append(f'\t\treturn ret;')
+	contents_shared.append("")
+	contents_shared.append('\treturn func;')
+	contents_shared.append('}')
+	contents_shared.append("")
+
+	for dll in dlls:
+		contents_shared.append(f'void* wine_thunk_initialize_{dll}(void);')
+	contents_shared.append("")
+
+	# wine_thunk_initialize_dll
+	contents_shared.append('WINAPI void wine_thunk_initialize_any(const char *dll)')
+	contents_shared.append('{')
+	for dll in dlls:
+		contents_shared.append(f'\tif (!strcasecmp("{dll}.dll", dll))')
+		contents_shared.append(f'\t\twine_thunk_initialize_{dll}();')
+	contents_shared.append("")
+	contents_shared.append('}')
+	contents_shared.append("")
+	
+	file_source = open(f'../dlls/winethunks/winethunks_shared.c', 'w')
+	file_source.write('\n'.join(contents_shared))
+	file_source.close()
 
 
-handle_dll("user32")
+handle_all_dlls()
