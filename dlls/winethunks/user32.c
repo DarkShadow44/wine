@@ -1,5 +1,7 @@
 #include "windows.h"
 #include "wine/asm.h"
+#include "wine/debug.h"
+WINE_DECLARE_DEBUG_CHANNEL(thunks);
 
 static WINAPI INT (*pMessageBoxA)(HWND, LPCSTR, LPCSTR, UINT);
 static WINAPI INT (*pMessageBoxW)(HWND, LPCWSTR, LPCWSTR, UINT);
@@ -12,6 +14,7 @@ static WINAPI INT (*pMessageBoxIndirectW)(LPMSGBOXPARAMSW);
 
 extern WINAPI INT wine32b_MessageBoxA(HWND hWnd, LPCSTR text, LPCSTR title, UINT type)
 {
+	TRACE_(thunks)("Enter MessageBoxA\n");
 	return pMessageBoxA(hWnd, text, title, type);
 }
 
@@ -39,6 +42,7 @@ __ASM_GLOBAL_FUNC(wine32a_MessageBoxA,
 
 extern WINAPI INT wine32b_MessageBoxW(HWND hwnd, LPCWSTR text, LPCWSTR title, UINT type)
 {
+	TRACE_(thunks)("Enter\n");
 	return pMessageBoxW(hwnd, text, title, type);
 }
 
@@ -66,6 +70,7 @@ __ASM_GLOBAL_FUNC(wine32a_MessageBoxW,
 
 extern WINAPI INT wine32b_MessageBoxExA(HWND hWnd, LPCSTR text, LPCSTR title, UINT type, WORD langid)
 {
+	TRACE_(thunks)("Enter MessageBoxExA\n");
 	return pMessageBoxExA(hWnd, text, title, type, langid);
 }
 
@@ -93,6 +98,7 @@ __ASM_GLOBAL_FUNC(wine32a_MessageBoxExA,
 
 extern WINAPI INT wine32b_MessageBoxExW(HWND hWnd, LPCWSTR text, LPCWSTR title, UINT type, WORD langid)
 {
+	TRACE_(thunks)("Enter MessageBoxExW\n");
 	return pMessageBoxExW(hWnd, text, title, type, langid);
 }
 
@@ -120,6 +126,7 @@ __ASM_GLOBAL_FUNC(wine32a_MessageBoxExW,
 
 extern WINAPI INT wine32b_MessageBoxTimeoutA(HWND hWnd, LPCSTR text, LPCSTR title, UINT type, WORD langid, DWORD timeout)
 {
+	TRACE_(thunks)("Enter MessageBoxTimeoutA\n");
 	return pMessageBoxTimeoutA(hWnd, text, title, type, langid, timeout);
 }
 
@@ -147,6 +154,7 @@ __ASM_GLOBAL_FUNC(wine32a_MessageBoxTimeoutA,
 
 extern WINAPI INT wine32b_MessageBoxTimeoutW(HWND hWnd, LPCWSTR text, LPCWSTR title, UINT type, WORD langid, DWORD timeout)
 {
+	TRACE_(thunks)("Enter MessageBoxTimeoutW\n");
 	return pMessageBoxTimeoutW(hWnd, text, title, type, langid, timeout);
 }
 
@@ -174,6 +182,7 @@ __ASM_GLOBAL_FUNC(wine32a_MessageBoxTimeoutW,
 
 extern WINAPI INT wine32b_MessageBoxIndirectA(LPMSGBOXPARAMSA msgbox)
 {
+	TRACE_(thunks)("Enter MessageBoxIndirectA\n");
 	return pMessageBoxIndirectA(msgbox);
 }
 
@@ -198,6 +207,7 @@ __ASM_GLOBAL_FUNC(wine32a_MessageBoxIndirectA,
 
 extern WINAPI INT wine32b_MessageBoxIndirectW(LPMSGBOXPARAMSW msgbox)
 {
+	TRACE_(thunks)("Enter MessageBoxIndirectW\n");
 	return pMessageBoxIndirectW(msgbox);
 }
 
