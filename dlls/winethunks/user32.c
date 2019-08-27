@@ -268,6 +268,5 @@ void* wine_thunk_get_for_user32(void *func)
 	if (func == pMessageBoxIndirectW)
 		return wine32a_MessageBoxIndirectW;
 
-	ERR("Missing thunk!\n");
 	return NULL;
 }

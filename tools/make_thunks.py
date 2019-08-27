@@ -108,7 +108,7 @@ def handle_dll_source(dll_path, source, funcs, contents_source, ret_func_pointer
 	path_file = dll_path + "/" + source
 
 	index = clang.cindex.Index.create()
-	tu = index.parse(path_file,  ["-D_WIN32", "-D__WINESRC__", "-I/usr/lib/clang/8.0.0/include/", "-I../include", "-fdeclspec"])
+	tu = index.parse(path_file,  ["-D_WIN32", "-D__WINESRC__", "-I/usr/lib/clang/8.0.1/include/", "-I../include", "-fdeclspec", "-Wno-pragma-pack"])
 	if len(tu.diagnostics) > 0:
 		for diag in tu.diagnostics:
 			print(diag.spelling + " " + str(diag.location.file) + ":" + str(diag.location.line))
@@ -172,7 +172,6 @@ def handle_dll(name):
 		contents_source.append(f'\tif (func == p{func})')
 		contents_source.append(f'\t\treturn wine32a_{func};')
 	contents_source.append("")
-	contents_source.append('\tERR("Missing thunk!\\n");')
 	contents_source.append('\treturn NULL;')
 	contents_source.append('}')
 	contents_source.append("")
@@ -204,6 +203,7 @@ def handle_all_dlls():
 		contents_shared.append(f'\tif ((ret = wine_thunk_get_for_{dll}(func)) != NULL)')
 		contents_shared.append(f'\t\treturn ret;')
 	contents_shared.append("")
+	contents_shared.append('\tERR("Missing thunk!\\n");')
 	contents_shared.append('\treturn func;')
 	contents_shared.append('}')
 	contents_shared.append("")

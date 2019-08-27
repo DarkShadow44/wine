@@ -8,6 +8,7 @@ WINAPI void *wine_thunk_get_for_any(void *func)
 	if ((ret = wine_thunk_get_for_user32(func)) != NULL)
 		return ret;
 
+	ERR("Missing thunk!\n");
 	return func;
 }
 
