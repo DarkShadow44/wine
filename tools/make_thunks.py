@@ -84,11 +84,17 @@ def make_thunk_callingconvention_32_to_64_a(contents_source, node):
 	contents_source.append(")")
 	contents_source.append("")
 
+def get_arguments_decl(node):
+	arguments_decl = [f'{arg.type.spelling} {arg.spelling}' for arg in node.get_arguments()]
+	if len(arguments_decl) == 0:
+		return 'void'
+	return ", ".join(arguments_decl)
+
 def make_thunk_callingconvention_32_to_64_b(contents_source, node):
 	funcname = node.spelling
-	arguments_decl = [f'{arg.type.spelling} {arg.spelling}' for arg in node.get_arguments()]
+	arguments_decl = get_arguments_decl(node)
 	arguments_calling = [f'{arg.spelling}' for arg in node.get_arguments()]
-	contents_source.append(f'extern WINAPI {node.result_type.spelling} wine32b_{funcname}({", ".join(arguments_decl)})')
+	contents_source.append(f'extern WINAPI {node.result_type.spelling} wine32b_{funcname}({arguments_decl})')
 	contents_source.append('{')
 	contents_source.append(f'\tTRACE("Enter {funcname}\\n");')
 	contents_source.append(f'\treturn p{funcname}({", ".join(arguments_calling)});')
@@ -108,7 +114,7 @@ def handle_dll_source(dll_path, source, funcs, contents_source, ret_func_pointer
 	path_file = dll_path + "/" + source
 
 	index = clang.cindex.Index.create()
-	tu = index.parse(path_file,  ["-D_WIN32", "-D__WINESRC__", "-I/usr/lib/clang/8.0.1/include/", "-I../include", "-fdeclspec", "-Wno-pragma-pack"])
+	tu = index.parse(path_file,  ["-D_WIN32", "-D__WINESRC__", "-I/usr/lib/clang/8.0.1/include/", "-I../include", "-I/home/fabian/Programming/Wine/wine64/include/", "-fdeclspec", "-Wno-pragma-pack"])
 	if len(tu.diagnostics) > 0:
 		for diag in tu.diagnostics:
 			print(diag.spelling + " " + str(diag.location.file) + ":" + str(diag.location.line))
@@ -119,8 +125,8 @@ def handle_dll_source(dll_path, source, funcs, contents_source, ret_func_pointer
 
 	# Make function pointers
 	for node in nodes:
-		arguments = [f'{arg.type.spelling}' for arg in node.get_arguments()]
-		contents_source.append(f'static WINAPI {node.result_type.spelling} (*p{node.spelling})({", ".join(arguments)});')
+		arguments = get_arguments_decl(node)
+		contents_source.append(f'static WINAPI {node.result_type.spelling} (*p{node.spelling})({arguments});')
 		ret_func_pointers.append(node.spelling)
 	contents_source.append("")
 
@@ -146,8 +152,8 @@ def handle_dll(name):
 
 	ret_func_pointers = []
 	for source in sources:
-		if not source.endswith("msgbox.c"):
-			continue
+		#if not source.endswith("msgbox.c"):
+		#	continue
 		handle_dll_source(dll_path, source, funcs, contents_source, ret_func_pointers)
 
 	# Make init function
@@ -189,6 +195,7 @@ def handle_all_dlls():
 
 	contents_shared = []
 	contents_shared.append('#include <windows.h>')
+	contents_source.append('#include "wine/debug.h"')
 	contents_shared.append("")
 
 	for dll in dlls:
