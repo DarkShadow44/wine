@@ -1305,7 +1305,7 @@ static GLXContext create_glxcontext(Display *display, struct wgl_context *contex
 /***********************************************************************
  *              create_gl_drawable
  */
-static struct gl_drawable *create_gl_drawable( HWND hwnd, const struct wgl_pixel_format *format, BOOL known_child )
+static struct gl_drawable *create_gl_drawable( HWND hwnd, const struct wgl_pixel_format *format )
 {
     struct gl_drawable *gl, *prev;
     XVisualInfo *visual = format->visual;
@@ -1326,7 +1326,7 @@ static struct gl_drawable *create_gl_drawable( HWND hwnd, const struct wgl_pixel
     gl->format = format;
     gl->ref = 1;
 
-    if (!known_child && !GetWindow( hwnd, GW_CHILD ) && GetAncestor( hwnd, GA_PARENT ) == GetDesktopWindow())  /* childless top-level window */
+    if (GetAncestor( hwnd, GA_PARENT ) == GetDesktopWindow())  /* top-level window */
     {
         gl->type = DC_GL_WINDOW;
         gl->window = create_client_window( hwnd, visual );
@@ -1389,7 +1389,7 @@ static BOOL set_win_format( HWND hwnd, const struct wgl_pixel_format *format )
 
     if (!format->visual) return FALSE;
 
-    if (!(gl = create_gl_drawable( hwnd, format, FALSE ))) return FALSE;
+    if (!(gl = create_gl_drawable( hwnd, format ))) return FALSE;
 
     TRACE( "created GL drawable %lx for win %p %s\n",
            gl->drawable, hwnd, debugstr_fbconfig( format->fbconfig ));
@@ -1448,7 +1448,7 @@ static BOOL set_pixel_format(HDC hdc, int format, BOOL allow_change)
 /***********************************************************************
  *              sync_gl_drawable
  */
-void sync_gl_drawable( HWND hwnd, BOOL known_child )
+void sync_gl_drawable( HWND hwnd )
 {
     struct gl_drawable *old, *new;
 
@@ -1456,11 +1456,8 @@ void sync_gl_drawable( HWND hwnd, BOOL known_child )
 
     switch (old->type)
     {
-    case DC_GL_WINDOW:
-        if (!known_child) break; /* Still a childless top-level window */
-        /* fall through */
     case DC_GL_PIXMAP_WIN:
-        if (!(new = create_gl_drawable( hwnd, old->format, known_child ))) break;
+        if (!(new = create_gl_drawable( hwnd, old->format ))) break;
         mark_drawable_dirty( old, new );
         XFlush( gdi_display );
         TRACE( "Recreated GL drawable %lx to replace %lx\n", new->drawable, old->drawable );
@@ -1497,7 +1494,7 @@ void set_gl_drawable_parent( HWND hwnd, HWND parent )
         return;
     }
 
-    if ((new = create_gl_drawable( hwnd, old->format, FALSE )))
+    if ((new = create_gl_drawable( hwnd, old->format )))
     {
         mark_drawable_dirty( old, new );
         release_gl_drawable( new );
@@ -3284,10 +3281,9 @@ static BOOL glxdrv_wglSwapBuffers( HDC hdc )
         }
         pglXSwapBuffers(gdi_display, gl->drawable);
         break;
-    case DC_GL_WINDOW:
     case DC_GL_CHILD_WIN:
         if (ctx) sync_context( ctx );
-        if (gl->type == DC_GL_CHILD_WIN) escape.gl_drawable = gl->window;
+        escape.gl_drawable = gl->window;
         /* fall through */
     default:
         if (escape.gl_drawable && pglXSwapBuffersMscOML)
@@ -3343,7 +3339,7 @@ struct opengl_funcs *get_glx_driver( UINT version )
     return NULL;
 }
 
-void sync_gl_drawable( HWND hwnd, BOOL known_child )
+void sync_gl_drawable( HWND hwnd )
 {
 }
 
