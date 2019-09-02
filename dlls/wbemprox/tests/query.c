@@ -465,7 +465,7 @@ static void test_Win32_Process( IWbemServices *services, BOOL use_full_path )
                                         WBEM_FLAVOR_ORIGIN_PROPAGATED;
     WCHAR full_path[MAX_COMPUTERNAME_LENGTH + ARRAY_SIZE(full_path_fmt)];
     BSTR class, method;
-    IWbemClassObject *process, *sig_in, *out;
+    IWbemClassObject *process, *out;
     IWbemQualifierSet *qualifiers;
     VARIANT retval, val;
     DWORD full_path_len = 0;
@@ -492,10 +492,8 @@ static void test_Win32_Process( IWbemServices *services, BOOL use_full_path )
         win_skip( "Win32_Process not available\n" );
         return;
     }
-    sig_in = (void*)0xdeadbeef;
-    hr = IWbemClassObject_GetMethod( process, getownerW, 0, &sig_in, NULL );
+    hr = IWbemClassObject_GetMethod( process, getownerW, 0, NULL, NULL );
     ok( hr == S_OK, "failed to get GetOwner method %08x\n", hr );
-    ok( !sig_in, "sig_in != NULL\n");
     IWbemClassObject_Release( process );
 
     out = NULL;
