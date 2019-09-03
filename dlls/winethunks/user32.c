@@ -1,3 +1,5 @@
+#define WIN32_NO_STATUS
+#include "ntstatus.h"
 #include "windows.h"
 #include "wine/asm.h"
 #include "wine/debug.h"

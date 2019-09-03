@@ -147,6 +147,8 @@ def handle_dll(name):
 	path_makefile = dll_path + "/Makefile.in"
 
 	contents_source = []
+	contents_source.append('#define WIN32_NO_STATUS')
+	contents_source.append('#include "ntstatus.h"');
 	contents_source.append('#include "windows.h"');
 	contents_source.append('#include "wine/asm.h"');
 	contents_source.append('#include "wine/debug.h"')
