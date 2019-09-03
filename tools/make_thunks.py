@@ -101,11 +101,21 @@ def make_thunk_callingconvention_32_to_64_b(contents_source, node):
 	contents_source.append('}')
 	contents_source.append("")
 
+def node_is_function_definition(node):
+	if not node.kind == CursorKind.FUNCTION_DECL:
+		return False
+
+	for c in node.get_children():
+		if (c.kind == CursorKind.COMPOUND_STMT):
+			return True
+
+	return False
+
 def find_typerefs(node, ret_nodes, funcs, source):
 	if (node.location.file is None or not node.location.file.name.endswith(f'/{source}')):
 		return
 	if node.spelling in funcs:
-		if node.kind == CursorKind.FUNCTION_DECL:
+		if node_is_function_definition(node):
 			ret_nodes.append(node)
 	for c in node.get_children():
 		find_typerefs(c, ret_nodes, funcs, source)
@@ -162,7 +172,7 @@ def handle_dll(name):
 	ret_func_pointers = []
 	ret_headers = []
 	for source in sources:
-		#if not source.endswith("dde_client.c"):
+		#if not source.endswith("menu.c"):
 		#	continue
 		handle_dll_source(dll_path, source, funcs, contents_dlls, ret_func_pointers, ret_headers)
 

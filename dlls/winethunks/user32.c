@@ -8065,7 +8065,6 @@ __ASM_GLOBAL_FUNC(wine32a_TileChildWindows,
 	"ret \n"
 )
 
-static WINAPI DWORD (*pDrawMenuBarTemp)(HWND hwnd, HDC hDC, LPRECT lprect, HMENU hMenu, HFONT hFont);
 static WINAPI BOOL (*pTrackPopupMenuEx)(HMENU hMenu, UINT wFlags, INT x, INT y, HWND hWnd, LPTPMPARAMS lpTpm);
 static WINAPI BOOL (*pTrackPopupMenu)(HMENU hMenu, UINT wFlags, INT x, INT y, INT nReserved, HWND hWnd, const RECT * lpRect);
 static WINAPI BOOL (*pChangeMenuA)(HMENU hMenu, UINT pos, LPCSTR data, UINT id, UINT flags);
@@ -8123,34 +8122,6 @@ static WINAPI INT (*pMenuItemFromPoint)(HWND hWnd, HMENU hMenu, POINT ptScreen);
 static WINAPI DWORD (*pCalcMenuBar)(HWND hwnd, DWORD left, DWORD right, DWORD top, RECT * rect);
 static WINAPI INT (*pTranslateAcceleratorA)(HWND hWnd, HACCEL hAccel, LPMSG msg);
 static WINAPI INT (*pTranslateAcceleratorW)(HWND hWnd, HACCEL hAccel, LPMSG msg);
-
-extern WINAPI DWORD wine32b_DrawMenuBarTemp(HWND hwnd, HDC hDC, LPRECT lprect, HMENU hMenu, HFONT hFont)
-{
-	TRACE("Enter DrawMenuBarTemp\n");
-	return pDrawMenuBarTemp(hwnd, hDC, lprect, hMenu, hFont);
-}
-
-extern WINAPI void wine32a_DrawMenuBarTemp(void);
-__ASM_GLOBAL_FUNC(wine32a_DrawMenuBarTemp,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_DrawMenuBarTemp") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
 
 extern WINAPI BOOL wine32b_TrackPopupMenuEx(HMENU hMenu, UINT wFlags, INT x, INT y, HWND hWnd, LPTPMPARAMS lpTpm)
 {
@@ -20559,7 +20530,6 @@ void wine_thunk_initialize_user32(void)
 	pCascadeChildWindows = (void *)GetProcAddress(library, "CascadeChildWindows");
 	pTileWindows = (void *)GetProcAddress(library, "TileWindows");
 	pTileChildWindows = (void *)GetProcAddress(library, "TileChildWindows");
-	pDrawMenuBarTemp = (void *)GetProcAddress(library, "DrawMenuBarTemp");
 	pTrackPopupMenuEx = (void *)GetProcAddress(library, "TrackPopupMenuEx");
 	pTrackPopupMenu = (void *)GetProcAddress(library, "TrackPopupMenu");
 	pChangeMenuA = (void *)GetProcAddress(library, "ChangeMenuA");
@@ -21596,8 +21566,6 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_TileWindows;
 	if (func == pTileChildWindows)
 		return wine32a_TileChildWindows;
-	if (func == pDrawMenuBarTemp)
-		return wine32a_DrawMenuBarTemp;
 	if (func == pTrackPopupMenuEx)
 		return wine32a_TrackPopupMenuEx;
 	if (func == pTrackPopupMenu)
