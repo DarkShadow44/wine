@@ -985,6 +985,11 @@ static BOOL import_dll32( HMODULE module, const IMAGE_IMPORT_DESCRIPTOR *descr, 
                      thunk_list->u1.Function );
             }
             TRACE_(imports)("--- Ordinal %s.%d = %x\n", name, ordinal, thunk_list->u1.Function );
+
+           if (func)
+           {
+               thunk_list->u1.Function = wine_make_thunk_function(&input_stubs[pos], func, name);
+           }
         }
         else  /* import by name */
         {
@@ -1003,13 +1008,13 @@ static BOOL import_dll32( HMODULE module, const IMAGE_IMPORT_DESCRIPTOR *descr, 
             }
             TRACE_(imports)("--- %s %s.%d = %x\n",
                             pe_name->Name, name, pe_name->Hint, thunk_list->u1.Function);
+
+            if (func)
+            {
+                thunk_list->u1.Function = wine_make_thunk_function(&input_stubs[pos], func, (const char*)pe_name->Name );
+            }
         }
 
-        if (func)
-        {
-
-            thunk_list->u1.Function = wine_make_thunk_function(&input_stubs[pos], func);
-        }
         import_list++;
         thunk_list++;
         pos += get_import_stub_size();

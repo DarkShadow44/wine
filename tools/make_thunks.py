@@ -225,8 +225,6 @@ def handle_all_dlls():
 
 	contents_shared = []
 	contents_shared.append('#include <windows.h>')
-	contents_shared.append('#include "wine/debug.h"')
-	contents_shared.append('WINE_DEFAULT_DEBUG_CHANNEL(thunks);')
 	contents_shared.append("")
 
 	for dll in dlls:
@@ -241,7 +239,6 @@ def handle_all_dlls():
 		contents_shared.append(f'\tif ((ret = wine_thunk_get_for_{dll}(func)) != NULL)')
 		contents_shared.append(f'\t\treturn ret;')
 	contents_shared.append("")
-	contents_shared.append('\tERR("Missing thunk!\\n");')
 	contents_shared.append('\treturn func;')
 	contents_shared.append('}')
 	contents_shared.append("")

@@ -37,12 +37,12 @@ WINAPI DWORD create_import_stub(void *address, void *function)
 }
 
 
-WINAPI DWORD wine_make_thunk_function(void *addr, void *func)
+WINAPI DWORD wine_make_thunk_function(void *addr, void *func, const char *hint)
 {
     void *thunk = wine_thunk_get_for_any(func);
-    if (!thunk)
+    if (thunk == func)
     {
-        ERR("Missing thunk!\n");
+        ERR("Missing thunk!: '%s'\n", hint);
     }
     return create_import_stub(addr, thunk);
 }

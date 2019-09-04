@@ -1,4 +1,4 @@
-WINAPI DWORD wine_make_thunk_function(void* addr, void *func);
+WINAPI DWORD wine_make_thunk_function(void* addr, void *func, const char *hint);
 WINAPI void wine_thunk_initialize_any(const char *dll);
 WINAPI void *wine_thunk_get_for_any(void *func);
 WINAPI int get_import_stub_size(void);
