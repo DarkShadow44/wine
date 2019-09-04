@@ -218,7 +218,8 @@ def handle_dll(name):
 def handle_all_dlls():
 	dlls = []
 	dlls.append("user32")
-	
+	dlls.append("kernel32")
+
 	for dll in dlls:
 		handle_dll(dll)
 
@@ -258,10 +259,26 @@ def handle_all_dlls():
 	contents_shared.append("")
 	contents_shared.append('}')
 	contents_shared.append("")
-	
+
 	file_source = open(f'../dlls/winethunks/winethunks_shared.c', 'w')
 	file_source.write('\n'.join(contents_shared))
 	file_source.close()
+
+	# Make makefile
+	contents_makefile = [];
+	contents_makefile.append('MODULE    = winethunks.dll')
+	contents_makefile.append('IMPORTLIB = winethunks')
+	contents_makefile.append('')
+	contents_makefile.append('C_SRCS = \\')
+	for dll in dlls:
+		contents_makefile.append(f'\t{dll}.c \\')
+	contents_makefile.append('\twinethunks_shared.c \\')
+	contents_makefile.append('\twinethunks_main.c')
+	contents_makefile.append('')
+
+	file_makefile = open(f'../dlls/winethunks/Makefile.in', 'w')
+	file_makefile.write('\n'.join(contents_makefile))
+	file_makefile.close()
 
 
 handle_all_dlls()
