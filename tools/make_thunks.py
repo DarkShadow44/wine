@@ -6,6 +6,7 @@ import sys
 import clang.cindex
 from clang.cindex import CursorKind
 from pprint import pprint
+from multiprocessing import Pool
 
 def get_specfile_funcs(path):
 	funcs = []
@@ -219,9 +220,12 @@ def handle_all_dlls():
 	dlls = []
 	dlls.append("user32")
 	dlls.append("kernel32")
+	dlls.append("advapi32")
+	dlls.append("msvcrt")
+	dlls.append("ntdll")
 
-	for dll in dlls:
-		handle_dll(dll)
+	pool = Pool(4)
+	pool.map(handle_dll, dlls)
 
 	contents_shared = []
 	contents_shared.append('#include <windows.h>')
