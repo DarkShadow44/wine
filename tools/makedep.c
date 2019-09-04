@@ -849,9 +849,6 @@ static void add_dependency( struct file *file, const char *name, enum incl_type 
 {
     /* enforce some rules for the Wine tree */
 
-    if (!memcmp( name, "../", 3 ))
-        fatal_error( "#include directive with relative path not allowed\n" );
-
     if (!strcmp( name, "config.h" ))
     {
         if (strendswith( file->name, ".h" ))
