@@ -121,7 +121,7 @@ def find_typerefs(node, ret_nodes, funcs, source):
 	for c in node.get_children():
 		find_typerefs(c, ret_nodes, funcs, source)
 
-def handle_dll_source(dll_path, source, funcs, contents_source, ret_func_pointers, ret_headers):
+def handle_dll_source(dll_path, source, funcs, contents_source, ret_func_pointers):
 	path_file = dll_path + "/" + source
 
 	index = clang.cindex.Index.create()
@@ -133,12 +133,6 @@ def handle_dll_source(dll_path, source, funcs, contents_source, ret_func_pointer
 	nodes = []
 	for c in tu.cursor.get_children():
 		find_typerefs(c, nodes, funcs, source)
-
-	for include in tu.get_includes():
-		if include.source.name.endswith(f'/{source}') and not include.include.name.startswith('/'):
-			include_path = f'../{include.include}';
-			if not include_path in ret_headers:
-				ret_headers.append(include_path)
 
 	# Make function pointers
 	for node in nodes:
@@ -158,9 +152,6 @@ def handle_dll(name):
 	path_makefile = dll_path + "/Makefile.in"
 
 	contents_source = []
-	contents_source.append('#define WIN32_NO_STATUS')
-	contents_source.append('#include "ntstatus.h"');
-	contents_source.append('#include "windows.h"');
 	contents_source.append('#include "wine/asm.h"');
 	contents_source.append('#include "wine/debug.h"')
 	contents_source.append('WINE_DEFAULT_DEBUG_CHANNEL(thunks);')
@@ -171,17 +162,10 @@ def handle_dll(name):
 
 	contents_dlls = []
 	ret_func_pointers = []
-	ret_headers = []
 	for source in sources:
-		#if not source.endswith("menu.c"):
-		#	continue
-		handle_dll_source(dll_path, source, funcs, contents_dlls, ret_func_pointers, ret_headers)
-
-	# Make includes
-	for header in ret_headers:
-		if not header.endswith('wine/port.h'):
-			contents_source.append(f'#include "{header}"')
-	contents_source.append("")
+		if not source.endswith("menu.c"):
+			continue
+		handle_dll_source(dll_path, source, funcs, contents_dlls, ret_func_pointers)
 
 	for line in contents_dlls:
 		contents_source.append(line)
@@ -219,10 +203,10 @@ def handle_dll(name):
 def handle_all_dlls():
 	dlls = []
 	dlls.append("user32")
-	dlls.append("kernel32")
-	dlls.append("advapi32")
-	dlls.append("msvcrt")
-	dlls.append("ntdll")
+	#dlls.append("kernel32")
+	#dlls.append("advapi32")
+	#dlls.append("msvcrt")
+	#dlls.append("ntdll")
 
 	pool = Pool(4)
 	pool.map(handle_dll, dlls)
