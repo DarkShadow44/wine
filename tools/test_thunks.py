@@ -84,15 +84,23 @@ class StructDef:
 		if node.kind == CursorKind.FIELD_DECL:
 			self.structType = StructDefEnum.Field
 		self.children = []
+		self.named_type = node.type.spelling
+		self.variable = ''
 
 def find_typerefs(node, ret_nodes, typedefs, structdefs_parent, depth):
 	indent = "\t" * depth
 	print(f'{indent}{node.kind} - {node.spelling}')
 	
 	if node.kind == CursorKind.STRUCT_DECL or node.kind == CursorKind.UNION_DECL or node.kind == CursorKind.FIELD_DECL:
-		parent = StructDef(node)
-		structdefs_parent.append(parent)
-		structdefs_parent = parent.children
+		if ('anonymous union' in node.type.spelling) or ('anonymous struct' in node.type.spelling):
+			for child in structdefs_parent:
+				if child.named_type == node.type.get_named_type().spelling:
+					child.variable = ' ' + node.spelling
+			structdefs_parent = []
+		else:
+			parent = StructDef(node)
+			structdefs_parent.append(parent)
+			structdefs_parent = parent.children
 	
 	for c in node.get_children():
 		find_typerefs(c, ret_nodes, typedefs, structdefs_parent, depth + 1)
@@ -135,7 +143,7 @@ def print_struct(struct, depth):
 		print(f'{indent}{{')
 		for child in struct.children:
 			print_struct(child, depth + 1)
-		print(f'{indent}}};')
+		print(f'{indent}}}{struct.variable};')
 		print('')
 
 	if struct.structType == StructDefEnum.Field:

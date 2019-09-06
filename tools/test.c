@@ -19,8 +19,12 @@ struct klsd
 	struct ee arr2[3];
 	struct
 	{
-		int asdasd;
+		int meta;
 	};
+	struct
+	{
+		int asdasd;
+	} d;
 	union
 	{
 		struct
