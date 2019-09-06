@@ -9,7 +9,9 @@ struct klsd
 	int k;
 	void **sdk;
 	int (*func)();
+	int* (*func2)(int k, struct ee arr2[3] pet, void **test);
 	int arr[45];
+	int x[34][45];
 	char *fg[45];
 	struct ee arr2[3];
 	struct
