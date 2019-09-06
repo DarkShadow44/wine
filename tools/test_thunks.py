@@ -7,7 +7,6 @@ import clang.cindex
 from clang.cindex import CursorKind
 from pprint import pprint
 from multiprocessing import Pool
-from dataclasses import dataclass
 from enum import Enum
 
 
@@ -16,43 +15,68 @@ class StructDefEnum(Enum):
 	Struct = 2
 	Union = 3
 
-@dataclass
 class TypeDef:
-    type_from: str
-    type_to: str
+	def __init__(self, source, target):
+		self.source = source
+		self.target = target
+
+	def tostring(self):
+		if t.source.chainType == TypeChainEnum.Function:
+			return f'typedef {t.source.tostring(t.target)};'
+		else:
+			return f'typedef {t.source.tostring("")} {t.target};'
 
 class TypeChainEnum(Enum):
 	Array = 1
 	Normal = 2
 	Pointer = 3
+	Function = 4
 
 class TypeChain:
-	def __init__(self, type):
+	def __init__(self, node, type):
 		is_pointer = (type.get_pointee().spelling != '')
 		is_array = (type.get_array_size() != -1)
+		is_func = ('(*)' in type.spelling)
+
+		func_params = []
+		if node:
+			for n in node.get_children():
+				if n.kind == CursorKind.PARM_DECL:
+					func_params.append(TypeChain(None, n.type))
 		
-		if is_pointer:
+		if is_func:
+			self.chainType = TypeChainEnum.Function
+			self.params = func_params
+			self.result = TypeChain(None, type.get_pointee().get_result())
+		elif is_pointer:
 			self.chainType = TypeChainEnum.Pointer
-			self.subType = TypeChain(type.get_pointee())
+			self.subType = TypeChain(None, type.get_pointee())
 		elif is_array:
 			self.chainType = TypeChainEnum.Array
-			self.subType = TypeChain(type.get_array_element_type())
+			self.subType = TypeChain(None, type.get_array_element_type())
 			self.arraySize = type.get_array_size()
 		else:
 			self.chainType = TypeChainEnum.Normal
 			self.normal = type.spelling
-	def tostring(self):
+
+	def tostring(self, variable):
 		if self.chainType == TypeChainEnum.Pointer:
-			return self.subType.tostring() + '*'
+			variable = f' {variable}' if variable != '' else ''
+			return self.subType.tostring('') + f'*{variable}'
 		elif self.chainType == TypeChainEnum.Array:
-			return self.subType.tostring() + f'[{self.arraySize}]'
+			return self.subType.tostring(variable) + f'[{self.arraySize}]'
+		elif self.chainType == TypeChainEnum.Function:
+			paramList = [param.tostring('') for param in self.params]
+			params = ", ".join(paramList) if len(paramList) > 0 else 'void'
+			return f'{self.result.tostring("")} (*{variable}) ({params})';
 		else:
-			return self.normal;
+			variable = f' {variable}' if variable != '' else ''
+			return f'{self.normal}{variable}';
 
 class StructDef:
 	def __init__(self, node):
 		self.name = node.spelling
-		self.type = TypeChain(node.type)
+		self.type = TypeChain(node, node.type)
 		if node.kind == CursorKind.STRUCT_DECL:
 			self.structType = StructDefEnum.Struct
 		if node.kind == CursorKind.UNION_DECL:
@@ -75,7 +99,7 @@ def find_typerefs(node, ret_nodes, typedefs, structdefs_parent, depth):
 
 	if node.kind == CursorKind.TYPEDEF_DECL:
 		type_to = node.spelling
-		type_from = node.underlying_typedef_type.spelling
+		type_from = TypeChain(node, node.underlying_typedef_type)
 		typedefs.append(TypeDef(type_from, type_to))
 		
 index = clang.cindex.Index.create()
@@ -90,8 +114,12 @@ typedefs = []
 for c in tu.cursor.get_children():
 	find_typerefs(c, nodes, typedefs, structdefs, 0)
 
+print('')
+print('########## OUTPUT ##########')
+print('')
+
 for t in typedefs:
-	print(f'From "{t.type_from}" to "{t.type_to}"')
+	print(t.tostring())
 
 def print_struct(struct, depth):
 	indent = "\t" * depth
@@ -111,7 +139,7 @@ def print_struct(struct, depth):
 		print('')
 
 	if struct.structType == StructDefEnum.Field:
-		print(f'{indent}{struct.type.tostring()} {struct.name};')
+		print(f'{indent}{struct.type.tostring(struct.name)};')
 
 
 for struct in structdefs:

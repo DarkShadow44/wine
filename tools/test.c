@@ -4,12 +4,15 @@ struct ee
 	int kop;
 };
 
+typedef int (*FUNCTYPE)(int k, struct ee arr2[3], void **test);
+
 struct klsd
 {
 	int k;
 	void **sdk;
-	int (*func)();
-	int* (*func2)(int k, struct ee arr2[3] pet, void **test);
+	int (*func)(void);
+	int* (*func2)(int k, struct ee arr2[3], void **test);
+	FUNCTYPE func3;
 	int arr[45];
 	int x[34][45];
 	char *fg[45];
@@ -18,7 +21,7 @@ struct klsd
 	{
 		int asdasd;
 	};
-	union uni
+	union
 	{
 		struct
 		{
@@ -26,7 +29,7 @@ struct klsd
 			int lol;
 		};
 		int k;
-	};
+	} uni;
 };
 
 
