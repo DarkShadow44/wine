@@ -209,7 +209,7 @@
 @ cdecl __wcserror(wstr) MSVCRT___wcserror
 @ cdecl __wgetmainargs(ptr ptr ptr long ptr)
 @ extern __winitenv MSVCRT___winitenv
-@ cdecl _abnormal_termination()
+@ cdecl _abnormal_termination() _abnormal_termination2
 @ cdecl _access(str long) MSVCRT__access
 @ extern _acmdln MSVCRT__acmdln
 @ stdcall -arch=i386 _adj_fdiv_m16i(long)
@@ -502,8 +502,8 @@
 @ cdecl _resetstkoflw() MSVCRT__resetstkoflw
 @ cdecl _rmdir(str) MSVCRT__rmdir
 @ cdecl _rmtmp() MSVCRT__rmtmp
-@ cdecl _rotl(long long)
-@ cdecl _rotr(long long)
+@ cdecl _rotl(long long) _rotl2
+@ cdecl _rotr(long long) _rotr2
 @ cdecl -arch=i386 _safe_fdiv()
 @ cdecl -arch=i386 _safe_fdivr()
 @ cdecl -arch=i386 _safe_fprem()

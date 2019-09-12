@@ -1014,7 +1014,7 @@
 @ stub __wcsncnt
 @ cdecl __wgetmainargs(ptr ptr ptr long ptr)
 @ extern __winitenv MSVCRT___winitenv
-@ cdecl _abnormal_termination()
+@ cdecl _abnormal_termination() _abnormal_termination2
 @ cdecl -ret64 _abs64(int64)
 @ cdecl _access(str long) MSVCRT__access
 @ cdecl _access_s(str long) MSVCRT__access_s
@@ -1618,10 +1618,10 @@
 @ cdecl _resetstkoflw() MSVCRT__resetstkoflw
 @ cdecl _rmdir(str) MSVCRT__rmdir
 @ cdecl _rmtmp() MSVCRT__rmtmp
-@ cdecl _rotl(long long)
-@ cdecl -ret64 _rotl64(int64 long)
-@ cdecl _rotr(long long)
-@ cdecl -ret64 _rotr64(int64 long)
+@ cdecl _rotl(long long) _rotl2
+@ cdecl -ret64 _rotl64(int64 long) _rotl642
+@ cdecl _rotr(long long) _rotr2
+@ cdecl -ret64 _rotr64(int64 long) _rotr642
 @ cdecl _scalb(double long) MSVCRT__scalb
 @ cdecl -arch=x86_64 _scalbf(float long) MSVCRT__scalbf
 @ varargs _scanf_l(str ptr) MSVCRT__scanf_l

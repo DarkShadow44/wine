@@ -38,7 +38,7 @@
 @ cdecl __threadhandle() kernel32.GetCurrentThread
 @ cdecl __threadid() kernel32.GetCurrentThreadId
 @ cdecl __toascii(long) MSVCRT___toascii
-@ cdecl _abnormal_termination()
+@ cdecl _abnormal_termination() _abnormal_termination2
 @ cdecl _access(str long) MSVCRT__access
 @ extern _acmdln_dll MSVCRT__acmdln
 @ extern _aexit_rtn_dll _aexit_rtn
@@ -261,8 +261,8 @@
 @ cdecl _read(long ptr long) MSVCRT__read
 @ cdecl _rmdir(str) MSVCRT__rmdir
 @ cdecl _rmtmp() MSVCRT__rmtmp
-@ cdecl _rotl(long long)
-@ cdecl _rotr(long long)
+@ cdecl _rotl(long long) _rotl2
+@ cdecl _rotr(long long) _rotr2
 @ cdecl _scalb(double long) MSVCRT__scalb
 @ cdecl _searchenv(str str ptr) MSVCRT__searchenv
 @ cdecl _seterrormode(long)

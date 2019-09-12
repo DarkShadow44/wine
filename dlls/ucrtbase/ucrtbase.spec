@@ -1866,10 +1866,10 @@
 @ cdecl _resetstkoflw() MSVCRT__resetstkoflw
 @ cdecl _rmdir(str) MSVCRT__rmdir
 @ cdecl _rmtmp() MSVCRT__rmtmp
-@ cdecl _rotl(long long)
-@ cdecl -ret64 _rotl64(int64 long)
-@ cdecl _rotr(long long)
-@ cdecl -ret64 _rotr64(int64 long)
+@ cdecl _rotl(long long) _rotl2
+@ cdecl -ret64 _rotl64(int64 long) _rotl642
+@ cdecl _rotr(long long) _rotr2
+@ cdecl -ret64 _rotr64(int64 long) _rotr642
 @ cdecl _scalb(double long) MSVCRT__scalb
 @ cdecl -arch=x86_64 _scalbf(float long) MSVCRT__scalbf
 @ cdecl _searchenv(str str ptr) MSVCRT__searchenv
