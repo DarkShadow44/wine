@@ -2,6 +2,5 @@ MODULE    = winethunks.dll
 IMPORTLIB = winethunks
 
 C_SRCS = \
-	user32.c \
 	winethunks_shared.c \
 	winethunks_main.c

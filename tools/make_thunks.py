@@ -202,7 +202,7 @@ def handle_dll(name):
 
 def handle_all_dlls():
 	dlls = []
-	dlls.append("user32")
+	#dlls.append("user32")
 	#dlls.append("kernel32")
 	#dlls.append("advapi32")
 	#dlls.append("msvcrt")
