@@ -16,3 +16,10 @@ WINAPI DWORD create_import_stub(void *address, void *function);
     ".byte 0xC7, 0x44, 0x24, 0x04, 0x23, 0x00, 0x00, 0x00\n" /* mov  dword [rsp + 4], 0x23 */ \
     ".byte 0x83, 0x04, 0x24, 0x0D\n"                         /* add  dword [rsp], 0x0D */ \
     ".byte 0xCB\n"                                           /* retf */
+
+
+#ifdef __MINGW32__
+#include <_mingw.h>
+#endif
+#undef __ptr32
+#undef __ptr64
