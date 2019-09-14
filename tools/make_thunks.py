@@ -37,7 +37,7 @@ class StructDef(GenericTypeDef):
 	def __init__(self, node):
 		self.name = node.spelling
 		self.type = TypeChain(node, node.type)
-		self.children = []
+		self.children = DefinitionCollection()
 		if node.kind == CursorKind.STRUCT_DECL:
 			self.structType = StructDefEnum.Struct
 		if node.kind == CursorKind.UNION_DECL:
@@ -157,6 +157,38 @@ class TypeDef(GenericTypeDef):
 	def make_declaration(self):
 		return None
 
+class DefinitionCollection:
+	def __init__(self):
+		self.items = []
+		self.typedef_item = None
+
+	def append_typedef_item(self, name):
+		if self.typedef_item is not None:
+			self.typedef_item.name = name
+			self.append(None, self.typedef_item)
+			self.typedef_item = None
+
+	def append(self, node, new_definition):
+		if node is not None:
+			# Ignore common definitions
+			file = str(node.location.file)
+			ignored_files = ['/winnt.h', '/windef.h', '/winbase.h', '/excpt.h', '/debug.h', '/guiddef.h']
+			if any(file.endswith(x) for x in ignored_files):
+				return
+			if file.startswith('/usr/'):
+				return
+
+		if new_definition.getname() == "":
+			self.typedef_item = new_definition # Store (anyonymous struct/enum/union) item for following typedef
+		else:
+			# Only add each definition once
+			if any(x.getname() == new_definition.getname() for x in self.items):
+				return
+			self.items.append(new_definition)
+
+	def __iter__(self):
+		return self.items.__iter__()
+
 # -------------------- Helper functions --------------------
 
 # Get all the functions inside a .spec file
@@ -270,49 +302,30 @@ def find_all_functions(node, ret_nodes, funcs, source):
 	for c in node.get_children():
 		find_all_functions(c, ret_nodes, funcs, source)
 
-def append_definition_if_not_exists(definitions, node, new_definition):
-	# Fields must always be added
-	if node.kind != CursorKind.FIELD_DECL:
-		# Only add each definition once
-		if any(x.getname() == new_definition.getname() for x in definitions):
-			return
-		# Ignore common definitions
-		file = str(node.location.file)
-		ignored_files = ['/winnt.h', '/windef.h', '/winbase.h', '/excpt.h', '/debug.h', '/guiddef.h']
-		if any(file.endswith(x) for x in ignored_files):
-			return
-		if file.startswith('/usr/'):
-			return
-
-	definitions.append(new_definition)
-
-def find_all_definitions(node, structdefs_parent):
+def find_all_definitions(node, definitions):
 	if node.kind == CursorKind.STRUCT_DECL or node.kind == CursorKind.UNION_DECL or node.kind == CursorKind.FIELD_DECL or node.kind == CursorKind.ENUM_DECL:
 		# Check if there is a field whichs type is an anyonymous struct/union
 		if ('anonymous union' in node.type.spelling) or ('anonymous struct' in node.type.spelling):
-			for child in structdefs_parent:
+			for child in definitions:
 				if child.named_type == node.type.get_named_type().spelling:
 					child.variable = ' ' + node.spelling
-			structdefs_parent = []
+			definitions = DefinitionCollection()
 		else:
 			if not node_is_only_declaration(node):
 				new_parent = StructDef(node)
-				append_definition_if_not_exists(structdefs_parent, node, new_parent)
-				structdefs_parent = new_parent.children
+				definitions.append(node, new_parent)
+				definitions = new_parent.children
 
-		for c in node.get_children():
-			find_all_definitions(c, structdefs_parent)
+		for child in node.get_children():
+			find_all_definitions(child, definitions)
 
 	if node.kind == CursorKind.TYPEDEF_DECL:
 		type_to = node.spelling
 		type_from = TypeChain(node, node.underlying_typedef_type)
 		# Fix anonymous struct/enum/union typedef
-		if len(structdefs_parent) > 0:
-			last_element = structdefs_parent[-1]
-			if last_element.getname() == "":
-				last_element.name = type_to
+		definitions.append_typedef_item(type_to)
 		definition = TypeDef(type_from, type_to)
-		append_definition_if_not_exists(structdefs_parent, node, definition)
+		definitions.append(node, definition)
 
 
 def parse_file(path_file):
@@ -361,7 +374,7 @@ def handle_dll(name):
 
 	contents_dlls = []
 	ret_func_pointers = []
-	definitions = []
+	definitions = DefinitionCollection()
 	for source in sources:
 		if not source.endswith("menu.c") and not source.endswith("text.c"):
 			continue
@@ -483,7 +496,7 @@ def handle_all_dlls(threads):
 def dump_definitions(path_file):
 	cursor = parse_file(path_file)
 
-	definitions = []
+	definitions = DefinitionCollection()
 	for child in cursor.get_children():
 		find_all_definitions(child, definitions)
 
