@@ -22,6 +22,10 @@ class GenericTypeDef(abc.ABC):
 	def getname(self) -> str:
 		pass
 
+	@abc.abstractmethod
+	def make_declaration(self) -> str:
+		pass
+
 class StructDefEnum(Enum):
 	Field = 1
 	Struct = 2
@@ -29,6 +33,7 @@ class StructDefEnum(Enum):
 	Enumeration = 4
 
 class StructDef(GenericTypeDef):
+
 	def __init__(self, node):
 		self.name = node.spelling
 		self.type = TypeChain(node, node.type)
@@ -61,7 +66,7 @@ class StructDef(GenericTypeDef):
 			for child in self.children:
 				child.print_struct(lines, depth + 1)
 			if self.structType == StructDefEnum.Enumeration:
-				lines.append(f'\n{self.name}_DUMMY = 0')
+				lines.append(f'    {self.name}_DUMMY = 0')
 			lines.append(f'{indent}}}{self.variable};')
 			lines.append('')
 
@@ -75,6 +80,18 @@ class StructDef(GenericTypeDef):
 
 	def getname(self):
 		return self.name;
+
+	def make_declaration(self):
+		type = None
+		if self.structType == StructDefEnum.Struct:
+			type = 'struct'
+		if self.structType == StructDefEnum.Union:
+			type  = 'union'
+		if self.structType == StructDefEnum.Enumeration:
+			type  = 'enum'
+		if type is None:
+			return None
+		return f'{type} {self.name};'
 
 class TypeChainEnum(Enum):
 	Array = 1
@@ -137,6 +154,8 @@ class TypeDef(GenericTypeDef):
 	def getname(self):
 		return 'typedef' + self.target;
 
+	def make_declaration(self):
+		return None
 
 # -------------------- Helper functions --------------------
 
@@ -252,21 +271,19 @@ def find_all_functions(node, ret_nodes, funcs, source):
 		find_all_functions(c, ret_nodes, funcs, source)
 
 def append_definition_if_not_exists(definitions, node, new_definition):
-	if new_definition.getname() == "":
-		return
 	# Fields must always be added
 	if node.kind != CursorKind.FIELD_DECL:
 		# Only add each definition once
 		if any(x.getname() == new_definition.getname() for x in definitions):
 			return
-
 		# Ignore common definitions
 		file = str(node.location.file)
 		ignored_files = ['/winnt.h', '/windef.h', '/winbase.h', '/excpt.h', '/debug.h', '/guiddef.h']
 		if any(file.endswith(x) for x in ignored_files):
 			return
-		if file.startswith('/usr/include/'):
+		if file.startswith('/usr/'):
 			return
+
 	definitions.append(new_definition)
 
 def find_all_definitions(node, structdefs_parent):
@@ -289,6 +306,11 @@ def find_all_definitions(node, structdefs_parent):
 	if node.kind == CursorKind.TYPEDEF_DECL:
 		type_to = node.spelling
 		type_from = TypeChain(node, node.underlying_typedef_type)
+		# Fix anonymous struct/enum/union typedef
+		if len(structdefs_parent) > 0:
+			last_element = structdefs_parent[-1]
+			if last_element.getname() == "":
+				last_element.name = type_to
 		definition = TypeDef(type_from, type_to)
 		append_definition_if_not_exists(structdefs_parent, node, definition)
 
@@ -347,8 +369,8 @@ def handle_dll(name):
 
 	# Make definitions
 	for definition in definitions:
-		if isinstance(definition, StructDef):
-			declaration = f'struct {definition.getname()};'
+		declaration = definition.make_declaration()
+		if declaration is not None:
 			contents_source.append(declaration)
 	contents_source.append("")
 	for definition in definitions:

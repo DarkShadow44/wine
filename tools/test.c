@@ -1,11 +1,22 @@
+typedef enum
+{
+    DISPLAYCONFIG_MODE_INFO_TYPE_SOURCE = 1,
+    DISPLAYCONFIG_MODE_INFO_TYPE_TARGET = 2,
+    DISPLAYCONFIG_MODE_INFO_TYPE_DESKTOP_IMAGE = 3,
+    DISPLAYCONFIG_MODE_INFO_TYPE_FORCE_UINT32 = 0xffffffff
+} DISPLAYCONFIG_MODE_INFO_TYPE;
+
+typedef struct
+{
+	int peter;
+} str;
+
 typedef struct tagCIEXYZTRIPLE
 {
     CIEXYZ ciexyzRed;
     CIEXYZ ciexyzGreen;
     CIEXYZ ciexyzBlue;
 } *CIEXYZTRIPLE, **CIEXYZTRIPLEss;
-
-typedef int (*sadsd)(int k, int kkk);
 
 int main()
 {
