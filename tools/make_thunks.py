@@ -39,19 +39,19 @@ class StructDefEnum(Enum):
 class StructDef(GenericTypeDef):
 
 	def __init__(self, node):
-		self.name = node.spelling
+		self.name = None if node.spelling == "" else node.spelling
 		self.type = TypeChain(node, node.type)
 		self.children = DefinitionCollection()
 		if node.kind == CursorKind.STRUCT_DECL:
-			self.name = 'struct ' + self.name
+			self.name = self.name and ('struct ' + self.name)
 			self.structType = StructDefEnum.Struct
 		if node.kind == CursorKind.UNION_DECL:
-			self.name = 'union ' + self.name
+			self.name = self.name and ('union ' + self.name)
 			self.structType = StructDefEnum.Union
 		if node.kind == CursorKind.FIELD_DECL:
 			self.structType = StructDefEnum.Field
 		if node.kind == CursorKind.ENUM_DECL:
-			self.name = 'enum ' + self.name
+			self.name = self.name and ('enum ' + self.name)
 			self.structType = StructDefEnum.Enumeration
 		self.named_type = node.type.spelling
 		self.variable = ''
@@ -175,6 +175,9 @@ class DefinitionCollection:
 		self.typedef_item = None
 
 	def append_typedef_item(self, name):
+		if "WIN16_SUBSYSTEM_TIB" in name:
+			print("\t\tWIN16_SUBSYSTEM_TIB")
+			print(self.typedef_item)
 		if self.typedef_item is not None:
 			self.typedef_item.name = name
 			self.append(None, self.typedef_item)
@@ -190,7 +193,7 @@ class DefinitionCollection:
 			if file.startswith('/usr/'):
 				return
 
-		if new_definition.getname() == "":
+		if new_definition.getname() is None:
 			self.typedef_item = new_definition # Store (anyonymous struct/enum/union) item for following typedef
 		else:
 			# Only add each definition once
@@ -348,7 +351,7 @@ def find_all_definitions(node, definitions):
 		type_to = node.spelling
 		type_from = TypeChain(node, node.underlying_typedef_type)
 		# Fix anonymous struct/enum/union typedef
-		definitions.append_typedef_item(type_to)
+		definitions.append_typedef_item(type_from.tostring(""))
 		definition = TypeDef(type_from, type_to)
 		definitions.append(node, definition)
 
