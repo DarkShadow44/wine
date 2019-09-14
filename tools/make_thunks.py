@@ -43,12 +43,15 @@ class StructDef(GenericTypeDef):
 		self.type = TypeChain(node, node.type)
 		self.children = DefinitionCollection()
 		if node.kind == CursorKind.STRUCT_DECL:
+			self.name = 'struct ' + self.name
 			self.structType = StructDefEnum.Struct
 		if node.kind == CursorKind.UNION_DECL:
+			self.name = 'union ' + self.name
 			self.structType = StructDefEnum.Union
 		if node.kind == CursorKind.FIELD_DECL:
 			self.structType = StructDefEnum.Field
 		if node.kind == CursorKind.ENUM_DECL:
+			self.name = 'enum ' + self.name
 			self.structType = StructDefEnum.Enumeration
 		self.named_type = node.type.spelling
 		self.variable = ''
@@ -56,21 +59,13 @@ class StructDef(GenericTypeDef):
 	def print_struct(self, lines, depth):
 		indent = ' ' * 4 * depth
 
-		type = 'error'
-		if self.structType == StructDefEnum.Struct:
-			type = 'struct'
-		if self.structType == StructDefEnum.Union:
-			type  = 'union'
-		if self.structType == StructDefEnum.Enumeration:
-			type  = 'enum'
-
 		if self.structType == StructDefEnum.Struct or self.structType == StructDefEnum.Union or self.structType == StructDefEnum.Enumeration:
-			lines.append(f'{indent}{type} {self.name}')
+			lines.append(f'{indent}{self.name}')
 			lines.append(f'{indent}{{')
 			for child in self.children:
 				child.print_struct(lines, depth + 1)
 			if self.structType == StructDefEnum.Enumeration:
-				lines.append(f'    {self.name}_DUMMY = 0')
+				lines.append(f'    {self.name.replace("enum ", "")}_DUMMY = 0')
 			lines.append(f'{indent}}}{self.variable};')
 			lines.append('')
 
@@ -86,16 +81,9 @@ class StructDef(GenericTypeDef):
 		return self.name;
 
 	def make_declaration(self):
-		type = None
-		if self.structType == StructDefEnum.Struct:
-			type = 'struct'
-		if self.structType == StructDefEnum.Union:
-			type  = 'union'
-		if self.structType == StructDefEnum.Enumeration:
-			type  = 'enum'
-		if type is None:
-			return None
-		return f'{type} {self.name};'
+		if self.structType == StructDefEnum.Struct or self.structType == StructDefEnum.Union or self.structType == StructDefEnum.Enumeration:
+			return f'{self.name};'
+		return None
 
 	def make_dependencies(self, dependencies):
 		if self.structType == StructDefEnum.Field:
@@ -173,13 +161,13 @@ class TypeDef(GenericTypeDef):
 			return f'typedef {self.source.tostring("")} {self.target};'
 
 	def getname(self):
-		return 'typedef' + self.target;
+		return self.target;
 
 	def make_declaration(self):
 		return None
 
 	def make_dependencies(self, dependencies):
-		dependencies.append(self.source)
+		self.source.make_dependencies(dependencies)
 
 class DefinitionCollection:
 	def __init__(self):
