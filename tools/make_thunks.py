@@ -19,13 +19,14 @@ class GenericTypeDef(abc.ABC):
 		pass
 
 	@abc.abstractmethod
-	def getname2(self) -> str:
+	def getname(self) -> str:
 		pass
 
 class StructDefEnum(Enum):
 	Field = 1
 	Struct = 2
 	Union = 3
+	Enumeration = 4
 
 class StructDef(GenericTypeDef):
 	def __init__(self, node):
@@ -37,11 +38,13 @@ class StructDef(GenericTypeDef):
 			self.structType = StructDefEnum.Union
 		if node.kind == CursorKind.FIELD_DECL:
 			self.structType = StructDefEnum.Field
+		if node.kind == CursorKind.ENUM_DECL:
+			self.structType = StructDefEnum.Enumeration
 		self.children = []
 		self.named_type = node.type.spelling
 		self.variable = ''
 
-	def print_struct(self, depth):
+	def print_struct(self, lines, depth):
 		indent = ' ' * 4 * depth
 
 		type = 'error'
@@ -49,20 +52,24 @@ class StructDef(GenericTypeDef):
 			type = 'struct'
 		if self.structType == StructDefEnum.Union:
 			type  = 'union'
+		if self.structType == StructDefEnum.Enumeration:
+			type  = 'enum'
 
-		if self.structType == StructDefEnum.Struct or self.structType == StructDefEnum.Union:
-			print(f'{indent}{type} {self.name}')
-			print(f'{indent}{{')
+		if self.structType == StructDefEnum.Struct or self.structType == StructDefEnum.Union or self.structType == StructDefEnum.Enumeration:
+			lines.append(f'{indent}{type} {self.name}')
+			lines.append(f'{indent}{{')
 			for child in self.children:
-				self.print_struct(child, depth + 1)
-			print(f'{indent}}}{self.variable};')
-			print('')
+				child.print_struct(lines, depth + 1)
+			lines.append(f'{indent}}}{self.variable};')
+			lines.append('')
 
 		if self.structType == StructDefEnum.Field:
-			print(f'{indent}{self.type.tostring(self.name)};')
+			lines.append(f'{indent}{self.type.tostring(self.name)};')
 
 	def tostring(self):
-		self.print_struct(0);
+		lines = []
+		self.print_struct(lines, 0)
+		return '\n'.join(lines);
 
 	def getname(self):
 		return self.name;
@@ -126,7 +133,7 @@ class TypeDef(GenericTypeDef):
 			return f'typedef {self.source.tostring("")} {self.target};'
 
 	def getname(self):
-		return target;
+		return self.target;
 
 
 # -------------------- Helper functions --------------------
@@ -246,8 +253,23 @@ def find_all_functions(node, ret_nodes, funcs, source):
 	for c in node.get_children():
 		find_all_functions(c, ret_nodes, funcs, source)
 
-def find_all_structs(node, structdefs_parent):
-	if node.kind == CursorKind.STRUCT_DECL or node.kind == CursorKind.UNION_DECL or node.kind == CursorKind.FIELD_DECL:
+def append_definition_if_not_exists(definitions, node, new_definition):
+	# Fields must always be added
+	if node.kind != CursorKind.FIELD_DECL:
+		# Only add each definition once
+		if any(x.getname() == node.spelling for x in definitions):
+			return
+
+		# Ignore common definitions
+		file = str(node.location.file)
+		ignored_files = ['/winnt.h', '/windef.h', '/winbase.h']
+		if any(file.endswith(x) for x in ignored_files):
+			return
+	definitions.append(new_definition)
+
+def find_all_definitions(node, structdefs_parent):
+	if node.kind == CursorKind.STRUCT_DECL or node.kind == CursorKind.UNION_DECL or node.kind == CursorKind.FIELD_DECL or node.kind == CursorKind.ENUM_DECL:
+		# Check if there is a field whichs type is an anyonymous struct/union
 		if ('anonymous union' in node.type.spelling) or ('anonymous struct' in node.type.spelling):
 			for child in structdefs_parent:
 				if child.named_type == node.type.get_named_type().spelling:
@@ -255,16 +277,16 @@ def find_all_structs(node, structdefs_parent):
 			structdefs_parent = []
 		else:
 			parent = StructDef(node)
-			structdefs_parent.append(parent)
+			append_definition_if_not_exists(structdefs_parent, node, parent)
 			structdefs_parent = parent.children
-
-	for c in node.get_children():
-		find_all_structs(c, structdefs_parent)
 
 	if node.kind == CursorKind.TYPEDEF_DECL:
 		type_to = node.spelling
 		type_from = TypeChain(node, node.underlying_typedef_type)
-		structdefs_parent.append(TypeDef(type_from, type_to))
+		append_definition_if_not_exists(structdefs_parent, node, TypeDef(type_from, type_to))
+
+	for c in node.get_children():
+		find_all_definitions(c, structdefs_parent)
 
 def parse_file(path_file):
 	index = clang.cindex.Index.create()
@@ -274,14 +296,15 @@ def parse_file(path_file):
 			print(diag.spelling + " " + str(diag.location.file) + ":" + str(diag.location.line))
 	return tu.cursor
 
-def handle_dll_source(dll_path, source, funcs, contents_source, ret_func_pointers):
+def handle_dll_source(dll_path, source, funcs, contents_source, ret_func_pointers, ret_definitions):
 	path_file = dll_path + "/" + source
 
 	cursor = parse_file(path_file)
 
 	nodes = []
-	for c in cursor.get_children():
-		find_all_functions(c, nodes, funcs, source)
+	for child in cursor.get_children():
+		find_all_functions(child, nodes, funcs, source)
+		find_all_definitions(child, ret_definitions)
 
 	# Make function pointers
 	for node in nodes:
@@ -311,11 +334,18 @@ def handle_dll(name):
 
 	contents_dlls = []
 	ret_func_pointers = []
+	definitions = []
 	for source in sources:
-		if not source.endswith("menu.c"):
+		if not source.endswith("menu.c") and not source.endswith("text.c"):
 			continue
-		handle_dll_source(dll_path, source, funcs, contents_dlls, ret_func_pointers)
+		handle_dll_source(dll_path, source, funcs, contents_dlls, ret_func_pointers, definitions)
 
+	# Make definitions
+	for definition in definitions:
+		contents_source.append(definition.tostring())
+		contents_source.append("")
+
+	# Add thunks
 	for line in contents_dlls:
 		contents_source.append(line)
 
@@ -349,16 +379,20 @@ def handle_dll(name):
 	file_source.write('\n'.join(contents_source))
 	file_source.close()
 
-def handle_all_dlls():
+def handle_all_dlls(threads):
 	dlls = []
-	#dlls.append("user32")
+	dlls.append("user32")
 	#dlls.append("kernel32")
 	#dlls.append("advapi32")
 	#dlls.append("msvcrt")
 	#dlls.append("ntdll")
 
-	pool = Pool(4)
-	pool.map(handle_dll, dlls)
+	if threads > 1:
+		pool = Pool(threads)
+		pool.map(handle_dll, dlls)
+	else:
+		for dll in dlls:
+			handle_dll(dll)
 
 	contents_shared = []
 	contents_shared.append('#include <windows.h>')
@@ -414,18 +448,34 @@ def handle_all_dlls():
 	file_makefile.write('\n'.join(contents_makefile))
 	file_makefile.close()
 
+def dump_definitions(path_file):
+	cursor = parse_file(path_file)
+
+	definitions = []
+	for child in cursor.get_children():
+		find_all_definitions(child, definitions)
+
+	for definition in definitions:
+		print(definition.tostring())
+
+
 # -------------------- Entry point --------------------
 
 parser = ArgumentParser()
 parser.add_argument('--fixup-sources', dest='fixup_sources', action='store_true', default=False, help='Fixup the wine sources to work with wine-pure. All structures need to have a 32bit layout.')
 parser.add_argument('--generate-thunks-all', dest='generate_thunks_all', action='store_true', default=False, help='Generate all thunks, including the Makefile and shared components.')
 parser.add_argument('--update-thunks', dest='update_thunks', metavar='DLLNAME', help='Regenerate the thunks for a single dll, without touching the Makefile or shared components.')
+parser.add_argument('--threads', dest='threads', metavar='NUMBER', default='4', type=int, help='Number of threads to use. To disable threading set to 1.')
+parser.add_argument('--dump-definitions', dest='dump_definitions', metavar='FILE_PATH', default=None, help='DEBUG ONLY: Dumps all definitions read from a file.')
 
 args = parser.parse_args()
 
-if not args.fixup_sources and not args.generate_thunks_all and not args.update_thunks:
+if not args.fixup_sources and not args.generate_thunks_all and not args.update_thunks and args.dump_definitions == None:
 	print('Please select an option. See -h for help.')
 	exit()
 
 if args.generate_thunks_all:
-	handle_all_dlls()
+	handle_all_dlls(args.threads)
+
+if not args.dump_definitions is None:
+	dump_definitions(args.dump_definitions)
