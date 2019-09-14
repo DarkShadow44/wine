@@ -172,7 +172,7 @@ class DefinitionCollection:
 		if node is not None:
 			# Ignore common definitions
 			file = str(node.location.file)
-			ignored_files = ['/winnt.h', '/windef.h', '/winbase.h', '/excpt.h', '/debug.h', '/guiddef.h']
+			ignored_files = ['/winnt.h', '/windef.h', '/winbase.h', '/excpt.h', '/debug.h', '/guiddef.h', '/wingdi.h', '/winnls.h', '/winuser.h', '/wincon.h', '/winnetwk.h', '/verrsrc.h', '/winreg.h']
 			if any(file.endswith(x) for x in ignored_files):
 				return
 			if file.startswith('/usr/'):
@@ -364,6 +364,7 @@ def handle_dll(name):
 	path_makefile = dll_path + "/Makefile.in"
 
 	contents_source = []
+	contents_source.append('#include "windows.h"');
 	contents_source.append('#include "wine/asm.h"');
 	contents_source.append('#include "wine/debug.h"')
 	contents_source.append('WINE_DEFAULT_DEBUG_CHANNEL(thunks);')
