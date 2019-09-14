@@ -26,6 +26,10 @@ class GenericTypeDef(abc.ABC):
 	def make_declaration(self) -> str:
 		pass
 
+	@abc.abstractmethod
+	def make_dependencies(self, dependencies):
+		pass
+
 class StructDefEnum(Enum):
 	Field = 1
 	Struct = 2
@@ -93,6 +97,13 @@ class StructDef(GenericTypeDef):
 			return None
 		return f'{type} {self.name};'
 
+	def make_dependencies(self, dependencies):
+		if self.structType == StructDefEnum.Field:
+			self.type.make_dependencies(dependencies)
+		else:
+			for child in self.children:
+				child.make_dependencies(dependencies)
+
 class TypeChainEnum(Enum):
 	Array = 1
 	Normal = 2
@@ -124,7 +135,7 @@ class TypeChain:
 			self.arraySize = type.get_array_size()
 		else:
 			self.chainType = TypeChainEnum.Normal
-			self.normal = type.spelling
+			self.normal = type.spelling.replace('const ', '')
 
 	def tostring(self, variable):
 		if self.chainType == TypeChainEnum.Pointer:
@@ -139,6 +150,16 @@ class TypeChain:
 		else:
 			variable = f' {variable}' if variable != '' else ''
 			return f'{self.normal}{variable}';
+
+	def make_dependencies(self, dependencies):
+		if self.chainType == TypeChainEnum.Pointer or self.chainType == TypeChainEnum.Array:
+			self.subType.make_dependencies(dependencies)
+		elif self.chainType == TypeChainEnum.Function:
+			for param in self.params:
+				param.make_dependencies(dependencies)
+			self.result.make_dependencies(dependencies)
+		else:
+			dependencies.append(self.normal)
 
 class TypeDef(GenericTypeDef):
 	def __init__(self, source, target):
@@ -156,6 +177,9 @@ class TypeDef(GenericTypeDef):
 
 	def make_declaration(self):
 		return None
+
+	def make_dependencies(self, dependencies):
+		dependencies.append(self.source)
 
 class DefinitionCollection:
 	def __init__(self):
@@ -186,6 +210,19 @@ class DefinitionCollection:
 				return
 			self.items.append(new_definition)
 
+	def __iter__(self):
+		return self.items.__iter__()
+
+class DependencyCollection:
+	def __init__(self, definitions):
+		self.items = []
+		self.definitions = definitions
+	def append(self, item):
+		if not item in self.items:
+			self.items.append(item)
+			for definition in self.definitions:
+				if definition.getname() == item:
+					definition.make_dependencies(self)
 	def __iter__(self):
 		return self.items.__iter__()
 
@@ -336,7 +373,7 @@ def parse_file(path_file):
 			print(diag.spelling + " " + str(diag.location.file) + ":" + str(diag.location.line))
 	return tu.cursor
 
-def handle_dll_source(dll_path, source, funcs, contents_source, ret_func_pointers, ret_definitions):
+def handle_dll_source(dll_path, source, funcs, contents_source, ret_func_pointers, ret_definitions, dependencies):
 	path_file = dll_path + "/" + source
 
 	cursor = parse_file(path_file)
@@ -352,6 +389,15 @@ def handle_dll_source(dll_path, source, funcs, contents_source, ret_func_pointer
 		contents_source.append(f'static WINAPI {node.result_type.spelling} (*p{node.spelling})({arguments});')
 		ret_func_pointers.append(node.spelling)
 	contents_source.append("")
+
+	# Make dependencies
+	for node in nodes:
+		if node.result_type is not None:
+			type_result = TypeChain(None, node.result_type)
+			type_result.make_dependencies(dependencies)
+		for arg in node.get_arguments():
+			arg_type = TypeChain(None, arg.type)
+			arg_type.make_dependencies(dependencies)
 
 	for node in nodes:
 		print(node.displayname + " " + str(node.location.file) + ":" + str(node.location.line) )
@@ -376,10 +422,14 @@ def handle_dll(name):
 	contents_dlls = []
 	ret_func_pointers = []
 	definitions = DefinitionCollection()
+	dependencies = DependencyCollection(definitions)
 	for source in sources:
 		if not source.endswith("menu.c") and not source.endswith("text.c"):
 			continue
-		handle_dll_source(dll_path, source, funcs, contents_dlls, ret_func_pointers, definitions)
+		handle_dll_source(dll_path, source, funcs, contents_dlls, ret_func_pointers, definitions, dependencies)
+
+	for dep in dependencies:
+		print('\t' + dep)
 
 	# Make definitions
 	for definition in definitions:
