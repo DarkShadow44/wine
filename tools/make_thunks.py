@@ -133,7 +133,7 @@ class TypeDef(GenericTypeDef):
 			return f'typedef {self.source.tostring("")} {self.target};'
 
 	def getname(self):
-		return self.target;
+		return 'typedef' + self.target;
 
 
 # -------------------- Helper functions --------------------
@@ -254,10 +254,12 @@ def find_all_functions(node, ret_nodes, funcs, source):
 		find_all_functions(c, ret_nodes, funcs, source)
 
 def append_definition_if_not_exists(definitions, node, new_definition):
+	if new_definition.getname() == "":
+		return
 	# Fields must always be added
 	if node.kind != CursorKind.FIELD_DECL:
 		# Only add each definition once
-		if any(x.getname() == node.spelling for x in definitions):
+		if any(x.getname() == new_definition.getname() for x in definitions):
 			return
 
 		# Ignore common definitions
@@ -267,7 +269,7 @@ def append_definition_if_not_exists(definitions, node, new_definition):
 			return
 	definitions.append(new_definition)
 
-def find_all_definitions(node, structdefs_parent):
+def find_all_definitions(node, structdefs_parent, typedef_name):
 	if node.kind == CursorKind.STRUCT_DECL or node.kind == CursorKind.UNION_DECL or node.kind == CursorKind.FIELD_DECL or node.kind == CursorKind.ENUM_DECL:
 		# Check if there is a field whichs type is an anyonymous struct/union
 		if ('anonymous union' in node.type.spelling) or ('anonymous struct' in node.type.spelling):
@@ -276,17 +278,22 @@ def find_all_definitions(node, structdefs_parent):
 					child.variable = ' ' + node.spelling
 			structdefs_parent = []
 		else:
-			parent = StructDef(node)
-			append_definition_if_not_exists(structdefs_parent, node, parent)
-			structdefs_parent = parent.children
+			new_parent = StructDef(node)
+			if typedef_name is not None:
+				new_parent.name = typedef_name
+			append_definition_if_not_exists(structdefs_parent, node, new_parent)
+			structdefs_parent = new_parent.children
+
+		for c in node.get_children():
+			find_all_definitions(c, structdefs_parent, None)
 
 	if node.kind == CursorKind.TYPEDEF_DECL:
 		type_to = node.spelling
 		type_from = TypeChain(node, node.underlying_typedef_type)
+		for c in node.get_children():
+			find_all_definitions(c, structdefs_parent, node.spelling)
 		append_definition_if_not_exists(structdefs_parent, node, TypeDef(type_from, type_to))
 
-	for c in node.get_children():
-		find_all_definitions(c, structdefs_parent)
 
 def parse_file(path_file):
 	index = clang.cindex.Index.create()
@@ -304,7 +311,7 @@ def handle_dll_source(dll_path, source, funcs, contents_source, ret_func_pointer
 	nodes = []
 	for child in cursor.get_children():
 		find_all_functions(child, nodes, funcs, source)
-		find_all_definitions(child, ret_definitions)
+		find_all_definitions(child, ret_definitions, None)
 
 	# Make function pointers
 	for node in nodes:
@@ -453,7 +460,7 @@ def dump_definitions(path_file):
 
 	definitions = []
 	for child in cursor.get_children():
-		find_all_definitions(child, definitions)
+		find_all_definitions(child, definitions, None)
 
 	for definition in definitions:
 		print(definition.tostring())
