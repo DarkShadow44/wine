@@ -175,9 +175,6 @@ class DefinitionCollection:
 		self.typedef_item = None
 
 	def append_typedef_item(self, name):
-		if "WIN16_SUBSYSTEM_TIB" in name:
-			print("\t\tWIN16_SUBSYSTEM_TIB")
-			print(self.typedef_item)
 		if self.typedef_item is not None:
 			self.typedef_item.name = name
 			self.append(None, self.typedef_item)
@@ -415,12 +412,11 @@ def handle_dll(name):
 	definitions = DefinitionCollection()
 	dependencies = DependencyCollection(definitions)
 	for source in sources:
-		if not source.endswith("menu.c") and not source.endswith("text.c"):
-			continue
+		#if not source.endswith("menu.c") and not source.endswith("text.c"):
+		#	continue
 		handle_dll_source(dll_path, source, funcs, contents_dlls, ret_func_pointers, definitions, dependencies)
 
-	for dep in dependencies:
-		print('\t' + dep)
+	definitions = [definition for definition in definitions if (definition.getname() in dependencies)]
 
 	# Make definitions
 	for definition in definitions:
