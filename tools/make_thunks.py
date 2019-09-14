@@ -32,6 +32,7 @@ class StructDef(GenericTypeDef):
 	def __init__(self, node):
 		self.name = node.spelling
 		self.type = TypeChain(node, node.type)
+		self.children = []
 		if node.kind == CursorKind.STRUCT_DECL:
 			self.structType = StructDefEnum.Struct
 		if node.kind == CursorKind.UNION_DECL:
@@ -40,7 +41,6 @@ class StructDef(GenericTypeDef):
 			self.structType = StructDefEnum.Field
 		if node.kind == CursorKind.ENUM_DECL:
 			self.structType = StructDefEnum.Enumeration
-		self.children = []
 		self.named_type = node.type.spelling
 		self.variable = ''
 
@@ -60,6 +60,8 @@ class StructDef(GenericTypeDef):
 			lines.append(f'{indent}{{')
 			for child in self.children:
 				child.print_struct(lines, depth + 1)
+			if self.structType == StructDefEnum.Enumeration:
+				lines.append(f'\n{self.name}_DUMMY = 0')
 			lines.append(f'{indent}}}{self.variable};')
 			lines.append('')
 
@@ -234,21 +236,17 @@ def make_thunk_callingconvention_32_to_64_b(contents_source, node):
 	contents_source.append('}')
 	contents_source.append("")
 
-def node_is_function_definition(node):
-	if not node.kind == CursorKind.FUNCTION_DECL:
-		return False
-
-	for c in node.get_children():
-		if (c.kind == CursorKind.COMPOUND_STMT):
-			return True
-
-	return False
+def node_is_only_declaration(node):
+	definition = node.get_definition();
+	if definition is None:
+		return True;
+	return node != definition;
 
 def find_all_functions(node, ret_nodes, funcs, source):
 	if (node.location.file is None or not node.location.file.name.endswith(f'/{source}')):
 		return
 	if node.spelling in funcs:
-		if node_is_function_definition(node):
+		if not node_is_only_declaration(node):
 			ret_nodes.append(node)
 	for c in node.get_children():
 		find_all_functions(c, ret_nodes, funcs, source)
@@ -264,12 +262,14 @@ def append_definition_if_not_exists(definitions, node, new_definition):
 
 		# Ignore common definitions
 		file = str(node.location.file)
-		ignored_files = ['/winnt.h', '/windef.h', '/winbase.h']
+		ignored_files = ['/winnt.h', '/windef.h', '/winbase.h', '/excpt.h', '/debug.h', '/guiddef.h']
 		if any(file.endswith(x) for x in ignored_files):
+			return
+		if file.startswith('/usr/include/'):
 			return
 	definitions.append(new_definition)
 
-def find_all_definitions(node, structdefs_parent, typedef_name):
+def find_all_definitions(node, structdefs_parent):
 	if node.kind == CursorKind.STRUCT_DECL or node.kind == CursorKind.UNION_DECL or node.kind == CursorKind.FIELD_DECL or node.kind == CursorKind.ENUM_DECL:
 		# Check if there is a field whichs type is an anyonymous struct/union
 		if ('anonymous union' in node.type.spelling) or ('anonymous struct' in node.type.spelling):
@@ -278,21 +278,19 @@ def find_all_definitions(node, structdefs_parent, typedef_name):
 					child.variable = ' ' + node.spelling
 			structdefs_parent = []
 		else:
-			new_parent = StructDef(node)
-			if typedef_name is not None:
-				new_parent.name = typedef_name
-			append_definition_if_not_exists(structdefs_parent, node, new_parent)
-			structdefs_parent = new_parent.children
+			if not node_is_only_declaration(node):
+				new_parent = StructDef(node)
+				append_definition_if_not_exists(structdefs_parent, node, new_parent)
+				structdefs_parent = new_parent.children
 
 		for c in node.get_children():
-			find_all_definitions(c, structdefs_parent, None)
+			find_all_definitions(c, structdefs_parent)
 
 	if node.kind == CursorKind.TYPEDEF_DECL:
 		type_to = node.spelling
 		type_from = TypeChain(node, node.underlying_typedef_type)
-		for c in node.get_children():
-			find_all_definitions(c, structdefs_parent, node.spelling)
-		append_definition_if_not_exists(structdefs_parent, node, TypeDef(type_from, type_to))
+		definition = TypeDef(type_from, type_to)
+		append_definition_if_not_exists(structdefs_parent, node, definition)
 
 
 def parse_file(path_file):
@@ -311,7 +309,7 @@ def handle_dll_source(dll_path, source, funcs, contents_source, ret_func_pointer
 	nodes = []
 	for child in cursor.get_children():
 		find_all_functions(child, nodes, funcs, source)
-		find_all_definitions(child, ret_definitions, None)
+		find_all_definitions(child, ret_definitions)
 
 	# Make function pointers
 	for node in nodes:
@@ -348,6 +346,11 @@ def handle_dll(name):
 		handle_dll_source(dll_path, source, funcs, contents_dlls, ret_func_pointers, definitions)
 
 	# Make definitions
+	for definition in definitions:
+		if isinstance(definition, StructDef):
+			declaration = f'struct {definition.getname()};'
+			contents_source.append(declaration)
+	contents_source.append("")
 	for definition in definitions:
 		contents_source.append(definition.tostring())
 		contents_source.append("")
@@ -460,7 +463,7 @@ def dump_definitions(path_file):
 
 	definitions = []
 	for child in cursor.get_children():
-		find_all_definitions(child, definitions, None)
+		find_all_definitions(child, definitions)
 
 	for definition in definitions:
 		print(definition.tostring())
