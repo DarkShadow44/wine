@@ -439,7 +439,7 @@ def parse_file(path_file):
 			print(diag.spelling + " " + str(diag.location.file) + ":" + str(diag.location.line))
 	return tu.cursor
 
-def handle_dll_source(dll_path, source, funcs, contents_source, ret_func_pointers, ret_definitions, dependencies):
+def handle_dll_source(dll_path, source, funcs, ret_definitions):
 	path_file = dll_path + "/" + source
 
 	cursor = parse_file(path_file)
@@ -447,25 +447,6 @@ def handle_dll_source(dll_path, source, funcs, contents_source, ret_func_pointer
 	for child in cursor.get_children():
 		find_all_functions(child, funcs, source)
 		find_all_definitions(child, ret_definitions)
-
-	# Make function pointers
-	for func in funcs:
-		if not func.is_empty():
-			arguments = func.get_arguments_decl()
-			contents_source.append(f'static WINAPI {func.return_type.tostring("")} (*p{func.internalname})({arguments});')
-			ret_func_pointers.append(func.internalname)
-	contents_source.append("")
-
-	# Make dependencies
-	for func in funcs:
-		if not func.is_empty():
-			func.make_dependencies(dependencies)
-
-	for func in funcs:
-		if not func.is_empty():
-			# print(node.displayname + " " + str(node.location.file) + ":" + str(node.location.line) )
-			make_thunk_callingconvention_32_to_64_b(contents_source, func)
-			make_thunk_callingconvention_32_to_64_a(contents_source, func)
 
 def handle_dll(name):
 	dll_path = "../dlls/" + name
@@ -483,18 +464,20 @@ def handle_dll(name):
 	funcs.load_from_specfile(path_spec)
 	sources = get_makefile_sources(path_makefile)
 
-	contents_dlls = []
-	ret_func_pointers = []
+	# Read files
 	definitions = DefinitionCollection()
-	dependencies = DependencyCollection(definitions)
 	for source in sources:
-		#if not source.endswith("console.c"):
+		#if not source.endswith("cpp.c"):
 		#	continue
-		handle_dll_source(dll_path, source, funcs, contents_dlls, ret_func_pointers, definitions, dependencies)
+		handle_dll_source(dll_path, source, funcs, definitions)
 
+	# Make dependencies
+	dependencies = DependencyCollection(definitions)
+	for func in funcs:
+		if not func.is_empty():
+			func.make_dependencies(dependencies)
 	definitions = [definition for definition in definitions if (definition.getname() in dependencies)]
 
-	# Make definitions
 	for definition in definitions:
 		declaration = definition.make_declaration()
 		if declaration is not None:
@@ -504,9 +487,19 @@ def handle_dll(name):
 		contents_source.append(definition.tostring())
 		contents_source.append("")
 
+	# Make function pointers
+	for func in funcs:
+		if not func.is_empty():
+			arguments = func.get_arguments_decl()
+			contents_source.append(f'static WINAPI {func.return_type.tostring("")} (*p{func.internalname})({arguments});')
+	contents_source.append("")
+
 	# Add thunks
-	for line in contents_dlls:
-		contents_source.append(line)
+	for func in funcs:
+		if not func.is_empty():
+			# print(node.displayname + " " + str(node.location.file) + ":" + str(node.location.line) )
+			make_thunk_callingconvention_32_to_64_b(contents_source, func)
+			make_thunk_callingconvention_32_to_64_a(contents_source, func)
 
 	# Make init function
 	contents_source.append('static BOOL initialized = FALSE;')
@@ -514,8 +507,9 @@ def handle_dll(name):
 	contents_source.append(f'void wine_thunk_initialize_{name}(void)')
 	contents_source.append('{')
 	contents_source.append(f'\tHMODULE library = LoadLibraryA("{name}.dll");')
-	for func in ret_func_pointers:
-		contents_source.append(f'\tp{func} = (void *)GetProcAddress(library, "{func}");')
+	for func in funcs:
+		if not func.is_empty():
+			contents_source.append(f'\tp{func.internalname} = (void *)GetProcAddress(library, "{func.internalname}");')
 	contents_source.append('\tinitialized = TRUE;')
 	contents_source.append('}')
 	contents_source.append("")
@@ -526,9 +520,10 @@ def handle_dll(name):
 	contents_source.append('\tif (!initialized)')
 	contents_source.append('\t\treturn NULL;')
 	contents_source.append("")
-	for func in ret_func_pointers:
-		contents_source.append(f'\tif (func == p{func})')
-		contents_source.append(f'\t\treturn wine32a_{func};')
+	for func in funcs:
+		if not func.is_empty():
+			contents_source.append(f'\tif (func == p{func.internalname})')
+			contents_source.append(f'\t\treturn wine32a_{func.internalname};')
 	contents_source.append("")
 	contents_source.append('\treturn NULL;')
 	contents_source.append('}')
