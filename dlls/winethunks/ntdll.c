@@ -3,6 +3,7 @@
 #include "wine/debug.h"
 WINE_DEFAULT_DEBUG_CHANNEL(thunks);
 
+struct iovec; /* /usr/include/bits/types/struct_iovec.h:26 */
 enum _EVENT_TYPE; /* ../include/ntdef.h:26 */
 enum _TIMER_TYPE; /* ../include/ntdef.h:31 */
 struct _STRING; /* ../include/winternl.h:48 */
@@ -79,6 +80,7 @@ union cptable; /* ../include/wine/unicode.h:75 */
 struct SHA_CTX; /* ../dlls/ntdll/crypt.c:29 */
 struct MD4_CTX; /* ../dlls/ntdll/crypt.c:222 */
 struct MD5_CTX; /* ../dlls/ntdll/crypt.c:464 */
+struct msghdr; /* /usr/include/bits/socket.h:257 */
 struct _RTL_BALANCED_LINKS; /* ../include/ddk/ntddk.h:143 */
 enum _RTL_GENERIC_COMPARE_RESULTS; /* ../include/ddk/ntddk.h:154 */
 struct _RTL_AVL_TABLE; /* ../include/ddk/ntddk.h:166 */
@@ -94,6 +96,23 @@ struct _EVENT_FILTER_DESCRIPTOR; /* ../include/evntprov.h:52 */
 enum _EVENT_INFO_CLASS; /* ../include/evntprov.h:62 */
 struct WS_in_addr; /* ../include/inaddr.h:29 */
 struct WS_in6_addr; /* ../include/in6addr.h:28 */
+
+typedef long __ssize_t; /* /usr/include/bits/types.h:193 */
+
+typedef unsigned int __socklen_t; /* /usr/include/bits/types.h:209 */
+
+typedef unsigned long size_t; /* /usr/lib/clang/8.0.1/include/stddef.h:62 */
+
+struct iovec /* /usr/include/bits/types/struct_iovec.h:26 */
+{
+    void* iov_base;
+    size_t iov_len;
+};
+
+
+typedef __ssize_t ssize_t; /* /usr/include/sys/types.h:108 */
+
+typedef __socklen_t socklen_t; /* /usr/include/unistd.h:274 */
 
 enum _EVENT_TYPE /* ../include/ntdef.h:26 */
 {
@@ -1059,6 +1078,18 @@ struct MD5_CTX /* ../dlls/ntdll/crypt.c:464 */
 
 
 typedef struct MD5_CTX MD5_CTX; /* ../dlls/ntdll/crypt.c:470 */
+
+struct msghdr /* /usr/include/bits/socket.h:257 */
+{
+    void* msg_name;
+    socklen_t msg_namelen;
+    struct iovec* msg_iov;
+    size_t msg_iovlen;
+    void* msg_control;
+    size_t msg_controllen;
+    int msg_flags;
+};
+
 
 struct _RTL_BALANCED_LINKS /* ../include/ddk/ntddk.h:143 */
 {

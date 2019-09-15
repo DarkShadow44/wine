@@ -194,7 +194,7 @@ class DefinitionCollection:
 
 	def append_typedef_item(self, node, name):
 		if self.typedef_item is not None:
-			if self.typedef_item.line == node.location.line:
+			if self.typedef_item.line == node.underlying_typedef_type.get_declaration().location.line:
 				self.typedef_item.name = name
 				self.append(None, self.typedef_item)
 			self.typedef_item = None
@@ -452,6 +452,7 @@ def handle_dll_source(dll_path, source, funcs, ret_definitions):
 		find_all_definitions(child, ret_definitions)
 
 def handle_dll(name):
+	print(f'Started {name}')
 	dll_path = "../dlls/" + name
 	path_spec = f'{dll_path}/{name}.spec'
 	path_makefile = dll_path + "/Makefile.in"
@@ -472,6 +473,7 @@ def handle_dll(name):
 	for source in sources:
 		#if not source.endswith("console.c"):
 		#	continue
+		print(f'\tAt {name}/{source}')
 		handle_dll_source(dll_path, source, funcs, definitions)
 
 	# Make dependencies
@@ -535,6 +537,7 @@ def handle_dll(name):
 	file_source = open(f'../dlls/winethunks/{name}.c', 'w')
 	file_source.write('\n'.join(contents_source))
 	file_source.close()
+	print(f'Finished {name}')
 
 def handle_all_dlls(threads):
 	dlls = []
