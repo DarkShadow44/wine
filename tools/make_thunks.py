@@ -343,11 +343,11 @@ def get_makefile_sources(path):
 # 4 - param 1
 # 4 - param 2
 # ...
-def make_thunk_callingconvention_32_to_64_a(contents_source, func):
+def make_thunk_callingconvention_32_to_64_a(contents_source, dllname, func):
 	funcname = func.internalname
 	num_params = len(func.params)
-	contents_source.append(f'extern WINAPI void wine32a_{funcname}(void);  /* {func.file}:{func.line} */')
-	contents_source.append(f'__ASM_GLOBAL_FUNC(wine32a_{funcname},')
+	contents_source.append(f'extern WINAPI void wine32a_{dllname}_{funcname}(void);  /* {func.file}:{func.line} */')
+	contents_source.append(f'__ASM_GLOBAL_FUNC(wine32a_{dllname}_{funcname},')
 	#Setup own stackframe
 	contents_source.append('\t"push %rbp \\n"');
 	contents_source.append('\t"mov %rsp, %rbp \\n"');
@@ -362,7 +362,7 @@ def make_thunk_callingconvention_32_to_64_a(contents_source, func):
 		contents_source.append('\t"movl 0x20(%rsp), %r9d \\n"');
 	# Call actual function, give it a bit space...
 	contents_source.append('\t"sub $0x100, %rsp \\n"')
-	contents_source.append(f'\t"call " __ASM_NAME("wine32b_{funcname}") "\\n"')
+	contents_source.append(f'\t"call " __ASM_NAME("wine32b_{dllname}_{funcname}") "\\n"')
 	contents_source.append('\t"add $0x100, %rsp \\n"')
 	# Reset own stackframe
 	contents_source.append('\t"pop %rbp \\n"')
@@ -381,11 +381,11 @@ def make_thunk_callingconvention_32_to_64_a(contents_source, func):
 	contents_source.append(")")
 	contents_source.append("")
 
-def make_thunk_callingconvention_32_to_64_b(contents_source, func):
+def make_thunk_callingconvention_32_to_64_b(contents_source, dllname, func):
 	funcname = func.internalname
 	arguments_decl = func.get_arguments_decl()
 	arguments_calling = func.get_arguments_calling()
-	contents_source.append(f'extern WINAPI {func.return_type.tostring("")} wine32b_{funcname}({arguments_decl}) /* {func.file}:{func.line} */')
+	contents_source.append(f'extern WINAPI {func.return_type.tostring("")} wine32b_{dllname}_{funcname}({arguments_decl}) /* {func.file}:{func.line} */')
 	contents_source.append('{')
 	contents_source.append(f'\tTRACE("Enter {funcname}\\n");')
 	contents_source.append(f'\treturn p{funcname}({arguments_calling});')
@@ -502,8 +502,8 @@ def handle_dll(name):
 	for func in funcs:
 		if not func.is_empty():
 			# print(node.displayname + " " + str(node.location.file) + ":" + str(node.location.line) )
-			make_thunk_callingconvention_32_to_64_b(contents_source, func)
-			make_thunk_callingconvention_32_to_64_a(contents_source, func)
+			make_thunk_callingconvention_32_to_64_b(contents_source, name, func)
+			make_thunk_callingconvention_32_to_64_a(contents_source, name, func)
 
 	# Make init function
 	contents_source.append('static BOOL initialized = FALSE;')
@@ -527,7 +527,7 @@ def handle_dll(name):
 	for func in funcs:
 		if not func.is_empty():
 			contents_source.append(f'\tif (func == p{func.internalname})')
-			contents_source.append(f'\t\treturn wine32a_{func.internalname};')
+			contents_source.append(f'\t\treturn wine32a_{name}_{func.internalname};')
 	contents_source.append("")
 	contents_source.append('\treturn NULL;')
 	contents_source.append('}')
@@ -539,11 +539,11 @@ def handle_dll(name):
 
 def handle_all_dlls(threads):
 	dlls = []
-	#dlls.append("user32")
-	#dlls.append("kernel32")
-	#dlls.append("advapi32")
+	dlls.append("user32")
+	dlls.append("kernel32")
+	dlls.append("advapi32")
 	dlls.append("msvcrt")
-	#dlls.append("ntdll")
+	dlls.append("ntdll")
 
 	if threads > 1:
 		pool = Pool(threads)

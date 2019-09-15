@@ -3,5 +3,9 @@ IMPORTLIB = winethunks
 
 C_SRCS = \
 	user32.c \
+	kernel32.c \
+	advapi32.c \
+	msvcrt.c \
+	ntdll.c \
 	winethunks_shared.c \
 	winethunks_main.c
