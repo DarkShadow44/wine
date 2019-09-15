@@ -198,6 +198,9 @@ class DefinitionCollection:
 			self.append(None, self.typedef_item)
 			self.typedef_item = None
 
+	def clear_typedef_item(self):
+		self.typedef_item = None
+
 	def append(self, node, new_definition):
 		if node is not None:
 			# Ignore common definitions
@@ -421,14 +424,15 @@ def find_all_definitions(node, definitions):
 
 		for child in node.get_children():
 			find_all_definitions(child, definitions)
-
-	if node.kind == CursorKind.TYPEDEF_DECL:
+	elif node.kind == CursorKind.TYPEDEF_DECL:
 		type_to = node.spelling
 		type_from = TypeChain(node, node.underlying_typedef_type)
 		# Fix anonymous struct/enum/union typedef
 		definitions.append_typedef_item(type_from.tostring(""))
 		definition = TypeDef(type_from, type_to, node.location)
 		definitions.append(node, definition)
+	else:
+		definitions.clear_typedef_item()
 
 
 def parse_file(path_file):
@@ -467,7 +471,7 @@ def handle_dll(name):
 	# Read files
 	definitions = DefinitionCollection()
 	for source in sources:
-		#if not source.endswith("cpp.c"):
+		#if not source.endswith("console.c"):
 		#	continue
 		handle_dll_source(dll_path, source, funcs, definitions)
 
