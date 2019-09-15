@@ -1,6 +1,7 @@
 #include "windows.h"
 #include "wine/asm.h"
 #include "wine/debug.h"
+#include "wine/winethunks.h"
 WINE_DEFAULT_DEBUG_CHANNEL(thunks);
 
 struct _UNICODE_STRING; /* ../include/winternl.h:65 */
@@ -854,6 +855,12 @@ struct _WMIGUIDINFORMATION /* ../include/wmium.h:67 */
 
 typedef struct _WMIGUIDINFORMATION WMIGUIDINFORMATION; /* ../include/wmium.h:72 */
 
+static void* pA_SHAFinal;
+static void* pextA_SHAFinal;
+static void* pA_SHAInit;
+static void* pextA_SHAInit;
+static void* pA_SHAUpdate;
+static void* pextA_SHAUpdate;
 static WINAPI BOOL (*pAbortSystemShutdownA)(LPSTR  lpMachineName);
 static WINAPI BOOL (*pAbortSystemShutdownW)(LPWSTR  lpMachineName);
 static WINAPI BOOL (*pAccessCheckAndAuditAlarmA)(LPCSTR  Subsystem, LPVOID  HandleId, LPSTR  ObjectTypeName, LPSTR  ObjectName, PSECURITY_DESCRIPTOR  SecurityDescriptor, DWORD  DesiredAccess, PGENERIC_MAPPING  GenericMapping, BOOL  ObjectCreation, LPDWORD  GrantedAccess, LPBOOL  AccessStatus, LPBOOL  pfGenerateOnClose);
@@ -883,6 +890,10 @@ static WINAPI BOOL (*pConvertStringSecurityDescriptorToSecurityDescriptorA)(LPCS
 static WINAPI BOOL (*pConvertStringSecurityDescriptorToSecurityDescriptorW)(LPCWSTR  StringSecurityDescriptor, DWORD  StringSDRevision, PSECURITY_DESCRIPTOR*  SecurityDescriptor, PULONG  SecurityDescriptorSize);
 static WINAPI BOOL (*pConvertStringSidToSidA)(LPCSTR  StringSid, PSID*  Sid);
 static WINAPI BOOL (*pConvertStringSidToSidW)(LPCWSTR  StringSid, PSID*  Sid);
+static void* pCreateProcessAsUserA;
+static void* pextCreateProcessAsUserA;
+static void* pCreateProcessAsUserW;
+static void* pextCreateProcessAsUserW;
 static WINAPI BOOL (*pCreateProcessWithLogonW)(LPCWSTR  lpUsername, LPCWSTR  lpDomain, LPCWSTR  lpPassword, DWORD  dwLogonFlags, LPCWSTR  lpApplicationName, LPWSTR  lpCommandLine, DWORD  dwCreationFlags, LPVOID  lpEnvironment, LPCWSTR  lpCurrentDirectory, LPSTARTUPINFOW  lpStartupInfo, LPPROCESS_INFORMATION  lpProcessInformation);
 static WINAPI BOOL (*pCreateProcessWithTokenW)(HANDLE  token, DWORD  logon_flags, LPCWSTR  application_name, LPWSTR  command_line, DWORD  creation_flags, void*  environment, LPCWSTR  current_directory, STARTUPINFOW*  startup_info, PROCESS_INFORMATION*  process_information);
 static WINAPI BOOL (*pCredDeleteA)(LPCSTR  TargetName, DWORD  Type, DWORD  Flags);
@@ -951,6 +962,24 @@ static WINAPI ULONG (*pEnableTraceEx2)(TRACEHANDLE  handle, LPCGUID  provider, U
 static WINAPI BOOL (*pEncryptFileA)(LPCSTR  lpFileName);
 static WINAPI BOOL (*pEncryptFileW)(LPCWSTR  lpFileName);
 static WINAPI ULONG (*pEnumerateTraceGuids)(PTRACE_GUID_PROPERTIES*  propertiesarray, ULONG  arraycount, PULONG  guidcount);
+static void* pEtwEventActivityIdControl;
+static void* pextEtwEventActivityIdControl;
+static void* pEtwEventEnabled;
+static void* pextEtwEventEnabled;
+static void* pEtwEventProviderEnabled;
+static void* pextEtwEventProviderEnabled;
+static void* pEtwEventRegister;
+static void* pextEtwEventRegister;
+static void* pEtwEventSetInformation;
+static void* pextEtwEventSetInformation;
+static void* pEtwEventUnregister;
+static void* pextEtwEventUnregister;
+static void* pEtwEventWrite;
+static void* pextEtwEventWrite;
+static void* pEtwEventWriteString;
+static void* pextEtwEventWriteString;
+static void* pEtwEventWriteTransfer;
+static void* pextEtwEventWriteTransfer;
 static WINAPI BOOL (*pFileEncryptionStatusA)(LPCSTR  lpFileName, LPDWORD  lpStatus);
 static WINAPI BOOL (*pFileEncryptionStatusW)(LPCWSTR  lpFileName, LPDWORD  lpStatus);
 static WINAPI ULONG (*pFlushTraceA)(TRACEHANDLE  hSession, LPCSTR  SessionName, PEVENT_TRACE_PROPERTIES  Properties);
@@ -959,6 +988,8 @@ static WINAPI DWORD (*pGetAuditedPermissionsFromAclA)(PACL  pacl, PTRUSTEEA  pTr
 static WINAPI DWORD (*pGetAuditedPermissionsFromAclW)(PACL  pacl, PTRUSTEEW  pTrustee, PACCESS_MASK  pSuccessfulAuditedRights, PACCESS_MASK  pFailedAuditRights);
 static WINAPI BOOL (*pGetCurrentHwProfileA)(LPHW_PROFILE_INFOA  pInfo);
 static WINAPI BOOL (*pGetCurrentHwProfileW)(LPHW_PROFILE_INFOW  pInfo);
+static void* pGetDynamicTimeZoneInformationEffectiveYears;
+static void* pextGetDynamicTimeZoneInformationEffectiveYears;
 static WINAPI DWORD (*pGetEffectiveRightsFromAclA)(PACL  pacl, PTRUSTEEA  pTrustee, PACCESS_MASK  pAccessRights);
 static WINAPI DWORD (*pGetEffectiveRightsFromAclW)(PACL  pacl, PTRUSTEEW  pTrustee, PACCESS_MASK  pAccessRights);
 static WINAPI BOOL (*pGetEventLogInformation)(HANDLE  hEventLog, DWORD  dwInfoLevel, LPVOID  lpBuffer, DWORD  cbBufSize, LPDWORD  pcbBytesNeeded);
@@ -967,6 +998,12 @@ static WINAPI DWORD (*pGetExplicitEntriesFromAclW)(PACL  pacl, PULONG  count, PE
 static WINAPI BOOL (*pGetFileSecurityA)(LPCSTR  lpFileName, SECURITY_INFORMATION  RequestedInformation, PSECURITY_DESCRIPTOR  pSecurityDescriptor, DWORD  nLength, LPDWORD  lpnLengthNeeded);
 static WINAPI DWORD (*pGetNamedSecurityInfoExA)(LPCSTR  object, SE_OBJECT_TYPE  type, SECURITY_INFORMATION  info, LPCSTR  provider, LPCSTR  property, PACTRL_ACCESSA*  access_list, PACTRL_AUDITA*  audit_list, LPSTR*  owner, LPSTR*  group);
 static WINAPI DWORD (*pGetNamedSecurityInfoExW)(LPCWSTR  object, SE_OBJECT_TYPE  type, SECURITY_INFORMATION  info, LPCWSTR  provider, LPCWSTR  property, PACTRL_ACCESSW*  access_list, PACTRL_AUDITW*  audit_list, LPWSTR*  owner, LPWSTR*  group);
+static void* pEtwGetTraceEnableFlags;
+static void* pextEtwGetTraceEnableFlags;
+static void* pEtwGetTraceEnableLevel;
+static void* pextEtwGetTraceEnableLevel;
+static void* pEtwGetTraceLoggerHandle;
+static void* pextEtwGetTraceLoggerHandle;
 static WINAPI TRUSTEE_FORM (*pGetTrusteeFormA)(PTRUSTEEA  pTrustee);
 static WINAPI TRUSTEE_FORM (*pGetTrusteeFormW)(PTRUSTEEW  pTrustee);
 static WINAPI LPSTR (*pGetTrusteeNameA)(PTRUSTEEA  pTrustee);
@@ -1027,6 +1064,18 @@ static WINAPI NTSTATUS (*pLsaSetTrustedDomainInfoByName)(LSA_HANDLE  policy, PLS
 static WINAPI NTSTATUS (*pLsaSetTrustedDomainInformation)(LSA_HANDLE  policy, PSID  sid, TRUSTED_INFORMATION_CLASS  class, PVOID  buffer);
 static WINAPI NTSTATUS (*pLsaStorePrivateData)(LSA_HANDLE  PolicyHandle, PLSA_UNICODE_STRING  KeyName, PLSA_UNICODE_STRING  PrivateData);
 static WINAPI NTSTATUS (*pLsaUnregisterPolicyChangeNotification)(POLICY_NOTIFICATION_INFORMATION_CLASS  class, HANDLE  event);
+static void* pMD4Final;
+static void* pextMD4Final;
+static void* pMD4Init;
+static void* pextMD4Init;
+static void* pMD4Update;
+static void* pextMD4Update;
+static void* pMD5Final;
+static void* pextMD5Final;
+static void* pMD5Init;
+static void* pextMD5Init;
+static void* pMD5Update;
+static void* pextMD5Update;
 static WINAPI BOOL (*pNotifyBootConfigStatus)(BOOL  x1);
 static WINAPI BOOL (*pObjectCloseAuditAlarmA)(LPCSTR  SubsystemName, LPVOID  HandleId, BOOL  GenerateOnClose);
 static WINAPI BOOL (*pObjectOpenAuditAlarmA)(LPCSTR  SubsystemName, LPVOID  HandleId, LPSTR  ObjectTypeName, LPSTR  ObjectName, PSECURITY_DESCRIPTOR  pSecurityDescriptor, HANDLE  ClientToken, DWORD  DesiredAccess, DWORD  GrantedAccess, PPRIVILEGE_SET  Privileges, BOOL  ObjectCreation, BOOL  AccessGranted, LPBOOL  GenerateOnClose);
@@ -1071,6 +1120,10 @@ static WINAPI LSTATUS (*pRegSetValueA)(HKEY  hkey, LPCSTR  subkey, DWORD  type, 
 static WINAPI LSTATUS (*pRegSetValueW)(HKEY  hkey, LPCWSTR  subkey, DWORD  type, LPCWSTR  data, DWORD  count);
 static WINAPI HANDLE (*pRegisterEventSourceA)(LPCSTR  lpUNCServerName, LPCSTR  lpSourceName);
 static WINAPI HANDLE (*pRegisterEventSourceW)(LPCWSTR  lpUNCServerName, LPCWSTR  lpSourceName);
+static void* pEtwRegisterTraceGuidsA;
+static void* pextEtwRegisterTraceGuidsA;
+static void* pEtwRegisterTraceGuidsW;
+static void* pextEtwRegisterTraceGuidsW;
 static WINAPI void (*pRegisterWaitChainCOMCallback)(PCOGETCALLSTATE  call_state_cb, PCOGETACTIVATIONSTATE  activation_state_cb);
 static WINAPI BOOL (*pReportEventA)(HANDLE  hEventLog, WORD  wType, WORD  wCategory, DWORD  dwEventID, PSID  lpUserSid, WORD  wNumStrings, DWORD  dwDataSize, LPCSTR*  lpStrings, LPVOID  lpRawData);
 static WINAPI BOOL (*pReportEventW)(HANDLE  hEventLog, WORD  wType, WORD  wCategory, DWORD  dwEventID, PSID  lpUserSid, WORD  wNumStrings, DWORD  dwDataSize, LPCWSTR*  lpStrings, LPVOID  lpRawData);
@@ -1107,8 +1160,16 @@ static WINAPI NTSTATUS (*pSystemFunction025)(BYTE*  in, BYTE*  key, LPBYTE  out)
 static WINAPI BOOL (*pSystemFunction030)(LPCVOID  b1, LPCVOID  b2);
 static WINAPI NTSTATUS (*pSystemFunction032)(struct ustring*  data, struct ustring*  key);
 static WINAPI BOOL (*pSystemFunction035)(LPCSTR  lpszDllFilePath);
+static void* pEtwLogTraceEvent;
+static void* pextEtwLogTraceEvent;
+static void* pEtwTraceMessage;
+static void* pextEtwTraceMessage;
+static void* pEtwTraceMessageVa;
+static void* pextEtwTraceMessageVa;
 static WINAPI ULONG (*pTraceSetInformation)(TRACEHANDLE  handle, TRACE_INFO_CLASS  infoclass, void*  info, ULONG  len);
 static WINAPI DWORD (*pTreeResetNamedSecurityInfoW)(LPWSTR  pObjectName, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID  pOwner, PSID  pGroup, PACL  pDacl, PACL  pSacl, BOOL  KeepExplicit, FN_PROGRESS  fnProgress, PROG_INVOKE_SETTING  ProgressInvokeSetting, PVOID  Args);
+static void* pEtwUnregisterTraceGuids;
+static void* pextEtwUnregisterTraceGuids;
 static WINAPI ULONG (*pWmiExecuteMethodA)(WMIHANDLE  handle, char*  name, ULONG  method, ULONG  inputsize, void*  inputbuffer, ULONG*  outputsize, void*  outputbuffer);
 static WINAPI ULONG (*pWmiExecuteMethodW)(WMIHANDLE  handle, WCHAR*  name, ULONG  method, ULONG  inputsize, void*  inputbuffer, ULONG*  outputsize, void*  outputbuffer);
 static WINAPI void (*pWmiFreeBuffer)(void*  buffer);
@@ -8484,6 +8545,14 @@ static BOOL initialized = FALSE;
 void wine_thunk_initialize_advapi32(void)
 {
 	HMODULE library = LoadLibraryA("advapi32.dll");
+	HMODULE library_kernel32 = LoadLibraryA("kernel32.dll");
+	HMODULE library_ntdll = LoadLibraryA("ntdll.dll");
+	pA_SHAFinal = (void *)GetProcAddress(library, "A_SHAFinal");
+	pextA_SHAFinal = (void *)GetProcAddress(library_ntdll, "A_SHAFinal");
+	pA_SHAInit = (void *)GetProcAddress(library, "A_SHAInit");
+	pextA_SHAInit = (void *)GetProcAddress(library_ntdll, "A_SHAInit");
+	pA_SHAUpdate = (void *)GetProcAddress(library, "A_SHAUpdate");
+	pextA_SHAUpdate = (void *)GetProcAddress(library_ntdll, "A_SHAUpdate");
 	pAbortSystemShutdownA = (void *)GetProcAddress(library, "AbortSystemShutdownA");
 	pAbortSystemShutdownW = (void *)GetProcAddress(library, "AbortSystemShutdownW");
 	pAccessCheckAndAuditAlarmA = (void *)GetProcAddress(library, "AccessCheckAndAuditAlarmA");
@@ -8513,6 +8582,10 @@ void wine_thunk_initialize_advapi32(void)
 	pConvertStringSecurityDescriptorToSecurityDescriptorW = (void *)GetProcAddress(library, "ConvertStringSecurityDescriptorToSecurityDescriptorW");
 	pConvertStringSidToSidA = (void *)GetProcAddress(library, "ConvertStringSidToSidA");
 	pConvertStringSidToSidW = (void *)GetProcAddress(library, "ConvertStringSidToSidW");
+	pCreateProcessAsUserA = (void *)GetProcAddress(library, "CreateProcessAsUserA");
+	pextCreateProcessAsUserA = (void *)GetProcAddress(library_kernel32, "CreateProcessAsUserA");
+	pCreateProcessAsUserW = (void *)GetProcAddress(library, "CreateProcessAsUserW");
+	pextCreateProcessAsUserW = (void *)GetProcAddress(library_kernel32, "CreateProcessAsUserW");
 	pCreateProcessWithLogonW = (void *)GetProcAddress(library, "CreateProcessWithLogonW");
 	pCreateProcessWithTokenW = (void *)GetProcAddress(library, "CreateProcessWithTokenW");
 	pCredDeleteA = (void *)GetProcAddress(library, "CredDeleteA");
@@ -8581,6 +8654,24 @@ void wine_thunk_initialize_advapi32(void)
 	pEncryptFileA = (void *)GetProcAddress(library, "EncryptFileA");
 	pEncryptFileW = (void *)GetProcAddress(library, "EncryptFileW");
 	pEnumerateTraceGuids = (void *)GetProcAddress(library, "EnumerateTraceGuids");
+	pEtwEventActivityIdControl = (void *)GetProcAddress(library, "EtwEventActivityIdControl");
+	pextEtwEventActivityIdControl = (void *)GetProcAddress(library_ntdll, "EtwEventActivityIdControl");
+	pEtwEventEnabled = (void *)GetProcAddress(library, "EtwEventEnabled");
+	pextEtwEventEnabled = (void *)GetProcAddress(library_ntdll, "EtwEventEnabled");
+	pEtwEventProviderEnabled = (void *)GetProcAddress(library, "EtwEventProviderEnabled");
+	pextEtwEventProviderEnabled = (void *)GetProcAddress(library_ntdll, "EtwEventProviderEnabled");
+	pEtwEventRegister = (void *)GetProcAddress(library, "EtwEventRegister");
+	pextEtwEventRegister = (void *)GetProcAddress(library_ntdll, "EtwEventRegister");
+	pEtwEventSetInformation = (void *)GetProcAddress(library, "EtwEventSetInformation");
+	pextEtwEventSetInformation = (void *)GetProcAddress(library_ntdll, "EtwEventSetInformation");
+	pEtwEventUnregister = (void *)GetProcAddress(library, "EtwEventUnregister");
+	pextEtwEventUnregister = (void *)GetProcAddress(library_ntdll, "EtwEventUnregister");
+	pEtwEventWrite = (void *)GetProcAddress(library, "EtwEventWrite");
+	pextEtwEventWrite = (void *)GetProcAddress(library_ntdll, "EtwEventWrite");
+	pEtwEventWriteString = (void *)GetProcAddress(library, "EtwEventWriteString");
+	pextEtwEventWriteString = (void *)GetProcAddress(library_ntdll, "EtwEventWriteString");
+	pEtwEventWriteTransfer = (void *)GetProcAddress(library, "EtwEventWriteTransfer");
+	pextEtwEventWriteTransfer = (void *)GetProcAddress(library_ntdll, "EtwEventWriteTransfer");
 	pFileEncryptionStatusA = (void *)GetProcAddress(library, "FileEncryptionStatusA");
 	pFileEncryptionStatusW = (void *)GetProcAddress(library, "FileEncryptionStatusW");
 	pFlushTraceA = (void *)GetProcAddress(library, "FlushTraceA");
@@ -8589,6 +8680,8 @@ void wine_thunk_initialize_advapi32(void)
 	pGetAuditedPermissionsFromAclW = (void *)GetProcAddress(library, "GetAuditedPermissionsFromAclW");
 	pGetCurrentHwProfileA = (void *)GetProcAddress(library, "GetCurrentHwProfileA");
 	pGetCurrentHwProfileW = (void *)GetProcAddress(library, "GetCurrentHwProfileW");
+	pGetDynamicTimeZoneInformationEffectiveYears = (void *)GetProcAddress(library, "GetDynamicTimeZoneInformationEffectiveYears");
+	pextGetDynamicTimeZoneInformationEffectiveYears = (void *)GetProcAddress(library_kernel32, "GetDynamicTimeZoneInformationEffectiveYears");
 	pGetEffectiveRightsFromAclA = (void *)GetProcAddress(library, "GetEffectiveRightsFromAclA");
 	pGetEffectiveRightsFromAclW = (void *)GetProcAddress(library, "GetEffectiveRightsFromAclW");
 	pGetEventLogInformation = (void *)GetProcAddress(library, "GetEventLogInformation");
@@ -8597,6 +8690,12 @@ void wine_thunk_initialize_advapi32(void)
 	pGetFileSecurityA = (void *)GetProcAddress(library, "GetFileSecurityA");
 	pGetNamedSecurityInfoExA = (void *)GetProcAddress(library, "GetNamedSecurityInfoExA");
 	pGetNamedSecurityInfoExW = (void *)GetProcAddress(library, "GetNamedSecurityInfoExW");
+	pEtwGetTraceEnableFlags = (void *)GetProcAddress(library, "EtwGetTraceEnableFlags");
+	pextEtwGetTraceEnableFlags = (void *)GetProcAddress(library_ntdll, "EtwGetTraceEnableFlags");
+	pEtwGetTraceEnableLevel = (void *)GetProcAddress(library, "EtwGetTraceEnableLevel");
+	pextEtwGetTraceEnableLevel = (void *)GetProcAddress(library_ntdll, "EtwGetTraceEnableLevel");
+	pEtwGetTraceLoggerHandle = (void *)GetProcAddress(library, "EtwGetTraceLoggerHandle");
+	pextEtwGetTraceLoggerHandle = (void *)GetProcAddress(library_ntdll, "EtwGetTraceLoggerHandle");
 	pGetTrusteeFormA = (void *)GetProcAddress(library, "GetTrusteeFormA");
 	pGetTrusteeFormW = (void *)GetProcAddress(library, "GetTrusteeFormW");
 	pGetTrusteeNameA = (void *)GetProcAddress(library, "GetTrusteeNameA");
@@ -8657,6 +8756,18 @@ void wine_thunk_initialize_advapi32(void)
 	pLsaSetTrustedDomainInformation = (void *)GetProcAddress(library, "LsaSetTrustedDomainInformation");
 	pLsaStorePrivateData = (void *)GetProcAddress(library, "LsaStorePrivateData");
 	pLsaUnregisterPolicyChangeNotification = (void *)GetProcAddress(library, "LsaUnregisterPolicyChangeNotification");
+	pMD4Final = (void *)GetProcAddress(library, "MD4Final");
+	pextMD4Final = (void *)GetProcAddress(library_ntdll, "MD4Final");
+	pMD4Init = (void *)GetProcAddress(library, "MD4Init");
+	pextMD4Init = (void *)GetProcAddress(library_ntdll, "MD4Init");
+	pMD4Update = (void *)GetProcAddress(library, "MD4Update");
+	pextMD4Update = (void *)GetProcAddress(library_ntdll, "MD4Update");
+	pMD5Final = (void *)GetProcAddress(library, "MD5Final");
+	pextMD5Final = (void *)GetProcAddress(library_ntdll, "MD5Final");
+	pMD5Init = (void *)GetProcAddress(library, "MD5Init");
+	pextMD5Init = (void *)GetProcAddress(library_ntdll, "MD5Init");
+	pMD5Update = (void *)GetProcAddress(library, "MD5Update");
+	pextMD5Update = (void *)GetProcAddress(library_ntdll, "MD5Update");
 	pNotifyBootConfigStatus = (void *)GetProcAddress(library, "NotifyBootConfigStatus");
 	pObjectCloseAuditAlarmA = (void *)GetProcAddress(library, "ObjectCloseAuditAlarmA");
 	pObjectOpenAuditAlarmA = (void *)GetProcAddress(library, "ObjectOpenAuditAlarmA");
@@ -8701,6 +8812,10 @@ void wine_thunk_initialize_advapi32(void)
 	pRegSetValueW = (void *)GetProcAddress(library, "RegSetValueW");
 	pRegisterEventSourceA = (void *)GetProcAddress(library, "RegisterEventSourceA");
 	pRegisterEventSourceW = (void *)GetProcAddress(library, "RegisterEventSourceW");
+	pEtwRegisterTraceGuidsA = (void *)GetProcAddress(library, "EtwRegisterTraceGuidsA");
+	pextEtwRegisterTraceGuidsA = (void *)GetProcAddress(library_ntdll, "EtwRegisterTraceGuidsA");
+	pEtwRegisterTraceGuidsW = (void *)GetProcAddress(library, "EtwRegisterTraceGuidsW");
+	pextEtwRegisterTraceGuidsW = (void *)GetProcAddress(library_ntdll, "EtwRegisterTraceGuidsW");
 	pRegisterWaitChainCOMCallback = (void *)GetProcAddress(library, "RegisterWaitChainCOMCallback");
 	pReportEventA = (void *)GetProcAddress(library, "ReportEventA");
 	pReportEventW = (void *)GetProcAddress(library, "ReportEventW");
@@ -8737,8 +8852,16 @@ void wine_thunk_initialize_advapi32(void)
 	pSystemFunction030 = (void *)GetProcAddress(library, "SystemFunction030");
 	pSystemFunction032 = (void *)GetProcAddress(library, "SystemFunction032");
 	pSystemFunction035 = (void *)GetProcAddress(library, "SystemFunction035");
+	pEtwLogTraceEvent = (void *)GetProcAddress(library, "EtwLogTraceEvent");
+	pextEtwLogTraceEvent = (void *)GetProcAddress(library_ntdll, "EtwLogTraceEvent");
+	pEtwTraceMessage = (void *)GetProcAddress(library, "EtwTraceMessage");
+	pextEtwTraceMessage = (void *)GetProcAddress(library_ntdll, "EtwTraceMessage");
+	pEtwTraceMessageVa = (void *)GetProcAddress(library, "EtwTraceMessageVa");
+	pextEtwTraceMessageVa = (void *)GetProcAddress(library_ntdll, "EtwTraceMessageVa");
 	pTraceSetInformation = (void *)GetProcAddress(library, "TraceSetInformation");
 	pTreeResetNamedSecurityInfoW = (void *)GetProcAddress(library, "TreeResetNamedSecurityInfoW");
+	pEtwUnregisterTraceGuids = (void *)GetProcAddress(library, "EtwUnregisterTraceGuids");
+	pextEtwUnregisterTraceGuids = (void *)GetProcAddress(library_ntdll, "EtwUnregisterTraceGuids");
 	pWmiExecuteMethodA = (void *)GetProcAddress(library, "WmiExecuteMethodA");
 	pWmiExecuteMethodW = (void *)GetProcAddress(library, "WmiExecuteMethodW");
 	pWmiFreeBuffer = (void *)GetProcAddress(library, "WmiFreeBuffer");
@@ -8763,6 +8886,12 @@ void* wine_thunk_get_for_advapi32(void *func)
 	if (!initialized)
 		return NULL;
 
+	if (func == pA_SHAFinal)
+		return wine_thunk_get_for_any(pextA_SHAFinal);
+	if (func == pA_SHAInit)
+		return wine_thunk_get_for_any(pextA_SHAInit);
+	if (func == pA_SHAUpdate)
+		return wine_thunk_get_for_any(pextA_SHAUpdate);
 	if (func == pAbortSystemShutdownA)
 		return wine32a_advapi32_AbortSystemShutdownA;
 	if (func == pAbortSystemShutdownW)
@@ -8821,6 +8950,10 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_ConvertStringSidToSidA;
 	if (func == pConvertStringSidToSidW)
 		return wine32a_advapi32_ConvertStringSidToSidW;
+	if (func == pCreateProcessAsUserA)
+		return wine_thunk_get_for_any(pextCreateProcessAsUserA);
+	if (func == pCreateProcessAsUserW)
+		return wine_thunk_get_for_any(pextCreateProcessAsUserW);
 	if (func == pCreateProcessWithLogonW)
 		return wine32a_advapi32_CreateProcessWithLogonW;
 	if (func == pCreateProcessWithTokenW)
@@ -8957,6 +9090,24 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_EncryptFileW;
 	if (func == pEnumerateTraceGuids)
 		return wine32a_advapi32_EnumerateTraceGuids;
+	if (func == pEtwEventActivityIdControl)
+		return wine_thunk_get_for_any(pextEtwEventActivityIdControl);
+	if (func == pEtwEventEnabled)
+		return wine_thunk_get_for_any(pextEtwEventEnabled);
+	if (func == pEtwEventProviderEnabled)
+		return wine_thunk_get_for_any(pextEtwEventProviderEnabled);
+	if (func == pEtwEventRegister)
+		return wine_thunk_get_for_any(pextEtwEventRegister);
+	if (func == pEtwEventSetInformation)
+		return wine_thunk_get_for_any(pextEtwEventSetInformation);
+	if (func == pEtwEventUnregister)
+		return wine_thunk_get_for_any(pextEtwEventUnregister);
+	if (func == pEtwEventWrite)
+		return wine_thunk_get_for_any(pextEtwEventWrite);
+	if (func == pEtwEventWriteString)
+		return wine_thunk_get_for_any(pextEtwEventWriteString);
+	if (func == pEtwEventWriteTransfer)
+		return wine_thunk_get_for_any(pextEtwEventWriteTransfer);
 	if (func == pFileEncryptionStatusA)
 		return wine32a_advapi32_FileEncryptionStatusA;
 	if (func == pFileEncryptionStatusW)
@@ -8973,6 +9124,8 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_GetCurrentHwProfileA;
 	if (func == pGetCurrentHwProfileW)
 		return wine32a_advapi32_GetCurrentHwProfileW;
+	if (func == pGetDynamicTimeZoneInformationEffectiveYears)
+		return wine_thunk_get_for_any(pextGetDynamicTimeZoneInformationEffectiveYears);
 	if (func == pGetEffectiveRightsFromAclA)
 		return wine32a_advapi32_GetEffectiveRightsFromAclA;
 	if (func == pGetEffectiveRightsFromAclW)
@@ -8989,6 +9142,12 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_GetNamedSecurityInfoExA;
 	if (func == pGetNamedSecurityInfoExW)
 		return wine32a_advapi32_GetNamedSecurityInfoExW;
+	if (func == pEtwGetTraceEnableFlags)
+		return wine_thunk_get_for_any(pextEtwGetTraceEnableFlags);
+	if (func == pEtwGetTraceEnableLevel)
+		return wine_thunk_get_for_any(pextEtwGetTraceEnableLevel);
+	if (func == pEtwGetTraceLoggerHandle)
+		return wine_thunk_get_for_any(pextEtwGetTraceLoggerHandle);
 	if (func == pGetTrusteeFormA)
 		return wine32a_advapi32_GetTrusteeFormA;
 	if (func == pGetTrusteeFormW)
@@ -9109,6 +9268,18 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_LsaStorePrivateData;
 	if (func == pLsaUnregisterPolicyChangeNotification)
 		return wine32a_advapi32_LsaUnregisterPolicyChangeNotification;
+	if (func == pMD4Final)
+		return wine_thunk_get_for_any(pextMD4Final);
+	if (func == pMD4Init)
+		return wine_thunk_get_for_any(pextMD4Init);
+	if (func == pMD4Update)
+		return wine_thunk_get_for_any(pextMD4Update);
+	if (func == pMD5Final)
+		return wine_thunk_get_for_any(pextMD5Final);
+	if (func == pMD5Init)
+		return wine_thunk_get_for_any(pextMD5Init);
+	if (func == pMD5Update)
+		return wine_thunk_get_for_any(pextMD5Update);
 	if (func == pNotifyBootConfigStatus)
 		return wine32a_advapi32_NotifyBootConfigStatus;
 	if (func == pObjectCloseAuditAlarmA)
@@ -9197,6 +9368,10 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_RegisterEventSourceA;
 	if (func == pRegisterEventSourceW)
 		return wine32a_advapi32_RegisterEventSourceW;
+	if (func == pEtwRegisterTraceGuidsA)
+		return wine_thunk_get_for_any(pextEtwRegisterTraceGuidsA);
+	if (func == pEtwRegisterTraceGuidsW)
+		return wine_thunk_get_for_any(pextEtwRegisterTraceGuidsW);
 	if (func == pRegisterWaitChainCOMCallback)
 		return wine32a_advapi32_RegisterWaitChainCOMCallback;
 	if (func == pReportEventA)
@@ -9269,10 +9444,18 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_SystemFunction032;
 	if (func == pSystemFunction035)
 		return wine32a_advapi32_SystemFunction035;
+	if (func == pEtwLogTraceEvent)
+		return wine_thunk_get_for_any(pextEtwLogTraceEvent);
+	if (func == pEtwTraceMessage)
+		return wine_thunk_get_for_any(pextEtwTraceMessage);
+	if (func == pEtwTraceMessageVa)
+		return wine_thunk_get_for_any(pextEtwTraceMessageVa);
 	if (func == pTraceSetInformation)
 		return wine32a_advapi32_TraceSetInformation;
 	if (func == pTreeResetNamedSecurityInfoW)
 		return wine32a_advapi32_TreeResetNamedSecurityInfoW;
+	if (func == pEtwUnregisterTraceGuids)
+		return wine_thunk_get_for_any(pextEtwUnregisterTraceGuids);
 	if (func == pWmiExecuteMethodA)
 		return wine32a_advapi32_WmiExecuteMethodA;
 	if (func == pWmiExecuteMethodW)

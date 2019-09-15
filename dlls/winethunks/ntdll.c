@@ -1,6 +1,7 @@
 #include "windows.h"
 #include "wine/asm.h"
 #include "wine/debug.h"
+#include "wine/winethunks.h"
 WINE_DEFAULT_DEBUG_CHANNEL(thunks);
 
 struct iovec; /* /usr/include/bits/types/struct_iovec.h:26 */

@@ -1,6 +1,7 @@
 #include "windows.h"
 #include "wine/asm.h"
 #include "wine/debug.h"
+#include "wine/winethunks.h"
 WINE_DEFAULT_DEBUG_CHANNEL(thunks);
 
 struct MSVCRT__LDOUBLE; /* ../dlls/msvcrt/msvcrt.h:106 */
@@ -582,6 +583,8 @@ static WINAPI char* (*p_Getmonths)(void);
 static WINAPI void* (*p_Gettnames)(void);
 static WINAPI MSVCRT_size_t (*p_Strftime)(char*  str, MSVCRT_size_t  max, char*  format, struct MSVCRT_tm*  mstm, MSVCRT___lc_time_data*  time_data);
 static WINAPI int (*p_XcptFilter)(NTSTATUS  ex, PEXCEPTION_POINTERS  ptr);
+static void* p__C_specific_handler;
+static void* pext__C_specific_handler;
 static WINAPI int (*p__CppXcptFilter)(NTSTATUS  ex, PEXCEPTION_POINTERS  ptr);
 static WINAPI BOOL (*p__CxxDetectRethrow)(PEXCEPTION_POINTERS  ptrs);
 static WINAPI int (*p__CxxExceptionFilter)(PEXCEPTION_POINTERS  ptrs, type_info*  ti, int  flags, void**  copy);
@@ -645,6 +648,10 @@ static WINAPI void** (*pMSVCRT___pxcptinfoptrs)(void);
 static WINAPI void (*pMSVCRT___set_app_type)(int  app_type);
 static WINAPI void (*pMSVCRT___setusermatherr)(MSVCRT_matherr_func  func);
 static WINAPI MSVCRT_size_t (*pMSVCRT___strncnt)(char*  str, MSVCRT_size_t  size);
+static void* pGetCurrentThread;
+static void* pextGetCurrentThread;
+static void* pGetCurrentThreadId;
+static void* pextGetCurrentThreadId;
 static WINAPI int (*pMSVCRT___toascii)(int  c);
 static WINAPI BOOL (*pMSVCRT___uncaught_exception)(void);
 static WINAPI char* (*p__unDName)(char*  buffer, char*  mangled, int  buflen, malloc_func_t  memget, free_func_t  memfree, unsigned short  flags);
@@ -810,6 +817,8 @@ static WINAPI char* (*pMSVCRT__getdcwd)(int  drive, char*  buf, int  size);
 static WINAPI unsigned int (*pMSVCRT__getdiskfree)(unsigned int  disk, struct MSVCRT__diskfree_t*  d);
 static WINAPI void* (*p_getdllprocaddr)(MSVCRT_intptr_t  dll, char*  name, int  ordinal);
 static WINAPI int (*pMSVCRT__getdrive)(void);
+static void* pGetLogicalDrives;
+static void* pextGetLogicalDrives;
 static WINAPI int (*pMSVCRT__getmaxstdio)(void);
 static WINAPI int (*p_getmbcp)(void);
 static WINAPI int (*p_getpid)(void);
@@ -827,7 +836,11 @@ static WINAPI int (*p_heapset)(unsigned int  value);
 static WINAPI int (*p_heapwalk)(struct MSVCRT__heapinfo*  next);
 static WINAPI double (*p_hypot)(double  x, double  y);
 static WINAPI float (*pMSVCRT__hypotf)(float  x, float  y);
+static void* p_i64toa;
+static void* pext_i64toa;
 static WINAPI int (*pMSVCRT__i64toa_s)(long  value, char*  str, MSVCRT_size_t  size, int  radix);
+static void* p_i64tow;
+static void* pext_i64tow;
 static WINAPI int (*pMSVCRT__i64tow_s)(long  value, MSVCRT_wchar_t*  str, MSVCRT_size_t  size, int  radix);
 static WINAPI void (*p_initterm)(_INITTERMFUN*  start, _INITTERMFUN*  end);
 static WINAPI int (*p_initterm_e)(_INITTERM_E_FN*  table, _INITTERM_E_FN*  end);
@@ -889,6 +902,8 @@ static WINAPI int (*pMSVCRT__iswxdigit_l)(MSVCRT_wchar_t  wc, MSVCRT__locale_t  
 static WINAPI int (*pMSVCRT__isxdigit_l)(int  c, MSVCRT__locale_t  locale);
 static WINAPI char* (*pMSVCRT__itoa)(int  value, char*  str, int  radix);
 static WINAPI int (*pMSVCRT__itoa_s)(int  value, char*  str, MSVCRT_size_t  size, int  radix);
+static void* p_itow;
+static void* pext_itow;
 static WINAPI int (*pMSVCRT__itow_s)(int  value, MSVCRT_wchar_t*  str, MSVCRT_size_t  size, int  radix);
 static WINAPI double (*pMSVCRT__j0)(double  num);
 static WINAPI double (*pMSVCRT__j1)(double  num);
@@ -913,7 +928,11 @@ static WINAPI MSVCRT_ulong (*pMSVCRT__lrotr)(MSVCRT_ulong  num, int  shift);
 static WINAPI void* (*p_lsearch)(void*  match, void*  start, unsigned int*  array_size, unsigned int  elem_size, int (* cf) (void));
 static WINAPI LONG (*pMSVCRT__lseek)(int  fd, LONG  offset, int  whence);
 static WINAPI long (*pMSVCRT__lseeki64)(int  fd, long  offset, int  whence);
+static void* p_ltoa;
+static void* pext_ltoa;
 static WINAPI int (*pMSVCRT__ltoa_s)(MSVCRT_long  value, char*  str, MSVCRT_size_t  size, int  radix);
+static void* p_ltow;
+static void* pext_ltow;
 static WINAPI int (*pMSVCRT__ltow_s)(MSVCRT_long  value, MSVCRT_wchar_t*  str, MSVCRT_size_t  size, int  radix);
 static WINAPI void (*pMSVCRT__makepath)(char*  path, char*  drive, char*  directory, char*  filename, char*  extension);
 static WINAPI int (*pMSVCRT__makepath_s)(char*  path, MSVCRT_size_t  size, char*  drive, char*  directory, char*  filename, char*  extension);
@@ -993,6 +1012,8 @@ static WINAPI MSVCRT_size_t (*p_mbstrlen_l)(char*  str, MSVCRT__locale_t  locale
 static WINAPI unsigned char* (*p_mbsupr)(unsigned char*  s);
 static WINAPI int (*p_mbsupr_s)(unsigned char*  s, MSVCRT_size_t  len);
 static WINAPI int (*pMSVCRT_mbtowc_l)(MSVCRT_wchar_t*  dst, char*  str, MSVCRT_size_t  n, MSVCRT__locale_t  locale);
+static void* p_memccpy;
+static void* pext_memccpy;
 static WINAPI int (*pMSVCRT__memicmp)(char*  s1, char*  s2, MSVCRT_size_t  len);
 static WINAPI int (*pMSVCRT__memicmp_l)(char*  s1, char*  s2, MSVCRT_size_t  len, MSVCRT__locale_t  locale);
 static WINAPI int (*pMSVCRT__mkdir)(char*  newdir);
@@ -1138,9 +1159,17 @@ static WINAPI int (*pMSVCRT__toupper_l)(int  c, MSVCRT__locale_t  locale);
 static WINAPI int (*pMSVCRT__towlower_l)(MSVCRT_wint_t  c, MSVCRT__locale_t  locale);
 static WINAPI int (*pMSVCRT__towupper_l)(MSVCRT_wint_t  c, MSVCRT__locale_t  locale);
 static WINAPI void (*pMSVCRT__tzset)(void);
+static void* p_ui64toa;
+static void* pext_ui64toa;
 static WINAPI int (*pMSVCRT__ui64toa_s)(unsigned long  value, char*  str, MSVCRT_size_t  size, int  radix);
+static void* p_ui64tow;
+static void* pext_ui64tow;
 static WINAPI int (*pMSVCRT__ui64tow_s)(unsigned long  value, MSVCRT_wchar_t*  str, MSVCRT_size_t  size, int  radix);
+static void* p_ultoa;
+static void* pext_ultoa;
 static WINAPI int (*pMSVCRT__ultoa_s)(MSVCRT_ulong  value, char*  str, MSVCRT_size_t  size, int  radix);
+static void* p_ultow;
+static void* pext_ultow;
 static WINAPI int (*pMSVCRT__ultow_s)(MSVCRT_ulong  value, MSVCRT_wchar_t*  str, MSVCRT_size_t  size, int  radix);
 static WINAPI int (*pMSVCRT__umask)(int  umask);
 static WINAPI int (*p_ungetch)(int  c);
@@ -1405,6 +1434,8 @@ static WINAPI char* (*pMSVCRT_gets)(char*  buf);
 static WINAPI MSVCRT_wint_t (*pMSVCRT_getwc)(MSVCRT_FILE*  file);
 static WINAPI MSVCRT_wint_t (*pMSVCRT_getwchar)(void);
 static WINAPI struct MSVCRT_tm* (*pMSVCRT_gmtime)(MSVCRT___time64_t*  secs);
+static void* piswctype;
+static void* pextiswctype;
 static WINAPI int (*pMSVCRT_isalnum)(int  c);
 static WINAPI int (*pMSVCRT_isalpha)(int  c);
 static WINAPI int (*pMSVCRT_iscntrl)(int  c);
@@ -1417,6 +1448,8 @@ static WINAPI int (*pMSVCRT_ispunct)(int  c);
 static WINAPI int (*pMSVCRT_isspace)(int  c);
 static WINAPI int (*pMSVCRT_isupper)(int  c);
 static WINAPI INT (*pMSVCRT_iswalnum)(MSVCRT_wchar_t  wc);
+static void* piswalpha;
+static void* pextiswalpha;
 static WINAPI int (*pMSVCRT_iswascii)(MSVCRT_wchar_t  c);
 static WINAPI INT (*pMSVCRT_iswcntrl)(MSVCRT_wchar_t  wc);
 static WINAPI int (*pMSVCRT_iswdigit)(MSVCRT_wchar_t  wc);
@@ -1490,6 +1523,8 @@ static WINAPI float (*pMSVCRT_sqrtf)(float  x);
 static WINAPI void (*pMSVCRT_srand)(unsigned int  seed);
 static WINAPI int (*pMSVCRT_sscanf)(char*  str, char*  format);
 static WINAPI int (*pMSVCRT_sscanf_s)(char*  str, char*  format);
+static void* pstrcat;
+static void* pextstrcat;
 static WINAPI int (*pMSVCRT_strcat_s)(char*  dst, MSVCRT_size_t  elem, char*  src);
 static WINAPI char* (*pMSVCRT_strchr)(char*  str, int  c);
 static WINAPI int (*pMSVCRT_strcmp)(char*  str1, char*  str2);
@@ -1509,6 +1544,8 @@ static WINAPI int (*pMSVCRT_strncpy_s)(char*  dest, MSVCRT_size_t  numberOfEleme
 static WINAPI MSVCRT_size_t (*pMSVCRT_strnlen)(char*  s, MSVCRT_size_t  maxlen);
 static WINAPI char* (*pMSVCRT_strpbrk)(char*  str, char*  accept);
 static WINAPI char* (*pMSVCRT_strrchr)(char*  str, int  c);
+static void* pstrspn;
+static void* pextstrspn;
 static WINAPI char* (*pMSVCRT_strstr)(char*  haystack, char*  needle);
 static WINAPI double (*pMSVCRT_strtod)(char*  str, char**  end);
 static WINAPI char* (*pMSVCRT_strtok)(char*  str, char*  delim);
@@ -1547,13 +1584,21 @@ static WINAPI int (*pMSVCRT_vswprintf_s)(MSVCRT_wchar_t*  str, MSVCRT_size_t  nu
 static WINAPI int (*pMSVCRT_vwprintf)(MSVCRT_wchar_t*  format, __builtin_ms_va_list  valist);
 static WINAPI int (*pMSVCRT_vwprintf_s)(MSVCRT_wchar_t*  format, __builtin_ms_va_list  valist);
 static WINAPI MSVCRT_size_t (*pMSVCRT_wcrtomb)(char*  dst, MSVCRT_wchar_t  ch, MSVCRT_mbstate_t*  s);
+static void* pwcscat;
+static void* pextwcscat;
 static WINAPI INT (*pMSVCRT_wcscat_s)(MSVCRT_wchar_t*  dst, MSVCRT_size_t  elem, MSVCRT_wchar_t*  src);
 static WINAPI MSVCRT_wchar_t* (*pMSVCRT_wcschr)(MSVCRT_wchar_t*  str, MSVCRT_wchar_t  ch);
 static WINAPI int (*pMSVCRT_wcscmp)(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2);
 static WINAPI int (*pMSVCRT_wcscoll)(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2);
+static void* pwcscpy;
+static void* pextwcscpy;
 static WINAPI INT (*pMSVCRT_wcscpy_s)(MSVCRT_wchar_t*  wcDest, MSVCRT_size_t  numElement, MSVCRT_wchar_t*  wcSrc);
+static void* pwcscspn;
+static void* pextwcscspn;
 static WINAPI MSVCRT_size_t (*pMSVCRT_wcsftime)(MSVCRT_wchar_t*  str, MSVCRT_size_t  max, MSVCRT_wchar_t*  format, struct MSVCRT_tm*  mstm);
 static WINAPI int (*pMSVCRT_wcslen)(MSVCRT_wchar_t*  str);
+static void* pwcsncat;
+static void* pextwcsncat;
 static WINAPI INT (*pMSVCRT_wcsncat_s)(MSVCRT_wchar_t*  dst, MSVCRT_size_t  elem, MSVCRT_wchar_t*  src, MSVCRT_size_t  count);
 static WINAPI int (*pMSVCRT_wcsncmp)(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2, int  n);
 static WINAPI MSVCRT_wchar_t* (*pMSVCRT_wcsncpy)(MSVCRT_wchar_t*  s1, MSVCRT_wchar_t*  s2, MSVCRT_size_t  n);
@@ -1563,6 +1608,8 @@ static WINAPI MSVCRT_wchar_t* (*pMSVCRT_wcspbrk)(MSVCRT_wchar_t*  str, MSVCRT_wc
 static WINAPI MSVCRT_wchar_t* (*pMSVCRT_wcsrchr)(MSVCRT_wchar_t*  str, MSVCRT_wchar_t  ch);
 static WINAPI MSVCRT_size_t (*pMSVCRT_wcsrtombs)(char*  mbstr, MSVCRT_wchar_t**  wcstr, MSVCRT_size_t  count, MSVCRT_mbstate_t*  mbstate);
 static WINAPI int (*pMSVCRT_wcsrtombs_s)(MSVCRT_size_t*  ret, char*  mbstr, MSVCRT_size_t  size, MSVCRT_wchar_t**  wcstr, MSVCRT_size_t  count, MSVCRT_mbstate_t*  mbstate);
+static void* pwcsspn;
+static void* pextwcsspn;
 static WINAPI MSVCRT_wchar_t* (*pMSVCRT_wcsstr)(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  sub);
 static WINAPI double (*pMSVCRT_wcstod)(MSVCRT_wchar_t*  lpszStr, MSVCRT_wchar_t**  end);
 static WINAPI MSVCRT_wchar_t* (*pMSVCRT_wcstok)(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  delim);
@@ -28947,6 +28994,8 @@ static BOOL initialized = FALSE;
 void wine_thunk_initialize_msvcrt(void)
 {
 	HMODULE library = LoadLibraryA("msvcrt.dll");
+	HMODULE library_kernel32 = LoadLibraryA("kernel32.dll");
+	HMODULE library_ntdll = LoadLibraryA("ntdll.dll");
 	pMSVCRT_I10_OUTPUT = (void *)GetProcAddress(library, "MSVCRT_I10_OUTPUT");
 	pMSVCRT___non_rtti_object_copy_ctor = (void *)GetProcAddress(library, "MSVCRT___non_rtti_object_copy_ctor");
 	pMSVCRT___non_rtti_object_ctor = (void *)GetProcAddress(library, "MSVCRT___non_rtti_object_ctor");
@@ -29003,6 +29052,8 @@ void wine_thunk_initialize_msvcrt(void)
 	p_Gettnames = (void *)GetProcAddress(library, "_Gettnames");
 	p_Strftime = (void *)GetProcAddress(library, "_Strftime");
 	p_XcptFilter = (void *)GetProcAddress(library, "_XcptFilter");
+	p__C_specific_handler = (void *)GetProcAddress(library, "__C_specific_handler");
+	pext__C_specific_handler = (void *)GetProcAddress(library_ntdll, "__C_specific_handler");
 	p__CppXcptFilter = (void *)GetProcAddress(library, "__CppXcptFilter");
 	p__CxxDetectRethrow = (void *)GetProcAddress(library, "__CxxDetectRethrow");
 	p__CxxExceptionFilter = (void *)GetProcAddress(library, "__CxxExceptionFilter");
@@ -29066,6 +29117,10 @@ void wine_thunk_initialize_msvcrt(void)
 	pMSVCRT___set_app_type = (void *)GetProcAddress(library, "MSVCRT___set_app_type");
 	pMSVCRT___setusermatherr = (void *)GetProcAddress(library, "MSVCRT___setusermatherr");
 	pMSVCRT___strncnt = (void *)GetProcAddress(library, "MSVCRT___strncnt");
+	pGetCurrentThread = (void *)GetProcAddress(library, "GetCurrentThread");
+	pextGetCurrentThread = (void *)GetProcAddress(library_kernel32, "GetCurrentThread");
+	pGetCurrentThreadId = (void *)GetProcAddress(library, "GetCurrentThreadId");
+	pextGetCurrentThreadId = (void *)GetProcAddress(library_kernel32, "GetCurrentThreadId");
 	pMSVCRT___toascii = (void *)GetProcAddress(library, "MSVCRT___toascii");
 	pMSVCRT___uncaught_exception = (void *)GetProcAddress(library, "MSVCRT___uncaught_exception");
 	p__unDName = (void *)GetProcAddress(library, "__unDName");
@@ -29231,6 +29286,8 @@ void wine_thunk_initialize_msvcrt(void)
 	pMSVCRT__getdiskfree = (void *)GetProcAddress(library, "MSVCRT__getdiskfree");
 	p_getdllprocaddr = (void *)GetProcAddress(library, "_getdllprocaddr");
 	pMSVCRT__getdrive = (void *)GetProcAddress(library, "MSVCRT__getdrive");
+	pGetLogicalDrives = (void *)GetProcAddress(library, "GetLogicalDrives");
+	pextGetLogicalDrives = (void *)GetProcAddress(library_kernel32, "GetLogicalDrives");
 	pMSVCRT__getmaxstdio = (void *)GetProcAddress(library, "MSVCRT__getmaxstdio");
 	p_getmbcp = (void *)GetProcAddress(library, "_getmbcp");
 	p_getpid = (void *)GetProcAddress(library, "_getpid");
@@ -29248,7 +29305,11 @@ void wine_thunk_initialize_msvcrt(void)
 	p_heapwalk = (void *)GetProcAddress(library, "_heapwalk");
 	p_hypot = (void *)GetProcAddress(library, "_hypot");
 	pMSVCRT__hypotf = (void *)GetProcAddress(library, "MSVCRT__hypotf");
+	p_i64toa = (void *)GetProcAddress(library, "_i64toa");
+	pext_i64toa = (void *)GetProcAddress(library_ntdll, "_i64toa");
 	pMSVCRT__i64toa_s = (void *)GetProcAddress(library, "MSVCRT__i64toa_s");
+	p_i64tow = (void *)GetProcAddress(library, "_i64tow");
+	pext_i64tow = (void *)GetProcAddress(library_ntdll, "_i64tow");
 	pMSVCRT__i64tow_s = (void *)GetProcAddress(library, "MSVCRT__i64tow_s");
 	p_initterm = (void *)GetProcAddress(library, "_initterm");
 	p_initterm_e = (void *)GetProcAddress(library, "_initterm_e");
@@ -29310,6 +29371,8 @@ void wine_thunk_initialize_msvcrt(void)
 	pMSVCRT__isxdigit_l = (void *)GetProcAddress(library, "MSVCRT__isxdigit_l");
 	pMSVCRT__itoa = (void *)GetProcAddress(library, "MSVCRT__itoa");
 	pMSVCRT__itoa_s = (void *)GetProcAddress(library, "MSVCRT__itoa_s");
+	p_itow = (void *)GetProcAddress(library, "_itow");
+	pext_itow = (void *)GetProcAddress(library_ntdll, "_itow");
 	pMSVCRT__itow_s = (void *)GetProcAddress(library, "MSVCRT__itow_s");
 	pMSVCRT__j0 = (void *)GetProcAddress(library, "MSVCRT__j0");
 	pMSVCRT__j1 = (void *)GetProcAddress(library, "MSVCRT__j1");
@@ -29334,7 +29397,11 @@ void wine_thunk_initialize_msvcrt(void)
 	p_lsearch = (void *)GetProcAddress(library, "_lsearch");
 	pMSVCRT__lseek = (void *)GetProcAddress(library, "MSVCRT__lseek");
 	pMSVCRT__lseeki64 = (void *)GetProcAddress(library, "MSVCRT__lseeki64");
+	p_ltoa = (void *)GetProcAddress(library, "_ltoa");
+	pext_ltoa = (void *)GetProcAddress(library_ntdll, "_ltoa");
 	pMSVCRT__ltoa_s = (void *)GetProcAddress(library, "MSVCRT__ltoa_s");
+	p_ltow = (void *)GetProcAddress(library, "_ltow");
+	pext_ltow = (void *)GetProcAddress(library_ntdll, "_ltow");
 	pMSVCRT__ltow_s = (void *)GetProcAddress(library, "MSVCRT__ltow_s");
 	pMSVCRT__makepath = (void *)GetProcAddress(library, "MSVCRT__makepath");
 	pMSVCRT__makepath_s = (void *)GetProcAddress(library, "MSVCRT__makepath_s");
@@ -29414,6 +29481,8 @@ void wine_thunk_initialize_msvcrt(void)
 	p_mbsupr = (void *)GetProcAddress(library, "_mbsupr");
 	p_mbsupr_s = (void *)GetProcAddress(library, "_mbsupr_s");
 	pMSVCRT_mbtowc_l = (void *)GetProcAddress(library, "MSVCRT_mbtowc_l");
+	p_memccpy = (void *)GetProcAddress(library, "_memccpy");
+	pext_memccpy = (void *)GetProcAddress(library_ntdll, "_memccpy");
 	pMSVCRT__memicmp = (void *)GetProcAddress(library, "MSVCRT__memicmp");
 	pMSVCRT__memicmp_l = (void *)GetProcAddress(library, "MSVCRT__memicmp_l");
 	pMSVCRT__mkdir = (void *)GetProcAddress(library, "MSVCRT__mkdir");
@@ -29559,9 +29628,17 @@ void wine_thunk_initialize_msvcrt(void)
 	pMSVCRT__towlower_l = (void *)GetProcAddress(library, "MSVCRT__towlower_l");
 	pMSVCRT__towupper_l = (void *)GetProcAddress(library, "MSVCRT__towupper_l");
 	pMSVCRT__tzset = (void *)GetProcAddress(library, "MSVCRT__tzset");
+	p_ui64toa = (void *)GetProcAddress(library, "_ui64toa");
+	pext_ui64toa = (void *)GetProcAddress(library_ntdll, "_ui64toa");
 	pMSVCRT__ui64toa_s = (void *)GetProcAddress(library, "MSVCRT__ui64toa_s");
+	p_ui64tow = (void *)GetProcAddress(library, "_ui64tow");
+	pext_ui64tow = (void *)GetProcAddress(library_ntdll, "_ui64tow");
 	pMSVCRT__ui64tow_s = (void *)GetProcAddress(library, "MSVCRT__ui64tow_s");
+	p_ultoa = (void *)GetProcAddress(library, "_ultoa");
+	pext_ultoa = (void *)GetProcAddress(library_ntdll, "_ultoa");
 	pMSVCRT__ultoa_s = (void *)GetProcAddress(library, "MSVCRT__ultoa_s");
+	p_ultow = (void *)GetProcAddress(library, "_ultow");
+	pext_ultow = (void *)GetProcAddress(library_ntdll, "_ultow");
 	pMSVCRT__ultow_s = (void *)GetProcAddress(library, "MSVCRT__ultow_s");
 	pMSVCRT__umask = (void *)GetProcAddress(library, "MSVCRT__umask");
 	p_ungetch = (void *)GetProcAddress(library, "_ungetch");
@@ -29826,6 +29903,8 @@ void wine_thunk_initialize_msvcrt(void)
 	pMSVCRT_getwc = (void *)GetProcAddress(library, "MSVCRT_getwc");
 	pMSVCRT_getwchar = (void *)GetProcAddress(library, "MSVCRT_getwchar");
 	pMSVCRT_gmtime = (void *)GetProcAddress(library, "MSVCRT_gmtime");
+	piswctype = (void *)GetProcAddress(library, "iswctype");
+	pextiswctype = (void *)GetProcAddress(library_ntdll, "iswctype");
 	pMSVCRT_isalnum = (void *)GetProcAddress(library, "MSVCRT_isalnum");
 	pMSVCRT_isalpha = (void *)GetProcAddress(library, "MSVCRT_isalpha");
 	pMSVCRT_iscntrl = (void *)GetProcAddress(library, "MSVCRT_iscntrl");
@@ -29838,6 +29917,8 @@ void wine_thunk_initialize_msvcrt(void)
 	pMSVCRT_isspace = (void *)GetProcAddress(library, "MSVCRT_isspace");
 	pMSVCRT_isupper = (void *)GetProcAddress(library, "MSVCRT_isupper");
 	pMSVCRT_iswalnum = (void *)GetProcAddress(library, "MSVCRT_iswalnum");
+	piswalpha = (void *)GetProcAddress(library, "iswalpha");
+	pextiswalpha = (void *)GetProcAddress(library_ntdll, "iswalpha");
 	pMSVCRT_iswascii = (void *)GetProcAddress(library, "MSVCRT_iswascii");
 	pMSVCRT_iswcntrl = (void *)GetProcAddress(library, "MSVCRT_iswcntrl");
 	pMSVCRT_iswdigit = (void *)GetProcAddress(library, "MSVCRT_iswdigit");
@@ -29911,6 +29992,8 @@ void wine_thunk_initialize_msvcrt(void)
 	pMSVCRT_srand = (void *)GetProcAddress(library, "MSVCRT_srand");
 	pMSVCRT_sscanf = (void *)GetProcAddress(library, "MSVCRT_sscanf");
 	pMSVCRT_sscanf_s = (void *)GetProcAddress(library, "MSVCRT_sscanf_s");
+	pstrcat = (void *)GetProcAddress(library, "strcat");
+	pextstrcat = (void *)GetProcAddress(library_ntdll, "strcat");
 	pMSVCRT_strcat_s = (void *)GetProcAddress(library, "MSVCRT_strcat_s");
 	pMSVCRT_strchr = (void *)GetProcAddress(library, "MSVCRT_strchr");
 	pMSVCRT_strcmp = (void *)GetProcAddress(library, "MSVCRT_strcmp");
@@ -29930,6 +30013,8 @@ void wine_thunk_initialize_msvcrt(void)
 	pMSVCRT_strnlen = (void *)GetProcAddress(library, "MSVCRT_strnlen");
 	pMSVCRT_strpbrk = (void *)GetProcAddress(library, "MSVCRT_strpbrk");
 	pMSVCRT_strrchr = (void *)GetProcAddress(library, "MSVCRT_strrchr");
+	pstrspn = (void *)GetProcAddress(library, "strspn");
+	pextstrspn = (void *)GetProcAddress(library_ntdll, "strspn");
 	pMSVCRT_strstr = (void *)GetProcAddress(library, "MSVCRT_strstr");
 	pMSVCRT_strtod = (void *)GetProcAddress(library, "MSVCRT_strtod");
 	pMSVCRT_strtok = (void *)GetProcAddress(library, "MSVCRT_strtok");
@@ -29968,13 +30053,21 @@ void wine_thunk_initialize_msvcrt(void)
 	pMSVCRT_vwprintf = (void *)GetProcAddress(library, "MSVCRT_vwprintf");
 	pMSVCRT_vwprintf_s = (void *)GetProcAddress(library, "MSVCRT_vwprintf_s");
 	pMSVCRT_wcrtomb = (void *)GetProcAddress(library, "MSVCRT_wcrtomb");
+	pwcscat = (void *)GetProcAddress(library, "wcscat");
+	pextwcscat = (void *)GetProcAddress(library_ntdll, "wcscat");
 	pMSVCRT_wcscat_s = (void *)GetProcAddress(library, "MSVCRT_wcscat_s");
 	pMSVCRT_wcschr = (void *)GetProcAddress(library, "MSVCRT_wcschr");
 	pMSVCRT_wcscmp = (void *)GetProcAddress(library, "MSVCRT_wcscmp");
 	pMSVCRT_wcscoll = (void *)GetProcAddress(library, "MSVCRT_wcscoll");
+	pwcscpy = (void *)GetProcAddress(library, "wcscpy");
+	pextwcscpy = (void *)GetProcAddress(library_ntdll, "wcscpy");
 	pMSVCRT_wcscpy_s = (void *)GetProcAddress(library, "MSVCRT_wcscpy_s");
+	pwcscspn = (void *)GetProcAddress(library, "wcscspn");
+	pextwcscspn = (void *)GetProcAddress(library_ntdll, "wcscspn");
 	pMSVCRT_wcsftime = (void *)GetProcAddress(library, "MSVCRT_wcsftime");
 	pMSVCRT_wcslen = (void *)GetProcAddress(library, "MSVCRT_wcslen");
+	pwcsncat = (void *)GetProcAddress(library, "wcsncat");
+	pextwcsncat = (void *)GetProcAddress(library_ntdll, "wcsncat");
 	pMSVCRT_wcsncat_s = (void *)GetProcAddress(library, "MSVCRT_wcsncat_s");
 	pMSVCRT_wcsncmp = (void *)GetProcAddress(library, "MSVCRT_wcsncmp");
 	pMSVCRT_wcsncpy = (void *)GetProcAddress(library, "MSVCRT_wcsncpy");
@@ -29984,6 +30077,8 @@ void wine_thunk_initialize_msvcrt(void)
 	pMSVCRT_wcsrchr = (void *)GetProcAddress(library, "MSVCRT_wcsrchr");
 	pMSVCRT_wcsrtombs = (void *)GetProcAddress(library, "MSVCRT_wcsrtombs");
 	pMSVCRT_wcsrtombs_s = (void *)GetProcAddress(library, "MSVCRT_wcsrtombs_s");
+	pwcsspn = (void *)GetProcAddress(library, "wcsspn");
+	pextwcsspn = (void *)GetProcAddress(library_ntdll, "wcsspn");
 	pMSVCRT_wcsstr = (void *)GetProcAddress(library, "MSVCRT_wcsstr");
 	pMSVCRT_wcstod = (void *)GetProcAddress(library, "MSVCRT_wcstod");
 	pMSVCRT_wcstok = (void *)GetProcAddress(library, "MSVCRT_wcstok");
@@ -30120,6 +30215,8 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt__Strftime;
 	if (func == p_XcptFilter)
 		return wine32a_msvcrt__XcptFilter;
+	if (func == p__C_specific_handler)
+		return wine_thunk_get_for_any(pext__C_specific_handler);
 	if (func == p__CppXcptFilter)
 		return wine32a_msvcrt___CppXcptFilter;
 	if (func == p__CxxDetectRethrow)
@@ -30246,6 +30343,10 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT___setusermatherr;
 	if (func == pMSVCRT___strncnt)
 		return wine32a_msvcrt_MSVCRT___strncnt;
+	if (func == pGetCurrentThread)
+		return wine_thunk_get_for_any(pextGetCurrentThread);
+	if (func == pGetCurrentThreadId)
+		return wine_thunk_get_for_any(pextGetCurrentThreadId);
 	if (func == pMSVCRT___toascii)
 		return wine32a_msvcrt_MSVCRT___toascii;
 	if (func == pMSVCRT___uncaught_exception)
@@ -30576,6 +30677,8 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt__getdllprocaddr;
 	if (func == pMSVCRT__getdrive)
 		return wine32a_msvcrt_MSVCRT__getdrive;
+	if (func == pGetLogicalDrives)
+		return wine_thunk_get_for_any(pextGetLogicalDrives);
 	if (func == pMSVCRT__getmaxstdio)
 		return wine32a_msvcrt_MSVCRT__getmaxstdio;
 	if (func == p_getmbcp)
@@ -30610,8 +30713,12 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt__hypot;
 	if (func == pMSVCRT__hypotf)
 		return wine32a_msvcrt_MSVCRT__hypotf;
+	if (func == p_i64toa)
+		return wine_thunk_get_for_any(pext_i64toa);
 	if (func == pMSVCRT__i64toa_s)
 		return wine32a_msvcrt_MSVCRT__i64toa_s;
+	if (func == p_i64tow)
+		return wine_thunk_get_for_any(pext_i64tow);
 	if (func == pMSVCRT__i64tow_s)
 		return wine32a_msvcrt_MSVCRT__i64tow_s;
 	if (func == p_initterm)
@@ -30734,6 +30841,8 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT__itoa;
 	if (func == pMSVCRT__itoa_s)
 		return wine32a_msvcrt_MSVCRT__itoa_s;
+	if (func == p_itow)
+		return wine_thunk_get_for_any(pext_itow);
 	if (func == pMSVCRT__itow_s)
 		return wine32a_msvcrt_MSVCRT__itow_s;
 	if (func == pMSVCRT__j0)
@@ -30782,8 +30891,12 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT__lseek;
 	if (func == pMSVCRT__lseeki64)
 		return wine32a_msvcrt_MSVCRT__lseeki64;
+	if (func == p_ltoa)
+		return wine_thunk_get_for_any(pext_ltoa);
 	if (func == pMSVCRT__ltoa_s)
 		return wine32a_msvcrt_MSVCRT__ltoa_s;
+	if (func == p_ltow)
+		return wine_thunk_get_for_any(pext_ltow);
 	if (func == pMSVCRT__ltow_s)
 		return wine32a_msvcrt_MSVCRT__ltow_s;
 	if (func == pMSVCRT__makepath)
@@ -30942,6 +31055,8 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt__mbsupr_s;
 	if (func == pMSVCRT_mbtowc_l)
 		return wine32a_msvcrt_MSVCRT_mbtowc_l;
+	if (func == p_memccpy)
+		return wine_thunk_get_for_any(pext_memccpy);
 	if (func == pMSVCRT__memicmp)
 		return wine32a_msvcrt_MSVCRT__memicmp;
 	if (func == pMSVCRT__memicmp_l)
@@ -31232,12 +31347,20 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT__towupper_l;
 	if (func == pMSVCRT__tzset)
 		return wine32a_msvcrt_MSVCRT__tzset;
+	if (func == p_ui64toa)
+		return wine_thunk_get_for_any(pext_ui64toa);
 	if (func == pMSVCRT__ui64toa_s)
 		return wine32a_msvcrt_MSVCRT__ui64toa_s;
+	if (func == p_ui64tow)
+		return wine_thunk_get_for_any(pext_ui64tow);
 	if (func == pMSVCRT__ui64tow_s)
 		return wine32a_msvcrt_MSVCRT__ui64tow_s;
+	if (func == p_ultoa)
+		return wine_thunk_get_for_any(pext_ultoa);
 	if (func == pMSVCRT__ultoa_s)
 		return wine32a_msvcrt_MSVCRT__ultoa_s;
+	if (func == p_ultow)
+		return wine_thunk_get_for_any(pext_ultow);
 	if (func == pMSVCRT__ultow_s)
 		return wine32a_msvcrt_MSVCRT__ultow_s;
 	if (func == pMSVCRT__umask)
@@ -31766,6 +31889,8 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT_getwchar;
 	if (func == pMSVCRT_gmtime)
 		return wine32a_msvcrt_MSVCRT_gmtime;
+	if (func == piswctype)
+		return wine_thunk_get_for_any(pextiswctype);
 	if (func == pMSVCRT_isalnum)
 		return wine32a_msvcrt_MSVCRT_isalnum;
 	if (func == pMSVCRT_isalpha)
@@ -31790,6 +31915,8 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT_isupper;
 	if (func == pMSVCRT_iswalnum)
 		return wine32a_msvcrt_MSVCRT_iswalnum;
+	if (func == piswalpha)
+		return wine_thunk_get_for_any(pextiswalpha);
 	if (func == pMSVCRT_iswascii)
 		return wine32a_msvcrt_MSVCRT_iswascii;
 	if (func == pMSVCRT_iswcntrl)
@@ -31936,6 +32063,8 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT_sscanf;
 	if (func == pMSVCRT_sscanf_s)
 		return wine32a_msvcrt_MSVCRT_sscanf_s;
+	if (func == pstrcat)
+		return wine_thunk_get_for_any(pextstrcat);
 	if (func == pMSVCRT_strcat_s)
 		return wine32a_msvcrt_MSVCRT_strcat_s;
 	if (func == pMSVCRT_strchr)
@@ -31974,6 +32103,8 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT_strpbrk;
 	if (func == pMSVCRT_strrchr)
 		return wine32a_msvcrt_MSVCRT_strrchr;
+	if (func == pstrspn)
+		return wine_thunk_get_for_any(pextstrspn);
 	if (func == pMSVCRT_strstr)
 		return wine32a_msvcrt_MSVCRT_strstr;
 	if (func == pMSVCRT_strtod)
@@ -32050,6 +32181,8 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT_vwprintf_s;
 	if (func == pMSVCRT_wcrtomb)
 		return wine32a_msvcrt_MSVCRT_wcrtomb;
+	if (func == pwcscat)
+		return wine_thunk_get_for_any(pextwcscat);
 	if (func == pMSVCRT_wcscat_s)
 		return wine32a_msvcrt_MSVCRT_wcscat_s;
 	if (func == pMSVCRT_wcschr)
@@ -32058,12 +32191,18 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT_wcscmp;
 	if (func == pMSVCRT_wcscoll)
 		return wine32a_msvcrt_MSVCRT_wcscoll;
+	if (func == pwcscpy)
+		return wine_thunk_get_for_any(pextwcscpy);
 	if (func == pMSVCRT_wcscpy_s)
 		return wine32a_msvcrt_MSVCRT_wcscpy_s;
+	if (func == pwcscspn)
+		return wine_thunk_get_for_any(pextwcscspn);
 	if (func == pMSVCRT_wcsftime)
 		return wine32a_msvcrt_MSVCRT_wcsftime;
 	if (func == pMSVCRT_wcslen)
 		return wine32a_msvcrt_MSVCRT_wcslen;
+	if (func == pwcsncat)
+		return wine_thunk_get_for_any(pextwcsncat);
 	if (func == pMSVCRT_wcsncat_s)
 		return wine32a_msvcrt_MSVCRT_wcsncat_s;
 	if (func == pMSVCRT_wcsncmp)
@@ -32082,6 +32221,8 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT_wcsrtombs;
 	if (func == pMSVCRT_wcsrtombs_s)
 		return wine32a_msvcrt_MSVCRT_wcsrtombs_s;
+	if (func == pwcsspn)
+		return wine_thunk_get_for_any(pextwcsspn);
 	if (func == pMSVCRT_wcsstr)
 		return wine32a_msvcrt_MSVCRT_wcsstr;
 	if (func == pMSVCRT_wcstod)

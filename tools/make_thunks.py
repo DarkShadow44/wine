@@ -11,6 +11,7 @@ from multiprocessing import Pool
 from argparse import ArgumentParser
 from enum import Enum
 import abc
+from collections import OrderedDict
 
 # -------------------- Classes and enums --------------------
 
@@ -239,6 +240,7 @@ class FunctionItem:
 		self.name = None
 		self.internalname = None
 		self.relay = False
+		self.relay_dll = None
 		self.callingconvention = None
 		self.return_type = None
 		self.params = None
@@ -259,6 +261,9 @@ class FunctionItem:
 				self.internalname = parts[2].strip()
 				if '.' in self.internalname:
 					self.relay = True
+					nameparts = self.internalname.split('.')
+					self.internalname = nameparts[1]
+					self.relay_dll = nameparts[0]
 			else:
 				self.internalname = self.name
 
@@ -461,6 +466,7 @@ def handle_dll(name):
 	contents_source.append('#include "windows.h"');
 	contents_source.append('#include "wine/asm.h"');
 	contents_source.append('#include "wine/debug.h"')
+	contents_source.append('#include "wine/winethunks.h"')
 	contents_source.append('WINE_DEFAULT_DEBUG_CHANNEL(thunks);')
 	contents_source.append("")
 
@@ -497,6 +503,9 @@ def handle_dll(name):
 		if not func.is_empty():
 			arguments = func.get_arguments_decl()
 			contents_source.append(f'static WINAPI {func.return_type.tostring("")} (*p{func.internalname})({arguments});')
+		if func.relay:
+			contents_source.append(f'static void* p{func.internalname};')
+			contents_source.append(f'static void* pext{func.internalname};')
 	contents_source.append("")
 
 	# Add thunks
@@ -512,9 +521,15 @@ def handle_dll(name):
 	contents_source.append(f'void wine_thunk_initialize_{name}(void)')
 	contents_source.append('{')
 	contents_source.append(f'\tHMODULE library = LoadLibraryA("{name}.dll");')
+	libs = list(OrderedDict.fromkeys([func.relay_dll for func in funcs if func.relay]))
+	for lib in libs:
+		contents_source.append(f'\tHMODULE library_{lib} = LoadLibraryA("{lib}.dll");')
 	for func in funcs:
 		if not func.is_empty():
 			contents_source.append(f'\tp{func.internalname} = (void *)GetProcAddress(library, "{func.internalname}");')
+		if func.relay:
+			contents_source.append(f'\tp{func.internalname} = (void *)GetProcAddress(library, "{func.internalname}");')
+			contents_source.append(f'\tpext{func.internalname} = (void *)GetProcAddress(library_{func.relay_dll}, "{func.internalname}");')
 	contents_source.append('\tinitialized = TRUE;')
 	contents_source.append('}')
 	contents_source.append("")
@@ -529,6 +544,9 @@ def handle_dll(name):
 		if not func.is_empty():
 			contents_source.append(f'\tif (func == p{func.internalname})')
 			contents_source.append(f'\t\treturn wine32a_{name}_{func.internalname};')
+		if func.relay:
+			contents_source.append(f'\tif (func == p{func.internalname})')
+			contents_source.append(f'\t\treturn wine_thunk_get_for_any(pext{func.internalname});')
 	contents_source.append("")
 	contents_source.append('\treturn NULL;')
 	contents_source.append('}')

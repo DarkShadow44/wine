@@ -1,6 +1,7 @@
 #include "windows.h"
 #include "wine/asm.h"
 #include "wine/debug.h"
+#include "wine/winethunks.h"
 WINE_DEFAULT_DEBUG_CHANNEL(thunks);
 
 struct wow_handlers16; /* ../dlls/user32/controls.h:94 */
