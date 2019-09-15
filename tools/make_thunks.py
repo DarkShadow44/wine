@@ -214,26 +214,53 @@ class DependencyCollection:
 	def __iter__(self):
 		return self.items.__iter__()
 
+class FunctionItem:
+	def __init__(self):
+		self.name = None
+		self.internalname = None
+		self.relay = False
+		self.callingconvention = None
+
+	def parse_from_spec_line(self, line):
+		rows = line.split(' ')
+		if rows[1] == 'stub' or rows[1] == 'extern':
+			self.name = rows[2]
+			self.internalname = self.name
+			self.callingconvention = 'stub'
+		else:
+			self.callingconvention = rows[1]
+			parts = line.replace('(', ')').split(')') # 0 - left side of parameters, 1 - parameters, 2 - right side of parameters
+			self.name = parts[0].split(' ')[-1]
+			if parts[2] != "":
+				self.internalname = parts[2].strip()
+				if '.' in self.internalname:
+					self.relay = True
+			else:
+				self.internalname = self.name
+
+class FunctionCollection:
+	def __init__(self):
+		self.items = {}
+
+	def contains(self, name):
+		return name in self.items
+
+	def load_from_specfile(self, path):
+		lines = [line.strip() for line in open(path)]
+		for line in lines:
+			if (line.startswith("#") or line == ""):
+				continue;
+			item = FunctionItem()
+			item.parse_from_spec_line(line)
+			self.items[item.internalname] = item
+
+	def dump_items(self):
+		for item in self.items.values():
+			print(f'{item.callingconvention} - {item.name}({item.internalname}) - relay: {item.relay}')
+
 # -------------------- Helper functions --------------------
 
-# Get all the functions inside a .spec file
-def get_specfile_funcs(path):
-	funcs = []
-	lines = [line.strip() for line in open(path)]
-	for line in lines:
-		rows = line.replace("(", " ").split(" ")
-		if (line.startswith("#") or line == ""):
-			continue;
-		if (rows[1] == "stub"):
-			funcs.append(rows[2])
-		else:
-			if (rows[2].startswith("-")):
-				funcs.append(rows[3])
-			else:
-				funcs.append(rows[2])
-	return funcs
-
-# Get all the sources inside a Makefile.in
+# Get all the sources inside a Makefile.in TODO: need parent sources
 def get_makefile_sources(path):
 	sources = []
 	lines = [line.strip() for line in open(path)]
@@ -321,7 +348,7 @@ def node_is_only_declaration(node):
 def find_all_functions(node, ret_nodes, funcs, source):
 	if (node.location.file is None or not node.location.file.name.endswith(f'/{source}')):
 		return
-	if node.kind == CursorKind.FUNCTION_DECL and node.spelling in funcs:
+	if node.kind == CursorKind.FUNCTION_DECL and funcs.contains(node.spelling):
 		if not node_is_only_declaration(node):
 			ret_nodes.append(node)
 	for c in node.get_children():
@@ -404,7 +431,8 @@ def handle_dll(name):
 	contents_source.append('WINE_DEFAULT_DEBUG_CHANNEL(thunks);')
 	contents_source.append("")
 
-	funcs = get_specfile_funcs(path_spec)
+	funcs = FunctionCollection()
+	funcs.load_from_specfile(path_spec)
 	sources = get_makefile_sources(path_makefile)
 
 	contents_dlls = []
@@ -412,8 +440,8 @@ def handle_dll(name):
 	definitions = DefinitionCollection()
 	dependencies = DependencyCollection(definitions)
 	for source in sources:
-		#if not source.endswith("menu.c") and not source.endswith("text.c"):
-		#	continue
+		if not source.endswith("time.c"):
+			continue
 		handle_dll_source(dll_path, source, funcs, contents_dlls, ret_func_pointers, definitions, dependencies)
 
 	definitions = [definition for definition in definitions if (definition.getname() in dependencies)]
@@ -464,10 +492,10 @@ def handle_dll(name):
 
 def handle_all_dlls(threads):
 	dlls = []
-	dlls.append("user32")
+	#dlls.append("user32")
 	#dlls.append("kernel32")
 	#dlls.append("advapi32")
-	#dlls.append("msvcrt")
+	dlls.append("msvcrt")
 	#dlls.append("ntdll")
 
 	if threads > 1:
