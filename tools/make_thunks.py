@@ -98,6 +98,19 @@ class TypeChainEnum(Enum):
 	Pointer = 3
 	Function = 4
 
+
+class ParamDef:
+	def __init__(self, node):
+		self.name = node.spelling
+		self.type = TypeChain(None, node.type)
+
+	def tostring(self):
+		name = f' {self.name}' if self.name != '' else ''
+		return self.type.tostring(name)
+
+	def make_dependencies(self, dependencies):
+		self.type.make_dependencies(dependencies)
+
 class TypeChain:
 	def __init__(self, node, type):
 		is_pointer = (type.get_pointee().spelling != '')
@@ -108,7 +121,7 @@ class TypeChain:
 		if node:
 			for n in node.get_children():
 				if n.kind == CursorKind.PARM_DECL:
-					func_params.append(TypeChain(None, n.type))
+					func_params.append(ParamDef(n))
 
 		if is_func:
 			self.chainType = TypeChainEnum.Function
@@ -132,7 +145,7 @@ class TypeChain:
 		elif self.chainType == TypeChainEnum.Array:
 			return self.subType.tostring(variable) + f'[{self.arraySize}]'
 		elif self.chainType == TypeChainEnum.Function:
-			paramList = [param.tostring('') for param in self.params]
+			paramList = [param.tostring() for param in self.params]
 			params = ", ".join(paramList) if len(paramList) > 0 else 'void'
 			return f'{self.result.tostring("")} (*{variable}) ({params})';
 		else:
@@ -220,6 +233,8 @@ class FunctionItem:
 		self.internalname = None
 		self.relay = False
 		self.callingconvention = None
+		self.return_type = None
+		self.params = None
 
 	def parse_from_spec_line(self, line):
 		rows = line.split(' ')
@@ -238,12 +253,41 @@ class FunctionItem:
 			else:
 				self.internalname = self.name
 
+	def is_empty(self):
+		return self.params == None
+
+	def make_dependencies(self, dependencies):
+		if self.return_type is not None:
+			self.return_type.make_dependencies(dependencies)
+		for param in self.params:
+			param.make_dependencies(dependencies)
+
+	def fill(self, node):
+		self.params = []
+		for child in node.get_children():
+			if child.kind == CursorKind.PARM_DECL:
+				self.params.append(ParamDef(child))
+		self.return_type = TypeChain(None, node.result_type)
+
+	def get_arguments_decl(self):
+		paramList = [param.tostring() for param in self.params]
+		params = ", ".join(paramList) if len(paramList) > 0 else 'void'
+		return params;
+
+	def get_arguments_calling(self):
+		paramList = [param.name for param in self.params]
+		params = ", ".join(paramList) if len(paramList) > 0 else ''
+		return params;
+
 class FunctionCollection:
 	def __init__(self):
 		self.items = {}
 
 	def contains(self, name):
 		return name in self.items
+
+	def get_item(self, name):
+		return self.items[name]
 
 	def load_from_specfile(self, path):
 		lines = [line.strip() for line in open(path)]
@@ -257,6 +301,9 @@ class FunctionCollection:
 	def dump_items(self):
 		for item in self.items.values():
 			print(f'{item.callingconvention} - {item.name}({item.internalname}) - relay: {item.relay}')
+
+	def __iter__(self):
+		return self.items.values().__iter__()
 
 # -------------------- Helper functions --------------------
 
@@ -284,9 +331,9 @@ def get_makefile_sources(path):
 # 4 - param 1
 # 4 - param 2
 # ...
-def make_thunk_callingconvention_32_to_64_a(contents_source, node):
-	funcname = node.spelling
-	num_params = len(list(node.get_arguments()))
+def make_thunk_callingconvention_32_to_64_a(contents_source, func):
+	funcname = func.internalname
+	num_params = len(func.params)
 	contents_source.append(f'extern WINAPI void wine32a_{funcname}(void);')
 	contents_source.append(f'__ASM_GLOBAL_FUNC(wine32a_{funcname},')
 	#Setup own stackframe
@@ -322,20 +369,14 @@ def make_thunk_callingconvention_32_to_64_a(contents_source, node):
 	contents_source.append(")")
 	contents_source.append("")
 
-def get_arguments_decl(node):
-	arguments_decl = [f'{arg.type.spelling} {arg.spelling}' for arg in node.get_arguments()]
-	if len(arguments_decl) == 0:
-		return 'void'
-	return ", ".join(arguments_decl)
-
-def make_thunk_callingconvention_32_to_64_b(contents_source, node):
-	funcname = node.spelling
-	arguments_decl = get_arguments_decl(node)
-	arguments_calling = [f'{arg.spelling}' for arg in node.get_arguments()]
-	contents_source.append(f'extern WINAPI {node.result_type.spelling} wine32b_{funcname}({arguments_decl})')
+def make_thunk_callingconvention_32_to_64_b(contents_source, func):
+	funcname = func.internalname
+	arguments_decl = func.get_arguments_decl()
+	arguments_calling = func.get_arguments_calling()
+	contents_source.append(f'extern WINAPI {func.return_type.tostring("")} wine32b_{funcname}({arguments_decl})')
 	contents_source.append('{')
 	contents_source.append(f'\tTRACE("Enter {funcname}\\n");')
-	contents_source.append(f'\treturn p{funcname}({", ".join(arguments_calling)});')
+	contents_source.append(f'\treturn p{funcname}({arguments_calling});')
 	contents_source.append('}')
 	contents_source.append("")
 
@@ -345,14 +386,15 @@ def node_is_only_declaration(node):
 		return True;
 	return node != definition;
 
-def find_all_functions(node, ret_nodes, funcs, source):
+def find_all_functions(node, funcs, source):
 	if (node.location.file is None or not node.location.file.name.endswith(f'/{source}')):
 		return
 	if node.kind == CursorKind.FUNCTION_DECL and funcs.contains(node.spelling):
 		if not node_is_only_declaration(node):
-			ret_nodes.append(node)
+			func = funcs.get_item(node.spelling)
+			func.fill(node)
 	for c in node.get_children():
-		find_all_functions(c, ret_nodes, funcs, source)
+		find_all_functions(c, funcs, source)
 
 def find_all_definitions(node, definitions):
 	if node.kind == CursorKind.STRUCT_DECL or node.kind == CursorKind.UNION_DECL or node.kind == CursorKind.FIELD_DECL or node.kind == CursorKind.ENUM_DECL:
@@ -393,31 +435,28 @@ def handle_dll_source(dll_path, source, funcs, contents_source, ret_func_pointer
 
 	cursor = parse_file(path_file)
 
-	nodes = []
 	for child in cursor.get_children():
-		find_all_functions(child, nodes, funcs, source)
+		find_all_functions(child, funcs, source)
 		find_all_definitions(child, ret_definitions)
 
 	# Make function pointers
-	for node in nodes:
-		arguments = get_arguments_decl(node)
-		contents_source.append(f'static WINAPI {node.result_type.spelling} (*p{node.spelling})({arguments});')
-		ret_func_pointers.append(node.spelling)
+	for func in funcs:
+		if not func.is_empty():
+			arguments = func.get_arguments_decl()
+			contents_source.append(f'static WINAPI {func.return_type.tostring("")} (*p{func.internalname})({arguments});')
+			ret_func_pointers.append(func.internalname)
 	contents_source.append("")
 
 	# Make dependencies
-	for node in nodes:
-		if node.result_type is not None:
-			type_result = TypeChain(None, node.result_type)
-			type_result.make_dependencies(dependencies)
-		for arg in node.get_arguments():
-			arg_type = TypeChain(None, arg.type)
-			arg_type.make_dependencies(dependencies)
+	for func in funcs:
+		if not func.is_empty():
+			func.make_dependencies(dependencies)
 
-	for node in nodes:
-		print(node.displayname + " " + str(node.location.file) + ":" + str(node.location.line) )
-		make_thunk_callingconvention_32_to_64_b(contents_source, node)
-		make_thunk_callingconvention_32_to_64_a(contents_source, node)
+	for func in funcs:
+		if not func.is_empty():
+			# print(node.displayname + " " + str(node.location.file) + ":" + str(node.location.line) )
+			make_thunk_callingconvention_32_to_64_b(contents_source, func)
+			make_thunk_callingconvention_32_to_64_a(contents_source, func)
 
 def handle_dll(name):
 	dll_path = "../dlls/" + name
@@ -440,8 +479,8 @@ def handle_dll(name):
 	definitions = DefinitionCollection()
 	dependencies = DependencyCollection(definitions)
 	for source in sources:
-		if not source.endswith("time.c"):
-			continue
+		#if not source.endswith("time.c"):
+		#	continue
 		handle_dll_source(dll_path, source, funcs, contents_dlls, ret_func_pointers, definitions, dependencies)
 
 	definitions = [definition for definition in definitions if (definition.getname() in dependencies)]
