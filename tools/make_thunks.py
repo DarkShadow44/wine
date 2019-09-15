@@ -529,9 +529,9 @@ def handle_dll(name):
 		contents_source.append(f'\tHMODULE library_{lib} = LoadLibraryA("{lib}.dll");')
 	for func in funcs:
 		if not func.is_empty():
-			contents_source.append(f'\tp{func.internalname} = (void *)GetProcAddress(library, "{func.internalname}");')
+			contents_source.append(f'\tp{func.internalname} = (void *)GetProcAddress(library, "{func.name}");')
 		if func.relay:
-			contents_source.append(f'\tp{func.internalname} = (void *)GetProcAddress(library, "{func.internalname}");')
+			contents_source.append(f'\tp{func.internalname} = (void *)GetProcAddress(library, "{func.name}");')
 			contents_source.append(f'\tpext{func.internalname} = (void *)GetProcAddress(library_{func.relay_dll}, "{func.internalname}");')
 	contents_source.append('\tinitialized = TRUE;')
 	contents_source.append('}')

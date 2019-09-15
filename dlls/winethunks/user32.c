@@ -20548,7 +20548,7 @@ void wine_thunk_initialize_user32(void)
 	pDrawTextExA = (void *)GetProcAddress(library, "DrawTextExA");
 	pDrawTextExW = (void *)GetProcAddress(library, "DrawTextExW");
 	pDrawTextW = (void *)GetProcAddress(library, "DrawTextW");
-	pEditWndProcA = (void *)GetProcAddress(library, "EditWndProcA");
+	pEditWndProcA = (void *)GetProcAddress(library, "EditWndProc");
 	pEmptyClipboard = (void *)GetProcAddress(library, "EmptyClipboard");
 	pEnableMenuItem = (void *)GetProcAddress(library, "EnableMenuItem");
 	pEnableMouseInPointer = (void *)GetProcAddress(library, "EnableMouseInPointer");
@@ -21070,7 +21070,7 @@ void wine_thunk_initialize_user32(void)
 	pUpdateLayeredWindowIndirect = (void *)GetProcAddress(library, "UpdateLayeredWindowIndirect");
 	pUpdateWindow = (void *)GetProcAddress(library, "UpdateWindow");
 	pUser32InitializeImmEntryTable = (void *)GetProcAddress(library, "User32InitializeImmEntryTable");
-	pDllMain = (void *)GetProcAddress(library, "DllMain");
+	pDllMain = (void *)GetProcAddress(library, "UserClientDllInitialize");
 	pUserHandleGrantAccess = (void *)GetProcAddress(library, "UserHandleGrantAccess");
 	pUserRealizePalette = (void *)GetProcAddress(library, "UserRealizePalette");
 	pUserRegisterWowHandlers = (void *)GetProcAddress(library, "UserRegisterWowHandlers");
