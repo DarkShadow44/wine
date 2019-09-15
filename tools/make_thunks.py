@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # pprint(dir())
-# TODO bitfields
+# TODO bitfields, parallelize single source file
 
 import sys
 import clang.cindex
@@ -256,7 +256,7 @@ class FunctionItem:
 		else:
 			self.callingconvention = rows[1]
 			parts = line.replace('(', ')').split(')') # 0 - left side of parameters, 1 - parameters, 2 - right side of parameters
-			self.name = parts[0].split(' ')[-1]
+			self.name = parts[0].strip().split(' ')[-1]
 			if parts[2] != "":
 				self.internalname = parts[2].strip()
 				if '.' in self.internalname:
@@ -266,6 +266,9 @@ class FunctionItem:
 					self.relay_dll = nameparts[0]
 			else:
 				self.internalname = self.name
+				if ' -import' in line:
+					self.relay = True
+					self.relay_dll = 'kernelbase'
 
 	def is_empty(self):
 		return self.params == None
@@ -477,7 +480,7 @@ def handle_dll(name):
 	# Read files
 	definitions = DefinitionCollection()
 	for source in sources:
-		#if not source.endswith("console.c"):
+		#if not source.endswith("path.c"):
 		#	continue
 		print(f'\tAt {name}/{source}')
 		handle_dll_source(dll_path, source, funcs, definitions)
@@ -545,7 +548,7 @@ def handle_dll(name):
 			contents_source.append(f'\tif (func == p{func.internalname})')
 			contents_source.append(f'\t\treturn wine32a_{name}_{func.internalname};')
 		if func.relay:
-			contents_source.append(f'\tif (func == p{func.internalname})')
+			contents_source.append(f'\tif (func == p{func.internalname} && func != pext{func.internalname})')
 			contents_source.append(f'\t\treturn wine_thunk_get_for_any(pext{func.internalname});')
 	contents_source.append("")
 	contents_source.append('\treturn NULL;')
@@ -564,6 +567,7 @@ def handle_all_dlls(threads):
 	dlls.append("advapi32")
 	dlls.append("msvcrt")
 	dlls.append("ntdll")
+	dlls.append("kernelbase")
 
 	if threads > 1:
 		pool = Pool(threads)

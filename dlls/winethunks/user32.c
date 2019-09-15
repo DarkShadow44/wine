@@ -166,6 +166,7 @@ static WINAPI BOOL (*pAdjustWindowRect)(LPRECT  rect, DWORD  style, BOOL  menu);
 static WINAPI BOOL (*pAdjustWindowRectEx)(LPRECT  rect, DWORD  style, BOOL  menu, DWORD  exStyle);
 static WINAPI BOOL (*pAdjustWindowRectExForDpi)(LPRECT  rect, DWORD  style, BOOL  menu, DWORD  exStyle, UINT  dpi);
 static WINAPI BOOL (*pAlignRects)(LPRECT  rect, DWORD  b, DWORD  c, DWORD  d);
+static WINAPI BOOL (*pAllowSetForegroundWindow)(DWORD  procid);
 static WINAPI BOOL (*pAnimateWindow)(HWND  hwnd, DWORD  dwTime, DWORD  dwFlags);
 static WINAPI BOOL (*pAnyPopup)(void);
 static WINAPI BOOL (*pAppendMenuA)(HMENU  hMenu, UINT  flags, UINT_PTR  id, LPCSTR  data);
@@ -250,6 +251,7 @@ static WINAPI HWND (*pCreateDialogIndirectParamW)(HINSTANCE  hInst, LPCDLGTEMPLA
 static WINAPI HWND (*pCreateDialogParamA)(HINSTANCE  hInst, LPCSTR  name, HWND  owner, DLGPROC  dlgProc, LPARAM  param);
 static WINAPI HWND (*pCreateDialogParamW)(HINSTANCE  hInst, LPCWSTR  name, HWND  owner, DLGPROC  dlgProc, LPARAM  param);
 static WINAPI HICON (*pCreateIcon)(HINSTANCE  hInstance, INT  nWidth, INT  nHeight, BYTE  bPlanes, BYTE  bBitsPixel, LPCVOID  lpANDbits, LPCVOID  lpXORbits);
+static WINAPI HICON (*pCreateIconFromResource)(LPBYTE  bits, UINT  cbSize, BOOL  bIcon, DWORD  dwVersion);
 static WINAPI HICON (*pCreateIconFromResourceEx)(LPBYTE  bits, UINT  cbSize, BOOL  bIcon, DWORD  dwVersion, INT  width, INT  height, UINT  cFlag);
 static WINAPI HICON (*pCreateIconIndirect)(PICONINFO  iconinfo);
 static WINAPI HWND (*pCreateMDIWindowA)(LPCSTR  lpClassName, LPCSTR  lpWindowName, DWORD  dwStyle, INT  X, INT  Y, INT  nWidth, INT  nHeight, HWND  hWndParent, HINSTANCE  hInstance, LPARAM  lParam);
@@ -289,6 +291,7 @@ static WINAPI DWORD (*pDdeQueryStringA)(DWORD  idInst, HSZ  hsz, LPSTR  psz, DWO
 static WINAPI DWORD (*pDdeQueryStringW)(DWORD  idInst, HSZ  hsz, LPWSTR  psz, DWORD  cchMax, INT  iCodePage);
 static WINAPI HCONV (*pDdeReconnect)(HCONV  hConv);
 static WINAPI BOOL (*pDdeSetQualityOfService)(HWND  hwndClient, SECURITY_QUALITY_OF_SERVICE*  pqosNew, PSECURITY_QUALITY_OF_SERVICE  pqosPrev);
+static WINAPI BOOL (*pDdeSetUserHandle)(HCONV  hConv, DWORD  id, DWORD  hUser);
 static WINAPI BOOL (*pDdeUnaccessData)(HDDEDATA  hData);
 static WINAPI BOOL (*pDdeUninitialize)(DWORD  idInst);
 static WINAPI LRESULT (*pDefDlgProcA)(HWND  hwnd, UINT  msg, WPARAM  wParam, LPARAM  lParam);
@@ -302,6 +305,7 @@ static WINAPI LRESULT (*pDefWindowProcA)(HWND  hwnd, UINT  msg, WPARAM  wParam, 
 static WINAPI LRESULT (*pDefWindowProcW)(HWND  hwnd, UINT  msg, WPARAM  wParam, LPARAM  lParam);
 static WINAPI HDWP (*pDeferWindowPos)(HDWP  hdwp, HWND  hwnd, HWND  hwndAfter, INT  x, INT  y, INT  cx, INT  cy, UINT  flags);
 static WINAPI BOOL (*pDeleteMenu)(HMENU  hMenu, UINT  id, UINT  flags);
+static WINAPI BOOL (*pDeregisterShellHookWindow)(HWND  hWnd);
 static WINAPI BOOL (*pDestroyAcceleratorTable)(HACCEL  handle);
 static WINAPI BOOL (*pDestroyCaret)(void);
 static WINAPI BOOL (*pDestroyCursor)(HCURSOR  hCursor);
@@ -414,6 +418,7 @@ static WINAPI HANDLE (*pGetClipboardData)(UINT  format);
 static WINAPI INT (*pGetClipboardFormatNameA)(UINT  format, LPSTR  buffer, INT  maxlen);
 static WINAPI INT (*pGetClipboardFormatNameW)(UINT  format, LPWSTR  buffer, INT  maxlen);
 static WINAPI HWND (*pGetClipboardOwner)(void);
+static WINAPI DWORD (*pGetClipboardSequenceNumber)(void);
 static WINAPI HWND (*pGetClipboardViewer)(void);
 static WINAPI BOOL (*pGetComboBoxInfo)(HWND  hwndCombo, PCOMBOBOXINFO  pcbi);
 static WINAPI BOOL (*pGetCurrentInputMessageSource)(INPUT_MESSAGE_SOURCE*  source);
@@ -494,6 +499,7 @@ static WINAPI INT (*pGetPriorityClipboardFormat)(UINT*  list, INT  nCount);
 static WINAPI BOOL (*pGetProcessDefaultLayout)(DWORD*  layout);
 static WINAPI BOOL (*pGetProcessDpiAwarenessInternal)(HANDLE  process, DPI_AWARENESS*  awareness);
 static WINAPI HWINSTA (*pGetProcessWindowStation)(void);
+static WINAPI HWND (*pGetProgmanWindow)(void);
 static WINAPI HANDLE (*pGetPropA)(HWND  hwnd, LPCSTR  str);
 static WINAPI HANDLE (*pGetPropW)(HWND  hwnd, LPCWSTR  str);
 static WINAPI DWORD (*pGetQueueStatus)(UINT  flags);
@@ -516,6 +522,7 @@ static WINAPI INT (*pGetSystemMetrics)(INT  index);
 static WINAPI INT (*pGetSystemMetricsForDpi)(INT  index, UINT  dpi);
 static WINAPI DWORD (*pGetTabbedTextExtentA)(HDC  hdc, LPCSTR  lpstr, INT  count, INT  cTabStops, INT*  lpTabPos);
 static WINAPI DWORD (*pGetTabbedTextExtentW)(HDC  hdc, LPCWSTR  lpstr, INT  count, INT  cTabStops, INT*  lpTabPos);
+static WINAPI HWND (*pGetTaskmanWindow)(void);
 static WINAPI HDESK (*pGetThreadDesktop)(DWORD  thread);
 static WINAPI DPI_AWARENESS_CONTEXT (*pGetThreadDpiAwarenessContext)(void);
 static WINAPI BOOL (*pGetTitleBarInfo)(HWND  hwnd, PTITLEBARINFO  tbi);
@@ -524,6 +531,9 @@ static WINAPI BOOL (*pGetTouchInputInfo)(HTOUCHINPUT  handle, UINT  count, TOUCH
 static WINAPI BOOL (*pGetUpdateRect)(HWND  hwnd, LPRECT  rect, BOOL  erase);
 static WINAPI INT (*pGetUpdateRgn)(HWND  hwnd, HRGN  hrgn, BOOL  erase);
 static WINAPI BOOL (*pGetUpdatedClipboardFormats)(UINT*  formats, UINT  size, UINT*  out_size);
+static WINAPI BOOL (*pGetUserObjectInformationA)(HANDLE  handle, INT  index, LPVOID  info, DWORD  len, LPDWORD  needed);
+static WINAPI BOOL (*pGetUserObjectInformationW)(HANDLE  handle, INT  index, LPVOID  info, DWORD  len, LPDWORD  needed);
+static WINAPI BOOL (*pGetUserObjectSecurity)(HANDLE  handle, PSECURITY_INFORMATION  info, PSECURITY_DESCRIPTOR  sid, DWORD  len, LPDWORD  needed);
 static WINAPI HWND (*pGetWindow)(HWND  hwnd, UINT  rel);
 static WINAPI DWORD (*pGetWindowContextHelpId)(HWND  hwnd);
 static WINAPI HDC (*pGetWindowDC)(HWND  hwnd);
@@ -614,6 +624,7 @@ static WINAPI HMENU (*pLoadMenuIndirectW)(LPCVOID  template);
 static WINAPI HMENU (*pLoadMenuW)(HINSTANCE  instance, LPCWSTR  name);
 static WINAPI INT (*pLoadStringA)(HINSTANCE  instance, UINT  resource_id, LPSTR  buffer, INT  buflen);
 static WINAPI INT (*pLoadStringW)(HINSTANCE  instance, UINT  resource_id, LPWSTR  buffer, INT  buflen);
+static WINAPI BOOL (*pLockSetForegroundWindow)(UINT  lockcode);
 static WINAPI BOOL (*pLockWindowUpdate)(HWND  hwnd);
 static WINAPI BOOL (*pLockWorkStation)(void);
 static WINAPI BOOL (*pLogicalToPhysicalPoint)(HWND  hwnd, POINT*  point);
@@ -672,6 +683,8 @@ static WINAPI BOOL (*pPostThreadMessageW)(DWORD  thread, UINT  msg, WPARAM  wpar
 static WINAPI BOOL (*pPrintWindow)(HWND  hwnd, HDC  hdcBlt, UINT  nFlags);
 static WINAPI UINT (*pPrivateExtractIconExA)(LPCSTR  lpstrFile, int  nIndex, HICON*  phIconLarge, HICON*  phIconSmall, UINT  nIcons);
 static WINAPI UINT (*pPrivateExtractIconExW)(LPCWSTR  lpwstrFile, int  nIndex, HICON*  phIconLarge, HICON*  phIconSmall, UINT  nIcons);
+static WINAPI UINT (*pPrivateExtractIconsA)(LPCSTR  lpstrFile, int  nIndex, int  sizeX, int  sizeY, HICON*  phicon, UINT*  piconid, UINT  nIcons, UINT  flags);
+static WINAPI UINT (*pPrivateExtractIconsW)(LPCWSTR  lpwstrFile, int  nIndex, int  sizeX, int  sizeY, HICON*  phicon, UINT*  pIconId, UINT  nIcons, UINT  flags);
 static WINAPI BOOL (*pPtInRect)(RECT*  rect, POINT  pt);
 static WINAPI LONG (*pQueryDisplayConfig)(UINT32  flags, UINT32*  numpathelements, DISPLAYCONFIG_PATH_INFO*  pathinfo, UINT32*  numinfoelements, DISPLAYCONFIG_MODE_INFO*  modeinfo, DISPLAYCONFIG_TOPOLOGY_ID*  topologyid);
 static WINAPI HWND (*pRealChildWindowFromPoint)(HWND  hwndParent, POINT  pt);
@@ -692,7 +705,9 @@ static WINAPI BOOL (*pRegisterPointerDeviceNotifications)(HWND  hwnd, BOOL  noti
 static WINAPI HPOWERNOTIFY (*pRegisterPowerSettingNotification)(HANDLE  recipient, GUID*  guid, DWORD  flags);
 static WINAPI BOOL (*pRegisterRawInputDevices)(RAWINPUTDEVICE*  devices, UINT  device_count, UINT  size);
 static WINAPI int (*pRegisterServicesProcess)(DWORD  ServicesProcessId);
+static WINAPI BOOL (*pRegisterShellHookWindow)(HWND  hWnd);
 static WINAPI void (*pRegisterSystemThread)(DWORD  flags, DWORD  reserved);
+static WINAPI DWORD (*pRegisterTasklist)(DWORD  x);
 static WINAPI BOOL (*pRegisterTouchHitTestingWindow)(HWND  hwnd, ULONG  value);
 static WINAPI BOOL (*pRegisterTouchWindow)(HWND  hwnd, ULONG  flags);
 static WINAPI UINT (*pRegisterWindowMessageA)(LPCSTR  str);
@@ -767,6 +782,7 @@ static WINAPI BOOL (*pSetProcessDefaultLayout)(DWORD  layout);
 static WINAPI BOOL (*pSetProcessDpiAwarenessContext)(DPI_AWARENESS_CONTEXT  context);
 static WINAPI BOOL (*pSetProcessDpiAwarenessInternal)(DPI_AWARENESS  awareness);
 static WINAPI BOOL (*pSetProcessWindowStation)(HWINSTA  handle);
+static WINAPI HWND (*pSetProgmanWindow)(HWND  hwnd);
 static WINAPI BOOL (*pSetPropA)(HWND  hwnd, LPCSTR  str, HANDLE  handle);
 static WINAPI BOOL (*pSetPropW)(HWND  hwnd, LPCWSTR  str, HANDLE  handle);
 static WINAPI BOOL (*pSetRect)(LPRECT  rect, INT  left, INT  top, INT  right, INT  bottom);
@@ -775,11 +791,13 @@ static WINAPI INT (*pSetScrollInfo)(HWND  hwnd, INT  nBar, SCROLLINFO*  info, BO
 static WINAPI INT (*pSetScrollPos)(HWND  hwnd, INT  nBar, INT  nPos, BOOL  bRedraw);
 static WINAPI BOOL (*pSetScrollRange)(HWND  hwnd, INT  nBar, INT  minVal, INT  maxVal, BOOL  bRedraw);
 static WINAPI BOOL (*pSetShellWindow)(HWND  hwndShell);
+static WINAPI BOOL (*pSetShellWindowEx)(HWND  hwndShell, HWND  hwndListView);
 static WINAPI BOOL (*pSetSysColors)(INT  count, INT*  colors, COLORREF*  values);
 static WINAPI DWORD_PTR (*pSetSysColorsTemp)(COLORREF*  pPens, HBRUSH*  pBrushes, DWORD_PTR  n);
 static WINAPI BOOL (*pSetSystemCursor)(HCURSOR  hcur, DWORD  id);
 static WINAPI BOOL (*pSetSystemMenu)(HWND  hwnd, HMENU  hMenu);
 static WINAPI UINT_PTR (*pSetSystemTimer)(HWND  hwnd, UINT_PTR  id, UINT  timeout, TIMERPROC  proc);
+static WINAPI HWND (*pSetTaskmanWindow)(HWND  hwnd);
 static WINAPI BOOL (*pSetThreadDesktop)(HDESK  handle);
 static WINAPI DPI_AWARENESS_CONTEXT (*pSetThreadDpiAwarenessContext)(DPI_AWARENESS_CONTEXT  context);
 static WINAPI UINT_PTR (*pSetTimer)(HWND  hwnd, UINT_PTR  id, UINT  timeout, TIMERPROC  proc);
@@ -1036,6 +1054,31 @@ __ASM_GLOBAL_FUNC(wine32a_user32_AlignRects,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $16, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI BOOL wine32b_user32_AllowSetForegroundWindow(DWORD  procid) /* ../dlls/user32/winpos.c:640 */
+{
+	TRACE("Enter AllowSetForegroundWindow\n");
+	return pAllowSetForegroundWindow(procid);
+}
+
+extern WINAPI void wine32a_user32_AllowSetForegroundWindow(void);  /* ../dlls/user32/winpos.c:640 */
+__ASM_GLOBAL_FUNC(wine32a_user32_AllowSetForegroundWindow,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32_AllowSetForegroundWindow") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $4, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -3277,6 +3320,34 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreateIcon,
 	"ret \n"
 )
 
+extern WINAPI HICON wine32b_user32_CreateIconFromResource(LPBYTE  bits, UINT  cbSize, BOOL  bIcon, DWORD  dwVersion) /* ../dlls/user32/cursoricon.c:1710 */
+{
+	TRACE("Enter CreateIconFromResource\n");
+	return pCreateIconFromResource(bits, cbSize, bIcon, dwVersion);
+}
+
+extern WINAPI void wine32a_user32_CreateIconFromResource(void);  /* ../dlls/user32/cursoricon.c:1710 */
+__ASM_GLOBAL_FUNC(wine32a_user32_CreateIconFromResource,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"movl 0x20(%rsp), %r9d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32_CreateIconFromResource") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $16, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
 extern WINAPI HICON wine32b_user32_CreateIconFromResourceEx(LPBYTE  bits, UINT  cbSize, BOOL  bIcon, DWORD  dwVersion, INT  width, INT  height, UINT  cFlag) /* ../dlls/user32/cursoricon.c:1663 */
 {
 	TRACE("Enter CreateIconFromResourceEx\n");
@@ -4323,6 +4394,33 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeSetQualityOfService,
 	"ret \n"
 )
 
+extern WINAPI BOOL wine32b_user32_DdeSetUserHandle(HCONV  hConv, DWORD  id, DWORD  hUser) /* ../dlls/user32/dde_misc.c:2327 */
+{
+	TRACE("Enter DdeSetUserHandle\n");
+	return pDdeSetUserHandle(hConv, id, hUser);
+}
+
+extern WINAPI void wine32a_user32_DdeSetUserHandle(void);  /* ../dlls/user32/dde_misc.c:2327 */
+__ASM_GLOBAL_FUNC(wine32a_user32_DdeSetUserHandle,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32_DdeSetUserHandle") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $12, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
 extern WINAPI BOOL wine32b_user32_DdeUnaccessData(HDDEDATA  hData) /* ../dlls/user32/dde_misc.c:1460 */
 {
 	TRACE("Enter DdeUnaccessData\n");
@@ -4673,6 +4771,31 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DeleteMenu,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $12, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI BOOL wine32b_user32_DeregisterShellHookWindow(HWND  hWnd) /* ../dlls/user32/misc.c:275 */
+{
+	TRACE("Enter DeregisterShellHookWindow\n");
+	return pDeregisterShellHookWindow(hWnd);
+}
+
+extern WINAPI void wine32a_user32_DeregisterShellHookWindow(void);  /* ../dlls/user32/misc.c:275 */
+__ASM_GLOBAL_FUNC(wine32a_user32_DeregisterShellHookWindow,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32_DeregisterShellHookWindow") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $4, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -7651,6 +7774,30 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetClipboardOwner,
 	"ret \n"
 )
 
+extern WINAPI DWORD wine32b_user32_GetClipboardSequenceNumber(void) /* ../dlls/user32/clipboard.c:1126 */
+{
+	TRACE("Enter GetClipboardSequenceNumber\n");
+	return pGetClipboardSequenceNumber();
+}
+
+extern WINAPI void wine32a_user32_GetClipboardSequenceNumber(void);  /* ../dlls/user32/clipboard.c:1126 */
+__ASM_GLOBAL_FUNC(wine32a_user32_GetClipboardSequenceNumber,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32_GetClipboardSequenceNumber") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $0, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
 extern WINAPI HWND wine32b_user32_GetClipboardViewer(void) /* ../dlls/user32/clipboard.c:832 */
 {
 	TRACE("Enter GetClipboardViewer\n");
@@ -9718,6 +9865,30 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetProcessWindowStation,
 	"ret \n"
 )
 
+extern WINAPI HWND wine32b_user32_GetProgmanWindow(void) /* ../dlls/user32/focus.c:470 */
+{
+	TRACE("Enter GetProgmanWindow\n");
+	return pGetProgmanWindow();
+}
+
+extern WINAPI void wine32a_user32_GetProgmanWindow(void);  /* ../dlls/user32/focus.c:470 */
+__ASM_GLOBAL_FUNC(wine32a_user32_GetProgmanWindow,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32_GetProgmanWindow") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $0, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
 extern WINAPI HANDLE wine32b_user32_GetPropA(HWND  hwnd, LPCSTR  str) /* ../dlls/user32/property.c:117 */
 {
 	TRACE("Enter GetPropA\n");
@@ -10301,6 +10472,30 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetTabbedTextExtentW,
 	"ret \n"
 )
 
+extern WINAPI HWND wine32b_user32_GetTaskmanWindow(void) /* ../dlls/user32/focus.c:506 */
+{
+	TRACE("Enter GetTaskmanWindow\n");
+	return pGetTaskmanWindow();
+}
+
+extern WINAPI void wine32a_user32_GetTaskmanWindow(void);  /* ../dlls/user32/focus.c:506 */
+__ASM_GLOBAL_FUNC(wine32a_user32_GetTaskmanWindow,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32_GetTaskmanWindow") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $0, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
 extern WINAPI HDESK wine32b_user32_GetThreadDesktop(DWORD  thread) /* ../dlls/user32/winstation.c:399 */
 {
 	TRACE("Enter GetThreadDesktop\n");
@@ -10504,6 +10699,90 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetUpdatedClipboardFormats,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $12, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI BOOL wine32b_user32_GetUserObjectInformationA(HANDLE  handle, INT  index, LPVOID  info, DWORD  len, LPDWORD  needed) /* ../dlls/user32/winstation.c:516 */
+{
+	TRACE("Enter GetUserObjectInformationA\n");
+	return pGetUserObjectInformationA(handle, index, info, len, needed);
+}
+
+extern WINAPI void wine32a_user32_GetUserObjectInformationA(void);  /* ../dlls/user32/winstation.c:516 */
+__ASM_GLOBAL_FUNC(wine32a_user32_GetUserObjectInformationA,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"movl 0x20(%rsp), %r9d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32_GetUserObjectInformationA") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $20, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI BOOL wine32b_user32_GetUserObjectInformationW(HANDLE  handle, INT  index, LPVOID  info, DWORD  len, LPDWORD  needed) /* ../dlls/user32/winstation.c:546 */
+{
+	TRACE("Enter GetUserObjectInformationW\n");
+	return pGetUserObjectInformationW(handle, index, info, len, needed);
+}
+
+extern WINAPI void wine32a_user32_GetUserObjectInformationW(void);  /* ../dlls/user32/winstation.c:546 */
+__ASM_GLOBAL_FUNC(wine32a_user32_GetUserObjectInformationW,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"movl 0x20(%rsp), %r9d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32_GetUserObjectInformationW") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $20, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI BOOL wine32b_user32_GetUserObjectSecurity(HANDLE  handle, PSECURITY_INFORMATION  info, PSECURITY_DESCRIPTOR  sid, DWORD  len, LPDWORD  needed) /* ../dlls/user32/winstation.c:674 */
+{
+	TRACE("Enter GetUserObjectSecurity\n");
+	return pGetUserObjectSecurity(handle, info, sid, len, needed);
+}
+
+extern WINAPI void wine32a_user32_GetUserObjectSecurity(void);  /* ../dlls/user32/winstation.c:674 */
+__ASM_GLOBAL_FUNC(wine32a_user32_GetUserObjectSecurity,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"movl 0x20(%rsp), %r9d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32_GetUserObjectSecurity") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $20, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -12842,6 +13121,31 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LoadStringW,
 	"ret \n"
 )
 
+extern WINAPI BOOL wine32b_user32_LockSetForegroundWindow(UINT  lockcode) /* ../dlls/user32/winpos.c:651 */
+{
+	TRACE("Enter LockSetForegroundWindow\n");
+	return pLockSetForegroundWindow(lockcode);
+}
+
+extern WINAPI void wine32a_user32_LockSetForegroundWindow(void);  /* ../dlls/user32/winpos.c:651 */
+__ASM_GLOBAL_FUNC(wine32a_user32_LockSetForegroundWindow,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32_LockSetForegroundWindow") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $4, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
 extern WINAPI BOOL wine32b_user32_LockWindowUpdate(HWND  hwnd) /* ../dlls/user32/painting.c:1197 */
 {
 	TRACE("Enter LockWindowUpdate\n");
@@ -14398,6 +14702,62 @@ __ASM_GLOBAL_FUNC(wine32a_user32_PrivateExtractIconExW,
 	"ret \n"
 )
 
+extern WINAPI UINT wine32b_user32_PrivateExtractIconsA(LPCSTR  lpstrFile, int  nIndex, int  sizeX, int  sizeY, HICON*  phicon, UINT*  piconid, UINT  nIcons, UINT  flags) /* ../dlls/user32/exticon.c:592 */
+{
+	TRACE("Enter PrivateExtractIconsA\n");
+	return pPrivateExtractIconsA(lpstrFile, nIndex, sizeX, sizeY, phicon, piconid, nIcons, flags);
+}
+
+extern WINAPI void wine32a_user32_PrivateExtractIconsA(void);  /* ../dlls/user32/exticon.c:592 */
+__ASM_GLOBAL_FUNC(wine32a_user32_PrivateExtractIconsA,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"movl 0x20(%rsp), %r9d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32_PrivateExtractIconsA") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $32, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI UINT wine32b_user32_PrivateExtractIconsW(LPCWSTR  lpwstrFile, int  nIndex, int  sizeX, int  sizeY, HICON*  phicon, UINT*  pIconId, UINT  nIcons, UINT  flags) /* ../dlls/user32/exticon.c:568 */
+{
+	TRACE("Enter PrivateExtractIconsW\n");
+	return pPrivateExtractIconsW(lpwstrFile, nIndex, sizeX, sizeY, phicon, pIconId, nIcons, flags);
+}
+
+extern WINAPI void wine32a_user32_PrivateExtractIconsW(void);  /* ../dlls/user32/exticon.c:568 */
+__ASM_GLOBAL_FUNC(wine32a_user32_PrivateExtractIconsW,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"movl 0x20(%rsp), %r9d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32_PrivateExtractIconsW") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $32, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
 extern WINAPI BOOL wine32b_user32_PtInRect(RECT*  rect, POINT  pt) /* ../dlls/user32/uitools.c:1296 */
 {
 	TRACE("Enter PtInRect\n");
@@ -14923,6 +15283,31 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterServicesProcess,
 	"ret \n"
 )
 
+extern WINAPI BOOL wine32b_user32_RegisterShellHookWindow(HWND  hWnd) /* ../dlls/user32/misc.c:265 */
+{
+	TRACE("Enter RegisterShellHookWindow\n");
+	return pRegisterShellHookWindow(hWnd);
+}
+
+extern WINAPI void wine32a_user32_RegisterShellHookWindow(void);  /* ../dlls/user32/misc.c:265 */
+__ASM_GLOBAL_FUNC(wine32a_user32_RegisterShellHookWindow,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32_RegisterShellHookWindow") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $4, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
 extern WINAPI void wine32b_user32_RegisterSystemThread(DWORD  flags, DWORD  reserved) /* ../dlls/user32/misc.c:257 */
 {
 	TRACE("Enter RegisterSystemThread\n");
@@ -14943,6 +15328,31 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterSystemThread,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $8, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI DWORD wine32b_user32_RegisterTasklist(DWORD  x) /* ../dlls/user32/misc.c:285 */
+{
+	TRACE("Enter RegisterTasklist\n");
+	return pRegisterTasklist(x);
+}
+
+extern WINAPI void wine32a_user32_RegisterTasklist(void);  /* ../dlls/user32/misc.c:285 */
+__ASM_GLOBAL_FUNC(wine32a_user32_RegisterTasklist,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32_RegisterTasklist") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $4, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -16904,6 +17314,31 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetProcessWindowStation,
 	"ret \n"
 )
 
+extern WINAPI HWND wine32b_user32_SetProgmanWindow(HWND  hwnd) /* ../dlls/user32/focus.c:454 */
+{
+	TRACE("Enter SetProgmanWindow\n");
+	return pSetProgmanWindow(hwnd);
+}
+
+extern WINAPI void wine32a_user32_SetProgmanWindow(void);  /* ../dlls/user32/focus.c:454 */
+__ASM_GLOBAL_FUNC(wine32a_user32_SetProgmanWindow,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32_SetProgmanWindow") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $4, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
 extern WINAPI BOOL wine32b_user32_SetPropA(HWND  hwnd, LPCSTR  str, HANDLE  handle) /* ../dlls/user32/property.c:149 */
 {
 	TRACE("Enter SetPropA\n");
@@ -17120,6 +17555,32 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetShellWindow,
 	"ret \n"
 )
 
+extern WINAPI BOOL wine32b_user32_SetShellWindowEx(HWND  hwndShell, HWND  hwndListView) /* ../dlls/user32/focus.c:391 */
+{
+	TRACE("Enter SetShellWindowEx\n");
+	return pSetShellWindowEx(hwndShell, hwndListView);
+}
+
+extern WINAPI void wine32a_user32_SetShellWindowEx(void);  /* ../dlls/user32/focus.c:391 */
+__ASM_GLOBAL_FUNC(wine32a_user32_SetShellWindowEx,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32_SetShellWindowEx") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $8, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
 extern WINAPI BOOL wine32b_user32_SetSysColors(INT  count, INT*  colors, COLORREF*  values) /* ../dlls/user32/sysparams.c:3050 */
 {
 	TRACE("Enter SetSysColors\n");
@@ -17248,6 +17709,31 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetSystemTimer,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $16, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI HWND wine32b_user32_SetTaskmanWindow(HWND  hwnd) /* ../dlls/user32/focus.c:491 */
+{
+	TRACE("Enter SetTaskmanWindow\n");
+	return pSetTaskmanWindow(hwnd);
+}
+
+extern WINAPI void wine32a_user32_SetTaskmanWindow(void);  /* ../dlls/user32/focus.c:491 */
+__ASM_GLOBAL_FUNC(wine32a_user32_SetTaskmanWindow,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32_SetTaskmanWindow") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $4, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -19881,6 +20367,7 @@ void wine_thunk_initialize_user32(void)
 	pAdjustWindowRectEx = (void *)GetProcAddress(library, "AdjustWindowRectEx");
 	pAdjustWindowRectExForDpi = (void *)GetProcAddress(library, "AdjustWindowRectExForDpi");
 	pAlignRects = (void *)GetProcAddress(library, "AlignRects");
+	pAllowSetForegroundWindow = (void *)GetProcAddress(library, "AllowSetForegroundWindow");
 	pAnimateWindow = (void *)GetProcAddress(library, "AnimateWindow");
 	pAnyPopup = (void *)GetProcAddress(library, "AnyPopup");
 	pAppendMenuA = (void *)GetProcAddress(library, "AppendMenuA");
@@ -19965,6 +20452,7 @@ void wine_thunk_initialize_user32(void)
 	pCreateDialogParamA = (void *)GetProcAddress(library, "CreateDialogParamA");
 	pCreateDialogParamW = (void *)GetProcAddress(library, "CreateDialogParamW");
 	pCreateIcon = (void *)GetProcAddress(library, "CreateIcon");
+	pCreateIconFromResource = (void *)GetProcAddress(library, "CreateIconFromResource");
 	pCreateIconFromResourceEx = (void *)GetProcAddress(library, "CreateIconFromResourceEx");
 	pCreateIconIndirect = (void *)GetProcAddress(library, "CreateIconIndirect");
 	pCreateMDIWindowA = (void *)GetProcAddress(library, "CreateMDIWindowA");
@@ -20004,6 +20492,7 @@ void wine_thunk_initialize_user32(void)
 	pDdeQueryStringW = (void *)GetProcAddress(library, "DdeQueryStringW");
 	pDdeReconnect = (void *)GetProcAddress(library, "DdeReconnect");
 	pDdeSetQualityOfService = (void *)GetProcAddress(library, "DdeSetQualityOfService");
+	pDdeSetUserHandle = (void *)GetProcAddress(library, "DdeSetUserHandle");
 	pDdeUnaccessData = (void *)GetProcAddress(library, "DdeUnaccessData");
 	pDdeUninitialize = (void *)GetProcAddress(library, "DdeUninitialize");
 	pDefDlgProcA = (void *)GetProcAddress(library, "DefDlgProcA");
@@ -20017,6 +20506,7 @@ void wine_thunk_initialize_user32(void)
 	pDefWindowProcW = (void *)GetProcAddress(library, "DefWindowProcW");
 	pDeferWindowPos = (void *)GetProcAddress(library, "DeferWindowPos");
 	pDeleteMenu = (void *)GetProcAddress(library, "DeleteMenu");
+	pDeregisterShellHookWindow = (void *)GetProcAddress(library, "DeregisterShellHookWindow");
 	pDestroyAcceleratorTable = (void *)GetProcAddress(library, "DestroyAcceleratorTable");
 	pDestroyCaret = (void *)GetProcAddress(library, "DestroyCaret");
 	pDestroyCursor = (void *)GetProcAddress(library, "DestroyCursor");
@@ -20129,6 +20619,7 @@ void wine_thunk_initialize_user32(void)
 	pGetClipboardFormatNameA = (void *)GetProcAddress(library, "GetClipboardFormatNameA");
 	pGetClipboardFormatNameW = (void *)GetProcAddress(library, "GetClipboardFormatNameW");
 	pGetClipboardOwner = (void *)GetProcAddress(library, "GetClipboardOwner");
+	pGetClipboardSequenceNumber = (void *)GetProcAddress(library, "GetClipboardSequenceNumber");
 	pGetClipboardViewer = (void *)GetProcAddress(library, "GetClipboardViewer");
 	pGetComboBoxInfo = (void *)GetProcAddress(library, "GetComboBoxInfo");
 	pGetCurrentInputMessageSource = (void *)GetProcAddress(library, "GetCurrentInputMessageSource");
@@ -20209,6 +20700,7 @@ void wine_thunk_initialize_user32(void)
 	pGetProcessDefaultLayout = (void *)GetProcAddress(library, "GetProcessDefaultLayout");
 	pGetProcessDpiAwarenessInternal = (void *)GetProcAddress(library, "GetProcessDpiAwarenessInternal");
 	pGetProcessWindowStation = (void *)GetProcAddress(library, "GetProcessWindowStation");
+	pGetProgmanWindow = (void *)GetProcAddress(library, "GetProgmanWindow");
 	pGetPropA = (void *)GetProcAddress(library, "GetPropA");
 	pGetPropW = (void *)GetProcAddress(library, "GetPropW");
 	pGetQueueStatus = (void *)GetProcAddress(library, "GetQueueStatus");
@@ -20231,6 +20723,7 @@ void wine_thunk_initialize_user32(void)
 	pGetSystemMetricsForDpi = (void *)GetProcAddress(library, "GetSystemMetricsForDpi");
 	pGetTabbedTextExtentA = (void *)GetProcAddress(library, "GetTabbedTextExtentA");
 	pGetTabbedTextExtentW = (void *)GetProcAddress(library, "GetTabbedTextExtentW");
+	pGetTaskmanWindow = (void *)GetProcAddress(library, "GetTaskmanWindow");
 	pGetThreadDesktop = (void *)GetProcAddress(library, "GetThreadDesktop");
 	pGetThreadDpiAwarenessContext = (void *)GetProcAddress(library, "GetThreadDpiAwarenessContext");
 	pGetTitleBarInfo = (void *)GetProcAddress(library, "GetTitleBarInfo");
@@ -20239,6 +20732,9 @@ void wine_thunk_initialize_user32(void)
 	pGetUpdateRect = (void *)GetProcAddress(library, "GetUpdateRect");
 	pGetUpdateRgn = (void *)GetProcAddress(library, "GetUpdateRgn");
 	pGetUpdatedClipboardFormats = (void *)GetProcAddress(library, "GetUpdatedClipboardFormats");
+	pGetUserObjectInformationA = (void *)GetProcAddress(library, "GetUserObjectInformationA");
+	pGetUserObjectInformationW = (void *)GetProcAddress(library, "GetUserObjectInformationW");
+	pGetUserObjectSecurity = (void *)GetProcAddress(library, "GetUserObjectSecurity");
 	pGetWindow = (void *)GetProcAddress(library, "GetWindow");
 	pGetWindowContextHelpId = (void *)GetProcAddress(library, "GetWindowContextHelpId");
 	pGetWindowDC = (void *)GetProcAddress(library, "GetWindowDC");
@@ -20329,6 +20825,7 @@ void wine_thunk_initialize_user32(void)
 	pLoadMenuW = (void *)GetProcAddress(library, "LoadMenuW");
 	pLoadStringA = (void *)GetProcAddress(library, "LoadStringA");
 	pLoadStringW = (void *)GetProcAddress(library, "LoadStringW");
+	pLockSetForegroundWindow = (void *)GetProcAddress(library, "LockSetForegroundWindow");
 	pLockWindowUpdate = (void *)GetProcAddress(library, "LockWindowUpdate");
 	pLockWorkStation = (void *)GetProcAddress(library, "LockWorkStation");
 	pLogicalToPhysicalPoint = (void *)GetProcAddress(library, "LogicalToPhysicalPoint");
@@ -20387,6 +20884,8 @@ void wine_thunk_initialize_user32(void)
 	pPrintWindow = (void *)GetProcAddress(library, "PrintWindow");
 	pPrivateExtractIconExA = (void *)GetProcAddress(library, "PrivateExtractIconExA");
 	pPrivateExtractIconExW = (void *)GetProcAddress(library, "PrivateExtractIconExW");
+	pPrivateExtractIconsA = (void *)GetProcAddress(library, "PrivateExtractIconsA");
+	pPrivateExtractIconsW = (void *)GetProcAddress(library, "PrivateExtractIconsW");
 	pPtInRect = (void *)GetProcAddress(library, "PtInRect");
 	pQueryDisplayConfig = (void *)GetProcAddress(library, "QueryDisplayConfig");
 	pRealChildWindowFromPoint = (void *)GetProcAddress(library, "RealChildWindowFromPoint");
@@ -20407,7 +20906,9 @@ void wine_thunk_initialize_user32(void)
 	pRegisterPowerSettingNotification = (void *)GetProcAddress(library, "RegisterPowerSettingNotification");
 	pRegisterRawInputDevices = (void *)GetProcAddress(library, "RegisterRawInputDevices");
 	pRegisterServicesProcess = (void *)GetProcAddress(library, "RegisterServicesProcess");
+	pRegisterShellHookWindow = (void *)GetProcAddress(library, "RegisterShellHookWindow");
 	pRegisterSystemThread = (void *)GetProcAddress(library, "RegisterSystemThread");
+	pRegisterTasklist = (void *)GetProcAddress(library, "RegisterTasklist");
 	pRegisterTouchHitTestingWindow = (void *)GetProcAddress(library, "RegisterTouchHitTestingWindow");
 	pRegisterTouchWindow = (void *)GetProcAddress(library, "RegisterTouchWindow");
 	pRegisterWindowMessageA = (void *)GetProcAddress(library, "RegisterWindowMessageA");
@@ -20482,6 +20983,7 @@ void wine_thunk_initialize_user32(void)
 	pSetProcessDpiAwarenessContext = (void *)GetProcAddress(library, "SetProcessDpiAwarenessContext");
 	pSetProcessDpiAwarenessInternal = (void *)GetProcAddress(library, "SetProcessDpiAwarenessInternal");
 	pSetProcessWindowStation = (void *)GetProcAddress(library, "SetProcessWindowStation");
+	pSetProgmanWindow = (void *)GetProcAddress(library, "SetProgmanWindow");
 	pSetPropA = (void *)GetProcAddress(library, "SetPropA");
 	pSetPropW = (void *)GetProcAddress(library, "SetPropW");
 	pSetRect = (void *)GetProcAddress(library, "SetRect");
@@ -20490,11 +20992,13 @@ void wine_thunk_initialize_user32(void)
 	pSetScrollPos = (void *)GetProcAddress(library, "SetScrollPos");
 	pSetScrollRange = (void *)GetProcAddress(library, "SetScrollRange");
 	pSetShellWindow = (void *)GetProcAddress(library, "SetShellWindow");
+	pSetShellWindowEx = (void *)GetProcAddress(library, "SetShellWindowEx");
 	pSetSysColors = (void *)GetProcAddress(library, "SetSysColors");
 	pSetSysColorsTemp = (void *)GetProcAddress(library, "SetSysColorsTemp");
 	pSetSystemCursor = (void *)GetProcAddress(library, "SetSystemCursor");
 	pSetSystemMenu = (void *)GetProcAddress(library, "SetSystemMenu");
 	pSetSystemTimer = (void *)GetProcAddress(library, "SetSystemTimer");
+	pSetTaskmanWindow = (void *)GetProcAddress(library, "SetTaskmanWindow");
 	pSetThreadDesktop = (void *)GetProcAddress(library, "SetThreadDesktop");
 	pSetThreadDpiAwarenessContext = (void *)GetProcAddress(library, "SetThreadDpiAwarenessContext");
 	pSetTimer = (void *)GetProcAddress(library, "SetTimer");
@@ -20614,6 +21118,8 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_AdjustWindowRectExForDpi;
 	if (func == pAlignRects)
 		return wine32a_user32_AlignRects;
+	if (func == pAllowSetForegroundWindow)
+		return wine32a_user32_AllowSetForegroundWindow;
 	if (func == pAnimateWindow)
 		return wine32a_user32_AnimateWindow;
 	if (func == pAnyPopup)
@@ -20782,6 +21288,8 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_CreateDialogParamW;
 	if (func == pCreateIcon)
 		return wine32a_user32_CreateIcon;
+	if (func == pCreateIconFromResource)
+		return wine32a_user32_CreateIconFromResource;
 	if (func == pCreateIconFromResourceEx)
 		return wine32a_user32_CreateIconFromResourceEx;
 	if (func == pCreateIconIndirect)
@@ -20860,6 +21368,8 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_DdeReconnect;
 	if (func == pDdeSetQualityOfService)
 		return wine32a_user32_DdeSetQualityOfService;
+	if (func == pDdeSetUserHandle)
+		return wine32a_user32_DdeSetUserHandle;
 	if (func == pDdeUnaccessData)
 		return wine32a_user32_DdeUnaccessData;
 	if (func == pDdeUninitialize)
@@ -20886,6 +21396,8 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_DeferWindowPos;
 	if (func == pDeleteMenu)
 		return wine32a_user32_DeleteMenu;
+	if (func == pDeregisterShellHookWindow)
+		return wine32a_user32_DeregisterShellHookWindow;
 	if (func == pDestroyAcceleratorTable)
 		return wine32a_user32_DestroyAcceleratorTable;
 	if (func == pDestroyCaret)
@@ -21110,6 +21622,8 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_GetClipboardFormatNameW;
 	if (func == pGetClipboardOwner)
 		return wine32a_user32_GetClipboardOwner;
+	if (func == pGetClipboardSequenceNumber)
+		return wine32a_user32_GetClipboardSequenceNumber;
 	if (func == pGetClipboardViewer)
 		return wine32a_user32_GetClipboardViewer;
 	if (func == pGetComboBoxInfo)
@@ -21270,6 +21784,8 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_GetProcessDpiAwarenessInternal;
 	if (func == pGetProcessWindowStation)
 		return wine32a_user32_GetProcessWindowStation;
+	if (func == pGetProgmanWindow)
+		return wine32a_user32_GetProgmanWindow;
 	if (func == pGetPropA)
 		return wine32a_user32_GetPropA;
 	if (func == pGetPropW)
@@ -21314,6 +21830,8 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_GetTabbedTextExtentA;
 	if (func == pGetTabbedTextExtentW)
 		return wine32a_user32_GetTabbedTextExtentW;
+	if (func == pGetTaskmanWindow)
+		return wine32a_user32_GetTaskmanWindow;
 	if (func == pGetThreadDesktop)
 		return wine32a_user32_GetThreadDesktop;
 	if (func == pGetThreadDpiAwarenessContext)
@@ -21330,6 +21848,12 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_GetUpdateRgn;
 	if (func == pGetUpdatedClipboardFormats)
 		return wine32a_user32_GetUpdatedClipboardFormats;
+	if (func == pGetUserObjectInformationA)
+		return wine32a_user32_GetUserObjectInformationA;
+	if (func == pGetUserObjectInformationW)
+		return wine32a_user32_GetUserObjectInformationW;
+	if (func == pGetUserObjectSecurity)
+		return wine32a_user32_GetUserObjectSecurity;
 	if (func == pGetWindow)
 		return wine32a_user32_GetWindow;
 	if (func == pGetWindowContextHelpId)
@@ -21510,6 +22034,8 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_LoadStringA;
 	if (func == pLoadStringW)
 		return wine32a_user32_LoadStringW;
+	if (func == pLockSetForegroundWindow)
+		return wine32a_user32_LockSetForegroundWindow;
 	if (func == pLockWindowUpdate)
 		return wine32a_user32_LockWindowUpdate;
 	if (func == pLockWorkStation)
@@ -21626,6 +22152,10 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_PrivateExtractIconExA;
 	if (func == pPrivateExtractIconExW)
 		return wine32a_user32_PrivateExtractIconExW;
+	if (func == pPrivateExtractIconsA)
+		return wine32a_user32_PrivateExtractIconsA;
+	if (func == pPrivateExtractIconsW)
+		return wine32a_user32_PrivateExtractIconsW;
 	if (func == pPtInRect)
 		return wine32a_user32_PtInRect;
 	if (func == pQueryDisplayConfig)
@@ -21666,8 +22196,12 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_RegisterRawInputDevices;
 	if (func == pRegisterServicesProcess)
 		return wine32a_user32_RegisterServicesProcess;
+	if (func == pRegisterShellHookWindow)
+		return wine32a_user32_RegisterShellHookWindow;
 	if (func == pRegisterSystemThread)
 		return wine32a_user32_RegisterSystemThread;
+	if (func == pRegisterTasklist)
+		return wine32a_user32_RegisterTasklist;
 	if (func == pRegisterTouchHitTestingWindow)
 		return wine32a_user32_RegisterTouchHitTestingWindow;
 	if (func == pRegisterTouchWindow)
@@ -21816,6 +22350,8 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_SetProcessDpiAwarenessInternal;
 	if (func == pSetProcessWindowStation)
 		return wine32a_user32_SetProcessWindowStation;
+	if (func == pSetProgmanWindow)
+		return wine32a_user32_SetProgmanWindow;
 	if (func == pSetPropA)
 		return wine32a_user32_SetPropA;
 	if (func == pSetPropW)
@@ -21832,6 +22368,8 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_SetScrollRange;
 	if (func == pSetShellWindow)
 		return wine32a_user32_SetShellWindow;
+	if (func == pSetShellWindowEx)
+		return wine32a_user32_SetShellWindowEx;
 	if (func == pSetSysColors)
 		return wine32a_user32_SetSysColors;
 	if (func == pSetSysColorsTemp)
@@ -21842,6 +22380,8 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_SetSystemMenu;
 	if (func == pSetSystemTimer)
 		return wine32a_user32_SetSystemTimer;
+	if (func == pSetTaskmanWindow)
+		return wine32a_user32_SetTaskmanWindow;
 	if (func == pSetThreadDesktop)
 		return wine32a_user32_SetThreadDesktop;
 	if (func == pSetThreadDpiAwarenessContext)

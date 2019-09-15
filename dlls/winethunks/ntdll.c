@@ -1397,6 +1397,7 @@ static WINAPI ULONG (*pNtGetCurrentProcessorNumber)(void);
 static WINAPI ULONG (*pNtGetTickCount)(void);
 static WINAPI NTSTATUS (*pNtGetWriteWatch)(HANDLE  process, ULONG  flags, PVOID  base, SIZE_T  size, PVOID*  addresses, ULONG_PTR*  count, ULONG*  granularity);
 static WINAPI NTSTATUS (*pNtImpersonateAnonymousToken)(HANDLE  thread);
+static WINAPI NTSTATUS (*pNtInitiatePowerAction)(POWER_ACTION  SystemAction, SYSTEM_POWER_STATE  MinSystemState, ULONG  Flags, BOOLEAN  Asynchronous);
 static WINAPI NTSTATUS (*pNtIsProcessInJob)(HANDLE  process, HANDLE  job);
 static WINAPI NTSTATUS (*pNtListenPort)(HANDLE  PortHandle, PLPC_MESSAGE  pLpcMessage);
 static WINAPI NTSTATUS (*pNtLoadDriver)(UNICODE_STRING*  DriverServiceName);
@@ -1425,6 +1426,7 @@ static WINAPI NTSTATUS (*pNtOpenProcessToken)(HANDLE  ProcessHandle, DWORD  Desi
 static WINAPI NTSTATUS (*pNtOpenProcessTokenEx)(HANDLE  process, DWORD  access, DWORD  attributes, HANDLE*  handle);
 static WINAPI NTSTATUS (*pNtOpenSection)(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr);
 static WINAPI NTSTATUS (*pNtOpenSemaphore)(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr);
+static WINAPI NTSTATUS (*pNtOpenSymbolicLinkObject)(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr);
 static WINAPI NTSTATUS (*pNtOpenThread)(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, CLIENT_ID*  id);
 static WINAPI NTSTATUS (*pNtOpenThreadToken)(HANDLE  ThreadHandle, DWORD  DesiredAccess, BOOLEAN  OpenAsSelf, HANDLE*  TokenHandle);
 static WINAPI NTSTATUS (*pNtOpenThreadTokenEx)(HANDLE  thread, DWORD  access, BOOLEAN  as_self, DWORD  attributes, HANDLE*  handle);
@@ -1449,6 +1451,7 @@ static WINAPI NTSTATUS (*pNtQueryInformationThread)(HANDLE  handle, THREADINFOCL
 static WINAPI NTSTATUS (*pNtQueryInformationToken)(HANDLE  token, TOKEN_INFORMATION_CLASS  tokeninfoclass, PVOID  tokeninfo, ULONG  tokeninfolength, PULONG  retlen);
 static WINAPI NTSTATUS (*pNtQueryInstallUILanguage)(LANGID*  lang);
 static WINAPI NTSTATUS (*pNtQueryIoCompletion)(HANDLE  CompletionPort, IO_COMPLETION_INFORMATION_CLASS  InformationClass, PVOID  CompletionInformation, ULONG  BufferLength, PULONG  RequiredLength);
+static WINAPI NTSTATUS (*pNtQueryKey)(HANDLE  handle, KEY_INFORMATION_CLASS  info_class, void*  info, DWORD  length, DWORD*  result_len);
 static WINAPI NTSTATUS (*pNtQueryLicenseValue)(UNICODE_STRING*  name, ULONG*  result_type, PVOID  data, ULONG  length, ULONG*  result_len);
 static WINAPI NTSTATUS (*pNtQueryMultipleValueKey)(HANDLE  KeyHandle, PKEY_MULTIPLE_VALUE_INFORMATION  ListOfValuesToQuery, ULONG  NumberOfItems, PVOID  MultipleValueInformation, ULONG  Length, PULONG  ReturnLength);
 static WINAPI NTSTATUS (*pNtQueryMutant)(HANDLE  handle, MUTANT_INFORMATION_CLASS  class, void*  info, ULONG  len, ULONG*  ret_len);
@@ -1456,6 +1459,7 @@ static WINAPI NTSTATUS (*pNtQueryObject)(HANDLE  handle, OBJECT_INFORMATION_CLAS
 static WINAPI NTSTATUS (*pNtQueryPerformanceCounter)(LARGE_INTEGER*  counter, LARGE_INTEGER*  frequency);
 static WINAPI NTSTATUS (*pNtQuerySection)(HANDLE  handle, SECTION_INFORMATION_CLASS  class, void*  ptr, SIZE_T  size, SIZE_T*  ret_size);
 static WINAPI NTSTATUS (*pNtQuerySecurityObject)(HANDLE  Object, SECURITY_INFORMATION  RequestedInformation, PSECURITY_DESCRIPTOR  pSecurityDescriptor, ULONG  Length, PULONG  ResultLength);
+static WINAPI NTSTATUS (*pNtQuerySemaphore)(HANDLE  handle, SEMAPHORE_INFORMATION_CLASS  class, void*  info, ULONG  len, ULONG*  ret_len);
 static WINAPI NTSTATUS (*pNtQuerySymbolicLinkObject)(HANDLE  handle, PUNICODE_STRING  target, PULONG  length);
 static WINAPI NTSTATUS (*pNtQuerySystemEnvironmentValue)(PUNICODE_STRING  VariableName, PWCHAR  Value, ULONG  ValueBufferLength, PULONG  RequiredLength);
 static WINAPI NTSTATUS (*pNtQuerySystemEnvironmentValueEx)(PUNICODE_STRING  name, LPGUID  vendor, PVOID  value, PULONG  retlength, PULONG  attrib);
@@ -1559,6 +1563,7 @@ static WINAPI void (*pRtlAddRefActivationContext)(HANDLE  handle);
 static WINAPI PVOID (*pRtlAddVectoredContinueHandler)(ULONG  first, PVECTORED_EXCEPTION_HANDLER  func);
 static WINAPI PVOID (*pRtlAddVectoredExceptionHandler)(ULONG  first, PVECTORED_EXCEPTION_HANDLER  func);
 static WINAPI NTSTATUS (*pRtlAdjustPrivilege)(ULONG  Privilege, BOOLEAN  Enable, BOOLEAN  CurrentThread, PBOOLEAN  Enabled);
+static WINAPI NTSTATUS (*pRtlAllocateAndInitializeSid)(PSID_IDENTIFIER_AUTHORITY  pIdentifierAuthority, BYTE  nSubAuthorityCount, DWORD  nSubAuthority0, DWORD  nSubAuthority1, DWORD  nSubAuthority2, DWORD  nSubAuthority3, DWORD  nSubAuthority4, DWORD  nSubAuthority5, DWORD  nSubAuthority6, DWORD  nSubAuthority7, PSID*  pSid);
 static WINAPI RTL_HANDLE* (*pRtlAllocateHandle)(RTL_HANDLE_TABLE*  HandleTable, ULONG*  HandleIndex);
 static WINAPI PVOID (*pRtlAllocateHeap)(HANDLE  heap, ULONG  flags, SIZE_T  size);
 static WINAPI WCHAR (*pRtlAnsiCharToUnicodeChar)(LPSTR*  ansi);
@@ -1690,6 +1695,7 @@ static WINAPI void (*pRtlFreeAnsiString)(PSTRING  str);
 static WINAPI BOOLEAN (*pRtlFreeHandle)(RTL_HANDLE_TABLE*  HandleTable, RTL_HANDLE*  Handle);
 static WINAPI BOOLEAN (*pRtlFreeHeap)(HANDLE  heap, ULONG  flags, void*  ptr);
 static WINAPI void (*pRtlFreeOemString)(PSTRING  str);
+static WINAPI DWORD (*pRtlFreeSid)(PSID  pSid);
 static WINAPI void (*pRtlFreeThreadActivationContextStack)(void);
 static WINAPI void (*pRtlFreeUnicodeString)(PUNICODE_STRING  str);
 static WINAPI void (*pRtlFreeUserStack)(void*  stack);
@@ -1870,6 +1876,7 @@ static WINAPI BOOLEAN (*pRtlTimeFieldsToTime)(PTIME_FIELDS  tfTimeFields, PLARGE
 static WINAPI void (*pRtlTimeToElapsedTimeFields)(LARGE_INTEGER*  Time, PTIME_FIELDS  TimeFields);
 static WINAPI BOOLEAN (*pRtlTimeToSecondsSince1970)(LARGE_INTEGER*  Time, LPDWORD  Seconds);
 static WINAPI BOOLEAN (*pRtlTimeToSecondsSince1980)(LARGE_INTEGER*  Time, LPDWORD  Seconds);
+static WINAPI void (*pRtlTimeToTimeFields)(LARGE_INTEGER*  liTime, PTIME_FIELDS  TimeFields);
 static WINAPI BOOLEAN (*pRtlTryAcquireSRWLockExclusive)(RTL_SRWLOCK*  lock);
 static WINAPI BOOLEAN (*pRtlTryAcquireSRWLockShared)(RTL_SRWLOCK*  lock);
 static WINAPI BOOL (*pRtlTryEnterCriticalSection)(RTL_CRITICAL_SECTION*  crit);
@@ -1958,10 +1965,6 @@ static WINAPI void (*pWinSqmIncrementDWORD)(DWORD  unk1, DWORD  unk2, DWORD  unk
 static WINAPI BOOL (*pWinSqmIsOptedIn)(void);
 static WINAPI void (*pWinSqmSetDWORD)(HANDLE  session, DWORD  datapoint_id, DWORD  datapoint_value);
 static WINAPI HANDLE (*pWinSqmStartSession)(GUID*  sessionguid, DWORD  sessionid, DWORD  unknown1);
-static WINAPI NTSTATUS (*pNtInitiatePowerAction)(POWER_ACTION  SystemAction, SYSTEM_POWER_STATE  MinSystemState, ULONG  Flags, BOOLEAN  Asynchronous);
-static WINAPI NTSTATUS (*pNtOpenSymbolicLinkObject)(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr);
-static WINAPI NTSTATUS (*pNtQueryKey)(HANDLE  handle, KEY_INFORMATION_CLASS  info_class, void*  info, DWORD  length, DWORD*  result_len);
-static WINAPI NTSTATUS (*pNtQuerySemaphore)(HANDLE  handle, SEMAPHORE_INFORMATION_CLASS  class, void*  info, ULONG  len, ULONG*  ret_len);
 static WINAPI EXCEPTION_DISPOSITION (*p__C_specific_handler)(EXCEPTION_RECORD*  rec, void*  frame, CONTEXT*  context, struct _DISPATCHER_CONTEXT*  dispatch);
 static WINAPI int (*pNTDLL___isascii)(int  c);
 static WINAPI int (*pNTDLL___iscsym)(int  c);
@@ -5230,6 +5233,34 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtImpersonateAnonymousToken,
 	"ret \n"
 )
 
+extern WINAPI NTSTATUS wine32b_ntdll_NtInitiatePowerAction(POWER_ACTION  SystemAction, SYSTEM_POWER_STATE  MinSystemState, ULONG  Flags, BOOLEAN  Asynchronous) /* ../dlls/ntdll/nt.c:3050 */
+{
+	TRACE("Enter NtInitiatePowerAction\n");
+	return pNtInitiatePowerAction(SystemAction, MinSystemState, Flags, Asynchronous);
+}
+
+extern WINAPI void wine32a_ntdll_NtInitiatePowerAction(void);  /* ../dlls/ntdll/nt.c:3050 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_NtInitiatePowerAction,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"movl 0x20(%rsp), %r9d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_ntdll_NtInitiatePowerAction") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $16, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
 extern WINAPI NTSTATUS wine32b_ntdll_NtIsProcessInJob(HANDLE  process, HANDLE  job) /* ../dlls/ntdll/sync.c:826 */
 {
 	TRACE("Enter NtIsProcessInJob\n");
@@ -5991,6 +6022,33 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenSemaphore,
 	"ret \n"
 )
 
+extern WINAPI NTSTATUS wine32b_ntdll_NtOpenSymbolicLinkObject(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/om.c:602 */
+{
+	TRACE("Enter NtOpenSymbolicLinkObject\n");
+	return pNtOpenSymbolicLinkObject(handle, access, attr);
+}
+
+extern WINAPI void wine32a_ntdll_NtOpenSymbolicLinkObject(void);  /* ../dlls/ntdll/om.c:602 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenSymbolicLinkObject,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_ntdll_NtOpenSymbolicLinkObject") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $12, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
 extern WINAPI NTSTATUS wine32b_ntdll_NtOpenThread(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, CLIENT_ID*  id) /* ../dlls/ntdll/thread.c:570 */
 {
 	TRACE("Enter NtOpenThread\n");
@@ -6647,6 +6705,34 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryIoCompletion,
 	"ret \n"
 )
 
+extern WINAPI NTSTATUS wine32b_ntdll_NtQueryKey(HANDLE  handle, KEY_INFORMATION_CLASS  info_class, void*  info, DWORD  length, DWORD*  result_len) /* ../dlls/ntdll/reg.c:430 */
+{
+	TRACE("Enter NtQueryKey\n");
+	return pNtQueryKey(handle, info_class, info, length, result_len);
+}
+
+extern WINAPI void wine32a_ntdll_NtQueryKey(void);  /* ../dlls/ntdll/reg.c:430 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryKey,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"movl 0x20(%rsp), %r9d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_ntdll_NtQueryKey") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $20, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
 extern WINAPI NTSTATUS wine32b_ntdll_NtQueryLicenseValue(UNICODE_STRING*  name, ULONG*  result_type, PVOID  data, ULONG  length, ULONG*  result_len) /* ../dlls/ntdll/reg.c:1544 */
 {
 	TRACE("Enter NtQueryLicenseValue\n");
@@ -6829,6 +6915,34 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQuerySecurityObject,
 	"movl 0x20(%rsp), %r9d \n"
 	"sub $0x100, %rsp \n"
 	"call " __ASM_NAME("wine32b_ntdll_NtQuerySecurityObject") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $20, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI NTSTATUS wine32b_ntdll_NtQuerySemaphore(HANDLE  handle, SEMAPHORE_INFORMATION_CLASS  class, void*  info, ULONG  len, ULONG*  ret_len) /* ../dlls/ntdll/sync.c:295 */
+{
+	TRACE("Enter NtQuerySemaphore\n");
+	return pNtQuerySemaphore(handle, class, info, len, ret_len);
+}
+
+extern WINAPI void wine32a_ntdll_NtQuerySemaphore(void);  /* ../dlls/ntdll/sync.c:295 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_NtQuerySemaphore,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"movl 0x20(%rsp), %r9d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_ntdll_NtQuerySemaphore") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -9620,6 +9734,34 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAdjustPrivilege,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $16, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI NTSTATUS wine32b_ntdll_RtlAllocateAndInitializeSid(PSID_IDENTIFIER_AUTHORITY  pIdentifierAuthority, BYTE  nSubAuthorityCount, DWORD  nSubAuthority0, DWORD  nSubAuthority1, DWORD  nSubAuthority2, DWORD  nSubAuthority3, DWORD  nSubAuthority4, DWORD  nSubAuthority5, DWORD  nSubAuthority6, DWORD  nSubAuthority7, PSID*  pSid) /* ../dlls/ntdll/sec.c:136 */
+{
+	TRACE("Enter RtlAllocateAndInitializeSid\n");
+	return pRtlAllocateAndInitializeSid(pIdentifierAuthority, nSubAuthorityCount, nSubAuthority0, nSubAuthority1, nSubAuthority2, nSubAuthority3, nSubAuthority4, nSubAuthority5, nSubAuthority6, nSubAuthority7, pSid);
+}
+
+extern WINAPI void wine32a_ntdll_RtlAllocateAndInitializeSid(void);  /* ../dlls/ntdll/sec.c:136 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAllocateAndInitializeSid,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"movl 0x20(%rsp), %r9d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_ntdll_RtlAllocateAndInitializeSid") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $44, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -13072,6 +13214,31 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFreeOemString,
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
 	"call " __ASM_NAME("wine32b_ntdll_RtlFreeOemString") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $4, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI DWORD wine32b_ntdll_RtlFreeSid(PSID  pSid) /* ../dlls/ntdll/sec.c:243 */
+{
+	TRACE("Enter RtlFreeSid\n");
+	return pRtlFreeSid(pSid);
+}
+
+extern WINAPI void wine32a_ntdll_RtlFreeSid(void);  /* ../dlls/ntdll/sec.c:243 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFreeSid,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_ntdll_RtlFreeSid") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -17800,6 +17967,32 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlTimeToSecondsSince1980,
 	"ret \n"
 )
 
+extern WINAPI void wine32b_ntdll_RtlTimeToTimeFields(LARGE_INTEGER*  liTime, PTIME_FIELDS  TimeFields) /* ../dlls/ntdll/time.c:141 */
+{
+	TRACE("Enter RtlTimeToTimeFields\n");
+	return pRtlTimeToTimeFields(liTime, TimeFields);
+}
+
+extern WINAPI void wine32a_ntdll_RtlTimeToTimeFields(void);  /* ../dlls/ntdll/time.c:141 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_RtlTimeToTimeFields,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_ntdll_RtlTimeToTimeFields") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $8, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
 extern WINAPI BOOLEAN wine32b_ntdll_RtlTryAcquireSRWLockExclusive(RTL_SRWLOCK*  lock) /* ../dlls/ntdll/sync.c:2149 */
 {
 	TRACE("Enter RtlTryAcquireSRWLockExclusive\n");
@@ -20102,117 +20295,6 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_WinSqmStartSession,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI NTSTATUS wine32b_ntdll_NtInitiatePowerAction(POWER_ACTION  SystemAction, SYSTEM_POWER_STATE  MinSystemState, ULONG  Flags, BOOLEAN  Asynchronous) /* ../dlls/ntdll/nt.c:3050 */
-{
-	TRACE("Enter NtInitiatePowerAction\n");
-	return pNtInitiatePowerAction(SystemAction, MinSystemState, Flags, Asynchronous);
-}
-
-extern WINAPI void wine32a_ntdll_NtInitiatePowerAction(void);  /* ../dlls/ntdll/nt.c:3050 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NtInitiatePowerAction,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NtInitiatePowerAction") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $16, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenSymbolicLinkObject(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/om.c:602 */
-{
-	TRACE("Enter NtOpenSymbolicLinkObject\n");
-	return pNtOpenSymbolicLinkObject(handle, access, attr);
-}
-
-extern WINAPI void wine32a_ntdll_NtOpenSymbolicLinkObject(void);  /* ../dlls/ntdll/om.c:602 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenSymbolicLinkObject,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NtOpenSymbolicLinkObject") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryKey(HANDLE  handle, KEY_INFORMATION_CLASS  info_class, void*  info, DWORD  length, DWORD*  result_len) /* ../dlls/ntdll/reg.c:430 */
-{
-	TRACE("Enter NtQueryKey\n");
-	return pNtQueryKey(handle, info_class, info, length, result_len);
-}
-
-extern WINAPI void wine32a_ntdll_NtQueryKey(void);  /* ../dlls/ntdll/reg.c:430 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryKey,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NtQueryKey") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI NTSTATUS wine32b_ntdll_NtQuerySemaphore(HANDLE  handle, SEMAPHORE_INFORMATION_CLASS  class, void*  info, ULONG  len, ULONG*  ret_len) /* ../dlls/ntdll/sync.c:295 */
-{
-	TRACE("Enter NtQuerySemaphore\n");
-	return pNtQuerySemaphore(handle, class, info, len, ret_len);
-}
-
-extern WINAPI void wine32a_ntdll_NtQuerySemaphore(void);  /* ../dlls/ntdll/sync.c:295 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NtQuerySemaphore,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NtQuerySemaphore") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -23987,6 +24069,7 @@ void wine_thunk_initialize_ntdll(void)
 	pNtGetTickCount = (void *)GetProcAddress(library, "NtGetTickCount");
 	pNtGetWriteWatch = (void *)GetProcAddress(library, "NtGetWriteWatch");
 	pNtImpersonateAnonymousToken = (void *)GetProcAddress(library, "NtImpersonateAnonymousToken");
+	pNtInitiatePowerAction = (void *)GetProcAddress(library, "NtInitiatePowerAction");
 	pNtIsProcessInJob = (void *)GetProcAddress(library, "NtIsProcessInJob");
 	pNtListenPort = (void *)GetProcAddress(library, "NtListenPort");
 	pNtLoadDriver = (void *)GetProcAddress(library, "NtLoadDriver");
@@ -24015,6 +24098,7 @@ void wine_thunk_initialize_ntdll(void)
 	pNtOpenProcessTokenEx = (void *)GetProcAddress(library, "NtOpenProcessTokenEx");
 	pNtOpenSection = (void *)GetProcAddress(library, "NtOpenSection");
 	pNtOpenSemaphore = (void *)GetProcAddress(library, "NtOpenSemaphore");
+	pNtOpenSymbolicLinkObject = (void *)GetProcAddress(library, "NtOpenSymbolicLinkObject");
 	pNtOpenThread = (void *)GetProcAddress(library, "NtOpenThread");
 	pNtOpenThreadToken = (void *)GetProcAddress(library, "NtOpenThreadToken");
 	pNtOpenThreadTokenEx = (void *)GetProcAddress(library, "NtOpenThreadTokenEx");
@@ -24039,6 +24123,7 @@ void wine_thunk_initialize_ntdll(void)
 	pNtQueryInformationToken = (void *)GetProcAddress(library, "NtQueryInformationToken");
 	pNtQueryInstallUILanguage = (void *)GetProcAddress(library, "NtQueryInstallUILanguage");
 	pNtQueryIoCompletion = (void *)GetProcAddress(library, "NtQueryIoCompletion");
+	pNtQueryKey = (void *)GetProcAddress(library, "NtQueryKey");
 	pNtQueryLicenseValue = (void *)GetProcAddress(library, "NtQueryLicenseValue");
 	pNtQueryMultipleValueKey = (void *)GetProcAddress(library, "NtQueryMultipleValueKey");
 	pNtQueryMutant = (void *)GetProcAddress(library, "NtQueryMutant");
@@ -24046,6 +24131,7 @@ void wine_thunk_initialize_ntdll(void)
 	pNtQueryPerformanceCounter = (void *)GetProcAddress(library, "NtQueryPerformanceCounter");
 	pNtQuerySection = (void *)GetProcAddress(library, "NtQuerySection");
 	pNtQuerySecurityObject = (void *)GetProcAddress(library, "NtQuerySecurityObject");
+	pNtQuerySemaphore = (void *)GetProcAddress(library, "NtQuerySemaphore");
 	pNtQuerySymbolicLinkObject = (void *)GetProcAddress(library, "NtQuerySymbolicLinkObject");
 	pNtQuerySystemEnvironmentValue = (void *)GetProcAddress(library, "NtQuerySystemEnvironmentValue");
 	pNtQuerySystemEnvironmentValueEx = (void *)GetProcAddress(library, "NtQuerySystemEnvironmentValueEx");
@@ -24149,6 +24235,7 @@ void wine_thunk_initialize_ntdll(void)
 	pRtlAddVectoredContinueHandler = (void *)GetProcAddress(library, "RtlAddVectoredContinueHandler");
 	pRtlAddVectoredExceptionHandler = (void *)GetProcAddress(library, "RtlAddVectoredExceptionHandler");
 	pRtlAdjustPrivilege = (void *)GetProcAddress(library, "RtlAdjustPrivilege");
+	pRtlAllocateAndInitializeSid = (void *)GetProcAddress(library, "RtlAllocateAndInitializeSid");
 	pRtlAllocateHandle = (void *)GetProcAddress(library, "RtlAllocateHandle");
 	pRtlAllocateHeap = (void *)GetProcAddress(library, "RtlAllocateHeap");
 	pRtlAnsiCharToUnicodeChar = (void *)GetProcAddress(library, "RtlAnsiCharToUnicodeChar");
@@ -24280,6 +24367,7 @@ void wine_thunk_initialize_ntdll(void)
 	pRtlFreeHandle = (void *)GetProcAddress(library, "RtlFreeHandle");
 	pRtlFreeHeap = (void *)GetProcAddress(library, "RtlFreeHeap");
 	pRtlFreeOemString = (void *)GetProcAddress(library, "RtlFreeOemString");
+	pRtlFreeSid = (void *)GetProcAddress(library, "RtlFreeSid");
 	pRtlFreeThreadActivationContextStack = (void *)GetProcAddress(library, "RtlFreeThreadActivationContextStack");
 	pRtlFreeUnicodeString = (void *)GetProcAddress(library, "RtlFreeUnicodeString");
 	pRtlFreeUserStack = (void *)GetProcAddress(library, "RtlFreeUserStack");
@@ -24460,6 +24548,7 @@ void wine_thunk_initialize_ntdll(void)
 	pRtlTimeToElapsedTimeFields = (void *)GetProcAddress(library, "RtlTimeToElapsedTimeFields");
 	pRtlTimeToSecondsSince1970 = (void *)GetProcAddress(library, "RtlTimeToSecondsSince1970");
 	pRtlTimeToSecondsSince1980 = (void *)GetProcAddress(library, "RtlTimeToSecondsSince1980");
+	pRtlTimeToTimeFields = (void *)GetProcAddress(library, "RtlTimeToTimeFields");
 	pRtlTryAcquireSRWLockExclusive = (void *)GetProcAddress(library, "RtlTryAcquireSRWLockExclusive");
 	pRtlTryAcquireSRWLockShared = (void *)GetProcAddress(library, "RtlTryAcquireSRWLockShared");
 	pRtlTryEnterCriticalSection = (void *)GetProcAddress(library, "RtlTryEnterCriticalSection");
@@ -24548,10 +24637,6 @@ void wine_thunk_initialize_ntdll(void)
 	pWinSqmIsOptedIn = (void *)GetProcAddress(library, "WinSqmIsOptedIn");
 	pWinSqmSetDWORD = (void *)GetProcAddress(library, "WinSqmSetDWORD");
 	pWinSqmStartSession = (void *)GetProcAddress(library, "WinSqmStartSession");
-	pNtInitiatePowerAction = (void *)GetProcAddress(library, "NtInitiatePowerAction");
-	pNtOpenSymbolicLinkObject = (void *)GetProcAddress(library, "NtOpenSymbolicLinkObject");
-	pNtQueryKey = (void *)GetProcAddress(library, "NtQueryKey");
-	pNtQuerySemaphore = (void *)GetProcAddress(library, "NtQuerySemaphore");
 	p__C_specific_handler = (void *)GetProcAddress(library, "__C_specific_handler");
 	pNTDLL___isascii = (void *)GetProcAddress(library, "NTDLL___isascii");
 	pNTDLL___iscsym = (void *)GetProcAddress(library, "NTDLL___iscsym");
@@ -24934,6 +25019,8 @@ void* wine_thunk_get_for_ntdll(void *func)
 		return wine32a_ntdll_NtGetWriteWatch;
 	if (func == pNtImpersonateAnonymousToken)
 		return wine32a_ntdll_NtImpersonateAnonymousToken;
+	if (func == pNtInitiatePowerAction)
+		return wine32a_ntdll_NtInitiatePowerAction;
 	if (func == pNtIsProcessInJob)
 		return wine32a_ntdll_NtIsProcessInJob;
 	if (func == pNtListenPort)
@@ -24990,6 +25077,8 @@ void* wine_thunk_get_for_ntdll(void *func)
 		return wine32a_ntdll_NtOpenSection;
 	if (func == pNtOpenSemaphore)
 		return wine32a_ntdll_NtOpenSemaphore;
+	if (func == pNtOpenSymbolicLinkObject)
+		return wine32a_ntdll_NtOpenSymbolicLinkObject;
 	if (func == pNtOpenThread)
 		return wine32a_ntdll_NtOpenThread;
 	if (func == pNtOpenThreadToken)
@@ -25038,6 +25127,8 @@ void* wine_thunk_get_for_ntdll(void *func)
 		return wine32a_ntdll_NtQueryInstallUILanguage;
 	if (func == pNtQueryIoCompletion)
 		return wine32a_ntdll_NtQueryIoCompletion;
+	if (func == pNtQueryKey)
+		return wine32a_ntdll_NtQueryKey;
 	if (func == pNtQueryLicenseValue)
 		return wine32a_ntdll_NtQueryLicenseValue;
 	if (func == pNtQueryMultipleValueKey)
@@ -25052,6 +25143,8 @@ void* wine_thunk_get_for_ntdll(void *func)
 		return wine32a_ntdll_NtQuerySection;
 	if (func == pNtQuerySecurityObject)
 		return wine32a_ntdll_NtQuerySecurityObject;
+	if (func == pNtQuerySemaphore)
+		return wine32a_ntdll_NtQuerySemaphore;
 	if (func == pNtQuerySymbolicLinkObject)
 		return wine32a_ntdll_NtQuerySymbolicLinkObject;
 	if (func == pNtQuerySystemEnvironmentValue)
@@ -25258,6 +25351,8 @@ void* wine_thunk_get_for_ntdll(void *func)
 		return wine32a_ntdll_RtlAddVectoredExceptionHandler;
 	if (func == pRtlAdjustPrivilege)
 		return wine32a_ntdll_RtlAdjustPrivilege;
+	if (func == pRtlAllocateAndInitializeSid)
+		return wine32a_ntdll_RtlAllocateAndInitializeSid;
 	if (func == pRtlAllocateHandle)
 		return wine32a_ntdll_RtlAllocateHandle;
 	if (func == pRtlAllocateHeap)
@@ -25520,6 +25615,8 @@ void* wine_thunk_get_for_ntdll(void *func)
 		return wine32a_ntdll_RtlFreeHeap;
 	if (func == pRtlFreeOemString)
 		return wine32a_ntdll_RtlFreeOemString;
+	if (func == pRtlFreeSid)
+		return wine32a_ntdll_RtlFreeSid;
 	if (func == pRtlFreeThreadActivationContextStack)
 		return wine32a_ntdll_RtlFreeThreadActivationContextStack;
 	if (func == pRtlFreeUnicodeString)
@@ -25880,6 +25977,8 @@ void* wine_thunk_get_for_ntdll(void *func)
 		return wine32a_ntdll_RtlTimeToSecondsSince1970;
 	if (func == pRtlTimeToSecondsSince1980)
 		return wine32a_ntdll_RtlTimeToSecondsSince1980;
+	if (func == pRtlTimeToTimeFields)
+		return wine32a_ntdll_RtlTimeToTimeFields;
 	if (func == pRtlTryAcquireSRWLockExclusive)
 		return wine32a_ntdll_RtlTryAcquireSRWLockExclusive;
 	if (func == pRtlTryAcquireSRWLockShared)
@@ -26056,14 +26155,6 @@ void* wine_thunk_get_for_ntdll(void *func)
 		return wine32a_ntdll_WinSqmSetDWORD;
 	if (func == pWinSqmStartSession)
 		return wine32a_ntdll_WinSqmStartSession;
-	if (func == pNtInitiatePowerAction)
-		return wine32a_ntdll_NtInitiatePowerAction;
-	if (func == pNtOpenSymbolicLinkObject)
-		return wine32a_ntdll_NtOpenSymbolicLinkObject;
-	if (func == pNtQueryKey)
-		return wine32a_ntdll_NtQueryKey;
-	if (func == pNtQuerySemaphore)
-		return wine32a_ntdll_NtQuerySemaphore;
 	if (func == p__C_specific_handler)
 		return wine32a_ntdll___C_specific_handler;
 	if (func == pNTDLL___isascii)

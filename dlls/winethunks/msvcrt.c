@@ -84,6 +84,10 @@ typedef void (*MSVCRT_unexpected_function) (void); /* ../dlls/msvcrt/msvcrt.h:97
 
 typedef void (*MSVCRT__se_translator_function) (unsigned int  code, struct _EXCEPTION_POINTERS*  info); /* ../dlls/msvcrt/msvcrt.h:98 */
 
+typedef void (*MSVCRT__beginthread_start_routine_t) (void*); /* ../dlls/msvcrt/msvcrt.h:99 */
+
+typedef unsigned int (*MSVCRT__beginthreadex_start_routine_t) (void*); /* ../dlls/msvcrt/msvcrt.h:100 */
+
 typedef int (*MSVCRT__onexit_t) (void); /* ../dlls/msvcrt/msvcrt.h:101 */
 
 struct MSVCRT__LDOUBLE /* ../dlls/msvcrt/msvcrt.h:106 */
@@ -680,6 +684,8 @@ static WINAPI int (*pMSVCRT__atoi_l)(char*  str, MSVCRT__locale_t  locale);
 static WINAPI MSVCRT_long (*pMSVCRT__atol_l)(char*  str, MSVCRT__locale_t  locale);
 static WINAPI int (*pMSVCRT__atoldbl)(MSVCRT__LDOUBLE*  value, char*  str);
 static WINAPI void (*pMSVCRT__beep)(unsigned int  freq, unsigned int  duration);
+static WINAPI MSVCRT_uintptr_t (*p_beginthread)(MSVCRT__beginthread_start_routine_t  start_address, unsigned int  stack_size, void*  arglist);
+static WINAPI MSVCRT_uintptr_t (*p_beginthreadex)(void*  security, unsigned int  stack_size, MSVCRT__beginthreadex_start_routine_t  start_address, void*  arglist, unsigned int  initflag, unsigned int*  thrdaddr);
 static WINAPI void (*pMSVCRT__c_exit)(void);
 static WINAPI double (*pMSVCRT__cabs)(struct MSVCRT__complex  num);
 static WINAPI int (*p_callnewh)(MSVCRT_size_t  size);
@@ -725,6 +731,7 @@ static WINAPI int (*pMSVCRT__dup)(int  od);
 static WINAPI int (*pMSVCRT__dup2)(int  od, int  nd);
 static WINAPI char* (*pMSVCRT__ecvt)(double  number, int  ndigits, int*  decpt, int*  sign);
 static WINAPI int (*pMSVCRT__ecvt_s)(char*  buffer, MSVCRT_size_t  length, double  number, int  ndigits, int*  decpt, int*  sign);
+static WINAPI void (*p_endthread)(void);
 static WINAPI void (*p_endthreadex)(unsigned int  retval);
 static WINAPI int (*pMSVCRT__eof)(int  fd);
 static WINAPI int* (*pMSVCRT__errno)(void);
@@ -830,6 +837,7 @@ static WINAPI struct MSVCRT_tm* (*pMSVCRT__gmtime32)(MSVCRT___time32_t*  secs);
 static WINAPI int (*pMSVCRT__gmtime32_s)(struct MSVCRT_tm*  res, MSVCRT___time32_t*  secs);
 static WINAPI struct MSVCRT_tm* (*pMSVCRT__gmtime64)(MSVCRT___time64_t*  secs);
 static WINAPI int (*pMSVCRT__gmtime64_s)(struct MSVCRT_tm*  res, MSVCRT___time64_t*  secs);
+static WINAPI int (*p_heapadd)(void*  mem, MSVCRT_size_t  size);
 static WINAPI int (*p_heapchk)(void);
 static WINAPI int (*p_heapmin)(void);
 static WINAPI int (*p_heapset)(unsigned int  value);
@@ -942,6 +950,7 @@ static WINAPI void (*p_mbccpy)(unsigned char*  dest, unsigned char*  src);
 static WINAPI void (*p_mbccpy_l)(unsigned char*  dest, unsigned char*  src, MSVCRT__locale_t  locale);
 static WINAPI int (*p_mbccpy_s)(unsigned char*  dest, MSVCRT_size_t  maxsize, int*  copied, unsigned char*  src);
 static WINAPI int (*p_mbccpy_s_l)(unsigned char*  dest, MSVCRT_size_t  maxsize, int*  copied, unsigned char*  src, MSVCRT__locale_t  locale);
+static WINAPI unsigned int (*p_mbcjistojms)(unsigned int  c);
 static WINAPI unsigned int (*p_mbcjmstojis)(unsigned int  c);
 static WINAPI unsigned int (*p_mbclen)(unsigned char*  str);
 static WINAPI unsigned int (*p_mbctohira)(unsigned int  c);
@@ -5365,6 +5374,61 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT__beep,
 	"ret \n"
 )
 
+extern WINAPI MSVCRT_uintptr_t wine32b_msvcrt__beginthread(MSVCRT__beginthread_start_routine_t  start_address, unsigned int  stack_size, void*  arglist) /* ../dlls/msvcrt/thread.c:111 */
+{
+	TRACE("Enter _beginthread\n");
+	return p_beginthread(start_address, stack_size, arglist);
+}
+
+extern WINAPI void wine32a_msvcrt__beginthread(void);  /* ../dlls/msvcrt/thread.c:111 */
+__ASM_GLOBAL_FUNC(wine32a_msvcrt__beginthread,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_msvcrt__beginthread") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $12, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI MSVCRT_uintptr_t wine32b_msvcrt__beginthreadex(void*  security, unsigned int  stack_size, MSVCRT__beginthreadex_start_routine_t  start_address, void*  arglist, unsigned int  initflag, unsigned int*  thrdaddr) /* ../dlls/msvcrt/thread.c:151 */
+{
+	TRACE("Enter _beginthreadex\n");
+	return p_beginthreadex(security, stack_size, start_address, arglist, initflag, thrdaddr);
+}
+
+extern WINAPI void wine32a_msvcrt__beginthreadex(void);  /* ../dlls/msvcrt/thread.c:151 */
+__ASM_GLOBAL_FUNC(wine32a_msvcrt__beginthreadex,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"movl 0x20(%rsp), %r9d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_msvcrt__beginthreadex") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $24, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
 extern WINAPI void wine32b_msvcrt_MSVCRT__c_exit(void) /* ../dlls/msvcrt/exit.c:330 */
 {
 	TRACE("Enter MSVCRT__c_exit\n");
@@ -6511,6 +6575,30 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT__ecvt_s,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $24, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI void wine32b_msvcrt__endthread(void) /* ../dlls/msvcrt/thread.c:61 */
+{
+	TRACE("Enter _endthread\n");
+	return p_endthread();
+}
+
+extern WINAPI void wine32a_msvcrt__endthread(void);  /* ../dlls/msvcrt/thread.c:61 */
+__ASM_GLOBAL_FUNC(wine32a_msvcrt__endthread,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_msvcrt__endthread") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $0, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -9129,6 +9217,32 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT__gmtime64_s,
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
 	"call " __ASM_NAME("wine32b_msvcrt_MSVCRT__gmtime64_s") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $8, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI int wine32b_msvcrt__heapadd(void*  mem, MSVCRT_size_t  size) /* ../dlls/msvcrt/heap.c:348 */
+{
+	TRACE("Enter _heapadd\n");
+	return p_heapadd(mem, size);
+}
+
+extern WINAPI void wine32a_msvcrt__heapadd(void);  /* ../dlls/msvcrt/heap.c:348 */
+__ASM_GLOBAL_FUNC(wine32a_msvcrt__heapadd,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_msvcrt__heapadd") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -11782,6 +11896,31 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbccpy_s_l,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $20, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI unsigned int wine32b_msvcrt__mbcjistojms(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:458 */
+{
+	TRACE("Enter _mbcjistojms\n");
+	return p_mbcjistojms(c);
+}
+
+extern WINAPI void wine32a_msvcrt__mbcjistojms(void);  /* ../dlls/msvcrt/mbcs.c:458 */
+__ASM_GLOBAL_FUNC(wine32a_msvcrt__mbcjistojms,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_msvcrt__mbcjistojms") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $4, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -28994,8 +29133,8 @@ static BOOL initialized = FALSE;
 void wine_thunk_initialize_msvcrt(void)
 {
 	HMODULE library = LoadLibraryA("msvcrt.dll");
-	HMODULE library_kernel32 = LoadLibraryA("kernel32.dll");
 	HMODULE library_ntdll = LoadLibraryA("ntdll.dll");
+	HMODULE library_kernel32 = LoadLibraryA("kernel32.dll");
 	pMSVCRT_I10_OUTPUT = (void *)GetProcAddress(library, "MSVCRT_I10_OUTPUT");
 	pMSVCRT___non_rtti_object_copy_ctor = (void *)GetProcAddress(library, "MSVCRT___non_rtti_object_copy_ctor");
 	pMSVCRT___non_rtti_object_ctor = (void *)GetProcAddress(library, "MSVCRT___non_rtti_object_ctor");
@@ -29149,6 +29288,8 @@ void wine_thunk_initialize_msvcrt(void)
 	pMSVCRT__atol_l = (void *)GetProcAddress(library, "MSVCRT__atol_l");
 	pMSVCRT__atoldbl = (void *)GetProcAddress(library, "MSVCRT__atoldbl");
 	pMSVCRT__beep = (void *)GetProcAddress(library, "MSVCRT__beep");
+	p_beginthread = (void *)GetProcAddress(library, "_beginthread");
+	p_beginthreadex = (void *)GetProcAddress(library, "_beginthreadex");
 	pMSVCRT__c_exit = (void *)GetProcAddress(library, "MSVCRT__c_exit");
 	pMSVCRT__cabs = (void *)GetProcAddress(library, "MSVCRT__cabs");
 	p_callnewh = (void *)GetProcAddress(library, "_callnewh");
@@ -29194,6 +29335,7 @@ void wine_thunk_initialize_msvcrt(void)
 	pMSVCRT__dup2 = (void *)GetProcAddress(library, "MSVCRT__dup2");
 	pMSVCRT__ecvt = (void *)GetProcAddress(library, "MSVCRT__ecvt");
 	pMSVCRT__ecvt_s = (void *)GetProcAddress(library, "MSVCRT__ecvt_s");
+	p_endthread = (void *)GetProcAddress(library, "_endthread");
 	p_endthreadex = (void *)GetProcAddress(library, "_endthreadex");
 	pMSVCRT__eof = (void *)GetProcAddress(library, "MSVCRT__eof");
 	pMSVCRT__errno = (void *)GetProcAddress(library, "MSVCRT__errno");
@@ -29299,6 +29441,7 @@ void wine_thunk_initialize_msvcrt(void)
 	pMSVCRT__gmtime32_s = (void *)GetProcAddress(library, "MSVCRT__gmtime32_s");
 	pMSVCRT__gmtime64 = (void *)GetProcAddress(library, "MSVCRT__gmtime64");
 	pMSVCRT__gmtime64_s = (void *)GetProcAddress(library, "MSVCRT__gmtime64_s");
+	p_heapadd = (void *)GetProcAddress(library, "_heapadd");
 	p_heapchk = (void *)GetProcAddress(library, "_heapchk");
 	p_heapmin = (void *)GetProcAddress(library, "_heapmin");
 	p_heapset = (void *)GetProcAddress(library, "_heapset");
@@ -29411,6 +29554,7 @@ void wine_thunk_initialize_msvcrt(void)
 	p_mbccpy_l = (void *)GetProcAddress(library, "_mbccpy_l");
 	p_mbccpy_s = (void *)GetProcAddress(library, "_mbccpy_s");
 	p_mbccpy_s_l = (void *)GetProcAddress(library, "_mbccpy_s_l");
+	p_mbcjistojms = (void *)GetProcAddress(library, "_mbcjistojms");
 	p_mbcjmstojis = (void *)GetProcAddress(library, "_mbcjmstojis");
 	p_mbclen = (void *)GetProcAddress(library, "_mbclen");
 	p_mbctohira = (void *)GetProcAddress(library, "_mbctohira");
@@ -30215,7 +30359,7 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt__Strftime;
 	if (func == p_XcptFilter)
 		return wine32a_msvcrt__XcptFilter;
-	if (func == p__C_specific_handler)
+	if (func == p__C_specific_handler && func != pext__C_specific_handler)
 		return wine_thunk_get_for_any(pext__C_specific_handler);
 	if (func == p__CppXcptFilter)
 		return wine32a_msvcrt___CppXcptFilter;
@@ -30343,9 +30487,9 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT___setusermatherr;
 	if (func == pMSVCRT___strncnt)
 		return wine32a_msvcrt_MSVCRT___strncnt;
-	if (func == pGetCurrentThread)
+	if (func == pGetCurrentThread && func != pextGetCurrentThread)
 		return wine_thunk_get_for_any(pextGetCurrentThread);
-	if (func == pGetCurrentThreadId)
+	if (func == pGetCurrentThreadId && func != pextGetCurrentThreadId)
 		return wine_thunk_get_for_any(pextGetCurrentThreadId);
 	if (func == pMSVCRT___toascii)
 		return wine32a_msvcrt_MSVCRT___toascii;
@@ -30403,6 +30547,10 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT__atoldbl;
 	if (func == pMSVCRT__beep)
 		return wine32a_msvcrt_MSVCRT__beep;
+	if (func == p_beginthread)
+		return wine32a_msvcrt__beginthread;
+	if (func == p_beginthreadex)
+		return wine32a_msvcrt__beginthreadex;
 	if (func == pMSVCRT__c_exit)
 		return wine32a_msvcrt_MSVCRT__c_exit;
 	if (func == pMSVCRT__cabs)
@@ -30493,6 +30641,8 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT__ecvt;
 	if (func == pMSVCRT__ecvt_s)
 		return wine32a_msvcrt_MSVCRT__ecvt_s;
+	if (func == p_endthread)
+		return wine32a_msvcrt__endthread;
 	if (func == p_endthreadex)
 		return wine32a_msvcrt__endthreadex;
 	if (func == pMSVCRT__eof)
@@ -30677,7 +30827,7 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt__getdllprocaddr;
 	if (func == pMSVCRT__getdrive)
 		return wine32a_msvcrt_MSVCRT__getdrive;
-	if (func == pGetLogicalDrives)
+	if (func == pGetLogicalDrives && func != pextGetLogicalDrives)
 		return wine_thunk_get_for_any(pextGetLogicalDrives);
 	if (func == pMSVCRT__getmaxstdio)
 		return wine32a_msvcrt_MSVCRT__getmaxstdio;
@@ -30701,6 +30851,8 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT__gmtime64;
 	if (func == pMSVCRT__gmtime64_s)
 		return wine32a_msvcrt_MSVCRT__gmtime64_s;
+	if (func == p_heapadd)
+		return wine32a_msvcrt__heapadd;
 	if (func == p_heapchk)
 		return wine32a_msvcrt__heapchk;
 	if (func == p_heapmin)
@@ -30713,11 +30865,11 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt__hypot;
 	if (func == pMSVCRT__hypotf)
 		return wine32a_msvcrt_MSVCRT__hypotf;
-	if (func == p_i64toa)
+	if (func == p_i64toa && func != pext_i64toa)
 		return wine_thunk_get_for_any(pext_i64toa);
 	if (func == pMSVCRT__i64toa_s)
 		return wine32a_msvcrt_MSVCRT__i64toa_s;
-	if (func == p_i64tow)
+	if (func == p_i64tow && func != pext_i64tow)
 		return wine_thunk_get_for_any(pext_i64tow);
 	if (func == pMSVCRT__i64tow_s)
 		return wine32a_msvcrt_MSVCRT__i64tow_s;
@@ -30841,7 +30993,7 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT__itoa;
 	if (func == pMSVCRT__itoa_s)
 		return wine32a_msvcrt_MSVCRT__itoa_s;
-	if (func == p_itow)
+	if (func == p_itow && func != pext_itow)
 		return wine_thunk_get_for_any(pext_itow);
 	if (func == pMSVCRT__itow_s)
 		return wine32a_msvcrt_MSVCRT__itow_s;
@@ -30891,11 +31043,11 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT__lseek;
 	if (func == pMSVCRT__lseeki64)
 		return wine32a_msvcrt_MSVCRT__lseeki64;
-	if (func == p_ltoa)
+	if (func == p_ltoa && func != pext_ltoa)
 		return wine_thunk_get_for_any(pext_ltoa);
 	if (func == pMSVCRT__ltoa_s)
 		return wine32a_msvcrt_MSVCRT__ltoa_s;
-	if (func == p_ltow)
+	if (func == p_ltow && func != pext_ltow)
 		return wine_thunk_get_for_any(pext_ltow);
 	if (func == pMSVCRT__ltow_s)
 		return wine32a_msvcrt_MSVCRT__ltow_s;
@@ -30915,6 +31067,8 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt__mbccpy_s;
 	if (func == p_mbccpy_s_l)
 		return wine32a_msvcrt__mbccpy_s_l;
+	if (func == p_mbcjistojms)
+		return wine32a_msvcrt__mbcjistojms;
 	if (func == p_mbcjmstojis)
 		return wine32a_msvcrt__mbcjmstojis;
 	if (func == p_mbclen)
@@ -31055,7 +31209,7 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt__mbsupr_s;
 	if (func == pMSVCRT_mbtowc_l)
 		return wine32a_msvcrt_MSVCRT_mbtowc_l;
-	if (func == p_memccpy)
+	if (func == p_memccpy && func != pext_memccpy)
 		return wine_thunk_get_for_any(pext_memccpy);
 	if (func == pMSVCRT__memicmp)
 		return wine32a_msvcrt_MSVCRT__memicmp;
@@ -31347,19 +31501,19 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT__towupper_l;
 	if (func == pMSVCRT__tzset)
 		return wine32a_msvcrt_MSVCRT__tzset;
-	if (func == p_ui64toa)
+	if (func == p_ui64toa && func != pext_ui64toa)
 		return wine_thunk_get_for_any(pext_ui64toa);
 	if (func == pMSVCRT__ui64toa_s)
 		return wine32a_msvcrt_MSVCRT__ui64toa_s;
-	if (func == p_ui64tow)
+	if (func == p_ui64tow && func != pext_ui64tow)
 		return wine_thunk_get_for_any(pext_ui64tow);
 	if (func == pMSVCRT__ui64tow_s)
 		return wine32a_msvcrt_MSVCRT__ui64tow_s;
-	if (func == p_ultoa)
+	if (func == p_ultoa && func != pext_ultoa)
 		return wine_thunk_get_for_any(pext_ultoa);
 	if (func == pMSVCRT__ultoa_s)
 		return wine32a_msvcrt_MSVCRT__ultoa_s;
-	if (func == p_ultow)
+	if (func == p_ultow && func != pext_ultow)
 		return wine_thunk_get_for_any(pext_ultow);
 	if (func == pMSVCRT__ultow_s)
 		return wine32a_msvcrt_MSVCRT__ultow_s;
@@ -31889,7 +32043,7 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT_getwchar;
 	if (func == pMSVCRT_gmtime)
 		return wine32a_msvcrt_MSVCRT_gmtime;
-	if (func == piswctype)
+	if (func == piswctype && func != pextiswctype)
 		return wine_thunk_get_for_any(pextiswctype);
 	if (func == pMSVCRT_isalnum)
 		return wine32a_msvcrt_MSVCRT_isalnum;
@@ -31915,7 +32069,7 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT_isupper;
 	if (func == pMSVCRT_iswalnum)
 		return wine32a_msvcrt_MSVCRT_iswalnum;
-	if (func == piswalpha)
+	if (func == piswalpha && func != pextiswalpha)
 		return wine_thunk_get_for_any(pextiswalpha);
 	if (func == pMSVCRT_iswascii)
 		return wine32a_msvcrt_MSVCRT_iswascii;
@@ -32063,7 +32217,7 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT_sscanf;
 	if (func == pMSVCRT_sscanf_s)
 		return wine32a_msvcrt_MSVCRT_sscanf_s;
-	if (func == pstrcat)
+	if (func == pstrcat && func != pextstrcat)
 		return wine_thunk_get_for_any(pextstrcat);
 	if (func == pMSVCRT_strcat_s)
 		return wine32a_msvcrt_MSVCRT_strcat_s;
@@ -32103,7 +32257,7 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT_strpbrk;
 	if (func == pMSVCRT_strrchr)
 		return wine32a_msvcrt_MSVCRT_strrchr;
-	if (func == pstrspn)
+	if (func == pstrspn && func != pextstrspn)
 		return wine_thunk_get_for_any(pextstrspn);
 	if (func == pMSVCRT_strstr)
 		return wine32a_msvcrt_MSVCRT_strstr;
@@ -32181,7 +32335,7 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT_vwprintf_s;
 	if (func == pMSVCRT_wcrtomb)
 		return wine32a_msvcrt_MSVCRT_wcrtomb;
-	if (func == pwcscat)
+	if (func == pwcscat && func != pextwcscat)
 		return wine_thunk_get_for_any(pextwcscat);
 	if (func == pMSVCRT_wcscat_s)
 		return wine32a_msvcrt_MSVCRT_wcscat_s;
@@ -32191,17 +32345,17 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT_wcscmp;
 	if (func == pMSVCRT_wcscoll)
 		return wine32a_msvcrt_MSVCRT_wcscoll;
-	if (func == pwcscpy)
+	if (func == pwcscpy && func != pextwcscpy)
 		return wine_thunk_get_for_any(pextwcscpy);
 	if (func == pMSVCRT_wcscpy_s)
 		return wine32a_msvcrt_MSVCRT_wcscpy_s;
-	if (func == pwcscspn)
+	if (func == pwcscspn && func != pextwcscspn)
 		return wine_thunk_get_for_any(pextwcscspn);
 	if (func == pMSVCRT_wcsftime)
 		return wine32a_msvcrt_MSVCRT_wcsftime;
 	if (func == pMSVCRT_wcslen)
 		return wine32a_msvcrt_MSVCRT_wcslen;
-	if (func == pwcsncat)
+	if (func == pwcsncat && func != pextwcsncat)
 		return wine_thunk_get_for_any(pextwcsncat);
 	if (func == pMSVCRT_wcsncat_s)
 		return wine32a_msvcrt_MSVCRT_wcsncat_s;
@@ -32221,7 +32375,7 @@ void* wine_thunk_get_for_msvcrt(void *func)
 		return wine32a_msvcrt_MSVCRT_wcsrtombs;
 	if (func == pMSVCRT_wcsrtombs_s)
 		return wine32a_msvcrt_MSVCRT_wcsrtombs_s;
-	if (func == pwcsspn)
+	if (func == pwcsspn && func != pextwcsspn)
 		return wine_thunk_get_for_any(pextwcsspn);
 	if (func == pMSVCRT_wcsstr)
 		return wine32a_msvcrt_MSVCRT_wcsstr;

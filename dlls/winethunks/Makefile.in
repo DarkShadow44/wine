@@ -7,5 +7,6 @@ C_SRCS = \
 	advapi32.c \
 	msvcrt.c \
 	ntdll.c \
+	kernelbase.c \
 	winethunks_shared.c \
 	winethunks_main.c

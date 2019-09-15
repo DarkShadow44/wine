@@ -863,8 +863,50 @@ static void* pA_SHAUpdate;
 static void* pextA_SHAUpdate;
 static WINAPI BOOL (*pAbortSystemShutdownA)(LPSTR  lpMachineName);
 static WINAPI BOOL (*pAbortSystemShutdownW)(LPWSTR  lpMachineName);
+static void* pAccessCheck;
+static void* pextAccessCheck;
 static WINAPI BOOL (*pAccessCheckAndAuditAlarmA)(LPCSTR  Subsystem, LPVOID  HandleId, LPSTR  ObjectTypeName, LPSTR  ObjectName, PSECURITY_DESCRIPTOR  SecurityDescriptor, DWORD  DesiredAccess, PGENERIC_MAPPING  GenericMapping, BOOL  ObjectCreation, LPDWORD  GrantedAccess, LPBOOL  AccessStatus, LPBOOL  pfGenerateOnClose);
+static void* pAccessCheckAndAuditAlarmW;
+static void* pextAccessCheckAndAuditAlarmW;
+static void* pAccessCheckByType;
+static void* pextAccessCheckByType;
+static void* pAddAccessAllowedAce;
+static void* pextAddAccessAllowedAce;
+static void* pAddAccessAllowedAceEx;
+static void* pextAddAccessAllowedAceEx;
+static void* pAddAccessAllowedObjectAce;
+static void* pextAddAccessAllowedObjectAce;
+static void* pAddAccessDeniedAce;
+static void* pextAddAccessDeniedAce;
+static void* pAddAccessDeniedAceEx;
+static void* pextAddAccessDeniedAceEx;
+static void* pAddAccessDeniedObjectAce;
+static void* pextAddAccessDeniedObjectAce;
+static void* pAddAce;
+static void* pextAddAce;
+static void* pAddAuditAccessAce;
+static void* pextAddAuditAccessAce;
+static void* pAddAuditAccessAceEx;
+static void* pextAddAuditAccessAceEx;
+static void* pAddAuditAccessObjectAce;
+static void* pextAddAuditAccessObjectAce;
+static void* pAddMandatoryAce;
+static void* pextAddMandatoryAce;
+static void* pAdjustTokenGroups;
+static void* pextAdjustTokenGroups;
+static void* pAdjustTokenPrivileges;
+static void* pextAdjustTokenPrivileges;
+static void* pAllocateAndInitializeSid;
+static void* pextAllocateAndInitializeSid;
+static void* pAllocateLocallyUniqueId;
+static void* pextAllocateLocallyUniqueId;
+static void* pAreAllAccessesGranted;
+static void* pextAreAllAccessesGranted;
+static void* pAreAnyAccessesGranted;
+static void* pextAreAnyAccessesGranted;
 static WINAPI BOOLEAN (*pAuditQuerySystemPolicy)(GUID*  guids, ULONG  count, AUDIT_POLICY_INFORMATION**  policy);
+static WINAPI BOOL (*pBackupEventLogA)(HANDLE  hEventLog, LPCSTR  lpBackupFileName);
+static WINAPI BOOL (*pBackupEventLogW)(HANDLE  hEventLog, LPCWSTR  lpBackupFileName);
 static WINAPI void (*pBuildExplicitAccessWithNameA)(PEXPLICIT_ACCESSA  pExplicitAccess, LPSTR  pTrusteeName, DWORD  AccessPermissions, ACCESS_MODE  AccessMode, DWORD  Inheritance);
 static WINAPI void (*pBuildExplicitAccessWithNameW)(PEXPLICIT_ACCESSW  pExplicitAccess, LPWSTR  pTrusteeName, DWORD  AccessPermissions, ACCESS_MODE  AccessMode, DWORD  Inheritance);
 static WINAPI DWORD (*pBuildSecurityDescriptorA)(PTRUSTEEA  pOwner, PTRUSTEEA  pGroup, ULONG  cCountOfAccessEntries, PEXPLICIT_ACCESSA  pListOfAccessEntries, ULONG  cCountOfAuditEntries, PEXPLICIT_ACCESSA  pListofAuditEntries, PSECURITY_DESCRIPTOR  pOldSD, PULONG  lpdwBufferLength, PSECURITY_DESCRIPTOR*  pNewSD);
@@ -877,7 +919,12 @@ static WINAPI void (*pBuildTrusteeWithObjectsAndSidA)(PTRUSTEEA  pTrustee, POBJE
 static WINAPI void (*pBuildTrusteeWithObjectsAndSidW)(PTRUSTEEW  pTrustee, POBJECTS_AND_SID  pObjSid, GUID*  pObjectGuid, GUID*  pInheritedObjectGuid, PSID  pSid);
 static WINAPI void (*pBuildTrusteeWithSidA)(PTRUSTEEA  pTrustee, PSID  pSid);
 static WINAPI void (*pBuildTrusteeWithSidW)(PTRUSTEEW  pTrustee, PSID  pSid);
+static void* pCheckTokenMembership;
+static void* pextCheckTokenMembership;
+static WINAPI BOOL (*pClearEventLogA)(HANDLE  hEventLog, LPCSTR  lpBackupFileName);
+static WINAPI BOOL (*pClearEventLogW)(HANDLE  hEventLog, LPCWSTR  lpBackupFileName);
 static WINAPI void (*pCloseEncryptedFileRaw)(PVOID  context);
+static WINAPI BOOL (*pCloseEventLog)(HANDLE  hEventLog);
 static WINAPI ULONG (*pCloseTrace)(TRACEHANDLE  handle);
 static WINAPI DWORD (*pCommandLineFromMsiDescriptor)(WCHAR*  szDescriptor, WCHAR*  szCommandLine, DWORD*  pcchCommandLine);
 static WINAPI ULONG (*pControlTraceA)(TRACEHANDLE  hSession, LPCSTR  SessionName, PEVENT_TRACE_PROPERTIES  Properties, ULONG  control);
@@ -890,12 +937,26 @@ static WINAPI BOOL (*pConvertStringSecurityDescriptorToSecurityDescriptorA)(LPCS
 static WINAPI BOOL (*pConvertStringSecurityDescriptorToSecurityDescriptorW)(LPCWSTR  StringSecurityDescriptor, DWORD  StringSDRevision, PSECURITY_DESCRIPTOR*  SecurityDescriptor, PULONG  SecurityDescriptorSize);
 static WINAPI BOOL (*pConvertStringSidToSidA)(LPCSTR  StringSid, PSID*  Sid);
 static WINAPI BOOL (*pConvertStringSidToSidW)(LPCWSTR  StringSid, PSID*  Sid);
+static void* pConvertToAutoInheritPrivateObjectSecurity;
+static void* pextConvertToAutoInheritPrivateObjectSecurity;
+static void* pCopySid;
+static void* pextCopySid;
+static void* pCreatePrivateObjectSecurity;
+static void* pextCreatePrivateObjectSecurity;
+static void* pCreatePrivateObjectSecurityEx;
+static void* pextCreatePrivateObjectSecurityEx;
+static void* pCreatePrivateObjectSecurityWithMultipleInheritance;
+static void* pextCreatePrivateObjectSecurityWithMultipleInheritance;
 static void* pCreateProcessAsUserA;
 static void* pextCreateProcessAsUserA;
 static void* pCreateProcessAsUserW;
 static void* pextCreateProcessAsUserW;
 static WINAPI BOOL (*pCreateProcessWithLogonW)(LPCWSTR  lpUsername, LPCWSTR  lpDomain, LPCWSTR  lpPassword, DWORD  dwLogonFlags, LPCWSTR  lpApplicationName, LPWSTR  lpCommandLine, DWORD  dwCreationFlags, LPVOID  lpEnvironment, LPCWSTR  lpCurrentDirectory, LPSTARTUPINFOW  lpStartupInfo, LPPROCESS_INFORMATION  lpProcessInformation);
 static WINAPI BOOL (*pCreateProcessWithTokenW)(HANDLE  token, DWORD  logon_flags, LPCWSTR  application_name, LPWSTR  command_line, DWORD  creation_flags, void*  environment, LPCWSTR  current_directory, STARTUPINFOW*  startup_info, PROCESS_INFORMATION*  process_information);
+static void* pCreateRestrictedToken;
+static void* pextCreateRestrictedToken;
+static void* pCreateWellKnownSid;
+static void* pextCreateWellKnownSid;
 static WINAPI BOOL (*pCredDeleteA)(LPCSTR  TargetName, DWORD  Type, DWORD  Flags);
 static WINAPI BOOL (*pCredDeleteW)(LPCWSTR  TargetName, DWORD  Type, DWORD  Flags);
 static WINAPI BOOL (*pCredEnumerateA)(LPCSTR  Filter, DWORD  Flags, DWORD*  Count, PCREDENTIALA**  Credentials);
@@ -955,13 +1016,27 @@ static WINAPI BOOL (*pCryptVerifySignatureA)(HCRYPTHASH  hHash, BYTE*  pbSignatu
 static WINAPI BOOL (*pCryptVerifySignatureW)(HCRYPTHASH  hHash, BYTE*  pbSignature, DWORD  dwSigLen, HCRYPTKEY  hPubKey, LPCWSTR  sDescription, DWORD  dwFlags);
 static WINAPI BOOL (*pDecryptFileA)(LPCSTR  lpFileName, DWORD  dwReserved);
 static WINAPI BOOL (*pDecryptFileW)(LPCWSTR  lpFileName, DWORD  dwReserved);
+static void* pDeleteAce;
+static void* pextDeleteAce;
 static WINAPI BOOL (*pDeregisterEventSource)(HANDLE  hEventLog);
+static void* pDestroyPrivateObjectSecurity;
+static void* pextDestroyPrivateObjectSecurity;
+static void* pDuplicateToken;
+static void* pextDuplicateToken;
+static void* pDuplicateTokenEx;
+static void* pextDuplicateTokenEx;
 static WINAPI ULONG (*pEnableTrace)(ULONG  enable, ULONG  flag, ULONG  level, LPCGUID  guid, TRACEHANDLE  hSession);
 static WINAPI ULONG (*pEnableTraceEx)(LPCGUID  provider, LPCGUID  source, TRACEHANDLE  hSession, ULONG  enable, UCHAR  level, ULONGLONG  anykeyword, ULONGLONG  allkeyword, ULONG  enableprop, PEVENT_FILTER_DESCRIPTOR  filterdesc);
 static WINAPI ULONG (*pEnableTraceEx2)(TRACEHANDLE  handle, LPCGUID  provider, ULONG  control, UCHAR  level, ULONGLONG  match_any, ULONGLONG  match_all, ULONG  timeout, PENABLE_TRACE_PARAMETERS  params);
 static WINAPI BOOL (*pEncryptFileA)(LPCSTR  lpFileName);
 static WINAPI BOOL (*pEncryptFileW)(LPCWSTR  lpFileName);
+static void* pEnumDynamicTimeZoneInformation;
+static void* pextEnumDynamicTimeZoneInformation;
 static WINAPI ULONG (*pEnumerateTraceGuids)(PTRACE_GUID_PROPERTIES*  propertiesarray, ULONG  arraycount, PULONG  guidcount);
+static void* pEqualPrefixSid;
+static void* pextEqualPrefixSid;
+static void* pEqualSid;
+static void* pextEqualSid;
 static void* pEtwEventActivityIdControl;
 static void* pextEtwEventActivityIdControl;
 static void* pEtwEventEnabled;
@@ -982,8 +1057,16 @@ static void* pEtwEventWriteTransfer;
 static void* pextEtwEventWriteTransfer;
 static WINAPI BOOL (*pFileEncryptionStatusA)(LPCSTR  lpFileName, LPDWORD  lpStatus);
 static WINAPI BOOL (*pFileEncryptionStatusW)(LPCWSTR  lpFileName, LPDWORD  lpStatus);
+static void* pFindFirstFreeAce;
+static void* pextFindFirstFreeAce;
 static WINAPI ULONG (*pFlushTraceA)(TRACEHANDLE  hSession, LPCSTR  SessionName, PEVENT_TRACE_PROPERTIES  Properties);
 static WINAPI ULONG (*pFlushTraceW)(TRACEHANDLE  hSession, LPCWSTR  SessionName, PEVENT_TRACE_PROPERTIES  Properties);
+static void* pFreeSid;
+static void* pextFreeSid;
+static void* pGetAce;
+static void* pextGetAce;
+static void* pGetAclInformation;
+static void* pextGetAclInformation;
 static WINAPI DWORD (*pGetAuditedPermissionsFromAclA)(PACL  pacl, PTRUSTEEA  pTrustee, PACCESS_MASK  pSuccessfulAuditedRights, PACCESS_MASK  pFailedAuditRights);
 static WINAPI DWORD (*pGetAuditedPermissionsFromAclW)(PACL  pacl, PTRUSTEEW  pTrustee, PACCESS_MASK  pSuccessfulAuditedRights, PACCESS_MASK  pFailedAuditRights);
 static WINAPI BOOL (*pGetCurrentHwProfileA)(LPHW_PROFILE_INFOA  pInfo);
@@ -996,8 +1079,45 @@ static WINAPI BOOL (*pGetEventLogInformation)(HANDLE  hEventLog, DWORD  dwInfoLe
 static WINAPI DWORD (*pGetExplicitEntriesFromAclA)(PACL  pacl, PULONG  pcCountOfExplicitEntries, PEXPLICIT_ACCESSA*  pListOfExplicitEntries);
 static WINAPI DWORD (*pGetExplicitEntriesFromAclW)(PACL  pacl, PULONG  count, PEXPLICIT_ACCESSW*  list);
 static WINAPI BOOL (*pGetFileSecurityA)(LPCSTR  lpFileName, SECURITY_INFORMATION  RequestedInformation, PSECURITY_DESCRIPTOR  pSecurityDescriptor, DWORD  nLength, LPDWORD  lpnLengthNeeded);
+static void* pGetFileSecurityW;
+static void* pextGetFileSecurityW;
+static void* pGetKernelObjectSecurity;
+static void* pextGetKernelObjectSecurity;
+static void* pGetLengthSid;
+static void* pextGetLengthSid;
+static WINAPI DWORD (*pGetNamedSecurityInfoA)(LPSTR  pObjectName, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID*  ppsidOwner, PSID*  ppsidGroup, PACL*  ppDacl, PACL*  ppSacl, PSECURITY_DESCRIPTOR*  ppSecurityDescriptor);
 static WINAPI DWORD (*pGetNamedSecurityInfoExA)(LPCSTR  object, SE_OBJECT_TYPE  type, SECURITY_INFORMATION  info, LPCSTR  provider, LPCSTR  property, PACTRL_ACCESSA*  access_list, PACTRL_AUDITA*  audit_list, LPSTR*  owner, LPSTR*  group);
 static WINAPI DWORD (*pGetNamedSecurityInfoExW)(LPCWSTR  object, SE_OBJECT_TYPE  type, SECURITY_INFORMATION  info, LPCWSTR  provider, LPCWSTR  property, PACTRL_ACCESSW*  access_list, PACTRL_AUDITW*  audit_list, LPWSTR*  owner, LPWSTR*  group);
+static WINAPI DWORD (*pGetNamedSecurityInfoW)(LPWSTR  name, SE_OBJECT_TYPE  type, SECURITY_INFORMATION  info, PSID*  owner, PSID*  group, PACL*  dacl, PACL*  sacl, PSECURITY_DESCRIPTOR*  descriptor);
+static WINAPI BOOL (*pGetNumberOfEventLogRecords)(HANDLE  hEventLog, PDWORD  NumberOfRecords);
+static WINAPI BOOL (*pGetOldestEventLogRecord)(HANDLE  hEventLog, PDWORD  OldestRecord);
+static void* pGetPrivateObjectSecurity;
+static void* pextGetPrivateObjectSecurity;
+static void* pGetSecurityDescriptorControl;
+static void* pextGetSecurityDescriptorControl;
+static void* pGetSecurityDescriptorDacl;
+static void* pextGetSecurityDescriptorDacl;
+static void* pGetSecurityDescriptorGroup;
+static void* pextGetSecurityDescriptorGroup;
+static void* pGetSecurityDescriptorLength;
+static void* pextGetSecurityDescriptorLength;
+static void* pGetSecurityDescriptorOwner;
+static void* pextGetSecurityDescriptorOwner;
+static void* pGetSecurityDescriptorSacl;
+static void* pextGetSecurityDescriptorSacl;
+static WINAPI DWORD (*pGetSecurityInfo)(HANDLE  hObject, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID*  ppsidOwner, PSID*  ppsidGroup, PACL*  ppDacl, PACL*  ppSacl, PSECURITY_DESCRIPTOR*  ppSecurityDescriptor);
+static WINAPI DWORD (*pGetSecurityInfoExA)(HANDLE  hObject, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, LPCSTR  lpProvider, LPCSTR  lpProperty, PACTRL_ACCESSA*  ppAccessList, PACTRL_AUDITA*  ppAuditList, LPSTR*  lppOwner, LPSTR*  lppGroup);
+static WINAPI DWORD (*pGetSecurityInfoExW)(HANDLE  hObject, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, LPCWSTR  lpProvider, LPCWSTR  lpProperty, PACTRL_ACCESSW*  ppAccessList, PACTRL_AUDITW*  ppAuditList, LPWSTR*  lppOwner, LPWSTR*  lppGroup);
+static void* pGetSidIdentifierAuthority;
+static void* pextGetSidIdentifierAuthority;
+static void* pGetSidLengthRequired;
+static void* pextGetSidLengthRequired;
+static void* pGetSidSubAuthority;
+static void* pextGetSidSubAuthority;
+static void* pGetSidSubAuthorityCount;
+static void* pextGetSidSubAuthorityCount;
+static void* pGetTokenInformation;
+static void* pextGetTokenInformation;
 static void* pEtwGetTraceEnableFlags;
 static void* pextEtwGetTraceEnableFlags;
 static void* pEtwGetTraceEnableLevel;
@@ -1012,6 +1132,22 @@ static WINAPI TRUSTEE_TYPE (*pGetTrusteeTypeA)(PTRUSTEEA  pTrustee);
 static WINAPI TRUSTEE_TYPE (*pGetTrusteeTypeW)(PTRUSTEEW  pTrustee);
 static WINAPI BOOL (*pGetUserNameA)(LPSTR  lpszName, LPDWORD  lpSize);
 static WINAPI BOOL (*pGetUserNameW)(LPWSTR  lpszName, LPDWORD  lpSize);
+static void* pGetWindowsAccountDomainSid;
+static void* pextGetWindowsAccountDomainSid;
+static void* pImpersonateAnonymousToken;
+static void* pextImpersonateAnonymousToken;
+static void* pImpersonateLoggedOnUser;
+static void* pextImpersonateLoggedOnUser;
+static void* pImpersonateNamedPipeClient;
+static void* pextImpersonateNamedPipeClient;
+static void* pImpersonateSelf;
+static void* pextImpersonateSelf;
+static void* pInitializeAcl;
+static void* pextInitializeAcl;
+static void* pInitializeSecurityDescriptor;
+static void* pextInitializeSecurityDescriptor;
+static void* pInitializeSid;
+static void* pextInitializeSid;
 static WINAPI DWORD (*pInitiateShutdownA)(char*  name, char*  message, DWORD  seconds, DWORD  flags, DWORD  reason);
 static WINAPI DWORD (*pInitiateShutdownW)(WCHAR*  name, WCHAR*  message, DWORD  seconds, DWORD  flags, DWORD  reason);
 static WINAPI BOOL (*pInitiateSystemShutdownA)(LPSTR  lpMachineName, LPSTR  lpMessage, DWORD  dwTimeout, BOOL  bForceAppsClosed, BOOL  bRebootAfterShutdown);
@@ -1019,6 +1155,16 @@ static WINAPI BOOL (*pInitiateSystemShutdownExA)(LPSTR  lpMachineName, LPSTR  lp
 static WINAPI BOOL (*pInitiateSystemShutdownExW)(LPWSTR  lpMachineName, LPWSTR  lpMessage, DWORD  dwTimeout, BOOL  bForceAppsClosed, BOOL  bRebootAfterShutdown, DWORD  dwReason);
 static WINAPI BOOL (*pInitiateSystemShutdownW)(LPWSTR  lpMachineName, LPWSTR  lpMessage, DWORD  dwTimeout, BOOL  bForceAppsClosed, BOOL  bRebootAfterShutdown);
 static WINAPI BOOL (*pIsTextUnicode)(LPCVOID  buf, INT  len, LPINT  flags);
+static void* pIsTokenRestricted;
+static void* pextIsTokenRestricted;
+static void* pIsValidAcl;
+static void* pextIsValidAcl;
+static void* pIsValidSecurityDescriptor;
+static void* pextIsValidSecurityDescriptor;
+static void* pIsValidSid;
+static void* pextIsValidSid;
+static void* pIsWellKnownSid;
+static void* pextIsWellKnownSid;
 static WINAPI BOOL (*pLogonUserA)(LPCSTR  lpszUsername, LPCSTR  lpszDomain, LPCSTR  lpszPassword, DWORD  dwLogonType, DWORD  dwLogonProvider, PHANDLE  phToken);
 static WINAPI BOOL (*pLogonUserW)(LPCWSTR  lpszUsername, LPCWSTR  lpszDomain, LPCWSTR  lpszPassword, DWORD  dwLogonType, DWORD  dwLogonProvider, PHANDLE  phToken);
 static WINAPI BOOL (*pLookupAccountNameA)(LPCSTR  system, LPCSTR  account, PSID  sid, LPDWORD  cbSid, LPSTR  ReferencedDomainName, LPDWORD  cbReferencedDomainName, PSID_NAME_USE  name_use);
@@ -1076,48 +1222,183 @@ static void* pMD5Init;
 static void* pextMD5Init;
 static void* pMD5Update;
 static void* pextMD5Update;
+static void* pMakeAbsoluteSD;
+static void* pextMakeAbsoluteSD;
+static void* pMakeSelfRelativeSD;
+static void* pextMakeSelfRelativeSD;
+static void* pMapGenericMask;
+static void* pextMapGenericMask;
 static WINAPI BOOL (*pNotifyBootConfigStatus)(BOOL  x1);
+static WINAPI BOOL (*pNotifyChangeEventLog)(HANDLE  hEventLog, HANDLE  hEvent);
 static WINAPI BOOL (*pObjectCloseAuditAlarmA)(LPCSTR  SubsystemName, LPVOID  HandleId, BOOL  GenerateOnClose);
+static void* pObjectCloseAuditAlarmW;
+static void* pextObjectCloseAuditAlarmW;
+static void* pObjectDeleteAuditAlarmW;
+static void* pextObjectDeleteAuditAlarmW;
 static WINAPI BOOL (*pObjectOpenAuditAlarmA)(LPCSTR  SubsystemName, LPVOID  HandleId, LPSTR  ObjectTypeName, LPSTR  ObjectName, PSECURITY_DESCRIPTOR  pSecurityDescriptor, HANDLE  ClientToken, DWORD  DesiredAccess, DWORD  GrantedAccess, PPRIVILEGE_SET  Privileges, BOOL  ObjectCreation, BOOL  AccessGranted, LPBOOL  GenerateOnClose);
+static void* pObjectOpenAuditAlarmW;
+static void* pextObjectOpenAuditAlarmW;
 static WINAPI BOOL (*pObjectPrivilegeAuditAlarmA)(LPCSTR  SubsystemName, LPVOID  HandleId, HANDLE  ClientToken, DWORD  DesiredAccess, PPRIVILEGE_SET  Privileges, BOOL  AccessGranted);
+static void* pObjectPrivilegeAuditAlarmW;
+static void* pextObjectPrivilegeAuditAlarmW;
+static WINAPI HANDLE (*pOpenBackupEventLogA)(LPCSTR  lpUNCServerName, LPCSTR  lpFileName);
+static WINAPI HANDLE (*pOpenBackupEventLogW)(LPCWSTR  lpUNCServerName, LPCWSTR  lpFileName);
 static WINAPI DWORD (*pOpenEncryptedFileRawA)(LPCSTR  filename, ULONG  flags, PVOID*  context);
 static WINAPI DWORD (*pOpenEncryptedFileRawW)(LPCWSTR  filename, ULONG  flags, PVOID*  context);
+static WINAPI HANDLE (*pOpenEventLogA)(LPCSTR  uncname, LPCSTR  source);
+static WINAPI HANDLE (*pOpenEventLogW)(LPCWSTR  uncname, LPCWSTR  source);
+static void* pOpenProcessToken;
+static void* pextOpenProcessToken;
+static void* pOpenThreadToken;
+static void* pextOpenThreadToken;
 static WINAPI TRACEHANDLE (*pOpenTraceA)(PEVENT_TRACE_LOGFILEA  logfile);
 static WINAPI TRACEHANDLE (*pOpenTraceW)(PEVENT_TRACE_LOGFILEW  logfile);
+static void* pPerfCreateInstance;
+static void* pextPerfCreateInstance;
+static void* pPerfDeleteInstance;
+static void* pextPerfDeleteInstance;
+static void* pPerfSetCounterRefValue;
+static void* pextPerfSetCounterRefValue;
+static void* pPerfSetCounterSetInfo;
+static void* pextPerfSetCounterSetInfo;
+static void* pPerfStartProvider;
+static void* pextPerfStartProvider;
+static void* pPerfStartProviderEx;
+static void* pextPerfStartProviderEx;
+static void* pPerfStopProvider;
+static void* pextPerfStopProvider;
+static void* pPrivilegeCheck;
+static void* pextPrivilegeCheck;
 static WINAPI BOOL (*pPrivilegedServiceAuditAlarmA)(LPCSTR  SubsystemName, LPCSTR  ServiceName, HANDLE  ClientToken, PPRIVILEGE_SET  Privileges, BOOL  AccessGranted);
+static void* pPrivilegedServiceAuditAlarmW;
+static void* pextPrivilegedServiceAuditAlarmW;
 static WINAPI ULONG (*pProcessTrace)(PTRACEHANDLE  HandleArray, ULONG  HandleCount, LPFILETIME  StartTime, LPFILETIME  EndTime);
 static WINAPI ULONG (*pQueryAllTracesA)(PEVENT_TRACE_PROPERTIES*  parray, ULONG  arraycount, PULONG  psessioncount);
 static WINAPI ULONG (*pQueryAllTracesW)(PEVENT_TRACE_PROPERTIES*  parray, ULONG  arraycount, PULONG  psessioncount);
 static WINAPI ULONG (*pQueryTraceW)(TRACEHANDLE  handle, LPCWSTR  sessionname, PEVENT_TRACE_PROPERTIES  properties);
 static WINAPI BOOL (*pQueryWindows31FilesMigration)(DWORD  x1);
 static WINAPI DWORD (*pReadEncryptedFileRaw)(PFE_EXPORT_FUNC  export, PVOID  callback, PVOID  context);
+static WINAPI BOOL (*pReadEventLogA)(HANDLE  hEventLog, DWORD  dwReadFlags, DWORD  dwRecordOffset, LPVOID  lpBuffer, DWORD  nNumberOfBytesToRead, DWORD*  pnBytesRead, DWORD*  pnMinNumberOfBytesNeeded);
+static WINAPI BOOL (*pReadEventLogW)(HANDLE  hEventLog, DWORD  dwReadFlags, DWORD  dwRecordOffset, LPVOID  lpBuffer, DWORD  nNumberOfBytesToRead, DWORD*  pnBytesRead, DWORD*  pnMinNumberOfBytesNeeded);
+static void* pRegCloseKey;
+static void* pextRegCloseKey;
 static WINAPI LSTATUS (*pRegConnectRegistryA)(LPCSTR  machine, HKEY  hkey, PHKEY  reskey);
 static WINAPI LSTATUS (*pRegConnectRegistryW)(LPCWSTR  lpMachineName, HKEY  hKey, PHKEY  phkResult);
 static WINAPI LSTATUS (*pRegCopyTreeA)(HKEY  hsrc, char*  subkey, HKEY  hdst);
+static void* pRegCopyTreeW;
+static void* pextRegCopyTreeW;
 static WINAPI LSTATUS (*pRegCreateKeyA)(HKEY  hkey, LPCSTR  lpSubKey, PHKEY  phkResult);
+static void* pRegCreateKeyExA;
+static void* pextRegCreateKeyExA;
+static void* pRegCreateKeyExW;
+static void* pextRegCreateKeyExW;
 static WINAPI LSTATUS (*pRegCreateKeyTransactedA)(HKEY  hkey, LPCSTR  name, DWORD  reserved, LPSTR  class, DWORD  options, REGSAM  access, SECURITY_ATTRIBUTES*  sa, PHKEY  retkey, LPDWORD  dispos, HANDLE  transaction, PVOID  reserved2);
 static WINAPI LSTATUS (*pRegCreateKeyTransactedW)(HKEY  hkey, LPCWSTR  name, DWORD  reserved, LPWSTR  class, DWORD  options, REGSAM  access, SECURITY_ATTRIBUTES*  sa, PHKEY  retkey, LPDWORD  dispos, HANDLE  transaction, PVOID  reserved2);
 static WINAPI LSTATUS (*pRegCreateKeyW)(HKEY  hkey, LPCWSTR  lpSubKey, PHKEY  phkResult);
 static WINAPI LSTATUS (*pRegDeleteKeyA)(HKEY  hkey, LPCSTR  name);
+static void* pRegDeleteKeyExA;
+static void* pextRegDeleteKeyExA;
+static void* pRegDeleteKeyExW;
+static void* pextRegDeleteKeyExW;
+static void* pRegDeleteKeyValueA;
+static void* pextRegDeleteKeyValueA;
+static void* pRegDeleteKeyValueW;
+static void* pextRegDeleteKeyValueW;
 static WINAPI LSTATUS (*pRegDeleteKeyW)(HKEY  hkey, LPCWSTR  name);
+static void* pRegDeleteTreeA;
+static void* pextRegDeleteTreeA;
+static void* pRegDeleteTreeW;
+static void* pextRegDeleteTreeW;
+static void* pRegDeleteValueA;
+static void* pextRegDeleteValueA;
+static void* pRegDeleteValueW;
+static void* pextRegDeleteValueW;
 static WINAPI LSTATUS (*pRegDisablePredefinedCache)(void);
 static WINAPI LONG (*pRegDisableReflectionKey)(HKEY  base);
 static WINAPI LSTATUS (*pRegEnumKeyA)(HKEY  hkey, DWORD  index, LPSTR  name, DWORD  name_len);
+static void* pRegEnumKeyExA;
+static void* pextRegEnumKeyExA;
+static void* pRegEnumKeyExW;
+static void* pextRegEnumKeyExW;
 static WINAPI LSTATUS (*pRegEnumKeyW)(HKEY  hkey, DWORD  index, LPWSTR  name, DWORD  name_len);
+static void* pRegEnumValueA;
+static void* pextRegEnumValueA;
+static void* pRegEnumValueW;
+static void* pextRegEnumValueW;
+static void* pRegFlushKey;
+static void* pextRegFlushKey;
+static void* pRegGetKeySecurity;
+static void* pextRegGetKeySecurity;
+static void* pRegGetValueA;
+static void* pextRegGetValueA;
+static void* pRegGetValueW;
+static void* pextRegGetValueW;
+static void* pRegLoadAppKeyA;
+static void* pextRegLoadAppKeyA;
+static void* pRegLoadAppKeyW;
+static void* pextRegLoadAppKeyW;
+static void* pRegLoadKeyA;
+static void* pextRegLoadKeyA;
+static void* pRegLoadKeyW;
+static void* pextRegLoadKeyW;
+static void* pRegLoadMUIStringA;
+static void* pextRegLoadMUIStringA;
+static void* pRegLoadMUIStringW;
+static void* pextRegLoadMUIStringW;
+static void* pRegNotifyChangeKeyValue;
+static void* pextRegNotifyChangeKeyValue;
+static void* pRegOpenCurrentUser;
+static void* pextRegOpenCurrentUser;
 static WINAPI LSTATUS (*pRegOpenKeyA)(HKEY  hkey, LPCSTR  name, PHKEY  retkey);
+static void* pRegOpenKeyExA;
+static void* pextRegOpenKeyExA;
+static void* pRegOpenKeyExW;
+static void* pextRegOpenKeyExW;
 static WINAPI LSTATUS (*pRegOpenKeyW)(HKEY  hkey, LPCWSTR  name, PHKEY  retkey);
+static void* pRegOpenUserClassesRoot;
+static void* pextRegOpenUserClassesRoot;
 static WINAPI LSTATUS (*pRegOverridePredefKey)(HKEY  hkey, HKEY  override);
+static void* pRegQueryInfoKeyA;
+static void* pextRegQueryInfoKeyA;
+static void* pRegQueryInfoKeyW;
+static void* pextRegQueryInfoKeyW;
 static WINAPI LSTATUS (*pRegQueryMultipleValuesA)(HKEY  hkey, PVALENTA  val_list, DWORD  num_vals, LPSTR  lpValueBuf, LPDWORD  ldwTotsize);
 static WINAPI LSTATUS (*pRegQueryMultipleValuesW)(HKEY  hkey, PVALENTW  val_list, DWORD  num_vals, LPWSTR  lpValueBuf, LPDWORD  ldwTotsize);
 static WINAPI LONG (*pRegQueryReflectionKey)(HKEY  hkey, BOOL*  is_reflection_disabled);
 static WINAPI LSTATUS (*pRegQueryValueA)(HKEY  hkey, LPCSTR  name, LPSTR  data, LPLONG  count);
+static void* pRegQueryValueExA;
+static void* pextRegQueryValueExA;
+static void* pRegQueryValueExW;
+static void* pextRegQueryValueExW;
 static WINAPI LSTATUS (*pRegQueryValueW)(HKEY  hkey, LPCWSTR  name, LPWSTR  data, LPLONG  count);
 static WINAPI LSTATUS (*pRegReplaceKeyA)(HKEY  hkey, LPCSTR  lpSubKey, LPCSTR  lpNewFile, LPCSTR  lpOldFile);
 static WINAPI LSTATUS (*pRegReplaceKeyW)(HKEY  hkey, LPCWSTR  lpSubKey, LPCWSTR  lpNewFile, LPCWSTR  lpOldFile);
+static void* pRegRestoreKeyA;
+static void* pextRegRestoreKeyA;
+static void* pRegRestoreKeyW;
+static void* pextRegRestoreKeyW;
 static WINAPI LSTATUS (*pRegSaveKeyA)(HKEY  hkey, LPCSTR  file, LPSECURITY_ATTRIBUTES  sa);
+static void* pRegSaveKeyExA;
+static void* pextRegSaveKeyExA;
+static void* pRegSaveKeyExW;
+static void* pextRegSaveKeyExW;
 static WINAPI LSTATUS (*pRegSaveKeyW)(HKEY  hkey, LPCWSTR  file, LPSECURITY_ATTRIBUTES  sa);
+static void* pRegSetKeySecurity;
+static void* pextRegSetKeySecurity;
+static void* pRegSetKeyValueA;
+static void* pextRegSetKeyValueA;
+static void* pRegSetKeyValueW;
+static void* pextRegSetKeyValueW;
 static WINAPI LSTATUS (*pRegSetValueA)(HKEY  hkey, LPCSTR  subkey, DWORD  type, LPCSTR  data, DWORD  count);
+static void* pRegSetValueExA;
+static void* pextRegSetValueExA;
+static void* pRegSetValueExW;
+static void* pextRegSetValueExW;
 static WINAPI LSTATUS (*pRegSetValueW)(HKEY  hkey, LPCWSTR  subkey, DWORD  type, LPCWSTR  data, DWORD  count);
+static void* pRegUnLoadKeyA;
+static void* pextRegUnLoadKeyA;
+static void* pRegUnLoadKeyW;
+static void* pextRegUnLoadKeyW;
 static WINAPI HANDLE (*pRegisterEventSourceA)(LPCSTR  lpUNCServerName, LPCSTR  lpSourceName);
 static WINAPI HANDLE (*pRegisterEventSourceW)(LPCWSTR  lpUNCServerName, LPCWSTR  lpSourceName);
 static void* pEtwRegisterTraceGuidsA;
@@ -1127,17 +1408,42 @@ static void* pextEtwRegisterTraceGuidsW;
 static WINAPI void (*pRegisterWaitChainCOMCallback)(PCOGETCALLSTATE  call_state_cb, PCOGETACTIVATIONSTATE  activation_state_cb);
 static WINAPI BOOL (*pReportEventA)(HANDLE  hEventLog, WORD  wType, WORD  wCategory, DWORD  dwEventID, PSID  lpUserSid, WORD  wNumStrings, DWORD  dwDataSize, LPCSTR*  lpStrings, LPVOID  lpRawData);
 static WINAPI BOOL (*pReportEventW)(HANDLE  hEventLog, WORD  wType, WORD  wCategory, DWORD  dwEventID, PSID  lpUserSid, WORD  wNumStrings, DWORD  dwDataSize, LPCWSTR*  lpStrings, LPVOID  lpRawData);
+static void* pRevertToSelf;
+static void* pextRevertToSelf;
 static WINAPI BOOL (*pSaferCloseLevel)(SAFER_LEVEL_HANDLE  handle);
 static WINAPI BOOL (*pSaferComputeTokenFromLevel)(SAFER_LEVEL_HANDLE  handle, HANDLE  token, PHANDLE  access_token, DWORD  flags, LPVOID  reserved);
 static WINAPI BOOL (*pSaferCreateLevel)(DWORD  ScopeId, DWORD  LevelId, DWORD  OpenFlags, SAFER_LEVEL_HANDLE*  LevelHandle, LPVOID  lpReserved);
 static WINAPI BOOL (*pSaferGetPolicyInformation)(DWORD  scope, SAFER_POLICY_INFO_CLASS  class, DWORD  size, PVOID  buffer, PDWORD  required, LPVOID  lpReserved);
 static WINAPI BOOL (*pSaferIdentifyLevel)(DWORD  count, SAFER_CODE_PROPERTIES*  properties, SAFER_LEVEL_HANDLE*  handle, void*  reserved);
 static WINAPI BOOL (*pSaferSetLevelInformation)(SAFER_LEVEL_HANDLE  handle, SAFER_OBJECT_INFO_CLASS  infotype, LPVOID  buffer, DWORD  size);
+static void* pSetAclInformation;
+static void* pextSetAclInformation;
 static WINAPI DWORD (*pSetEntriesInAclA)(ULONG  count, PEXPLICIT_ACCESSA  pEntries, PACL  OldAcl, PACL*  NewAcl);
 static WINAPI DWORD (*pSetEntriesInAclW)(ULONG  count, PEXPLICIT_ACCESSW  pEntries, PACL  OldAcl, PACL*  NewAcl);
 static WINAPI BOOL (*pSetFileSecurityA)(LPCSTR  lpFileName, SECURITY_INFORMATION  RequestedInformation, PSECURITY_DESCRIPTOR  pSecurityDescriptor);
+static void* pSetFileSecurityW;
+static void* pextSetFileSecurityW;
+static void* pSetKernelObjectSecurity;
+static void* pextSetKernelObjectSecurity;
 static WINAPI DWORD (*pSetNamedSecurityInfoA)(LPSTR  pObjectName, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID  psidOwner, PSID  psidGroup, PACL  pDacl, PACL  pSacl);
 static WINAPI DWORD (*pSetNamedSecurityInfoW)(LPWSTR  pObjectName, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID  psidOwner, PSID  psidGroup, PACL  pDacl, PACL  pSacl);
+static void* pSetPrivateObjectSecurity;
+static void* pextSetPrivateObjectSecurity;
+static void* pSetSecurityDescriptorControl;
+static void* pextSetSecurityDescriptorControl;
+static void* pSetSecurityDescriptorDacl;
+static void* pextSetSecurityDescriptorDacl;
+static void* pSetSecurityDescriptorGroup;
+static void* pextSetSecurityDescriptorGroup;
+static void* pSetSecurityDescriptorOwner;
+static void* pextSetSecurityDescriptorOwner;
+static void* pSetSecurityDescriptorSacl;
+static void* pextSetSecurityDescriptorSacl;
+static WINAPI DWORD (*pSetSecurityInfo)(HANDLE  handle, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID  psidOwner, PSID  psidGroup, PACL  pDacl, PACL  pSacl);
+static void* pSetThreadToken;
+static void* pextSetThreadToken;
+static void* pSetTokenInformation;
+static void* pextSetTokenInformation;
 static WINAPI ULONG (*pStartTraceA)(PTRACEHANDLE  pSessionHandle, LPCSTR  SessionName, PEVENT_TRACE_PROPERTIES  Properties);
 static WINAPI ULONG (*pStartTraceW)(PTRACEHANDLE  pSessionHandle, LPCWSTR  SessionName, PEVENT_TRACE_PROPERTIES  Properties);
 static WINAPI ULONG (*pStopTraceA)(TRACEHANDLE  session, LPCSTR  session_name, PEVENT_TRACE_PROPERTIES  properties);
@@ -1286,6 +1592,58 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_AuditQuerySystemPolicy,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $12, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI BOOL wine32b_advapi32_BackupEventLogA(HANDLE  hEventLog, LPCSTR  lpBackupFileName) /* ../dlls/advapi32/eventlog.c:55 */
+{
+	TRACE("Enter BackupEventLogA\n");
+	return pBackupEventLogA(hEventLog, lpBackupFileName);
+}
+
+extern WINAPI void wine32a_advapi32_BackupEventLogA(void);  /* ../dlls/advapi32/eventlog.c:55 */
+__ASM_GLOBAL_FUNC(wine32a_advapi32_BackupEventLogA,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_advapi32_BackupEventLogA") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $8, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI BOOL wine32b_advapi32_BackupEventLogW(HANDLE  hEventLog, LPCWSTR  lpBackupFileName) /* ../dlls/advapi32/eventlog.c:72 */
+{
+	TRACE("Enter BackupEventLogW\n");
+	return pBackupEventLogW(hEventLog, lpBackupFileName);
+}
+
+extern WINAPI void wine32a_advapi32_BackupEventLogW(void);  /* ../dlls/advapi32/eventlog.c:72 */
+__ASM_GLOBAL_FUNC(wine32a_advapi32_BackupEventLogW,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_advapi32_BackupEventLogW") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $8, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -1620,6 +1978,58 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_BuildTrusteeWithSidW,
 	"ret \n"
 )
 
+extern WINAPI BOOL wine32b_advapi32_ClearEventLogA(HANDLE  hEventLog, LPCSTR  lpBackupFileName) /* ../dlls/advapi32/eventlog.c:112 */
+{
+	TRACE("Enter ClearEventLogA\n");
+	return pClearEventLogA(hEventLog, lpBackupFileName);
+}
+
+extern WINAPI void wine32a_advapi32_ClearEventLogA(void);  /* ../dlls/advapi32/eventlog.c:112 */
+__ASM_GLOBAL_FUNC(wine32a_advapi32_ClearEventLogA,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_advapi32_ClearEventLogA") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $8, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI BOOL wine32b_advapi32_ClearEventLogW(HANDLE  hEventLog, LPCWSTR  lpBackupFileName) /* ../dlls/advapi32/eventlog.c:129 */
+{
+	TRACE("Enter ClearEventLogW\n");
+	return pClearEventLogW(hEventLog, lpBackupFileName);
+}
+
+extern WINAPI void wine32a_advapi32_ClearEventLogW(void);  /* ../dlls/advapi32/eventlog.c:129 */
+__ASM_GLOBAL_FUNC(wine32a_advapi32_ClearEventLogW,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_advapi32_ClearEventLogW") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $8, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
 extern WINAPI void wine32b_advapi32_CloseEncryptedFileRaw(PVOID  context) /* ../dlls/advapi32/crypt.c:345 */
 {
 	TRACE("Enter CloseEncryptedFileRaw\n");
@@ -1633,6 +2043,31 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CloseEncryptedFileRaw,
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
 	"call " __ASM_NAME("wine32b_advapi32_CloseEncryptedFileRaw") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $4, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI BOOL wine32b_advapi32_CloseEventLog(HANDLE  hEventLog) /* ../dlls/advapi32/eventlog.c:154 */
+{
+	TRACE("Enter CloseEventLog\n");
+	return pCloseEventLog(hEventLog);
+}
+
+extern WINAPI void wine32a_advapi32_CloseEventLog(void);  /* ../dlls/advapi32/eventlog.c:154 */
+__ASM_GLOBAL_FUNC(wine32a_advapi32_CloseEventLog,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_advapi32_CloseEventLog") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -4198,6 +4633,34 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetFileSecurityA,
 	"ret \n"
 )
 
+extern WINAPI DWORD wine32b_advapi32_GetNamedSecurityInfoA(LPSTR  pObjectName, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID*  ppsidOwner, PSID*  ppsidGroup, PACL*  ppDacl, PACL*  ppSacl, PSECURITY_DESCRIPTOR*  ppSecurityDescriptor) /* ../dlls/advapi32/security.c:4070 */
+{
+	TRACE("Enter GetNamedSecurityInfoA\n");
+	return pGetNamedSecurityInfoA(pObjectName, ObjectType, SecurityInfo, ppsidOwner, ppsidGroup, ppDacl, ppSacl, ppSecurityDescriptor);
+}
+
+extern WINAPI void wine32a_advapi32_GetNamedSecurityInfoA(void);  /* ../dlls/advapi32/security.c:4070 */
+__ASM_GLOBAL_FUNC(wine32a_advapi32_GetNamedSecurityInfoA,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"movl 0x20(%rsp), %r9d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_advapi32_GetNamedSecurityInfoA") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $32, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
 extern WINAPI DWORD wine32b_advapi32_GetNamedSecurityInfoExA(LPCSTR  object, SE_OBJECT_TYPE  type, SECURITY_INFORMATION  info, LPCSTR  provider, LPCSTR  property, PACTRL_ACCESSA*  access_list, PACTRL_AUDITA*  audit_list, LPSTR*  owner, LPSTR*  group) /* ../dlls/advapi32/security.c:4170 */
 {
 	TRACE("Enter GetNamedSecurityInfoExA\n");
@@ -4242,6 +4705,170 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetNamedSecurityInfoExW,
 	"movl 0x20(%rsp), %r9d \n"
 	"sub $0x100, %rsp \n"
 	"call " __ASM_NAME("wine32b_advapi32_GetNamedSecurityInfoExW") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $36, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI DWORD wine32b_advapi32_GetNamedSecurityInfoW(LPWSTR  name, SE_OBJECT_TYPE  type, SECURITY_INFORMATION  info, PSID*  owner, PSID*  group, PACL*  dacl, PACL*  sacl, PSECURITY_DESCRIPTOR*  descriptor) /* ../dlls/advapi32/security.c:4093 */
+{
+	TRACE("Enter GetNamedSecurityInfoW\n");
+	return pGetNamedSecurityInfoW(name, type, info, owner, group, dacl, sacl, descriptor);
+}
+
+extern WINAPI void wine32a_advapi32_GetNamedSecurityInfoW(void);  /* ../dlls/advapi32/security.c:4093 */
+__ASM_GLOBAL_FUNC(wine32a_advapi32_GetNamedSecurityInfoW,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"movl 0x20(%rsp), %r9d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_advapi32_GetNamedSecurityInfoW") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $32, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI BOOL wine32b_advapi32_GetNumberOfEventLogRecords(HANDLE  hEventLog, PDWORD  NumberOfRecords) /* ../dlls/advapi32/eventlog.c:338 */
+{
+	TRACE("Enter GetNumberOfEventLogRecords\n");
+	return pGetNumberOfEventLogRecords(hEventLog, NumberOfRecords);
+}
+
+extern WINAPI void wine32a_advapi32_GetNumberOfEventLogRecords(void);  /* ../dlls/advapi32/eventlog.c:338 */
+__ASM_GLOBAL_FUNC(wine32a_advapi32_GetNumberOfEventLogRecords,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_advapi32_GetNumberOfEventLogRecords") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $8, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI BOOL wine32b_advapi32_GetOldestEventLogRecord(HANDLE  hEventLog, PDWORD  OldestRecord) /* ../dlls/advapi32/eventlog.c:373 */
+{
+	TRACE("Enter GetOldestEventLogRecord\n");
+	return pGetOldestEventLogRecord(hEventLog, OldestRecord);
+}
+
+extern WINAPI void wine32a_advapi32_GetOldestEventLogRecord(void);  /* ../dlls/advapi32/eventlog.c:373 */
+__ASM_GLOBAL_FUNC(wine32a_advapi32_GetOldestEventLogRecord,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_advapi32_GetOldestEventLogRecord") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $8, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI DWORD wine32b_advapi32_GetSecurityInfo(HANDLE  hObject, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID*  ppsidOwner, PSID*  ppsidGroup, PACL*  ppDacl, PACL*  ppSacl, PSECURITY_DESCRIPTOR*  ppSecurityDescriptor) /* ../dlls/advapi32/security.c:1781 */
+{
+	TRACE("Enter GetSecurityInfo\n");
+	return pGetSecurityInfo(hObject, ObjectType, SecurityInfo, ppsidOwner, ppsidGroup, ppDacl, ppSacl, ppSecurityDescriptor);
+}
+
+extern WINAPI void wine32a_advapi32_GetSecurityInfo(void);  /* ../dlls/advapi32/security.c:1781 */
+__ASM_GLOBAL_FUNC(wine32a_advapi32_GetSecurityInfo,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"movl 0x20(%rsp), %r9d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_advapi32_GetSecurityInfo") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $32, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI DWORD wine32b_advapi32_GetSecurityInfoExA(HANDLE  hObject, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, LPCSTR  lpProvider, LPCSTR  lpProperty, PACTRL_ACCESSA*  ppAccessList, PACTRL_AUDITA*  ppAuditList, LPSTR*  lppOwner, LPSTR*  lppGroup) /* ../dlls/advapi32/security.c:1869 */
+{
+	TRACE("Enter GetSecurityInfoExA\n");
+	return pGetSecurityInfoExA(hObject, ObjectType, SecurityInfo, lpProvider, lpProperty, ppAccessList, ppAuditList, lppOwner, lppGroup);
+}
+
+extern WINAPI void wine32a_advapi32_GetSecurityInfoExA(void);  /* ../dlls/advapi32/security.c:1869 */
+__ASM_GLOBAL_FUNC(wine32a_advapi32_GetSecurityInfoExA,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"movl 0x20(%rsp), %r9d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_advapi32_GetSecurityInfoExA") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $36, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI DWORD wine32b_advapi32_GetSecurityInfoExW(HANDLE  hObject, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, LPCWSTR  lpProvider, LPCWSTR  lpProperty, PACTRL_ACCESSW*  ppAccessList, PACTRL_AUDITW*  ppAuditList, LPWSTR*  lppOwner, LPWSTR*  lppGroup) /* ../dlls/advapi32/security.c:1883 */
+{
+	TRACE("Enter GetSecurityInfoExW\n");
+	return pGetSecurityInfoExW(hObject, ObjectType, SecurityInfo, lpProvider, lpProperty, ppAccessList, ppAuditList, lppOwner, lppGroup);
+}
+
+extern WINAPI void wine32a_advapi32_GetSecurityInfoExW(void);  /* ../dlls/advapi32/security.c:1883 */
+__ASM_GLOBAL_FUNC(wine32a_advapi32_GetSecurityInfoExW,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"movl 0x20(%rsp), %r9d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_advapi32_GetSecurityInfoExW") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -5913,6 +6540,32 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_NotifyBootConfigStatus,
 	"ret \n"
 )
 
+extern WINAPI BOOL wine32b_advapi32_NotifyChangeEventLog(HANDLE  hEventLog, HANDLE  hEvent) /* ../dlls/advapi32/eventlog.c:408 */
+{
+	TRACE("Enter NotifyChangeEventLog\n");
+	return pNotifyChangeEventLog(hEventLog, hEvent);
+}
+
+extern WINAPI void wine32a_advapi32_NotifyChangeEventLog(void);  /* ../dlls/advapi32/eventlog.c:408 */
+__ASM_GLOBAL_FUNC(wine32a_advapi32_NotifyChangeEventLog,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_advapi32_NotifyChangeEventLog") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $8, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
 extern WINAPI BOOL wine32b_advapi32_ObjectCloseAuditAlarmA(LPCSTR  SubsystemName, LPVOID  HandleId, BOOL  GenerateOnClose) /* ../dlls/advapi32/security.c:1724 */
 {
 	TRACE("Enter ObjectCloseAuditAlarmA\n");
@@ -5996,6 +6649,58 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ObjectPrivilegeAuditAlarmA,
 	"ret \n"
 )
 
+extern WINAPI HANDLE wine32b_advapi32_OpenBackupEventLogA(LPCSTR  lpUNCServerName, LPCSTR  lpFileName) /* ../dlls/advapi32/eventlog.c:428 */
+{
+	TRACE("Enter OpenBackupEventLogA\n");
+	return pOpenBackupEventLogA(lpUNCServerName, lpFileName);
+}
+
+extern WINAPI void wine32a_advapi32_OpenBackupEventLogA(void);  /* ../dlls/advapi32/eventlog.c:428 */
+__ASM_GLOBAL_FUNC(wine32a_advapi32_OpenBackupEventLogA,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_advapi32_OpenBackupEventLogA") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $8, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI HANDLE wine32b_advapi32_OpenBackupEventLogW(LPCWSTR  lpUNCServerName, LPCWSTR  lpFileName) /* ../dlls/advapi32/eventlog.c:447 */
+{
+	TRACE("Enter OpenBackupEventLogW\n");
+	return pOpenBackupEventLogW(lpUNCServerName, lpFileName);
+}
+
+extern WINAPI void wine32a_advapi32_OpenBackupEventLogW(void);  /* ../dlls/advapi32/eventlog.c:447 */
+__ASM_GLOBAL_FUNC(wine32a_advapi32_OpenBackupEventLogW,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_advapi32_OpenBackupEventLogW") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $8, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
 extern WINAPI DWORD wine32b_advapi32_OpenEncryptedFileRawA(LPCSTR  filename, ULONG  flags, PVOID*  context) /* ../dlls/advapi32/crypt.c:2296 */
 {
 	TRACE("Enter OpenEncryptedFileRawA\n");
@@ -6044,6 +6749,58 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_OpenEncryptedFileRawW,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $12, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI HANDLE wine32b_advapi32_OpenEventLogA(LPCSTR  uncname, LPCSTR  source) /* ../dlls/advapi32/eventlog.c:487 */
+{
+	TRACE("Enter OpenEventLogA\n");
+	return pOpenEventLogA(uncname, source);
+}
+
+extern WINAPI void wine32a_advapi32_OpenEventLogA(void);  /* ../dlls/advapi32/eventlog.c:487 */
+__ASM_GLOBAL_FUNC(wine32a_advapi32_OpenEventLogA,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_advapi32_OpenEventLogA") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $8, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI HANDLE wine32b_advapi32_OpenEventLogW(LPCWSTR  uncname, LPCWSTR  source) /* ../dlls/advapi32/eventlog.c:506 */
+{
+	TRACE("Enter OpenEventLogW\n");
+	return pOpenEventLogW(uncname, source);
+}
+
+extern WINAPI void wine32a_advapi32_OpenEventLogW(void);  /* ../dlls/advapi32/eventlog.c:506 */
+__ASM_GLOBAL_FUNC(wine32a_advapi32_OpenEventLogW,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_advapi32_OpenEventLogW") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $8, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -6283,6 +7040,62 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ReadEncryptedFileRaw,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $12, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI BOOL wine32b_advapi32_ReadEventLogA(HANDLE  hEventLog, DWORD  dwReadFlags, DWORD  dwRecordOffset, LPVOID  lpBuffer, DWORD  nNumberOfBytesToRead, DWORD*  pnBytesRead, DWORD*  pnMinNumberOfBytesNeeded) /* ../dlls/advapi32/eventlog.c:572 */
+{
+	TRACE("Enter ReadEventLogA\n");
+	return pReadEventLogA(hEventLog, dwReadFlags, dwRecordOffset, lpBuffer, nNumberOfBytesToRead, pnBytesRead, pnMinNumberOfBytesNeeded);
+}
+
+extern WINAPI void wine32a_advapi32_ReadEventLogA(void);  /* ../dlls/advapi32/eventlog.c:572 */
+__ASM_GLOBAL_FUNC(wine32a_advapi32_ReadEventLogA,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"movl 0x20(%rsp), %r9d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_advapi32_ReadEventLogA") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $28, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI BOOL wine32b_advapi32_ReadEventLogW(HANDLE  hEventLog, DWORD  dwReadFlags, DWORD  dwRecordOffset, LPVOID  lpBuffer, DWORD  nNumberOfBytesToRead, DWORD*  pnBytesRead, DWORD*  pnMinNumberOfBytesNeeded) /* ../dlls/advapi32/eventlog.c:587 */
+{
+	TRACE("Enter ReadEventLogW\n");
+	return pReadEventLogW(hEventLog, dwReadFlags, dwRecordOffset, lpBuffer, nNumberOfBytesToRead, pnBytesRead, pnMinNumberOfBytesNeeded);
+}
+
+extern WINAPI void wine32a_advapi32_ReadEventLogW(void);  /* ../dlls/advapi32/eventlog.c:587 */
+__ASM_GLOBAL_FUNC(wine32a_advapi32_ReadEventLogW,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"movl 0x20(%rsp), %r9d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_advapi32_ReadEventLogW") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $28, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -7459,6 +8272,34 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SetNamedSecurityInfoW,
 	"ret \n"
 )
 
+extern WINAPI DWORD wine32b_advapi32_SetSecurityInfo(HANDLE  handle, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID  psidOwner, PSID  psidGroup, PACL  pDacl, PACL  pSacl) /* ../dlls/advapi32/security.c:4300 */
+{
+	TRACE("Enter SetSecurityInfo\n");
+	return pSetSecurityInfo(handle, ObjectType, SecurityInfo, psidOwner, psidGroup, pDacl, pSacl);
+}
+
+extern WINAPI void wine32a_advapi32_SetSecurityInfo(void);  /* ../dlls/advapi32/security.c:4300 */
+__ASM_GLOBAL_FUNC(wine32a_advapi32_SetSecurityInfo,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"movl 0x20(%rsp), %r9d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_advapi32_SetSecurityInfo") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $28, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
 extern WINAPI ULONG wine32b_advapi32_StartTraceA(PTRACEHANDLE  pSessionHandle, LPCSTR  SessionName, PEVENT_TRACE_PROPERTIES  Properties) /* ../dlls/advapi32/eventlog.c:749 */
 {
 	TRACE("Enter StartTraceA\n");
@@ -8545,8 +9386,9 @@ static BOOL initialized = FALSE;
 void wine_thunk_initialize_advapi32(void)
 {
 	HMODULE library = LoadLibraryA("advapi32.dll");
-	HMODULE library_kernel32 = LoadLibraryA("kernel32.dll");
 	HMODULE library_ntdll = LoadLibraryA("ntdll.dll");
+	HMODULE library_kernelbase = LoadLibraryA("kernelbase.dll");
+	HMODULE library_kernel32 = LoadLibraryA("kernel32.dll");
 	pA_SHAFinal = (void *)GetProcAddress(library, "A_SHAFinal");
 	pextA_SHAFinal = (void *)GetProcAddress(library_ntdll, "A_SHAFinal");
 	pA_SHAInit = (void *)GetProcAddress(library, "A_SHAInit");
@@ -8555,8 +9397,50 @@ void wine_thunk_initialize_advapi32(void)
 	pextA_SHAUpdate = (void *)GetProcAddress(library_ntdll, "A_SHAUpdate");
 	pAbortSystemShutdownA = (void *)GetProcAddress(library, "AbortSystemShutdownA");
 	pAbortSystemShutdownW = (void *)GetProcAddress(library, "AbortSystemShutdownW");
+	pAccessCheck = (void *)GetProcAddress(library, "AccessCheck");
+	pextAccessCheck = (void *)GetProcAddress(library_kernelbase, "AccessCheck");
 	pAccessCheckAndAuditAlarmA = (void *)GetProcAddress(library, "AccessCheckAndAuditAlarmA");
+	pAccessCheckAndAuditAlarmW = (void *)GetProcAddress(library, "AccessCheckAndAuditAlarmW");
+	pextAccessCheckAndAuditAlarmW = (void *)GetProcAddress(library_kernelbase, "AccessCheckAndAuditAlarmW");
+	pAccessCheckByType = (void *)GetProcAddress(library, "AccessCheckByType");
+	pextAccessCheckByType = (void *)GetProcAddress(library_kernelbase, "AccessCheckByType");
+	pAddAccessAllowedAce = (void *)GetProcAddress(library, "AddAccessAllowedAce");
+	pextAddAccessAllowedAce = (void *)GetProcAddress(library_kernelbase, "AddAccessAllowedAce");
+	pAddAccessAllowedAceEx = (void *)GetProcAddress(library, "AddAccessAllowedAceEx");
+	pextAddAccessAllowedAceEx = (void *)GetProcAddress(library_kernelbase, "AddAccessAllowedAceEx");
+	pAddAccessAllowedObjectAce = (void *)GetProcAddress(library, "AddAccessAllowedObjectAce");
+	pextAddAccessAllowedObjectAce = (void *)GetProcAddress(library_kernelbase, "AddAccessAllowedObjectAce");
+	pAddAccessDeniedAce = (void *)GetProcAddress(library, "AddAccessDeniedAce");
+	pextAddAccessDeniedAce = (void *)GetProcAddress(library_kernelbase, "AddAccessDeniedAce");
+	pAddAccessDeniedAceEx = (void *)GetProcAddress(library, "AddAccessDeniedAceEx");
+	pextAddAccessDeniedAceEx = (void *)GetProcAddress(library_kernelbase, "AddAccessDeniedAceEx");
+	pAddAccessDeniedObjectAce = (void *)GetProcAddress(library, "AddAccessDeniedObjectAce");
+	pextAddAccessDeniedObjectAce = (void *)GetProcAddress(library_kernelbase, "AddAccessDeniedObjectAce");
+	pAddAce = (void *)GetProcAddress(library, "AddAce");
+	pextAddAce = (void *)GetProcAddress(library_kernelbase, "AddAce");
+	pAddAuditAccessAce = (void *)GetProcAddress(library, "AddAuditAccessAce");
+	pextAddAuditAccessAce = (void *)GetProcAddress(library_kernelbase, "AddAuditAccessAce");
+	pAddAuditAccessAceEx = (void *)GetProcAddress(library, "AddAuditAccessAceEx");
+	pextAddAuditAccessAceEx = (void *)GetProcAddress(library_kernelbase, "AddAuditAccessAceEx");
+	pAddAuditAccessObjectAce = (void *)GetProcAddress(library, "AddAuditAccessObjectAce");
+	pextAddAuditAccessObjectAce = (void *)GetProcAddress(library_kernelbase, "AddAuditAccessObjectAce");
+	pAddMandatoryAce = (void *)GetProcAddress(library, "AddMandatoryAce");
+	pextAddMandatoryAce = (void *)GetProcAddress(library_kernelbase, "AddMandatoryAce");
+	pAdjustTokenGroups = (void *)GetProcAddress(library, "AdjustTokenGroups");
+	pextAdjustTokenGroups = (void *)GetProcAddress(library_kernelbase, "AdjustTokenGroups");
+	pAdjustTokenPrivileges = (void *)GetProcAddress(library, "AdjustTokenPrivileges");
+	pextAdjustTokenPrivileges = (void *)GetProcAddress(library_kernelbase, "AdjustTokenPrivileges");
+	pAllocateAndInitializeSid = (void *)GetProcAddress(library, "AllocateAndInitializeSid");
+	pextAllocateAndInitializeSid = (void *)GetProcAddress(library_kernelbase, "AllocateAndInitializeSid");
+	pAllocateLocallyUniqueId = (void *)GetProcAddress(library, "AllocateLocallyUniqueId");
+	pextAllocateLocallyUniqueId = (void *)GetProcAddress(library_kernelbase, "AllocateLocallyUniqueId");
+	pAreAllAccessesGranted = (void *)GetProcAddress(library, "AreAllAccessesGranted");
+	pextAreAllAccessesGranted = (void *)GetProcAddress(library_kernelbase, "AreAllAccessesGranted");
+	pAreAnyAccessesGranted = (void *)GetProcAddress(library, "AreAnyAccessesGranted");
+	pextAreAnyAccessesGranted = (void *)GetProcAddress(library_kernelbase, "AreAnyAccessesGranted");
 	pAuditQuerySystemPolicy = (void *)GetProcAddress(library, "AuditQuerySystemPolicy");
+	pBackupEventLogA = (void *)GetProcAddress(library, "BackupEventLogA");
+	pBackupEventLogW = (void *)GetProcAddress(library, "BackupEventLogW");
 	pBuildExplicitAccessWithNameA = (void *)GetProcAddress(library, "BuildExplicitAccessWithNameA");
 	pBuildExplicitAccessWithNameW = (void *)GetProcAddress(library, "BuildExplicitAccessWithNameW");
 	pBuildSecurityDescriptorA = (void *)GetProcAddress(library, "BuildSecurityDescriptorA");
@@ -8569,7 +9453,12 @@ void wine_thunk_initialize_advapi32(void)
 	pBuildTrusteeWithObjectsAndSidW = (void *)GetProcAddress(library, "BuildTrusteeWithObjectsAndSidW");
 	pBuildTrusteeWithSidA = (void *)GetProcAddress(library, "BuildTrusteeWithSidA");
 	pBuildTrusteeWithSidW = (void *)GetProcAddress(library, "BuildTrusteeWithSidW");
+	pCheckTokenMembership = (void *)GetProcAddress(library, "CheckTokenMembership");
+	pextCheckTokenMembership = (void *)GetProcAddress(library_kernelbase, "CheckTokenMembership");
+	pClearEventLogA = (void *)GetProcAddress(library, "ClearEventLogA");
+	pClearEventLogW = (void *)GetProcAddress(library, "ClearEventLogW");
 	pCloseEncryptedFileRaw = (void *)GetProcAddress(library, "CloseEncryptedFileRaw");
+	pCloseEventLog = (void *)GetProcAddress(library, "CloseEventLog");
 	pCloseTrace = (void *)GetProcAddress(library, "CloseTrace");
 	pCommandLineFromMsiDescriptor = (void *)GetProcAddress(library, "CommandLineFromMsiDescriptor");
 	pControlTraceA = (void *)GetProcAddress(library, "ControlTraceA");
@@ -8582,12 +9471,26 @@ void wine_thunk_initialize_advapi32(void)
 	pConvertStringSecurityDescriptorToSecurityDescriptorW = (void *)GetProcAddress(library, "ConvertStringSecurityDescriptorToSecurityDescriptorW");
 	pConvertStringSidToSidA = (void *)GetProcAddress(library, "ConvertStringSidToSidA");
 	pConvertStringSidToSidW = (void *)GetProcAddress(library, "ConvertStringSidToSidW");
+	pConvertToAutoInheritPrivateObjectSecurity = (void *)GetProcAddress(library, "ConvertToAutoInheritPrivateObjectSecurity");
+	pextConvertToAutoInheritPrivateObjectSecurity = (void *)GetProcAddress(library_kernelbase, "ConvertToAutoInheritPrivateObjectSecurity");
+	pCopySid = (void *)GetProcAddress(library, "CopySid");
+	pextCopySid = (void *)GetProcAddress(library_kernelbase, "CopySid");
+	pCreatePrivateObjectSecurity = (void *)GetProcAddress(library, "CreatePrivateObjectSecurity");
+	pextCreatePrivateObjectSecurity = (void *)GetProcAddress(library_kernelbase, "CreatePrivateObjectSecurity");
+	pCreatePrivateObjectSecurityEx = (void *)GetProcAddress(library, "CreatePrivateObjectSecurityEx");
+	pextCreatePrivateObjectSecurityEx = (void *)GetProcAddress(library_kernelbase, "CreatePrivateObjectSecurityEx");
+	pCreatePrivateObjectSecurityWithMultipleInheritance = (void *)GetProcAddress(library, "CreatePrivateObjectSecurityWithMultipleInheritance");
+	pextCreatePrivateObjectSecurityWithMultipleInheritance = (void *)GetProcAddress(library_kernelbase, "CreatePrivateObjectSecurityWithMultipleInheritance");
 	pCreateProcessAsUserA = (void *)GetProcAddress(library, "CreateProcessAsUserA");
 	pextCreateProcessAsUserA = (void *)GetProcAddress(library_kernel32, "CreateProcessAsUserA");
 	pCreateProcessAsUserW = (void *)GetProcAddress(library, "CreateProcessAsUserW");
 	pextCreateProcessAsUserW = (void *)GetProcAddress(library_kernel32, "CreateProcessAsUserW");
 	pCreateProcessWithLogonW = (void *)GetProcAddress(library, "CreateProcessWithLogonW");
 	pCreateProcessWithTokenW = (void *)GetProcAddress(library, "CreateProcessWithTokenW");
+	pCreateRestrictedToken = (void *)GetProcAddress(library, "CreateRestrictedToken");
+	pextCreateRestrictedToken = (void *)GetProcAddress(library_kernelbase, "CreateRestrictedToken");
+	pCreateWellKnownSid = (void *)GetProcAddress(library, "CreateWellKnownSid");
+	pextCreateWellKnownSid = (void *)GetProcAddress(library_kernelbase, "CreateWellKnownSid");
 	pCredDeleteA = (void *)GetProcAddress(library, "CredDeleteA");
 	pCredDeleteW = (void *)GetProcAddress(library, "CredDeleteW");
 	pCredEnumerateA = (void *)GetProcAddress(library, "CredEnumerateA");
@@ -8647,13 +9550,27 @@ void wine_thunk_initialize_advapi32(void)
 	pCryptVerifySignatureW = (void *)GetProcAddress(library, "CryptVerifySignatureW");
 	pDecryptFileA = (void *)GetProcAddress(library, "DecryptFileA");
 	pDecryptFileW = (void *)GetProcAddress(library, "DecryptFileW");
+	pDeleteAce = (void *)GetProcAddress(library, "DeleteAce");
+	pextDeleteAce = (void *)GetProcAddress(library_kernelbase, "DeleteAce");
 	pDeregisterEventSource = (void *)GetProcAddress(library, "DeregisterEventSource");
+	pDestroyPrivateObjectSecurity = (void *)GetProcAddress(library, "DestroyPrivateObjectSecurity");
+	pextDestroyPrivateObjectSecurity = (void *)GetProcAddress(library_kernelbase, "DestroyPrivateObjectSecurity");
+	pDuplicateToken = (void *)GetProcAddress(library, "DuplicateToken");
+	pextDuplicateToken = (void *)GetProcAddress(library_kernelbase, "DuplicateToken");
+	pDuplicateTokenEx = (void *)GetProcAddress(library, "DuplicateTokenEx");
+	pextDuplicateTokenEx = (void *)GetProcAddress(library_kernelbase, "DuplicateTokenEx");
 	pEnableTrace = (void *)GetProcAddress(library, "EnableTrace");
 	pEnableTraceEx = (void *)GetProcAddress(library, "EnableTraceEx");
 	pEnableTraceEx2 = (void *)GetProcAddress(library, "EnableTraceEx2");
 	pEncryptFileA = (void *)GetProcAddress(library, "EncryptFileA");
 	pEncryptFileW = (void *)GetProcAddress(library, "EncryptFileW");
+	pEnumDynamicTimeZoneInformation = (void *)GetProcAddress(library, "EnumDynamicTimeZoneInformation");
+	pextEnumDynamicTimeZoneInformation = (void *)GetProcAddress(library_kernelbase, "EnumDynamicTimeZoneInformation");
 	pEnumerateTraceGuids = (void *)GetProcAddress(library, "EnumerateTraceGuids");
+	pEqualPrefixSid = (void *)GetProcAddress(library, "EqualPrefixSid");
+	pextEqualPrefixSid = (void *)GetProcAddress(library_kernelbase, "EqualPrefixSid");
+	pEqualSid = (void *)GetProcAddress(library, "EqualSid");
+	pextEqualSid = (void *)GetProcAddress(library_kernelbase, "EqualSid");
 	pEtwEventActivityIdControl = (void *)GetProcAddress(library, "EtwEventActivityIdControl");
 	pextEtwEventActivityIdControl = (void *)GetProcAddress(library_ntdll, "EtwEventActivityIdControl");
 	pEtwEventEnabled = (void *)GetProcAddress(library, "EtwEventEnabled");
@@ -8674,8 +9591,16 @@ void wine_thunk_initialize_advapi32(void)
 	pextEtwEventWriteTransfer = (void *)GetProcAddress(library_ntdll, "EtwEventWriteTransfer");
 	pFileEncryptionStatusA = (void *)GetProcAddress(library, "FileEncryptionStatusA");
 	pFileEncryptionStatusW = (void *)GetProcAddress(library, "FileEncryptionStatusW");
+	pFindFirstFreeAce = (void *)GetProcAddress(library, "FindFirstFreeAce");
+	pextFindFirstFreeAce = (void *)GetProcAddress(library_kernelbase, "FindFirstFreeAce");
 	pFlushTraceA = (void *)GetProcAddress(library, "FlushTraceA");
 	pFlushTraceW = (void *)GetProcAddress(library, "FlushTraceW");
+	pFreeSid = (void *)GetProcAddress(library, "FreeSid");
+	pextFreeSid = (void *)GetProcAddress(library_kernelbase, "FreeSid");
+	pGetAce = (void *)GetProcAddress(library, "GetAce");
+	pextGetAce = (void *)GetProcAddress(library_kernelbase, "GetAce");
+	pGetAclInformation = (void *)GetProcAddress(library, "GetAclInformation");
+	pextGetAclInformation = (void *)GetProcAddress(library_kernelbase, "GetAclInformation");
 	pGetAuditedPermissionsFromAclA = (void *)GetProcAddress(library, "GetAuditedPermissionsFromAclA");
 	pGetAuditedPermissionsFromAclW = (void *)GetProcAddress(library, "GetAuditedPermissionsFromAclW");
 	pGetCurrentHwProfileA = (void *)GetProcAddress(library, "GetCurrentHwProfileA");
@@ -8688,8 +9613,45 @@ void wine_thunk_initialize_advapi32(void)
 	pGetExplicitEntriesFromAclA = (void *)GetProcAddress(library, "GetExplicitEntriesFromAclA");
 	pGetExplicitEntriesFromAclW = (void *)GetProcAddress(library, "GetExplicitEntriesFromAclW");
 	pGetFileSecurityA = (void *)GetProcAddress(library, "GetFileSecurityA");
+	pGetFileSecurityW = (void *)GetProcAddress(library, "GetFileSecurityW");
+	pextGetFileSecurityW = (void *)GetProcAddress(library_kernelbase, "GetFileSecurityW");
+	pGetKernelObjectSecurity = (void *)GetProcAddress(library, "GetKernelObjectSecurity");
+	pextGetKernelObjectSecurity = (void *)GetProcAddress(library_kernelbase, "GetKernelObjectSecurity");
+	pGetLengthSid = (void *)GetProcAddress(library, "GetLengthSid");
+	pextGetLengthSid = (void *)GetProcAddress(library_kernelbase, "GetLengthSid");
+	pGetNamedSecurityInfoA = (void *)GetProcAddress(library, "GetNamedSecurityInfoA");
 	pGetNamedSecurityInfoExA = (void *)GetProcAddress(library, "GetNamedSecurityInfoExA");
 	pGetNamedSecurityInfoExW = (void *)GetProcAddress(library, "GetNamedSecurityInfoExW");
+	pGetNamedSecurityInfoW = (void *)GetProcAddress(library, "GetNamedSecurityInfoW");
+	pGetNumberOfEventLogRecords = (void *)GetProcAddress(library, "GetNumberOfEventLogRecords");
+	pGetOldestEventLogRecord = (void *)GetProcAddress(library, "GetOldestEventLogRecord");
+	pGetPrivateObjectSecurity = (void *)GetProcAddress(library, "GetPrivateObjectSecurity");
+	pextGetPrivateObjectSecurity = (void *)GetProcAddress(library_kernelbase, "GetPrivateObjectSecurity");
+	pGetSecurityDescriptorControl = (void *)GetProcAddress(library, "GetSecurityDescriptorControl");
+	pextGetSecurityDescriptorControl = (void *)GetProcAddress(library_kernelbase, "GetSecurityDescriptorControl");
+	pGetSecurityDescriptorDacl = (void *)GetProcAddress(library, "GetSecurityDescriptorDacl");
+	pextGetSecurityDescriptorDacl = (void *)GetProcAddress(library_kernelbase, "GetSecurityDescriptorDacl");
+	pGetSecurityDescriptorGroup = (void *)GetProcAddress(library, "GetSecurityDescriptorGroup");
+	pextGetSecurityDescriptorGroup = (void *)GetProcAddress(library_kernelbase, "GetSecurityDescriptorGroup");
+	pGetSecurityDescriptorLength = (void *)GetProcAddress(library, "GetSecurityDescriptorLength");
+	pextGetSecurityDescriptorLength = (void *)GetProcAddress(library_kernelbase, "GetSecurityDescriptorLength");
+	pGetSecurityDescriptorOwner = (void *)GetProcAddress(library, "GetSecurityDescriptorOwner");
+	pextGetSecurityDescriptorOwner = (void *)GetProcAddress(library_kernelbase, "GetSecurityDescriptorOwner");
+	pGetSecurityDescriptorSacl = (void *)GetProcAddress(library, "GetSecurityDescriptorSacl");
+	pextGetSecurityDescriptorSacl = (void *)GetProcAddress(library_kernelbase, "GetSecurityDescriptorSacl");
+	pGetSecurityInfo = (void *)GetProcAddress(library, "GetSecurityInfo");
+	pGetSecurityInfoExA = (void *)GetProcAddress(library, "GetSecurityInfoExA");
+	pGetSecurityInfoExW = (void *)GetProcAddress(library, "GetSecurityInfoExW");
+	pGetSidIdentifierAuthority = (void *)GetProcAddress(library, "GetSidIdentifierAuthority");
+	pextGetSidIdentifierAuthority = (void *)GetProcAddress(library_kernelbase, "GetSidIdentifierAuthority");
+	pGetSidLengthRequired = (void *)GetProcAddress(library, "GetSidLengthRequired");
+	pextGetSidLengthRequired = (void *)GetProcAddress(library_kernelbase, "GetSidLengthRequired");
+	pGetSidSubAuthority = (void *)GetProcAddress(library, "GetSidSubAuthority");
+	pextGetSidSubAuthority = (void *)GetProcAddress(library_kernelbase, "GetSidSubAuthority");
+	pGetSidSubAuthorityCount = (void *)GetProcAddress(library, "GetSidSubAuthorityCount");
+	pextGetSidSubAuthorityCount = (void *)GetProcAddress(library_kernelbase, "GetSidSubAuthorityCount");
+	pGetTokenInformation = (void *)GetProcAddress(library, "GetTokenInformation");
+	pextGetTokenInformation = (void *)GetProcAddress(library_kernelbase, "GetTokenInformation");
 	pEtwGetTraceEnableFlags = (void *)GetProcAddress(library, "EtwGetTraceEnableFlags");
 	pextEtwGetTraceEnableFlags = (void *)GetProcAddress(library_ntdll, "EtwGetTraceEnableFlags");
 	pEtwGetTraceEnableLevel = (void *)GetProcAddress(library, "EtwGetTraceEnableLevel");
@@ -8704,6 +9666,22 @@ void wine_thunk_initialize_advapi32(void)
 	pGetTrusteeTypeW = (void *)GetProcAddress(library, "GetTrusteeTypeW");
 	pGetUserNameA = (void *)GetProcAddress(library, "GetUserNameA");
 	pGetUserNameW = (void *)GetProcAddress(library, "GetUserNameW");
+	pGetWindowsAccountDomainSid = (void *)GetProcAddress(library, "GetWindowsAccountDomainSid");
+	pextGetWindowsAccountDomainSid = (void *)GetProcAddress(library_kernelbase, "GetWindowsAccountDomainSid");
+	pImpersonateAnonymousToken = (void *)GetProcAddress(library, "ImpersonateAnonymousToken");
+	pextImpersonateAnonymousToken = (void *)GetProcAddress(library_kernelbase, "ImpersonateAnonymousToken");
+	pImpersonateLoggedOnUser = (void *)GetProcAddress(library, "ImpersonateLoggedOnUser");
+	pextImpersonateLoggedOnUser = (void *)GetProcAddress(library_kernelbase, "ImpersonateLoggedOnUser");
+	pImpersonateNamedPipeClient = (void *)GetProcAddress(library, "ImpersonateNamedPipeClient");
+	pextImpersonateNamedPipeClient = (void *)GetProcAddress(library_kernelbase, "ImpersonateNamedPipeClient");
+	pImpersonateSelf = (void *)GetProcAddress(library, "ImpersonateSelf");
+	pextImpersonateSelf = (void *)GetProcAddress(library_kernelbase, "ImpersonateSelf");
+	pInitializeAcl = (void *)GetProcAddress(library, "InitializeAcl");
+	pextInitializeAcl = (void *)GetProcAddress(library_kernelbase, "InitializeAcl");
+	pInitializeSecurityDescriptor = (void *)GetProcAddress(library, "InitializeSecurityDescriptor");
+	pextInitializeSecurityDescriptor = (void *)GetProcAddress(library_kernelbase, "InitializeSecurityDescriptor");
+	pInitializeSid = (void *)GetProcAddress(library, "InitializeSid");
+	pextInitializeSid = (void *)GetProcAddress(library_kernelbase, "InitializeSid");
 	pInitiateShutdownA = (void *)GetProcAddress(library, "InitiateShutdownA");
 	pInitiateShutdownW = (void *)GetProcAddress(library, "InitiateShutdownW");
 	pInitiateSystemShutdownA = (void *)GetProcAddress(library, "InitiateSystemShutdownA");
@@ -8711,6 +9689,16 @@ void wine_thunk_initialize_advapi32(void)
 	pInitiateSystemShutdownExW = (void *)GetProcAddress(library, "InitiateSystemShutdownExW");
 	pInitiateSystemShutdownW = (void *)GetProcAddress(library, "InitiateSystemShutdownW");
 	pIsTextUnicode = (void *)GetProcAddress(library, "IsTextUnicode");
+	pIsTokenRestricted = (void *)GetProcAddress(library, "IsTokenRestricted");
+	pextIsTokenRestricted = (void *)GetProcAddress(library_kernelbase, "IsTokenRestricted");
+	pIsValidAcl = (void *)GetProcAddress(library, "IsValidAcl");
+	pextIsValidAcl = (void *)GetProcAddress(library_kernelbase, "IsValidAcl");
+	pIsValidSecurityDescriptor = (void *)GetProcAddress(library, "IsValidSecurityDescriptor");
+	pextIsValidSecurityDescriptor = (void *)GetProcAddress(library_kernelbase, "IsValidSecurityDescriptor");
+	pIsValidSid = (void *)GetProcAddress(library, "IsValidSid");
+	pextIsValidSid = (void *)GetProcAddress(library_kernelbase, "IsValidSid");
+	pIsWellKnownSid = (void *)GetProcAddress(library, "IsWellKnownSid");
+	pextIsWellKnownSid = (void *)GetProcAddress(library_kernelbase, "IsWellKnownSid");
 	pLogonUserA = (void *)GetProcAddress(library, "LogonUserA");
 	pLogonUserW = (void *)GetProcAddress(library, "LogonUserW");
 	pLookupAccountNameA = (void *)GetProcAddress(library, "LookupAccountNameA");
@@ -8768,48 +9756,183 @@ void wine_thunk_initialize_advapi32(void)
 	pextMD5Init = (void *)GetProcAddress(library_ntdll, "MD5Init");
 	pMD5Update = (void *)GetProcAddress(library, "MD5Update");
 	pextMD5Update = (void *)GetProcAddress(library_ntdll, "MD5Update");
+	pMakeAbsoluteSD = (void *)GetProcAddress(library, "MakeAbsoluteSD");
+	pextMakeAbsoluteSD = (void *)GetProcAddress(library_kernelbase, "MakeAbsoluteSD");
+	pMakeSelfRelativeSD = (void *)GetProcAddress(library, "MakeSelfRelativeSD");
+	pextMakeSelfRelativeSD = (void *)GetProcAddress(library_kernelbase, "MakeSelfRelativeSD");
+	pMapGenericMask = (void *)GetProcAddress(library, "MapGenericMask");
+	pextMapGenericMask = (void *)GetProcAddress(library_kernelbase, "MapGenericMask");
 	pNotifyBootConfigStatus = (void *)GetProcAddress(library, "NotifyBootConfigStatus");
+	pNotifyChangeEventLog = (void *)GetProcAddress(library, "NotifyChangeEventLog");
 	pObjectCloseAuditAlarmA = (void *)GetProcAddress(library, "ObjectCloseAuditAlarmA");
+	pObjectCloseAuditAlarmW = (void *)GetProcAddress(library, "ObjectCloseAuditAlarmW");
+	pextObjectCloseAuditAlarmW = (void *)GetProcAddress(library_kernelbase, "ObjectCloseAuditAlarmW");
+	pObjectDeleteAuditAlarmW = (void *)GetProcAddress(library, "ObjectDeleteAuditAlarmW");
+	pextObjectDeleteAuditAlarmW = (void *)GetProcAddress(library_kernelbase, "ObjectDeleteAuditAlarmW");
 	pObjectOpenAuditAlarmA = (void *)GetProcAddress(library, "ObjectOpenAuditAlarmA");
+	pObjectOpenAuditAlarmW = (void *)GetProcAddress(library, "ObjectOpenAuditAlarmW");
+	pextObjectOpenAuditAlarmW = (void *)GetProcAddress(library_kernelbase, "ObjectOpenAuditAlarmW");
 	pObjectPrivilegeAuditAlarmA = (void *)GetProcAddress(library, "ObjectPrivilegeAuditAlarmA");
+	pObjectPrivilegeAuditAlarmW = (void *)GetProcAddress(library, "ObjectPrivilegeAuditAlarmW");
+	pextObjectPrivilegeAuditAlarmW = (void *)GetProcAddress(library_kernelbase, "ObjectPrivilegeAuditAlarmW");
+	pOpenBackupEventLogA = (void *)GetProcAddress(library, "OpenBackupEventLogA");
+	pOpenBackupEventLogW = (void *)GetProcAddress(library, "OpenBackupEventLogW");
 	pOpenEncryptedFileRawA = (void *)GetProcAddress(library, "OpenEncryptedFileRawA");
 	pOpenEncryptedFileRawW = (void *)GetProcAddress(library, "OpenEncryptedFileRawW");
+	pOpenEventLogA = (void *)GetProcAddress(library, "OpenEventLogA");
+	pOpenEventLogW = (void *)GetProcAddress(library, "OpenEventLogW");
+	pOpenProcessToken = (void *)GetProcAddress(library, "OpenProcessToken");
+	pextOpenProcessToken = (void *)GetProcAddress(library_kernelbase, "OpenProcessToken");
+	pOpenThreadToken = (void *)GetProcAddress(library, "OpenThreadToken");
+	pextOpenThreadToken = (void *)GetProcAddress(library_kernelbase, "OpenThreadToken");
 	pOpenTraceA = (void *)GetProcAddress(library, "OpenTraceA");
 	pOpenTraceW = (void *)GetProcAddress(library, "OpenTraceW");
+	pPerfCreateInstance = (void *)GetProcAddress(library, "PerfCreateInstance");
+	pextPerfCreateInstance = (void *)GetProcAddress(library_kernelbase, "PerfCreateInstance");
+	pPerfDeleteInstance = (void *)GetProcAddress(library, "PerfDeleteInstance");
+	pextPerfDeleteInstance = (void *)GetProcAddress(library_kernelbase, "PerfDeleteInstance");
+	pPerfSetCounterRefValue = (void *)GetProcAddress(library, "PerfSetCounterRefValue");
+	pextPerfSetCounterRefValue = (void *)GetProcAddress(library_kernelbase, "PerfSetCounterRefValue");
+	pPerfSetCounterSetInfo = (void *)GetProcAddress(library, "PerfSetCounterSetInfo");
+	pextPerfSetCounterSetInfo = (void *)GetProcAddress(library_kernelbase, "PerfSetCounterSetInfo");
+	pPerfStartProvider = (void *)GetProcAddress(library, "PerfStartProvider");
+	pextPerfStartProvider = (void *)GetProcAddress(library_kernelbase, "PerfStartProvider");
+	pPerfStartProviderEx = (void *)GetProcAddress(library, "PerfStartProviderEx");
+	pextPerfStartProviderEx = (void *)GetProcAddress(library_kernelbase, "PerfStartProviderEx");
+	pPerfStopProvider = (void *)GetProcAddress(library, "PerfStopProvider");
+	pextPerfStopProvider = (void *)GetProcAddress(library_kernelbase, "PerfStopProvider");
+	pPrivilegeCheck = (void *)GetProcAddress(library, "PrivilegeCheck");
+	pextPrivilegeCheck = (void *)GetProcAddress(library_kernelbase, "PrivilegeCheck");
 	pPrivilegedServiceAuditAlarmA = (void *)GetProcAddress(library, "PrivilegedServiceAuditAlarmA");
+	pPrivilegedServiceAuditAlarmW = (void *)GetProcAddress(library, "PrivilegedServiceAuditAlarmW");
+	pextPrivilegedServiceAuditAlarmW = (void *)GetProcAddress(library_kernelbase, "PrivilegedServiceAuditAlarmW");
 	pProcessTrace = (void *)GetProcAddress(library, "ProcessTrace");
 	pQueryAllTracesA = (void *)GetProcAddress(library, "QueryAllTracesA");
 	pQueryAllTracesW = (void *)GetProcAddress(library, "QueryAllTracesW");
 	pQueryTraceW = (void *)GetProcAddress(library, "QueryTraceW");
 	pQueryWindows31FilesMigration = (void *)GetProcAddress(library, "QueryWindows31FilesMigration");
 	pReadEncryptedFileRaw = (void *)GetProcAddress(library, "ReadEncryptedFileRaw");
+	pReadEventLogA = (void *)GetProcAddress(library, "ReadEventLogA");
+	pReadEventLogW = (void *)GetProcAddress(library, "ReadEventLogW");
+	pRegCloseKey = (void *)GetProcAddress(library, "RegCloseKey");
+	pextRegCloseKey = (void *)GetProcAddress(library_kernelbase, "RegCloseKey");
 	pRegConnectRegistryA = (void *)GetProcAddress(library, "RegConnectRegistryA");
 	pRegConnectRegistryW = (void *)GetProcAddress(library, "RegConnectRegistryW");
 	pRegCopyTreeA = (void *)GetProcAddress(library, "RegCopyTreeA");
+	pRegCopyTreeW = (void *)GetProcAddress(library, "RegCopyTreeW");
+	pextRegCopyTreeW = (void *)GetProcAddress(library_kernelbase, "RegCopyTreeW");
 	pRegCreateKeyA = (void *)GetProcAddress(library, "RegCreateKeyA");
+	pRegCreateKeyExA = (void *)GetProcAddress(library, "RegCreateKeyExA");
+	pextRegCreateKeyExA = (void *)GetProcAddress(library_kernelbase, "RegCreateKeyExA");
+	pRegCreateKeyExW = (void *)GetProcAddress(library, "RegCreateKeyExW");
+	pextRegCreateKeyExW = (void *)GetProcAddress(library_kernelbase, "RegCreateKeyExW");
 	pRegCreateKeyTransactedA = (void *)GetProcAddress(library, "RegCreateKeyTransactedA");
 	pRegCreateKeyTransactedW = (void *)GetProcAddress(library, "RegCreateKeyTransactedW");
 	pRegCreateKeyW = (void *)GetProcAddress(library, "RegCreateKeyW");
 	pRegDeleteKeyA = (void *)GetProcAddress(library, "RegDeleteKeyA");
+	pRegDeleteKeyExA = (void *)GetProcAddress(library, "RegDeleteKeyExA");
+	pextRegDeleteKeyExA = (void *)GetProcAddress(library_kernelbase, "RegDeleteKeyExA");
+	pRegDeleteKeyExW = (void *)GetProcAddress(library, "RegDeleteKeyExW");
+	pextRegDeleteKeyExW = (void *)GetProcAddress(library_kernelbase, "RegDeleteKeyExW");
+	pRegDeleteKeyValueA = (void *)GetProcAddress(library, "RegDeleteKeyValueA");
+	pextRegDeleteKeyValueA = (void *)GetProcAddress(library_kernelbase, "RegDeleteKeyValueA");
+	pRegDeleteKeyValueW = (void *)GetProcAddress(library, "RegDeleteKeyValueW");
+	pextRegDeleteKeyValueW = (void *)GetProcAddress(library_kernelbase, "RegDeleteKeyValueW");
 	pRegDeleteKeyW = (void *)GetProcAddress(library, "RegDeleteKeyW");
+	pRegDeleteTreeA = (void *)GetProcAddress(library, "RegDeleteTreeA");
+	pextRegDeleteTreeA = (void *)GetProcAddress(library_kernelbase, "RegDeleteTreeA");
+	pRegDeleteTreeW = (void *)GetProcAddress(library, "RegDeleteTreeW");
+	pextRegDeleteTreeW = (void *)GetProcAddress(library_kernelbase, "RegDeleteTreeW");
+	pRegDeleteValueA = (void *)GetProcAddress(library, "RegDeleteValueA");
+	pextRegDeleteValueA = (void *)GetProcAddress(library_kernelbase, "RegDeleteValueA");
+	pRegDeleteValueW = (void *)GetProcAddress(library, "RegDeleteValueW");
+	pextRegDeleteValueW = (void *)GetProcAddress(library_kernelbase, "RegDeleteValueW");
 	pRegDisablePredefinedCache = (void *)GetProcAddress(library, "RegDisablePredefinedCache");
 	pRegDisableReflectionKey = (void *)GetProcAddress(library, "RegDisableReflectionKey");
 	pRegEnumKeyA = (void *)GetProcAddress(library, "RegEnumKeyA");
+	pRegEnumKeyExA = (void *)GetProcAddress(library, "RegEnumKeyExA");
+	pextRegEnumKeyExA = (void *)GetProcAddress(library_kernelbase, "RegEnumKeyExA");
+	pRegEnumKeyExW = (void *)GetProcAddress(library, "RegEnumKeyExW");
+	pextRegEnumKeyExW = (void *)GetProcAddress(library_kernelbase, "RegEnumKeyExW");
 	pRegEnumKeyW = (void *)GetProcAddress(library, "RegEnumKeyW");
+	pRegEnumValueA = (void *)GetProcAddress(library, "RegEnumValueA");
+	pextRegEnumValueA = (void *)GetProcAddress(library_kernelbase, "RegEnumValueA");
+	pRegEnumValueW = (void *)GetProcAddress(library, "RegEnumValueW");
+	pextRegEnumValueW = (void *)GetProcAddress(library_kernelbase, "RegEnumValueW");
+	pRegFlushKey = (void *)GetProcAddress(library, "RegFlushKey");
+	pextRegFlushKey = (void *)GetProcAddress(library_kernelbase, "RegFlushKey");
+	pRegGetKeySecurity = (void *)GetProcAddress(library, "RegGetKeySecurity");
+	pextRegGetKeySecurity = (void *)GetProcAddress(library_kernelbase, "RegGetKeySecurity");
+	pRegGetValueA = (void *)GetProcAddress(library, "RegGetValueA");
+	pextRegGetValueA = (void *)GetProcAddress(library_kernelbase, "RegGetValueA");
+	pRegGetValueW = (void *)GetProcAddress(library, "RegGetValueW");
+	pextRegGetValueW = (void *)GetProcAddress(library_kernelbase, "RegGetValueW");
+	pRegLoadAppKeyA = (void *)GetProcAddress(library, "RegLoadAppKeyA");
+	pextRegLoadAppKeyA = (void *)GetProcAddress(library_kernelbase, "RegLoadAppKeyA");
+	pRegLoadAppKeyW = (void *)GetProcAddress(library, "RegLoadAppKeyW");
+	pextRegLoadAppKeyW = (void *)GetProcAddress(library_kernelbase, "RegLoadAppKeyW");
+	pRegLoadKeyA = (void *)GetProcAddress(library, "RegLoadKeyA");
+	pextRegLoadKeyA = (void *)GetProcAddress(library_kernelbase, "RegLoadKeyA");
+	pRegLoadKeyW = (void *)GetProcAddress(library, "RegLoadKeyW");
+	pextRegLoadKeyW = (void *)GetProcAddress(library_kernelbase, "RegLoadKeyW");
+	pRegLoadMUIStringA = (void *)GetProcAddress(library, "RegLoadMUIStringA");
+	pextRegLoadMUIStringA = (void *)GetProcAddress(library_kernelbase, "RegLoadMUIStringA");
+	pRegLoadMUIStringW = (void *)GetProcAddress(library, "RegLoadMUIStringW");
+	pextRegLoadMUIStringW = (void *)GetProcAddress(library_kernelbase, "RegLoadMUIStringW");
+	pRegNotifyChangeKeyValue = (void *)GetProcAddress(library, "RegNotifyChangeKeyValue");
+	pextRegNotifyChangeKeyValue = (void *)GetProcAddress(library_kernelbase, "RegNotifyChangeKeyValue");
+	pRegOpenCurrentUser = (void *)GetProcAddress(library, "RegOpenCurrentUser");
+	pextRegOpenCurrentUser = (void *)GetProcAddress(library_kernelbase, "RegOpenCurrentUser");
 	pRegOpenKeyA = (void *)GetProcAddress(library, "RegOpenKeyA");
+	pRegOpenKeyExA = (void *)GetProcAddress(library, "RegOpenKeyExA");
+	pextRegOpenKeyExA = (void *)GetProcAddress(library_kernelbase, "RegOpenKeyExA");
+	pRegOpenKeyExW = (void *)GetProcAddress(library, "RegOpenKeyExW");
+	pextRegOpenKeyExW = (void *)GetProcAddress(library_kernelbase, "RegOpenKeyExW");
 	pRegOpenKeyW = (void *)GetProcAddress(library, "RegOpenKeyW");
+	pRegOpenUserClassesRoot = (void *)GetProcAddress(library, "RegOpenUserClassesRoot");
+	pextRegOpenUserClassesRoot = (void *)GetProcAddress(library_kernelbase, "RegOpenUserClassesRoot");
 	pRegOverridePredefKey = (void *)GetProcAddress(library, "RegOverridePredefKey");
+	pRegQueryInfoKeyA = (void *)GetProcAddress(library, "RegQueryInfoKeyA");
+	pextRegQueryInfoKeyA = (void *)GetProcAddress(library_kernelbase, "RegQueryInfoKeyA");
+	pRegQueryInfoKeyW = (void *)GetProcAddress(library, "RegQueryInfoKeyW");
+	pextRegQueryInfoKeyW = (void *)GetProcAddress(library_kernelbase, "RegQueryInfoKeyW");
 	pRegQueryMultipleValuesA = (void *)GetProcAddress(library, "RegQueryMultipleValuesA");
 	pRegQueryMultipleValuesW = (void *)GetProcAddress(library, "RegQueryMultipleValuesW");
 	pRegQueryReflectionKey = (void *)GetProcAddress(library, "RegQueryReflectionKey");
 	pRegQueryValueA = (void *)GetProcAddress(library, "RegQueryValueA");
+	pRegQueryValueExA = (void *)GetProcAddress(library, "RegQueryValueExA");
+	pextRegQueryValueExA = (void *)GetProcAddress(library_kernelbase, "RegQueryValueExA");
+	pRegQueryValueExW = (void *)GetProcAddress(library, "RegQueryValueExW");
+	pextRegQueryValueExW = (void *)GetProcAddress(library_kernelbase, "RegQueryValueExW");
 	pRegQueryValueW = (void *)GetProcAddress(library, "RegQueryValueW");
 	pRegReplaceKeyA = (void *)GetProcAddress(library, "RegReplaceKeyA");
 	pRegReplaceKeyW = (void *)GetProcAddress(library, "RegReplaceKeyW");
+	pRegRestoreKeyA = (void *)GetProcAddress(library, "RegRestoreKeyA");
+	pextRegRestoreKeyA = (void *)GetProcAddress(library_kernelbase, "RegRestoreKeyA");
+	pRegRestoreKeyW = (void *)GetProcAddress(library, "RegRestoreKeyW");
+	pextRegRestoreKeyW = (void *)GetProcAddress(library_kernelbase, "RegRestoreKeyW");
 	pRegSaveKeyA = (void *)GetProcAddress(library, "RegSaveKeyA");
+	pRegSaveKeyExA = (void *)GetProcAddress(library, "RegSaveKeyExA");
+	pextRegSaveKeyExA = (void *)GetProcAddress(library_kernelbase, "RegSaveKeyExA");
+	pRegSaveKeyExW = (void *)GetProcAddress(library, "RegSaveKeyExW");
+	pextRegSaveKeyExW = (void *)GetProcAddress(library_kernelbase, "RegSaveKeyExW");
 	pRegSaveKeyW = (void *)GetProcAddress(library, "RegSaveKeyW");
+	pRegSetKeySecurity = (void *)GetProcAddress(library, "RegSetKeySecurity");
+	pextRegSetKeySecurity = (void *)GetProcAddress(library_kernelbase, "RegSetKeySecurity");
+	pRegSetKeyValueA = (void *)GetProcAddress(library, "RegSetKeyValueA");
+	pextRegSetKeyValueA = (void *)GetProcAddress(library_kernelbase, "RegSetKeyValueA");
+	pRegSetKeyValueW = (void *)GetProcAddress(library, "RegSetKeyValueW");
+	pextRegSetKeyValueW = (void *)GetProcAddress(library_kernelbase, "RegSetKeyValueW");
 	pRegSetValueA = (void *)GetProcAddress(library, "RegSetValueA");
+	pRegSetValueExA = (void *)GetProcAddress(library, "RegSetValueExA");
+	pextRegSetValueExA = (void *)GetProcAddress(library_kernelbase, "RegSetValueExA");
+	pRegSetValueExW = (void *)GetProcAddress(library, "RegSetValueExW");
+	pextRegSetValueExW = (void *)GetProcAddress(library_kernelbase, "RegSetValueExW");
 	pRegSetValueW = (void *)GetProcAddress(library, "RegSetValueW");
+	pRegUnLoadKeyA = (void *)GetProcAddress(library, "RegUnLoadKeyA");
+	pextRegUnLoadKeyA = (void *)GetProcAddress(library_kernelbase, "RegUnLoadKeyA");
+	pRegUnLoadKeyW = (void *)GetProcAddress(library, "RegUnLoadKeyW");
+	pextRegUnLoadKeyW = (void *)GetProcAddress(library_kernelbase, "RegUnLoadKeyW");
 	pRegisterEventSourceA = (void *)GetProcAddress(library, "RegisterEventSourceA");
 	pRegisterEventSourceW = (void *)GetProcAddress(library, "RegisterEventSourceW");
 	pEtwRegisterTraceGuidsA = (void *)GetProcAddress(library, "EtwRegisterTraceGuidsA");
@@ -8819,17 +9942,42 @@ void wine_thunk_initialize_advapi32(void)
 	pRegisterWaitChainCOMCallback = (void *)GetProcAddress(library, "RegisterWaitChainCOMCallback");
 	pReportEventA = (void *)GetProcAddress(library, "ReportEventA");
 	pReportEventW = (void *)GetProcAddress(library, "ReportEventW");
+	pRevertToSelf = (void *)GetProcAddress(library, "RevertToSelf");
+	pextRevertToSelf = (void *)GetProcAddress(library_kernelbase, "RevertToSelf");
 	pSaferCloseLevel = (void *)GetProcAddress(library, "SaferCloseLevel");
 	pSaferComputeTokenFromLevel = (void *)GetProcAddress(library, "SaferComputeTokenFromLevel");
 	pSaferCreateLevel = (void *)GetProcAddress(library, "SaferCreateLevel");
 	pSaferGetPolicyInformation = (void *)GetProcAddress(library, "SaferGetPolicyInformation");
 	pSaferIdentifyLevel = (void *)GetProcAddress(library, "SaferIdentifyLevel");
 	pSaferSetLevelInformation = (void *)GetProcAddress(library, "SaferSetLevelInformation");
+	pSetAclInformation = (void *)GetProcAddress(library, "SetAclInformation");
+	pextSetAclInformation = (void *)GetProcAddress(library_kernelbase, "SetAclInformation");
 	pSetEntriesInAclA = (void *)GetProcAddress(library, "SetEntriesInAclA");
 	pSetEntriesInAclW = (void *)GetProcAddress(library, "SetEntriesInAclW");
 	pSetFileSecurityA = (void *)GetProcAddress(library, "SetFileSecurityA");
+	pSetFileSecurityW = (void *)GetProcAddress(library, "SetFileSecurityW");
+	pextSetFileSecurityW = (void *)GetProcAddress(library_kernelbase, "SetFileSecurityW");
+	pSetKernelObjectSecurity = (void *)GetProcAddress(library, "SetKernelObjectSecurity");
+	pextSetKernelObjectSecurity = (void *)GetProcAddress(library_kernelbase, "SetKernelObjectSecurity");
 	pSetNamedSecurityInfoA = (void *)GetProcAddress(library, "SetNamedSecurityInfoA");
 	pSetNamedSecurityInfoW = (void *)GetProcAddress(library, "SetNamedSecurityInfoW");
+	pSetPrivateObjectSecurity = (void *)GetProcAddress(library, "SetPrivateObjectSecurity");
+	pextSetPrivateObjectSecurity = (void *)GetProcAddress(library_kernelbase, "SetPrivateObjectSecurity");
+	pSetSecurityDescriptorControl = (void *)GetProcAddress(library, "SetSecurityDescriptorControl");
+	pextSetSecurityDescriptorControl = (void *)GetProcAddress(library_kernelbase, "SetSecurityDescriptorControl");
+	pSetSecurityDescriptorDacl = (void *)GetProcAddress(library, "SetSecurityDescriptorDacl");
+	pextSetSecurityDescriptorDacl = (void *)GetProcAddress(library_kernelbase, "SetSecurityDescriptorDacl");
+	pSetSecurityDescriptorGroup = (void *)GetProcAddress(library, "SetSecurityDescriptorGroup");
+	pextSetSecurityDescriptorGroup = (void *)GetProcAddress(library_kernelbase, "SetSecurityDescriptorGroup");
+	pSetSecurityDescriptorOwner = (void *)GetProcAddress(library, "SetSecurityDescriptorOwner");
+	pextSetSecurityDescriptorOwner = (void *)GetProcAddress(library_kernelbase, "SetSecurityDescriptorOwner");
+	pSetSecurityDescriptorSacl = (void *)GetProcAddress(library, "SetSecurityDescriptorSacl");
+	pextSetSecurityDescriptorSacl = (void *)GetProcAddress(library_kernelbase, "SetSecurityDescriptorSacl");
+	pSetSecurityInfo = (void *)GetProcAddress(library, "SetSecurityInfo");
+	pSetThreadToken = (void *)GetProcAddress(library, "SetThreadToken");
+	pextSetThreadToken = (void *)GetProcAddress(library_kernelbase, "SetThreadToken");
+	pSetTokenInformation = (void *)GetProcAddress(library, "SetTokenInformation");
+	pextSetTokenInformation = (void *)GetProcAddress(library_kernelbase, "SetTokenInformation");
 	pStartTraceA = (void *)GetProcAddress(library, "StartTraceA");
 	pStartTraceW = (void *)GetProcAddress(library, "StartTraceW");
 	pStopTraceA = (void *)GetProcAddress(library, "StopTraceA");
@@ -8886,20 +10034,64 @@ void* wine_thunk_get_for_advapi32(void *func)
 	if (!initialized)
 		return NULL;
 
-	if (func == pA_SHAFinal)
+	if (func == pA_SHAFinal && func != pextA_SHAFinal)
 		return wine_thunk_get_for_any(pextA_SHAFinal);
-	if (func == pA_SHAInit)
+	if (func == pA_SHAInit && func != pextA_SHAInit)
 		return wine_thunk_get_for_any(pextA_SHAInit);
-	if (func == pA_SHAUpdate)
+	if (func == pA_SHAUpdate && func != pextA_SHAUpdate)
 		return wine_thunk_get_for_any(pextA_SHAUpdate);
 	if (func == pAbortSystemShutdownA)
 		return wine32a_advapi32_AbortSystemShutdownA;
 	if (func == pAbortSystemShutdownW)
 		return wine32a_advapi32_AbortSystemShutdownW;
+	if (func == pAccessCheck && func != pextAccessCheck)
+		return wine_thunk_get_for_any(pextAccessCheck);
 	if (func == pAccessCheckAndAuditAlarmA)
 		return wine32a_advapi32_AccessCheckAndAuditAlarmA;
+	if (func == pAccessCheckAndAuditAlarmW && func != pextAccessCheckAndAuditAlarmW)
+		return wine_thunk_get_for_any(pextAccessCheckAndAuditAlarmW);
+	if (func == pAccessCheckByType && func != pextAccessCheckByType)
+		return wine_thunk_get_for_any(pextAccessCheckByType);
+	if (func == pAddAccessAllowedAce && func != pextAddAccessAllowedAce)
+		return wine_thunk_get_for_any(pextAddAccessAllowedAce);
+	if (func == pAddAccessAllowedAceEx && func != pextAddAccessAllowedAceEx)
+		return wine_thunk_get_for_any(pextAddAccessAllowedAceEx);
+	if (func == pAddAccessAllowedObjectAce && func != pextAddAccessAllowedObjectAce)
+		return wine_thunk_get_for_any(pextAddAccessAllowedObjectAce);
+	if (func == pAddAccessDeniedAce && func != pextAddAccessDeniedAce)
+		return wine_thunk_get_for_any(pextAddAccessDeniedAce);
+	if (func == pAddAccessDeniedAceEx && func != pextAddAccessDeniedAceEx)
+		return wine_thunk_get_for_any(pextAddAccessDeniedAceEx);
+	if (func == pAddAccessDeniedObjectAce && func != pextAddAccessDeniedObjectAce)
+		return wine_thunk_get_for_any(pextAddAccessDeniedObjectAce);
+	if (func == pAddAce && func != pextAddAce)
+		return wine_thunk_get_for_any(pextAddAce);
+	if (func == pAddAuditAccessAce && func != pextAddAuditAccessAce)
+		return wine_thunk_get_for_any(pextAddAuditAccessAce);
+	if (func == pAddAuditAccessAceEx && func != pextAddAuditAccessAceEx)
+		return wine_thunk_get_for_any(pextAddAuditAccessAceEx);
+	if (func == pAddAuditAccessObjectAce && func != pextAddAuditAccessObjectAce)
+		return wine_thunk_get_for_any(pextAddAuditAccessObjectAce);
+	if (func == pAddMandatoryAce && func != pextAddMandatoryAce)
+		return wine_thunk_get_for_any(pextAddMandatoryAce);
+	if (func == pAdjustTokenGroups && func != pextAdjustTokenGroups)
+		return wine_thunk_get_for_any(pextAdjustTokenGroups);
+	if (func == pAdjustTokenPrivileges && func != pextAdjustTokenPrivileges)
+		return wine_thunk_get_for_any(pextAdjustTokenPrivileges);
+	if (func == pAllocateAndInitializeSid && func != pextAllocateAndInitializeSid)
+		return wine_thunk_get_for_any(pextAllocateAndInitializeSid);
+	if (func == pAllocateLocallyUniqueId && func != pextAllocateLocallyUniqueId)
+		return wine_thunk_get_for_any(pextAllocateLocallyUniqueId);
+	if (func == pAreAllAccessesGranted && func != pextAreAllAccessesGranted)
+		return wine_thunk_get_for_any(pextAreAllAccessesGranted);
+	if (func == pAreAnyAccessesGranted && func != pextAreAnyAccessesGranted)
+		return wine_thunk_get_for_any(pextAreAnyAccessesGranted);
 	if (func == pAuditQuerySystemPolicy)
 		return wine32a_advapi32_AuditQuerySystemPolicy;
+	if (func == pBackupEventLogA)
+		return wine32a_advapi32_BackupEventLogA;
+	if (func == pBackupEventLogW)
+		return wine32a_advapi32_BackupEventLogW;
 	if (func == pBuildExplicitAccessWithNameA)
 		return wine32a_advapi32_BuildExplicitAccessWithNameA;
 	if (func == pBuildExplicitAccessWithNameW)
@@ -8924,8 +10116,16 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_BuildTrusteeWithSidA;
 	if (func == pBuildTrusteeWithSidW)
 		return wine32a_advapi32_BuildTrusteeWithSidW;
+	if (func == pCheckTokenMembership && func != pextCheckTokenMembership)
+		return wine_thunk_get_for_any(pextCheckTokenMembership);
+	if (func == pClearEventLogA)
+		return wine32a_advapi32_ClearEventLogA;
+	if (func == pClearEventLogW)
+		return wine32a_advapi32_ClearEventLogW;
 	if (func == pCloseEncryptedFileRaw)
 		return wine32a_advapi32_CloseEncryptedFileRaw;
+	if (func == pCloseEventLog)
+		return wine32a_advapi32_CloseEventLog;
 	if (func == pCloseTrace)
 		return wine32a_advapi32_CloseTrace;
 	if (func == pCommandLineFromMsiDescriptor)
@@ -8950,14 +10150,28 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_ConvertStringSidToSidA;
 	if (func == pConvertStringSidToSidW)
 		return wine32a_advapi32_ConvertStringSidToSidW;
-	if (func == pCreateProcessAsUserA)
+	if (func == pConvertToAutoInheritPrivateObjectSecurity && func != pextConvertToAutoInheritPrivateObjectSecurity)
+		return wine_thunk_get_for_any(pextConvertToAutoInheritPrivateObjectSecurity);
+	if (func == pCopySid && func != pextCopySid)
+		return wine_thunk_get_for_any(pextCopySid);
+	if (func == pCreatePrivateObjectSecurity && func != pextCreatePrivateObjectSecurity)
+		return wine_thunk_get_for_any(pextCreatePrivateObjectSecurity);
+	if (func == pCreatePrivateObjectSecurityEx && func != pextCreatePrivateObjectSecurityEx)
+		return wine_thunk_get_for_any(pextCreatePrivateObjectSecurityEx);
+	if (func == pCreatePrivateObjectSecurityWithMultipleInheritance && func != pextCreatePrivateObjectSecurityWithMultipleInheritance)
+		return wine_thunk_get_for_any(pextCreatePrivateObjectSecurityWithMultipleInheritance);
+	if (func == pCreateProcessAsUserA && func != pextCreateProcessAsUserA)
 		return wine_thunk_get_for_any(pextCreateProcessAsUserA);
-	if (func == pCreateProcessAsUserW)
+	if (func == pCreateProcessAsUserW && func != pextCreateProcessAsUserW)
 		return wine_thunk_get_for_any(pextCreateProcessAsUserW);
 	if (func == pCreateProcessWithLogonW)
 		return wine32a_advapi32_CreateProcessWithLogonW;
 	if (func == pCreateProcessWithTokenW)
 		return wine32a_advapi32_CreateProcessWithTokenW;
+	if (func == pCreateRestrictedToken && func != pextCreateRestrictedToken)
+		return wine_thunk_get_for_any(pextCreateRestrictedToken);
+	if (func == pCreateWellKnownSid && func != pextCreateWellKnownSid)
+		return wine_thunk_get_for_any(pextCreateWellKnownSid);
 	if (func == pCredDeleteA)
 		return wine32a_advapi32_CredDeleteA;
 	if (func == pCredDeleteW)
@@ -9076,8 +10290,16 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_DecryptFileA;
 	if (func == pDecryptFileW)
 		return wine32a_advapi32_DecryptFileW;
+	if (func == pDeleteAce && func != pextDeleteAce)
+		return wine_thunk_get_for_any(pextDeleteAce);
 	if (func == pDeregisterEventSource)
 		return wine32a_advapi32_DeregisterEventSource;
+	if (func == pDestroyPrivateObjectSecurity && func != pextDestroyPrivateObjectSecurity)
+		return wine_thunk_get_for_any(pextDestroyPrivateObjectSecurity);
+	if (func == pDuplicateToken && func != pextDuplicateToken)
+		return wine_thunk_get_for_any(pextDuplicateToken);
+	if (func == pDuplicateTokenEx && func != pextDuplicateTokenEx)
+		return wine_thunk_get_for_any(pextDuplicateTokenEx);
 	if (func == pEnableTrace)
 		return wine32a_advapi32_EnableTrace;
 	if (func == pEnableTraceEx)
@@ -9088,34 +10310,48 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_EncryptFileA;
 	if (func == pEncryptFileW)
 		return wine32a_advapi32_EncryptFileW;
+	if (func == pEnumDynamicTimeZoneInformation && func != pextEnumDynamicTimeZoneInformation)
+		return wine_thunk_get_for_any(pextEnumDynamicTimeZoneInformation);
 	if (func == pEnumerateTraceGuids)
 		return wine32a_advapi32_EnumerateTraceGuids;
-	if (func == pEtwEventActivityIdControl)
+	if (func == pEqualPrefixSid && func != pextEqualPrefixSid)
+		return wine_thunk_get_for_any(pextEqualPrefixSid);
+	if (func == pEqualSid && func != pextEqualSid)
+		return wine_thunk_get_for_any(pextEqualSid);
+	if (func == pEtwEventActivityIdControl && func != pextEtwEventActivityIdControl)
 		return wine_thunk_get_for_any(pextEtwEventActivityIdControl);
-	if (func == pEtwEventEnabled)
+	if (func == pEtwEventEnabled && func != pextEtwEventEnabled)
 		return wine_thunk_get_for_any(pextEtwEventEnabled);
-	if (func == pEtwEventProviderEnabled)
+	if (func == pEtwEventProviderEnabled && func != pextEtwEventProviderEnabled)
 		return wine_thunk_get_for_any(pextEtwEventProviderEnabled);
-	if (func == pEtwEventRegister)
+	if (func == pEtwEventRegister && func != pextEtwEventRegister)
 		return wine_thunk_get_for_any(pextEtwEventRegister);
-	if (func == pEtwEventSetInformation)
+	if (func == pEtwEventSetInformation && func != pextEtwEventSetInformation)
 		return wine_thunk_get_for_any(pextEtwEventSetInformation);
-	if (func == pEtwEventUnregister)
+	if (func == pEtwEventUnregister && func != pextEtwEventUnregister)
 		return wine_thunk_get_for_any(pextEtwEventUnregister);
-	if (func == pEtwEventWrite)
+	if (func == pEtwEventWrite && func != pextEtwEventWrite)
 		return wine_thunk_get_for_any(pextEtwEventWrite);
-	if (func == pEtwEventWriteString)
+	if (func == pEtwEventWriteString && func != pextEtwEventWriteString)
 		return wine_thunk_get_for_any(pextEtwEventWriteString);
-	if (func == pEtwEventWriteTransfer)
+	if (func == pEtwEventWriteTransfer && func != pextEtwEventWriteTransfer)
 		return wine_thunk_get_for_any(pextEtwEventWriteTransfer);
 	if (func == pFileEncryptionStatusA)
 		return wine32a_advapi32_FileEncryptionStatusA;
 	if (func == pFileEncryptionStatusW)
 		return wine32a_advapi32_FileEncryptionStatusW;
+	if (func == pFindFirstFreeAce && func != pextFindFirstFreeAce)
+		return wine_thunk_get_for_any(pextFindFirstFreeAce);
 	if (func == pFlushTraceA)
 		return wine32a_advapi32_FlushTraceA;
 	if (func == pFlushTraceW)
 		return wine32a_advapi32_FlushTraceW;
+	if (func == pFreeSid && func != pextFreeSid)
+		return wine_thunk_get_for_any(pextFreeSid);
+	if (func == pGetAce && func != pextGetAce)
+		return wine_thunk_get_for_any(pextGetAce);
+	if (func == pGetAclInformation && func != pextGetAclInformation)
+		return wine_thunk_get_for_any(pextGetAclInformation);
 	if (func == pGetAuditedPermissionsFromAclA)
 		return wine32a_advapi32_GetAuditedPermissionsFromAclA;
 	if (func == pGetAuditedPermissionsFromAclW)
@@ -9124,7 +10360,7 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_GetCurrentHwProfileA;
 	if (func == pGetCurrentHwProfileW)
 		return wine32a_advapi32_GetCurrentHwProfileW;
-	if (func == pGetDynamicTimeZoneInformationEffectiveYears)
+	if (func == pGetDynamicTimeZoneInformationEffectiveYears && func != pextGetDynamicTimeZoneInformationEffectiveYears)
 		return wine_thunk_get_for_any(pextGetDynamicTimeZoneInformationEffectiveYears);
 	if (func == pGetEffectiveRightsFromAclA)
 		return wine32a_advapi32_GetEffectiveRightsFromAclA;
@@ -9138,15 +10374,59 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_GetExplicitEntriesFromAclW;
 	if (func == pGetFileSecurityA)
 		return wine32a_advapi32_GetFileSecurityA;
+	if (func == pGetFileSecurityW && func != pextGetFileSecurityW)
+		return wine_thunk_get_for_any(pextGetFileSecurityW);
+	if (func == pGetKernelObjectSecurity && func != pextGetKernelObjectSecurity)
+		return wine_thunk_get_for_any(pextGetKernelObjectSecurity);
+	if (func == pGetLengthSid && func != pextGetLengthSid)
+		return wine_thunk_get_for_any(pextGetLengthSid);
+	if (func == pGetNamedSecurityInfoA)
+		return wine32a_advapi32_GetNamedSecurityInfoA;
 	if (func == pGetNamedSecurityInfoExA)
 		return wine32a_advapi32_GetNamedSecurityInfoExA;
 	if (func == pGetNamedSecurityInfoExW)
 		return wine32a_advapi32_GetNamedSecurityInfoExW;
-	if (func == pEtwGetTraceEnableFlags)
+	if (func == pGetNamedSecurityInfoW)
+		return wine32a_advapi32_GetNamedSecurityInfoW;
+	if (func == pGetNumberOfEventLogRecords)
+		return wine32a_advapi32_GetNumberOfEventLogRecords;
+	if (func == pGetOldestEventLogRecord)
+		return wine32a_advapi32_GetOldestEventLogRecord;
+	if (func == pGetPrivateObjectSecurity && func != pextGetPrivateObjectSecurity)
+		return wine_thunk_get_for_any(pextGetPrivateObjectSecurity);
+	if (func == pGetSecurityDescriptorControl && func != pextGetSecurityDescriptorControl)
+		return wine_thunk_get_for_any(pextGetSecurityDescriptorControl);
+	if (func == pGetSecurityDescriptorDacl && func != pextGetSecurityDescriptorDacl)
+		return wine_thunk_get_for_any(pextGetSecurityDescriptorDacl);
+	if (func == pGetSecurityDescriptorGroup && func != pextGetSecurityDescriptorGroup)
+		return wine_thunk_get_for_any(pextGetSecurityDescriptorGroup);
+	if (func == pGetSecurityDescriptorLength && func != pextGetSecurityDescriptorLength)
+		return wine_thunk_get_for_any(pextGetSecurityDescriptorLength);
+	if (func == pGetSecurityDescriptorOwner && func != pextGetSecurityDescriptorOwner)
+		return wine_thunk_get_for_any(pextGetSecurityDescriptorOwner);
+	if (func == pGetSecurityDescriptorSacl && func != pextGetSecurityDescriptorSacl)
+		return wine_thunk_get_for_any(pextGetSecurityDescriptorSacl);
+	if (func == pGetSecurityInfo)
+		return wine32a_advapi32_GetSecurityInfo;
+	if (func == pGetSecurityInfoExA)
+		return wine32a_advapi32_GetSecurityInfoExA;
+	if (func == pGetSecurityInfoExW)
+		return wine32a_advapi32_GetSecurityInfoExW;
+	if (func == pGetSidIdentifierAuthority && func != pextGetSidIdentifierAuthority)
+		return wine_thunk_get_for_any(pextGetSidIdentifierAuthority);
+	if (func == pGetSidLengthRequired && func != pextGetSidLengthRequired)
+		return wine_thunk_get_for_any(pextGetSidLengthRequired);
+	if (func == pGetSidSubAuthority && func != pextGetSidSubAuthority)
+		return wine_thunk_get_for_any(pextGetSidSubAuthority);
+	if (func == pGetSidSubAuthorityCount && func != pextGetSidSubAuthorityCount)
+		return wine_thunk_get_for_any(pextGetSidSubAuthorityCount);
+	if (func == pGetTokenInformation && func != pextGetTokenInformation)
+		return wine_thunk_get_for_any(pextGetTokenInformation);
+	if (func == pEtwGetTraceEnableFlags && func != pextEtwGetTraceEnableFlags)
 		return wine_thunk_get_for_any(pextEtwGetTraceEnableFlags);
-	if (func == pEtwGetTraceEnableLevel)
+	if (func == pEtwGetTraceEnableLevel && func != pextEtwGetTraceEnableLevel)
 		return wine_thunk_get_for_any(pextEtwGetTraceEnableLevel);
-	if (func == pEtwGetTraceLoggerHandle)
+	if (func == pEtwGetTraceLoggerHandle && func != pextEtwGetTraceLoggerHandle)
 		return wine_thunk_get_for_any(pextEtwGetTraceLoggerHandle);
 	if (func == pGetTrusteeFormA)
 		return wine32a_advapi32_GetTrusteeFormA;
@@ -9164,6 +10444,22 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_GetUserNameA;
 	if (func == pGetUserNameW)
 		return wine32a_advapi32_GetUserNameW;
+	if (func == pGetWindowsAccountDomainSid && func != pextGetWindowsAccountDomainSid)
+		return wine_thunk_get_for_any(pextGetWindowsAccountDomainSid);
+	if (func == pImpersonateAnonymousToken && func != pextImpersonateAnonymousToken)
+		return wine_thunk_get_for_any(pextImpersonateAnonymousToken);
+	if (func == pImpersonateLoggedOnUser && func != pextImpersonateLoggedOnUser)
+		return wine_thunk_get_for_any(pextImpersonateLoggedOnUser);
+	if (func == pImpersonateNamedPipeClient && func != pextImpersonateNamedPipeClient)
+		return wine_thunk_get_for_any(pextImpersonateNamedPipeClient);
+	if (func == pImpersonateSelf && func != pextImpersonateSelf)
+		return wine_thunk_get_for_any(pextImpersonateSelf);
+	if (func == pInitializeAcl && func != pextInitializeAcl)
+		return wine_thunk_get_for_any(pextInitializeAcl);
+	if (func == pInitializeSecurityDescriptor && func != pextInitializeSecurityDescriptor)
+		return wine_thunk_get_for_any(pextInitializeSecurityDescriptor);
+	if (func == pInitializeSid && func != pextInitializeSid)
+		return wine_thunk_get_for_any(pextInitializeSid);
 	if (func == pInitiateShutdownA)
 		return wine32a_advapi32_InitiateShutdownA;
 	if (func == pInitiateShutdownW)
@@ -9178,6 +10474,16 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_InitiateSystemShutdownW;
 	if (func == pIsTextUnicode)
 		return wine32a_advapi32_IsTextUnicode;
+	if (func == pIsTokenRestricted && func != pextIsTokenRestricted)
+		return wine_thunk_get_for_any(pextIsTokenRestricted);
+	if (func == pIsValidAcl && func != pextIsValidAcl)
+		return wine_thunk_get_for_any(pextIsValidAcl);
+	if (func == pIsValidSecurityDescriptor && func != pextIsValidSecurityDescriptor)
+		return wine_thunk_get_for_any(pextIsValidSecurityDescriptor);
+	if (func == pIsValidSid && func != pextIsValidSid)
+		return wine_thunk_get_for_any(pextIsValidSid);
+	if (func == pIsWellKnownSid && func != pextIsWellKnownSid)
+		return wine_thunk_get_for_any(pextIsWellKnownSid);
 	if (func == pLogonUserA)
 		return wine32a_advapi32_LogonUserA;
 	if (func == pLogonUserW)
@@ -9268,36 +10574,82 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_LsaStorePrivateData;
 	if (func == pLsaUnregisterPolicyChangeNotification)
 		return wine32a_advapi32_LsaUnregisterPolicyChangeNotification;
-	if (func == pMD4Final)
+	if (func == pMD4Final && func != pextMD4Final)
 		return wine_thunk_get_for_any(pextMD4Final);
-	if (func == pMD4Init)
+	if (func == pMD4Init && func != pextMD4Init)
 		return wine_thunk_get_for_any(pextMD4Init);
-	if (func == pMD4Update)
+	if (func == pMD4Update && func != pextMD4Update)
 		return wine_thunk_get_for_any(pextMD4Update);
-	if (func == pMD5Final)
+	if (func == pMD5Final && func != pextMD5Final)
 		return wine_thunk_get_for_any(pextMD5Final);
-	if (func == pMD5Init)
+	if (func == pMD5Init && func != pextMD5Init)
 		return wine_thunk_get_for_any(pextMD5Init);
-	if (func == pMD5Update)
+	if (func == pMD5Update && func != pextMD5Update)
 		return wine_thunk_get_for_any(pextMD5Update);
+	if (func == pMakeAbsoluteSD && func != pextMakeAbsoluteSD)
+		return wine_thunk_get_for_any(pextMakeAbsoluteSD);
+	if (func == pMakeSelfRelativeSD && func != pextMakeSelfRelativeSD)
+		return wine_thunk_get_for_any(pextMakeSelfRelativeSD);
+	if (func == pMapGenericMask && func != pextMapGenericMask)
+		return wine_thunk_get_for_any(pextMapGenericMask);
 	if (func == pNotifyBootConfigStatus)
 		return wine32a_advapi32_NotifyBootConfigStatus;
+	if (func == pNotifyChangeEventLog)
+		return wine32a_advapi32_NotifyChangeEventLog;
 	if (func == pObjectCloseAuditAlarmA)
 		return wine32a_advapi32_ObjectCloseAuditAlarmA;
+	if (func == pObjectCloseAuditAlarmW && func != pextObjectCloseAuditAlarmW)
+		return wine_thunk_get_for_any(pextObjectCloseAuditAlarmW);
+	if (func == pObjectDeleteAuditAlarmW && func != pextObjectDeleteAuditAlarmW)
+		return wine_thunk_get_for_any(pextObjectDeleteAuditAlarmW);
 	if (func == pObjectOpenAuditAlarmA)
 		return wine32a_advapi32_ObjectOpenAuditAlarmA;
+	if (func == pObjectOpenAuditAlarmW && func != pextObjectOpenAuditAlarmW)
+		return wine_thunk_get_for_any(pextObjectOpenAuditAlarmW);
 	if (func == pObjectPrivilegeAuditAlarmA)
 		return wine32a_advapi32_ObjectPrivilegeAuditAlarmA;
+	if (func == pObjectPrivilegeAuditAlarmW && func != pextObjectPrivilegeAuditAlarmW)
+		return wine_thunk_get_for_any(pextObjectPrivilegeAuditAlarmW);
+	if (func == pOpenBackupEventLogA)
+		return wine32a_advapi32_OpenBackupEventLogA;
+	if (func == pOpenBackupEventLogW)
+		return wine32a_advapi32_OpenBackupEventLogW;
 	if (func == pOpenEncryptedFileRawA)
 		return wine32a_advapi32_OpenEncryptedFileRawA;
 	if (func == pOpenEncryptedFileRawW)
 		return wine32a_advapi32_OpenEncryptedFileRawW;
+	if (func == pOpenEventLogA)
+		return wine32a_advapi32_OpenEventLogA;
+	if (func == pOpenEventLogW)
+		return wine32a_advapi32_OpenEventLogW;
+	if (func == pOpenProcessToken && func != pextOpenProcessToken)
+		return wine_thunk_get_for_any(pextOpenProcessToken);
+	if (func == pOpenThreadToken && func != pextOpenThreadToken)
+		return wine_thunk_get_for_any(pextOpenThreadToken);
 	if (func == pOpenTraceA)
 		return wine32a_advapi32_OpenTraceA;
 	if (func == pOpenTraceW)
 		return wine32a_advapi32_OpenTraceW;
+	if (func == pPerfCreateInstance && func != pextPerfCreateInstance)
+		return wine_thunk_get_for_any(pextPerfCreateInstance);
+	if (func == pPerfDeleteInstance && func != pextPerfDeleteInstance)
+		return wine_thunk_get_for_any(pextPerfDeleteInstance);
+	if (func == pPerfSetCounterRefValue && func != pextPerfSetCounterRefValue)
+		return wine_thunk_get_for_any(pextPerfSetCounterRefValue);
+	if (func == pPerfSetCounterSetInfo && func != pextPerfSetCounterSetInfo)
+		return wine_thunk_get_for_any(pextPerfSetCounterSetInfo);
+	if (func == pPerfStartProvider && func != pextPerfStartProvider)
+		return wine_thunk_get_for_any(pextPerfStartProvider);
+	if (func == pPerfStartProviderEx && func != pextPerfStartProviderEx)
+		return wine_thunk_get_for_any(pextPerfStartProviderEx);
+	if (func == pPerfStopProvider && func != pextPerfStopProvider)
+		return wine_thunk_get_for_any(pextPerfStopProvider);
+	if (func == pPrivilegeCheck && func != pextPrivilegeCheck)
+		return wine_thunk_get_for_any(pextPrivilegeCheck);
 	if (func == pPrivilegedServiceAuditAlarmA)
 		return wine32a_advapi32_PrivilegedServiceAuditAlarmA;
+	if (func == pPrivilegedServiceAuditAlarmW && func != pextPrivilegedServiceAuditAlarmW)
+		return wine_thunk_get_for_any(pextPrivilegedServiceAuditAlarmW);
 	if (func == pProcessTrace)
 		return wine32a_advapi32_ProcessTrace;
 	if (func == pQueryAllTracesA)
@@ -9310,14 +10662,26 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_QueryWindows31FilesMigration;
 	if (func == pReadEncryptedFileRaw)
 		return wine32a_advapi32_ReadEncryptedFileRaw;
+	if (func == pReadEventLogA)
+		return wine32a_advapi32_ReadEventLogA;
+	if (func == pReadEventLogW)
+		return wine32a_advapi32_ReadEventLogW;
+	if (func == pRegCloseKey && func != pextRegCloseKey)
+		return wine_thunk_get_for_any(pextRegCloseKey);
 	if (func == pRegConnectRegistryA)
 		return wine32a_advapi32_RegConnectRegistryA;
 	if (func == pRegConnectRegistryW)
 		return wine32a_advapi32_RegConnectRegistryW;
 	if (func == pRegCopyTreeA)
 		return wine32a_advapi32_RegCopyTreeA;
+	if (func == pRegCopyTreeW && func != pextRegCopyTreeW)
+		return wine_thunk_get_for_any(pextRegCopyTreeW);
 	if (func == pRegCreateKeyA)
 		return wine32a_advapi32_RegCreateKeyA;
+	if (func == pRegCreateKeyExA && func != pextRegCreateKeyExA)
+		return wine_thunk_get_for_any(pextRegCreateKeyExA);
+	if (func == pRegCreateKeyExW && func != pextRegCreateKeyExW)
+		return wine_thunk_get_for_any(pextRegCreateKeyExW);
 	if (func == pRegCreateKeyTransactedA)
 		return wine32a_advapi32_RegCreateKeyTransactedA;
 	if (func == pRegCreateKeyTransactedW)
@@ -9326,22 +10690,80 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_RegCreateKeyW;
 	if (func == pRegDeleteKeyA)
 		return wine32a_advapi32_RegDeleteKeyA;
+	if (func == pRegDeleteKeyExA && func != pextRegDeleteKeyExA)
+		return wine_thunk_get_for_any(pextRegDeleteKeyExA);
+	if (func == pRegDeleteKeyExW && func != pextRegDeleteKeyExW)
+		return wine_thunk_get_for_any(pextRegDeleteKeyExW);
+	if (func == pRegDeleteKeyValueA && func != pextRegDeleteKeyValueA)
+		return wine_thunk_get_for_any(pextRegDeleteKeyValueA);
+	if (func == pRegDeleteKeyValueW && func != pextRegDeleteKeyValueW)
+		return wine_thunk_get_for_any(pextRegDeleteKeyValueW);
 	if (func == pRegDeleteKeyW)
 		return wine32a_advapi32_RegDeleteKeyW;
+	if (func == pRegDeleteTreeA && func != pextRegDeleteTreeA)
+		return wine_thunk_get_for_any(pextRegDeleteTreeA);
+	if (func == pRegDeleteTreeW && func != pextRegDeleteTreeW)
+		return wine_thunk_get_for_any(pextRegDeleteTreeW);
+	if (func == pRegDeleteValueA && func != pextRegDeleteValueA)
+		return wine_thunk_get_for_any(pextRegDeleteValueA);
+	if (func == pRegDeleteValueW && func != pextRegDeleteValueW)
+		return wine_thunk_get_for_any(pextRegDeleteValueW);
 	if (func == pRegDisablePredefinedCache)
 		return wine32a_advapi32_RegDisablePredefinedCache;
 	if (func == pRegDisableReflectionKey)
 		return wine32a_advapi32_RegDisableReflectionKey;
 	if (func == pRegEnumKeyA)
 		return wine32a_advapi32_RegEnumKeyA;
+	if (func == pRegEnumKeyExA && func != pextRegEnumKeyExA)
+		return wine_thunk_get_for_any(pextRegEnumKeyExA);
+	if (func == pRegEnumKeyExW && func != pextRegEnumKeyExW)
+		return wine_thunk_get_for_any(pextRegEnumKeyExW);
 	if (func == pRegEnumKeyW)
 		return wine32a_advapi32_RegEnumKeyW;
+	if (func == pRegEnumValueA && func != pextRegEnumValueA)
+		return wine_thunk_get_for_any(pextRegEnumValueA);
+	if (func == pRegEnumValueW && func != pextRegEnumValueW)
+		return wine_thunk_get_for_any(pextRegEnumValueW);
+	if (func == pRegFlushKey && func != pextRegFlushKey)
+		return wine_thunk_get_for_any(pextRegFlushKey);
+	if (func == pRegGetKeySecurity && func != pextRegGetKeySecurity)
+		return wine_thunk_get_for_any(pextRegGetKeySecurity);
+	if (func == pRegGetValueA && func != pextRegGetValueA)
+		return wine_thunk_get_for_any(pextRegGetValueA);
+	if (func == pRegGetValueW && func != pextRegGetValueW)
+		return wine_thunk_get_for_any(pextRegGetValueW);
+	if (func == pRegLoadAppKeyA && func != pextRegLoadAppKeyA)
+		return wine_thunk_get_for_any(pextRegLoadAppKeyA);
+	if (func == pRegLoadAppKeyW && func != pextRegLoadAppKeyW)
+		return wine_thunk_get_for_any(pextRegLoadAppKeyW);
+	if (func == pRegLoadKeyA && func != pextRegLoadKeyA)
+		return wine_thunk_get_for_any(pextRegLoadKeyA);
+	if (func == pRegLoadKeyW && func != pextRegLoadKeyW)
+		return wine_thunk_get_for_any(pextRegLoadKeyW);
+	if (func == pRegLoadMUIStringA && func != pextRegLoadMUIStringA)
+		return wine_thunk_get_for_any(pextRegLoadMUIStringA);
+	if (func == pRegLoadMUIStringW && func != pextRegLoadMUIStringW)
+		return wine_thunk_get_for_any(pextRegLoadMUIStringW);
+	if (func == pRegNotifyChangeKeyValue && func != pextRegNotifyChangeKeyValue)
+		return wine_thunk_get_for_any(pextRegNotifyChangeKeyValue);
+	if (func == pRegOpenCurrentUser && func != pextRegOpenCurrentUser)
+		return wine_thunk_get_for_any(pextRegOpenCurrentUser);
 	if (func == pRegOpenKeyA)
 		return wine32a_advapi32_RegOpenKeyA;
+	if (func == pRegOpenKeyExA && func != pextRegOpenKeyExA)
+		return wine_thunk_get_for_any(pextRegOpenKeyExA);
+	if (func == pRegOpenKeyExW && func != pextRegOpenKeyExW)
+		return wine_thunk_get_for_any(pextRegOpenKeyExW);
 	if (func == pRegOpenKeyW)
 		return wine32a_advapi32_RegOpenKeyW;
+	if (func == pRegOpenUserClassesRoot && func != pextRegOpenUserClassesRoot)
+		return wine_thunk_get_for_any(pextRegOpenUserClassesRoot);
 	if (func == pRegOverridePredefKey)
 		return wine32a_advapi32_RegOverridePredefKey;
+	if (func == pRegQueryInfoKeyA && func != pextRegQueryInfoKeyA)
+		return wine_thunk_get_for_any(pextRegQueryInfoKeyA);
+	if (func == pRegQueryInfoKeyW && func != pextRegQueryInfoKeyW)
+		return wine_thunk_get_for_any(pextRegQueryInfoKeyW);
 	if (func == pRegQueryMultipleValuesA)
 		return wine32a_advapi32_RegQueryMultipleValuesA;
 	if (func == pRegQueryMultipleValuesW)
@@ -9350,27 +10772,53 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_RegQueryReflectionKey;
 	if (func == pRegQueryValueA)
 		return wine32a_advapi32_RegQueryValueA;
+	if (func == pRegQueryValueExA && func != pextRegQueryValueExA)
+		return wine_thunk_get_for_any(pextRegQueryValueExA);
+	if (func == pRegQueryValueExW && func != pextRegQueryValueExW)
+		return wine_thunk_get_for_any(pextRegQueryValueExW);
 	if (func == pRegQueryValueW)
 		return wine32a_advapi32_RegQueryValueW;
 	if (func == pRegReplaceKeyA)
 		return wine32a_advapi32_RegReplaceKeyA;
 	if (func == pRegReplaceKeyW)
 		return wine32a_advapi32_RegReplaceKeyW;
+	if (func == pRegRestoreKeyA && func != pextRegRestoreKeyA)
+		return wine_thunk_get_for_any(pextRegRestoreKeyA);
+	if (func == pRegRestoreKeyW && func != pextRegRestoreKeyW)
+		return wine_thunk_get_for_any(pextRegRestoreKeyW);
 	if (func == pRegSaveKeyA)
 		return wine32a_advapi32_RegSaveKeyA;
+	if (func == pRegSaveKeyExA && func != pextRegSaveKeyExA)
+		return wine_thunk_get_for_any(pextRegSaveKeyExA);
+	if (func == pRegSaveKeyExW && func != pextRegSaveKeyExW)
+		return wine_thunk_get_for_any(pextRegSaveKeyExW);
 	if (func == pRegSaveKeyW)
 		return wine32a_advapi32_RegSaveKeyW;
+	if (func == pRegSetKeySecurity && func != pextRegSetKeySecurity)
+		return wine_thunk_get_for_any(pextRegSetKeySecurity);
+	if (func == pRegSetKeyValueA && func != pextRegSetKeyValueA)
+		return wine_thunk_get_for_any(pextRegSetKeyValueA);
+	if (func == pRegSetKeyValueW && func != pextRegSetKeyValueW)
+		return wine_thunk_get_for_any(pextRegSetKeyValueW);
 	if (func == pRegSetValueA)
 		return wine32a_advapi32_RegSetValueA;
+	if (func == pRegSetValueExA && func != pextRegSetValueExA)
+		return wine_thunk_get_for_any(pextRegSetValueExA);
+	if (func == pRegSetValueExW && func != pextRegSetValueExW)
+		return wine_thunk_get_for_any(pextRegSetValueExW);
 	if (func == pRegSetValueW)
 		return wine32a_advapi32_RegSetValueW;
+	if (func == pRegUnLoadKeyA && func != pextRegUnLoadKeyA)
+		return wine_thunk_get_for_any(pextRegUnLoadKeyA);
+	if (func == pRegUnLoadKeyW && func != pextRegUnLoadKeyW)
+		return wine_thunk_get_for_any(pextRegUnLoadKeyW);
 	if (func == pRegisterEventSourceA)
 		return wine32a_advapi32_RegisterEventSourceA;
 	if (func == pRegisterEventSourceW)
 		return wine32a_advapi32_RegisterEventSourceW;
-	if (func == pEtwRegisterTraceGuidsA)
+	if (func == pEtwRegisterTraceGuidsA && func != pextEtwRegisterTraceGuidsA)
 		return wine_thunk_get_for_any(pextEtwRegisterTraceGuidsA);
-	if (func == pEtwRegisterTraceGuidsW)
+	if (func == pEtwRegisterTraceGuidsW && func != pextEtwRegisterTraceGuidsW)
 		return wine_thunk_get_for_any(pextEtwRegisterTraceGuidsW);
 	if (func == pRegisterWaitChainCOMCallback)
 		return wine32a_advapi32_RegisterWaitChainCOMCallback;
@@ -9378,6 +10826,8 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_ReportEventA;
 	if (func == pReportEventW)
 		return wine32a_advapi32_ReportEventW;
+	if (func == pRevertToSelf && func != pextRevertToSelf)
+		return wine_thunk_get_for_any(pextRevertToSelf);
 	if (func == pSaferCloseLevel)
 		return wine32a_advapi32_SaferCloseLevel;
 	if (func == pSaferComputeTokenFromLevel)
@@ -9390,16 +10840,40 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_SaferIdentifyLevel;
 	if (func == pSaferSetLevelInformation)
 		return wine32a_advapi32_SaferSetLevelInformation;
+	if (func == pSetAclInformation && func != pextSetAclInformation)
+		return wine_thunk_get_for_any(pextSetAclInformation);
 	if (func == pSetEntriesInAclA)
 		return wine32a_advapi32_SetEntriesInAclA;
 	if (func == pSetEntriesInAclW)
 		return wine32a_advapi32_SetEntriesInAclW;
 	if (func == pSetFileSecurityA)
 		return wine32a_advapi32_SetFileSecurityA;
+	if (func == pSetFileSecurityW && func != pextSetFileSecurityW)
+		return wine_thunk_get_for_any(pextSetFileSecurityW);
+	if (func == pSetKernelObjectSecurity && func != pextSetKernelObjectSecurity)
+		return wine_thunk_get_for_any(pextSetKernelObjectSecurity);
 	if (func == pSetNamedSecurityInfoA)
 		return wine32a_advapi32_SetNamedSecurityInfoA;
 	if (func == pSetNamedSecurityInfoW)
 		return wine32a_advapi32_SetNamedSecurityInfoW;
+	if (func == pSetPrivateObjectSecurity && func != pextSetPrivateObjectSecurity)
+		return wine_thunk_get_for_any(pextSetPrivateObjectSecurity);
+	if (func == pSetSecurityDescriptorControl && func != pextSetSecurityDescriptorControl)
+		return wine_thunk_get_for_any(pextSetSecurityDescriptorControl);
+	if (func == pSetSecurityDescriptorDacl && func != pextSetSecurityDescriptorDacl)
+		return wine_thunk_get_for_any(pextSetSecurityDescriptorDacl);
+	if (func == pSetSecurityDescriptorGroup && func != pextSetSecurityDescriptorGroup)
+		return wine_thunk_get_for_any(pextSetSecurityDescriptorGroup);
+	if (func == pSetSecurityDescriptorOwner && func != pextSetSecurityDescriptorOwner)
+		return wine_thunk_get_for_any(pextSetSecurityDescriptorOwner);
+	if (func == pSetSecurityDescriptorSacl && func != pextSetSecurityDescriptorSacl)
+		return wine_thunk_get_for_any(pextSetSecurityDescriptorSacl);
+	if (func == pSetSecurityInfo)
+		return wine32a_advapi32_SetSecurityInfo;
+	if (func == pSetThreadToken && func != pextSetThreadToken)
+		return wine_thunk_get_for_any(pextSetThreadToken);
+	if (func == pSetTokenInformation && func != pextSetTokenInformation)
+		return wine_thunk_get_for_any(pextSetTokenInformation);
 	if (func == pStartTraceA)
 		return wine32a_advapi32_StartTraceA;
 	if (func == pStartTraceW)
@@ -9444,17 +10918,17 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_SystemFunction032;
 	if (func == pSystemFunction035)
 		return wine32a_advapi32_SystemFunction035;
-	if (func == pEtwLogTraceEvent)
+	if (func == pEtwLogTraceEvent && func != pextEtwLogTraceEvent)
 		return wine_thunk_get_for_any(pextEtwLogTraceEvent);
-	if (func == pEtwTraceMessage)
+	if (func == pEtwTraceMessage && func != pextEtwTraceMessage)
 		return wine_thunk_get_for_any(pextEtwTraceMessage);
-	if (func == pEtwTraceMessageVa)
+	if (func == pEtwTraceMessageVa && func != pextEtwTraceMessageVa)
 		return wine_thunk_get_for_any(pextEtwTraceMessageVa);
 	if (func == pTraceSetInformation)
 		return wine32a_advapi32_TraceSetInformation;
 	if (func == pTreeResetNamedSecurityInfoW)
 		return wine32a_advapi32_TreeResetNamedSecurityInfoW;
-	if (func == pEtwUnregisterTraceGuids)
+	if (func == pEtwUnregisterTraceGuids && func != pextEtwUnregisterTraceGuids)
 		return wine_thunk_get_for_any(pextEtwUnregisterTraceGuids);
 	if (func == pWmiExecuteMethodA)
 		return wine32a_advapi32_WmiExecuteMethodA;
