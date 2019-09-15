@@ -192,10 +192,11 @@ class DefinitionCollection:
 		self.items = []
 		self.typedef_item = None
 
-	def append_typedef_item(self, name):
+	def append_typedef_item(self, node, name):
 		if self.typedef_item is not None:
-			self.typedef_item.name = name
-			self.append(None, self.typedef_item)
+			if self.typedef_item.line == node.location.line:
+				self.typedef_item.name = name
+				self.append(None, self.typedef_item)
 			self.typedef_item = None
 
 	def clear_typedef_item(self):
@@ -207,8 +208,6 @@ class DefinitionCollection:
 			file = str(node.location.file)
 			ignored_files = ['/winnt.h', '/windef.h', '/winbase.h', '/excpt.h', '/debug.h', '/guiddef.h', '/wingdi.h', '/winnls.h', '/winuser.h', '/wincon.h', '/winnetwk.h', '/verrsrc.h', '/winreg.h']
 			if any(file.endswith(x) for x in ignored_files):
-				return
-			if file.startswith('/usr/'):
 				return
 
 		if new_definition.getname() is None:
@@ -428,7 +427,7 @@ def find_all_definitions(node, definitions):
 		type_to = node.spelling
 		type_from = TypeChain(node, node.underlying_typedef_type)
 		# Fix anonymous struct/enum/union typedef
-		definitions.append_typedef_item(type_from.tostring(""))
+		definitions.append_typedef_item(node, type_from.tostring(""))
 		definition = TypeDef(type_from, type_to, node.location)
 		definitions.append(node, definition)
 	else:
