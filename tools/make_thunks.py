@@ -321,7 +321,7 @@ def node_is_only_declaration(node):
 def find_all_functions(node, ret_nodes, funcs, source):
 	if (node.location.file is None or not node.location.file.name.endswith(f'/{source}')):
 		return
-	if node.spelling in funcs:
+	if node.kind == CursorKind.FUNCTION_DECL and node.spelling in funcs:
 		if not node_is_only_declaration(node):
 			ret_nodes.append(node)
 	for c in node.get_children():
