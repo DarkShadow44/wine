@@ -2794,13 +2794,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrAccessResource,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrAddRefDll(ULONG  flags, HMODULE  module) /* ../dlls/ntdll/loader.c:3162 */
+extern WINAPI NTSTATUS wine32b_ntdll_LdrAddRefDll(ULONG  flags, HMODULE  module) /* ../dlls/ntdll/loader.c:3163 */
 {
 	TRACE("Enter LdrAddRefDll\n");
 	return pLdrAddRefDll(flags, module);
 }
 
-extern WINAPI void wine32a_ntdll_LdrAddRefDll(void);  /* ../dlls/ntdll/loader.c:3162 */
+extern WINAPI void wine32a_ntdll_LdrAddRefDll(void);  /* ../dlls/ntdll/loader.c:3163 */
 __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrAddRefDll,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -2954,13 +2954,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrFindResource_U,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrGetDllHandle(LPCWSTR  load_path, ULONG  flags, UNICODE_STRING*  name, HMODULE*  base) /* ../dlls/ntdll/loader.c:3130 */
+extern WINAPI NTSTATUS wine32b_ntdll_LdrGetDllHandle(LPCWSTR  load_path, ULONG  flags, UNICODE_STRING*  name, HMODULE*  base) /* ../dlls/ntdll/loader.c:3131 */
 {
 	TRACE("Enter LdrGetDllHandle\n");
 	return pLdrGetDllHandle(load_path, flags, name, base);
 }
 
-extern WINAPI void wine32a_ntdll_LdrGetDllHandle(void);  /* ../dlls/ntdll/loader.c:3130 */
+extern WINAPI void wine32a_ntdll_LdrGetDllHandle(void);  /* ../dlls/ntdll/loader.c:3131 */
 __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrGetDllHandle,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -3010,13 +3010,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrGetProcedureAddress,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_LdrInitializeThunk(CONTEXT*  context, void**  entry, ULONG_PTR  unknown3, ULONG_PTR  unknown4) /* ../dlls/ntdll/loader.c:3754 */
+extern WINAPI void wine32b_ntdll_LdrInitializeThunk(CONTEXT*  context, void**  entry, ULONG_PTR  unknown3, ULONG_PTR  unknown4) /* ../dlls/ntdll/loader.c:3755 */
 {
 	TRACE("Enter LdrInitializeThunk\n");
 	return pLdrInitializeThunk(context, entry, unknown3, unknown4);
 }
 
-extern WINAPI void wine32a_ntdll_LdrInitializeThunk(void);  /* ../dlls/ntdll/loader.c:3754 */
+extern WINAPI void wine32a_ntdll_LdrInitializeThunk(void);  /* ../dlls/ntdll/loader.c:3755 */
 __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrInitializeThunk,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -3038,13 +3038,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrInitializeThunk,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrLoadDll(LPCWSTR  path_name, DWORD  flags, UNICODE_STRING*  libname, HMODULE*  hModule) /* ../dlls/ntdll/loader.c:3100 */
+extern WINAPI NTSTATUS wine32b_ntdll_LdrLoadDll(LPCWSTR  path_name, DWORD  flags, UNICODE_STRING*  libname, HMODULE*  hModule) /* ../dlls/ntdll/loader.c:3101 */
 {
 	TRACE("Enter LdrLoadDll\n");
 	return pLdrLoadDll(path_name, flags, libname, hModule);
 }
 
-extern WINAPI void wine32a_ntdll_LdrLoadDll(void);  /* ../dlls/ntdll/loader.c:3100 */
+extern WINAPI void wine32a_ntdll_LdrLoadDll(void);  /* ../dlls/ntdll/loader.c:3101 */
 __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrLoadDll,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -3093,13 +3093,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrLockLoaderLock,
 	"ret \n"
 )
 
-extern WINAPI IMAGE_BASE_RELOCATION* wine32b_ntdll_LdrProcessRelocationBlock(void*  page, UINT  count, USHORT*  relocs, INT_PTR  delta) /* ../dlls/ntdll/loader.c:3191 */
+extern WINAPI IMAGE_BASE_RELOCATION* wine32b_ntdll_LdrProcessRelocationBlock(void*  page, UINT  count, USHORT*  relocs, INT_PTR  delta) /* ../dlls/ntdll/loader.c:3192 */
 {
 	TRACE("Enter LdrProcessRelocationBlock\n");
 	return pLdrProcessRelocationBlock(page, count, relocs, delta);
 }
 
-extern WINAPI void wine32a_ntdll_LdrProcessRelocationBlock(void);  /* ../dlls/ntdll/loader.c:3191 */
+extern WINAPI void wine32a_ntdll_LdrProcessRelocationBlock(void);  /* ../dlls/ntdll/loader.c:3192 */
 __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrProcessRelocationBlock,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -3121,13 +3121,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrProcessRelocationBlock,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrQueryImageFileExecutionOptions(UNICODE_STRING*  key, LPCWSTR  value, ULONG  type, void*  data, ULONG  in_size, ULONG*  out_size) /* ../dlls/ntdll/loader.c:3370 */
+extern WINAPI NTSTATUS wine32b_ntdll_LdrQueryImageFileExecutionOptions(UNICODE_STRING*  key, LPCWSTR  value, ULONG  type, void*  data, ULONG  in_size, ULONG*  out_size) /* ../dlls/ntdll/loader.c:3371 */
 {
 	TRACE("Enter LdrQueryImageFileExecutionOptions\n");
 	return pLdrQueryImageFileExecutionOptions(key, value, type, data, in_size, out_size);
 }
 
-extern WINAPI void wine32a_ntdll_LdrQueryImageFileExecutionOptions(void);  /* ../dlls/ntdll/loader.c:3370 */
+extern WINAPI void wine32a_ntdll_LdrQueryImageFileExecutionOptions(void);  /* ../dlls/ntdll/loader.c:3371 */
 __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrQueryImageFileExecutionOptions,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -3149,13 +3149,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrQueryImageFileExecutionOptions,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrQueryProcessModuleInformation(PSYSTEM_MODULE_INFORMATION  smi, ULONG  buf_size, ULONG*  req_size) /* ../dlls/ntdll/loader.c:3268 */
+extern WINAPI NTSTATUS wine32b_ntdll_LdrQueryProcessModuleInformation(PSYSTEM_MODULE_INFORMATION  smi, ULONG  buf_size, ULONG*  req_size) /* ../dlls/ntdll/loader.c:3269 */
 {
 	TRACE("Enter LdrQueryProcessModuleInformation\n");
 	return pLdrQueryProcessModuleInformation(smi, buf_size, req_size);
 }
 
-extern WINAPI void wine32a_ntdll_LdrQueryProcessModuleInformation(void);  /* ../dlls/ntdll/loader.c:3268 */
+extern WINAPI void wine32a_ntdll_LdrQueryProcessModuleInformation(void);  /* ../dlls/ntdll/loader.c:3269 */
 __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrQueryProcessModuleInformation,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -3204,13 +3204,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrRegisterDllNotification,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_ntdll_LdrResolveDelayLoadedAPI(void*  base, IMAGE_DELAYLOAD_DESCRIPTOR*  desc, PDELAYLOAD_FAILURE_DLL_CALLBACK  dllhook, PDELAYLOAD_FAILURE_SYSTEM_ROUTINE  syshook, IMAGE_THUNK_DATA*  addr, ULONG  flags) /* ../dlls/ntdll/loader.c:3429 */
+extern WINAPI void* wine32b_ntdll_LdrResolveDelayLoadedAPI(void*  base, IMAGE_DELAYLOAD_DESCRIPTOR*  desc, PDELAYLOAD_FAILURE_DLL_CALLBACK  dllhook, PDELAYLOAD_FAILURE_SYSTEM_ROUTINE  syshook, IMAGE_THUNK_DATA*  addr, ULONG  flags) /* ../dlls/ntdll/loader.c:3430 */
 {
 	TRACE("Enter LdrResolveDelayLoadedAPI\n");
 	return pLdrResolveDelayLoadedAPI(base, desc, dllhook, syshook, addr, flags);
 }
 
-extern WINAPI void wine32a_ntdll_LdrResolveDelayLoadedAPI(void);  /* ../dlls/ntdll/loader.c:3429 */
+extern WINAPI void wine32a_ntdll_LdrResolveDelayLoadedAPI(void);  /* ../dlls/ntdll/loader.c:3430 */
 __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrResolveDelayLoadedAPI,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -3232,13 +3232,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrResolveDelayLoadedAPI,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_LdrShutdownProcess(void) /* ../dlls/ntdll/loader.c:3509 */
+extern WINAPI void wine32b_ntdll_LdrShutdownProcess(void) /* ../dlls/ntdll/loader.c:3510 */
 {
 	TRACE("Enter LdrShutdownProcess\n");
 	return pLdrShutdownProcess();
 }
 
-extern WINAPI void wine32a_ntdll_LdrShutdownProcess(void);  /* ../dlls/ntdll/loader.c:3509 */
+extern WINAPI void wine32a_ntdll_LdrShutdownProcess(void);  /* ../dlls/ntdll/loader.c:3510 */
 __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrShutdownProcess,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -3256,13 +3256,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrShutdownProcess,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_LdrShutdownThread(void) /* ../dlls/ntdll/loader.c:3534 */
+extern WINAPI void wine32b_ntdll_LdrShutdownThread(void) /* ../dlls/ntdll/loader.c:3535 */
 {
 	TRACE("Enter LdrShutdownThread\n");
 	return pLdrShutdownThread();
 }
 
-extern WINAPI void wine32a_ntdll_LdrShutdownThread(void);  /* ../dlls/ntdll/loader.c:3534 */
+extern WINAPI void wine32a_ntdll_LdrShutdownThread(void);  /* ../dlls/ntdll/loader.c:3535 */
 __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrShutdownThread,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -3280,13 +3280,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrShutdownThread,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrUnloadDll(HMODULE  hModule) /* ../dlls/ntdll/loader.c:3683 */
+extern WINAPI NTSTATUS wine32b_ntdll_LdrUnloadDll(HMODULE  hModule) /* ../dlls/ntdll/loader.c:3684 */
 {
 	TRACE("Enter LdrUnloadDll\n");
 	return pLdrUnloadDll(hModule);
 }
 
-extern WINAPI void wine32a_ntdll_LdrUnloadDll(void);  /* ../dlls/ntdll/loader.c:3683 */
+extern WINAPI void wine32a_ntdll_LdrUnloadDll(void);  /* ../dlls/ntdll/loader.c:3684 */
 __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrUnloadDll,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -5313,13 +5313,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtListenPort,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtLoadDriver(UNICODE_STRING*  DriverServiceName) /* ../dlls/ntdll/loader.c:3971 */
+extern WINAPI NTSTATUS wine32b_ntdll_NtLoadDriver(UNICODE_STRING*  DriverServiceName) /* ../dlls/ntdll/loader.c:3972 */
 {
 	TRACE("Enter NtLoadDriver\n");
 	return pNtLoadDriver(DriverServiceName);
 }
 
-extern WINAPI void wine32a_ntdll_NtLoadDriver(void);  /* ../dlls/ntdll/loader.c:3971 */
+extern WINAPI void wine32a_ntdll_NtLoadDriver(void);  /* ../dlls/ntdll/loader.c:3972 */
 __ASM_GLOBAL_FUNC(wine32a_ntdll_NtLoadDriver,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -8742,13 +8742,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtTerminateThread,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtUnloadDriver(UNICODE_STRING*  DriverServiceName) /* ../dlls/ntdll/loader.c:3982 */
+extern WINAPI NTSTATUS wine32b_ntdll_NtUnloadDriver(UNICODE_STRING*  DriverServiceName) /* ../dlls/ntdll/loader.c:3983 */
 {
 	TRACE("Enter NtUnloadDriver\n");
 	return pNtUnloadDriver(DriverServiceName);
 }
 
-extern WINAPI void wine32a_ntdll_NtUnloadDriver(void);  /* ../dlls/ntdll/loader.c:3982 */
+extern WINAPI void wine32a_ntdll_NtUnloadDriver(void);  /* ../dlls/ntdll/loader.c:3983 */
 __ASM_GLOBAL_FUNC(wine32a_ntdll_NtUnloadDriver,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -11797,13 +11797,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDetermineDosPathNameType_U,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlDllShutdownInProgress(void) /* ../dlls/ntdll/loader.c:3421 */
+extern WINAPI BOOLEAN wine32b_ntdll_RtlDllShutdownInProgress(void) /* ../dlls/ntdll/loader.c:3422 */
 {
 	TRACE("Enter RtlDllShutdownInProgress\n");
 	return pRtlDllShutdownInProgress();
 }
 
-extern WINAPI void wine32a_ntdll_RtlDllShutdownInProgress(void);  /* ../dlls/ntdll/loader.c:3421 */
+extern WINAPI void wine32a_ntdll_RtlDllShutdownInProgress(void);  /* ../dlls/ntdll/loader.c:3422 */
 __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDllShutdownInProgress,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -12373,13 +12373,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlEraseUnicodeString,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlExitUserProcess(DWORD  status) /* ../dlls/ntdll/loader.c:3520 */
+extern WINAPI void wine32b_ntdll_RtlExitUserProcess(DWORD  status) /* ../dlls/ntdll/loader.c:3521 */
 {
 	TRACE("Enter RtlExitUserProcess\n");
 	return pRtlExitUserProcess(status);
 }
 
-extern WINAPI void wine32a_ntdll_RtlExitUserProcess(void);  /* ../dlls/ntdll/loader.c:3520 */
+extern WINAPI void wine32a_ntdll_RtlExitUserProcess(void);  /* ../dlls/ntdll/loader.c:3521 */
 __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlExitUserProcess,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -14123,13 +14123,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIdentifierAuthoritySid,
 	"ret \n"
 )
 
-extern WINAPI PVOID wine32b_ntdll_RtlImageDirectoryEntryToData(HMODULE  module, BOOL  image, WORD  dir, ULONG*  size) /* ../dlls/ntdll/loader.c:3877 */
+extern WINAPI PVOID wine32b_ntdll_RtlImageDirectoryEntryToData(HMODULE  module, BOOL  image, WORD  dir, ULONG*  size) /* ../dlls/ntdll/loader.c:3878 */
 {
 	TRACE("Enter RtlImageDirectoryEntryToData\n");
 	return pRtlImageDirectoryEntryToData(module, image, dir, size);
 }
 
-extern WINAPI void wine32a_ntdll_RtlImageDirectoryEntryToData(void);  /* ../dlls/ntdll/loader.c:3877 */
+extern WINAPI void wine32a_ntdll_RtlImageDirectoryEntryToData(void);  /* ../dlls/ntdll/loader.c:3878 */
 __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlImageDirectoryEntryToData,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -14151,13 +14151,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlImageDirectoryEntryToData,
 	"ret \n"
 )
 
-extern WINAPI PIMAGE_NT_HEADERS wine32b_ntdll_RtlImageNtHeader(HMODULE  hModule) /* ../dlls/ntdll/loader.c:3724 */
+extern WINAPI PIMAGE_NT_HEADERS wine32b_ntdll_RtlImageNtHeader(HMODULE  hModule) /* ../dlls/ntdll/loader.c:3725 */
 {
 	TRACE("Enter RtlImageNtHeader\n");
 	return pRtlImageNtHeader(hModule);
 }
 
-extern WINAPI void wine32a_ntdll_RtlImageNtHeader(void);  /* ../dlls/ntdll/loader.c:3724 */
+extern WINAPI void wine32a_ntdll_RtlImageNtHeader(void);  /* ../dlls/ntdll/loader.c:3725 */
 __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlImageNtHeader,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -14176,13 +14176,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlImageNtHeader,
 	"ret \n"
 )
 
-extern WINAPI PIMAGE_SECTION_HEADER wine32b_ntdll_RtlImageRvaToSection(IMAGE_NT_HEADERS*  nt, HMODULE  module, DWORD  rva) /* ../dlls/ntdll/loader.c:3913 */
+extern WINAPI PIMAGE_SECTION_HEADER wine32b_ntdll_RtlImageRvaToSection(IMAGE_NT_HEADERS*  nt, HMODULE  module, DWORD  rva) /* ../dlls/ntdll/loader.c:3914 */
 {
 	TRACE("Enter RtlImageRvaToSection\n");
 	return pRtlImageRvaToSection(nt, module, rva);
 }
 
-extern WINAPI void wine32a_ntdll_RtlImageRvaToSection(void);  /* ../dlls/ntdll/loader.c:3913 */
+extern WINAPI void wine32a_ntdll_RtlImageRvaToSection(void);  /* ../dlls/ntdll/loader.c:3914 */
 __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlImageRvaToSection,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -14203,13 +14203,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlImageRvaToSection,
 	"ret \n"
 )
 
-extern WINAPI PVOID wine32b_ntdll_RtlImageRvaToVa(IMAGE_NT_HEADERS*  nt, HMODULE  module, DWORD  rva, IMAGE_SECTION_HEADER**  section) /* ../dlls/ntdll/loader.c:3933 */
+extern WINAPI PVOID wine32b_ntdll_RtlImageRvaToVa(IMAGE_NT_HEADERS*  nt, HMODULE  module, DWORD  rva, IMAGE_SECTION_HEADER**  section) /* ../dlls/ntdll/loader.c:3934 */
 {
 	TRACE("Enter RtlImageRvaToVa\n");
 	return pRtlImageRvaToVa(nt, module, rva, section);
 }
 
-extern WINAPI void wine32a_ntdll_RtlImageRvaToVa(void);  /* ../dlls/ntdll/loader.c:3933 */
+extern WINAPI void wine32a_ntdll_RtlImageRvaToVa(void);  /* ../dlls/ntdll/loader.c:3934 */
 __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlImageRvaToVa,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -16103,13 +16103,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlOpenCurrentUser,
 	"ret \n"
 )
 
-extern WINAPI PVOID wine32b_ntdll_RtlPcToFileHeader(PVOID  pc, PVOID*  address) /* ../dlls/ntdll/loader.c:3954 */
+extern WINAPI PVOID wine32b_ntdll_RtlPcToFileHeader(PVOID  pc, PVOID*  address) /* ../dlls/ntdll/loader.c:3955 */
 {
 	TRACE("Enter RtlPcToFileHeader\n");
 	return pRtlPcToFileHeader(pc, address);
 }
 
-extern WINAPI void wine32a_ntdll_RtlPcToFileHeader(void);  /* ../dlls/ntdll/loader.c:3954 */
+extern WINAPI void wine32a_ntdll_RtlPcToFileHeader(void);  /* ../dlls/ntdll/loader.c:3955 */
 __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlPcToFileHeader,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"

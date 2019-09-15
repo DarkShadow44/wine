@@ -1596,6 +1596,10 @@ static void* pextTerminateThread;
 static WINAPI BOOL (*pTermsrvAppInstallMode)(void);
 static WINAPI BOOL (*pThread32First)(HANDLE  hSnapShot, LPTHREADENTRY32  lpte);
 static WINAPI BOOL (*pThread32Next)(HANDLE  hSnapShot, LPTHREADENTRY32  lpte);
+static void* pTlsAlloc;
+static void* pextTlsAlloc;
+static void* pTlsFree;
+static void* pextTlsFree;
 static void* pTlsGetValue;
 static void* pextTlsGetValue;
 static void* pTlsSetValue;
@@ -24050,6 +24054,10 @@ void wine_thunk_initialize_kernel32(void)
 	pTermsrvAppInstallMode = (void *)GetProcAddress(library, "TermsrvAppInstallMode");
 	pThread32First = (void *)GetProcAddress(library, "Thread32First");
 	pThread32Next = (void *)GetProcAddress(library, "Thread32Next");
+	pTlsAlloc = (void *)GetProcAddress(library, "TlsAlloc");
+	pextTlsAlloc = (void *)GetProcAddress(library_kernelbase, "TlsAlloc");
+	pTlsFree = (void *)GetProcAddress(library, "TlsFree");
+	pextTlsFree = (void *)GetProcAddress(library_kernelbase, "TlsFree");
 	pTlsGetValue = (void *)GetProcAddress(library, "TlsGetValue");
 	pextTlsGetValue = (void *)GetProcAddress(library_kernelbase, "TlsGetValue");
 	pTlsSetValue = (void *)GetProcAddress(library, "TlsSetValue");
@@ -26300,6 +26308,10 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_Thread32First;
 	if (func == pThread32Next)
 		return wine32a_kernel32_Thread32Next;
+	if (func == pTlsAlloc && func != pextTlsAlloc)
+		return wine_thunk_get_for_any(pextTlsAlloc);
+	if (func == pTlsFree && func != pextTlsFree)
+		return wine_thunk_get_for_any(pextTlsFree);
 	if (func == pTlsGetValue && func != pextTlsGetValue)
 		return wine_thunk_get_for_any(pextTlsGetValue);
 	if (func == pTlsSetValue && func != pextTlsSetValue)

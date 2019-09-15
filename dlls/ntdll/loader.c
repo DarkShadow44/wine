@@ -2950,6 +2950,7 @@ static void init_dll (UNICODE_STRING name)
             initialized = TRUE;
             wine_thunk_initialize_any("kernelbase.dll");
             wine_thunk_initialize_any("kernel32.dll");
+            wine_thunk_initialize_any("ntdll.dll");
         }
         wine_thunk_initialize_any(ansi_name.Buffer);
     }

@@ -315,7 +315,10 @@ class FunctionCollection:
 				continue;
 			item = FunctionItem()
 			item.parse_from_spec_line(line)
-			self.items[item.internalname] = item
+			if item.relay: # A relay might have the same item.internalname as an already existing function
+				self.items['relay_' + item.internalname] = item
+			else:
+				self.items[item.internalname] = item
 
 	def dump_items(self):
 		for item in self.items.values():
