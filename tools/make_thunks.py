@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 # pprint(dir())
+# TODO bitfields
 
 import sys
 import clang.cindex
@@ -55,12 +56,14 @@ class StructDef(GenericTypeDef):
 			self.structType = StructDefEnum.Enumeration
 		self.named_type = node.type.spelling
 		self.variable = ''
+		self.line = node.location.line
+		self.file = node.location.file.name
 
 	def print_struct(self, lines, depth):
 		indent = ' ' * 4 * depth
 
 		if self.structType == StructDefEnum.Struct or self.structType == StructDefEnum.Union or self.structType == StructDefEnum.Enumeration:
-			lines.append(f'{indent}{self.name}')
+			lines.append(f'{indent}{self.name} /* {self.file}:{self.line} */')
 			lines.append(f'{indent}{{')
 			for child in self.children:
 				child.print_struct(lines, depth + 1)
@@ -163,15 +166,17 @@ class TypeChain:
 			dependencies.append(self.normal)
 
 class TypeDef(GenericTypeDef):
-	def __init__(self, source, target):
+	def __init__(self, source, target, location):
 		self.source = source
 		self.target = target
+		self.line = location.line
+		self.file = location.file.name
 
 	def tostring(self):
 		if self.source.chainType == TypeChainEnum.Function:
-			return f'typedef {self.source.tostring(self.target)};'
+			return f'typedef {self.source.tostring(self.target)}; /* {self.file}:{self.line} */'
 		else:
-			return f'typedef {self.source.tostring("")} {self.target};'
+			return f'typedef {self.source.tostring("")} {self.target}; /* {self.file}:{self.line} */'
 
 	def getname(self):
 		return self.target;
@@ -235,6 +240,8 @@ class FunctionItem:
 		self.callingconvention = None
 		self.return_type = None
 		self.params = None
+		self.file = None
+		self.line = None
 
 	def parse_from_spec_line(self, line):
 		rows = line.split(' ')
@@ -268,6 +275,8 @@ class FunctionItem:
 			if child.kind == CursorKind.PARM_DECL:
 				self.params.append(ParamDef(child))
 		self.return_type = TypeChain(None, node.result_type)
+		self.line = node.location.line
+		self.file = node.location.file.name
 
 	def get_arguments_decl(self):
 		paramList = [param.tostring() for param in self.params]
@@ -334,7 +343,7 @@ def get_makefile_sources(path):
 def make_thunk_callingconvention_32_to_64_a(contents_source, func):
 	funcname = func.internalname
 	num_params = len(func.params)
-	contents_source.append(f'extern WINAPI void wine32a_{funcname}(void);')
+	contents_source.append(f'extern WINAPI void wine32a_{funcname}(void);  /* {func.file}:{func.line} */')
 	contents_source.append(f'__ASM_GLOBAL_FUNC(wine32a_{funcname},')
 	#Setup own stackframe
 	contents_source.append('\t"push %rbp \\n"');
@@ -373,7 +382,7 @@ def make_thunk_callingconvention_32_to_64_b(contents_source, func):
 	funcname = func.internalname
 	arguments_decl = func.get_arguments_decl()
 	arguments_calling = func.get_arguments_calling()
-	contents_source.append(f'extern WINAPI {func.return_type.tostring("")} wine32b_{funcname}({arguments_decl})')
+	contents_source.append(f'extern WINAPI {func.return_type.tostring("")} wine32b_{funcname}({arguments_decl}) /* {func.file}:{func.line} */')
 	contents_source.append('{')
 	contents_source.append(f'\tTRACE("Enter {funcname}\\n");')
 	contents_source.append(f'\treturn p{funcname}({arguments_calling});')
@@ -418,7 +427,7 @@ def find_all_definitions(node, definitions):
 		type_from = TypeChain(node, node.underlying_typedef_type)
 		# Fix anonymous struct/enum/union typedef
 		definitions.append_typedef_item(type_from.tostring(""))
-		definition = TypeDef(type_from, type_to)
+		definition = TypeDef(type_from, type_to, node.location)
 		definitions.append(node, definition)
 
 
@@ -479,7 +488,7 @@ def handle_dll(name):
 	definitions = DefinitionCollection()
 	dependencies = DependencyCollection(definitions)
 	for source in sources:
-		#if not source.endswith("time.c"):
+		#if not source.endswith("console.c"):
 		#	continue
 		handle_dll_source(dll_path, source, funcs, contents_dlls, ret_func_pointers, definitions, dependencies)
 
