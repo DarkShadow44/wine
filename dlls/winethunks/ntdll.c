@@ -1839,7 +1839,6 @@ static WINAPI void (*pRtlReleaseSRWLockShared)(RTL_SRWLOCK*  lock);
 static WINAPI ULONG (*pRtlRemoveVectoredContinueHandler)(PVOID  handler);
 static WINAPI ULONG (*pRtlRemoveVectoredExceptionHandler)(PVOID  handler);
 static WINAPI void (*pRtlRestoreContext)(CONTEXT*  context, EXCEPTION_RECORD*  rec);
-static WINAPI void (*pRtlSetLastWin32Error)(DWORD  err);
 static WINAPI DWORD (*pRtlRunOnceBeginInitialize)(RTL_RUN_ONCE*  once, ULONG  flags, void**  context);
 static WINAPI DWORD (*pRtlRunOnceComplete)(RTL_RUN_ONCE*  once, ULONG  flags, void*  context);
 static WINAPI DWORD (*pRtlRunOnceExecuteOnce)(RTL_RUN_ONCE*  once, PRTL_RUN_ONCE_INIT_FN  func, void*  param, void**  context);
@@ -1859,6 +1858,7 @@ static WINAPI NTSTATUS (*pRtlSetEnvironmentVariable)(PWSTR*  penv, PUNICODE_STRI
 static WINAPI NTSTATUS (*pRtlSetGroupSecurityDescriptor)(PSECURITY_DESCRIPTOR  pSecurityDescriptor, PSID  group, BOOLEAN  groupdefaulted);
 static WINAPI NTSTATUS (*pRtlSetHeapInformation)(HANDLE  heap, HEAP_INFORMATION_CLASS  info_class, PVOID  info, SIZE_T  size);
 static WINAPI NTSTATUS (*pRtlSetIoCompletionCallback)(HANDLE  FileHandle, PRTL_OVERLAPPED_COMPLETION_ROUTINE  Function, ULONG  Flags);
+static WINAPI void (*pRtlSetLastWin32Error)(DWORD  err);
 static WINAPI void (*pRtlSetLastWin32ErrorAndNtStatusFromNtStatus)(NTSTATUS  status);
 static WINAPI NTSTATUS (*pRtlSetOwnerSecurityDescriptor)(PSECURITY_DESCRIPTOR  pSecurityDescriptor, PSID  owner, BOOLEAN  ownerdefaulted);
 static WINAPI NTSTATUS (*pRtlSetSaclSecurityDescriptor)(PSECURITY_DESCRIPTOR  pSecurityDescriptor, BOOLEAN  saclpresent, PACL  sacl, BOOLEAN  sacldefaulted);
@@ -1966,10 +1966,10 @@ static WINAPI BOOL (*pWinSqmIsOptedIn)(void);
 static WINAPI void (*pWinSqmSetDWORD)(HANDLE  session, DWORD  datapoint_id, DWORD  datapoint_value);
 static WINAPI HANDLE (*pWinSqmStartSession)(GUID*  sessionguid, DWORD  sessionid, DWORD  unknown1);
 static WINAPI EXCEPTION_DISPOSITION (*p__C_specific_handler)(EXCEPTION_RECORD*  rec, void*  frame, CONTEXT*  context, struct _DISPATCHER_CONTEXT*  dispatch);
-static WINAPI int (*pNTDLL___isascii)(int  c);
-static WINAPI int (*pNTDLL___iscsym)(int  c);
-static WINAPI int (*pNTDLL___iscsymf)(int  c);
-static WINAPI int (*pNTDLL___toascii)(int  c);
+static WINAPI int (*p__isascii)(int  c);
+static WINAPI int (*p__iscsym)(int  c);
+static WINAPI int (*p__iscsymf)(int  c);
+static WINAPI int (*p__toascii)(int  c);
 static WINAPI LONGLONG (*p_atoi64)(char*  str);
 static WINAPI char* (*p_i64toa)(LONGLONG  value, char*  str, int  radix);
 static WINAPI LPWSTR (*p_i64tow)(LONGLONG  value, LPWSTR  str, INT  radix);
@@ -1981,112 +1981,112 @@ static WINAPI char* (*p_ltoa)(LONG  value, char*  str, int  radix);
 static WINAPI LPWSTR (*p_ltow)(LONG  value, LPWSTR  str, INT  radix);
 static WINAPI void* (*p_memccpy)(void*  dst, void*  src, int  c, size_t  n);
 static WINAPI INT (*p_memicmp)(LPCSTR  s1, LPCSTR  s2, DWORD  len);
-static WINAPI int (*pNTDLL__snprintf)(char*  str, SIZE_T  len, char*  format);
+static WINAPI int (*p_snprintf)(char*  str, SIZE_T  len, char*  format);
 static WINAPI int (*p_snprintf_s)(char*  str, SIZE_T  size, SIZE_T  len, char*  format);
-static WINAPI int (*pNTDLL__snwprintf)(WCHAR*  str, SIZE_T  len, WCHAR*  format);
+static WINAPI int (*p_snwprintf)(WCHAR*  str, SIZE_T  len, WCHAR*  format);
 static WINAPI void (*p_splitpath)(char*  inpath, char*  drv, char*  dir, char*  fname, char*  ext);
 static WINAPI int (*p_stricmp)(LPCSTR  str1, LPCSTR  str2);
 static WINAPI LPSTR (*p_strlwr)(LPSTR  str);
 static WINAPI int (*p_strnicmp)(LPCSTR  str1, LPCSTR  str2, size_t  n);
 static WINAPI LPSTR (*p_strupr)(LPSTR  str);
-static WINAPI int (*pNTDLL__tolower)(int  c);
-static WINAPI int (*pNTDLL__toupper)(int  c);
+static WINAPI int (*p_tolower)(int  c);
+static WINAPI int (*p_toupper)(int  c);
 static WINAPI char* (*p_ui64toa)(ULONGLONG  value, char*  str, int  radix);
 static WINAPI LPWSTR (*p_ui64tow)(ULONGLONG  value, LPWSTR  str, INT  radix);
 static WINAPI char* (*p_ultoa)(ULONG  value, char*  str, int  radix);
 static WINAPI LPWSTR (*p_ultow)(ULONG  value, LPWSTR  str, INT  radix);
-static WINAPI int (*pNTDLL__vsnprintf)(char*  str, SIZE_T  len, char*  format, __builtin_ms_va_list  args);
+static WINAPI int (*p_vsnprintf)(char*  str, SIZE_T  len, char*  format, __builtin_ms_va_list  args);
 static WINAPI int (*p_vsnprintf_s)(char*  str, SIZE_T  size, SIZE_T  len, char*  format, __builtin_ms_va_list  args);
-static WINAPI int (*pNTDLL__vsnwprintf)(WCHAR*  str, SIZE_T  len, WCHAR*  format, __builtin_ms_va_list  args);
-static WINAPI INT (*pNTDLL__wcsicmp)(LPCWSTR  str1, LPCWSTR  str2);
-static WINAPI LPWSTR (*pNTDLL__wcslwr)(LPWSTR  str);
-static WINAPI INT (*pNTDLL__wcsnicmp)(LPCWSTR  str1, LPCWSTR  str2, INT  n);
-static WINAPI LPWSTR (*pNTDLL__wcsupr)(LPWSTR  str);
+static WINAPI int (*p_vsnwprintf)(WCHAR*  str, SIZE_T  len, WCHAR*  format, __builtin_ms_va_list  args);
+static WINAPI INT (*p_wcsicmp)(LPCWSTR  str1, LPCWSTR  str2);
+static WINAPI LPWSTR (*p_wcslwr)(LPWSTR  str);
+static WINAPI INT (*p_wcsnicmp)(LPCWSTR  str1, LPCWSTR  str2, INT  n);
+static WINAPI LPWSTR (*p_wcsupr)(LPWSTR  str);
 static WINAPI int (*p_wtoi)(LPCWSTR  str);
 static WINAPI LONGLONG (*p_wtoi64)(LPCWSTR  str);
 static WINAPI LONG (*p_wtol)(LPCWSTR  str);
-static WINAPI int (*pNTDLL_abs)(int  i);
-static WINAPI double (*pNTDLL_atan)(double  d);
-static WINAPI int (*pNTDLL_atoi)(char*  nptr);
-static WINAPI LONG (*pNTDLL_atol)(char*  nptr);
-static WINAPI void* (*pNTDLL_bsearch)(void*  key, void*  base, size_t  nmemb, size_t  size, int (* compar) (void));
-static WINAPI double (*pNTDLL_ceil)(double  d);
-static WINAPI double (*pNTDLL_cos)(double  d);
-static WINAPI double (*pNTDLL_fabs)(double  d);
-static WINAPI double (*pNTDLL_floor)(double  d);
-static WINAPI int (*pNTDLL_isalnum)(int  c);
-static WINAPI int (*pNTDLL_isalpha)(int  c);
-static WINAPI int (*pNTDLL_iscntrl)(int  c);
-static WINAPI int (*pNTDLL_isdigit)(int  c);
-static WINAPI int (*pNTDLL_isgraph)(int  c);
-static WINAPI int (*pNTDLL_islower)(int  c);
-static WINAPI int (*pNTDLL_isprint)(int  c);
-static WINAPI int (*pNTDLL_ispunct)(int  c);
-static WINAPI int (*pNTDLL_isspace)(int  c);
-static WINAPI int (*pNTDLL_isupper)(int  c);
-static WINAPI INT (*pNTDLL_iswalpha)(WCHAR  wc);
-static WINAPI INT (*pNTDLL_iswctype)(WCHAR  wc, WCHAR  wct);
-static WINAPI INT (*pNTDLL_iswdigit)(WCHAR  wc);
-static WINAPI INT (*pNTDLL_iswlower)(WCHAR  wc);
-static WINAPI INT (*pNTDLL_iswspace)(WCHAR  wc);
-static WINAPI INT (*pNTDLL_iswxdigit)(WCHAR  wc);
-static WINAPI int (*pNTDLL_isxdigit)(int  c);
-static WINAPI LONG (*pNTDLL_labs)(LONG  i);
-static WINAPI double (*pNTDLL_log)(double  d);
-static WINAPI INT (*pNTDLL_mbstowcs)(LPWSTR  dst, LPCSTR  src, INT  n);
-static WINAPI void* (*pNTDLL_memchr)(void*  ptr, int  c, size_t  n);
-static WINAPI int (*pNTDLL_memcmp)(void*  ptr1, void*  ptr2, size_t  n);
-static WINAPI void* (*pNTDLL_memcpy)(void*  dst, void*  src, size_t  n);
-static WINAPI void* (*pNTDLL_memmove)(void*  dst, void*  src, size_t  n);
-static WINAPI void* (*pNTDLL_memset)(void*  dst, int  c, size_t  n);
-static WINAPI double (*pNTDLL_pow)(double  x, double  y);
-static WINAPI void (*pNTDLL_qsort)(void*  base, size_t  nmemb, size_t  size, int (* compar) (void));
-static WINAPI double (*pNTDLL_sin)(double  d);
-static WINAPI int (*pNTDLL_sprintf)(char*  str, char*  format);
-static WINAPI double (*pNTDLL_sqrt)(double  d);
-static WINAPI int (*pNTDLL_sscanf)(char*  str, char*  format);
-static WINAPI char* (*pNTDLL_strcat)(char*  dst, char*  src);
-static WINAPI char* (*pNTDLL_strchr)(char*  str, int  c);
-static WINAPI int (*pNTDLL_strcmp)(char*  str1, char*  str2);
-static WINAPI char* (*pNTDLL_strcpy)(char*  dst, char*  src);
-static WINAPI size_t (*pNTDLL_strcspn)(char*  str, char*  reject);
-static WINAPI size_t (*pNTDLL_strlen)(char*  str);
-static WINAPI char* (*pNTDLL_strncat)(char*  dst, char*  src, size_t  len);
-static WINAPI int (*pNTDLL_strncmp)(char*  str1, char*  str2, size_t  len);
-static WINAPI char* (*pNTDLL_strncpy)(char*  dst, char*  src, size_t  len);
-static WINAPI size_t (*pNTDLL_strnlen)(char*  str, size_t  len);
-static WINAPI char* (*pNTDLL_strpbrk)(char*  str, char*  accept);
-static WINAPI char* (*pNTDLL_strrchr)(char*  str, int  c);
-static WINAPI size_t (*pNTDLL_strspn)(char*  str, char*  accept);
-static WINAPI char* (*pNTDLL_strstr)(char*  haystack, char*  needle);
-static WINAPI LONG (*pNTDLL_strtol)(char*  nptr, char**  endptr, int  base);
-static WINAPI ULONG (*pNTDLL_strtoul)(char*  nptr, char**  endptr, int  base);
-static WINAPI int (*pNTDLL_swprintf)(WCHAR*  str, WCHAR*  format);
-static WINAPI double (*pNTDLL_tan)(double  d);
-static WINAPI int (*pNTDLL_tolower)(int  c);
-static WINAPI int (*pNTDLL_toupper)(int  c);
-static WINAPI WCHAR (*pNTDLL_towlower)(WCHAR  ch);
-static WINAPI WCHAR (*pNTDLL_towupper)(WCHAR  ch);
+static WINAPI int (*pabs)(int  i);
+static WINAPI double (*patan)(double  d);
+static WINAPI int (*patoi)(char*  nptr);
+static WINAPI LONG (*patol)(char*  nptr);
+static WINAPI void* (*pbsearch)(void*  key, void*  base, size_t  nmemb, size_t  size, int (* compar) (void));
+static WINAPI double (*pceil)(double  d);
+static WINAPI double (*pcos)(double  d);
+static WINAPI double (*pfabs)(double  d);
+static WINAPI double (*pfloor)(double  d);
+static WINAPI int (*pisalnum)(int  c);
+static WINAPI int (*pisalpha)(int  c);
+static WINAPI int (*piscntrl)(int  c);
+static WINAPI int (*pisdigit)(int  c);
+static WINAPI int (*pisgraph)(int  c);
+static WINAPI int (*pislower)(int  c);
+static WINAPI int (*pisprint)(int  c);
+static WINAPI int (*pispunct)(int  c);
+static WINAPI int (*pisspace)(int  c);
+static WINAPI int (*pisupper)(int  c);
+static WINAPI INT (*piswalpha)(WCHAR  wc);
+static WINAPI INT (*piswctype)(WCHAR  wc, WCHAR  wct);
+static WINAPI INT (*piswdigit)(WCHAR  wc);
+static WINAPI INT (*piswlower)(WCHAR  wc);
+static WINAPI INT (*piswspace)(WCHAR  wc);
+static WINAPI INT (*piswxdigit)(WCHAR  wc);
+static WINAPI int (*pisxdigit)(int  c);
+static WINAPI LONG (*plabs)(LONG  i);
+static WINAPI double (*plog)(double  d);
+static WINAPI INT (*pmbstowcs)(LPWSTR  dst, LPCSTR  src, INT  n);
+static WINAPI void* (*pmemchr)(void*  ptr, int  c, size_t  n);
+static WINAPI int (*pmemcmp)(void*  ptr1, void*  ptr2, size_t  n);
+static WINAPI void* (*pmemcpy)(void*  dst, void*  src, size_t  n);
+static WINAPI void* (*pmemmove)(void*  dst, void*  src, size_t  n);
+static WINAPI void* (*pmemset)(void*  dst, int  c, size_t  n);
+static WINAPI double (*ppow)(double  x, double  y);
+static WINAPI void (*pqsort)(void*  base, size_t  nmemb, size_t  size, int (* compar) (void));
+static WINAPI double (*psin)(double  d);
+static WINAPI int (*psprintf)(char*  str, char*  format);
+static WINAPI double (*psqrt)(double  d);
+static WINAPI int (*psscanf)(char*  str, char*  format);
+static WINAPI char* (*pstrcat)(char*  dst, char*  src);
+static WINAPI char* (*pstrchr)(char*  str, int  c);
+static WINAPI int (*pstrcmp)(char*  str1, char*  str2);
+static WINAPI char* (*pstrcpy)(char*  dst, char*  src);
+static WINAPI size_t (*pstrcspn)(char*  str, char*  reject);
+static WINAPI size_t (*pstrlen)(char*  str);
+static WINAPI char* (*pstrncat)(char*  dst, char*  src, size_t  len);
+static WINAPI int (*pstrncmp)(char*  str1, char*  str2, size_t  len);
+static WINAPI char* (*pstrncpy)(char*  dst, char*  src, size_t  len);
+static WINAPI size_t (*pstrnlen)(char*  str, size_t  len);
+static WINAPI char* (*pstrpbrk)(char*  str, char*  accept);
+static WINAPI char* (*pstrrchr)(char*  str, int  c);
+static WINAPI size_t (*pstrspn)(char*  str, char*  accept);
+static WINAPI char* (*pstrstr)(char*  haystack, char*  needle);
+static WINAPI LONG (*pstrtol)(char*  nptr, char**  endptr, int  base);
+static WINAPI ULONG (*pstrtoul)(char*  nptr, char**  endptr, int  base);
+static WINAPI int (*pswprintf)(WCHAR*  str, WCHAR*  format);
+static WINAPI double (*ptan)(double  d);
+static WINAPI int (*ptolower)(int  c);
+static WINAPI int (*ptoupper)(int  c);
+static WINAPI WCHAR (*ptowlower)(WCHAR  ch);
+static WINAPI WCHAR (*ptowupper)(WCHAR  ch);
 static WINAPI NTSTATUS (*pvDbgPrintEx)(ULONG  id, ULONG  level, LPCSTR  fmt, __builtin_ms_va_list  args);
 static WINAPI NTSTATUS (*pvDbgPrintExWithPrefix)(LPCSTR  prefix, ULONG  id, ULONG  level, LPCSTR  fmt, __builtin_ms_va_list  args);
-static WINAPI int (*pNTDLL_vsprintf)(char*  str, char*  format, __builtin_ms_va_list  args);
-static WINAPI LPWSTR (*pNTDLL_wcscat)(LPWSTR  dst, LPCWSTR  src);
-static WINAPI LPWSTR (*pNTDLL_wcschr)(LPCWSTR  str, WCHAR  ch);
-static WINAPI INT (*pNTDLL_wcscmp)(LPCWSTR  str1, LPCWSTR  str2);
-static WINAPI LPWSTR (*pNTDLL_wcscpy)(LPWSTR  dst, LPCWSTR  src);
-static WINAPI INT (*pNTDLL_wcscspn)(LPCWSTR  str, LPCWSTR  reject);
-static WINAPI INT (*pNTDLL_wcslen)(LPCWSTR  str);
-static WINAPI LPWSTR (*pNTDLL_wcsncat)(LPWSTR  s1, LPCWSTR  s2, INT  n);
-static WINAPI INT (*pNTDLL_wcsncmp)(LPCWSTR  str1, LPCWSTR  str2, INT  n);
-static WINAPI LPWSTR (*pNTDLL_wcsncpy)(LPWSTR  s1, LPCWSTR  s2, INT  n);
-static WINAPI LPWSTR (*pNTDLL_wcspbrk)(LPCWSTR  str, LPCWSTR  accept);
-static WINAPI LPWSTR (*pNTDLL_wcsrchr)(LPWSTR  str, WCHAR  ch);
-static WINAPI INT (*pNTDLL_wcsspn)(LPCWSTR  str, LPCWSTR  accept);
-static WINAPI LPWSTR (*pNTDLL_wcsstr)(LPCWSTR  str, LPCWSTR  sub);
-static WINAPI LPWSTR (*pNTDLL_wcstok)(LPWSTR  str, LPCWSTR  delim);
-static WINAPI LONG (*pNTDLL_wcstol)(LPCWSTR  s, LPWSTR*  end, INT  base);
-static WINAPI INT (*pNTDLL_wcstombs)(LPSTR  dst, LPCWSTR  src, INT  n);
-static WINAPI ULONG (*pNTDLL_wcstoul)(LPCWSTR  s, LPWSTR*  end, INT  base);
+static WINAPI int (*pvsprintf)(char*  str, char*  format, __builtin_ms_va_list  args);
+static WINAPI LPWSTR (*pwcscat)(LPWSTR  dst, LPCWSTR  src);
+static WINAPI LPWSTR (*pwcschr)(LPCWSTR  str, WCHAR  ch);
+static WINAPI INT (*pwcscmp)(LPCWSTR  str1, LPCWSTR  str2);
+static WINAPI LPWSTR (*pwcscpy)(LPWSTR  dst, LPCWSTR  src);
+static WINAPI INT (*pwcscspn)(LPCWSTR  str, LPCWSTR  reject);
+static WINAPI INT (*pwcslen)(LPCWSTR  str);
+static WINAPI LPWSTR (*pwcsncat)(LPWSTR  s1, LPCWSTR  s2, INT  n);
+static WINAPI INT (*pwcsncmp)(LPCWSTR  str1, LPCWSTR  str2, INT  n);
+static WINAPI LPWSTR (*pwcsncpy)(LPWSTR  s1, LPCWSTR  s2, INT  n);
+static WINAPI LPWSTR (*pwcspbrk)(LPCWSTR  str, LPCWSTR  accept);
+static WINAPI LPWSTR (*pwcsrchr)(LPWSTR  str, WCHAR  ch);
+static WINAPI INT (*pwcsspn)(LPCWSTR  str, LPCWSTR  accept);
+static WINAPI LPWSTR (*pwcsstr)(LPCWSTR  str, LPCWSTR  sub);
+static WINAPI LPWSTR (*pwcstok)(LPWSTR  str, LPCWSTR  delim);
+static WINAPI LONG (*pwcstol)(LPCWSTR  s, LPWSTR*  end, INT  base);
+static WINAPI INT (*pwcstombs)(LPSTR  dst, LPCWSTR  src, INT  n);
+static WINAPI ULONG (*pwcstoul)(LPCWSTR  s, LPWSTR*  end, INT  base);
 static WINAPI unsigned int (*pwine_server_call)(void*  req_ptr);
 static WINAPI int (*pwine_server_fd_to_handle)(int  fd, unsigned int  access, unsigned int  attributes, HANDLE*  handle);
 static WINAPI int (*pwine_server_handle_to_fd)(HANDLE  handle, unsigned int  access, int*  unix_fd, unsigned int*  options);
@@ -2098,9 +2098,9 @@ static WINAPI int (*p__wine_dbg_header)(enum __wine_debug_class  cls, struct __w
 static WINAPI int (*p__wine_dbg_output)(char*  str);
 static WINAPI char* (*p__wine_dbg_strdup)(char*  str);
 static WINAPI ssize_t (*p__wine_locked_recvmsg)(int  fd, struct msghdr*  hdr, int  flags);
-static WINAPI char* (*pNTDLL_wine_get_version)(void);
-static WINAPI char* (*pNTDLL_wine_get_build_id)(void);
-static WINAPI void (*pNTDLL_wine_get_host_version)(char**  sysname, char**  release);
+static WINAPI char* (*pwine_get_version)(void);
+static WINAPI char* (*pwine_get_build_id)(void);
+static WINAPI void (*pwine_get_host_version)(char**  sysname, char**  release);
 static WINAPI void (*p__wine_init_codepages)(union cptable*  ansi, union cptable*  oem, union cptable*  ucp);
 static WINAPI int (*p__wine_set_signal_handler)(unsigned int  sig, wine_signal_handler  wsh);
 static WINAPI NTSTATUS (*pwine_nt_to_unix_file_name)(UNICODE_STRING*  nameW, ANSI_STRING*  unix_name_ret, UINT  disposition, BOOLEAN  check_case);
@@ -16992,31 +16992,6 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlRestoreContext,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlSetLastWin32Error(DWORD  err) /* ../dlls/ntdll/error.c:155 */
-{
-	TRACE("Enter RtlSetLastWin32Error\n");
-	return pRtlSetLastWin32Error(err);
-}
-
-extern WINAPI void wine32a_ntdll_RtlSetLastWin32Error(void);  /* ../dlls/ntdll/error.c:155 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetLastWin32Error,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_RtlSetLastWin32Error") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
 extern WINAPI DWORD wine32b_ntdll_RtlRunOnceBeginInitialize(RTL_RUN_ONCE*  once, ULONG  flags, void**  context) /* ../dlls/ntdll/sync.c:1554 */
 {
 	TRACE("Enter RtlRunOnceBeginInitialize\n");
@@ -17516,6 +17491,31 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetIoCompletionCallback,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $12, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+extern WINAPI void wine32b_ntdll_RtlSetLastWin32Error(DWORD  err) /* ../dlls/ntdll/error.c:155 */
+{
+	TRACE("Enter RtlSetLastWin32Error\n");
+	return pRtlSetLastWin32Error(err);
+}
+
+extern WINAPI void wine32a_ntdll_RtlSetLastWin32Error(void);  /* ../dlls/ntdll/error.c:155 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetLastWin32Error,
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_ntdll_RtlSetLastWin32Error") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $4, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -20329,19 +20329,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll___C_specific_handler,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL___isascii(int  c) /* ../dlls/ntdll/string.c:455 */
+extern WINAPI int wine32b_ntdll___isascii(int  c) /* ../dlls/ntdll/string.c:455 */
 {
-	TRACE("Enter NTDLL___isascii\n");
-	return pNTDLL___isascii(c);
+	TRACE("Enter __isascii\n");
+	return p__isascii(c);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL___isascii(void);  /* ../dlls/ntdll/string.c:455 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL___isascii,
+extern WINAPI void wine32a_ntdll___isascii(void);  /* ../dlls/ntdll/string.c:455 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll___isascii,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL___isascii") "\n"
+	"call " __ASM_NAME("wine32b_ntdll___isascii") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -20354,19 +20354,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL___isascii,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL___iscsym(int  c) /* ../dlls/ntdll/string.c:473 */
+extern WINAPI int wine32b_ntdll___iscsym(int  c) /* ../dlls/ntdll/string.c:473 */
 {
-	TRACE("Enter NTDLL___iscsym\n");
-	return pNTDLL___iscsym(c);
+	TRACE("Enter __iscsym\n");
+	return p__iscsym(c);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL___iscsym(void);  /* ../dlls/ntdll/string.c:473 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL___iscsym,
+extern WINAPI void wine32a_ntdll___iscsym(void);  /* ../dlls/ntdll/string.c:473 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll___iscsym,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL___iscsym") "\n"
+	"call " __ASM_NAME("wine32b_ntdll___iscsym") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -20379,19 +20379,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL___iscsym,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL___iscsymf(int  c) /* ../dlls/ntdll/string.c:482 */
+extern WINAPI int wine32b_ntdll___iscsymf(int  c) /* ../dlls/ntdll/string.c:482 */
 {
-	TRACE("Enter NTDLL___iscsymf\n");
-	return pNTDLL___iscsymf(c);
+	TRACE("Enter __iscsymf\n");
+	return p__iscsymf(c);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL___iscsymf(void);  /* ../dlls/ntdll/string.c:482 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL___iscsymf,
+extern WINAPI void wine32a_ntdll___iscsymf(void);  /* ../dlls/ntdll/string.c:482 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll___iscsymf,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL___iscsymf") "\n"
+	"call " __ASM_NAME("wine32b_ntdll___iscsymf") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -20404,19 +20404,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL___iscsymf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL___toascii(int  c) /* ../dlls/ntdll/string.c:464 */
+extern WINAPI int wine32b_ntdll___toascii(int  c) /* ../dlls/ntdll/string.c:464 */
 {
-	TRACE("Enter NTDLL___toascii\n");
-	return pNTDLL___toascii(c);
+	TRACE("Enter __toascii\n");
+	return p__toascii(c);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL___toascii(void);  /* ../dlls/ntdll/string.c:464 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL___toascii,
+extern WINAPI void wine32a_ntdll___toascii(void);  /* ../dlls/ntdll/string.c:464 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll___toascii,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL___toascii") "\n"
+	"call " __ASM_NAME("wine32b_ntdll___toascii") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -20725,21 +20725,21 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__memicmp,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL__snprintf(char*  str, SIZE_T  len, char*  format) /* ../dlls/ntdll/printf.c:740 */
+extern WINAPI int wine32b_ntdll__snprintf(char*  str, SIZE_T  len, char*  format) /* ../dlls/ntdll/printf.c:740 */
 {
-	TRACE("Enter NTDLL__snprintf\n");
-	return pNTDLL__snprintf(str, len, format);
+	TRACE("Enter _snprintf\n");
+	return p_snprintf(str, len, format);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL__snprintf(void);  /* ../dlls/ntdll/printf.c:740 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL__snprintf,
+extern WINAPI void wine32a_ntdll__snprintf(void);  /* ../dlls/ntdll/printf.c:740 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll__snprintf,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL__snprintf") "\n"
+	"call " __ASM_NAME("wine32b_ntdll__snprintf") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -20780,21 +20780,21 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__snprintf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL__snwprintf(WCHAR*  str, SIZE_T  len, WCHAR*  format) /* ../dlls/ntdll/printf.c:755 */
+extern WINAPI int wine32b_ntdll__snwprintf(WCHAR*  str, SIZE_T  len, WCHAR*  format) /* ../dlls/ntdll/printf.c:755 */
 {
-	TRACE("Enter NTDLL__snwprintf\n");
-	return pNTDLL__snwprintf(str, len, format);
+	TRACE("Enter _snwprintf\n");
+	return p_snwprintf(str, len, format);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL__snwprintf(void);  /* ../dlls/ntdll/printf.c:755 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL__snwprintf,
+extern WINAPI void wine32a_ntdll__snwprintf(void);  /* ../dlls/ntdll/printf.c:755 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll__snwprintf,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL__snwprintf") "\n"
+	"call " __ASM_NAME("wine32b_ntdll__snwprintf") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -20938,19 +20938,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__strupr,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL__tolower(int  c) /* ../dlls/ntdll/string.c:500 */
+extern WINAPI int wine32b_ntdll__tolower(int  c) /* ../dlls/ntdll/string.c:500 */
 {
-	TRACE("Enter NTDLL__tolower\n");
-	return pNTDLL__tolower(c);
+	TRACE("Enter _tolower\n");
+	return p_tolower(c);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL__tolower(void);  /* ../dlls/ntdll/string.c:500 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL__tolower,
+extern WINAPI void wine32a_ntdll__tolower(void);  /* ../dlls/ntdll/string.c:500 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll__tolower,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL__tolower") "\n"
+	"call " __ASM_NAME("wine32b_ntdll__tolower") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -20963,19 +20963,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL__tolower,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL__toupper(int  c) /* ../dlls/ntdll/string.c:491 */
+extern WINAPI int wine32b_ntdll__toupper(int  c) /* ../dlls/ntdll/string.c:491 */
 {
-	TRACE("Enter NTDLL__toupper\n");
-	return pNTDLL__toupper(c);
+	TRACE("Enter _toupper\n");
+	return p_toupper(c);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL__toupper(void);  /* ../dlls/ntdll/string.c:491 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL__toupper,
+extern WINAPI void wine32a_ntdll__toupper(void);  /* ../dlls/ntdll/string.c:491 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll__toupper,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL__toupper") "\n"
+	"call " __ASM_NAME("wine32b_ntdll__toupper") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21096,14 +21096,14 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__ultow,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL__vsnprintf(char*  str, SIZE_T  len, char*  format, __builtin_ms_va_list  args) /* ../dlls/ntdll/printf.c:693 */
+extern WINAPI int wine32b_ntdll__vsnprintf(char*  str, SIZE_T  len, char*  format, __builtin_ms_va_list  args) /* ../dlls/ntdll/printf.c:693 */
 {
-	TRACE("Enter NTDLL__vsnprintf\n");
-	return pNTDLL__vsnprintf(str, len, format, args);
+	TRACE("Enter _vsnprintf\n");
+	return p_vsnprintf(str, len, format, args);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL__vsnprintf(void);  /* ../dlls/ntdll/printf.c:693 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL__vsnprintf,
+extern WINAPI void wine32a_ntdll__vsnprintf(void);  /* ../dlls/ntdll/printf.c:693 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll__vsnprintf,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21111,7 +21111,7 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL__vsnprintf,
 	"movl 0x1C(%rsp), %r8d \n"
 	"movl 0x20(%rsp), %r9d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL__vsnprintf") "\n"
+	"call " __ASM_NAME("wine32b_ntdll__vsnprintf") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21152,14 +21152,14 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__vsnprintf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL__vsnwprintf(WCHAR*  str, SIZE_T  len, WCHAR*  format, __builtin_ms_va_list  args) /* ../dlls/ntdll/printf.c:721 */
+extern WINAPI int wine32b_ntdll__vsnwprintf(WCHAR*  str, SIZE_T  len, WCHAR*  format, __builtin_ms_va_list  args) /* ../dlls/ntdll/printf.c:721 */
 {
-	TRACE("Enter NTDLL__vsnwprintf\n");
-	return pNTDLL__vsnwprintf(str, len, format, args);
+	TRACE("Enter _vsnwprintf\n");
+	return p_vsnwprintf(str, len, format, args);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL__vsnwprintf(void);  /* ../dlls/ntdll/printf.c:721 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL__vsnwprintf,
+extern WINAPI void wine32a_ntdll__vsnwprintf(void);  /* ../dlls/ntdll/printf.c:721 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll__vsnwprintf,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21167,7 +21167,7 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL__vsnwprintf,
 	"movl 0x1C(%rsp), %r8d \n"
 	"movl 0x20(%rsp), %r9d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL__vsnwprintf") "\n"
+	"call " __ASM_NAME("wine32b_ntdll__vsnwprintf") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21180,20 +21180,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL__vsnwprintf,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_NTDLL__wcsicmp(LPCWSTR  str1, LPCWSTR  str2) /* ../dlls/ntdll/wcstring.c:39 */
+extern WINAPI INT wine32b_ntdll__wcsicmp(LPCWSTR  str1, LPCWSTR  str2) /* ../dlls/ntdll/wcstring.c:39 */
 {
-	TRACE("Enter NTDLL__wcsicmp\n");
-	return pNTDLL__wcsicmp(str1, str2);
+	TRACE("Enter _wcsicmp\n");
+	return p_wcsicmp(str1, str2);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL__wcsicmp(void);  /* ../dlls/ntdll/wcstring.c:39 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL__wcsicmp,
+extern WINAPI void wine32a_ntdll__wcsicmp(void);  /* ../dlls/ntdll/wcstring.c:39 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll__wcsicmp,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL__wcsicmp") "\n"
+	"call " __ASM_NAME("wine32b_ntdll__wcsicmp") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21206,19 +21206,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL__wcsicmp,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll_NTDLL__wcslwr(LPWSTR  str) /* ../dlls/ntdll/wcstring.c:48 */
+extern WINAPI LPWSTR wine32b_ntdll__wcslwr(LPWSTR  str) /* ../dlls/ntdll/wcstring.c:48 */
 {
-	TRACE("Enter NTDLL__wcslwr\n");
-	return pNTDLL__wcslwr(str);
+	TRACE("Enter _wcslwr\n");
+	return p_wcslwr(str);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL__wcslwr(void);  /* ../dlls/ntdll/wcstring.c:48 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL__wcslwr,
+extern WINAPI void wine32a_ntdll__wcslwr(void);  /* ../dlls/ntdll/wcstring.c:48 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll__wcslwr,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL__wcslwr") "\n"
+	"call " __ASM_NAME("wine32b_ntdll__wcslwr") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21231,21 +21231,21 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL__wcslwr,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_NTDLL__wcsnicmp(LPCWSTR  str1, LPCWSTR  str2, INT  n) /* ../dlls/ntdll/wcstring.c:57 */
+extern WINAPI INT wine32b_ntdll__wcsnicmp(LPCWSTR  str1, LPCWSTR  str2, INT  n) /* ../dlls/ntdll/wcstring.c:57 */
 {
-	TRACE("Enter NTDLL__wcsnicmp\n");
-	return pNTDLL__wcsnicmp(str1, str2, n);
+	TRACE("Enter _wcsnicmp\n");
+	return p_wcsnicmp(str1, str2, n);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL__wcsnicmp(void);  /* ../dlls/ntdll/wcstring.c:57 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL__wcsnicmp,
+extern WINAPI void wine32a_ntdll__wcsnicmp(void);  /* ../dlls/ntdll/wcstring.c:57 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll__wcsnicmp,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL__wcsnicmp") "\n"
+	"call " __ASM_NAME("wine32b_ntdll__wcsnicmp") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21258,19 +21258,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL__wcsnicmp,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll_NTDLL__wcsupr(LPWSTR  str) /* ../dlls/ntdll/wcstring.c:66 */
+extern WINAPI LPWSTR wine32b_ntdll__wcsupr(LPWSTR  str) /* ../dlls/ntdll/wcstring.c:66 */
 {
-	TRACE("Enter NTDLL__wcsupr\n");
-	return pNTDLL__wcsupr(str);
+	TRACE("Enter _wcsupr\n");
+	return p_wcsupr(str);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL__wcsupr(void);  /* ../dlls/ntdll/wcstring.c:66 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL__wcsupr,
+extern WINAPI void wine32a_ntdll__wcsupr(void);  /* ../dlls/ntdll/wcstring.c:66 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll__wcsupr,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL__wcsupr") "\n"
+	"call " __ASM_NAME("wine32b_ntdll__wcsupr") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21358,19 +21358,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__wtol,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_abs(int  i) /* ../dlls/ntdll/misc.c:96 */
+extern WINAPI int wine32b_ntdll_abs(int  i) /* ../dlls/ntdll/misc.c:96 */
 {
-	TRACE("Enter NTDLL_abs\n");
-	return pNTDLL_abs(i);
+	TRACE("Enter abs\n");
+	return pabs(i);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_abs(void);  /* ../dlls/ntdll/misc.c:96 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_abs,
+extern WINAPI void wine32a_ntdll_abs(void);  /* ../dlls/ntdll/misc.c:96 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_abs,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_abs") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_abs") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21383,19 +21383,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_abs,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_ntdll_NTDLL_atan(double  d) /* ../dlls/ntdll/misc.c:112 */
+extern WINAPI double wine32b_ntdll_atan(double  d) /* ../dlls/ntdll/misc.c:112 */
 {
-	TRACE("Enter NTDLL_atan\n");
-	return pNTDLL_atan(d);
+	TRACE("Enter atan\n");
+	return patan(d);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_atan(void);  /* ../dlls/ntdll/misc.c:112 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_atan,
+extern WINAPI void wine32a_ntdll_atan(void);  /* ../dlls/ntdll/misc.c:112 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_atan,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_atan") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_atan") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21408,19 +21408,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_atan,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_atoi(char*  nptr) /* ../dlls/ntdll/string.c:797 */
+extern WINAPI int wine32b_ntdll_atoi(char*  nptr) /* ../dlls/ntdll/string.c:797 */
 {
-	TRACE("Enter NTDLL_atoi\n");
-	return pNTDLL_atoi(nptr);
+	TRACE("Enter atoi\n");
+	return patoi(nptr);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_atoi(void);  /* ../dlls/ntdll/string.c:797 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_atoi,
+extern WINAPI void wine32a_ntdll_atoi(void);  /* ../dlls/ntdll/string.c:797 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_atoi,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_atoi") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_atoi") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21433,19 +21433,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_atoi,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_ntdll_NTDLL_atol(char*  nptr) /* ../dlls/ntdll/string.c:806 */
+extern WINAPI LONG wine32b_ntdll_atol(char*  nptr) /* ../dlls/ntdll/string.c:806 */
 {
-	TRACE("Enter NTDLL_atol\n");
-	return pNTDLL_atol(nptr);
+	TRACE("Enter atol\n");
+	return patol(nptr);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_atol(void);  /* ../dlls/ntdll/string.c:806 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_atol,
+extern WINAPI void wine32a_ntdll_atol(void);  /* ../dlls/ntdll/string.c:806 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_atol,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_atol") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_atol") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21458,14 +21458,14 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_atol,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_ntdll_NTDLL_bsearch(void*  key, void*  base, size_t  nmemb, size_t  size, int (* compar) (void)) /* ../dlls/ntdll/misc.c:300 */
+extern WINAPI void* wine32b_ntdll_bsearch(void*  key, void*  base, size_t  nmemb, size_t  size, int (* compar) (void)) /* ../dlls/ntdll/misc.c:300 */
 {
-	TRACE("Enter NTDLL_bsearch\n");
-	return pNTDLL_bsearch(key, base, nmemb, size, compar);
+	TRACE("Enter bsearch\n");
+	return pbsearch(key, base, nmemb, size, compar);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_bsearch(void);  /* ../dlls/ntdll/misc.c:300 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_bsearch,
+extern WINAPI void wine32a_ntdll_bsearch(void);  /* ../dlls/ntdll/misc.c:300 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_bsearch,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21473,7 +21473,7 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_bsearch,
 	"movl 0x1C(%rsp), %r8d \n"
 	"movl 0x20(%rsp), %r9d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_bsearch") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_bsearch") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21486,19 +21486,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_bsearch,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_ntdll_NTDLL_ceil(double  d) /* ../dlls/ntdll/misc.c:120 */
+extern WINAPI double wine32b_ntdll_ceil(double  d) /* ../dlls/ntdll/misc.c:120 */
 {
-	TRACE("Enter NTDLL_ceil\n");
-	return pNTDLL_ceil(d);
+	TRACE("Enter ceil\n");
+	return pceil(d);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_ceil(void);  /* ../dlls/ntdll/misc.c:120 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_ceil,
+extern WINAPI void wine32a_ntdll_ceil(void);  /* ../dlls/ntdll/misc.c:120 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_ceil,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_ceil") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_ceil") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21511,19 +21511,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_ceil,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_ntdll_NTDLL_cos(double  d) /* ../dlls/ntdll/misc.c:128 */
+extern WINAPI double wine32b_ntdll_cos(double  d) /* ../dlls/ntdll/misc.c:128 */
 {
-	TRACE("Enter NTDLL_cos\n");
-	return pNTDLL_cos(d);
+	TRACE("Enter cos\n");
+	return pcos(d);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_cos(void);  /* ../dlls/ntdll/misc.c:128 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_cos,
+extern WINAPI void wine32a_ntdll_cos(void);  /* ../dlls/ntdll/misc.c:128 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_cos,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_cos") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_cos") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21536,19 +21536,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_cos,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_ntdll_NTDLL_fabs(double  d) /* ../dlls/ntdll/misc.c:136 */
+extern WINAPI double wine32b_ntdll_fabs(double  d) /* ../dlls/ntdll/misc.c:136 */
 {
-	TRACE("Enter NTDLL_fabs\n");
-	return pNTDLL_fabs(d);
+	TRACE("Enter fabs\n");
+	return pfabs(d);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_fabs(void);  /* ../dlls/ntdll/misc.c:136 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_fabs,
+extern WINAPI void wine32a_ntdll_fabs(void);  /* ../dlls/ntdll/misc.c:136 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_fabs,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_fabs") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_fabs") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21561,19 +21561,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_fabs,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_ntdll_NTDLL_floor(double  d) /* ../dlls/ntdll/misc.c:144 */
+extern WINAPI double wine32b_ntdll_floor(double  d) /* ../dlls/ntdll/misc.c:144 */
 {
-	TRACE("Enter NTDLL_floor\n");
-	return pNTDLL_floor(d);
+	TRACE("Enter floor\n");
+	return pfloor(d);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_floor(void);  /* ../dlls/ntdll/misc.c:144 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_floor,
+extern WINAPI void wine32a_ntdll_floor(void);  /* ../dlls/ntdll/misc.c:144 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_floor,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_floor") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_floor") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21586,19 +21586,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_floor,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_isalnum(int  c) /* ../dlls/ntdll/string.c:356 */
+extern WINAPI int wine32b_ntdll_isalnum(int  c) /* ../dlls/ntdll/string.c:356 */
 {
-	TRACE("Enter NTDLL_isalnum\n");
-	return pNTDLL_isalnum(c);
+	TRACE("Enter isalnum\n");
+	return pisalnum(c);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_isalnum(void);  /* ../dlls/ntdll/string.c:356 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_isalnum,
+extern WINAPI void wine32a_ntdll_isalnum(void);  /* ../dlls/ntdll/string.c:356 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_isalnum,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_isalnum") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_isalnum") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21611,19 +21611,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_isalnum,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_isalpha(int  c) /* ../dlls/ntdll/string.c:365 */
+extern WINAPI int wine32b_ntdll_isalpha(int  c) /* ../dlls/ntdll/string.c:365 */
 {
-	TRACE("Enter NTDLL_isalpha\n");
-	return pNTDLL_isalpha(c);
+	TRACE("Enter isalpha\n");
+	return pisalpha(c);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_isalpha(void);  /* ../dlls/ntdll/string.c:365 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_isalpha,
+extern WINAPI void wine32a_ntdll_isalpha(void);  /* ../dlls/ntdll/string.c:365 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_isalpha,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_isalpha") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_isalpha") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21636,19 +21636,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_isalpha,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_iscntrl(int  c) /* ../dlls/ntdll/string.c:374 */
+extern WINAPI int wine32b_ntdll_iscntrl(int  c) /* ../dlls/ntdll/string.c:374 */
 {
-	TRACE("Enter NTDLL_iscntrl\n");
-	return pNTDLL_iscntrl(c);
+	TRACE("Enter iscntrl\n");
+	return piscntrl(c);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_iscntrl(void);  /* ../dlls/ntdll/string.c:374 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_iscntrl,
+extern WINAPI void wine32a_ntdll_iscntrl(void);  /* ../dlls/ntdll/string.c:374 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_iscntrl,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_iscntrl") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_iscntrl") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21661,19 +21661,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_iscntrl,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_isdigit(int  c) /* ../dlls/ntdll/string.c:383 */
+extern WINAPI int wine32b_ntdll_isdigit(int  c) /* ../dlls/ntdll/string.c:383 */
 {
-	TRACE("Enter NTDLL_isdigit\n");
-	return pNTDLL_isdigit(c);
+	TRACE("Enter isdigit\n");
+	return pisdigit(c);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_isdigit(void);  /* ../dlls/ntdll/string.c:383 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_isdigit,
+extern WINAPI void wine32a_ntdll_isdigit(void);  /* ../dlls/ntdll/string.c:383 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_isdigit,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_isdigit") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_isdigit") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21686,19 +21686,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_isdigit,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_isgraph(int  c) /* ../dlls/ntdll/string.c:392 */
+extern WINAPI int wine32b_ntdll_isgraph(int  c) /* ../dlls/ntdll/string.c:392 */
 {
-	TRACE("Enter NTDLL_isgraph\n");
-	return pNTDLL_isgraph(c);
+	TRACE("Enter isgraph\n");
+	return pisgraph(c);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_isgraph(void);  /* ../dlls/ntdll/string.c:392 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_isgraph,
+extern WINAPI void wine32a_ntdll_isgraph(void);  /* ../dlls/ntdll/string.c:392 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_isgraph,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_isgraph") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_isgraph") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21711,19 +21711,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_isgraph,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_islower(int  c) /* ../dlls/ntdll/string.c:401 */
+extern WINAPI int wine32b_ntdll_islower(int  c) /* ../dlls/ntdll/string.c:401 */
 {
-	TRACE("Enter NTDLL_islower\n");
-	return pNTDLL_islower(c);
+	TRACE("Enter islower\n");
+	return pislower(c);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_islower(void);  /* ../dlls/ntdll/string.c:401 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_islower,
+extern WINAPI void wine32a_ntdll_islower(void);  /* ../dlls/ntdll/string.c:401 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_islower,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_islower") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_islower") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21736,19 +21736,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_islower,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_isprint(int  c) /* ../dlls/ntdll/string.c:410 */
+extern WINAPI int wine32b_ntdll_isprint(int  c) /* ../dlls/ntdll/string.c:410 */
 {
-	TRACE("Enter NTDLL_isprint\n");
-	return pNTDLL_isprint(c);
+	TRACE("Enter isprint\n");
+	return pisprint(c);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_isprint(void);  /* ../dlls/ntdll/string.c:410 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_isprint,
+extern WINAPI void wine32a_ntdll_isprint(void);  /* ../dlls/ntdll/string.c:410 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_isprint,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_isprint") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_isprint") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21761,19 +21761,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_isprint,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_ispunct(int  c) /* ../dlls/ntdll/string.c:419 */
+extern WINAPI int wine32b_ntdll_ispunct(int  c) /* ../dlls/ntdll/string.c:419 */
 {
-	TRACE("Enter NTDLL_ispunct\n");
-	return pNTDLL_ispunct(c);
+	TRACE("Enter ispunct\n");
+	return pispunct(c);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_ispunct(void);  /* ../dlls/ntdll/string.c:419 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_ispunct,
+extern WINAPI void wine32a_ntdll_ispunct(void);  /* ../dlls/ntdll/string.c:419 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_ispunct,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_ispunct") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_ispunct") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21786,19 +21786,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_ispunct,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_isspace(int  c) /* ../dlls/ntdll/string.c:428 */
+extern WINAPI int wine32b_ntdll_isspace(int  c) /* ../dlls/ntdll/string.c:428 */
 {
-	TRACE("Enter NTDLL_isspace\n");
-	return pNTDLL_isspace(c);
+	TRACE("Enter isspace\n");
+	return pisspace(c);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_isspace(void);  /* ../dlls/ntdll/string.c:428 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_isspace,
+extern WINAPI void wine32a_ntdll_isspace(void);  /* ../dlls/ntdll/string.c:428 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_isspace,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_isspace") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_isspace") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21811,19 +21811,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_isspace,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_isupper(int  c) /* ../dlls/ntdll/string.c:437 */
+extern WINAPI int wine32b_ntdll_isupper(int  c) /* ../dlls/ntdll/string.c:437 */
 {
-	TRACE("Enter NTDLL_isupper\n");
-	return pNTDLL_isupper(c);
+	TRACE("Enter isupper\n");
+	return pisupper(c);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_isupper(void);  /* ../dlls/ntdll/string.c:437 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_isupper,
+extern WINAPI void wine32a_ntdll_isupper(void);  /* ../dlls/ntdll/string.c:437 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_isupper,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_isupper") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_isupper") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21836,19 +21836,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_isupper,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_NTDLL_iswalpha(WCHAR  wc) /* ../dlls/ntdll/wcstring.c:314 */
+extern WINAPI INT wine32b_ntdll_iswalpha(WCHAR  wc) /* ../dlls/ntdll/wcstring.c:314 */
 {
-	TRACE("Enter NTDLL_iswalpha\n");
-	return pNTDLL_iswalpha(wc);
+	TRACE("Enter iswalpha\n");
+	return piswalpha(wc);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_iswalpha(void);  /* ../dlls/ntdll/wcstring.c:314 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_iswalpha,
+extern WINAPI void wine32a_ntdll_iswalpha(void);  /* ../dlls/ntdll/wcstring.c:314 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_iswalpha,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_iswalpha") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_iswalpha") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21861,20 +21861,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_iswalpha,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_NTDLL_iswctype(WCHAR  wc, WCHAR  wct) /* ../dlls/ntdll/wcstring.c:299 */
+extern WINAPI INT wine32b_ntdll_iswctype(WCHAR  wc, WCHAR  wct) /* ../dlls/ntdll/wcstring.c:299 */
 {
-	TRACE("Enter NTDLL_iswctype\n");
-	return pNTDLL_iswctype(wc, wct);
+	TRACE("Enter iswctype\n");
+	return piswctype(wc, wct);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_iswctype(void);  /* ../dlls/ntdll/wcstring.c:299 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_iswctype,
+extern WINAPI void wine32a_ntdll_iswctype(void);  /* ../dlls/ntdll/wcstring.c:299 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_iswctype,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_iswctype") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_iswctype") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21887,19 +21887,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_iswctype,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_NTDLL_iswdigit(WCHAR  wc) /* ../dlls/ntdll/wcstring.c:329 */
+extern WINAPI INT wine32b_ntdll_iswdigit(WCHAR  wc) /* ../dlls/ntdll/wcstring.c:329 */
 {
-	TRACE("Enter NTDLL_iswdigit\n");
-	return pNTDLL_iswdigit(wc);
+	TRACE("Enter iswdigit\n");
+	return piswdigit(wc);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_iswdigit(void);  /* ../dlls/ntdll/wcstring.c:329 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_iswdigit,
+extern WINAPI void wine32a_ntdll_iswdigit(void);  /* ../dlls/ntdll/wcstring.c:329 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_iswdigit,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_iswdigit") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_iswdigit") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21912,19 +21912,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_iswdigit,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_NTDLL_iswlower(WCHAR  wc) /* ../dlls/ntdll/wcstring.c:344 */
+extern WINAPI INT wine32b_ntdll_iswlower(WCHAR  wc) /* ../dlls/ntdll/wcstring.c:344 */
 {
-	TRACE("Enter NTDLL_iswlower\n");
-	return pNTDLL_iswlower(wc);
+	TRACE("Enter iswlower\n");
+	return piswlower(wc);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_iswlower(void);  /* ../dlls/ntdll/wcstring.c:344 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_iswlower,
+extern WINAPI void wine32a_ntdll_iswlower(void);  /* ../dlls/ntdll/wcstring.c:344 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_iswlower,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_iswlower") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_iswlower") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21937,19 +21937,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_iswlower,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_NTDLL_iswspace(WCHAR  wc) /* ../dlls/ntdll/wcstring.c:359 */
+extern WINAPI INT wine32b_ntdll_iswspace(WCHAR  wc) /* ../dlls/ntdll/wcstring.c:359 */
 {
-	TRACE("Enter NTDLL_iswspace\n");
-	return pNTDLL_iswspace(wc);
+	TRACE("Enter iswspace\n");
+	return piswspace(wc);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_iswspace(void);  /* ../dlls/ntdll/wcstring.c:359 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_iswspace,
+extern WINAPI void wine32a_ntdll_iswspace(void);  /* ../dlls/ntdll/wcstring.c:359 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_iswspace,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_iswspace") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_iswspace") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21962,19 +21962,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_iswspace,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_NTDLL_iswxdigit(WCHAR  wc) /* ../dlls/ntdll/wcstring.c:374 */
+extern WINAPI INT wine32b_ntdll_iswxdigit(WCHAR  wc) /* ../dlls/ntdll/wcstring.c:374 */
 {
-	TRACE("Enter NTDLL_iswxdigit\n");
-	return pNTDLL_iswxdigit(wc);
+	TRACE("Enter iswxdigit\n");
+	return piswxdigit(wc);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_iswxdigit(void);  /* ../dlls/ntdll/wcstring.c:374 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_iswxdigit,
+extern WINAPI void wine32a_ntdll_iswxdigit(void);  /* ../dlls/ntdll/wcstring.c:374 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_iswxdigit,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_iswxdigit") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_iswxdigit") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21987,19 +21987,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_iswxdigit,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_isxdigit(int  c) /* ../dlls/ntdll/string.c:446 */
+extern WINAPI int wine32b_ntdll_isxdigit(int  c) /* ../dlls/ntdll/string.c:446 */
 {
-	TRACE("Enter NTDLL_isxdigit\n");
-	return pNTDLL_isxdigit(c);
+	TRACE("Enter isxdigit\n");
+	return pisxdigit(c);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_isxdigit(void);  /* ../dlls/ntdll/string.c:446 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_isxdigit,
+extern WINAPI void wine32a_ntdll_isxdigit(void);  /* ../dlls/ntdll/string.c:446 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_isxdigit,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_isxdigit") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_isxdigit") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22012,19 +22012,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_isxdigit,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_ntdll_NTDLL_labs(LONG  i) /* ../dlls/ntdll/misc.c:104 */
+extern WINAPI LONG wine32b_ntdll_labs(LONG  i) /* ../dlls/ntdll/misc.c:104 */
 {
-	TRACE("Enter NTDLL_labs\n");
-	return pNTDLL_labs(i);
+	TRACE("Enter labs\n");
+	return plabs(i);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_labs(void);  /* ../dlls/ntdll/misc.c:104 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_labs,
+extern WINAPI void wine32a_ntdll_labs(void);  /* ../dlls/ntdll/misc.c:104 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_labs,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_labs") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_labs") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22037,19 +22037,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_labs,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_ntdll_NTDLL_log(double  d) /* ../dlls/ntdll/misc.c:152 */
+extern WINAPI double wine32b_ntdll_log(double  d) /* ../dlls/ntdll/misc.c:152 */
 {
-	TRACE("Enter NTDLL_log\n");
-	return pNTDLL_log(d);
+	TRACE("Enter log\n");
+	return plog(d);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_log(void);  /* ../dlls/ntdll/misc.c:152 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_log,
+extern WINAPI void wine32a_ntdll_log(void);  /* ../dlls/ntdll/misc.c:152 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_log,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_log") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_log") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22062,21 +22062,21 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_log,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_NTDLL_mbstowcs(LPWSTR  dst, LPCSTR  src, INT  n) /* ../dlls/ntdll/wcstring.c:260 */
+extern WINAPI INT wine32b_ntdll_mbstowcs(LPWSTR  dst, LPCSTR  src, INT  n) /* ../dlls/ntdll/wcstring.c:260 */
 {
-	TRACE("Enter NTDLL_mbstowcs\n");
-	return pNTDLL_mbstowcs(dst, src, n);
+	TRACE("Enter mbstowcs\n");
+	return pmbstowcs(dst, src, n);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_mbstowcs(void);  /* ../dlls/ntdll/wcstring.c:260 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_mbstowcs,
+extern WINAPI void wine32a_ntdll_mbstowcs(void);  /* ../dlls/ntdll/wcstring.c:260 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_mbstowcs,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_mbstowcs") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_mbstowcs") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22089,21 +22089,21 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_mbstowcs,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_ntdll_NTDLL_memchr(void*  ptr, int  c, size_t  n) /* ../dlls/ntdll/string.c:40 */
+extern WINAPI void* wine32b_ntdll_memchr(void*  ptr, int  c, size_t  n) /* ../dlls/ntdll/string.c:40 */
 {
-	TRACE("Enter NTDLL_memchr\n");
-	return pNTDLL_memchr(ptr, c, n);
+	TRACE("Enter memchr\n");
+	return pmemchr(ptr, c, n);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_memchr(void);  /* ../dlls/ntdll/string.c:40 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_memchr,
+extern WINAPI void wine32a_ntdll_memchr(void);  /* ../dlls/ntdll/string.c:40 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_memchr,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_memchr") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_memchr") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22116,21 +22116,21 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_memchr,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_memcmp(void*  ptr1, void*  ptr2, size_t  n) /* ../dlls/ntdll/string.c:49 */
+extern WINAPI int wine32b_ntdll_memcmp(void*  ptr1, void*  ptr2, size_t  n) /* ../dlls/ntdll/string.c:49 */
 {
-	TRACE("Enter NTDLL_memcmp\n");
-	return pNTDLL_memcmp(ptr1, ptr2, n);
+	TRACE("Enter memcmp\n");
+	return pmemcmp(ptr1, ptr2, n);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_memcmp(void);  /* ../dlls/ntdll/string.c:49 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_memcmp,
+extern WINAPI void wine32a_ntdll_memcmp(void);  /* ../dlls/ntdll/string.c:49 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_memcmp,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_memcmp") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_memcmp") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22143,21 +22143,21 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_memcmp,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_ntdll_NTDLL_memcpy(void*  dst, void*  src, size_t  n) /* ../dlls/ntdll/string.c:61 */
+extern WINAPI void* wine32b_ntdll_memcpy(void*  dst, void*  src, size_t  n) /* ../dlls/ntdll/string.c:61 */
 {
-	TRACE("Enter NTDLL_memcpy\n");
-	return pNTDLL_memcpy(dst, src, n);
+	TRACE("Enter memcpy\n");
+	return pmemcpy(dst, src, n);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_memcpy(void);  /* ../dlls/ntdll/string.c:61 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_memcpy,
+extern WINAPI void wine32a_ntdll_memcpy(void);  /* ../dlls/ntdll/string.c:61 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_memcpy,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_memcpy") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_memcpy") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22170,21 +22170,21 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_memcpy,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_ntdll_NTDLL_memmove(void*  dst, void*  src, size_t  n) /* ../dlls/ntdll/string.c:70 */
+extern WINAPI void* wine32b_ntdll_memmove(void*  dst, void*  src, size_t  n) /* ../dlls/ntdll/string.c:70 */
 {
-	TRACE("Enter NTDLL_memmove\n");
-	return pNTDLL_memmove(dst, src, n);
+	TRACE("Enter memmove\n");
+	return pmemmove(dst, src, n);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_memmove(void);  /* ../dlls/ntdll/string.c:70 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_memmove,
+extern WINAPI void wine32a_ntdll_memmove(void);  /* ../dlls/ntdll/string.c:70 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_memmove,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_memmove") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_memmove") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22197,21 +22197,21 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_memmove,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_ntdll_NTDLL_memset(void*  dst, int  c, size_t  n) /* ../dlls/ntdll/string.c:79 */
+extern WINAPI void* wine32b_ntdll_memset(void*  dst, int  c, size_t  n) /* ../dlls/ntdll/string.c:79 */
 {
-	TRACE("Enter NTDLL_memset\n");
-	return pNTDLL_memset(dst, c, n);
+	TRACE("Enter memset\n");
+	return pmemset(dst, c, n);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_memset(void);  /* ../dlls/ntdll/string.c:79 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_memset,
+extern WINAPI void wine32a_ntdll_memset(void);  /* ../dlls/ntdll/string.c:79 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_memset,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_memset") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_memset") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22224,20 +22224,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_memset,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_ntdll_NTDLL_pow(double  x, double  y) /* ../dlls/ntdll/misc.c:160 */
+extern WINAPI double wine32b_ntdll_pow(double  x, double  y) /* ../dlls/ntdll/misc.c:160 */
 {
-	TRACE("Enter NTDLL_pow\n");
-	return pNTDLL_pow(x, y);
+	TRACE("Enter pow\n");
+	return ppow(x, y);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_pow(void);  /* ../dlls/ntdll/misc.c:160 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_pow,
+extern WINAPI void wine32a_ntdll_pow(void);  /* ../dlls/ntdll/misc.c:160 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_pow,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_pow") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_pow") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22250,14 +22250,14 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_pow,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_NTDLL_qsort(void*  base, size_t  nmemb, size_t  size, int (* compar) (void)) /* ../dlls/ntdll/misc.c:286 */
+extern WINAPI void wine32b_ntdll_qsort(void*  base, size_t  nmemb, size_t  size, int (* compar) (void)) /* ../dlls/ntdll/misc.c:286 */
 {
-	TRACE("Enter NTDLL_qsort\n");
-	return pNTDLL_qsort(base, nmemb, size, compar);
+	TRACE("Enter qsort\n");
+	return pqsort(base, nmemb, size, compar);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_qsort(void);  /* ../dlls/ntdll/misc.c:286 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_qsort,
+extern WINAPI void wine32a_ntdll_qsort(void);  /* ../dlls/ntdll/misc.c:286 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_qsort,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -22265,7 +22265,7 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_qsort,
 	"movl 0x1C(%rsp), %r8d \n"
 	"movl 0x20(%rsp), %r9d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_qsort") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_qsort") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22278,19 +22278,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_qsort,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_ntdll_NTDLL_sin(double  d) /* ../dlls/ntdll/misc.c:168 */
+extern WINAPI double wine32b_ntdll_sin(double  d) /* ../dlls/ntdll/misc.c:168 */
 {
-	TRACE("Enter NTDLL_sin\n");
-	return pNTDLL_sin(d);
+	TRACE("Enter sin\n");
+	return psin(d);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_sin(void);  /* ../dlls/ntdll/misc.c:168 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_sin,
+extern WINAPI void wine32a_ntdll_sin(void);  /* ../dlls/ntdll/misc.c:168 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_sin,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_sin") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_sin") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22303,20 +22303,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_sin,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_sprintf(char*  str, char*  format) /* ../dlls/ntdll/printf.c:824 */
+extern WINAPI int wine32b_ntdll_sprintf(char*  str, char*  format) /* ../dlls/ntdll/printf.c:824 */
 {
-	TRACE("Enter NTDLL_sprintf\n");
-	return pNTDLL_sprintf(str, format);
+	TRACE("Enter sprintf\n");
+	return psprintf(str, format);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_sprintf(void);  /* ../dlls/ntdll/printf.c:824 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_sprintf,
+extern WINAPI void wine32a_ntdll_sprintf(void);  /* ../dlls/ntdll/printf.c:824 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_sprintf,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_sprintf") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_sprintf") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22329,19 +22329,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_sprintf,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_ntdll_NTDLL_sqrt(double  d) /* ../dlls/ntdll/misc.c:176 */
+extern WINAPI double wine32b_ntdll_sqrt(double  d) /* ../dlls/ntdll/misc.c:176 */
 {
-	TRACE("Enter NTDLL_sqrt\n");
-	return pNTDLL_sqrt(d);
+	TRACE("Enter sqrt\n");
+	return psqrt(d);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_sqrt(void);  /* ../dlls/ntdll/misc.c:176 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_sqrt,
+extern WINAPI void wine32a_ntdll_sqrt(void);  /* ../dlls/ntdll/misc.c:176 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_sqrt,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_sqrt") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_sqrt") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22354,20 +22354,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_sqrt,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_sscanf(char*  str, char*  format) /* ../dlls/ntdll/string.c:1400 */
+extern WINAPI int wine32b_ntdll_sscanf(char*  str, char*  format) /* ../dlls/ntdll/string.c:1400 */
 {
-	TRACE("Enter NTDLL_sscanf\n");
-	return pNTDLL_sscanf(str, format);
+	TRACE("Enter sscanf\n");
+	return psscanf(str, format);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_sscanf(void);  /* ../dlls/ntdll/string.c:1400 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_sscanf,
+extern WINAPI void wine32a_ntdll_sscanf(void);  /* ../dlls/ntdll/string.c:1400 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_sscanf,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_sscanf") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_sscanf") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22380,20 +22380,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_sscanf,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll_NTDLL_strcat(char*  dst, char*  src) /* ../dlls/ntdll/string.c:88 */
+extern WINAPI char* wine32b_ntdll_strcat(char*  dst, char*  src) /* ../dlls/ntdll/string.c:88 */
 {
-	TRACE("Enter NTDLL_strcat\n");
-	return pNTDLL_strcat(dst, src);
+	TRACE("Enter strcat\n");
+	return pstrcat(dst, src);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_strcat(void);  /* ../dlls/ntdll/string.c:88 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strcat,
+extern WINAPI void wine32a_ntdll_strcat(void);  /* ../dlls/ntdll/string.c:88 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_strcat,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_strcat") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_strcat") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22406,20 +22406,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strcat,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll_NTDLL_strchr(char*  str, int  c) /* ../dlls/ntdll/string.c:97 */
+extern WINAPI char* wine32b_ntdll_strchr(char*  str, int  c) /* ../dlls/ntdll/string.c:97 */
 {
-	TRACE("Enter NTDLL_strchr\n");
-	return pNTDLL_strchr(str, c);
+	TRACE("Enter strchr\n");
+	return pstrchr(str, c);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_strchr(void);  /* ../dlls/ntdll/string.c:97 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strchr,
+extern WINAPI void wine32a_ntdll_strchr(void);  /* ../dlls/ntdll/string.c:97 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_strchr,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_strchr") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_strchr") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22432,20 +22432,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strchr,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_strcmp(char*  str1, char*  str2) /* ../dlls/ntdll/string.c:106 */
+extern WINAPI int wine32b_ntdll_strcmp(char*  str1, char*  str2) /* ../dlls/ntdll/string.c:106 */
 {
-	TRACE("Enter NTDLL_strcmp\n");
-	return pNTDLL_strcmp(str1, str2);
+	TRACE("Enter strcmp\n");
+	return pstrcmp(str1, str2);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_strcmp(void);  /* ../dlls/ntdll/string.c:106 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strcmp,
+extern WINAPI void wine32a_ntdll_strcmp(void);  /* ../dlls/ntdll/string.c:106 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_strcmp,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_strcmp") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_strcmp") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22458,20 +22458,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strcmp,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll_NTDLL_strcpy(char*  dst, char*  src) /* ../dlls/ntdll/string.c:115 */
+extern WINAPI char* wine32b_ntdll_strcpy(char*  dst, char*  src) /* ../dlls/ntdll/string.c:115 */
 {
-	TRACE("Enter NTDLL_strcpy\n");
-	return pNTDLL_strcpy(dst, src);
+	TRACE("Enter strcpy\n");
+	return pstrcpy(dst, src);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_strcpy(void);  /* ../dlls/ntdll/string.c:115 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strcpy,
+extern WINAPI void wine32a_ntdll_strcpy(void);  /* ../dlls/ntdll/string.c:115 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_strcpy,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_strcpy") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_strcpy") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22484,20 +22484,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strcpy,
 	"ret \n"
 )
 
-extern WINAPI size_t wine32b_ntdll_NTDLL_strcspn(char*  str, char*  reject) /* ../dlls/ntdll/string.c:124 */
+extern WINAPI size_t wine32b_ntdll_strcspn(char*  str, char*  reject) /* ../dlls/ntdll/string.c:124 */
 {
-	TRACE("Enter NTDLL_strcspn\n");
-	return pNTDLL_strcspn(str, reject);
+	TRACE("Enter strcspn\n");
+	return pstrcspn(str, reject);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_strcspn(void);  /* ../dlls/ntdll/string.c:124 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strcspn,
+extern WINAPI void wine32a_ntdll_strcspn(void);  /* ../dlls/ntdll/string.c:124 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_strcspn,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_strcspn") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_strcspn") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22510,19 +22510,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strcspn,
 	"ret \n"
 )
 
-extern WINAPI size_t wine32b_ntdll_NTDLL_strlen(char*  str) /* ../dlls/ntdll/string.c:133 */
+extern WINAPI size_t wine32b_ntdll_strlen(char*  str) /* ../dlls/ntdll/string.c:133 */
 {
-	TRACE("Enter NTDLL_strlen\n");
-	return pNTDLL_strlen(str);
+	TRACE("Enter strlen\n");
+	return pstrlen(str);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_strlen(void);  /* ../dlls/ntdll/string.c:133 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strlen,
+extern WINAPI void wine32a_ntdll_strlen(void);  /* ../dlls/ntdll/string.c:133 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_strlen,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_strlen") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_strlen") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22535,21 +22535,21 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strlen,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll_NTDLL_strncat(char*  dst, char*  src, size_t  len) /* ../dlls/ntdll/string.c:142 */
+extern WINAPI char* wine32b_ntdll_strncat(char*  dst, char*  src, size_t  len) /* ../dlls/ntdll/string.c:142 */
 {
-	TRACE("Enter NTDLL_strncat\n");
-	return pNTDLL_strncat(dst, src, len);
+	TRACE("Enter strncat\n");
+	return pstrncat(dst, src, len);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_strncat(void);  /* ../dlls/ntdll/string.c:142 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strncat,
+extern WINAPI void wine32a_ntdll_strncat(void);  /* ../dlls/ntdll/string.c:142 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_strncat,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_strncat") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_strncat") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22562,21 +22562,21 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strncat,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_strncmp(char*  str1, char*  str2, size_t  len) /* ../dlls/ntdll/string.c:151 */
+extern WINAPI int wine32b_ntdll_strncmp(char*  str1, char*  str2, size_t  len) /* ../dlls/ntdll/string.c:151 */
 {
-	TRACE("Enter NTDLL_strncmp\n");
-	return pNTDLL_strncmp(str1, str2, len);
+	TRACE("Enter strncmp\n");
+	return pstrncmp(str1, str2, len);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_strncmp(void);  /* ../dlls/ntdll/string.c:151 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strncmp,
+extern WINAPI void wine32a_ntdll_strncmp(void);  /* ../dlls/ntdll/string.c:151 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_strncmp,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_strncmp") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_strncmp") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22589,21 +22589,21 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strncmp,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll_NTDLL_strncpy(char*  dst, char*  src, size_t  len) /* ../dlls/ntdll/string.c:160 */
+extern WINAPI char* wine32b_ntdll_strncpy(char*  dst, char*  src, size_t  len) /* ../dlls/ntdll/string.c:160 */
 {
-	TRACE("Enter NTDLL_strncpy\n");
-	return pNTDLL_strncpy(dst, src, len);
+	TRACE("Enter strncpy\n");
+	return pstrncpy(dst, src, len);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_strncpy(void);  /* ../dlls/ntdll/string.c:160 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strncpy,
+extern WINAPI void wine32a_ntdll_strncpy(void);  /* ../dlls/ntdll/string.c:160 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_strncpy,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_strncpy") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_strncpy") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22616,20 +22616,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strncpy,
 	"ret \n"
 )
 
-extern WINAPI size_t wine32b_ntdll_NTDLL_strnlen(char*  str, size_t  len) /* ../dlls/ntdll/string.c:169 */
+extern WINAPI size_t wine32b_ntdll_strnlen(char*  str, size_t  len) /* ../dlls/ntdll/string.c:169 */
 {
-	TRACE("Enter NTDLL_strnlen\n");
-	return pNTDLL_strnlen(str, len);
+	TRACE("Enter strnlen\n");
+	return pstrnlen(str, len);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_strnlen(void);  /* ../dlls/ntdll/string.c:169 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strnlen,
+extern WINAPI void wine32a_ntdll_strnlen(void);  /* ../dlls/ntdll/string.c:169 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_strnlen,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_strnlen") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_strnlen") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22642,20 +22642,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strnlen,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll_NTDLL_strpbrk(char*  str, char*  accept) /* ../dlls/ntdll/string.c:178 */
+extern WINAPI char* wine32b_ntdll_strpbrk(char*  str, char*  accept) /* ../dlls/ntdll/string.c:178 */
 {
-	TRACE("Enter NTDLL_strpbrk\n");
-	return pNTDLL_strpbrk(str, accept);
+	TRACE("Enter strpbrk\n");
+	return pstrpbrk(str, accept);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_strpbrk(void);  /* ../dlls/ntdll/string.c:178 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strpbrk,
+extern WINAPI void wine32a_ntdll_strpbrk(void);  /* ../dlls/ntdll/string.c:178 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_strpbrk,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_strpbrk") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_strpbrk") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22668,20 +22668,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strpbrk,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll_NTDLL_strrchr(char*  str, int  c) /* ../dlls/ntdll/string.c:187 */
+extern WINAPI char* wine32b_ntdll_strrchr(char*  str, int  c) /* ../dlls/ntdll/string.c:187 */
 {
-	TRACE("Enter NTDLL_strrchr\n");
-	return pNTDLL_strrchr(str, c);
+	TRACE("Enter strrchr\n");
+	return pstrrchr(str, c);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_strrchr(void);  /* ../dlls/ntdll/string.c:187 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strrchr,
+extern WINAPI void wine32a_ntdll_strrchr(void);  /* ../dlls/ntdll/string.c:187 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_strrchr,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_strrchr") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_strrchr") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22694,20 +22694,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strrchr,
 	"ret \n"
 )
 
-extern WINAPI size_t wine32b_ntdll_NTDLL_strspn(char*  str, char*  accept) /* ../dlls/ntdll/string.c:196 */
+extern WINAPI size_t wine32b_ntdll_strspn(char*  str, char*  accept) /* ../dlls/ntdll/string.c:196 */
 {
-	TRACE("Enter NTDLL_strspn\n");
-	return pNTDLL_strspn(str, accept);
+	TRACE("Enter strspn\n");
+	return pstrspn(str, accept);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_strspn(void);  /* ../dlls/ntdll/string.c:196 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strspn,
+extern WINAPI void wine32a_ntdll_strspn(void);  /* ../dlls/ntdll/string.c:196 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_strspn,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_strspn") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_strspn") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22720,20 +22720,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strspn,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll_NTDLL_strstr(char*  haystack, char*  needle) /* ../dlls/ntdll/string.c:205 */
+extern WINAPI char* wine32b_ntdll_strstr(char*  haystack, char*  needle) /* ../dlls/ntdll/string.c:205 */
 {
-	TRACE("Enter NTDLL_strstr\n");
-	return pNTDLL_strstr(haystack, needle);
+	TRACE("Enter strstr\n");
+	return pstrstr(haystack, needle);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_strstr(void);  /* ../dlls/ntdll/string.c:205 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strstr,
+extern WINAPI void wine32a_ntdll_strstr(void);  /* ../dlls/ntdll/string.c:205 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_strstr,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_strstr") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_strstr") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22746,21 +22746,21 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strstr,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_ntdll_NTDLL_strtol(char*  nptr, char**  endptr, int  base) /* ../dlls/ntdll/string.c:509 */
+extern WINAPI LONG wine32b_ntdll_strtol(char*  nptr, char**  endptr, int  base) /* ../dlls/ntdll/string.c:509 */
 {
-	TRACE("Enter NTDLL_strtol\n");
-	return pNTDLL_strtol(nptr, endptr, base);
+	TRACE("Enter strtol\n");
+	return pstrtol(nptr, endptr, base);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_strtol(void);  /* ../dlls/ntdll/string.c:509 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strtol,
+extern WINAPI void wine32a_ntdll_strtol(void);  /* ../dlls/ntdll/string.c:509 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_strtol,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_strtol") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_strtol") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22773,21 +22773,21 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strtol,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_NTDLL_strtoul(char*  nptr, char**  endptr, int  base) /* ../dlls/ntdll/string.c:518 */
+extern WINAPI ULONG wine32b_ntdll_strtoul(char*  nptr, char**  endptr, int  base) /* ../dlls/ntdll/string.c:518 */
 {
-	TRACE("Enter NTDLL_strtoul\n");
-	return pNTDLL_strtoul(nptr, endptr, base);
+	TRACE("Enter strtoul\n");
+	return pstrtoul(nptr, endptr, base);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_strtoul(void);  /* ../dlls/ntdll/string.c:518 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strtoul,
+extern WINAPI void wine32a_ntdll_strtoul(void);  /* ../dlls/ntdll/string.c:518 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_strtoul,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_strtoul") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_strtoul") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22800,20 +22800,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_strtoul,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_swprintf(WCHAR*  str, WCHAR*  format) /* ../dlls/ntdll/printf.c:839 */
+extern WINAPI int wine32b_ntdll_swprintf(WCHAR*  str, WCHAR*  format) /* ../dlls/ntdll/printf.c:839 */
 {
-	TRACE("Enter NTDLL_swprintf\n");
-	return pNTDLL_swprintf(str, format);
+	TRACE("Enter swprintf\n");
+	return pswprintf(str, format);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_swprintf(void);  /* ../dlls/ntdll/printf.c:839 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_swprintf,
+extern WINAPI void wine32a_ntdll_swprintf(void);  /* ../dlls/ntdll/printf.c:839 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_swprintf,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_swprintf") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_swprintf") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22826,19 +22826,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_swprintf,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_ntdll_NTDLL_tan(double  d) /* ../dlls/ntdll/misc.c:184 */
+extern WINAPI double wine32b_ntdll_tan(double  d) /* ../dlls/ntdll/misc.c:184 */
 {
-	TRACE("Enter NTDLL_tan\n");
-	return pNTDLL_tan(d);
+	TRACE("Enter tan\n");
+	return ptan(d);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_tan(void);  /* ../dlls/ntdll/misc.c:184 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_tan,
+extern WINAPI void wine32a_ntdll_tan(void);  /* ../dlls/ntdll/misc.c:184 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_tan,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_tan") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_tan") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22851,19 +22851,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_tan,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_tolower(int  c) /* ../dlls/ntdll/string.c:223 */
+extern WINAPI int wine32b_ntdll_tolower(int  c) /* ../dlls/ntdll/string.c:223 */
 {
-	TRACE("Enter NTDLL_tolower\n");
-	return pNTDLL_tolower(c);
+	TRACE("Enter tolower\n");
+	return ptolower(c);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_tolower(void);  /* ../dlls/ntdll/string.c:223 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_tolower,
+extern WINAPI void wine32a_ntdll_tolower(void);  /* ../dlls/ntdll/string.c:223 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_tolower,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_tolower") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_tolower") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22876,19 +22876,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_tolower,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_toupper(int  c) /* ../dlls/ntdll/string.c:337 */
+extern WINAPI int wine32b_ntdll_toupper(int  c) /* ../dlls/ntdll/string.c:337 */
 {
-	TRACE("Enter NTDLL_toupper\n");
-	return pNTDLL_toupper(c);
+	TRACE("Enter toupper\n");
+	return ptoupper(c);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_toupper(void);  /* ../dlls/ntdll/string.c:337 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_toupper,
+extern WINAPI void wine32a_ntdll_toupper(void);  /* ../dlls/ntdll/string.c:337 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_toupper,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_toupper") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_toupper") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22901,19 +22901,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_toupper,
 	"ret \n"
 )
 
-extern WINAPI WCHAR wine32b_ntdll_NTDLL_towlower(WCHAR  ch) /* ../dlls/ntdll/wcstring.c:75 */
+extern WINAPI WCHAR wine32b_ntdll_towlower(WCHAR  ch) /* ../dlls/ntdll/wcstring.c:75 */
 {
-	TRACE("Enter NTDLL_towlower\n");
-	return pNTDLL_towlower(ch);
+	TRACE("Enter towlower\n");
+	return ptowlower(ch);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_towlower(void);  /* ../dlls/ntdll/wcstring.c:75 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_towlower,
+extern WINAPI void wine32a_ntdll_towlower(void);  /* ../dlls/ntdll/wcstring.c:75 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_towlower,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_towlower") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_towlower") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22926,19 +22926,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_towlower,
 	"ret \n"
 )
 
-extern WINAPI WCHAR wine32b_ntdll_NTDLL_towupper(WCHAR  ch) /* ../dlls/ntdll/wcstring.c:84 */
+extern WINAPI WCHAR wine32b_ntdll_towupper(WCHAR  ch) /* ../dlls/ntdll/wcstring.c:84 */
 {
-	TRACE("Enter NTDLL_towupper\n");
-	return pNTDLL_towupper(ch);
+	TRACE("Enter towupper\n");
+	return ptowupper(ch);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_towupper(void);  /* ../dlls/ntdll/wcstring.c:84 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_towupper,
+extern WINAPI void wine32a_ntdll_towupper(void);  /* ../dlls/ntdll/wcstring.c:84 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_towupper,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_towupper") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_towupper") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -23007,21 +23007,21 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_vDbgPrintExWithPrefix,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_NTDLL_vsprintf(char*  str, char*  format, __builtin_ms_va_list  args) /* ../dlls/ntdll/printf.c:815 */
+extern WINAPI int wine32b_ntdll_vsprintf(char*  str, char*  format, __builtin_ms_va_list  args) /* ../dlls/ntdll/printf.c:815 */
 {
-	TRACE("Enter NTDLL_vsprintf\n");
-	return pNTDLL_vsprintf(str, format, args);
+	TRACE("Enter vsprintf\n");
+	return pvsprintf(str, format, args);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_vsprintf(void);  /* ../dlls/ntdll/printf.c:815 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_vsprintf,
+extern WINAPI void wine32a_ntdll_vsprintf(void);  /* ../dlls/ntdll/printf.c:815 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_vsprintf,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_vsprintf") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_vsprintf") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -23034,20 +23034,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_vsprintf,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll_NTDLL_wcscat(LPWSTR  dst, LPCWSTR  src) /* ../dlls/ntdll/wcstring.c:93 */
+extern WINAPI LPWSTR wine32b_ntdll_wcscat(LPWSTR  dst, LPCWSTR  src) /* ../dlls/ntdll/wcstring.c:93 */
 {
-	TRACE("Enter NTDLL_wcscat\n");
-	return pNTDLL_wcscat(dst, src);
+	TRACE("Enter wcscat\n");
+	return pwcscat(dst, src);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_wcscat(void);  /* ../dlls/ntdll/wcstring.c:93 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcscat,
+extern WINAPI void wine32a_ntdll_wcscat(void);  /* ../dlls/ntdll/wcstring.c:93 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_wcscat,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_wcscat") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_wcscat") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -23060,20 +23060,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcscat,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll_NTDLL_wcschr(LPCWSTR  str, WCHAR  ch) /* ../dlls/ntdll/wcstring.c:102 */
+extern WINAPI LPWSTR wine32b_ntdll_wcschr(LPCWSTR  str, WCHAR  ch) /* ../dlls/ntdll/wcstring.c:102 */
 {
-	TRACE("Enter NTDLL_wcschr\n");
-	return pNTDLL_wcschr(str, ch);
+	TRACE("Enter wcschr\n");
+	return pwcschr(str, ch);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_wcschr(void);  /* ../dlls/ntdll/wcstring.c:102 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcschr,
+extern WINAPI void wine32a_ntdll_wcschr(void);  /* ../dlls/ntdll/wcstring.c:102 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_wcschr,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_wcschr") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_wcschr") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -23086,20 +23086,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcschr,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_NTDLL_wcscmp(LPCWSTR  str1, LPCWSTR  str2) /* ../dlls/ntdll/wcstring.c:111 */
+extern WINAPI INT wine32b_ntdll_wcscmp(LPCWSTR  str1, LPCWSTR  str2) /* ../dlls/ntdll/wcstring.c:111 */
 {
-	TRACE("Enter NTDLL_wcscmp\n");
-	return pNTDLL_wcscmp(str1, str2);
+	TRACE("Enter wcscmp\n");
+	return pwcscmp(str1, str2);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_wcscmp(void);  /* ../dlls/ntdll/wcstring.c:111 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcscmp,
+extern WINAPI void wine32a_ntdll_wcscmp(void);  /* ../dlls/ntdll/wcstring.c:111 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_wcscmp,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_wcscmp") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_wcscmp") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -23112,20 +23112,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcscmp,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll_NTDLL_wcscpy(LPWSTR  dst, LPCWSTR  src) /* ../dlls/ntdll/wcstring.c:120 */
+extern WINAPI LPWSTR wine32b_ntdll_wcscpy(LPWSTR  dst, LPCWSTR  src) /* ../dlls/ntdll/wcstring.c:120 */
 {
-	TRACE("Enter NTDLL_wcscpy\n");
-	return pNTDLL_wcscpy(dst, src);
+	TRACE("Enter wcscpy\n");
+	return pwcscpy(dst, src);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_wcscpy(void);  /* ../dlls/ntdll/wcstring.c:120 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcscpy,
+extern WINAPI void wine32a_ntdll_wcscpy(void);  /* ../dlls/ntdll/wcstring.c:120 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_wcscpy,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_wcscpy") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_wcscpy") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -23138,20 +23138,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcscpy,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_NTDLL_wcscspn(LPCWSTR  str, LPCWSTR  reject) /* ../dlls/ntdll/wcstring.c:129 */
+extern WINAPI INT wine32b_ntdll_wcscspn(LPCWSTR  str, LPCWSTR  reject) /* ../dlls/ntdll/wcstring.c:129 */
 {
-	TRACE("Enter NTDLL_wcscspn\n");
-	return pNTDLL_wcscspn(str, reject);
+	TRACE("Enter wcscspn\n");
+	return pwcscspn(str, reject);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_wcscspn(void);  /* ../dlls/ntdll/wcstring.c:129 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcscspn,
+extern WINAPI void wine32a_ntdll_wcscspn(void);  /* ../dlls/ntdll/wcstring.c:129 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_wcscspn,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_wcscspn") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_wcscspn") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -23164,19 +23164,19 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcscspn,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_NTDLL_wcslen(LPCWSTR  str) /* ../dlls/ntdll/wcstring.c:138 */
+extern WINAPI INT wine32b_ntdll_wcslen(LPCWSTR  str) /* ../dlls/ntdll/wcstring.c:138 */
 {
-	TRACE("Enter NTDLL_wcslen\n");
-	return pNTDLL_wcslen(str);
+	TRACE("Enter wcslen\n");
+	return pwcslen(str);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_wcslen(void);  /* ../dlls/ntdll/wcstring.c:138 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcslen,
+extern WINAPI void wine32a_ntdll_wcslen(void);  /* ../dlls/ntdll/wcstring.c:138 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_wcslen,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_wcslen") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_wcslen") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -23189,21 +23189,21 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcslen,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll_NTDLL_wcsncat(LPWSTR  s1, LPCWSTR  s2, INT  n) /* ../dlls/ntdll/wcstring.c:147 */
+extern WINAPI LPWSTR wine32b_ntdll_wcsncat(LPWSTR  s1, LPCWSTR  s2, INT  n) /* ../dlls/ntdll/wcstring.c:147 */
 {
-	TRACE("Enter NTDLL_wcsncat\n");
-	return pNTDLL_wcsncat(s1, s2, n);
+	TRACE("Enter wcsncat\n");
+	return pwcsncat(s1, s2, n);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_wcsncat(void);  /* ../dlls/ntdll/wcstring.c:147 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcsncat,
+extern WINAPI void wine32a_ntdll_wcsncat(void);  /* ../dlls/ntdll/wcstring.c:147 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_wcsncat,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_wcsncat") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_wcsncat") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -23216,21 +23216,21 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcsncat,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_NTDLL_wcsncmp(LPCWSTR  str1, LPCWSTR  str2, INT  n) /* ../dlls/ntdll/wcstring.c:160 */
+extern WINAPI INT wine32b_ntdll_wcsncmp(LPCWSTR  str1, LPCWSTR  str2, INT  n) /* ../dlls/ntdll/wcstring.c:160 */
 {
-	TRACE("Enter NTDLL_wcsncmp\n");
-	return pNTDLL_wcsncmp(str1, str2, n);
+	TRACE("Enter wcsncmp\n");
+	return pwcsncmp(str1, str2, n);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_wcsncmp(void);  /* ../dlls/ntdll/wcstring.c:160 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcsncmp,
+extern WINAPI void wine32a_ntdll_wcsncmp(void);  /* ../dlls/ntdll/wcstring.c:160 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_wcsncmp,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_wcsncmp") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_wcsncmp") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -23243,21 +23243,21 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcsncmp,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll_NTDLL_wcsncpy(LPWSTR  s1, LPCWSTR  s2, INT  n) /* ../dlls/ntdll/wcstring.c:169 */
+extern WINAPI LPWSTR wine32b_ntdll_wcsncpy(LPWSTR  s1, LPCWSTR  s2, INT  n) /* ../dlls/ntdll/wcstring.c:169 */
 {
-	TRACE("Enter NTDLL_wcsncpy\n");
-	return pNTDLL_wcsncpy(s1, s2, n);
+	TRACE("Enter wcsncpy\n");
+	return pwcsncpy(s1, s2, n);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_wcsncpy(void);  /* ../dlls/ntdll/wcstring.c:169 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcsncpy,
+extern WINAPI void wine32a_ntdll_wcsncpy(void);  /* ../dlls/ntdll/wcstring.c:169 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_wcsncpy,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_wcsncpy") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_wcsncpy") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -23270,20 +23270,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcsncpy,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll_NTDLL_wcspbrk(LPCWSTR  str, LPCWSTR  accept) /* ../dlls/ntdll/wcstring.c:181 */
+extern WINAPI LPWSTR wine32b_ntdll_wcspbrk(LPCWSTR  str, LPCWSTR  accept) /* ../dlls/ntdll/wcstring.c:181 */
 {
-	TRACE("Enter NTDLL_wcspbrk\n");
-	return pNTDLL_wcspbrk(str, accept);
+	TRACE("Enter wcspbrk\n");
+	return pwcspbrk(str, accept);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_wcspbrk(void);  /* ../dlls/ntdll/wcstring.c:181 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcspbrk,
+extern WINAPI void wine32a_ntdll_wcspbrk(void);  /* ../dlls/ntdll/wcstring.c:181 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_wcspbrk,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_wcspbrk") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_wcspbrk") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -23296,20 +23296,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcspbrk,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll_NTDLL_wcsrchr(LPWSTR  str, WCHAR  ch) /* ../dlls/ntdll/wcstring.c:190 */
+extern WINAPI LPWSTR wine32b_ntdll_wcsrchr(LPWSTR  str, WCHAR  ch) /* ../dlls/ntdll/wcstring.c:190 */
 {
-	TRACE("Enter NTDLL_wcsrchr\n");
-	return pNTDLL_wcsrchr(str, ch);
+	TRACE("Enter wcsrchr\n");
+	return pwcsrchr(str, ch);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_wcsrchr(void);  /* ../dlls/ntdll/wcstring.c:190 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcsrchr,
+extern WINAPI void wine32a_ntdll_wcsrchr(void);  /* ../dlls/ntdll/wcstring.c:190 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_wcsrchr,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_wcsrchr") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_wcsrchr") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -23322,20 +23322,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcsrchr,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_NTDLL_wcsspn(LPCWSTR  str, LPCWSTR  accept) /* ../dlls/ntdll/wcstring.c:199 */
+extern WINAPI INT wine32b_ntdll_wcsspn(LPCWSTR  str, LPCWSTR  accept) /* ../dlls/ntdll/wcstring.c:199 */
 {
-	TRACE("Enter NTDLL_wcsspn\n");
-	return pNTDLL_wcsspn(str, accept);
+	TRACE("Enter wcsspn\n");
+	return pwcsspn(str, accept);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_wcsspn(void);  /* ../dlls/ntdll/wcstring.c:199 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcsspn,
+extern WINAPI void wine32a_ntdll_wcsspn(void);  /* ../dlls/ntdll/wcstring.c:199 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_wcsspn,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_wcsspn") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_wcsspn") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -23348,20 +23348,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcsspn,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll_NTDLL_wcsstr(LPCWSTR  str, LPCWSTR  sub) /* ../dlls/ntdll/wcstring.c:208 */
+extern WINAPI LPWSTR wine32b_ntdll_wcsstr(LPCWSTR  str, LPCWSTR  sub) /* ../dlls/ntdll/wcstring.c:208 */
 {
-	TRACE("Enter NTDLL_wcsstr\n");
-	return pNTDLL_wcsstr(str, sub);
+	TRACE("Enter wcsstr\n");
+	return pwcsstr(str, sub);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_wcsstr(void);  /* ../dlls/ntdll/wcstring.c:208 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcsstr,
+extern WINAPI void wine32a_ntdll_wcsstr(void);  /* ../dlls/ntdll/wcstring.c:208 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_wcsstr,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_wcsstr") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_wcsstr") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -23374,20 +23374,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcsstr,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll_NTDLL_wcstok(LPWSTR  str, LPCWSTR  delim) /* ../dlls/ntdll/wcstring.c:217 */
+extern WINAPI LPWSTR wine32b_ntdll_wcstok(LPWSTR  str, LPCWSTR  delim) /* ../dlls/ntdll/wcstring.c:217 */
 {
-	TRACE("Enter NTDLL_wcstok\n");
-	return pNTDLL_wcstok(str, delim);
+	TRACE("Enter wcstok\n");
+	return pwcstok(str, delim);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_wcstok(void);  /* ../dlls/ntdll/wcstring.c:217 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcstok,
+extern WINAPI void wine32a_ntdll_wcstok(void);  /* ../dlls/ntdll/wcstring.c:217 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_wcstok,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_wcstok") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_wcstok") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -23400,21 +23400,21 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcstok,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_ntdll_NTDLL_wcstol(LPCWSTR  s, LPWSTR*  end, INT  base) /* ../dlls/ntdll/wcstring.c:281 */
+extern WINAPI LONG wine32b_ntdll_wcstol(LPCWSTR  s, LPWSTR*  end, INT  base) /* ../dlls/ntdll/wcstring.c:281 */
 {
-	TRACE("Enter NTDLL_wcstol\n");
-	return pNTDLL_wcstol(s, end, base);
+	TRACE("Enter wcstol\n");
+	return pwcstol(s, end, base);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_wcstol(void);  /* ../dlls/ntdll/wcstring.c:281 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcstol,
+extern WINAPI void wine32a_ntdll_wcstol(void);  /* ../dlls/ntdll/wcstring.c:281 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_wcstol,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_wcstol") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_wcstol") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -23427,21 +23427,21 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcstol,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_NTDLL_wcstombs(LPSTR  dst, LPCWSTR  src, INT  n) /* ../dlls/ntdll/wcstring.c:238 */
+extern WINAPI INT wine32b_ntdll_wcstombs(LPSTR  dst, LPCWSTR  src, INT  n) /* ../dlls/ntdll/wcstring.c:238 */
 {
-	TRACE("Enter NTDLL_wcstombs\n");
-	return pNTDLL_wcstombs(dst, src, n);
+	TRACE("Enter wcstombs\n");
+	return pwcstombs(dst, src, n);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_wcstombs(void);  /* ../dlls/ntdll/wcstring.c:238 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcstombs,
+extern WINAPI void wine32a_ntdll_wcstombs(void);  /* ../dlls/ntdll/wcstring.c:238 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_wcstombs,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_wcstombs") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_wcstombs") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -23454,21 +23454,21 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcstombs,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_NTDLL_wcstoul(LPCWSTR  s, LPWSTR*  end, INT  base) /* ../dlls/ntdll/wcstring.c:290 */
+extern WINAPI ULONG wine32b_ntdll_wcstoul(LPCWSTR  s, LPWSTR*  end, INT  base) /* ../dlls/ntdll/wcstring.c:290 */
 {
-	TRACE("Enter NTDLL_wcstoul\n");
-	return pNTDLL_wcstoul(s, end, base);
+	TRACE("Enter wcstoul\n");
+	return pwcstoul(s, end, base);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_wcstoul(void);  /* ../dlls/ntdll/wcstring.c:290 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wcstoul,
+extern WINAPI void wine32a_ntdll_wcstoul(void);  /* ../dlls/ntdll/wcstring.c:290 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_wcstoul,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_wcstoul") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_wcstoul") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -23766,18 +23766,18 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll___wine_locked_recvmsg,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll_NTDLL_wine_get_version(void) /* ../dlls/ntdll/misc.c:58 */
+extern WINAPI char* wine32b_ntdll_wine_get_version(void) /* ../dlls/ntdll/misc.c:58 */
 {
-	TRACE("Enter NTDLL_wine_get_version\n");
-	return pNTDLL_wine_get_version();
+	TRACE("Enter wine_get_version\n");
+	return pwine_get_version();
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_wine_get_version(void);  /* ../dlls/ntdll/misc.c:58 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wine_get_version,
+extern WINAPI void wine32a_ntdll_wine_get_version(void);  /* ../dlls/ntdll/misc.c:58 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_wine_get_version,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_wine_get_version") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_wine_get_version") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -23790,18 +23790,18 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wine_get_version,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll_NTDLL_wine_get_build_id(void) /* ../dlls/ntdll/misc.c:66 */
+extern WINAPI char* wine32b_ntdll_wine_get_build_id(void) /* ../dlls/ntdll/misc.c:66 */
 {
-	TRACE("Enter NTDLL_wine_get_build_id\n");
-	return pNTDLL_wine_get_build_id();
+	TRACE("Enter wine_get_build_id\n");
+	return pwine_get_build_id();
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_wine_get_build_id(void);  /* ../dlls/ntdll/misc.c:66 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wine_get_build_id,
+extern WINAPI void wine32a_ntdll_wine_get_build_id(void);  /* ../dlls/ntdll/misc.c:66 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_wine_get_build_id,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_wine_get_build_id") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_wine_get_build_id") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -23814,20 +23814,20 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wine_get_build_id,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_NTDLL_wine_get_host_version(char**  sysname, char**  release) /* ../dlls/ntdll/misc.c:74 */
+extern WINAPI void wine32b_ntdll_wine_get_host_version(char**  sysname, char**  release) /* ../dlls/ntdll/misc.c:74 */
 {
-	TRACE("Enter NTDLL_wine_get_host_version\n");
-	return pNTDLL_wine_get_host_version(sysname, release);
+	TRACE("Enter wine_get_host_version\n");
+	return pwine_get_host_version(sysname, release);
 }
 
-extern WINAPI void wine32a_ntdll_NTDLL_wine_get_host_version(void);  /* ../dlls/ntdll/misc.c:74 */
-__ASM_GLOBAL_FUNC(wine32a_ntdll_NTDLL_wine_get_host_version,
+extern WINAPI void wine32a_ntdll_wine_get_host_version(void);  /* ../dlls/ntdll/misc.c:74 */
+__ASM_GLOBAL_FUNC(wine32a_ntdll_wine_get_host_version,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_ntdll_NTDLL_wine_get_host_version") "\n"
+	"call " __ASM_NAME("wine32b_ntdll_wine_get_host_version") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -24005,211 +24005,211 @@ void wine_thunk_initialize_ntdll(void)
 	pMD5Final = (void *)GetProcAddress(library, "MD5Final");
 	pMD5Init = (void *)GetProcAddress(library, "MD5Init");
 	pMD5Update = (void *)GetProcAddress(library, "MD5Update");
-	pNtAcceptConnectPort = (void *)GetProcAddress(library, "ZwAcceptConnectPort");
-	pNtAccessCheck = (void *)GetProcAddress(library, "ZwAccessCheck");
-	pNtAccessCheckAndAuditAlarm = (void *)GetProcAddress(library, "ZwAccessCheckAndAuditAlarm");
-	pNtAddAtom = (void *)GetProcAddress(library, "ZwAddAtom");
-	pNtAdjustGroupsToken = (void *)GetProcAddress(library, "ZwAdjustGroupsToken");
-	pNtAdjustPrivilegesToken = (void *)GetProcAddress(library, "ZwAdjustPrivilegesToken");
-	pNtAlertResumeThread = (void *)GetProcAddress(library, "ZwAlertResumeThread");
-	pNtAlertThread = (void *)GetProcAddress(library, "ZwAlertThread");
-	pNtAllocateLocallyUniqueId = (void *)GetProcAddress(library, "ZwAllocateLocallyUniqueId");
-	pNtAllocateUuids = (void *)GetProcAddress(library, "ZwAllocateUuids");
-	pNtAllocateVirtualMemory = (void *)GetProcAddress(library, "ZwAllocateVirtualMemory");
-	pNtAreMappedFilesTheSame = (void *)GetProcAddress(library, "ZwAreMappedFilesTheSame");
-	pNtAssignProcessToJobObject = (void *)GetProcAddress(library, "ZwAssignProcessToJobObject");
-	pNtCancelIoFile = (void *)GetProcAddress(library, "ZwCancelIoFile");
-	pNtCancelIoFileEx = (void *)GetProcAddress(library, "ZwCancelIoFileEx");
-	pNtCancelTimer = (void *)GetProcAddress(library, "ZwCancelTimer");
-	pNtClearEvent = (void *)GetProcAddress(library, "ZwClearEvent");
-	pNtClearPowerRequest = (void *)GetProcAddress(library, "ZwClearPowerRequest");
-	pNtClose = (void *)GetProcAddress(library, "ZwClose");
-	pNtCompleteConnectPort = (void *)GetProcAddress(library, "ZwCompleteConnectPort");
-	pNtConnectPort = (void *)GetProcAddress(library, "ZwConnectPort");
-	pNtCreateDirectoryObject = (void *)GetProcAddress(library, "ZwCreateDirectoryObject");
-	pNtCreateEvent = (void *)GetProcAddress(library, "ZwCreateEvent");
-	pNtCreateFile = (void *)GetProcAddress(library, "ZwCreateFile");
-	pNtCreateIoCompletion = (void *)GetProcAddress(library, "ZwCreateIoCompletion");
-	pNtCreateJobObject = (void *)GetProcAddress(library, "ZwCreateJobObject");
-	pNtCreateKey = (void *)GetProcAddress(library, "ZwCreateKey");
-	pNtCreateKeyTransacted = (void *)GetProcAddress(library, "ZwCreateKeyTransacted");
-	pNtCreateKeyedEvent = (void *)GetProcAddress(library, "ZwCreateKeyedEvent");
+	pNtAcceptConnectPort = (void *)GetProcAddress(library, "NtAcceptConnectPort");
+	pNtAccessCheck = (void *)GetProcAddress(library, "NtAccessCheck");
+	pNtAccessCheckAndAuditAlarm = (void *)GetProcAddress(library, "NtAccessCheckAndAuditAlarm");
+	pNtAddAtom = (void *)GetProcAddress(library, "NtAddAtom");
+	pNtAdjustGroupsToken = (void *)GetProcAddress(library, "NtAdjustGroupsToken");
+	pNtAdjustPrivilegesToken = (void *)GetProcAddress(library, "NtAdjustPrivilegesToken");
+	pNtAlertResumeThread = (void *)GetProcAddress(library, "NtAlertResumeThread");
+	pNtAlertThread = (void *)GetProcAddress(library, "NtAlertThread");
+	pNtAllocateLocallyUniqueId = (void *)GetProcAddress(library, "NtAllocateLocallyUniqueId");
+	pNtAllocateUuids = (void *)GetProcAddress(library, "NtAllocateUuids");
+	pNtAllocateVirtualMemory = (void *)GetProcAddress(library, "NtAllocateVirtualMemory");
+	pNtAreMappedFilesTheSame = (void *)GetProcAddress(library, "NtAreMappedFilesTheSame");
+	pNtAssignProcessToJobObject = (void *)GetProcAddress(library, "NtAssignProcessToJobObject");
+	pNtCancelIoFile = (void *)GetProcAddress(library, "NtCancelIoFile");
+	pNtCancelIoFileEx = (void *)GetProcAddress(library, "NtCancelIoFileEx");
+	pNtCancelTimer = (void *)GetProcAddress(library, "NtCancelTimer");
+	pNtClearEvent = (void *)GetProcAddress(library, "NtClearEvent");
+	pNtClearPowerRequest = (void *)GetProcAddress(library, "NtClearPowerRequest");
+	pNtClose = (void *)GetProcAddress(library, "NtClose");
+	pNtCompleteConnectPort = (void *)GetProcAddress(library, "NtCompleteConnectPort");
+	pNtConnectPort = (void *)GetProcAddress(library, "NtConnectPort");
+	pNtCreateDirectoryObject = (void *)GetProcAddress(library, "NtCreateDirectoryObject");
+	pNtCreateEvent = (void *)GetProcAddress(library, "NtCreateEvent");
+	pNtCreateFile = (void *)GetProcAddress(library, "NtCreateFile");
+	pNtCreateIoCompletion = (void *)GetProcAddress(library, "NtCreateIoCompletion");
+	pNtCreateJobObject = (void *)GetProcAddress(library, "NtCreateJobObject");
+	pNtCreateKey = (void *)GetProcAddress(library, "NtCreateKey");
+	pNtCreateKeyTransacted = (void *)GetProcAddress(library, "NtCreateKeyTransacted");
+	pNtCreateKeyedEvent = (void *)GetProcAddress(library, "NtCreateKeyedEvent");
 	pNtCreateLowBoxToken = (void *)GetProcAddress(library, "NtCreateLowBoxToken");
-	pNtCreateMailslotFile = (void *)GetProcAddress(library, "ZwCreateMailslotFile");
-	pNtCreateMutant = (void *)GetProcAddress(library, "ZwCreateMutant");
-	pNtCreateNamedPipeFile = (void *)GetProcAddress(library, "ZwCreateNamedPipeFile");
-	pNtCreatePagingFile = (void *)GetProcAddress(library, "ZwCreatePagingFile");
-	pNtCreatePort = (void *)GetProcAddress(library, "ZwCreatePort");
-	pNtCreatePowerRequest = (void *)GetProcAddress(library, "ZwCreatePowerRequest");
-	pNtCreateSection = (void *)GetProcAddress(library, "ZwCreateSection");
-	pNtCreateSemaphore = (void *)GetProcAddress(library, "ZwCreateSemaphore");
-	pNtCreateSymbolicLinkObject = (void *)GetProcAddress(library, "ZwCreateSymbolicLinkObject");
+	pNtCreateMailslotFile = (void *)GetProcAddress(library, "NtCreateMailslotFile");
+	pNtCreateMutant = (void *)GetProcAddress(library, "NtCreateMutant");
+	pNtCreateNamedPipeFile = (void *)GetProcAddress(library, "NtCreateNamedPipeFile");
+	pNtCreatePagingFile = (void *)GetProcAddress(library, "NtCreatePagingFile");
+	pNtCreatePort = (void *)GetProcAddress(library, "NtCreatePort");
+	pNtCreatePowerRequest = (void *)GetProcAddress(library, "NtCreatePowerRequest");
+	pNtCreateSection = (void *)GetProcAddress(library, "NtCreateSection");
+	pNtCreateSemaphore = (void *)GetProcAddress(library, "NtCreateSemaphore");
+	pNtCreateSymbolicLinkObject = (void *)GetProcAddress(library, "NtCreateSymbolicLinkObject");
 	pNtCreateThreadEx = (void *)GetProcAddress(library, "NtCreateThreadEx");
-	pNtCreateTimer = (void *)GetProcAddress(library, "ZwCreateTimer");
-	pNtDelayExecution = (void *)GetProcAddress(library, "ZwDelayExecution");
-	pNtDeleteAtom = (void *)GetProcAddress(library, "ZwDeleteAtom");
-	pNtDeleteFile = (void *)GetProcAddress(library, "ZwDeleteFile");
-	pNtDeleteKey = (void *)GetProcAddress(library, "ZwDeleteKey");
-	pNtDeleteValueKey = (void *)GetProcAddress(library, "ZwDeleteValueKey");
-	pNtDeviceIoControlFile = (void *)GetProcAddress(library, "ZwDeviceIoControlFile");
-	pNtDisplayString = (void *)GetProcAddress(library, "ZwDisplayString");
-	pNtDuplicateObject = (void *)GetProcAddress(library, "ZwDuplicateObject");
-	pNtDuplicateToken = (void *)GetProcAddress(library, "ZwDuplicateToken");
-	pNtEnumerateKey = (void *)GetProcAddress(library, "ZwEnumerateKey");
-	pNtEnumerateValueKey = (void *)GetProcAddress(library, "ZwEnumerateValueKey");
-	pNtFindAtom = (void *)GetProcAddress(library, "ZwFindAtom");
-	pNtFlushBuffersFile = (void *)GetProcAddress(library, "ZwFlushBuffersFile");
-	pNtFlushInstructionCache = (void *)GetProcAddress(library, "ZwFlushInstructionCache");
-	pNtFlushKey = (void *)GetProcAddress(library, "ZwFlushKey");
-	pNtFlushVirtualMemory = (void *)GetProcAddress(library, "ZwFlushVirtualMemory");
-	pNtFreeVirtualMemory = (void *)GetProcAddress(library, "ZwFreeVirtualMemory");
-	pNtFsControlFile = (void *)GetProcAddress(library, "ZwFsControlFile");
-	pNtGetContextThread = (void *)GetProcAddress(library, "ZwGetContextThread");
-	pNtGetCurrentProcessorNumber = (void *)GetProcAddress(library, "ZwGetCurrentProcessorNumber");
-	pNtGetTickCount = (void *)GetProcAddress(library, "ZwGetTickCount");
-	pNtGetWriteWatch = (void *)GetProcAddress(library, "ZwGetWriteWatch");
-	pNtImpersonateAnonymousToken = (void *)GetProcAddress(library, "ZwImpersonateAnonymousToken");
-	pNtInitiatePowerAction = (void *)GetProcAddress(library, "ZwInitiatePowerAction");
-	pNtIsProcessInJob = (void *)GetProcAddress(library, "ZwIsProcessInJob");
-	pNtListenPort = (void *)GetProcAddress(library, "ZwListenPort");
-	pNtLoadDriver = (void *)GetProcAddress(library, "ZwLoadDriver");
-	pNtLoadKey2 = (void *)GetProcAddress(library, "ZwLoadKey2");
-	pNtLoadKey = (void *)GetProcAddress(library, "ZwLoadKey");
-	pNtLockFile = (void *)GetProcAddress(library, "ZwLockFile");
-	pNtLockVirtualMemory = (void *)GetProcAddress(library, "ZwLockVirtualMemory");
-	pNtMakeTemporaryObject = (void *)GetProcAddress(library, "ZwMakeTemporaryObject");
-	pNtMapViewOfSection = (void *)GetProcAddress(library, "ZwMapViewOfSection");
-	pNtNotifyChangeDirectoryFile = (void *)GetProcAddress(library, "ZwNotifyChangeDirectoryFile");
-	pNtNotifyChangeKey = (void *)GetProcAddress(library, "ZwNotifyChangeKey");
-	pNtNotifyChangeMultipleKeys = (void *)GetProcAddress(library, "ZwNotifyChangeMultipleKeys");
-	pNtOpenDirectoryObject = (void *)GetProcAddress(library, "ZwOpenDirectoryObject");
-	pNtOpenEvent = (void *)GetProcAddress(library, "ZwOpenEvent");
-	pNtOpenFile = (void *)GetProcAddress(library, "ZwOpenFile");
-	pNtOpenIoCompletion = (void *)GetProcAddress(library, "ZwOpenIoCompletion");
-	pNtOpenJobObject = (void *)GetProcAddress(library, "ZwOpenJobObject");
-	pNtOpenKey = (void *)GetProcAddress(library, "ZwOpenKey");
-	pNtOpenKeyEx = (void *)GetProcAddress(library, "ZwOpenKeyEx");
-	pNtOpenKeyTransacted = (void *)GetProcAddress(library, "ZwOpenKeyTransacted");
-	pNtOpenKeyTransactedEx = (void *)GetProcAddress(library, "ZwOpenKeyTransactedEx");
-	pNtOpenKeyedEvent = (void *)GetProcAddress(library, "ZwOpenKeyedEvent");
-	pNtOpenMutant = (void *)GetProcAddress(library, "ZwOpenMutant");
-	pNtOpenProcess = (void *)GetProcAddress(library, "ZwOpenProcess");
-	pNtOpenProcessToken = (void *)GetProcAddress(library, "ZwOpenProcessToken");
-	pNtOpenProcessTokenEx = (void *)GetProcAddress(library, "ZwOpenProcessTokenEx");
-	pNtOpenSection = (void *)GetProcAddress(library, "ZwOpenSection");
-	pNtOpenSemaphore = (void *)GetProcAddress(library, "ZwOpenSemaphore");
-	pNtOpenSymbolicLinkObject = (void *)GetProcAddress(library, "ZwOpenSymbolicLinkObject");
-	pNtOpenThread = (void *)GetProcAddress(library, "ZwOpenThread");
-	pNtOpenThreadToken = (void *)GetProcAddress(library, "ZwOpenThreadToken");
-	pNtOpenThreadTokenEx = (void *)GetProcAddress(library, "ZwOpenThreadTokenEx");
-	pNtOpenTimer = (void *)GetProcAddress(library, "ZwOpenTimer");
-	pNtPowerInformation = (void *)GetProcAddress(library, "ZwPowerInformation");
-	pNtPrivilegeCheck = (void *)GetProcAddress(library, "ZwPrivilegeCheck");
-	pNtProtectVirtualMemory = (void *)GetProcAddress(library, "ZwProtectVirtualMemory");
-	pNtPulseEvent = (void *)GetProcAddress(library, "ZwPulseEvent");
-	pNtQueryAttributesFile = (void *)GetProcAddress(library, "ZwQueryAttributesFile");
-	pNtQueryDefaultLocale = (void *)GetProcAddress(library, "ZwQueryDefaultLocale");
-	pNtQueryDefaultUILanguage = (void *)GetProcAddress(library, "ZwQueryDefaultUILanguage");
-	pNtQueryDirectoryFile = (void *)GetProcAddress(library, "ZwQueryDirectoryFile");
-	pNtQueryDirectoryObject = (void *)GetProcAddress(library, "ZwQueryDirectoryObject");
-	pNtQueryEaFile = (void *)GetProcAddress(library, "ZwQueryEaFile");
-	pNtQueryEvent = (void *)GetProcAddress(library, "ZwQueryEvent");
-	pNtQueryFullAttributesFile = (void *)GetProcAddress(library, "ZwQueryFullAttributesFile");
-	pNtQueryInformationAtom = (void *)GetProcAddress(library, "ZwQueryInformationAtom");
-	pNtQueryInformationFile = (void *)GetProcAddress(library, "ZwQueryInformationFile");
-	pNtQueryInformationJobObject = (void *)GetProcAddress(library, "ZwQueryInformationJobObject");
-	pNtQueryInformationProcess = (void *)GetProcAddress(library, "ZwQueryInformationProcess");
-	pNtQueryInformationThread = (void *)GetProcAddress(library, "ZwQueryInformationThread");
-	pNtQueryInformationToken = (void *)GetProcAddress(library, "ZwQueryInformationToken");
-	pNtQueryInstallUILanguage = (void *)GetProcAddress(library, "ZwQueryInstallUILanguage");
-	pNtQueryIoCompletion = (void *)GetProcAddress(library, "ZwQueryIoCompletion");
-	pNtQueryKey = (void *)GetProcAddress(library, "ZwQueryKey");
-	pNtQueryLicenseValue = (void *)GetProcAddress(library, "ZwQueryLicenseValue");
-	pNtQueryMultipleValueKey = (void *)GetProcAddress(library, "ZwQueryMultipleValueKey");
-	pNtQueryMutant = (void *)GetProcAddress(library, "ZwQueryMutant");
-	pNtQueryObject = (void *)GetProcAddress(library, "ZwQueryObject");
-	pNtQueryPerformanceCounter = (void *)GetProcAddress(library, "ZwQueryPerformanceCounter");
-	pNtQuerySection = (void *)GetProcAddress(library, "ZwQuerySection");
-	pNtQuerySecurityObject = (void *)GetProcAddress(library, "ZwQuerySecurityObject");
-	pNtQuerySemaphore = (void *)GetProcAddress(library, "ZwQuerySemaphore");
-	pNtQuerySymbolicLinkObject = (void *)GetProcAddress(library, "ZwQuerySymbolicLinkObject");
-	pNtQuerySystemEnvironmentValue = (void *)GetProcAddress(library, "ZwQuerySystemEnvironmentValue");
-	pNtQuerySystemEnvironmentValueEx = (void *)GetProcAddress(library, "ZwQuerySystemEnvironmentValueEx");
-	pNtQuerySystemInformation = (void *)GetProcAddress(library, "ZwQuerySystemInformation");
-	pNtQuerySystemInformationEx = (void *)GetProcAddress(library, "ZwQuerySystemInformationEx");
-	pNtQuerySystemTime = (void *)GetProcAddress(library, "ZwQuerySystemTime");
-	pNtQueryTimer = (void *)GetProcAddress(library, "ZwQueryTimer");
-	pNtQueryTimerResolution = (void *)GetProcAddress(library, "ZwQueryTimerResolution");
-	pNtQueryValueKey = (void *)GetProcAddress(library, "ZwQueryValueKey");
-	pNtQueryVirtualMemory = (void *)GetProcAddress(library, "ZwQueryVirtualMemory");
-	pNtQueryVolumeInformationFile = (void *)GetProcAddress(library, "ZwQueryVolumeInformationFile");
-	pNtQueueApcThread = (void *)GetProcAddress(library, "ZwQueueApcThread");
-	pNtRaiseException = (void *)GetProcAddress(library, "ZwRaiseException");
-	pNtRaiseHardError = (void *)GetProcAddress(library, "ZwRaiseHardError");
-	pNtReadFile = (void *)GetProcAddress(library, "ZwReadFile");
-	pNtReadFileScatter = (void *)GetProcAddress(library, "ZwReadFileScatter");
-	pNtReadVirtualMemory = (void *)GetProcAddress(library, "ZwReadVirtualMemory");
-	pNtRegisterThreadTerminatePort = (void *)GetProcAddress(library, "ZwRegisterThreadTerminatePort");
-	pNtReleaseKeyedEvent = (void *)GetProcAddress(library, "ZwReleaseKeyedEvent");
-	pNtReleaseMutant = (void *)GetProcAddress(library, "ZwReleaseMutant");
-	pNtReleaseSemaphore = (void *)GetProcAddress(library, "ZwReleaseSemaphore");
-	pNtRemoveIoCompletion = (void *)GetProcAddress(library, "ZwRemoveIoCompletion");
-	pNtRemoveIoCompletionEx = (void *)GetProcAddress(library, "ZwRemoveIoCompletionEx");
-	pNtRenameKey = (void *)GetProcAddress(library, "ZwRenameKey");
-	pNtReplaceKey = (void *)GetProcAddress(library, "ZwReplaceKey");
-	pNtReplyWaitReceivePort = (void *)GetProcAddress(library, "ZwReplyWaitReceivePort");
-	pNtRequestWaitReplyPort = (void *)GetProcAddress(library, "ZwRequestWaitReplyPort");
-	pNtResetEvent = (void *)GetProcAddress(library, "ZwResetEvent");
-	pNtResetWriteWatch = (void *)GetProcAddress(library, "ZwResetWriteWatch");
-	pNtRestoreKey = (void *)GetProcAddress(library, "ZwRestoreKey");
-	pNtResumeProcess = (void *)GetProcAddress(library, "ZwResumeProcess");
-	pNtResumeThread = (void *)GetProcAddress(library, "ZwResumeThread");
-	pNtSaveKey = (void *)GetProcAddress(library, "ZwSaveKey");
-	pNtSecureConnectPort = (void *)GetProcAddress(library, "ZwSecureConnectPort");
-	pNtSetContextThread = (void *)GetProcAddress(library, "ZwSetContextThread");
-	pNtSetDefaultLocale = (void *)GetProcAddress(library, "ZwSetDefaultLocale");
-	pNtSetDefaultUILanguage = (void *)GetProcAddress(library, "ZwSetDefaultUILanguage");
-	pNtSetEaFile = (void *)GetProcAddress(library, "ZwSetEaFile");
-	pNtSetEvent = (void *)GetProcAddress(library, "ZwSetEvent");
-	pNtSetInformationFile = (void *)GetProcAddress(library, "ZwSetInformationFile");
-	pNtSetInformationJobObject = (void *)GetProcAddress(library, "ZwSetInformationJobObject");
-	pNtSetInformationKey = (void *)GetProcAddress(library, "ZwSetInformationKey");
-	pNtSetInformationObject = (void *)GetProcAddress(library, "ZwSetInformationObject");
-	pNtSetInformationProcess = (void *)GetProcAddress(library, "ZwSetInformationProcess");
-	pNtSetInformationThread = (void *)GetProcAddress(library, "ZwSetInformationThread");
-	pNtSetInformationToken = (void *)GetProcAddress(library, "ZwSetInformationToken");
-	pNtSetIntervalProfile = (void *)GetProcAddress(library, "ZwSetIntervalProfile");
-	pNtSetIoCompletion = (void *)GetProcAddress(library, "ZwSetIoCompletion");
-	pNtSetLdtEntries = (void *)GetProcAddress(library, "ZwSetLdtEntries");
-	pNtSetPowerRequest = (void *)GetProcAddress(library, "ZwSetPowerRequest");
-	pNtSetSecurityObject = (void *)GetProcAddress(library, "ZwSetSecurityObject");
-	pNtSetSystemInformation = (void *)GetProcAddress(library, "ZwSetSystemInformation");
-	pNtSetSystemTime = (void *)GetProcAddress(library, "ZwSetSystemTime");
-	pNtSetThreadExecutionState = (void *)GetProcAddress(library, "ZwSetThreadExecutionState");
-	pNtSetTimer = (void *)GetProcAddress(library, "ZwSetTimer");
-	pNtSetTimerResolution = (void *)GetProcAddress(library, "ZwSetTimerResolution");
-	pNtSetValueKey = (void *)GetProcAddress(library, "ZwSetValueKey");
-	pNtSetVolumeInformationFile = (void *)GetProcAddress(library, "ZwSetVolumeInformationFile");
-	pNtShutdownSystem = (void *)GetProcAddress(library, "ZwShutdownSystem");
-	pNtSignalAndWaitForSingleObject = (void *)GetProcAddress(library, "ZwSignalAndWaitForSingleObject");
-	pNtSuspendProcess = (void *)GetProcAddress(library, "ZwSuspendProcess");
-	pNtSuspendThread = (void *)GetProcAddress(library, "ZwSuspendThread");
-	pNtSystemDebugControl = (void *)GetProcAddress(library, "ZwSystemDebugControl");
-	pNtTerminateJobObject = (void *)GetProcAddress(library, "ZwTerminateJobObject");
-	pNtTerminateProcess = (void *)GetProcAddress(library, "ZwTerminateProcess");
-	pNtTerminateThread = (void *)GetProcAddress(library, "ZwTerminateThread");
-	pNtUnloadDriver = (void *)GetProcAddress(library, "ZwUnloadDriver");
-	pNtUnloadKey = (void *)GetProcAddress(library, "ZwUnloadKey");
-	pNtUnlockFile = (void *)GetProcAddress(library, "ZwUnlockFile");
-	pNtUnlockVirtualMemory = (void *)GetProcAddress(library, "ZwUnlockVirtualMemory");
-	pNtUnmapViewOfSection = (void *)GetProcAddress(library, "ZwUnmapViewOfSection");
-	pNtWaitForKeyedEvent = (void *)GetProcAddress(library, "ZwWaitForKeyedEvent");
-	pNtWaitForMultipleObjects = (void *)GetProcAddress(library, "ZwWaitForMultipleObjects");
-	pNtWaitForSingleObject = (void *)GetProcAddress(library, "ZwWaitForSingleObject");
-	pNtWriteFile = (void *)GetProcAddress(library, "ZwWriteFile");
-	pNtWriteFileGather = (void *)GetProcAddress(library, "ZwWriteFileGather");
-	pNtWriteVirtualMemory = (void *)GetProcAddress(library, "ZwWriteVirtualMemory");
-	pNtYieldExecution = (void *)GetProcAddress(library, "ZwYieldExecution");
+	pNtCreateTimer = (void *)GetProcAddress(library, "NtCreateTimer");
+	pNtDelayExecution = (void *)GetProcAddress(library, "NtDelayExecution");
+	pNtDeleteAtom = (void *)GetProcAddress(library, "NtDeleteAtom");
+	pNtDeleteFile = (void *)GetProcAddress(library, "NtDeleteFile");
+	pNtDeleteKey = (void *)GetProcAddress(library, "NtDeleteKey");
+	pNtDeleteValueKey = (void *)GetProcAddress(library, "NtDeleteValueKey");
+	pNtDeviceIoControlFile = (void *)GetProcAddress(library, "NtDeviceIoControlFile");
+	pNtDisplayString = (void *)GetProcAddress(library, "NtDisplayString");
+	pNtDuplicateObject = (void *)GetProcAddress(library, "NtDuplicateObject");
+	pNtDuplicateToken = (void *)GetProcAddress(library, "NtDuplicateToken");
+	pNtEnumerateKey = (void *)GetProcAddress(library, "NtEnumerateKey");
+	pNtEnumerateValueKey = (void *)GetProcAddress(library, "NtEnumerateValueKey");
+	pNtFindAtom = (void *)GetProcAddress(library, "NtFindAtom");
+	pNtFlushBuffersFile = (void *)GetProcAddress(library, "NtFlushBuffersFile");
+	pNtFlushInstructionCache = (void *)GetProcAddress(library, "NtFlushInstructionCache");
+	pNtFlushKey = (void *)GetProcAddress(library, "NtFlushKey");
+	pNtFlushVirtualMemory = (void *)GetProcAddress(library, "NtFlushVirtualMemory");
+	pNtFreeVirtualMemory = (void *)GetProcAddress(library, "NtFreeVirtualMemory");
+	pNtFsControlFile = (void *)GetProcAddress(library, "NtFsControlFile");
+	pNtGetContextThread = (void *)GetProcAddress(library, "NtGetContextThread");
+	pNtGetCurrentProcessorNumber = (void *)GetProcAddress(library, "NtGetCurrentProcessorNumber");
+	pNtGetTickCount = (void *)GetProcAddress(library, "NtGetTickCount");
+	pNtGetWriteWatch = (void *)GetProcAddress(library, "NtGetWriteWatch");
+	pNtImpersonateAnonymousToken = (void *)GetProcAddress(library, "NtImpersonateAnonymousToken");
+	pNtInitiatePowerAction = (void *)GetProcAddress(library, "NtInitiatePowerAction");
+	pNtIsProcessInJob = (void *)GetProcAddress(library, "NtIsProcessInJob");
+	pNtListenPort = (void *)GetProcAddress(library, "NtListenPort");
+	pNtLoadDriver = (void *)GetProcAddress(library, "NtLoadDriver");
+	pNtLoadKey2 = (void *)GetProcAddress(library, "NtLoadKey2");
+	pNtLoadKey = (void *)GetProcAddress(library, "NtLoadKey");
+	pNtLockFile = (void *)GetProcAddress(library, "NtLockFile");
+	pNtLockVirtualMemory = (void *)GetProcAddress(library, "NtLockVirtualMemory");
+	pNtMakeTemporaryObject = (void *)GetProcAddress(library, "NtMakeTemporaryObject");
+	pNtMapViewOfSection = (void *)GetProcAddress(library, "NtMapViewOfSection");
+	pNtNotifyChangeDirectoryFile = (void *)GetProcAddress(library, "NtNotifyChangeDirectoryFile");
+	pNtNotifyChangeKey = (void *)GetProcAddress(library, "NtNotifyChangeKey");
+	pNtNotifyChangeMultipleKeys = (void *)GetProcAddress(library, "NtNotifyChangeMultipleKeys");
+	pNtOpenDirectoryObject = (void *)GetProcAddress(library, "NtOpenDirectoryObject");
+	pNtOpenEvent = (void *)GetProcAddress(library, "NtOpenEvent");
+	pNtOpenFile = (void *)GetProcAddress(library, "NtOpenFile");
+	pNtOpenIoCompletion = (void *)GetProcAddress(library, "NtOpenIoCompletion");
+	pNtOpenJobObject = (void *)GetProcAddress(library, "NtOpenJobObject");
+	pNtOpenKey = (void *)GetProcAddress(library, "NtOpenKey");
+	pNtOpenKeyEx = (void *)GetProcAddress(library, "NtOpenKeyEx");
+	pNtOpenKeyTransacted = (void *)GetProcAddress(library, "NtOpenKeyTransacted");
+	pNtOpenKeyTransactedEx = (void *)GetProcAddress(library, "NtOpenKeyTransactedEx");
+	pNtOpenKeyedEvent = (void *)GetProcAddress(library, "NtOpenKeyedEvent");
+	pNtOpenMutant = (void *)GetProcAddress(library, "NtOpenMutant");
+	pNtOpenProcess = (void *)GetProcAddress(library, "NtOpenProcess");
+	pNtOpenProcessToken = (void *)GetProcAddress(library, "NtOpenProcessToken");
+	pNtOpenProcessTokenEx = (void *)GetProcAddress(library, "NtOpenProcessTokenEx");
+	pNtOpenSection = (void *)GetProcAddress(library, "NtOpenSection");
+	pNtOpenSemaphore = (void *)GetProcAddress(library, "NtOpenSemaphore");
+	pNtOpenSymbolicLinkObject = (void *)GetProcAddress(library, "NtOpenSymbolicLinkObject");
+	pNtOpenThread = (void *)GetProcAddress(library, "NtOpenThread");
+	pNtOpenThreadToken = (void *)GetProcAddress(library, "NtOpenThreadToken");
+	pNtOpenThreadTokenEx = (void *)GetProcAddress(library, "NtOpenThreadTokenEx");
+	pNtOpenTimer = (void *)GetProcAddress(library, "NtOpenTimer");
+	pNtPowerInformation = (void *)GetProcAddress(library, "NtPowerInformation");
+	pNtPrivilegeCheck = (void *)GetProcAddress(library, "NtPrivilegeCheck");
+	pNtProtectVirtualMemory = (void *)GetProcAddress(library, "NtProtectVirtualMemory");
+	pNtPulseEvent = (void *)GetProcAddress(library, "NtPulseEvent");
+	pNtQueryAttributesFile = (void *)GetProcAddress(library, "NtQueryAttributesFile");
+	pNtQueryDefaultLocale = (void *)GetProcAddress(library, "NtQueryDefaultLocale");
+	pNtQueryDefaultUILanguage = (void *)GetProcAddress(library, "NtQueryDefaultUILanguage");
+	pNtQueryDirectoryFile = (void *)GetProcAddress(library, "NtQueryDirectoryFile");
+	pNtQueryDirectoryObject = (void *)GetProcAddress(library, "NtQueryDirectoryObject");
+	pNtQueryEaFile = (void *)GetProcAddress(library, "NtQueryEaFile");
+	pNtQueryEvent = (void *)GetProcAddress(library, "NtQueryEvent");
+	pNtQueryFullAttributesFile = (void *)GetProcAddress(library, "NtQueryFullAttributesFile");
+	pNtQueryInformationAtom = (void *)GetProcAddress(library, "NtQueryInformationAtom");
+	pNtQueryInformationFile = (void *)GetProcAddress(library, "NtQueryInformationFile");
+	pNtQueryInformationJobObject = (void *)GetProcAddress(library, "NtQueryInformationJobObject");
+	pNtQueryInformationProcess = (void *)GetProcAddress(library, "NtQueryInformationProcess");
+	pNtQueryInformationThread = (void *)GetProcAddress(library, "NtQueryInformationThread");
+	pNtQueryInformationToken = (void *)GetProcAddress(library, "NtQueryInformationToken");
+	pNtQueryInstallUILanguage = (void *)GetProcAddress(library, "NtQueryInstallUILanguage");
+	pNtQueryIoCompletion = (void *)GetProcAddress(library, "NtQueryIoCompletion");
+	pNtQueryKey = (void *)GetProcAddress(library, "NtQueryKey");
+	pNtQueryLicenseValue = (void *)GetProcAddress(library, "NtQueryLicenseValue");
+	pNtQueryMultipleValueKey = (void *)GetProcAddress(library, "NtQueryMultipleValueKey");
+	pNtQueryMutant = (void *)GetProcAddress(library, "NtQueryMutant");
+	pNtQueryObject = (void *)GetProcAddress(library, "NtQueryObject");
+	pNtQueryPerformanceCounter = (void *)GetProcAddress(library, "NtQueryPerformanceCounter");
+	pNtQuerySection = (void *)GetProcAddress(library, "NtQuerySection");
+	pNtQuerySecurityObject = (void *)GetProcAddress(library, "NtQuerySecurityObject");
+	pNtQuerySemaphore = (void *)GetProcAddress(library, "NtQuerySemaphore");
+	pNtQuerySymbolicLinkObject = (void *)GetProcAddress(library, "NtQuerySymbolicLinkObject");
+	pNtQuerySystemEnvironmentValue = (void *)GetProcAddress(library, "NtQuerySystemEnvironmentValue");
+	pNtQuerySystemEnvironmentValueEx = (void *)GetProcAddress(library, "NtQuerySystemEnvironmentValueEx");
+	pNtQuerySystemInformation = (void *)GetProcAddress(library, "NtQuerySystemInformation");
+	pNtQuerySystemInformationEx = (void *)GetProcAddress(library, "NtQuerySystemInformationEx");
+	pNtQuerySystemTime = (void *)GetProcAddress(library, "NtQuerySystemTime");
+	pNtQueryTimer = (void *)GetProcAddress(library, "NtQueryTimer");
+	pNtQueryTimerResolution = (void *)GetProcAddress(library, "NtQueryTimerResolution");
+	pNtQueryValueKey = (void *)GetProcAddress(library, "NtQueryValueKey");
+	pNtQueryVirtualMemory = (void *)GetProcAddress(library, "NtQueryVirtualMemory");
+	pNtQueryVolumeInformationFile = (void *)GetProcAddress(library, "NtQueryVolumeInformationFile");
+	pNtQueueApcThread = (void *)GetProcAddress(library, "NtQueueApcThread");
+	pNtRaiseException = (void *)GetProcAddress(library, "NtRaiseException");
+	pNtRaiseHardError = (void *)GetProcAddress(library, "NtRaiseHardError");
+	pNtReadFile = (void *)GetProcAddress(library, "NtReadFile");
+	pNtReadFileScatter = (void *)GetProcAddress(library, "NtReadFileScatter");
+	pNtReadVirtualMemory = (void *)GetProcAddress(library, "NtReadVirtualMemory");
+	pNtRegisterThreadTerminatePort = (void *)GetProcAddress(library, "NtRegisterThreadTerminatePort");
+	pNtReleaseKeyedEvent = (void *)GetProcAddress(library, "NtReleaseKeyedEvent");
+	pNtReleaseMutant = (void *)GetProcAddress(library, "NtReleaseMutant");
+	pNtReleaseSemaphore = (void *)GetProcAddress(library, "NtReleaseSemaphore");
+	pNtRemoveIoCompletion = (void *)GetProcAddress(library, "NtRemoveIoCompletion");
+	pNtRemoveIoCompletionEx = (void *)GetProcAddress(library, "NtRemoveIoCompletionEx");
+	pNtRenameKey = (void *)GetProcAddress(library, "NtRenameKey");
+	pNtReplaceKey = (void *)GetProcAddress(library, "NtReplaceKey");
+	pNtReplyWaitReceivePort = (void *)GetProcAddress(library, "NtReplyWaitReceivePort");
+	pNtRequestWaitReplyPort = (void *)GetProcAddress(library, "NtRequestWaitReplyPort");
+	pNtResetEvent = (void *)GetProcAddress(library, "NtResetEvent");
+	pNtResetWriteWatch = (void *)GetProcAddress(library, "NtResetWriteWatch");
+	pNtRestoreKey = (void *)GetProcAddress(library, "NtRestoreKey");
+	pNtResumeProcess = (void *)GetProcAddress(library, "NtResumeProcess");
+	pNtResumeThread = (void *)GetProcAddress(library, "NtResumeThread");
+	pNtSaveKey = (void *)GetProcAddress(library, "NtSaveKey");
+	pNtSecureConnectPort = (void *)GetProcAddress(library, "NtSecureConnectPort");
+	pNtSetContextThread = (void *)GetProcAddress(library, "NtSetContextThread");
+	pNtSetDefaultLocale = (void *)GetProcAddress(library, "NtSetDefaultLocale");
+	pNtSetDefaultUILanguage = (void *)GetProcAddress(library, "NtSetDefaultUILanguage");
+	pNtSetEaFile = (void *)GetProcAddress(library, "NtSetEaFile");
+	pNtSetEvent = (void *)GetProcAddress(library, "NtSetEvent");
+	pNtSetInformationFile = (void *)GetProcAddress(library, "NtSetInformationFile");
+	pNtSetInformationJobObject = (void *)GetProcAddress(library, "NtSetInformationJobObject");
+	pNtSetInformationKey = (void *)GetProcAddress(library, "NtSetInformationKey");
+	pNtSetInformationObject = (void *)GetProcAddress(library, "NtSetInformationObject");
+	pNtSetInformationProcess = (void *)GetProcAddress(library, "NtSetInformationProcess");
+	pNtSetInformationThread = (void *)GetProcAddress(library, "NtSetInformationThread");
+	pNtSetInformationToken = (void *)GetProcAddress(library, "NtSetInformationToken");
+	pNtSetIntervalProfile = (void *)GetProcAddress(library, "NtSetIntervalProfile");
+	pNtSetIoCompletion = (void *)GetProcAddress(library, "NtSetIoCompletion");
+	pNtSetLdtEntries = (void *)GetProcAddress(library, "NtSetLdtEntries");
+	pNtSetPowerRequest = (void *)GetProcAddress(library, "NtSetPowerRequest");
+	pNtSetSecurityObject = (void *)GetProcAddress(library, "NtSetSecurityObject");
+	pNtSetSystemInformation = (void *)GetProcAddress(library, "NtSetSystemInformation");
+	pNtSetSystemTime = (void *)GetProcAddress(library, "NtSetSystemTime");
+	pNtSetThreadExecutionState = (void *)GetProcAddress(library, "NtSetThreadExecutionState");
+	pNtSetTimer = (void *)GetProcAddress(library, "NtSetTimer");
+	pNtSetTimerResolution = (void *)GetProcAddress(library, "NtSetTimerResolution");
+	pNtSetValueKey = (void *)GetProcAddress(library, "NtSetValueKey");
+	pNtSetVolumeInformationFile = (void *)GetProcAddress(library, "NtSetVolumeInformationFile");
+	pNtShutdownSystem = (void *)GetProcAddress(library, "NtShutdownSystem");
+	pNtSignalAndWaitForSingleObject = (void *)GetProcAddress(library, "NtSignalAndWaitForSingleObject");
+	pNtSuspendProcess = (void *)GetProcAddress(library, "NtSuspendProcess");
+	pNtSuspendThread = (void *)GetProcAddress(library, "NtSuspendThread");
+	pNtSystemDebugControl = (void *)GetProcAddress(library, "NtSystemDebugControl");
+	pNtTerminateJobObject = (void *)GetProcAddress(library, "NtTerminateJobObject");
+	pNtTerminateProcess = (void *)GetProcAddress(library, "NtTerminateProcess");
+	pNtTerminateThread = (void *)GetProcAddress(library, "NtTerminateThread");
+	pNtUnloadDriver = (void *)GetProcAddress(library, "NtUnloadDriver");
+	pNtUnloadKey = (void *)GetProcAddress(library, "NtUnloadKey");
+	pNtUnlockFile = (void *)GetProcAddress(library, "NtUnlockFile");
+	pNtUnlockVirtualMemory = (void *)GetProcAddress(library, "NtUnlockVirtualMemory");
+	pNtUnmapViewOfSection = (void *)GetProcAddress(library, "NtUnmapViewOfSection");
+	pNtWaitForKeyedEvent = (void *)GetProcAddress(library, "NtWaitForKeyedEvent");
+	pNtWaitForMultipleObjects = (void *)GetProcAddress(library, "NtWaitForMultipleObjects");
+	pNtWaitForSingleObject = (void *)GetProcAddress(library, "NtWaitForSingleObject");
+	pNtWriteFile = (void *)GetProcAddress(library, "NtWriteFile");
+	pNtWriteFileGather = (void *)GetProcAddress(library, "NtWriteFileGather");
+	pNtWriteVirtualMemory = (void *)GetProcAddress(library, "NtWriteVirtualMemory");
+	pNtYieldExecution = (void *)GetProcAddress(library, "NtYieldExecution");
 	pRtlAbsoluteToSelfRelativeSD = (void *)GetProcAddress(library, "RtlAbsoluteToSelfRelativeSD");
 	pRtlAcquirePebLock = (void *)GetProcAddress(library, "RtlAcquirePebLock");
 	pRtlAcquireResourceExclusive = (void *)GetProcAddress(library, "RtlAcquireResourceExclusive");
@@ -24239,7 +24239,7 @@ void wine_thunk_initialize_ntdll(void)
 	pRtlAllocateHandle = (void *)GetProcAddress(library, "RtlAllocateHandle");
 	pRtlAllocateHeap = (void *)GetProcAddress(library, "RtlAllocateHeap");
 	pRtlAnsiCharToUnicodeChar = (void *)GetProcAddress(library, "RtlAnsiCharToUnicodeChar");
-	pRtlAnsiStringToUnicodeSize = (void *)GetProcAddress(library, "RtlxAnsiStringToUnicodeSize");
+	pRtlAnsiStringToUnicodeSize = (void *)GetProcAddress(library, "RtlAnsiStringToUnicodeSize");
 	pRtlAnsiStringToUnicodeString = (void *)GetProcAddress(library, "RtlAnsiStringToUnicodeString");
 	pRtlAppendAsciizToString = (void *)GetProcAddress(library, "RtlAppendAsciizToString");
 	pRtlAppendStringToString = (void *)GetProcAddress(library, "RtlAppendStringToString");
@@ -24291,7 +24291,7 @@ void wine_thunk_initialize_ntdll(void)
 	pRtlCreateUserThread = (void *)GetProcAddress(library, "RtlCreateUserThread");
 	pRtlDeNormalizeProcessParams = (void *)GetProcAddress(library, "RtlDeNormalizeProcessParams");
 	pRtlDeactivateActivationContext = (void *)GetProcAddress(library, "RtlDeactivateActivationContext");
-	pRtlDecodePointer = (void *)GetProcAddress(library, "RtlDecodeSystemPointer");
+	pRtlDecodePointer = (void *)GetProcAddress(library, "RtlDecodePointer");
 	pRtlDecompressBuffer = (void *)GetProcAddress(library, "RtlDecompressBuffer");
 	pRtlDecompressFragment = (void *)GetProcAddress(library, "RtlDecompressFragment");
 	pRtlDeleteAce = (void *)GetProcAddress(library, "RtlDeleteAce");
@@ -24324,7 +24324,7 @@ void wine_thunk_initialize_ntdll(void)
 	pRtlDumpResource = (void *)GetProcAddress(library, "RtlDumpResource");
 	pRtlDuplicateUnicodeString = (void *)GetProcAddress(library, "RtlDuplicateUnicodeString");
 	pRtlEmptyAtomTable = (void *)GetProcAddress(library, "RtlEmptyAtomTable");
-	pRtlEncodePointer = (void *)GetProcAddress(library, "RtlEncodeSystemPointer");
+	pRtlEncodePointer = (void *)GetProcAddress(library, "RtlEncodePointer");
 	pRtlEnterCriticalSection = (void *)GetProcAddress(library, "RtlEnterCriticalSection");
 	pRtlEnumerateGenericTableWithoutSplaying = (void *)GetProcAddress(library, "RtlEnumerateGenericTableWithoutSplaying");
 	pRtlEqualComputerName = (void *)GetProcAddress(library, "RtlEqualComputerName");
@@ -24473,7 +24473,7 @@ void wine_thunk_initialize_ntdll(void)
 	pRtlNumberGenericTableElements = (void *)GetProcAddress(library, "RtlNumberGenericTableElements");
 	pRtlNumberOfClearBits = (void *)GetProcAddress(library, "RtlNumberOfClearBits");
 	pRtlNumberOfSetBits = (void *)GetProcAddress(library, "RtlNumberOfSetBits");
-	pRtlOemStringToUnicodeSize = (void *)GetProcAddress(library, "RtlxOemStringToUnicodeSize");
+	pRtlOemStringToUnicodeSize = (void *)GetProcAddress(library, "RtlOemStringToUnicodeSize");
 	pRtlOemStringToUnicodeString = (void *)GetProcAddress(library, "RtlOemStringToUnicodeString");
 	pRtlOemToUnicodeN = (void *)GetProcAddress(library, "RtlOemToUnicodeN");
 	pRtlOpenCurrentUser = (void *)GetProcAddress(library, "RtlOpenCurrentUser");
@@ -24511,7 +24511,6 @@ void wine_thunk_initialize_ntdll(void)
 	pRtlRemoveVectoredContinueHandler = (void *)GetProcAddress(library, "RtlRemoveVectoredContinueHandler");
 	pRtlRemoveVectoredExceptionHandler = (void *)GetProcAddress(library, "RtlRemoveVectoredExceptionHandler");
 	pRtlRestoreContext = (void *)GetProcAddress(library, "RtlRestoreContext");
-	pRtlSetLastWin32Error = (void *)GetProcAddress(library, "RtlSetLastWin32Error");
 	pRtlRunOnceBeginInitialize = (void *)GetProcAddress(library, "RtlRunOnceBeginInitialize");
 	pRtlRunOnceComplete = (void *)GetProcAddress(library, "RtlRunOnceComplete");
 	pRtlRunOnceExecuteOnce = (void *)GetProcAddress(library, "RtlRunOnceExecuteOnce");
@@ -24531,6 +24530,7 @@ void wine_thunk_initialize_ntdll(void)
 	pRtlSetGroupSecurityDescriptor = (void *)GetProcAddress(library, "RtlSetGroupSecurityDescriptor");
 	pRtlSetHeapInformation = (void *)GetProcAddress(library, "RtlSetHeapInformation");
 	pRtlSetIoCompletionCallback = (void *)GetProcAddress(library, "RtlSetIoCompletionCallback");
+	pRtlSetLastWin32Error = (void *)GetProcAddress(library, "RtlSetLastWin32Error");
 	pRtlSetLastWin32ErrorAndNtStatusFromNtStatus = (void *)GetProcAddress(library, "RtlSetLastWin32ErrorAndNtStatusFromNtStatus");
 	pRtlSetOwnerSecurityDescriptor = (void *)GetProcAddress(library, "RtlSetOwnerSecurityDescriptor");
 	pRtlSetSaclSecurityDescriptor = (void *)GetProcAddress(library, "RtlSetSaclSecurityDescriptor");
@@ -24553,10 +24553,10 @@ void wine_thunk_initialize_ntdll(void)
 	pRtlTryAcquireSRWLockShared = (void *)GetProcAddress(library, "RtlTryAcquireSRWLockShared");
 	pRtlTryEnterCriticalSection = (void *)GetProcAddress(library, "RtlTryEnterCriticalSection");
 	pRtlUlonglongByteSwap = (void *)GetProcAddress(library, "RtlUlonglongByteSwap");
-	pRtlUnicodeStringToAnsiSize = (void *)GetProcAddress(library, "RtlxUnicodeStringToAnsiSize");
+	pRtlUnicodeStringToAnsiSize = (void *)GetProcAddress(library, "RtlUnicodeStringToAnsiSize");
 	pRtlUnicodeStringToAnsiString = (void *)GetProcAddress(library, "RtlUnicodeStringToAnsiString");
 	pRtlUnicodeStringToInteger = (void *)GetProcAddress(library, "RtlUnicodeStringToInteger");
-	pRtlUnicodeStringToOemSize = (void *)GetProcAddress(library, "RtlxUnicodeStringToOemSize");
+	pRtlUnicodeStringToOemSize = (void *)GetProcAddress(library, "RtlUnicodeStringToOemSize");
 	pRtlUnicodeStringToOemString = (void *)GetProcAddress(library, "RtlUnicodeStringToOemString");
 	pRtlUnicodeToMultiByteN = (void *)GetProcAddress(library, "RtlUnicodeToMultiByteN");
 	pRtlUnicodeToMultiByteSize = (void *)GetProcAddress(library, "RtlUnicodeToMultiByteSize");
@@ -24638,10 +24638,10 @@ void wine_thunk_initialize_ntdll(void)
 	pWinSqmSetDWORD = (void *)GetProcAddress(library, "WinSqmSetDWORD");
 	pWinSqmStartSession = (void *)GetProcAddress(library, "WinSqmStartSession");
 	p__C_specific_handler = (void *)GetProcAddress(library, "__C_specific_handler");
-	pNTDLL___isascii = (void *)GetProcAddress(library, "__isascii");
-	pNTDLL___iscsym = (void *)GetProcAddress(library, "__iscsym");
-	pNTDLL___iscsymf = (void *)GetProcAddress(library, "__iscsymf");
-	pNTDLL___toascii = (void *)GetProcAddress(library, "__toascii");
+	p__isascii = (void *)GetProcAddress(library, "__isascii");
+	p__iscsym = (void *)GetProcAddress(library, "__iscsym");
+	p__iscsymf = (void *)GetProcAddress(library, "__iscsymf");
+	p__toascii = (void *)GetProcAddress(library, "__toascii");
 	p_atoi64 = (void *)GetProcAddress(library, "_atoi64");
 	p_i64toa = (void *)GetProcAddress(library, "_i64toa");
 	p_i64tow = (void *)GetProcAddress(library, "_i64tow");
@@ -24653,112 +24653,112 @@ void wine_thunk_initialize_ntdll(void)
 	p_ltow = (void *)GetProcAddress(library, "_ltow");
 	p_memccpy = (void *)GetProcAddress(library, "_memccpy");
 	p_memicmp = (void *)GetProcAddress(library, "_memicmp");
-	pNTDLL__snprintf = (void *)GetProcAddress(library, "_snprintf");
+	p_snprintf = (void *)GetProcAddress(library, "_snprintf");
 	p_snprintf_s = (void *)GetProcAddress(library, "_snprintf_s");
-	pNTDLL__snwprintf = (void *)GetProcAddress(library, "_snwprintf");
+	p_snwprintf = (void *)GetProcAddress(library, "_snwprintf");
 	p_splitpath = (void *)GetProcAddress(library, "_splitpath");
 	p_stricmp = (void *)GetProcAddress(library, "_stricmp");
 	p_strlwr = (void *)GetProcAddress(library, "_strlwr");
 	p_strnicmp = (void *)GetProcAddress(library, "_strnicmp");
 	p_strupr = (void *)GetProcAddress(library, "_strupr");
-	pNTDLL__tolower = (void *)GetProcAddress(library, "_tolower");
-	pNTDLL__toupper = (void *)GetProcAddress(library, "_toupper");
+	p_tolower = (void *)GetProcAddress(library, "_tolower");
+	p_toupper = (void *)GetProcAddress(library, "_toupper");
 	p_ui64toa = (void *)GetProcAddress(library, "_ui64toa");
 	p_ui64tow = (void *)GetProcAddress(library, "_ui64tow");
 	p_ultoa = (void *)GetProcAddress(library, "_ultoa");
 	p_ultow = (void *)GetProcAddress(library, "_ultow");
-	pNTDLL__vsnprintf = (void *)GetProcAddress(library, "_vsnprintf");
+	p_vsnprintf = (void *)GetProcAddress(library, "_vsnprintf");
 	p_vsnprintf_s = (void *)GetProcAddress(library, "_vsnprintf_s");
-	pNTDLL__vsnwprintf = (void *)GetProcAddress(library, "_vsnwprintf");
-	pNTDLL__wcsicmp = (void *)GetProcAddress(library, "_wcsicmp");
-	pNTDLL__wcslwr = (void *)GetProcAddress(library, "_wcslwr");
-	pNTDLL__wcsnicmp = (void *)GetProcAddress(library, "_wcsnicmp");
-	pNTDLL__wcsupr = (void *)GetProcAddress(library, "_wcsupr");
+	p_vsnwprintf = (void *)GetProcAddress(library, "_vsnwprintf");
+	p_wcsicmp = (void *)GetProcAddress(library, "_wcsicmp");
+	p_wcslwr = (void *)GetProcAddress(library, "_wcslwr");
+	p_wcsnicmp = (void *)GetProcAddress(library, "_wcsnicmp");
+	p_wcsupr = (void *)GetProcAddress(library, "_wcsupr");
 	p_wtoi = (void *)GetProcAddress(library, "_wtoi");
 	p_wtoi64 = (void *)GetProcAddress(library, "_wtoi64");
 	p_wtol = (void *)GetProcAddress(library, "_wtol");
-	pNTDLL_abs = (void *)GetProcAddress(library, "abs");
-	pNTDLL_atan = (void *)GetProcAddress(library, "atan");
-	pNTDLL_atoi = (void *)GetProcAddress(library, "atoi");
-	pNTDLL_atol = (void *)GetProcAddress(library, "atol");
-	pNTDLL_bsearch = (void *)GetProcAddress(library, "bsearch");
-	pNTDLL_ceil = (void *)GetProcAddress(library, "ceil");
-	pNTDLL_cos = (void *)GetProcAddress(library, "cos");
-	pNTDLL_fabs = (void *)GetProcAddress(library, "fabs");
-	pNTDLL_floor = (void *)GetProcAddress(library, "floor");
-	pNTDLL_isalnum = (void *)GetProcAddress(library, "isalnum");
-	pNTDLL_isalpha = (void *)GetProcAddress(library, "isalpha");
-	pNTDLL_iscntrl = (void *)GetProcAddress(library, "iscntrl");
-	pNTDLL_isdigit = (void *)GetProcAddress(library, "isdigit");
-	pNTDLL_isgraph = (void *)GetProcAddress(library, "isgraph");
-	pNTDLL_islower = (void *)GetProcAddress(library, "islower");
-	pNTDLL_isprint = (void *)GetProcAddress(library, "isprint");
-	pNTDLL_ispunct = (void *)GetProcAddress(library, "ispunct");
-	pNTDLL_isspace = (void *)GetProcAddress(library, "isspace");
-	pNTDLL_isupper = (void *)GetProcAddress(library, "isupper");
-	pNTDLL_iswalpha = (void *)GetProcAddress(library, "iswalpha");
-	pNTDLL_iswctype = (void *)GetProcAddress(library, "iswctype");
-	pNTDLL_iswdigit = (void *)GetProcAddress(library, "iswdigit");
-	pNTDLL_iswlower = (void *)GetProcAddress(library, "iswlower");
-	pNTDLL_iswspace = (void *)GetProcAddress(library, "iswspace");
-	pNTDLL_iswxdigit = (void *)GetProcAddress(library, "iswxdigit");
-	pNTDLL_isxdigit = (void *)GetProcAddress(library, "isxdigit");
-	pNTDLL_labs = (void *)GetProcAddress(library, "labs");
-	pNTDLL_log = (void *)GetProcAddress(library, "log");
-	pNTDLL_mbstowcs = (void *)GetProcAddress(library, "mbstowcs");
-	pNTDLL_memchr = (void *)GetProcAddress(library, "memchr");
-	pNTDLL_memcmp = (void *)GetProcAddress(library, "memcmp");
-	pNTDLL_memcpy = (void *)GetProcAddress(library, "memcpy");
-	pNTDLL_memmove = (void *)GetProcAddress(library, "memmove");
-	pNTDLL_memset = (void *)GetProcAddress(library, "memset");
-	pNTDLL_pow = (void *)GetProcAddress(library, "pow");
-	pNTDLL_qsort = (void *)GetProcAddress(library, "qsort");
-	pNTDLL_sin = (void *)GetProcAddress(library, "sin");
-	pNTDLL_sprintf = (void *)GetProcAddress(library, "sprintf");
-	pNTDLL_sqrt = (void *)GetProcAddress(library, "sqrt");
-	pNTDLL_sscanf = (void *)GetProcAddress(library, "sscanf");
-	pNTDLL_strcat = (void *)GetProcAddress(library, "strcat");
-	pNTDLL_strchr = (void *)GetProcAddress(library, "strchr");
-	pNTDLL_strcmp = (void *)GetProcAddress(library, "strcmp");
-	pNTDLL_strcpy = (void *)GetProcAddress(library, "strcpy");
-	pNTDLL_strcspn = (void *)GetProcAddress(library, "strcspn");
-	pNTDLL_strlen = (void *)GetProcAddress(library, "strlen");
-	pNTDLL_strncat = (void *)GetProcAddress(library, "strncat");
-	pNTDLL_strncmp = (void *)GetProcAddress(library, "strncmp");
-	pNTDLL_strncpy = (void *)GetProcAddress(library, "strncpy");
-	pNTDLL_strnlen = (void *)GetProcAddress(library, "strnlen");
-	pNTDLL_strpbrk = (void *)GetProcAddress(library, "strpbrk");
-	pNTDLL_strrchr = (void *)GetProcAddress(library, "strrchr");
-	pNTDLL_strspn = (void *)GetProcAddress(library, "strspn");
-	pNTDLL_strstr = (void *)GetProcAddress(library, "strstr");
-	pNTDLL_strtol = (void *)GetProcAddress(library, "strtol");
-	pNTDLL_strtoul = (void *)GetProcAddress(library, "strtoul");
-	pNTDLL_swprintf = (void *)GetProcAddress(library, "swprintf");
-	pNTDLL_tan = (void *)GetProcAddress(library, "tan");
-	pNTDLL_tolower = (void *)GetProcAddress(library, "tolower");
-	pNTDLL_toupper = (void *)GetProcAddress(library, "toupper");
-	pNTDLL_towlower = (void *)GetProcAddress(library, "towlower");
-	pNTDLL_towupper = (void *)GetProcAddress(library, "towupper");
+	pabs = (void *)GetProcAddress(library, "abs");
+	patan = (void *)GetProcAddress(library, "atan");
+	patoi = (void *)GetProcAddress(library, "atoi");
+	patol = (void *)GetProcAddress(library, "atol");
+	pbsearch = (void *)GetProcAddress(library, "bsearch");
+	pceil = (void *)GetProcAddress(library, "ceil");
+	pcos = (void *)GetProcAddress(library, "cos");
+	pfabs = (void *)GetProcAddress(library, "fabs");
+	pfloor = (void *)GetProcAddress(library, "floor");
+	pisalnum = (void *)GetProcAddress(library, "isalnum");
+	pisalpha = (void *)GetProcAddress(library, "isalpha");
+	piscntrl = (void *)GetProcAddress(library, "iscntrl");
+	pisdigit = (void *)GetProcAddress(library, "isdigit");
+	pisgraph = (void *)GetProcAddress(library, "isgraph");
+	pislower = (void *)GetProcAddress(library, "islower");
+	pisprint = (void *)GetProcAddress(library, "isprint");
+	pispunct = (void *)GetProcAddress(library, "ispunct");
+	pisspace = (void *)GetProcAddress(library, "isspace");
+	pisupper = (void *)GetProcAddress(library, "isupper");
+	piswalpha = (void *)GetProcAddress(library, "iswalpha");
+	piswctype = (void *)GetProcAddress(library, "iswctype");
+	piswdigit = (void *)GetProcAddress(library, "iswdigit");
+	piswlower = (void *)GetProcAddress(library, "iswlower");
+	piswspace = (void *)GetProcAddress(library, "iswspace");
+	piswxdigit = (void *)GetProcAddress(library, "iswxdigit");
+	pisxdigit = (void *)GetProcAddress(library, "isxdigit");
+	plabs = (void *)GetProcAddress(library, "labs");
+	plog = (void *)GetProcAddress(library, "log");
+	pmbstowcs = (void *)GetProcAddress(library, "mbstowcs");
+	pmemchr = (void *)GetProcAddress(library, "memchr");
+	pmemcmp = (void *)GetProcAddress(library, "memcmp");
+	pmemcpy = (void *)GetProcAddress(library, "memcpy");
+	pmemmove = (void *)GetProcAddress(library, "memmove");
+	pmemset = (void *)GetProcAddress(library, "memset");
+	ppow = (void *)GetProcAddress(library, "pow");
+	pqsort = (void *)GetProcAddress(library, "qsort");
+	psin = (void *)GetProcAddress(library, "sin");
+	psprintf = (void *)GetProcAddress(library, "sprintf");
+	psqrt = (void *)GetProcAddress(library, "sqrt");
+	psscanf = (void *)GetProcAddress(library, "sscanf");
+	pstrcat = (void *)GetProcAddress(library, "strcat");
+	pstrchr = (void *)GetProcAddress(library, "strchr");
+	pstrcmp = (void *)GetProcAddress(library, "strcmp");
+	pstrcpy = (void *)GetProcAddress(library, "strcpy");
+	pstrcspn = (void *)GetProcAddress(library, "strcspn");
+	pstrlen = (void *)GetProcAddress(library, "strlen");
+	pstrncat = (void *)GetProcAddress(library, "strncat");
+	pstrncmp = (void *)GetProcAddress(library, "strncmp");
+	pstrncpy = (void *)GetProcAddress(library, "strncpy");
+	pstrnlen = (void *)GetProcAddress(library, "strnlen");
+	pstrpbrk = (void *)GetProcAddress(library, "strpbrk");
+	pstrrchr = (void *)GetProcAddress(library, "strrchr");
+	pstrspn = (void *)GetProcAddress(library, "strspn");
+	pstrstr = (void *)GetProcAddress(library, "strstr");
+	pstrtol = (void *)GetProcAddress(library, "strtol");
+	pstrtoul = (void *)GetProcAddress(library, "strtoul");
+	pswprintf = (void *)GetProcAddress(library, "swprintf");
+	ptan = (void *)GetProcAddress(library, "tan");
+	ptolower = (void *)GetProcAddress(library, "tolower");
+	ptoupper = (void *)GetProcAddress(library, "toupper");
+	ptowlower = (void *)GetProcAddress(library, "towlower");
+	ptowupper = (void *)GetProcAddress(library, "towupper");
 	pvDbgPrintEx = (void *)GetProcAddress(library, "vDbgPrintEx");
 	pvDbgPrintExWithPrefix = (void *)GetProcAddress(library, "vDbgPrintExWithPrefix");
-	pNTDLL_vsprintf = (void *)GetProcAddress(library, "vsprintf");
-	pNTDLL_wcscat = (void *)GetProcAddress(library, "wcscat");
-	pNTDLL_wcschr = (void *)GetProcAddress(library, "wcschr");
-	pNTDLL_wcscmp = (void *)GetProcAddress(library, "wcscmp");
-	pNTDLL_wcscpy = (void *)GetProcAddress(library, "wcscpy");
-	pNTDLL_wcscspn = (void *)GetProcAddress(library, "wcscspn");
-	pNTDLL_wcslen = (void *)GetProcAddress(library, "wcslen");
-	pNTDLL_wcsncat = (void *)GetProcAddress(library, "wcsncat");
-	pNTDLL_wcsncmp = (void *)GetProcAddress(library, "wcsncmp");
-	pNTDLL_wcsncpy = (void *)GetProcAddress(library, "wcsncpy");
-	pNTDLL_wcspbrk = (void *)GetProcAddress(library, "wcspbrk");
-	pNTDLL_wcsrchr = (void *)GetProcAddress(library, "wcsrchr");
-	pNTDLL_wcsspn = (void *)GetProcAddress(library, "wcsspn");
-	pNTDLL_wcsstr = (void *)GetProcAddress(library, "wcsstr");
-	pNTDLL_wcstok = (void *)GetProcAddress(library, "wcstok");
-	pNTDLL_wcstol = (void *)GetProcAddress(library, "wcstol");
-	pNTDLL_wcstombs = (void *)GetProcAddress(library, "wcstombs");
-	pNTDLL_wcstoul = (void *)GetProcAddress(library, "wcstoul");
+	pvsprintf = (void *)GetProcAddress(library, "vsprintf");
+	pwcscat = (void *)GetProcAddress(library, "wcscat");
+	pwcschr = (void *)GetProcAddress(library, "wcschr");
+	pwcscmp = (void *)GetProcAddress(library, "wcscmp");
+	pwcscpy = (void *)GetProcAddress(library, "wcscpy");
+	pwcscspn = (void *)GetProcAddress(library, "wcscspn");
+	pwcslen = (void *)GetProcAddress(library, "wcslen");
+	pwcsncat = (void *)GetProcAddress(library, "wcsncat");
+	pwcsncmp = (void *)GetProcAddress(library, "wcsncmp");
+	pwcsncpy = (void *)GetProcAddress(library, "wcsncpy");
+	pwcspbrk = (void *)GetProcAddress(library, "wcspbrk");
+	pwcsrchr = (void *)GetProcAddress(library, "wcsrchr");
+	pwcsspn = (void *)GetProcAddress(library, "wcsspn");
+	pwcsstr = (void *)GetProcAddress(library, "wcsstr");
+	pwcstok = (void *)GetProcAddress(library, "wcstok");
+	pwcstol = (void *)GetProcAddress(library, "wcstol");
+	pwcstombs = (void *)GetProcAddress(library, "wcstombs");
+	pwcstoul = (void *)GetProcAddress(library, "wcstoul");
 	pwine_server_call = (void *)GetProcAddress(library, "wine_server_call");
 	pwine_server_fd_to_handle = (void *)GetProcAddress(library, "wine_server_fd_to_handle");
 	pwine_server_handle_to_fd = (void *)GetProcAddress(library, "wine_server_handle_to_fd");
@@ -24770,9 +24770,9 @@ void wine_thunk_initialize_ntdll(void)
 	p__wine_dbg_output = (void *)GetProcAddress(library, "__wine_dbg_output");
 	p__wine_dbg_strdup = (void *)GetProcAddress(library, "__wine_dbg_strdup");
 	p__wine_locked_recvmsg = (void *)GetProcAddress(library, "__wine_locked_recvmsg");
-	pNTDLL_wine_get_version = (void *)GetProcAddress(library, "wine_get_version");
-	pNTDLL_wine_get_build_id = (void *)GetProcAddress(library, "wine_get_build_id");
-	pNTDLL_wine_get_host_version = (void *)GetProcAddress(library, "wine_get_host_version");
+	pwine_get_version = (void *)GetProcAddress(library, "wine_get_version");
+	pwine_get_build_id = (void *)GetProcAddress(library, "wine_get_build_id");
+	pwine_get_host_version = (void *)GetProcAddress(library, "wine_get_host_version");
 	p__wine_init_codepages = (void *)GetProcAddress(library, "__wine_init_codepages");
 	p__wine_set_signal_handler = (void *)GetProcAddress(library, "__wine_set_signal_handler");
 	pwine_nt_to_unix_file_name = (void *)GetProcAddress(library, "wine_nt_to_unix_file_name");
@@ -25903,8 +25903,6 @@ void* wine_thunk_get_for_ntdll(void *func)
 		return wine32a_ntdll_RtlRemoveVectoredExceptionHandler;
 	if (func == pRtlRestoreContext)
 		return wine32a_ntdll_RtlRestoreContext;
-	if (func == pRtlSetLastWin32Error)
-		return wine32a_ntdll_RtlSetLastWin32Error;
 	if (func == pRtlRunOnceBeginInitialize)
 		return wine32a_ntdll_RtlRunOnceBeginInitialize;
 	if (func == pRtlRunOnceComplete)
@@ -25943,6 +25941,8 @@ void* wine_thunk_get_for_ntdll(void *func)
 		return wine32a_ntdll_RtlSetHeapInformation;
 	if (func == pRtlSetIoCompletionCallback)
 		return wine32a_ntdll_RtlSetIoCompletionCallback;
+	if (func == pRtlSetLastWin32Error)
+		return wine32a_ntdll_RtlSetLastWin32Error;
 	if (func == pRtlSetLastWin32ErrorAndNtStatusFromNtStatus)
 		return wine32a_ntdll_RtlSetLastWin32ErrorAndNtStatusFromNtStatus;
 	if (func == pRtlSetOwnerSecurityDescriptor)
@@ -26157,14 +26157,14 @@ void* wine_thunk_get_for_ntdll(void *func)
 		return wine32a_ntdll_WinSqmStartSession;
 	if (func == p__C_specific_handler)
 		return wine32a_ntdll___C_specific_handler;
-	if (func == pNTDLL___isascii)
-		return wine32a_ntdll_NTDLL___isascii;
-	if (func == pNTDLL___iscsym)
-		return wine32a_ntdll_NTDLL___iscsym;
-	if (func == pNTDLL___iscsymf)
-		return wine32a_ntdll_NTDLL___iscsymf;
-	if (func == pNTDLL___toascii)
-		return wine32a_ntdll_NTDLL___toascii;
+	if (func == p__isascii)
+		return wine32a_ntdll___isascii;
+	if (func == p__iscsym)
+		return wine32a_ntdll___iscsym;
+	if (func == p__iscsymf)
+		return wine32a_ntdll___iscsymf;
+	if (func == p__toascii)
+		return wine32a_ntdll___toascii;
 	if (func == p_atoi64)
 		return wine32a_ntdll__atoi64;
 	if (func == p_i64toa)
@@ -26187,12 +26187,12 @@ void* wine_thunk_get_for_ntdll(void *func)
 		return wine32a_ntdll__memccpy;
 	if (func == p_memicmp)
 		return wine32a_ntdll__memicmp;
-	if (func == pNTDLL__snprintf)
-		return wine32a_ntdll_NTDLL__snprintf;
+	if (func == p_snprintf)
+		return wine32a_ntdll__snprintf;
 	if (func == p_snprintf_s)
 		return wine32a_ntdll__snprintf_s;
-	if (func == pNTDLL__snwprintf)
-		return wine32a_ntdll_NTDLL__snwprintf;
+	if (func == p_snwprintf)
+		return wine32a_ntdll__snwprintf;
 	if (func == p_splitpath)
 		return wine32a_ntdll__splitpath;
 	if (func == p_stricmp)
@@ -26203,10 +26203,10 @@ void* wine_thunk_get_for_ntdll(void *func)
 		return wine32a_ntdll__strnicmp;
 	if (func == p_strupr)
 		return wine32a_ntdll__strupr;
-	if (func == pNTDLL__tolower)
-		return wine32a_ntdll_NTDLL__tolower;
-	if (func == pNTDLL__toupper)
-		return wine32a_ntdll_NTDLL__toupper;
+	if (func == p_tolower)
+		return wine32a_ntdll__tolower;
+	if (func == p_toupper)
+		return wine32a_ntdll__toupper;
 	if (func == p_ui64toa)
 		return wine32a_ntdll__ui64toa;
 	if (func == p_ui64tow)
@@ -26215,190 +26215,190 @@ void* wine_thunk_get_for_ntdll(void *func)
 		return wine32a_ntdll__ultoa;
 	if (func == p_ultow)
 		return wine32a_ntdll__ultow;
-	if (func == pNTDLL__vsnprintf)
-		return wine32a_ntdll_NTDLL__vsnprintf;
+	if (func == p_vsnprintf)
+		return wine32a_ntdll__vsnprintf;
 	if (func == p_vsnprintf_s)
 		return wine32a_ntdll__vsnprintf_s;
-	if (func == pNTDLL__vsnwprintf)
-		return wine32a_ntdll_NTDLL__vsnwprintf;
-	if (func == pNTDLL__wcsicmp)
-		return wine32a_ntdll_NTDLL__wcsicmp;
-	if (func == pNTDLL__wcslwr)
-		return wine32a_ntdll_NTDLL__wcslwr;
-	if (func == pNTDLL__wcsnicmp)
-		return wine32a_ntdll_NTDLL__wcsnicmp;
-	if (func == pNTDLL__wcsupr)
-		return wine32a_ntdll_NTDLL__wcsupr;
+	if (func == p_vsnwprintf)
+		return wine32a_ntdll__vsnwprintf;
+	if (func == p_wcsicmp)
+		return wine32a_ntdll__wcsicmp;
+	if (func == p_wcslwr)
+		return wine32a_ntdll__wcslwr;
+	if (func == p_wcsnicmp)
+		return wine32a_ntdll__wcsnicmp;
+	if (func == p_wcsupr)
+		return wine32a_ntdll__wcsupr;
 	if (func == p_wtoi)
 		return wine32a_ntdll__wtoi;
 	if (func == p_wtoi64)
 		return wine32a_ntdll__wtoi64;
 	if (func == p_wtol)
 		return wine32a_ntdll__wtol;
-	if (func == pNTDLL_abs)
-		return wine32a_ntdll_NTDLL_abs;
-	if (func == pNTDLL_atan)
-		return wine32a_ntdll_NTDLL_atan;
-	if (func == pNTDLL_atoi)
-		return wine32a_ntdll_NTDLL_atoi;
-	if (func == pNTDLL_atol)
-		return wine32a_ntdll_NTDLL_atol;
-	if (func == pNTDLL_bsearch)
-		return wine32a_ntdll_NTDLL_bsearch;
-	if (func == pNTDLL_ceil)
-		return wine32a_ntdll_NTDLL_ceil;
-	if (func == pNTDLL_cos)
-		return wine32a_ntdll_NTDLL_cos;
-	if (func == pNTDLL_fabs)
-		return wine32a_ntdll_NTDLL_fabs;
-	if (func == pNTDLL_floor)
-		return wine32a_ntdll_NTDLL_floor;
-	if (func == pNTDLL_isalnum)
-		return wine32a_ntdll_NTDLL_isalnum;
-	if (func == pNTDLL_isalpha)
-		return wine32a_ntdll_NTDLL_isalpha;
-	if (func == pNTDLL_iscntrl)
-		return wine32a_ntdll_NTDLL_iscntrl;
-	if (func == pNTDLL_isdigit)
-		return wine32a_ntdll_NTDLL_isdigit;
-	if (func == pNTDLL_isgraph)
-		return wine32a_ntdll_NTDLL_isgraph;
-	if (func == pNTDLL_islower)
-		return wine32a_ntdll_NTDLL_islower;
-	if (func == pNTDLL_isprint)
-		return wine32a_ntdll_NTDLL_isprint;
-	if (func == pNTDLL_ispunct)
-		return wine32a_ntdll_NTDLL_ispunct;
-	if (func == pNTDLL_isspace)
-		return wine32a_ntdll_NTDLL_isspace;
-	if (func == pNTDLL_isupper)
-		return wine32a_ntdll_NTDLL_isupper;
-	if (func == pNTDLL_iswalpha)
-		return wine32a_ntdll_NTDLL_iswalpha;
-	if (func == pNTDLL_iswctype)
-		return wine32a_ntdll_NTDLL_iswctype;
-	if (func == pNTDLL_iswdigit)
-		return wine32a_ntdll_NTDLL_iswdigit;
-	if (func == pNTDLL_iswlower)
-		return wine32a_ntdll_NTDLL_iswlower;
-	if (func == pNTDLL_iswspace)
-		return wine32a_ntdll_NTDLL_iswspace;
-	if (func == pNTDLL_iswxdigit)
-		return wine32a_ntdll_NTDLL_iswxdigit;
-	if (func == pNTDLL_isxdigit)
-		return wine32a_ntdll_NTDLL_isxdigit;
-	if (func == pNTDLL_labs)
-		return wine32a_ntdll_NTDLL_labs;
-	if (func == pNTDLL_log)
-		return wine32a_ntdll_NTDLL_log;
-	if (func == pNTDLL_mbstowcs)
-		return wine32a_ntdll_NTDLL_mbstowcs;
-	if (func == pNTDLL_memchr)
-		return wine32a_ntdll_NTDLL_memchr;
-	if (func == pNTDLL_memcmp)
-		return wine32a_ntdll_NTDLL_memcmp;
-	if (func == pNTDLL_memcpy)
-		return wine32a_ntdll_NTDLL_memcpy;
-	if (func == pNTDLL_memmove)
-		return wine32a_ntdll_NTDLL_memmove;
-	if (func == pNTDLL_memset)
-		return wine32a_ntdll_NTDLL_memset;
-	if (func == pNTDLL_pow)
-		return wine32a_ntdll_NTDLL_pow;
-	if (func == pNTDLL_qsort)
-		return wine32a_ntdll_NTDLL_qsort;
-	if (func == pNTDLL_sin)
-		return wine32a_ntdll_NTDLL_sin;
-	if (func == pNTDLL_sprintf)
-		return wine32a_ntdll_NTDLL_sprintf;
-	if (func == pNTDLL_sqrt)
-		return wine32a_ntdll_NTDLL_sqrt;
-	if (func == pNTDLL_sscanf)
-		return wine32a_ntdll_NTDLL_sscanf;
-	if (func == pNTDLL_strcat)
-		return wine32a_ntdll_NTDLL_strcat;
-	if (func == pNTDLL_strchr)
-		return wine32a_ntdll_NTDLL_strchr;
-	if (func == pNTDLL_strcmp)
-		return wine32a_ntdll_NTDLL_strcmp;
-	if (func == pNTDLL_strcpy)
-		return wine32a_ntdll_NTDLL_strcpy;
-	if (func == pNTDLL_strcspn)
-		return wine32a_ntdll_NTDLL_strcspn;
-	if (func == pNTDLL_strlen)
-		return wine32a_ntdll_NTDLL_strlen;
-	if (func == pNTDLL_strncat)
-		return wine32a_ntdll_NTDLL_strncat;
-	if (func == pNTDLL_strncmp)
-		return wine32a_ntdll_NTDLL_strncmp;
-	if (func == pNTDLL_strncpy)
-		return wine32a_ntdll_NTDLL_strncpy;
-	if (func == pNTDLL_strnlen)
-		return wine32a_ntdll_NTDLL_strnlen;
-	if (func == pNTDLL_strpbrk)
-		return wine32a_ntdll_NTDLL_strpbrk;
-	if (func == pNTDLL_strrchr)
-		return wine32a_ntdll_NTDLL_strrchr;
-	if (func == pNTDLL_strspn)
-		return wine32a_ntdll_NTDLL_strspn;
-	if (func == pNTDLL_strstr)
-		return wine32a_ntdll_NTDLL_strstr;
-	if (func == pNTDLL_strtol)
-		return wine32a_ntdll_NTDLL_strtol;
-	if (func == pNTDLL_strtoul)
-		return wine32a_ntdll_NTDLL_strtoul;
-	if (func == pNTDLL_swprintf)
-		return wine32a_ntdll_NTDLL_swprintf;
-	if (func == pNTDLL_tan)
-		return wine32a_ntdll_NTDLL_tan;
-	if (func == pNTDLL_tolower)
-		return wine32a_ntdll_NTDLL_tolower;
-	if (func == pNTDLL_toupper)
-		return wine32a_ntdll_NTDLL_toupper;
-	if (func == pNTDLL_towlower)
-		return wine32a_ntdll_NTDLL_towlower;
-	if (func == pNTDLL_towupper)
-		return wine32a_ntdll_NTDLL_towupper;
+	if (func == pabs)
+		return wine32a_ntdll_abs;
+	if (func == patan)
+		return wine32a_ntdll_atan;
+	if (func == patoi)
+		return wine32a_ntdll_atoi;
+	if (func == patol)
+		return wine32a_ntdll_atol;
+	if (func == pbsearch)
+		return wine32a_ntdll_bsearch;
+	if (func == pceil)
+		return wine32a_ntdll_ceil;
+	if (func == pcos)
+		return wine32a_ntdll_cos;
+	if (func == pfabs)
+		return wine32a_ntdll_fabs;
+	if (func == pfloor)
+		return wine32a_ntdll_floor;
+	if (func == pisalnum)
+		return wine32a_ntdll_isalnum;
+	if (func == pisalpha)
+		return wine32a_ntdll_isalpha;
+	if (func == piscntrl)
+		return wine32a_ntdll_iscntrl;
+	if (func == pisdigit)
+		return wine32a_ntdll_isdigit;
+	if (func == pisgraph)
+		return wine32a_ntdll_isgraph;
+	if (func == pislower)
+		return wine32a_ntdll_islower;
+	if (func == pisprint)
+		return wine32a_ntdll_isprint;
+	if (func == pispunct)
+		return wine32a_ntdll_ispunct;
+	if (func == pisspace)
+		return wine32a_ntdll_isspace;
+	if (func == pisupper)
+		return wine32a_ntdll_isupper;
+	if (func == piswalpha)
+		return wine32a_ntdll_iswalpha;
+	if (func == piswctype)
+		return wine32a_ntdll_iswctype;
+	if (func == piswdigit)
+		return wine32a_ntdll_iswdigit;
+	if (func == piswlower)
+		return wine32a_ntdll_iswlower;
+	if (func == piswspace)
+		return wine32a_ntdll_iswspace;
+	if (func == piswxdigit)
+		return wine32a_ntdll_iswxdigit;
+	if (func == pisxdigit)
+		return wine32a_ntdll_isxdigit;
+	if (func == plabs)
+		return wine32a_ntdll_labs;
+	if (func == plog)
+		return wine32a_ntdll_log;
+	if (func == pmbstowcs)
+		return wine32a_ntdll_mbstowcs;
+	if (func == pmemchr)
+		return wine32a_ntdll_memchr;
+	if (func == pmemcmp)
+		return wine32a_ntdll_memcmp;
+	if (func == pmemcpy)
+		return wine32a_ntdll_memcpy;
+	if (func == pmemmove)
+		return wine32a_ntdll_memmove;
+	if (func == pmemset)
+		return wine32a_ntdll_memset;
+	if (func == ppow)
+		return wine32a_ntdll_pow;
+	if (func == pqsort)
+		return wine32a_ntdll_qsort;
+	if (func == psin)
+		return wine32a_ntdll_sin;
+	if (func == psprintf)
+		return wine32a_ntdll_sprintf;
+	if (func == psqrt)
+		return wine32a_ntdll_sqrt;
+	if (func == psscanf)
+		return wine32a_ntdll_sscanf;
+	if (func == pstrcat)
+		return wine32a_ntdll_strcat;
+	if (func == pstrchr)
+		return wine32a_ntdll_strchr;
+	if (func == pstrcmp)
+		return wine32a_ntdll_strcmp;
+	if (func == pstrcpy)
+		return wine32a_ntdll_strcpy;
+	if (func == pstrcspn)
+		return wine32a_ntdll_strcspn;
+	if (func == pstrlen)
+		return wine32a_ntdll_strlen;
+	if (func == pstrncat)
+		return wine32a_ntdll_strncat;
+	if (func == pstrncmp)
+		return wine32a_ntdll_strncmp;
+	if (func == pstrncpy)
+		return wine32a_ntdll_strncpy;
+	if (func == pstrnlen)
+		return wine32a_ntdll_strnlen;
+	if (func == pstrpbrk)
+		return wine32a_ntdll_strpbrk;
+	if (func == pstrrchr)
+		return wine32a_ntdll_strrchr;
+	if (func == pstrspn)
+		return wine32a_ntdll_strspn;
+	if (func == pstrstr)
+		return wine32a_ntdll_strstr;
+	if (func == pstrtol)
+		return wine32a_ntdll_strtol;
+	if (func == pstrtoul)
+		return wine32a_ntdll_strtoul;
+	if (func == pswprintf)
+		return wine32a_ntdll_swprintf;
+	if (func == ptan)
+		return wine32a_ntdll_tan;
+	if (func == ptolower)
+		return wine32a_ntdll_tolower;
+	if (func == ptoupper)
+		return wine32a_ntdll_toupper;
+	if (func == ptowlower)
+		return wine32a_ntdll_towlower;
+	if (func == ptowupper)
+		return wine32a_ntdll_towupper;
 	if (func == pvDbgPrintEx)
 		return wine32a_ntdll_vDbgPrintEx;
 	if (func == pvDbgPrintExWithPrefix)
 		return wine32a_ntdll_vDbgPrintExWithPrefix;
-	if (func == pNTDLL_vsprintf)
-		return wine32a_ntdll_NTDLL_vsprintf;
-	if (func == pNTDLL_wcscat)
-		return wine32a_ntdll_NTDLL_wcscat;
-	if (func == pNTDLL_wcschr)
-		return wine32a_ntdll_NTDLL_wcschr;
-	if (func == pNTDLL_wcscmp)
-		return wine32a_ntdll_NTDLL_wcscmp;
-	if (func == pNTDLL_wcscpy)
-		return wine32a_ntdll_NTDLL_wcscpy;
-	if (func == pNTDLL_wcscspn)
-		return wine32a_ntdll_NTDLL_wcscspn;
-	if (func == pNTDLL_wcslen)
-		return wine32a_ntdll_NTDLL_wcslen;
-	if (func == pNTDLL_wcsncat)
-		return wine32a_ntdll_NTDLL_wcsncat;
-	if (func == pNTDLL_wcsncmp)
-		return wine32a_ntdll_NTDLL_wcsncmp;
-	if (func == pNTDLL_wcsncpy)
-		return wine32a_ntdll_NTDLL_wcsncpy;
-	if (func == pNTDLL_wcspbrk)
-		return wine32a_ntdll_NTDLL_wcspbrk;
-	if (func == pNTDLL_wcsrchr)
-		return wine32a_ntdll_NTDLL_wcsrchr;
-	if (func == pNTDLL_wcsspn)
-		return wine32a_ntdll_NTDLL_wcsspn;
-	if (func == pNTDLL_wcsstr)
-		return wine32a_ntdll_NTDLL_wcsstr;
-	if (func == pNTDLL_wcstok)
-		return wine32a_ntdll_NTDLL_wcstok;
-	if (func == pNTDLL_wcstol)
-		return wine32a_ntdll_NTDLL_wcstol;
-	if (func == pNTDLL_wcstombs)
-		return wine32a_ntdll_NTDLL_wcstombs;
-	if (func == pNTDLL_wcstoul)
-		return wine32a_ntdll_NTDLL_wcstoul;
+	if (func == pvsprintf)
+		return wine32a_ntdll_vsprintf;
+	if (func == pwcscat)
+		return wine32a_ntdll_wcscat;
+	if (func == pwcschr)
+		return wine32a_ntdll_wcschr;
+	if (func == pwcscmp)
+		return wine32a_ntdll_wcscmp;
+	if (func == pwcscpy)
+		return wine32a_ntdll_wcscpy;
+	if (func == pwcscspn)
+		return wine32a_ntdll_wcscspn;
+	if (func == pwcslen)
+		return wine32a_ntdll_wcslen;
+	if (func == pwcsncat)
+		return wine32a_ntdll_wcsncat;
+	if (func == pwcsncmp)
+		return wine32a_ntdll_wcsncmp;
+	if (func == pwcsncpy)
+		return wine32a_ntdll_wcsncpy;
+	if (func == pwcspbrk)
+		return wine32a_ntdll_wcspbrk;
+	if (func == pwcsrchr)
+		return wine32a_ntdll_wcsrchr;
+	if (func == pwcsspn)
+		return wine32a_ntdll_wcsspn;
+	if (func == pwcsstr)
+		return wine32a_ntdll_wcsstr;
+	if (func == pwcstok)
+		return wine32a_ntdll_wcstok;
+	if (func == pwcstol)
+		return wine32a_ntdll_wcstol;
+	if (func == pwcstombs)
+		return wine32a_ntdll_wcstombs;
+	if (func == pwcstoul)
+		return wine32a_ntdll_wcstoul;
 	if (func == pwine_server_call)
 		return wine32a_ntdll_wine_server_call;
 	if (func == pwine_server_fd_to_handle)
@@ -26421,12 +26421,12 @@ void* wine_thunk_get_for_ntdll(void *func)
 		return wine32a_ntdll___wine_dbg_strdup;
 	if (func == p__wine_locked_recvmsg)
 		return wine32a_ntdll___wine_locked_recvmsg;
-	if (func == pNTDLL_wine_get_version)
-		return wine32a_ntdll_NTDLL_wine_get_version;
-	if (func == pNTDLL_wine_get_build_id)
-		return wine32a_ntdll_NTDLL_wine_get_build_id;
-	if (func == pNTDLL_wine_get_host_version)
-		return wine32a_ntdll_NTDLL_wine_get_host_version;
+	if (func == pwine_get_version)
+		return wine32a_ntdll_wine_get_version;
+	if (func == pwine_get_build_id)
+		return wine32a_ntdll_wine_get_build_id;
+	if (func == pwine_get_host_version)
+		return wine32a_ntdll_wine_get_host_version;
 	if (func == p__wine_init_codepages)
 		return wine32a_ntdll___wine_init_codepages;
 	if (func == p__wine_set_signal_handler)

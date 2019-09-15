@@ -2,6 +2,7 @@
 
 # pprint(dir())
 # TODO bitfields, parallelize single source file
+# commandline option to limit to source and dll
 
 import sys
 import clang.cindex
@@ -246,29 +247,31 @@ class FunctionItem:
 		self.params = None
 		self.file = None
 		self.line = None
+		self.identifier = None
 
 	def parse_from_spec_line(self, line):
 		rows = line.split(' ')
-		if rows[1] == 'stub' or rows[1] == 'extern':
-			self.name = rows[2]
-			self.internalname = self.name
-			self.callingconvention = 'stub'
+		self.temp = line
+		self.callingconvention = rows[1]
+		parts = line.replace('(', ')').split(')') # 0 - left side of parameters, 1 - parameters, 2 - right side of parameters
+		self.internalname = self.name = parts[0].strip().split(' ')[-1]
+		self.identifier = self.name
+		if len(parts) < 3:
+			return
+		if parts[2] != "":
+			self.internalname = parts[2].strip()
+			if '.' in self.internalname:
+				nameparts = self.internalname.split('.')
+				self.internalname = nameparts[1]
+				self.relay_dll = nameparts[0]
+				self.relay = True
 		else:
-			self.callingconvention = rows[1]
-			parts = line.replace('(', ')').split(')') # 0 - left side of parameters, 1 - parameters, 2 - right side of parameters
-			self.name = parts[0].strip().split(' ')[-1]
-			if parts[2] != "":
-				self.internalname = parts[2].strip()
-				if '.' in self.internalname:
-					self.relay = True
-					nameparts = self.internalname.split('.')
-					self.internalname = nameparts[1]
-					self.relay_dll = nameparts[0]
-			else:
-				self.internalname = self.name
-				if ' -import' in line:
-					self.relay = True
-					self.relay_dll = 'kernelbase'
+			if ' -import' in line:
+				self.relay = True
+				self.relay_dll = 'kernelbase'
+
+		if ('@' in self.identifier) or ('$' in self.identifier): # C++ name
+			self.identifier = self.internalname
 
 	def is_empty(self):
 		return self.params == None
@@ -310,13 +313,18 @@ class FunctionCollection:
 
 	def load_from_specfile(self, path):
 		lines = [line.strip() for line in open(path)]
+		items_temp = []
 		for line in lines:
 			if (line.startswith("#") or line == ""):
 				continue;
 			item = FunctionItem()
 			item.parse_from_spec_line(line)
-			if item.relay: # A relay might have the same item.internalname as an already existing function
-				self.items['relay_' + item.internalname] = item
+			items_temp.append(item)
+		all_names = [item.name for item in items_temp]
+		for item in items_temp:
+			is_in_names = (item.internalname != item.name) and (item.internalname in all_names)
+			if item.relay or is_in_names: # A relay might have the same item.internalname as an already existing function
+				self.items['relay_' + item.name] = item
 			else:
 				self.items[item.internalname] = item
 
@@ -354,7 +362,7 @@ def get_makefile_sources(path):
 # 4 - param 2
 # ...
 def make_thunk_callingconvention_32_to_64_a(contents_source, dllname, func):
-	funcname = func.internalname
+	funcname = func.identifier
 	num_params = len(func.params)
 	contents_source.append(f'extern WINAPI void wine32a_{dllname}_{funcname}(void);  /* {func.file}:{func.line} */')
 	contents_source.append(f'__ASM_GLOBAL_FUNC(wine32a_{dllname}_{funcname},')
@@ -392,7 +400,7 @@ def make_thunk_callingconvention_32_to_64_a(contents_source, dllname, func):
 	contents_source.append("")
 
 def make_thunk_callingconvention_32_to_64_b(contents_source, dllname, func):
-	funcname = func.internalname
+	funcname = func.identifier
 	arguments_decl = func.get_arguments_decl()
 	arguments_calling = func.get_arguments_calling()
 	contents_source.append(f'extern WINAPI {func.return_type.tostring("")} wine32b_{dllname}_{funcname}({arguments_decl}) /* {func.file}:{func.line} */')
@@ -450,7 +458,7 @@ def parse_file(path_file):
 	tu = index.parse(path_file,  ["-D_WIN32", "-D__WINESRC__", "-I/usr/lib/clang/8.0.1/include/", "-I../include", "-I/home/fabian/Programming/Wine/wine64/include/", "-fdeclspec", "-Wno-pragma-pack"])
 	if len(tu.diagnostics) > 0:
 		for diag in tu.diagnostics:
-			print(diag.spelling + " " + str(diag.location.file) + ":" + str(diag.location.line))
+			print(f'\t\t{diag.spelling}  {diag.location.file.name}:{diag.location.line}')
 	return tu.cursor
 
 def handle_dll_source(dll_path, source, funcs, ret_definitions):
@@ -508,10 +516,10 @@ def handle_dll(name):
 	for func in funcs:
 		if not func.is_empty():
 			arguments = func.get_arguments_decl()
-			contents_source.append(f'static WINAPI {func.return_type.tostring("")} (*p{func.internalname})({arguments});')
+			contents_source.append(f'static WINAPI {func.return_type.tostring("")} (*p{func.identifier})({arguments});')
 		if func.relay:
-			contents_source.append(f'static void* p{func.internalname};')
-			contents_source.append(f'static void* pext{func.internalname};')
+			contents_source.append(f'static void* p{func.identifier};')
+			contents_source.append(f'static void* pext{func.identifier};')
 	contents_source.append("")
 
 	# Add thunks
@@ -532,10 +540,10 @@ def handle_dll(name):
 		contents_source.append(f'\tHMODULE library_{lib} = LoadLibraryA("{lib}.dll");')
 	for func in funcs:
 		if not func.is_empty():
-			contents_source.append(f'\tp{func.internalname} = (void *)GetProcAddress(library, "{func.name}");')
+			contents_source.append(f'\tp{func.identifier} = (void *)GetProcAddress(library, "{func.name}");')
 		if func.relay:
-			contents_source.append(f'\tp{func.internalname} = (void *)GetProcAddress(library, "{func.name}");')
-			contents_source.append(f'\tpext{func.internalname} = (void *)GetProcAddress(library_{func.relay_dll}, "{func.internalname}");')
+			contents_source.append(f'\tp{func.identifier} = (void *)GetProcAddress(library, "{func.name}");')
+			contents_source.append(f'\tpext{func.identifier} = (void *)GetProcAddress(library_{func.relay_dll}, "{func.internalname}");')
 	contents_source.append('\tinitialized = TRUE;')
 	contents_source.append('}')
 	contents_source.append("")
@@ -548,11 +556,11 @@ def handle_dll(name):
 	contents_source.append("")
 	for func in funcs:
 		if not func.is_empty():
-			contents_source.append(f'\tif (func == p{func.internalname})')
-			contents_source.append(f'\t\treturn wine32a_{name}_{func.internalname};')
+			contents_source.append(f'\tif (func == p{func.identifier})')
+			contents_source.append(f'\t\treturn wine32a_{name}_{func.identifier};')
 		if func.relay:
-			contents_source.append(f'\tif (func == p{func.internalname} && func != pext{func.internalname})')
-			contents_source.append(f'\t\treturn wine_thunk_get_for_any(pext{func.internalname});')
+			contents_source.append(f'\tif (func == p{func.identifier} && func != pext{func.identifier})')
+			contents_source.append(f'\t\treturn wine_thunk_get_for_any(pext{func.identifier});')
 	contents_source.append("")
 	contents_source.append('\treturn NULL;')
 	contents_source.append('}')

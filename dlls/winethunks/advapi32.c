@@ -1037,24 +1037,24 @@ static void* pEqualPrefixSid;
 static void* pextEqualPrefixSid;
 static void* pEqualSid;
 static void* pextEqualSid;
-static void* pEtwEventActivityIdControl;
-static void* pextEtwEventActivityIdControl;
-static void* pEtwEventEnabled;
-static void* pextEtwEventEnabled;
-static void* pEtwEventProviderEnabled;
-static void* pextEtwEventProviderEnabled;
-static void* pEtwEventRegister;
-static void* pextEtwEventRegister;
-static void* pEtwEventSetInformation;
-static void* pextEtwEventSetInformation;
-static void* pEtwEventUnregister;
-static void* pextEtwEventUnregister;
-static void* pEtwEventWrite;
-static void* pextEtwEventWrite;
-static void* pEtwEventWriteString;
-static void* pextEtwEventWriteString;
-static void* pEtwEventWriteTransfer;
-static void* pextEtwEventWriteTransfer;
+static void* pEventActivityIdControl;
+static void* pextEventActivityIdControl;
+static void* pEventEnabled;
+static void* pextEventEnabled;
+static void* pEventProviderEnabled;
+static void* pextEventProviderEnabled;
+static void* pEventRegister;
+static void* pextEventRegister;
+static void* pEventSetInformation;
+static void* pextEventSetInformation;
+static void* pEventUnregister;
+static void* pextEventUnregister;
+static void* pEventWrite;
+static void* pextEventWrite;
+static void* pEventWriteString;
+static void* pextEventWriteString;
+static void* pEventWriteTransfer;
+static void* pextEventWriteTransfer;
 static WINAPI BOOL (*pFileEncryptionStatusA)(LPCSTR  lpFileName, LPDWORD  lpStatus);
 static WINAPI BOOL (*pFileEncryptionStatusW)(LPCWSTR  lpFileName, LPDWORD  lpStatus);
 static void* pFindFirstFreeAce;
@@ -1118,12 +1118,12 @@ static void* pGetSidSubAuthorityCount;
 static void* pextGetSidSubAuthorityCount;
 static void* pGetTokenInformation;
 static void* pextGetTokenInformation;
-static void* pEtwGetTraceEnableFlags;
-static void* pextEtwGetTraceEnableFlags;
-static void* pEtwGetTraceEnableLevel;
-static void* pextEtwGetTraceEnableLevel;
-static void* pEtwGetTraceLoggerHandle;
-static void* pextEtwGetTraceLoggerHandle;
+static void* pGetTraceEnableFlags;
+static void* pextGetTraceEnableFlags;
+static void* pGetTraceEnableLevel;
+static void* pextGetTraceEnableLevel;
+static void* pGetTraceLoggerHandle;
+static void* pextGetTraceLoggerHandle;
 static WINAPI TRUSTEE_FORM (*pGetTrusteeFormA)(PTRUSTEEA  pTrustee);
 static WINAPI TRUSTEE_FORM (*pGetTrusteeFormW)(PTRUSTEEW  pTrustee);
 static WINAPI LPSTR (*pGetTrusteeNameA)(PTRUSTEEA  pTrustee);
@@ -1401,10 +1401,10 @@ static void* pRegUnLoadKeyW;
 static void* pextRegUnLoadKeyW;
 static WINAPI HANDLE (*pRegisterEventSourceA)(LPCSTR  lpUNCServerName, LPCSTR  lpSourceName);
 static WINAPI HANDLE (*pRegisterEventSourceW)(LPCWSTR  lpUNCServerName, LPCWSTR  lpSourceName);
-static void* pEtwRegisterTraceGuidsA;
-static void* pextEtwRegisterTraceGuidsA;
-static void* pEtwRegisterTraceGuidsW;
-static void* pextEtwRegisterTraceGuidsW;
+static void* pRegisterTraceGuidsA;
+static void* pextRegisterTraceGuidsA;
+static void* pRegisterTraceGuidsW;
+static void* pextRegisterTraceGuidsW;
 static WINAPI void (*pRegisterWaitChainCOMCallback)(PCOGETCALLSTATE  call_state_cb, PCOGETACTIVATIONSTATE  activation_state_cb);
 static WINAPI BOOL (*pReportEventA)(HANDLE  hEventLog, WORD  wType, WORD  wCategory, DWORD  dwEventID, PSID  lpUserSid, WORD  wNumStrings, DWORD  dwDataSize, LPCSTR*  lpStrings, LPVOID  lpRawData);
 static WINAPI BOOL (*pReportEventW)(HANDLE  hEventLog, WORD  wType, WORD  wCategory, DWORD  dwEventID, PSID  lpUserSid, WORD  wNumStrings, DWORD  dwDataSize, LPCWSTR*  lpStrings, LPVOID  lpRawData);
@@ -1466,16 +1466,16 @@ static WINAPI NTSTATUS (*pSystemFunction025)(BYTE*  in, BYTE*  key, LPBYTE  out)
 static WINAPI BOOL (*pSystemFunction030)(LPCVOID  b1, LPCVOID  b2);
 static WINAPI NTSTATUS (*pSystemFunction032)(struct ustring*  data, struct ustring*  key);
 static WINAPI BOOL (*pSystemFunction035)(LPCSTR  lpszDllFilePath);
-static void* pEtwLogTraceEvent;
-static void* pextEtwLogTraceEvent;
-static void* pEtwTraceMessage;
-static void* pextEtwTraceMessage;
-static void* pEtwTraceMessageVa;
-static void* pextEtwTraceMessageVa;
+static void* pTraceEvent;
+static void* pextTraceEvent;
+static void* pTraceMessage;
+static void* pextTraceMessage;
+static void* pTraceMessageVa;
+static void* pextTraceMessageVa;
 static WINAPI ULONG (*pTraceSetInformation)(TRACEHANDLE  handle, TRACE_INFO_CLASS  infoclass, void*  info, ULONG  len);
 static WINAPI DWORD (*pTreeResetNamedSecurityInfoW)(LPWSTR  pObjectName, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID  pOwner, PSID  pGroup, PACL  pDacl, PACL  pSacl, BOOL  KeepExplicit, FN_PROGRESS  fnProgress, PROG_INVOKE_SETTING  ProgressInvokeSetting, PVOID  Args);
-static void* pEtwUnregisterTraceGuids;
-static void* pextEtwUnregisterTraceGuids;
+static void* pUnregisterTraceGuids;
+static void* pextUnregisterTraceGuids;
 static WINAPI ULONG (*pWmiExecuteMethodA)(WMIHANDLE  handle, char*  name, ULONG  method, ULONG  inputsize, void*  inputbuffer, ULONG*  outputsize, void*  outputbuffer);
 static WINAPI ULONG (*pWmiExecuteMethodW)(WMIHANDLE  handle, WCHAR*  name, ULONG  method, ULONG  inputsize, void*  inputbuffer, ULONG*  outputsize, void*  outputbuffer);
 static WINAPI void (*pWmiFreeBuffer)(void*  buffer);
@@ -9571,24 +9571,24 @@ void wine_thunk_initialize_advapi32(void)
 	pextEqualPrefixSid = (void *)GetProcAddress(library_kernelbase, "EqualPrefixSid");
 	pEqualSid = (void *)GetProcAddress(library, "EqualSid");
 	pextEqualSid = (void *)GetProcAddress(library_kernelbase, "EqualSid");
-	pEtwEventActivityIdControl = (void *)GetProcAddress(library, "EventActivityIdControl");
-	pextEtwEventActivityIdControl = (void *)GetProcAddress(library_ntdll, "EtwEventActivityIdControl");
-	pEtwEventEnabled = (void *)GetProcAddress(library, "EventEnabled");
-	pextEtwEventEnabled = (void *)GetProcAddress(library_ntdll, "EtwEventEnabled");
-	pEtwEventProviderEnabled = (void *)GetProcAddress(library, "EventProviderEnabled");
-	pextEtwEventProviderEnabled = (void *)GetProcAddress(library_ntdll, "EtwEventProviderEnabled");
-	pEtwEventRegister = (void *)GetProcAddress(library, "EventRegister");
-	pextEtwEventRegister = (void *)GetProcAddress(library_ntdll, "EtwEventRegister");
-	pEtwEventSetInformation = (void *)GetProcAddress(library, "EventSetInformation");
-	pextEtwEventSetInformation = (void *)GetProcAddress(library_ntdll, "EtwEventSetInformation");
-	pEtwEventUnregister = (void *)GetProcAddress(library, "EventUnregister");
-	pextEtwEventUnregister = (void *)GetProcAddress(library_ntdll, "EtwEventUnregister");
-	pEtwEventWrite = (void *)GetProcAddress(library, "EventWrite");
-	pextEtwEventWrite = (void *)GetProcAddress(library_ntdll, "EtwEventWrite");
-	pEtwEventWriteString = (void *)GetProcAddress(library, "EventWriteString");
-	pextEtwEventWriteString = (void *)GetProcAddress(library_ntdll, "EtwEventWriteString");
-	pEtwEventWriteTransfer = (void *)GetProcAddress(library, "EventWriteTransfer");
-	pextEtwEventWriteTransfer = (void *)GetProcAddress(library_ntdll, "EtwEventWriteTransfer");
+	pEventActivityIdControl = (void *)GetProcAddress(library, "EventActivityIdControl");
+	pextEventActivityIdControl = (void *)GetProcAddress(library_ntdll, "EtwEventActivityIdControl");
+	pEventEnabled = (void *)GetProcAddress(library, "EventEnabled");
+	pextEventEnabled = (void *)GetProcAddress(library_ntdll, "EtwEventEnabled");
+	pEventProviderEnabled = (void *)GetProcAddress(library, "EventProviderEnabled");
+	pextEventProviderEnabled = (void *)GetProcAddress(library_ntdll, "EtwEventProviderEnabled");
+	pEventRegister = (void *)GetProcAddress(library, "EventRegister");
+	pextEventRegister = (void *)GetProcAddress(library_ntdll, "EtwEventRegister");
+	pEventSetInformation = (void *)GetProcAddress(library, "EventSetInformation");
+	pextEventSetInformation = (void *)GetProcAddress(library_ntdll, "EtwEventSetInformation");
+	pEventUnregister = (void *)GetProcAddress(library, "EventUnregister");
+	pextEventUnregister = (void *)GetProcAddress(library_ntdll, "EtwEventUnregister");
+	pEventWrite = (void *)GetProcAddress(library, "EventWrite");
+	pextEventWrite = (void *)GetProcAddress(library_ntdll, "EtwEventWrite");
+	pEventWriteString = (void *)GetProcAddress(library, "EventWriteString");
+	pextEventWriteString = (void *)GetProcAddress(library_ntdll, "EtwEventWriteString");
+	pEventWriteTransfer = (void *)GetProcAddress(library, "EventWriteTransfer");
+	pextEventWriteTransfer = (void *)GetProcAddress(library_ntdll, "EtwEventWriteTransfer");
 	pFileEncryptionStatusA = (void *)GetProcAddress(library, "FileEncryptionStatusA");
 	pFileEncryptionStatusW = (void *)GetProcAddress(library, "FileEncryptionStatusW");
 	pFindFirstFreeAce = (void *)GetProcAddress(library, "FindFirstFreeAce");
@@ -9652,12 +9652,12 @@ void wine_thunk_initialize_advapi32(void)
 	pextGetSidSubAuthorityCount = (void *)GetProcAddress(library_kernelbase, "GetSidSubAuthorityCount");
 	pGetTokenInformation = (void *)GetProcAddress(library, "GetTokenInformation");
 	pextGetTokenInformation = (void *)GetProcAddress(library_kernelbase, "GetTokenInformation");
-	pEtwGetTraceEnableFlags = (void *)GetProcAddress(library, "GetTraceEnableFlags");
-	pextEtwGetTraceEnableFlags = (void *)GetProcAddress(library_ntdll, "EtwGetTraceEnableFlags");
-	pEtwGetTraceEnableLevel = (void *)GetProcAddress(library, "GetTraceEnableLevel");
-	pextEtwGetTraceEnableLevel = (void *)GetProcAddress(library_ntdll, "EtwGetTraceEnableLevel");
-	pEtwGetTraceLoggerHandle = (void *)GetProcAddress(library, "GetTraceLoggerHandle");
-	pextEtwGetTraceLoggerHandle = (void *)GetProcAddress(library_ntdll, "EtwGetTraceLoggerHandle");
+	pGetTraceEnableFlags = (void *)GetProcAddress(library, "GetTraceEnableFlags");
+	pextGetTraceEnableFlags = (void *)GetProcAddress(library_ntdll, "EtwGetTraceEnableFlags");
+	pGetTraceEnableLevel = (void *)GetProcAddress(library, "GetTraceEnableLevel");
+	pextGetTraceEnableLevel = (void *)GetProcAddress(library_ntdll, "EtwGetTraceEnableLevel");
+	pGetTraceLoggerHandle = (void *)GetProcAddress(library, "GetTraceLoggerHandle");
+	pextGetTraceLoggerHandle = (void *)GetProcAddress(library_ntdll, "EtwGetTraceLoggerHandle");
 	pGetTrusteeFormA = (void *)GetProcAddress(library, "GetTrusteeFormA");
 	pGetTrusteeFormW = (void *)GetProcAddress(library, "GetTrusteeFormW");
 	pGetTrusteeNameA = (void *)GetProcAddress(library, "GetTrusteeNameA");
@@ -9935,10 +9935,10 @@ void wine_thunk_initialize_advapi32(void)
 	pextRegUnLoadKeyW = (void *)GetProcAddress(library_kernelbase, "RegUnLoadKeyW");
 	pRegisterEventSourceA = (void *)GetProcAddress(library, "RegisterEventSourceA");
 	pRegisterEventSourceW = (void *)GetProcAddress(library, "RegisterEventSourceW");
-	pEtwRegisterTraceGuidsA = (void *)GetProcAddress(library, "RegisterTraceGuidsA");
-	pextEtwRegisterTraceGuidsA = (void *)GetProcAddress(library_ntdll, "EtwRegisterTraceGuidsA");
-	pEtwRegisterTraceGuidsW = (void *)GetProcAddress(library, "RegisterTraceGuidsW");
-	pextEtwRegisterTraceGuidsW = (void *)GetProcAddress(library_ntdll, "EtwRegisterTraceGuidsW");
+	pRegisterTraceGuidsA = (void *)GetProcAddress(library, "RegisterTraceGuidsA");
+	pextRegisterTraceGuidsA = (void *)GetProcAddress(library_ntdll, "EtwRegisterTraceGuidsA");
+	pRegisterTraceGuidsW = (void *)GetProcAddress(library, "RegisterTraceGuidsW");
+	pextRegisterTraceGuidsW = (void *)GetProcAddress(library_ntdll, "EtwRegisterTraceGuidsW");
 	pRegisterWaitChainCOMCallback = (void *)GetProcAddress(library, "RegisterWaitChainCOMCallback");
 	pReportEventA = (void *)GetProcAddress(library, "ReportEventA");
 	pReportEventW = (void *)GetProcAddress(library, "ReportEventW");
@@ -9992,24 +9992,24 @@ void wine_thunk_initialize_advapi32(void)
 	pSystemFunction007 = (void *)GetProcAddress(library, "SystemFunction007");
 	pSystemFunction008 = (void *)GetProcAddress(library, "SystemFunction008");
 	pSystemFunction009 = (void *)GetProcAddress(library, "SystemFunction009");
-	pSystemFunction010 = (void *)GetProcAddress(library, "SystemFunction011");
-	pSystemFunction012 = (void *)GetProcAddress(library, "SystemFunction022");
-	pSystemFunction013 = (void *)GetProcAddress(library, "SystemFunction023");
-	pSystemFunction024 = (void *)GetProcAddress(library, "SystemFunction026");
-	pSystemFunction025 = (void *)GetProcAddress(library, "SystemFunction027");
-	pSystemFunction030 = (void *)GetProcAddress(library, "SystemFunction031");
+	pSystemFunction010 = (void *)GetProcAddress(library, "SystemFunction010");
+	pSystemFunction012 = (void *)GetProcAddress(library, "SystemFunction012");
+	pSystemFunction013 = (void *)GetProcAddress(library, "SystemFunction013");
+	pSystemFunction024 = (void *)GetProcAddress(library, "SystemFunction024");
+	pSystemFunction025 = (void *)GetProcAddress(library, "SystemFunction025");
+	pSystemFunction030 = (void *)GetProcAddress(library, "SystemFunction030");
 	pSystemFunction032 = (void *)GetProcAddress(library, "SystemFunction032");
 	pSystemFunction035 = (void *)GetProcAddress(library, "SystemFunction035");
-	pEtwLogTraceEvent = (void *)GetProcAddress(library, "TraceEvent");
-	pextEtwLogTraceEvent = (void *)GetProcAddress(library_ntdll, "EtwLogTraceEvent");
-	pEtwTraceMessage = (void *)GetProcAddress(library, "TraceMessage");
-	pextEtwTraceMessage = (void *)GetProcAddress(library_ntdll, "EtwTraceMessage");
-	pEtwTraceMessageVa = (void *)GetProcAddress(library, "TraceMessageVa");
-	pextEtwTraceMessageVa = (void *)GetProcAddress(library_ntdll, "EtwTraceMessageVa");
+	pTraceEvent = (void *)GetProcAddress(library, "TraceEvent");
+	pextTraceEvent = (void *)GetProcAddress(library_ntdll, "EtwLogTraceEvent");
+	pTraceMessage = (void *)GetProcAddress(library, "TraceMessage");
+	pextTraceMessage = (void *)GetProcAddress(library_ntdll, "EtwTraceMessage");
+	pTraceMessageVa = (void *)GetProcAddress(library, "TraceMessageVa");
+	pextTraceMessageVa = (void *)GetProcAddress(library_ntdll, "EtwTraceMessageVa");
 	pTraceSetInformation = (void *)GetProcAddress(library, "TraceSetInformation");
 	pTreeResetNamedSecurityInfoW = (void *)GetProcAddress(library, "TreeResetNamedSecurityInfoW");
-	pEtwUnregisterTraceGuids = (void *)GetProcAddress(library, "UnregisterTraceGuids");
-	pextEtwUnregisterTraceGuids = (void *)GetProcAddress(library_ntdll, "EtwUnregisterTraceGuids");
+	pUnregisterTraceGuids = (void *)GetProcAddress(library, "UnregisterTraceGuids");
+	pextUnregisterTraceGuids = (void *)GetProcAddress(library_ntdll, "EtwUnregisterTraceGuids");
 	pWmiExecuteMethodA = (void *)GetProcAddress(library, "WmiExecuteMethodA");
 	pWmiExecuteMethodW = (void *)GetProcAddress(library, "WmiExecuteMethodW");
 	pWmiFreeBuffer = (void *)GetProcAddress(library, "WmiFreeBuffer");
@@ -10318,24 +10318,24 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine_thunk_get_for_any(pextEqualPrefixSid);
 	if (func == pEqualSid && func != pextEqualSid)
 		return wine_thunk_get_for_any(pextEqualSid);
-	if (func == pEtwEventActivityIdControl && func != pextEtwEventActivityIdControl)
-		return wine_thunk_get_for_any(pextEtwEventActivityIdControl);
-	if (func == pEtwEventEnabled && func != pextEtwEventEnabled)
-		return wine_thunk_get_for_any(pextEtwEventEnabled);
-	if (func == pEtwEventProviderEnabled && func != pextEtwEventProviderEnabled)
-		return wine_thunk_get_for_any(pextEtwEventProviderEnabled);
-	if (func == pEtwEventRegister && func != pextEtwEventRegister)
-		return wine_thunk_get_for_any(pextEtwEventRegister);
-	if (func == pEtwEventSetInformation && func != pextEtwEventSetInformation)
-		return wine_thunk_get_for_any(pextEtwEventSetInformation);
-	if (func == pEtwEventUnregister && func != pextEtwEventUnregister)
-		return wine_thunk_get_for_any(pextEtwEventUnregister);
-	if (func == pEtwEventWrite && func != pextEtwEventWrite)
-		return wine_thunk_get_for_any(pextEtwEventWrite);
-	if (func == pEtwEventWriteString && func != pextEtwEventWriteString)
-		return wine_thunk_get_for_any(pextEtwEventWriteString);
-	if (func == pEtwEventWriteTransfer && func != pextEtwEventWriteTransfer)
-		return wine_thunk_get_for_any(pextEtwEventWriteTransfer);
+	if (func == pEventActivityIdControl && func != pextEventActivityIdControl)
+		return wine_thunk_get_for_any(pextEventActivityIdControl);
+	if (func == pEventEnabled && func != pextEventEnabled)
+		return wine_thunk_get_for_any(pextEventEnabled);
+	if (func == pEventProviderEnabled && func != pextEventProviderEnabled)
+		return wine_thunk_get_for_any(pextEventProviderEnabled);
+	if (func == pEventRegister && func != pextEventRegister)
+		return wine_thunk_get_for_any(pextEventRegister);
+	if (func == pEventSetInformation && func != pextEventSetInformation)
+		return wine_thunk_get_for_any(pextEventSetInformation);
+	if (func == pEventUnregister && func != pextEventUnregister)
+		return wine_thunk_get_for_any(pextEventUnregister);
+	if (func == pEventWrite && func != pextEventWrite)
+		return wine_thunk_get_for_any(pextEventWrite);
+	if (func == pEventWriteString && func != pextEventWriteString)
+		return wine_thunk_get_for_any(pextEventWriteString);
+	if (func == pEventWriteTransfer && func != pextEventWriteTransfer)
+		return wine_thunk_get_for_any(pextEventWriteTransfer);
 	if (func == pFileEncryptionStatusA)
 		return wine32a_advapi32_FileEncryptionStatusA;
 	if (func == pFileEncryptionStatusW)
@@ -10422,12 +10422,12 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine_thunk_get_for_any(pextGetSidSubAuthorityCount);
 	if (func == pGetTokenInformation && func != pextGetTokenInformation)
 		return wine_thunk_get_for_any(pextGetTokenInformation);
-	if (func == pEtwGetTraceEnableFlags && func != pextEtwGetTraceEnableFlags)
-		return wine_thunk_get_for_any(pextEtwGetTraceEnableFlags);
-	if (func == pEtwGetTraceEnableLevel && func != pextEtwGetTraceEnableLevel)
-		return wine_thunk_get_for_any(pextEtwGetTraceEnableLevel);
-	if (func == pEtwGetTraceLoggerHandle && func != pextEtwGetTraceLoggerHandle)
-		return wine_thunk_get_for_any(pextEtwGetTraceLoggerHandle);
+	if (func == pGetTraceEnableFlags && func != pextGetTraceEnableFlags)
+		return wine_thunk_get_for_any(pextGetTraceEnableFlags);
+	if (func == pGetTraceEnableLevel && func != pextGetTraceEnableLevel)
+		return wine_thunk_get_for_any(pextGetTraceEnableLevel);
+	if (func == pGetTraceLoggerHandle && func != pextGetTraceLoggerHandle)
+		return wine_thunk_get_for_any(pextGetTraceLoggerHandle);
 	if (func == pGetTrusteeFormA)
 		return wine32a_advapi32_GetTrusteeFormA;
 	if (func == pGetTrusteeFormW)
@@ -10816,10 +10816,10 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_RegisterEventSourceA;
 	if (func == pRegisterEventSourceW)
 		return wine32a_advapi32_RegisterEventSourceW;
-	if (func == pEtwRegisterTraceGuidsA && func != pextEtwRegisterTraceGuidsA)
-		return wine_thunk_get_for_any(pextEtwRegisterTraceGuidsA);
-	if (func == pEtwRegisterTraceGuidsW && func != pextEtwRegisterTraceGuidsW)
-		return wine_thunk_get_for_any(pextEtwRegisterTraceGuidsW);
+	if (func == pRegisterTraceGuidsA && func != pextRegisterTraceGuidsA)
+		return wine_thunk_get_for_any(pextRegisterTraceGuidsA);
+	if (func == pRegisterTraceGuidsW && func != pextRegisterTraceGuidsW)
+		return wine_thunk_get_for_any(pextRegisterTraceGuidsW);
 	if (func == pRegisterWaitChainCOMCallback)
 		return wine32a_advapi32_RegisterWaitChainCOMCallback;
 	if (func == pReportEventA)
@@ -10918,18 +10918,18 @@ void* wine_thunk_get_for_advapi32(void *func)
 		return wine32a_advapi32_SystemFunction032;
 	if (func == pSystemFunction035)
 		return wine32a_advapi32_SystemFunction035;
-	if (func == pEtwLogTraceEvent && func != pextEtwLogTraceEvent)
-		return wine_thunk_get_for_any(pextEtwLogTraceEvent);
-	if (func == pEtwTraceMessage && func != pextEtwTraceMessage)
-		return wine_thunk_get_for_any(pextEtwTraceMessage);
-	if (func == pEtwTraceMessageVa && func != pextEtwTraceMessageVa)
-		return wine_thunk_get_for_any(pextEtwTraceMessageVa);
+	if (func == pTraceEvent && func != pextTraceEvent)
+		return wine_thunk_get_for_any(pextTraceEvent);
+	if (func == pTraceMessage && func != pextTraceMessage)
+		return wine_thunk_get_for_any(pextTraceMessage);
+	if (func == pTraceMessageVa && func != pextTraceMessageVa)
+		return wine_thunk_get_for_any(pextTraceMessageVa);
 	if (func == pTraceSetInformation)
 		return wine32a_advapi32_TraceSetInformation;
 	if (func == pTreeResetNamedSecurityInfoW)
 		return wine32a_advapi32_TreeResetNamedSecurityInfoW;
-	if (func == pEtwUnregisterTraceGuids && func != pextEtwUnregisterTraceGuids)
-		return wine_thunk_get_for_any(pextEtwUnregisterTraceGuids);
+	if (func == pUnregisterTraceGuids && func != pextUnregisterTraceGuids)
+		return wine_thunk_get_for_any(pextUnregisterTraceGuids);
 	if (func == pWmiExecuteMethodA)
 		return wine32a_advapi32_WmiExecuteMethodA;
 	if (func == pWmiExecuteMethodW)

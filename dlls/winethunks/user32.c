@@ -347,7 +347,7 @@ static WINAPI INT (*pDrawTextA)(HDC  hdc, LPCSTR  str, INT  count, LPRECT  rect,
 static WINAPI INT (*pDrawTextExA)(HDC  hdc, LPSTR  str, INT  count, LPRECT  rect, UINT  flags, LPDRAWTEXTPARAMS  dtp);
 static WINAPI INT (*pDrawTextExW)(HDC  hdc, LPWSTR  str, INT  i_count, LPRECT  rect, UINT  flags, LPDRAWTEXTPARAMS  dtp);
 static WINAPI INT (*pDrawTextW)(HDC  hdc, LPCWSTR  str, INT  count, LPRECT  rect, UINT  flags);
-static WINAPI LRESULT (*pEditWndProcA)(HWND  hwnd, UINT  msg, WPARAM  wParam, LPARAM  lParam);
+static WINAPI LRESULT (*pEditWndProc)(HWND  hwnd, UINT  msg, WPARAM  wParam, LPARAM  lParam);
 static WINAPI BOOL (*pEmptyClipboard)(void);
 static WINAPI BOOL (*pEnableMenuItem)(HMENU  hMenu, UINT  id, UINT  wFlags);
 static WINAPI BOOL (*pEnableMouseInPointer)(BOOL  enable);
@@ -869,7 +869,7 @@ static WINAPI BOOL (*pUpdateLayeredWindow)(HWND  hwnd, HDC  hdcDst, POINT*  pptD
 static WINAPI BOOL (*pUpdateLayeredWindowIndirect)(HWND  hwnd, UPDATELAYEREDWINDOWINFO*  info);
 static WINAPI BOOL (*pUpdateWindow)(HWND  hwnd);
 static WINAPI BOOL (*pUser32InitializeImmEntryTable)(DWORD  magic);
-static WINAPI BOOL (*pDllMain)(HINSTANCE  inst, DWORD  reason, LPVOID  reserved);
+static WINAPI BOOL (*pUserClientDllInitialize)(HINSTANCE  inst, DWORD  reason, LPVOID  reserved);
 static WINAPI BOOL (*pUserHandleGrantAccess)(HANDLE  handle, HANDLE  job, BOOL  grant);
 static WINAPI UINT (*pUserRealizePalette)(HDC  hDC);
 static WINAPI void (*pUserRegisterWowHandlers)(struct wow_handlers16*  new, struct wow_handlers32*  orig);
@@ -5911,14 +5911,14 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DrawTextW,
 	"ret \n"
 )
 
-extern WINAPI LRESULT wine32b_user32_EditWndProcA(HWND  hwnd, UINT  msg, WPARAM  wParam, LPARAM  lParam) /* ../dlls/user32/winproc.c:1115 */
+extern WINAPI LRESULT wine32b_user32_EditWndProc(HWND  hwnd, UINT  msg, WPARAM  wParam, LPARAM  lParam) /* ../dlls/user32/winproc.c:1115 */
 {
-	TRACE("Enter EditWndProcA\n");
-	return pEditWndProcA(hwnd, msg, wParam, lParam);
+	TRACE("Enter EditWndProc\n");
+	return pEditWndProc(hwnd, msg, wParam, lParam);
 }
 
-extern WINAPI void wine32a_user32_EditWndProcA(void);  /* ../dlls/user32/winproc.c:1115 */
-__ASM_GLOBAL_FUNC(wine32a_user32_EditWndProcA,
+extern WINAPI void wine32a_user32_EditWndProc(void);  /* ../dlls/user32/winproc.c:1115 */
+__ASM_GLOBAL_FUNC(wine32a_user32_EditWndProc,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5926,7 +5926,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EditWndProcA,
 	"movl 0x1C(%rsp), %r8d \n"
 	"movl 0x20(%rsp), %r9d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_user32_EditWndProcA") "\n"
+	"call " __ASM_NAME("wine32b_user32_EditWndProc") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -19623,21 +19623,21 @@ __ASM_GLOBAL_FUNC(wine32a_user32_User32InitializeImmEntryTable,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_user32_DllMain(HINSTANCE  inst, DWORD  reason, LPVOID  reserved) /* ../dlls/user32/user_main.c:396 */
+extern WINAPI BOOL wine32b_user32_UserClientDllInitialize(HINSTANCE  inst, DWORD  reason, LPVOID  reserved) /* ../dlls/user32/user_main.c:396 */
 {
-	TRACE("Enter DllMain\n");
-	return pDllMain(inst, reason, reserved);
+	TRACE("Enter UserClientDllInitialize\n");
+	return pUserClientDllInitialize(inst, reason, reserved);
 }
 
-extern WINAPI void wine32a_user32_DllMain(void);  /* ../dlls/user32/user_main.c:396 */
-__ASM_GLOBAL_FUNC(wine32a_user32_DllMain,
+extern WINAPI void wine32a_user32_UserClientDllInitialize(void);  /* ../dlls/user32/user_main.c:396 */
+__ASM_GLOBAL_FUNC(wine32a_user32_UserClientDllInitialize,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_user32_DllMain") "\n"
+	"call " __ASM_NAME("wine32b_user32_UserClientDllInitialize") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -20548,7 +20548,7 @@ void wine_thunk_initialize_user32(void)
 	pDrawTextExA = (void *)GetProcAddress(library, "DrawTextExA");
 	pDrawTextExW = (void *)GetProcAddress(library, "DrawTextExW");
 	pDrawTextW = (void *)GetProcAddress(library, "DrawTextW");
-	pEditWndProcA = (void *)GetProcAddress(library, "EditWndProc");
+	pEditWndProc = (void *)GetProcAddress(library, "EditWndProc");
 	pEmptyClipboard = (void *)GetProcAddress(library, "EmptyClipboard");
 	pEnableMenuItem = (void *)GetProcAddress(library, "EnableMenuItem");
 	pEnableMouseInPointer = (void *)GetProcAddress(library, "EnableMouseInPointer");
@@ -21070,7 +21070,7 @@ void wine_thunk_initialize_user32(void)
 	pUpdateLayeredWindowIndirect = (void *)GetProcAddress(library, "UpdateLayeredWindowIndirect");
 	pUpdateWindow = (void *)GetProcAddress(library, "UpdateWindow");
 	pUser32InitializeImmEntryTable = (void *)GetProcAddress(library, "User32InitializeImmEntryTable");
-	pDllMain = (void *)GetProcAddress(library, "UserClientDllInitialize");
+	pUserClientDllInitialize = (void *)GetProcAddress(library, "UserClientDllInitialize");
 	pUserHandleGrantAccess = (void *)GetProcAddress(library, "UserHandleGrantAccess");
 	pUserRealizePalette = (void *)GetProcAddress(library, "UserRealizePalette");
 	pUserRegisterWowHandlers = (void *)GetProcAddress(library, "UserRegisterWowHandlers");
@@ -21480,8 +21480,8 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_DrawTextExW;
 	if (func == pDrawTextW)
 		return wine32a_user32_DrawTextW;
-	if (func == pEditWndProcA)
-		return wine32a_user32_EditWndProcA;
+	if (func == pEditWndProc)
+		return wine32a_user32_EditWndProc;
 	if (func == pEmptyClipboard)
 		return wine32a_user32_EmptyClipboard;
 	if (func == pEnableMenuItem)
@@ -22524,8 +22524,8 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_UpdateWindow;
 	if (func == pUser32InitializeImmEntryTable)
 		return wine32a_user32_User32InitializeImmEntryTable;
-	if (func == pDllMain)
-		return wine32a_user32_DllMain;
+	if (func == pUserClientDllInitialize)
+		return wine32a_user32_UserClientDllInitialize;
 	if (func == pUserHandleGrantAccess)
 		return wine32a_user32_UserHandleGrantAccess;
 	if (func == pUserRealizePalette)

@@ -207,10 +207,10 @@ struct _PROC_THREAD_ATTRIBUTE_LIST /* ../dlls/kernelbase/process.c:360 */
 static WINAPI BOOL (*pAccessCheck)(PSECURITY_DESCRIPTOR  descr, HANDLE  token, DWORD  access, PGENERIC_MAPPING  mapping, PPRIVILEGE_SET  priv, LPDWORD  priv_len, LPDWORD  granted, LPBOOL  status);
 static WINAPI BOOL (*pAccessCheckAndAuditAlarmW)(LPCWSTR  subsystem, LPVOID  id, LPWSTR  type_name, LPWSTR  name, PSECURITY_DESCRIPTOR  descr, DWORD  access, PGENERIC_MAPPING  mapping, BOOL  creation, LPDWORD  granted, LPBOOL  status, LPBOOL  on_close);
 static WINAPI BOOL (*pAccessCheckByType)(PSECURITY_DESCRIPTOR  descr, PSID  sid, HANDLE  token, DWORD  access, POBJECT_TYPE_LIST  types, DWORD  types_len, PGENERIC_MAPPING  mapping, PPRIVILEGE_SET  priv, LPDWORD  priv_len, LPDWORD  granted, LPBOOL  status);
-static void* pRtlAcquireSRWLockExclusive;
-static void* pextRtlAcquireSRWLockExclusive;
-static void* pRtlAcquireSRWLockShared;
-static void* pextRtlAcquireSRWLockShared;
+static void* pAcquireSRWLockExclusive;
+static void* pextAcquireSRWLockExclusive;
+static void* pAcquireSRWLockShared;
+static void* pextAcquireSRWLockShared;
 static WINAPI BOOL (*pActivateActCtx)(HANDLE  context, ULONG_PTR*  cookie);
 static WINAPI BOOL (*pAddAccessAllowedAce)(PACL  acl, DWORD  rev, DWORD  access, PSID  sid);
 static WINAPI BOOL (*pAddAccessAllowedAceEx)(PACL  acl, DWORD  rev, DWORD  flags, DWORD  access, PSID  sid);
@@ -226,10 +226,10 @@ static void* pAddDllDirectory;
 static void* pextAddDllDirectory;
 static WINAPI BOOL (*pAddMandatoryAce)(PACL  acl, DWORD  rev, DWORD  flags, DWORD  policy, PSID  sid);
 static WINAPI void (*pAddRefActCtx)(HANDLE  context);
-static void* pRtlAddVectoredContinueHandler;
-static void* pextRtlAddVectoredContinueHandler;
-static void* pRtlAddVectoredExceptionHandler;
-static void* pextRtlAddVectoredExceptionHandler;
+static void* pAddVectoredContinueHandler;
+static void* pextAddVectoredContinueHandler;
+static void* pAddVectoredExceptionHandler;
+static void* pextAddVectoredExceptionHandler;
 static WINAPI BOOL (*pAdjustTokenGroups)(HANDLE  token, BOOL  reset, PTOKEN_GROUPS  new, DWORD  len, PTOKEN_GROUPS  prev, PDWORD  ret_len);
 static WINAPI BOOL (*pAdjustTokenPrivileges)(HANDLE  token, BOOL  disable, PTOKEN_PRIVILEGES  new, DWORD  len, PTOKEN_PRIVILEGES  prev, PDWORD  ret_len);
 static void* pAllocConsole;
@@ -284,18 +284,18 @@ static void* pClearCommError;
 static void* pextClearCommError;
 static void* pCloseHandle;
 static void* pextCloseHandle;
-static void* pTpReleasePool;
-static void* pextTpReleasePool;
-static void* pTpReleaseCleanupGroup;
-static void* pextTpReleaseCleanupGroup;
-static void* pTpReleaseCleanupGroupMembers;
-static void* pextTpReleaseCleanupGroupMembers;
-static void* pTpReleaseTimer;
-static void* pextTpReleaseTimer;
-static void* pTpReleaseWait;
-static void* pextTpReleaseWait;
-static void* pTpReleaseWork;
-static void* pextTpReleaseWork;
+static void* pCloseThreadpool;
+static void* pextCloseThreadpool;
+static void* pCloseThreadpoolCleanupGroup;
+static void* pextCloseThreadpoolCleanupGroup;
+static void* pCloseThreadpoolCleanupGroupMembers;
+static void* pextCloseThreadpoolCleanupGroupMembers;
+static void* pCloseThreadpoolTimer;
+static void* pextCloseThreadpoolTimer;
+static void* pCloseThreadpoolWait;
+static void* pextCloseThreadpoolWait;
+static void* pCloseThreadpoolWork;
+static void* pextCloseThreadpoolWork;
 static void* pCompareFileTime;
 static void* pextCompareFileTime;
 static void* pCompareStringA;
@@ -391,17 +391,17 @@ static void* pDebugActiveProcessStop;
 static void* pextDebugActiveProcessStop;
 static void* pDebugBreak;
 static void* pextDebugBreak;
-static void* pRtlDecodePointer;
-static void* pextRtlDecodePointer;
-static void* pRtlDecodeSystemPointer;
-static void* pextRtlDecodeSystemPointer;
+static void* pDecodePointer;
+static void* pextDecodePointer;
+static void* pDecodeSystemPointer;
+static void* pextDecodeSystemPointer;
 static void* pDefineDosDeviceW;
 static void* pextDefineDosDeviceW;
 static void* pDelayLoadFailureHook;
 static void* pextDelayLoadFailureHook;
 static WINAPI BOOL (*pDeleteAce)(PACL  acl, DWORD  index);
-static void* pRtlDeleteCriticalSection;
-static void* pextRtlDeleteCriticalSection;
+static void* pDeleteCriticalSection;
+static void* pextDeleteCriticalSection;
 static WINAPI void (*pDeleteFiber)(LPVOID  fiber_ptr);
 static WINAPI BOOL (*pDeleteFileA)(LPCSTR  path);
 static WINAPI BOOL (*pDeleteFileW)(LPCWSTR  path);
@@ -415,19 +415,19 @@ static void* pDeviceIoControl;
 static void* pextDeviceIoControl;
 static WINAPI NTSTATUS (*pDisablePredefinedHandleTableInternal)(HKEY  hkey);
 static WINAPI BOOL (*pDisableThreadLibraryCalls)(HMODULE  module);
-static void* pTpDisassociateCallback;
-static void* pextTpDisassociateCallback;
+static void* pDisassociateCurrentThreadFromCallback;
+static void* pextDisassociateCurrentThreadFromCallback;
 static WINAPI BOOL (*pDisconnectNamedPipe)(HANDLE  pipe);
 static void* pDuplicateHandle;
 static void* pextDuplicateHandle;
 static WINAPI BOOL (*pDuplicateToken)(HANDLE  token, SECURITY_IMPERSONATION_LEVEL  level, PHANDLE  ret);
 static WINAPI BOOL (*pDuplicateTokenEx)(HANDLE  token, DWORD  access, LPSECURITY_ATTRIBUTES  sa, SECURITY_IMPERSONATION_LEVEL  level, TOKEN_TYPE  type, PHANDLE  ret);
-static void* pRtlEncodePointer;
-static void* pextRtlEncodePointer;
-static void* pRtlEncodeSystemPointer;
-static void* pextRtlEncodeSystemPointer;
-static void* pRtlEnterCriticalSection;
-static void* pextRtlEnterCriticalSection;
+static void* pEncodePointer;
+static void* pextEncodePointer;
+static void* pEncodeSystemPointer;
+static void* pextEncodeSystemPointer;
+static void* pEnterCriticalSection;
+static void* pextEnterCriticalSection;
 static void* pEnumCalendarInfoExEx;
 static void* pextEnumCalendarInfoExEx;
 static void* pEnumCalendarInfoExW;
@@ -474,28 +474,28 @@ static WINAPI BOOL (*pEqualPrefixSid)(PSID  sid1, PSID  sid2);
 static WINAPI BOOL (*pEqualSid)(PSID  sid1, PSID  sid2);
 static void* pEscapeCommFunction;
 static void* pextEscapeCommFunction;
-static void* pEtwEventActivityIdControl;
-static void* pextEtwEventActivityIdControl;
-static void* pEtwEventEnabled;
-static void* pextEtwEventEnabled;
-static void* pEtwEventProviderEnabled;
-static void* pextEtwEventProviderEnabled;
-static void* pEtwEventRegister;
-static void* pextEtwEventRegister;
-static void* pEtwEventSetInformation;
-static void* pextEtwEventSetInformation;
-static void* pEtwEventUnregister;
-static void* pextEtwEventUnregister;
-static void* pEtwEventWrite;
-static void* pextEtwEventWrite;
-static void* pEtwEventWriteString;
-static void* pextEtwEventWriteString;
-static void* pEtwEventWriteTransfer;
-static void* pextEtwEventWriteTransfer;
-static void* pRtlExitUserProcess;
-static void* pextRtlExitUserProcess;
-static void* pRtlExitUserThread;
-static void* pextRtlExitUserThread;
+static void* pEventActivityIdControl;
+static void* pextEventActivityIdControl;
+static void* pEventEnabled;
+static void* pextEventEnabled;
+static void* pEventProviderEnabled;
+static void* pextEventProviderEnabled;
+static void* pEventRegister;
+static void* pextEventRegister;
+static void* pEventSetInformation;
+static void* pextEventSetInformation;
+static void* pEventUnregister;
+static void* pextEventUnregister;
+static void* pEventWrite;
+static void* pextEventWrite;
+static void* pEventWriteString;
+static void* pextEventWriteString;
+static void* pEventWriteTransfer;
+static void* pextEventWriteTransfer;
+static void* pExitProcess;
+static void* pextExitProcess;
+static void* pExitThread;
+static void* pextExitThread;
 static void* pExpandEnvironmentStringsA;
 static void* pextExpandEnvironmentStringsA;
 static void* pExpandEnvironmentStringsW;
@@ -582,8 +582,8 @@ static void* pextFreeEnvironmentStringsW;
 static void* pFreeLibrary;
 static void* pextFreeLibrary;
 static WINAPI void (*pFreeLibraryAndExitThread)(HINSTANCE  module, DWORD  exit_code);
-static void* pTpCallbackUnloadDllOnCompletion;
-static void* pextTpCallbackUnloadDllOnCompletion;
+static void* pFreeLibraryWhenCallbackReturns;
+static void* pextFreeLibraryWhenCallbackReturns;
 static WINAPI BOOL (*pFreeResource)(HGLOBAL  handle);
 static WINAPI PVOID (*pFreeSid)(PSID  pSid);
 static void* pFreeUserPhysicalPages;
@@ -661,14 +661,14 @@ static void* pGetCurrentPackageFullName;
 static void* pextGetCurrentPackageFullName;
 static void* pGetCurrentPackageId;
 static void* pextGetCurrentPackageId;
-static WINAPI HANDLE (*pkernelbase_GetCurrentProcess)(void);
-static WINAPI DWORD (*pkernelbase_GetCurrentProcessId)(void);
-static void* pNtGetCurrentProcessorNumber;
-static void* pextNtGetCurrentProcessorNumber;
-static void* pRtlGetCurrentProcessorNumberEx;
-static void* pextRtlGetCurrentProcessorNumberEx;
-static WINAPI HANDLE (*pkernelbase_GetCurrentThread)(void);
-static WINAPI DWORD (*pkernelbase_GetCurrentThreadId)(void);
+static WINAPI HANDLE (*pGetCurrentProcess)(void);
+static WINAPI DWORD (*pGetCurrentProcessId)(void);
+static void* pGetCurrentProcessorNumber;
+static void* pextGetCurrentProcessorNumber;
+static void* pGetCurrentProcessorNumberEx;
+static void* pextGetCurrentProcessorNumberEx;
+static WINAPI HANDLE (*pGetCurrentThread)(void);
+static WINAPI DWORD (*pGetCurrentThreadId)(void);
 static WINAPI void (*pGetCurrentThreadStackLimits)(ULONG_PTR*  low, ULONG_PTR*  high);
 static void* pGetDateFormatA;
 static void* pextGetDateFormatA;
@@ -747,7 +747,7 @@ static void* pGetLargePageMinimum;
 static void* pextGetLargePageMinimum;
 static void* pGetLargestConsoleWindowSize;
 static void* pextGetLargestConsoleWindowSize;
-static WINAPI DWORD (*pkernelbase_GetLastError)(void);
+static WINAPI DWORD (*pGetLastError)(void);
 static WINAPI DWORD (*pGetLengthSid)(PSID  sid);
 static void* pGetLocalTime;
 static void* pextGetLocalTime;
@@ -806,7 +806,7 @@ static WINAPI BOOL (*pGetPrivateObjectSecurity)(PSECURITY_DESCRIPTOR  obj_descr,
 static void* pGetProcAddress;
 static void* pextGetProcAddress;
 static WINAPI BOOL (*pGetProcessHandleCount)(HANDLE  process, DWORD*  count);
-static WINAPI HANDLE (*pkernelbase_GetProcessHeap)(void);
+static WINAPI HANDLE (*pGetProcessHeap)(void);
 static WINAPI DWORD (*pGetProcessId)(HANDLE  process);
 static WINAPI DWORD (*pGetProcessIdOfThread)(HANDLE  thread);
 static WINAPI BOOL (*pGetProcessMitigationPolicy)(HANDLE  process, PROCESS_MITIGATION_POLICY  policy, void*  buffer, SIZE_T  length);
@@ -915,12 +915,12 @@ static void* pextGetTimeZoneInformation;
 static void* pGetTimeZoneInformationForYear;
 static void* pextGetTimeZoneInformationForYear;
 static WINAPI BOOL (*pGetTokenInformation)(HANDLE  token, TOKEN_INFORMATION_CLASS  class, LPVOID  info, DWORD  len, LPDWORD  retlen);
-static void* pEtwGetTraceEnableFlags;
-static void* pextEtwGetTraceEnableFlags;
-static void* pEtwGetTraceEnableLevel;
-static void* pextEtwGetTraceEnableLevel;
-static void* pEtwGetTraceLoggerHandle;
-static void* pextEtwGetTraceLoggerHandle;
+static void* pGetTraceEnableFlags;
+static void* pextGetTraceEnableFlags;
+static void* pGetTraceEnableLevel;
+static void* pextGetTraceEnableLevel;
+static void* pGetTraceLoggerHandle;
+static void* pextGetTraceLoggerHandle;
 static void* pGetUserDefaultLCID;
 static void* pextGetUserDefaultLCID;
 static void* pGetUserDefaultLangID;
@@ -963,26 +963,26 @@ static void* pextGlobalFree;
 static void* pGlobalMemoryStatusEx;
 static void* pextGlobalMemoryStatusEx;
 static WINAPI HRESULT (*pHashData)(unsigned char*  src, DWORD  src_len, unsigned char*  dest, DWORD  dest_len);
-static void* pRtlAllocateHeap;
-static void* pextRtlAllocateHeap;
+static void* pHeapAlloc;
+static void* pextHeapAlloc;
 static void* pHeapCompact;
 static void* pextHeapCompact;
 static void* pHeapCreate;
 static void* pextHeapCreate;
 static void* pHeapDestroy;
 static void* pextHeapDestroy;
-static void* pRtlFreeHeap;
-static void* pextRtlFreeHeap;
+static void* pHeapFree;
+static void* pextHeapFree;
 static void* pHeapLock;
 static void* pextHeapLock;
 static void* pHeapQueryInformation;
 static void* pextHeapQueryInformation;
-static void* pRtlReAllocateHeap;
-static void* pextRtlReAllocateHeap;
+static void* pHeapReAlloc;
+static void* pextHeapReAlloc;
 static void* pHeapSetInformation;
 static void* pextHeapSetInformation;
-static void* pRtlSizeHeap;
-static void* pextRtlSizeHeap;
+static void* pHeapSize;
+static void* pextHeapSize;
 static void* pHeapUnlock;
 static void* pextHeapUnlock;
 static void* pHeapValidate;
@@ -1005,44 +1005,44 @@ static void* pInitOnceComplete;
 static void* pextInitOnceComplete;
 static void* pInitOnceExecuteOnce;
 static void* pextInitOnceExecuteOnce;
-static void* pRtlRunOnceInitialize;
-static void* pextRtlRunOnceInitialize;
+static void* pInitOnceInitialize;
+static void* pextInitOnceInitialize;
 static WINAPI BOOL (*pInitializeAcl)(PACL  acl, DWORD  size, DWORD  rev);
-static void* pRtlInitializeConditionVariable;
-static void* pextRtlInitializeConditionVariable;
-static void* pRtlInitializeCriticalSection;
-static void* pextRtlInitializeCriticalSection;
+static void* pInitializeConditionVariable;
+static void* pextInitializeConditionVariable;
+static void* pInitializeCriticalSection;
+static void* pextInitializeCriticalSection;
 static WINAPI BOOL (*pInitializeCriticalSectionAndSpinCount)(CRITICAL_SECTION*  crit, DWORD  count);
 static WINAPI BOOL (*pInitializeCriticalSectionEx)(CRITICAL_SECTION*  crit, DWORD  spincount, DWORD  flags);
 static WINAPI BOOL (*pInitializeProcThreadAttributeList)(struct _PROC_THREAD_ATTRIBUTE_LIST*  list, DWORD  count, DWORD  flags, SIZE_T*  size);
-static void* pRtlInitializeSListHead;
-static void* pextRtlInitializeSListHead;
-static void* pRtlInitializeSRWLock;
-static void* pextRtlInitializeSRWLock;
+static void* pInitializeSListHead;
+static void* pextInitializeSListHead;
+static void* pInitializeSRWLock;
+static void* pextInitializeSRWLock;
 static WINAPI BOOL (*pInitializeSecurityDescriptor)(PSECURITY_DESCRIPTOR  descr, DWORD  revision);
 static WINAPI BOOL (*pInitializeSid)(PSID  sid, PSID_IDENTIFIER_AUTHORITY  auth, BYTE  count);
 static void* pInterlockedCompareExchange;
 static void* pextInterlockedCompareExchange;
-static void* pRtlInterlockedCompareExchange64;
-static void* pextRtlInterlockedCompareExchange64;
+static void* pInterlockedCompareExchange64;
+static void* pextInterlockedCompareExchange64;
 static void* pInterlockedDecrement;
 static void* pextInterlockedDecrement;
 static void* pInterlockedExchange;
 static void* pextInterlockedExchange;
 static void* pInterlockedExchangeAdd;
 static void* pextInterlockedExchangeAdd;
-static void* pRtlInterlockedFlushSList;
-static void* pextRtlInterlockedFlushSList;
+static void* pInterlockedFlushSList;
+static void* pextInterlockedFlushSList;
 static void* pInterlockedIncrement;
 static void* pextInterlockedIncrement;
-static void* pRtlInterlockedPopEntrySList;
-static void* pextRtlInterlockedPopEntrySList;
-static void* pRtlInterlockedPushEntrySList;
-static void* pextRtlInterlockedPushEntrySList;
-static void* pRtlInterlockedPushListSList;
-static void* pextRtlInterlockedPushListSList;
-static void* pRtlInterlockedPushListSListEx;
-static void* pextRtlInterlockedPushListSListEx;
+static void* pInterlockedPopEntrySList;
+static void* pextInterlockedPopEntrySList;
+static void* pInterlockedPushEntrySList;
+static void* pextInterlockedPushEntrySList;
+static void* pInterlockedPushListSList;
+static void* pextInterlockedPushListSList;
+static void* pInterlockedPushListSListEx;
+static void* pextInterlockedPushListSListEx;
 static WINAPI BOOL (*pIsCharAlphaA)(CHAR  x);
 static WINAPI BOOL (*pIsCharAlphaNumericA)(CHAR  x);
 static WINAPI BOOL (*pIsCharAlphaNumericW)(WCHAR  ch);
@@ -1072,8 +1072,8 @@ static void* pextIsProcessInJob;
 static void* pIsProcessorFeaturePresent;
 static void* pextIsProcessorFeaturePresent;
 static WINAPI BOOL (*pIsThreadAFiber)(void);
-static void* pTpIsTimerSet;
-static void* pextTpIsTimerSet;
+static void* pIsThreadpoolTimerSet;
+static void* pextIsThreadpoolTimerSet;
 static WINAPI BOOL (*pIsTokenRestricted)(HANDLE  token);
 static WINAPI BOOL (*pIsValidAcl)(PACL  acl);
 static void* pIsValidCodePage;
@@ -1150,10 +1150,10 @@ static void* pLCMapStringEx;
 static void* pextLCMapStringEx;
 static void* pLCMapStringW;
 static void* pextLCMapStringW;
-static void* pRtlLeaveCriticalSection;
-static void* pextRtlLeaveCriticalSection;
-static void* pTpCallbackLeaveCriticalSectionOnCompletion;
-static void* pextTpCallbackLeaveCriticalSectionOnCompletion;
+static void* pLeaveCriticalSection;
+static void* pextLeaveCriticalSection;
+static void* pLeaveCriticalSectionWhenCallbackReturns;
+static void* pextLeaveCriticalSectionWhenCallbackReturns;
 static void* pLoadLibraryA;
 static void* pextLoadLibraryA;
 static void* pLoadLibraryExA;
@@ -1352,8 +1352,8 @@ static void* pextPurgeComm;
 static WINAPI HRESULT (*pQISearch)(void*  base, QITAB*  table, IID*  riid, void**  obj);
 static WINAPI BOOL (*pQueryActCtxSettingsW)(DWORD  flags, HANDLE  ctx, WCHAR*  ns, WCHAR*  settings, WCHAR*  buffer, SIZE_T  size, SIZE_T*  written);
 static WINAPI BOOL (*pQueryActCtxW)(DWORD  flags, HANDLE  context, PVOID  inst, ULONG  class, PVOID  buffer, SIZE_T  size, SIZE_T*  written);
-static void* pRtlQueryDepthSList;
-static void* pextRtlQueryDepthSList;
+static void* pQueryDepthSList;
+static void* pextQueryDepthSList;
 static void* pQueryDosDeviceW;
 static void* pextQueryDosDeviceW;
 static void* pQueryFullProcessImageNameA;
@@ -1450,20 +1450,20 @@ static WINAPI LSTATUS (*pRegSetValueExA)(HKEY  hkey, LPCSTR  name, DWORD  reserv
 static WINAPI LSTATUS (*pRegSetValueExW)(HKEY  hkey, LPCWSTR  name, DWORD  reserved, DWORD  type, BYTE*  data, DWORD  count);
 static WINAPI LSTATUS (*pRegUnLoadKeyA)(HKEY  hkey, LPCSTR  lpSubKey);
 static WINAPI LSTATUS (*pRegUnLoadKeyW)(HKEY  hkey, LPCWSTR  lpSubKey);
-static void* pEtwRegisterTraceGuidsW;
-static void* pextEtwRegisterTraceGuidsW;
+static void* pRegisterTraceGuidsW;
+static void* pextRegisterTraceGuidsW;
 static WINAPI HANDLE (*pRegisterWaitForSingleObjectEx)(HANDLE  handle, WAITORTIMERCALLBACK  callback, PVOID  context, ULONG  timeout, ULONG  flags);
 static WINAPI void (*pReleaseActCtx)(HANDLE  context);
 static WINAPI BOOL (*pReleaseMutex)(HANDLE  handle);
-static void* pTpCallbackReleaseMutexOnCompletion;
-static void* pextTpCallbackReleaseMutexOnCompletion;
-static void* pRtlReleaseSRWLockExclusive;
-static void* pextRtlReleaseSRWLockExclusive;
-static void* pRtlReleaseSRWLockShared;
-static void* pextRtlReleaseSRWLockShared;
+static void* pReleaseMutexWhenCallbackReturns;
+static void* pextReleaseMutexWhenCallbackReturns;
+static void* pReleaseSRWLockExclusive;
+static void* pextReleaseSRWLockExclusive;
+static void* pReleaseSRWLockShared;
+static void* pextReleaseSRWLockShared;
 static WINAPI BOOL (*pReleaseSemaphore)(HANDLE  handle, LONG  count, LONG*  previous);
-static void* pTpCallbackReleaseSemaphoreOnCompletion;
-static void* pextTpCallbackReleaseSemaphoreOnCompletion;
+static void* pReleaseSemaphoreWhenCallbackReturns;
+static void* pextReleaseSemaphoreWhenCallbackReturns;
 static WINAPI NTSTATUS (*pRemapPredefinedHandleInternal)(HKEY  hkey, HKEY  override);
 static void* pRemoveDirectoryA;
 static void* pextRemoveDirectoryA;
@@ -1471,10 +1471,10 @@ static void* pRemoveDirectoryW;
 static void* pextRemoveDirectoryW;
 static void* pRemoveDllDirectory;
 static void* pextRemoveDllDirectory;
-static void* pRtlRemoveVectoredContinueHandler;
-static void* pextRtlRemoveVectoredContinueHandler;
-static void* pRtlRemoveVectoredExceptionHandler;
-static void* pextRtlRemoveVectoredExceptionHandler;
+static void* pRemoveVectoredContinueHandler;
+static void* pextRemoveVectoredContinueHandler;
+static void* pRemoveVectoredExceptionHandler;
+static void* pextRemoveVectoredExceptionHandler;
 static void* pReplaceFileW;
 static void* pextReplaceFileW;
 static WINAPI BOOL (*pResetEvent)(HANDLE  handle);
@@ -1484,10 +1484,14 @@ static void* pResolveDelayLoadedAPI;
 static void* pextResolveDelayLoadedAPI;
 static void* pResolveLocaleName;
 static void* pextResolveLocaleName;
-static void* pRtlRestoreLastWin32Error;
-static void* pextRtlRestoreLastWin32Error;
+static void* pRestoreLastError;
+static void* pextRestoreLastError;
 static WINAPI DWORD (*pResumeThread)(HANDLE  thread);
 static WINAPI BOOL (*pRevertToSelf)(void);
+static void* pSHExpandEnvironmentStringsA;
+static void* pextSHExpandEnvironmentStringsA;
+static void* pSHExpandEnvironmentStringsW;
+static void* pextSHExpandEnvironmentStringsW;
 static WINAPI HRESULT (*pSHLoadIndirectString)(WCHAR*  src, WCHAR*  dst, UINT  dst_len, void**  reserved);
 static WINAPI LONG (*pSHRegCloseUSKey)(HUSKEY  hUSKey);
 static WINAPI LONG (*pSHRegCreateUSKeyA)(LPCSTR  path, REGSAM  samDesired, HUSKEY  relative_key, PHUSKEY  new_uskey, DWORD  flags);
@@ -1572,8 +1576,8 @@ static void* pSetConsoleTitleW;
 static void* pextSetConsoleTitleW;
 static void* pSetConsoleWindowInfo;
 static void* pextSetConsoleWindowInfo;
-static void* pRtlSetCriticalSectionSpinCount;
-static void* pextRtlSetCriticalSectionSpinCount;
+static void* pSetCriticalSectionSpinCount;
+static void* pextSetCriticalSectionSpinCount;
 static void* pSetCurrentDirectoryA;
 static void* pextSetCurrentDirectoryA;
 static void* pSetCurrentDirectoryW;
@@ -1587,8 +1591,8 @@ static void* pSetEnvironmentVariableW;
 static void* pextSetEnvironmentVariableW;
 static WINAPI UINT (*pSetErrorMode)(UINT  mode);
 static WINAPI BOOL (*pSetEvent)(HANDLE  handle);
-static void* pTpCallbackSetEventOnCompletion;
-static void* pextTpCallbackSetEventOnCompletion;
+static void* pSetEventWhenCallbackReturns;
+static void* pextSetEventWhenCallbackReturns;
 static WINAPI void (*pSetFileApisToANSI)(void);
 static WINAPI void (*pSetFileApisToOEM)(void);
 static WINAPI BOOL (*pSetFileAttributesA)(LPCSTR  name, DWORD  attributes);
@@ -1604,8 +1608,8 @@ static void* pextSetHandleCount;
 static void* pSetHandleInformation;
 static void* pextSetHandleInformation;
 static WINAPI BOOL (*pSetKernelObjectSecurity)(HANDLE  handle, SECURITY_INFORMATION  info, PSECURITY_DESCRIPTOR  descr);
-static void* pRtlSetLastWin32Error;
-static void* pextRtlSetLastWin32Error;
+static void* pSetLastError;
+static void* pextSetLastError;
 static void* pSetLocalTime;
 static void* pextSetLocalTime;
 static void* pSetLocaleInfoW;
@@ -1648,14 +1652,14 @@ static WINAPI BOOL (*pSetThreadStackGuarantee)(ULONG*  size);
 static WINAPI BOOL (*pSetThreadToken)(PHANDLE  thread, HANDLE  token);
 static void* pSetThreadUILanguage;
 static void* pextSetThreadUILanguage;
-static void* pTpSetPoolMaxThreads;
-static void* pextTpSetPoolMaxThreads;
-static void* pTpSetPoolMinThreads;
-static void* pextTpSetPoolMinThreads;
-static void* pTpSetTimer;
-static void* pextTpSetTimer;
-static void* pTpSetWait;
-static void* pextTpSetWait;
+static void* pSetThreadpoolThreadMaximum;
+static void* pextSetThreadpoolThreadMaximum;
+static void* pSetThreadpoolThreadMinimum;
+static void* pextSetThreadpoolThreadMinimum;
+static void* pSetThreadpoolTimer;
+static void* pextSetThreadpoolTimer;
+static void* pSetThreadpoolWait;
+static void* pextSetThreadpoolWait;
 static void* pSetTimeZoneInformation;
 static void* pextSetTimeZoneInformation;
 static WINAPI BOOL (*pSetTokenInformation)(HANDLE  token, TOKEN_INFORMATION_CLASS  class, LPVOID  info, DWORD  len);
@@ -1731,8 +1735,8 @@ static WINAPI BOOL (*pStrToIntExW)(WCHAR*  str, DWORD  flags, INT*  ret);
 static WINAPI int (*pStrToIntW)(WCHAR*  str);
 static WINAPI BOOL (*pStrTrimA)(char*  str, char*  trim);
 static WINAPI BOOL (*pStrTrimW)(WCHAR*  str, WCHAR*  trim);
-static void* pTpPostWork;
-static void* pextTpPostWork;
+static void* pSubmitThreadpoolWork;
+static void* pextSubmitThreadpoolWork;
 static WINAPI DWORD (*pSuspendThread)(HANDLE  thread);
 static WINAPI void (*pSwitchToFiber)(LPVOID  fiber);
 static WINAPI BOOL (*pSwitchToThread)(void);
@@ -1746,21 +1750,21 @@ static WINAPI DWORD (*pTlsAlloc)(void);
 static WINAPI BOOL (*pTlsFree)(DWORD  index);
 static WINAPI LPVOID (*pTlsGetValue)(DWORD  index);
 static WINAPI BOOL (*pTlsSetValue)(DWORD  index, LPVOID  value);
-static void* pEtwLogTraceEvent;
-static void* pextEtwLogTraceEvent;
-static void* pEtwTraceMessage;
-static void* pextEtwTraceMessage;
-static void* pEtwTraceMessageVa;
-static void* pextEtwTraceMessageVa;
+static void* pTraceEvent;
+static void* pextTraceEvent;
+static void* pTraceMessage;
+static void* pextTraceMessage;
+static void* pTraceMessageVa;
+static void* pextTraceMessageVa;
 static WINAPI BOOL (*pTransactNamedPipe)(HANDLE  handle, LPVOID  write_buf, DWORD  write_size, LPVOID  read_buf, DWORD  read_size, LPDWORD  bytes_read, LPOVERLAPPED  overlapped);
 static void* pTransmitCommChar;
 static void* pextTransmitCommChar;
-static void* pRtlTryAcquireSRWLockExclusive;
-static void* pextRtlTryAcquireSRWLockExclusive;
-static void* pRtlTryAcquireSRWLockShared;
-static void* pextRtlTryAcquireSRWLockShared;
-static void* pRtlTryEnterCriticalSection;
-static void* pextRtlTryEnterCriticalSection;
+static void* pTryAcquireSRWLockExclusive;
+static void* pextTryAcquireSRWLockExclusive;
+static void* pTryAcquireSRWLockShared;
+static void* pextTryAcquireSRWLockShared;
+static void* pTryEnterCriticalSection;
+static void* pextTryEnterCriticalSection;
 static WINAPI BOOL (*pTrySubmitThreadpoolCallback)(PTP_SIMPLE_CALLBACK  callback, PVOID  userdata, TP_CALLBACK_ENVIRON*  environment);
 static void* pTzSpecificLocalTimeToSystemTime;
 static void* pextTzSpecificLocalTimeToSystemTime;
@@ -1770,8 +1774,8 @@ static WINAPI BOOL (*pUnlockFile)(HANDLE  file, DWORD  offset_low, DWORD  offset
 static WINAPI BOOL (*pUnlockFileEx)(HANDLE  file, DWORD  reserved, DWORD  count_low, DWORD  count_high, LPOVERLAPPED  overlapped);
 static void* pUnmapViewOfFile;
 static void* pextUnmapViewOfFile;
-static void* pEtwUnregisterTraceGuids;
-static void* pextEtwUnregisterTraceGuids;
+static void* pUnregisterTraceGuids;
+static void* pextUnregisterTraceGuids;
 static WINAPI BOOL (*pUnregisterWaitEx)(HANDLE  handle, HANDLE  event);
 static WINAPI BOOL (*pUpdateProcThreadAttribute)(struct _PROC_THREAD_ATTRIBUTE_LIST*  list, DWORD  flags, DWORD_PTR  attr, void*  value, SIZE_T  size, void*  prev_ret, SIZE_T*  size_ret);
 static WINAPI HRESULT (*pUrlApplySchemeA)(char*  url, char*  out, DWORD*  out_len, DWORD  flags);
@@ -1841,22 +1845,22 @@ static WINAPI DWORD (*pWaitForMultipleObjects)(DWORD  count, HANDLE*  handles, B
 static WINAPI DWORD (*pWaitForMultipleObjectsEx)(DWORD  count, HANDLE*  handles, BOOL  wait_all, DWORD  timeout, BOOL  alertable);
 static WINAPI DWORD (*pWaitForSingleObject)(HANDLE  handle, DWORD  timeout);
 static WINAPI DWORD (*pWaitForSingleObjectEx)(HANDLE  handle, DWORD  timeout, BOOL  alertable);
-static void* pTpWaitForTimer;
-static void* pextTpWaitForTimer;
-static void* pTpWaitForWait;
-static void* pextTpWaitForWait;
-static void* pTpWaitForWork;
-static void* pextTpWaitForWork;
+static void* pWaitForThreadpoolTimerCallbacks;
+static void* pextWaitForThreadpoolTimerCallbacks;
+static void* pWaitForThreadpoolWaitCallbacks;
+static void* pextWaitForThreadpoolWaitCallbacks;
+static void* pWaitForThreadpoolWorkCallbacks;
+static void* pextWaitForThreadpoolWorkCallbacks;
 static WINAPI BOOL (*pWaitNamedPipeW)(LPCWSTR  name, DWORD  timeout);
 static WINAPI BOOL (*pWaitOnAddress)(volatile void*  addr, void*  cmp, SIZE_T  size, DWORD  timeout);
-static void* pRtlWakeAllConditionVariable;
-static void* pextRtlWakeAllConditionVariable;
-static void* pRtlWakeAddressAll;
-static void* pextRtlWakeAddressAll;
-static void* pRtlWakeAddressSingle;
-static void* pextRtlWakeAddressSingle;
-static void* pRtlWakeConditionVariable;
-static void* pextRtlWakeConditionVariable;
+static void* pWakeAllConditionVariable;
+static void* pextWakeAllConditionVariable;
+static void* pWakeByAddressAll;
+static void* pextWakeByAddressAll;
+static void* pWakeByAddressSingle;
+static void* pextWakeByAddressSingle;
+static void* pWakeConditionVariable;
+static void* pextWakeConditionVariable;
 static void* pWerRegisterFile;
 static void* pextWerRegisterFile;
 static void* pWerRegisterMemoryBlock;
@@ -1907,10 +1911,10 @@ static WINAPI INT (*plstrcmpA)(LPCSTR  str1, LPCSTR  str2);
 static WINAPI INT (*plstrcmpW)(LPCWSTR  str1, LPCWSTR  str2);
 static WINAPI INT (*plstrcmpiA)(LPCSTR  str1, LPCSTR  str2);
 static WINAPI INT (*plstrcmpiW)(LPCWSTR  str1, LPCWSTR  str2);
-static WINAPI LPSTR (*pKERNELBASE_lstrcpynA)(LPSTR  dst, LPCSTR  src, INT  n);
-static WINAPI LPWSTR (*pKERNELBASE_lstrcpynW)(LPWSTR  dst, LPCWSTR  src, INT  n);
-static WINAPI INT (*pKERNELBASE_lstrlenA)(LPCSTR  str);
-static WINAPI INT (*pKERNELBASE_lstrlenW)(LPCWSTR  str);
+static WINAPI LPSTR (*plstrcpynA)(LPSTR  dst, LPCSTR  src, INT  n);
+static WINAPI LPWSTR (*plstrcpynW)(LPWSTR  dst, LPCWSTR  src, INT  n);
+static WINAPI INT (*plstrlenA)(LPCSTR  str);
+static WINAPI INT (*plstrlenW)(LPCWSTR  str);
 
 extern WINAPI BOOL wine32b_kernelbase_AccessCheck(PSECURITY_DESCRIPTOR  descr, HANDLE  token, DWORD  access, PGENERIC_MAPPING  mapping, PPRIVILEGE_SET  priv, LPDWORD  priv_len, LPDWORD  granted, LPBOOL  status) /* ../dlls/kernelbase/security.c:1204 */
 {
@@ -5725,18 +5729,18 @@ __ASM_GLOBAL_FUNC(wine32a_kernelbase_GetCurrentActCtx,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernelbase_kernelbase_GetCurrentProcess(void) /* ../dlls/kernelbase/process.c:56 */
+extern WINAPI HANDLE wine32b_kernelbase_GetCurrentProcess(void) /* ../dlls/kernelbase/process.c:56 */
 {
-	TRACE("Enter kernelbase_GetCurrentProcess\n");
-	return pkernelbase_GetCurrentProcess();
+	TRACE("Enter GetCurrentProcess\n");
+	return pGetCurrentProcess();
 }
 
-extern WINAPI void wine32a_kernelbase_kernelbase_GetCurrentProcess(void);  /* ../dlls/kernelbase/process.c:56 */
-__ASM_GLOBAL_FUNC(wine32a_kernelbase_kernelbase_GetCurrentProcess,
+extern WINAPI void wine32a_kernelbase_GetCurrentProcess(void);  /* ../dlls/kernelbase/process.c:56 */
+__ASM_GLOBAL_FUNC(wine32a_kernelbase_GetCurrentProcess,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernelbase_kernelbase_GetCurrentProcess") "\n"
+	"call " __ASM_NAME("wine32b_kernelbase_GetCurrentProcess") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -5749,18 +5753,18 @@ __ASM_GLOBAL_FUNC(wine32a_kernelbase_kernelbase_GetCurrentProcess,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernelbase_kernelbase_GetCurrentProcessId(void) /* ../dlls/kernelbase/process.c:65 */
+extern WINAPI DWORD wine32b_kernelbase_GetCurrentProcessId(void) /* ../dlls/kernelbase/process.c:65 */
 {
-	TRACE("Enter kernelbase_GetCurrentProcessId\n");
-	return pkernelbase_GetCurrentProcessId();
+	TRACE("Enter GetCurrentProcessId\n");
+	return pGetCurrentProcessId();
 }
 
-extern WINAPI void wine32a_kernelbase_kernelbase_GetCurrentProcessId(void);  /* ../dlls/kernelbase/process.c:65 */
-__ASM_GLOBAL_FUNC(wine32a_kernelbase_kernelbase_GetCurrentProcessId,
+extern WINAPI void wine32a_kernelbase_GetCurrentProcessId(void);  /* ../dlls/kernelbase/process.c:65 */
+__ASM_GLOBAL_FUNC(wine32a_kernelbase_GetCurrentProcessId,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernelbase_kernelbase_GetCurrentProcessId") "\n"
+	"call " __ASM_NAME("wine32b_kernelbase_GetCurrentProcessId") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -5773,18 +5777,18 @@ __ASM_GLOBAL_FUNC(wine32a_kernelbase_kernelbase_GetCurrentProcessId,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernelbase_kernelbase_GetCurrentThread(void) /* ../dlls/kernelbase/thread.c:146 */
+extern WINAPI HANDLE wine32b_kernelbase_GetCurrentThread(void) /* ../dlls/kernelbase/thread.c:146 */
 {
-	TRACE("Enter kernelbase_GetCurrentThread\n");
-	return pkernelbase_GetCurrentThread();
+	TRACE("Enter GetCurrentThread\n");
+	return pGetCurrentThread();
 }
 
-extern WINAPI void wine32a_kernelbase_kernelbase_GetCurrentThread(void);  /* ../dlls/kernelbase/thread.c:146 */
-__ASM_GLOBAL_FUNC(wine32a_kernelbase_kernelbase_GetCurrentThread,
+extern WINAPI void wine32a_kernelbase_GetCurrentThread(void);  /* ../dlls/kernelbase/thread.c:146 */
+__ASM_GLOBAL_FUNC(wine32a_kernelbase_GetCurrentThread,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernelbase_kernelbase_GetCurrentThread") "\n"
+	"call " __ASM_NAME("wine32b_kernelbase_GetCurrentThread") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -5797,18 +5801,18 @@ __ASM_GLOBAL_FUNC(wine32a_kernelbase_kernelbase_GetCurrentThread,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernelbase_kernelbase_GetCurrentThreadId(void) /* ../dlls/kernelbase/thread.c:155 */
+extern WINAPI DWORD wine32b_kernelbase_GetCurrentThreadId(void) /* ../dlls/kernelbase/thread.c:155 */
 {
-	TRACE("Enter kernelbase_GetCurrentThreadId\n");
-	return pkernelbase_GetCurrentThreadId();
+	TRACE("Enter GetCurrentThreadId\n");
+	return pGetCurrentThreadId();
 }
 
-extern WINAPI void wine32a_kernelbase_kernelbase_GetCurrentThreadId(void);  /* ../dlls/kernelbase/thread.c:155 */
-__ASM_GLOBAL_FUNC(wine32a_kernelbase_kernelbase_GetCurrentThreadId,
+extern WINAPI void wine32a_kernelbase_GetCurrentThreadId(void);  /* ../dlls/kernelbase/thread.c:155 */
+__ASM_GLOBAL_FUNC(wine32a_kernelbase_GetCurrentThreadId,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernelbase_kernelbase_GetCurrentThreadId") "\n"
+	"call " __ASM_NAME("wine32b_kernelbase_GetCurrentThreadId") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -6460,18 +6464,18 @@ __ASM_GLOBAL_FUNC(wine32a_kernelbase_GetKernelObjectSecurity,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernelbase_kernelbase_GetLastError(void) /* ../dlls/kernelbase/thread.c:177 */
+extern WINAPI DWORD wine32b_kernelbase_GetLastError(void) /* ../dlls/kernelbase/thread.c:177 */
 {
-	TRACE("Enter kernelbase_GetLastError\n");
-	return pkernelbase_GetLastError();
+	TRACE("Enter GetLastError\n");
+	return pGetLastError();
 }
 
-extern WINAPI void wine32a_kernelbase_kernelbase_GetLastError(void);  /* ../dlls/kernelbase/thread.c:177 */
-__ASM_GLOBAL_FUNC(wine32a_kernelbase_kernelbase_GetLastError,
+extern WINAPI void wine32a_kernelbase_GetLastError(void);  /* ../dlls/kernelbase/thread.c:177 */
+__ASM_GLOBAL_FUNC(wine32a_kernelbase_GetLastError,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernelbase_kernelbase_GetLastError") "\n"
+	"call " __ASM_NAME("wine32b_kernelbase_GetLastError") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -6802,18 +6806,18 @@ __ASM_GLOBAL_FUNC(wine32a_kernelbase_GetProcessHandleCount,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernelbase_kernelbase_GetProcessHeap(void) /* ../dlls/kernelbase/process.c:135 */
+extern WINAPI HANDLE wine32b_kernelbase_GetProcessHeap(void) /* ../dlls/kernelbase/process.c:135 */
 {
-	TRACE("Enter kernelbase_GetProcessHeap\n");
-	return pkernelbase_GetProcessHeap();
+	TRACE("Enter GetProcessHeap\n");
+	return pGetProcessHeap();
 }
 
-extern WINAPI void wine32a_kernelbase_kernelbase_GetProcessHeap(void);  /* ../dlls/kernelbase/process.c:135 */
-__ASM_GLOBAL_FUNC(wine32a_kernelbase_kernelbase_GetProcessHeap,
+extern WINAPI void wine32a_kernelbase_GetProcessHeap(void);  /* ../dlls/kernelbase/process.c:135 */
+__ASM_GLOBAL_FUNC(wine32a_kernelbase_GetProcessHeap,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernelbase_kernelbase_GetProcessHeap") "\n"
+	"call " __ASM_NAME("wine32b_kernelbase_GetProcessHeap") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -19232,21 +19236,21 @@ __ASM_GLOBAL_FUNC(wine32a_kernelbase_lstrcmpiW,
 	"ret \n"
 )
 
-extern WINAPI LPSTR wine32b_kernelbase_KERNELBASE_lstrcpynA(LPSTR  dst, LPCSTR  src, INT  n) /* ../dlls/kernelbase/string.c:100 */
+extern WINAPI LPSTR wine32b_kernelbase_lstrcpynA(LPSTR  dst, LPCSTR  src, INT  n) /* ../dlls/kernelbase/string.c:100 */
 {
-	TRACE("Enter KERNELBASE_lstrcpynA\n");
-	return pKERNELBASE_lstrcpynA(dst, src, n);
+	TRACE("Enter lstrcpynA\n");
+	return plstrcpynA(dst, src, n);
 }
 
-extern WINAPI void wine32a_kernelbase_KERNELBASE_lstrcpynA(void);  /* ../dlls/kernelbase/string.c:100 */
-__ASM_GLOBAL_FUNC(wine32a_kernelbase_KERNELBASE_lstrcpynA,
+extern WINAPI void wine32a_kernelbase_lstrcpynA(void);  /* ../dlls/kernelbase/string.c:100 */
+__ASM_GLOBAL_FUNC(wine32a_kernelbase_lstrcpynA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernelbase_KERNELBASE_lstrcpynA") "\n"
+	"call " __ASM_NAME("wine32b_kernelbase_lstrcpynA") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -19259,21 +19263,21 @@ __ASM_GLOBAL_FUNC(wine32a_kernelbase_KERNELBASE_lstrcpynA,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_kernelbase_KERNELBASE_lstrcpynW(LPWSTR  dst, LPCWSTR  src, INT  n) /* ../dlls/kernelbase/string.c:130 */
+extern WINAPI LPWSTR wine32b_kernelbase_lstrcpynW(LPWSTR  dst, LPCWSTR  src, INT  n) /* ../dlls/kernelbase/string.c:130 */
 {
-	TRACE("Enter KERNELBASE_lstrcpynW\n");
-	return pKERNELBASE_lstrcpynW(dst, src, n);
+	TRACE("Enter lstrcpynW\n");
+	return plstrcpynW(dst, src, n);
 }
 
-extern WINAPI void wine32a_kernelbase_KERNELBASE_lstrcpynW(void);  /* ../dlls/kernelbase/string.c:130 */
-__ASM_GLOBAL_FUNC(wine32a_kernelbase_KERNELBASE_lstrcpynW,
+extern WINAPI void wine32a_kernelbase_lstrcpynW(void);  /* ../dlls/kernelbase/string.c:130 */
+__ASM_GLOBAL_FUNC(wine32a_kernelbase_lstrcpynW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernelbase_KERNELBASE_lstrcpynW") "\n"
+	"call " __ASM_NAME("wine32b_kernelbase_lstrcpynW") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -19286,19 +19290,19 @@ __ASM_GLOBAL_FUNC(wine32a_kernelbase_KERNELBASE_lstrcpynW,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernelbase_KERNELBASE_lstrlenA(LPCSTR  str) /* ../dlls/kernelbase/string.c:160 */
+extern WINAPI INT wine32b_kernelbase_lstrlenA(LPCSTR  str) /* ../dlls/kernelbase/string.c:160 */
 {
-	TRACE("Enter KERNELBASE_lstrlenA\n");
-	return pKERNELBASE_lstrlenA(str);
+	TRACE("Enter lstrlenA\n");
+	return plstrlenA(str);
 }
 
-extern WINAPI void wine32a_kernelbase_KERNELBASE_lstrlenA(void);  /* ../dlls/kernelbase/string.c:160 */
-__ASM_GLOBAL_FUNC(wine32a_kernelbase_KERNELBASE_lstrlenA,
+extern WINAPI void wine32a_kernelbase_lstrlenA(void);  /* ../dlls/kernelbase/string.c:160 */
+__ASM_GLOBAL_FUNC(wine32a_kernelbase_lstrlenA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernelbase_KERNELBASE_lstrlenA") "\n"
+	"call " __ASM_NAME("wine32b_kernelbase_lstrlenA") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -19311,19 +19315,19 @@ __ASM_GLOBAL_FUNC(wine32a_kernelbase_KERNELBASE_lstrlenA,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernelbase_KERNELBASE_lstrlenW(LPCWSTR  str) /* ../dlls/kernelbase/string.c:176 */
+extern WINAPI INT wine32b_kernelbase_lstrlenW(LPCWSTR  str) /* ../dlls/kernelbase/string.c:176 */
 {
-	TRACE("Enter KERNELBASE_lstrlenW\n");
-	return pKERNELBASE_lstrlenW(str);
+	TRACE("Enter lstrlenW\n");
+	return plstrlenW(str);
 }
 
-extern WINAPI void wine32a_kernelbase_KERNELBASE_lstrlenW(void);  /* ../dlls/kernelbase/string.c:176 */
-__ASM_GLOBAL_FUNC(wine32a_kernelbase_KERNELBASE_lstrlenW,
+extern WINAPI void wine32a_kernelbase_lstrlenW(void);  /* ../dlls/kernelbase/string.c:176 */
+__ASM_GLOBAL_FUNC(wine32a_kernelbase_lstrlenW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernelbase_KERNELBASE_lstrlenW") "\n"
+	"call " __ASM_NAME("wine32b_kernelbase_lstrlenW") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -19346,10 +19350,10 @@ void wine_thunk_initialize_kernelbase(void)
 	pAccessCheck = (void *)GetProcAddress(library, "AccessCheck");
 	pAccessCheckAndAuditAlarmW = (void *)GetProcAddress(library, "AccessCheckAndAuditAlarmW");
 	pAccessCheckByType = (void *)GetProcAddress(library, "AccessCheckByType");
-	pRtlAcquireSRWLockExclusive = (void *)GetProcAddress(library, "AcquireSRWLockExclusive");
-	pextRtlAcquireSRWLockExclusive = (void *)GetProcAddress(library_ntdll, "RtlAcquireSRWLockExclusive");
-	pRtlAcquireSRWLockShared = (void *)GetProcAddress(library, "AcquireSRWLockShared");
-	pextRtlAcquireSRWLockShared = (void *)GetProcAddress(library_ntdll, "RtlAcquireSRWLockShared");
+	pAcquireSRWLockExclusive = (void *)GetProcAddress(library, "AcquireSRWLockExclusive");
+	pextAcquireSRWLockExclusive = (void *)GetProcAddress(library_ntdll, "RtlAcquireSRWLockExclusive");
+	pAcquireSRWLockShared = (void *)GetProcAddress(library, "AcquireSRWLockShared");
+	pextAcquireSRWLockShared = (void *)GetProcAddress(library_ntdll, "RtlAcquireSRWLockShared");
 	pActivateActCtx = (void *)GetProcAddress(library, "ActivateActCtx");
 	pAddAccessAllowedAce = (void *)GetProcAddress(library, "AddAccessAllowedAce");
 	pAddAccessAllowedAceEx = (void *)GetProcAddress(library, "AddAccessAllowedAceEx");
@@ -19365,10 +19369,10 @@ void wine_thunk_initialize_kernelbase(void)
 	pextAddDllDirectory = (void *)GetProcAddress(library_kernel32, "AddDllDirectory");
 	pAddMandatoryAce = (void *)GetProcAddress(library, "AddMandatoryAce");
 	pAddRefActCtx = (void *)GetProcAddress(library, "AddRefActCtx");
-	pRtlAddVectoredContinueHandler = (void *)GetProcAddress(library, "AddVectoredContinueHandler");
-	pextRtlAddVectoredContinueHandler = (void *)GetProcAddress(library_ntdll, "RtlAddVectoredContinueHandler");
-	pRtlAddVectoredExceptionHandler = (void *)GetProcAddress(library, "AddVectoredExceptionHandler");
-	pextRtlAddVectoredExceptionHandler = (void *)GetProcAddress(library_ntdll, "RtlAddVectoredExceptionHandler");
+	pAddVectoredContinueHandler = (void *)GetProcAddress(library, "AddVectoredContinueHandler");
+	pextAddVectoredContinueHandler = (void *)GetProcAddress(library_ntdll, "RtlAddVectoredContinueHandler");
+	pAddVectoredExceptionHandler = (void *)GetProcAddress(library, "AddVectoredExceptionHandler");
+	pextAddVectoredExceptionHandler = (void *)GetProcAddress(library_ntdll, "RtlAddVectoredExceptionHandler");
 	pAdjustTokenGroups = (void *)GetProcAddress(library, "AdjustTokenGroups");
 	pAdjustTokenPrivileges = (void *)GetProcAddress(library, "AdjustTokenPrivileges");
 	pAllocConsole = (void *)GetProcAddress(library, "AllocConsole");
@@ -19423,18 +19427,18 @@ void wine_thunk_initialize_kernelbase(void)
 	pextClearCommError = (void *)GetProcAddress(library_kernel32, "ClearCommError");
 	pCloseHandle = (void *)GetProcAddress(library, "CloseHandle");
 	pextCloseHandle = (void *)GetProcAddress(library_kernel32, "CloseHandle");
-	pTpReleasePool = (void *)GetProcAddress(library, "CloseThreadpool");
-	pextTpReleasePool = (void *)GetProcAddress(library_ntdll, "TpReleasePool");
-	pTpReleaseCleanupGroup = (void *)GetProcAddress(library, "CloseThreadpoolCleanupGroup");
-	pextTpReleaseCleanupGroup = (void *)GetProcAddress(library_ntdll, "TpReleaseCleanupGroup");
-	pTpReleaseCleanupGroupMembers = (void *)GetProcAddress(library, "CloseThreadpoolCleanupGroupMembers");
-	pextTpReleaseCleanupGroupMembers = (void *)GetProcAddress(library_ntdll, "TpReleaseCleanupGroupMembers");
-	pTpReleaseTimer = (void *)GetProcAddress(library, "CloseThreadpoolTimer");
-	pextTpReleaseTimer = (void *)GetProcAddress(library_ntdll, "TpReleaseTimer");
-	pTpReleaseWait = (void *)GetProcAddress(library, "CloseThreadpoolWait");
-	pextTpReleaseWait = (void *)GetProcAddress(library_ntdll, "TpReleaseWait");
-	pTpReleaseWork = (void *)GetProcAddress(library, "CloseThreadpoolWork");
-	pextTpReleaseWork = (void *)GetProcAddress(library_ntdll, "TpReleaseWork");
+	pCloseThreadpool = (void *)GetProcAddress(library, "CloseThreadpool");
+	pextCloseThreadpool = (void *)GetProcAddress(library_ntdll, "TpReleasePool");
+	pCloseThreadpoolCleanupGroup = (void *)GetProcAddress(library, "CloseThreadpoolCleanupGroup");
+	pextCloseThreadpoolCleanupGroup = (void *)GetProcAddress(library_ntdll, "TpReleaseCleanupGroup");
+	pCloseThreadpoolCleanupGroupMembers = (void *)GetProcAddress(library, "CloseThreadpoolCleanupGroupMembers");
+	pextCloseThreadpoolCleanupGroupMembers = (void *)GetProcAddress(library_ntdll, "TpReleaseCleanupGroupMembers");
+	pCloseThreadpoolTimer = (void *)GetProcAddress(library, "CloseThreadpoolTimer");
+	pextCloseThreadpoolTimer = (void *)GetProcAddress(library_ntdll, "TpReleaseTimer");
+	pCloseThreadpoolWait = (void *)GetProcAddress(library, "CloseThreadpoolWait");
+	pextCloseThreadpoolWait = (void *)GetProcAddress(library_ntdll, "TpReleaseWait");
+	pCloseThreadpoolWork = (void *)GetProcAddress(library, "CloseThreadpoolWork");
+	pextCloseThreadpoolWork = (void *)GetProcAddress(library_ntdll, "TpReleaseWork");
 	pCompareFileTime = (void *)GetProcAddress(library, "CompareFileTime");
 	pextCompareFileTime = (void *)GetProcAddress(library_kernel32, "CompareFileTime");
 	pCompareStringA = (void *)GetProcAddress(library, "CompareStringA");
@@ -19530,17 +19534,17 @@ void wine_thunk_initialize_kernelbase(void)
 	pextDebugActiveProcessStop = (void *)GetProcAddress(library_kernel32, "DebugActiveProcessStop");
 	pDebugBreak = (void *)GetProcAddress(library, "DebugBreak");
 	pextDebugBreak = (void *)GetProcAddress(library_kernel32, "DebugBreak");
-	pRtlDecodePointer = (void *)GetProcAddress(library, "DecodePointer");
-	pextRtlDecodePointer = (void *)GetProcAddress(library_ntdll, "RtlDecodePointer");
-	pRtlDecodeSystemPointer = (void *)GetProcAddress(library, "DecodeSystemPointer");
-	pextRtlDecodeSystemPointer = (void *)GetProcAddress(library_ntdll, "RtlDecodeSystemPointer");
+	pDecodePointer = (void *)GetProcAddress(library, "DecodePointer");
+	pextDecodePointer = (void *)GetProcAddress(library_ntdll, "RtlDecodePointer");
+	pDecodeSystemPointer = (void *)GetProcAddress(library, "DecodeSystemPointer");
+	pextDecodeSystemPointer = (void *)GetProcAddress(library_ntdll, "RtlDecodeSystemPointer");
 	pDefineDosDeviceW = (void *)GetProcAddress(library, "DefineDosDeviceW");
 	pextDefineDosDeviceW = (void *)GetProcAddress(library_kernel32, "DefineDosDeviceW");
 	pDelayLoadFailureHook = (void *)GetProcAddress(library, "DelayLoadFailureHook");
 	pextDelayLoadFailureHook = (void *)GetProcAddress(library_kernel32, "DelayLoadFailureHook");
 	pDeleteAce = (void *)GetProcAddress(library, "DeleteAce");
-	pRtlDeleteCriticalSection = (void *)GetProcAddress(library, "DeleteCriticalSection");
-	pextRtlDeleteCriticalSection = (void *)GetProcAddress(library_ntdll, "RtlDeleteCriticalSection");
+	pDeleteCriticalSection = (void *)GetProcAddress(library, "DeleteCriticalSection");
+	pextDeleteCriticalSection = (void *)GetProcAddress(library_ntdll, "RtlDeleteCriticalSection");
 	pDeleteFiber = (void *)GetProcAddress(library, "DeleteFiber");
 	pDeleteFileA = (void *)GetProcAddress(library, "DeleteFileA");
 	pDeleteFileW = (void *)GetProcAddress(library, "DeleteFileW");
@@ -19554,19 +19558,19 @@ void wine_thunk_initialize_kernelbase(void)
 	pextDeviceIoControl = (void *)GetProcAddress(library_kernel32, "DeviceIoControl");
 	pDisablePredefinedHandleTableInternal = (void *)GetProcAddress(library, "DisablePredefinedHandleTableInternal");
 	pDisableThreadLibraryCalls = (void *)GetProcAddress(library, "DisableThreadLibraryCalls");
-	pTpDisassociateCallback = (void *)GetProcAddress(library, "DisassociateCurrentThreadFromCallback");
-	pextTpDisassociateCallback = (void *)GetProcAddress(library_ntdll, "TpDisassociateCallback");
+	pDisassociateCurrentThreadFromCallback = (void *)GetProcAddress(library, "DisassociateCurrentThreadFromCallback");
+	pextDisassociateCurrentThreadFromCallback = (void *)GetProcAddress(library_ntdll, "TpDisassociateCallback");
 	pDisconnectNamedPipe = (void *)GetProcAddress(library, "DisconnectNamedPipe");
 	pDuplicateHandle = (void *)GetProcAddress(library, "DuplicateHandle");
 	pextDuplicateHandle = (void *)GetProcAddress(library_kernel32, "DuplicateHandle");
 	pDuplicateToken = (void *)GetProcAddress(library, "DuplicateToken");
 	pDuplicateTokenEx = (void *)GetProcAddress(library, "DuplicateTokenEx");
-	pRtlEncodePointer = (void *)GetProcAddress(library, "EncodePointer");
-	pextRtlEncodePointer = (void *)GetProcAddress(library_ntdll, "RtlEncodePointer");
-	pRtlEncodeSystemPointer = (void *)GetProcAddress(library, "EncodeSystemPointer");
-	pextRtlEncodeSystemPointer = (void *)GetProcAddress(library_ntdll, "RtlEncodeSystemPointer");
-	pRtlEnterCriticalSection = (void *)GetProcAddress(library, "EnterCriticalSection");
-	pextRtlEnterCriticalSection = (void *)GetProcAddress(library_ntdll, "RtlEnterCriticalSection");
+	pEncodePointer = (void *)GetProcAddress(library, "EncodePointer");
+	pextEncodePointer = (void *)GetProcAddress(library_ntdll, "RtlEncodePointer");
+	pEncodeSystemPointer = (void *)GetProcAddress(library, "EncodeSystemPointer");
+	pextEncodeSystemPointer = (void *)GetProcAddress(library_ntdll, "RtlEncodeSystemPointer");
+	pEnterCriticalSection = (void *)GetProcAddress(library, "EnterCriticalSection");
+	pextEnterCriticalSection = (void *)GetProcAddress(library_ntdll, "RtlEnterCriticalSection");
 	pEnumCalendarInfoExEx = (void *)GetProcAddress(library, "EnumCalendarInfoExEx");
 	pextEnumCalendarInfoExEx = (void *)GetProcAddress(library_kernel32, "EnumCalendarInfoExEx");
 	pEnumCalendarInfoExW = (void *)GetProcAddress(library, "EnumCalendarInfoExW");
@@ -19613,31 +19617,31 @@ void wine_thunk_initialize_kernelbase(void)
 	pEqualSid = (void *)GetProcAddress(library, "EqualSid");
 	pEscapeCommFunction = (void *)GetProcAddress(library, "EscapeCommFunction");
 	pextEscapeCommFunction = (void *)GetProcAddress(library_kernel32, "EscapeCommFunction");
-	pEtwEventActivityIdControl = (void *)GetProcAddress(library, "EventActivityIdControl");
-	pextEtwEventActivityIdControl = (void *)GetProcAddress(library_ntdll, "EtwEventActivityIdControl");
-	pEtwEventEnabled = (void *)GetProcAddress(library, "EventEnabled");
-	pextEtwEventEnabled = (void *)GetProcAddress(library_ntdll, "EtwEventEnabled");
-	pEtwEventProviderEnabled = (void *)GetProcAddress(library, "EventProviderEnabled");
-	pextEtwEventProviderEnabled = (void *)GetProcAddress(library_ntdll, "EtwEventProviderEnabled");
-	pEtwEventRegister = (void *)GetProcAddress(library, "EventRegister");
-	pextEtwEventRegister = (void *)GetProcAddress(library_ntdll, "EtwEventRegister");
-	pEtwEventSetInformation = (void *)GetProcAddress(library, "EventSetInformation");
-	pextEtwEventSetInformation = (void *)GetProcAddress(library_ntdll, "EtwEventSetInformation");
-	pEtwEventUnregister = (void *)GetProcAddress(library, "EventUnregister");
-	pextEtwEventUnregister = (void *)GetProcAddress(library_ntdll, "EtwEventUnregister");
-	pEtwEventWrite = (void *)GetProcAddress(library, "EventWrite");
-	pextEtwEventWrite = (void *)GetProcAddress(library_ntdll, "EtwEventWrite");
-	pEtwEventWriteString = (void *)GetProcAddress(library, "EventWriteString");
-	pextEtwEventWriteString = (void *)GetProcAddress(library_ntdll, "EtwEventWriteString");
-	pEtwEventWriteTransfer = (void *)GetProcAddress(library, "EventWriteTransfer");
-	pextEtwEventWriteTransfer = (void *)GetProcAddress(library_ntdll, "EtwEventWriteTransfer");
-	pRtlExitUserProcess = (void *)GetProcAddress(library, "ExitProcess");
-	pextRtlExitUserProcess = (void *)GetProcAddress(library_ntdll, "RtlExitUserProcess");
-	pRtlExitUserThread = (void *)GetProcAddress(library, "ExitThread");
-	pextRtlExitUserThread = (void *)GetProcAddress(library_ntdll, "RtlExitUserThread");
-	pExpandEnvironmentStringsA = (void *)GetProcAddress(library, "SHExpandEnvironmentStringsA");
+	pEventActivityIdControl = (void *)GetProcAddress(library, "EventActivityIdControl");
+	pextEventActivityIdControl = (void *)GetProcAddress(library_ntdll, "EtwEventActivityIdControl");
+	pEventEnabled = (void *)GetProcAddress(library, "EventEnabled");
+	pextEventEnabled = (void *)GetProcAddress(library_ntdll, "EtwEventEnabled");
+	pEventProviderEnabled = (void *)GetProcAddress(library, "EventProviderEnabled");
+	pextEventProviderEnabled = (void *)GetProcAddress(library_ntdll, "EtwEventProviderEnabled");
+	pEventRegister = (void *)GetProcAddress(library, "EventRegister");
+	pextEventRegister = (void *)GetProcAddress(library_ntdll, "EtwEventRegister");
+	pEventSetInformation = (void *)GetProcAddress(library, "EventSetInformation");
+	pextEventSetInformation = (void *)GetProcAddress(library_ntdll, "EtwEventSetInformation");
+	pEventUnregister = (void *)GetProcAddress(library, "EventUnregister");
+	pextEventUnregister = (void *)GetProcAddress(library_ntdll, "EtwEventUnregister");
+	pEventWrite = (void *)GetProcAddress(library, "EventWrite");
+	pextEventWrite = (void *)GetProcAddress(library_ntdll, "EtwEventWrite");
+	pEventWriteString = (void *)GetProcAddress(library, "EventWriteString");
+	pextEventWriteString = (void *)GetProcAddress(library_ntdll, "EtwEventWriteString");
+	pEventWriteTransfer = (void *)GetProcAddress(library, "EventWriteTransfer");
+	pextEventWriteTransfer = (void *)GetProcAddress(library_ntdll, "EtwEventWriteTransfer");
+	pExitProcess = (void *)GetProcAddress(library, "ExitProcess");
+	pextExitProcess = (void *)GetProcAddress(library_ntdll, "RtlExitUserProcess");
+	pExitThread = (void *)GetProcAddress(library, "ExitThread");
+	pextExitThread = (void *)GetProcAddress(library_ntdll, "RtlExitUserThread");
+	pExpandEnvironmentStringsA = (void *)GetProcAddress(library, "ExpandEnvironmentStringsA");
 	pextExpandEnvironmentStringsA = (void *)GetProcAddress(library_kernel32, "ExpandEnvironmentStringsA");
-	pExpandEnvironmentStringsW = (void *)GetProcAddress(library, "SHExpandEnvironmentStringsW");
+	pExpandEnvironmentStringsW = (void *)GetProcAddress(library, "ExpandEnvironmentStringsW");
 	pextExpandEnvironmentStringsW = (void *)GetProcAddress(library_kernel32, "ExpandEnvironmentStringsW");
 	pFatalAppExitA = (void *)GetProcAddress(library, "FatalAppExitA");
 	pextFatalAppExitA = (void *)GetProcAddress(library_kernel32, "FatalAppExitA");
@@ -19721,8 +19725,8 @@ void wine_thunk_initialize_kernelbase(void)
 	pFreeLibrary = (void *)GetProcAddress(library, "FreeLibrary");
 	pextFreeLibrary = (void *)GetProcAddress(library_kernel32, "FreeLibrary");
 	pFreeLibraryAndExitThread = (void *)GetProcAddress(library, "FreeLibraryAndExitThread");
-	pTpCallbackUnloadDllOnCompletion = (void *)GetProcAddress(library, "FreeLibraryWhenCallbackReturns");
-	pextTpCallbackUnloadDllOnCompletion = (void *)GetProcAddress(library_ntdll, "TpCallbackUnloadDllOnCompletion");
+	pFreeLibraryWhenCallbackReturns = (void *)GetProcAddress(library, "FreeLibraryWhenCallbackReturns");
+	pextFreeLibraryWhenCallbackReturns = (void *)GetProcAddress(library_ntdll, "TpCallbackUnloadDllOnCompletion");
 	pFreeResource = (void *)GetProcAddress(library, "FreeResource");
 	pFreeSid = (void *)GetProcAddress(library, "FreeSid");
 	pFreeUserPhysicalPages = (void *)GetProcAddress(library, "FreeUserPhysicalPages");
@@ -19800,14 +19804,14 @@ void wine_thunk_initialize_kernelbase(void)
 	pextGetCurrentPackageFullName = (void *)GetProcAddress(library_kernel32, "GetCurrentPackageFullName");
 	pGetCurrentPackageId = (void *)GetProcAddress(library, "GetCurrentPackageId");
 	pextGetCurrentPackageId = (void *)GetProcAddress(library_kernel32, "GetCurrentPackageId");
-	pkernelbase_GetCurrentProcess = (void *)GetProcAddress(library, "GetCurrentProcess");
-	pkernelbase_GetCurrentProcessId = (void *)GetProcAddress(library, "GetCurrentProcessId");
-	pNtGetCurrentProcessorNumber = (void *)GetProcAddress(library, "GetCurrentProcessorNumber");
-	pextNtGetCurrentProcessorNumber = (void *)GetProcAddress(library_ntdll, "NtGetCurrentProcessorNumber");
-	pRtlGetCurrentProcessorNumberEx = (void *)GetProcAddress(library, "GetCurrentProcessorNumberEx");
-	pextRtlGetCurrentProcessorNumberEx = (void *)GetProcAddress(library_ntdll, "RtlGetCurrentProcessorNumberEx");
-	pkernelbase_GetCurrentThread = (void *)GetProcAddress(library, "GetCurrentThread");
-	pkernelbase_GetCurrentThreadId = (void *)GetProcAddress(library, "GetCurrentThreadId");
+	pGetCurrentProcess = (void *)GetProcAddress(library, "GetCurrentProcess");
+	pGetCurrentProcessId = (void *)GetProcAddress(library, "GetCurrentProcessId");
+	pGetCurrentProcessorNumber = (void *)GetProcAddress(library, "GetCurrentProcessorNumber");
+	pextGetCurrentProcessorNumber = (void *)GetProcAddress(library_ntdll, "NtGetCurrentProcessorNumber");
+	pGetCurrentProcessorNumberEx = (void *)GetProcAddress(library, "GetCurrentProcessorNumberEx");
+	pextGetCurrentProcessorNumberEx = (void *)GetProcAddress(library_ntdll, "RtlGetCurrentProcessorNumberEx");
+	pGetCurrentThread = (void *)GetProcAddress(library, "GetCurrentThread");
+	pGetCurrentThreadId = (void *)GetProcAddress(library, "GetCurrentThreadId");
 	pGetCurrentThreadStackLimits = (void *)GetProcAddress(library, "GetCurrentThreadStackLimits");
 	pGetDateFormatA = (void *)GetProcAddress(library, "GetDateFormatA");
 	pextGetDateFormatA = (void *)GetProcAddress(library_kernel32, "GetDateFormatA");
@@ -19886,7 +19890,7 @@ void wine_thunk_initialize_kernelbase(void)
 	pextGetLargePageMinimum = (void *)GetProcAddress(library_kernel32, "GetLargePageMinimum");
 	pGetLargestConsoleWindowSize = (void *)GetProcAddress(library, "GetLargestConsoleWindowSize");
 	pextGetLargestConsoleWindowSize = (void *)GetProcAddress(library_kernel32, "GetLargestConsoleWindowSize");
-	pkernelbase_GetLastError = (void *)GetProcAddress(library, "GetLastError");
+	pGetLastError = (void *)GetProcAddress(library, "GetLastError");
 	pGetLengthSid = (void *)GetProcAddress(library, "GetLengthSid");
 	pGetLocalTime = (void *)GetProcAddress(library, "GetLocalTime");
 	pextGetLocalTime = (void *)GetProcAddress(library_kernel32, "GetLocalTime");
@@ -19945,7 +19949,7 @@ void wine_thunk_initialize_kernelbase(void)
 	pGetProcAddress = (void *)GetProcAddress(library, "GetProcAddress");
 	pextGetProcAddress = (void *)GetProcAddress(library_kernel32, "GetProcAddress");
 	pGetProcessHandleCount = (void *)GetProcAddress(library, "GetProcessHandleCount");
-	pkernelbase_GetProcessHeap = (void *)GetProcAddress(library, "GetProcessHeap");
+	pGetProcessHeap = (void *)GetProcAddress(library, "GetProcessHeap");
 	pGetProcessId = (void *)GetProcAddress(library, "GetProcessId");
 	pGetProcessIdOfThread = (void *)GetProcAddress(library, "GetProcessIdOfThread");
 	pGetProcessMitigationPolicy = (void *)GetProcAddress(library, "GetProcessMitigationPolicy");
@@ -20054,12 +20058,12 @@ void wine_thunk_initialize_kernelbase(void)
 	pGetTimeZoneInformationForYear = (void *)GetProcAddress(library, "GetTimeZoneInformationForYear");
 	pextGetTimeZoneInformationForYear = (void *)GetProcAddress(library_kernel32, "GetTimeZoneInformationForYear");
 	pGetTokenInformation = (void *)GetProcAddress(library, "GetTokenInformation");
-	pEtwGetTraceEnableFlags = (void *)GetProcAddress(library, "GetTraceEnableFlags");
-	pextEtwGetTraceEnableFlags = (void *)GetProcAddress(library_ntdll, "EtwGetTraceEnableFlags");
-	pEtwGetTraceEnableLevel = (void *)GetProcAddress(library, "GetTraceEnableLevel");
-	pextEtwGetTraceEnableLevel = (void *)GetProcAddress(library_ntdll, "EtwGetTraceEnableLevel");
-	pEtwGetTraceLoggerHandle = (void *)GetProcAddress(library, "GetTraceLoggerHandle");
-	pextEtwGetTraceLoggerHandle = (void *)GetProcAddress(library_ntdll, "EtwGetTraceLoggerHandle");
+	pGetTraceEnableFlags = (void *)GetProcAddress(library, "GetTraceEnableFlags");
+	pextGetTraceEnableFlags = (void *)GetProcAddress(library_ntdll, "EtwGetTraceEnableFlags");
+	pGetTraceEnableLevel = (void *)GetProcAddress(library, "GetTraceEnableLevel");
+	pextGetTraceEnableLevel = (void *)GetProcAddress(library_ntdll, "EtwGetTraceEnableLevel");
+	pGetTraceLoggerHandle = (void *)GetProcAddress(library, "GetTraceLoggerHandle");
+	pextGetTraceLoggerHandle = (void *)GetProcAddress(library_ntdll, "EtwGetTraceLoggerHandle");
 	pGetUserDefaultLCID = (void *)GetProcAddress(library, "GetUserDefaultLCID");
 	pextGetUserDefaultLCID = (void *)GetProcAddress(library_kernel32, "GetUserDefaultLCID");
 	pGetUserDefaultLangID = (void *)GetProcAddress(library, "GetUserDefaultLangID");
@@ -20102,26 +20106,26 @@ void wine_thunk_initialize_kernelbase(void)
 	pGlobalMemoryStatusEx = (void *)GetProcAddress(library, "GlobalMemoryStatusEx");
 	pextGlobalMemoryStatusEx = (void *)GetProcAddress(library_kernel32, "GlobalMemoryStatusEx");
 	pHashData = (void *)GetProcAddress(library, "HashData");
-	pRtlAllocateHeap = (void *)GetProcAddress(library, "HeapAlloc");
-	pextRtlAllocateHeap = (void *)GetProcAddress(library_ntdll, "RtlAllocateHeap");
+	pHeapAlloc = (void *)GetProcAddress(library, "HeapAlloc");
+	pextHeapAlloc = (void *)GetProcAddress(library_ntdll, "RtlAllocateHeap");
 	pHeapCompact = (void *)GetProcAddress(library, "HeapCompact");
 	pextHeapCompact = (void *)GetProcAddress(library_kernel32, "HeapCompact");
 	pHeapCreate = (void *)GetProcAddress(library, "HeapCreate");
 	pextHeapCreate = (void *)GetProcAddress(library_kernel32, "HeapCreate");
 	pHeapDestroy = (void *)GetProcAddress(library, "HeapDestroy");
 	pextHeapDestroy = (void *)GetProcAddress(library_kernel32, "HeapDestroy");
-	pRtlFreeHeap = (void *)GetProcAddress(library, "HeapFree");
-	pextRtlFreeHeap = (void *)GetProcAddress(library_ntdll, "RtlFreeHeap");
+	pHeapFree = (void *)GetProcAddress(library, "HeapFree");
+	pextHeapFree = (void *)GetProcAddress(library_ntdll, "RtlFreeHeap");
 	pHeapLock = (void *)GetProcAddress(library, "HeapLock");
 	pextHeapLock = (void *)GetProcAddress(library_kernel32, "HeapLock");
 	pHeapQueryInformation = (void *)GetProcAddress(library, "HeapQueryInformation");
 	pextHeapQueryInformation = (void *)GetProcAddress(library_kernel32, "HeapQueryInformation");
-	pRtlReAllocateHeap = (void *)GetProcAddress(library, "HeapReAlloc");
-	pextRtlReAllocateHeap = (void *)GetProcAddress(library_ntdll, "RtlReAllocateHeap");
+	pHeapReAlloc = (void *)GetProcAddress(library, "HeapReAlloc");
+	pextHeapReAlloc = (void *)GetProcAddress(library_ntdll, "RtlReAllocateHeap");
 	pHeapSetInformation = (void *)GetProcAddress(library, "HeapSetInformation");
 	pextHeapSetInformation = (void *)GetProcAddress(library_kernel32, "HeapSetInformation");
-	pRtlSizeHeap = (void *)GetProcAddress(library, "HeapSize");
-	pextRtlSizeHeap = (void *)GetProcAddress(library_ntdll, "RtlSizeHeap");
+	pHeapSize = (void *)GetProcAddress(library, "HeapSize");
+	pextHeapSize = (void *)GetProcAddress(library_ntdll, "RtlSizeHeap");
 	pHeapUnlock = (void *)GetProcAddress(library, "HeapUnlock");
 	pextHeapUnlock = (void *)GetProcAddress(library_kernel32, "HeapUnlock");
 	pHeapValidate = (void *)GetProcAddress(library, "HeapValidate");
@@ -20144,44 +20148,44 @@ void wine_thunk_initialize_kernelbase(void)
 	pextInitOnceComplete = (void *)GetProcAddress(library_kernel32, "InitOnceComplete");
 	pInitOnceExecuteOnce = (void *)GetProcAddress(library, "InitOnceExecuteOnce");
 	pextInitOnceExecuteOnce = (void *)GetProcAddress(library_kernel32, "InitOnceExecuteOnce");
-	pRtlRunOnceInitialize = (void *)GetProcAddress(library, "InitOnceInitialize");
-	pextRtlRunOnceInitialize = (void *)GetProcAddress(library_ntdll, "RtlRunOnceInitialize");
+	pInitOnceInitialize = (void *)GetProcAddress(library, "InitOnceInitialize");
+	pextInitOnceInitialize = (void *)GetProcAddress(library_ntdll, "RtlRunOnceInitialize");
 	pInitializeAcl = (void *)GetProcAddress(library, "InitializeAcl");
-	pRtlInitializeConditionVariable = (void *)GetProcAddress(library, "InitializeConditionVariable");
-	pextRtlInitializeConditionVariable = (void *)GetProcAddress(library_ntdll, "RtlInitializeConditionVariable");
-	pRtlInitializeCriticalSection = (void *)GetProcAddress(library, "InitializeCriticalSection");
-	pextRtlInitializeCriticalSection = (void *)GetProcAddress(library_ntdll, "RtlInitializeCriticalSection");
+	pInitializeConditionVariable = (void *)GetProcAddress(library, "InitializeConditionVariable");
+	pextInitializeConditionVariable = (void *)GetProcAddress(library_ntdll, "RtlInitializeConditionVariable");
+	pInitializeCriticalSection = (void *)GetProcAddress(library, "InitializeCriticalSection");
+	pextInitializeCriticalSection = (void *)GetProcAddress(library_ntdll, "RtlInitializeCriticalSection");
 	pInitializeCriticalSectionAndSpinCount = (void *)GetProcAddress(library, "InitializeCriticalSectionAndSpinCount");
 	pInitializeCriticalSectionEx = (void *)GetProcAddress(library, "InitializeCriticalSectionEx");
 	pInitializeProcThreadAttributeList = (void *)GetProcAddress(library, "InitializeProcThreadAttributeList");
-	pRtlInitializeSListHead = (void *)GetProcAddress(library, "InitializeSListHead");
-	pextRtlInitializeSListHead = (void *)GetProcAddress(library_ntdll, "RtlInitializeSListHead");
-	pRtlInitializeSRWLock = (void *)GetProcAddress(library, "InitializeSRWLock");
-	pextRtlInitializeSRWLock = (void *)GetProcAddress(library_ntdll, "RtlInitializeSRWLock");
+	pInitializeSListHead = (void *)GetProcAddress(library, "InitializeSListHead");
+	pextInitializeSListHead = (void *)GetProcAddress(library_ntdll, "RtlInitializeSListHead");
+	pInitializeSRWLock = (void *)GetProcAddress(library, "InitializeSRWLock");
+	pextInitializeSRWLock = (void *)GetProcAddress(library_ntdll, "RtlInitializeSRWLock");
 	pInitializeSecurityDescriptor = (void *)GetProcAddress(library, "InitializeSecurityDescriptor");
 	pInitializeSid = (void *)GetProcAddress(library, "InitializeSid");
 	pInterlockedCompareExchange = (void *)GetProcAddress(library, "InterlockedCompareExchange");
 	pextInterlockedCompareExchange = (void *)GetProcAddress(library_kernel32, "InterlockedCompareExchange");
-	pRtlInterlockedCompareExchange64 = (void *)GetProcAddress(library, "InterlockedCompareExchange64");
-	pextRtlInterlockedCompareExchange64 = (void *)GetProcAddress(library_ntdll, "RtlInterlockedCompareExchange64");
+	pInterlockedCompareExchange64 = (void *)GetProcAddress(library, "InterlockedCompareExchange64");
+	pextInterlockedCompareExchange64 = (void *)GetProcAddress(library_ntdll, "RtlInterlockedCompareExchange64");
 	pInterlockedDecrement = (void *)GetProcAddress(library, "InterlockedDecrement");
 	pextInterlockedDecrement = (void *)GetProcAddress(library_kernel32, "InterlockedDecrement");
 	pInterlockedExchange = (void *)GetProcAddress(library, "InterlockedExchange");
 	pextInterlockedExchange = (void *)GetProcAddress(library_kernel32, "InterlockedExchange");
 	pInterlockedExchangeAdd = (void *)GetProcAddress(library, "InterlockedExchangeAdd");
 	pextInterlockedExchangeAdd = (void *)GetProcAddress(library_kernel32, "InterlockedExchangeAdd");
-	pRtlInterlockedFlushSList = (void *)GetProcAddress(library, "InterlockedFlushSList");
-	pextRtlInterlockedFlushSList = (void *)GetProcAddress(library_ntdll, "RtlInterlockedFlushSList");
+	pInterlockedFlushSList = (void *)GetProcAddress(library, "InterlockedFlushSList");
+	pextInterlockedFlushSList = (void *)GetProcAddress(library_ntdll, "RtlInterlockedFlushSList");
 	pInterlockedIncrement = (void *)GetProcAddress(library, "InterlockedIncrement");
 	pextInterlockedIncrement = (void *)GetProcAddress(library_kernel32, "InterlockedIncrement");
-	pRtlInterlockedPopEntrySList = (void *)GetProcAddress(library, "InterlockedPopEntrySList");
-	pextRtlInterlockedPopEntrySList = (void *)GetProcAddress(library_ntdll, "RtlInterlockedPopEntrySList");
-	pRtlInterlockedPushEntrySList = (void *)GetProcAddress(library, "InterlockedPushEntrySList");
-	pextRtlInterlockedPushEntrySList = (void *)GetProcAddress(library_ntdll, "RtlInterlockedPushEntrySList");
-	pRtlInterlockedPushListSList = (void *)GetProcAddress(library, "InterlockedPushListSList");
-	pextRtlInterlockedPushListSList = (void *)GetProcAddress(library_ntdll, "RtlInterlockedPushListSList");
-	pRtlInterlockedPushListSListEx = (void *)GetProcAddress(library, "InterlockedPushListSListEx");
-	pextRtlInterlockedPushListSListEx = (void *)GetProcAddress(library_ntdll, "RtlInterlockedPushListSListEx");
+	pInterlockedPopEntrySList = (void *)GetProcAddress(library, "InterlockedPopEntrySList");
+	pextInterlockedPopEntrySList = (void *)GetProcAddress(library_ntdll, "RtlInterlockedPopEntrySList");
+	pInterlockedPushEntrySList = (void *)GetProcAddress(library, "InterlockedPushEntrySList");
+	pextInterlockedPushEntrySList = (void *)GetProcAddress(library_ntdll, "RtlInterlockedPushEntrySList");
+	pInterlockedPushListSList = (void *)GetProcAddress(library, "InterlockedPushListSList");
+	pextInterlockedPushListSList = (void *)GetProcAddress(library_ntdll, "RtlInterlockedPushListSList");
+	pInterlockedPushListSListEx = (void *)GetProcAddress(library, "InterlockedPushListSListEx");
+	pextInterlockedPushListSListEx = (void *)GetProcAddress(library_ntdll, "RtlInterlockedPushListSListEx");
 	pIsCharAlphaA = (void *)GetProcAddress(library, "IsCharAlphaA");
 	pIsCharAlphaNumericA = (void *)GetProcAddress(library, "IsCharAlphaNumericA");
 	pIsCharAlphaNumericW = (void *)GetProcAddress(library, "IsCharAlphaNumericW");
@@ -20211,8 +20215,8 @@ void wine_thunk_initialize_kernelbase(void)
 	pIsProcessorFeaturePresent = (void *)GetProcAddress(library, "IsProcessorFeaturePresent");
 	pextIsProcessorFeaturePresent = (void *)GetProcAddress(library_kernel32, "IsProcessorFeaturePresent");
 	pIsThreadAFiber = (void *)GetProcAddress(library, "IsThreadAFiber");
-	pTpIsTimerSet = (void *)GetProcAddress(library, "IsThreadpoolTimerSet");
-	pextTpIsTimerSet = (void *)GetProcAddress(library_ntdll, "TpIsTimerSet");
+	pIsThreadpoolTimerSet = (void *)GetProcAddress(library, "IsThreadpoolTimerSet");
+	pextIsThreadpoolTimerSet = (void *)GetProcAddress(library_ntdll, "TpIsTimerSet");
 	pIsTokenRestricted = (void *)GetProcAddress(library, "IsTokenRestricted");
 	pIsValidAcl = (void *)GetProcAddress(library, "IsValidAcl");
 	pIsValidCodePage = (void *)GetProcAddress(library, "IsValidCodePage");
@@ -20289,10 +20293,10 @@ void wine_thunk_initialize_kernelbase(void)
 	pextLCMapStringEx = (void *)GetProcAddress(library_kernel32, "LCMapStringEx");
 	pLCMapStringW = (void *)GetProcAddress(library, "LCMapStringW");
 	pextLCMapStringW = (void *)GetProcAddress(library_kernel32, "LCMapStringW");
-	pRtlLeaveCriticalSection = (void *)GetProcAddress(library, "LeaveCriticalSection");
-	pextRtlLeaveCriticalSection = (void *)GetProcAddress(library_ntdll, "RtlLeaveCriticalSection");
-	pTpCallbackLeaveCriticalSectionOnCompletion = (void *)GetProcAddress(library, "LeaveCriticalSectionWhenCallbackReturns");
-	pextTpCallbackLeaveCriticalSectionOnCompletion = (void *)GetProcAddress(library_ntdll, "TpCallbackLeaveCriticalSectionOnCompletion");
+	pLeaveCriticalSection = (void *)GetProcAddress(library, "LeaveCriticalSection");
+	pextLeaveCriticalSection = (void *)GetProcAddress(library_ntdll, "RtlLeaveCriticalSection");
+	pLeaveCriticalSectionWhenCallbackReturns = (void *)GetProcAddress(library, "LeaveCriticalSectionWhenCallbackReturns");
+	pextLeaveCriticalSectionWhenCallbackReturns = (void *)GetProcAddress(library_ntdll, "TpCallbackLeaveCriticalSectionOnCompletion");
 	pLoadLibraryA = (void *)GetProcAddress(library, "LoadLibraryA");
 	pextLoadLibraryA = (void *)GetProcAddress(library_kernel32, "LoadLibraryA");
 	pLoadLibraryExA = (void *)GetProcAddress(library, "LoadLibraryExA");
@@ -20491,8 +20495,8 @@ void wine_thunk_initialize_kernelbase(void)
 	pQISearch = (void *)GetProcAddress(library, "QISearch");
 	pQueryActCtxSettingsW = (void *)GetProcAddress(library, "QueryActCtxSettingsW");
 	pQueryActCtxW = (void *)GetProcAddress(library, "QueryActCtxW");
-	pRtlQueryDepthSList = (void *)GetProcAddress(library, "QueryDepthSList");
-	pextRtlQueryDepthSList = (void *)GetProcAddress(library_ntdll, "RtlQueryDepthSList");
+	pQueryDepthSList = (void *)GetProcAddress(library, "QueryDepthSList");
+	pextQueryDepthSList = (void *)GetProcAddress(library_ntdll, "RtlQueryDepthSList");
 	pQueryDosDeviceW = (void *)GetProcAddress(library, "QueryDosDeviceW");
 	pextQueryDosDeviceW = (void *)GetProcAddress(library_kernel32, "QueryDosDeviceW");
 	pQueryFullProcessImageNameA = (void *)GetProcAddress(library, "QueryFullProcessImageNameA");
@@ -20589,20 +20593,20 @@ void wine_thunk_initialize_kernelbase(void)
 	pRegSetValueExW = (void *)GetProcAddress(library, "RegSetValueExW");
 	pRegUnLoadKeyA = (void *)GetProcAddress(library, "RegUnLoadKeyA");
 	pRegUnLoadKeyW = (void *)GetProcAddress(library, "RegUnLoadKeyW");
-	pEtwRegisterTraceGuidsW = (void *)GetProcAddress(library, "RegisterTraceGuidsW");
-	pextEtwRegisterTraceGuidsW = (void *)GetProcAddress(library_ntdll, "EtwRegisterTraceGuidsW");
+	pRegisterTraceGuidsW = (void *)GetProcAddress(library, "RegisterTraceGuidsW");
+	pextRegisterTraceGuidsW = (void *)GetProcAddress(library_ntdll, "EtwRegisterTraceGuidsW");
 	pRegisterWaitForSingleObjectEx = (void *)GetProcAddress(library, "RegisterWaitForSingleObjectEx");
 	pReleaseActCtx = (void *)GetProcAddress(library, "ReleaseActCtx");
 	pReleaseMutex = (void *)GetProcAddress(library, "ReleaseMutex");
-	pTpCallbackReleaseMutexOnCompletion = (void *)GetProcAddress(library, "ReleaseMutexWhenCallbackReturns");
-	pextTpCallbackReleaseMutexOnCompletion = (void *)GetProcAddress(library_ntdll, "TpCallbackReleaseMutexOnCompletion");
-	pRtlReleaseSRWLockExclusive = (void *)GetProcAddress(library, "ReleaseSRWLockExclusive");
-	pextRtlReleaseSRWLockExclusive = (void *)GetProcAddress(library_ntdll, "RtlReleaseSRWLockExclusive");
-	pRtlReleaseSRWLockShared = (void *)GetProcAddress(library, "ReleaseSRWLockShared");
-	pextRtlReleaseSRWLockShared = (void *)GetProcAddress(library_ntdll, "RtlReleaseSRWLockShared");
+	pReleaseMutexWhenCallbackReturns = (void *)GetProcAddress(library, "ReleaseMutexWhenCallbackReturns");
+	pextReleaseMutexWhenCallbackReturns = (void *)GetProcAddress(library_ntdll, "TpCallbackReleaseMutexOnCompletion");
+	pReleaseSRWLockExclusive = (void *)GetProcAddress(library, "ReleaseSRWLockExclusive");
+	pextReleaseSRWLockExclusive = (void *)GetProcAddress(library_ntdll, "RtlReleaseSRWLockExclusive");
+	pReleaseSRWLockShared = (void *)GetProcAddress(library, "ReleaseSRWLockShared");
+	pextReleaseSRWLockShared = (void *)GetProcAddress(library_ntdll, "RtlReleaseSRWLockShared");
 	pReleaseSemaphore = (void *)GetProcAddress(library, "ReleaseSemaphore");
-	pTpCallbackReleaseSemaphoreOnCompletion = (void *)GetProcAddress(library, "ReleaseSemaphoreWhenCallbackReturns");
-	pextTpCallbackReleaseSemaphoreOnCompletion = (void *)GetProcAddress(library_ntdll, "TpCallbackReleaseSemaphoreOnCompletion");
+	pReleaseSemaphoreWhenCallbackReturns = (void *)GetProcAddress(library, "ReleaseSemaphoreWhenCallbackReturns");
+	pextReleaseSemaphoreWhenCallbackReturns = (void *)GetProcAddress(library_ntdll, "TpCallbackReleaseSemaphoreOnCompletion");
 	pRemapPredefinedHandleInternal = (void *)GetProcAddress(library, "RemapPredefinedHandleInternal");
 	pRemoveDirectoryA = (void *)GetProcAddress(library, "RemoveDirectoryA");
 	pextRemoveDirectoryA = (void *)GetProcAddress(library_kernel32, "RemoveDirectoryA");
@@ -20610,10 +20614,10 @@ void wine_thunk_initialize_kernelbase(void)
 	pextRemoveDirectoryW = (void *)GetProcAddress(library_kernel32, "RemoveDirectoryW");
 	pRemoveDllDirectory = (void *)GetProcAddress(library, "RemoveDllDirectory");
 	pextRemoveDllDirectory = (void *)GetProcAddress(library_kernel32, "RemoveDllDirectory");
-	pRtlRemoveVectoredContinueHandler = (void *)GetProcAddress(library, "RemoveVectoredContinueHandler");
-	pextRtlRemoveVectoredContinueHandler = (void *)GetProcAddress(library_ntdll, "RtlRemoveVectoredContinueHandler");
-	pRtlRemoveVectoredExceptionHandler = (void *)GetProcAddress(library, "RemoveVectoredExceptionHandler");
-	pextRtlRemoveVectoredExceptionHandler = (void *)GetProcAddress(library_ntdll, "RtlRemoveVectoredExceptionHandler");
+	pRemoveVectoredContinueHandler = (void *)GetProcAddress(library, "RemoveVectoredContinueHandler");
+	pextRemoveVectoredContinueHandler = (void *)GetProcAddress(library_ntdll, "RtlRemoveVectoredContinueHandler");
+	pRemoveVectoredExceptionHandler = (void *)GetProcAddress(library, "RemoveVectoredExceptionHandler");
+	pextRemoveVectoredExceptionHandler = (void *)GetProcAddress(library_ntdll, "RtlRemoveVectoredExceptionHandler");
 	pReplaceFileW = (void *)GetProcAddress(library, "ReplaceFileW");
 	pextReplaceFileW = (void *)GetProcAddress(library_kernel32, "ReplaceFileW");
 	pResetEvent = (void *)GetProcAddress(library, "ResetEvent");
@@ -20623,10 +20627,14 @@ void wine_thunk_initialize_kernelbase(void)
 	pextResolveDelayLoadedAPI = (void *)GetProcAddress(library_kernel32, "ResolveDelayLoadedAPI");
 	pResolveLocaleName = (void *)GetProcAddress(library, "ResolveLocaleName");
 	pextResolveLocaleName = (void *)GetProcAddress(library_kernel32, "ResolveLocaleName");
-	pRtlRestoreLastWin32Error = (void *)GetProcAddress(library, "RestoreLastError");
-	pextRtlRestoreLastWin32Error = (void *)GetProcAddress(library_ntdll, "RtlRestoreLastWin32Error");
+	pRestoreLastError = (void *)GetProcAddress(library, "RestoreLastError");
+	pextRestoreLastError = (void *)GetProcAddress(library_ntdll, "RtlRestoreLastWin32Error");
 	pResumeThread = (void *)GetProcAddress(library, "ResumeThread");
 	pRevertToSelf = (void *)GetProcAddress(library, "RevertToSelf");
+	pSHExpandEnvironmentStringsA = (void *)GetProcAddress(library, "SHExpandEnvironmentStringsA");
+	pextSHExpandEnvironmentStringsA = (void *)GetProcAddress(library_kernel32, "ExpandEnvironmentStringsA");
+	pSHExpandEnvironmentStringsW = (void *)GetProcAddress(library, "SHExpandEnvironmentStringsW");
+	pextSHExpandEnvironmentStringsW = (void *)GetProcAddress(library_kernel32, "ExpandEnvironmentStringsW");
 	pSHLoadIndirectString = (void *)GetProcAddress(library, "SHLoadIndirectString");
 	pSHRegCloseUSKey = (void *)GetProcAddress(library, "SHRegCloseUSKey");
 	pSHRegCreateUSKeyA = (void *)GetProcAddress(library, "SHRegCreateUSKeyA");
@@ -20711,8 +20719,8 @@ void wine_thunk_initialize_kernelbase(void)
 	pextSetConsoleTitleW = (void *)GetProcAddress(library_kernel32, "SetConsoleTitleW");
 	pSetConsoleWindowInfo = (void *)GetProcAddress(library, "SetConsoleWindowInfo");
 	pextSetConsoleWindowInfo = (void *)GetProcAddress(library_kernel32, "SetConsoleWindowInfo");
-	pRtlSetCriticalSectionSpinCount = (void *)GetProcAddress(library, "SetCriticalSectionSpinCount");
-	pextRtlSetCriticalSectionSpinCount = (void *)GetProcAddress(library_ntdll, "RtlSetCriticalSectionSpinCount");
+	pSetCriticalSectionSpinCount = (void *)GetProcAddress(library, "SetCriticalSectionSpinCount");
+	pextSetCriticalSectionSpinCount = (void *)GetProcAddress(library_ntdll, "RtlSetCriticalSectionSpinCount");
 	pSetCurrentDirectoryA = (void *)GetProcAddress(library, "SetCurrentDirectoryA");
 	pextSetCurrentDirectoryA = (void *)GetProcAddress(library_kernel32, "SetCurrentDirectoryA");
 	pSetCurrentDirectoryW = (void *)GetProcAddress(library, "SetCurrentDirectoryW");
@@ -20726,8 +20734,8 @@ void wine_thunk_initialize_kernelbase(void)
 	pextSetEnvironmentVariableW = (void *)GetProcAddress(library_kernel32, "SetEnvironmentVariableW");
 	pSetErrorMode = (void *)GetProcAddress(library, "SetErrorMode");
 	pSetEvent = (void *)GetProcAddress(library, "SetEvent");
-	pTpCallbackSetEventOnCompletion = (void *)GetProcAddress(library, "SetEventWhenCallbackReturns");
-	pextTpCallbackSetEventOnCompletion = (void *)GetProcAddress(library_ntdll, "TpCallbackSetEventOnCompletion");
+	pSetEventWhenCallbackReturns = (void *)GetProcAddress(library, "SetEventWhenCallbackReturns");
+	pextSetEventWhenCallbackReturns = (void *)GetProcAddress(library_ntdll, "TpCallbackSetEventOnCompletion");
 	pSetFileApisToANSI = (void *)GetProcAddress(library, "SetFileApisToANSI");
 	pSetFileApisToOEM = (void *)GetProcAddress(library, "SetFileApisToOEM");
 	pSetFileAttributesA = (void *)GetProcAddress(library, "SetFileAttributesA");
@@ -20743,8 +20751,8 @@ void wine_thunk_initialize_kernelbase(void)
 	pSetHandleInformation = (void *)GetProcAddress(library, "SetHandleInformation");
 	pextSetHandleInformation = (void *)GetProcAddress(library_kernel32, "SetHandleInformation");
 	pSetKernelObjectSecurity = (void *)GetProcAddress(library, "SetKernelObjectSecurity");
-	pRtlSetLastWin32Error = (void *)GetProcAddress(library, "SetLastError");
-	pextRtlSetLastWin32Error = (void *)GetProcAddress(library_ntdll, "RtlSetLastWin32Error");
+	pSetLastError = (void *)GetProcAddress(library, "SetLastError");
+	pextSetLastError = (void *)GetProcAddress(library_ntdll, "RtlSetLastWin32Error");
 	pSetLocalTime = (void *)GetProcAddress(library, "SetLocalTime");
 	pextSetLocalTime = (void *)GetProcAddress(library_kernel32, "SetLocalTime");
 	pSetLocaleInfoW = (void *)GetProcAddress(library, "SetLocaleInfoW");
@@ -20787,14 +20795,14 @@ void wine_thunk_initialize_kernelbase(void)
 	pSetThreadToken = (void *)GetProcAddress(library, "SetThreadToken");
 	pSetThreadUILanguage = (void *)GetProcAddress(library, "SetThreadUILanguage");
 	pextSetThreadUILanguage = (void *)GetProcAddress(library_kernel32, "SetThreadUILanguage");
-	pTpSetPoolMaxThreads = (void *)GetProcAddress(library, "SetThreadpoolThreadMaximum");
-	pextTpSetPoolMaxThreads = (void *)GetProcAddress(library_ntdll, "TpSetPoolMaxThreads");
-	pTpSetPoolMinThreads = (void *)GetProcAddress(library, "SetThreadpoolThreadMinimum");
-	pextTpSetPoolMinThreads = (void *)GetProcAddress(library_ntdll, "TpSetPoolMinThreads");
-	pTpSetTimer = (void *)GetProcAddress(library, "SetThreadpoolTimer");
-	pextTpSetTimer = (void *)GetProcAddress(library_ntdll, "TpSetTimer");
-	pTpSetWait = (void *)GetProcAddress(library, "SetThreadpoolWait");
-	pextTpSetWait = (void *)GetProcAddress(library_ntdll, "TpSetWait");
+	pSetThreadpoolThreadMaximum = (void *)GetProcAddress(library, "SetThreadpoolThreadMaximum");
+	pextSetThreadpoolThreadMaximum = (void *)GetProcAddress(library_ntdll, "TpSetPoolMaxThreads");
+	pSetThreadpoolThreadMinimum = (void *)GetProcAddress(library, "SetThreadpoolThreadMinimum");
+	pextSetThreadpoolThreadMinimum = (void *)GetProcAddress(library_ntdll, "TpSetPoolMinThreads");
+	pSetThreadpoolTimer = (void *)GetProcAddress(library, "SetThreadpoolTimer");
+	pextSetThreadpoolTimer = (void *)GetProcAddress(library_ntdll, "TpSetTimer");
+	pSetThreadpoolWait = (void *)GetProcAddress(library, "SetThreadpoolWait");
+	pextSetThreadpoolWait = (void *)GetProcAddress(library_ntdll, "TpSetWait");
 	pSetTimeZoneInformation = (void *)GetProcAddress(library, "SetTimeZoneInformation");
 	pextSetTimeZoneInformation = (void *)GetProcAddress(library_kernel32, "SetTimeZoneInformation");
 	pSetTokenInformation = (void *)GetProcAddress(library, "SetTokenInformation");
@@ -20870,8 +20878,8 @@ void wine_thunk_initialize_kernelbase(void)
 	pStrToIntW = (void *)GetProcAddress(library, "StrToIntW");
 	pStrTrimA = (void *)GetProcAddress(library, "StrTrimA");
 	pStrTrimW = (void *)GetProcAddress(library, "StrTrimW");
-	pTpPostWork = (void *)GetProcAddress(library, "SubmitThreadpoolWork");
-	pextTpPostWork = (void *)GetProcAddress(library_ntdll, "TpPostWork");
+	pSubmitThreadpoolWork = (void *)GetProcAddress(library, "SubmitThreadpoolWork");
+	pextSubmitThreadpoolWork = (void *)GetProcAddress(library_ntdll, "TpPostWork");
 	pSuspendThread = (void *)GetProcAddress(library, "SuspendThread");
 	pSwitchToFiber = (void *)GetProcAddress(library, "SwitchToFiber");
 	pSwitchToThread = (void *)GetProcAddress(library, "SwitchToThread");
@@ -20885,21 +20893,21 @@ void wine_thunk_initialize_kernelbase(void)
 	pTlsFree = (void *)GetProcAddress(library, "TlsFree");
 	pTlsGetValue = (void *)GetProcAddress(library, "TlsGetValue");
 	pTlsSetValue = (void *)GetProcAddress(library, "TlsSetValue");
-	pEtwLogTraceEvent = (void *)GetProcAddress(library, "TraceEvent");
-	pextEtwLogTraceEvent = (void *)GetProcAddress(library_ntdll, "EtwLogTraceEvent");
-	pEtwTraceMessage = (void *)GetProcAddress(library, "TraceMessage");
-	pextEtwTraceMessage = (void *)GetProcAddress(library_ntdll, "EtwTraceMessage");
-	pEtwTraceMessageVa = (void *)GetProcAddress(library, "TraceMessageVa");
-	pextEtwTraceMessageVa = (void *)GetProcAddress(library_ntdll, "EtwTraceMessageVa");
+	pTraceEvent = (void *)GetProcAddress(library, "TraceEvent");
+	pextTraceEvent = (void *)GetProcAddress(library_ntdll, "EtwLogTraceEvent");
+	pTraceMessage = (void *)GetProcAddress(library, "TraceMessage");
+	pextTraceMessage = (void *)GetProcAddress(library_ntdll, "EtwTraceMessage");
+	pTraceMessageVa = (void *)GetProcAddress(library, "TraceMessageVa");
+	pextTraceMessageVa = (void *)GetProcAddress(library_ntdll, "EtwTraceMessageVa");
 	pTransactNamedPipe = (void *)GetProcAddress(library, "TransactNamedPipe");
 	pTransmitCommChar = (void *)GetProcAddress(library, "TransmitCommChar");
 	pextTransmitCommChar = (void *)GetProcAddress(library_kernel32, "TransmitCommChar");
-	pRtlTryAcquireSRWLockExclusive = (void *)GetProcAddress(library, "TryAcquireSRWLockExclusive");
-	pextRtlTryAcquireSRWLockExclusive = (void *)GetProcAddress(library_ntdll, "RtlTryAcquireSRWLockExclusive");
-	pRtlTryAcquireSRWLockShared = (void *)GetProcAddress(library, "TryAcquireSRWLockShared");
-	pextRtlTryAcquireSRWLockShared = (void *)GetProcAddress(library_ntdll, "RtlTryAcquireSRWLockShared");
-	pRtlTryEnterCriticalSection = (void *)GetProcAddress(library, "TryEnterCriticalSection");
-	pextRtlTryEnterCriticalSection = (void *)GetProcAddress(library_ntdll, "RtlTryEnterCriticalSection");
+	pTryAcquireSRWLockExclusive = (void *)GetProcAddress(library, "TryAcquireSRWLockExclusive");
+	pextTryAcquireSRWLockExclusive = (void *)GetProcAddress(library_ntdll, "RtlTryAcquireSRWLockExclusive");
+	pTryAcquireSRWLockShared = (void *)GetProcAddress(library, "TryAcquireSRWLockShared");
+	pextTryAcquireSRWLockShared = (void *)GetProcAddress(library_ntdll, "RtlTryAcquireSRWLockShared");
+	pTryEnterCriticalSection = (void *)GetProcAddress(library, "TryEnterCriticalSection");
+	pextTryEnterCriticalSection = (void *)GetProcAddress(library_ntdll, "RtlTryEnterCriticalSection");
 	pTrySubmitThreadpoolCallback = (void *)GetProcAddress(library, "TrySubmitThreadpoolCallback");
 	pTzSpecificLocalTimeToSystemTime = (void *)GetProcAddress(library, "TzSpecificLocalTimeToSystemTime");
 	pextTzSpecificLocalTimeToSystemTime = (void *)GetProcAddress(library_kernel32, "TzSpecificLocalTimeToSystemTime");
@@ -20909,8 +20917,8 @@ void wine_thunk_initialize_kernelbase(void)
 	pUnlockFileEx = (void *)GetProcAddress(library, "UnlockFileEx");
 	pUnmapViewOfFile = (void *)GetProcAddress(library, "UnmapViewOfFile");
 	pextUnmapViewOfFile = (void *)GetProcAddress(library_kernel32, "UnmapViewOfFile");
-	pEtwUnregisterTraceGuids = (void *)GetProcAddress(library, "UnregisterTraceGuids");
-	pextEtwUnregisterTraceGuids = (void *)GetProcAddress(library_ntdll, "EtwUnregisterTraceGuids");
+	pUnregisterTraceGuids = (void *)GetProcAddress(library, "UnregisterTraceGuids");
+	pextUnregisterTraceGuids = (void *)GetProcAddress(library_ntdll, "EtwUnregisterTraceGuids");
 	pUnregisterWaitEx = (void *)GetProcAddress(library, "UnregisterWaitEx");
 	pUpdateProcThreadAttribute = (void *)GetProcAddress(library, "UpdateProcThreadAttribute");
 	pUrlApplySchemeA = (void *)GetProcAddress(library, "UrlApplySchemeA");
@@ -20980,22 +20988,22 @@ void wine_thunk_initialize_kernelbase(void)
 	pWaitForMultipleObjectsEx = (void *)GetProcAddress(library, "WaitForMultipleObjectsEx");
 	pWaitForSingleObject = (void *)GetProcAddress(library, "WaitForSingleObject");
 	pWaitForSingleObjectEx = (void *)GetProcAddress(library, "WaitForSingleObjectEx");
-	pTpWaitForTimer = (void *)GetProcAddress(library, "WaitForThreadpoolTimerCallbacks");
-	pextTpWaitForTimer = (void *)GetProcAddress(library_ntdll, "TpWaitForTimer");
-	pTpWaitForWait = (void *)GetProcAddress(library, "WaitForThreadpoolWaitCallbacks");
-	pextTpWaitForWait = (void *)GetProcAddress(library_ntdll, "TpWaitForWait");
-	pTpWaitForWork = (void *)GetProcAddress(library, "WaitForThreadpoolWorkCallbacks");
-	pextTpWaitForWork = (void *)GetProcAddress(library_ntdll, "TpWaitForWork");
+	pWaitForThreadpoolTimerCallbacks = (void *)GetProcAddress(library, "WaitForThreadpoolTimerCallbacks");
+	pextWaitForThreadpoolTimerCallbacks = (void *)GetProcAddress(library_ntdll, "TpWaitForTimer");
+	pWaitForThreadpoolWaitCallbacks = (void *)GetProcAddress(library, "WaitForThreadpoolWaitCallbacks");
+	pextWaitForThreadpoolWaitCallbacks = (void *)GetProcAddress(library_ntdll, "TpWaitForWait");
+	pWaitForThreadpoolWorkCallbacks = (void *)GetProcAddress(library, "WaitForThreadpoolWorkCallbacks");
+	pextWaitForThreadpoolWorkCallbacks = (void *)GetProcAddress(library_ntdll, "TpWaitForWork");
 	pWaitNamedPipeW = (void *)GetProcAddress(library, "WaitNamedPipeW");
 	pWaitOnAddress = (void *)GetProcAddress(library, "WaitOnAddress");
-	pRtlWakeAllConditionVariable = (void *)GetProcAddress(library, "WakeAllConditionVariable");
-	pextRtlWakeAllConditionVariable = (void *)GetProcAddress(library_ntdll, "RtlWakeAllConditionVariable");
-	pRtlWakeAddressAll = (void *)GetProcAddress(library, "WakeByAddressAll");
-	pextRtlWakeAddressAll = (void *)GetProcAddress(library_ntdll, "RtlWakeAddressAll");
-	pRtlWakeAddressSingle = (void *)GetProcAddress(library, "WakeByAddressSingle");
-	pextRtlWakeAddressSingle = (void *)GetProcAddress(library_ntdll, "RtlWakeAddressSingle");
-	pRtlWakeConditionVariable = (void *)GetProcAddress(library, "WakeConditionVariable");
-	pextRtlWakeConditionVariable = (void *)GetProcAddress(library_ntdll, "RtlWakeConditionVariable");
+	pWakeAllConditionVariable = (void *)GetProcAddress(library, "WakeAllConditionVariable");
+	pextWakeAllConditionVariable = (void *)GetProcAddress(library_ntdll, "RtlWakeAllConditionVariable");
+	pWakeByAddressAll = (void *)GetProcAddress(library, "WakeByAddressAll");
+	pextWakeByAddressAll = (void *)GetProcAddress(library_ntdll, "RtlWakeAddressAll");
+	pWakeByAddressSingle = (void *)GetProcAddress(library, "WakeByAddressSingle");
+	pextWakeByAddressSingle = (void *)GetProcAddress(library_ntdll, "RtlWakeAddressSingle");
+	pWakeConditionVariable = (void *)GetProcAddress(library, "WakeConditionVariable");
+	pextWakeConditionVariable = (void *)GetProcAddress(library_ntdll, "RtlWakeConditionVariable");
 	pWerRegisterFile = (void *)GetProcAddress(library, "WerRegisterFile");
 	pextWerRegisterFile = (void *)GetProcAddress(library_kernel32, "WerRegisterFile");
 	pWerRegisterMemoryBlock = (void *)GetProcAddress(library, "WerRegisterMemoryBlock");
@@ -21046,10 +21054,10 @@ void wine_thunk_initialize_kernelbase(void)
 	plstrcmpW = (void *)GetProcAddress(library, "lstrcmpW");
 	plstrcmpiA = (void *)GetProcAddress(library, "lstrcmpiA");
 	plstrcmpiW = (void *)GetProcAddress(library, "lstrcmpiW");
-	pKERNELBASE_lstrcpynA = (void *)GetProcAddress(library, "lstrcpynA");
-	pKERNELBASE_lstrcpynW = (void *)GetProcAddress(library, "lstrcpynW");
-	pKERNELBASE_lstrlenA = (void *)GetProcAddress(library, "lstrlenA");
-	pKERNELBASE_lstrlenW = (void *)GetProcAddress(library, "lstrlenW");
+	plstrcpynA = (void *)GetProcAddress(library, "lstrcpynA");
+	plstrcpynW = (void *)GetProcAddress(library, "lstrcpynW");
+	plstrlenA = (void *)GetProcAddress(library, "lstrlenA");
+	plstrlenW = (void *)GetProcAddress(library, "lstrlenW");
 	initialized = TRUE;
 }
 
@@ -21064,10 +21072,10 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine32a_kernelbase_AccessCheckAndAuditAlarmW;
 	if (func == pAccessCheckByType)
 		return wine32a_kernelbase_AccessCheckByType;
-	if (func == pRtlAcquireSRWLockExclusive && func != pextRtlAcquireSRWLockExclusive)
-		return wine_thunk_get_for_any(pextRtlAcquireSRWLockExclusive);
-	if (func == pRtlAcquireSRWLockShared && func != pextRtlAcquireSRWLockShared)
-		return wine_thunk_get_for_any(pextRtlAcquireSRWLockShared);
+	if (func == pAcquireSRWLockExclusive && func != pextAcquireSRWLockExclusive)
+		return wine_thunk_get_for_any(pextAcquireSRWLockExclusive);
+	if (func == pAcquireSRWLockShared && func != pextAcquireSRWLockShared)
+		return wine_thunk_get_for_any(pextAcquireSRWLockShared);
 	if (func == pActivateActCtx)
 		return wine32a_kernelbase_ActivateActCtx;
 	if (func == pAddAccessAllowedAce)
@@ -21096,10 +21104,10 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine32a_kernelbase_AddMandatoryAce;
 	if (func == pAddRefActCtx)
 		return wine32a_kernelbase_AddRefActCtx;
-	if (func == pRtlAddVectoredContinueHandler && func != pextRtlAddVectoredContinueHandler)
-		return wine_thunk_get_for_any(pextRtlAddVectoredContinueHandler);
-	if (func == pRtlAddVectoredExceptionHandler && func != pextRtlAddVectoredExceptionHandler)
-		return wine_thunk_get_for_any(pextRtlAddVectoredExceptionHandler);
+	if (func == pAddVectoredContinueHandler && func != pextAddVectoredContinueHandler)
+		return wine_thunk_get_for_any(pextAddVectoredContinueHandler);
+	if (func == pAddVectoredExceptionHandler && func != pextAddVectoredExceptionHandler)
+		return wine_thunk_get_for_any(pextAddVectoredExceptionHandler);
 	if (func == pAdjustTokenGroups)
 		return wine32a_kernelbase_AdjustTokenGroups;
 	if (func == pAdjustTokenPrivileges)
@@ -21190,18 +21198,18 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine_thunk_get_for_any(pextClearCommError);
 	if (func == pCloseHandle && func != pextCloseHandle)
 		return wine_thunk_get_for_any(pextCloseHandle);
-	if (func == pTpReleasePool && func != pextTpReleasePool)
-		return wine_thunk_get_for_any(pextTpReleasePool);
-	if (func == pTpReleaseCleanupGroup && func != pextTpReleaseCleanupGroup)
-		return wine_thunk_get_for_any(pextTpReleaseCleanupGroup);
-	if (func == pTpReleaseCleanupGroupMembers && func != pextTpReleaseCleanupGroupMembers)
-		return wine_thunk_get_for_any(pextTpReleaseCleanupGroupMembers);
-	if (func == pTpReleaseTimer && func != pextTpReleaseTimer)
-		return wine_thunk_get_for_any(pextTpReleaseTimer);
-	if (func == pTpReleaseWait && func != pextTpReleaseWait)
-		return wine_thunk_get_for_any(pextTpReleaseWait);
-	if (func == pTpReleaseWork && func != pextTpReleaseWork)
-		return wine_thunk_get_for_any(pextTpReleaseWork);
+	if (func == pCloseThreadpool && func != pextCloseThreadpool)
+		return wine_thunk_get_for_any(pextCloseThreadpool);
+	if (func == pCloseThreadpoolCleanupGroup && func != pextCloseThreadpoolCleanupGroup)
+		return wine_thunk_get_for_any(pextCloseThreadpoolCleanupGroup);
+	if (func == pCloseThreadpoolCleanupGroupMembers && func != pextCloseThreadpoolCleanupGroupMembers)
+		return wine_thunk_get_for_any(pextCloseThreadpoolCleanupGroupMembers);
+	if (func == pCloseThreadpoolTimer && func != pextCloseThreadpoolTimer)
+		return wine_thunk_get_for_any(pextCloseThreadpoolTimer);
+	if (func == pCloseThreadpoolWait && func != pextCloseThreadpoolWait)
+		return wine_thunk_get_for_any(pextCloseThreadpoolWait);
+	if (func == pCloseThreadpoolWork && func != pextCloseThreadpoolWork)
+		return wine_thunk_get_for_any(pextCloseThreadpoolWork);
 	if (func == pCompareFileTime && func != pextCompareFileTime)
 		return wine_thunk_get_for_any(pextCompareFileTime);
 	if (func == pCompareStringA && func != pextCompareStringA)
@@ -21344,18 +21352,18 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine_thunk_get_for_any(pextDebugActiveProcessStop);
 	if (func == pDebugBreak && func != pextDebugBreak)
 		return wine_thunk_get_for_any(pextDebugBreak);
-	if (func == pRtlDecodePointer && func != pextRtlDecodePointer)
-		return wine_thunk_get_for_any(pextRtlDecodePointer);
-	if (func == pRtlDecodeSystemPointer && func != pextRtlDecodeSystemPointer)
-		return wine_thunk_get_for_any(pextRtlDecodeSystemPointer);
+	if (func == pDecodePointer && func != pextDecodePointer)
+		return wine_thunk_get_for_any(pextDecodePointer);
+	if (func == pDecodeSystemPointer && func != pextDecodeSystemPointer)
+		return wine_thunk_get_for_any(pextDecodeSystemPointer);
 	if (func == pDefineDosDeviceW && func != pextDefineDosDeviceW)
 		return wine_thunk_get_for_any(pextDefineDosDeviceW);
 	if (func == pDelayLoadFailureHook && func != pextDelayLoadFailureHook)
 		return wine_thunk_get_for_any(pextDelayLoadFailureHook);
 	if (func == pDeleteAce)
 		return wine32a_kernelbase_DeleteAce;
-	if (func == pRtlDeleteCriticalSection && func != pextRtlDeleteCriticalSection)
-		return wine_thunk_get_for_any(pextRtlDeleteCriticalSection);
+	if (func == pDeleteCriticalSection && func != pextDeleteCriticalSection)
+		return wine_thunk_get_for_any(pextDeleteCriticalSection);
 	if (func == pDeleteFiber)
 		return wine32a_kernelbase_DeleteFiber;
 	if (func == pDeleteFileA)
@@ -21378,8 +21386,8 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine32a_kernelbase_DisablePredefinedHandleTableInternal;
 	if (func == pDisableThreadLibraryCalls)
 		return wine32a_kernelbase_DisableThreadLibraryCalls;
-	if (func == pTpDisassociateCallback && func != pextTpDisassociateCallback)
-		return wine_thunk_get_for_any(pextTpDisassociateCallback);
+	if (func == pDisassociateCurrentThreadFromCallback && func != pextDisassociateCurrentThreadFromCallback)
+		return wine_thunk_get_for_any(pextDisassociateCurrentThreadFromCallback);
 	if (func == pDisconnectNamedPipe)
 		return wine32a_kernelbase_DisconnectNamedPipe;
 	if (func == pDuplicateHandle && func != pextDuplicateHandle)
@@ -21388,12 +21396,12 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine32a_kernelbase_DuplicateToken;
 	if (func == pDuplicateTokenEx)
 		return wine32a_kernelbase_DuplicateTokenEx;
-	if (func == pRtlEncodePointer && func != pextRtlEncodePointer)
-		return wine_thunk_get_for_any(pextRtlEncodePointer);
-	if (func == pRtlEncodeSystemPointer && func != pextRtlEncodeSystemPointer)
-		return wine_thunk_get_for_any(pextRtlEncodeSystemPointer);
-	if (func == pRtlEnterCriticalSection && func != pextRtlEnterCriticalSection)
-		return wine_thunk_get_for_any(pextRtlEnterCriticalSection);
+	if (func == pEncodePointer && func != pextEncodePointer)
+		return wine_thunk_get_for_any(pextEncodePointer);
+	if (func == pEncodeSystemPointer && func != pextEncodeSystemPointer)
+		return wine_thunk_get_for_any(pextEncodeSystemPointer);
+	if (func == pEnterCriticalSection && func != pextEnterCriticalSection)
+		return wine_thunk_get_for_any(pextEnterCriticalSection);
 	if (func == pEnumCalendarInfoExEx && func != pextEnumCalendarInfoExEx)
 		return wine_thunk_get_for_any(pextEnumCalendarInfoExEx);
 	if (func == pEnumCalendarInfoExW && func != pextEnumCalendarInfoExW)
@@ -21450,28 +21458,28 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine32a_kernelbase_EqualSid;
 	if (func == pEscapeCommFunction && func != pextEscapeCommFunction)
 		return wine_thunk_get_for_any(pextEscapeCommFunction);
-	if (func == pEtwEventActivityIdControl && func != pextEtwEventActivityIdControl)
-		return wine_thunk_get_for_any(pextEtwEventActivityIdControl);
-	if (func == pEtwEventEnabled && func != pextEtwEventEnabled)
-		return wine_thunk_get_for_any(pextEtwEventEnabled);
-	if (func == pEtwEventProviderEnabled && func != pextEtwEventProviderEnabled)
-		return wine_thunk_get_for_any(pextEtwEventProviderEnabled);
-	if (func == pEtwEventRegister && func != pextEtwEventRegister)
-		return wine_thunk_get_for_any(pextEtwEventRegister);
-	if (func == pEtwEventSetInformation && func != pextEtwEventSetInformation)
-		return wine_thunk_get_for_any(pextEtwEventSetInformation);
-	if (func == pEtwEventUnregister && func != pextEtwEventUnregister)
-		return wine_thunk_get_for_any(pextEtwEventUnregister);
-	if (func == pEtwEventWrite && func != pextEtwEventWrite)
-		return wine_thunk_get_for_any(pextEtwEventWrite);
-	if (func == pEtwEventWriteString && func != pextEtwEventWriteString)
-		return wine_thunk_get_for_any(pextEtwEventWriteString);
-	if (func == pEtwEventWriteTransfer && func != pextEtwEventWriteTransfer)
-		return wine_thunk_get_for_any(pextEtwEventWriteTransfer);
-	if (func == pRtlExitUserProcess && func != pextRtlExitUserProcess)
-		return wine_thunk_get_for_any(pextRtlExitUserProcess);
-	if (func == pRtlExitUserThread && func != pextRtlExitUserThread)
-		return wine_thunk_get_for_any(pextRtlExitUserThread);
+	if (func == pEventActivityIdControl && func != pextEventActivityIdControl)
+		return wine_thunk_get_for_any(pextEventActivityIdControl);
+	if (func == pEventEnabled && func != pextEventEnabled)
+		return wine_thunk_get_for_any(pextEventEnabled);
+	if (func == pEventProviderEnabled && func != pextEventProviderEnabled)
+		return wine_thunk_get_for_any(pextEventProviderEnabled);
+	if (func == pEventRegister && func != pextEventRegister)
+		return wine_thunk_get_for_any(pextEventRegister);
+	if (func == pEventSetInformation && func != pextEventSetInformation)
+		return wine_thunk_get_for_any(pextEventSetInformation);
+	if (func == pEventUnregister && func != pextEventUnregister)
+		return wine_thunk_get_for_any(pextEventUnregister);
+	if (func == pEventWrite && func != pextEventWrite)
+		return wine_thunk_get_for_any(pextEventWrite);
+	if (func == pEventWriteString && func != pextEventWriteString)
+		return wine_thunk_get_for_any(pextEventWriteString);
+	if (func == pEventWriteTransfer && func != pextEventWriteTransfer)
+		return wine_thunk_get_for_any(pextEventWriteTransfer);
+	if (func == pExitProcess && func != pextExitProcess)
+		return wine_thunk_get_for_any(pextExitProcess);
+	if (func == pExitThread && func != pextExitThread)
+		return wine_thunk_get_for_any(pextExitThread);
 	if (func == pExpandEnvironmentStringsA && func != pextExpandEnvironmentStringsA)
 		return wine_thunk_get_for_any(pextExpandEnvironmentStringsA);
 	if (func == pExpandEnvironmentStringsW && func != pextExpandEnvironmentStringsW)
@@ -21570,8 +21578,8 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine_thunk_get_for_any(pextFreeLibrary);
 	if (func == pFreeLibraryAndExitThread)
 		return wine32a_kernelbase_FreeLibraryAndExitThread;
-	if (func == pTpCallbackUnloadDllOnCompletion && func != pextTpCallbackUnloadDllOnCompletion)
-		return wine_thunk_get_for_any(pextTpCallbackUnloadDllOnCompletion);
+	if (func == pFreeLibraryWhenCallbackReturns && func != pextFreeLibraryWhenCallbackReturns)
+		return wine_thunk_get_for_any(pextFreeLibraryWhenCallbackReturns);
 	if (func == pFreeResource)
 		return wine32a_kernelbase_FreeResource;
 	if (func == pFreeSid)
@@ -21658,18 +21666,18 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine_thunk_get_for_any(pextGetCurrentPackageFullName);
 	if (func == pGetCurrentPackageId && func != pextGetCurrentPackageId)
 		return wine_thunk_get_for_any(pextGetCurrentPackageId);
-	if (func == pkernelbase_GetCurrentProcess)
-		return wine32a_kernelbase_kernelbase_GetCurrentProcess;
-	if (func == pkernelbase_GetCurrentProcessId)
-		return wine32a_kernelbase_kernelbase_GetCurrentProcessId;
-	if (func == pNtGetCurrentProcessorNumber && func != pextNtGetCurrentProcessorNumber)
-		return wine_thunk_get_for_any(pextNtGetCurrentProcessorNumber);
-	if (func == pRtlGetCurrentProcessorNumberEx && func != pextRtlGetCurrentProcessorNumberEx)
-		return wine_thunk_get_for_any(pextRtlGetCurrentProcessorNumberEx);
-	if (func == pkernelbase_GetCurrentThread)
-		return wine32a_kernelbase_kernelbase_GetCurrentThread;
-	if (func == pkernelbase_GetCurrentThreadId)
-		return wine32a_kernelbase_kernelbase_GetCurrentThreadId;
+	if (func == pGetCurrentProcess)
+		return wine32a_kernelbase_GetCurrentProcess;
+	if (func == pGetCurrentProcessId)
+		return wine32a_kernelbase_GetCurrentProcessId;
+	if (func == pGetCurrentProcessorNumber && func != pextGetCurrentProcessorNumber)
+		return wine_thunk_get_for_any(pextGetCurrentProcessorNumber);
+	if (func == pGetCurrentProcessorNumberEx && func != pextGetCurrentProcessorNumberEx)
+		return wine_thunk_get_for_any(pextGetCurrentProcessorNumberEx);
+	if (func == pGetCurrentThread)
+		return wine32a_kernelbase_GetCurrentThread;
+	if (func == pGetCurrentThreadId)
+		return wine32a_kernelbase_GetCurrentThreadId;
 	if (func == pGetCurrentThreadStackLimits)
 		return wine32a_kernelbase_GetCurrentThreadStackLimits;
 	if (func == pGetDateFormatA && func != pextGetDateFormatA)
@@ -21772,8 +21780,8 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine_thunk_get_for_any(pextGetLargePageMinimum);
 	if (func == pGetLargestConsoleWindowSize && func != pextGetLargestConsoleWindowSize)
 		return wine_thunk_get_for_any(pextGetLargestConsoleWindowSize);
-	if (func == pkernelbase_GetLastError)
-		return wine32a_kernelbase_kernelbase_GetLastError;
+	if (func == pGetLastError)
+		return wine32a_kernelbase_GetLastError;
 	if (func == pGetLengthSid)
 		return wine32a_kernelbase_GetLengthSid;
 	if (func == pGetLocalTime && func != pextGetLocalTime)
@@ -21844,8 +21852,8 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine_thunk_get_for_any(pextGetProcAddress);
 	if (func == pGetProcessHandleCount)
 		return wine32a_kernelbase_GetProcessHandleCount;
-	if (func == pkernelbase_GetProcessHeap)
-		return wine32a_kernelbase_kernelbase_GetProcessHeap;
+	if (func == pGetProcessHeap)
+		return wine32a_kernelbase_GetProcessHeap;
 	if (func == pGetProcessId)
 		return wine32a_kernelbase_GetProcessId;
 	if (func == pGetProcessIdOfThread)
@@ -21986,12 +21994,12 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine_thunk_get_for_any(pextGetTimeZoneInformationForYear);
 	if (func == pGetTokenInformation)
 		return wine32a_kernelbase_GetTokenInformation;
-	if (func == pEtwGetTraceEnableFlags && func != pextEtwGetTraceEnableFlags)
-		return wine_thunk_get_for_any(pextEtwGetTraceEnableFlags);
-	if (func == pEtwGetTraceEnableLevel && func != pextEtwGetTraceEnableLevel)
-		return wine_thunk_get_for_any(pextEtwGetTraceEnableLevel);
-	if (func == pEtwGetTraceLoggerHandle && func != pextEtwGetTraceLoggerHandle)
-		return wine_thunk_get_for_any(pextEtwGetTraceLoggerHandle);
+	if (func == pGetTraceEnableFlags && func != pextGetTraceEnableFlags)
+		return wine_thunk_get_for_any(pextGetTraceEnableFlags);
+	if (func == pGetTraceEnableLevel && func != pextGetTraceEnableLevel)
+		return wine_thunk_get_for_any(pextGetTraceEnableLevel);
+	if (func == pGetTraceLoggerHandle && func != pextGetTraceLoggerHandle)
+		return wine_thunk_get_for_any(pextGetTraceLoggerHandle);
 	if (func == pGetUserDefaultLCID && func != pextGetUserDefaultLCID)
 		return wine_thunk_get_for_any(pextGetUserDefaultLCID);
 	if (func == pGetUserDefaultLangID && func != pextGetUserDefaultLangID)
@@ -22038,26 +22046,26 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine_thunk_get_for_any(pextGlobalMemoryStatusEx);
 	if (func == pHashData)
 		return wine32a_kernelbase_HashData;
-	if (func == pRtlAllocateHeap && func != pextRtlAllocateHeap)
-		return wine_thunk_get_for_any(pextRtlAllocateHeap);
+	if (func == pHeapAlloc && func != pextHeapAlloc)
+		return wine_thunk_get_for_any(pextHeapAlloc);
 	if (func == pHeapCompact && func != pextHeapCompact)
 		return wine_thunk_get_for_any(pextHeapCompact);
 	if (func == pHeapCreate && func != pextHeapCreate)
 		return wine_thunk_get_for_any(pextHeapCreate);
 	if (func == pHeapDestroy && func != pextHeapDestroy)
 		return wine_thunk_get_for_any(pextHeapDestroy);
-	if (func == pRtlFreeHeap && func != pextRtlFreeHeap)
-		return wine_thunk_get_for_any(pextRtlFreeHeap);
+	if (func == pHeapFree && func != pextHeapFree)
+		return wine_thunk_get_for_any(pextHeapFree);
 	if (func == pHeapLock && func != pextHeapLock)
 		return wine_thunk_get_for_any(pextHeapLock);
 	if (func == pHeapQueryInformation && func != pextHeapQueryInformation)
 		return wine_thunk_get_for_any(pextHeapQueryInformation);
-	if (func == pRtlReAllocateHeap && func != pextRtlReAllocateHeap)
-		return wine_thunk_get_for_any(pextRtlReAllocateHeap);
+	if (func == pHeapReAlloc && func != pextHeapReAlloc)
+		return wine_thunk_get_for_any(pextHeapReAlloc);
 	if (func == pHeapSetInformation && func != pextHeapSetInformation)
 		return wine_thunk_get_for_any(pextHeapSetInformation);
-	if (func == pRtlSizeHeap && func != pextRtlSizeHeap)
-		return wine_thunk_get_for_any(pextRtlSizeHeap);
+	if (func == pHeapSize && func != pextHeapSize)
+		return wine_thunk_get_for_any(pextHeapSize);
 	if (func == pHeapUnlock && func != pextHeapUnlock)
 		return wine_thunk_get_for_any(pextHeapUnlock);
 	if (func == pHeapValidate && func != pextHeapValidate)
@@ -22084,50 +22092,50 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine_thunk_get_for_any(pextInitOnceComplete);
 	if (func == pInitOnceExecuteOnce && func != pextInitOnceExecuteOnce)
 		return wine_thunk_get_for_any(pextInitOnceExecuteOnce);
-	if (func == pRtlRunOnceInitialize && func != pextRtlRunOnceInitialize)
-		return wine_thunk_get_for_any(pextRtlRunOnceInitialize);
+	if (func == pInitOnceInitialize && func != pextInitOnceInitialize)
+		return wine_thunk_get_for_any(pextInitOnceInitialize);
 	if (func == pInitializeAcl)
 		return wine32a_kernelbase_InitializeAcl;
-	if (func == pRtlInitializeConditionVariable && func != pextRtlInitializeConditionVariable)
-		return wine_thunk_get_for_any(pextRtlInitializeConditionVariable);
-	if (func == pRtlInitializeCriticalSection && func != pextRtlInitializeCriticalSection)
-		return wine_thunk_get_for_any(pextRtlInitializeCriticalSection);
+	if (func == pInitializeConditionVariable && func != pextInitializeConditionVariable)
+		return wine_thunk_get_for_any(pextInitializeConditionVariable);
+	if (func == pInitializeCriticalSection && func != pextInitializeCriticalSection)
+		return wine_thunk_get_for_any(pextInitializeCriticalSection);
 	if (func == pInitializeCriticalSectionAndSpinCount)
 		return wine32a_kernelbase_InitializeCriticalSectionAndSpinCount;
 	if (func == pInitializeCriticalSectionEx)
 		return wine32a_kernelbase_InitializeCriticalSectionEx;
 	if (func == pInitializeProcThreadAttributeList)
 		return wine32a_kernelbase_InitializeProcThreadAttributeList;
-	if (func == pRtlInitializeSListHead && func != pextRtlInitializeSListHead)
-		return wine_thunk_get_for_any(pextRtlInitializeSListHead);
-	if (func == pRtlInitializeSRWLock && func != pextRtlInitializeSRWLock)
-		return wine_thunk_get_for_any(pextRtlInitializeSRWLock);
+	if (func == pInitializeSListHead && func != pextInitializeSListHead)
+		return wine_thunk_get_for_any(pextInitializeSListHead);
+	if (func == pInitializeSRWLock && func != pextInitializeSRWLock)
+		return wine_thunk_get_for_any(pextInitializeSRWLock);
 	if (func == pInitializeSecurityDescriptor)
 		return wine32a_kernelbase_InitializeSecurityDescriptor;
 	if (func == pInitializeSid)
 		return wine32a_kernelbase_InitializeSid;
 	if (func == pInterlockedCompareExchange && func != pextInterlockedCompareExchange)
 		return wine_thunk_get_for_any(pextInterlockedCompareExchange);
-	if (func == pRtlInterlockedCompareExchange64 && func != pextRtlInterlockedCompareExchange64)
-		return wine_thunk_get_for_any(pextRtlInterlockedCompareExchange64);
+	if (func == pInterlockedCompareExchange64 && func != pextInterlockedCompareExchange64)
+		return wine_thunk_get_for_any(pextInterlockedCompareExchange64);
 	if (func == pInterlockedDecrement && func != pextInterlockedDecrement)
 		return wine_thunk_get_for_any(pextInterlockedDecrement);
 	if (func == pInterlockedExchange && func != pextInterlockedExchange)
 		return wine_thunk_get_for_any(pextInterlockedExchange);
 	if (func == pInterlockedExchangeAdd && func != pextInterlockedExchangeAdd)
 		return wine_thunk_get_for_any(pextInterlockedExchangeAdd);
-	if (func == pRtlInterlockedFlushSList && func != pextRtlInterlockedFlushSList)
-		return wine_thunk_get_for_any(pextRtlInterlockedFlushSList);
+	if (func == pInterlockedFlushSList && func != pextInterlockedFlushSList)
+		return wine_thunk_get_for_any(pextInterlockedFlushSList);
 	if (func == pInterlockedIncrement && func != pextInterlockedIncrement)
 		return wine_thunk_get_for_any(pextInterlockedIncrement);
-	if (func == pRtlInterlockedPopEntrySList && func != pextRtlInterlockedPopEntrySList)
-		return wine_thunk_get_for_any(pextRtlInterlockedPopEntrySList);
-	if (func == pRtlInterlockedPushEntrySList && func != pextRtlInterlockedPushEntrySList)
-		return wine_thunk_get_for_any(pextRtlInterlockedPushEntrySList);
-	if (func == pRtlInterlockedPushListSList && func != pextRtlInterlockedPushListSList)
-		return wine_thunk_get_for_any(pextRtlInterlockedPushListSList);
-	if (func == pRtlInterlockedPushListSListEx && func != pextRtlInterlockedPushListSListEx)
-		return wine_thunk_get_for_any(pextRtlInterlockedPushListSListEx);
+	if (func == pInterlockedPopEntrySList && func != pextInterlockedPopEntrySList)
+		return wine_thunk_get_for_any(pextInterlockedPopEntrySList);
+	if (func == pInterlockedPushEntrySList && func != pextInterlockedPushEntrySList)
+		return wine_thunk_get_for_any(pextInterlockedPushEntrySList);
+	if (func == pInterlockedPushListSList && func != pextInterlockedPushListSList)
+		return wine_thunk_get_for_any(pextInterlockedPushListSList);
+	if (func == pInterlockedPushListSListEx && func != pextInterlockedPushListSListEx)
+		return wine_thunk_get_for_any(pextInterlockedPushListSListEx);
 	if (func == pIsCharAlphaA)
 		return wine32a_kernelbase_IsCharAlphaA;
 	if (func == pIsCharAlphaNumericA)
@@ -22174,8 +22182,8 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine_thunk_get_for_any(pextIsProcessorFeaturePresent);
 	if (func == pIsThreadAFiber)
 		return wine32a_kernelbase_IsThreadAFiber;
-	if (func == pTpIsTimerSet && func != pextTpIsTimerSet)
-		return wine_thunk_get_for_any(pextTpIsTimerSet);
+	if (func == pIsThreadpoolTimerSet && func != pextIsThreadpoolTimerSet)
+		return wine_thunk_get_for_any(pextIsThreadpoolTimerSet);
 	if (func == pIsTokenRestricted)
 		return wine32a_kernelbase_IsTokenRestricted;
 	if (func == pIsValidAcl)
@@ -22258,10 +22266,10 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine_thunk_get_for_any(pextLCMapStringEx);
 	if (func == pLCMapStringW && func != pextLCMapStringW)
 		return wine_thunk_get_for_any(pextLCMapStringW);
-	if (func == pRtlLeaveCriticalSection && func != pextRtlLeaveCriticalSection)
-		return wine_thunk_get_for_any(pextRtlLeaveCriticalSection);
-	if (func == pTpCallbackLeaveCriticalSectionOnCompletion && func != pextTpCallbackLeaveCriticalSectionOnCompletion)
-		return wine_thunk_get_for_any(pextTpCallbackLeaveCriticalSectionOnCompletion);
+	if (func == pLeaveCriticalSection && func != pextLeaveCriticalSection)
+		return wine_thunk_get_for_any(pextLeaveCriticalSection);
+	if (func == pLeaveCriticalSectionWhenCallbackReturns && func != pextLeaveCriticalSectionWhenCallbackReturns)
+		return wine_thunk_get_for_any(pextLeaveCriticalSectionWhenCallbackReturns);
 	if (func == pLoadLibraryA && func != pextLoadLibraryA)
 		return wine_thunk_get_for_any(pextLoadLibraryA);
 	if (func == pLoadLibraryExA && func != pextLoadLibraryExA)
@@ -22604,8 +22612,8 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine32a_kernelbase_QueryActCtxSettingsW;
 	if (func == pQueryActCtxW)
 		return wine32a_kernelbase_QueryActCtxW;
-	if (func == pRtlQueryDepthSList && func != pextRtlQueryDepthSList)
-		return wine_thunk_get_for_any(pextRtlQueryDepthSList);
+	if (func == pQueryDepthSList && func != pextQueryDepthSList)
+		return wine_thunk_get_for_any(pextQueryDepthSList);
 	if (func == pQueryDosDeviceW && func != pextQueryDosDeviceW)
 		return wine_thunk_get_for_any(pextQueryDosDeviceW);
 	if (func == pQueryFullProcessImageNameA && func != pextQueryFullProcessImageNameA)
@@ -22756,24 +22764,24 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine32a_kernelbase_RegUnLoadKeyA;
 	if (func == pRegUnLoadKeyW)
 		return wine32a_kernelbase_RegUnLoadKeyW;
-	if (func == pEtwRegisterTraceGuidsW && func != pextEtwRegisterTraceGuidsW)
-		return wine_thunk_get_for_any(pextEtwRegisterTraceGuidsW);
+	if (func == pRegisterTraceGuidsW && func != pextRegisterTraceGuidsW)
+		return wine_thunk_get_for_any(pextRegisterTraceGuidsW);
 	if (func == pRegisterWaitForSingleObjectEx)
 		return wine32a_kernelbase_RegisterWaitForSingleObjectEx;
 	if (func == pReleaseActCtx)
 		return wine32a_kernelbase_ReleaseActCtx;
 	if (func == pReleaseMutex)
 		return wine32a_kernelbase_ReleaseMutex;
-	if (func == pTpCallbackReleaseMutexOnCompletion && func != pextTpCallbackReleaseMutexOnCompletion)
-		return wine_thunk_get_for_any(pextTpCallbackReleaseMutexOnCompletion);
-	if (func == pRtlReleaseSRWLockExclusive && func != pextRtlReleaseSRWLockExclusive)
-		return wine_thunk_get_for_any(pextRtlReleaseSRWLockExclusive);
-	if (func == pRtlReleaseSRWLockShared && func != pextRtlReleaseSRWLockShared)
-		return wine_thunk_get_for_any(pextRtlReleaseSRWLockShared);
+	if (func == pReleaseMutexWhenCallbackReturns && func != pextReleaseMutexWhenCallbackReturns)
+		return wine_thunk_get_for_any(pextReleaseMutexWhenCallbackReturns);
+	if (func == pReleaseSRWLockExclusive && func != pextReleaseSRWLockExclusive)
+		return wine_thunk_get_for_any(pextReleaseSRWLockExclusive);
+	if (func == pReleaseSRWLockShared && func != pextReleaseSRWLockShared)
+		return wine_thunk_get_for_any(pextReleaseSRWLockShared);
 	if (func == pReleaseSemaphore)
 		return wine32a_kernelbase_ReleaseSemaphore;
-	if (func == pTpCallbackReleaseSemaphoreOnCompletion && func != pextTpCallbackReleaseSemaphoreOnCompletion)
-		return wine_thunk_get_for_any(pextTpCallbackReleaseSemaphoreOnCompletion);
+	if (func == pReleaseSemaphoreWhenCallbackReturns && func != pextReleaseSemaphoreWhenCallbackReturns)
+		return wine_thunk_get_for_any(pextReleaseSemaphoreWhenCallbackReturns);
 	if (func == pRemapPredefinedHandleInternal)
 		return wine32a_kernelbase_RemapPredefinedHandleInternal;
 	if (func == pRemoveDirectoryA && func != pextRemoveDirectoryA)
@@ -22782,10 +22790,10 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine_thunk_get_for_any(pextRemoveDirectoryW);
 	if (func == pRemoveDllDirectory && func != pextRemoveDllDirectory)
 		return wine_thunk_get_for_any(pextRemoveDllDirectory);
-	if (func == pRtlRemoveVectoredContinueHandler && func != pextRtlRemoveVectoredContinueHandler)
-		return wine_thunk_get_for_any(pextRtlRemoveVectoredContinueHandler);
-	if (func == pRtlRemoveVectoredExceptionHandler && func != pextRtlRemoveVectoredExceptionHandler)
-		return wine_thunk_get_for_any(pextRtlRemoveVectoredExceptionHandler);
+	if (func == pRemoveVectoredContinueHandler && func != pextRemoveVectoredContinueHandler)
+		return wine_thunk_get_for_any(pextRemoveVectoredContinueHandler);
+	if (func == pRemoveVectoredExceptionHandler && func != pextRemoveVectoredExceptionHandler)
+		return wine_thunk_get_for_any(pextRemoveVectoredExceptionHandler);
 	if (func == pReplaceFileW && func != pextReplaceFileW)
 		return wine_thunk_get_for_any(pextReplaceFileW);
 	if (func == pResetEvent)
@@ -22796,12 +22804,16 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine_thunk_get_for_any(pextResolveDelayLoadedAPI);
 	if (func == pResolveLocaleName && func != pextResolveLocaleName)
 		return wine_thunk_get_for_any(pextResolveLocaleName);
-	if (func == pRtlRestoreLastWin32Error && func != pextRtlRestoreLastWin32Error)
-		return wine_thunk_get_for_any(pextRtlRestoreLastWin32Error);
+	if (func == pRestoreLastError && func != pextRestoreLastError)
+		return wine_thunk_get_for_any(pextRestoreLastError);
 	if (func == pResumeThread)
 		return wine32a_kernelbase_ResumeThread;
 	if (func == pRevertToSelf)
 		return wine32a_kernelbase_RevertToSelf;
+	if (func == pSHExpandEnvironmentStringsA && func != pextSHExpandEnvironmentStringsA)
+		return wine_thunk_get_for_any(pextSHExpandEnvironmentStringsA);
+	if (func == pSHExpandEnvironmentStringsW && func != pextSHExpandEnvironmentStringsW)
+		return wine_thunk_get_for_any(pextSHExpandEnvironmentStringsW);
 	if (func == pSHLoadIndirectString)
 		return wine32a_kernelbase_SHLoadIndirectString;
 	if (func == pSHRegCloseUSKey)
@@ -22914,8 +22926,8 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine_thunk_get_for_any(pextSetConsoleTitleW);
 	if (func == pSetConsoleWindowInfo && func != pextSetConsoleWindowInfo)
 		return wine_thunk_get_for_any(pextSetConsoleWindowInfo);
-	if (func == pRtlSetCriticalSectionSpinCount && func != pextRtlSetCriticalSectionSpinCount)
-		return wine_thunk_get_for_any(pextRtlSetCriticalSectionSpinCount);
+	if (func == pSetCriticalSectionSpinCount && func != pextSetCriticalSectionSpinCount)
+		return wine_thunk_get_for_any(pextSetCriticalSectionSpinCount);
 	if (func == pSetCurrentDirectoryA && func != pextSetCurrentDirectoryA)
 		return wine_thunk_get_for_any(pextSetCurrentDirectoryA);
 	if (func == pSetCurrentDirectoryW && func != pextSetCurrentDirectoryW)
@@ -22932,8 +22944,8 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine32a_kernelbase_SetErrorMode;
 	if (func == pSetEvent)
 		return wine32a_kernelbase_SetEvent;
-	if (func == pTpCallbackSetEventOnCompletion && func != pextTpCallbackSetEventOnCompletion)
-		return wine_thunk_get_for_any(pextTpCallbackSetEventOnCompletion);
+	if (func == pSetEventWhenCallbackReturns && func != pextSetEventWhenCallbackReturns)
+		return wine_thunk_get_for_any(pextSetEventWhenCallbackReturns);
 	if (func == pSetFileApisToANSI)
 		return wine32a_kernelbase_SetFileApisToANSI;
 	if (func == pSetFileApisToOEM)
@@ -22960,8 +22972,8 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine_thunk_get_for_any(pextSetHandleInformation);
 	if (func == pSetKernelObjectSecurity)
 		return wine32a_kernelbase_SetKernelObjectSecurity;
-	if (func == pRtlSetLastWin32Error && func != pextRtlSetLastWin32Error)
-		return wine_thunk_get_for_any(pextRtlSetLastWin32Error);
+	if (func == pSetLastError && func != pextSetLastError)
+		return wine_thunk_get_for_any(pextSetLastError);
 	if (func == pSetLocalTime && func != pextSetLocalTime)
 		return wine_thunk_get_for_any(pextSetLocalTime);
 	if (func == pSetLocaleInfoW && func != pextSetLocaleInfoW)
@@ -23026,14 +23038,14 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine32a_kernelbase_SetThreadToken;
 	if (func == pSetThreadUILanguage && func != pextSetThreadUILanguage)
 		return wine_thunk_get_for_any(pextSetThreadUILanguage);
-	if (func == pTpSetPoolMaxThreads && func != pextTpSetPoolMaxThreads)
-		return wine_thunk_get_for_any(pextTpSetPoolMaxThreads);
-	if (func == pTpSetPoolMinThreads && func != pextTpSetPoolMinThreads)
-		return wine_thunk_get_for_any(pextTpSetPoolMinThreads);
-	if (func == pTpSetTimer && func != pextTpSetTimer)
-		return wine_thunk_get_for_any(pextTpSetTimer);
-	if (func == pTpSetWait && func != pextTpSetWait)
-		return wine_thunk_get_for_any(pextTpSetWait);
+	if (func == pSetThreadpoolThreadMaximum && func != pextSetThreadpoolThreadMaximum)
+		return wine_thunk_get_for_any(pextSetThreadpoolThreadMaximum);
+	if (func == pSetThreadpoolThreadMinimum && func != pextSetThreadpoolThreadMinimum)
+		return wine_thunk_get_for_any(pextSetThreadpoolThreadMinimum);
+	if (func == pSetThreadpoolTimer && func != pextSetThreadpoolTimer)
+		return wine_thunk_get_for_any(pextSetThreadpoolTimer);
+	if (func == pSetThreadpoolWait && func != pextSetThreadpoolWait)
+		return wine_thunk_get_for_any(pextSetThreadpoolWait);
 	if (func == pSetTimeZoneInformation && func != pextSetTimeZoneInformation)
 		return wine_thunk_get_for_any(pextSetTimeZoneInformation);
 	if (func == pSetTokenInformation)
@@ -23176,8 +23188,8 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine32a_kernelbase_StrTrimA;
 	if (func == pStrTrimW)
 		return wine32a_kernelbase_StrTrimW;
-	if (func == pTpPostWork && func != pextTpPostWork)
-		return wine_thunk_get_for_any(pextTpPostWork);
+	if (func == pSubmitThreadpoolWork && func != pextSubmitThreadpoolWork)
+		return wine_thunk_get_for_any(pextSubmitThreadpoolWork);
 	if (func == pSuspendThread)
 		return wine32a_kernelbase_SuspendThread;
 	if (func == pSwitchToFiber)
@@ -23200,22 +23212,22 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine32a_kernelbase_TlsGetValue;
 	if (func == pTlsSetValue)
 		return wine32a_kernelbase_TlsSetValue;
-	if (func == pEtwLogTraceEvent && func != pextEtwLogTraceEvent)
-		return wine_thunk_get_for_any(pextEtwLogTraceEvent);
-	if (func == pEtwTraceMessage && func != pextEtwTraceMessage)
-		return wine_thunk_get_for_any(pextEtwTraceMessage);
-	if (func == pEtwTraceMessageVa && func != pextEtwTraceMessageVa)
-		return wine_thunk_get_for_any(pextEtwTraceMessageVa);
+	if (func == pTraceEvent && func != pextTraceEvent)
+		return wine_thunk_get_for_any(pextTraceEvent);
+	if (func == pTraceMessage && func != pextTraceMessage)
+		return wine_thunk_get_for_any(pextTraceMessage);
+	if (func == pTraceMessageVa && func != pextTraceMessageVa)
+		return wine_thunk_get_for_any(pextTraceMessageVa);
 	if (func == pTransactNamedPipe)
 		return wine32a_kernelbase_TransactNamedPipe;
 	if (func == pTransmitCommChar && func != pextTransmitCommChar)
 		return wine_thunk_get_for_any(pextTransmitCommChar);
-	if (func == pRtlTryAcquireSRWLockExclusive && func != pextRtlTryAcquireSRWLockExclusive)
-		return wine_thunk_get_for_any(pextRtlTryAcquireSRWLockExclusive);
-	if (func == pRtlTryAcquireSRWLockShared && func != pextRtlTryAcquireSRWLockShared)
-		return wine_thunk_get_for_any(pextRtlTryAcquireSRWLockShared);
-	if (func == pRtlTryEnterCriticalSection && func != pextRtlTryEnterCriticalSection)
-		return wine_thunk_get_for_any(pextRtlTryEnterCriticalSection);
+	if (func == pTryAcquireSRWLockExclusive && func != pextTryAcquireSRWLockExclusive)
+		return wine_thunk_get_for_any(pextTryAcquireSRWLockExclusive);
+	if (func == pTryAcquireSRWLockShared && func != pextTryAcquireSRWLockShared)
+		return wine_thunk_get_for_any(pextTryAcquireSRWLockShared);
+	if (func == pTryEnterCriticalSection && func != pextTryEnterCriticalSection)
+		return wine_thunk_get_for_any(pextTryEnterCriticalSection);
 	if (func == pTrySubmitThreadpoolCallback)
 		return wine32a_kernelbase_TrySubmitThreadpoolCallback;
 	if (func == pTzSpecificLocalTimeToSystemTime && func != pextTzSpecificLocalTimeToSystemTime)
@@ -23228,8 +23240,8 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine32a_kernelbase_UnlockFileEx;
 	if (func == pUnmapViewOfFile && func != pextUnmapViewOfFile)
 		return wine_thunk_get_for_any(pextUnmapViewOfFile);
-	if (func == pEtwUnregisterTraceGuids && func != pextEtwUnregisterTraceGuids)
-		return wine_thunk_get_for_any(pextEtwUnregisterTraceGuids);
+	if (func == pUnregisterTraceGuids && func != pextUnregisterTraceGuids)
+		return wine_thunk_get_for_any(pextUnregisterTraceGuids);
 	if (func == pUnregisterWaitEx)
 		return wine32a_kernelbase_UnregisterWaitEx;
 	if (func == pUpdateProcThreadAttribute)
@@ -23336,24 +23348,24 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine32a_kernelbase_WaitForSingleObject;
 	if (func == pWaitForSingleObjectEx)
 		return wine32a_kernelbase_WaitForSingleObjectEx;
-	if (func == pTpWaitForTimer && func != pextTpWaitForTimer)
-		return wine_thunk_get_for_any(pextTpWaitForTimer);
-	if (func == pTpWaitForWait && func != pextTpWaitForWait)
-		return wine_thunk_get_for_any(pextTpWaitForWait);
-	if (func == pTpWaitForWork && func != pextTpWaitForWork)
-		return wine_thunk_get_for_any(pextTpWaitForWork);
+	if (func == pWaitForThreadpoolTimerCallbacks && func != pextWaitForThreadpoolTimerCallbacks)
+		return wine_thunk_get_for_any(pextWaitForThreadpoolTimerCallbacks);
+	if (func == pWaitForThreadpoolWaitCallbacks && func != pextWaitForThreadpoolWaitCallbacks)
+		return wine_thunk_get_for_any(pextWaitForThreadpoolWaitCallbacks);
+	if (func == pWaitForThreadpoolWorkCallbacks && func != pextWaitForThreadpoolWorkCallbacks)
+		return wine_thunk_get_for_any(pextWaitForThreadpoolWorkCallbacks);
 	if (func == pWaitNamedPipeW)
 		return wine32a_kernelbase_WaitNamedPipeW;
 	if (func == pWaitOnAddress)
 		return wine32a_kernelbase_WaitOnAddress;
-	if (func == pRtlWakeAllConditionVariable && func != pextRtlWakeAllConditionVariable)
-		return wine_thunk_get_for_any(pextRtlWakeAllConditionVariable);
-	if (func == pRtlWakeAddressAll && func != pextRtlWakeAddressAll)
-		return wine_thunk_get_for_any(pextRtlWakeAddressAll);
-	if (func == pRtlWakeAddressSingle && func != pextRtlWakeAddressSingle)
-		return wine_thunk_get_for_any(pextRtlWakeAddressSingle);
-	if (func == pRtlWakeConditionVariable && func != pextRtlWakeConditionVariable)
-		return wine_thunk_get_for_any(pextRtlWakeConditionVariable);
+	if (func == pWakeAllConditionVariable && func != pextWakeAllConditionVariable)
+		return wine_thunk_get_for_any(pextWakeAllConditionVariable);
+	if (func == pWakeByAddressAll && func != pextWakeByAddressAll)
+		return wine_thunk_get_for_any(pextWakeByAddressAll);
+	if (func == pWakeByAddressSingle && func != pextWakeByAddressSingle)
+		return wine_thunk_get_for_any(pextWakeByAddressSingle);
+	if (func == pWakeConditionVariable && func != pextWakeConditionVariable)
+		return wine_thunk_get_for_any(pextWakeConditionVariable);
 	if (func == pWerRegisterFile && func != pextWerRegisterFile)
 		return wine_thunk_get_for_any(pextWerRegisterFile);
 	if (func == pWerRegisterMemoryBlock && func != pextWerRegisterMemoryBlock)
@@ -23414,14 +23426,14 @@ void* wine_thunk_get_for_kernelbase(void *func)
 		return wine32a_kernelbase_lstrcmpiA;
 	if (func == plstrcmpiW)
 		return wine32a_kernelbase_lstrcmpiW;
-	if (func == pKERNELBASE_lstrcpynA)
-		return wine32a_kernelbase_KERNELBASE_lstrcpynA;
-	if (func == pKERNELBASE_lstrcpynW)
-		return wine32a_kernelbase_KERNELBASE_lstrcpynW;
-	if (func == pKERNELBASE_lstrlenA)
-		return wine32a_kernelbase_KERNELBASE_lstrlenA;
-	if (func == pKERNELBASE_lstrlenW)
-		return wine32a_kernelbase_KERNELBASE_lstrlenW;
+	if (func == plstrcpynA)
+		return wine32a_kernelbase_lstrcpynA;
+	if (func == plstrcpynW)
+		return wine32a_kernelbase_lstrcpynW;
+	if (func == plstrlenA)
+		return wine32a_kernelbase_lstrlenA;
+	if (func == plstrlenW)
+		return wine32a_kernelbase_lstrlenW;
 
 	return NULL;
 }
