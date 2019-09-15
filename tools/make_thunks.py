@@ -85,7 +85,7 @@ class StructDef(GenericTypeDef):
 
 	def make_declaration(self):
 		if self.structType == StructDefEnum.Struct or self.structType == StructDefEnum.Union or self.structType == StructDefEnum.Enumeration:
-			return f'{self.name};'
+			return f'{self.name}; /* {self.file}:{self.line} */'
 		return None
 
 	def make_dependencies(self, dependencies):
