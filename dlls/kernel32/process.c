@@ -1253,7 +1253,7 @@ __ASM_GLOBAL_FUNC( start_process_wrapper,
                    "pushl %eax\n\t"  /* entry */
                    "call " __ASM_NAME("start_process") )
 #else
-extern DWORD call_process_entry2( PEB *peb, LPTHREAD_START_ROUTINE entry );
+extern DWORD WINAPI call_process_entry2( PEB *peb, LPTHREAD_START_ROUTINE entry );
 __ASM_GLOBAL_FUNC( call_process_entry2,
                     ASM_SWITCH_x64_to_x86()
                     ".byte 0x6A, 0x2B\n"        /* push   0x2B */
