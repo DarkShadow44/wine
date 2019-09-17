@@ -56,7 +56,7 @@ static HMODULE load_desktop_driver( HWND hwnd )
     HMODULE ret = 0;
     HKEY hkey;
     DWORD size;
-    WCHAR path[MAX_PATH];
+    WCHAR path[] = {'C',':','\\','w','i','n','d','o','w','s','\\','s','y','s','t','e','m','3','2','\\','w','i','n','e','x','1','1','.','d','r','v',0};
     WCHAR key[ARRAY_SIZE(key_pathW) + ARRAY_SIZE(displayW) + 40];
     UINT guid_atom = HandleToULong( GetPropW( hwnd, display_device_guid_propW ));
 
@@ -69,12 +69,12 @@ static HMODULE load_desktop_driver( HWND hwnd )
         SendMessageW( hwnd, WM_NULL, 0, 0 );  /* wait for the desktop process to be ready */
         guid_atom = HandleToULong( GetPropW( hwnd, display_device_guid_propW ));
     }
-    memcpy( key, key_pathW, sizeof(key_pathW) );
+    /*memcpy( key, key_pathW, sizeof(key_pathW) );
     if (!GlobalGetAtomNameW( guid_atom, key + strlenW(key), 40 )) return 0;
     strcatW( key, displayW );
     if (RegOpenKeyW( HKEY_LOCAL_MACHINE, key, &hkey )) return 0;
-    size = sizeof(path);
-    if (!RegQueryValueExW( hkey, driverW, NULL, NULL, (BYTE *)path, &size ))
+    size = sizeof(path);*/
+    if (1)
     {
         if (!(ret = LoadLibraryW( path ))) ERR( "failed to load %s\n", debugstr_w(path) );
         TRACE( "%s %p\n", debugstr_w(path), ret );
