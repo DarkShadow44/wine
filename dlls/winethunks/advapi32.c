@@ -9385,10 +9385,10 @@ static BOOL initialized = FALSE;
 
 void wine_thunk_initialize_advapi32(void)
 {
-	HMODULE library = LoadLibraryA("advapi32.dll");
-	HMODULE library_ntdll = LoadLibraryA("ntdll.dll");
-	HMODULE library_kernelbase = LoadLibraryA("kernelbase.dll");
-	HMODULE library_kernel32 = LoadLibraryA("kernel32.dll");
+	HMODULE library = GetModuleHandleA("advapi32.dll");
+	HMODULE library_ntdll = GetModuleHandleA("ntdll.dll");
+	HMODULE library_kernelbase = GetModuleHandleA("kernelbase.dll");
+	HMODULE library_kernel32 = GetModuleHandleA("kernel32.dll");
 	pA_SHAFinal = (void *)GetProcAddress(library, "A_SHAFinal");
 	pextA_SHAFinal = (void *)GetProcAddress(library_ntdll, "A_SHAFinal");
 	pA_SHAInit = (void *)GetProcAddress(library, "A_SHAInit");

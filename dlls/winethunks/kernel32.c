@@ -232,194 +232,6 @@ enum _WER_REGISTER_FILE_TYPE /* ../include/werapi.h:83 */
 
 typedef enum _WER_REGISTER_FILE_TYPE WER_REGISTER_FILE_TYPE; /* ../include/werapi.h:88 */
 
-static void* pVxDCall0;
-static void* pextVxDCall0;
-static void* pVxDCall1;
-static void* pextVxDCall1;
-static void* pVxDCall2;
-static void* pextVxDCall2;
-static void* pVxDCall3;
-static void* pextVxDCall3;
-static void* pVxDCall4;
-static void* pextVxDCall4;
-static void* pVxDCall5;
-static void* pextVxDCall5;
-static void* pVxDCall6;
-static void* pextVxDCall6;
-static void* pVxDCall7;
-static void* pextVxDCall7;
-static void* pVxDCall8;
-static void* pextVxDCall8;
-static void* pk32CharToOemA;
-static void* pextk32CharToOemA;
-static void* pk32CharToOemBuffA;
-static void* pextk32CharToOemBuffA;
-static void* pk32OemToCharA;
-static void* pextk32OemToCharA;
-static void* pk32OemToCharBuffA;
-static void* pextk32OemToCharBuffA;
-static void* pk32LoadStringA;
-static void* pextk32LoadStringA;
-static void* pk32wsprintfA;
-static void* pextk32wsprintfA;
-static void* pk32wvsprintfA;
-static void* pextk32wvsprintfA;
-static void* pCommonUnimpStub;
-static void* pextCommonUnimpStub;
-static void* pGetProcessDword;
-static void* pextGetProcessDword;
-static void* pDosFileHandleToWin32Handle;
-static void* pextDosFileHandleToWin32Handle;
-static void* pWin32HandleToDosFileHandle;
-static void* pextWin32HandleToDosFileHandle;
-static void* pDisposeLZ32Handle;
-static void* pextDisposeLZ32Handle;
-static void* pGlobalAlloc16;
-static void* pextGlobalAlloc16;
-static void* pGlobalLock16;
-static void* pextGlobalLock16;
-static void* pGlobalUnlock16;
-static void* pextGlobalUnlock16;
-static void* pGlobalFix16;
-static void* pextGlobalFix16;
-static void* pGlobalUnfix16;
-static void* pextGlobalUnfix16;
-static void* pGlobalWire16;
-static void* pextGlobalWire16;
-static void* pGlobalUnWire16;
-static void* pextGlobalUnWire16;
-static void* pGlobalFree16;
-static void* pextGlobalFree16;
-static void* pGlobalSize16;
-static void* pextGlobalSize16;
-static void* pHouseCleanLogicallyDeadHandles;
-static void* pextHouseCleanLogicallyDeadHandles;
-static void* pGetWin16DOSEnv;
-static void* pextGetWin16DOSEnv;
-static void* pLoadLibrary16;
-static void* pextLoadLibrary16;
-static void* pFreeLibrary16;
-static void* pextFreeLibrary16;
-static void* pGetProcAddress16;
-static void* pextGetProcAddress16;
-static void* pAllocMappedBuffer;
-static void* pextAllocMappedBuffer;
-static void* pFreeMappedBuffer;
-static void* pextFreeMappedBuffer;
-static void* pOT_32ThkLSF;
-static void* pextOT_32ThkLSF;
-static void* pThunkInitLSF;
-static void* pextThunkInitLSF;
-static void* pLogApiThkLSF;
-static void* pextLogApiThkLSF;
-static void* pThunkInitLS;
-static void* pextThunkInitLS;
-static void* pLogApiThkSL;
-static void* pextLogApiThkSL;
-static void* pCommon32ThkLS;
-static void* pextCommon32ThkLS;
-static void* pThunkInitSL;
-static void* pextThunkInitSL;
-static void* pLogCBThkSL;
-static void* pextLogCBThkSL;
-static void* pReleaseThunkLock;
-static void* pextReleaseThunkLock;
-static void* pRestoreThunkLock;
-static void* pextRestoreThunkLock;
-static void* pW32S_BackTo32;
-static void* pextW32S_BackTo32;
-static void* pGetThunkBuff;
-static void* pextGetThunkBuff;
-static void* pGetThunkStuff;
-static void* pextGetThunkStuff;
-static void* pK32WOWCallback16;
-static void* pextK32WOWCallback16;
-static void* pK32WOWCallback16Ex;
-static void* pextK32WOWCallback16Ex;
-static void* pK32WOWGetVDMPointer;
-static void* pextK32WOWGetVDMPointer;
-static void* pK32WOWHandle32;
-static void* pextK32WOWHandle32;
-static void* pK32WOWHandle16;
-static void* pextK32WOWHandle16;
-static void* pK32WOWGlobalAlloc16;
-static void* pextK32WOWGlobalAlloc16;
-static void* pK32WOWGlobalLock16;
-static void* pextK32WOWGlobalLock16;
-static void* pK32WOWGlobalUnlock16;
-static void* pextK32WOWGlobalUnlock16;
-static void* pK32WOWGlobalFree16;
-static void* pextK32WOWGlobalFree16;
-static void* pK32WOWGlobalAllocLock16;
-static void* pextK32WOWGlobalAllocLock16;
-static void* pK32WOWGlobalUnlockFree16;
-static void* pextK32WOWGlobalUnlockFree16;
-static void* pK32WOWGlobalLockSize16;
-static void* pextK32WOWGlobalLockSize16;
-static void* pK32WOWYield16;
-static void* pextK32WOWYield16;
-static void* pK32WOWDirectedYield16;
-static void* pextK32WOWDirectedYield16;
-static void* pK32WOWGetVDMPointerFix;
-static void* pextK32WOWGetVDMPointerFix;
-static void* pK32WOWGetVDMPointerUnfix;
-static void* pextK32WOWGetVDMPointerUnfix;
-static void* pK32WOWGetDescriptor;
-static void* pextK32WOWGetDescriptor;
-static void* pK32RtlLargeIntegerAdd;
-static void* pextK32RtlLargeIntegerAdd;
-static void* pK32RtlEnlargedIntegerMultiply;
-static void* pextK32RtlEnlargedIntegerMultiply;
-static void* pK32RtlEnlargedUnsignedMultiply;
-static void* pextK32RtlEnlargedUnsignedMultiply;
-static void* pK32RtlEnlargedUnsignedDivide;
-static void* pextK32RtlEnlargedUnsignedDivide;
-static void* pK32RtlExtendedLargeIntegerDivide;
-static void* pextK32RtlExtendedLargeIntegerDivide;
-static void* pK32RtlExtendedMagicDivide;
-static void* pextK32RtlExtendedMagicDivide;
-static void* pK32RtlExtendedIntegerMultiply;
-static void* pextK32RtlExtendedIntegerMultiply;
-static void* pK32RtlLargeIntegerShiftLeft;
-static void* pextK32RtlLargeIntegerShiftLeft;
-static void* pK32RtlLargeIntegerShiftRight;
-static void* pextK32RtlLargeIntegerShiftRight;
-static void* pK32RtlLargeIntegerArithmeticShift;
-static void* pextK32RtlLargeIntegerArithmeticShift;
-static void* pK32RtlLargeIntegerNegate;
-static void* pextK32RtlLargeIntegerNegate;
-static void* pK32RtlLargeIntegerSubtract;
-static void* pextK32RtlLargeIntegerSubtract;
-static void* pK32RtlConvertLongToLargeInteger;
-static void* pextK32RtlConvertLongToLargeInteger;
-static void* pK32RtlConvertUlongToLargeInteger;
-static void* pextK32RtlConvertUlongToLargeInteger;
-static void* pexe16;
-static void* pextexe16;
-static void* pSSOnBigStack;
-static void* pextSSOnBigStack;
-static void* pSSCall;
-static void* pextSSCall;
-static void* pFT_PrologPrime;
-static void* pextFT_PrologPrime;
-static void* pQT_ThunkPrime;
-static void* pextQT_ThunkPrime;
-static void* pPK16FNF;
-static void* pextPK16FNF;
-static void* pGetPK16SysVar;
-static void* pextGetPK16SysVar;
-static void* pGetpWin16Lock;
-static void* pextGetpWin16Lock;
-static void* p_CheckNotSysLevel;
-static void* pext_CheckNotSysLevel;
-static void* p_ConfirmSysLevel;
-static void* pext_ConfirmSysLevel;
-static void* p_ConfirmWin16Lock;
-static void* pext_ConfirmWin16Lock;
-static void* p_EnterSysLevel;
-static void* pext_EnterSysLevel;
-static void* p_LeaveSysLevel;
-static void* pext_LeaveSysLevel;
 static void* pAcquireSRWLockExclusive;
 static void* pextAcquireSRWLockExclusive;
 static void* pAcquireSRWLockShared;
@@ -438,15 +250,14 @@ static void* pextAddVectoredContinueHandler;
 static void* pAddVectoredExceptionHandler;
 static void* pextAddVectoredExceptionHandler;
 static WINAPI BOOL (*pAllocConsole)(void);
-static void* pAllocSLCallback;
-static void* pextAllocSLCallback;
 static WINAPI BOOL (*pAllocateUserPhysicalPages)(HANDLE  process, ULONG_PTR*  pages, ULONG_PTR*  userarray);
 static WINAPI void (*pApplicationRecoveryFinished)(BOOL  success);
 static WINAPI HRESULT (*pApplicationRecoveryInProgress)(PBOOL  canceled);
 static void* pAreFileApisANSI;
 static void* pextAreFileApisANSI;
 static WINAPI BOOL (*pAssignProcessToJobObject)(HANDLE  job, HANDLE  process);
-static WINAPI BOOL (*pAttachConsole)(DWORD  dwProcessId);
+static void* pAttachConsole;
+static void* pextAttachConsole;
 static WINAPI BOOL (*pBackupRead)(HANDLE  file, LPBYTE  buffer, DWORD  to_read, LPDWORD  read, BOOL  abort, BOOL  security, LPVOID*  context);
 static WINAPI BOOL (*pBackupSeek)(HANDLE  file, DWORD  seek_low, DWORD  seek_high, LPDWORD  seeked_low, LPDWORD  seeked_high, LPVOID*  context);
 static WINAPI BOOL (*pBackupWrite)(HANDLE  file, LPBYTE  buffer, DWORD  to_write, LPDWORD  written, BOOL  abort, BOOL  security, LPVOID*  context);
@@ -479,9 +290,12 @@ static void* pChangeTimerQueueTimer;
 static void* pextChangeTimerQueueTimer;
 static WINAPI BOOL (*pCheckNameLegalDOS8Dot3A)(char*  name, char*  oemname, DWORD  oemname_len, BOOL*  contains_spaces, BOOL*  is_legal);
 static WINAPI BOOL (*pCheckNameLegalDOS8Dot3W)(WCHAR*  name, char*  oemname, DWORD  oemname_len, BOOL*  contains_spaces_ret, BOOL*  is_legal);
-static WINAPI BOOL (*pCheckRemoteDebuggerPresent)(HANDLE  process, PBOOL  DebuggerPresent);
-static WINAPI BOOL (*pClearCommBreak)(HANDLE  handle);
-static WINAPI BOOL (*pClearCommError)(HANDLE  handle, LPDWORD  errors, LPCOMSTAT  lpStat);
+static void* pCheckRemoteDebuggerPresent;
+static void* pextCheckRemoteDebuggerPresent;
+static void* pClearCommBreak;
+static void* pextClearCommBreak;
+static void* pClearCommError;
+static void* pextClearCommError;
 static WINAPI BOOL (*pCloseConsoleHandle)(HANDLE  handle);
 static WINAPI BOOL (*pCloseHandle)(HANDLE  handle);
 static WINAPI BOOL (*pCloseProfileUserMapping)(void);
@@ -507,7 +321,8 @@ static WINAPI INT (*pCompareStringEx)(LPCWSTR  locale, DWORD  flags, LPCWSTR  st
 static WINAPI INT (*pCompareStringOrdinal)(WCHAR*  str1, INT  len1, WCHAR*  str2, INT  len2, BOOL  ignore_case);
 static void* pConnectNamedPipe;
 static void* pextConnectNamedPipe;
-static WINAPI BOOL (*pContinueDebugEvent)(DWORD  pid, DWORD  tid, DWORD  status);
+static void* pContinueDebugEvent;
+static void* pextContinueDebugEvent;
 static WINAPI LCID (*pConvertDefaultLocale)(LCID  lcid);
 static void* pConvertFiberToThread;
 static void* pextConvertFiberToThread;
@@ -523,7 +338,8 @@ static WINAPI BOOL (*pCopyFileW)(LPCWSTR  source, LPCWSTR  dest, BOOL  fail_if_e
 static WINAPI HANDLE (*pCreateActCtxA)(PCACTCTXA  pActCtx);
 static void* pCreateActCtxW;
 static void* pextCreateActCtxW;
-static WINAPI HANDLE (*pCreateConsoleScreenBuffer)(DWORD  dwDesiredAccess, DWORD  dwShareMode, LPSECURITY_ATTRIBUTES  sa, DWORD  dwFlags, LPVOID  lpScreenBufferData);
+static void* pCreateConsoleScreenBuffer;
+static void* pextCreateConsoleScreenBuffer;
 static void* pCreateDirectoryA;
 static void* pextCreateDirectoryA;
 static WINAPI BOOL (*pCreateDirectoryExA)(LPCSTR  template, LPCSTR  path, LPSECURITY_ATTRIBUTES  sa);
@@ -562,7 +378,8 @@ static WINAPI HANDLE (*pCreateJobObjectA)(LPSECURITY_ATTRIBUTES  attr, LPCSTR  n
 static WINAPI HANDLE (*pCreateJobObjectW)(LPSECURITY_ATTRIBUTES  sa, LPCWSTR  name);
 static WINAPI HANDLE (*pCreateMailslotA)(LPCSTR  lpName, DWORD  nMaxMessageSize, DWORD  lReadTimeout, LPSECURITY_ATTRIBUTES  sa);
 static WINAPI HANDLE (*pCreateMailslotW)(LPCWSTR  lpName, DWORD  nMaxMessageSize, DWORD  lReadTimeout, LPSECURITY_ATTRIBUTES  sa);
-static WINAPI HANDLE (*pCreateMemoryResourceNotification)(MEMORY_RESOURCE_NOTIFICATION_TYPE  type);
+static void* pCreateMemoryResourceNotification;
+static void* pextCreateMemoryResourceNotification;
 static void* pCreateMutexA;
 static void* pextCreateMutexA;
 static void* pCreateMutexExA;
@@ -624,8 +441,10 @@ static void* pCreateWaitableTimerW;
 static void* pextCreateWaitableTimerW;
 static void* pDeactivateActCtx;
 static void* pextDeactivateActCtx;
-static WINAPI BOOL (*pDebugActiveProcess)(DWORD  pid);
-static WINAPI BOOL (*pDebugActiveProcessStop)(DWORD  pid);
+static void* pDebugActiveProcess;
+static void* pextDebugActiveProcess;
+static void* pDebugActiveProcessStop;
+static void* pextDebugActiveProcessStop;
 static WINAPI BOOL (*pDebugBreakProcess)(HANDLE  process);
 static WINAPI BOOL (*pDebugSetProcessKillOnExit)(BOOL  kill);
 static void* pDecodePointer;
@@ -723,58 +542,32 @@ static WINAPI BOOL (*pEnumUILanguagesA)(UILANGUAGE_ENUMPROCA  pUILangEnumProc, D
 static WINAPI BOOL (*pEnumUILanguagesW)(UILANGUAGE_ENUMPROCW  pUILangEnumProc, DWORD  dwFlags, LONG_PTR  lParam);
 static WINAPI BOOL (*pEnterUmsSchedulingMode)(UMS_SCHEDULER_STARTUP_INFO*  info);
 static WINAPI DWORD (*pEraseTape)(HANDLE  device, DWORD  type, BOOL  immediate);
-static WINAPI BOOL (*pEscapeCommFunction)(HANDLE  handle, DWORD  func);
+static void* pEscapeCommFunction;
+static void* pextEscapeCommFunction;
 static WINAPI BOOL (*pExecuteUmsThread)(PUMS_CONTEXT  ctx);
 static WINAPI void (*pExitProcess)(DWORD  status);
 static void* pExitThread;
 static void* pextExitThread;
-static WINAPI DWORD (*pExpandEnvironmentStringsA)(LPCSTR  src, LPSTR  dst, DWORD  count);
-static WINAPI DWORD (*pExpandEnvironmentStringsW)(LPCWSTR  src, LPWSTR  dst, DWORD  len);
+static void* pExpandEnvironmentStringsA;
+static void* pextExpandEnvironmentStringsA;
+static void* pExpandEnvironmentStringsW;
+static void* pextExpandEnvironmentStringsW;
 static WINAPI void (*pExpungeConsoleCommandHistoryA)(LPCSTR  unknown);
 static WINAPI void (*pExpungeConsoleCommandHistoryW)(LPCWSTR  unknown);
-static void* pFT_Exit0;
-static void* pextFT_Exit0;
-static void* pFT_Exit12;
-static void* pextFT_Exit12;
-static void* pFT_Exit16;
-static void* pextFT_Exit16;
-static void* pFT_Exit20;
-static void* pextFT_Exit20;
-static void* pFT_Exit24;
-static void* pextFT_Exit24;
-static void* pFT_Exit28;
-static void* pextFT_Exit28;
-static void* pFT_Exit32;
-static void* pextFT_Exit32;
-static void* pFT_Exit36;
-static void* pextFT_Exit36;
-static void* pFT_Exit40;
-static void* pextFT_Exit40;
-static void* pFT_Exit44;
-static void* pextFT_Exit44;
-static void* pFT_Exit48;
-static void* pextFT_Exit48;
-static void* pFT_Exit4;
-static void* pextFT_Exit4;
-static void* pFT_Exit52;
-static void* pextFT_Exit52;
-static void* pFT_Exit56;
-static void* pextFT_Exit56;
-static void* pFT_Exit8;
-static void* pextFT_Exit8;
-static void* pFT_Prolog;
-static void* pextFT_Prolog;
-static void* pFT_Thunk;
-static void* pextFT_Thunk;
-static WINAPI void (*pFatalAppExitA)(UINT  action, LPCSTR  str);
-static WINAPI void (*pFatalAppExitW)(UINT  action, LPCWSTR  str);
-static WINAPI void (*pFatalExit)(int  ExitCode);
+static void* pFatalAppExitA;
+static void* pextFatalAppExitA;
+static void* pFatalAppExitW;
+static void* pextFatalAppExitW;
+static WINAPI void (*pFatalExit)(int  code);
 static WINAPI BOOL (*pFileTimeToDosDateTime)(FILETIME*  ft, LPWORD  fatdate, LPWORD  fattime);
 static WINAPI BOOL (*pFileTimeToLocalFileTime)(FILETIME*  utcft, LPFILETIME  localft);
 static WINAPI BOOL (*pFileTimeToSystemTime)(FILETIME*  ft, LPSYSTEMTIME  syst);
-static WINAPI BOOL (*pFillConsoleOutputAttribute)(HANDLE  hConsoleOutput, WORD  attr, DWORD  length, COORD  coord, LPDWORD  lpNumAttrsWritten);
-static WINAPI BOOL (*pFillConsoleOutputCharacterA)(HANDLE  hConsoleOutput, CHAR  ch, DWORD  length, COORD  coord, LPDWORD  lpNumCharsWritten);
-static WINAPI BOOL (*pFillConsoleOutputCharacterW)(HANDLE  hConsoleOutput, WCHAR  ch, DWORD  length, COORD  coord, LPDWORD  lpNumCharsWritten);
+static void* pFillConsoleOutputAttribute;
+static void* pextFillConsoleOutputAttribute;
+static void* pFillConsoleOutputCharacterA;
+static void* pextFillConsoleOutputCharacterA;
+static void* pFillConsoleOutputCharacterW;
+static void* pextFillConsoleOutputCharacterW;
 static void* pFindActCtxSectionGuid;
 static void* pextFindActCtxSectionGuid;
 static WINAPI BOOL (*pFindActCtxSectionStringA)(DWORD  dwFlags, GUID*  lpExtGuid, ULONG  ulId, LPCSTR  lpSearchStr, PACTCTX_SECTION_KEYED_DATA  pInfo);
@@ -783,9 +576,12 @@ static void* pextFindActCtxSectionStringW;
 static WINAPI ATOM (*pFindAtomA)(LPCSTR  str);
 static WINAPI ATOM (*pFindAtomW)(LPCWSTR  str);
 static WINAPI BOOL (*pFindClose)(HANDLE  handle);
-static WINAPI BOOL (*pFindCloseChangeNotification)(HANDLE  handle);
-static WINAPI HANDLE (*pFindFirstChangeNotificationA)(LPCSTR  lpPathName, BOOL  bWatchSubtree, DWORD  dwNotifyFilter);
-static WINAPI HANDLE (*pFindFirstChangeNotificationW)(LPCWSTR  lpPathName, BOOL  bWatchSubtree, DWORD  dwNotifyFilter);
+static void* pFindCloseChangeNotification;
+static void* pextFindCloseChangeNotification;
+static void* pFindFirstChangeNotificationA;
+static void* pextFindFirstChangeNotificationA;
+static void* pFindFirstChangeNotificationW;
+static void* pextFindFirstChangeNotificationW;
 static WINAPI HANDLE (*pFindFirstFileA)(LPCSTR  lpFileName, WIN32_FIND_DATAA*  lpFindData);
 static WINAPI HANDLE (*pFindFirstFileExA)(LPCSTR  lpFileName, FINDEX_INFO_LEVELS  fInfoLevelId, LPVOID  lpFindFileData, FINDEX_SEARCH_OPS  fSearchOp, LPVOID  lpSearchFilter, DWORD  dwAdditionalFlags);
 static WINAPI HANDLE (*pFindFirstFileExW)(LPCWSTR  filename, FINDEX_INFO_LEVELS  level, LPVOID  data, FINDEX_SEARCH_OPS  search_op, LPVOID  filter, DWORD  flags);
@@ -795,7 +591,8 @@ static WINAPI HANDLE (*pFindFirstVolumeA)(LPSTR  volume, DWORD  len);
 static WINAPI HANDLE (*pFindFirstVolumeMountPointA)(LPCSTR  root, LPSTR  mount_point, DWORD  len);
 static WINAPI HANDLE (*pFindFirstVolumeMountPointW)(LPCWSTR  root, LPWSTR  mount_point, DWORD  len);
 static WINAPI HANDLE (*pFindFirstVolumeW)(LPWSTR  volume, DWORD  len);
-static WINAPI BOOL (*pFindNextChangeNotification)(HANDLE  handle);
+static void* pFindNextChangeNotification;
+static void* pextFindNextChangeNotification;
 static WINAPI BOOL (*pFindNextFileA)(HANDLE  handle, WIN32_FIND_DATAA*  data);
 static WINAPI BOOL (*pFindNextFileW)(HANDLE  handle, WIN32_FIND_DATAW*  data);
 static WINAPI BOOL (*pFindNextStreamW)(HANDLE  handle, void*  data);
@@ -825,26 +622,26 @@ static void* pextFlushFileBuffers;
 static void* pFlushInstructionCache;
 static void* pextFlushInstructionCache;
 static WINAPI void (*pFlushProcessWriteBuffers)(void);
-static WINAPI BOOL (*pFlushViewOfFile)(LPCVOID  base, SIZE_T  size);
+static void* pFlushViewOfFile;
+static void* pextFlushViewOfFile;
 static WINAPI INT (*pFoldStringA)(DWORD  dwFlags, LPCSTR  src, INT  srclen, LPSTR  dst, INT  dstlen);
 static WINAPI INT (*pFoldStringW)(DWORD  dwFlags, LPCWSTR  src, INT  srclen, LPWSTR  dst, INT  dstlen);
 static WINAPI DWORD (*pFormatMessageA)(DWORD  dwFlags, LPCVOID  lpSource, DWORD  dwMessageId, DWORD  dwLanguageId, LPSTR  lpBuffer, DWORD  nSize, __builtin_ms_va_list*  args);
 static WINAPI DWORD (*pFormatMessageW)(DWORD  dwFlags, LPCVOID  lpSource, DWORD  dwMessageId, DWORD  dwLanguageId, LPWSTR  lpBuffer, DWORD  nSize, __builtin_ms_va_list*  args);
 static WINAPI BOOL (*pFreeConsole)(void);
-static WINAPI BOOL (*pFreeEnvironmentStringsA)(LPSTR  ptr);
-static WINAPI BOOL (*pFreeEnvironmentStringsW)(LPWSTR  ptr);
+static void* pFreeEnvironmentStringsA;
+static void* pextFreeEnvironmentStringsA;
+static void* pFreeEnvironmentStringsW;
+static void* pextFreeEnvironmentStringsW;
 static WINAPI BOOL (*pFreeLibrary)(HINSTANCE  hLibModule);
 static WINAPI void (*pFreeLibraryAndExitThread)(HINSTANCE  hLibModule, DWORD  dwExitCode);
 static void* pFreeLibraryWhenCallbackReturns;
 static void* pextFreeLibraryWhenCallbackReturns;
 static void* pFreeResource;
 static void* pextFreeResource;
-static void* pFreeSLCallback;
-static void* pextFreeSLCallback;
 static WINAPI BOOL (*pFreeUserPhysicalPages)(HANDLE  process, ULONG_PTR*  pages, ULONG_PTR*  userarray);
-static WINAPI BOOL (*pGenerateConsoleCtrlEvent)(DWORD  dwCtrlEvent, DWORD  dwProcessGroupID);
-static void* pGet16DLLAddress;
-static void* pextGet16DLLAddress;
+static void* pGenerateConsoleCtrlEvent;
+static void* pextGenerateConsoleCtrlEvent;
 static WINAPI UINT (*pGetACP)(void);
 static WINAPI DWORD (*pGetActiveProcessorCount)(WORD  group);
 static WINAPI WORD (*pGetActiveProcessorGroupCount)(void);
@@ -859,14 +656,22 @@ static WINAPI BOOL (*pGetCPInfoExW)(UINT  codepage, DWORD  dwFlags, LPCPINFOEXW 
 static WINAPI INT (*pGetCalendarInfoA)(LCID  lcid, CALID  Calendar, CALTYPE  CalType, LPSTR  lpCalData, int  cchData, LPDWORD  lpValue);
 static WINAPI INT (*pGetCalendarInfoW)(LCID  Locale, CALID  Calendar, CALTYPE  CalType, LPWSTR  lpCalData, int  cchData, LPDWORD  lpValue);
 static WINAPI int (*pGetCalendarInfoEx)(LPCWSTR  locale, CALID  calendar, LPCWSTR  lpReserved, CALTYPE  caltype, LPWSTR  data, int  len, DWORD*  value);
-static WINAPI BOOL (*pGetCommConfig)(HANDLE  hFile, LPCOMMCONFIG  lpCommConfig, LPDWORD  lpdwSize);
-static WINAPI BOOL (*pGetCommMask)(HANDLE  handle, LPDWORD  evtmask);
-static WINAPI BOOL (*pGetCommModemStatus)(HANDLE  hFile, LPDWORD  lpModemStat);
-static WINAPI BOOL (*pGetCommProperties)(HANDLE  hFile, LPCOMMPROP  lpCommProp);
-static WINAPI BOOL (*pGetCommState)(HANDLE  handle, LPDCB  lpdcb);
-static WINAPI BOOL (*pGetCommTimeouts)(HANDLE  hComm, LPCOMMTIMEOUTS  lptimeouts);
-static WINAPI LPSTR (*pGetCommandLineA)(void);
-static WINAPI LPWSTR (*pGetCommandLineW)(void);
+static void* pGetCommConfig;
+static void* pextGetCommConfig;
+static void* pGetCommMask;
+static void* pextGetCommMask;
+static void* pGetCommModemStatus;
+static void* pextGetCommModemStatus;
+static void* pGetCommProperties;
+static void* pextGetCommProperties;
+static void* pGetCommState;
+static void* pextGetCommState;
+static void* pGetCommTimeouts;
+static void* pextGetCommTimeouts;
+static void* pGetCommandLineA;
+static void* pextGetCommandLineA;
+static void* pGetCommandLineW;
+static void* pextGetCommandLineW;
 static void* pGetCompressedFileSizeA;
 static void* pextGetCompressedFileSizeA;
 static void* pGetCompressedFileSizeW;
@@ -880,27 +685,36 @@ static WINAPI DWORD (*pGetConsoleAliasExesLengthW)(void);
 static WINAPI DWORD (*pGetConsoleAliasW)(LPWSTR  lpSource, LPWSTR  lpTargetBuffer, DWORD  TargetBufferLength, LPWSTR  lpExename);
 static WINAPI DWORD (*pGetConsoleAliasesLengthA)(LPSTR  unknown);
 static WINAPI DWORD (*pGetConsoleAliasesLengthW)(LPWSTR  unknown);
-static WINAPI UINT (*pGetConsoleCP)(void);
+static void* pGetConsoleCP;
+static void* pextGetConsoleCP;
 static WINAPI DWORD (*pGetConsoleCommandHistoryA)(DWORD  unknown1, DWORD  unknown2, DWORD  unknown3);
 static WINAPI DWORD (*pGetConsoleCommandHistoryLengthA)(LPCSTR  unknown);
 static WINAPI DWORD (*pGetConsoleCommandHistoryLengthW)(LPCWSTR  unknown);
 static WINAPI DWORD (*pGetConsoleCommandHistoryW)(DWORD  unknown1, DWORD  unknown2, DWORD  unknown3);
-static WINAPI BOOL (*pGetConsoleCursorInfo)(HANDLE  hCon, LPCONSOLE_CURSOR_INFO  cinfo);
+static void* pGetConsoleCursorInfo;
+static void* pextGetConsoleCursorInfo;
 static WINAPI BOOL (*pGetConsoleDisplayMode)(LPDWORD  lpModeFlags);
 static WINAPI BOOL (*pGetConsoleFontInfo)(HANDLE  hConsole, BOOL  maximize, DWORD  numfonts, CONSOLE_FONT_INFO*  info);
 static WINAPI COORD (*pGetConsoleFontSize)(HANDLE  hConsole, DWORD  index);
-static WINAPI BOOL (*pGetConsoleInputExeNameA)(DWORD  buflen, LPSTR  buffer);
-static WINAPI BOOL (*pGetConsoleInputExeNameW)(DWORD  buflen, LPWSTR  buffer);
+static void* pGetConsoleInputExeNameA;
+static void* pextGetConsoleInputExeNameA;
+static void* pGetConsoleInputExeNameW;
+static void* pextGetConsoleInputExeNameW;
 static WINAPI HANDLE (*pGetConsoleInputWaitHandle)(void);
 static WINAPI BOOL (*pGetConsoleKeyboardLayoutNameA)(LPSTR  layoutName);
 static WINAPI BOOL (*pGetConsoleKeyboardLayoutNameW)(LPWSTR  layoutName);
-static WINAPI BOOL (*pGetConsoleMode)(HANDLE  hcon, LPDWORD  mode);
-static WINAPI UINT (*pGetConsoleOutputCP)(void);
+static void* pGetConsoleMode;
+static void* pextGetConsoleMode;
+static void* pGetConsoleOutputCP;
+static void* pextGetConsoleOutputCP;
 static WINAPI DWORD (*pGetConsoleProcessList)(LPDWORD  processlist, DWORD  processcount);
-static WINAPI BOOL (*pGetConsoleScreenBufferInfo)(HANDLE  hConsoleOutput, LPCONSOLE_SCREEN_BUFFER_INFO  csbi);
-static WINAPI BOOL (*pGetConsoleScreenBufferInfoEx)(HANDLE  hConsole, CONSOLE_SCREEN_BUFFER_INFOEX*  csbix);
+static void* pGetConsoleScreenBufferInfo;
+static void* pextGetConsoleScreenBufferInfo;
+static void* pGetConsoleScreenBufferInfoEx;
+static void* pextGetConsoleScreenBufferInfoEx;
 static WINAPI DWORD (*pGetConsoleTitleA)(LPSTR  title, DWORD  size);
-static WINAPI DWORD (*pGetConsoleTitleW)(LPWSTR  title, DWORD  size);
+static void* pGetConsoleTitleW;
+static void* pextGetConsoleTitleW;
 static WINAPI HWND (*pGetConsoleWindow)(void);
 static WINAPI INT (*pGetCurrencyFormatA)(LCID  lcid, DWORD  dwFlags, LPCSTR  lpszValue, CURRENCYFMTA*  lpFormat, LPSTR  lpCurrencyStr, int  cchOut);
 static WINAPI INT (*pGetCurrencyFormatEx)(LPCWSTR  localename, DWORD  flags, LPCWSTR  value, CURRENCYFMTW*  format, LPWSTR  str, int  len);
@@ -942,10 +756,16 @@ static WINAPI UINT (*pGetDriveTypeW)(LPCWSTR  root);
 static WINAPI DWORD (*pGetDynamicTimeZoneInformation)(DYNAMIC_TIME_ZONE_INFORMATION*  tzinfo);
 static WINAPI DWORD (*pGetDynamicTimeZoneInformationEffectiveYears)(DYNAMIC_TIME_ZONE_INFORMATION*  tzinfo, DWORD*  first_year, DWORD*  last_year);
 static WINAPI DWORD64 (*pGetEnabledXStateFeatures)(void);
-static WINAPI LPSTR (*pGetEnvironmentStringsA)(void);
-static WINAPI LPWSTR (*pGetEnvironmentStringsW)(void);
-static WINAPI DWORD (*pGetEnvironmentVariableA)(LPCSTR  name, LPSTR  value, DWORD  size);
-static WINAPI DWORD (*pGetEnvironmentVariableW)(LPCWSTR  name, LPWSTR  val, DWORD  size);
+static void* pGetEnvironmentStrings;
+static void* pextGetEnvironmentStrings;
+static void* pGetEnvironmentStringsA;
+static void* pextGetEnvironmentStringsA;
+static void* pGetEnvironmentStringsW;
+static void* pextGetEnvironmentStringsW;
+static void* pGetEnvironmentVariableA;
+static void* pextGetEnvironmentVariableA;
+static void* pGetEnvironmentVariableW;
+static void* pextGetEnvironmentVariableW;
 static void* pGetErrorMode;
 static void* pextGetErrorMode;
 static WINAPI BOOL (*pGetExitCodeProcess)(HANDLE  hProcess, LPDWORD  lpExitCode);
@@ -986,7 +806,8 @@ static WINAPI INT (*pGetGeoInfoW)(GEOID  geoid, GEOTYPE  geotype, LPWSTR  data, 
 static WINAPI DWORD (*pGetHandleContext)(HANDLE  hnd);
 static WINAPI BOOL (*pGetHandleInformation)(HANDLE  handle, LPDWORD  flags);
 static WINAPI SIZE_T (*pGetLargePageMinimum)(void);
-static WINAPI COORD (*pGetLargestConsoleWindowSize)(HANDLE  hConsoleOutput);
+static void* pGetLargestConsoleWindowSize;
+static void* pextGetLargestConsoleWindowSize;
 static void* pGetLastError;
 static void* pextGetLastError;
 static WINAPI void (*pGetLocalTime)(LPSYSTEMTIME  systime);
@@ -1037,7 +858,8 @@ static WINAPI INT (*pGetNumberFormatA)(LCID  lcid, DWORD  dwFlags, LPCSTR  lpszV
 static WINAPI INT (*pGetNumberFormatEx)(LPCWSTR  name, DWORD  flags, LPCWSTR  value, NUMBERFMTW*  format, LPWSTR  number, int  numout);
 static WINAPI INT (*pGetNumberFormatW)(LCID  lcid, DWORD  dwFlags, LPCWSTR  lpszValue, NUMBERFMTW*  lpFormat, LPWSTR  lpNumberStr, int  cchOut);
 static WINAPI DWORD (*pGetNumberOfConsoleFonts)(void);
-static WINAPI BOOL (*pGetNumberOfConsoleInputEvents)(HANDLE  handle, LPDWORD  nrofevents);
+static void* pGetNumberOfConsoleInputEvents;
+static void* pextGetNumberOfConsoleInputEvents;
 static WINAPI BOOL (*pGetNumberOfConsoleMouseButtons)(LPDWORD  nrofbuttons);
 static WINAPI UINT (*pGetOEMCP)(void);
 static void* pGetOverlappedResult;
@@ -1096,8 +918,10 @@ static void* pextGetQueuedCompletionStatusEx;
 static WINAPI DWORD (*pGetShortPathNameA)(LPCSTR  longpath, LPSTR  shortpath, DWORD  shortlen);
 static WINAPI DWORD (*pGetShortPathNameW)(LPCWSTR  longpath, LPWSTR  shortpath, DWORD  shortlen);
 static WINAPI void (*pGetStartupInfoA)(LPSTARTUPINFOA  info);
-static WINAPI void (*pGetStartupInfoW)(LPSTARTUPINFOW  info);
-static WINAPI HANDLE (*pGetStdHandle)(DWORD  std_handle);
+static void* pGetStartupInfoW;
+static void* pextGetStartupInfoW;
+static void* pGetStdHandle;
+static void* pextGetStdHandle;
 static WINAPI BOOL (*pGetStringTypeA)(LCID  locale, DWORD  type, LPCSTR  src, INT  count, LPWORD  chartype);
 static WINAPI BOOL (*pGetStringTypeExA)(LCID  locale, DWORD  type, LPCSTR  src, INT  count, LPWORD  chartype);
 static WINAPI BOOL (*pGetStringTypeExW)(LCID  locale, DWORD  type, LPCWSTR  src, INT  count, LPWORD  chartype);
@@ -1168,9 +992,12 @@ static WINAPI LANGID (*pGetUserDefaultLangID)(void);
 static WINAPI INT (*pGetUserDefaultLocaleName)(LPWSTR  localename, int  buffersize);
 static WINAPI LANGID (*pGetUserDefaultUILanguage)(void);
 static WINAPI GEOID (*pGetUserGeoID)(GEOCLASS  GeoClass);
-static WINAPI DWORD (*pGetVersion)(void);
-static WINAPI BOOL (*pGetVersionExA)(OSVERSIONINFOA*  v);
-static WINAPI BOOL (*pGetVersionExW)(OSVERSIONINFOW*  info);
+static void* pGetVersion;
+static void* pextGetVersion;
+static void* pGetVersionExA;
+static void* pextGetVersionExA;
+static void* pGetVersionExW;
+static void* pextGetVersionExW;
 static WINAPI BOOL (*pGetVolumeInformationA)(LPCSTR  root, LPSTR  label, DWORD  label_len, DWORD*  serial, DWORD*  filename_len, DWORD*  flags, LPSTR  fsname, DWORD  fsname_len);
 static WINAPI BOOL (*pGetVolumeInformationByHandleW)(HANDLE  handle, WCHAR*  volnamebuf, DWORD  volnamesize, DWORD*  volserial, DWORD*  maxlength, DWORD*  flags, WCHAR*  fsnamebuf, DWORD  fsnamesize);
 static WINAPI BOOL (*pGetVolumeInformationW)(LPCWSTR  root, LPWSTR  label, DWORD  label_len, DWORD*  serial, DWORD*  filename_len, DWORD*  flags, LPWSTR  fsname, DWORD  fsname_len);
@@ -1184,17 +1011,20 @@ static void* pGetWindowsDirectoryA;
 static void* pextGetWindowsDirectoryA;
 static void* pGetWindowsDirectoryW;
 static void* pextGetWindowsDirectoryW;
-static WINAPI UINT (*pGetWriteWatch)(DWORD  flags, LPVOID  base, SIZE_T  size, LPVOID*  addresses, ULONG_PTR*  count, ULONG*  granularity);
+static void* pGetWriteWatch;
+static void* pextGetWriteWatch;
 static WINAPI ATOM (*pGlobalAddAtomA)(LPCSTR  str);
 static WINAPI ATOM (*pGlobalAddAtomW)(LPCWSTR  str);
-static WINAPI HGLOBAL (*pGlobalAlloc)(UINT  flags, SIZE_T  size);
+static void* pGlobalAlloc;
+static void* pextGlobalAlloc;
 static WINAPI SIZE_T (*pGlobalCompact)(DWORD  minfree);
 static WINAPI ATOM (*pGlobalDeleteAtom)(ATOM  atom);
 static WINAPI ATOM (*pGlobalFindAtomA)(LPCSTR  str);
 static WINAPI ATOM (*pGlobalFindAtomW)(LPCWSTR  str);
 static WINAPI void (*pGlobalFix)(HGLOBAL  hmem);
 static WINAPI UINT (*pGlobalFlags)(HGLOBAL  hmem);
-static WINAPI HGLOBAL (*pGlobalFree)(HGLOBAL  hmem);
+static void* pGlobalFree;
+static void* pextGlobalFree;
 static WINAPI UINT (*pGlobalGetAtomNameA)(ATOM  atom, LPSTR  buffer, INT  count);
 static WINAPI UINT (*pGlobalGetAtomNameW)(ATOM  atom, LPWSTR  buffer, INT  count);
 static WINAPI HGLOBAL (*pGlobalHandle)(LPCVOID  pmem);
@@ -1210,28 +1040,37 @@ static WINAPI LPVOID (*pGlobalWire)(HGLOBAL  hmem);
 static WINAPI BOOL (*pHeap32ListFirst)(HANDLE  hSnapshot, LPHEAPLIST32  lphl);
 static void* pHeapAlloc;
 static void* pextHeapAlloc;
-static WINAPI SIZE_T (*pHeapCompact)(HANDLE  heap, DWORD  flags);
+static void* pHeapCompact;
+static void* pextHeapCompact;
 static WINAPI HANDLE (*pHeapCreate)(DWORD  flags, SIZE_T  initialSize, SIZE_T  maxSize);
 static WINAPI BOOL (*pHeapDestroy)(HANDLE  heap);
-static void* pHeapFree;
-static void* pextHeapFree;
-static WINAPI BOOL (*pHeapLock)(HANDLE  heap);
-static WINAPI BOOL (*pHeapQueryInformation)(HANDLE  heap, HEAP_INFORMATION_CLASS  info_class, PVOID  info, SIZE_T  size_in, PSIZE_T  size_out);
+static WINAPI BOOL (*pHeapFree)(HANDLE  heap, DWORD  flags, LPVOID  ptr);
+static void* pHeapLock;
+static void* pextHeapLock;
+static void* pHeapQueryInformation;
+static void* pextHeapQueryInformation;
 static void* pHeapReAlloc;
 static void* pextHeapReAlloc;
-static WINAPI BOOL (*pHeapSetInformation)(HANDLE  heap, HEAP_INFORMATION_CLASS  infoclass, PVOID  info, SIZE_T  size);
+static void* pHeapSetInformation;
+static void* pextHeapSetInformation;
 static void* pHeapSize;
 static void* pextHeapSize;
-static WINAPI BOOL (*pHeapUnlock)(HANDLE  heap);
-static WINAPI BOOL (*pHeapValidate)(HANDLE  heap, DWORD  flags, LPCVOID  block);
-static WINAPI BOOL (*pHeapWalk)(HANDLE  heap, LPPROCESS_HEAP_ENTRY  entry);
+static void* pHeapUnlock;
+static void* pextHeapUnlock;
+static void* pHeapValidate;
+static void* pextHeapValidate;
+static void* pHeapWalk;
+static void* pextHeapWalk;
 static WINAPI INT (*pIdnToAscii)(DWORD  dwFlags, LPCWSTR  lpUnicodeCharStr, INT  cchUnicodeChar, LPWSTR  lpASCIICharStr, INT  cchASCIIChar);
 static WINAPI INT (*pIdnToNameprepUnicode)(DWORD  dwFlags, LPCWSTR  lpUnicodeCharStr, INT  cchUnicodeChar, LPWSTR  lpNameprepCharStr, INT  cchNameprepChar);
 static WINAPI INT (*pIdnToUnicode)(DWORD  dwFlags, LPCWSTR  lpASCIICharStr, INT  cchASCIIChar, LPWSTR  lpUnicodeCharStr, INT  cchUnicodeChar);
 static WINAPI BOOL (*pInitAtomTable)(DWORD  entries);
-static WINAPI BOOL (*pInitOnceBeginInitialize)(INIT_ONCE*  once, DWORD  flags, BOOL*  pending, void**  context);
-static WINAPI BOOL (*pInitOnceComplete)(INIT_ONCE*  once, DWORD  flags, void*  context);
-static WINAPI BOOL (*pInitOnceExecuteOnce)(INIT_ONCE*  once, PINIT_ONCE_FN  func, void*  param, void**  context);
+static void* pInitOnceBeginInitialize;
+static void* pextInitOnceBeginInitialize;
+static void* pInitOnceComplete;
+static void* pextInitOnceComplete;
+static void* pInitOnceExecuteOnce;
+static void* pextInitOnceExecuteOnce;
 static void* pInitOnceInitialize;
 static void* pextInitOnceInitialize;
 static void* pInitializeConditionVariable;
@@ -1270,7 +1109,8 @@ static WINAPI BOOL (*pIsBadStringPtrW)(LPCWSTR  str, UINT_PTR  max);
 static WINAPI BOOL (*pIsBadWritePtr)(LPVOID  ptr, UINT_PTR  size);
 static WINAPI BOOL (*pIsDBCSLeadByte)(BYTE  testchar);
 static WINAPI BOOL (*pIsDBCSLeadByteEx)(UINT  codepage, BYTE  testchar);
-static WINAPI BOOL (*pIsDebuggerPresent)(void);
+static void* pIsDebuggerPresent;
+static void* pextIsDebuggerPresent;
 static WINAPI BOOL (*pIsNormalizedString)(NORM_FORM  NormForm, LPCWSTR  lpString, INT  cwLength);
 static WINAPI BOOL (*pIsProcessInJob)(HANDLE  process, HANDLE  job, PBOOL  result);
 static WINAPI BOOL (*pIsProcessorFeaturePresent)(DWORD  feature);
@@ -1312,10 +1152,6 @@ static WINAPI BOOL (*pK32GetWsChangesEx)(HANDLE  process, PSAPI_WS_WATCH_INFORMA
 static WINAPI BOOL (*pK32InitializeProcessForWsWatch)(HANDLE  process);
 static WINAPI BOOL (*pK32QueryWorkingSet)(HANDLE  process, LPVOID  buffer, DWORD  size);
 static WINAPI BOOL (*pK32QueryWorkingSetEx)(HANDLE  process, LPVOID  buffer, DWORD  size);
-static void* pK32Thk1632Epilog;
-static void* pextK32Thk1632Epilog;
-static void* pK32Thk1632Prolog;
-static void* pextK32Thk1632Prolog;
 static WINAPI INT (*pLCIDToLocaleName)(LCID  lcid, LPWSTR  name, INT  count, DWORD  flags);
 static WINAPI INT (*pLCMapStringA)(LCID  lcid, DWORD  flags, LPCSTR  src, INT  srclen, LPSTR  dst, INT  dstlen);
 static WINAPI INT (*pLCMapStringEx)(LPCWSTR  name, DWORD  flags, LPCWSTR  src, INT  srclen, LPWSTR  dst, INT  dstlen, LPNLSVERSIONINFO  version, LPVOID  reserved, LPARAM  lparam);
@@ -1340,17 +1176,22 @@ static WINAPI HMODULE (*pLoadLibraryW)(LPCWSTR  libnameW);
 static WINAPI DWORD (*pLoadModule)(LPCSTR  name, LPVOID  paramBlock);
 static void* pLoadResource;
 static void* pextLoadResource;
-static WINAPI HLOCAL (*pLocalAlloc)(UINT  flags, SIZE_T  size);
+static void* pLocalAlloc;
+static void* pextLocalAlloc;
 static WINAPI SIZE_T (*pLocalCompact)(UINT  minfree);
 static WINAPI BOOL (*pLocalFileTimeToFileTime)(FILETIME*  localft, LPFILETIME  utcft);
 static WINAPI UINT (*pLocalFlags)(HLOCAL  handle);
-static WINAPI HLOCAL (*pLocalFree)(HLOCAL  handle);
+static void* pLocalFree;
+static void* pextLocalFree;
 static WINAPI HLOCAL (*pLocalHandle)(LPCVOID  ptr);
-static WINAPI LPVOID (*pLocalLock)(HLOCAL  handle);
-static WINAPI HLOCAL (*pLocalReAlloc)(HLOCAL  handle, SIZE_T  size, UINT  flags);
+static void* pLocalLock;
+static void* pextLocalLock;
+static void* pLocalReAlloc;
+static void* pextLocalReAlloc;
 static WINAPI SIZE_T (*pLocalShrink)(HGLOBAL  handle, UINT  newsize);
 static WINAPI SIZE_T (*pLocalSize)(HLOCAL  handle);
-static WINAPI BOOL (*pLocalUnlock)(HLOCAL  handle);
+static void* pLocalUnlock;
+static void* pextLocalUnlock;
 static WINAPI LCID (*pLocaleNameToLCID)(LPCWSTR  name, DWORD  flags);
 static void* pLockFile;
 static void* pextLockFile;
@@ -1359,27 +1200,13 @@ static void* pextLockFileEx;
 static void* pLockResource;
 static void* pextLockResource;
 static WINAPI void (*pMakeCriticalSectionGlobal)(CRITICAL_SECTION*  crit);
-static void* pMapHInstLS;
-static void* pextMapHInstLS;
-static void* pMapHInstLS_PN;
-static void* pextMapHInstLS_PN;
-static void* pMapHInstSL;
-static void* pextMapHInstSL;
-static void* pMapHInstSL_PN;
-static void* pextMapHInstSL_PN;
-static void* pMapHModuleLS;
-static void* pextMapHModuleLS;
-static void* pMapHModuleSL;
-static void* pextMapHModuleSL;
-static void* pMapLS;
-static void* pextMapLS;
-static void* pMapSL;
-static void* pextMapSL;
-static void* pMapSLFix;
-static void* pextMapSLFix;
 static WINAPI BOOL (*pMapUserPhysicalPages)(PVOID  addr, ULONG_PTR  page_count, PULONG_PTR  pages);
-static WINAPI LPVOID (*pMapViewOfFile)(HANDLE  mapping, DWORD  access, DWORD  offset_high, DWORD  offset_low, SIZE_T  count);
-static WINAPI LPVOID (*pMapViewOfFileEx)(HANDLE  handle, DWORD  access, DWORD  offset_high, DWORD  offset_low, SIZE_T  count, LPVOID  addr);
+static void* pMapViewOfFile;
+static void* pextMapViewOfFile;
+static void* pMapViewOfFileEx;
+static void* pextMapViewOfFileEx;
+static void* pMapViewOfFileExNuma;
+static void* pextMapViewOfFileExNuma;
 static WINAPI BOOL (*pModule32First)(HANDLE  hSnapshot, LPMODULEENTRY32  lpme);
 static WINAPI BOOL (*pModule32FirstW)(HANDLE  hSnapshot, LPMODULEENTRY32W  lpme);
 static WINAPI BOOL (*pModule32Next)(HANDLE  hSnapshot, LPMODULEENTRY32  lpme);
@@ -1425,10 +1252,14 @@ static WINAPI HANDLE (*pOpenVxDHandle)(HANDLE  hHandleRing3);
 static WINAPI HANDLE (*pOpenWaitableTimerA)(DWORD  access, BOOL  inherit, LPCSTR  name);
 static void* pOpenWaitableTimerW;
 static void* pextOpenWaitableTimerW;
-static WINAPI void (*pOutputDebugStringA)(LPCSTR  str);
-static WINAPI void (*pOutputDebugStringW)(LPCWSTR  str);
-static WINAPI BOOL (*pPeekConsoleInputA)(HANDLE  handle, PINPUT_RECORD  buffer, DWORD  count, LPDWORD  pRead);
-static WINAPI BOOL (*pPeekConsoleInputW)(HANDLE  handle, PINPUT_RECORD  buffer, DWORD  count, LPDWORD  read);
+static void* pOutputDebugStringA;
+static void* pextOutputDebugStringA;
+static void* pOutputDebugStringW;
+static void* pextOutputDebugStringW;
+static void* pPeekConsoleInputA;
+static void* pextPeekConsoleInputA;
+static void* pPeekConsoleInputW;
+static void* pextPeekConsoleInputW;
 static void* pPeekNamedPipe;
 static void* pextPeekNamedPipe;
 static void* pPostQueuedCompletionStatus;
@@ -1437,10 +1268,6 @@ static WINAPI BOOL (*pPowerClearRequest)(HANDLE  request, POWER_REQUEST_TYPE  ty
 static WINAPI HANDLE (*pPowerCreateRequest)(REASON_CONTEXT*  context);
 static WINAPI BOOL (*pPowerSetRequest)(HANDLE  request, POWER_REQUEST_TYPE  type);
 static WINAPI DWORD (*pPrepareTape)(HANDLE  device, DWORD  operation, BOOL  immediate);
-static void* pPrivateFreeLibrary;
-static void* pextPrivateFreeLibrary;
-static void* pPrivateLoadLibrary;
-static void* pextPrivateLoadLibrary;
 static WINAPI BOOL (*pProcess32First)(HANDLE  hSnapshot, LPPROCESSENTRY32  lppe);
 static WINAPI BOOL (*pProcess32FirstW)(HANDLE  hSnapshot, LPPROCESSENTRY32W  lppe);
 static WINAPI BOOL (*pProcess32Next)(HANDLE  hSnapshot, LPPROCESSENTRY32  lppe);
@@ -1448,9 +1275,8 @@ static WINAPI BOOL (*pProcess32NextW)(HANDLE  hSnapshot, LPPROCESSENTRY32W  lppe
 static WINAPI BOOL (*pProcessIdToSessionId)(DWORD  procid, DWORD*  sessionid_ptr);
 static void* pPulseEvent;
 static void* pextPulseEvent;
-static WINAPI BOOL (*pPurgeComm)(HANDLE  handle, DWORD  flags);
-static void* pQT_Thunk;
-static void* pextQT_Thunk;
+static void* pPurgeComm;
+static void* pextPurgeComm;
 static void* pQueryActCtxSettingsW;
 static void* pextQueryActCtxSettingsW;
 static void* pQueryActCtxW;
@@ -1462,9 +1288,12 @@ static WINAPI DWORD (*pQueryDosDeviceW)(LPCWSTR  devname, LPWSTR  target, DWORD 
 static WINAPI BOOL (*pQueryFullProcessImageNameA)(HANDLE  hProcess, DWORD  dwFlags, LPSTR  lpExeName, PDWORD  pdwSize);
 static WINAPI BOOL (*pQueryFullProcessImageNameW)(HANDLE  hProcess, DWORD  dwFlags, LPWSTR  lpExeName, PDWORD  pdwSize);
 static WINAPI BOOL (*pQueryInformationJobObject)(HANDLE  job, JOBOBJECTINFOCLASS  class, LPVOID  info, DWORD  len, DWORD*  ret_len);
-static WINAPI BOOL (*pQueryMemoryResourceNotification)(HANDLE  handle, PBOOL  state);
-static WINAPI BOOL (*pQueryPerformanceCounter)(PLARGE_INTEGER  counter);
-static WINAPI BOOL (*pQueryPerformanceFrequency)(PLARGE_INTEGER  frequency);
+static void* pQueryMemoryResourceNotification;
+static void* pextQueryMemoryResourceNotification;
+static void* pQueryPerformanceCounter;
+static void* pextQueryPerformanceCounter;
+static void* pQueryPerformanceFrequency;
+static void* pextQueryPerformanceFrequency;
 static WINAPI BOOL (*pQueryProcessCycleTime)(HANDLE  process, PULONG64  cycle);
 static WINAPI BOOL (*pQueryThreadCycleTime)(HANDLE  thread, PULONG64  cycle);
 static WINAPI BOOL (*pQueryUmsThreadInformation)(PUMS_CONTEXT  ctx, UMS_THREAD_INFO_CLASS  class, void*  buf, ULONG  length, ULONG*  ret_length);
@@ -1473,98 +1302,34 @@ static void* pQueueUserAPC;
 static void* pextQueueUserAPC;
 static void* pQueueUserWorkItem;
 static void* pextQueueUserWorkItem;
-static WINAPI void (*pRaiseException)(DWORD  code, DWORD  flags, DWORD  nbargs, ULONG_PTR*  args);
-static WINAPI BOOL (*pReadConsoleA)(HANDLE  hConsoleInput, LPVOID  lpBuffer, DWORD  nNumberOfCharsToRead, LPDWORD  lpNumberOfCharsRead, LPVOID  lpReserved);
-static WINAPI BOOL (*pReadConsoleInputA)(HANDLE  handle, PINPUT_RECORD  buffer, DWORD  count, LPDWORD  pRead);
+static void* pRaiseException;
+static void* pextRaiseException;
+static void* pReadConsoleA;
+static void* pextReadConsoleA;
+static void* pReadConsoleInputA;
+static void* pextReadConsoleInputA;
 static WINAPI BOOL (*pReadConsoleInputW)(HANDLE  hConsoleInput, PINPUT_RECORD  lpBuffer, DWORD  nLength, LPDWORD  lpNumberOfEventsRead);
-static WINAPI BOOL (*pReadConsoleOutputA)(HANDLE  hConsoleOutput, LPCHAR_INFO  lpBuffer, COORD  size, COORD  coord, LPSMALL_RECT  region);
-static WINAPI BOOL (*pReadConsoleOutputAttribute)(HANDLE  hConsoleOutput, LPWORD  lpAttribute, DWORD  length, COORD  coord, LPDWORD  read_count);
-static WINAPI BOOL (*pReadConsoleOutputCharacterA)(HANDLE  hConsoleOutput, LPSTR  lpstr, DWORD  count, COORD  coord, LPDWORD  read_count);
-static WINAPI BOOL (*pReadConsoleOutputCharacterW)(HANDLE  hConsoleOutput, LPWSTR  buffer, DWORD  count, COORD  coord, LPDWORD  read_count);
-static WINAPI BOOL (*pReadConsoleOutputW)(HANDLE  hConsoleOutput, LPCHAR_INFO  lpBuffer, COORD  size, COORD  coord, LPSMALL_RECT  region);
+static void* pReadConsoleOutputA;
+static void* pextReadConsoleOutputA;
+static void* pReadConsoleOutputAttribute;
+static void* pextReadConsoleOutputAttribute;
+static void* pReadConsoleOutputCharacterA;
+static void* pextReadConsoleOutputCharacterA;
+static void* pReadConsoleOutputCharacterW;
+static void* pextReadConsoleOutputCharacterW;
+static void* pReadConsoleOutputW;
+static void* pextReadConsoleOutputW;
 static WINAPI BOOL (*pReadConsoleW)(HANDLE  hConsoleInput, LPVOID  lpBuffer, DWORD  nNumberOfCharsToRead, LPDWORD  lpNumberOfCharsRead, LPVOID  lpReserved);
-static WINAPI BOOL (*pReadDirectoryChangesW)(HANDLE  handle, LPVOID  buffer, DWORD  len, BOOL  subtree, DWORD  filter, LPDWORD  returned, LPOVERLAPPED  overlapped, LPOVERLAPPED_COMPLETION_ROUTINE  completion);
+static void* pReadDirectoryChangesW;
+static void* pextReadDirectoryChangesW;
 static void* pReadFile;
 static void* pextReadFile;
 static void* pReadFileEx;
 static void* pextReadFileEx;
 static void* pReadFileScatter;
 static void* pextReadFileScatter;
-static WINAPI BOOL (*pReadProcessMemory)(HANDLE  process, LPCVOID  addr, LPVOID  buffer, SIZE_T  size, SIZE_T*  bytes_read);
-static void* pRegCloseKey;
-static void* pextRegCloseKey;
-static void* pRegCreateKeyExA;
-static void* pextRegCreateKeyExA;
-static void* pRegCreateKeyExW;
-static void* pextRegCreateKeyExW;
-static void* pRegDeleteKeyExA;
-static void* pextRegDeleteKeyExA;
-static void* pRegDeleteKeyExW;
-static void* pextRegDeleteKeyExW;
-static void* pRegDeleteTreeA;
-static void* pextRegDeleteTreeA;
-static void* pRegDeleteTreeW;
-static void* pextRegDeleteTreeW;
-static void* pRegDeleteValueA;
-static void* pextRegDeleteValueA;
-static void* pRegDeleteValueW;
-static void* pextRegDeleteValueW;
-static void* pRegEnumKeyExA;
-static void* pextRegEnumKeyExA;
-static void* pRegEnumKeyExW;
-static void* pextRegEnumKeyExW;
-static void* pRegEnumValueA;
-static void* pextRegEnumValueA;
-static void* pRegEnumValueW;
-static void* pextRegEnumValueW;
-static void* pRegFlushKey;
-static void* pextRegFlushKey;
-static void* pRegGetKeySecurity;
-static void* pextRegGetKeySecurity;
-static void* pRegGetValueA;
-static void* pextRegGetValueA;
-static void* pRegGetValueW;
-static void* pextRegGetValueW;
-static void* pRegLoadKeyA;
-static void* pextRegLoadKeyA;
-static void* pRegLoadKeyW;
-static void* pextRegLoadKeyW;
-static void* pRegLoadMUIStringA;
-static void* pextRegLoadMUIStringA;
-static void* pRegLoadMUIStringW;
-static void* pextRegLoadMUIStringW;
-static void* pRegNotifyChangeKeyValue;
-static void* pextRegNotifyChangeKeyValue;
-static void* pRegOpenCurrentUser;
-static void* pextRegOpenCurrentUser;
-static void* pRegOpenKeyExA;
-static void* pextRegOpenKeyExA;
-static void* pRegOpenKeyExW;
-static void* pextRegOpenKeyExW;
-static void* pRegOpenUserClassesRoot;
-static void* pextRegOpenUserClassesRoot;
-static void* pRegQueryInfoKeyA;
-static void* pextRegQueryInfoKeyA;
-static void* pRegQueryInfoKeyW;
-static void* pextRegQueryInfoKeyW;
-static void* pRegQueryValueExA;
-static void* pextRegQueryValueExA;
-static void* pRegQueryValueExW;
-static void* pextRegQueryValueExW;
-static void* pRegRestoreKeyA;
-static void* pextRegRestoreKeyA;
-static void* pRegRestoreKeyW;
-static void* pextRegRestoreKeyW;
-static void* pRegSetKeySecurity;
-static void* pextRegSetKeySecurity;
-static void* pRegSetValueExA;
-static void* pextRegSetValueExA;
-static void* pRegSetValueExW;
-static void* pextRegSetValueExW;
-static void* pRegUnLoadKeyA;
-static void* pextRegUnLoadKeyA;
-static void* pRegUnLoadKeyW;
-static void* pextRegUnLoadKeyW;
+static void* pReadProcessMemory;
+static void* pextReadProcessMemory;
 static WINAPI HRESULT (*pRegisterApplicationRecoveryCallback)(APPLICATION_RECOVERY_CALLBACK  callback, PVOID  param, DWORD  pingint, DWORD  flags);
 static WINAPI HRESULT (*pRegisterApplicationRestart)(PCWSTR  pwzCommandLine, DWORD  dwFlags);
 static WINAPI DWORD (*pRegisterServiceProcess)(DWORD  dwProcessId, DWORD  dwType);
@@ -1599,7 +1364,8 @@ static WINAPI BOOL (*pRequestDeviceWakeup)(HANDLE  device);
 static WINAPI BOOL (*pRequestWakeupLatency)(LATENCY_TIME  latency);
 static void* pResetEvent;
 static void* pextResetEvent;
-static WINAPI UINT (*pResetWriteWatch)(LPVOID  base, SIZE_T  size);
+static void* pResetWriteWatch;
+static void* pextResetWriteWatch;
 static void* pResolveDelayLoadedAPI;
 static void* pextResolveDelayLoadedAPI;
 static WINAPI INT (*pResolveLocaleName)(LPCWSTR  name, LPWSTR  localename, INT  len);
@@ -1641,81 +1407,61 @@ static void* pRtlVirtualUnwind;
 static void* pextRtlVirtualUnwind;
 static void* pRtlZeroMemory;
 static void* pextRtlZeroMemory;
-static void* pSMapLS;
-static void* pextSMapLS;
-static void* pSMapLS_IP_EBP_12;
-static void* pextSMapLS_IP_EBP_12;
-static void* pSMapLS_IP_EBP_16;
-static void* pextSMapLS_IP_EBP_16;
-static void* pSMapLS_IP_EBP_20;
-static void* pextSMapLS_IP_EBP_20;
-static void* pSMapLS_IP_EBP_24;
-static void* pextSMapLS_IP_EBP_24;
-static void* pSMapLS_IP_EBP_28;
-static void* pextSMapLS_IP_EBP_28;
-static void* pSMapLS_IP_EBP_32;
-static void* pextSMapLS_IP_EBP_32;
-static void* pSMapLS_IP_EBP_36;
-static void* pextSMapLS_IP_EBP_36;
-static void* pSMapLS_IP_EBP_40;
-static void* pextSMapLS_IP_EBP_40;
-static void* pSMapLS_IP_EBP_8;
-static void* pextSMapLS_IP_EBP_8;
-static void* pSUnMapLS;
-static void* pextSUnMapLS;
-static void* pSUnMapLS_IP_EBP_12;
-static void* pextSUnMapLS_IP_EBP_12;
-static void* pSUnMapLS_IP_EBP_16;
-static void* pextSUnMapLS_IP_EBP_16;
-static void* pSUnMapLS_IP_EBP_20;
-static void* pextSUnMapLS_IP_EBP_20;
-static void* pSUnMapLS_IP_EBP_24;
-static void* pextSUnMapLS_IP_EBP_24;
-static void* pSUnMapLS_IP_EBP_28;
-static void* pextSUnMapLS_IP_EBP_28;
-static void* pSUnMapLS_IP_EBP_32;
-static void* pextSUnMapLS_IP_EBP_32;
-static void* pSUnMapLS_IP_EBP_36;
-static void* pextSUnMapLS_IP_EBP_36;
-static void* pSUnMapLS_IP_EBP_40;
-static void* pextSUnMapLS_IP_EBP_40;
-static void* pSUnMapLS_IP_EBP_8;
-static void* pextSUnMapLS_IP_EBP_8;
-static WINAPI BOOL (*pScrollConsoleScreenBufferA)(HANDLE  hConsoleOutput, LPSMALL_RECT  lpScrollRect, LPSMALL_RECT  lpClipRect, COORD  dwDestOrigin, LPCHAR_INFO  lpFill);
-static WINAPI BOOL (*pScrollConsoleScreenBufferW)(HANDLE  hConsoleOutput, LPSMALL_RECT  lpScrollRect, LPSMALL_RECT  lpClipRect, COORD  dwDestOrigin, LPCHAR_INFO  lpFill);
+static void* pScrollConsoleScreenBufferA;
+static void* pextScrollConsoleScreenBufferA;
+static void* pScrollConsoleScreenBufferW;
+static void* pextScrollConsoleScreenBufferW;
 static WINAPI DWORD (*pSearchPathA)(LPCSTR  path, LPCSTR  name, LPCSTR  ext, DWORD  buflen, LPSTR  buffer, LPSTR*  lastpart);
 static WINAPI DWORD (*pSearchPathW)(LPCWSTR  path, LPCWSTR  name, LPCWSTR  ext, DWORD  buflen, LPWSTR  buffer, LPWSTR*  lastpart);
 static WINAPI UINT (*pSetCPGlobal)(UINT  acp);
 static WINAPI INT (*pSetCalendarInfoA)(LCID  Locale, CALID  Calendar, CALTYPE  CalType, LPCSTR  lpCalData);
 static WINAPI INT (*pSetCalendarInfoW)(LCID  Locale, CALID  Calendar, CALTYPE  CalType, LPCWSTR  lpCalData);
-static WINAPI BOOL (*pSetCommBreak)(HANDLE  handle);
-static WINAPI BOOL (*pSetCommConfig)(HANDLE  hFile, LPCOMMCONFIG  lpCommConfig, DWORD  dwSize);
-static WINAPI BOOL (*pSetCommMask)(HANDLE  handle, DWORD  evtmask);
-static WINAPI BOOL (*pSetCommState)(HANDLE  handle, LPDCB  lpdcb);
-static WINAPI BOOL (*pSetCommTimeouts)(HANDLE  hComm, LPCOMMTIMEOUTS  lptimeouts);
+static void* pSetCommBreak;
+static void* pextSetCommBreak;
+static void* pSetCommConfig;
+static void* pextSetCommConfig;
+static void* pSetCommMask;
+static void* pextSetCommMask;
+static void* pSetCommState;
+static void* pextSetCommState;
+static void* pSetCommTimeouts;
+static void* pextSetCommTimeouts;
 static WINAPI BOOL (*pSetComputerNameA)(LPCSTR  lpComputerName);
 static WINAPI BOOL (*pSetComputerNameExA)(COMPUTER_NAME_FORMAT  type, LPCSTR  lpComputerName);
 static WINAPI BOOL (*pSetComputerNameExW)(COMPUTER_NAME_FORMAT  type, LPCWSTR  lpComputerName);
 static WINAPI BOOL (*pSetComputerNameW)(LPCWSTR  lpComputerName);
-static WINAPI BOOL (*pSetConsoleActiveScreenBuffer)(HANDLE  hConsoleOutput);
-static WINAPI BOOL (*pSetConsoleCP)(UINT  cp);
+static void* pSetConsoleActiveScreenBuffer;
+static void* pextSetConsoleActiveScreenBuffer;
+static void* pSetConsoleCP;
+static void* pextSetConsoleCP;
 static WINAPI BOOL (*pSetConsoleCtrlHandler)(PHANDLER_ROUTINE  func, BOOL  add);
-static WINAPI BOOL (*pSetConsoleCursorInfo)(HANDLE  hCon, LPCONSOLE_CURSOR_INFO  cinfo);
-static WINAPI BOOL (*pSetConsoleCursorPosition)(HANDLE  hcon, COORD  pos);
+static void* pSetConsoleCursorInfo;
+static void* pextSetConsoleCursorInfo;
+static void* pSetConsoleCursorPosition;
+static void* pextSetConsoleCursorPosition;
 static WINAPI BOOL (*pSetConsoleDisplayMode)(HANDLE  hConsoleOutput, DWORD  dwFlags, COORD*  lpNewScreenBufferDimensions);
 static WINAPI BOOL (*pSetConsoleFont)(HANDLE  hConsole, DWORD  index);
 static WINAPI BOOL (*pSetConsoleIcon)(HICON  icon);
-static WINAPI BOOL (*pSetConsoleInputExeNameA)(LPCSTR  name);
-static WINAPI BOOL (*pSetConsoleInputExeNameW)(LPCWSTR  name);
+static void* pSetConsoleInputExeNameA;
+static void* pextSetConsoleInputExeNameA;
+static void* pSetConsoleInputExeNameW;
+static void* pextSetConsoleInputExeNameW;
 static WINAPI BOOL (*pSetConsoleKeyShortcuts)(BOOL  set, BYTE  keys, void*  a, DWORD  b);
-static WINAPI BOOL (*pSetConsoleMode)(HANDLE  hcon, DWORD  mode);
-static WINAPI BOOL (*pSetConsoleOutputCP)(UINT  cp);
-static WINAPI BOOL (*pSetConsoleScreenBufferInfoEx)(HANDLE  hConsole, CONSOLE_SCREEN_BUFFER_INFOEX*  csbix);
-static WINAPI BOOL (*pSetConsoleScreenBufferSize)(HANDLE  hConsoleOutput, COORD  dwSize);
-static WINAPI BOOL (*pSetConsoleTextAttribute)(HANDLE  hConsoleOutput, WORD  wAttr);
+static void* pSetConsoleMode;
+static void* pextSetConsoleMode;
+static void* pSetConsoleOutputCP;
+static void* pextSetConsoleOutputCP;
+static void* pSetConsoleScreenBufferInfoEx;
+static void* pextSetConsoleScreenBufferInfoEx;
+static void* pSetConsoleScreenBufferSize;
+static void* pextSetConsoleScreenBufferSize;
+static void* pSetConsoleTextAttribute;
+static void* pextSetConsoleTextAttribute;
 static WINAPI BOOL (*pSetConsoleTitleA)(LPCSTR  title);
-static WINAPI BOOL (*pSetConsoleTitleW)(LPCWSTR  title);
-static WINAPI BOOL (*pSetConsoleWindowInfo)(HANDLE  hCon, BOOL  bAbsolute, LPSMALL_RECT  window);
+static void* pSetConsoleTitleW;
+static void* pextSetConsoleTitleW;
+static void* pSetConsoleWindowInfo;
+static void* pextSetConsoleWindowInfo;
 static void* pSetCriticalSectionSpinCount;
 static void* pextSetCriticalSectionSpinCount;
 static WINAPI BOOL (*pSetCurrentConsoleFontEx)(HANDLE  hConsole, BOOL  maxwindow, CONSOLE_FONT_INFOEX*  cfix);
@@ -1728,8 +1474,10 @@ static WINAPI BOOL (*pSetDllDirectoryA)(LPCSTR  dir);
 static WINAPI BOOL (*pSetDllDirectoryW)(LPCWSTR  dir);
 static void* pSetEndOfFile;
 static void* pextSetEndOfFile;
-static WINAPI BOOL (*pSetEnvironmentVariableA)(LPCSTR  name, LPCSTR  value);
-static WINAPI BOOL (*pSetEnvironmentVariableW)(LPCWSTR  name, LPCWSTR  value);
+static void* pSetEnvironmentVariableA;
+static void* pextSetEnvironmentVariableA;
+static void* pSetEnvironmentVariableW;
+static void* pextSetEnvironmentVariableW;
 static void* pSetErrorMode;
 static void* pextSetErrorMode;
 static void* pSetEvent;
@@ -1782,7 +1530,10 @@ static WINAPI BOOL (*pSetProcessWorkingSetSize)(HANDLE  process, SIZE_T  minset,
 static void* pSetProcessWorkingSetSizeEx;
 static void* pextSetProcessWorkingSetSizeEx;
 static WINAPI BOOL (*pSetSearchPathMode)(DWORD  flags);
-static WINAPI BOOL (*pSetStdHandle)(DWORD  std_handle, HANDLE  handle);
+static void* pSetStdHandle;
+static void* pextSetStdHandle;
+static void* pSetStdHandleEx;
+static void* pextSetStdHandleEx;
 static WINAPI BOOL (*pSetSystemFileCacheSize)(SIZE_T  mincache, SIZE_T  maxcache, DWORD  flags);
 static WINAPI BOOL (*pSetSystemPowerState)(BOOL  suspend_or_hibernate, BOOL  force_flag);
 static WINAPI BOOL (*pSetSystemTime)(SYSTEMTIME*  systime);
@@ -1821,7 +1572,8 @@ static void* pSetThreadpoolWait;
 static void* pextSetThreadpoolWait;
 static WINAPI BOOL (*pSetTimeZoneInformation)(TIME_ZONE_INFORMATION*  tzinfo);
 static WINAPI BOOL (*pSetUmsThreadInformation)(PUMS_CONTEXT  ctx, UMS_THREAD_INFO_CLASS  class, void*  buf, ULONG  length);
-static WINAPI LPTOP_LEVEL_EXCEPTION_FILTER (*pSetUnhandledExceptionFilter)(LPTOP_LEVEL_EXCEPTION_FILTER  filter);
+static void* pSetUnhandledExceptionFilter;
+static void* pextSetUnhandledExceptionFilter;
 static WINAPI BOOL (*pSetUserGeoID)(GEOID  GeoID);
 static WINAPI BOOL (*pSetVolumeLabelA)(LPCSTR  root, LPCSTR  volname);
 static WINAPI BOOL (*pSetVolumeLabelW)(LPCWSTR  root, LPCWSTR  label);
@@ -1831,7 +1583,8 @@ static void* pSetWaitableTimer;
 static void* pextSetWaitableTimer;
 static void* pSetWaitableTimerEx;
 static void* pextSetWaitableTimerEx;
-static WINAPI BOOL (*pSetupComm)(HANDLE  handle, DWORD  insize, DWORD  outsize);
+static void* pSetupComm;
+static void* pextSetupComm;
 static void* pSignalObjectAndWait;
 static void* pextSignalObjectAndWait;
 static void* pSizeofResource;
@@ -1862,8 +1615,6 @@ static void* pextTerminateThread;
 static WINAPI BOOL (*pTermsrvAppInstallMode)(void);
 static WINAPI BOOL (*pThread32First)(HANDLE  hSnapShot, LPTHREADENTRY32  lpte);
 static WINAPI BOOL (*pThread32Next)(HANDLE  hSnapShot, LPTHREADENTRY32  lpte);
-static void* pThunkConnect32;
-static void* pextThunkConnect32;
 static void* pTlsAlloc;
 static void* pextTlsAlloc;
 static void* pTlsFree;
@@ -1875,7 +1626,8 @@ static void* pextTlsSetValue;
 static WINAPI BOOL (*pToolhelp32ReadProcessMemory)(DWORD  pid, void*  base, void*  buf, SIZE_T  len, SIZE_T*  r);
 static void* pTransactNamedPipe;
 static void* pextTransactNamedPipe;
-static WINAPI BOOL (*pTransmitCommChar)(HANDLE  hComm, CHAR  chTransmit);
+static void* pTransmitCommChar;
+static void* pextTransmitCommChar;
 static void* pTryAcquireSRWLockExclusive;
 static void* pextTryAcquireSRWLockExclusive;
 static void* pTryAcquireSRWLockShared;
@@ -1886,21 +1638,15 @@ static void* pTrySubmitThreadpoolCallback;
 static void* pextTrySubmitThreadpoolCallback;
 static WINAPI BOOL (*pTzSpecificLocalTimeToSystemTime)(TIME_ZONE_INFORMATION*  lpTimeZoneInformation, SYSTEMTIME*  lpLocalTime, LPSYSTEMTIME  lpUniversalTime);
 static WINAPI BOOL (*pUmsThreadYield)(void*  param);
-static void* pUTRegister;
-static void* pextUTRegister;
-static void* pUTUnRegister;
-static void* pextUTUnRegister;
-static void* pUnMapLS;
-static void* pextUnMapLS;
-static void* pUnMapSLFixArray;
-static void* pextUnMapSLFixArray;
-static WINAPI LONG (*pUnhandledExceptionFilter)(PEXCEPTION_POINTERS  epointers);
+static void* pUnhandledExceptionFilter;
+static void* pextUnhandledExceptionFilter;
 static WINAPI void (*pUninitializeCriticalSection)(CRITICAL_SECTION*  crit);
 static void* pUnlockFile;
 static void* pextUnlockFile;
 static void* pUnlockFileEx;
 static void* pextUnlockFileEx;
-static WINAPI BOOL (*pUnmapViewOfFile)(void*  addr);
+static void* pUnmapViewOfFile;
+static void* pextUnmapViewOfFile;
 static WINAPI HRESULT (*pUnregisterApplicationRestart)(void);
 static WINAPI BOOL (*pUnregisterWait)(HANDLE  WaitHandle);
 static void* pUnregisterWaitEx;
@@ -1916,20 +1662,33 @@ static void* pextVerSetConditionMask;
 static WINAPI BOOL (*pVerifyConsoleIoHandle)(HANDLE  handle);
 static WINAPI BOOL (*pVerifyVersionInfoA)(LPOSVERSIONINFOEXA  lpVersionInfo, DWORD  dwTypeMask, DWORDLONG  dwlConditionMask);
 static WINAPI BOOL (*pVerifyVersionInfoW)(LPOSVERSIONINFOEXW  lpVersionInfo, DWORD  dwTypeMask, DWORDLONG  dwlConditionMask);
-static WINAPI LPVOID (*pVirtualAlloc)(void*  addr, SIZE_T  size, DWORD  type, DWORD  protect);
-static WINAPI LPVOID (*pVirtualAllocEx)(HANDLE  hProcess, LPVOID  addr, SIZE_T  size, DWORD  type, DWORD  protect);
-static WINAPI LPVOID (*pVirtualAllocExNuma)(HANDLE  process, void*  addr, SIZE_T  size, DWORD  type, DWORD  protect, DWORD  numa_node);
-static WINAPI BOOL (*pVirtualFree)(LPVOID  addr, SIZE_T  size, DWORD  type);
-static WINAPI BOOL (*pVirtualFreeEx)(HANDLE  process, LPVOID  addr, SIZE_T  size, DWORD  type);
-static WINAPI BOOL (*pVirtualLock)(LPVOID  addr, SIZE_T  size);
-static WINAPI BOOL (*pVirtualProtect)(LPVOID  addr, SIZE_T  size, DWORD  new_prot, LPDWORD  old_prot);
-static WINAPI BOOL (*pVirtualProtectEx)(HANDLE  process, LPVOID  addr, SIZE_T  size, DWORD  new_prot, LPDWORD  old_prot);
-static WINAPI SIZE_T (*pVirtualQuery)(LPCVOID  addr, PMEMORY_BASIC_INFORMATION  info, SIZE_T  len);
-static WINAPI SIZE_T (*pVirtualQueryEx)(HANDLE  process, LPCVOID  addr, PMEMORY_BASIC_INFORMATION  info, SIZE_T  len);
-static WINAPI BOOL (*pVirtualUnlock)(LPVOID  addr, SIZE_T  size);
+static void* pVirtualAlloc;
+static void* pextVirtualAlloc;
+static void* pVirtualAllocEx;
+static void* pextVirtualAllocEx;
+static void* pVirtualAllocExNuma;
+static void* pextVirtualAllocExNuma;
+static void* pVirtualFree;
+static void* pextVirtualFree;
+static void* pVirtualFreeEx;
+static void* pextVirtualFreeEx;
+static void* pVirtualLock;
+static void* pextVirtualLock;
+static void* pVirtualProtect;
+static void* pextVirtualProtect;
+static void* pVirtualProtectEx;
+static void* pextVirtualProtectEx;
+static void* pVirtualQuery;
+static void* pextVirtualQuery;
+static void* pVirtualQueryEx;
+static void* pextVirtualQueryEx;
+static void* pVirtualUnlock;
+static void* pextVirtualUnlock;
 static WINAPI DWORD (*pWTSGetActiveConsoleSessionId)(void);
-static WINAPI BOOL (*pWaitCommEvent)(HANDLE  hFile, LPDWORD  lpdwEvents, LPOVERLAPPED  lpOverlapped);
-static WINAPI BOOL (*pWaitForDebugEvent)(LPDEBUG_EVENT  event, DWORD  timeout);
+static void* pWaitCommEvent;
+static void* pextWaitCommEvent;
+static void* pWaitForDebugEvent;
+static void* pextWaitForDebugEvent;
 static void* pWaitForMultipleObjects;
 static void* pextWaitForMultipleObjects;
 static void* pWaitForMultipleObjectsEx;
@@ -1966,14 +1725,22 @@ static WINAPI BOOL (*pWow64GetThreadContext)(HANDLE  handle, WOW64_CONTEXT*  con
 static void* pWow64RevertWow64FsRedirection;
 static void* pextWow64RevertWow64FsRedirection;
 static WINAPI BOOL (*pWow64SetThreadContext)(HANDLE  handle, WOW64_CONTEXT*  context);
-static WINAPI BOOL (*pWriteConsoleA)(HANDLE  hConsoleOutput, LPCVOID  lpBuffer, DWORD  nNumberOfCharsToWrite, LPDWORD  lpNumberOfCharsWritten, LPVOID  lpReserved);
-static WINAPI BOOL (*pWriteConsoleInputA)(HANDLE  handle, INPUT_RECORD*  buffer, DWORD  count, LPDWORD  written);
-static WINAPI BOOL (*pWriteConsoleInputW)(HANDLE  handle, INPUT_RECORD*  buffer, DWORD  count, LPDWORD  written);
-static WINAPI BOOL (*pWriteConsoleOutputA)(HANDLE  hConsoleOutput, CHAR_INFO*  lpBuffer, COORD  size, COORD  coord, LPSMALL_RECT  region);
-static WINAPI BOOL (*pWriteConsoleOutputAttribute)(HANDLE  hConsoleOutput, WORD*  attr, DWORD  length, COORD  coord, LPDWORD  lpNumAttrsWritten);
-static WINAPI BOOL (*pWriteConsoleOutputCharacterA)(HANDLE  hConsoleOutput, LPCSTR  str, DWORD  length, COORD  coord, LPDWORD  lpNumCharsWritten);
-static WINAPI BOOL (*pWriteConsoleOutputCharacterW)(HANDLE  hConsoleOutput, LPCWSTR  str, DWORD  length, COORD  coord, LPDWORD  lpNumCharsWritten);
-static WINAPI BOOL (*pWriteConsoleOutputW)(HANDLE  hConsoleOutput, CHAR_INFO*  lpBuffer, COORD  size, COORD  coord, LPSMALL_RECT  region);
+static void* pWriteConsoleA;
+static void* pextWriteConsoleA;
+static void* pWriteConsoleInputA;
+static void* pextWriteConsoleInputA;
+static void* pWriteConsoleInputW;
+static void* pextWriteConsoleInputW;
+static void* pWriteConsoleOutputA;
+static void* pextWriteConsoleOutputA;
+static void* pWriteConsoleOutputAttribute;
+static void* pextWriteConsoleOutputAttribute;
+static void* pWriteConsoleOutputCharacterA;
+static void* pextWriteConsoleOutputCharacterA;
+static void* pWriteConsoleOutputCharacterW;
+static void* pextWriteConsoleOutputCharacterW;
+static void* pWriteConsoleOutputW;
+static void* pextWriteConsoleOutputW;
 static WINAPI BOOL (*pWriteConsoleW)(HANDLE  hConsoleOutput, LPCVOID  lpBuffer, DWORD  nNumberOfCharsToWrite, LPDWORD  lpNumberOfCharsWritten, LPVOID  lpReserved);
 static void* pWriteFile;
 static void* pextWriteFile;
@@ -1987,7 +1754,8 @@ static WINAPI BOOL (*pWritePrivateProfileStringA)(LPCSTR  section, LPCSTR  entry
 static WINAPI BOOL (*pWritePrivateProfileStringW)(LPCWSTR  section, LPCWSTR  entry, LPCWSTR  string, LPCWSTR  filename);
 static WINAPI BOOL (*pWritePrivateProfileStructA)(LPCSTR  section, LPCSTR  key, LPVOID  buf, UINT  bufsize, LPCSTR  filename);
 static WINAPI BOOL (*pWritePrivateProfileStructW)(LPCWSTR  section, LPCWSTR  key, LPVOID  buf, UINT  bufsize, LPCWSTR  filename);
-static WINAPI BOOL (*pWriteProcessMemory)(HANDLE  process, LPVOID  addr, LPCVOID  buffer, SIZE_T  size, SIZE_T*  bytes_written);
+static void* pWriteProcessMemory;
+static void* pextWriteProcessMemory;
 static WINAPI BOOL (*pWriteProfileSectionA)(LPCSTR  section, LPCSTR  keys_n_values);
 static WINAPI BOOL (*pWriteProfileSectionW)(LPCWSTR  section, LPCWSTR  keys_n_values);
 static WINAPI BOOL (*pWriteProfileStringA)(LPCSTR  section, LPCSTR  entry, LPCSTR  string);
@@ -1995,17 +1763,11 @@ static WINAPI BOOL (*pWriteProfileStringW)(LPCWSTR  section, LPCWSTR  entry, LPC
 static WINAPI DWORD (*pWriteTapemark)(HANDLE  device, DWORD  type, DWORD  count, BOOL  immediate);
 static void* pZombifyActCtx;
 static void* pextZombifyActCtx;
-static void* p__C_specific_handler;
-static void* pext__C_specific_handler;
-static void* p__chkstk;
-static void* pext__chkstk;
 static WINAPI LONG (*p_hread)(HFILE  hFile, LPVOID  buffer, LONG  count);
 static WINAPI LONG (*p_hwrite)(HFILE  handle, LPCSTR  buffer, LONG  count);
 static WINAPI HFILE (*p_lclose)(HFILE  hFile);
 static WINAPI HFILE (*p_lcreat)(LPCSTR  path, INT  attr);
 static WINAPI LONG (*p_llseek)(HFILE  hFile, LONG  lOffset, INT  nOrigin);
-static void* p_local_unwind;
-static void* pext_local_unwind;
 static WINAPI HFILE (*p_lopen)(LPCSTR  path, INT  mode);
 static WINAPI UINT (*p_lread)(HFILE  handle, LPVOID  buffer, UINT  count);
 static WINAPI UINT (*p_lwrite)(HFILE  hFile, LPCSTR  buffer, UINT  count);
@@ -2091,13 +1853,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_AddAtomW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_AddConsoleAliasA(LPSTR  source, LPSTR  target, LPSTR  exename) /* ../dlls/kernel32/console.c:3251 */
+extern WINAPI BOOL wine32b_kernel32_AddConsoleAliasA(LPSTR  source, LPSTR  target, LPSTR  exename) /* ../dlls/kernel32/console.c:1600 */
 {
 	TRACE("Enter AddConsoleAliasA\n");
 	return pAddConsoleAliasA(source, target, exename);
 }
 
-extern WINAPI void wine32a_kernel32_AddConsoleAliasA(void);  /* ../dlls/kernel32/console.c:3251 */
+extern WINAPI void wine32a_kernel32_AddConsoleAliasA(void);  /* ../dlls/kernel32/console.c:1600 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_AddConsoleAliasA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -2118,13 +1880,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_AddConsoleAliasA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_AddConsoleAliasW(LPWSTR  source, LPWSTR  target, LPWSTR  exename) /* ../dlls/kernel32/console.c:3258 */
+extern WINAPI BOOL wine32b_kernel32_AddConsoleAliasW(LPWSTR  source, LPWSTR  target, LPWSTR  exename) /* ../dlls/kernel32/console.c:1607 */
 {
 	TRACE("Enter AddConsoleAliasW\n");
 	return pAddConsoleAliasW(source, target, exename);
 }
 
-extern WINAPI void wine32a_kernel32_AddConsoleAliasW(void);  /* ../dlls/kernel32/console.c:3258 */
+extern WINAPI void wine32a_kernel32_AddConsoleAliasW(void);  /* ../dlls/kernel32/console.c:1607 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_AddConsoleAliasW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -2170,13 +1932,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_AddDllDirectory,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_AllocConsole(void) /* ../dlls/kernel32/console.c:1512 */
+extern WINAPI BOOL wine32b_kernel32_AllocConsole(void) /* ../dlls/kernel32/console.c:633 */
 {
 	TRACE("Enter AllocConsole\n");
 	return pAllocConsole();
 }
 
-extern WINAPI void wine32a_kernel32_AllocConsole(void);  /* ../dlls/kernel32/console.c:1512 */
+extern WINAPI void wine32a_kernel32_AllocConsole(void);  /* ../dlls/kernel32/console.c:633 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_AllocConsole,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -2194,13 +1956,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_AllocConsole,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_AllocateUserPhysicalPages(HANDLE  process, ULONG_PTR*  pages, ULONG_PTR*  userarray) /* ../dlls/kernel32/heap.c:1472 */
+extern WINAPI BOOL wine32b_kernel32_AllocateUserPhysicalPages(HANDLE  process, ULONG_PTR*  pages, ULONG_PTR*  userarray) /* ../dlls/kernel32/heap.c:929 */
 {
 	TRACE("Enter AllocateUserPhysicalPages\n");
 	return pAllocateUserPhysicalPages(process, pages, userarray);
 }
 
-extern WINAPI void wine32a_kernel32_AllocateUserPhysicalPages(void);  /* ../dlls/kernel32/heap.c:1472 */
+extern WINAPI void wine32a_kernel32_AllocateUserPhysicalPages(void);  /* ../dlls/kernel32/heap.c:929 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_AllocateUserPhysicalPages,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -2221,13 +1983,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_AllocateUserPhysicalPages,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_ApplicationRecoveryFinished(BOOL  success) /* ../dlls/kernel32/process.c:3956 */
+extern WINAPI void wine32b_kernel32_ApplicationRecoveryFinished(BOOL  success) /* ../dlls/kernel32/process.c:3937 */
 {
 	TRACE("Enter ApplicationRecoveryFinished\n");
 	return pApplicationRecoveryFinished(success);
 }
 
-extern WINAPI void wine32a_kernel32_ApplicationRecoveryFinished(void);  /* ../dlls/kernel32/process.c:3956 */
+extern WINAPI void wine32a_kernel32_ApplicationRecoveryFinished(void);  /* ../dlls/kernel32/process.c:3937 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_ApplicationRecoveryFinished,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -2246,13 +2008,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ApplicationRecoveryFinished,
 	"ret \n"
 )
 
-extern WINAPI HRESULT wine32b_kernel32_ApplicationRecoveryInProgress(PBOOL  canceled) /* ../dlls/kernel32/process.c:3965 */
+extern WINAPI HRESULT wine32b_kernel32_ApplicationRecoveryInProgress(PBOOL  canceled) /* ../dlls/kernel32/process.c:3946 */
 {
 	TRACE("Enter ApplicationRecoveryInProgress\n");
 	return pApplicationRecoveryInProgress(canceled);
 }
 
-extern WINAPI void wine32a_kernel32_ApplicationRecoveryInProgress(void);  /* ../dlls/kernel32/process.c:3965 */
+extern WINAPI void wine32a_kernel32_ApplicationRecoveryInProgress(void);  /* ../dlls/kernel32/process.c:3946 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_ApplicationRecoveryInProgress,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -2291,31 +2053,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_AssignProcessToJobObject,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_AttachConsole(DWORD  dwProcessId) /* ../dlls/kernel32/console.c:2910 */
-{
-	TRACE("Enter AttachConsole\n");
-	return pAttachConsole(dwProcessId);
-}
-
-extern WINAPI void wine32a_kernel32_AttachConsole(void);  /* ../dlls/kernel32/console.c:2910 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_AttachConsole,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_AttachConsole") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -2406,13 +2143,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_BackupWrite,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_BaseFlushAppcompatCache(void) /* ../dlls/kernel32/process.c:4277 */
+extern WINAPI BOOL wine32b_kernel32_BaseFlushAppcompatCache(void) /* ../dlls/kernel32/process.c:4258 */
 {
 	TRACE("Enter BaseFlushAppcompatCache\n");
 	return pBaseFlushAppcompatCache();
 }
 
-extern WINAPI void wine32a_kernel32_BaseFlushAppcompatCache(void);  /* ../dlls/kernel32/process.c:4277 */
+extern WINAPI void wine32a_kernel32_BaseFlushAppcompatCache(void);  /* ../dlls/kernel32/process.c:4258 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_BaseFlushAppcompatCache,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -2430,13 +2167,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_BaseFlushAppcompatCache,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_Beep(DWORD  dwFreq, DWORD  dwDur) /* ../dlls/kernel32/console.c:358 */
+extern WINAPI BOOL wine32b_kernel32_Beep(DWORD  dwFreq, DWORD  dwDur) /* ../dlls/kernel32/console.c:197 */
 {
 	TRACE("Enter Beep\n");
 	return pBeep(dwFreq, dwDur);
 }
 
-extern WINAPI void wine32a_kernel32_Beep(void);  /* ../dlls/kernel32/console.c:358 */
+extern WINAPI void wine32a_kernel32_Beep(void);  /* ../dlls/kernel32/console.c:197 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_Beep,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -2751,91 +2488,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CheckNameLegalDOS8Dot3W,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CheckRemoteDebuggerPresent(HANDLE  process, PBOOL  DebuggerPresent) /* ../dlls/kernel32/debugger.c:456 */
-{
-	TRACE("Enter CheckRemoteDebuggerPresent\n");
-	return pCheckRemoteDebuggerPresent(process, DebuggerPresent);
-}
-
-extern WINAPI void wine32a_kernel32_CheckRemoteDebuggerPresent(void);  /* ../dlls/kernel32/debugger.c:456 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_CheckRemoteDebuggerPresent,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_CheckRemoteDebuggerPresent") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_ClearCommBreak(HANDLE  handle) /* ../dlls/kernel32/comm.c:573 */
-{
-	TRACE("Enter ClearCommBreak\n");
-	return pClearCommBreak(handle);
-}
-
-extern WINAPI void wine32a_kernel32_ClearCommBreak(void);  /* ../dlls/kernel32/comm.c:573 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_ClearCommBreak,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_ClearCommBreak") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_ClearCommError(HANDLE  handle, LPDWORD  errors, LPCOMSTAT  lpStat) /* ../dlls/kernel32/comm.c:656 */
-{
-	TRACE("Enter ClearCommError\n");
-	return pClearCommError(handle, errors, lpStat);
-}
-
-extern WINAPI void wine32a_kernel32_ClearCommError(void);  /* ../dlls/kernel32/comm.c:656 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_ClearCommError,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_ClearCommError") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_CloseConsoleHandle(HANDLE  handle) /* ../dlls/kernel32/console.c:452 */
+extern WINAPI BOOL wine32b_kernel32_CloseConsoleHandle(HANDLE  handle) /* ../dlls/kernel32/console.c:291 */
 {
 	TRACE("Enter CloseConsoleHandle\n");
 	return pCloseConsoleHandle(handle);
 }
 
-extern WINAPI void wine32a_kernel32_CloseConsoleHandle(void);  /* ../dlls/kernel32/console.c:452 */
+extern WINAPI void wine32a_kernel32_CloseConsoleHandle(void);  /* ../dlls/kernel32/console.c:291 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_CloseConsoleHandle,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -2854,13 +2513,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CloseConsoleHandle,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CloseHandle(HANDLE  handle) /* ../dlls/kernel32/process.c:3233 */
+extern WINAPI BOOL wine32b_kernel32_CloseHandle(HANDLE  handle) /* ../dlls/kernel32/process.c:3238 */
 {
 	TRACE("Enter CloseHandle\n");
 	return pCloseHandle(handle);
 }
 
-extern WINAPI void wine32a_kernel32_CloseHandle(void);  /* ../dlls/kernel32/process.c:3233 */
+extern WINAPI void wine32a_kernel32_CloseHandle(void);  /* ../dlls/kernel32/process.c:3238 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_CloseHandle,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -2903,13 +2562,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CloseProfileUserMapping,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CmdBatNotification(BOOL  bBatchRunning) /* ../dlls/kernel32/process.c:3907 */
+extern WINAPI BOOL wine32b_kernel32_CmdBatNotification(BOOL  bBatchRunning) /* ../dlls/kernel32/process.c:3888 */
 {
 	TRACE("Enter CmdBatNotification\n");
 	return pCmdBatNotification(bBatchRunning);
 }
 
-extern WINAPI void wine32a_kernel32_CmdBatNotification(void);  /* ../dlls/kernel32/process.c:3907 */
+extern WINAPI void wine32a_kernel32_CmdBatNotification(void);  /* ../dlls/kernel32/process.c:3888 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_CmdBatNotification,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -2928,13 +2587,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CmdBatNotification,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CommConfigDialogA(LPCSTR  lpszDevice, HWND  hWnd, LPCOMMCONFIG  lpCommConfig) /* ../dlls/kernel32/comm.c:1210 */
+extern WINAPI BOOL wine32b_kernel32_CommConfigDialogA(LPCSTR  lpszDevice, HWND  hWnd, LPCOMMCONFIG  lpCommConfig) /* ../dlls/kernel32/comm.c:568 */
 {
 	TRACE("Enter CommConfigDialogA\n");
 	return pCommConfigDialogA(lpszDevice, hWnd, lpCommConfig);
 }
 
-extern WINAPI void wine32a_kernel32_CommConfigDialogA(void);  /* ../dlls/kernel32/comm.c:1210 */
+extern WINAPI void wine32a_kernel32_CommConfigDialogA(void);  /* ../dlls/kernel32/comm.c:568 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_CommConfigDialogA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -2955,13 +2614,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CommConfigDialogA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CommConfigDialogW(LPCWSTR  lpszDevice, HWND  hWnd, LPCOMMCONFIG  lpCommConfig) /* ../dlls/kernel32/comm.c:1237 */
+extern WINAPI BOOL wine32b_kernel32_CommConfigDialogW(LPCWSTR  lpszDevice, HWND  hWnd, LPCOMMCONFIG  lpCommConfig) /* ../dlls/kernel32/comm.c:595 */
 {
 	TRACE("Enter CommConfigDialogW\n");
 	return pCommConfigDialogW(lpszDevice, hWnd, lpCommConfig);
 }
 
-extern WINAPI void wine32a_kernel32_CommConfigDialogW(void);  /* ../dlls/kernel32/comm.c:1237 */
+extern WINAPI void wine32a_kernel32_CommConfigDialogW(void);  /* ../dlls/kernel32/comm.c:595 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_CommConfigDialogW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -3120,33 +2779,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CompareStringOrdinal,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_ContinueDebugEvent(DWORD  pid, DWORD  tid, DWORD  status) /* ../dlls/kernel32/debugger.c:170 */
-{
-	TRACE("Enter ContinueDebugEvent\n");
-	return pContinueDebugEvent(pid, tid, status);
-}
-
-extern WINAPI void wine32a_kernel32_ContinueDebugEvent(void);  /* ../dlls/kernel32/debugger.c:170 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_ContinueDebugEvent,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_ContinueDebugEvent") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
 extern WINAPI LCID wine32b_kernel32_ConvertDefaultLocale(LCID  lcid) /* ../dlls/kernel32/locale.c:2871 */
 {
 	TRACE("Enter ConvertDefaultLocale\n");
@@ -3172,13 +2804,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ConvertDefaultLocale,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_ConvertToGlobalHandle(HANDLE  hSrc) /* ../dlls/kernel32/process.c:3333 */
+extern WINAPI HANDLE wine32b_kernel32_ConvertToGlobalHandle(HANDLE  hSrc) /* ../dlls/kernel32/process.c:3338 */
 {
 	TRACE("Enter ConvertToGlobalHandle\n");
 	return pConvertToGlobalHandle(hSrc);
 }
 
-extern WINAPI void wine32a_kernel32_ConvertToGlobalHandle(void);  /* ../dlls/kernel32/process.c:3333 */
+extern WINAPI void wine32a_kernel32_ConvertToGlobalHandle(void);  /* ../dlls/kernel32/process.c:3338 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_ConvertToGlobalHandle,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -3326,34 +2958,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateActCtxA,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI HANDLE wine32b_kernel32_CreateConsoleScreenBuffer(DWORD  dwDesiredAccess, DWORD  dwShareMode, LPSECURITY_ATTRIBUTES  sa, DWORD  dwFlags, LPVOID  lpScreenBufferData) /* ../dlls/kernel32/console.c:2101 */
-{
-	TRACE("Enter CreateConsoleScreenBuffer\n");
-	return pCreateConsoleScreenBuffer(dwDesiredAccess, dwShareMode, sa, dwFlags, lpScreenBufferData);
-}
-
-extern WINAPI void wine32a_kernel32_CreateConsoleScreenBuffer(void);  /* ../dlls/kernel32/console.c:2101 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_CreateConsoleScreenBuffer,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_CreateConsoleScreenBuffer") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -3633,31 +3237,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateMailslotW,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_CreateMemoryResourceNotification(MEMORY_RESOURCE_NOTIFICATION_TYPE  type) /* ../dlls/kernel32/sync.c:1015 */
-{
-	TRACE("Enter CreateMemoryResourceNotification\n");
-	return pCreateMemoryResourceNotification(type);
-}
-
-extern WINAPI void wine32a_kernel32_CreateMemoryResourceNotification(void);  /* ../dlls/kernel32/sync.c:1015 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_CreateMemoryResourceNotification,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_CreateMemoryResourceNotification") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
 extern WINAPI HANDLE wine32b_kernel32_CreateNamedPipeA(LPCSTR  name, DWORD  dwOpenMode, DWORD  dwPipeMode, DWORD  nMaxInstances, DWORD  nOutBufferSize, DWORD  nInBufferSize, DWORD  nDefaultTimeOut, LPSECURITY_ATTRIBUTES  attr) /* ../dlls/kernel32/sync.c:525 */
 {
 	TRACE("Enter CreateNamedPipeA\n");
@@ -3714,13 +3293,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreatePipe,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreateProcessA(LPCSTR  app_name, LPSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCSTR  cur_dir, LPSTARTUPINFOA  startup_info, LPPROCESS_INFORMATION  info) /* ../dlls/kernel32/process.c:2916 */
+extern WINAPI BOOL wine32b_kernel32_CreateProcessA(LPCSTR  app_name, LPSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCSTR  cur_dir, LPSTARTUPINFOA  startup_info, LPPROCESS_INFORMATION  info) /* ../dlls/kernel32/process.c:2911 */
 {
 	TRACE("Enter CreateProcessA\n");
 	return pCreateProcessA(app_name, cmd_line, process_attr, thread_attr, inherit, flags, env, cur_dir, startup_info, info);
 }
 
-extern WINAPI void wine32a_kernel32_CreateProcessA(void);  /* ../dlls/kernel32/process.c:2916 */
+extern WINAPI void wine32a_kernel32_CreateProcessA(void);  /* ../dlls/kernel32/process.c:2911 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateProcessA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -3742,13 +3321,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateProcessA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreateProcessAsUserA(HANDLE  token, LPCSTR  app_name, LPSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCSTR  cur_dir, LPSTARTUPINFOA  startup_info, LPPROCESS_INFORMATION  info) /* ../dlls/kernel32/process.c:2942 */
+extern WINAPI BOOL wine32b_kernel32_CreateProcessAsUserA(HANDLE  token, LPCSTR  app_name, LPSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCSTR  cur_dir, LPSTARTUPINFOA  startup_info, LPPROCESS_INFORMATION  info) /* ../dlls/kernel32/process.c:2937 */
 {
 	TRACE("Enter CreateProcessAsUserA\n");
 	return pCreateProcessAsUserA(token, app_name, cmd_line, process_attr, thread_attr, inherit, flags, env, cur_dir, startup_info, info);
 }
 
-extern WINAPI void wine32a_kernel32_CreateProcessAsUserA(void);  /* ../dlls/kernel32/process.c:2942 */
+extern WINAPI void wine32a_kernel32_CreateProcessAsUserA(void);  /* ../dlls/kernel32/process.c:2937 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateProcessAsUserA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -3770,13 +3349,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateProcessAsUserA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreateProcessAsUserW(HANDLE  token, LPCWSTR  app_name, LPWSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCWSTR  cur_dir, LPSTARTUPINFOW  startup_info, LPPROCESS_INFORMATION  info) /* ../dlls/kernel32/process.c:2957 */
+extern WINAPI BOOL wine32b_kernel32_CreateProcessAsUserW(HANDLE  token, LPCWSTR  app_name, LPWSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCWSTR  cur_dir, LPSTARTUPINFOW  startup_info, LPPROCESS_INFORMATION  info) /* ../dlls/kernel32/process.c:2952 */
 {
 	TRACE("Enter CreateProcessAsUserW\n");
 	return pCreateProcessAsUserW(token, app_name, cmd_line, process_attr, thread_attr, inherit, flags, env, cur_dir, startup_info, info);
 }
 
-extern WINAPI void wine32a_kernel32_CreateProcessAsUserW(void);  /* ../dlls/kernel32/process.c:2957 */
+extern WINAPI void wine32a_kernel32_CreateProcessAsUserW(void);  /* ../dlls/kernel32/process.c:2952 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateProcessAsUserW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -3798,13 +3377,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateProcessAsUserW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreateProcessInternalA(HANDLE  token, LPCSTR  app_name, LPSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCSTR  cur_dir, LPSTARTUPINFOA  startup_info, LPPROCESS_INFORMATION  info, HANDLE*  new_token) /* ../dlls/kernel32/process.c:2873 */
+extern WINAPI BOOL wine32b_kernel32_CreateProcessInternalA(HANDLE  token, LPCSTR  app_name, LPSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCSTR  cur_dir, LPSTARTUPINFOA  startup_info, LPPROCESS_INFORMATION  info, HANDLE*  new_token) /* ../dlls/kernel32/process.c:2868 */
 {
 	TRACE("Enter CreateProcessInternalA\n");
 	return pCreateProcessInternalA(token, app_name, cmd_line, process_attr, thread_attr, inherit, flags, env, cur_dir, startup_info, info, new_token);
 }
 
-extern WINAPI void wine32a_kernel32_CreateProcessInternalA(void);  /* ../dlls/kernel32/process.c:2873 */
+extern WINAPI void wine32a_kernel32_CreateProcessInternalA(void);  /* ../dlls/kernel32/process.c:2868 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateProcessInternalA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -3826,13 +3405,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateProcessInternalA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreateProcessInternalW(HANDLE  token, LPCWSTR  app_name, LPWSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCWSTR  cur_dir, LPSTARTUPINFOW  startup_info, LPPROCESS_INFORMATION  info, HANDLE*  new_token) /* ../dlls/kernel32/process.c:2731 */
+extern WINAPI BOOL wine32b_kernel32_CreateProcessInternalW(HANDLE  token, LPCWSTR  app_name, LPWSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCWSTR  cur_dir, LPSTARTUPINFOW  startup_info, LPPROCESS_INFORMATION  info, HANDLE*  new_token) /* ../dlls/kernel32/process.c:2726 */
 {
 	TRACE("Enter CreateProcessInternalW\n");
 	return pCreateProcessInternalW(token, app_name, cmd_line, process_attr, thread_attr, inherit, flags, env, cur_dir, startup_info, info, new_token);
 }
 
-extern WINAPI void wine32a_kernel32_CreateProcessInternalW(void);  /* ../dlls/kernel32/process.c:2731 */
+extern WINAPI void wine32a_kernel32_CreateProcessInternalW(void);  /* ../dlls/kernel32/process.c:2726 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateProcessInternalW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -3854,13 +3433,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateProcessInternalW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreateProcessW(LPCWSTR  app_name, LPWSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCWSTR  cur_dir, LPSTARTUPINFOW  startup_info, LPPROCESS_INFORMATION  info) /* ../dlls/kernel32/process.c:2929 */
+extern WINAPI BOOL wine32b_kernel32_CreateProcessW(LPCWSTR  app_name, LPWSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCWSTR  cur_dir, LPSTARTUPINFOW  startup_info, LPPROCESS_INFORMATION  info) /* ../dlls/kernel32/process.c:2924 */
 {
 	TRACE("Enter CreateProcessW\n");
 	return pCreateProcessW(app_name, cmd_line, process_attr, thread_attr, inherit, flags, env, cur_dir, startup_info, info);
 }
 
-extern WINAPI void wine32a_kernel32_CreateProcessW(void);  /* ../dlls/kernel32/process.c:2929 */
+extern WINAPI void wine32a_kernel32_CreateProcessW(void);  /* ../dlls/kernel32/process.c:2924 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateProcessW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -3938,13 +3517,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateSemaphoreExA,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_CreateSocketHandle(void) /* ../dlls/kernel32/process.c:3369 */
+extern WINAPI HANDLE wine32b_kernel32_CreateSocketHandle(void) /* ../dlls/kernel32/process.c:3374 */
 {
 	TRACE("Enter CreateSocketHandle\n");
 	return pCreateSocketHandle();
 }
 
-extern WINAPI void wine32a_kernel32_CreateSocketHandle(void);  /* ../dlls/kernel32/process.c:3369 */
+extern WINAPI void wine32a_kernel32_CreateSocketHandle(void);  /* ../dlls/kernel32/process.c:3374 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateSocketHandle,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -4070,13 +3649,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateToolhelp32Snapshot,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreateUmsCompletionList(PUMS_COMPLETION_LIST*  list) /* ../dlls/kernel32/process.c:4145 */
+extern WINAPI BOOL wine32b_kernel32_CreateUmsCompletionList(PUMS_COMPLETION_LIST*  list) /* ../dlls/kernel32/process.c:4126 */
 {
 	TRACE("Enter CreateUmsCompletionList\n");
 	return pCreateUmsCompletionList(list);
 }
 
-extern WINAPI void wine32a_kernel32_CreateUmsCompletionList(void);  /* ../dlls/kernel32/process.c:4145 */
+extern WINAPI void wine32a_kernel32_CreateUmsCompletionList(void);  /* ../dlls/kernel32/process.c:4126 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateUmsCompletionList,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -4095,13 +3674,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateUmsCompletionList,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreateUmsThreadContext(PUMS_CONTEXT*  ctx) /* ../dlls/kernel32/process.c:4155 */
+extern WINAPI BOOL wine32b_kernel32_CreateUmsThreadContext(PUMS_CONTEXT*  ctx) /* ../dlls/kernel32/process.c:4136 */
 {
 	TRACE("Enter CreateUmsThreadContext\n");
 	return pCreateUmsThreadContext(ctx);
 }
 
-extern WINAPI void wine32a_kernel32_CreateUmsThreadContext(void);  /* ../dlls/kernel32/process.c:4155 */
+extern WINAPI void wine32a_kernel32_CreateUmsThreadContext(void);  /* ../dlls/kernel32/process.c:4136 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateUmsThreadContext,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -4175,63 +3754,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateWaitableTimerExA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_DebugActiveProcess(DWORD  pid) /* ../dlls/kernel32/debugger.c:200 */
-{
-	TRACE("Enter DebugActiveProcess\n");
-	return pDebugActiveProcess(pid);
-}
-
-extern WINAPI void wine32a_kernel32_DebugActiveProcess(void);  /* ../dlls/kernel32/debugger.c:200 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_DebugActiveProcess,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_DebugActiveProcess") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_DebugActiveProcessStop(DWORD  pid) /* ../dlls/kernel32/debugger.c:231 */
-{
-	TRACE("Enter DebugActiveProcessStop\n");
-	return pDebugActiveProcessStop(pid);
-}
-
-extern WINAPI void wine32a_kernel32_DebugActiveProcessStop(void);  /* ../dlls/kernel32/debugger.c:231 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_DebugActiveProcessStop,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_DebugActiveProcessStop") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_DebugBreakProcess(HANDLE  process) /* ../dlls/kernel32/debugger.c:416 */
+extern WINAPI BOOL wine32b_kernel32_DebugBreakProcess(HANDLE  process) /* ../dlls/kernel32/debugger.c:49 */
 {
 	TRACE("Enter DebugBreakProcess\n");
 	return pDebugBreakProcess(process);
 }
 
-extern WINAPI void wine32a_kernel32_DebugBreakProcess(void);  /* ../dlls/kernel32/debugger.c:416 */
+extern WINAPI void wine32a_kernel32_DebugBreakProcess(void);  /* ../dlls/kernel32/debugger.c:49 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_DebugBreakProcess,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -4250,13 +3779,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DebugBreakProcess,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_DebugSetProcessKillOnExit(BOOL  kill) /* ../dlls/kernel32/debugger.c:490 */
+extern WINAPI BOOL wine32b_kernel32_DebugSetProcessKillOnExit(BOOL  kill) /* ../dlls/kernel32/debugger.c:73 */
 {
 	TRACE("Enter DebugSetProcessKillOnExit\n");
 	return pDebugSetProcessKillOnExit(kill);
 }
 
-extern WINAPI void wine32a_kernel32_DebugSetProcessKillOnExit(void);  /* ../dlls/kernel32/debugger.c:490 */
+extern WINAPI void wine32a_kernel32_DebugSetProcessKillOnExit(void);  /* ../dlls/kernel32/debugger.c:73 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_DebugSetProcessKillOnExit,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -4405,13 +3934,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DeleteTimerQueue,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_DeleteUmsCompletionList(PUMS_COMPLETION_LIST  list) /* ../dlls/kernel32/process.c:4165 */
+extern WINAPI BOOL wine32b_kernel32_DeleteUmsCompletionList(PUMS_COMPLETION_LIST  list) /* ../dlls/kernel32/process.c:4146 */
 {
 	TRACE("Enter DeleteUmsCompletionList\n");
 	return pDeleteUmsCompletionList(list);
 }
 
-extern WINAPI void wine32a_kernel32_DeleteUmsCompletionList(void);  /* ../dlls/kernel32/process.c:4165 */
+extern WINAPI void wine32a_kernel32_DeleteUmsCompletionList(void);  /* ../dlls/kernel32/process.c:4146 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_DeleteUmsCompletionList,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -4430,13 +3959,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DeleteUmsCompletionList,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_DeleteUmsThreadContext(PUMS_CONTEXT  ctx) /* ../dlls/kernel32/process.c:4175 */
+extern WINAPI BOOL wine32b_kernel32_DeleteUmsThreadContext(PUMS_CONTEXT  ctx) /* ../dlls/kernel32/process.c:4156 */
 {
 	TRACE("Enter DeleteUmsThreadContext\n");
 	return pDeleteUmsThreadContext(ctx);
 }
 
-extern WINAPI void wine32a_kernel32_DeleteUmsThreadContext(void);  /* ../dlls/kernel32/process.c:4175 */
+extern WINAPI void wine32a_kernel32_DeleteUmsThreadContext(void);  /* ../dlls/kernel32/process.c:4156 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_DeleteUmsThreadContext,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -4505,13 +4034,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DeleteVolumeMountPointW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_DequeueUmsCompletionListItems(void*  list, DWORD  timeout, PUMS_CONTEXT*  ctx) /* ../dlls/kernel32/process.c:4185 */
+extern WINAPI BOOL wine32b_kernel32_DequeueUmsCompletionListItems(void*  list, DWORD  timeout, PUMS_CONTEXT*  ctx) /* ../dlls/kernel32/process.c:4166 */
 {
 	TRACE("Enter DequeueUmsCompletionListItems\n");
 	return pDequeueUmsCompletionListItems(list, timeout, ctx);
 }
 
-extern WINAPI void wine32a_kernel32_DequeueUmsCompletionListItems(void);  /* ../dlls/kernel32/process.c:4185 */
+extern WINAPI void wine32a_kernel32_DequeueUmsCompletionListItems(void);  /* ../dlls/kernel32/process.c:4166 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_DequeueUmsCompletionListItems,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -4641,13 +4170,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DosDateTimeToFileTime,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_DuplicateConsoleHandle(HANDLE  handle, DWORD  access, BOOL  inherit, DWORD  options) /* ../dlls/kernel32/console.c:435 */
+extern WINAPI HANDLE wine32b_kernel32_DuplicateConsoleHandle(HANDLE  handle, DWORD  access, BOOL  inherit, DWORD  options) /* ../dlls/kernel32/console.c:274 */
 {
 	TRACE("Enter DuplicateConsoleHandle\n");
 	return pDuplicateConsoleHandle(handle, access, inherit, options);
 }
 
-extern WINAPI void wine32a_kernel32_DuplicateConsoleHandle(void);  /* ../dlls/kernel32/console.c:435 */
+extern WINAPI void wine32a_kernel32_DuplicateConsoleHandle(void);  /* ../dlls/kernel32/console.c:274 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_DuplicateConsoleHandle,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -4669,13 +4198,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DuplicateConsoleHandle,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_DuplicateHandle(HANDLE  source_process, HANDLE  source, HANDLE  dest_process, HANDLE*  dest, DWORD  access, BOOL  inherit, DWORD  options) /* ../dlls/kernel32/process.c:3305 */
+extern WINAPI BOOL wine32b_kernel32_DuplicateHandle(HANDLE  source_process, HANDLE  source, HANDLE  dest_process, HANDLE*  dest, DWORD  access, BOOL  inherit, DWORD  options) /* ../dlls/kernel32/process.c:3310 */
 {
 	TRACE("Enter DuplicateHandle\n");
 	return pDuplicateHandle(source_process, source, dest_process, dest, access, inherit, options);
 }
 
-extern WINAPI void wine32a_kernel32_DuplicateHandle(void);  /* ../dlls/kernel32/process.c:3305 */
+extern WINAPI void wine32a_kernel32_DuplicateHandle(void);  /* ../dlls/kernel32/process.c:3310 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_DuplicateHandle,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -5271,13 +4800,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumSystemCodePagesW,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_EnumSystemFirmwareTables(DWORD  provider, void*  buffer, DWORD  size) /* ../dlls/kernel32/cpu.c:373 */
+extern WINAPI UINT wine32b_kernel32_EnumSystemFirmwareTables(DWORD  provider, void*  buffer, DWORD  size) /* ../dlls/kernel32/cpu.c:328 */
 {
 	TRACE("Enter EnumSystemFirmwareTables\n");
 	return pEnumSystemFirmwareTables(provider, buffer, size);
 }
 
-extern WINAPI void wine32a_kernel32_EnumSystemFirmwareTables(void);  /* ../dlls/kernel32/cpu.c:373 */
+extern WINAPI void wine32a_kernel32_EnumSystemFirmwareTables(void);  /* ../dlls/kernel32/cpu.c:328 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumSystemFirmwareTables,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -5595,13 +5124,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumUILanguagesW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnterUmsSchedulingMode(UMS_SCHEDULER_STARTUP_INFO*  info) /* ../dlls/kernel32/process.c:4195 */
+extern WINAPI BOOL wine32b_kernel32_EnterUmsSchedulingMode(UMS_SCHEDULER_STARTUP_INFO*  info) /* ../dlls/kernel32/process.c:4176 */
 {
 	TRACE("Enter EnterUmsSchedulingMode\n");
 	return pEnterUmsSchedulingMode(info);
 }
 
-extern WINAPI void wine32a_kernel32_EnterUmsSchedulingMode(void);  /* ../dlls/kernel32/process.c:4195 */
+extern WINAPI void wine32a_kernel32_EnterUmsSchedulingMode(void);  /* ../dlls/kernel32/process.c:4176 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_EnterUmsSchedulingMode,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -5647,39 +5176,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EraseTape,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EscapeCommFunction(HANDLE  handle, DWORD  func) /* ../dlls/kernel32/comm.c:595 */
-{
-	TRACE("Enter EscapeCommFunction\n");
-	return pEscapeCommFunction(handle, func);
-}
-
-extern WINAPI void wine32a_kernel32_EscapeCommFunction(void);  /* ../dlls/kernel32/comm.c:595 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_EscapeCommFunction,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_EscapeCommFunction") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_ExecuteUmsThread(PUMS_CONTEXT  ctx) /* ../dlls/kernel32/process.c:4205 */
+extern WINAPI BOOL wine32b_kernel32_ExecuteUmsThread(PUMS_CONTEXT  ctx) /* ../dlls/kernel32/process.c:4186 */
 {
 	TRACE("Enter ExecuteUmsThread\n");
 	return pExecuteUmsThread(ctx);
 }
 
-extern WINAPI void wine32a_kernel32_ExecuteUmsThread(void);  /* ../dlls/kernel32/process.c:4205 */
+extern WINAPI void wine32a_kernel32_ExecuteUmsThread(void);  /* ../dlls/kernel32/process.c:4186 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_ExecuteUmsThread,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -5698,13 +5201,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ExecuteUmsThread,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_ExitProcess(DWORD  status) /* ../dlls/kernel32/process.c:3163 */
+extern WINAPI void wine32b_kernel32_ExitProcess(DWORD  status) /* ../dlls/kernel32/process.c:3158 */
 {
 	TRACE("Enter ExitProcess\n");
 	return pExitProcess(status);
 }
 
-extern WINAPI void wine32a_kernel32_ExitProcess(void);  /* ../dlls/kernel32/process.c:3163 */
+extern WINAPI void wine32a_kernel32_ExitProcess(void);  /* ../dlls/kernel32/process.c:3158 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_ExitProcess,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -5723,67 +5226,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ExitProcess,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_ExpandEnvironmentStringsA(LPCSTR  src, LPSTR  dst, DWORD  count) /* ../dlls/kernel32/environ.c:329 */
-{
-	TRACE("Enter ExpandEnvironmentStringsA\n");
-	return pExpandEnvironmentStringsA(src, dst, count);
-}
-
-extern WINAPI void wine32a_kernel32_ExpandEnvironmentStringsA(void);  /* ../dlls/kernel32/environ.c:329 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_ExpandEnvironmentStringsA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_ExpandEnvironmentStringsA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI DWORD wine32b_kernel32_ExpandEnvironmentStringsW(LPCWSTR  src, LPWSTR  dst, DWORD  len) /* ../dlls/kernel32/environ.c:371 */
-{
-	TRACE("Enter ExpandEnvironmentStringsW\n");
-	return pExpandEnvironmentStringsW(src, dst, len);
-}
-
-extern WINAPI void wine32a_kernel32_ExpandEnvironmentStringsW(void);  /* ../dlls/kernel32/environ.c:371 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_ExpandEnvironmentStringsW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_ExpandEnvironmentStringsW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI void wine32b_kernel32_ExpungeConsoleCommandHistoryA(LPCSTR  unknown) /* ../dlls/kernel32/console.c:3239 */
+extern WINAPI void wine32b_kernel32_ExpungeConsoleCommandHistoryA(LPCSTR  unknown) /* ../dlls/kernel32/console.c:1588 */
 {
 	TRACE("Enter ExpungeConsoleCommandHistoryA\n");
 	return pExpungeConsoleCommandHistoryA(unknown);
 }
 
-extern WINAPI void wine32a_kernel32_ExpungeConsoleCommandHistoryA(void);  /* ../dlls/kernel32/console.c:3239 */
+extern WINAPI void wine32a_kernel32_ExpungeConsoleCommandHistoryA(void);  /* ../dlls/kernel32/console.c:1588 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_ExpungeConsoleCommandHistoryA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -5802,13 +5251,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ExpungeConsoleCommandHistoryA,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_ExpungeConsoleCommandHistoryW(LPCWSTR  unknown) /* ../dlls/kernel32/console.c:3245 */
+extern WINAPI void wine32b_kernel32_ExpungeConsoleCommandHistoryW(LPCWSTR  unknown) /* ../dlls/kernel32/console.c:1594 */
 {
 	TRACE("Enter ExpungeConsoleCommandHistoryW\n");
 	return pExpungeConsoleCommandHistoryW(unknown);
 }
 
-extern WINAPI void wine32a_kernel32_ExpungeConsoleCommandHistoryW(void);  /* ../dlls/kernel32/console.c:3245 */
+extern WINAPI void wine32a_kernel32_ExpungeConsoleCommandHistoryW(void);  /* ../dlls/kernel32/console.c:1594 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_ExpungeConsoleCommandHistoryW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -5827,65 +5276,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ExpungeConsoleCommandHistoryW,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_FatalAppExitA(UINT  action, LPCSTR  str) /* ../dlls/kernel32/except.c:471 */
-{
-	TRACE("Enter FatalAppExitA\n");
-	return pFatalAppExitA(action, str);
-}
-
-extern WINAPI void wine32a_kernel32_FatalAppExitA(void);  /* ../dlls/kernel32/except.c:471 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_FatalAppExitA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_FatalAppExitA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI void wine32b_kernel32_FatalAppExitW(UINT  action, LPCWSTR  str) /* ../dlls/kernel32/except.c:488 */
-{
-	TRACE("Enter FatalAppExitW\n");
-	return pFatalAppExitW(action, str);
-}
-
-extern WINAPI void wine32a_kernel32_FatalAppExitW(void);  /* ../dlls/kernel32/except.c:488 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_FatalAppExitW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_FatalAppExitW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI void wine32b_kernel32_FatalExit(int  ExitCode) /* ../dlls/kernel32/except.c:507 */
+extern WINAPI void wine32b_kernel32_FatalExit(int  code) /* ../dlls/kernel32/process.c:3198 */
 {
 	TRACE("Enter FatalExit\n");
-	return pFatalExit(ExitCode);
+	return pFatalExit(code);
 }
 
-extern WINAPI void wine32a_kernel32_FatalExit(void);  /* ../dlls/kernel32/except.c:507 */
+extern WINAPI void wine32a_kernel32_FatalExit(void);  /* ../dlls/kernel32/process.c:3198 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_FatalExit,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -5977,90 +5374,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FileTimeToSystemTime,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_FillConsoleOutputAttribute(HANDLE  hConsoleOutput, WORD  attr, DWORD  length, COORD  coord, LPDWORD  lpNumAttrsWritten) /* ../dlls/kernel32/console.c:796 */
-{
-	TRACE("Enter FillConsoleOutputAttribute\n");
-	return pFillConsoleOutputAttribute(hConsoleOutput, attr, length, coord, lpNumAttrsWritten);
-}
-
-extern WINAPI void wine32a_kernel32_FillConsoleOutputAttribute(void);  /* ../dlls/kernel32/console.c:796 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_FillConsoleOutputAttribute,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_FillConsoleOutputAttribute") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_FillConsoleOutputCharacterA(HANDLE  hConsoleOutput, CHAR  ch, DWORD  length, COORD  coord, LPDWORD  lpNumCharsWritten) /* ../dlls/kernel32/console.c:725 */
-{
-	TRACE("Enter FillConsoleOutputCharacterA\n");
-	return pFillConsoleOutputCharacterA(hConsoleOutput, ch, length, coord, lpNumCharsWritten);
-}
-
-extern WINAPI void wine32a_kernel32_FillConsoleOutputCharacterA(void);  /* ../dlls/kernel32/console.c:725 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_FillConsoleOutputCharacterA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_FillConsoleOutputCharacterA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_FillConsoleOutputCharacterW(HANDLE  hConsoleOutput, WCHAR  ch, DWORD  length, COORD  coord, LPDWORD  lpNumCharsWritten) /* ../dlls/kernel32/console.c:749 */
-{
-	TRACE("Enter FillConsoleOutputCharacterW\n");
-	return pFillConsoleOutputCharacterW(hConsoleOutput, ch, length, coord, lpNumCharsWritten);
-}
-
-extern WINAPI void wine32a_kernel32_FillConsoleOutputCharacterW(void);  /* ../dlls/kernel32/console.c:749 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_FillConsoleOutputCharacterW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_FillConsoleOutputCharacterW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -6164,85 +5477,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindClose,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_FindCloseChangeNotification(HANDLE  handle) /* ../dlls/kernel32/change.c:131 */
-{
-	TRACE("Enter FindCloseChangeNotification\n");
-	return pFindCloseChangeNotification(handle);
-}
-
-extern WINAPI void wine32a_kernel32_FindCloseChangeNotification(void);  /* ../dlls/kernel32/change.c:131 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_FindCloseChangeNotification,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_FindCloseChangeNotification") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI HANDLE wine32b_kernel32_FindFirstChangeNotificationA(LPCSTR  lpPathName, BOOL  bWatchSubtree, DWORD  dwNotifyFilter) /* ../dlls/kernel32/change.c:42 */
-{
-	TRACE("Enter FindFirstChangeNotificationA\n");
-	return pFindFirstChangeNotificationA(lpPathName, bWatchSubtree, dwNotifyFilter);
-}
-
-extern WINAPI void wine32a_kernel32_FindFirstChangeNotificationA(void);  /* ../dlls/kernel32/change.c:42 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_FindFirstChangeNotificationA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_FindFirstChangeNotificationA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI HANDLE wine32b_kernel32_FindFirstChangeNotificationW(LPCWSTR  lpPathName, BOOL  bWatchSubtree, DWORD  dwNotifyFilter) /* ../dlls/kernel32/change.c:61 */
-{
-	TRACE("Enter FindFirstChangeNotificationW\n");
-	return pFindFirstChangeNotificationW(lpPathName, bWatchSubtree, dwNotifyFilter);
-}
-
-extern WINAPI void wine32a_kernel32_FindFirstChangeNotificationW(void);  /* ../dlls/kernel32/change.c:61 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_FindFirstChangeNotificationW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_FindFirstChangeNotificationW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $12, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -6485,31 +5719,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindFirstVolumeW,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_FindNextChangeNotification(HANDLE  handle) /* ../dlls/kernel32/change.c:111 */
-{
-	TRACE("Enter FindNextChangeNotification\n");
-	return pFindNextChangeNotification(handle);
-}
-
-extern WINAPI void wine32a_kernel32_FindNextChangeNotification(void);  /* ../dlls/kernel32/change.c:111 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_FindNextChangeNotification,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_FindNextChangeNotification") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -6809,13 +6018,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindVolumeMountPointClose,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_FlushConsoleInputBuffer(HANDLE  handle) /* ../dlls/kernel32/console.c:1231 */
+extern WINAPI BOOL wine32b_kernel32_FlushConsoleInputBuffer(HANDLE  handle) /* ../dlls/kernel32/console.c:464 */
 {
 	TRACE("Enter FlushConsoleInputBuffer\n");
 	return pFlushConsoleInputBuffer(handle);
 }
 
-extern WINAPI void wine32a_kernel32_FlushConsoleInputBuffer(void);  /* ../dlls/kernel32/console.c:1231 */
+extern WINAPI void wine32a_kernel32_FlushConsoleInputBuffer(void);  /* ../dlls/kernel32/console.c:464 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_FlushConsoleInputBuffer,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -6834,13 +6043,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FlushConsoleInputBuffer,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_FlushProcessWriteBuffers(void) /* ../dlls/kernel32/process.c:4124 */
+extern WINAPI void wine32b_kernel32_FlushProcessWriteBuffers(void) /* ../dlls/kernel32/process.c:4105 */
 {
 	TRACE("Enter FlushProcessWriteBuffers\n");
 	return pFlushProcessWriteBuffers();
 }
 
-extern WINAPI void wine32a_kernel32_FlushProcessWriteBuffers(void);  /* ../dlls/kernel32/process.c:4124 */
+extern WINAPI void wine32a_kernel32_FlushProcessWriteBuffers(void);  /* ../dlls/kernel32/process.c:4105 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_FlushProcessWriteBuffers,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -6852,32 +6061,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FlushProcessWriteBuffers,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $0, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_FlushViewOfFile(LPCVOID  base, SIZE_T  size) /* ../dlls/kernel32/virtual.c:432 */
-{
-	TRACE("Enter FlushViewOfFile\n");
-	return pFlushViewOfFile(base, size);
-}
-
-extern WINAPI void wine32a_kernel32_FlushViewOfFile(void);  /* ../dlls/kernel32/virtual.c:432 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_FlushViewOfFile,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_FlushViewOfFile") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -6996,13 +6179,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FormatMessageW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_FreeConsole(void) /* ../dlls/kernel32/console.c:1419 */
+extern WINAPI BOOL wine32b_kernel32_FreeConsole(void) /* ../dlls/kernel32/console.c:540 */
 {
 	TRACE("Enter FreeConsole\n");
 	return pFreeConsole();
 }
 
-extern WINAPI void wine32a_kernel32_FreeConsole(void);  /* ../dlls/kernel32/console.c:1419 */
+extern WINAPI void wine32a_kernel32_FreeConsole(void);  /* ../dlls/kernel32/console.c:540 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_FreeConsole,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -7014,56 +6197,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FreeConsole,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $0, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_FreeEnvironmentStringsA(LPSTR  ptr) /* ../dlls/kernel32/environ.c:163 */
-{
-	TRACE("Enter FreeEnvironmentStringsA\n");
-	return pFreeEnvironmentStringsA(ptr);
-}
-
-extern WINAPI void wine32a_kernel32_FreeEnvironmentStringsA(void);  /* ../dlls/kernel32/environ.c:163 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_FreeEnvironmentStringsA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_FreeEnvironmentStringsA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_FreeEnvironmentStringsW(LPWSTR  ptr) /* ../dlls/kernel32/environ.c:172 */
-{
-	TRACE("Enter FreeEnvironmentStringsW\n");
-	return pFreeEnvironmentStringsW(ptr);
-}
-
-extern WINAPI void wine32a_kernel32_FreeEnvironmentStringsW(void);  /* ../dlls/kernel32/environ.c:172 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_FreeEnvironmentStringsW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_FreeEnvironmentStringsW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -7121,13 +6254,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FreeLibraryAndExitThread,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_FreeUserPhysicalPages(HANDLE  process, ULONG_PTR*  pages, ULONG_PTR*  userarray) /* ../dlls/kernel32/heap.c:1479 */
+extern WINAPI BOOL wine32b_kernel32_FreeUserPhysicalPages(HANDLE  process, ULONG_PTR*  pages, ULONG_PTR*  userarray) /* ../dlls/kernel32/heap.c:936 */
 {
 	TRACE("Enter FreeUserPhysicalPages\n");
 	return pFreeUserPhysicalPages(process, pages, userarray);
 }
 
-extern WINAPI void wine32a_kernel32_FreeUserPhysicalPages(void);  /* ../dlls/kernel32/heap.c:1479 */
+extern WINAPI void wine32a_kernel32_FreeUserPhysicalPages(void);  /* ../dlls/kernel32/heap.c:936 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_FreeUserPhysicalPages,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -7142,32 +6275,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FreeUserPhysicalPages,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_GenerateConsoleCtrlEvent(DWORD  dwCtrlEvent, DWORD  dwProcessGroupID) /* ../dlls/kernel32/console.c:2055 */
-{
-	TRACE("Enter GenerateConsoleCtrlEvent\n");
-	return pGenerateConsoleCtrlEvent(dwCtrlEvent, dwProcessGroupID);
-}
-
-extern WINAPI void wine32a_kernel32_GenerateConsoleCtrlEvent(void);  /* ../dlls/kernel32/console.c:2055 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GenerateConsoleCtrlEvent,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GenerateConsoleCtrlEvent") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -7198,13 +6305,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetACP,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetActiveProcessorCount(WORD  group) /* ../dlls/kernel32/cpu.c:302 */
+extern WINAPI DWORD wine32b_kernel32_GetActiveProcessorCount(WORD  group) /* ../dlls/kernel32/cpu.c:257 */
 {
 	TRACE("Enter GetActiveProcessorCount\n");
 	return pGetActiveProcessorCount(group);
 }
 
-extern WINAPI void wine32a_kernel32_GetActiveProcessorCount(void);  /* ../dlls/kernel32/cpu.c:302 */
+extern WINAPI void wine32a_kernel32_GetActiveProcessorCount(void);  /* ../dlls/kernel32/cpu.c:257 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetActiveProcessorCount,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -7223,13 +6330,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetActiveProcessorCount,
 	"ret \n"
 )
 
-extern WINAPI WORD wine32b_kernel32_GetActiveProcessorGroupCount(void) /* ../dlls/kernel32/cpu.c:293 */
+extern WINAPI WORD wine32b_kernel32_GetActiveProcessorGroupCount(void) /* ../dlls/kernel32/cpu.c:248 */
 {
 	TRACE("Enter GetActiveProcessorGroupCount\n");
 	return pGetActiveProcessorGroupCount();
 }
 
-extern WINAPI void wine32a_kernel32_GetActiveProcessorGroupCount(void);  /* ../dlls/kernel32/cpu.c:293 */
+extern WINAPI void wine32a_kernel32_GetActiveProcessorGroupCount(void);  /* ../dlls/kernel32/cpu.c:248 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetActiveProcessorGroupCount,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -7247,13 +6354,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetActiveProcessorGroupCount,
 	"ret \n"
 )
 
-extern WINAPI HRESULT wine32b_kernel32_GetApplicationRestartSettings(HANDLE  process, WCHAR*  cmdline, DWORD*  size, DWORD*  flags) /* ../dlls/kernel32/process.c:3985 */
+extern WINAPI HRESULT wine32b_kernel32_GetApplicationRestartSettings(HANDLE  process, WCHAR*  cmdline, DWORD*  size, DWORD*  flags) /* ../dlls/kernel32/process.c:3966 */
 {
 	TRACE("Enter GetApplicationRestartSettings\n");
 	return pGetApplicationRestartSettings(process, cmdline, size, flags);
 }
 
-extern WINAPI void wine32a_kernel32_GetApplicationRestartSettings(void);  /* ../dlls/kernel32/process.c:3985 */
+extern WINAPI void wine32a_kernel32_GetApplicationRestartSettings(void);  /* ../dlls/kernel32/process.c:3966 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetApplicationRestartSettings,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -7545,211 +6652,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCalendarInfoEx,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetCommConfig(HANDLE  hFile, LPCOMMCONFIG  lpCommConfig, LPDWORD  lpdwSize) /* ../dlls/kernel32/comm.c:1274 */
-{
-	TRACE("Enter GetCommConfig\n");
-	return pGetCommConfig(hFile, lpCommConfig, lpdwSize);
-}
-
-extern WINAPI void wine32a_kernel32_GetCommConfig(void);  /* ../dlls/kernel32/comm.c:1274 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetCommConfig,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetCommConfig") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_GetCommMask(HANDLE  handle, LPDWORD  evtmask) /* ../dlls/kernel32/comm.c:740 */
-{
-	TRACE("Enter GetCommMask\n");
-	return pGetCommMask(handle, evtmask);
-}
-
-extern WINAPI void wine32a_kernel32_GetCommMask(void);  /* ../dlls/kernel32/comm.c:740 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetCommMask,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetCommMask") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_GetCommModemStatus(HANDLE  hFile, LPDWORD  lpModemStat) /* ../dlls/kernel32/comm.c:1095 */
-{
-	TRACE("Enter GetCommModemStatus\n");
-	return pGetCommModemStatus(hFile, lpModemStat);
-}
-
-extern WINAPI void wine32a_kernel32_GetCommModemStatus(void);  /* ../dlls/kernel32/comm.c:1095 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetCommModemStatus,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetCommModemStatus") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_GetCommProperties(HANDLE  hFile, LPCOMMPROP  lpCommProp) /* ../dlls/kernel32/comm.c:1140 */
-{
-	TRACE("Enter GetCommProperties\n");
-	return pGetCommProperties(hFile, lpCommProp);
-}
-
-extern WINAPI void wine32a_kernel32_GetCommProperties(void);  /* ../dlls/kernel32/comm.c:1140 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetCommProperties,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetCommProperties") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_GetCommState(HANDLE  handle, LPDCB  lpdcb) /* ../dlls/kernel32/comm.c:900 */
-{
-	TRACE("Enter GetCommState\n");
-	return pGetCommState(handle, lpdcb);
-}
-
-extern WINAPI void wine32a_kernel32_GetCommState(void);  /* ../dlls/kernel32/comm.c:900 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetCommState,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetCommState") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_GetCommTimeouts(HANDLE  hComm, LPCOMMTIMEOUTS  lptimeouts) /* ../dlls/kernel32/comm.c:1016 */
-{
-	TRACE("Enter GetCommTimeouts\n");
-	return pGetCommTimeouts(hComm, lptimeouts);
-}
-
-extern WINAPI void wine32a_kernel32_GetCommTimeouts(void);  /* ../dlls/kernel32/comm.c:1016 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetCommTimeouts,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetCommTimeouts") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI LPSTR wine32b_kernel32_GetCommandLineA(void) /* ../dlls/kernel32/environ.c:71 */
-{
-	TRACE("Enter GetCommandLineA\n");
-	return pGetCommandLineA();
-}
-
-extern WINAPI void wine32a_kernel32_GetCommandLineA(void);  /* ../dlls/kernel32/environ.c:71 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetCommandLineA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetCommandLineA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $0, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI LPWSTR wine32b_kernel32_GetCommandLineW(void) /* ../dlls/kernel32/environ.c:90 */
-{
-	TRACE("Enter GetCommandLineW\n");
-	return pGetCommandLineW();
-}
-
-extern WINAPI void wine32a_kernel32_GetCommandLineW(void);  /* ../dlls/kernel32/environ.c:90 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetCommandLineW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetCommandLineW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $0, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
 extern WINAPI BOOL wine32b_kernel32_GetComputerNameA(LPSTR  name, LPDWORD  size) /* ../dlls/kernel32/computername.c:382 */
 {
 	TRACE("Enter GetComputerNameA\n");
@@ -7856,13 +6758,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetComputerNameW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetConsoleAliasExesLengthA(void) /* ../dlls/kernel32/console.c:3225 */
+extern WINAPI DWORD wine32b_kernel32_GetConsoleAliasExesLengthA(void) /* ../dlls/kernel32/console.c:1574 */
 {
 	TRACE("Enter GetConsoleAliasExesLengthA\n");
 	return pGetConsoleAliasExesLengthA();
 }
 
-extern WINAPI void wine32a_kernel32_GetConsoleAliasExesLengthA(void);  /* ../dlls/kernel32/console.c:3225 */
+extern WINAPI void wine32a_kernel32_GetConsoleAliasExesLengthA(void);  /* ../dlls/kernel32/console.c:1574 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleAliasExesLengthA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -7880,13 +6782,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleAliasExesLengthA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetConsoleAliasExesLengthW(void) /* ../dlls/kernel32/console.c:3232 */
+extern WINAPI DWORD wine32b_kernel32_GetConsoleAliasExesLengthW(void) /* ../dlls/kernel32/console.c:1581 */
 {
 	TRACE("Enter GetConsoleAliasExesLengthW\n");
 	return pGetConsoleAliasExesLengthW();
 }
 
-extern WINAPI void wine32a_kernel32_GetConsoleAliasExesLengthW(void);  /* ../dlls/kernel32/console.c:3232 */
+extern WINAPI void wine32a_kernel32_GetConsoleAliasExesLengthW(void);  /* ../dlls/kernel32/console.c:1581 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleAliasExesLengthW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -7904,13 +6806,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleAliasExesLengthW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetConsoleAliasW(LPWSTR  lpSource, LPWSTR  lpTargetBuffer, DWORD  TargetBufferLength, LPWSTR  lpExename) /* ../dlls/kernel32/console.c:3059 */
+extern WINAPI DWORD wine32b_kernel32_GetConsoleAliasW(LPWSTR  lpSource, LPWSTR  lpTargetBuffer, DWORD  TargetBufferLength, LPWSTR  lpExename) /* ../dlls/kernel32/console.c:1408 */
 {
 	TRACE("Enter GetConsoleAliasW\n");
 	return pGetConsoleAliasW(lpSource, lpTargetBuffer, TargetBufferLength, lpExename);
 }
 
-extern WINAPI void wine32a_kernel32_GetConsoleAliasW(void);  /* ../dlls/kernel32/console.c:3059 */
+extern WINAPI void wine32a_kernel32_GetConsoleAliasW(void);  /* ../dlls/kernel32/console.c:1408 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleAliasW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -7932,13 +6834,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleAliasW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetConsoleAliasesLengthA(LPSTR  unknown) /* ../dlls/kernel32/console.c:3211 */
+extern WINAPI DWORD wine32b_kernel32_GetConsoleAliasesLengthA(LPSTR  unknown) /* ../dlls/kernel32/console.c:1560 */
 {
 	TRACE("Enter GetConsoleAliasesLengthA\n");
 	return pGetConsoleAliasesLengthA(unknown);
 }
 
-extern WINAPI void wine32a_kernel32_GetConsoleAliasesLengthA(void);  /* ../dlls/kernel32/console.c:3211 */
+extern WINAPI void wine32a_kernel32_GetConsoleAliasesLengthA(void);  /* ../dlls/kernel32/console.c:1560 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleAliasesLengthA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -7957,13 +6859,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleAliasesLengthA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetConsoleAliasesLengthW(LPWSTR  unknown) /* ../dlls/kernel32/console.c:3218 */
+extern WINAPI DWORD wine32b_kernel32_GetConsoleAliasesLengthW(LPWSTR  unknown) /* ../dlls/kernel32/console.c:1567 */
 {
 	TRACE("Enter GetConsoleAliasesLengthW\n");
 	return pGetConsoleAliasesLengthW(unknown);
 }
 
-extern WINAPI void wine32a_kernel32_GetConsoleAliasesLengthW(void);  /* ../dlls/kernel32/console.c:3218 */
+extern WINAPI void wine32a_kernel32_GetConsoleAliasesLengthW(void);  /* ../dlls/kernel32/console.c:1567 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleAliasesLengthW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -7982,37 +6884,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleAliasesLengthW,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetConsoleCP(void) /* ../dlls/kernel32/console.c:257 */
-{
-	TRACE("Enter GetConsoleCP\n");
-	return pGetConsoleCP();
-}
-
-extern WINAPI void wine32a_kernel32_GetConsoleCP(void);  /* ../dlls/kernel32/console.c:257 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleCP,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetConsoleCP") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $0, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI DWORD wine32b_kernel32_GetConsoleCommandHistoryA(DWORD  unknown1, DWORD  unknown2, DWORD  unknown3) /* ../dlls/kernel32/console.c:3177 */
+extern WINAPI DWORD wine32b_kernel32_GetConsoleCommandHistoryA(DWORD  unknown1, DWORD  unknown2, DWORD  unknown3) /* ../dlls/kernel32/console.c:1526 */
 {
 	TRACE("Enter GetConsoleCommandHistoryA\n");
 	return pGetConsoleCommandHistoryA(unknown1, unknown2, unknown3);
 }
 
-extern WINAPI void wine32a_kernel32_GetConsoleCommandHistoryA(void);  /* ../dlls/kernel32/console.c:3177 */
+extern WINAPI void wine32a_kernel32_GetConsoleCommandHistoryA(void);  /* ../dlls/kernel32/console.c:1526 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleCommandHistoryA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -8033,13 +6911,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleCommandHistoryA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetConsoleCommandHistoryLengthA(LPCSTR  unknown) /* ../dlls/kernel32/console.c:3195 */
+extern WINAPI DWORD wine32b_kernel32_GetConsoleCommandHistoryLengthA(LPCSTR  unknown) /* ../dlls/kernel32/console.c:1544 */
 {
 	TRACE("Enter GetConsoleCommandHistoryLengthA\n");
 	return pGetConsoleCommandHistoryLengthA(unknown);
 }
 
-extern WINAPI void wine32a_kernel32_GetConsoleCommandHistoryLengthA(void);  /* ../dlls/kernel32/console.c:3195 */
+extern WINAPI void wine32a_kernel32_GetConsoleCommandHistoryLengthA(void);  /* ../dlls/kernel32/console.c:1544 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleCommandHistoryLengthA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -8058,13 +6936,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleCommandHistoryLengthA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetConsoleCommandHistoryLengthW(LPCWSTR  unknown) /* ../dlls/kernel32/console.c:3204 */
+extern WINAPI DWORD wine32b_kernel32_GetConsoleCommandHistoryLengthW(LPCWSTR  unknown) /* ../dlls/kernel32/console.c:1553 */
 {
 	TRACE("Enter GetConsoleCommandHistoryLengthW\n");
 	return pGetConsoleCommandHistoryLengthW(unknown);
 }
 
-extern WINAPI void wine32a_kernel32_GetConsoleCommandHistoryLengthW(void);  /* ../dlls/kernel32/console.c:3204 */
+extern WINAPI void wine32a_kernel32_GetConsoleCommandHistoryLengthW(void);  /* ../dlls/kernel32/console.c:1553 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleCommandHistoryLengthW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -8083,13 +6961,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleCommandHistoryLengthW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetConsoleCommandHistoryW(DWORD  unknown1, DWORD  unknown2, DWORD  unknown3) /* ../dlls/kernel32/console.c:3186 */
+extern WINAPI DWORD wine32b_kernel32_GetConsoleCommandHistoryW(DWORD  unknown1, DWORD  unknown2, DWORD  unknown3) /* ../dlls/kernel32/console.c:1535 */
 {
 	TRACE("Enter GetConsoleCommandHistoryW\n");
 	return pGetConsoleCommandHistoryW(unknown1, unknown2, unknown3);
 }
 
-extern WINAPI void wine32a_kernel32_GetConsoleCommandHistoryW(void);  /* ../dlls/kernel32/console.c:3186 */
+extern WINAPI void wine32a_kernel32_GetConsoleCommandHistoryW(void);  /* ../dlls/kernel32/console.c:1535 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleCommandHistoryW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -8110,39 +6988,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleCommandHistoryW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetConsoleCursorInfo(HANDLE  hCon, LPCONSOLE_CURSOR_INFO  cinfo) /* ../dlls/kernel32/console.c:2595 */
-{
-	TRACE("Enter GetConsoleCursorInfo\n");
-	return pGetConsoleCursorInfo(hCon, cinfo);
-}
-
-extern WINAPI void wine32a_kernel32_GetConsoleCursorInfo(void);  /* ../dlls/kernel32/console.c:2595 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleCursorInfo,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetConsoleCursorInfo") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_GetConsoleDisplayMode(LPDWORD  lpModeFlags) /* ../dlls/kernel32/console.c:2934 */
+extern WINAPI BOOL wine32b_kernel32_GetConsoleDisplayMode(LPDWORD  lpModeFlags) /* ../dlls/kernel32/console.c:1283 */
 {
 	TRACE("Enter GetConsoleDisplayMode\n");
 	return pGetConsoleDisplayMode(lpModeFlags);
 }
 
-extern WINAPI void wine32a_kernel32_GetConsoleDisplayMode(void);  /* ../dlls/kernel32/console.c:2934 */
+extern WINAPI void wine32a_kernel32_GetConsoleDisplayMode(void);  /* ../dlls/kernel32/console.c:1283 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleDisplayMode,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -8161,13 +7013,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleDisplayMode,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetConsoleFontInfo(HANDLE  hConsole, BOOL  maximize, DWORD  numfonts, CONSOLE_FONT_INFO*  info) /* ../dlls/kernel32/console.c:3365 */
+extern WINAPI BOOL wine32b_kernel32_GetConsoleFontInfo(HANDLE  hConsole, BOOL  maximize, DWORD  numfonts, CONSOLE_FONT_INFO*  info) /* ../dlls/kernel32/console.c:1711 */
 {
 	TRACE("Enter GetConsoleFontInfo\n");
 	return pGetConsoleFontInfo(hConsole, maximize, numfonts, info);
 }
 
-extern WINAPI void wine32a_kernel32_GetConsoleFontInfo(void);  /* ../dlls/kernel32/console.c:3365 */
+extern WINAPI void wine32a_kernel32_GetConsoleFontInfo(void);  /* ../dlls/kernel32/console.c:1711 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleFontInfo,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -8189,13 +7041,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleFontInfo,
 	"ret \n"
 )
 
-extern WINAPI COORD wine32b_kernel32_GetConsoleFontSize(HANDLE  hConsole, DWORD  index) /* ../dlls/kernel32/console.c:3359 */
+extern WINAPI COORD wine32b_kernel32_GetConsoleFontSize(HANDLE  hConsole, DWORD  index) /* ../dlls/kernel32/console.c:1705 */
 {
 	TRACE("Enter GetConsoleFontSize\n");
 	return pGetConsoleFontSize(hConsole, index);
 }
 
-extern WINAPI void wine32a_kernel32_GetConsoleFontSize(void);  /* ../dlls/kernel32/console.c:3359 */
+extern WINAPI void wine32a_kernel32_GetConsoleFontSize(void);  /* ../dlls/kernel32/console.c:1705 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleFontSize,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -8215,65 +7067,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleFontSize,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetConsoleInputExeNameA(DWORD  buflen, LPSTR  buffer) /* ../dlls/kernel32/console.c:1299 */
-{
-	TRACE("Enter GetConsoleInputExeNameA\n");
-	return pGetConsoleInputExeNameA(buflen, buffer);
-}
-
-extern WINAPI void wine32a_kernel32_GetConsoleInputExeNameA(void);  /* ../dlls/kernel32/console.c:1299 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleInputExeNameA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetConsoleInputExeNameA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_GetConsoleInputExeNameW(DWORD  buflen, LPWSTR  buffer) /* ../dlls/kernel32/console.c:1284 */
-{
-	TRACE("Enter GetConsoleInputExeNameW\n");
-	return pGetConsoleInputExeNameW(buflen, buffer);
-}
-
-extern WINAPI void wine32a_kernel32_GetConsoleInputExeNameW(void);  /* ../dlls/kernel32/console.c:1284 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleInputExeNameW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetConsoleInputExeNameW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI HANDLE wine32b_kernel32_GetConsoleInputWaitHandle(void) /* ../dlls/kernel32/console.c:467 */
+extern WINAPI HANDLE wine32b_kernel32_GetConsoleInputWaitHandle(void) /* ../dlls/kernel32/console.c:306 */
 {
 	TRACE("Enter GetConsoleInputWaitHandle\n");
 	return pGetConsoleInputWaitHandle();
 }
 
-extern WINAPI void wine32a_kernel32_GetConsoleInputWaitHandle(void);  /* ../dlls/kernel32/console.c:467 */
+extern WINAPI void wine32a_kernel32_GetConsoleInputWaitHandle(void);  /* ../dlls/kernel32/console.c:306 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleInputWaitHandle,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -8291,13 +7091,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleInputWaitHandle,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetConsoleKeyboardLayoutNameA(LPSTR  layoutName) /* ../dlls/kernel32/console.c:1262 */
+extern WINAPI BOOL wine32b_kernel32_GetConsoleKeyboardLayoutNameA(LPSTR  layoutName) /* ../dlls/kernel32/console.c:495 */
 {
 	TRACE("Enter GetConsoleKeyboardLayoutNameA\n");
 	return pGetConsoleKeyboardLayoutNameA(layoutName);
 }
 
-extern WINAPI void wine32a_kernel32_GetConsoleKeyboardLayoutNameA(void);  /* ../dlls/kernel32/console.c:1262 */
+extern WINAPI void wine32a_kernel32_GetConsoleKeyboardLayoutNameA(void);  /* ../dlls/kernel32/console.c:495 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleKeyboardLayoutNameA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -8316,13 +7116,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleKeyboardLayoutNameA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetConsoleKeyboardLayoutNameW(LPWSTR  layoutName) /* ../dlls/kernel32/console.c:1271 */
+extern WINAPI BOOL wine32b_kernel32_GetConsoleKeyboardLayoutNameW(LPWSTR  layoutName) /* ../dlls/kernel32/console.c:504 */
 {
 	TRACE("Enter GetConsoleKeyboardLayoutNameW\n");
 	return pGetConsoleKeyboardLayoutNameW(layoutName);
 }
 
-extern WINAPI void wine32a_kernel32_GetConsoleKeyboardLayoutNameW(void);  /* ../dlls/kernel32/console.c:1271 */
+extern WINAPI void wine32a_kernel32_GetConsoleKeyboardLayoutNameW(void);  /* ../dlls/kernel32/console.c:504 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleKeyboardLayoutNameW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -8341,63 +7141,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleKeyboardLayoutNameW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetConsoleMode(HANDLE  hcon, LPDWORD  mode) /* ../dlls/kernel32/console.c:2198 */
-{
-	TRACE("Enter GetConsoleMode\n");
-	return pGetConsoleMode(hcon, mode);
-}
-
-extern WINAPI void wine32a_kernel32_GetConsoleMode(void);  /* ../dlls/kernel32/console.c:2198 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleMode,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetConsoleMode") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI UINT wine32b_kernel32_GetConsoleOutputCP(void) /* ../dlls/kernel32/console.c:304 */
-{
-	TRACE("Enter GetConsoleOutputCP\n");
-	return pGetConsoleOutputCP();
-}
-
-extern WINAPI void wine32a_kernel32_GetConsoleOutputCP(void);  /* ../dlls/kernel32/console.c:304 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleOutputCP,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetConsoleOutputCP") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $0, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI DWORD wine32b_kernel32_GetConsoleProcessList(LPDWORD  processlist, DWORD  processcount) /* ../dlls/kernel32/console.c:3070 */
+extern WINAPI DWORD wine32b_kernel32_GetConsoleProcessList(LPDWORD  processlist, DWORD  processcount) /* ../dlls/kernel32/console.c:1419 */
 {
 	TRACE("Enter GetConsoleProcessList\n");
 	return pGetConsoleProcessList(processlist, processcount);
 }
 
-extern WINAPI void wine32a_kernel32_GetConsoleProcessList(void);  /* ../dlls/kernel32/console.c:3070 */
+extern WINAPI void wine32a_kernel32_GetConsoleProcessList(void);  /* ../dlls/kernel32/console.c:1419 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleProcessList,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -8417,65 +7167,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleProcessList,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetConsoleScreenBufferInfo(HANDLE  hConsoleOutput, LPCONSOLE_SCREEN_BUFFER_INFO  csbi) /* ../dlls/kernel32/console.c:2135 */
-{
-	TRACE("Enter GetConsoleScreenBufferInfo\n");
-	return pGetConsoleScreenBufferInfo(hConsoleOutput, csbi);
-}
-
-extern WINAPI void wine32a_kernel32_GetConsoleScreenBufferInfo(void);  /* ../dlls/kernel32/console.c:2135 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleScreenBufferInfo,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetConsoleScreenBufferInfo") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_GetConsoleScreenBufferInfoEx(HANDLE  hConsole, CONSOLE_SCREEN_BUFFER_INFOEX*  csbix) /* ../dlls/kernel32/console.c:3372 */
-{
-	TRACE("Enter GetConsoleScreenBufferInfoEx\n");
-	return pGetConsoleScreenBufferInfoEx(hConsole, csbix);
-}
-
-extern WINAPI void wine32a_kernel32_GetConsoleScreenBufferInfoEx(void);  /* ../dlls/kernel32/console.c:3372 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleScreenBufferInfoEx,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetConsoleScreenBufferInfoEx") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI DWORD wine32b_kernel32_GetConsoleTitleA(LPSTR  title, DWORD  size) /* ../dlls/kernel32/console.c:1317 */
+extern WINAPI DWORD wine32b_kernel32_GetConsoleTitleA(LPSTR  title, DWORD  size) /* ../dlls/kernel32/console.c:517 */
 {
 	TRACE("Enter GetConsoleTitleA\n");
 	return pGetConsoleTitleA(title, size);
 }
 
-extern WINAPI void wine32a_kernel32_GetConsoleTitleA(void);  /* ../dlls/kernel32/console.c:1317 */
+extern WINAPI void wine32a_kernel32_GetConsoleTitleA(void);  /* ../dlls/kernel32/console.c:517 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleTitleA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -8495,39 +7193,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleTitleA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetConsoleTitleW(LPWSTR  title, DWORD  size) /* ../dlls/kernel32/console.c:1345 */
-{
-	TRACE("Enter GetConsoleTitleW\n");
-	return pGetConsoleTitleW(title, size);
-}
-
-extern WINAPI void wine32a_kernel32_GetConsoleTitleW(void);  /* ../dlls/kernel32/console.c:1345 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleTitleW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetConsoleTitleW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI HWND wine32b_kernel32_GetConsoleWindow(void) /* ../dlls/kernel32/console.c:236 */
+extern WINAPI HWND wine32b_kernel32_GetConsoleWindow(void) /* ../dlls/kernel32/console.c:179 */
 {
 	TRACE("Enter GetConsoleWindow\n");
 	return pGetConsoleWindow();
 }
 
-extern WINAPI void wine32a_kernel32_GetConsoleWindow(void);  /* ../dlls/kernel32/console.c:236 */
+extern WINAPI void wine32a_kernel32_GetConsoleWindow(void);  /* ../dlls/kernel32/console.c:179 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleWindow,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -8629,13 +7301,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrencyFormatW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetCurrentConsoleFont(HANDLE  hConsole, BOOL  maxwindow, LPCONSOLE_FONT_INFO  fontinfo) /* ../dlls/kernel32/console.c:3293 */
+extern WINAPI BOOL wine32b_kernel32_GetCurrentConsoleFont(HANDLE  hConsole, BOOL  maxwindow, LPCONSOLE_FONT_INFO  fontinfo) /* ../dlls/kernel32/console.c:1642 */
 {
 	TRACE("Enter GetCurrentConsoleFont\n");
 	return pGetCurrentConsoleFont(hConsole, maxwindow, fontinfo);
 }
 
-extern WINAPI void wine32a_kernel32_GetCurrentConsoleFont(void);  /* ../dlls/kernel32/console.c:3293 */
+extern WINAPI void wine32a_kernel32_GetCurrentConsoleFont(void);  /* ../dlls/kernel32/console.c:1642 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentConsoleFont,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -8708,13 +7380,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentDirectoryW,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_kernel32_GetCurrentPackageFamilyName(UINT32*  length, PWSTR  name) /* ../dlls/kernel32/version.c:217 */
+extern WINAPI LONG wine32b_kernel32_GetCurrentPackageFamilyName(UINT32*  length, PWSTR  name) /* ../dlls/kernel32/version.c:140 */
 {
 	TRACE("Enter GetCurrentPackageFamilyName\n");
 	return pGetCurrentPackageFamilyName(length, name);
 }
 
-extern WINAPI void wine32a_kernel32_GetCurrentPackageFamilyName(void);  /* ../dlls/kernel32/version.c:217 */
+extern WINAPI void wine32a_kernel32_GetCurrentPackageFamilyName(void);  /* ../dlls/kernel32/version.c:140 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentPackageFamilyName,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -8734,13 +7406,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentPackageFamilyName,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_kernel32_GetCurrentPackageFullName(UINT32*  length, PWSTR  name) /* ../dlls/kernel32/version.c:226 */
+extern WINAPI LONG wine32b_kernel32_GetCurrentPackageFullName(UINT32*  length, PWSTR  name) /* ../dlls/kernel32/version.c:149 */
 {
 	TRACE("Enter GetCurrentPackageFullName\n");
 	return pGetCurrentPackageFullName(length, name);
 }
 
-extern WINAPI void wine32a_kernel32_GetCurrentPackageFullName(void);  /* ../dlls/kernel32/version.c:226 */
+extern WINAPI void wine32a_kernel32_GetCurrentPackageFullName(void);  /* ../dlls/kernel32/version.c:149 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentPackageFullName,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -8760,13 +7432,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentPackageFullName,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_kernel32_GetCurrentPackageId(UINT32*  len, BYTE*  buffer) /* ../dlls/kernel32/version.c:208 */
+extern WINAPI LONG wine32b_kernel32_GetCurrentPackageId(UINT32*  len, BYTE*  buffer) /* ../dlls/kernel32/version.c:131 */
 {
 	TRACE("Enter GetCurrentPackageId\n");
 	return pGetCurrentPackageId(len, buffer);
 }
 
-extern WINAPI void wine32a_kernel32_GetCurrentPackageId(void);  /* ../dlls/kernel32/version.c:208 */
+extern WINAPI void wine32a_kernel32_GetCurrentPackageId(void);  /* ../dlls/kernel32/version.c:131 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentPackageId,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -8786,13 +7458,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentPackageId,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_GetCurrentProcess(void) /* ../dlls/kernel32/process.c:3830 */
+extern WINAPI HANDLE wine32b_kernel32_GetCurrentProcess(void) /* ../dlls/kernel32/process.c:3811 */
 {
 	TRACE("Enter GetCurrentProcess\n");
 	return pGetCurrentProcess();
 }
 
-extern WINAPI void wine32a_kernel32_GetCurrentProcess(void);  /* ../dlls/kernel32/process.c:3830 */
+extern WINAPI void wine32a_kernel32_GetCurrentProcess(void);  /* ../dlls/kernel32/process.c:3811 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentProcess,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -8882,13 +7554,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentThreadId,
 	"ret \n"
 )
 
-extern WINAPI PUMS_CONTEXT wine32b_kernel32_GetCurrentUmsThread(void) /* ../dlls/kernel32/process.c:4215 */
+extern WINAPI PUMS_CONTEXT wine32b_kernel32_GetCurrentUmsThread(void) /* ../dlls/kernel32/process.c:4196 */
 {
 	TRACE("Enter GetCurrentUmsThread\n");
 	return pGetCurrentUmsThread();
 }
 
-extern WINAPI void wine32a_kernel32_GetCurrentUmsThread(void);  /* ../dlls/kernel32/process.c:4215 */
+extern WINAPI void wine32a_kernel32_GetCurrentUmsThread(void);  /* ../dlls/kernel32/process.c:4196 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentUmsThread,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -9014,13 +7686,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDaylightFlag,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetDefaultCommConfigA(LPCSTR  lpszName, LPCOMMCONFIG  lpCC, LPDWORD  lpdwSize) /* ../dlls/kernel32/comm.c:1432 */
+extern WINAPI BOOL wine32b_kernel32_GetDefaultCommConfigA(LPCSTR  lpszName, LPCOMMCONFIG  lpCC, LPDWORD  lpdwSize) /* ../dlls/kernel32/comm.c:730 */
 {
 	TRACE("Enter GetDefaultCommConfigA\n");
 	return pGetDefaultCommConfigA(lpszName, lpCC, lpdwSize);
 }
 
-extern WINAPI void wine32a_kernel32_GetDefaultCommConfigA(void);  /* ../dlls/kernel32/comm.c:1432 */
+extern WINAPI void wine32a_kernel32_GetDefaultCommConfigA(void);  /* ../dlls/kernel32/comm.c:730 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDefaultCommConfigA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -9041,13 +7713,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDefaultCommConfigA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetDefaultCommConfigW(LPCWSTR  lpszName, LPCOMMCONFIG  lpCC, LPDWORD  lpdwSize) /* ../dlls/kernel32/comm.c:1396 */
+extern WINAPI BOOL wine32b_kernel32_GetDefaultCommConfigW(LPCWSTR  lpszName, LPCOMMCONFIG  lpCC, LPDWORD  lpdwSize) /* ../dlls/kernel32/comm.c:694 */
 {
 	TRACE("Enter GetDefaultCommConfigW\n");
 	return pGetDefaultCommConfigW(lpszName, lpCC, lpdwSize);
 }
 
-extern WINAPI void wine32a_kernel32_GetDefaultCommConfigW(void);  /* ../dlls/kernel32/comm.c:1396 */
+extern WINAPI void wine32a_kernel32_GetDefaultCommConfigW(void);  /* ../dlls/kernel32/comm.c:694 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDefaultCommConfigW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -9360,13 +8032,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDynamicTimeZoneInformationEffectiveYears,
 	"ret \n"
 )
 
-extern WINAPI DWORD64 wine32b_kernel32_GetEnabledXStateFeatures(void) /* ../dlls/kernel32/cpu.c:332 */
+extern WINAPI DWORD64 wine32b_kernel32_GetEnabledXStateFeatures(void) /* ../dlls/kernel32/cpu.c:287 */
 {
 	TRACE("Enter GetEnabledXStateFeatures\n");
 	return pGetEnabledXStateFeatures();
 }
 
-extern WINAPI void wine32a_kernel32_GetEnabledXStateFeatures(void);  /* ../dlls/kernel32/cpu.c:332 */
+extern WINAPI void wine32a_kernel32_GetEnabledXStateFeatures(void);  /* ../dlls/kernel32/cpu.c:287 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetEnabledXStateFeatures,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -9384,115 +8056,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetEnabledXStateFeatures,
 	"ret \n"
 )
 
-extern WINAPI LPSTR wine32b_kernel32_GetEnvironmentStringsA(void) /* ../dlls/kernel32/environ.c:100 */
-{
-	TRACE("Enter GetEnvironmentStringsA\n");
-	return pGetEnvironmentStringsA();
-}
-
-extern WINAPI void wine32a_kernel32_GetEnvironmentStringsA(void);  /* ../dlls/kernel32/environ.c:100 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetEnvironmentStringsA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetEnvironmentStringsA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $0, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI LPWSTR wine32b_kernel32_GetEnvironmentStringsW(void) /* ../dlls/kernel32/environ.c:140 */
-{
-	TRACE("Enter GetEnvironmentStringsW\n");
-	return pGetEnvironmentStringsW();
-}
-
-extern WINAPI void wine32a_kernel32_GetEnvironmentStringsW(void);  /* ../dlls/kernel32/environ.c:140 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetEnvironmentStringsW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetEnvironmentStringsW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $0, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI DWORD wine32b_kernel32_GetEnvironmentVariableA(LPCSTR  name, LPSTR  value, DWORD  size) /* ../dlls/kernel32/environ.c:181 */
-{
-	TRACE("Enter GetEnvironmentVariableA\n");
-	return pGetEnvironmentVariableA(name, value, size);
-}
-
-extern WINAPI void wine32a_kernel32_GetEnvironmentVariableA(void);  /* ../dlls/kernel32/environ.c:181 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetEnvironmentVariableA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetEnvironmentVariableA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI DWORD wine32b_kernel32_GetEnvironmentVariableW(LPCWSTR  name, LPWSTR  val, DWORD  size) /* ../dlls/kernel32/environ.c:222 */
-{
-	TRACE("Enter GetEnvironmentVariableW\n");
-	return pGetEnvironmentVariableW(name, val, size);
-}
-
-extern WINAPI void wine32a_kernel32_GetEnvironmentVariableW(void);  /* ../dlls/kernel32/environ.c:222 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetEnvironmentVariableW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetEnvironmentVariableW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_GetExitCodeProcess(HANDLE  hProcess, LPDWORD  lpExitCode) /* ../dlls/kernel32/process.c:3183 */
+extern WINAPI BOOL wine32b_kernel32_GetExitCodeProcess(HANDLE  hProcess, LPDWORD  lpExitCode) /* ../dlls/kernel32/process.c:3178 */
 {
 	TRACE("Enter GetExitCodeProcess\n");
 	return pGetExitCodeProcess(hProcess, lpExitCode);
 }
 
-extern WINAPI void wine32a_kernel32_GetExitCodeProcess(void);  /* ../dlls/kernel32/process.c:3183 */
+extern WINAPI void wine32a_kernel32_GetExitCodeProcess(void);  /* ../dlls/kernel32/process.c:3178 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetExitCodeProcess,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -9676,13 +8246,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetFinalPathNameByHandleW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetFirmwareEnvironmentVariableA(LPCSTR  name, LPCSTR  guid, PVOID  buffer, DWORD  size) /* ../dlls/kernel32/environ.c:512 */
+extern WINAPI DWORD wine32b_kernel32_GetFirmwareEnvironmentVariableA(LPCSTR  name, LPCSTR  guid, PVOID  buffer, DWORD  size) /* ../dlls/kernel32/environ.c:100 */
 {
 	TRACE("Enter GetFirmwareEnvironmentVariableA\n");
 	return pGetFirmwareEnvironmentVariableA(name, guid, buffer, size);
 }
 
-extern WINAPI void wine32a_kernel32_GetFirmwareEnvironmentVariableA(void);  /* ../dlls/kernel32/environ.c:512 */
+extern WINAPI void wine32a_kernel32_GetFirmwareEnvironmentVariableA(void);  /* ../dlls/kernel32/environ.c:100 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetFirmwareEnvironmentVariableA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -9704,13 +8274,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetFirmwareEnvironmentVariableA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetFirmwareEnvironmentVariableW(LPCWSTR  name, LPCWSTR  guid, PVOID  buffer, DWORD  size) /* ../dlls/kernel32/environ.c:522 */
+extern WINAPI DWORD wine32b_kernel32_GetFirmwareEnvironmentVariableW(LPCWSTR  name, LPCWSTR  guid, PVOID  buffer, DWORD  size) /* ../dlls/kernel32/environ.c:110 */
 {
 	TRACE("Enter GetFirmwareEnvironmentVariableW\n");
 	return pGetFirmwareEnvironmentVariableW(name, guid, buffer, size);
 }
 
-extern WINAPI void wine32a_kernel32_GetFirmwareEnvironmentVariableW(void);  /* ../dlls/kernel32/environ.c:522 */
+extern WINAPI void wine32a_kernel32_GetFirmwareEnvironmentVariableW(void);  /* ../dlls/kernel32/environ.c:110 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetFirmwareEnvironmentVariableW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -9844,13 +8414,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetGeoInfoW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetHandleContext(HANDLE  hnd) /* ../dlls/kernel32/process.c:3357 */
+extern WINAPI DWORD wine32b_kernel32_GetHandleContext(HANDLE  hnd) /* ../dlls/kernel32/process.c:3362 */
 {
 	TRACE("Enter GetHandleContext\n");
 	return pGetHandleContext(hnd);
 }
 
-extern WINAPI void wine32a_kernel32_GetHandleContext(void);  /* ../dlls/kernel32/process.c:3357 */
+extern WINAPI void wine32a_kernel32_GetHandleContext(void);  /* ../dlls/kernel32/process.c:3362 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetHandleContext,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -9869,13 +8439,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetHandleContext,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetHandleInformation(HANDLE  handle, LPDWORD  flags) /* ../dlls/kernel32/process.c:3257 */
+extern WINAPI BOOL wine32b_kernel32_GetHandleInformation(HANDLE  handle, LPDWORD  flags) /* ../dlls/kernel32/process.c:3262 */
 {
 	TRACE("Enter GetHandleInformation\n");
 	return pGetHandleInformation(handle, flags);
 }
 
-extern WINAPI void wine32a_kernel32_GetHandleInformation(void);  /* ../dlls/kernel32/process.c:3257 */
+extern WINAPI void wine32a_kernel32_GetHandleInformation(void);  /* ../dlls/kernel32/process.c:3262 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetHandleInformation,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -9895,13 +8465,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetHandleInformation,
 	"ret \n"
 )
 
-extern WINAPI SIZE_T wine32b_kernel32_GetLargePageMinimum(void) /* ../dlls/kernel32/cpu.c:281 */
+extern WINAPI SIZE_T wine32b_kernel32_GetLargePageMinimum(void) /* ../dlls/kernel32/cpu.c:236 */
 {
 	TRACE("Enter GetLargePageMinimum\n");
 	return pGetLargePageMinimum();
 }
 
-extern WINAPI void wine32a_kernel32_GetLargePageMinimum(void);  /* ../dlls/kernel32/cpu.c:281 */
+extern WINAPI void wine32a_kernel32_GetLargePageMinimum(void);  /* ../dlls/kernel32/cpu.c:236 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetLargePageMinimum,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -9913,31 +8483,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetLargePageMinimum,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $0, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI COORD wine32b_kernel32_GetLargestConsoleWindowSize(HANDLE  hConsoleOutput) /* ../dlls/kernel32/console.c:1404 */
-{
-	TRACE("Enter GetLargestConsoleWindowSize\n");
-	return pGetLargestConsoleWindowSize(hConsoleOutput);
-}
-
-extern WINAPI void wine32a_kernel32_GetLargestConsoleWindowSize(void);  /* ../dlls/kernel32/console.c:1404 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetLargestConsoleWindowSize,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetLargestConsoleWindowSize") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -10129,13 +8674,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetLogicalDrives,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetLogicalProcessorInformation(PSYSTEM_LOGICAL_PROCESSOR_INFORMATION  buffer, PDWORD  pBufLen) /* ../dlls/kernel32/process.c:3838 */
+extern WINAPI BOOL wine32b_kernel32_GetLogicalProcessorInformation(PSYSTEM_LOGICAL_PROCESSOR_INFORMATION  buffer, PDWORD  pBufLen) /* ../dlls/kernel32/process.c:3819 */
 {
 	TRACE("Enter GetLogicalProcessorInformation\n");
 	return pGetLogicalProcessorInformation(buffer, pBufLen);
 }
 
-extern WINAPI void wine32a_kernel32_GetLogicalProcessorInformation(void);  /* ../dlls/kernel32/process.c:3838 */
+extern WINAPI void wine32a_kernel32_GetLogicalProcessorInformation(void);  /* ../dlls/kernel32/process.c:3819 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetLogicalProcessorInformation,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -10155,13 +8700,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetLogicalProcessorInformation,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetLogicalProcessorInformationEx(LOGICAL_PROCESSOR_RELATIONSHIP  relationship, SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX*  buffer, DWORD*  len) /* ../dlls/kernel32/process.c:3868 */
+extern WINAPI BOOL wine32b_kernel32_GetLogicalProcessorInformationEx(LOGICAL_PROCESSOR_RELATIONSHIP  relationship, SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX*  buffer, DWORD*  len) /* ../dlls/kernel32/process.c:3849 */
 {
 	TRACE("Enter GetLogicalProcessorInformationEx\n");
 	return pGetLogicalProcessorInformationEx(relationship, buffer, len);
 }
 
-extern WINAPI void wine32a_kernel32_GetLogicalProcessorInformationEx(void);  /* ../dlls/kernel32/process.c:3868 */
+extern WINAPI void wine32a_kernel32_GetLogicalProcessorInformationEx(void);  /* ../dlls/kernel32/process.c:3849 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetLogicalProcessorInformationEx,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -10264,13 +8809,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetMailslotInfo,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetMaximumProcessorCount(WORD  group) /* ../dlls/kernel32/cpu.c:317 */
+extern WINAPI DWORD wine32b_kernel32_GetMaximumProcessorCount(WORD  group) /* ../dlls/kernel32/cpu.c:272 */
 {
 	TRACE("Enter GetMaximumProcessorCount\n");
 	return pGetMaximumProcessorCount(group);
 }
 
-extern WINAPI void wine32a_kernel32_GetMaximumProcessorCount(void);  /* ../dlls/kernel32/cpu.c:317 */
+extern WINAPI void wine32a_kernel32_GetMaximumProcessorCount(void);  /* ../dlls/kernel32/cpu.c:272 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetMaximumProcessorCount,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -10449,13 +8994,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNamedPipeServerSessionId,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_GetNativeSystemInfo(LPSYSTEM_INFO  si) /* ../dlls/kernel32/cpu.c:174 */
+extern WINAPI void wine32b_kernel32_GetNativeSystemInfo(LPSYSTEM_INFO  si) /* ../dlls/kernel32/cpu.c:129 */
 {
 	TRACE("Enter GetNativeSystemInfo\n");
 	return pGetNativeSystemInfo(si);
 }
 
-extern WINAPI void wine32a_kernel32_GetNativeSystemInfo(void);  /* ../dlls/kernel32/cpu.c:174 */
+extern WINAPI void wine32a_kernel32_GetNativeSystemInfo(void);  /* ../dlls/kernel32/cpu.c:129 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNativeSystemInfo,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -10474,13 +9019,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNativeSystemInfo,
 	"ret \n"
 )
 
-extern WINAPI PUMS_CONTEXT wine32b_kernel32_GetNextUmsListItem(PUMS_CONTEXT  ctx) /* ../dlls/kernel32/process.c:4225 */
+extern WINAPI PUMS_CONTEXT wine32b_kernel32_GetNextUmsListItem(PUMS_CONTEXT  ctx) /* ../dlls/kernel32/process.c:4206 */
 {
 	TRACE("Enter GetNextUmsListItem\n");
 	return pGetNextUmsListItem(ctx);
 }
 
-extern WINAPI void wine32a_kernel32_GetNextUmsListItem(void);  /* ../dlls/kernel32/process.c:4225 */
+extern WINAPI void wine32a_kernel32_GetNextUmsListItem(void);  /* ../dlls/kernel32/process.c:4206 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNextUmsListItem,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -10499,13 +9044,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNextUmsListItem,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNumaAvailableMemoryNode(UCHAR  node, PULONGLONG  available_bytes) /* ../dlls/kernel32/process.c:4024 */
+extern WINAPI BOOL wine32b_kernel32_GetNumaAvailableMemoryNode(UCHAR  node, PULONGLONG  available_bytes) /* ../dlls/kernel32/process.c:4005 */
 {
 	TRACE("Enter GetNumaAvailableMemoryNode\n");
 	return pGetNumaAvailableMemoryNode(node, available_bytes);
 }
 
-extern WINAPI void wine32a_kernel32_GetNumaAvailableMemoryNode(void);  /* ../dlls/kernel32/process.c:4024 */
+extern WINAPI void wine32a_kernel32_GetNumaAvailableMemoryNode(void);  /* ../dlls/kernel32/process.c:4005 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaAvailableMemoryNode,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -10525,13 +9070,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaAvailableMemoryNode,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNumaAvailableMemoryNodeEx(USHORT  node, PULONGLONG  available_bytes) /* ../dlls/kernel32/process.c:4034 */
+extern WINAPI BOOL wine32b_kernel32_GetNumaAvailableMemoryNodeEx(USHORT  node, PULONGLONG  available_bytes) /* ../dlls/kernel32/process.c:4015 */
 {
 	TRACE("Enter GetNumaAvailableMemoryNodeEx\n");
 	return pGetNumaAvailableMemoryNodeEx(node, available_bytes);
 }
 
-extern WINAPI void wine32a_kernel32_GetNumaAvailableMemoryNodeEx(void);  /* ../dlls/kernel32/process.c:4034 */
+extern WINAPI void wine32a_kernel32_GetNumaAvailableMemoryNodeEx(void);  /* ../dlls/kernel32/process.c:4015 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaAvailableMemoryNodeEx,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -10551,13 +9096,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaAvailableMemoryNodeEx,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNumaHighestNodeNumber(PULONG  highestnode) /* ../dlls/kernel32/process.c:3994 */
+extern WINAPI BOOL wine32b_kernel32_GetNumaHighestNodeNumber(PULONG  highestnode) /* ../dlls/kernel32/process.c:3975 */
 {
 	TRACE("Enter GetNumaHighestNodeNumber\n");
 	return pGetNumaHighestNodeNumber(highestnode);
 }
 
-extern WINAPI void wine32a_kernel32_GetNumaHighestNodeNumber(void);  /* ../dlls/kernel32/process.c:3994 */
+extern WINAPI void wine32a_kernel32_GetNumaHighestNodeNumber(void);  /* ../dlls/kernel32/process.c:3975 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaHighestNodeNumber,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -10576,13 +9121,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaHighestNodeNumber,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNumaNodeProcessorMask(UCHAR  node, PULONGLONG  mask) /* ../dlls/kernel32/process.c:4004 */
+extern WINAPI BOOL wine32b_kernel32_GetNumaNodeProcessorMask(UCHAR  node, PULONGLONG  mask) /* ../dlls/kernel32/process.c:3985 */
 {
 	TRACE("Enter GetNumaNodeProcessorMask\n");
 	return pGetNumaNodeProcessorMask(node, mask);
 }
 
-extern WINAPI void wine32a_kernel32_GetNumaNodeProcessorMask(void);  /* ../dlls/kernel32/process.c:4004 */
+extern WINAPI void wine32a_kernel32_GetNumaNodeProcessorMask(void);  /* ../dlls/kernel32/process.c:3985 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaNodeProcessorMask,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -10602,13 +9147,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaNodeProcessorMask,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNumaNodeProcessorMaskEx(USHORT  node, PGROUP_AFFINITY  mask) /* ../dlls/kernel32/process.c:4014 */
+extern WINAPI BOOL wine32b_kernel32_GetNumaNodeProcessorMaskEx(USHORT  node, PGROUP_AFFINITY  mask) /* ../dlls/kernel32/process.c:3995 */
 {
 	TRACE("Enter GetNumaNodeProcessorMaskEx\n");
 	return pGetNumaNodeProcessorMaskEx(node, mask);
 }
 
-extern WINAPI void wine32a_kernel32_GetNumaNodeProcessorMaskEx(void);  /* ../dlls/kernel32/process.c:4014 */
+extern WINAPI void wine32a_kernel32_GetNumaNodeProcessorMaskEx(void);  /* ../dlls/kernel32/process.c:3995 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaNodeProcessorMaskEx,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -10628,13 +9173,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaNodeProcessorMaskEx,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNumaProcessorNode(UCHAR  processor, PUCHAR  node) /* ../dlls/kernel32/process.c:4044 */
+extern WINAPI BOOL wine32b_kernel32_GetNumaProcessorNode(UCHAR  processor, PUCHAR  node) /* ../dlls/kernel32/process.c:4025 */
 {
 	TRACE("Enter GetNumaProcessorNode\n");
 	return pGetNumaProcessorNode(processor, node);
 }
 
-extern WINAPI void wine32a_kernel32_GetNumaProcessorNode(void);  /* ../dlls/kernel32/process.c:4044 */
+extern WINAPI void wine32a_kernel32_GetNumaProcessorNode(void);  /* ../dlls/kernel32/process.c:4025 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaProcessorNode,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -10654,13 +9199,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaProcessorNode,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNumaProcessorNodeEx(PPROCESSOR_NUMBER  processor, PUSHORT  node_number) /* ../dlls/kernel32/process.c:4065 */
+extern WINAPI BOOL wine32b_kernel32_GetNumaProcessorNodeEx(PPROCESSOR_NUMBER  processor, PUSHORT  node_number) /* ../dlls/kernel32/process.c:4046 */
 {
 	TRACE("Enter GetNumaProcessorNodeEx\n");
 	return pGetNumaProcessorNodeEx(processor, node_number);
 }
 
-extern WINAPI void wine32a_kernel32_GetNumaProcessorNodeEx(void);  /* ../dlls/kernel32/process.c:4065 */
+extern WINAPI void wine32a_kernel32_GetNumaProcessorNodeEx(void);  /* ../dlls/kernel32/process.c:4046 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaProcessorNodeEx,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -10680,13 +9225,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaProcessorNodeEx,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNumaProximityNode(ULONG  proximity_id, PUCHAR  node_number) /* ../dlls/kernel32/process.c:4074 */
+extern WINAPI BOOL wine32b_kernel32_GetNumaProximityNode(ULONG  proximity_id, PUCHAR  node_number) /* ../dlls/kernel32/process.c:4055 */
 {
 	TRACE("Enter GetNumaProximityNode\n");
 	return pGetNumaProximityNode(proximity_id, node_number);
 }
 
-extern WINAPI void wine32a_kernel32_GetNumaProximityNode(void);  /* ../dlls/kernel32/process.c:4074 */
+extern WINAPI void wine32a_kernel32_GetNumaProximityNode(void);  /* ../dlls/kernel32/process.c:4055 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaProximityNode,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -10706,13 +9251,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaProximityNode,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNumaProximityNodeEx(ULONG  proximity_id, PUSHORT  node_number) /* ../dlls/kernel32/process.c:4083 */
+extern WINAPI BOOL wine32b_kernel32_GetNumaProximityNodeEx(ULONG  proximity_id, PUSHORT  node_number) /* ../dlls/kernel32/process.c:4064 */
 {
 	TRACE("Enter GetNumaProximityNodeEx\n");
 	return pGetNumaProximityNodeEx(proximity_id, node_number);
 }
 
-extern WINAPI void wine32a_kernel32_GetNumaProximityNodeEx(void);  /* ../dlls/kernel32/process.c:4083 */
+extern WINAPI void wine32a_kernel32_GetNumaProximityNodeEx(void);  /* ../dlls/kernel32/process.c:4064 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaProximityNodeEx,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -10816,13 +9361,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumberFormatW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetNumberOfConsoleFonts(void) /* ../dlls/kernel32/console.c:3273 */
+extern WINAPI DWORD wine32b_kernel32_GetNumberOfConsoleFonts(void) /* ../dlls/kernel32/console.c:1622 */
 {
 	TRACE("Enter GetNumberOfConsoleFonts\n");
 	return pGetNumberOfConsoleFonts();
 }
 
-extern WINAPI void wine32a_kernel32_GetNumberOfConsoleFonts(void);  /* ../dlls/kernel32/console.c:3273 */
+extern WINAPI void wine32a_kernel32_GetNumberOfConsoleFonts(void);  /* ../dlls/kernel32/console.c:1622 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumberOfConsoleFonts,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -10840,39 +9385,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumberOfConsoleFonts,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNumberOfConsoleInputEvents(HANDLE  handle, LPDWORD  nrofevents) /* ../dlls/kernel32/console.c:1065 */
-{
-	TRACE("Enter GetNumberOfConsoleInputEvents\n");
-	return pGetNumberOfConsoleInputEvents(handle, nrofevents);
-}
-
-extern WINAPI void wine32a_kernel32_GetNumberOfConsoleInputEvents(void);  /* ../dlls/kernel32/console.c:1065 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumberOfConsoleInputEvents,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetNumberOfConsoleInputEvents") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_GetNumberOfConsoleMouseButtons(LPDWORD  nrofbuttons) /* ../dlls/kernel32/console.c:1813 */
+extern WINAPI BOOL wine32b_kernel32_GetNumberOfConsoleMouseButtons(LPDWORD  nrofbuttons) /* ../dlls/kernel32/console.c:832 */
 {
 	TRACE("Enter GetNumberOfConsoleMouseButtons\n");
 	return pGetNumberOfConsoleMouseButtons(nrofbuttons);
 }
 
-extern WINAPI void wine32a_kernel32_GetNumberOfConsoleMouseButtons(void);  /* ../dlls/kernel32/console.c:1813 */
+extern WINAPI void wine32a_kernel32_GetNumberOfConsoleMouseButtons(void);  /* ../dlls/kernel32/console.c:832 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumberOfConsoleMouseButtons,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -10943,13 +9462,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetUserPreferredUILanguages,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_kernel32_GetPackageFullName(HANDLE  process, UINT32*  length, PWSTR  name) /* ../dlls/kernel32/version.c:235 */
+extern WINAPI LONG wine32b_kernel32_GetPackageFullName(HANDLE  process, UINT32*  length, PWSTR  name) /* ../dlls/kernel32/version.c:158 */
 {
 	TRACE("Enter GetPackageFullName\n");
 	return pGetPackageFullName(process, length, name);
 }
 
-extern WINAPI void wine32a_kernel32_GetPackageFullName(void);  /* ../dlls/kernel32/version.c:235 */
+extern WINAPI void wine32a_kernel32_GetPackageFullName(void);  /* ../dlls/kernel32/version.c:158 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetPackageFullName,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -10970,13 +9489,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetPackageFullName,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetPhysicallyInstalledSystemMemory(ULONGLONG*  total_memory) /* ../dlls/kernel32/heap.c:1440 */
+extern WINAPI BOOL wine32b_kernel32_GetPhysicallyInstalledSystemMemory(ULONGLONG*  total_memory) /* ../dlls/kernel32/heap.c:897 */
 {
 	TRACE("Enter GetPhysicallyInstalledSystemMemory\n");
 	return pGetPhysicallyInstalledSystemMemory(total_memory);
 }
 
-extern WINAPI void wine32a_kernel32_GetPhysicallyInstalledSystemMemory(void);  /* ../dlls/kernel32/heap.c:1440 */
+extern WINAPI void wine32a_kernel32_GetPhysicallyInstalledSystemMemory(void);  /* ../dlls/kernel32/heap.c:897 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetPhysicallyInstalledSystemMemory,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -11299,13 +9818,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcAddress,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetProcessAffinityMask(HANDLE  hProcess, PDWORD_PTR  process_mask, PDWORD_PTR  system_mask) /* ../dlls/kernel32/process.c:3399 */
+extern WINAPI BOOL wine32b_kernel32_GetProcessAffinityMask(HANDLE  hProcess, PDWORD_PTR  process_mask, PDWORD_PTR  system_mask) /* ../dlls/kernel32/process.c:3404 */
 {
 	TRACE("Enter GetProcessAffinityMask\n");
 	return pGetProcessAffinityMask(hProcess, process_mask, system_mask);
 }
 
-extern WINAPI void wine32a_kernel32_GetProcessAffinityMask(void);  /* ../dlls/kernel32/process.c:3399 */
+extern WINAPI void wine32a_kernel32_GetProcessAffinityMask(void);  /* ../dlls/kernel32/process.c:3404 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcessAffinityMask,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -11326,13 +9845,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcessAffinityMask,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetProcessDEPPolicy(HANDLE  process, LPDWORD  flags, PBOOL  permanent) /* ../dlls/kernel32/process.c:4092 */
+extern WINAPI BOOL wine32b_kernel32_GetProcessDEPPolicy(HANDLE  process, LPDWORD  flags, PBOOL  permanent) /* ../dlls/kernel32/process.c:4073 */
 {
 	TRACE("Enter GetProcessDEPPolicy\n");
 	return pGetProcessDEPPolicy(process, flags, permanent);
 }
 
-extern WINAPI void wine32a_kernel32_GetProcessDEPPolicy(void);  /* ../dlls/kernel32/process.c:4092 */
+extern WINAPI void wine32a_kernel32_GetProcessDEPPolicy(void);  /* ../dlls/kernel32/process.c:4073 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcessDEPPolicy,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -11353,13 +9872,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcessDEPPolicy,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetProcessFlags(DWORD  processid) /* ../dlls/kernel32/process.c:3203 */
+extern WINAPI DWORD wine32b_kernel32_GetProcessFlags(DWORD  processid) /* ../dlls/kernel32/process.c:3208 */
 {
 	TRACE("Enter GetProcessFlags\n");
 	return pGetProcessFlags(processid);
 }
 
-extern WINAPI void wine32a_kernel32_GetProcessFlags(void);  /* ../dlls/kernel32/process.c:3203 */
+extern WINAPI void wine32a_kernel32_GetProcessFlags(void);  /* ../dlls/kernel32/process.c:3208 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcessFlags,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -11378,13 +9897,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcessFlags,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetProcessIoCounters(HANDLE  hProcess, PIO_COUNTERS  ioc) /* ../dlls/kernel32/process.c:3540 */
+extern WINAPI BOOL wine32b_kernel32_GetProcessIoCounters(HANDLE  hProcess, PIO_COUNTERS  ioc) /* ../dlls/kernel32/process.c:3521 */
 {
 	TRACE("Enter GetProcessIoCounters\n");
 	return pGetProcessIoCounters(hProcess, ioc);
 }
 
-extern WINAPI void wine32a_kernel32_GetProcessIoCounters(void);  /* ../dlls/kernel32/process.c:3540 */
+extern WINAPI void wine32a_kernel32_GetProcessIoCounters(void);  /* ../dlls/kernel32/process.c:3521 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcessIoCounters,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -11460,13 +9979,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcessTimes,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetProcessVersion(DWORD  pid) /* ../dlls/kernel32/process.c:3425 */
+extern WINAPI DWORD wine32b_kernel32_GetProcessVersion(DWORD  pid) /* ../dlls/kernel32/process.c:3430 */
 {
 	TRACE("Enter GetProcessVersion\n");
 	return pGetProcessVersion(pid);
 }
 
-extern WINAPI void wine32a_kernel32_GetProcessVersion(void);  /* ../dlls/kernel32/process.c:3425 */
+extern WINAPI void wine32a_kernel32_GetProcessVersion(void);  /* ../dlls/kernel32/process.c:3430 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcessVersion,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -11485,13 +10004,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcessVersion,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetProcessWorkingSetSize(HANDLE  process, SIZE_T*  minset, SIZE_T*  maxset) /* ../dlls/kernel32/process.c:3507 */
+extern WINAPI BOOL wine32b_kernel32_GetProcessWorkingSetSize(HANDLE  process, SIZE_T*  minset, SIZE_T*  maxset) /* ../dlls/kernel32/process.c:3512 */
 {
 	TRACE("Enter GetProcessWorkingSetSize\n");
 	return pGetProcessWorkingSetSize(process, minset, maxset);
 }
 
-extern WINAPI void wine32a_kernel32_GetProcessWorkingSetSize(void);  /* ../dlls/kernel32/process.c:3507 */
+extern WINAPI void wine32a_kernel32_GetProcessWorkingSetSize(void);  /* ../dlls/kernel32/process.c:3512 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcessWorkingSetSize,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -11512,13 +10031,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcessWorkingSetSize,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetProductInfo(DWORD  dwOSMajorVersion, DWORD  dwOSMinorVersion, DWORD  dwSpMajorVersion, DWORD  dwSpMinorVersion, PDWORD  pdwReturnedProductType) /* ../dlls/kernel32/version.c:198 */
+extern WINAPI BOOL wine32b_kernel32_GetProductInfo(DWORD  dwOSMajorVersion, DWORD  dwOSMinorVersion, DWORD  dwSpMajorVersion, DWORD  dwSpMinorVersion, PDWORD  pdwReturnedProductType) /* ../dlls/kernel32/version.c:121 */
 {
 	TRACE("Enter GetProductInfo\n");
 	return pGetProductInfo(dwOSMajorVersion, dwOSMinorVersion, dwSpMajorVersion, dwSpMinorVersion, pdwReturnedProductType);
 }
 
-extern WINAPI void wine32a_kernel32_GetProductInfo(void);  /* ../dlls/kernel32/version.c:198 */
+extern WINAPI void wine32a_kernel32_GetProductInfo(void);  /* ../dlls/kernel32/version.c:121 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProductInfo,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -11758,69 +10277,19 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetShortPathNameW,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_GetStartupInfoA(LPSTARTUPINFOA  info) /* ../dlls/kernel32/environ.c:438 */
+extern WINAPI void wine32b_kernel32_GetStartupInfoA(LPSTARTUPINFOA  info) /* ../dlls/kernel32/environ.c:54 */
 {
 	TRACE("Enter GetStartupInfoA\n");
 	return pGetStartupInfoA(info);
 }
 
-extern WINAPI void wine32a_kernel32_GetStartupInfoA(void);  /* ../dlls/kernel32/environ.c:438 */
+extern WINAPI void wine32a_kernel32_GetStartupInfoA(void);  /* ../dlls/kernel32/environ.c:54 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetStartupInfoA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
 	"call " __ASM_NAME("wine32b_kernel32_GetStartupInfoA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI void wine32b_kernel32_GetStartupInfoW(LPSTARTUPINFOW  info) /* ../dlls/kernel32/environ.c:447 */
-{
-	TRACE("Enter GetStartupInfoW\n");
-	return pGetStartupInfoW(info);
-}
-
-extern WINAPI void wine32a_kernel32_GetStartupInfoW(void);  /* ../dlls/kernel32/environ.c:447 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetStartupInfoW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetStartupInfoW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI HANDLE wine32b_kernel32_GetStdHandle(DWORD  std_handle) /* ../dlls/kernel32/environ.c:407 */
-{
-	TRACE("Enter GetStdHandle\n");
-	return pGetStdHandle(std_handle);
-}
-
-extern WINAPI void wine32a_kernel32_GetStdHandle(void);  /* ../dlls/kernel32/environ.c:407 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetStdHandle,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetStdHandle") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -11945,13 +10414,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetStringTypeW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetSystemFileCacheSize(PSIZE_T  mincache, PSIZE_T  maxcache, PDWORD  flags) /* ../dlls/kernel32/heap.c:1458 */
+extern WINAPI BOOL wine32b_kernel32_GetSystemFileCacheSize(PSIZE_T  mincache, PSIZE_T  maxcache, PDWORD  flags) /* ../dlls/kernel32/heap.c:915 */
 {
 	TRACE("Enter GetSystemFileCacheSize\n");
 	return pGetSystemFileCacheSize(mincache, maxcache, flags);
 }
 
-extern WINAPI void wine32a_kernel32_GetSystemFileCacheSize(void);  /* ../dlls/kernel32/heap.c:1458 */
+extern WINAPI void wine32a_kernel32_GetSystemFileCacheSize(void);  /* ../dlls/kernel32/heap.c:915 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemFileCacheSize,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -12070,13 +10539,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemDefaultUILanguage,
 	"ret \n"
 )
 
-extern WINAPI DEP_SYSTEM_POLICY_TYPE wine32b_kernel32_GetSystemDEPPolicy(void) /* ../dlls/kernel32/process.c:3937 */
+extern WINAPI DEP_SYSTEM_POLICY_TYPE wine32b_kernel32_GetSystemDEPPolicy(void) /* ../dlls/kernel32/process.c:3918 */
 {
 	TRACE("Enter GetSystemDEPPolicy\n");
 	return pGetSystemDEPPolicy();
 }
 
-extern WINAPI void wine32a_kernel32_GetSystemDEPPolicy(void);  /* ../dlls/kernel32/process.c:3937 */
+extern WINAPI void wine32a_kernel32_GetSystemDEPPolicy(void);  /* ../dlls/kernel32/process.c:3918 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemDEPPolicy,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -12146,13 +10615,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemDirectoryW,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetSystemFirmwareTable(DWORD  provider, DWORD  id, void*  buffer, DWORD  size) /* ../dlls/kernel32/cpu.c:341 */
+extern WINAPI UINT wine32b_kernel32_GetSystemFirmwareTable(DWORD  provider, DWORD  id, void*  buffer, DWORD  size) /* ../dlls/kernel32/cpu.c:296 */
 {
 	TRACE("Enter GetSystemFirmwareTable\n");
 	return pGetSystemFirmwareTable(provider, id, buffer, size);
 }
 
-extern WINAPI void wine32a_kernel32_GetSystemFirmwareTable(void);  /* ../dlls/kernel32/cpu.c:341 */
+extern WINAPI void wine32a_kernel32_GetSystemFirmwareTable(void);  /* ../dlls/kernel32/cpu.c:296 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemFirmwareTable,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -12174,13 +10643,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemFirmwareTable,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_GetSystemInfo(LPSYSTEM_INFO  si) /* ../dlls/kernel32/cpu.c:102 */
+extern WINAPI void wine32b_kernel32_GetSystemInfo(LPSYSTEM_INFO  si) /* ../dlls/kernel32/cpu.c:57 */
 {
 	TRACE("Enter GetSystemInfo\n");
 	return pGetSystemInfo(si);
 }
 
-extern WINAPI void wine32a_kernel32_GetSystemInfo(void);  /* ../dlls/kernel32/cpu.c:102 */
+extern WINAPI void wine32a_kernel32_GetSystemInfo(void);  /* ../dlls/kernel32/cpu.c:57 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemInfo,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -12886,13 +11355,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetTimeZoneInformationForYear,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetUmsCompletionListEvent(PUMS_COMPLETION_LIST  list, HANDLE*  event) /* ../dlls/kernel32/process.c:4235 */
+extern WINAPI BOOL wine32b_kernel32_GetUmsCompletionListEvent(PUMS_COMPLETION_LIST  list, HANDLE*  event) /* ../dlls/kernel32/process.c:4216 */
 {
 	TRACE("Enter GetUmsCompletionListEvent\n");
 	return pGetUmsCompletionListEvent(list, event);
 }
 
-extern WINAPI void wine32a_kernel32_GetUmsCompletionListEvent(void);  /* ../dlls/kernel32/process.c:4235 */
+extern WINAPI void wine32a_kernel32_GetUmsCompletionListEvent(void);  /* ../dlls/kernel32/process.c:4216 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GetUmsCompletionListEvent,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -13023,80 +11492,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetUserGeoID,
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
 	"call " __ASM_NAME("wine32b_kernel32_GetUserGeoID") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI DWORD wine32b_kernel32_GetVersion(void) /* ../dlls/kernel32/version.c:57 */
-{
-	TRACE("Enter GetVersion\n");
-	return pGetVersion();
-}
-
-extern WINAPI void wine32a_kernel32_GetVersion(void);  /* ../dlls/kernel32/version.c:57 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetVersion,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetVersion") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $0, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_GetVersionExA(OSVERSIONINFOA*  v) /* ../dlls/kernel32/version.c:71 */
-{
-	TRACE("Enter GetVersionExA\n");
-	return pGetVersionExA(v);
-}
-
-extern WINAPI void wine32a_kernel32_GetVersionExA(void);  /* ../dlls/kernel32/version.c:71 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetVersionExA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetVersionExA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_GetVersionExW(OSVERSIONINFOW*  info) /* ../dlls/kernel32/version.c:109 */
-{
-	TRACE("Enter GetVersionExW\n");
-	return pGetVersionExW(info);
-}
-
-extern WINAPI void wine32a_kernel32_GetVersionExW(void);  /* ../dlls/kernel32/version.c:109 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetVersionExW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetVersionExW") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -13357,34 +11752,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetVolumePathNamesForVolumeNameW,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetWriteWatch(DWORD  flags, LPVOID  base, SIZE_T  size, LPVOID*  addresses, ULONG_PTR*  count, ULONG*  granularity) /* ../dlls/kernel32/virtual.c:447 */
-{
-	TRACE("Enter GetWriteWatch\n");
-	return pGetWriteWatch(flags, base, size, addresses, count, granularity);
-}
-
-extern WINAPI void wine32a_kernel32_GetWriteWatch(void);  /* ../dlls/kernel32/virtual.c:447 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GetWriteWatch,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GetWriteWatch") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $24, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
 extern WINAPI ATOM wine32b_kernel32_GlobalAddAtomA(LPCSTR  str) /* ../dlls/kernel32/atom.c:111 */
 {
 	TRACE("Enter GlobalAddAtomA\n");
@@ -13435,39 +11802,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalAddAtomW,
 	"ret \n"
 )
 
-extern WINAPI HGLOBAL wine32b_kernel32_GlobalAlloc(UINT  flags, SIZE_T  size) /* ../dlls/kernel32/heap.c:342 */
-{
-	TRACE("Enter GlobalAlloc\n");
-	return pGlobalAlloc(flags, size);
-}
-
-extern WINAPI void wine32a_kernel32_GlobalAlloc(void);  /* ../dlls/kernel32/heap.c:342 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalAlloc,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GlobalAlloc") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI SIZE_T wine32b_kernel32_GlobalCompact(DWORD  minfree) /* ../dlls/kernel32/heap.c:937 */
+extern WINAPI SIZE_T wine32b_kernel32_GlobalCompact(DWORD  minfree) /* ../dlls/kernel32/heap.c:509 */
 {
 	TRACE("Enter GlobalCompact\n");
 	return pGlobalCompact(minfree);
 }
 
-extern WINAPI void wine32a_kernel32_GlobalCompact(void);  /* ../dlls/kernel32/heap.c:937 */
+extern WINAPI void wine32a_kernel32_GlobalCompact(void);  /* ../dlls/kernel32/heap.c:509 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalCompact,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -13561,13 +11902,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalFindAtomW,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_GlobalFix(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:875 */
+extern WINAPI void wine32b_kernel32_GlobalFix(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:447 */
 {
 	TRACE("Enter GlobalFix\n");
 	return pGlobalFix(hmem);
 }
 
-extern WINAPI void wine32a_kernel32_GlobalFix(void);  /* ../dlls/kernel32/heap.c:875 */
+extern WINAPI void wine32a_kernel32_GlobalFix(void);  /* ../dlls/kernel32/heap.c:447 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalFix,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -13586,44 +11927,19 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalFix,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GlobalFlags(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:903 */
+extern WINAPI UINT wine32b_kernel32_GlobalFlags(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:475 */
 {
 	TRACE("Enter GlobalFlags\n");
 	return pGlobalFlags(hmem);
 }
 
-extern WINAPI void wine32a_kernel32_GlobalFlags(void);  /* ../dlls/kernel32/heap.c:903 */
+extern WINAPI void wine32a_kernel32_GlobalFlags(void);  /* ../dlls/kernel32/heap.c:475 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalFlags,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
 	"call " __ASM_NAME("wine32b_kernel32_GlobalFlags") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI HGLOBAL wine32b_kernel32_GlobalFree(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:733 */
-{
-	TRACE("Enter GlobalFree\n");
-	return pGlobalFree(hmem);
-}
-
-extern WINAPI void wine32a_kernel32_GlobalFree(void);  /* ../dlls/kernel32/heap.c:733 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalFree,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_GlobalFree") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -13690,13 +12006,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalGetAtomNameW,
 	"ret \n"
 )
 
-extern WINAPI HGLOBAL wine32b_kernel32_GlobalHandle(LPCVOID  pmem) /* ../dlls/kernel32/heap.c:530 */
+extern WINAPI HGLOBAL wine32b_kernel32_GlobalHandle(LPCVOID  pmem) /* ../dlls/kernel32/heap.c:293 */
 {
 	TRACE("Enter GlobalHandle\n");
 	return pGlobalHandle(pmem);
 }
 
-extern WINAPI void wine32a_kernel32_GlobalHandle(void);  /* ../dlls/kernel32/heap.c:530 */
+extern WINAPI void wine32a_kernel32_GlobalHandle(void);  /* ../dlls/kernel32/heap.c:293 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalHandle,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -13715,13 +12031,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalHandle,
 	"ret \n"
 )
 
-extern WINAPI LPVOID wine32b_kernel32_GlobalLock(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:421 */
+extern WINAPI LPVOID wine32b_kernel32_GlobalLock(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:255 */
 {
 	TRACE("Enter GlobalLock\n");
 	return pGlobalLock(hmem);
 }
 
-extern WINAPI void wine32a_kernel32_GlobalLock(void);  /* ../dlls/kernel32/heap.c:421 */
+extern WINAPI void wine32a_kernel32_GlobalLock(void);  /* ../dlls/kernel32/heap.c:255 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalLock,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -13740,13 +12056,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalLock,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_GlobalMemoryStatus(LPMEMORYSTATUS  lpBuffer) /* ../dlls/kernel32/heap.c:1365 */
+extern WINAPI void wine32b_kernel32_GlobalMemoryStatus(LPMEMORYSTATUS  lpBuffer) /* ../dlls/kernel32/heap.c:822 */
 {
 	TRACE("Enter GlobalMemoryStatus\n");
 	return pGlobalMemoryStatus(lpBuffer);
 }
 
-extern WINAPI void wine32a_kernel32_GlobalMemoryStatus(void);  /* ../dlls/kernel32/heap.c:1365 */
+extern WINAPI void wine32a_kernel32_GlobalMemoryStatus(void);  /* ../dlls/kernel32/heap.c:822 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalMemoryStatus,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -13765,13 +12081,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalMemoryStatus,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GlobalMemoryStatusEx(LPMEMORYSTATUSEX  lpmemex) /* ../dlls/kernel32/heap.c:1144 */
+extern WINAPI BOOL wine32b_kernel32_GlobalMemoryStatusEx(LPMEMORYSTATUSEX  lpmemex) /* ../dlls/kernel32/heap.c:601 */
 {
 	TRACE("Enter GlobalMemoryStatusEx\n");
 	return pGlobalMemoryStatusEx(lpmemex);
 }
 
-extern WINAPI void wine32a_kernel32_GlobalMemoryStatusEx(void);  /* ../dlls/kernel32/heap.c:1144 */
+extern WINAPI void wine32a_kernel32_GlobalMemoryStatusEx(void);  /* ../dlls/kernel32/heap.c:601 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalMemoryStatusEx,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -13790,13 +12106,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalMemoryStatusEx,
 	"ret \n"
 )
 
-extern WINAPI HGLOBAL wine32b_kernel32_GlobalReAlloc(HGLOBAL  hmem, SIZE_T  size, UINT  flags) /* ../dlls/kernel32/heap.c:592 */
+extern WINAPI HGLOBAL wine32b_kernel32_GlobalReAlloc(HGLOBAL  hmem, SIZE_T  size, UINT  flags) /* ../dlls/kernel32/heap.c:355 */
 {
 	TRACE("Enter GlobalReAlloc\n");
 	return pGlobalReAlloc(hmem, size, flags);
 }
 
-extern WINAPI void wine32a_kernel32_GlobalReAlloc(void);  /* ../dlls/kernel32/heap.c:592 */
+extern WINAPI void wine32a_kernel32_GlobalReAlloc(void);  /* ../dlls/kernel32/heap.c:355 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalReAlloc,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -13817,13 +12133,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalReAlloc,
 	"ret \n"
 )
 
-extern WINAPI SIZE_T wine32b_kernel32_GlobalSize(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:805 */
+extern WINAPI SIZE_T wine32b_kernel32_GlobalSize(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:377 */
 {
 	TRACE("Enter GlobalSize\n");
 	return pGlobalSize(hmem);
 }
 
-extern WINAPI void wine32a_kernel32_GlobalSize(void);  /* ../dlls/kernel32/heap.c:805 */
+extern WINAPI void wine32a_kernel32_GlobalSize(void);  /* ../dlls/kernel32/heap.c:377 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalSize,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -13842,13 +12158,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalSize,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GlobalUnWire(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:866 */
+extern WINAPI BOOL wine32b_kernel32_GlobalUnWire(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:438 */
 {
 	TRACE("Enter GlobalUnWire\n");
 	return pGlobalUnWire(hmem);
 }
 
-extern WINAPI void wine32a_kernel32_GlobalUnWire(void);  /* ../dlls/kernel32/heap.c:866 */
+extern WINAPI void wine32a_kernel32_GlobalUnWire(void);  /* ../dlls/kernel32/heap.c:438 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalUnWire,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -13867,13 +12183,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalUnWire,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_GlobalUnfix(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:884 */
+extern WINAPI void wine32b_kernel32_GlobalUnfix(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:456 */
 {
 	TRACE("Enter GlobalUnfix\n");
 	return pGlobalUnfix(hmem);
 }
 
-extern WINAPI void wine32a_kernel32_GlobalUnfix(void);  /* ../dlls/kernel32/heap.c:884 */
+extern WINAPI void wine32a_kernel32_GlobalUnfix(void);  /* ../dlls/kernel32/heap.c:456 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalUnfix,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -13892,13 +12208,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalUnfix,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GlobalUnlock(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:476 */
+extern WINAPI BOOL wine32b_kernel32_GlobalUnlock(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:277 */
 {
 	TRACE("Enter GlobalUnlock\n");
 	return pGlobalUnlock(hmem);
 }
 
-extern WINAPI void wine32a_kernel32_GlobalUnlock(void);  /* ../dlls/kernel32/heap.c:476 */
+extern WINAPI void wine32a_kernel32_GlobalUnlock(void);  /* ../dlls/kernel32/heap.c:277 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalUnlock,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -13917,13 +12233,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalUnlock,
 	"ret \n"
 )
 
-extern WINAPI LPVOID wine32b_kernel32_GlobalWire(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:857 */
+extern WINAPI LPVOID wine32b_kernel32_GlobalWire(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:429 */
 {
 	TRACE("Enter GlobalWire\n");
 	return pGlobalWire(hmem);
 }
 
-extern WINAPI void wine32a_kernel32_GlobalWire(void);  /* ../dlls/kernel32/heap.c:857 */
+extern WINAPI void wine32a_kernel32_GlobalWire(void);  /* ../dlls/kernel32/heap.c:429 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalWire,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -13956,32 +12272,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_Heap32ListFirst,
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
 	"call " __ASM_NAME("wine32b_kernel32_Heap32ListFirst") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI SIZE_T wine32b_kernel32_HeapCompact(HANDLE  heap, DWORD  flags) /* ../dlls/kernel32/heap.c:177 */
-{
-	TRACE("Enter HeapCompact\n");
-	return pHeapCompact(heap, flags);
-}
-
-extern WINAPI void wine32a_kernel32_HeapCompact(void);  /* ../dlls/kernel32/heap.c:177 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_HeapCompact,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_HeapCompact") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -14046,159 +12336,27 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_HeapDestroy,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_HeapLock(HANDLE  heap) /* ../dlls/kernel32/heap.c:233 */
+extern WINAPI BOOL wine32b_kernel32_HeapFree(HANDLE  heap, DWORD  flags, LPVOID  ptr) /* ../dlls/kernel32/heap.c:187 */
 {
-	TRACE("Enter HeapLock\n");
-	return pHeapLock(heap);
+	TRACE("Enter HeapFree\n");
+	return pHeapFree(heap, flags, ptr);
 }
 
-extern WINAPI void wine32a_kernel32_HeapLock(void);  /* ../dlls/kernel32/heap.c:233 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_HeapLock,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_HeapLock") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_HeapQueryInformation(HANDLE  heap, HEAP_INFORMATION_CLASS  info_class, PVOID  info, SIZE_T  size_in, PSIZE_T  size_out) /* ../dlls/kernel32/heap.c:281 */
-{
-	TRACE("Enter HeapQueryInformation\n");
-	return pHeapQueryInformation(heap, info_class, info, size_in, size_out);
-}
-
-extern WINAPI void wine32a_kernel32_HeapQueryInformation(void);  /* ../dlls/kernel32/heap.c:281 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_HeapQueryInformation,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_HeapQueryInformation") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_HeapSetInformation(HANDLE  heap, HEAP_INFORMATION_CLASS  infoclass, PVOID  info, SIZE_T  size) /* ../dlls/kernel32/heap.c:289 */
-{
-	TRACE("Enter HeapSetInformation\n");
-	return pHeapSetInformation(heap, infoclass, info, size);
-}
-
-extern WINAPI void wine32a_kernel32_HeapSetInformation(void);  /* ../dlls/kernel32/heap.c:289 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_HeapSetInformation,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_HeapSetInformation") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $16, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_HeapUnlock(HANDLE  heap) /* ../dlls/kernel32/heap.c:248 */
-{
-	TRACE("Enter HeapUnlock\n");
-	return pHeapUnlock(heap);
-}
-
-extern WINAPI void wine32a_kernel32_HeapUnlock(void);  /* ../dlls/kernel32/heap.c:248 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_HeapUnlock,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_HeapUnlock") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_HeapValidate(HANDLE  heap, DWORD  flags, LPCVOID  block) /* ../dlls/kernel32/heap.c:194 */
-{
-	TRACE("Enter HeapValidate\n");
-	return pHeapValidate(heap, flags, block);
-}
-
-extern WINAPI void wine32a_kernel32_HeapValidate(void);  /* ../dlls/kernel32/heap.c:194 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_HeapValidate,
+extern WINAPI void wine32a_kernel32_HeapFree(void);  /* ../dlls/kernel32/heap.c:187 */
+__ASM_GLOBAL_FUNC(wine32a_kernel32_HeapFree,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"movl 0x18(%rsp), %edx \n"
 	"movl 0x1C(%rsp), %r8d \n"
 	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_HeapValidate") "\n"
+	"call " __ASM_NAME("wine32b_kernel32_HeapFree") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_HeapWalk(HANDLE  heap, LPPROCESS_HEAP_ENTRY  entry) /* ../dlls/kernel32/heap.c:215 */
-{
-	TRACE("Enter HeapWalk\n");
-	return pHeapWalk(heap, entry);
-}
-
-extern WINAPI void wine32a_kernel32_HeapWalk(void);  /* ../dlls/kernel32/heap.c:215 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_HeapWalk,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_HeapWalk") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -14314,89 +12472,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_InitAtomTable,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_InitOnceBeginInitialize(INIT_ONCE*  once, DWORD  flags, BOOL*  pending, void**  context) /* ../dlls/kernel32/sync.c:1077 */
-{
-	TRACE("Enter InitOnceBeginInitialize\n");
-	return pInitOnceBeginInitialize(once, flags, pending, context);
-}
-
-extern WINAPI void wine32a_kernel32_InitOnceBeginInitialize(void);  /* ../dlls/kernel32/sync.c:1077 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_InitOnceBeginInitialize,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_InitOnceBeginInitialize") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $16, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_InitOnceComplete(INIT_ONCE*  once, DWORD  flags, void*  context) /* ../dlls/kernel32/sync.c:1088 */
-{
-	TRACE("Enter InitOnceComplete\n");
-	return pInitOnceComplete(once, flags, context);
-}
-
-extern WINAPI void wine32a_kernel32_InitOnceComplete(void);  /* ../dlls/kernel32/sync.c:1088 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_InitOnceComplete,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_InitOnceComplete") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_InitOnceExecuteOnce(INIT_ONCE*  once, PINIT_ONCE_FN  func, void*  param, void**  context) /* ../dlls/kernel32/sync.c:1098 */
-{
-	TRACE("Enter InitOnceExecuteOnce\n");
-	return pInitOnceExecuteOnce(once, func, param, context);
-}
-
-extern WINAPI void wine32a_kernel32_InitOnceExecuteOnce(void);  /* ../dlls/kernel32/sync.c:1098 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_InitOnceExecuteOnce,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_InitOnceExecuteOnce") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $16, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
 extern WINAPI BOOL wine32b_kernel32_InvalidateNLSCache(void) /* ../dlls/kernel32/locale.c:4602 */
 {
 	TRACE("Enter InvalidateNLSCache\n");
@@ -14421,13 +12496,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_InvalidateNLSCache,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsBadCodePtr(FARPROC  ptr) /* ../dlls/kernel32/virtual.c:603 */
+extern WINAPI BOOL wine32b_kernel32_IsBadCodePtr(FARPROC  ptr) /* ../dlls/kernel32/virtual.c:183 */
 {
 	TRACE("Enter IsBadCodePtr\n");
 	return pIsBadCodePtr(ptr);
 }
 
-extern WINAPI void wine32a_kernel32_IsBadCodePtr(void);  /* ../dlls/kernel32/virtual.c:603 */
+extern WINAPI void wine32a_kernel32_IsBadCodePtr(void);  /* ../dlls/kernel32/virtual.c:183 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_IsBadCodePtr,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -14446,13 +12521,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsBadCodePtr,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsBadHugeReadPtr(LPCVOID  ptr, UINT_PTR  size) /* ../dlls/kernel32/virtual.c:566 */
+extern WINAPI BOOL wine32b_kernel32_IsBadHugeReadPtr(LPCVOID  ptr, UINT_PTR  size) /* ../dlls/kernel32/virtual.c:146 */
 {
 	TRACE("Enter IsBadHugeReadPtr\n");
 	return pIsBadHugeReadPtr(ptr, size);
 }
 
-extern WINAPI void wine32a_kernel32_IsBadHugeReadPtr(void);  /* ../dlls/kernel32/virtual.c:566 */
+extern WINAPI void wine32a_kernel32_IsBadHugeReadPtr(void);  /* ../dlls/kernel32/virtual.c:146 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_IsBadHugeReadPtr,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -14472,13 +12547,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsBadHugeReadPtr,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsBadHugeWritePtr(LPVOID  ptr, UINT_PTR  size) /* ../dlls/kernel32/virtual.c:585 */
+extern WINAPI BOOL wine32b_kernel32_IsBadHugeWritePtr(LPVOID  ptr, UINT_PTR  size) /* ../dlls/kernel32/virtual.c:165 */
 {
 	TRACE("Enter IsBadHugeWritePtr\n");
 	return pIsBadHugeWritePtr(ptr, size);
 }
 
-extern WINAPI void wine32a_kernel32_IsBadHugeWritePtr(void);  /* ../dlls/kernel32/virtual.c:585 */
+extern WINAPI void wine32a_kernel32_IsBadHugeWritePtr(void);  /* ../dlls/kernel32/virtual.c:165 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_IsBadHugeWritePtr,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -14498,13 +12573,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsBadHugeWritePtr,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsBadReadPtr(LPCVOID  ptr, UINT_PTR  size) /* ../dlls/kernel32/virtual.c:483 */
+extern WINAPI BOOL wine32b_kernel32_IsBadReadPtr(LPCVOID  ptr, UINT_PTR  size) /* ../dlls/kernel32/virtual.c:63 */
 {
 	TRACE("Enter IsBadReadPtr\n");
 	return pIsBadReadPtr(ptr, size);
 }
 
-extern WINAPI void wine32a_kernel32_IsBadReadPtr(void);  /* ../dlls/kernel32/virtual.c:483 */
+extern WINAPI void wine32a_kernel32_IsBadReadPtr(void);  /* ../dlls/kernel32/virtual.c:63 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_IsBadReadPtr,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -14524,13 +12599,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsBadReadPtr,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsBadStringPtrA(LPCSTR  str, UINT_PTR  max) /* ../dlls/kernel32/virtual.c:622 */
+extern WINAPI BOOL wine32b_kernel32_IsBadStringPtrA(LPCSTR  str, UINT_PTR  max) /* ../dlls/kernel32/virtual.c:202 */
 {
 	TRACE("Enter IsBadStringPtrA\n");
 	return pIsBadStringPtrA(str, max);
 }
 
-extern WINAPI void wine32a_kernel32_IsBadStringPtrA(void);  /* ../dlls/kernel32/virtual.c:622 */
+extern WINAPI void wine32a_kernel32_IsBadStringPtrA(void);  /* ../dlls/kernel32/virtual.c:202 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_IsBadStringPtrA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -14550,13 +12625,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsBadStringPtrA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsBadStringPtrW(LPCWSTR  str, UINT_PTR  max) /* ../dlls/kernel32/virtual.c:646 */
+extern WINAPI BOOL wine32b_kernel32_IsBadStringPtrW(LPCWSTR  str, UINT_PTR  max) /* ../dlls/kernel32/virtual.c:226 */
 {
 	TRACE("Enter IsBadStringPtrW\n");
 	return pIsBadStringPtrW(str, max);
 }
 
-extern WINAPI void wine32a_kernel32_IsBadStringPtrW(void);  /* ../dlls/kernel32/virtual.c:646 */
+extern WINAPI void wine32a_kernel32_IsBadStringPtrW(void);  /* ../dlls/kernel32/virtual.c:226 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_IsBadStringPtrW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -14576,13 +12651,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsBadStringPtrW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsBadWritePtr(LPVOID  ptr, UINT_PTR  size) /* ../dlls/kernel32/virtual.c:525 */
+extern WINAPI BOOL wine32b_kernel32_IsBadWritePtr(LPVOID  ptr, UINT_PTR  size) /* ../dlls/kernel32/virtual.c:105 */
 {
 	TRACE("Enter IsBadWritePtr\n");
 	return pIsBadWritePtr(ptr, size);
 }
 
-extern WINAPI void wine32a_kernel32_IsBadWritePtr(void);  /* ../dlls/kernel32/virtual.c:525 */
+extern WINAPI void wine32a_kernel32_IsBadWritePtr(void);  /* ../dlls/kernel32/virtual.c:105 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_IsBadWritePtr,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -14653,30 +12728,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsDBCSLeadByteEx,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsDebuggerPresent(void) /* ../dlls/kernel32/debugger.c:439 */
-{
-	TRACE("Enter IsDebuggerPresent\n");
-	return pIsDebuggerPresent();
-}
-
-extern WINAPI void wine32a_kernel32_IsDebuggerPresent(void);  /* ../dlls/kernel32/debugger.c:439 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_IsDebuggerPresent,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_IsDebuggerPresent") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $0, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
 extern WINAPI BOOL wine32b_kernel32_IsNormalizedString(NORM_FORM  NormForm, LPCWSTR  lpString, INT  cwLength) /* ../dlls/kernel32/locale.c:5333 */
 {
 	TRACE("Enter IsNormalizedString\n");
@@ -14731,13 +12782,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsProcessInJob,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsProcessorFeaturePresent(DWORD  feature) /* ../dlls/kernel32/cpu.c:202 */
+extern WINAPI BOOL wine32b_kernel32_IsProcessorFeaturePresent(DWORD  feature) /* ../dlls/kernel32/cpu.c:157 */
 {
 	TRACE("Enter IsProcessorFeaturePresent\n");
 	return pIsProcessorFeaturePresent(feature);
 }
 
-extern WINAPI void wine32a_kernel32_IsProcessorFeaturePresent(void);  /* ../dlls/kernel32/cpu.c:202 */
+extern WINAPI void wine32a_kernel32_IsProcessorFeaturePresent(void);  /* ../dlls/kernel32/cpu.c:157 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_IsProcessorFeaturePresent,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -14882,13 +12933,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsValidLocaleName,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32EmptyWorkingSet(HANDLE  hProcess) /* ../dlls/kernel32/process.c:3498 */
+extern WINAPI BOOL wine32b_kernel32_K32EmptyWorkingSet(HANDLE  hProcess) /* ../dlls/kernel32/process.c:3503 */
 {
 	TRACE("Enter K32EmptyWorkingSet\n");
 	return pK32EmptyWorkingSet(hProcess);
 }
 
-extern WINAPI void wine32a_kernel32_K32EmptyWorkingSet(void);  /* ../dlls/kernel32/process.c:3498 */
+extern WINAPI void wine32a_kernel32_K32EmptyWorkingSet(void);  /* ../dlls/kernel32/process.c:3503 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_K32EmptyWorkingSet,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -14934,13 +12985,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32EnumDeviceDrivers,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32EnumPageFilesA(PENUM_PAGE_FILE_CALLBACKA  callback, LPVOID  context) /* ../dlls/kernel32/virtual.c:693 */
+extern WINAPI BOOL wine32b_kernel32_K32EnumPageFilesA(PENUM_PAGE_FILE_CALLBACKA  callback, LPVOID  context) /* ../dlls/kernel32/virtual.c:273 */
 {
 	TRACE("Enter K32EnumPageFilesA\n");
 	return pK32EnumPageFilesA(callback, context);
 }
 
-extern WINAPI void wine32a_kernel32_K32EnumPageFilesA(void);  /* ../dlls/kernel32/virtual.c:693 */
+extern WINAPI void wine32a_kernel32_K32EnumPageFilesA(void);  /* ../dlls/kernel32/virtual.c:273 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_K32EnumPageFilesA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -14960,13 +13011,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32EnumPageFilesA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32EnumPageFilesW(PENUM_PAGE_FILE_CALLBACKW  callback, LPVOID  context) /* ../dlls/kernel32/virtual.c:702 */
+extern WINAPI BOOL wine32b_kernel32_K32EnumPageFilesW(PENUM_PAGE_FILE_CALLBACKW  callback, LPVOID  context) /* ../dlls/kernel32/virtual.c:282 */
 {
 	TRACE("Enter K32EnumPageFilesW\n");
 	return pK32EnumPageFilesW(callback, context);
 }
 
-extern WINAPI void wine32a_kernel32_K32EnumPageFilesW(void);  /* ../dlls/kernel32/virtual.c:702 */
+extern WINAPI void wine32a_kernel32_K32EnumPageFilesW(void);  /* ../dlls/kernel32/virtual.c:282 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_K32EnumPageFilesW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -15042,13 +13093,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32EnumProcessModulesEx,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32EnumProcesses(DWORD*  lpdwProcessIDs, DWORD  cb, DWORD*  lpcbUsed) /* ../dlls/kernel32/process.c:3672 */
+extern WINAPI BOOL wine32b_kernel32_K32EnumProcesses(DWORD*  lpdwProcessIDs, DWORD  cb, DWORD*  lpcbUsed) /* ../dlls/kernel32/process.c:3653 */
 {
 	TRACE("Enter K32EnumProcesses\n");
 	return pK32EnumProcesses(lpdwProcessIDs, cb, lpcbUsed);
 }
 
-extern WINAPI void wine32a_kernel32_K32EnumProcesses(void);  /* ../dlls/kernel32/process.c:3672 */
+extern WINAPI void wine32a_kernel32_K32EnumProcesses(void);  /* ../dlls/kernel32/process.c:3653 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_K32EnumProcesses,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -15177,13 +13228,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetDeviceDriverFileNameW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_K32GetMappedFileNameA(HANDLE  process, LPVOID  lpv, LPSTR  file_name, DWORD  size) /* ../dlls/kernel32/virtual.c:667 */
+extern WINAPI DWORD wine32b_kernel32_K32GetMappedFileNameA(HANDLE  process, LPVOID  lpv, LPSTR  file_name, DWORD  size) /* ../dlls/kernel32/virtual.c:247 */
 {
 	TRACE("Enter K32GetMappedFileNameA\n");
 	return pK32GetMappedFileNameA(process, lpv, file_name, size);
 }
 
-extern WINAPI void wine32a_kernel32_K32GetMappedFileNameA(void);  /* ../dlls/kernel32/virtual.c:667 */
+extern WINAPI void wine32a_kernel32_K32GetMappedFileNameA(void);  /* ../dlls/kernel32/virtual.c:247 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetMappedFileNameA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -15205,13 +13256,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetMappedFileNameA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_K32GetMappedFileNameW(HANDLE  process, LPVOID  lpv, LPWSTR  file_name, DWORD  size) /* ../dlls/kernel32/virtual.c:680 */
+extern WINAPI DWORD wine32b_kernel32_K32GetMappedFileNameW(HANDLE  process, LPVOID  lpv, LPWSTR  file_name, DWORD  size) /* ../dlls/kernel32/virtual.c:260 */
 {
 	TRACE("Enter K32GetMappedFileNameW\n");
 	return pK32GetMappedFileNameW(process, lpv, file_name, size);
 }
 
-extern WINAPI void wine32a_kernel32_K32GetMappedFileNameW(void);  /* ../dlls/kernel32/virtual.c:680 */
+extern WINAPI void wine32a_kernel32_K32GetMappedFileNameW(void);  /* ../dlls/kernel32/virtual.c:260 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetMappedFileNameW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -15373,13 +13424,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetModuleInformation,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32GetPerformanceInfo(PPERFORMANCE_INFORMATION  info, DWORD  size) /* ../dlls/kernel32/cpu.c:210 */
+extern WINAPI BOOL wine32b_kernel32_K32GetPerformanceInfo(PPERFORMANCE_INFORMATION  info, DWORD  size) /* ../dlls/kernel32/cpu.c:165 */
 {
 	TRACE("Enter K32GetPerformanceInfo\n");
 	return pK32GetPerformanceInfo(info, size);
 }
 
-extern WINAPI void wine32a_kernel32_K32GetPerformanceInfo(void);  /* ../dlls/kernel32/cpu.c:210 */
+extern WINAPI void wine32a_kernel32_K32GetPerformanceInfo(void);  /* ../dlls/kernel32/cpu.c:165 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetPerformanceInfo,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -15399,13 +13450,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetPerformanceInfo,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_K32GetProcessImageFileNameA(HANDLE  process, LPSTR  file, DWORD  size) /* ../dlls/kernel32/process.c:3656 */
+extern WINAPI DWORD wine32b_kernel32_K32GetProcessImageFileNameA(HANDLE  process, LPSTR  file, DWORD  size) /* ../dlls/kernel32/process.c:3637 */
 {
 	TRACE("Enter K32GetProcessImageFileNameA\n");
 	return pK32GetProcessImageFileNameA(process, file, size);
 }
 
-extern WINAPI void wine32a_kernel32_K32GetProcessImageFileNameA(void);  /* ../dlls/kernel32/process.c:3656 */
+extern WINAPI void wine32a_kernel32_K32GetProcessImageFileNameA(void);  /* ../dlls/kernel32/process.c:3637 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetProcessImageFileNameA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -15426,13 +13477,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetProcessImageFileNameA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_K32GetProcessImageFileNameW(HANDLE  process, LPWSTR  file, DWORD  size) /* ../dlls/kernel32/process.c:3664 */
+extern WINAPI DWORD wine32b_kernel32_K32GetProcessImageFileNameW(HANDLE  process, LPWSTR  file, DWORD  size) /* ../dlls/kernel32/process.c:3645 */
 {
 	TRACE("Enter K32GetProcessImageFileNameW\n");
 	return pK32GetProcessImageFileNameW(process, file, size);
 }
 
-extern WINAPI void wine32a_kernel32_K32GetProcessImageFileNameW(void);  /* ../dlls/kernel32/process.c:3664 */
+extern WINAPI void wine32a_kernel32_K32GetProcessImageFileNameW(void);  /* ../dlls/kernel32/process.c:3645 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetProcessImageFileNameW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -15453,13 +13504,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetProcessImageFileNameW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32GetProcessMemoryInfo(HANDLE  process, PPROCESS_MEMORY_COUNTERS  pmc, DWORD  cb) /* ../dlls/kernel32/process.c:3757 */
+extern WINAPI BOOL wine32b_kernel32_K32GetProcessMemoryInfo(HANDLE  process, PPROCESS_MEMORY_COUNTERS  pmc, DWORD  cb) /* ../dlls/kernel32/process.c:3738 */
 {
 	TRACE("Enter K32GetProcessMemoryInfo\n");
 	return pK32GetProcessMemoryInfo(process, pmc, cb);
 }
 
-extern WINAPI void wine32a_kernel32_K32GetProcessMemoryInfo(void);  /* ../dlls/kernel32/process.c:3757 */
+extern WINAPI void wine32a_kernel32_K32GetProcessMemoryInfo(void);  /* ../dlls/kernel32/process.c:3738 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetProcessMemoryInfo,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -15480,13 +13531,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetProcessMemoryInfo,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32GetWsChanges(HANDLE  process, PPSAPI_WS_WATCH_INFORMATION  watchinfo, DWORD  size) /* ../dlls/kernel32/virtual.c:711 */
+extern WINAPI BOOL wine32b_kernel32_K32GetWsChanges(HANDLE  process, PPSAPI_WS_WATCH_INFORMATION  watchinfo, DWORD  size) /* ../dlls/kernel32/virtual.c:291 */
 {
 	TRACE("Enter K32GetWsChanges\n");
 	return pK32GetWsChanges(process, watchinfo, size);
 }
 
-extern WINAPI void wine32a_kernel32_K32GetWsChanges(void);  /* ../dlls/kernel32/virtual.c:711 */
+extern WINAPI void wine32a_kernel32_K32GetWsChanges(void);  /* ../dlls/kernel32/virtual.c:291 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetWsChanges,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -15507,13 +13558,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetWsChanges,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32GetWsChangesEx(HANDLE  process, PSAPI_WS_WATCH_INFORMATION_EX*  watchinfoex, DWORD*  size) /* ../dlls/kernel32/virtual.c:730 */
+extern WINAPI BOOL wine32b_kernel32_K32GetWsChangesEx(HANDLE  process, PSAPI_WS_WATCH_INFORMATION_EX*  watchinfoex, DWORD*  size) /* ../dlls/kernel32/virtual.c:310 */
 {
 	TRACE("Enter K32GetWsChangesEx\n");
 	return pK32GetWsChangesEx(process, watchinfoex, size);
 }
 
-extern WINAPI void wine32a_kernel32_K32GetWsChangesEx(void);  /* ../dlls/kernel32/virtual.c:730 */
+extern WINAPI void wine32a_kernel32_K32GetWsChangesEx(void);  /* ../dlls/kernel32/virtual.c:310 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetWsChangesEx,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -15534,13 +13585,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetWsChangesEx,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32InitializeProcessForWsWatch(HANDLE  process) /* ../dlls/kernel32/virtual.c:741 */
+extern WINAPI BOOL wine32b_kernel32_K32InitializeProcessForWsWatch(HANDLE  process) /* ../dlls/kernel32/virtual.c:321 */
 {
 	TRACE("Enter K32InitializeProcessForWsWatch\n");
 	return pK32InitializeProcessForWsWatch(process);
 }
 
-extern WINAPI void wine32a_kernel32_K32InitializeProcessForWsWatch(void);  /* ../dlls/kernel32/virtual.c:741 */
+extern WINAPI void wine32a_kernel32_K32InitializeProcessForWsWatch(void);  /* ../dlls/kernel32/virtual.c:321 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_K32InitializeProcessForWsWatch,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -15559,13 +13610,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32InitializeProcessForWsWatch,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32QueryWorkingSet(HANDLE  process, LPVOID  buffer, DWORD  size) /* ../dlls/kernel32/process.c:3716 */
+extern WINAPI BOOL wine32b_kernel32_K32QueryWorkingSet(HANDLE  process, LPVOID  buffer, DWORD  size) /* ../dlls/kernel32/process.c:3697 */
 {
 	TRACE("Enter K32QueryWorkingSet\n");
 	return pK32QueryWorkingSet(process, buffer, size);
 }
 
-extern WINAPI void wine32a_kernel32_K32QueryWorkingSet(void);  /* ../dlls/kernel32/process.c:3716 */
+extern WINAPI void wine32a_kernel32_K32QueryWorkingSet(void);  /* ../dlls/kernel32/process.c:3697 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_K32QueryWorkingSet,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -15586,13 +13637,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32QueryWorkingSet,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32QueryWorkingSetEx(HANDLE  process, LPVOID  buffer, DWORD  size) /* ../dlls/kernel32/process.c:3735 */
+extern WINAPI BOOL wine32b_kernel32_K32QueryWorkingSetEx(HANDLE  process, LPVOID  buffer, DWORD  size) /* ../dlls/kernel32/process.c:3716 */
 {
 	TRACE("Enter K32QueryWorkingSetEx\n");
 	return pK32QueryWorkingSetEx(process, buffer, size);
 }
 
-extern WINAPI void wine32a_kernel32_K32QueryWorkingSetEx(void);  /* ../dlls/kernel32/process.c:3735 */
+extern WINAPI void wine32a_kernel32_K32QueryWorkingSetEx(void);  /* ../dlls/kernel32/process.c:3716 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_K32QueryWorkingSetEx,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -16061,13 +14112,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LoadLibraryW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_LoadModule(LPCSTR  name, LPVOID  paramBlock) /* ../dlls/kernel32/process.c:3084 */
+extern WINAPI DWORD wine32b_kernel32_LoadModule(LPCSTR  name, LPVOID  paramBlock) /* ../dlls/kernel32/process.c:3079 */
 {
 	TRACE("Enter LoadModule\n");
 	return pLoadModule(name, paramBlock);
 }
 
-extern WINAPI void wine32a_kernel32_LoadModule(void);  /* ../dlls/kernel32/process.c:3084 */
+extern WINAPI void wine32a_kernel32_LoadModule(void);  /* ../dlls/kernel32/process.c:3079 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_LoadModule,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -16087,39 +14138,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LoadModule,
 	"ret \n"
 )
 
-extern WINAPI HLOCAL wine32b_kernel32_LocalAlloc(UINT  flags, SIZE_T  size) /* ../dlls/kernel32/heap.c:956 */
-{
-	TRACE("Enter LocalAlloc\n");
-	return pLocalAlloc(flags, size);
-}
-
-extern WINAPI void wine32a_kernel32_LocalAlloc(void);  /* ../dlls/kernel32/heap.c:956 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_LocalAlloc,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_LocalAlloc") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI SIZE_T wine32b_kernel32_LocalCompact(UINT  minfree) /* ../dlls/kernel32/heap.c:973 */
+extern WINAPI SIZE_T wine32b_kernel32_LocalCompact(UINT  minfree) /* ../dlls/kernel32/heap.c:518 */
 {
 	TRACE("Enter LocalCompact\n");
 	return pLocalCompact(minfree);
 }
 
-extern WINAPI void wine32a_kernel32_LocalCompact(void);  /* ../dlls/kernel32/heap.c:973 */
+extern WINAPI void wine32a_kernel32_LocalCompact(void);  /* ../dlls/kernel32/heap.c:518 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_LocalCompact,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -16164,13 +14189,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LocalFileTimeToFileTime,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_LocalFlags(HLOCAL  handle) /* ../dlls/kernel32/heap.c:992 */
+extern WINAPI UINT wine32b_kernel32_LocalFlags(HLOCAL  handle) /* ../dlls/kernel32/heap.c:537 */
 {
 	TRACE("Enter LocalFlags\n");
 	return pLocalFlags(handle);
 }
 
-extern WINAPI void wine32a_kernel32_LocalFlags(void);  /* ../dlls/kernel32/heap.c:992 */
+extern WINAPI void wine32a_kernel32_LocalFlags(void);  /* ../dlls/kernel32/heap.c:537 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_LocalFlags,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -16189,38 +14214,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LocalFlags,
 	"ret \n"
 )
 
-extern WINAPI HLOCAL wine32b_kernel32_LocalFree(HLOCAL  handle) /* ../dlls/kernel32/heap.c:1012 */
-{
-	TRACE("Enter LocalFree\n");
-	return pLocalFree(handle);
-}
-
-extern WINAPI void wine32a_kernel32_LocalFree(void);  /* ../dlls/kernel32/heap.c:1012 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_LocalFree,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_LocalFree") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI HLOCAL wine32b_kernel32_LocalHandle(LPCVOID  ptr) /* ../dlls/kernel32/heap.c:1032 */
+extern WINAPI HLOCAL wine32b_kernel32_LocalHandle(LPCVOID  ptr) /* ../dlls/kernel32/heap.c:557 */
 {
 	TRACE("Enter LocalHandle\n");
 	return pLocalHandle(ptr);
 }
 
-extern WINAPI void wine32a_kernel32_LocalHandle(void);  /* ../dlls/kernel32/heap.c:1032 */
+extern WINAPI void wine32a_kernel32_LocalHandle(void);  /* ../dlls/kernel32/heap.c:557 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_LocalHandle,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -16239,65 +14239,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LocalHandle,
 	"ret \n"
 )
 
-extern WINAPI LPVOID wine32b_kernel32_LocalLock(HLOCAL  handle) /* ../dlls/kernel32/heap.c:1052 */
-{
-	TRACE("Enter LocalLock\n");
-	return pLocalLock(handle);
-}
-
-extern WINAPI void wine32a_kernel32_LocalLock(void);  /* ../dlls/kernel32/heap.c:1052 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_LocalLock,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_LocalLock") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI HLOCAL wine32b_kernel32_LocalReAlloc(HLOCAL  handle, SIZE_T  size, UINT  flags) /* ../dlls/kernel32/heap.c:1072 */
-{
-	TRACE("Enter LocalReAlloc\n");
-	return pLocalReAlloc(handle, size, flags);
-}
-
-extern WINAPI void wine32a_kernel32_LocalReAlloc(void);  /* ../dlls/kernel32/heap.c:1072 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_LocalReAlloc,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_LocalReAlloc") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI SIZE_T wine32b_kernel32_LocalShrink(HGLOBAL  handle, UINT  newsize) /* ../dlls/kernel32/heap.c:1084 */
+extern WINAPI SIZE_T wine32b_kernel32_LocalShrink(HGLOBAL  handle, UINT  newsize) /* ../dlls/kernel32/heap.c:567 */
 {
 	TRACE("Enter LocalShrink\n");
 	return pLocalShrink(handle, newsize);
 }
 
-extern WINAPI void wine32a_kernel32_LocalShrink(void);  /* ../dlls/kernel32/heap.c:1084 */
+extern WINAPI void wine32a_kernel32_LocalShrink(void);  /* ../dlls/kernel32/heap.c:567 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_LocalShrink,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -16317,44 +14265,19 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LocalShrink,
 	"ret \n"
 )
 
-extern WINAPI SIZE_T wine32b_kernel32_LocalSize(HLOCAL  handle) /* ../dlls/kernel32/heap.c:1103 */
+extern WINAPI SIZE_T wine32b_kernel32_LocalSize(HLOCAL  handle) /* ../dlls/kernel32/heap.c:586 */
 {
 	TRACE("Enter LocalSize\n");
 	return pLocalSize(handle);
 }
 
-extern WINAPI void wine32a_kernel32_LocalSize(void);  /* ../dlls/kernel32/heap.c:1103 */
+extern WINAPI void wine32a_kernel32_LocalSize(void);  /* ../dlls/kernel32/heap.c:586 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_LocalSize,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
 	"call " __ASM_NAME("wine32b_kernel32_LocalSize") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_LocalUnlock(HLOCAL  handle) /* ../dlls/kernel32/heap.c:1123 */
-{
-	TRACE("Enter LocalUnlock\n");
-	return pLocalUnlock(handle);
-}
-
-extern WINAPI void wine32a_kernel32_LocalUnlock(void);  /* ../dlls/kernel32/heap.c:1123 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_LocalUnlock,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_LocalUnlock") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -16418,13 +14341,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_MakeCriticalSectionGlobal,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_MapUserPhysicalPages(PVOID  addr, ULONG_PTR  page_count, PULONG_PTR  pages) /* ../dlls/kernel32/heap.c:1487 */
+extern WINAPI BOOL wine32b_kernel32_MapUserPhysicalPages(PVOID  addr, ULONG_PTR  page_count, PULONG_PTR  pages) /* ../dlls/kernel32/heap.c:944 */
 {
 	TRACE("Enter MapUserPhysicalPages\n");
 	return pMapUserPhysicalPages(addr, page_count, pages);
 }
 
-extern WINAPI void wine32a_kernel32_MapUserPhysicalPages(void);  /* ../dlls/kernel32/heap.c:1487 */
+extern WINAPI void wine32a_kernel32_MapUserPhysicalPages(void);  /* ../dlls/kernel32/heap.c:944 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_MapUserPhysicalPages,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -16439,62 +14362,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_MapUserPhysicalPages,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI LPVOID wine32b_kernel32_MapViewOfFile(HANDLE  mapping, DWORD  access, DWORD  offset_high, DWORD  offset_low, SIZE_T  count) /* ../dlls/kernel32/virtual.c:329 */
-{
-	TRACE("Enter MapViewOfFile\n");
-	return pMapViewOfFile(mapping, access, offset_high, offset_low, count);
-}
-
-extern WINAPI void wine32a_kernel32_MapViewOfFile(void);  /* ../dlls/kernel32/virtual.c:329 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_MapViewOfFile,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_MapViewOfFile") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI LPVOID wine32b_kernel32_MapViewOfFileEx(HANDLE  handle, DWORD  access, DWORD  offset_high, DWORD  offset_low, SIZE_T  count, LPVOID  addr) /* ../dlls/kernel32/virtual.c:354 */
-{
-	TRACE("Enter MapViewOfFileEx\n");
-	return pMapViewOfFileEx(handle, access, offset_high, offset_low, count, addr);
-}
-
-extern WINAPI void wine32a_kernel32_MapViewOfFileEx(void);  /* ../dlls/kernel32/virtual.c:354 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_MapViewOfFileEx,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_MapViewOfFileEx") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $24, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -16956,13 +14823,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_NormalizeString,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_OpenConsoleW(LPCWSTR  name, DWORD  access, BOOL  inherit, DWORD  creation) /* ../dlls/kernel32/console.c:374 */
+extern WINAPI HANDLE wine32b_kernel32_OpenConsoleW(LPCWSTR  name, DWORD  access, BOOL  inherit, DWORD  creation) /* ../dlls/kernel32/console.c:213 */
 {
 	TRACE("Enter OpenConsoleW\n");
 	return pOpenConsoleW(name, access, inherit, creation);
 }
 
-extern WINAPI void wine32a_kernel32_OpenConsoleW(void);  /* ../dlls/kernel32/console.c:374 */
+extern WINAPI void wine32a_kernel32_OpenConsoleW(void);  /* ../dlls/kernel32/console.c:213 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_OpenConsoleW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -17222,112 +15089,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_OpenWaitableTimerA,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_OutputDebugStringA(LPCSTR  str) /* ../dlls/kernel32/debugger.c:263 */
-{
-	TRACE("Enter OutputDebugStringA\n");
-	return pOutputDebugStringA(str);
-}
-
-extern WINAPI void wine32a_kernel32_OutputDebugStringA(void);  /* ../dlls/kernel32/debugger.c:263 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_OutputDebugStringA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_OutputDebugStringA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI void wine32b_kernel32_OutputDebugStringW(LPCWSTR  str) /* ../dlls/kernel32/debugger.c:374 */
-{
-	TRACE("Enter OutputDebugStringW\n");
-	return pOutputDebugStringW(str);
-}
-
-extern WINAPI void wine32a_kernel32_OutputDebugStringW(void);  /* ../dlls/kernel32/debugger.c:374 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_OutputDebugStringW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_OutputDebugStringW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_PeekConsoleInputA(HANDLE  handle, PINPUT_RECORD  buffer, DWORD  count, LPDWORD  pRead) /* ../dlls/kernel32/console.c:1030 */
-{
-	TRACE("Enter PeekConsoleInputA\n");
-	return pPeekConsoleInputA(handle, buffer, count, pRead);
-}
-
-extern WINAPI void wine32a_kernel32_PeekConsoleInputA(void);  /* ../dlls/kernel32/console.c:1030 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_PeekConsoleInputA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_PeekConsoleInputA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $16, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_PeekConsoleInputW(HANDLE  handle, PINPUT_RECORD  buffer, DWORD  count, LPDWORD  read) /* ../dlls/kernel32/console.c:1044 */
-{
-	TRACE("Enter PeekConsoleInputW\n");
-	return pPeekConsoleInputW(handle, buffer, count, read);
-}
-
-extern WINAPI void wine32a_kernel32_PeekConsoleInputW(void);  /* ../dlls/kernel32/console.c:1044 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_PeekConsoleInputW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_PeekConsoleInputW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $16, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
 extern WINAPI BOOL wine32b_kernel32_PowerClearRequest(HANDLE  request, POWER_REQUEST_TYPE  type) /* ../dlls/kernel32/powermgnt.c:167 */
 {
 	TRACE("Enter PowerClearRequest\n");
@@ -17536,13 +15297,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_Process32NextW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_ProcessIdToSessionId(DWORD  procid, DWORD*  sessionid_ptr) /* ../dlls/kernel32/process.c:3796 */
+extern WINAPI BOOL wine32b_kernel32_ProcessIdToSessionId(DWORD  procid, DWORD*  sessionid_ptr) /* ../dlls/kernel32/process.c:3777 */
 {
 	TRACE("Enter ProcessIdToSessionId\n");
 	return pProcessIdToSessionId(procid, sessionid_ptr);
 }
 
-extern WINAPI void wine32a_kernel32_ProcessIdToSessionId(void);  /* ../dlls/kernel32/process.c:3796 */
+extern WINAPI void wine32a_kernel32_ProcessIdToSessionId(void);  /* ../dlls/kernel32/process.c:3777 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_ProcessIdToSessionId,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -17550,32 +15311,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ProcessIdToSessionId,
 	"movl 0x18(%rsp), %edx \n"
 	"sub $0x100, %rsp \n"
 	"call " __ASM_NAME("wine32b_kernel32_ProcessIdToSessionId") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_PurgeComm(HANDLE  handle, DWORD  flags) /* ../dlls/kernel32/comm.c:634 */
-{
-	TRACE("Enter PurgeComm\n");
-	return pPurgeComm(handle, flags);
-}
-
-extern WINAPI void wine32a_kernel32_PurgeComm(void);  /* ../dlls/kernel32/comm.c:634 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_PurgeComm,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_PurgeComm") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -17642,13 +15377,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_QueryDosDeviceW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_QueryFullProcessImageNameA(HANDLE  hProcess, DWORD  dwFlags, LPSTR  lpExeName, PDWORD  pdwSize) /* ../dlls/kernel32/process.c:3553 */
+extern WINAPI BOOL wine32b_kernel32_QueryFullProcessImageNameA(HANDLE  hProcess, DWORD  dwFlags, LPSTR  lpExeName, PDWORD  pdwSize) /* ../dlls/kernel32/process.c:3534 */
 {
 	TRACE("Enter QueryFullProcessImageNameA\n");
 	return pQueryFullProcessImageNameA(hProcess, dwFlags, lpExeName, pdwSize);
 }
 
-extern WINAPI void wine32a_kernel32_QueryFullProcessImageNameA(void);  /* ../dlls/kernel32/process.c:3553 */
+extern WINAPI void wine32a_kernel32_QueryFullProcessImageNameA(void);  /* ../dlls/kernel32/process.c:3534 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_QueryFullProcessImageNameA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -17670,13 +15405,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_QueryFullProcessImageNameA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_QueryFullProcessImageNameW(HANDLE  hProcess, DWORD  dwFlags, LPWSTR  lpExeName, PDWORD  pdwSize) /* ../dlls/kernel32/process.c:3574 */
+extern WINAPI BOOL wine32b_kernel32_QueryFullProcessImageNameW(HANDLE  hProcess, DWORD  dwFlags, LPWSTR  lpExeName, PDWORD  pdwSize) /* ../dlls/kernel32/process.c:3555 */
 {
 	TRACE("Enter QueryFullProcessImageNameW\n");
 	return pQueryFullProcessImageNameW(hProcess, dwFlags, lpExeName, pdwSize);
 }
 
-extern WINAPI void wine32a_kernel32_QueryFullProcessImageNameW(void);  /* ../dlls/kernel32/process.c:3574 */
+extern WINAPI void wine32a_kernel32_QueryFullProcessImageNameW(void);  /* ../dlls/kernel32/process.c:3555 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_QueryFullProcessImageNameW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -17720,82 +15455,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_QueryInformationJobObject,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_QueryMemoryResourceNotification(HANDLE  handle, PBOOL  state) /* ../dlls/kernel32/sync.c:1059 */
-{
-	TRACE("Enter QueryMemoryResourceNotification\n");
-	return pQueryMemoryResourceNotification(handle, state);
-}
-
-extern WINAPI void wine32a_kernel32_QueryMemoryResourceNotification(void);  /* ../dlls/kernel32/sync.c:1059 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_QueryMemoryResourceNotification,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_QueryMemoryResourceNotification") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_QueryPerformanceCounter(PLARGE_INTEGER  counter) /* ../dlls/kernel32/cpu.c:64 */
-{
-	TRACE("Enter QueryPerformanceCounter\n");
-	return pQueryPerformanceCounter(counter);
-}
-
-extern WINAPI void wine32a_kernel32_QueryPerformanceCounter(void);  /* ../dlls/kernel32/cpu.c:64 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_QueryPerformanceCounter,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_QueryPerformanceCounter") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_QueryPerformanceFrequency(PLARGE_INTEGER  frequency) /* ../dlls/kernel32/cpu.c:86 */
-{
-	TRACE("Enter QueryPerformanceFrequency\n");
-	return pQueryPerformanceFrequency(frequency);
-}
-
-extern WINAPI void wine32a_kernel32_QueryPerformanceFrequency(void);  /* ../dlls/kernel32/cpu.c:86 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_QueryPerformanceFrequency,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_QueryPerformanceFrequency") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -17854,13 +15513,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_QueryThreadCycleTime,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_QueryUmsThreadInformation(PUMS_CONTEXT  ctx, UMS_THREAD_INFO_CLASS  class, void*  buf, ULONG  length, ULONG*  ret_length) /* ../dlls/kernel32/process.c:4245 */
+extern WINAPI BOOL wine32b_kernel32_QueryUmsThreadInformation(PUMS_CONTEXT  ctx, UMS_THREAD_INFO_CLASS  class, void*  buf, ULONG  length, ULONG*  ret_length) /* ../dlls/kernel32/process.c:4226 */
 {
 	TRACE("Enter QueryUmsThreadInformation\n");
 	return pQueryUmsThreadInformation(ctx, class, buf, length, ret_length);
 }
 
-extern WINAPI void wine32a_kernel32_QueryUmsThreadInformation(void);  /* ../dlls/kernel32/process.c:4245 */
+extern WINAPI void wine32a_kernel32_QueryUmsThreadInformation(void);  /* ../dlls/kernel32/process.c:4226 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_QueryUmsThreadInformation,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -17907,97 +15566,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_QueryUnbiasedInterruptTime,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_RaiseException(DWORD  code, DWORD  flags, DWORD  nbargs, ULONG_PTR*  args) /* ../dlls/kernel32/except.c:67 */
-{
-	TRACE("Enter RaiseException\n");
-	return pRaiseException(code, flags, nbargs, args);
-}
-
-extern WINAPI void wine32a_kernel32_RaiseException(void);  /* ../dlls/kernel32/except.c:67 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_RaiseException,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_RaiseException") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $16, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_ReadConsoleA(HANDLE  hConsoleInput, LPVOID  lpBuffer, DWORD  nNumberOfCharsToRead, LPDWORD  lpNumberOfCharsRead, LPVOID  lpReserved) /* ../dlls/kernel32/console.c:1611 */
-{
-	TRACE("Enter ReadConsoleA\n");
-	return pReadConsoleA(hConsoleInput, lpBuffer, nNumberOfCharsToRead, lpNumberOfCharsRead, lpReserved);
-}
-
-extern WINAPI void wine32a_kernel32_ReadConsoleA(void);  /* ../dlls/kernel32/console.c:1611 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_ReadConsoleA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_ReadConsoleA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_ReadConsoleInputA(HANDLE  handle, PINPUT_RECORD  buffer, DWORD  count, LPDWORD  pRead) /* ../dlls/kernel32/console.c:1014 */
-{
-	TRACE("Enter ReadConsoleInputA\n");
-	return pReadConsoleInputA(handle, buffer, count, pRead);
-}
-
-extern WINAPI void wine32a_kernel32_ReadConsoleInputA(void);  /* ../dlls/kernel32/console.c:1014 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_ReadConsoleInputA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_ReadConsoleInputA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $16, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_ReadConsoleInputW(HANDLE  hConsoleInput, PINPUT_RECORD  lpBuffer, DWORD  nLength, LPDWORD  lpNumberOfEventsRead) /* ../dlls/kernel32/console.c:1712 */
+extern WINAPI BOOL wine32b_kernel32_ReadConsoleInputW(HANDLE  hConsoleInput, PINPUT_RECORD  lpBuffer, DWORD  nLength, LPDWORD  lpNumberOfEventsRead) /* ../dlls/kernel32/console.c:807 */
 {
 	TRACE("Enter ReadConsoleInputW\n");
 	return pReadConsoleInputW(hConsoleInput, lpBuffer, nLength, lpNumberOfEventsRead);
 }
 
-extern WINAPI void wine32a_kernel32_ReadConsoleInputW(void);  /* ../dlls/kernel32/console.c:1712 */
+extern WINAPI void wine32a_kernel32_ReadConsoleInputW(void);  /* ../dlls/kernel32/console.c:807 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_ReadConsoleInputW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -18019,153 +15594,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ReadConsoleInputW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_ReadConsoleOutputA(HANDLE  hConsoleOutput, LPCHAR_INFO  lpBuffer, COORD  size, COORD  coord, LPSMALL_RECT  region) /* ../dlls/kernel32/console.c:938 */
-{
-	TRACE("Enter ReadConsoleOutputA\n");
-	return pReadConsoleOutputA(hConsoleOutput, lpBuffer, size, coord, region);
-}
-
-extern WINAPI void wine32a_kernel32_ReadConsoleOutputA(void);  /* ../dlls/kernel32/console.c:938 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_ReadConsoleOutputA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_ReadConsoleOutputA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_ReadConsoleOutputAttribute(HANDLE  hConsoleOutput, LPWORD  lpAttribute, DWORD  length, COORD  coord, LPDWORD  read_count) /* ../dlls/kernel32/console.c:902 */
-{
-	TRACE("Enter ReadConsoleOutputAttribute\n");
-	return pReadConsoleOutputAttribute(hConsoleOutput, lpAttribute, length, coord, read_count);
-}
-
-extern WINAPI void wine32a_kernel32_ReadConsoleOutputAttribute(void);  /* ../dlls/kernel32/console.c:902 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_ReadConsoleOutputAttribute,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_ReadConsoleOutputAttribute") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_ReadConsoleOutputCharacterA(HANDLE  hConsoleOutput, LPSTR  lpstr, DWORD  count, COORD  coord, LPDWORD  read_count) /* ../dlls/kernel32/console.c:833 */
-{
-	TRACE("Enter ReadConsoleOutputCharacterA\n");
-	return pReadConsoleOutputCharacterA(hConsoleOutput, lpstr, count, coord, read_count);
-}
-
-extern WINAPI void wine32a_kernel32_ReadConsoleOutputCharacterA(void);  /* ../dlls/kernel32/console.c:833 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_ReadConsoleOutputCharacterA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_ReadConsoleOutputCharacterA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_ReadConsoleOutputCharacterW(HANDLE  hConsoleOutput, LPWSTR  buffer, DWORD  count, COORD  coord, LPDWORD  read_count) /* ../dlls/kernel32/console.c:868 */
-{
-	TRACE("Enter ReadConsoleOutputCharacterW\n");
-	return pReadConsoleOutputCharacterW(hConsoleOutput, buffer, count, coord, read_count);
-}
-
-extern WINAPI void wine32a_kernel32_ReadConsoleOutputCharacterW(void);  /* ../dlls/kernel32/console.c:868 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_ReadConsoleOutputCharacterW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_ReadConsoleOutputCharacterW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_ReadConsoleOutputW(HANDLE  hConsoleOutput, LPCHAR_INFO  lpBuffer, COORD  size, COORD  coord, LPSMALL_RECT  region) /* ../dlls/kernel32/console.c:963 */
-{
-	TRACE("Enter ReadConsoleOutputW\n");
-	return pReadConsoleOutputW(hConsoleOutput, lpBuffer, size, coord, region);
-}
-
-extern WINAPI void wine32a_kernel32_ReadConsoleOutputW(void);  /* ../dlls/kernel32/console.c:963 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_ReadConsoleOutputW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_ReadConsoleOutputW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_ReadConsoleW(HANDLE  hConsoleInput, LPVOID  lpBuffer, DWORD  nNumberOfCharsToRead, LPDWORD  lpNumberOfCharsRead, LPVOID  lpReserved) /* ../dlls/kernel32/console.c:1637 */
+extern WINAPI BOOL wine32b_kernel32_ReadConsoleW(HANDLE  hConsoleInput, LPVOID  lpBuffer, DWORD  nNumberOfCharsToRead, LPDWORD  lpNumberOfCharsRead, LPVOID  lpReserved) /* ../dlls/kernel32/console.c:732 */
 {
 	TRACE("Enter ReadConsoleW\n");
 	return pReadConsoleW(hConsoleInput, lpBuffer, nNumberOfCharsToRead, lpNumberOfCharsRead, lpReserved);
 }
 
-extern WINAPI void wine32a_kernel32_ReadConsoleW(void);  /* ../dlls/kernel32/console.c:1637 */
+extern WINAPI void wine32a_kernel32_ReadConsoleW(void);  /* ../dlls/kernel32/console.c:732 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_ReadConsoleW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -18187,69 +15622,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ReadConsoleW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_ReadDirectoryChangesW(HANDLE  handle, LPVOID  buffer, DWORD  len, BOOL  subtree, DWORD  filter, LPDWORD  returned, LPOVERLAPPED  overlapped, LPOVERLAPPED_COMPLETION_ROUTINE  completion) /* ../dlls/kernel32/change.c:155 */
-{
-	TRACE("Enter ReadDirectoryChangesW\n");
-	return pReadDirectoryChangesW(handle, buffer, len, subtree, filter, returned, overlapped, completion);
-}
-
-extern WINAPI void wine32a_kernel32_ReadDirectoryChangesW(void);  /* ../dlls/kernel32/change.c:155 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_ReadDirectoryChangesW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_ReadDirectoryChangesW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $32, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_ReadProcessMemory(HANDLE  process, LPCVOID  addr, LPVOID  buffer, SIZE_T  size, SIZE_T*  bytes_read) /* ../dlls/kernel32/process.c:3516 */
-{
-	TRACE("Enter ReadProcessMemory\n");
-	return pReadProcessMemory(process, addr, buffer, size, bytes_read);
-}
-
-extern WINAPI void wine32a_kernel32_ReadProcessMemory(void);  /* ../dlls/kernel32/process.c:3516 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_ReadProcessMemory,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_ReadProcessMemory") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI HRESULT wine32b_kernel32_RegisterApplicationRecoveryCallback(APPLICATION_RECOVERY_CALLBACK  callback, PVOID  param, DWORD  pingint, DWORD  flags) /* ../dlls/kernel32/process.c:3975 */
+extern WINAPI HRESULT wine32b_kernel32_RegisterApplicationRecoveryCallback(APPLICATION_RECOVERY_CALLBACK  callback, PVOID  param, DWORD  pingint, DWORD  flags) /* ../dlls/kernel32/process.c:3956 */
 {
 	TRACE("Enter RegisterApplicationRecoveryCallback\n");
 	return pRegisterApplicationRecoveryCallback(callback, param, pingint, flags);
 }
 
-extern WINAPI void wine32a_kernel32_RegisterApplicationRecoveryCallback(void);  /* ../dlls/kernel32/process.c:3975 */
+extern WINAPI void wine32a_kernel32_RegisterApplicationRecoveryCallback(void);  /* ../dlls/kernel32/process.c:3956 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_RegisterApplicationRecoveryCallback,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -18271,13 +15650,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_RegisterApplicationRecoveryCallback,
 	"ret \n"
 )
 
-extern WINAPI HRESULT wine32b_kernel32_RegisterApplicationRestart(PCWSTR  pwzCommandLine, DWORD  dwFlags) /* ../dlls/kernel32/process.c:3916 */
+extern WINAPI HRESULT wine32b_kernel32_RegisterApplicationRestart(PCWSTR  pwzCommandLine, DWORD  dwFlags) /* ../dlls/kernel32/process.c:3897 */
 {
 	TRACE("Enter RegisterApplicationRestart\n");
 	return pRegisterApplicationRestart(pwzCommandLine, dwFlags);
 }
 
-extern WINAPI void wine32a_kernel32_RegisterApplicationRestart(void);  /* ../dlls/kernel32/process.c:3916 */
+extern WINAPI void wine32a_kernel32_RegisterApplicationRestart(void);  /* ../dlls/kernel32/process.c:3897 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_RegisterApplicationRestart,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -18297,13 +15676,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_RegisterApplicationRestart,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_RegisterServiceProcess(DWORD  dwProcessId, DWORD  dwType) /* ../dlls/kernel32/process.c:3812 */
+extern WINAPI DWORD wine32b_kernel32_RegisterServiceProcess(DWORD  dwProcessId, DWORD  dwType) /* ../dlls/kernel32/process.c:3793 */
 {
 	TRACE("Enter RegisterServiceProcess\n");
 	return pRegisterServiceProcess(dwProcessId, dwType);
 }
 
-extern WINAPI void wine32a_kernel32_RegisterServiceProcess(void);  /* ../dlls/kernel32/process.c:3812 */
+extern WINAPI void wine32a_kernel32_RegisterServiceProcess(void);  /* ../dlls/kernel32/process.c:3793 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_RegisterServiceProcess,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -18557,32 +15936,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_RequestWakeupLatency,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_ResetWriteWatch(LPVOID  base, SIZE_T  size) /* ../dlls/kernel32/virtual.c:461 */
-{
-	TRACE("Enter ResetWriteWatch\n");
-	return pResetWriteWatch(base, size);
-}
-
-extern WINAPI void wine32a_kernel32_ResetWriteWatch(void);  /* ../dlls/kernel32/virtual.c:461 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_ResetWriteWatch,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_ResetWriteWatch") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
 extern WINAPI INT wine32b_kernel32_ResolveLocaleName(LPCWSTR  name, LPWSTR  localename, INT  len) /* ../dlls/kernel32/locale.c:5898 */
 {
 	TRACE("Enter ResolveLocaleName\n");
@@ -18604,62 +15957,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ResolveLocaleName,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_ScrollConsoleScreenBufferA(HANDLE  hConsoleOutput, LPSMALL_RECT  lpScrollRect, LPSMALL_RECT  lpClipRect, COORD  dwDestOrigin, LPCHAR_INFO  lpFill) /* ../dlls/kernel32/console.c:2757 */
-{
-	TRACE("Enter ScrollConsoleScreenBufferA\n");
-	return pScrollConsoleScreenBufferA(hConsoleOutput, lpScrollRect, lpClipRect, dwDestOrigin, lpFill);
-}
-
-extern WINAPI void wine32a_kernel32_ScrollConsoleScreenBufferA(void);  /* ../dlls/kernel32/console.c:2757 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_ScrollConsoleScreenBufferA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_ScrollConsoleScreenBufferA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_ScrollConsoleScreenBufferW(HANDLE  hConsoleOutput, LPSMALL_RECT  lpScrollRect, LPSMALL_RECT  lpClipRect, COORD  dwDestOrigin, LPCHAR_INFO  lpFill) /* ../dlls/kernel32/console.c:2798 */
-{
-	TRACE("Enter ScrollConsoleScreenBufferW\n");
-	return pScrollConsoleScreenBufferW(hConsoleOutput, lpScrollRect, lpClipRect, dwDestOrigin, lpFill);
-}
-
-extern WINAPI void wine32a_kernel32_ScrollConsoleScreenBufferW(void);  /* ../dlls/kernel32/console.c:2798 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_ScrollConsoleScreenBufferW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_ScrollConsoleScreenBufferW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -18803,136 +16100,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetCalendarInfoW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetCommBreak(HANDLE  handle) /* ../dlls/kernel32/comm.c:550 */
-{
-	TRACE("Enter SetCommBreak\n");
-	return pSetCommBreak(handle);
-}
-
-extern WINAPI void wine32a_kernel32_SetCommBreak(void);  /* ../dlls/kernel32/comm.c:550 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetCommBreak,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetCommBreak") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_SetCommConfig(HANDLE  hFile, LPCOMMCONFIG  lpCommConfig, DWORD  dwSize) /* ../dlls/kernel32/comm.c:1312 */
-{
-	TRACE("Enter SetCommConfig\n");
-	return pSetCommConfig(hFile, lpCommConfig, dwSize);
-}
-
-extern WINAPI void wine32a_kernel32_SetCommConfig(void);  /* ../dlls/kernel32/comm.c:1312 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetCommConfig,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetCommConfig") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_SetCommMask(HANDLE  handle, DWORD  evtmask) /* ../dlls/kernel32/comm.c:764 */
-{
-	TRACE("Enter SetCommMask\n");
-	return pSetCommMask(handle, evtmask);
-}
-
-extern WINAPI void wine32a_kernel32_SetCommMask(void);  /* ../dlls/kernel32/comm.c:764 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetCommMask,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetCommMask") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_SetCommState(HANDLE  handle, LPDCB  lpdcb) /* ../dlls/kernel32/comm.c:803 */
-{
-	TRACE("Enter SetCommState\n");
-	return pSetCommState(handle, lpdcb);
-}
-
-extern WINAPI void wine32a_kernel32_SetCommState(void);  /* ../dlls/kernel32/comm.c:803 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetCommState,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetCommState") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_SetCommTimeouts(HANDLE  hComm, LPCOMMTIMEOUTS  lptimeouts) /* ../dlls/kernel32/comm.c:1058 */
-{
-	TRACE("Enter SetCommTimeouts\n");
-	return pSetCommTimeouts(hComm, lptimeouts);
-}
-
-extern WINAPI void wine32a_kernel32_SetCommTimeouts(void);  /* ../dlls/kernel32/comm.c:1058 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetCommTimeouts,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetCommTimeouts") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
 extern WINAPI BOOL wine32b_kernel32_SetComputerNameA(LPCSTR  lpComputerName) /* ../dlls/kernel32/computername.c:628 */
 {
 	TRACE("Enter SetComputerNameA\n");
@@ -19035,63 +16202,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetComputerNameW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetConsoleActiveScreenBuffer(HANDLE  hConsoleOutput) /* ../dlls/kernel32/console.c:2177 */
-{
-	TRACE("Enter SetConsoleActiveScreenBuffer\n");
-	return pSetConsoleActiveScreenBuffer(hConsoleOutput);
-}
-
-extern WINAPI void wine32a_kernel32_SetConsoleActiveScreenBuffer(void);  /* ../dlls/kernel32/console.c:2177 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleActiveScreenBuffer,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetConsoleActiveScreenBuffer") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_SetConsoleCP(UINT  cp) /* ../dlls/kernel32/console.c:278 */
-{
-	TRACE("Enter SetConsoleCP\n");
-	return pSetConsoleCP(cp);
-}
-
-extern WINAPI void wine32a_kernel32_SetConsoleCP(void);  /* ../dlls/kernel32/console.c:278 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleCP,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetConsoleCP") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_SetConsoleCtrlHandler(PHANDLER_ROUTINE  func, BOOL  add) /* ../dlls/kernel32/console.c:1904 */
+extern WINAPI BOOL wine32b_kernel32_SetConsoleCtrlHandler(PHANDLER_ROUTINE  func, BOOL  add) /* ../dlls/kernel32/console.c:878 */
 {
 	TRACE("Enter SetConsoleCtrlHandler\n");
 	return pSetConsoleCtrlHandler(func, add);
 }
 
-extern WINAPI void wine32a_kernel32_SetConsoleCtrlHandler(void);  /* ../dlls/kernel32/console.c:1904 */
+extern WINAPI void wine32a_kernel32_SetConsoleCtrlHandler(void);  /* ../dlls/kernel32/console.c:878 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleCtrlHandler,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -19111,65 +16228,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleCtrlHandler,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetConsoleCursorInfo(HANDLE  hCon, LPCONSOLE_CURSOR_INFO  cinfo) /* ../dlls/kernel32/console.c:2634 */
-{
-	TRACE("Enter SetConsoleCursorInfo\n");
-	return pSetConsoleCursorInfo(hCon, cinfo);
-}
-
-extern WINAPI void wine32a_kernel32_SetConsoleCursorInfo(void);  /* ../dlls/kernel32/console.c:2634 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleCursorInfo,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetConsoleCursorInfo") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_SetConsoleCursorPosition(HANDLE  hcon, COORD  pos) /* ../dlls/kernel32/console.c:2530 */
-{
-	TRACE("Enter SetConsoleCursorPosition\n");
-	return pSetConsoleCursorPosition(hcon, pos);
-}
-
-extern WINAPI void wine32a_kernel32_SetConsoleCursorPosition(void);  /* ../dlls/kernel32/console.c:2530 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleCursorPosition,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetConsoleCursorPosition") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_SetConsoleDisplayMode(HANDLE  hConsoleOutput, DWORD  dwFlags, COORD*  lpNewScreenBufferDimensions) /* ../dlls/kernel32/console.c:2945 */
+extern WINAPI BOOL wine32b_kernel32_SetConsoleDisplayMode(HANDLE  hConsoleOutput, DWORD  dwFlags, COORD*  lpNewScreenBufferDimensions) /* ../dlls/kernel32/console.c:1294 */
 {
 	TRACE("Enter SetConsoleDisplayMode\n");
 	return pSetConsoleDisplayMode(hConsoleOutput, dwFlags, lpNewScreenBufferDimensions);
 }
 
-extern WINAPI void wine32a_kernel32_SetConsoleDisplayMode(void);  /* ../dlls/kernel32/console.c:2945 */
+extern WINAPI void wine32a_kernel32_SetConsoleDisplayMode(void);  /* ../dlls/kernel32/console.c:1294 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleDisplayMode,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -19190,13 +16255,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleDisplayMode,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetConsoleFont(HANDLE  hConsole, DWORD  index) /* ../dlls/kernel32/console.c:3278 */
+extern WINAPI BOOL wine32b_kernel32_SetConsoleFont(HANDLE  hConsole, DWORD  index) /* ../dlls/kernel32/console.c:1627 */
 {
 	TRACE("Enter SetConsoleFont\n");
 	return pSetConsoleFont(hConsole, index);
 }
 
-extern WINAPI void wine32a_kernel32_SetConsoleFont(void);  /* ../dlls/kernel32/console.c:3278 */
+extern WINAPI void wine32a_kernel32_SetConsoleFont(void);  /* ../dlls/kernel32/console.c:1627 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleFont,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -19216,13 +16281,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleFont,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetConsoleIcon(HICON  icon) /* ../dlls/kernel32/console.c:3266 */
+extern WINAPI BOOL wine32b_kernel32_SetConsoleIcon(HICON  icon) /* ../dlls/kernel32/console.c:1615 */
 {
 	TRACE("Enter SetConsoleIcon\n");
 	return pSetConsoleIcon(icon);
 }
 
-extern WINAPI void wine32a_kernel32_SetConsoleIcon(void);  /* ../dlls/kernel32/console.c:3266 */
+extern WINAPI void wine32a_kernel32_SetConsoleIcon(void);  /* ../dlls/kernel32/console.c:1615 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleIcon,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -19241,63 +16306,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleIcon,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetConsoleInputExeNameA(LPCSTR  name) /* ../dlls/kernel32/console.c:1843 */
-{
-	TRACE("Enter SetConsoleInputExeNameA\n");
-	return pSetConsoleInputExeNameA(name);
-}
-
-extern WINAPI void wine32a_kernel32_SetConsoleInputExeNameA(void);  /* ../dlls/kernel32/console.c:1843 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleInputExeNameA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetConsoleInputExeNameA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_SetConsoleInputExeNameW(LPCWSTR  name) /* ../dlls/kernel32/console.c:1823 */
-{
-	TRACE("Enter SetConsoleInputExeNameW\n");
-	return pSetConsoleInputExeNameW(name);
-}
-
-extern WINAPI void wine32a_kernel32_SetConsoleInputExeNameW(void);  /* ../dlls/kernel32/console.c:1823 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleInputExeNameW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetConsoleInputExeNameW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_SetConsoleKeyShortcuts(BOOL  set, BYTE  keys, void*  a, DWORD  b) /* ../dlls/kernel32/console.c:3285 */
+extern WINAPI BOOL wine32b_kernel32_SetConsoleKeyShortcuts(BOOL  set, BYTE  keys, void*  a, DWORD  b) /* ../dlls/kernel32/console.c:1634 */
 {
 	TRACE("Enter SetConsoleKeyShortcuts\n");
 	return pSetConsoleKeyShortcuts(set, keys, a, b);
 }
 
-extern WINAPI void wine32a_kernel32_SetConsoleKeyShortcuts(void);  /* ../dlls/kernel32/console.c:3285 */
+extern WINAPI void wine32a_kernel32_SetConsoleKeyShortcuts(void);  /* ../dlls/kernel32/console.c:1634 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleKeyShortcuts,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -19319,142 +16334,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleKeyShortcuts,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetConsoleMode(HANDLE  hcon, DWORD  mode) /* ../dlls/kernel32/console.c:2233 */
-{
-	TRACE("Enter SetConsoleMode\n");
-	return pSetConsoleMode(hcon, mode);
-}
-
-extern WINAPI void wine32a_kernel32_SetConsoleMode(void);  /* ../dlls/kernel32/console.c:2233 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleMode,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetConsoleMode") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_SetConsoleOutputCP(UINT  cp) /* ../dlls/kernel32/console.c:332 */
-{
-	TRACE("Enter SetConsoleOutputCP\n");
-	return pSetConsoleOutputCP(cp);
-}
-
-extern WINAPI void wine32a_kernel32_SetConsoleOutputCP(void);  /* ../dlls/kernel32/console.c:332 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleOutputCP,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetConsoleOutputCP") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_SetConsoleScreenBufferInfoEx(HANDLE  hConsole, CONSOLE_SCREEN_BUFFER_INFOEX*  csbix) /* ../dlls/kernel32/console.c:3408 */
-{
-	TRACE("Enter SetConsoleScreenBufferInfoEx\n");
-	return pSetConsoleScreenBufferInfoEx(hConsole, csbix);
-}
-
-extern WINAPI void wine32a_kernel32_SetConsoleScreenBufferInfoEx(void);  /* ../dlls/kernel32/console.c:3408 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleScreenBufferInfoEx,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetConsoleScreenBufferInfoEx") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_SetConsoleScreenBufferSize(HANDLE  hConsoleOutput, COORD  dwSize) /* ../dlls/kernel32/console.c:2735 */
-{
-	TRACE("Enter SetConsoleScreenBufferSize\n");
-	return pSetConsoleScreenBufferSize(hConsoleOutput, dwSize);
-}
-
-extern WINAPI void wine32a_kernel32_SetConsoleScreenBufferSize(void);  /* ../dlls/kernel32/console.c:2735 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleScreenBufferSize,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetConsoleScreenBufferSize") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_SetConsoleTextAttribute(HANDLE  hConsoleOutput, WORD  wAttr) /* ../dlls/kernel32/console.c:2707 */
-{
-	TRACE("Enter SetConsoleTextAttribute\n");
-	return pSetConsoleTextAttribute(hConsoleOutput, wAttr);
-}
-
-extern WINAPI void wine32a_kernel32_SetConsoleTextAttribute(void);  /* ../dlls/kernel32/console.c:2707 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleTextAttribute,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetConsoleTextAttribute") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_SetConsoleTitleA(LPCSTR  title) /* ../dlls/kernel32/console.c:1245 */
+extern WINAPI BOOL wine32b_kernel32_SetConsoleTitleA(LPCSTR  title) /* ../dlls/kernel32/console.c:478 */
 {
 	TRACE("Enter SetConsoleTitleA\n");
 	return pSetConsoleTitleA(title);
 }
 
-extern WINAPI void wine32a_kernel32_SetConsoleTitleA(void);  /* ../dlls/kernel32/console.c:1245 */
+extern WINAPI void wine32a_kernel32_SetConsoleTitleA(void);  /* ../dlls/kernel32/console.c:478 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleTitleA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -19473,65 +16359,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleTitleA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetConsoleTitleW(LPCWSTR  title) /* ../dlls/kernel32/console.c:1793 */
-{
-	TRACE("Enter SetConsoleTitleW\n");
-	return pSetConsoleTitleW(title);
-}
-
-extern WINAPI void wine32a_kernel32_SetConsoleTitleW(void);  /* ../dlls/kernel32/console.c:1793 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleTitleW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetConsoleTitleW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_SetConsoleWindowInfo(HANDLE  hCon, BOOL  bAbsolute, LPSMALL_RECT  window) /* ../dlls/kernel32/console.c:2663 */
-{
-	TRACE("Enter SetConsoleWindowInfo\n");
-	return pSetConsoleWindowInfo(hCon, bAbsolute, window);
-}
-
-extern WINAPI void wine32a_kernel32_SetConsoleWindowInfo(void);  /* ../dlls/kernel32/console.c:2663 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleWindowInfo,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetConsoleWindowInfo") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_SetCurrentConsoleFontEx(HANDLE  hConsole, BOOL  maxwindow, CONSOLE_FONT_INFOEX*  cfix) /* ../dlls/kernel32/console.c:3415 */
+extern WINAPI BOOL wine32b_kernel32_SetCurrentConsoleFontEx(HANDLE  hConsole, BOOL  maxwindow, CONSOLE_FONT_INFOEX*  cfix) /* ../dlls/kernel32/console.c:1718 */
 {
 	TRACE("Enter SetCurrentConsoleFontEx\n");
 	return pSetCurrentConsoleFontEx(hConsole, maxwindow, cfix);
 }
 
-extern WINAPI void wine32a_kernel32_SetCurrentConsoleFontEx(void);  /* ../dlls/kernel32/console.c:3415 */
+extern WINAPI void wine32a_kernel32_SetCurrentConsoleFontEx(void);  /* ../dlls/kernel32/console.c:1718 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_SetCurrentConsoleFontEx,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -19602,13 +16436,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetCurrentDirectoryW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetDefaultCommConfigA(LPCSTR  lpszDevice, LPCOMMCONFIG  lpCommConfig, DWORD  dwSize) /* ../dlls/kernel32/comm.c:1366 */
+extern WINAPI BOOL wine32b_kernel32_SetDefaultCommConfigA(LPCSTR  lpszDevice, LPCOMMCONFIG  lpCommConfig, DWORD  dwSize) /* ../dlls/kernel32/comm.c:664 */
 {
 	TRACE("Enter SetDefaultCommConfigA\n");
 	return pSetDefaultCommConfigA(lpszDevice, lpCommConfig, dwSize);
 }
 
-extern WINAPI void wine32a_kernel32_SetDefaultCommConfigA(void);  /* ../dlls/kernel32/comm.c:1366 */
+extern WINAPI void wine32a_kernel32_SetDefaultCommConfigA(void);  /* ../dlls/kernel32/comm.c:664 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_SetDefaultCommConfigA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -19629,13 +16463,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetDefaultCommConfigA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetDefaultCommConfigW(LPCWSTR  lpszDevice, LPCOMMCONFIG  lpCommConfig, DWORD  dwSize) /* ../dlls/kernel32/comm.c:1336 */
+extern WINAPI BOOL wine32b_kernel32_SetDefaultCommConfigW(LPCWSTR  lpszDevice, LPCOMMCONFIG  lpCommConfig, DWORD  dwSize) /* ../dlls/kernel32/comm.c:634 */
 {
 	TRACE("Enter SetDefaultCommConfigW\n");
 	return pSetDefaultCommConfigW(lpszDevice, lpCommConfig, dwSize);
 }
 
-extern WINAPI void wine32a_kernel32_SetDefaultCommConfigW(void);  /* ../dlls/kernel32/comm.c:1336 */
+extern WINAPI void wine32a_kernel32_SetDefaultCommConfigW(void);  /* ../dlls/kernel32/comm.c:634 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_SetDefaultCommConfigW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -19731,58 +16565,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetDllDirectoryW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetEnvironmentVariableA(LPCSTR  name, LPCSTR  value) /* ../dlls/kernel32/environ.c:258 */
-{
-	TRACE("Enter SetEnvironmentVariableA\n");
-	return pSetEnvironmentVariableA(name, value);
-}
-
-extern WINAPI void wine32a_kernel32_SetEnvironmentVariableA(void);  /* ../dlls/kernel32/environ.c:258 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetEnvironmentVariableA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetEnvironmentVariableA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_SetEnvironmentVariableW(LPCWSTR  name, LPCWSTR  value) /* ../dlls/kernel32/environ.c:289 */
-{
-	TRACE("Enter SetEnvironmentVariableW\n");
-	return pSetEnvironmentVariableW(name, value);
-}
-
-extern WINAPI void wine32a_kernel32_SetEnvironmentVariableW(void);  /* ../dlls/kernel32/environ.c:289 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetEnvironmentVariableW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetEnvironmentVariableW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
 extern WINAPI BOOL wine32b_kernel32_SetFileCompletionNotificationModes(HANDLE  file, UCHAR  flags) /* ../dlls/kernel32/file.c:393 */
 {
 	TRACE("Enter SetFileCompletionNotificationModes\n");
@@ -19809,13 +16591,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetFileCompletionNotificationModes,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetHandleContext(HANDLE  hnd, DWORD  context) /* ../dlls/kernel32/process.c:3345 */
+extern WINAPI BOOL wine32b_kernel32_SetHandleContext(HANDLE  hnd, DWORD  context) /* ../dlls/kernel32/process.c:3350 */
 {
 	TRACE("Enter SetHandleContext\n");
 	return pSetHandleContext(hnd, context);
 }
 
-extern WINAPI void wine32a_kernel32_SetHandleContext(void);  /* ../dlls/kernel32/process.c:3345 */
+extern WINAPI void wine32a_kernel32_SetHandleContext(void);  /* ../dlls/kernel32/process.c:3350 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_SetHandleContext,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -19860,13 +16642,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetHandleCount,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetHandleInformation(HANDLE  handle, DWORD  mask, DWORD  flags) /* ../dlls/kernel32/process.c:3276 */
+extern WINAPI BOOL wine32b_kernel32_SetHandleInformation(HANDLE  handle, DWORD  mask, DWORD  flags) /* ../dlls/kernel32/process.c:3281 */
 {
 	TRACE("Enter SetHandleInformation\n");
 	return pSetHandleInformation(handle, mask, flags);
 }
 
-extern WINAPI void wine32a_kernel32_SetHandleInformation(void);  /* ../dlls/kernel32/process.c:3276 */
+extern WINAPI void wine32a_kernel32_SetHandleInformation(void);  /* ../dlls/kernel32/process.c:3281 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_SetHandleInformation,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -20020,13 +16802,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetMailslotInfo,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetProcessAffinityMask(HANDLE  hProcess, DWORD_PTR  affmask) /* ../dlls/kernel32/process.c:3381 */
+extern WINAPI BOOL wine32b_kernel32_SetProcessAffinityMask(HANDLE  hProcess, DWORD_PTR  affmask) /* ../dlls/kernel32/process.c:3386 */
 {
 	TRACE("Enter SetProcessAffinityMask\n");
 	return pSetProcessAffinityMask(hProcess, affmask);
 }
 
-extern WINAPI void wine32a_kernel32_SetProcessAffinityMask(void);  /* ../dlls/kernel32/process.c:3381 */
+extern WINAPI void wine32a_kernel32_SetProcessAffinityMask(void);  /* ../dlls/kernel32/process.c:3386 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_SetProcessAffinityMask,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -20046,13 +16828,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetProcessAffinityMask,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetProcessDEPPolicy(DWORD  newDEP) /* ../dlls/kernel32/process.c:3946 */
+extern WINAPI BOOL wine32b_kernel32_SetProcessDEPPolicy(DWORD  newDEP) /* ../dlls/kernel32/process.c:3927 */
 {
 	TRACE("Enter SetProcessDEPPolicy\n");
 	return pSetProcessDEPPolicy(newDEP);
 }
 
-extern WINAPI void wine32a_kernel32_SetProcessDEPPolicy(void);  /* ../dlls/kernel32/process.c:3946 */
+extern WINAPI void wine32a_kernel32_SetProcessDEPPolicy(void);  /* ../dlls/kernel32/process.c:3927 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_SetProcessDEPPolicy,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -20098,13 +16880,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetProcessPreferredUILanguages,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetProcessWorkingSetSize(HANDLE  process, SIZE_T  minset, SIZE_T  maxset) /* ../dlls/kernel32/process.c:3490 */
+extern WINAPI BOOL wine32b_kernel32_SetProcessWorkingSetSize(HANDLE  process, SIZE_T  minset, SIZE_T  maxset) /* ../dlls/kernel32/process.c:3495 */
 {
 	TRACE("Enter SetProcessWorkingSetSize\n");
 	return pSetProcessWorkingSetSize(process, minset, maxset);
 }
 
-extern WINAPI void wine32a_kernel32_SetProcessWorkingSetSize(void);  /* ../dlls/kernel32/process.c:3490 */
+extern WINAPI void wine32a_kernel32_SetProcessWorkingSetSize(void);  /* ../dlls/kernel32/process.c:3495 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_SetProcessWorkingSetSize,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -20150,39 +16932,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetSearchPathMode,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetStdHandle(DWORD  std_handle, HANDLE  handle) /* ../dlls/kernel32/environ.c:423 */
-{
-	TRACE("Enter SetStdHandle\n");
-	return pSetStdHandle(std_handle, handle);
-}
-
-extern WINAPI void wine32a_kernel32_SetStdHandle(void);  /* ../dlls/kernel32/environ.c:423 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetStdHandle,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetStdHandle") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_SetSystemFileCacheSize(SIZE_T  mincache, SIZE_T  maxcache, DWORD  flags) /* ../dlls/kernel32/heap.c:1465 */
+extern WINAPI BOOL wine32b_kernel32_SetSystemFileCacheSize(SIZE_T  mincache, SIZE_T  maxcache, DWORD  flags) /* ../dlls/kernel32/heap.c:922 */
 {
 	TRACE("Enter SetSystemFileCacheSize\n");
 	return pSetSystemFileCacheSize(mincache, maxcache, flags);
 }
 
-extern WINAPI void wine32a_kernel32_SetSystemFileCacheSize(void);  /* ../dlls/kernel32/heap.c:1465 */
+extern WINAPI void wine32a_kernel32_SetSystemFileCacheSize(void);  /* ../dlls/kernel32/heap.c:922 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_SetSystemFileCacheSize,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -20335,13 +17091,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetTapePosition,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_SetTermsrvAppInstallMode(BOOL  bInstallMode) /* ../dlls/kernel32/version.c:184 */
+extern WINAPI DWORD wine32b_kernel32_SetTermsrvAppInstallMode(BOOL  bInstallMode) /* ../dlls/kernel32/version.c:107 */
 {
 	TRACE("Enter SetTermsrvAppInstallMode\n");
 	return pSetTermsrvAppInstallMode(bInstallMode);
 }
 
-extern WINAPI void wine32a_kernel32_SetTermsrvAppInstallMode(void);  /* ../dlls/kernel32/version.c:184 */
+extern WINAPI void wine32a_kernel32_SetTermsrvAppInstallMode(void);  /* ../dlls/kernel32/version.c:107 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_SetTermsrvAppInstallMode,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -20513,13 +17269,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetTimeZoneInformation,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetUmsThreadInformation(PUMS_CONTEXT  ctx, UMS_THREAD_INFO_CLASS  class, void*  buf, ULONG  length) /* ../dlls/kernel32/process.c:4256 */
+extern WINAPI BOOL wine32b_kernel32_SetUmsThreadInformation(PUMS_CONTEXT  ctx, UMS_THREAD_INFO_CLASS  class, void*  buf, ULONG  length) /* ../dlls/kernel32/process.c:4237 */
 {
 	TRACE("Enter SetUmsThreadInformation\n");
 	return pSetUmsThreadInformation(ctx, class, buf, length);
 }
 
-extern WINAPI void wine32a_kernel32_SetUmsThreadInformation(void);  /* ../dlls/kernel32/process.c:4256 */
+extern WINAPI void wine32a_kernel32_SetUmsThreadInformation(void);  /* ../dlls/kernel32/process.c:4237 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_SetUmsThreadInformation,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -20535,31 +17291,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetUmsThreadInformation,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $16, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI LPTOP_LEVEL_EXCEPTION_FILTER wine32b_kernel32_SetUnhandledExceptionFilter(LPTOP_LEVEL_EXCEPTION_FILTER  filter) /* ../dlls/kernel32/except.c:459 */
-{
-	TRACE("Enter SetUnhandledExceptionFilter\n");
-	return pSetUnhandledExceptionFilter(filter);
-}
-
-extern WINAPI void wine32a_kernel32_SetUnhandledExceptionFilter(void);  /* ../dlls/kernel32/except.c:459 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetUnhandledExceptionFilter,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetUnhandledExceptionFilter") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -20695,33 +17426,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetVolumeMountPointW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetupComm(HANDLE  handle, DWORD  insize, DWORD  outsize) /* ../dlls/kernel32/comm.c:714 */
-{
-	TRACE("Enter SetupComm\n");
-	return pSetupComm(handle, insize, outsize);
-}
-
-extern WINAPI void wine32a_kernel32_SetupComm(void);  /* ../dlls/kernel32/comm.c:714 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_SetupComm,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_SetupComm") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
 extern WINAPI BOOL wine32b_kernel32_SystemTimeToFileTime(SYSTEMTIME*  syst, LPFILETIME  ft) /* ../dlls/kernel32/time.c:1239 */
 {
 	TRACE("Enter SystemTimeToFileTime\n");
@@ -20801,13 +17505,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_TerminateJobObject,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_TermsrvAppInstallMode(void) /* ../dlls/kernel32/version.c:168 */
+extern WINAPI BOOL wine32b_kernel32_TermsrvAppInstallMode(void) /* ../dlls/kernel32/version.c:91 */
 {
 	TRACE("Enter TermsrvAppInstallMode\n");
 	return pTermsrvAppInstallMode();
 }
 
-extern WINAPI void wine32a_kernel32_TermsrvAppInstallMode(void);  /* ../dlls/kernel32/version.c:168 */
+extern WINAPI void wine32a_kernel32_TermsrvAppInstallMode(void);  /* ../dlls/kernel32/version.c:91 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_TermsrvAppInstallMode,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -20905,32 +17609,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_Toolhelp32ReadProcessMemory,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_TransmitCommChar(HANDLE  hComm, CHAR  chTransmit) /* ../dlls/kernel32/comm.c:994 */
-{
-	TRACE("Enter TransmitCommChar\n");
-	return pTransmitCommChar(hComm, chTransmit);
-}
-
-extern WINAPI void wine32a_kernel32_TransmitCommChar(void);  /* ../dlls/kernel32/comm.c:994 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_TransmitCommChar,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_TransmitCommChar") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
 extern WINAPI BOOL wine32b_kernel32_TzSpecificLocalTimeToSystemTime(TIME_ZONE_INFORMATION*  lpTimeZoneInformation, SYSTEMTIME*  lpLocalTime, LPSYSTEMTIME  lpUniversalTime) /* ../dlls/kernel32/time.c:757 */
 {
 	TRACE("Enter TzSpecificLocalTimeToSystemTime\n");
@@ -20958,44 +17636,19 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_TzSpecificLocalTimeToSystemTime,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_UmsThreadYield(void*  param) /* ../dlls/kernel32/process.c:4267 */
+extern WINAPI BOOL wine32b_kernel32_UmsThreadYield(void*  param) /* ../dlls/kernel32/process.c:4248 */
 {
 	TRACE("Enter UmsThreadYield\n");
 	return pUmsThreadYield(param);
 }
 
-extern WINAPI void wine32a_kernel32_UmsThreadYield(void);  /* ../dlls/kernel32/process.c:4267 */
+extern WINAPI void wine32a_kernel32_UmsThreadYield(void);  /* ../dlls/kernel32/process.c:4248 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_UmsThreadYield,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
 	"sub $0x100, %rsp \n"
 	"call " __ASM_NAME("wine32b_kernel32_UmsThreadYield") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI LONG wine32b_kernel32_UnhandledExceptionFilter(PEXCEPTION_POINTERS  epointers) /* ../dlls/kernel32/except.c:418 */
-{
-	TRACE("Enter UnhandledExceptionFilter\n");
-	return pUnhandledExceptionFilter(epointers);
-}
-
-extern WINAPI void wine32a_kernel32_UnhandledExceptionFilter(void);  /* ../dlls/kernel32/except.c:418 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_UnhandledExceptionFilter,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_UnhandledExceptionFilter") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -21033,38 +17686,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_UninitializeCriticalSection,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_UnmapViewOfFile(void*  addr) /* ../dlls/kernel32/virtual.c:399 */
-{
-	TRACE("Enter UnmapViewOfFile\n");
-	return pUnmapViewOfFile(addr);
-}
-
-extern WINAPI void wine32a_kernel32_UnmapViewOfFile(void);  /* ../dlls/kernel32/virtual.c:399 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_UnmapViewOfFile,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_UnmapViewOfFile") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $4, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI HRESULT wine32b_kernel32_UnregisterApplicationRestart(void) /* ../dlls/kernel32/process.c:4135 */
+extern WINAPI HRESULT wine32b_kernel32_UnregisterApplicationRestart(void) /* ../dlls/kernel32/process.c:4116 */
 {
 	TRACE("Enter UnregisterApplicationRestart\n");
 	return pUnregisterApplicationRestart();
 }
 
-extern WINAPI void wine32a_kernel32_UnregisterApplicationRestart(void);  /* ../dlls/kernel32/process.c:4135 */
+extern WINAPI void wine32a_kernel32_UnregisterApplicationRestart(void);  /* ../dlls/kernel32/process.c:4116 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_UnregisterApplicationRestart,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -21217,13 +17845,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_VerLanguageNameW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_VerifyConsoleIoHandle(HANDLE  handle) /* ../dlls/kernel32/console.c:416 */
+extern WINAPI BOOL wine32b_kernel32_VerifyConsoleIoHandle(HANDLE  handle) /* ../dlls/kernel32/console.c:255 */
 {
 	TRACE("Enter VerifyConsoleIoHandle\n");
 	return pVerifyConsoleIoHandle(handle);
 }
 
-extern WINAPI void wine32a_kernel32_VerifyConsoleIoHandle(void);  /* ../dlls/kernel32/console.c:416 */
+extern WINAPI void wine32a_kernel32_VerifyConsoleIoHandle(void);  /* ../dlls/kernel32/console.c:255 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_VerifyConsoleIoHandle,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -21242,13 +17870,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_VerifyConsoleIoHandle,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_VerifyVersionInfoA(LPOSVERSIONINFOEXA  lpVersionInfo, DWORD  dwTypeMask, DWORDLONG  dwlConditionMask) /* ../dlls/kernel32/version.c:125 */
+extern WINAPI BOOL wine32b_kernel32_VerifyVersionInfoA(LPOSVERSIONINFOEXA  lpVersionInfo, DWORD  dwTypeMask, DWORDLONG  dwlConditionMask) /* ../dlls/kernel32/version.c:48 */
 {
 	TRACE("Enter VerifyVersionInfoA\n");
 	return pVerifyVersionInfoA(lpVersionInfo, dwTypeMask, dwlConditionMask);
 }
 
-extern WINAPI void wine32a_kernel32_VerifyVersionInfoA(void);  /* ../dlls/kernel32/version.c:125 */
+extern WINAPI void wine32a_kernel32_VerifyVersionInfoA(void);  /* ../dlls/kernel32/version.c:48 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_VerifyVersionInfoA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -21269,13 +17897,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_VerifyVersionInfoA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_VerifyVersionInfoW(LPOSVERSIONINFOEXW  lpVersionInfo, DWORD  dwTypeMask, DWORDLONG  dwlConditionMask) /* ../dlls/kernel32/version.c:148 */
+extern WINAPI BOOL wine32b_kernel32_VerifyVersionInfoW(LPOSVERSIONINFOEXW  lpVersionInfo, DWORD  dwTypeMask, DWORDLONG  dwlConditionMask) /* ../dlls/kernel32/version.c:71 */
 {
 	TRACE("Enter VerifyVersionInfoW\n");
 	return pVerifyVersionInfoW(lpVersionInfo, dwTypeMask, dwlConditionMask);
 }
 
-extern WINAPI void wine32a_kernel32_VerifyVersionInfoW(void);  /* ../dlls/kernel32/version.c:148 */
+extern WINAPI void wine32a_kernel32_VerifyVersionInfoW(void);  /* ../dlls/kernel32/version.c:71 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_VerifyVersionInfoW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -21296,315 +17924,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_VerifyVersionInfoW,
 	"ret \n"
 )
 
-extern WINAPI LPVOID wine32b_kernel32_VirtualAlloc(void*  addr, SIZE_T  size, DWORD  type, DWORD  protect) /* ../dlls/kernel32/virtual.c:67 */
-{
-	TRACE("Enter VirtualAlloc\n");
-	return pVirtualAlloc(addr, size, type, protect);
-}
-
-extern WINAPI void wine32a_kernel32_VirtualAlloc(void);  /* ../dlls/kernel32/virtual.c:67 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_VirtualAlloc,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_VirtualAlloc") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $16, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI LPVOID wine32b_kernel32_VirtualAllocEx(HANDLE  hProcess, LPVOID  addr, SIZE_T  size, DWORD  type, DWORD  protect) /* ../dlls/kernel32/virtual.c:90 */
-{
-	TRACE("Enter VirtualAllocEx\n");
-	return pVirtualAllocEx(hProcess, addr, size, type, protect);
-}
-
-extern WINAPI void wine32a_kernel32_VirtualAllocEx(void);  /* ../dlls/kernel32/virtual.c:90 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_VirtualAllocEx,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_VirtualAllocEx") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI LPVOID wine32b_kernel32_VirtualAllocExNuma(HANDLE  process, void*  addr, SIZE_T  size, DWORD  type, DWORD  protect, DWORD  numa_node) /* ../dlls/kernel32/virtual.c:108 */
-{
-	TRACE("Enter VirtualAllocExNuma\n");
-	return pVirtualAllocExNuma(process, addr, size, type, protect, numa_node);
-}
-
-extern WINAPI void wine32a_kernel32_VirtualAllocExNuma(void);  /* ../dlls/kernel32/virtual.c:108 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_VirtualAllocExNuma,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_VirtualAllocExNuma") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $24, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_VirtualFree(LPVOID  addr, SIZE_T  size, DWORD  type) /* ../dlls/kernel32/virtual.c:130 */
-{
-	TRACE("Enter VirtualFree\n");
-	return pVirtualFree(addr, size, type);
-}
-
-extern WINAPI void wine32a_kernel32_VirtualFree(void);  /* ../dlls/kernel32/virtual.c:130 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_VirtualFree,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_VirtualFree") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_VirtualFreeEx(HANDLE  process, LPVOID  addr, SIZE_T  size, DWORD  type) /* ../dlls/kernel32/virtual.c:151 */
-{
-	TRACE("Enter VirtualFreeEx\n");
-	return pVirtualFreeEx(process, addr, size, type);
-}
-
-extern WINAPI void wine32a_kernel32_VirtualFreeEx(void);  /* ../dlls/kernel32/virtual.c:151 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_VirtualFreeEx,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_VirtualFreeEx") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $16, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_VirtualLock(LPVOID  addr, SIZE_T  size) /* ../dlls/kernel32/virtual.c:176 */
-{
-	TRACE("Enter VirtualLock\n");
-	return pVirtualLock(addr, size);
-}
-
-extern WINAPI void wine32a_kernel32_VirtualLock(void);  /* ../dlls/kernel32/virtual.c:176 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_VirtualLock,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_VirtualLock") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_VirtualProtect(LPVOID  addr, SIZE_T  size, DWORD  new_prot, LPDWORD  old_prot) /* ../dlls/kernel32/virtual.c:224 */
-{
-	TRACE("Enter VirtualProtect\n");
-	return pVirtualProtect(addr, size, new_prot, old_prot);
-}
-
-extern WINAPI void wine32a_kernel32_VirtualProtect(void);  /* ../dlls/kernel32/virtual.c:224 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_VirtualProtect,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_VirtualProtect") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $16, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_VirtualProtectEx(HANDLE  process, LPVOID  addr, SIZE_T  size, DWORD  new_prot, LPDWORD  old_prot) /* ../dlls/kernel32/virtual.c:247 */
-{
-	TRACE("Enter VirtualProtectEx\n");
-	return pVirtualProtectEx(process, addr, size, new_prot, old_prot);
-}
-
-extern WINAPI void wine32a_kernel32_VirtualProtectEx(void);  /* ../dlls/kernel32/virtual.c:247 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_VirtualProtectEx,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_VirtualProtectEx") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI SIZE_T wine32b_kernel32_VirtualQuery(LPCVOID  addr, PMEMORY_BASIC_INFORMATION  info, SIZE_T  len) /* ../dlls/kernel32/virtual.c:276 */
-{
-	TRACE("Enter VirtualQuery\n");
-	return pVirtualQuery(addr, info, len);
-}
-
-extern WINAPI void wine32a_kernel32_VirtualQuery(void);  /* ../dlls/kernel32/virtual.c:276 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_VirtualQuery,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_VirtualQuery") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI SIZE_T wine32b_kernel32_VirtualQueryEx(HANDLE  process, LPCVOID  addr, PMEMORY_BASIC_INFORMATION  info, SIZE_T  len) /* ../dlls/kernel32/virtual.c:298 */
-{
-	TRACE("Enter VirtualQueryEx\n");
-	return pVirtualQueryEx(process, addr, info, len);
-}
-
-extern WINAPI void wine32a_kernel32_VirtualQueryEx(void);  /* ../dlls/kernel32/virtual.c:298 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_VirtualQueryEx,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_VirtualQueryEx") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $16, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_VirtualUnlock(LPVOID  addr, SIZE_T  size) /* ../dlls/kernel32/virtual.c:201 */
-{
-	TRACE("Enter VirtualUnlock\n");
-	return pVirtualUnlock(addr, size);
-}
-
-extern WINAPI void wine32a_kernel32_VirtualUnlock(void);  /* ../dlls/kernel32/virtual.c:201 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_VirtualUnlock,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_VirtualUnlock") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI DWORD wine32b_kernel32_WTSGetActiveConsoleSessionId(void) /* ../dlls/kernel32/process.c:3926 */
+extern WINAPI DWORD wine32b_kernel32_WTSGetActiveConsoleSessionId(void) /* ../dlls/kernel32/process.c:3907 */
 {
 	TRACE("Enter WTSGetActiveConsoleSessionId\n");
 	return pWTSGetActiveConsoleSessionId();
 }
 
-extern WINAPI void wine32a_kernel32_WTSGetActiveConsoleSessionId(void);  /* ../dlls/kernel32/process.c:3926 */
+extern WINAPI void wine32a_kernel32_WTSGetActiveConsoleSessionId(void);  /* ../dlls/kernel32/process.c:3907 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_WTSGetActiveConsoleSessionId,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -21616,59 +17942,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WTSGetActiveConsoleSessionId,
 	"movl 0x04(%rsp), %edx \n"
 	"movl 0x08(%rsp), %r8d \n"
 	"addq $0, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_WaitCommEvent(HANDLE  hFile, LPDWORD  lpdwEvents, LPOVERLAPPED  lpOverlapped) /* ../dlls/kernel32/comm.c:1119 */
-{
-	TRACE("Enter WaitCommEvent\n");
-	return pWaitCommEvent(hFile, lpdwEvents, lpOverlapped);
-}
-
-extern WINAPI void wine32a_kernel32_WaitCommEvent(void);  /* ../dlls/kernel32/comm.c:1119 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_WaitCommEvent,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_WaitCommEvent") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_WaitForDebugEvent(LPDEBUG_EVENT  event, DWORD  timeout) /* ../dlls/kernel32/debugger.c:51 */
-{
-	TRACE("Enter WaitForDebugEvent\n");
-	return pWaitForDebugEvent(event, timeout);
-}
-
-extern WINAPI void wine32a_kernel32_WaitForDebugEvent(void);  /* ../dlls/kernel32/debugger.c:51 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_WaitForDebugEvent,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_WaitForDebugEvent") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
 	"movl %ecx, 0x00(%rsp) \n"
 	"movl %edx, 0x04(%rsp) \n"
 	"movl %r8d, 0x08(%rsp) \n"
@@ -21884,13 +18157,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WideCharToMultiByte,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_WinExec(LPCSTR  lpCmdLine, UINT  nCmdShow) /* ../dlls/kernel32/process.c:3044 */
+extern WINAPI UINT wine32b_kernel32_WinExec(LPCSTR  lpCmdLine, UINT  nCmdShow) /* ../dlls/kernel32/process.c:3039 */
 {
 	TRACE("Enter WinExec\n");
 	return pWinExec(lpCmdLine, nCmdShow);
 }
 
-extern WINAPI void wine32a_kernel32_WinExec(void);  /* ../dlls/kernel32/process.c:3044 */
+extern WINAPI void wine32a_kernel32_WinExec(void);  /* ../dlls/kernel32/process.c:3039 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_WinExec,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -21987,237 +18260,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_Wow64SetThreadContext,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_WriteConsoleA(HANDLE  hConsoleOutput, LPCVOID  lpBuffer, DWORD  nNumberOfCharsToWrite, LPDWORD  lpNumberOfCharsWritten, LPVOID  lpReserved) /* ../dlls/kernel32/console.c:2496 */
-{
-	TRACE("Enter WriteConsoleA\n");
-	return pWriteConsoleA(hConsoleOutput, lpBuffer, nNumberOfCharsToWrite, lpNumberOfCharsWritten, lpReserved);
-}
-
-extern WINAPI void wine32a_kernel32_WriteConsoleA(void);  /* ../dlls/kernel32/console.c:2496 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_WriteConsoleA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_WriteConsoleA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_WriteConsoleInputA(HANDLE  handle, INPUT_RECORD*  buffer, DWORD  count, LPDWORD  written) /* ../dlls/kernel32/console.c:485 */
-{
-	TRACE("Enter WriteConsoleInputA\n");
-	return pWriteConsoleInputA(handle, buffer, count, written);
-}
-
-extern WINAPI void wine32a_kernel32_WriteConsoleInputA(void);  /* ../dlls/kernel32/console.c:485 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_WriteConsoleInputA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_WriteConsoleInputA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $16, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_WriteConsoleInputW(HANDLE  handle, INPUT_RECORD*  buffer, DWORD  count, LPDWORD  written) /* ../dlls/kernel32/console.c:518 */
-{
-	TRACE("Enter WriteConsoleInputW\n");
-	return pWriteConsoleInputW(handle, buffer, count, written);
-}
-
-extern WINAPI void wine32a_kernel32_WriteConsoleInputW(void);  /* ../dlls/kernel32/console.c:518 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_WriteConsoleInputW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_WriteConsoleInputW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $16, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_WriteConsoleOutputA(HANDLE  hConsoleOutput, CHAR_INFO*  lpBuffer, COORD  size, COORD  coord, LPSMALL_RECT  region) /* ../dlls/kernel32/console.c:554 */
-{
-	TRACE("Enter WriteConsoleOutputA\n");
-	return pWriteConsoleOutputA(hConsoleOutput, lpBuffer, size, coord, region);
-}
-
-extern WINAPI void wine32a_kernel32_WriteConsoleOutputA(void);  /* ../dlls/kernel32/console.c:554 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_WriteConsoleOutputA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_WriteConsoleOutputA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_WriteConsoleOutputAttribute(HANDLE  hConsoleOutput, WORD*  attr, DWORD  length, COORD  coord, LPDWORD  lpNumAttrsWritten) /* ../dlls/kernel32/console.c:689 */
-{
-	TRACE("Enter WriteConsoleOutputAttribute\n");
-	return pWriteConsoleOutputAttribute(hConsoleOutput, attr, length, coord, lpNumAttrsWritten);
-}
-
-extern WINAPI void wine32a_kernel32_WriteConsoleOutputAttribute(void);  /* ../dlls/kernel32/console.c:689 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_WriteConsoleOutputAttribute,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_WriteConsoleOutputAttribute") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_WriteConsoleOutputCharacterA(HANDLE  hConsoleOutput, LPCSTR  str, DWORD  length, COORD  coord, LPDWORD  lpNumCharsWritten) /* ../dlls/kernel32/console.c:638 */
-{
-	TRACE("Enter WriteConsoleOutputCharacterA\n");
-	return pWriteConsoleOutputCharacterA(hConsoleOutput, str, length, coord, lpNumCharsWritten);
-}
-
-extern WINAPI void wine32a_kernel32_WriteConsoleOutputCharacterA(void);  /* ../dlls/kernel32/console.c:638 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_WriteConsoleOutputCharacterA,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_WriteConsoleOutputCharacterA") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_WriteConsoleOutputCharacterW(HANDLE  hConsoleOutput, LPCWSTR  str, DWORD  length, COORD  coord, LPDWORD  lpNumCharsWritten) /* ../dlls/kernel32/console.c:1751 */
-{
-	TRACE("Enter WriteConsoleOutputCharacterW\n");
-	return pWriteConsoleOutputCharacterW(hConsoleOutput, str, length, coord, lpNumCharsWritten);
-}
-
-extern WINAPI void wine32a_kernel32_WriteConsoleOutputCharacterW(void);  /* ../dlls/kernel32/console.c:1751 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_WriteConsoleOutputCharacterW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_WriteConsoleOutputCharacterW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_WriteConsoleOutputW(HANDLE  hConsoleOutput, CHAR_INFO*  lpBuffer, COORD  size, COORD  coord, LPSMALL_RECT  region) /* ../dlls/kernel32/console.c:591 */
-{
-	TRACE("Enter WriteConsoleOutputW\n");
-	return pWriteConsoleOutputW(hConsoleOutput, lpBuffer, size, coord, region);
-}
-
-extern WINAPI void wine32a_kernel32_WriteConsoleOutputW(void);  /* ../dlls/kernel32/console.c:591 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_WriteConsoleOutputW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_WriteConsoleOutputW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_WriteConsoleW(HANDLE  hConsoleOutput, LPCVOID  lpBuffer, DWORD  nNumberOfCharsToWrite, LPDWORD  lpNumberOfCharsWritten, LPVOID  lpReserved) /* ../dlls/kernel32/console.c:2368 */
+extern WINAPI BOOL wine32b_kernel32_WriteConsoleW(HANDLE  hConsoleOutput, LPCVOID  lpBuffer, DWORD  nNumberOfCharsToWrite, LPDWORD  lpNumberOfCharsWritten, LPVOID  lpReserved) /* ../dlls/kernel32/console.c:1132 */
 {
 	TRACE("Enter WriteConsoleW\n");
 	return pWriteConsoleW(hConsoleOutput, lpBuffer, nNumberOfCharsToWrite, lpNumberOfCharsWritten, lpReserved);
 }
 
-extern WINAPI void wine32a_kernel32_WriteConsoleW(void);  /* ../dlls/kernel32/console.c:2368 */
+extern WINAPI void wine32a_kernel32_WriteConsoleW(void);  /* ../dlls/kernel32/console.c:1132 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32_WriteConsoleW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -22393,34 +18442,6 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WritePrivateProfileStructW,
 	"movl 0x20(%rsp), %r9d \n"
 	"sub $0x100, %rsp \n"
 	"call " __ASM_NAME("wine32b_kernel32_WritePrivateProfileStructW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $20, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-extern WINAPI BOOL wine32b_kernel32_WriteProcessMemory(HANDLE  process, LPVOID  addr, LPCVOID  buffer, SIZE_T  size, SIZE_T*  bytes_written) /* ../dlls/kernel32/process.c:3528 */
-{
-	TRACE("Enter WriteProcessMemory\n");
-	return pWriteProcessMemory(process, addr, buffer, size, bytes_written);
-}
-
-extern WINAPI void wine32a_kernel32_WriteProcessMemory(void);  /* ../dlls/kernel32/process.c:3528 */
-__ASM_GLOBAL_FUNC(wine32a_kernel32_WriteProcessMemory,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"movl 0x20(%rsp), %r9d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_kernel32_WriteProcessMemory") "\n"
 	"add $0x100, %rsp \n"
 	"pop %rbp \n"
 	"movl 0x00(%rsp), %ecx \n"
@@ -22933,13 +18954,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_wine_get_dos_file_name,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_kernel32___wine_kernel_init(void) /* ../dlls/kernel32/process.c:1395 */
+extern WINAPI void* wine32b_kernel32___wine_kernel_init(void) /* ../dlls/kernel32/process.c:1390 */
 {
 	TRACE("Enter __wine_kernel_init\n");
 	return p__wine_kernel_init();
 }
 
-extern WINAPI void wine32a_kernel32___wine_kernel_init(void);  /* ../dlls/kernel32/process.c:1395 */
+extern WINAPI void wine32a_kernel32___wine_kernel_init(void);  /* ../dlls/kernel32/process.c:1390 */
 __ASM_GLOBAL_FUNC(wine32a_kernel32___wine_kernel_init,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -22961,199 +18982,9 @@ static BOOL initialized = FALSE;
 
 void wine_thunk_initialize_kernel32(void)
 {
-	HMODULE library = LoadLibraryA("kernel32.dll");
-	HMODULE library_krnl386 = LoadLibraryA("krnl386.dll");
-	HMODULE library_ntdll = LoadLibraryA("ntdll.dll");
-	HMODULE library_kernelbase = LoadLibraryA("kernelbase.dll");
-	HMODULE library_advapi32 = LoadLibraryA("advapi32.dll");
-	pVxDCall0 = (void *)GetProcAddress(library, "VxDCall0");
-	pextVxDCall0 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pVxDCall1 = (void *)GetProcAddress(library, "VxDCall1");
-	pextVxDCall1 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pVxDCall2 = (void *)GetProcAddress(library, "VxDCall2");
-	pextVxDCall2 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pVxDCall3 = (void *)GetProcAddress(library, "VxDCall3");
-	pextVxDCall3 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pVxDCall4 = (void *)GetProcAddress(library, "VxDCall4");
-	pextVxDCall4 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pVxDCall5 = (void *)GetProcAddress(library, "VxDCall5");
-	pextVxDCall5 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pVxDCall6 = (void *)GetProcAddress(library, "VxDCall6");
-	pextVxDCall6 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pVxDCall7 = (void *)GetProcAddress(library, "VxDCall7");
-	pextVxDCall7 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pVxDCall8 = (void *)GetProcAddress(library, "VxDCall8");
-	pextVxDCall8 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pk32CharToOemA = (void *)GetProcAddress(library, "k32CharToOemA");
-	pextk32CharToOemA = (void *)GetProcAddress(library_krnl386, "exe16");
-	pk32CharToOemBuffA = (void *)GetProcAddress(library, "k32CharToOemBuffA");
-	pextk32CharToOemBuffA = (void *)GetProcAddress(library_krnl386, "exe16");
-	pk32OemToCharA = (void *)GetProcAddress(library, "k32OemToCharA");
-	pextk32OemToCharA = (void *)GetProcAddress(library_krnl386, "exe16");
-	pk32OemToCharBuffA = (void *)GetProcAddress(library, "k32OemToCharBuffA");
-	pextk32OemToCharBuffA = (void *)GetProcAddress(library_krnl386, "exe16");
-	pk32LoadStringA = (void *)GetProcAddress(library, "k32LoadStringA");
-	pextk32LoadStringA = (void *)GetProcAddress(library_krnl386, "exe16");
-	pk32wsprintfA = (void *)GetProcAddress(library, "k32wsprintfA");
-	pextk32wsprintfA = (void *)GetProcAddress(library_krnl386, "exe16");
-	pk32wvsprintfA = (void *)GetProcAddress(library, "k32wvsprintfA");
-	pextk32wvsprintfA = (void *)GetProcAddress(library_krnl386, "exe16");
-	pCommonUnimpStub = (void *)GetProcAddress(library, "CommonUnimpStub");
-	pextCommonUnimpStub = (void *)GetProcAddress(library_krnl386, "exe16");
-	pGetProcessDword = (void *)GetProcAddress(library, "GetProcessDword");
-	pextGetProcessDword = (void *)GetProcAddress(library_krnl386, "exe16");
-	pDosFileHandleToWin32Handle = (void *)GetProcAddress(library, "DosFileHandleToWin32Handle");
-	pextDosFileHandleToWin32Handle = (void *)GetProcAddress(library_krnl386, "exe16");
-	pWin32HandleToDosFileHandle = (void *)GetProcAddress(library, "Win32HandleToDosFileHandle");
-	pextWin32HandleToDosFileHandle = (void *)GetProcAddress(library_krnl386, "exe16");
-	pDisposeLZ32Handle = (void *)GetProcAddress(library, "DisposeLZ32Handle");
-	pextDisposeLZ32Handle = (void *)GetProcAddress(library_krnl386, "exe16");
-	pGlobalAlloc16 = (void *)GetProcAddress(library, "GlobalAlloc16");
-	pextGlobalAlloc16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pGlobalLock16 = (void *)GetProcAddress(library, "GlobalLock16");
-	pextGlobalLock16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pGlobalUnlock16 = (void *)GetProcAddress(library, "GlobalUnlock16");
-	pextGlobalUnlock16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pGlobalFix16 = (void *)GetProcAddress(library, "GlobalFix16");
-	pextGlobalFix16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pGlobalUnfix16 = (void *)GetProcAddress(library, "GlobalUnfix16");
-	pextGlobalUnfix16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pGlobalWire16 = (void *)GetProcAddress(library, "GlobalWire16");
-	pextGlobalWire16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pGlobalUnWire16 = (void *)GetProcAddress(library, "GlobalUnWire16");
-	pextGlobalUnWire16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pGlobalFree16 = (void *)GetProcAddress(library, "GlobalFree16");
-	pextGlobalFree16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pGlobalSize16 = (void *)GetProcAddress(library, "GlobalSize16");
-	pextGlobalSize16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pHouseCleanLogicallyDeadHandles = (void *)GetProcAddress(library, "HouseCleanLogicallyDeadHandles");
-	pextHouseCleanLogicallyDeadHandles = (void *)GetProcAddress(library_krnl386, "exe16");
-	pGetWin16DOSEnv = (void *)GetProcAddress(library, "GetWin16DOSEnv");
-	pextGetWin16DOSEnv = (void *)GetProcAddress(library_krnl386, "exe16");
-	pLoadLibrary16 = (void *)GetProcAddress(library, "LoadLibrary16");
-	pextLoadLibrary16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pFreeLibrary16 = (void *)GetProcAddress(library, "FreeLibrary16");
-	pextFreeLibrary16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pGetProcAddress16 = (void *)GetProcAddress(library, "GetProcAddress16");
-	pextGetProcAddress16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pAllocMappedBuffer = (void *)GetProcAddress(library, "AllocMappedBuffer");
-	pextAllocMappedBuffer = (void *)GetProcAddress(library_krnl386, "exe16");
-	pFreeMappedBuffer = (void *)GetProcAddress(library, "FreeMappedBuffer");
-	pextFreeMappedBuffer = (void *)GetProcAddress(library_krnl386, "exe16");
-	pOT_32ThkLSF = (void *)GetProcAddress(library, "OT_32ThkLSF");
-	pextOT_32ThkLSF = (void *)GetProcAddress(library_krnl386, "exe16");
-	pThunkInitLSF = (void *)GetProcAddress(library, "ThunkInitLSF");
-	pextThunkInitLSF = (void *)GetProcAddress(library_krnl386, "exe16");
-	pLogApiThkLSF = (void *)GetProcAddress(library, "LogApiThkLSF");
-	pextLogApiThkLSF = (void *)GetProcAddress(library_krnl386, "exe16");
-	pThunkInitLS = (void *)GetProcAddress(library, "ThunkInitLS");
-	pextThunkInitLS = (void *)GetProcAddress(library_krnl386, "exe16");
-	pLogApiThkSL = (void *)GetProcAddress(library, "LogApiThkSL");
-	pextLogApiThkSL = (void *)GetProcAddress(library_krnl386, "exe16");
-	pCommon32ThkLS = (void *)GetProcAddress(library, "Common32ThkLS");
-	pextCommon32ThkLS = (void *)GetProcAddress(library_krnl386, "exe16");
-	pThunkInitSL = (void *)GetProcAddress(library, "ThunkInitSL");
-	pextThunkInitSL = (void *)GetProcAddress(library_krnl386, "exe16");
-	pLogCBThkSL = (void *)GetProcAddress(library, "LogCBThkSL");
-	pextLogCBThkSL = (void *)GetProcAddress(library_krnl386, "exe16");
-	pReleaseThunkLock = (void *)GetProcAddress(library, "ReleaseThunkLock");
-	pextReleaseThunkLock = (void *)GetProcAddress(library_krnl386, "exe16");
-	pRestoreThunkLock = (void *)GetProcAddress(library, "RestoreThunkLock");
-	pextRestoreThunkLock = (void *)GetProcAddress(library_krnl386, "exe16");
-	pW32S_BackTo32 = (void *)GetProcAddress(library, "W32S_BackTo32");
-	pextW32S_BackTo32 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pGetThunkBuff = (void *)GetProcAddress(library, "GetThunkBuff");
-	pextGetThunkBuff = (void *)GetProcAddress(library_krnl386, "exe16");
-	pGetThunkStuff = (void *)GetProcAddress(library, "GetThunkStuff");
-	pextGetThunkStuff = (void *)GetProcAddress(library_krnl386, "exe16");
-	pK32WOWCallback16 = (void *)GetProcAddress(library, "K32WOWCallback16");
-	pextK32WOWCallback16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pK32WOWCallback16Ex = (void *)GetProcAddress(library, "K32WOWCallback16Ex");
-	pextK32WOWCallback16Ex = (void *)GetProcAddress(library_krnl386, "exe16");
-	pK32WOWGetVDMPointer = (void *)GetProcAddress(library, "K32WOWGetVDMPointer");
-	pextK32WOWGetVDMPointer = (void *)GetProcAddress(library_krnl386, "exe16");
-	pK32WOWHandle32 = (void *)GetProcAddress(library, "K32WOWHandle32");
-	pextK32WOWHandle32 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pK32WOWHandle16 = (void *)GetProcAddress(library, "K32WOWHandle16");
-	pextK32WOWHandle16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pK32WOWGlobalAlloc16 = (void *)GetProcAddress(library, "K32WOWGlobalAlloc16");
-	pextK32WOWGlobalAlloc16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pK32WOWGlobalLock16 = (void *)GetProcAddress(library, "K32WOWGlobalLock16");
-	pextK32WOWGlobalLock16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pK32WOWGlobalUnlock16 = (void *)GetProcAddress(library, "K32WOWGlobalUnlock16");
-	pextK32WOWGlobalUnlock16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pK32WOWGlobalFree16 = (void *)GetProcAddress(library, "K32WOWGlobalFree16");
-	pextK32WOWGlobalFree16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pK32WOWGlobalAllocLock16 = (void *)GetProcAddress(library, "K32WOWGlobalAllocLock16");
-	pextK32WOWGlobalAllocLock16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pK32WOWGlobalUnlockFree16 = (void *)GetProcAddress(library, "K32WOWGlobalUnlockFree16");
-	pextK32WOWGlobalUnlockFree16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pK32WOWGlobalLockSize16 = (void *)GetProcAddress(library, "K32WOWGlobalLockSize16");
-	pextK32WOWGlobalLockSize16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pK32WOWYield16 = (void *)GetProcAddress(library, "K32WOWYield16");
-	pextK32WOWYield16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pK32WOWDirectedYield16 = (void *)GetProcAddress(library, "K32WOWDirectedYield16");
-	pextK32WOWDirectedYield16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pK32WOWGetVDMPointerFix = (void *)GetProcAddress(library, "K32WOWGetVDMPointerFix");
-	pextK32WOWGetVDMPointerFix = (void *)GetProcAddress(library_krnl386, "exe16");
-	pK32WOWGetVDMPointerUnfix = (void *)GetProcAddress(library, "K32WOWGetVDMPointerUnfix");
-	pextK32WOWGetVDMPointerUnfix = (void *)GetProcAddress(library_krnl386, "exe16");
-	pK32WOWGetDescriptor = (void *)GetProcAddress(library, "K32WOWGetDescriptor");
-	pextK32WOWGetDescriptor = (void *)GetProcAddress(library_krnl386, "exe16");
-	pK32RtlLargeIntegerAdd = (void *)GetProcAddress(library, "K32RtlLargeIntegerAdd");
-	pextK32RtlLargeIntegerAdd = (void *)GetProcAddress(library_ntdll, "RtlLargeIntegerAdd");
-	pK32RtlEnlargedIntegerMultiply = (void *)GetProcAddress(library, "K32RtlEnlargedIntegerMultiply");
-	pextK32RtlEnlargedIntegerMultiply = (void *)GetProcAddress(library_ntdll, "RtlEnlargedIntegerMultiply");
-	pK32RtlEnlargedUnsignedMultiply = (void *)GetProcAddress(library, "K32RtlEnlargedUnsignedMultiply");
-	pextK32RtlEnlargedUnsignedMultiply = (void *)GetProcAddress(library_ntdll, "RtlEnlargedUnsignedMultiply");
-	pK32RtlEnlargedUnsignedDivide = (void *)GetProcAddress(library, "K32RtlEnlargedUnsignedDivide");
-	pextK32RtlEnlargedUnsignedDivide = (void *)GetProcAddress(library_ntdll, "RtlEnlargedUnsignedDivide");
-	pK32RtlExtendedLargeIntegerDivide = (void *)GetProcAddress(library, "K32RtlExtendedLargeIntegerDivide");
-	pextK32RtlExtendedLargeIntegerDivide = (void *)GetProcAddress(library_ntdll, "RtlExtendedLargeIntegerDivide");
-	pK32RtlExtendedMagicDivide = (void *)GetProcAddress(library, "K32RtlExtendedMagicDivide");
-	pextK32RtlExtendedMagicDivide = (void *)GetProcAddress(library_ntdll, "RtlExtendedMagicDivide");
-	pK32RtlExtendedIntegerMultiply = (void *)GetProcAddress(library, "K32RtlExtendedIntegerMultiply");
-	pextK32RtlExtendedIntegerMultiply = (void *)GetProcAddress(library_ntdll, "RtlExtendedIntegerMultiply");
-	pK32RtlLargeIntegerShiftLeft = (void *)GetProcAddress(library, "K32RtlLargeIntegerShiftLeft");
-	pextK32RtlLargeIntegerShiftLeft = (void *)GetProcAddress(library_ntdll, "RtlLargeIntegerShiftLeft");
-	pK32RtlLargeIntegerShiftRight = (void *)GetProcAddress(library, "K32RtlLargeIntegerShiftRight");
-	pextK32RtlLargeIntegerShiftRight = (void *)GetProcAddress(library_ntdll, "RtlLargeIntegerShiftRight");
-	pK32RtlLargeIntegerArithmeticShift = (void *)GetProcAddress(library, "K32RtlLargeIntegerArithmeticShift");
-	pextK32RtlLargeIntegerArithmeticShift = (void *)GetProcAddress(library_ntdll, "RtlLargeIntegerArithmeticShift");
-	pK32RtlLargeIntegerNegate = (void *)GetProcAddress(library, "K32RtlLargeIntegerNegate");
-	pextK32RtlLargeIntegerNegate = (void *)GetProcAddress(library_ntdll, "RtlLargeIntegerNegate");
-	pK32RtlLargeIntegerSubtract = (void *)GetProcAddress(library, "K32RtlLargeIntegerSubtract");
-	pextK32RtlLargeIntegerSubtract = (void *)GetProcAddress(library_ntdll, "RtlLargeIntegerSubtract");
-	pK32RtlConvertLongToLargeInteger = (void *)GetProcAddress(library, "K32RtlConvertLongToLargeInteger");
-	pextK32RtlConvertLongToLargeInteger = (void *)GetProcAddress(library_ntdll, "RtlConvertLongToLargeInteger");
-	pK32RtlConvertUlongToLargeInteger = (void *)GetProcAddress(library, "K32RtlConvertUlongToLargeInteger");
-	pextK32RtlConvertUlongToLargeInteger = (void *)GetProcAddress(library_ntdll, "RtlConvertUlongToLargeInteger");
-	pexe16 = (void *)GetProcAddress(library, "@");
-	pextexe16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pSSOnBigStack = (void *)GetProcAddress(library, "SSOnBigStack");
-	pextSSOnBigStack = (void *)GetProcAddress(library_krnl386, "exe16");
-	pSSCall = (void *)GetProcAddress(library, "SSCall");
-	pextSSCall = (void *)GetProcAddress(library_krnl386, "exe16");
-	pFT_PrologPrime = (void *)GetProcAddress(library, "FT_PrologPrime");
-	pextFT_PrologPrime = (void *)GetProcAddress(library_krnl386, "exe16");
-	pQT_ThunkPrime = (void *)GetProcAddress(library, "QT_ThunkPrime");
-	pextQT_ThunkPrime = (void *)GetProcAddress(library_krnl386, "exe16");
-	pPK16FNF = (void *)GetProcAddress(library, "PK16FNF");
-	pextPK16FNF = (void *)GetProcAddress(library_krnl386, "exe16");
-	pGetPK16SysVar = (void *)GetProcAddress(library, "GetPK16SysVar");
-	pextGetPK16SysVar = (void *)GetProcAddress(library_krnl386, "exe16");
-	pGetpWin16Lock = (void *)GetProcAddress(library, "GetpWin16Lock");
-	pextGetpWin16Lock = (void *)GetProcAddress(library_krnl386, "exe16");
-	p_CheckNotSysLevel = (void *)GetProcAddress(library, "_CheckNotSysLevel");
-	pext_CheckNotSysLevel = (void *)GetProcAddress(library_krnl386, "exe16");
-	p_ConfirmSysLevel = (void *)GetProcAddress(library, "_ConfirmSysLevel");
-	pext_ConfirmSysLevel = (void *)GetProcAddress(library_krnl386, "exe16");
-	p_ConfirmWin16Lock = (void *)GetProcAddress(library, "_ConfirmWin16Lock");
-	pext_ConfirmWin16Lock = (void *)GetProcAddress(library_krnl386, "exe16");
-	p_EnterSysLevel = (void *)GetProcAddress(library, "_EnterSysLevel");
-	pext_EnterSysLevel = (void *)GetProcAddress(library_krnl386, "exe16");
-	p_LeaveSysLevel = (void *)GetProcAddress(library, "_LeaveSysLevel");
-	pext_LeaveSysLevel = (void *)GetProcAddress(library_krnl386, "exe16");
+	HMODULE library = GetModuleHandleA("kernel32.dll");
+	HMODULE library_ntdll = GetModuleHandleA("ntdll.dll");
+	HMODULE library_kernelbase = GetModuleHandleA("kernelbase.dll");
 	pAcquireSRWLockExclusive = (void *)GetProcAddress(library, "AcquireSRWLockExclusive");
 	pextAcquireSRWLockExclusive = (void *)GetProcAddress(library_ntdll, "RtlAcquireSRWLockExclusive");
 	pAcquireSRWLockShared = (void *)GetProcAddress(library, "AcquireSRWLockShared");
@@ -23172,8 +19003,6 @@ void wine_thunk_initialize_kernel32(void)
 	pAddVectoredExceptionHandler = (void *)GetProcAddress(library, "AddVectoredExceptionHandler");
 	pextAddVectoredExceptionHandler = (void *)GetProcAddress(library_ntdll, "RtlAddVectoredExceptionHandler");
 	pAllocConsole = (void *)GetProcAddress(library, "AllocConsole");
-	pAllocSLCallback = (void *)GetProcAddress(library, "AllocSLCallback");
-	pextAllocSLCallback = (void *)GetProcAddress(library_krnl386, "exe16");
 	pAllocateUserPhysicalPages = (void *)GetProcAddress(library, "AllocateUserPhysicalPages");
 	pApplicationRecoveryFinished = (void *)GetProcAddress(library, "ApplicationRecoveryFinished");
 	pApplicationRecoveryInProgress = (void *)GetProcAddress(library, "ApplicationRecoveryInProgress");
@@ -23181,6 +19010,7 @@ void wine_thunk_initialize_kernel32(void)
 	pextAreFileApisANSI = (void *)GetProcAddress(library_kernelbase, "AreFileApisANSI");
 	pAssignProcessToJobObject = (void *)GetProcAddress(library, "AssignProcessToJobObject");
 	pAttachConsole = (void *)GetProcAddress(library, "AttachConsole");
+	pextAttachConsole = (void *)GetProcAddress(library_kernelbase, "AttachConsole");
 	pBackupRead = (void *)GetProcAddress(library, "BackupRead");
 	pBackupSeek = (void *)GetProcAddress(library, "BackupSeek");
 	pBackupWrite = (void *)GetProcAddress(library, "BackupWrite");
@@ -23214,8 +19044,11 @@ void wine_thunk_initialize_kernel32(void)
 	pCheckNameLegalDOS8Dot3A = (void *)GetProcAddress(library, "CheckNameLegalDOS8Dot3A");
 	pCheckNameLegalDOS8Dot3W = (void *)GetProcAddress(library, "CheckNameLegalDOS8Dot3W");
 	pCheckRemoteDebuggerPresent = (void *)GetProcAddress(library, "CheckRemoteDebuggerPresent");
+	pextCheckRemoteDebuggerPresent = (void *)GetProcAddress(library_kernelbase, "CheckRemoteDebuggerPresent");
 	pClearCommBreak = (void *)GetProcAddress(library, "ClearCommBreak");
+	pextClearCommBreak = (void *)GetProcAddress(library_kernelbase, "ClearCommBreak");
 	pClearCommError = (void *)GetProcAddress(library, "ClearCommError");
+	pextClearCommError = (void *)GetProcAddress(library_kernelbase, "ClearCommError");
 	pCloseConsoleHandle = (void *)GetProcAddress(library, "CloseConsoleHandle");
 	pCloseHandle = (void *)GetProcAddress(library, "CloseHandle");
 	pCloseProfileUserMapping = (void *)GetProcAddress(library, "CloseProfileUserMapping");
@@ -23242,6 +19075,7 @@ void wine_thunk_initialize_kernel32(void)
 	pConnectNamedPipe = (void *)GetProcAddress(library, "ConnectNamedPipe");
 	pextConnectNamedPipe = (void *)GetProcAddress(library_kernelbase, "ConnectNamedPipe");
 	pContinueDebugEvent = (void *)GetProcAddress(library, "ContinueDebugEvent");
+	pextContinueDebugEvent = (void *)GetProcAddress(library_kernelbase, "ContinueDebugEvent");
 	pConvertDefaultLocale = (void *)GetProcAddress(library, "ConvertDefaultLocale");
 	pConvertFiberToThread = (void *)GetProcAddress(library, "ConvertFiberToThread");
 	pextConvertFiberToThread = (void *)GetProcAddress(library_kernelbase, "ConvertFiberToThread");
@@ -23258,6 +19092,7 @@ void wine_thunk_initialize_kernel32(void)
 	pCreateActCtxW = (void *)GetProcAddress(library, "CreateActCtxW");
 	pextCreateActCtxW = (void *)GetProcAddress(library_kernelbase, "CreateActCtxW");
 	pCreateConsoleScreenBuffer = (void *)GetProcAddress(library, "CreateConsoleScreenBuffer");
+	pextCreateConsoleScreenBuffer = (void *)GetProcAddress(library_kernelbase, "CreateConsoleScreenBuffer");
 	pCreateDirectoryA = (void *)GetProcAddress(library, "CreateDirectoryA");
 	pextCreateDirectoryA = (void *)GetProcAddress(library_kernelbase, "CreateDirectoryA");
 	pCreateDirectoryExA = (void *)GetProcAddress(library, "CreateDirectoryExA");
@@ -23297,6 +19132,7 @@ void wine_thunk_initialize_kernel32(void)
 	pCreateMailslotA = (void *)GetProcAddress(library, "CreateMailslotA");
 	pCreateMailslotW = (void *)GetProcAddress(library, "CreateMailslotW");
 	pCreateMemoryResourceNotification = (void *)GetProcAddress(library, "CreateMemoryResourceNotification");
+	pextCreateMemoryResourceNotification = (void *)GetProcAddress(library_kernelbase, "CreateMemoryResourceNotification");
 	pCreateMutexA = (void *)GetProcAddress(library, "CreateMutexA");
 	pextCreateMutexA = (void *)GetProcAddress(library_kernelbase, "CreateMutexA");
 	pCreateMutexExA = (void *)GetProcAddress(library, "CreateMutexExA");
@@ -23359,7 +19195,9 @@ void wine_thunk_initialize_kernel32(void)
 	pDeactivateActCtx = (void *)GetProcAddress(library, "DeactivateActCtx");
 	pextDeactivateActCtx = (void *)GetProcAddress(library_kernelbase, "DeactivateActCtx");
 	pDebugActiveProcess = (void *)GetProcAddress(library, "DebugActiveProcess");
+	pextDebugActiveProcess = (void *)GetProcAddress(library_kernelbase, "DebugActiveProcess");
 	pDebugActiveProcessStop = (void *)GetProcAddress(library, "DebugActiveProcessStop");
+	pextDebugActiveProcessStop = (void *)GetProcAddress(library_kernelbase, "DebugActiveProcessStop");
 	pDebugBreakProcess = (void *)GetProcAddress(library, "DebugBreakProcess");
 	pDebugSetProcessKillOnExit = (void *)GetProcAddress(library, "DebugSetProcessKillOnExit");
 	pDecodePointer = (void *)GetProcAddress(library, "DecodePointer");
@@ -23458,57 +19296,31 @@ void wine_thunk_initialize_kernel32(void)
 	pEnterUmsSchedulingMode = (void *)GetProcAddress(library, "EnterUmsSchedulingMode");
 	pEraseTape = (void *)GetProcAddress(library, "EraseTape");
 	pEscapeCommFunction = (void *)GetProcAddress(library, "EscapeCommFunction");
+	pextEscapeCommFunction = (void *)GetProcAddress(library_kernelbase, "EscapeCommFunction");
 	pExecuteUmsThread = (void *)GetProcAddress(library, "ExecuteUmsThread");
 	pExitProcess = (void *)GetProcAddress(library, "ExitProcess");
 	pExitThread = (void *)GetProcAddress(library, "ExitThread");
 	pextExitThread = (void *)GetProcAddress(library_ntdll, "RtlExitUserThread");
 	pExpandEnvironmentStringsA = (void *)GetProcAddress(library, "ExpandEnvironmentStringsA");
+	pextExpandEnvironmentStringsA = (void *)GetProcAddress(library_kernelbase, "ExpandEnvironmentStringsA");
 	pExpandEnvironmentStringsW = (void *)GetProcAddress(library, "ExpandEnvironmentStringsW");
+	pextExpandEnvironmentStringsW = (void *)GetProcAddress(library_kernelbase, "ExpandEnvironmentStringsW");
 	pExpungeConsoleCommandHistoryA = (void *)GetProcAddress(library, "ExpungeConsoleCommandHistoryA");
 	pExpungeConsoleCommandHistoryW = (void *)GetProcAddress(library, "ExpungeConsoleCommandHistoryW");
-	pFT_Exit0 = (void *)GetProcAddress(library, "FT_Exit0");
-	pextFT_Exit0 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pFT_Exit12 = (void *)GetProcAddress(library, "FT_Exit12");
-	pextFT_Exit12 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pFT_Exit16 = (void *)GetProcAddress(library, "FT_Exit16");
-	pextFT_Exit16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pFT_Exit20 = (void *)GetProcAddress(library, "FT_Exit20");
-	pextFT_Exit20 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pFT_Exit24 = (void *)GetProcAddress(library, "FT_Exit24");
-	pextFT_Exit24 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pFT_Exit28 = (void *)GetProcAddress(library, "FT_Exit28");
-	pextFT_Exit28 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pFT_Exit32 = (void *)GetProcAddress(library, "FT_Exit32");
-	pextFT_Exit32 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pFT_Exit36 = (void *)GetProcAddress(library, "FT_Exit36");
-	pextFT_Exit36 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pFT_Exit40 = (void *)GetProcAddress(library, "FT_Exit40");
-	pextFT_Exit40 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pFT_Exit44 = (void *)GetProcAddress(library, "FT_Exit44");
-	pextFT_Exit44 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pFT_Exit48 = (void *)GetProcAddress(library, "FT_Exit48");
-	pextFT_Exit48 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pFT_Exit4 = (void *)GetProcAddress(library, "FT_Exit4");
-	pextFT_Exit4 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pFT_Exit52 = (void *)GetProcAddress(library, "FT_Exit52");
-	pextFT_Exit52 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pFT_Exit56 = (void *)GetProcAddress(library, "FT_Exit56");
-	pextFT_Exit56 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pFT_Exit8 = (void *)GetProcAddress(library, "FT_Exit8");
-	pextFT_Exit8 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pFT_Prolog = (void *)GetProcAddress(library, "FT_Prolog");
-	pextFT_Prolog = (void *)GetProcAddress(library_krnl386, "exe16");
-	pFT_Thunk = (void *)GetProcAddress(library, "FT_Thunk");
-	pextFT_Thunk = (void *)GetProcAddress(library_krnl386, "exe16");
 	pFatalAppExitA = (void *)GetProcAddress(library, "FatalAppExitA");
+	pextFatalAppExitA = (void *)GetProcAddress(library_kernelbase, "FatalAppExitA");
 	pFatalAppExitW = (void *)GetProcAddress(library, "FatalAppExitW");
+	pextFatalAppExitW = (void *)GetProcAddress(library_kernelbase, "FatalAppExitW");
 	pFatalExit = (void *)GetProcAddress(library, "FatalExit");
 	pFileTimeToDosDateTime = (void *)GetProcAddress(library, "FileTimeToDosDateTime");
 	pFileTimeToLocalFileTime = (void *)GetProcAddress(library, "FileTimeToLocalFileTime");
 	pFileTimeToSystemTime = (void *)GetProcAddress(library, "FileTimeToSystemTime");
 	pFillConsoleOutputAttribute = (void *)GetProcAddress(library, "FillConsoleOutputAttribute");
+	pextFillConsoleOutputAttribute = (void *)GetProcAddress(library_kernelbase, "FillConsoleOutputAttribute");
 	pFillConsoleOutputCharacterA = (void *)GetProcAddress(library, "FillConsoleOutputCharacterA");
+	pextFillConsoleOutputCharacterA = (void *)GetProcAddress(library_kernelbase, "FillConsoleOutputCharacterA");
 	pFillConsoleOutputCharacterW = (void *)GetProcAddress(library, "FillConsoleOutputCharacterW");
+	pextFillConsoleOutputCharacterW = (void *)GetProcAddress(library_kernelbase, "FillConsoleOutputCharacterW");
 	pFindActCtxSectionGuid = (void *)GetProcAddress(library, "FindActCtxSectionGuid");
 	pextFindActCtxSectionGuid = (void *)GetProcAddress(library_kernelbase, "FindActCtxSectionGuid");
 	pFindActCtxSectionStringA = (void *)GetProcAddress(library, "FindActCtxSectionStringA");
@@ -23518,8 +19330,11 @@ void wine_thunk_initialize_kernel32(void)
 	pFindAtomW = (void *)GetProcAddress(library, "FindAtomW");
 	pFindClose = (void *)GetProcAddress(library, "FindClose");
 	pFindCloseChangeNotification = (void *)GetProcAddress(library, "FindCloseChangeNotification");
+	pextFindCloseChangeNotification = (void *)GetProcAddress(library_kernelbase, "FindCloseChangeNotification");
 	pFindFirstChangeNotificationA = (void *)GetProcAddress(library, "FindFirstChangeNotificationA");
+	pextFindFirstChangeNotificationA = (void *)GetProcAddress(library_kernelbase, "FindFirstChangeNotificationA");
 	pFindFirstChangeNotificationW = (void *)GetProcAddress(library, "FindFirstChangeNotificationW");
+	pextFindFirstChangeNotificationW = (void *)GetProcAddress(library_kernelbase, "FindFirstChangeNotificationW");
 	pFindFirstFileA = (void *)GetProcAddress(library, "FindFirstFileA");
 	pFindFirstFileExA = (void *)GetProcAddress(library, "FindFirstFileExA");
 	pFindFirstFileExW = (void *)GetProcAddress(library, "FindFirstFileExW");
@@ -23530,6 +19345,7 @@ void wine_thunk_initialize_kernel32(void)
 	pFindFirstVolumeMountPointW = (void *)GetProcAddress(library, "FindFirstVolumeMountPointW");
 	pFindFirstVolumeW = (void *)GetProcAddress(library, "FindFirstVolumeW");
 	pFindNextChangeNotification = (void *)GetProcAddress(library, "FindNextChangeNotification");
+	pextFindNextChangeNotification = (void *)GetProcAddress(library_kernelbase, "FindNextChangeNotification");
 	pFindNextFileA = (void *)GetProcAddress(library, "FindNextFileA");
 	pFindNextFileW = (void *)GetProcAddress(library, "FindNextFileW");
 	pFindNextStreamW = (void *)GetProcAddress(library, "FindNextStreamW");
@@ -23560,25 +19376,25 @@ void wine_thunk_initialize_kernel32(void)
 	pextFlushInstructionCache = (void *)GetProcAddress(library_kernelbase, "FlushInstructionCache");
 	pFlushProcessWriteBuffers = (void *)GetProcAddress(library, "FlushProcessWriteBuffers");
 	pFlushViewOfFile = (void *)GetProcAddress(library, "FlushViewOfFile");
+	pextFlushViewOfFile = (void *)GetProcAddress(library_kernelbase, "FlushViewOfFile");
 	pFoldStringA = (void *)GetProcAddress(library, "FoldStringA");
 	pFoldStringW = (void *)GetProcAddress(library, "FoldStringW");
 	pFormatMessageA = (void *)GetProcAddress(library, "FormatMessageA");
 	pFormatMessageW = (void *)GetProcAddress(library, "FormatMessageW");
 	pFreeConsole = (void *)GetProcAddress(library, "FreeConsole");
 	pFreeEnvironmentStringsA = (void *)GetProcAddress(library, "FreeEnvironmentStringsA");
+	pextFreeEnvironmentStringsA = (void *)GetProcAddress(library_kernelbase, "FreeEnvironmentStringsA");
 	pFreeEnvironmentStringsW = (void *)GetProcAddress(library, "FreeEnvironmentStringsW");
+	pextFreeEnvironmentStringsW = (void *)GetProcAddress(library_kernelbase, "FreeEnvironmentStringsW");
 	pFreeLibrary = (void *)GetProcAddress(library, "FreeLibrary");
 	pFreeLibraryAndExitThread = (void *)GetProcAddress(library, "FreeLibraryAndExitThread");
 	pFreeLibraryWhenCallbackReturns = (void *)GetProcAddress(library, "FreeLibraryWhenCallbackReturns");
 	pextFreeLibraryWhenCallbackReturns = (void *)GetProcAddress(library_ntdll, "TpCallbackUnloadDllOnCompletion");
 	pFreeResource = (void *)GetProcAddress(library, "FreeResource");
 	pextFreeResource = (void *)GetProcAddress(library_kernelbase, "FreeResource");
-	pFreeSLCallback = (void *)GetProcAddress(library, "FreeSLCallback");
-	pextFreeSLCallback = (void *)GetProcAddress(library_krnl386, "exe16");
 	pFreeUserPhysicalPages = (void *)GetProcAddress(library, "FreeUserPhysicalPages");
 	pGenerateConsoleCtrlEvent = (void *)GetProcAddress(library, "GenerateConsoleCtrlEvent");
-	pGet16DLLAddress = (void *)GetProcAddress(library, "Get16DLLAddress");
-	pextGet16DLLAddress = (void *)GetProcAddress(library_krnl386, "exe16");
+	pextGenerateConsoleCtrlEvent = (void *)GetProcAddress(library_kernelbase, "GenerateConsoleCtrlEvent");
 	pGetACP = (void *)GetProcAddress(library, "GetACP");
 	pGetActiveProcessorCount = (void *)GetProcAddress(library, "GetActiveProcessorCount");
 	pGetActiveProcessorGroupCount = (void *)GetProcAddress(library, "GetActiveProcessorGroupCount");
@@ -23594,13 +19410,21 @@ void wine_thunk_initialize_kernel32(void)
 	pGetCalendarInfoW = (void *)GetProcAddress(library, "GetCalendarInfoW");
 	pGetCalendarInfoEx = (void *)GetProcAddress(library, "GetCalendarInfoEx");
 	pGetCommConfig = (void *)GetProcAddress(library, "GetCommConfig");
+	pextGetCommConfig = (void *)GetProcAddress(library_kernelbase, "GetCommConfig");
 	pGetCommMask = (void *)GetProcAddress(library, "GetCommMask");
+	pextGetCommMask = (void *)GetProcAddress(library_kernelbase, "GetCommMask");
 	pGetCommModemStatus = (void *)GetProcAddress(library, "GetCommModemStatus");
+	pextGetCommModemStatus = (void *)GetProcAddress(library_kernelbase, "GetCommModemStatus");
 	pGetCommProperties = (void *)GetProcAddress(library, "GetCommProperties");
+	pextGetCommProperties = (void *)GetProcAddress(library_kernelbase, "GetCommProperties");
 	pGetCommState = (void *)GetProcAddress(library, "GetCommState");
+	pextGetCommState = (void *)GetProcAddress(library_kernelbase, "GetCommState");
 	pGetCommTimeouts = (void *)GetProcAddress(library, "GetCommTimeouts");
+	pextGetCommTimeouts = (void *)GetProcAddress(library_kernelbase, "GetCommTimeouts");
 	pGetCommandLineA = (void *)GetProcAddress(library, "GetCommandLineA");
+	pextGetCommandLineA = (void *)GetProcAddress(library_kernelbase, "GetCommandLineA");
 	pGetCommandLineW = (void *)GetProcAddress(library, "GetCommandLineW");
+	pextGetCommandLineW = (void *)GetProcAddress(library_kernelbase, "GetCommandLineW");
 	pGetCompressedFileSizeA = (void *)GetProcAddress(library, "GetCompressedFileSizeA");
 	pextGetCompressedFileSizeA = (void *)GetProcAddress(library_kernelbase, "GetCompressedFileSizeA");
 	pGetCompressedFileSizeW = (void *)GetProcAddress(library, "GetCompressedFileSizeW");
@@ -23615,26 +19439,35 @@ void wine_thunk_initialize_kernel32(void)
 	pGetConsoleAliasesLengthA = (void *)GetProcAddress(library, "GetConsoleAliasesLengthA");
 	pGetConsoleAliasesLengthW = (void *)GetProcAddress(library, "GetConsoleAliasesLengthW");
 	pGetConsoleCP = (void *)GetProcAddress(library, "GetConsoleCP");
+	pextGetConsoleCP = (void *)GetProcAddress(library_kernelbase, "GetConsoleCP");
 	pGetConsoleCommandHistoryA = (void *)GetProcAddress(library, "GetConsoleCommandHistoryA");
 	pGetConsoleCommandHistoryLengthA = (void *)GetProcAddress(library, "GetConsoleCommandHistoryLengthA");
 	pGetConsoleCommandHistoryLengthW = (void *)GetProcAddress(library, "GetConsoleCommandHistoryLengthW");
 	pGetConsoleCommandHistoryW = (void *)GetProcAddress(library, "GetConsoleCommandHistoryW");
 	pGetConsoleCursorInfo = (void *)GetProcAddress(library, "GetConsoleCursorInfo");
+	pextGetConsoleCursorInfo = (void *)GetProcAddress(library_kernelbase, "GetConsoleCursorInfo");
 	pGetConsoleDisplayMode = (void *)GetProcAddress(library, "GetConsoleDisplayMode");
 	pGetConsoleFontInfo = (void *)GetProcAddress(library, "GetConsoleFontInfo");
 	pGetConsoleFontSize = (void *)GetProcAddress(library, "GetConsoleFontSize");
 	pGetConsoleInputExeNameA = (void *)GetProcAddress(library, "GetConsoleInputExeNameA");
+	pextGetConsoleInputExeNameA = (void *)GetProcAddress(library_kernelbase, "GetConsoleInputExeNameA");
 	pGetConsoleInputExeNameW = (void *)GetProcAddress(library, "GetConsoleInputExeNameW");
+	pextGetConsoleInputExeNameW = (void *)GetProcAddress(library_kernelbase, "GetConsoleInputExeNameW");
 	pGetConsoleInputWaitHandle = (void *)GetProcAddress(library, "GetConsoleInputWaitHandle");
 	pGetConsoleKeyboardLayoutNameA = (void *)GetProcAddress(library, "GetConsoleKeyboardLayoutNameA");
 	pGetConsoleKeyboardLayoutNameW = (void *)GetProcAddress(library, "GetConsoleKeyboardLayoutNameW");
 	pGetConsoleMode = (void *)GetProcAddress(library, "GetConsoleMode");
+	pextGetConsoleMode = (void *)GetProcAddress(library_kernelbase, "GetConsoleMode");
 	pGetConsoleOutputCP = (void *)GetProcAddress(library, "GetConsoleOutputCP");
+	pextGetConsoleOutputCP = (void *)GetProcAddress(library_kernelbase, "GetConsoleOutputCP");
 	pGetConsoleProcessList = (void *)GetProcAddress(library, "GetConsoleProcessList");
 	pGetConsoleScreenBufferInfo = (void *)GetProcAddress(library, "GetConsoleScreenBufferInfo");
+	pextGetConsoleScreenBufferInfo = (void *)GetProcAddress(library_kernelbase, "GetConsoleScreenBufferInfo");
 	pGetConsoleScreenBufferInfoEx = (void *)GetProcAddress(library, "GetConsoleScreenBufferInfoEx");
+	pextGetConsoleScreenBufferInfoEx = (void *)GetProcAddress(library_kernelbase, "GetConsoleScreenBufferInfoEx");
 	pGetConsoleTitleA = (void *)GetProcAddress(library, "GetConsoleTitleA");
 	pGetConsoleTitleW = (void *)GetProcAddress(library, "GetConsoleTitleW");
+	pextGetConsoleTitleW = (void *)GetProcAddress(library_kernelbase, "GetConsoleTitleW");
 	pGetConsoleWindow = (void *)GetProcAddress(library, "GetConsoleWindow");
 	pGetCurrencyFormatA = (void *)GetProcAddress(library, "GetCurrencyFormatA");
 	pGetCurrencyFormatEx = (void *)GetProcAddress(library, "GetCurrencyFormatEx");
@@ -23676,10 +19509,16 @@ void wine_thunk_initialize_kernel32(void)
 	pGetDynamicTimeZoneInformation = (void *)GetProcAddress(library, "GetDynamicTimeZoneInformation");
 	pGetDynamicTimeZoneInformationEffectiveYears = (void *)GetProcAddress(library, "GetDynamicTimeZoneInformationEffectiveYears");
 	pGetEnabledXStateFeatures = (void *)GetProcAddress(library, "GetEnabledXStateFeatures");
+	pGetEnvironmentStrings = (void *)GetProcAddress(library, "GetEnvironmentStrings");
+	pextGetEnvironmentStrings = (void *)GetProcAddress(library_kernelbase, "GetEnvironmentStrings");
 	pGetEnvironmentStringsA = (void *)GetProcAddress(library, "GetEnvironmentStringsA");
+	pextGetEnvironmentStringsA = (void *)GetProcAddress(library_kernelbase, "GetEnvironmentStringsA");
 	pGetEnvironmentStringsW = (void *)GetProcAddress(library, "GetEnvironmentStringsW");
+	pextGetEnvironmentStringsW = (void *)GetProcAddress(library_kernelbase, "GetEnvironmentStringsW");
 	pGetEnvironmentVariableA = (void *)GetProcAddress(library, "GetEnvironmentVariableA");
+	pextGetEnvironmentVariableA = (void *)GetProcAddress(library_kernelbase, "GetEnvironmentVariableA");
 	pGetEnvironmentVariableW = (void *)GetProcAddress(library, "GetEnvironmentVariableW");
+	pextGetEnvironmentVariableW = (void *)GetProcAddress(library_kernelbase, "GetEnvironmentVariableW");
 	pGetErrorMode = (void *)GetProcAddress(library, "GetErrorMode");
 	pextGetErrorMode = (void *)GetProcAddress(library_kernelbase, "GetErrorMode");
 	pGetExitCodeProcess = (void *)GetProcAddress(library, "GetExitCodeProcess");
@@ -23721,6 +19560,7 @@ void wine_thunk_initialize_kernel32(void)
 	pGetHandleInformation = (void *)GetProcAddress(library, "GetHandleInformation");
 	pGetLargePageMinimum = (void *)GetProcAddress(library, "GetLargePageMinimum");
 	pGetLargestConsoleWindowSize = (void *)GetProcAddress(library, "GetLargestConsoleWindowSize");
+	pextGetLargestConsoleWindowSize = (void *)GetProcAddress(library_kernelbase, "GetLargestConsoleWindowSize");
 	pGetLastError = (void *)GetProcAddress(library, "GetLastError");
 	pextGetLastError = (void *)GetProcAddress(library_kernelbase, "GetLastError");
 	pGetLocalTime = (void *)GetProcAddress(library, "GetLocalTime");
@@ -23772,6 +19612,7 @@ void wine_thunk_initialize_kernel32(void)
 	pGetNumberFormatW = (void *)GetProcAddress(library, "GetNumberFormatW");
 	pGetNumberOfConsoleFonts = (void *)GetProcAddress(library, "GetNumberOfConsoleFonts");
 	pGetNumberOfConsoleInputEvents = (void *)GetProcAddress(library, "GetNumberOfConsoleInputEvents");
+	pextGetNumberOfConsoleInputEvents = (void *)GetProcAddress(library_kernelbase, "GetNumberOfConsoleInputEvents");
 	pGetNumberOfConsoleMouseButtons = (void *)GetProcAddress(library, "GetNumberOfConsoleMouseButtons");
 	pGetOEMCP = (void *)GetProcAddress(library, "GetOEMCP");
 	pGetOverlappedResult = (void *)GetProcAddress(library, "GetOverlappedResult");
@@ -23831,7 +19672,9 @@ void wine_thunk_initialize_kernel32(void)
 	pGetShortPathNameW = (void *)GetProcAddress(library, "GetShortPathNameW");
 	pGetStartupInfoA = (void *)GetProcAddress(library, "GetStartupInfoA");
 	pGetStartupInfoW = (void *)GetProcAddress(library, "GetStartupInfoW");
+	pextGetStartupInfoW = (void *)GetProcAddress(library_kernelbase, "GetStartupInfoW");
 	pGetStdHandle = (void *)GetProcAddress(library, "GetStdHandle");
+	pextGetStdHandle = (void *)GetProcAddress(library_kernelbase, "GetStdHandle");
 	pGetStringTypeA = (void *)GetProcAddress(library, "GetStringTypeA");
 	pGetStringTypeExA = (void *)GetProcAddress(library, "GetStringTypeExA");
 	pGetStringTypeExW = (void *)GetProcAddress(library, "GetStringTypeExW");
@@ -23903,8 +19746,11 @@ void wine_thunk_initialize_kernel32(void)
 	pGetUserDefaultUILanguage = (void *)GetProcAddress(library, "GetUserDefaultUILanguage");
 	pGetUserGeoID = (void *)GetProcAddress(library, "GetUserGeoID");
 	pGetVersion = (void *)GetProcAddress(library, "GetVersion");
+	pextGetVersion = (void *)GetProcAddress(library_kernelbase, "GetVersion");
 	pGetVersionExA = (void *)GetProcAddress(library, "GetVersionExA");
+	pextGetVersionExA = (void *)GetProcAddress(library_kernelbase, "GetVersionExA");
 	pGetVersionExW = (void *)GetProcAddress(library, "GetVersionExW");
+	pextGetVersionExW = (void *)GetProcAddress(library_kernelbase, "GetVersionExW");
 	pGetVolumeInformationA = (void *)GetProcAddress(library, "GetVolumeInformationA");
 	pGetVolumeInformationByHandleW = (void *)GetProcAddress(library, "GetVolumeInformationByHandleW");
 	pGetVolumeInformationW = (void *)GetProcAddress(library, "GetVolumeInformationW");
@@ -23919,9 +19765,11 @@ void wine_thunk_initialize_kernel32(void)
 	pGetWindowsDirectoryW = (void *)GetProcAddress(library, "GetWindowsDirectoryW");
 	pextGetWindowsDirectoryW = (void *)GetProcAddress(library_kernelbase, "GetWindowsDirectoryW");
 	pGetWriteWatch = (void *)GetProcAddress(library, "GetWriteWatch");
+	pextGetWriteWatch = (void *)GetProcAddress(library_kernelbase, "GetWriteWatch");
 	pGlobalAddAtomA = (void *)GetProcAddress(library, "GlobalAddAtomA");
 	pGlobalAddAtomW = (void *)GetProcAddress(library, "GlobalAddAtomW");
 	pGlobalAlloc = (void *)GetProcAddress(library, "GlobalAlloc");
+	pextGlobalAlloc = (void *)GetProcAddress(library_kernelbase, "GlobalAlloc");
 	pGlobalCompact = (void *)GetProcAddress(library, "GlobalCompact");
 	pGlobalDeleteAtom = (void *)GetProcAddress(library, "GlobalDeleteAtom");
 	pGlobalFindAtomA = (void *)GetProcAddress(library, "GlobalFindAtomA");
@@ -23929,6 +19777,7 @@ void wine_thunk_initialize_kernel32(void)
 	pGlobalFix = (void *)GetProcAddress(library, "GlobalFix");
 	pGlobalFlags = (void *)GetProcAddress(library, "GlobalFlags");
 	pGlobalFree = (void *)GetProcAddress(library, "GlobalFree");
+	pextGlobalFree = (void *)GetProcAddress(library_kernelbase, "GlobalFree");
 	pGlobalGetAtomNameA = (void *)GetProcAddress(library, "GlobalGetAtomNameA");
 	pGlobalGetAtomNameW = (void *)GetProcAddress(library, "GlobalGetAtomNameW");
 	pGlobalHandle = (void *)GetProcAddress(library, "GlobalHandle");
@@ -23945,27 +19794,36 @@ void wine_thunk_initialize_kernel32(void)
 	pHeapAlloc = (void *)GetProcAddress(library, "HeapAlloc");
 	pextHeapAlloc = (void *)GetProcAddress(library_ntdll, "RtlAllocateHeap");
 	pHeapCompact = (void *)GetProcAddress(library, "HeapCompact");
+	pextHeapCompact = (void *)GetProcAddress(library_kernelbase, "HeapCompact");
 	pHeapCreate = (void *)GetProcAddress(library, "HeapCreate");
 	pHeapDestroy = (void *)GetProcAddress(library, "HeapDestroy");
 	pHeapFree = (void *)GetProcAddress(library, "HeapFree");
-	pextHeapFree = (void *)GetProcAddress(library_ntdll, "RtlFreeHeap");
 	pHeapLock = (void *)GetProcAddress(library, "HeapLock");
+	pextHeapLock = (void *)GetProcAddress(library_kernelbase, "HeapLock");
 	pHeapQueryInformation = (void *)GetProcAddress(library, "HeapQueryInformation");
+	pextHeapQueryInformation = (void *)GetProcAddress(library_kernelbase, "HeapQueryInformation");
 	pHeapReAlloc = (void *)GetProcAddress(library, "HeapReAlloc");
 	pextHeapReAlloc = (void *)GetProcAddress(library_ntdll, "RtlReAllocateHeap");
 	pHeapSetInformation = (void *)GetProcAddress(library, "HeapSetInformation");
+	pextHeapSetInformation = (void *)GetProcAddress(library_kernelbase, "HeapSetInformation");
 	pHeapSize = (void *)GetProcAddress(library, "HeapSize");
 	pextHeapSize = (void *)GetProcAddress(library_ntdll, "RtlSizeHeap");
 	pHeapUnlock = (void *)GetProcAddress(library, "HeapUnlock");
+	pextHeapUnlock = (void *)GetProcAddress(library_kernelbase, "HeapUnlock");
 	pHeapValidate = (void *)GetProcAddress(library, "HeapValidate");
+	pextHeapValidate = (void *)GetProcAddress(library_kernelbase, "HeapValidate");
 	pHeapWalk = (void *)GetProcAddress(library, "HeapWalk");
+	pextHeapWalk = (void *)GetProcAddress(library_kernelbase, "HeapWalk");
 	pIdnToAscii = (void *)GetProcAddress(library, "IdnToAscii");
 	pIdnToNameprepUnicode = (void *)GetProcAddress(library, "IdnToNameprepUnicode");
 	pIdnToUnicode = (void *)GetProcAddress(library, "IdnToUnicode");
 	pInitAtomTable = (void *)GetProcAddress(library, "InitAtomTable");
 	pInitOnceBeginInitialize = (void *)GetProcAddress(library, "InitOnceBeginInitialize");
+	pextInitOnceBeginInitialize = (void *)GetProcAddress(library_kernelbase, "InitOnceBeginInitialize");
 	pInitOnceComplete = (void *)GetProcAddress(library, "InitOnceComplete");
+	pextInitOnceComplete = (void *)GetProcAddress(library_kernelbase, "InitOnceComplete");
 	pInitOnceExecuteOnce = (void *)GetProcAddress(library, "InitOnceExecuteOnce");
+	pextInitOnceExecuteOnce = (void *)GetProcAddress(library_kernelbase, "InitOnceExecuteOnce");
 	pInitOnceInitialize = (void *)GetProcAddress(library, "InitOnceInitialize");
 	pextInitOnceInitialize = (void *)GetProcAddress(library_ntdll, "RtlRunOnceInitialize");
 	pInitializeConditionVariable = (void *)GetProcAddress(library, "InitializeConditionVariable");
@@ -24005,6 +19863,7 @@ void wine_thunk_initialize_kernel32(void)
 	pIsDBCSLeadByte = (void *)GetProcAddress(library, "IsDBCSLeadByte");
 	pIsDBCSLeadByteEx = (void *)GetProcAddress(library, "IsDBCSLeadByteEx");
 	pIsDebuggerPresent = (void *)GetProcAddress(library, "IsDebuggerPresent");
+	pextIsDebuggerPresent = (void *)GetProcAddress(library_kernelbase, "IsDebuggerPresent");
 	pIsNormalizedString = (void *)GetProcAddress(library, "IsNormalizedString");
 	pIsProcessInJob = (void *)GetProcAddress(library, "IsProcessInJob");
 	pIsProcessorFeaturePresent = (void *)GetProcAddress(library, "IsProcessorFeaturePresent");
@@ -24046,10 +19905,6 @@ void wine_thunk_initialize_kernel32(void)
 	pK32InitializeProcessForWsWatch = (void *)GetProcAddress(library, "K32InitializeProcessForWsWatch");
 	pK32QueryWorkingSet = (void *)GetProcAddress(library, "K32QueryWorkingSet");
 	pK32QueryWorkingSetEx = (void *)GetProcAddress(library, "K32QueryWorkingSetEx");
-	pK32Thk1632Epilog = (void *)GetProcAddress(library, "K32Thk1632Epilog");
-	pextK32Thk1632Epilog = (void *)GetProcAddress(library_krnl386, "exe16");
-	pK32Thk1632Prolog = (void *)GetProcAddress(library, "K32Thk1632Prolog");
-	pextK32Thk1632Prolog = (void *)GetProcAddress(library_krnl386, "exe16");
 	pLCIDToLocaleName = (void *)GetProcAddress(library, "LCIDToLocaleName");
 	pLCMapStringA = (void *)GetProcAddress(library, "LCMapStringA");
 	pLCMapStringEx = (void *)GetProcAddress(library, "LCMapStringEx");
@@ -24075,16 +19930,21 @@ void wine_thunk_initialize_kernel32(void)
 	pLoadResource = (void *)GetProcAddress(library, "LoadResource");
 	pextLoadResource = (void *)GetProcAddress(library_kernelbase, "LoadResource");
 	pLocalAlloc = (void *)GetProcAddress(library, "LocalAlloc");
+	pextLocalAlloc = (void *)GetProcAddress(library_kernelbase, "LocalAlloc");
 	pLocalCompact = (void *)GetProcAddress(library, "LocalCompact");
 	pLocalFileTimeToFileTime = (void *)GetProcAddress(library, "LocalFileTimeToFileTime");
 	pLocalFlags = (void *)GetProcAddress(library, "LocalFlags");
 	pLocalFree = (void *)GetProcAddress(library, "LocalFree");
+	pextLocalFree = (void *)GetProcAddress(library_kernelbase, "LocalFree");
 	pLocalHandle = (void *)GetProcAddress(library, "LocalHandle");
 	pLocalLock = (void *)GetProcAddress(library, "LocalLock");
+	pextLocalLock = (void *)GetProcAddress(library_kernelbase, "LocalLock");
 	pLocalReAlloc = (void *)GetProcAddress(library, "LocalReAlloc");
+	pextLocalReAlloc = (void *)GetProcAddress(library_kernelbase, "LocalReAlloc");
 	pLocalShrink = (void *)GetProcAddress(library, "LocalShrink");
 	pLocalSize = (void *)GetProcAddress(library, "LocalSize");
 	pLocalUnlock = (void *)GetProcAddress(library, "LocalUnlock");
+	pextLocalUnlock = (void *)GetProcAddress(library_kernelbase, "LocalUnlock");
 	pLocaleNameToLCID = (void *)GetProcAddress(library, "LocaleNameToLCID");
 	pLockFile = (void *)GetProcAddress(library, "LockFile");
 	pextLockFile = (void *)GetProcAddress(library_kernelbase, "LockFile");
@@ -24093,27 +19953,13 @@ void wine_thunk_initialize_kernel32(void)
 	pLockResource = (void *)GetProcAddress(library, "LockResource");
 	pextLockResource = (void *)GetProcAddress(library_kernelbase, "LockResource");
 	pMakeCriticalSectionGlobal = (void *)GetProcAddress(library, "MakeCriticalSectionGlobal");
-	pMapHInstLS = (void *)GetProcAddress(library, "MapHInstLS");
-	pextMapHInstLS = (void *)GetProcAddress(library_krnl386, "exe16");
-	pMapHInstLS_PN = (void *)GetProcAddress(library, "MapHInstLS_PN");
-	pextMapHInstLS_PN = (void *)GetProcAddress(library_krnl386, "exe16");
-	pMapHInstSL = (void *)GetProcAddress(library, "MapHInstSL");
-	pextMapHInstSL = (void *)GetProcAddress(library_krnl386, "exe16");
-	pMapHInstSL_PN = (void *)GetProcAddress(library, "MapHInstSL_PN");
-	pextMapHInstSL_PN = (void *)GetProcAddress(library_krnl386, "exe16");
-	pMapHModuleLS = (void *)GetProcAddress(library, "MapHModuleLS");
-	pextMapHModuleLS = (void *)GetProcAddress(library_krnl386, "exe16");
-	pMapHModuleSL = (void *)GetProcAddress(library, "MapHModuleSL");
-	pextMapHModuleSL = (void *)GetProcAddress(library_krnl386, "exe16");
-	pMapLS = (void *)GetProcAddress(library, "MapLS");
-	pextMapLS = (void *)GetProcAddress(library_krnl386, "exe16");
-	pMapSL = (void *)GetProcAddress(library, "MapSL");
-	pextMapSL = (void *)GetProcAddress(library_krnl386, "exe16");
-	pMapSLFix = (void *)GetProcAddress(library, "MapSLFix");
-	pextMapSLFix = (void *)GetProcAddress(library_krnl386, "exe16");
 	pMapUserPhysicalPages = (void *)GetProcAddress(library, "MapUserPhysicalPages");
 	pMapViewOfFile = (void *)GetProcAddress(library, "MapViewOfFile");
+	pextMapViewOfFile = (void *)GetProcAddress(library_kernelbase, "MapViewOfFile");
 	pMapViewOfFileEx = (void *)GetProcAddress(library, "MapViewOfFileEx");
+	pextMapViewOfFileEx = (void *)GetProcAddress(library_kernelbase, "MapViewOfFileEx");
+	pMapViewOfFileExNuma = (void *)GetProcAddress(library, "MapViewOfFileExNuma");
+	pextMapViewOfFileExNuma = (void *)GetProcAddress(library_kernelbase, "MapViewOfFileExNuma");
 	pModule32First = (void *)GetProcAddress(library, "Module32First");
 	pModule32FirstW = (void *)GetProcAddress(library, "Module32FirstW");
 	pModule32Next = (void *)GetProcAddress(library, "Module32Next");
@@ -24160,9 +20006,13 @@ void wine_thunk_initialize_kernel32(void)
 	pOpenWaitableTimerW = (void *)GetProcAddress(library, "OpenWaitableTimerW");
 	pextOpenWaitableTimerW = (void *)GetProcAddress(library_kernelbase, "OpenWaitableTimerW");
 	pOutputDebugStringA = (void *)GetProcAddress(library, "OutputDebugStringA");
+	pextOutputDebugStringA = (void *)GetProcAddress(library_kernelbase, "OutputDebugStringA");
 	pOutputDebugStringW = (void *)GetProcAddress(library, "OutputDebugStringW");
+	pextOutputDebugStringW = (void *)GetProcAddress(library_kernelbase, "OutputDebugStringW");
 	pPeekConsoleInputA = (void *)GetProcAddress(library, "PeekConsoleInputA");
+	pextPeekConsoleInputA = (void *)GetProcAddress(library_kernelbase, "PeekConsoleInputA");
 	pPeekConsoleInputW = (void *)GetProcAddress(library, "PeekConsoleInputW");
+	pextPeekConsoleInputW = (void *)GetProcAddress(library_kernelbase, "PeekConsoleInputW");
 	pPeekNamedPipe = (void *)GetProcAddress(library, "PeekNamedPipe");
 	pextPeekNamedPipe = (void *)GetProcAddress(library_kernelbase, "PeekNamedPipe");
 	pPostQueuedCompletionStatus = (void *)GetProcAddress(library, "PostQueuedCompletionStatus");
@@ -24171,10 +20021,6 @@ void wine_thunk_initialize_kernel32(void)
 	pPowerCreateRequest = (void *)GetProcAddress(library, "PowerCreateRequest");
 	pPowerSetRequest = (void *)GetProcAddress(library, "PowerSetRequest");
 	pPrepareTape = (void *)GetProcAddress(library, "PrepareTape");
-	pPrivateFreeLibrary = (void *)GetProcAddress(library, "PrivateFreeLibrary");
-	pextPrivateFreeLibrary = (void *)GetProcAddress(library_krnl386, "exe16");
-	pPrivateLoadLibrary = (void *)GetProcAddress(library, "PrivateLoadLibrary");
-	pextPrivateLoadLibrary = (void *)GetProcAddress(library_krnl386, "exe16");
 	pProcess32First = (void *)GetProcAddress(library, "Process32First");
 	pProcess32FirstW = (void *)GetProcAddress(library, "Process32FirstW");
 	pProcess32Next = (void *)GetProcAddress(library, "Process32Next");
@@ -24183,8 +20029,7 @@ void wine_thunk_initialize_kernel32(void)
 	pPulseEvent = (void *)GetProcAddress(library, "PulseEvent");
 	pextPulseEvent = (void *)GetProcAddress(library_kernelbase, "PulseEvent");
 	pPurgeComm = (void *)GetProcAddress(library, "PurgeComm");
-	pQT_Thunk = (void *)GetProcAddress(library, "QT_Thunk");
-	pextQT_Thunk = (void *)GetProcAddress(library_krnl386, "exe16");
+	pextPurgeComm = (void *)GetProcAddress(library_kernelbase, "PurgeComm");
 	pQueryActCtxSettingsW = (void *)GetProcAddress(library, "QueryActCtxSettingsW");
 	pextQueryActCtxSettingsW = (void *)GetProcAddress(library_kernelbase, "QueryActCtxSettingsW");
 	pQueryActCtxW = (void *)GetProcAddress(library, "QueryActCtxW");
@@ -24197,8 +20042,11 @@ void wine_thunk_initialize_kernel32(void)
 	pQueryFullProcessImageNameW = (void *)GetProcAddress(library, "QueryFullProcessImageNameW");
 	pQueryInformationJobObject = (void *)GetProcAddress(library, "QueryInformationJobObject");
 	pQueryMemoryResourceNotification = (void *)GetProcAddress(library, "QueryMemoryResourceNotification");
+	pextQueryMemoryResourceNotification = (void *)GetProcAddress(library_kernelbase, "QueryMemoryResourceNotification");
 	pQueryPerformanceCounter = (void *)GetProcAddress(library, "QueryPerformanceCounter");
+	pextQueryPerformanceCounter = (void *)GetProcAddress(library_kernelbase, "QueryPerformanceCounter");
 	pQueryPerformanceFrequency = (void *)GetProcAddress(library, "QueryPerformanceFrequency");
+	pextQueryPerformanceFrequency = (void *)GetProcAddress(library_kernelbase, "QueryPerformanceFrequency");
 	pQueryProcessCycleTime = (void *)GetProcAddress(library, "QueryProcessCycleTime");
 	pQueryThreadCycleTime = (void *)GetProcAddress(library, "QueryThreadCycleTime");
 	pQueryUmsThreadInformation = (void *)GetProcAddress(library, "QueryUmsThreadInformation");
@@ -24208,16 +20056,25 @@ void wine_thunk_initialize_kernel32(void)
 	pQueueUserWorkItem = (void *)GetProcAddress(library, "QueueUserWorkItem");
 	pextQueueUserWorkItem = (void *)GetProcAddress(library_kernelbase, "QueueUserWorkItem");
 	pRaiseException = (void *)GetProcAddress(library, "RaiseException");
+	pextRaiseException = (void *)GetProcAddress(library_kernelbase, "RaiseException");
 	pReadConsoleA = (void *)GetProcAddress(library, "ReadConsoleA");
+	pextReadConsoleA = (void *)GetProcAddress(library_kernelbase, "ReadConsoleA");
 	pReadConsoleInputA = (void *)GetProcAddress(library, "ReadConsoleInputA");
+	pextReadConsoleInputA = (void *)GetProcAddress(library_kernelbase, "ReadConsoleInputA");
 	pReadConsoleInputW = (void *)GetProcAddress(library, "ReadConsoleInputW");
 	pReadConsoleOutputA = (void *)GetProcAddress(library, "ReadConsoleOutputA");
+	pextReadConsoleOutputA = (void *)GetProcAddress(library_kernelbase, "ReadConsoleOutputA");
 	pReadConsoleOutputAttribute = (void *)GetProcAddress(library, "ReadConsoleOutputAttribute");
+	pextReadConsoleOutputAttribute = (void *)GetProcAddress(library_kernelbase, "ReadConsoleOutputAttribute");
 	pReadConsoleOutputCharacterA = (void *)GetProcAddress(library, "ReadConsoleOutputCharacterA");
+	pextReadConsoleOutputCharacterA = (void *)GetProcAddress(library_kernelbase, "ReadConsoleOutputCharacterA");
 	pReadConsoleOutputCharacterW = (void *)GetProcAddress(library, "ReadConsoleOutputCharacterW");
+	pextReadConsoleOutputCharacterW = (void *)GetProcAddress(library_kernelbase, "ReadConsoleOutputCharacterW");
 	pReadConsoleOutputW = (void *)GetProcAddress(library, "ReadConsoleOutputW");
+	pextReadConsoleOutputW = (void *)GetProcAddress(library_kernelbase, "ReadConsoleOutputW");
 	pReadConsoleW = (void *)GetProcAddress(library, "ReadConsoleW");
 	pReadDirectoryChangesW = (void *)GetProcAddress(library, "ReadDirectoryChangesW");
+	pextReadDirectoryChangesW = (void *)GetProcAddress(library_kernelbase, "ReadDirectoryChangesW");
 	pReadFile = (void *)GetProcAddress(library, "ReadFile");
 	pextReadFile = (void *)GetProcAddress(library_kernelbase, "ReadFile");
 	pReadFileEx = (void *)GetProcAddress(library, "ReadFileEx");
@@ -24225,80 +20082,7 @@ void wine_thunk_initialize_kernel32(void)
 	pReadFileScatter = (void *)GetProcAddress(library, "ReadFileScatter");
 	pextReadFileScatter = (void *)GetProcAddress(library_kernelbase, "ReadFileScatter");
 	pReadProcessMemory = (void *)GetProcAddress(library, "ReadProcessMemory");
-	pRegCloseKey = (void *)GetProcAddress(library, "RegCloseKey");
-	pextRegCloseKey = (void *)GetProcAddress(library_advapi32, "RegCloseKey");
-	pRegCreateKeyExA = (void *)GetProcAddress(library, "RegCreateKeyExA");
-	pextRegCreateKeyExA = (void *)GetProcAddress(library_advapi32, "RegCreateKeyExA");
-	pRegCreateKeyExW = (void *)GetProcAddress(library, "RegCreateKeyExW");
-	pextRegCreateKeyExW = (void *)GetProcAddress(library_advapi32, "RegCreateKeyExW");
-	pRegDeleteKeyExA = (void *)GetProcAddress(library, "RegDeleteKeyExA");
-	pextRegDeleteKeyExA = (void *)GetProcAddress(library_advapi32, "RegDeleteKeyExA");
-	pRegDeleteKeyExW = (void *)GetProcAddress(library, "RegDeleteKeyExW");
-	pextRegDeleteKeyExW = (void *)GetProcAddress(library_advapi32, "RegDeleteKeyExW");
-	pRegDeleteTreeA = (void *)GetProcAddress(library, "RegDeleteTreeA");
-	pextRegDeleteTreeA = (void *)GetProcAddress(library_advapi32, "RegDeleteTreeA");
-	pRegDeleteTreeW = (void *)GetProcAddress(library, "RegDeleteTreeW");
-	pextRegDeleteTreeW = (void *)GetProcAddress(library_advapi32, "RegDeleteTreeW");
-	pRegDeleteValueA = (void *)GetProcAddress(library, "RegDeleteValueA");
-	pextRegDeleteValueA = (void *)GetProcAddress(library_advapi32, "RegDeleteValueA");
-	pRegDeleteValueW = (void *)GetProcAddress(library, "RegDeleteValueW");
-	pextRegDeleteValueW = (void *)GetProcAddress(library_advapi32, "RegDeleteValueW");
-	pRegEnumKeyExA = (void *)GetProcAddress(library, "RegEnumKeyExA");
-	pextRegEnumKeyExA = (void *)GetProcAddress(library_advapi32, "RegEnumKeyExA");
-	pRegEnumKeyExW = (void *)GetProcAddress(library, "RegEnumKeyExW");
-	pextRegEnumKeyExW = (void *)GetProcAddress(library_advapi32, "RegEnumKeyExW");
-	pRegEnumValueA = (void *)GetProcAddress(library, "RegEnumValueA");
-	pextRegEnumValueA = (void *)GetProcAddress(library_advapi32, "RegEnumValueA");
-	pRegEnumValueW = (void *)GetProcAddress(library, "RegEnumValueW");
-	pextRegEnumValueW = (void *)GetProcAddress(library_advapi32, "RegEnumValueW");
-	pRegFlushKey = (void *)GetProcAddress(library, "RegFlushKey");
-	pextRegFlushKey = (void *)GetProcAddress(library_advapi32, "RegFlushKey");
-	pRegGetKeySecurity = (void *)GetProcAddress(library, "RegGetKeySecurity");
-	pextRegGetKeySecurity = (void *)GetProcAddress(library_advapi32, "RegGetKeySecurity");
-	pRegGetValueA = (void *)GetProcAddress(library, "RegGetValueA");
-	pextRegGetValueA = (void *)GetProcAddress(library_advapi32, "RegGetValueA");
-	pRegGetValueW = (void *)GetProcAddress(library, "RegGetValueW");
-	pextRegGetValueW = (void *)GetProcAddress(library_advapi32, "RegGetValueW");
-	pRegLoadKeyA = (void *)GetProcAddress(library, "RegLoadKeyA");
-	pextRegLoadKeyA = (void *)GetProcAddress(library_advapi32, "RegLoadKeyA");
-	pRegLoadKeyW = (void *)GetProcAddress(library, "RegLoadKeyW");
-	pextRegLoadKeyW = (void *)GetProcAddress(library_advapi32, "RegLoadKeyW");
-	pRegLoadMUIStringA = (void *)GetProcAddress(library, "RegLoadMUIStringA");
-	pextRegLoadMUIStringA = (void *)GetProcAddress(library_advapi32, "RegLoadMUIStringA");
-	pRegLoadMUIStringW = (void *)GetProcAddress(library, "RegLoadMUIStringW");
-	pextRegLoadMUIStringW = (void *)GetProcAddress(library_advapi32, "RegLoadMUIStringW");
-	pRegNotifyChangeKeyValue = (void *)GetProcAddress(library, "RegNotifyChangeKeyValue");
-	pextRegNotifyChangeKeyValue = (void *)GetProcAddress(library_advapi32, "RegNotifyChangeKeyValue");
-	pRegOpenCurrentUser = (void *)GetProcAddress(library, "RegOpenCurrentUser");
-	pextRegOpenCurrentUser = (void *)GetProcAddress(library_advapi32, "RegOpenCurrentUser");
-	pRegOpenKeyExA = (void *)GetProcAddress(library, "RegOpenKeyExA");
-	pextRegOpenKeyExA = (void *)GetProcAddress(library_advapi32, "RegOpenKeyExA");
-	pRegOpenKeyExW = (void *)GetProcAddress(library, "RegOpenKeyExW");
-	pextRegOpenKeyExW = (void *)GetProcAddress(library_advapi32, "RegOpenKeyExW");
-	pRegOpenUserClassesRoot = (void *)GetProcAddress(library, "RegOpenUserClassesRoot");
-	pextRegOpenUserClassesRoot = (void *)GetProcAddress(library_advapi32, "RegOpenUserClassesRoot");
-	pRegQueryInfoKeyA = (void *)GetProcAddress(library, "RegQueryInfoKeyA");
-	pextRegQueryInfoKeyA = (void *)GetProcAddress(library_advapi32, "RegQueryInfoKeyA");
-	pRegQueryInfoKeyW = (void *)GetProcAddress(library, "RegQueryInfoKeyW");
-	pextRegQueryInfoKeyW = (void *)GetProcAddress(library_advapi32, "RegQueryInfoKeyW");
-	pRegQueryValueExA = (void *)GetProcAddress(library, "RegQueryValueExA");
-	pextRegQueryValueExA = (void *)GetProcAddress(library_advapi32, "RegQueryValueExA");
-	pRegQueryValueExW = (void *)GetProcAddress(library, "RegQueryValueExW");
-	pextRegQueryValueExW = (void *)GetProcAddress(library_advapi32, "RegQueryValueExW");
-	pRegRestoreKeyA = (void *)GetProcAddress(library, "RegRestoreKeyA");
-	pextRegRestoreKeyA = (void *)GetProcAddress(library_advapi32, "RegRestoreKeyA");
-	pRegRestoreKeyW = (void *)GetProcAddress(library, "RegRestoreKeyW");
-	pextRegRestoreKeyW = (void *)GetProcAddress(library_advapi32, "RegRestoreKeyW");
-	pRegSetKeySecurity = (void *)GetProcAddress(library, "RegSetKeySecurity");
-	pextRegSetKeySecurity = (void *)GetProcAddress(library_advapi32, "RegSetKeySecurity");
-	pRegSetValueExA = (void *)GetProcAddress(library, "RegSetValueExA");
-	pextRegSetValueExA = (void *)GetProcAddress(library_advapi32, "RegSetValueExA");
-	pRegSetValueExW = (void *)GetProcAddress(library, "RegSetValueExW");
-	pextRegSetValueExW = (void *)GetProcAddress(library_advapi32, "RegSetValueExW");
-	pRegUnLoadKeyA = (void *)GetProcAddress(library, "RegUnLoadKeyA");
-	pextRegUnLoadKeyA = (void *)GetProcAddress(library_advapi32, "RegUnLoadKeyA");
-	pRegUnLoadKeyW = (void *)GetProcAddress(library, "RegUnLoadKeyW");
-	pextRegUnLoadKeyW = (void *)GetProcAddress(library_advapi32, "RegUnLoadKeyW");
+	pextReadProcessMemory = (void *)GetProcAddress(library_kernelbase, "ReadProcessMemory");
 	pRegisterApplicationRecoveryCallback = (void *)GetProcAddress(library, "RegisterApplicationRecoveryCallback");
 	pRegisterApplicationRestart = (void *)GetProcAddress(library, "RegisterApplicationRestart");
 	pRegisterServiceProcess = (void *)GetProcAddress(library, "RegisterServiceProcess");
@@ -24334,6 +20118,7 @@ void wine_thunk_initialize_kernel32(void)
 	pResetEvent = (void *)GetProcAddress(library, "ResetEvent");
 	pextResetEvent = (void *)GetProcAddress(library_kernelbase, "ResetEvent");
 	pResetWriteWatch = (void *)GetProcAddress(library, "ResetWriteWatch");
+	pextResetWriteWatch = (void *)GetProcAddress(library_kernelbase, "ResetWriteWatch");
 	pResolveDelayLoadedAPI = (void *)GetProcAddress(library, "ResolveDelayLoadedAPI");
 	pextResolveDelayLoadedAPI = (void *)GetProcAddress(library_ntdll, "LdrResolveDelayLoadedAPI");
 	pResolveLocaleName = (void *)GetProcAddress(library, "ResolveLocaleName");
@@ -24375,81 +20160,61 @@ void wine_thunk_initialize_kernel32(void)
 	pextRtlVirtualUnwind = (void *)GetProcAddress(library_ntdll, "RtlVirtualUnwind");
 	pRtlZeroMemory = (void *)GetProcAddress(library, "RtlZeroMemory");
 	pextRtlZeroMemory = (void *)GetProcAddress(library_ntdll, "RtlZeroMemory");
-	pSMapLS = (void *)GetProcAddress(library, "SMapLS");
-	pextSMapLS = (void *)GetProcAddress(library_krnl386, "exe16");
-	pSMapLS_IP_EBP_12 = (void *)GetProcAddress(library, "SMapLS_IP_EBP_12");
-	pextSMapLS_IP_EBP_12 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pSMapLS_IP_EBP_16 = (void *)GetProcAddress(library, "SMapLS_IP_EBP_16");
-	pextSMapLS_IP_EBP_16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pSMapLS_IP_EBP_20 = (void *)GetProcAddress(library, "SMapLS_IP_EBP_20");
-	pextSMapLS_IP_EBP_20 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pSMapLS_IP_EBP_24 = (void *)GetProcAddress(library, "SMapLS_IP_EBP_24");
-	pextSMapLS_IP_EBP_24 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pSMapLS_IP_EBP_28 = (void *)GetProcAddress(library, "SMapLS_IP_EBP_28");
-	pextSMapLS_IP_EBP_28 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pSMapLS_IP_EBP_32 = (void *)GetProcAddress(library, "SMapLS_IP_EBP_32");
-	pextSMapLS_IP_EBP_32 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pSMapLS_IP_EBP_36 = (void *)GetProcAddress(library, "SMapLS_IP_EBP_36");
-	pextSMapLS_IP_EBP_36 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pSMapLS_IP_EBP_40 = (void *)GetProcAddress(library, "SMapLS_IP_EBP_40");
-	pextSMapLS_IP_EBP_40 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pSMapLS_IP_EBP_8 = (void *)GetProcAddress(library, "SMapLS_IP_EBP_8");
-	pextSMapLS_IP_EBP_8 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pSUnMapLS = (void *)GetProcAddress(library, "SUnMapLS");
-	pextSUnMapLS = (void *)GetProcAddress(library_krnl386, "exe16");
-	pSUnMapLS_IP_EBP_12 = (void *)GetProcAddress(library, "SUnMapLS_IP_EBP_12");
-	pextSUnMapLS_IP_EBP_12 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pSUnMapLS_IP_EBP_16 = (void *)GetProcAddress(library, "SUnMapLS_IP_EBP_16");
-	pextSUnMapLS_IP_EBP_16 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pSUnMapLS_IP_EBP_20 = (void *)GetProcAddress(library, "SUnMapLS_IP_EBP_20");
-	pextSUnMapLS_IP_EBP_20 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pSUnMapLS_IP_EBP_24 = (void *)GetProcAddress(library, "SUnMapLS_IP_EBP_24");
-	pextSUnMapLS_IP_EBP_24 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pSUnMapLS_IP_EBP_28 = (void *)GetProcAddress(library, "SUnMapLS_IP_EBP_28");
-	pextSUnMapLS_IP_EBP_28 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pSUnMapLS_IP_EBP_32 = (void *)GetProcAddress(library, "SUnMapLS_IP_EBP_32");
-	pextSUnMapLS_IP_EBP_32 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pSUnMapLS_IP_EBP_36 = (void *)GetProcAddress(library, "SUnMapLS_IP_EBP_36");
-	pextSUnMapLS_IP_EBP_36 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pSUnMapLS_IP_EBP_40 = (void *)GetProcAddress(library, "SUnMapLS_IP_EBP_40");
-	pextSUnMapLS_IP_EBP_40 = (void *)GetProcAddress(library_krnl386, "exe16");
-	pSUnMapLS_IP_EBP_8 = (void *)GetProcAddress(library, "SUnMapLS_IP_EBP_8");
-	pextSUnMapLS_IP_EBP_8 = (void *)GetProcAddress(library_krnl386, "exe16");
 	pScrollConsoleScreenBufferA = (void *)GetProcAddress(library, "ScrollConsoleScreenBufferA");
+	pextScrollConsoleScreenBufferA = (void *)GetProcAddress(library_kernelbase, "ScrollConsoleScreenBufferA");
 	pScrollConsoleScreenBufferW = (void *)GetProcAddress(library, "ScrollConsoleScreenBufferW");
+	pextScrollConsoleScreenBufferW = (void *)GetProcAddress(library_kernelbase, "ScrollConsoleScreenBufferW");
 	pSearchPathA = (void *)GetProcAddress(library, "SearchPathA");
 	pSearchPathW = (void *)GetProcAddress(library, "SearchPathW");
 	pSetCPGlobal = (void *)GetProcAddress(library, "SetCPGlobal");
 	pSetCalendarInfoA = (void *)GetProcAddress(library, "SetCalendarInfoA");
 	pSetCalendarInfoW = (void *)GetProcAddress(library, "SetCalendarInfoW");
 	pSetCommBreak = (void *)GetProcAddress(library, "SetCommBreak");
+	pextSetCommBreak = (void *)GetProcAddress(library_kernelbase, "SetCommBreak");
 	pSetCommConfig = (void *)GetProcAddress(library, "SetCommConfig");
+	pextSetCommConfig = (void *)GetProcAddress(library_kernelbase, "SetCommConfig");
 	pSetCommMask = (void *)GetProcAddress(library, "SetCommMask");
+	pextSetCommMask = (void *)GetProcAddress(library_kernelbase, "SetCommMask");
 	pSetCommState = (void *)GetProcAddress(library, "SetCommState");
+	pextSetCommState = (void *)GetProcAddress(library_kernelbase, "SetCommState");
 	pSetCommTimeouts = (void *)GetProcAddress(library, "SetCommTimeouts");
+	pextSetCommTimeouts = (void *)GetProcAddress(library_kernelbase, "SetCommTimeouts");
 	pSetComputerNameA = (void *)GetProcAddress(library, "SetComputerNameA");
 	pSetComputerNameExA = (void *)GetProcAddress(library, "SetComputerNameExA");
 	pSetComputerNameExW = (void *)GetProcAddress(library, "SetComputerNameExW");
 	pSetComputerNameW = (void *)GetProcAddress(library, "SetComputerNameW");
 	pSetConsoleActiveScreenBuffer = (void *)GetProcAddress(library, "SetConsoleActiveScreenBuffer");
+	pextSetConsoleActiveScreenBuffer = (void *)GetProcAddress(library_kernelbase, "SetConsoleActiveScreenBuffer");
 	pSetConsoleCP = (void *)GetProcAddress(library, "SetConsoleCP");
+	pextSetConsoleCP = (void *)GetProcAddress(library_kernelbase, "SetConsoleCP");
 	pSetConsoleCtrlHandler = (void *)GetProcAddress(library, "SetConsoleCtrlHandler");
 	pSetConsoleCursorInfo = (void *)GetProcAddress(library, "SetConsoleCursorInfo");
+	pextSetConsoleCursorInfo = (void *)GetProcAddress(library_kernelbase, "SetConsoleCursorInfo");
 	pSetConsoleCursorPosition = (void *)GetProcAddress(library, "SetConsoleCursorPosition");
+	pextSetConsoleCursorPosition = (void *)GetProcAddress(library_kernelbase, "SetConsoleCursorPosition");
 	pSetConsoleDisplayMode = (void *)GetProcAddress(library, "SetConsoleDisplayMode");
 	pSetConsoleFont = (void *)GetProcAddress(library, "SetConsoleFont");
 	pSetConsoleIcon = (void *)GetProcAddress(library, "SetConsoleIcon");
 	pSetConsoleInputExeNameA = (void *)GetProcAddress(library, "SetConsoleInputExeNameA");
+	pextSetConsoleInputExeNameA = (void *)GetProcAddress(library_kernelbase, "SetConsoleInputExeNameA");
 	pSetConsoleInputExeNameW = (void *)GetProcAddress(library, "SetConsoleInputExeNameW");
+	pextSetConsoleInputExeNameW = (void *)GetProcAddress(library_kernelbase, "SetConsoleInputExeNameW");
 	pSetConsoleKeyShortcuts = (void *)GetProcAddress(library, "SetConsoleKeyShortcuts");
 	pSetConsoleMode = (void *)GetProcAddress(library, "SetConsoleMode");
+	pextSetConsoleMode = (void *)GetProcAddress(library_kernelbase, "SetConsoleMode");
 	pSetConsoleOutputCP = (void *)GetProcAddress(library, "SetConsoleOutputCP");
+	pextSetConsoleOutputCP = (void *)GetProcAddress(library_kernelbase, "SetConsoleOutputCP");
 	pSetConsoleScreenBufferInfoEx = (void *)GetProcAddress(library, "SetConsoleScreenBufferInfoEx");
+	pextSetConsoleScreenBufferInfoEx = (void *)GetProcAddress(library_kernelbase, "SetConsoleScreenBufferInfoEx");
 	pSetConsoleScreenBufferSize = (void *)GetProcAddress(library, "SetConsoleScreenBufferSize");
+	pextSetConsoleScreenBufferSize = (void *)GetProcAddress(library_kernelbase, "SetConsoleScreenBufferSize");
 	pSetConsoleTextAttribute = (void *)GetProcAddress(library, "SetConsoleTextAttribute");
+	pextSetConsoleTextAttribute = (void *)GetProcAddress(library_kernelbase, "SetConsoleTextAttribute");
 	pSetConsoleTitleA = (void *)GetProcAddress(library, "SetConsoleTitleA");
 	pSetConsoleTitleW = (void *)GetProcAddress(library, "SetConsoleTitleW");
+	pextSetConsoleTitleW = (void *)GetProcAddress(library_kernelbase, "SetConsoleTitleW");
 	pSetConsoleWindowInfo = (void *)GetProcAddress(library, "SetConsoleWindowInfo");
+	pextSetConsoleWindowInfo = (void *)GetProcAddress(library_kernelbase, "SetConsoleWindowInfo");
 	pSetCriticalSectionSpinCount = (void *)GetProcAddress(library, "SetCriticalSectionSpinCount");
 	pextSetCriticalSectionSpinCount = (void *)GetProcAddress(library_ntdll, "RtlSetCriticalSectionSpinCount");
 	pSetCurrentConsoleFontEx = (void *)GetProcAddress(library, "SetCurrentConsoleFontEx");
@@ -24463,7 +20228,9 @@ void wine_thunk_initialize_kernel32(void)
 	pSetEndOfFile = (void *)GetProcAddress(library, "SetEndOfFile");
 	pextSetEndOfFile = (void *)GetProcAddress(library_kernelbase, "SetEndOfFile");
 	pSetEnvironmentVariableA = (void *)GetProcAddress(library, "SetEnvironmentVariableA");
+	pextSetEnvironmentVariableA = (void *)GetProcAddress(library_kernelbase, "SetEnvironmentVariableA");
 	pSetEnvironmentVariableW = (void *)GetProcAddress(library, "SetEnvironmentVariableW");
+	pextSetEnvironmentVariableW = (void *)GetProcAddress(library_kernelbase, "SetEnvironmentVariableW");
 	pSetErrorMode = (void *)GetProcAddress(library, "SetErrorMode");
 	pextSetErrorMode = (void *)GetProcAddress(library_kernelbase, "SetErrorMode");
 	pSetEvent = (void *)GetProcAddress(library, "SetEvent");
@@ -24517,6 +20284,9 @@ void wine_thunk_initialize_kernel32(void)
 	pextSetProcessWorkingSetSizeEx = (void *)GetProcAddress(library_kernelbase, "SetProcessWorkingSetSizeEx");
 	pSetSearchPathMode = (void *)GetProcAddress(library, "SetSearchPathMode");
 	pSetStdHandle = (void *)GetProcAddress(library, "SetStdHandle");
+	pextSetStdHandle = (void *)GetProcAddress(library_kernelbase, "SetStdHandle");
+	pSetStdHandleEx = (void *)GetProcAddress(library, "SetStdHandleEx");
+	pextSetStdHandleEx = (void *)GetProcAddress(library_kernelbase, "SetStdHandleEx");
 	pSetSystemFileCacheSize = (void *)GetProcAddress(library, "SetSystemFileCacheSize");
 	pSetSystemPowerState = (void *)GetProcAddress(library, "SetSystemPowerState");
 	pSetSystemTime = (void *)GetProcAddress(library, "SetSystemTime");
@@ -24556,6 +20326,7 @@ void wine_thunk_initialize_kernel32(void)
 	pSetTimeZoneInformation = (void *)GetProcAddress(library, "SetTimeZoneInformation");
 	pSetUmsThreadInformation = (void *)GetProcAddress(library, "SetUmsThreadInformation");
 	pSetUnhandledExceptionFilter = (void *)GetProcAddress(library, "SetUnhandledExceptionFilter");
+	pextSetUnhandledExceptionFilter = (void *)GetProcAddress(library_kernelbase, "SetUnhandledExceptionFilter");
 	pSetUserGeoID = (void *)GetProcAddress(library, "SetUserGeoID");
 	pSetVolumeLabelA = (void *)GetProcAddress(library, "SetVolumeLabelA");
 	pSetVolumeLabelW = (void *)GetProcAddress(library, "SetVolumeLabelW");
@@ -24566,6 +20337,7 @@ void wine_thunk_initialize_kernel32(void)
 	pSetWaitableTimerEx = (void *)GetProcAddress(library, "SetWaitableTimerEx");
 	pextSetWaitableTimerEx = (void *)GetProcAddress(library_kernelbase, "SetWaitableTimerEx");
 	pSetupComm = (void *)GetProcAddress(library, "SetupComm");
+	pextSetupComm = (void *)GetProcAddress(library_kernelbase, "SetupComm");
 	pSignalObjectAndWait = (void *)GetProcAddress(library, "SignalObjectAndWait");
 	pextSignalObjectAndWait = (void *)GetProcAddress(library_kernelbase, "SignalObjectAndWait");
 	pSizeofResource = (void *)GetProcAddress(library, "SizeofResource");
@@ -24596,8 +20368,6 @@ void wine_thunk_initialize_kernel32(void)
 	pTermsrvAppInstallMode = (void *)GetProcAddress(library, "TermsrvAppInstallMode");
 	pThread32First = (void *)GetProcAddress(library, "Thread32First");
 	pThread32Next = (void *)GetProcAddress(library, "Thread32Next");
-	pThunkConnect32 = (void *)GetProcAddress(library, "ThunkConnect32");
-	pextThunkConnect32 = (void *)GetProcAddress(library_krnl386, "exe16");
 	pTlsAlloc = (void *)GetProcAddress(library, "TlsAlloc");
 	pextTlsAlloc = (void *)GetProcAddress(library_kernelbase, "TlsAlloc");
 	pTlsFree = (void *)GetProcAddress(library, "TlsFree");
@@ -24610,6 +20380,7 @@ void wine_thunk_initialize_kernel32(void)
 	pTransactNamedPipe = (void *)GetProcAddress(library, "TransactNamedPipe");
 	pextTransactNamedPipe = (void *)GetProcAddress(library_kernelbase, "TransactNamedPipe");
 	pTransmitCommChar = (void *)GetProcAddress(library, "TransmitCommChar");
+	pextTransmitCommChar = (void *)GetProcAddress(library_kernelbase, "TransmitCommChar");
 	pTryAcquireSRWLockExclusive = (void *)GetProcAddress(library, "TryAcquireSRWLockExclusive");
 	pextTryAcquireSRWLockExclusive = (void *)GetProcAddress(library_ntdll, "RtlTryAcquireSRWLockExclusive");
 	pTryAcquireSRWLockShared = (void *)GetProcAddress(library, "TryAcquireSRWLockShared");
@@ -24620,21 +20391,15 @@ void wine_thunk_initialize_kernel32(void)
 	pextTrySubmitThreadpoolCallback = (void *)GetProcAddress(library_kernelbase, "TrySubmitThreadpoolCallback");
 	pTzSpecificLocalTimeToSystemTime = (void *)GetProcAddress(library, "TzSpecificLocalTimeToSystemTime");
 	pUmsThreadYield = (void *)GetProcAddress(library, "UmsThreadYield");
-	pUTRegister = (void *)GetProcAddress(library, "UTRegister");
-	pextUTRegister = (void *)GetProcAddress(library_krnl386, "exe16");
-	pUTUnRegister = (void *)GetProcAddress(library, "UTUnRegister");
-	pextUTUnRegister = (void *)GetProcAddress(library_krnl386, "exe16");
-	pUnMapLS = (void *)GetProcAddress(library, "UnMapLS");
-	pextUnMapLS = (void *)GetProcAddress(library_krnl386, "exe16");
-	pUnMapSLFixArray = (void *)GetProcAddress(library, "UnMapSLFixArray");
-	pextUnMapSLFixArray = (void *)GetProcAddress(library_krnl386, "exe16");
 	pUnhandledExceptionFilter = (void *)GetProcAddress(library, "UnhandledExceptionFilter");
+	pextUnhandledExceptionFilter = (void *)GetProcAddress(library_kernelbase, "UnhandledExceptionFilter");
 	pUninitializeCriticalSection = (void *)GetProcAddress(library, "UninitializeCriticalSection");
 	pUnlockFile = (void *)GetProcAddress(library, "UnlockFile");
 	pextUnlockFile = (void *)GetProcAddress(library_kernelbase, "UnlockFile");
 	pUnlockFileEx = (void *)GetProcAddress(library, "UnlockFileEx");
 	pextUnlockFileEx = (void *)GetProcAddress(library_kernelbase, "UnlockFileEx");
 	pUnmapViewOfFile = (void *)GetProcAddress(library, "UnmapViewOfFile");
+	pextUnmapViewOfFile = (void *)GetProcAddress(library_kernelbase, "UnmapViewOfFile");
 	pUnregisterApplicationRestart = (void *)GetProcAddress(library, "UnregisterApplicationRestart");
 	pUnregisterWait = (void *)GetProcAddress(library, "UnregisterWait");
 	pUnregisterWaitEx = (void *)GetProcAddress(library, "UnregisterWaitEx");
@@ -24651,19 +20416,32 @@ void wine_thunk_initialize_kernel32(void)
 	pVerifyVersionInfoA = (void *)GetProcAddress(library, "VerifyVersionInfoA");
 	pVerifyVersionInfoW = (void *)GetProcAddress(library, "VerifyVersionInfoW");
 	pVirtualAlloc = (void *)GetProcAddress(library, "VirtualAlloc");
+	pextVirtualAlloc = (void *)GetProcAddress(library_kernelbase, "VirtualAlloc");
 	pVirtualAllocEx = (void *)GetProcAddress(library, "VirtualAllocEx");
+	pextVirtualAllocEx = (void *)GetProcAddress(library_kernelbase, "VirtualAllocEx");
 	pVirtualAllocExNuma = (void *)GetProcAddress(library, "VirtualAllocExNuma");
+	pextVirtualAllocExNuma = (void *)GetProcAddress(library_kernelbase, "VirtualAllocExNuma");
 	pVirtualFree = (void *)GetProcAddress(library, "VirtualFree");
+	pextVirtualFree = (void *)GetProcAddress(library_kernelbase, "VirtualFree");
 	pVirtualFreeEx = (void *)GetProcAddress(library, "VirtualFreeEx");
+	pextVirtualFreeEx = (void *)GetProcAddress(library_kernelbase, "VirtualFreeEx");
 	pVirtualLock = (void *)GetProcAddress(library, "VirtualLock");
+	pextVirtualLock = (void *)GetProcAddress(library_kernelbase, "VirtualLock");
 	pVirtualProtect = (void *)GetProcAddress(library, "VirtualProtect");
+	pextVirtualProtect = (void *)GetProcAddress(library_kernelbase, "VirtualProtect");
 	pVirtualProtectEx = (void *)GetProcAddress(library, "VirtualProtectEx");
+	pextVirtualProtectEx = (void *)GetProcAddress(library_kernelbase, "VirtualProtectEx");
 	pVirtualQuery = (void *)GetProcAddress(library, "VirtualQuery");
+	pextVirtualQuery = (void *)GetProcAddress(library_kernelbase, "VirtualQuery");
 	pVirtualQueryEx = (void *)GetProcAddress(library, "VirtualQueryEx");
+	pextVirtualQueryEx = (void *)GetProcAddress(library_kernelbase, "VirtualQueryEx");
 	pVirtualUnlock = (void *)GetProcAddress(library, "VirtualUnlock");
+	pextVirtualUnlock = (void *)GetProcAddress(library_kernelbase, "VirtualUnlock");
 	pWTSGetActiveConsoleSessionId = (void *)GetProcAddress(library, "WTSGetActiveConsoleSessionId");
 	pWaitCommEvent = (void *)GetProcAddress(library, "WaitCommEvent");
+	pextWaitCommEvent = (void *)GetProcAddress(library_kernelbase, "WaitCommEvent");
 	pWaitForDebugEvent = (void *)GetProcAddress(library, "WaitForDebugEvent");
+	pextWaitForDebugEvent = (void *)GetProcAddress(library_kernelbase, "WaitForDebugEvent");
 	pWaitForMultipleObjects = (void *)GetProcAddress(library, "WaitForMultipleObjects");
 	pextWaitForMultipleObjects = (void *)GetProcAddress(library_kernelbase, "WaitForMultipleObjects");
 	pWaitForMultipleObjectsEx = (void *)GetProcAddress(library, "WaitForMultipleObjectsEx");
@@ -24701,13 +20479,21 @@ void wine_thunk_initialize_kernel32(void)
 	pextWow64RevertWow64FsRedirection = (void *)GetProcAddress(library_kernelbase, "Wow64RevertWow64FsRedirection");
 	pWow64SetThreadContext = (void *)GetProcAddress(library, "Wow64SetThreadContext");
 	pWriteConsoleA = (void *)GetProcAddress(library, "WriteConsoleA");
+	pextWriteConsoleA = (void *)GetProcAddress(library_kernelbase, "WriteConsoleA");
 	pWriteConsoleInputA = (void *)GetProcAddress(library, "WriteConsoleInputA");
+	pextWriteConsoleInputA = (void *)GetProcAddress(library_kernelbase, "WriteConsoleInputA");
 	pWriteConsoleInputW = (void *)GetProcAddress(library, "WriteConsoleInputW");
+	pextWriteConsoleInputW = (void *)GetProcAddress(library_kernelbase, "WriteConsoleInputW");
 	pWriteConsoleOutputA = (void *)GetProcAddress(library, "WriteConsoleOutputA");
+	pextWriteConsoleOutputA = (void *)GetProcAddress(library_kernelbase, "WriteConsoleOutputA");
 	pWriteConsoleOutputAttribute = (void *)GetProcAddress(library, "WriteConsoleOutputAttribute");
+	pextWriteConsoleOutputAttribute = (void *)GetProcAddress(library_kernelbase, "WriteConsoleOutputAttribute");
 	pWriteConsoleOutputCharacterA = (void *)GetProcAddress(library, "WriteConsoleOutputCharacterA");
+	pextWriteConsoleOutputCharacterA = (void *)GetProcAddress(library_kernelbase, "WriteConsoleOutputCharacterA");
 	pWriteConsoleOutputCharacterW = (void *)GetProcAddress(library, "WriteConsoleOutputCharacterW");
+	pextWriteConsoleOutputCharacterW = (void *)GetProcAddress(library_kernelbase, "WriteConsoleOutputCharacterW");
 	pWriteConsoleOutputW = (void *)GetProcAddress(library, "WriteConsoleOutputW");
+	pextWriteConsoleOutputW = (void *)GetProcAddress(library_kernelbase, "WriteConsoleOutputW");
 	pWriteConsoleW = (void *)GetProcAddress(library, "WriteConsoleW");
 	pWriteFile = (void *)GetProcAddress(library, "WriteFile");
 	pextWriteFile = (void *)GetProcAddress(library_kernelbase, "WriteFile");
@@ -24722,6 +20508,7 @@ void wine_thunk_initialize_kernel32(void)
 	pWritePrivateProfileStructA = (void *)GetProcAddress(library, "WritePrivateProfileStructA");
 	pWritePrivateProfileStructW = (void *)GetProcAddress(library, "WritePrivateProfileStructW");
 	pWriteProcessMemory = (void *)GetProcAddress(library, "WriteProcessMemory");
+	pextWriteProcessMemory = (void *)GetProcAddress(library_kernelbase, "WriteProcessMemory");
 	pWriteProfileSectionA = (void *)GetProcAddress(library, "WriteProfileSectionA");
 	pWriteProfileSectionW = (void *)GetProcAddress(library, "WriteProfileSectionW");
 	pWriteProfileStringA = (void *)GetProcAddress(library, "WriteProfileStringA");
@@ -24729,17 +20516,11 @@ void wine_thunk_initialize_kernel32(void)
 	pWriteTapemark = (void *)GetProcAddress(library, "WriteTapemark");
 	pZombifyActCtx = (void *)GetProcAddress(library, "ZombifyActCtx");
 	pextZombifyActCtx = (void *)GetProcAddress(library_kernelbase, "ZombifyActCtx");
-	p__C_specific_handler = (void *)GetProcAddress(library, "__C_specific_handler");
-	pext__C_specific_handler = (void *)GetProcAddress(library_ntdll, "__C_specific_handler");
-	p__chkstk = (void *)GetProcAddress(library, "__chkstk");
-	pext__chkstk = (void *)GetProcAddress(library_ntdll, "__chkstk");
 	p_hread = (void *)GetProcAddress(library, "_hread");
 	p_hwrite = (void *)GetProcAddress(library, "_hwrite");
 	p_lclose = (void *)GetProcAddress(library, "_lclose");
 	p_lcreat = (void *)GetProcAddress(library, "_lcreat");
 	p_llseek = (void *)GetProcAddress(library, "_llseek");
-	p_local_unwind = (void *)GetProcAddress(library, "_local_unwind");
-	pext_local_unwind = (void *)GetProcAddress(library_ntdll, "_local_unwind");
 	p_lopen = (void *)GetProcAddress(library, "_lopen");
 	p_lread = (void *)GetProcAddress(library, "_lread");
 	p_lwrite = (void *)GetProcAddress(library, "_lwrite");
@@ -24782,194 +20563,6 @@ void* wine_thunk_get_for_kernel32(void *func)
 	if (!initialized)
 		return NULL;
 
-	if (func == pVxDCall0 && func != pextVxDCall0)
-		return wine_thunk_get_for_any(pextVxDCall0);
-	if (func == pVxDCall1 && func != pextVxDCall1)
-		return wine_thunk_get_for_any(pextVxDCall1);
-	if (func == pVxDCall2 && func != pextVxDCall2)
-		return wine_thunk_get_for_any(pextVxDCall2);
-	if (func == pVxDCall3 && func != pextVxDCall3)
-		return wine_thunk_get_for_any(pextVxDCall3);
-	if (func == pVxDCall4 && func != pextVxDCall4)
-		return wine_thunk_get_for_any(pextVxDCall4);
-	if (func == pVxDCall5 && func != pextVxDCall5)
-		return wine_thunk_get_for_any(pextVxDCall5);
-	if (func == pVxDCall6 && func != pextVxDCall6)
-		return wine_thunk_get_for_any(pextVxDCall6);
-	if (func == pVxDCall7 && func != pextVxDCall7)
-		return wine_thunk_get_for_any(pextVxDCall7);
-	if (func == pVxDCall8 && func != pextVxDCall8)
-		return wine_thunk_get_for_any(pextVxDCall8);
-	if (func == pk32CharToOemA && func != pextk32CharToOemA)
-		return wine_thunk_get_for_any(pextk32CharToOemA);
-	if (func == pk32CharToOemBuffA && func != pextk32CharToOemBuffA)
-		return wine_thunk_get_for_any(pextk32CharToOemBuffA);
-	if (func == pk32OemToCharA && func != pextk32OemToCharA)
-		return wine_thunk_get_for_any(pextk32OemToCharA);
-	if (func == pk32OemToCharBuffA && func != pextk32OemToCharBuffA)
-		return wine_thunk_get_for_any(pextk32OemToCharBuffA);
-	if (func == pk32LoadStringA && func != pextk32LoadStringA)
-		return wine_thunk_get_for_any(pextk32LoadStringA);
-	if (func == pk32wsprintfA && func != pextk32wsprintfA)
-		return wine_thunk_get_for_any(pextk32wsprintfA);
-	if (func == pk32wvsprintfA && func != pextk32wvsprintfA)
-		return wine_thunk_get_for_any(pextk32wvsprintfA);
-	if (func == pCommonUnimpStub && func != pextCommonUnimpStub)
-		return wine_thunk_get_for_any(pextCommonUnimpStub);
-	if (func == pGetProcessDword && func != pextGetProcessDword)
-		return wine_thunk_get_for_any(pextGetProcessDword);
-	if (func == pDosFileHandleToWin32Handle && func != pextDosFileHandleToWin32Handle)
-		return wine_thunk_get_for_any(pextDosFileHandleToWin32Handle);
-	if (func == pWin32HandleToDosFileHandle && func != pextWin32HandleToDosFileHandle)
-		return wine_thunk_get_for_any(pextWin32HandleToDosFileHandle);
-	if (func == pDisposeLZ32Handle && func != pextDisposeLZ32Handle)
-		return wine_thunk_get_for_any(pextDisposeLZ32Handle);
-	if (func == pGlobalAlloc16 && func != pextGlobalAlloc16)
-		return wine_thunk_get_for_any(pextGlobalAlloc16);
-	if (func == pGlobalLock16 && func != pextGlobalLock16)
-		return wine_thunk_get_for_any(pextGlobalLock16);
-	if (func == pGlobalUnlock16 && func != pextGlobalUnlock16)
-		return wine_thunk_get_for_any(pextGlobalUnlock16);
-	if (func == pGlobalFix16 && func != pextGlobalFix16)
-		return wine_thunk_get_for_any(pextGlobalFix16);
-	if (func == pGlobalUnfix16 && func != pextGlobalUnfix16)
-		return wine_thunk_get_for_any(pextGlobalUnfix16);
-	if (func == pGlobalWire16 && func != pextGlobalWire16)
-		return wine_thunk_get_for_any(pextGlobalWire16);
-	if (func == pGlobalUnWire16 && func != pextGlobalUnWire16)
-		return wine_thunk_get_for_any(pextGlobalUnWire16);
-	if (func == pGlobalFree16 && func != pextGlobalFree16)
-		return wine_thunk_get_for_any(pextGlobalFree16);
-	if (func == pGlobalSize16 && func != pextGlobalSize16)
-		return wine_thunk_get_for_any(pextGlobalSize16);
-	if (func == pHouseCleanLogicallyDeadHandles && func != pextHouseCleanLogicallyDeadHandles)
-		return wine_thunk_get_for_any(pextHouseCleanLogicallyDeadHandles);
-	if (func == pGetWin16DOSEnv && func != pextGetWin16DOSEnv)
-		return wine_thunk_get_for_any(pextGetWin16DOSEnv);
-	if (func == pLoadLibrary16 && func != pextLoadLibrary16)
-		return wine_thunk_get_for_any(pextLoadLibrary16);
-	if (func == pFreeLibrary16 && func != pextFreeLibrary16)
-		return wine_thunk_get_for_any(pextFreeLibrary16);
-	if (func == pGetProcAddress16 && func != pextGetProcAddress16)
-		return wine_thunk_get_for_any(pextGetProcAddress16);
-	if (func == pAllocMappedBuffer && func != pextAllocMappedBuffer)
-		return wine_thunk_get_for_any(pextAllocMappedBuffer);
-	if (func == pFreeMappedBuffer && func != pextFreeMappedBuffer)
-		return wine_thunk_get_for_any(pextFreeMappedBuffer);
-	if (func == pOT_32ThkLSF && func != pextOT_32ThkLSF)
-		return wine_thunk_get_for_any(pextOT_32ThkLSF);
-	if (func == pThunkInitLSF && func != pextThunkInitLSF)
-		return wine_thunk_get_for_any(pextThunkInitLSF);
-	if (func == pLogApiThkLSF && func != pextLogApiThkLSF)
-		return wine_thunk_get_for_any(pextLogApiThkLSF);
-	if (func == pThunkInitLS && func != pextThunkInitLS)
-		return wine_thunk_get_for_any(pextThunkInitLS);
-	if (func == pLogApiThkSL && func != pextLogApiThkSL)
-		return wine_thunk_get_for_any(pextLogApiThkSL);
-	if (func == pCommon32ThkLS && func != pextCommon32ThkLS)
-		return wine_thunk_get_for_any(pextCommon32ThkLS);
-	if (func == pThunkInitSL && func != pextThunkInitSL)
-		return wine_thunk_get_for_any(pextThunkInitSL);
-	if (func == pLogCBThkSL && func != pextLogCBThkSL)
-		return wine_thunk_get_for_any(pextLogCBThkSL);
-	if (func == pReleaseThunkLock && func != pextReleaseThunkLock)
-		return wine_thunk_get_for_any(pextReleaseThunkLock);
-	if (func == pRestoreThunkLock && func != pextRestoreThunkLock)
-		return wine_thunk_get_for_any(pextRestoreThunkLock);
-	if (func == pW32S_BackTo32 && func != pextW32S_BackTo32)
-		return wine_thunk_get_for_any(pextW32S_BackTo32);
-	if (func == pGetThunkBuff && func != pextGetThunkBuff)
-		return wine_thunk_get_for_any(pextGetThunkBuff);
-	if (func == pGetThunkStuff && func != pextGetThunkStuff)
-		return wine_thunk_get_for_any(pextGetThunkStuff);
-	if (func == pK32WOWCallback16 && func != pextK32WOWCallback16)
-		return wine_thunk_get_for_any(pextK32WOWCallback16);
-	if (func == pK32WOWCallback16Ex && func != pextK32WOWCallback16Ex)
-		return wine_thunk_get_for_any(pextK32WOWCallback16Ex);
-	if (func == pK32WOWGetVDMPointer && func != pextK32WOWGetVDMPointer)
-		return wine_thunk_get_for_any(pextK32WOWGetVDMPointer);
-	if (func == pK32WOWHandle32 && func != pextK32WOWHandle32)
-		return wine_thunk_get_for_any(pextK32WOWHandle32);
-	if (func == pK32WOWHandle16 && func != pextK32WOWHandle16)
-		return wine_thunk_get_for_any(pextK32WOWHandle16);
-	if (func == pK32WOWGlobalAlloc16 && func != pextK32WOWGlobalAlloc16)
-		return wine_thunk_get_for_any(pextK32WOWGlobalAlloc16);
-	if (func == pK32WOWGlobalLock16 && func != pextK32WOWGlobalLock16)
-		return wine_thunk_get_for_any(pextK32WOWGlobalLock16);
-	if (func == pK32WOWGlobalUnlock16 && func != pextK32WOWGlobalUnlock16)
-		return wine_thunk_get_for_any(pextK32WOWGlobalUnlock16);
-	if (func == pK32WOWGlobalFree16 && func != pextK32WOWGlobalFree16)
-		return wine_thunk_get_for_any(pextK32WOWGlobalFree16);
-	if (func == pK32WOWGlobalAllocLock16 && func != pextK32WOWGlobalAllocLock16)
-		return wine_thunk_get_for_any(pextK32WOWGlobalAllocLock16);
-	if (func == pK32WOWGlobalUnlockFree16 && func != pextK32WOWGlobalUnlockFree16)
-		return wine_thunk_get_for_any(pextK32WOWGlobalUnlockFree16);
-	if (func == pK32WOWGlobalLockSize16 && func != pextK32WOWGlobalLockSize16)
-		return wine_thunk_get_for_any(pextK32WOWGlobalLockSize16);
-	if (func == pK32WOWYield16 && func != pextK32WOWYield16)
-		return wine_thunk_get_for_any(pextK32WOWYield16);
-	if (func == pK32WOWDirectedYield16 && func != pextK32WOWDirectedYield16)
-		return wine_thunk_get_for_any(pextK32WOWDirectedYield16);
-	if (func == pK32WOWGetVDMPointerFix && func != pextK32WOWGetVDMPointerFix)
-		return wine_thunk_get_for_any(pextK32WOWGetVDMPointerFix);
-	if (func == pK32WOWGetVDMPointerUnfix && func != pextK32WOWGetVDMPointerUnfix)
-		return wine_thunk_get_for_any(pextK32WOWGetVDMPointerUnfix);
-	if (func == pK32WOWGetDescriptor && func != pextK32WOWGetDescriptor)
-		return wine_thunk_get_for_any(pextK32WOWGetDescriptor);
-	if (func == pK32RtlLargeIntegerAdd && func != pextK32RtlLargeIntegerAdd)
-		return wine_thunk_get_for_any(pextK32RtlLargeIntegerAdd);
-	if (func == pK32RtlEnlargedIntegerMultiply && func != pextK32RtlEnlargedIntegerMultiply)
-		return wine_thunk_get_for_any(pextK32RtlEnlargedIntegerMultiply);
-	if (func == pK32RtlEnlargedUnsignedMultiply && func != pextK32RtlEnlargedUnsignedMultiply)
-		return wine_thunk_get_for_any(pextK32RtlEnlargedUnsignedMultiply);
-	if (func == pK32RtlEnlargedUnsignedDivide && func != pextK32RtlEnlargedUnsignedDivide)
-		return wine_thunk_get_for_any(pextK32RtlEnlargedUnsignedDivide);
-	if (func == pK32RtlExtendedLargeIntegerDivide && func != pextK32RtlExtendedLargeIntegerDivide)
-		return wine_thunk_get_for_any(pextK32RtlExtendedLargeIntegerDivide);
-	if (func == pK32RtlExtendedMagicDivide && func != pextK32RtlExtendedMagicDivide)
-		return wine_thunk_get_for_any(pextK32RtlExtendedMagicDivide);
-	if (func == pK32RtlExtendedIntegerMultiply && func != pextK32RtlExtendedIntegerMultiply)
-		return wine_thunk_get_for_any(pextK32RtlExtendedIntegerMultiply);
-	if (func == pK32RtlLargeIntegerShiftLeft && func != pextK32RtlLargeIntegerShiftLeft)
-		return wine_thunk_get_for_any(pextK32RtlLargeIntegerShiftLeft);
-	if (func == pK32RtlLargeIntegerShiftRight && func != pextK32RtlLargeIntegerShiftRight)
-		return wine_thunk_get_for_any(pextK32RtlLargeIntegerShiftRight);
-	if (func == pK32RtlLargeIntegerArithmeticShift && func != pextK32RtlLargeIntegerArithmeticShift)
-		return wine_thunk_get_for_any(pextK32RtlLargeIntegerArithmeticShift);
-	if (func == pK32RtlLargeIntegerNegate && func != pextK32RtlLargeIntegerNegate)
-		return wine_thunk_get_for_any(pextK32RtlLargeIntegerNegate);
-	if (func == pK32RtlLargeIntegerSubtract && func != pextK32RtlLargeIntegerSubtract)
-		return wine_thunk_get_for_any(pextK32RtlLargeIntegerSubtract);
-	if (func == pK32RtlConvertLongToLargeInteger && func != pextK32RtlConvertLongToLargeInteger)
-		return wine_thunk_get_for_any(pextK32RtlConvertLongToLargeInteger);
-	if (func == pK32RtlConvertUlongToLargeInteger && func != pextK32RtlConvertUlongToLargeInteger)
-		return wine_thunk_get_for_any(pextK32RtlConvertUlongToLargeInteger);
-	if (func == pexe16 && func != pextexe16)
-		return wine_thunk_get_for_any(pextexe16);
-	if (func == pSSOnBigStack && func != pextSSOnBigStack)
-		return wine_thunk_get_for_any(pextSSOnBigStack);
-	if (func == pSSCall && func != pextSSCall)
-		return wine_thunk_get_for_any(pextSSCall);
-	if (func == pFT_PrologPrime && func != pextFT_PrologPrime)
-		return wine_thunk_get_for_any(pextFT_PrologPrime);
-	if (func == pQT_ThunkPrime && func != pextQT_ThunkPrime)
-		return wine_thunk_get_for_any(pextQT_ThunkPrime);
-	if (func == pPK16FNF && func != pextPK16FNF)
-		return wine_thunk_get_for_any(pextPK16FNF);
-	if (func == pGetPK16SysVar && func != pextGetPK16SysVar)
-		return wine_thunk_get_for_any(pextGetPK16SysVar);
-	if (func == pGetpWin16Lock && func != pextGetpWin16Lock)
-		return wine_thunk_get_for_any(pextGetpWin16Lock);
-	if (func == p_CheckNotSysLevel && func != pext_CheckNotSysLevel)
-		return wine_thunk_get_for_any(pext_CheckNotSysLevel);
-	if (func == p_ConfirmSysLevel && func != pext_ConfirmSysLevel)
-		return wine_thunk_get_for_any(pext_ConfirmSysLevel);
-	if (func == p_ConfirmWin16Lock && func != pext_ConfirmWin16Lock)
-		return wine_thunk_get_for_any(pext_ConfirmWin16Lock);
-	if (func == p_EnterSysLevel && func != pext_EnterSysLevel)
-		return wine_thunk_get_for_any(pext_EnterSysLevel);
-	if (func == p_LeaveSysLevel && func != pext_LeaveSysLevel)
-		return wine_thunk_get_for_any(pext_LeaveSysLevel);
 	if (func == pAcquireSRWLockExclusive && func != pextAcquireSRWLockExclusive)
 		return wine_thunk_get_for_any(pextAcquireSRWLockExclusive);
 	if (func == pAcquireSRWLockShared && func != pextAcquireSRWLockShared)
@@ -24994,8 +20587,6 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine_thunk_get_for_any(pextAddVectoredExceptionHandler);
 	if (func == pAllocConsole)
 		return wine32a_kernel32_AllocConsole;
-	if (func == pAllocSLCallback && func != pextAllocSLCallback)
-		return wine_thunk_get_for_any(pextAllocSLCallback);
 	if (func == pAllocateUserPhysicalPages)
 		return wine32a_kernel32_AllocateUserPhysicalPages;
 	if (func == pApplicationRecoveryFinished)
@@ -25006,8 +20597,8 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine_thunk_get_for_any(pextAreFileApisANSI);
 	if (func == pAssignProcessToJobObject)
 		return wine32a_kernel32_AssignProcessToJobObject;
-	if (func == pAttachConsole)
-		return wine32a_kernel32_AttachConsole;
+	if (func == pAttachConsole && func != pextAttachConsole)
+		return wine_thunk_get_for_any(pextAttachConsole);
 	if (func == pBackupRead)
 		return wine32a_kernel32_BackupRead;
 	if (func == pBackupSeek)
@@ -25056,12 +20647,12 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_CheckNameLegalDOS8Dot3A;
 	if (func == pCheckNameLegalDOS8Dot3W)
 		return wine32a_kernel32_CheckNameLegalDOS8Dot3W;
-	if (func == pCheckRemoteDebuggerPresent)
-		return wine32a_kernel32_CheckRemoteDebuggerPresent;
-	if (func == pClearCommBreak)
-		return wine32a_kernel32_ClearCommBreak;
-	if (func == pClearCommError)
-		return wine32a_kernel32_ClearCommError;
+	if (func == pCheckRemoteDebuggerPresent && func != pextCheckRemoteDebuggerPresent)
+		return wine_thunk_get_for_any(pextCheckRemoteDebuggerPresent);
+	if (func == pClearCommBreak && func != pextClearCommBreak)
+		return wine_thunk_get_for_any(pextClearCommBreak);
+	if (func == pClearCommError && func != pextClearCommError)
+		return wine_thunk_get_for_any(pextClearCommError);
 	if (func == pCloseConsoleHandle)
 		return wine32a_kernel32_CloseConsoleHandle;
 	if (func == pCloseHandle)
@@ -25098,8 +20689,8 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_CompareStringOrdinal;
 	if (func == pConnectNamedPipe && func != pextConnectNamedPipe)
 		return wine_thunk_get_for_any(pextConnectNamedPipe);
-	if (func == pContinueDebugEvent)
-		return wine32a_kernel32_ContinueDebugEvent;
+	if (func == pContinueDebugEvent && func != pextContinueDebugEvent)
+		return wine_thunk_get_for_any(pextContinueDebugEvent);
 	if (func == pConvertDefaultLocale)
 		return wine32a_kernel32_ConvertDefaultLocale;
 	if (func == pConvertFiberToThread && func != pextConvertFiberToThread)
@@ -25122,8 +20713,8 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_CreateActCtxA;
 	if (func == pCreateActCtxW && func != pextCreateActCtxW)
 		return wine_thunk_get_for_any(pextCreateActCtxW);
-	if (func == pCreateConsoleScreenBuffer)
-		return wine32a_kernel32_CreateConsoleScreenBuffer;
+	if (func == pCreateConsoleScreenBuffer && func != pextCreateConsoleScreenBuffer)
+		return wine_thunk_get_for_any(pextCreateConsoleScreenBuffer);
 	if (func == pCreateDirectoryA && func != pextCreateDirectoryA)
 		return wine_thunk_get_for_any(pextCreateDirectoryA);
 	if (func == pCreateDirectoryExA)
@@ -25172,8 +20763,8 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_CreateMailslotA;
 	if (func == pCreateMailslotW)
 		return wine32a_kernel32_CreateMailslotW;
-	if (func == pCreateMemoryResourceNotification)
-		return wine32a_kernel32_CreateMemoryResourceNotification;
+	if (func == pCreateMemoryResourceNotification && func != pextCreateMemoryResourceNotification)
+		return wine_thunk_get_for_any(pextCreateMemoryResourceNotification);
 	if (func == pCreateMutexA && func != pextCreateMutexA)
 		return wine_thunk_get_for_any(pextCreateMutexA);
 	if (func == pCreateMutexExA && func != pextCreateMutexExA)
@@ -25254,10 +20845,10 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine_thunk_get_for_any(pextCreateWaitableTimerW);
 	if (func == pDeactivateActCtx && func != pextDeactivateActCtx)
 		return wine_thunk_get_for_any(pextDeactivateActCtx);
-	if (func == pDebugActiveProcess)
-		return wine32a_kernel32_DebugActiveProcess;
-	if (func == pDebugActiveProcessStop)
-		return wine32a_kernel32_DebugActiveProcessStop;
+	if (func == pDebugActiveProcess && func != pextDebugActiveProcess)
+		return wine_thunk_get_for_any(pextDebugActiveProcess);
+	if (func == pDebugActiveProcessStop && func != pextDebugActiveProcessStop)
+		return wine_thunk_get_for_any(pextDebugActiveProcessStop);
 	if (func == pDebugBreakProcess)
 		return wine32a_kernel32_DebugBreakProcess;
 	if (func == pDebugSetProcessKillOnExit)
@@ -25408,60 +20999,26 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_EnterUmsSchedulingMode;
 	if (func == pEraseTape)
 		return wine32a_kernel32_EraseTape;
-	if (func == pEscapeCommFunction)
-		return wine32a_kernel32_EscapeCommFunction;
+	if (func == pEscapeCommFunction && func != pextEscapeCommFunction)
+		return wine_thunk_get_for_any(pextEscapeCommFunction);
 	if (func == pExecuteUmsThread)
 		return wine32a_kernel32_ExecuteUmsThread;
 	if (func == pExitProcess)
 		return wine32a_kernel32_ExitProcess;
 	if (func == pExitThread && func != pextExitThread)
 		return wine_thunk_get_for_any(pextExitThread);
-	if (func == pExpandEnvironmentStringsA)
-		return wine32a_kernel32_ExpandEnvironmentStringsA;
-	if (func == pExpandEnvironmentStringsW)
-		return wine32a_kernel32_ExpandEnvironmentStringsW;
+	if (func == pExpandEnvironmentStringsA && func != pextExpandEnvironmentStringsA)
+		return wine_thunk_get_for_any(pextExpandEnvironmentStringsA);
+	if (func == pExpandEnvironmentStringsW && func != pextExpandEnvironmentStringsW)
+		return wine_thunk_get_for_any(pextExpandEnvironmentStringsW);
 	if (func == pExpungeConsoleCommandHistoryA)
 		return wine32a_kernel32_ExpungeConsoleCommandHistoryA;
 	if (func == pExpungeConsoleCommandHistoryW)
 		return wine32a_kernel32_ExpungeConsoleCommandHistoryW;
-	if (func == pFT_Exit0 && func != pextFT_Exit0)
-		return wine_thunk_get_for_any(pextFT_Exit0);
-	if (func == pFT_Exit12 && func != pextFT_Exit12)
-		return wine_thunk_get_for_any(pextFT_Exit12);
-	if (func == pFT_Exit16 && func != pextFT_Exit16)
-		return wine_thunk_get_for_any(pextFT_Exit16);
-	if (func == pFT_Exit20 && func != pextFT_Exit20)
-		return wine_thunk_get_for_any(pextFT_Exit20);
-	if (func == pFT_Exit24 && func != pextFT_Exit24)
-		return wine_thunk_get_for_any(pextFT_Exit24);
-	if (func == pFT_Exit28 && func != pextFT_Exit28)
-		return wine_thunk_get_for_any(pextFT_Exit28);
-	if (func == pFT_Exit32 && func != pextFT_Exit32)
-		return wine_thunk_get_for_any(pextFT_Exit32);
-	if (func == pFT_Exit36 && func != pextFT_Exit36)
-		return wine_thunk_get_for_any(pextFT_Exit36);
-	if (func == pFT_Exit40 && func != pextFT_Exit40)
-		return wine_thunk_get_for_any(pextFT_Exit40);
-	if (func == pFT_Exit44 && func != pextFT_Exit44)
-		return wine_thunk_get_for_any(pextFT_Exit44);
-	if (func == pFT_Exit48 && func != pextFT_Exit48)
-		return wine_thunk_get_for_any(pextFT_Exit48);
-	if (func == pFT_Exit4 && func != pextFT_Exit4)
-		return wine_thunk_get_for_any(pextFT_Exit4);
-	if (func == pFT_Exit52 && func != pextFT_Exit52)
-		return wine_thunk_get_for_any(pextFT_Exit52);
-	if (func == pFT_Exit56 && func != pextFT_Exit56)
-		return wine_thunk_get_for_any(pextFT_Exit56);
-	if (func == pFT_Exit8 && func != pextFT_Exit8)
-		return wine_thunk_get_for_any(pextFT_Exit8);
-	if (func == pFT_Prolog && func != pextFT_Prolog)
-		return wine_thunk_get_for_any(pextFT_Prolog);
-	if (func == pFT_Thunk && func != pextFT_Thunk)
-		return wine_thunk_get_for_any(pextFT_Thunk);
-	if (func == pFatalAppExitA)
-		return wine32a_kernel32_FatalAppExitA;
-	if (func == pFatalAppExitW)
-		return wine32a_kernel32_FatalAppExitW;
+	if (func == pFatalAppExitA && func != pextFatalAppExitA)
+		return wine_thunk_get_for_any(pextFatalAppExitA);
+	if (func == pFatalAppExitW && func != pextFatalAppExitW)
+		return wine_thunk_get_for_any(pextFatalAppExitW);
 	if (func == pFatalExit)
 		return wine32a_kernel32_FatalExit;
 	if (func == pFileTimeToDosDateTime)
@@ -25470,12 +21027,12 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_FileTimeToLocalFileTime;
 	if (func == pFileTimeToSystemTime)
 		return wine32a_kernel32_FileTimeToSystemTime;
-	if (func == pFillConsoleOutputAttribute)
-		return wine32a_kernel32_FillConsoleOutputAttribute;
-	if (func == pFillConsoleOutputCharacterA)
-		return wine32a_kernel32_FillConsoleOutputCharacterA;
-	if (func == pFillConsoleOutputCharacterW)
-		return wine32a_kernel32_FillConsoleOutputCharacterW;
+	if (func == pFillConsoleOutputAttribute && func != pextFillConsoleOutputAttribute)
+		return wine_thunk_get_for_any(pextFillConsoleOutputAttribute);
+	if (func == pFillConsoleOutputCharacterA && func != pextFillConsoleOutputCharacterA)
+		return wine_thunk_get_for_any(pextFillConsoleOutputCharacterA);
+	if (func == pFillConsoleOutputCharacterW && func != pextFillConsoleOutputCharacterW)
+		return wine_thunk_get_for_any(pextFillConsoleOutputCharacterW);
 	if (func == pFindActCtxSectionGuid && func != pextFindActCtxSectionGuid)
 		return wine_thunk_get_for_any(pextFindActCtxSectionGuid);
 	if (func == pFindActCtxSectionStringA)
@@ -25488,12 +21045,12 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_FindAtomW;
 	if (func == pFindClose)
 		return wine32a_kernel32_FindClose;
-	if (func == pFindCloseChangeNotification)
-		return wine32a_kernel32_FindCloseChangeNotification;
-	if (func == pFindFirstChangeNotificationA)
-		return wine32a_kernel32_FindFirstChangeNotificationA;
-	if (func == pFindFirstChangeNotificationW)
-		return wine32a_kernel32_FindFirstChangeNotificationW;
+	if (func == pFindCloseChangeNotification && func != pextFindCloseChangeNotification)
+		return wine_thunk_get_for_any(pextFindCloseChangeNotification);
+	if (func == pFindFirstChangeNotificationA && func != pextFindFirstChangeNotificationA)
+		return wine_thunk_get_for_any(pextFindFirstChangeNotificationA);
+	if (func == pFindFirstChangeNotificationW && func != pextFindFirstChangeNotificationW)
+		return wine_thunk_get_for_any(pextFindFirstChangeNotificationW);
 	if (func == pFindFirstFileA)
 		return wine32a_kernel32_FindFirstFileA;
 	if (func == pFindFirstFileExA)
@@ -25512,8 +21069,8 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_FindFirstVolumeMountPointW;
 	if (func == pFindFirstVolumeW)
 		return wine32a_kernel32_FindFirstVolumeW;
-	if (func == pFindNextChangeNotification)
-		return wine32a_kernel32_FindNextChangeNotification;
+	if (func == pFindNextChangeNotification && func != pextFindNextChangeNotification)
+		return wine_thunk_get_for_any(pextFindNextChangeNotification);
 	if (func == pFindNextFileA)
 		return wine32a_kernel32_FindNextFileA;
 	if (func == pFindNextFileW)
@@ -25556,8 +21113,8 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine_thunk_get_for_any(pextFlushInstructionCache);
 	if (func == pFlushProcessWriteBuffers)
 		return wine32a_kernel32_FlushProcessWriteBuffers;
-	if (func == pFlushViewOfFile)
-		return wine32a_kernel32_FlushViewOfFile;
+	if (func == pFlushViewOfFile && func != pextFlushViewOfFile)
+		return wine_thunk_get_for_any(pextFlushViewOfFile);
 	if (func == pFoldStringA)
 		return wine32a_kernel32_FoldStringA;
 	if (func == pFoldStringW)
@@ -25568,10 +21125,10 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_FormatMessageW;
 	if (func == pFreeConsole)
 		return wine32a_kernel32_FreeConsole;
-	if (func == pFreeEnvironmentStringsA)
-		return wine32a_kernel32_FreeEnvironmentStringsA;
-	if (func == pFreeEnvironmentStringsW)
-		return wine32a_kernel32_FreeEnvironmentStringsW;
+	if (func == pFreeEnvironmentStringsA && func != pextFreeEnvironmentStringsA)
+		return wine_thunk_get_for_any(pextFreeEnvironmentStringsA);
+	if (func == pFreeEnvironmentStringsW && func != pextFreeEnvironmentStringsW)
+		return wine_thunk_get_for_any(pextFreeEnvironmentStringsW);
 	if (func == pFreeLibrary)
 		return wine32a_kernel32_FreeLibrary;
 	if (func == pFreeLibraryAndExitThread)
@@ -25580,14 +21137,10 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine_thunk_get_for_any(pextFreeLibraryWhenCallbackReturns);
 	if (func == pFreeResource && func != pextFreeResource)
 		return wine_thunk_get_for_any(pextFreeResource);
-	if (func == pFreeSLCallback && func != pextFreeSLCallback)
-		return wine_thunk_get_for_any(pextFreeSLCallback);
 	if (func == pFreeUserPhysicalPages)
 		return wine32a_kernel32_FreeUserPhysicalPages;
-	if (func == pGenerateConsoleCtrlEvent)
-		return wine32a_kernel32_GenerateConsoleCtrlEvent;
-	if (func == pGet16DLLAddress && func != pextGet16DLLAddress)
-		return wine_thunk_get_for_any(pextGet16DLLAddress);
+	if (func == pGenerateConsoleCtrlEvent && func != pextGenerateConsoleCtrlEvent)
+		return wine_thunk_get_for_any(pextGenerateConsoleCtrlEvent);
 	if (func == pGetACP)
 		return wine32a_kernel32_GetACP;
 	if (func == pGetActiveProcessorCount)
@@ -25616,22 +21169,22 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_GetCalendarInfoW;
 	if (func == pGetCalendarInfoEx)
 		return wine32a_kernel32_GetCalendarInfoEx;
-	if (func == pGetCommConfig)
-		return wine32a_kernel32_GetCommConfig;
-	if (func == pGetCommMask)
-		return wine32a_kernel32_GetCommMask;
-	if (func == pGetCommModemStatus)
-		return wine32a_kernel32_GetCommModemStatus;
-	if (func == pGetCommProperties)
-		return wine32a_kernel32_GetCommProperties;
-	if (func == pGetCommState)
-		return wine32a_kernel32_GetCommState;
-	if (func == pGetCommTimeouts)
-		return wine32a_kernel32_GetCommTimeouts;
-	if (func == pGetCommandLineA)
-		return wine32a_kernel32_GetCommandLineA;
-	if (func == pGetCommandLineW)
-		return wine32a_kernel32_GetCommandLineW;
+	if (func == pGetCommConfig && func != pextGetCommConfig)
+		return wine_thunk_get_for_any(pextGetCommConfig);
+	if (func == pGetCommMask && func != pextGetCommMask)
+		return wine_thunk_get_for_any(pextGetCommMask);
+	if (func == pGetCommModemStatus && func != pextGetCommModemStatus)
+		return wine_thunk_get_for_any(pextGetCommModemStatus);
+	if (func == pGetCommProperties && func != pextGetCommProperties)
+		return wine_thunk_get_for_any(pextGetCommProperties);
+	if (func == pGetCommState && func != pextGetCommState)
+		return wine_thunk_get_for_any(pextGetCommState);
+	if (func == pGetCommTimeouts && func != pextGetCommTimeouts)
+		return wine_thunk_get_for_any(pextGetCommTimeouts);
+	if (func == pGetCommandLineA && func != pextGetCommandLineA)
+		return wine_thunk_get_for_any(pextGetCommandLineA);
+	if (func == pGetCommandLineW && func != pextGetCommandLineW)
+		return wine_thunk_get_for_any(pextGetCommandLineW);
 	if (func == pGetCompressedFileSizeA && func != pextGetCompressedFileSizeA)
 		return wine_thunk_get_for_any(pextGetCompressedFileSizeA);
 	if (func == pGetCompressedFileSizeW && func != pextGetCompressedFileSizeW)
@@ -25654,8 +21207,8 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_GetConsoleAliasesLengthA;
 	if (func == pGetConsoleAliasesLengthW)
 		return wine32a_kernel32_GetConsoleAliasesLengthW;
-	if (func == pGetConsoleCP)
-		return wine32a_kernel32_GetConsoleCP;
+	if (func == pGetConsoleCP && func != pextGetConsoleCP)
+		return wine_thunk_get_for_any(pextGetConsoleCP);
 	if (func == pGetConsoleCommandHistoryA)
 		return wine32a_kernel32_GetConsoleCommandHistoryA;
 	if (func == pGetConsoleCommandHistoryLengthA)
@@ -25664,38 +21217,38 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_GetConsoleCommandHistoryLengthW;
 	if (func == pGetConsoleCommandHistoryW)
 		return wine32a_kernel32_GetConsoleCommandHistoryW;
-	if (func == pGetConsoleCursorInfo)
-		return wine32a_kernel32_GetConsoleCursorInfo;
+	if (func == pGetConsoleCursorInfo && func != pextGetConsoleCursorInfo)
+		return wine_thunk_get_for_any(pextGetConsoleCursorInfo);
 	if (func == pGetConsoleDisplayMode)
 		return wine32a_kernel32_GetConsoleDisplayMode;
 	if (func == pGetConsoleFontInfo)
 		return wine32a_kernel32_GetConsoleFontInfo;
 	if (func == pGetConsoleFontSize)
 		return wine32a_kernel32_GetConsoleFontSize;
-	if (func == pGetConsoleInputExeNameA)
-		return wine32a_kernel32_GetConsoleInputExeNameA;
-	if (func == pGetConsoleInputExeNameW)
-		return wine32a_kernel32_GetConsoleInputExeNameW;
+	if (func == pGetConsoleInputExeNameA && func != pextGetConsoleInputExeNameA)
+		return wine_thunk_get_for_any(pextGetConsoleInputExeNameA);
+	if (func == pGetConsoleInputExeNameW && func != pextGetConsoleInputExeNameW)
+		return wine_thunk_get_for_any(pextGetConsoleInputExeNameW);
 	if (func == pGetConsoleInputWaitHandle)
 		return wine32a_kernel32_GetConsoleInputWaitHandle;
 	if (func == pGetConsoleKeyboardLayoutNameA)
 		return wine32a_kernel32_GetConsoleKeyboardLayoutNameA;
 	if (func == pGetConsoleKeyboardLayoutNameW)
 		return wine32a_kernel32_GetConsoleKeyboardLayoutNameW;
-	if (func == pGetConsoleMode)
-		return wine32a_kernel32_GetConsoleMode;
-	if (func == pGetConsoleOutputCP)
-		return wine32a_kernel32_GetConsoleOutputCP;
+	if (func == pGetConsoleMode && func != pextGetConsoleMode)
+		return wine_thunk_get_for_any(pextGetConsoleMode);
+	if (func == pGetConsoleOutputCP && func != pextGetConsoleOutputCP)
+		return wine_thunk_get_for_any(pextGetConsoleOutputCP);
 	if (func == pGetConsoleProcessList)
 		return wine32a_kernel32_GetConsoleProcessList;
-	if (func == pGetConsoleScreenBufferInfo)
-		return wine32a_kernel32_GetConsoleScreenBufferInfo;
-	if (func == pGetConsoleScreenBufferInfoEx)
-		return wine32a_kernel32_GetConsoleScreenBufferInfoEx;
+	if (func == pGetConsoleScreenBufferInfo && func != pextGetConsoleScreenBufferInfo)
+		return wine_thunk_get_for_any(pextGetConsoleScreenBufferInfo);
+	if (func == pGetConsoleScreenBufferInfoEx && func != pextGetConsoleScreenBufferInfoEx)
+		return wine_thunk_get_for_any(pextGetConsoleScreenBufferInfoEx);
 	if (func == pGetConsoleTitleA)
 		return wine32a_kernel32_GetConsoleTitleA;
-	if (func == pGetConsoleTitleW)
-		return wine32a_kernel32_GetConsoleTitleW;
+	if (func == pGetConsoleTitleW && func != pextGetConsoleTitleW)
+		return wine_thunk_get_for_any(pextGetConsoleTitleW);
 	if (func == pGetConsoleWindow)
 		return wine32a_kernel32_GetConsoleWindow;
 	if (func == pGetCurrencyFormatA)
@@ -25770,14 +21323,16 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_GetDynamicTimeZoneInformationEffectiveYears;
 	if (func == pGetEnabledXStateFeatures)
 		return wine32a_kernel32_GetEnabledXStateFeatures;
-	if (func == pGetEnvironmentStringsA)
-		return wine32a_kernel32_GetEnvironmentStringsA;
-	if (func == pGetEnvironmentStringsW)
-		return wine32a_kernel32_GetEnvironmentStringsW;
-	if (func == pGetEnvironmentVariableA)
-		return wine32a_kernel32_GetEnvironmentVariableA;
-	if (func == pGetEnvironmentVariableW)
-		return wine32a_kernel32_GetEnvironmentVariableW;
+	if (func == pGetEnvironmentStrings && func != pextGetEnvironmentStrings)
+		return wine_thunk_get_for_any(pextGetEnvironmentStrings);
+	if (func == pGetEnvironmentStringsA && func != pextGetEnvironmentStringsA)
+		return wine_thunk_get_for_any(pextGetEnvironmentStringsA);
+	if (func == pGetEnvironmentStringsW && func != pextGetEnvironmentStringsW)
+		return wine_thunk_get_for_any(pextGetEnvironmentStringsW);
+	if (func == pGetEnvironmentVariableA && func != pextGetEnvironmentVariableA)
+		return wine_thunk_get_for_any(pextGetEnvironmentVariableA);
+	if (func == pGetEnvironmentVariableW && func != pextGetEnvironmentVariableW)
+		return wine_thunk_get_for_any(pextGetEnvironmentVariableW);
 	if (func == pGetErrorMode && func != pextGetErrorMode)
 		return wine_thunk_get_for_any(pextGetErrorMode);
 	if (func == pGetExitCodeProcess)
@@ -25834,8 +21389,8 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_GetHandleInformation;
 	if (func == pGetLargePageMinimum)
 		return wine32a_kernel32_GetLargePageMinimum;
-	if (func == pGetLargestConsoleWindowSize)
-		return wine32a_kernel32_GetLargestConsoleWindowSize;
+	if (func == pGetLargestConsoleWindowSize && func != pextGetLargestConsoleWindowSize)
+		return wine_thunk_get_for_any(pextGetLargestConsoleWindowSize);
 	if (func == pGetLastError && func != pextGetLastError)
 		return wine_thunk_get_for_any(pextGetLastError);
 	if (func == pGetLocalTime)
@@ -25920,8 +21475,8 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_GetNumberFormatW;
 	if (func == pGetNumberOfConsoleFonts)
 		return wine32a_kernel32_GetNumberOfConsoleFonts;
-	if (func == pGetNumberOfConsoleInputEvents)
-		return wine32a_kernel32_GetNumberOfConsoleInputEvents;
+	if (func == pGetNumberOfConsoleInputEvents && func != pextGetNumberOfConsoleInputEvents)
+		return wine_thunk_get_for_any(pextGetNumberOfConsoleInputEvents);
 	if (func == pGetNumberOfConsoleMouseButtons)
 		return wine32a_kernel32_GetNumberOfConsoleMouseButtons;
 	if (func == pGetOEMCP)
@@ -26014,10 +21569,10 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_GetShortPathNameW;
 	if (func == pGetStartupInfoA)
 		return wine32a_kernel32_GetStartupInfoA;
-	if (func == pGetStartupInfoW)
-		return wine32a_kernel32_GetStartupInfoW;
-	if (func == pGetStdHandle)
-		return wine32a_kernel32_GetStdHandle;
+	if (func == pGetStartupInfoW && func != pextGetStartupInfoW)
+		return wine_thunk_get_for_any(pextGetStartupInfoW);
+	if (func == pGetStdHandle && func != pextGetStdHandle)
+		return wine_thunk_get_for_any(pextGetStdHandle);
 	if (func == pGetStringTypeA)
 		return wine32a_kernel32_GetStringTypeA;
 	if (func == pGetStringTypeExA)
@@ -26134,12 +21689,12 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_GetUserDefaultUILanguage;
 	if (func == pGetUserGeoID)
 		return wine32a_kernel32_GetUserGeoID;
-	if (func == pGetVersion)
-		return wine32a_kernel32_GetVersion;
-	if (func == pGetVersionExA)
-		return wine32a_kernel32_GetVersionExA;
-	if (func == pGetVersionExW)
-		return wine32a_kernel32_GetVersionExW;
+	if (func == pGetVersion && func != pextGetVersion)
+		return wine_thunk_get_for_any(pextGetVersion);
+	if (func == pGetVersionExA && func != pextGetVersionExA)
+		return wine_thunk_get_for_any(pextGetVersionExA);
+	if (func == pGetVersionExW && func != pextGetVersionExW)
+		return wine_thunk_get_for_any(pextGetVersionExW);
 	if (func == pGetVolumeInformationA)
 		return wine32a_kernel32_GetVolumeInformationA;
 	if (func == pGetVolumeInformationByHandleW)
@@ -26162,14 +21717,14 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine_thunk_get_for_any(pextGetWindowsDirectoryA);
 	if (func == pGetWindowsDirectoryW && func != pextGetWindowsDirectoryW)
 		return wine_thunk_get_for_any(pextGetWindowsDirectoryW);
-	if (func == pGetWriteWatch)
-		return wine32a_kernel32_GetWriteWatch;
+	if (func == pGetWriteWatch && func != pextGetWriteWatch)
+		return wine_thunk_get_for_any(pextGetWriteWatch);
 	if (func == pGlobalAddAtomA)
 		return wine32a_kernel32_GlobalAddAtomA;
 	if (func == pGlobalAddAtomW)
 		return wine32a_kernel32_GlobalAddAtomW;
-	if (func == pGlobalAlloc)
-		return wine32a_kernel32_GlobalAlloc;
+	if (func == pGlobalAlloc && func != pextGlobalAlloc)
+		return wine_thunk_get_for_any(pextGlobalAlloc);
 	if (func == pGlobalCompact)
 		return wine32a_kernel32_GlobalCompact;
 	if (func == pGlobalDeleteAtom)
@@ -26182,8 +21737,8 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_GlobalFix;
 	if (func == pGlobalFlags)
 		return wine32a_kernel32_GlobalFlags;
-	if (func == pGlobalFree)
-		return wine32a_kernel32_GlobalFree;
+	if (func == pGlobalFree && func != pextGlobalFree)
+		return wine_thunk_get_for_any(pextGlobalFree);
 	if (func == pGlobalGetAtomNameA)
 		return wine32a_kernel32_GlobalGetAtomNameA;
 	if (func == pGlobalGetAtomNameW)
@@ -26212,30 +21767,30 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_Heap32ListFirst;
 	if (func == pHeapAlloc && func != pextHeapAlloc)
 		return wine_thunk_get_for_any(pextHeapAlloc);
-	if (func == pHeapCompact)
-		return wine32a_kernel32_HeapCompact;
+	if (func == pHeapCompact && func != pextHeapCompact)
+		return wine_thunk_get_for_any(pextHeapCompact);
 	if (func == pHeapCreate)
 		return wine32a_kernel32_HeapCreate;
 	if (func == pHeapDestroy)
 		return wine32a_kernel32_HeapDestroy;
-	if (func == pHeapFree && func != pextHeapFree)
-		return wine_thunk_get_for_any(pextHeapFree);
-	if (func == pHeapLock)
-		return wine32a_kernel32_HeapLock;
-	if (func == pHeapQueryInformation)
-		return wine32a_kernel32_HeapQueryInformation;
+	if (func == pHeapFree)
+		return wine32a_kernel32_HeapFree;
+	if (func == pHeapLock && func != pextHeapLock)
+		return wine_thunk_get_for_any(pextHeapLock);
+	if (func == pHeapQueryInformation && func != pextHeapQueryInformation)
+		return wine_thunk_get_for_any(pextHeapQueryInformation);
 	if (func == pHeapReAlloc && func != pextHeapReAlloc)
 		return wine_thunk_get_for_any(pextHeapReAlloc);
-	if (func == pHeapSetInformation)
-		return wine32a_kernel32_HeapSetInformation;
+	if (func == pHeapSetInformation && func != pextHeapSetInformation)
+		return wine_thunk_get_for_any(pextHeapSetInformation);
 	if (func == pHeapSize && func != pextHeapSize)
 		return wine_thunk_get_for_any(pextHeapSize);
-	if (func == pHeapUnlock)
-		return wine32a_kernel32_HeapUnlock;
-	if (func == pHeapValidate)
-		return wine32a_kernel32_HeapValidate;
-	if (func == pHeapWalk)
-		return wine32a_kernel32_HeapWalk;
+	if (func == pHeapUnlock && func != pextHeapUnlock)
+		return wine_thunk_get_for_any(pextHeapUnlock);
+	if (func == pHeapValidate && func != pextHeapValidate)
+		return wine_thunk_get_for_any(pextHeapValidate);
+	if (func == pHeapWalk && func != pextHeapWalk)
+		return wine_thunk_get_for_any(pextHeapWalk);
 	if (func == pIdnToAscii)
 		return wine32a_kernel32_IdnToAscii;
 	if (func == pIdnToNameprepUnicode)
@@ -26244,12 +21799,12 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_IdnToUnicode;
 	if (func == pInitAtomTable)
 		return wine32a_kernel32_InitAtomTable;
-	if (func == pInitOnceBeginInitialize)
-		return wine32a_kernel32_InitOnceBeginInitialize;
-	if (func == pInitOnceComplete)
-		return wine32a_kernel32_InitOnceComplete;
-	if (func == pInitOnceExecuteOnce)
-		return wine32a_kernel32_InitOnceExecuteOnce;
+	if (func == pInitOnceBeginInitialize && func != pextInitOnceBeginInitialize)
+		return wine_thunk_get_for_any(pextInitOnceBeginInitialize);
+	if (func == pInitOnceComplete && func != pextInitOnceComplete)
+		return wine_thunk_get_for_any(pextInitOnceComplete);
+	if (func == pInitOnceExecuteOnce && func != pextInitOnceExecuteOnce)
+		return wine_thunk_get_for_any(pextInitOnceExecuteOnce);
 	if (func == pInitOnceInitialize && func != pextInitOnceInitialize)
 		return wine_thunk_get_for_any(pextInitOnceInitialize);
 	if (func == pInitializeConditionVariable && func != pextInitializeConditionVariable)
@@ -26298,8 +21853,8 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_IsDBCSLeadByte;
 	if (func == pIsDBCSLeadByteEx)
 		return wine32a_kernel32_IsDBCSLeadByteEx;
-	if (func == pIsDebuggerPresent)
-		return wine32a_kernel32_IsDebuggerPresent;
+	if (func == pIsDebuggerPresent && func != pextIsDebuggerPresent)
+		return wine_thunk_get_for_any(pextIsDebuggerPresent);
 	if (func == pIsNormalizedString)
 		return wine32a_kernel32_IsNormalizedString;
 	if (func == pIsProcessInJob)
@@ -26376,10 +21931,6 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_K32QueryWorkingSet;
 	if (func == pK32QueryWorkingSetEx)
 		return wine32a_kernel32_K32QueryWorkingSetEx;
-	if (func == pK32Thk1632Epilog && func != pextK32Thk1632Epilog)
-		return wine_thunk_get_for_any(pextK32Thk1632Epilog);
-	if (func == pK32Thk1632Prolog && func != pextK32Thk1632Prolog)
-		return wine_thunk_get_for_any(pextK32Thk1632Prolog);
 	if (func == pLCIDToLocaleName)
 		return wine32a_kernel32_LCIDToLocaleName;
 	if (func == pLCMapStringA)
@@ -26422,28 +21973,28 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_LoadModule;
 	if (func == pLoadResource && func != pextLoadResource)
 		return wine_thunk_get_for_any(pextLoadResource);
-	if (func == pLocalAlloc)
-		return wine32a_kernel32_LocalAlloc;
+	if (func == pLocalAlloc && func != pextLocalAlloc)
+		return wine_thunk_get_for_any(pextLocalAlloc);
 	if (func == pLocalCompact)
 		return wine32a_kernel32_LocalCompact;
 	if (func == pLocalFileTimeToFileTime)
 		return wine32a_kernel32_LocalFileTimeToFileTime;
 	if (func == pLocalFlags)
 		return wine32a_kernel32_LocalFlags;
-	if (func == pLocalFree)
-		return wine32a_kernel32_LocalFree;
+	if (func == pLocalFree && func != pextLocalFree)
+		return wine_thunk_get_for_any(pextLocalFree);
 	if (func == pLocalHandle)
 		return wine32a_kernel32_LocalHandle;
-	if (func == pLocalLock)
-		return wine32a_kernel32_LocalLock;
-	if (func == pLocalReAlloc)
-		return wine32a_kernel32_LocalReAlloc;
+	if (func == pLocalLock && func != pextLocalLock)
+		return wine_thunk_get_for_any(pextLocalLock);
+	if (func == pLocalReAlloc && func != pextLocalReAlloc)
+		return wine_thunk_get_for_any(pextLocalReAlloc);
 	if (func == pLocalShrink)
 		return wine32a_kernel32_LocalShrink;
 	if (func == pLocalSize)
 		return wine32a_kernel32_LocalSize;
-	if (func == pLocalUnlock)
-		return wine32a_kernel32_LocalUnlock;
+	if (func == pLocalUnlock && func != pextLocalUnlock)
+		return wine_thunk_get_for_any(pextLocalUnlock);
 	if (func == pLocaleNameToLCID)
 		return wine32a_kernel32_LocaleNameToLCID;
 	if (func == pLockFile && func != pextLockFile)
@@ -26454,30 +22005,14 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine_thunk_get_for_any(pextLockResource);
 	if (func == pMakeCriticalSectionGlobal)
 		return wine32a_kernel32_MakeCriticalSectionGlobal;
-	if (func == pMapHInstLS && func != pextMapHInstLS)
-		return wine_thunk_get_for_any(pextMapHInstLS);
-	if (func == pMapHInstLS_PN && func != pextMapHInstLS_PN)
-		return wine_thunk_get_for_any(pextMapHInstLS_PN);
-	if (func == pMapHInstSL && func != pextMapHInstSL)
-		return wine_thunk_get_for_any(pextMapHInstSL);
-	if (func == pMapHInstSL_PN && func != pextMapHInstSL_PN)
-		return wine_thunk_get_for_any(pextMapHInstSL_PN);
-	if (func == pMapHModuleLS && func != pextMapHModuleLS)
-		return wine_thunk_get_for_any(pextMapHModuleLS);
-	if (func == pMapHModuleSL && func != pextMapHModuleSL)
-		return wine_thunk_get_for_any(pextMapHModuleSL);
-	if (func == pMapLS && func != pextMapLS)
-		return wine_thunk_get_for_any(pextMapLS);
-	if (func == pMapSL && func != pextMapSL)
-		return wine_thunk_get_for_any(pextMapSL);
-	if (func == pMapSLFix && func != pextMapSLFix)
-		return wine_thunk_get_for_any(pextMapSLFix);
 	if (func == pMapUserPhysicalPages)
 		return wine32a_kernel32_MapUserPhysicalPages;
-	if (func == pMapViewOfFile)
-		return wine32a_kernel32_MapViewOfFile;
-	if (func == pMapViewOfFileEx)
-		return wine32a_kernel32_MapViewOfFileEx;
+	if (func == pMapViewOfFile && func != pextMapViewOfFile)
+		return wine_thunk_get_for_any(pextMapViewOfFile);
+	if (func == pMapViewOfFileEx && func != pextMapViewOfFileEx)
+		return wine_thunk_get_for_any(pextMapViewOfFileEx);
+	if (func == pMapViewOfFileExNuma && func != pextMapViewOfFileExNuma)
+		return wine_thunk_get_for_any(pextMapViewOfFileExNuma);
 	if (func == pModule32First)
 		return wine32a_kernel32_Module32First;
 	if (func == pModule32FirstW)
@@ -26550,14 +22085,14 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_OpenWaitableTimerA;
 	if (func == pOpenWaitableTimerW && func != pextOpenWaitableTimerW)
 		return wine_thunk_get_for_any(pextOpenWaitableTimerW);
-	if (func == pOutputDebugStringA)
-		return wine32a_kernel32_OutputDebugStringA;
-	if (func == pOutputDebugStringW)
-		return wine32a_kernel32_OutputDebugStringW;
-	if (func == pPeekConsoleInputA)
-		return wine32a_kernel32_PeekConsoleInputA;
-	if (func == pPeekConsoleInputW)
-		return wine32a_kernel32_PeekConsoleInputW;
+	if (func == pOutputDebugStringA && func != pextOutputDebugStringA)
+		return wine_thunk_get_for_any(pextOutputDebugStringA);
+	if (func == pOutputDebugStringW && func != pextOutputDebugStringW)
+		return wine_thunk_get_for_any(pextOutputDebugStringW);
+	if (func == pPeekConsoleInputA && func != pextPeekConsoleInputA)
+		return wine_thunk_get_for_any(pextPeekConsoleInputA);
+	if (func == pPeekConsoleInputW && func != pextPeekConsoleInputW)
+		return wine_thunk_get_for_any(pextPeekConsoleInputW);
 	if (func == pPeekNamedPipe && func != pextPeekNamedPipe)
 		return wine_thunk_get_for_any(pextPeekNamedPipe);
 	if (func == pPostQueuedCompletionStatus && func != pextPostQueuedCompletionStatus)
@@ -26570,10 +22105,6 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_PowerSetRequest;
 	if (func == pPrepareTape)
 		return wine32a_kernel32_PrepareTape;
-	if (func == pPrivateFreeLibrary && func != pextPrivateFreeLibrary)
-		return wine_thunk_get_for_any(pextPrivateFreeLibrary);
-	if (func == pPrivateLoadLibrary && func != pextPrivateLoadLibrary)
-		return wine_thunk_get_for_any(pextPrivateLoadLibrary);
 	if (func == pProcess32First)
 		return wine32a_kernel32_Process32First;
 	if (func == pProcess32FirstW)
@@ -26586,10 +22117,8 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_ProcessIdToSessionId;
 	if (func == pPulseEvent && func != pextPulseEvent)
 		return wine_thunk_get_for_any(pextPulseEvent);
-	if (func == pPurgeComm)
-		return wine32a_kernel32_PurgeComm;
-	if (func == pQT_Thunk && func != pextQT_Thunk)
-		return wine_thunk_get_for_any(pextQT_Thunk);
+	if (func == pPurgeComm && func != pextPurgeComm)
+		return wine_thunk_get_for_any(pextPurgeComm);
 	if (func == pQueryActCtxSettingsW && func != pextQueryActCtxSettingsW)
 		return wine_thunk_get_for_any(pextQueryActCtxSettingsW);
 	if (func == pQueryActCtxW && func != pextQueryActCtxW)
@@ -26606,12 +22135,12 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_QueryFullProcessImageNameW;
 	if (func == pQueryInformationJobObject)
 		return wine32a_kernel32_QueryInformationJobObject;
-	if (func == pQueryMemoryResourceNotification)
-		return wine32a_kernel32_QueryMemoryResourceNotification;
-	if (func == pQueryPerformanceCounter)
-		return wine32a_kernel32_QueryPerformanceCounter;
-	if (func == pQueryPerformanceFrequency)
-		return wine32a_kernel32_QueryPerformanceFrequency;
+	if (func == pQueryMemoryResourceNotification && func != pextQueryMemoryResourceNotification)
+		return wine_thunk_get_for_any(pextQueryMemoryResourceNotification);
+	if (func == pQueryPerformanceCounter && func != pextQueryPerformanceCounter)
+		return wine_thunk_get_for_any(pextQueryPerformanceCounter);
+	if (func == pQueryPerformanceFrequency && func != pextQueryPerformanceFrequency)
+		return wine_thunk_get_for_any(pextQueryPerformanceFrequency);
 	if (func == pQueryProcessCycleTime)
 		return wine32a_kernel32_QueryProcessCycleTime;
 	if (func == pQueryThreadCycleTime)
@@ -26624,110 +22153,36 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine_thunk_get_for_any(pextQueueUserAPC);
 	if (func == pQueueUserWorkItem && func != pextQueueUserWorkItem)
 		return wine_thunk_get_for_any(pextQueueUserWorkItem);
-	if (func == pRaiseException)
-		return wine32a_kernel32_RaiseException;
-	if (func == pReadConsoleA)
-		return wine32a_kernel32_ReadConsoleA;
-	if (func == pReadConsoleInputA)
-		return wine32a_kernel32_ReadConsoleInputA;
+	if (func == pRaiseException && func != pextRaiseException)
+		return wine_thunk_get_for_any(pextRaiseException);
+	if (func == pReadConsoleA && func != pextReadConsoleA)
+		return wine_thunk_get_for_any(pextReadConsoleA);
+	if (func == pReadConsoleInputA && func != pextReadConsoleInputA)
+		return wine_thunk_get_for_any(pextReadConsoleInputA);
 	if (func == pReadConsoleInputW)
 		return wine32a_kernel32_ReadConsoleInputW;
-	if (func == pReadConsoleOutputA)
-		return wine32a_kernel32_ReadConsoleOutputA;
-	if (func == pReadConsoleOutputAttribute)
-		return wine32a_kernel32_ReadConsoleOutputAttribute;
-	if (func == pReadConsoleOutputCharacterA)
-		return wine32a_kernel32_ReadConsoleOutputCharacterA;
-	if (func == pReadConsoleOutputCharacterW)
-		return wine32a_kernel32_ReadConsoleOutputCharacterW;
-	if (func == pReadConsoleOutputW)
-		return wine32a_kernel32_ReadConsoleOutputW;
+	if (func == pReadConsoleOutputA && func != pextReadConsoleOutputA)
+		return wine_thunk_get_for_any(pextReadConsoleOutputA);
+	if (func == pReadConsoleOutputAttribute && func != pextReadConsoleOutputAttribute)
+		return wine_thunk_get_for_any(pextReadConsoleOutputAttribute);
+	if (func == pReadConsoleOutputCharacterA && func != pextReadConsoleOutputCharacterA)
+		return wine_thunk_get_for_any(pextReadConsoleOutputCharacterA);
+	if (func == pReadConsoleOutputCharacterW && func != pextReadConsoleOutputCharacterW)
+		return wine_thunk_get_for_any(pextReadConsoleOutputCharacterW);
+	if (func == pReadConsoleOutputW && func != pextReadConsoleOutputW)
+		return wine_thunk_get_for_any(pextReadConsoleOutputW);
 	if (func == pReadConsoleW)
 		return wine32a_kernel32_ReadConsoleW;
-	if (func == pReadDirectoryChangesW)
-		return wine32a_kernel32_ReadDirectoryChangesW;
+	if (func == pReadDirectoryChangesW && func != pextReadDirectoryChangesW)
+		return wine_thunk_get_for_any(pextReadDirectoryChangesW);
 	if (func == pReadFile && func != pextReadFile)
 		return wine_thunk_get_for_any(pextReadFile);
 	if (func == pReadFileEx && func != pextReadFileEx)
 		return wine_thunk_get_for_any(pextReadFileEx);
 	if (func == pReadFileScatter && func != pextReadFileScatter)
 		return wine_thunk_get_for_any(pextReadFileScatter);
-	if (func == pReadProcessMemory)
-		return wine32a_kernel32_ReadProcessMemory;
-	if (func == pRegCloseKey && func != pextRegCloseKey)
-		return wine_thunk_get_for_any(pextRegCloseKey);
-	if (func == pRegCreateKeyExA && func != pextRegCreateKeyExA)
-		return wine_thunk_get_for_any(pextRegCreateKeyExA);
-	if (func == pRegCreateKeyExW && func != pextRegCreateKeyExW)
-		return wine_thunk_get_for_any(pextRegCreateKeyExW);
-	if (func == pRegDeleteKeyExA && func != pextRegDeleteKeyExA)
-		return wine_thunk_get_for_any(pextRegDeleteKeyExA);
-	if (func == pRegDeleteKeyExW && func != pextRegDeleteKeyExW)
-		return wine_thunk_get_for_any(pextRegDeleteKeyExW);
-	if (func == pRegDeleteTreeA && func != pextRegDeleteTreeA)
-		return wine_thunk_get_for_any(pextRegDeleteTreeA);
-	if (func == pRegDeleteTreeW && func != pextRegDeleteTreeW)
-		return wine_thunk_get_for_any(pextRegDeleteTreeW);
-	if (func == pRegDeleteValueA && func != pextRegDeleteValueA)
-		return wine_thunk_get_for_any(pextRegDeleteValueA);
-	if (func == pRegDeleteValueW && func != pextRegDeleteValueW)
-		return wine_thunk_get_for_any(pextRegDeleteValueW);
-	if (func == pRegEnumKeyExA && func != pextRegEnumKeyExA)
-		return wine_thunk_get_for_any(pextRegEnumKeyExA);
-	if (func == pRegEnumKeyExW && func != pextRegEnumKeyExW)
-		return wine_thunk_get_for_any(pextRegEnumKeyExW);
-	if (func == pRegEnumValueA && func != pextRegEnumValueA)
-		return wine_thunk_get_for_any(pextRegEnumValueA);
-	if (func == pRegEnumValueW && func != pextRegEnumValueW)
-		return wine_thunk_get_for_any(pextRegEnumValueW);
-	if (func == pRegFlushKey && func != pextRegFlushKey)
-		return wine_thunk_get_for_any(pextRegFlushKey);
-	if (func == pRegGetKeySecurity && func != pextRegGetKeySecurity)
-		return wine_thunk_get_for_any(pextRegGetKeySecurity);
-	if (func == pRegGetValueA && func != pextRegGetValueA)
-		return wine_thunk_get_for_any(pextRegGetValueA);
-	if (func == pRegGetValueW && func != pextRegGetValueW)
-		return wine_thunk_get_for_any(pextRegGetValueW);
-	if (func == pRegLoadKeyA && func != pextRegLoadKeyA)
-		return wine_thunk_get_for_any(pextRegLoadKeyA);
-	if (func == pRegLoadKeyW && func != pextRegLoadKeyW)
-		return wine_thunk_get_for_any(pextRegLoadKeyW);
-	if (func == pRegLoadMUIStringA && func != pextRegLoadMUIStringA)
-		return wine_thunk_get_for_any(pextRegLoadMUIStringA);
-	if (func == pRegLoadMUIStringW && func != pextRegLoadMUIStringW)
-		return wine_thunk_get_for_any(pextRegLoadMUIStringW);
-	if (func == pRegNotifyChangeKeyValue && func != pextRegNotifyChangeKeyValue)
-		return wine_thunk_get_for_any(pextRegNotifyChangeKeyValue);
-	if (func == pRegOpenCurrentUser && func != pextRegOpenCurrentUser)
-		return wine_thunk_get_for_any(pextRegOpenCurrentUser);
-	if (func == pRegOpenKeyExA && func != pextRegOpenKeyExA)
-		return wine_thunk_get_for_any(pextRegOpenKeyExA);
-	if (func == pRegOpenKeyExW && func != pextRegOpenKeyExW)
-		return wine_thunk_get_for_any(pextRegOpenKeyExW);
-	if (func == pRegOpenUserClassesRoot && func != pextRegOpenUserClassesRoot)
-		return wine_thunk_get_for_any(pextRegOpenUserClassesRoot);
-	if (func == pRegQueryInfoKeyA && func != pextRegQueryInfoKeyA)
-		return wine_thunk_get_for_any(pextRegQueryInfoKeyA);
-	if (func == pRegQueryInfoKeyW && func != pextRegQueryInfoKeyW)
-		return wine_thunk_get_for_any(pextRegQueryInfoKeyW);
-	if (func == pRegQueryValueExA && func != pextRegQueryValueExA)
-		return wine_thunk_get_for_any(pextRegQueryValueExA);
-	if (func == pRegQueryValueExW && func != pextRegQueryValueExW)
-		return wine_thunk_get_for_any(pextRegQueryValueExW);
-	if (func == pRegRestoreKeyA && func != pextRegRestoreKeyA)
-		return wine_thunk_get_for_any(pextRegRestoreKeyA);
-	if (func == pRegRestoreKeyW && func != pextRegRestoreKeyW)
-		return wine_thunk_get_for_any(pextRegRestoreKeyW);
-	if (func == pRegSetKeySecurity && func != pextRegSetKeySecurity)
-		return wine_thunk_get_for_any(pextRegSetKeySecurity);
-	if (func == pRegSetValueExA && func != pextRegSetValueExA)
-		return wine_thunk_get_for_any(pextRegSetValueExA);
-	if (func == pRegSetValueExW && func != pextRegSetValueExW)
-		return wine_thunk_get_for_any(pextRegSetValueExW);
-	if (func == pRegUnLoadKeyA && func != pextRegUnLoadKeyA)
-		return wine_thunk_get_for_any(pextRegUnLoadKeyA);
-	if (func == pRegUnLoadKeyW && func != pextRegUnLoadKeyW)
-		return wine_thunk_get_for_any(pextRegUnLoadKeyW);
+	if (func == pReadProcessMemory && func != pextReadProcessMemory)
+		return wine_thunk_get_for_any(pextReadProcessMemory);
 	if (func == pRegisterApplicationRecoveryCallback)
 		return wine32a_kernel32_RegisterApplicationRecoveryCallback;
 	if (func == pRegisterApplicationRestart)
@@ -26774,8 +22229,8 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_RequestWakeupLatency;
 	if (func == pResetEvent && func != pextResetEvent)
 		return wine_thunk_get_for_any(pextResetEvent);
-	if (func == pResetWriteWatch)
-		return wine32a_kernel32_ResetWriteWatch;
+	if (func == pResetWriteWatch && func != pextResetWriteWatch)
+		return wine_thunk_get_for_any(pextResetWriteWatch);
 	if (func == pResolveDelayLoadedAPI && func != pextResolveDelayLoadedAPI)
 		return wine_thunk_get_for_any(pextResolveDelayLoadedAPI);
 	if (func == pResolveLocaleName)
@@ -26818,50 +22273,10 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine_thunk_get_for_any(pextRtlVirtualUnwind);
 	if (func == pRtlZeroMemory && func != pextRtlZeroMemory)
 		return wine_thunk_get_for_any(pextRtlZeroMemory);
-	if (func == pSMapLS && func != pextSMapLS)
-		return wine_thunk_get_for_any(pextSMapLS);
-	if (func == pSMapLS_IP_EBP_12 && func != pextSMapLS_IP_EBP_12)
-		return wine_thunk_get_for_any(pextSMapLS_IP_EBP_12);
-	if (func == pSMapLS_IP_EBP_16 && func != pextSMapLS_IP_EBP_16)
-		return wine_thunk_get_for_any(pextSMapLS_IP_EBP_16);
-	if (func == pSMapLS_IP_EBP_20 && func != pextSMapLS_IP_EBP_20)
-		return wine_thunk_get_for_any(pextSMapLS_IP_EBP_20);
-	if (func == pSMapLS_IP_EBP_24 && func != pextSMapLS_IP_EBP_24)
-		return wine_thunk_get_for_any(pextSMapLS_IP_EBP_24);
-	if (func == pSMapLS_IP_EBP_28 && func != pextSMapLS_IP_EBP_28)
-		return wine_thunk_get_for_any(pextSMapLS_IP_EBP_28);
-	if (func == pSMapLS_IP_EBP_32 && func != pextSMapLS_IP_EBP_32)
-		return wine_thunk_get_for_any(pextSMapLS_IP_EBP_32);
-	if (func == pSMapLS_IP_EBP_36 && func != pextSMapLS_IP_EBP_36)
-		return wine_thunk_get_for_any(pextSMapLS_IP_EBP_36);
-	if (func == pSMapLS_IP_EBP_40 && func != pextSMapLS_IP_EBP_40)
-		return wine_thunk_get_for_any(pextSMapLS_IP_EBP_40);
-	if (func == pSMapLS_IP_EBP_8 && func != pextSMapLS_IP_EBP_8)
-		return wine_thunk_get_for_any(pextSMapLS_IP_EBP_8);
-	if (func == pSUnMapLS && func != pextSUnMapLS)
-		return wine_thunk_get_for_any(pextSUnMapLS);
-	if (func == pSUnMapLS_IP_EBP_12 && func != pextSUnMapLS_IP_EBP_12)
-		return wine_thunk_get_for_any(pextSUnMapLS_IP_EBP_12);
-	if (func == pSUnMapLS_IP_EBP_16 && func != pextSUnMapLS_IP_EBP_16)
-		return wine_thunk_get_for_any(pextSUnMapLS_IP_EBP_16);
-	if (func == pSUnMapLS_IP_EBP_20 && func != pextSUnMapLS_IP_EBP_20)
-		return wine_thunk_get_for_any(pextSUnMapLS_IP_EBP_20);
-	if (func == pSUnMapLS_IP_EBP_24 && func != pextSUnMapLS_IP_EBP_24)
-		return wine_thunk_get_for_any(pextSUnMapLS_IP_EBP_24);
-	if (func == pSUnMapLS_IP_EBP_28 && func != pextSUnMapLS_IP_EBP_28)
-		return wine_thunk_get_for_any(pextSUnMapLS_IP_EBP_28);
-	if (func == pSUnMapLS_IP_EBP_32 && func != pextSUnMapLS_IP_EBP_32)
-		return wine_thunk_get_for_any(pextSUnMapLS_IP_EBP_32);
-	if (func == pSUnMapLS_IP_EBP_36 && func != pextSUnMapLS_IP_EBP_36)
-		return wine_thunk_get_for_any(pextSUnMapLS_IP_EBP_36);
-	if (func == pSUnMapLS_IP_EBP_40 && func != pextSUnMapLS_IP_EBP_40)
-		return wine_thunk_get_for_any(pextSUnMapLS_IP_EBP_40);
-	if (func == pSUnMapLS_IP_EBP_8 && func != pextSUnMapLS_IP_EBP_8)
-		return wine_thunk_get_for_any(pextSUnMapLS_IP_EBP_8);
-	if (func == pScrollConsoleScreenBufferA)
-		return wine32a_kernel32_ScrollConsoleScreenBufferA;
-	if (func == pScrollConsoleScreenBufferW)
-		return wine32a_kernel32_ScrollConsoleScreenBufferW;
+	if (func == pScrollConsoleScreenBufferA && func != pextScrollConsoleScreenBufferA)
+		return wine_thunk_get_for_any(pextScrollConsoleScreenBufferA);
+	if (func == pScrollConsoleScreenBufferW && func != pextScrollConsoleScreenBufferW)
+		return wine_thunk_get_for_any(pextScrollConsoleScreenBufferW);
 	if (func == pSearchPathA)
 		return wine32a_kernel32_SearchPathA;
 	if (func == pSearchPathW)
@@ -26872,16 +22287,16 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_SetCalendarInfoA;
 	if (func == pSetCalendarInfoW)
 		return wine32a_kernel32_SetCalendarInfoW;
-	if (func == pSetCommBreak)
-		return wine32a_kernel32_SetCommBreak;
-	if (func == pSetCommConfig)
-		return wine32a_kernel32_SetCommConfig;
-	if (func == pSetCommMask)
-		return wine32a_kernel32_SetCommMask;
-	if (func == pSetCommState)
-		return wine32a_kernel32_SetCommState;
-	if (func == pSetCommTimeouts)
-		return wine32a_kernel32_SetCommTimeouts;
+	if (func == pSetCommBreak && func != pextSetCommBreak)
+		return wine_thunk_get_for_any(pextSetCommBreak);
+	if (func == pSetCommConfig && func != pextSetCommConfig)
+		return wine_thunk_get_for_any(pextSetCommConfig);
+	if (func == pSetCommMask && func != pextSetCommMask)
+		return wine_thunk_get_for_any(pextSetCommMask);
+	if (func == pSetCommState && func != pextSetCommState)
+		return wine_thunk_get_for_any(pextSetCommState);
+	if (func == pSetCommTimeouts && func != pextSetCommTimeouts)
+		return wine_thunk_get_for_any(pextSetCommTimeouts);
 	if (func == pSetComputerNameA)
 		return wine32a_kernel32_SetComputerNameA;
 	if (func == pSetComputerNameExA)
@@ -26890,44 +22305,44 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_SetComputerNameExW;
 	if (func == pSetComputerNameW)
 		return wine32a_kernel32_SetComputerNameW;
-	if (func == pSetConsoleActiveScreenBuffer)
-		return wine32a_kernel32_SetConsoleActiveScreenBuffer;
-	if (func == pSetConsoleCP)
-		return wine32a_kernel32_SetConsoleCP;
+	if (func == pSetConsoleActiveScreenBuffer && func != pextSetConsoleActiveScreenBuffer)
+		return wine_thunk_get_for_any(pextSetConsoleActiveScreenBuffer);
+	if (func == pSetConsoleCP && func != pextSetConsoleCP)
+		return wine_thunk_get_for_any(pextSetConsoleCP);
 	if (func == pSetConsoleCtrlHandler)
 		return wine32a_kernel32_SetConsoleCtrlHandler;
-	if (func == pSetConsoleCursorInfo)
-		return wine32a_kernel32_SetConsoleCursorInfo;
-	if (func == pSetConsoleCursorPosition)
-		return wine32a_kernel32_SetConsoleCursorPosition;
+	if (func == pSetConsoleCursorInfo && func != pextSetConsoleCursorInfo)
+		return wine_thunk_get_for_any(pextSetConsoleCursorInfo);
+	if (func == pSetConsoleCursorPosition && func != pextSetConsoleCursorPosition)
+		return wine_thunk_get_for_any(pextSetConsoleCursorPosition);
 	if (func == pSetConsoleDisplayMode)
 		return wine32a_kernel32_SetConsoleDisplayMode;
 	if (func == pSetConsoleFont)
 		return wine32a_kernel32_SetConsoleFont;
 	if (func == pSetConsoleIcon)
 		return wine32a_kernel32_SetConsoleIcon;
-	if (func == pSetConsoleInputExeNameA)
-		return wine32a_kernel32_SetConsoleInputExeNameA;
-	if (func == pSetConsoleInputExeNameW)
-		return wine32a_kernel32_SetConsoleInputExeNameW;
+	if (func == pSetConsoleInputExeNameA && func != pextSetConsoleInputExeNameA)
+		return wine_thunk_get_for_any(pextSetConsoleInputExeNameA);
+	if (func == pSetConsoleInputExeNameW && func != pextSetConsoleInputExeNameW)
+		return wine_thunk_get_for_any(pextSetConsoleInputExeNameW);
 	if (func == pSetConsoleKeyShortcuts)
 		return wine32a_kernel32_SetConsoleKeyShortcuts;
-	if (func == pSetConsoleMode)
-		return wine32a_kernel32_SetConsoleMode;
-	if (func == pSetConsoleOutputCP)
-		return wine32a_kernel32_SetConsoleOutputCP;
-	if (func == pSetConsoleScreenBufferInfoEx)
-		return wine32a_kernel32_SetConsoleScreenBufferInfoEx;
-	if (func == pSetConsoleScreenBufferSize)
-		return wine32a_kernel32_SetConsoleScreenBufferSize;
-	if (func == pSetConsoleTextAttribute)
-		return wine32a_kernel32_SetConsoleTextAttribute;
+	if (func == pSetConsoleMode && func != pextSetConsoleMode)
+		return wine_thunk_get_for_any(pextSetConsoleMode);
+	if (func == pSetConsoleOutputCP && func != pextSetConsoleOutputCP)
+		return wine_thunk_get_for_any(pextSetConsoleOutputCP);
+	if (func == pSetConsoleScreenBufferInfoEx && func != pextSetConsoleScreenBufferInfoEx)
+		return wine_thunk_get_for_any(pextSetConsoleScreenBufferInfoEx);
+	if (func == pSetConsoleScreenBufferSize && func != pextSetConsoleScreenBufferSize)
+		return wine_thunk_get_for_any(pextSetConsoleScreenBufferSize);
+	if (func == pSetConsoleTextAttribute && func != pextSetConsoleTextAttribute)
+		return wine_thunk_get_for_any(pextSetConsoleTextAttribute);
 	if (func == pSetConsoleTitleA)
 		return wine32a_kernel32_SetConsoleTitleA;
-	if (func == pSetConsoleTitleW)
-		return wine32a_kernel32_SetConsoleTitleW;
-	if (func == pSetConsoleWindowInfo)
-		return wine32a_kernel32_SetConsoleWindowInfo;
+	if (func == pSetConsoleTitleW && func != pextSetConsoleTitleW)
+		return wine_thunk_get_for_any(pextSetConsoleTitleW);
+	if (func == pSetConsoleWindowInfo && func != pextSetConsoleWindowInfo)
+		return wine_thunk_get_for_any(pextSetConsoleWindowInfo);
 	if (func == pSetCriticalSectionSpinCount && func != pextSetCriticalSectionSpinCount)
 		return wine_thunk_get_for_any(pextSetCriticalSectionSpinCount);
 	if (func == pSetCurrentConsoleFontEx)
@@ -26948,10 +22363,10 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_SetDllDirectoryW;
 	if (func == pSetEndOfFile && func != pextSetEndOfFile)
 		return wine_thunk_get_for_any(pextSetEndOfFile);
-	if (func == pSetEnvironmentVariableA)
-		return wine32a_kernel32_SetEnvironmentVariableA;
-	if (func == pSetEnvironmentVariableW)
-		return wine32a_kernel32_SetEnvironmentVariableW;
+	if (func == pSetEnvironmentVariableA && func != pextSetEnvironmentVariableA)
+		return wine_thunk_get_for_any(pextSetEnvironmentVariableA);
+	if (func == pSetEnvironmentVariableW && func != pextSetEnvironmentVariableW)
+		return wine_thunk_get_for_any(pextSetEnvironmentVariableW);
 	if (func == pSetErrorMode && func != pextSetErrorMode)
 		return wine_thunk_get_for_any(pextSetErrorMode);
 	if (func == pSetEvent && func != pextSetEvent)
@@ -27018,8 +22433,10 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine_thunk_get_for_any(pextSetProcessWorkingSetSizeEx);
 	if (func == pSetSearchPathMode)
 		return wine32a_kernel32_SetSearchPathMode;
-	if (func == pSetStdHandle)
-		return wine32a_kernel32_SetStdHandle;
+	if (func == pSetStdHandle && func != pextSetStdHandle)
+		return wine_thunk_get_for_any(pextSetStdHandle);
+	if (func == pSetStdHandleEx && func != pextSetStdHandleEx)
+		return wine_thunk_get_for_any(pextSetStdHandleEx);
 	if (func == pSetSystemFileCacheSize)
 		return wine32a_kernel32_SetSystemFileCacheSize;
 	if (func == pSetSystemPowerState)
@@ -27072,8 +22489,8 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_SetTimeZoneInformation;
 	if (func == pSetUmsThreadInformation)
 		return wine32a_kernel32_SetUmsThreadInformation;
-	if (func == pSetUnhandledExceptionFilter)
-		return wine32a_kernel32_SetUnhandledExceptionFilter;
+	if (func == pSetUnhandledExceptionFilter && func != pextSetUnhandledExceptionFilter)
+		return wine_thunk_get_for_any(pextSetUnhandledExceptionFilter);
 	if (func == pSetUserGeoID)
 		return wine32a_kernel32_SetUserGeoID;
 	if (func == pSetVolumeLabelA)
@@ -27088,8 +22505,8 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine_thunk_get_for_any(pextSetWaitableTimer);
 	if (func == pSetWaitableTimerEx && func != pextSetWaitableTimerEx)
 		return wine_thunk_get_for_any(pextSetWaitableTimerEx);
-	if (func == pSetupComm)
-		return wine32a_kernel32_SetupComm;
+	if (func == pSetupComm && func != pextSetupComm)
+		return wine_thunk_get_for_any(pextSetupComm);
 	if (func == pSignalObjectAndWait && func != pextSignalObjectAndWait)
 		return wine_thunk_get_for_any(pextSignalObjectAndWait);
 	if (func == pSizeofResource && func != pextSizeofResource)
@@ -27126,8 +22543,6 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_Thread32First;
 	if (func == pThread32Next)
 		return wine32a_kernel32_Thread32Next;
-	if (func == pThunkConnect32 && func != pextThunkConnect32)
-		return wine_thunk_get_for_any(pextThunkConnect32);
 	if (func == pTlsAlloc && func != pextTlsAlloc)
 		return wine_thunk_get_for_any(pextTlsAlloc);
 	if (func == pTlsFree && func != pextTlsFree)
@@ -27140,8 +22555,8 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_Toolhelp32ReadProcessMemory;
 	if (func == pTransactNamedPipe && func != pextTransactNamedPipe)
 		return wine_thunk_get_for_any(pextTransactNamedPipe);
-	if (func == pTransmitCommChar)
-		return wine32a_kernel32_TransmitCommChar;
+	if (func == pTransmitCommChar && func != pextTransmitCommChar)
+		return wine_thunk_get_for_any(pextTransmitCommChar);
 	if (func == pTryAcquireSRWLockExclusive && func != pextTryAcquireSRWLockExclusive)
 		return wine_thunk_get_for_any(pextTryAcquireSRWLockExclusive);
 	if (func == pTryAcquireSRWLockShared && func != pextTryAcquireSRWLockShared)
@@ -27154,24 +22569,16 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_TzSpecificLocalTimeToSystemTime;
 	if (func == pUmsThreadYield)
 		return wine32a_kernel32_UmsThreadYield;
-	if (func == pUTRegister && func != pextUTRegister)
-		return wine_thunk_get_for_any(pextUTRegister);
-	if (func == pUTUnRegister && func != pextUTUnRegister)
-		return wine_thunk_get_for_any(pextUTUnRegister);
-	if (func == pUnMapLS && func != pextUnMapLS)
-		return wine_thunk_get_for_any(pextUnMapLS);
-	if (func == pUnMapSLFixArray && func != pextUnMapSLFixArray)
-		return wine_thunk_get_for_any(pextUnMapSLFixArray);
-	if (func == pUnhandledExceptionFilter)
-		return wine32a_kernel32_UnhandledExceptionFilter;
+	if (func == pUnhandledExceptionFilter && func != pextUnhandledExceptionFilter)
+		return wine_thunk_get_for_any(pextUnhandledExceptionFilter);
 	if (func == pUninitializeCriticalSection)
 		return wine32a_kernel32_UninitializeCriticalSection;
 	if (func == pUnlockFile && func != pextUnlockFile)
 		return wine_thunk_get_for_any(pextUnlockFile);
 	if (func == pUnlockFileEx && func != pextUnlockFileEx)
 		return wine_thunk_get_for_any(pextUnlockFileEx);
-	if (func == pUnmapViewOfFile)
-		return wine32a_kernel32_UnmapViewOfFile;
+	if (func == pUnmapViewOfFile && func != pextUnmapViewOfFile)
+		return wine_thunk_get_for_any(pextUnmapViewOfFile);
 	if (func == pUnregisterApplicationRestart)
 		return wine32a_kernel32_UnregisterApplicationRestart;
 	if (func == pUnregisterWait)
@@ -27196,34 +22603,34 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_VerifyVersionInfoA;
 	if (func == pVerifyVersionInfoW)
 		return wine32a_kernel32_VerifyVersionInfoW;
-	if (func == pVirtualAlloc)
-		return wine32a_kernel32_VirtualAlloc;
-	if (func == pVirtualAllocEx)
-		return wine32a_kernel32_VirtualAllocEx;
-	if (func == pVirtualAllocExNuma)
-		return wine32a_kernel32_VirtualAllocExNuma;
-	if (func == pVirtualFree)
-		return wine32a_kernel32_VirtualFree;
-	if (func == pVirtualFreeEx)
-		return wine32a_kernel32_VirtualFreeEx;
-	if (func == pVirtualLock)
-		return wine32a_kernel32_VirtualLock;
-	if (func == pVirtualProtect)
-		return wine32a_kernel32_VirtualProtect;
-	if (func == pVirtualProtectEx)
-		return wine32a_kernel32_VirtualProtectEx;
-	if (func == pVirtualQuery)
-		return wine32a_kernel32_VirtualQuery;
-	if (func == pVirtualQueryEx)
-		return wine32a_kernel32_VirtualQueryEx;
-	if (func == pVirtualUnlock)
-		return wine32a_kernel32_VirtualUnlock;
+	if (func == pVirtualAlloc && func != pextVirtualAlloc)
+		return wine_thunk_get_for_any(pextVirtualAlloc);
+	if (func == pVirtualAllocEx && func != pextVirtualAllocEx)
+		return wine_thunk_get_for_any(pextVirtualAllocEx);
+	if (func == pVirtualAllocExNuma && func != pextVirtualAllocExNuma)
+		return wine_thunk_get_for_any(pextVirtualAllocExNuma);
+	if (func == pVirtualFree && func != pextVirtualFree)
+		return wine_thunk_get_for_any(pextVirtualFree);
+	if (func == pVirtualFreeEx && func != pextVirtualFreeEx)
+		return wine_thunk_get_for_any(pextVirtualFreeEx);
+	if (func == pVirtualLock && func != pextVirtualLock)
+		return wine_thunk_get_for_any(pextVirtualLock);
+	if (func == pVirtualProtect && func != pextVirtualProtect)
+		return wine_thunk_get_for_any(pextVirtualProtect);
+	if (func == pVirtualProtectEx && func != pextVirtualProtectEx)
+		return wine_thunk_get_for_any(pextVirtualProtectEx);
+	if (func == pVirtualQuery && func != pextVirtualQuery)
+		return wine_thunk_get_for_any(pextVirtualQuery);
+	if (func == pVirtualQueryEx && func != pextVirtualQueryEx)
+		return wine_thunk_get_for_any(pextVirtualQueryEx);
+	if (func == pVirtualUnlock && func != pextVirtualUnlock)
+		return wine_thunk_get_for_any(pextVirtualUnlock);
 	if (func == pWTSGetActiveConsoleSessionId)
 		return wine32a_kernel32_WTSGetActiveConsoleSessionId;
-	if (func == pWaitCommEvent)
-		return wine32a_kernel32_WaitCommEvent;
-	if (func == pWaitForDebugEvent)
-		return wine32a_kernel32_WaitForDebugEvent;
+	if (func == pWaitCommEvent && func != pextWaitCommEvent)
+		return wine_thunk_get_for_any(pextWaitCommEvent);
+	if (func == pWaitForDebugEvent && func != pextWaitForDebugEvent)
+		return wine_thunk_get_for_any(pextWaitForDebugEvent);
 	if (func == pWaitForMultipleObjects && func != pextWaitForMultipleObjects)
 		return wine_thunk_get_for_any(pextWaitForMultipleObjects);
 	if (func == pWaitForMultipleObjectsEx && func != pextWaitForMultipleObjectsEx)
@@ -27272,22 +22679,22 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine_thunk_get_for_any(pextWow64RevertWow64FsRedirection);
 	if (func == pWow64SetThreadContext)
 		return wine32a_kernel32_Wow64SetThreadContext;
-	if (func == pWriteConsoleA)
-		return wine32a_kernel32_WriteConsoleA;
-	if (func == pWriteConsoleInputA)
-		return wine32a_kernel32_WriteConsoleInputA;
-	if (func == pWriteConsoleInputW)
-		return wine32a_kernel32_WriteConsoleInputW;
-	if (func == pWriteConsoleOutputA)
-		return wine32a_kernel32_WriteConsoleOutputA;
-	if (func == pWriteConsoleOutputAttribute)
-		return wine32a_kernel32_WriteConsoleOutputAttribute;
-	if (func == pWriteConsoleOutputCharacterA)
-		return wine32a_kernel32_WriteConsoleOutputCharacterA;
-	if (func == pWriteConsoleOutputCharacterW)
-		return wine32a_kernel32_WriteConsoleOutputCharacterW;
-	if (func == pWriteConsoleOutputW)
-		return wine32a_kernel32_WriteConsoleOutputW;
+	if (func == pWriteConsoleA && func != pextWriteConsoleA)
+		return wine_thunk_get_for_any(pextWriteConsoleA);
+	if (func == pWriteConsoleInputA && func != pextWriteConsoleInputA)
+		return wine_thunk_get_for_any(pextWriteConsoleInputA);
+	if (func == pWriteConsoleInputW && func != pextWriteConsoleInputW)
+		return wine_thunk_get_for_any(pextWriteConsoleInputW);
+	if (func == pWriteConsoleOutputA && func != pextWriteConsoleOutputA)
+		return wine_thunk_get_for_any(pextWriteConsoleOutputA);
+	if (func == pWriteConsoleOutputAttribute && func != pextWriteConsoleOutputAttribute)
+		return wine_thunk_get_for_any(pextWriteConsoleOutputAttribute);
+	if (func == pWriteConsoleOutputCharacterA && func != pextWriteConsoleOutputCharacterA)
+		return wine_thunk_get_for_any(pextWriteConsoleOutputCharacterA);
+	if (func == pWriteConsoleOutputCharacterW && func != pextWriteConsoleOutputCharacterW)
+		return wine_thunk_get_for_any(pextWriteConsoleOutputCharacterW);
+	if (func == pWriteConsoleOutputW && func != pextWriteConsoleOutputW)
+		return wine_thunk_get_for_any(pextWriteConsoleOutputW);
 	if (func == pWriteConsoleW)
 		return wine32a_kernel32_WriteConsoleW;
 	if (func == pWriteFile && func != pextWriteFile)
@@ -27308,8 +22715,8 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_WritePrivateProfileStructA;
 	if (func == pWritePrivateProfileStructW)
 		return wine32a_kernel32_WritePrivateProfileStructW;
-	if (func == pWriteProcessMemory)
-		return wine32a_kernel32_WriteProcessMemory;
+	if (func == pWriteProcessMemory && func != pextWriteProcessMemory)
+		return wine_thunk_get_for_any(pextWriteProcessMemory);
 	if (func == pWriteProfileSectionA)
 		return wine32a_kernel32_WriteProfileSectionA;
 	if (func == pWriteProfileSectionW)
@@ -27322,10 +22729,6 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32_WriteTapemark;
 	if (func == pZombifyActCtx && func != pextZombifyActCtx)
 		return wine_thunk_get_for_any(pextZombifyActCtx);
-	if (func == p__C_specific_handler && func != pext__C_specific_handler)
-		return wine_thunk_get_for_any(pext__C_specific_handler);
-	if (func == p__chkstk && func != pext__chkstk)
-		return wine_thunk_get_for_any(pext__chkstk);
 	if (func == p_hread)
 		return wine32a_kernel32__hread;
 	if (func == p_hwrite)
@@ -27336,8 +22739,6 @@ void* wine_thunk_get_for_kernel32(void *func)
 		return wine32a_kernel32__lcreat;
 	if (func == p_llseek)
 		return wine32a_kernel32__llseek;
-	if (func == p_local_unwind && func != pext_local_unwind)
-		return wine_thunk_get_for_any(pext_local_unwind);
 	if (func == p_lopen)
 		return wine32a_kernel32__lopen;
 	if (func == p_lread)

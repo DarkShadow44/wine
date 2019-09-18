@@ -29134,9 +29134,9 @@ static BOOL initialized = FALSE;
 
 void wine_thunk_initialize_msvcrt(void)
 {
-	HMODULE library = LoadLibraryA("msvcrt.dll");
-	HMODULE library_ntdll = LoadLibraryA("ntdll.dll");
-	HMODULE library_kernel32 = LoadLibraryA("kernel32.dll");
+	HMODULE library = GetModuleHandleA("msvcrt.dll");
+	HMODULE library_ntdll = GetModuleHandleA("ntdll.dll");
+	HMODULE library_kernel32 = GetModuleHandleA("kernel32.dll");
 	pMSVCRT_I10_OUTPUT = (void *)GetProcAddress(library, "$I10_OUTPUT");
 	pMSVCRT___non_rtti_object_copy_ctor = (void *)GetProcAddress(library, "??0__non_rtti_object@@QEAA@AEBV0@@Z");
 	pMSVCRT___non_rtti_object_ctor = (void *)GetProcAddress(library, "??0__non_rtti_object@@QEAA@PEBD@Z");

@@ -4639,13 +4639,13 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DefMDIChildProcW,
 	"ret \n"
 )
 
-extern WINAPI LRESULT wine32b_user32_DefRawInputProc(RAWINPUT**  data, INT  data_count, UINT  header_size) /* ../dlls/user32/rawinput.c:486 */
+extern WINAPI LRESULT wine32b_user32_DefRawInputProc(RAWINPUT**  data, INT  data_count, UINT  header_size) /* ../dlls/user32/rawinput.c:497 */
 {
 	TRACE("Enter DefRawInputProc\n");
 	return pDefRawInputProc(data, data_count, header_size);
 }
 
-extern WINAPI void wine32a_user32_DefRawInputProc(void);  /* ../dlls/user32/rawinput.c:486 */
+extern WINAPI void wine32a_user32_DefRawInputProc(void);  /* ../dlls/user32/rawinput.c:497 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DefRawInputProc,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -9966,13 +9966,13 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetQueueStatus,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_user32_GetRawInputBuffer(RAWINPUT*  data, UINT*  data_size, UINT  header_size) /* ../dlls/user32/rawinput.c:341 */
+extern WINAPI UINT wine32b_user32_GetRawInputBuffer(RAWINPUT*  data, UINT*  data_size, UINT  header_size) /* ../dlls/user32/rawinput.c:352 */
 {
 	TRACE("Enter GetRawInputBuffer\n");
 	return pGetRawInputBuffer(data, data_size, header_size);
 }
 
-extern WINAPI void wine32a_user32_GetRawInputBuffer(void);  /* ../dlls/user32/rawinput.c:341 */
+extern WINAPI void wine32a_user32_GetRawInputBuffer(void);  /* ../dlls/user32/rawinput.c:352 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetRawInputBuffer,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -9993,13 +9993,13 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetRawInputBuffer,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_user32_GetRawInputData(HRAWINPUT  rawinput, UINT  command, void*  data, UINT*  data_size, UINT  header_size) /* ../dlls/user32/rawinput.c:298 */
+extern WINAPI UINT wine32b_user32_GetRawInputData(HRAWINPUT  rawinput, UINT  command, void*  data, UINT*  data_size, UINT  header_size) /* ../dlls/user32/rawinput.c:309 */
 {
 	TRACE("Enter GetRawInputData\n");
 	return pGetRawInputData(rawinput, command, data, data_size, header_size);
 }
 
-extern WINAPI void wine32a_user32_GetRawInputData(void);  /* ../dlls/user32/rawinput.c:298 */
+extern WINAPI void wine32a_user32_GetRawInputData(void);  /* ../dlls/user32/rawinput.c:309 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetRawInputData,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -10021,13 +10021,13 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetRawInputData,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_user32_GetRawInputDeviceInfoA(HANDLE  device, UINT  command, void*  data, UINT*  data_size) /* ../dlls/user32/rawinput.c:351 */
+extern WINAPI UINT wine32b_user32_GetRawInputDeviceInfoA(HANDLE  device, UINT  command, void*  data, UINT*  data_size) /* ../dlls/user32/rawinput.c:362 */
 {
 	TRACE("Enter GetRawInputDeviceInfoA\n");
 	return pGetRawInputDeviceInfoA(device, command, data, data_size);
 }
 
-extern WINAPI void wine32a_user32_GetRawInputDeviceInfoA(void);  /* ../dlls/user32/rawinput.c:351 */
+extern WINAPI void wine32a_user32_GetRawInputDeviceInfoA(void);  /* ../dlls/user32/rawinput.c:362 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetRawInputDeviceInfoA,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -10049,13 +10049,13 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetRawInputDeviceInfoA,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_user32_GetRawInputDeviceInfoW(HANDLE  device, UINT  command, void*  data, UINT*  data_size) /* ../dlls/user32/rawinput.c:389 */
+extern WINAPI UINT wine32b_user32_GetRawInputDeviceInfoW(HANDLE  device, UINT  command, void*  data, UINT*  data_size) /* ../dlls/user32/rawinput.c:400 */
 {
 	TRACE("Enter GetRawInputDeviceInfoW\n");
 	return pGetRawInputDeviceInfoW(device, command, data, data_size);
 }
 
-extern WINAPI void wine32a_user32_GetRawInputDeviceInfoW(void);  /* ../dlls/user32/rawinput.c:389 */
+extern WINAPI void wine32a_user32_GetRawInputDeviceInfoW(void);  /* ../dlls/user32/rawinput.c:400 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetRawInputDeviceInfoW,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -10104,13 +10104,13 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetRawInputDeviceList,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_user32_GetRegisteredRawInputDevices(RAWINPUTDEVICE*  devices, UINT*  device_count, UINT  size) /* ../dlls/user32/rawinput.c:475 */
+extern WINAPI UINT wine32b_user32_GetRegisteredRawInputDevices(RAWINPUTDEVICE*  devices, UINT*  device_count, UINT  size) /* ../dlls/user32/rawinput.c:486 */
 {
 	TRACE("Enter GetRegisteredRawInputDevices\n");
 	return pGetRegisteredRawInputDevices(devices, device_count, size);
 }
 
-extern WINAPI void wine32a_user32_GetRegisteredRawInputDevices(void);  /* ../dlls/user32/rawinput.c:475 */
+extern WINAPI void wine32a_user32_GetRegisteredRawInputDevices(void);  /* ../dlls/user32/rawinput.c:486 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetRegisteredRawInputDevices,
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
@@ -20360,7 +20360,7 @@ static BOOL initialized = FALSE;
 
 void wine_thunk_initialize_user32(void)
 {
-	HMODULE library = LoadLibraryA("user32.dll");
+	HMODULE library = GetModuleHandleA("user32.dll");
 	pActivateKeyboardLayout = (void *)GetProcAddress(library, "ActivateKeyboardLayout");
 	pAddClipboardFormatListener = (void *)GetProcAddress(library, "AddClipboardFormatListener");
 	pAdjustWindowRect = (void *)GetProcAddress(library, "AdjustWindowRect");

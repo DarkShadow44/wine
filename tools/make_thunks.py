@@ -316,7 +316,9 @@ class FunctionCollection:
 		items_temp = []
 		for line in lines:
 			if (line.startswith("#") or line == ""):
-				continue;
+				continue
+			if (' -private' in line):
+				continue
 			item = FunctionItem()
 			item.parse_from_spec_line(line)
 			items_temp.append(item)
@@ -534,10 +536,10 @@ def handle_dll(name):
 	contents_source.append("")
 	contents_source.append(f'void wine_thunk_initialize_{name}(void)')
 	contents_source.append('{')
-	contents_source.append(f'\tHMODULE library = LoadLibraryA("{name}.dll");')
+	contents_source.append(f'\tHMODULE library = GetModuleHandleA("{name}.dll");')
 	libs = list(OrderedDict.fromkeys([func.relay_dll for func in funcs if func.relay]))
 	for lib in libs:
-		contents_source.append(f'\tHMODULE library_{lib} = LoadLibraryA("{lib}.dll");')
+		contents_source.append(f'\tHMODULE library_{lib} = GetModuleHandleA("{lib}.dll");')
 	for func in funcs:
 		if not func.is_empty():
 			contents_source.append(f'\tp{func.identifier} = (void *)GetProcAddress(library, "{func.name}");')
