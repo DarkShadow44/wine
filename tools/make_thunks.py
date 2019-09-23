@@ -3,6 +3,7 @@
 # pprint(dir())
 # TODO bitfields, parallelize single source file
 # commandline option to limit to source and dll
+# refactor and document...
 
 import sys
 import clang.cindex
@@ -46,17 +47,15 @@ class StructDef(GenericTypeDef):
 		self.type = TypeChain(node, node.type)
 		self.children = DefinitionCollection()
 		if node.kind == CursorKind.STRUCT_DECL:
-			self.name = self.name and ('struct ' + self.name)
 			self.structType = StructDefEnum.Struct
 		if node.kind == CursorKind.UNION_DECL:
-			self.name = self.name and ('union ' + self.name)
 			self.structType = StructDefEnum.Union
 		if node.kind == CursorKind.FIELD_DECL:
 			self.structType = StructDefEnum.Field
 		if node.kind == CursorKind.ENUM_DECL:
-			self.name = self.name and ('enum ' + self.name)
 			self.structType = StructDefEnum.Enumeration
 		self.named_type = node.type.spelling
+		self.set_name(self.name)
 		self.variable = ''
 		self.line = node.location.line
 		self.file = node.location.file.name
@@ -96,6 +95,19 @@ class StructDef(GenericTypeDef):
 		else:
 			for child in self.children:
 				child.make_dependencies(dependencies)
+
+	def resolve_typedef(self, definitions):
+		return self.type
+
+	def set_name(self, name):
+		if self.structType == StructDefEnum.Struct:
+			self.name = name and ('struct ' + name)
+		elif self.structType == StructDefEnum.Union:
+			self.name = name and ('union ' + name)
+		elif self.structType == StructDefEnum.Enumeration:
+			self.name = name and ('enum ' + name)
+		else:
+			self.name = name
 
 class TypeChainEnum(Enum):
 	Array = 1
@@ -192,39 +204,58 @@ class TypeDef(GenericTypeDef):
 	def make_dependencies(self, dependencies):
 		self.source.make_dependencies(dependencies)
 
+	def resolve_typedef(self, definitions):
+		return definitions.resolve_typedefs(self.source)
+
 class DefinitionCollection:
 	def __init__(self):
-		self.items = []
+		self.items = {}
+		self.ignored_items = {}
 		self.typedef_item = None
 
 	def append_typedef_item(self, node, name):
 		if self.typedef_item is not None:
-			if self.typedef_item.line == node.underlying_typedef_type.get_declaration().location.line:
+			original_cursor = node.underlying_typedef_type.get_declaration()
+			if self.typedef_item.line == original_cursor.location.line:
 				self.typedef_item.name = name
-				self.append(None, self.typedef_item)
+				self.append(original_cursor, self.typedef_item)
 			self.typedef_item = None
 
 	def clear_typedef_item(self):
 		self.typedef_item = None
 
+	def resolve_typedefs(self, type):
+		if type.chainType != TypeChainEnum.Normal:
+			return type;
+		name = type.normal
+		if name in self.items:
+			return self.items[name].resolve_typedef(self)
+		return type;
+
+	def is_ignored(self, name):
+		return name in self.ignored_items;
+
 	def append(self, node, new_definition):
-		if node is not None:
-			# Ignore common definitions
-			file = str(node.location.file)
-			ignored_files = ['/winnt.h', '/windef.h', '/winbase.h', '/excpt.h', '/debug.h', '/guiddef.h', '/wingdi.h', '/winnls.h', '/winuser.h', '/wincon.h', '/winnetwk.h', '/verrsrc.h', '/winreg.h']
-			if any(file.endswith(x) for x in ignored_files):
-				return
+		ignored = False
+
+		# Ignore common definitions
+		file = str(node.location.file)
+		ignored_files = ['/winnt.h', '/windef.h', '/winbase.h', '/excpt.h', '/debug.h', '/guiddef.h', '/wingdi.h', '/winnls.h', '/winuser.h', '/wincon.h', '/winnetwk.h', '/verrsrc.h', '/winreg.h']
+		if any(file.endswith(x) for x in ignored_files):
+			ignored = True
 
 		if new_definition.getname() is None:
 			self.typedef_item = new_definition # Store (anyonymous struct/enum/union) item for following typedef
 		else:
 			# Only add each definition once
-			if any(x.getname() == new_definition.getname() for x in self.items):
+			if new_definition.getname() in self.items:
 				return
-			self.items.append(new_definition)
+			if ignored:
+				self.ignored_items[new_definition.getname()] = True
+			self.items[new_definition.getname()] = new_definition
 
 	def __iter__(self):
-		return self.items.__iter__()
+		return self.items.values().__iter__()
 
 class DependencyCollection:
 	def __init__(self, definitions):
@@ -404,12 +435,13 @@ def make_thunk_callingconvention_32_to_64_a(contents_source, dllname, func):
 	contents_source.append(")")
 	contents_source.append("")
 
-def make_thunk_callingconvention_32_to_64_b(contents_source, dllname, func):
+def make_thunk_callingconvention_32_to_64_b(contents_source, dllname, func, definitions):
 	funcname = func.identifier
 	arguments_decl = func.get_arguments_decl()
 	arguments_calling = func.get_arguments_calling()
 	return_type = func.return_type.tostring('return_value')
 	has_return = not func.return_type.is_void()
+	return_base_type = definitions.resolve_typedefs(func.return_type)
 	contents_source.append(f'WINAPI {func.return_type.tostring("")} wine32b_{dllname}_{funcname}({arguments_decl}) /* {func.file}:{func.line} */')
 	contents_source.append('{')
 	if has_return:
@@ -419,8 +451,8 @@ def make_thunk_callingconvention_32_to_64_b(contents_source, dllname, func):
 		contents_source.append(f'\treturn_value = p{funcname}({arguments_calling});')
 	else:
 		contents_source.append(f'\tp{funcname}({arguments_calling});')
-	if (func.return_type.chainType == TypeChainEnum.Function):
-		contents_source.append('\treturn_value = wine_thunk_get_for_any(return_value);')
+	if (return_base_type.chainType == TypeChainEnum.Function):
+		contents_source.append('\treturn_value = wine_make_thunk_function_alloc(return_value);')
 	contents_source.append(f'\tTRACE("Leave {funcname}\\n");')
 	if has_return:
 		contents_source.append('\treturn return_value;')
@@ -506,26 +538,25 @@ def handle_dll(name):
 	sources = get_makefile_sources(path_makefile)
 
 	# Read files
-	definitions = DefinitionCollection()
+	definitionCollection = DefinitionCollection()
 	for source in sources:
-		#if not source.endswith("path.c"):
+		#if not source.endswith("version.c"):
 		#	continue
 		print(f'\tAt {name}/{source}')
-		handle_dll_source(dll_path, source, funcs, definitions)
+		handle_dll_source(dll_path, source, funcs, definitionCollection)
 
 	# Make dependencies
-	dependencies = DependencyCollection(definitions)
+	dependencies = DependencyCollection(definitionCollection)
 	for func in funcs:
 		if not func.is_empty():
 			func.make_dependencies(dependencies)
-	definitions = [definition for definition in definitions if (definition.getname() in dependencies)]
-
-	for definition in definitions:
+	usedDefinitions = [definition for definition in definitionCollection if ((definition.getname() in dependencies) and (not definitionCollection.is_ignored(definition.getname())))]
+	for definition in usedDefinitions:
 		declaration = definition.make_declaration()
 		if declaration is not None:
 			contents_source.append(declaration)
 	contents_source.append("")
-	for definition in definitions:
+	for definition in usedDefinitions:
 		contents_source.append(definition.tostring())
 		contents_source.append("")
 
@@ -543,7 +574,7 @@ def handle_dll(name):
 	for func in funcs:
 		if not func.is_empty():
 			# print(node.displayname + " " + str(node.location.file) + ":" + str(node.location.line) )
-			make_thunk_callingconvention_32_to_64_b(contents_source, name, func)
+			make_thunk_callingconvention_32_to_64_b(contents_source, name, func, definitionCollection)
 			make_thunk_callingconvention_32_to_64_a(contents_source, name, func)
 
 	# Make init function

@@ -21,6 +21,8 @@ struct _PROVIDER_CONTEXT; /* ../include/perflib.h:45 */
 struct proc_thread_attr; /* ../dlls/kernelbase/process.c:699 */
 struct _PROC_THREAD_ATTRIBUTE_LIST; /* ../dlls/kernelbase/process.c:706 */
 
+typedef unsigned long DWORD64; /* ../include/basetsd.h:100 */
+
 typedef long LONG_PTR; /* ../include/basetsd.h:118 */
 
 typedef unsigned long ULONG_PTR; /* ../include/basetsd.h:120 */
@@ -33,9 +35,9 @@ typedef ULONG_PTR SIZE_T; /* ../include/basetsd.h:264 */
 
 typedef ULONG_PTR* PSIZE_T; /* ../include/basetsd.h:264 */
 
-typedef LONG NTSTATUS; /* ../include/winternl.h:38 */
+typedef ULONG_PTR KAFFINITY; /* ../include/basetsd.h:266 */
 
-typedef int HRESULT; /* ../include/winerror.h:93 */
+typedef LONG NTSTATUS; /* ../include/winternl.h:38 */
 
 struct _CREATEFILE2_EXTENDED_PARAMETERS /* ../include/fileapi.h:26 */
 {
@@ -20662,6 +20664,7 @@ WINAPI LPTOP_LEVEL_EXCEPTION_FILTER wine32b_kernelbase_SetUnhandledExceptionFilt
 	LPTOP_LEVEL_EXCEPTION_FILTER return_value;
 	TRACE("Enter SetUnhandledExceptionFilter\n");
 	return_value = pSetUnhandledExceptionFilter(filter);
+	return_value = wine_make_thunk_function_alloc(return_value);
 	TRACE("Leave SetUnhandledExceptionFilter\n");
 	return return_value;
 }

@@ -44,6 +44,10 @@ struct _I10_OUTPUT_DATA; /* ../dlls/msvcrt/string.c:1786 */
 
 typedef unsigned long ULONG64; /* ../include/basetsd.h:99 */
 
+typedef unsigned long DWORD64; /* ../include/basetsd.h:100 */
+
+typedef unsigned long ULONG_PTR; /* ../include/basetsd.h:120 */
+
 typedef unsigned short MSVCRT_wchar_t; /* ../dlls/msvcrt/msvcrt.h:64 */
 
 typedef unsigned short MSVCRT_wint_t; /* ../dlls/msvcrt/msvcrt.h:65 */
@@ -2670,6 +2674,7 @@ WINAPI MSVCRT_new_handler_func wine32b_msvcrt_MSVCRT__query_new_handler(void) /*
 	MSVCRT_new_handler_func return_value;
 	TRACE("Enter MSVCRT__query_new_handler\n");
 	return_value = pMSVCRT__query_new_handler();
+	return_value = wine_make_thunk_function_alloc(return_value);
 	TRACE("Leave MSVCRT__query_new_handler\n");
 	return return_value;
 }
@@ -2724,6 +2729,7 @@ WINAPI MSVCRT_new_handler_func wine32b_msvcrt_MSVCRT__set_new_handler(MSVCRT_new
 	MSVCRT_new_handler_func return_value;
 	TRACE("Enter MSVCRT__set_new_handler\n");
 	return_value = pMSVCRT__set_new_handler(func);
+	return_value = wine_make_thunk_function_alloc(return_value);
 	TRACE("Leave MSVCRT__set_new_handler\n");
 	return return_value;
 }
@@ -2780,6 +2786,7 @@ WINAPI MSVCRT__se_translator_function wine32b_msvcrt_MSVCRT__set_se_translator(M
 	MSVCRT__se_translator_function return_value;
 	TRACE("Enter MSVCRT__set_se_translator\n");
 	return_value = pMSVCRT__set_se_translator(func);
+	return_value = wine_make_thunk_function_alloc(return_value);
 	TRACE("Leave MSVCRT__set_se_translator\n");
 	return return_value;
 }
@@ -2893,6 +2900,7 @@ WINAPI MSVCRT_new_handler_func wine32b_msvcrt_MSVCRT_set_new_handler(void*  func
 	MSVCRT_new_handler_func return_value;
 	TRACE("Enter MSVCRT_set_new_handler\n");
 	return_value = pMSVCRT_set_new_handler(func);
+	return_value = wine_make_thunk_function_alloc(return_value);
 	TRACE("Leave MSVCRT_set_new_handler\n");
 	return return_value;
 }
@@ -2921,6 +2929,7 @@ WINAPI MSVCRT_terminate_function wine32b_msvcrt_MSVCRT_set_terminate(MSVCRT_term
 	MSVCRT_terminate_function return_value;
 	TRACE("Enter MSVCRT_set_terminate\n");
 	return_value = pMSVCRT_set_terminate(func);
+	return_value = wine_make_thunk_function_alloc(return_value);
 	TRACE("Leave MSVCRT_set_terminate\n");
 	return return_value;
 }
@@ -2949,6 +2958,7 @@ WINAPI MSVCRT_unexpected_function wine32b_msvcrt_MSVCRT_set_unexpected(MSVCRT_un
 	MSVCRT_unexpected_function return_value;
 	TRACE("Enter MSVCRT_set_unexpected\n");
 	return_value = pMSVCRT_set_unexpected(func);
+	return_value = wine_make_thunk_function_alloc(return_value);
 	TRACE("Leave MSVCRT_set_unexpected\n");
 	return return_value;
 }
@@ -3944,6 +3954,7 @@ WINAPI MSVCRT__onexit_t wine32b_msvcrt___dllonexit(MSVCRT__onexit_t  func, MSVCR
 	MSVCRT__onexit_t return_value;
 	TRACE("Enter __dllonexit\n");
 	return_value = p__dllonexit(func, start, end);
+	return_value = wine_make_thunk_function_alloc(return_value);
 	TRACE("Leave __dllonexit\n");
 	return return_value;
 }
@@ -9483,6 +9494,7 @@ WINAPI MSVCRT_terminate_function wine32b_msvcrt__get_terminate(void) /* ../dlls/
 	MSVCRT_terminate_function return_value;
 	TRACE("Enter _get_terminate\n");
 	return_value = p_get_terminate();
+	return_value = wine_make_thunk_function_alloc(return_value);
 	TRACE("Leave _get_terminate\n");
 	return return_value;
 }
@@ -9541,6 +9553,7 @@ WINAPI MSVCRT_unexpected_function wine32b_msvcrt__get_unexpected(void) /* ../dll
 	MSVCRT_unexpected_function return_value;
 	TRACE("Enter _get_unexpected\n");
 	return_value = p_get_unexpected();
+	return_value = wine_make_thunk_function_alloc(return_value);
 	TRACE("Leave _get_unexpected\n");
 	return return_value;
 }
@@ -15492,6 +15505,7 @@ WINAPI MSVCRT__onexit_t wine32b_msvcrt__onexit(MSVCRT__onexit_t  func) /* ../dll
 	MSVCRT__onexit_t return_value;
 	TRACE("Enter _onexit\n");
 	return_value = p_onexit(func);
+	return_value = wine_make_thunk_function_alloc(return_value);
 	TRACE("Leave _onexit\n");
 	return return_value;
 }
@@ -29234,6 +29248,7 @@ WINAPI MSVCRT___sighandler_t wine32b_msvcrt_signal(int  sig, MSVCRT___sighandler
 	MSVCRT___sighandler_t return_value;
 	TRACE("Enter signal\n");
 	return_value = psignal(sig, func);
+	return_value = wine_make_thunk_function_alloc(return_value);
 	TRACE("Leave signal\n");
 	return return_value;
 }

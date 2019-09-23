@@ -70,6 +70,8 @@ typedef unsigned long ULONG64; /* ../include/basetsd.h:99 */
 
 typedef unsigned long ULONG_PTR; /* ../include/basetsd.h:120 */
 
+typedef ULONG_PTR DWORD_PTR; /* ../include/basetsd.h:121 */
+
 typedef LONG NTSTATUS; /* ../include/winternl.h:38 */
 
 struct _UNICODE_STRING /* ../include/winternl.h:65 */

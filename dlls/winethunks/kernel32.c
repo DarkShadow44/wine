@@ -24,6 +24,8 @@ typedef unsigned long* PULONG64; /* ../include/basetsd.h:99 */
 
 typedef unsigned long DWORD64; /* ../include/basetsd.h:100 */
 
+typedef long INT_PTR; /* ../include/basetsd.h:117 */
+
 typedef long LONG_PTR; /* ../include/basetsd.h:118 */
 
 typedef unsigned long UINT_PTR; /* ../include/basetsd.h:119 */
@@ -39,6 +41,8 @@ typedef ULONG_PTR* PDWORD_PTR; /* ../include/basetsd.h:121 */
 typedef ULONG_PTR SIZE_T; /* ../include/basetsd.h:264 */
 
 typedef ULONG_PTR* PSIZE_T; /* ../include/basetsd.h:264 */
+
+typedef ULONG_PTR KAFFINITY; /* ../include/basetsd.h:266 */
 
 typedef void* DLL_DIRECTORY_COOKIE; /* ../include/libloaderapi.h:26 */
 
@@ -128,8 +132,6 @@ typedef struct _ENUM_PAGE_FILE_INFORMATION* PENUM_PAGE_FILE_INFORMATION; /* ../i
 typedef BOOL (*PENUM_PAGE_FILE_CALLBACKA) (LPVOID, PENUM_PAGE_FILE_INFORMATION, LPCSTR); /* ../include/psapi.h:84 */
 
 typedef BOOL (*PENUM_PAGE_FILE_CALLBACKW) (LPVOID, PENUM_PAGE_FILE_INFORMATION, LPCWSTR); /* ../include/psapi.h:85 */
-
-typedef int HRESULT; /* ../include/winerror.h:93 */
 
 struct tagTHREADENTRY32 /* ../include/tlhelp32.h:43 */
 {
@@ -4092,6 +4094,7 @@ WINAPI FARPROC wine32b_kernel32_DelayLoadFailureHook(LPCSTR  name, LPCSTR  funct
 	FARPROC return_value;
 	TRACE("Enter DelayLoadFailureHook\n");
 	return_value = pDelayLoadFailureHook(name, function);
+	return_value = wine_make_thunk_function_alloc(return_value);
 	TRACE("Leave DelayLoadFailureHook\n");
 	return return_value;
 }
@@ -10682,6 +10685,7 @@ WINAPI FARPROC wine32b_kernel32_GetProcAddress(HMODULE  hModule, LPCSTR  functio
 	FARPROC return_value;
 	TRACE("Enter GetProcAddress\n");
 	return_value = pGetProcAddress(hModule, function);
+	return_value = wine_make_thunk_function_alloc(return_value);
 	TRACE("Leave GetProcAddress\n");
 	return return_value;
 }

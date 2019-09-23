@@ -78,6 +78,17 @@ struct cp_info; /* ../include/wine/unicode.h:47 */
 struct sbcs_table; /* ../include/wine/unicode.h:56 */
 struct dbcs_table; /* ../include/wine/unicode.h:65 */
 union cptable; /* ../include/wine/unicode.h:75 */
+struct file_info; /* ../dlls/ntdll/actctx.c:126 */
+struct assembly_version; /* ../dlls/ntdll/actctx.c:132 */
+struct assembly_identity; /* ../dlls/ntdll/actctx.c:140 */
+struct strsection_header; /* ../dlls/ntdll/actctx.c:152 */
+struct guidsection_header; /* ../dlls/ntdll/actctx.c:174 */
+struct entity; /* ../dlls/ntdll/actctx.c:437 */
+struct entity_array; /* ../dlls/ntdll/actctx.c:494 */
+struct dll_redirect; /* ../dlls/ntdll/actctx.c:501 */
+enum assembly_type; /* ../dlls/ntdll/actctx.c:508 */
+struct assembly; /* ../dlls/ntdll/actctx.c:515 */
+struct _ACTIVATION_CONTEXT; /* ../dlls/ntdll/actctx.c:543 */
 struct SHA_CTX; /* ../dlls/ntdll/crypt.c:29 */
 struct MD4_CTX; /* ../dlls/ntdll/crypt.c:222 */
 struct MD5_CTX; /* ../dlls/ntdll/crypt.c:464 */
@@ -133,11 +144,15 @@ typedef enum _TIMER_TYPE TIMER_TYPE; /* ../include/ntdef.h:34 */
 
 typedef unsigned long ULONG64; /* ../include/basetsd.h:99 */
 
+typedef unsigned long DWORD64; /* ../include/basetsd.h:100 */
+
 typedef long INT_PTR; /* ../include/basetsd.h:117 */
 
 typedef unsigned long ULONG_PTR; /* ../include/basetsd.h:120 */
 
 typedef unsigned long* PULONG_PTR; /* ../include/basetsd.h:120 */
+
+typedef ULONG_PTR DWORD_PTR; /* ../include/basetsd.h:121 */
 
 typedef ULONG_PTR SIZE_T; /* ../include/basetsd.h:264 */
 
@@ -1044,6 +1059,127 @@ union cptable /* ../include/wine/unicode.h:75 */
     struct cp_info info;
     struct sbcs_table sbcs;
     struct dbcs_table dbcs;
+};
+
+
+struct file_info /* ../dlls/ntdll/actctx.c:126 */
+{
+    ULONG type;
+    WCHAR* info;
+};
+
+
+struct assembly_version /* ../dlls/ntdll/actctx.c:132 */
+{
+    USHORT major;
+    USHORT minor;
+    USHORT build;
+    USHORT revision;
+};
+
+
+struct assembly_identity /* ../dlls/ntdll/actctx.c:140 */
+{
+    WCHAR* name;
+    WCHAR* arch;
+    WCHAR* public_key;
+    WCHAR* language;
+    WCHAR* type;
+    struct assembly_version version;
+    BOOL optional;
+    BOOL delayed;
+};
+
+
+struct strsection_header /* ../dlls/ntdll/actctx.c:152 */
+{
+    DWORD magic;
+    ULONG size;
+    DWORD unk1[3];
+    ULONG count;
+    ULONG index_offset;
+    DWORD unk2[2];
+    ULONG global_offset;
+    ULONG global_len;
+};
+
+
+struct guidsection_header /* ../dlls/ntdll/actctx.c:174 */
+{
+    DWORD magic;
+    ULONG size;
+    DWORD unk[3];
+    ULONG count;
+    ULONG index_offset;
+    DWORD unk2;
+    ULONG names_offset;
+    ULONG names_len;
+};
+
+
+struct entity /* ../dlls/ntdll/actctx.c:437 */
+{
+    DWORD kind;
+};
+
+
+struct entity_array /* ../dlls/ntdll/actctx.c:494 */
+{
+    struct entity* base;
+    unsigned int num;
+    unsigned int allocated;
+};
+
+
+struct dll_redirect /* ../dlls/ntdll/actctx.c:501 */
+{
+    WCHAR* name;
+    WCHAR* hash;
+    struct entity_array entities;
+};
+
+
+enum assembly_type /* ../dlls/ntdll/actctx.c:508 */
+{
+    assembly_type_DUMMY = 0
+};
+
+
+struct assembly /* ../dlls/ntdll/actctx.c:515 */
+{
+    enum assembly_type type;
+    struct assembly_identity id;
+    struct file_info manifest;
+    WCHAR* directory;
+    BOOL no_inherit;
+    struct dll_redirect* dlls;
+    unsigned int num_dlls;
+    unsigned int allocated_dlls;
+    struct entity_array entities;
+    COMPATIBILITY_CONTEXT_ELEMENT* compat_contexts;
+    ULONG num_compat_contexts;
+    ACTCTX_REQUESTED_RUN_LEVEL run_level;
+    ULONG ui_access;
+};
+
+
+struct _ACTIVATION_CONTEXT /* ../dlls/ntdll/actctx.c:543 */
+{
+    ULONG magic;
+    int ref_count;
+    struct file_info config;
+    struct file_info appdir;
+    struct assembly* assemblies;
+    unsigned int num_assemblies;
+    unsigned int allocated_assemblies;
+    DWORD sections;
+    struct strsection_header* wndclass_section;
+    struct strsection_header* dllredirect_section;
+    struct strsection_header* progid_section;
+    struct guidsection_header* tlib_section;
+    struct guidsection_header* comserver_section;
+    struct guidsection_header* ifaceps_section;
+    struct guidsection_header* clrsurrogate_section;
 };
 
 
