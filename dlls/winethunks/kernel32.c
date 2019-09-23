@@ -1803,10 +1803,13 @@ static WINAPI char* (*pwine_get_unix_file_name)(LPCWSTR  dosW);
 static WINAPI WCHAR* (*pwine_get_dos_file_name)(LPCSTR  str);
 static WINAPI void* (*p__wine_kernel_init)(void);
 
-extern WINAPI ATOM wine32b_kernel32_AddAtomA(LPCSTR  str) /* ../dlls/kernel32/atom.c:152 */
+WINAPI ATOM wine32b_kernel32_AddAtomA(LPCSTR  str) /* ../dlls/kernel32/atom.c:152 */
 {
+	ATOM return_value;
 	TRACE("Enter AddAtomA\n");
-	return pAddAtomA(str);
+	return_value = pAddAtomA(str);
+	TRACE("Leave AddAtomA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_AddAtomA(void);  /* ../dlls/kernel32/atom.c:152 */
@@ -1828,10 +1831,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_AddAtomA,
 	"ret \n"
 )
 
-extern WINAPI ATOM wine32b_kernel32_AddAtomW(LPCWSTR  str) /* ../dlls/kernel32/atom.c:202 */
+WINAPI ATOM wine32b_kernel32_AddAtomW(LPCWSTR  str) /* ../dlls/kernel32/atom.c:202 */
 {
+	ATOM return_value;
 	TRACE("Enter AddAtomW\n");
-	return pAddAtomW(str);
+	return_value = pAddAtomW(str);
+	TRACE("Leave AddAtomW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_AddAtomW(void);  /* ../dlls/kernel32/atom.c:202 */
@@ -1853,10 +1859,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_AddAtomW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_AddConsoleAliasA(LPSTR  source, LPSTR  target, LPSTR  exename) /* ../dlls/kernel32/console.c:1600 */
+WINAPI BOOL wine32b_kernel32_AddConsoleAliasA(LPSTR  source, LPSTR  target, LPSTR  exename) /* ../dlls/kernel32/console.c:1600 */
 {
+	BOOL return_value;
 	TRACE("Enter AddConsoleAliasA\n");
-	return pAddConsoleAliasA(source, target, exename);
+	return_value = pAddConsoleAliasA(source, target, exename);
+	TRACE("Leave AddConsoleAliasA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_AddConsoleAliasA(void);  /* ../dlls/kernel32/console.c:1600 */
@@ -1880,10 +1889,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_AddConsoleAliasA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_AddConsoleAliasW(LPWSTR  source, LPWSTR  target, LPWSTR  exename) /* ../dlls/kernel32/console.c:1607 */
+WINAPI BOOL wine32b_kernel32_AddConsoleAliasW(LPWSTR  source, LPWSTR  target, LPWSTR  exename) /* ../dlls/kernel32/console.c:1607 */
 {
+	BOOL return_value;
 	TRACE("Enter AddConsoleAliasW\n");
-	return pAddConsoleAliasW(source, target, exename);
+	return_value = pAddConsoleAliasW(source, target, exename);
+	TRACE("Leave AddConsoleAliasW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_AddConsoleAliasW(void);  /* ../dlls/kernel32/console.c:1607 */
@@ -1907,10 +1919,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_AddConsoleAliasW,
 	"ret \n"
 )
 
-extern WINAPI DLL_DIRECTORY_COOKIE wine32b_kernel32_AddDllDirectory(WCHAR*  dir) /* ../dlls/kernel32/module.c:172 */
+WINAPI DLL_DIRECTORY_COOKIE wine32b_kernel32_AddDllDirectory(WCHAR*  dir) /* ../dlls/kernel32/module.c:172 */
 {
+	DLL_DIRECTORY_COOKIE return_value;
 	TRACE("Enter AddDllDirectory\n");
-	return pAddDllDirectory(dir);
+	return_value = pAddDllDirectory(dir);
+	TRACE("Leave AddDllDirectory\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_AddDllDirectory(void);  /* ../dlls/kernel32/module.c:172 */
@@ -1932,10 +1947,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_AddDllDirectory,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_AllocConsole(void) /* ../dlls/kernel32/console.c:633 */
+WINAPI BOOL wine32b_kernel32_AllocConsole(void) /* ../dlls/kernel32/console.c:633 */
 {
+	BOOL return_value;
 	TRACE("Enter AllocConsole\n");
-	return pAllocConsole();
+	return_value = pAllocConsole();
+	TRACE("Leave AllocConsole\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_AllocConsole(void);  /* ../dlls/kernel32/console.c:633 */
@@ -1956,10 +1974,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_AllocConsole,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_AllocateUserPhysicalPages(HANDLE  process, ULONG_PTR*  pages, ULONG_PTR*  userarray) /* ../dlls/kernel32/heap.c:929 */
+WINAPI BOOL wine32b_kernel32_AllocateUserPhysicalPages(HANDLE  process, ULONG_PTR*  pages, ULONG_PTR*  userarray) /* ../dlls/kernel32/heap.c:929 */
 {
+	BOOL return_value;
 	TRACE("Enter AllocateUserPhysicalPages\n");
-	return pAllocateUserPhysicalPages(process, pages, userarray);
+	return_value = pAllocateUserPhysicalPages(process, pages, userarray);
+	TRACE("Leave AllocateUserPhysicalPages\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_AllocateUserPhysicalPages(void);  /* ../dlls/kernel32/heap.c:929 */
@@ -1983,10 +2004,11 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_AllocateUserPhysicalPages,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_ApplicationRecoveryFinished(BOOL  success) /* ../dlls/kernel32/process.c:3937 */
+WINAPI void wine32b_kernel32_ApplicationRecoveryFinished(BOOL  success) /* ../dlls/kernel32/process.c:3937 */
 {
 	TRACE("Enter ApplicationRecoveryFinished\n");
-	return pApplicationRecoveryFinished(success);
+	pApplicationRecoveryFinished(success);
+	TRACE("Leave ApplicationRecoveryFinished\n");
 }
 
 extern WINAPI void wine32a_kernel32_ApplicationRecoveryFinished(void);  /* ../dlls/kernel32/process.c:3937 */
@@ -2008,10 +2030,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ApplicationRecoveryFinished,
 	"ret \n"
 )
 
-extern WINAPI HRESULT wine32b_kernel32_ApplicationRecoveryInProgress(PBOOL  canceled) /* ../dlls/kernel32/process.c:3946 */
+WINAPI HRESULT wine32b_kernel32_ApplicationRecoveryInProgress(PBOOL  canceled) /* ../dlls/kernel32/process.c:3946 */
 {
+	HRESULT return_value;
 	TRACE("Enter ApplicationRecoveryInProgress\n");
-	return pApplicationRecoveryInProgress(canceled);
+	return_value = pApplicationRecoveryInProgress(canceled);
+	TRACE("Leave ApplicationRecoveryInProgress\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_ApplicationRecoveryInProgress(void);  /* ../dlls/kernel32/process.c:3946 */
@@ -2033,10 +2058,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ApplicationRecoveryInProgress,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_AssignProcessToJobObject(HANDLE  job, HANDLE  process) /* ../dlls/kernel32/sync.c:378 */
+WINAPI BOOL wine32b_kernel32_AssignProcessToJobObject(HANDLE  job, HANDLE  process) /* ../dlls/kernel32/sync.c:378 */
 {
+	BOOL return_value;
 	TRACE("Enter AssignProcessToJobObject\n");
-	return pAssignProcessToJobObject(job, process);
+	return_value = pAssignProcessToJobObject(job, process);
+	TRACE("Leave AssignProcessToJobObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_AssignProcessToJobObject(void);  /* ../dlls/kernel32/sync.c:378 */
@@ -2059,10 +2087,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_AssignProcessToJobObject,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_BackupRead(HANDLE  file, LPBYTE  buffer, DWORD  to_read, LPDWORD  read, BOOL  abort, BOOL  security, LPVOID*  context) /* ../dlls/kernel32/tape.c:51 */
+WINAPI BOOL wine32b_kernel32_BackupRead(HANDLE  file, LPBYTE  buffer, DWORD  to_read, LPDWORD  read, BOOL  abort, BOOL  security, LPVOID*  context) /* ../dlls/kernel32/tape.c:51 */
 {
+	BOOL return_value;
 	TRACE("Enter BackupRead\n");
-	return pBackupRead(file, buffer, to_read, read, abort, security, context);
+	return_value = pBackupRead(file, buffer, to_read, read, abort, security, context);
+	TRACE("Leave BackupRead\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_BackupRead(void);  /* ../dlls/kernel32/tape.c:51 */
@@ -2087,10 +2118,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_BackupRead,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_BackupSeek(HANDLE  file, DWORD  seek_low, DWORD  seek_high, LPDWORD  seeked_low, LPDWORD  seeked_high, LPVOID*  context) /* ../dlls/kernel32/tape.c:66 */
+WINAPI BOOL wine32b_kernel32_BackupSeek(HANDLE  file, DWORD  seek_low, DWORD  seek_high, LPDWORD  seeked_low, LPDWORD  seeked_high, LPVOID*  context) /* ../dlls/kernel32/tape.c:66 */
 {
+	BOOL return_value;
 	TRACE("Enter BackupSeek\n");
-	return pBackupSeek(file, seek_low, seek_high, seeked_low, seeked_high, context);
+	return_value = pBackupSeek(file, seek_low, seek_high, seeked_low, seeked_high, context);
+	TRACE("Leave BackupSeek\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_BackupSeek(void);  /* ../dlls/kernel32/tape.c:66 */
@@ -2115,10 +2149,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_BackupSeek,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_BackupWrite(HANDLE  file, LPBYTE  buffer, DWORD  to_write, LPDWORD  written, BOOL  abort, BOOL  security, LPVOID*  context) /* ../dlls/kernel32/tape.c:81 */
+WINAPI BOOL wine32b_kernel32_BackupWrite(HANDLE  file, LPBYTE  buffer, DWORD  to_write, LPDWORD  written, BOOL  abort, BOOL  security, LPVOID*  context) /* ../dlls/kernel32/tape.c:81 */
 {
+	BOOL return_value;
 	TRACE("Enter BackupWrite\n");
-	return pBackupWrite(file, buffer, to_write, written, abort, security, context);
+	return_value = pBackupWrite(file, buffer, to_write, written, abort, security, context);
+	TRACE("Leave BackupWrite\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_BackupWrite(void);  /* ../dlls/kernel32/tape.c:81 */
@@ -2143,10 +2180,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_BackupWrite,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_BaseFlushAppcompatCache(void) /* ../dlls/kernel32/process.c:4258 */
+WINAPI BOOL wine32b_kernel32_BaseFlushAppcompatCache(void) /* ../dlls/kernel32/process.c:4258 */
 {
+	BOOL return_value;
 	TRACE("Enter BaseFlushAppcompatCache\n");
-	return pBaseFlushAppcompatCache();
+	return_value = pBaseFlushAppcompatCache();
+	TRACE("Leave BaseFlushAppcompatCache\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_BaseFlushAppcompatCache(void);  /* ../dlls/kernel32/process.c:4258 */
@@ -2167,10 +2207,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_BaseFlushAppcompatCache,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_Beep(DWORD  dwFreq, DWORD  dwDur) /* ../dlls/kernel32/console.c:197 */
+WINAPI BOOL wine32b_kernel32_Beep(DWORD  dwFreq, DWORD  dwDur) /* ../dlls/kernel32/console.c:197 */
 {
+	BOOL return_value;
 	TRACE("Enter Beep\n");
-	return pBeep(dwFreq, dwDur);
+	return_value = pBeep(dwFreq, dwDur);
+	TRACE("Leave Beep\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_Beep(void);  /* ../dlls/kernel32/console.c:197 */
@@ -2193,10 +2236,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_Beep,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_BeginUpdateResourceA(LPCSTR  pFileName, BOOL  bDeleteExistingResources) /* ../dlls/kernel32/resource.c:1240 */
+WINAPI HANDLE wine32b_kernel32_BeginUpdateResourceA(LPCSTR  pFileName, BOOL  bDeleteExistingResources) /* ../dlls/kernel32/resource.c:1240 */
 {
+	HANDLE return_value;
 	TRACE("Enter BeginUpdateResourceA\n");
-	return pBeginUpdateResourceA(pFileName, bDeleteExistingResources);
+	return_value = pBeginUpdateResourceA(pFileName, bDeleteExistingResources);
+	TRACE("Leave BeginUpdateResourceA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_BeginUpdateResourceA(void);  /* ../dlls/kernel32/resource.c:1240 */
@@ -2219,10 +2265,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_BeginUpdateResourceA,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_BeginUpdateResourceW(LPCWSTR  pFileName, BOOL  bDeleteExistingResources) /* ../dlls/kernel32/resource.c:1194 */
+WINAPI HANDLE wine32b_kernel32_BeginUpdateResourceW(LPCWSTR  pFileName, BOOL  bDeleteExistingResources) /* ../dlls/kernel32/resource.c:1194 */
 {
+	HANDLE return_value;
 	TRACE("Enter BeginUpdateResourceW\n");
-	return pBeginUpdateResourceW(pFileName, bDeleteExistingResources);
+	return_value = pBeginUpdateResourceW(pFileName, bDeleteExistingResources);
+	TRACE("Leave BeginUpdateResourceW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_BeginUpdateResourceW(void);  /* ../dlls/kernel32/resource.c:1194 */
@@ -2245,10 +2294,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_BeginUpdateResourceW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_BindIoCompletionCallback(HANDLE  FileHandle, LPOVERLAPPED_COMPLETION_ROUTINE  Function, ULONG  Flags) /* ../dlls/kernel32/sync.c:999 */
+WINAPI BOOL wine32b_kernel32_BindIoCompletionCallback(HANDLE  FileHandle, LPOVERLAPPED_COMPLETION_ROUTINE  Function, ULONG  Flags) /* ../dlls/kernel32/sync.c:999 */
 {
+	BOOL return_value;
 	TRACE("Enter BindIoCompletionCallback\n");
-	return pBindIoCompletionCallback(FileHandle, Function, Flags);
+	return_value = pBindIoCompletionCallback(FileHandle, Function, Flags);
+	TRACE("Leave BindIoCompletionCallback\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_BindIoCompletionCallback(void);  /* ../dlls/kernel32/sync.c:999 */
@@ -2272,10 +2324,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_BindIoCompletionCallback,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_BuildCommDCBA(LPCSTR  device, LPDCB  lpdcb) /* ../dlls/kernel32/comm.c:422 */
+WINAPI BOOL wine32b_kernel32_BuildCommDCBA(LPCSTR  device, LPDCB  lpdcb) /* ../dlls/kernel32/comm.c:422 */
 {
+	BOOL return_value;
 	TRACE("Enter BuildCommDCBA\n");
-	return pBuildCommDCBA(device, lpdcb);
+	return_value = pBuildCommDCBA(device, lpdcb);
+	TRACE("Leave BuildCommDCBA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_BuildCommDCBA(void);  /* ../dlls/kernel32/comm.c:422 */
@@ -2298,10 +2353,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_BuildCommDCBA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_BuildCommDCBAndTimeoutsA(LPCSTR  device, LPDCB  lpdcb, LPCOMMTIMEOUTS  lptimeouts) /* ../dlls/kernel32/comm.c:440 */
+WINAPI BOOL wine32b_kernel32_BuildCommDCBAndTimeoutsA(LPCSTR  device, LPDCB  lpdcb, LPCOMMTIMEOUTS  lptimeouts) /* ../dlls/kernel32/comm.c:440 */
 {
+	BOOL return_value;
 	TRACE("Enter BuildCommDCBAndTimeoutsA\n");
-	return pBuildCommDCBAndTimeoutsA(device, lpdcb, lptimeouts);
+	return_value = pBuildCommDCBAndTimeoutsA(device, lpdcb, lptimeouts);
+	TRACE("Leave BuildCommDCBAndTimeoutsA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_BuildCommDCBAndTimeoutsA(void);  /* ../dlls/kernel32/comm.c:440 */
@@ -2325,10 +2383,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_BuildCommDCBAndTimeoutsA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_BuildCommDCBAndTimeoutsW(LPCWSTR  devid, LPDCB  lpdcb, LPCOMMTIMEOUTS  lptimeouts) /* ../dlls/kernel32/comm.c:469 */
+WINAPI BOOL wine32b_kernel32_BuildCommDCBAndTimeoutsW(LPCWSTR  devid, LPDCB  lpdcb, LPCOMMTIMEOUTS  lptimeouts) /* ../dlls/kernel32/comm.c:469 */
 {
+	BOOL return_value;
 	TRACE("Enter BuildCommDCBAndTimeoutsW\n");
-	return pBuildCommDCBAndTimeoutsW(devid, lpdcb, lptimeouts);
+	return_value = pBuildCommDCBAndTimeoutsW(devid, lpdcb, lptimeouts);
+	TRACE("Leave BuildCommDCBAndTimeoutsW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_BuildCommDCBAndTimeoutsW(void);  /* ../dlls/kernel32/comm.c:469 */
@@ -2352,10 +2413,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_BuildCommDCBAndTimeoutsW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_BuildCommDCBW(LPCWSTR  devid, LPDCB  lpdcb) /* ../dlls/kernel32/comm.c:526 */
+WINAPI BOOL wine32b_kernel32_BuildCommDCBW(LPCWSTR  devid, LPDCB  lpdcb) /* ../dlls/kernel32/comm.c:526 */
 {
+	BOOL return_value;
 	TRACE("Enter BuildCommDCBW\n");
-	return pBuildCommDCBW(devid, lpdcb);
+	return_value = pBuildCommDCBW(devid, lpdcb);
+	TRACE("Leave BuildCommDCBW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_BuildCommDCBW(void);  /* ../dlls/kernel32/comm.c:526 */
@@ -2378,10 +2442,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_BuildCommDCBW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CallNamedPipeA(LPCSTR  lpNamedPipeName, LPVOID  lpInput, DWORD  dwInputSize, LPVOID  lpOutput, DWORD  dwOutputSize, LPDWORD  lpBytesRead, DWORD  nTimeout) /* ../dlls/kernel32/sync.c:715 */
+WINAPI BOOL wine32b_kernel32_CallNamedPipeA(LPCSTR  lpNamedPipeName, LPVOID  lpInput, DWORD  dwInputSize, LPVOID  lpOutput, DWORD  dwOutputSize, LPDWORD  lpBytesRead, DWORD  nTimeout) /* ../dlls/kernel32/sync.c:715 */
 {
+	BOOL return_value;
 	TRACE("Enter CallNamedPipeA\n");
-	return pCallNamedPipeA(lpNamedPipeName, lpInput, dwInputSize, lpOutput, dwOutputSize, lpBytesRead, nTimeout);
+	return_value = pCallNamedPipeA(lpNamedPipeName, lpInput, dwInputSize, lpOutput, dwOutputSize, lpBytesRead, nTimeout);
+	TRACE("Leave CallNamedPipeA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CallNamedPipeA(void);  /* ../dlls/kernel32/sync.c:715 */
@@ -2406,10 +2473,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CallNamedPipeA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CancelTimerQueueTimer(HANDLE  queue, HANDLE  timer) /* ../dlls/kernel32/sync.c:468 */
+WINAPI BOOL wine32b_kernel32_CancelTimerQueueTimer(HANDLE  queue, HANDLE  timer) /* ../dlls/kernel32/sync.c:468 */
 {
+	BOOL return_value;
 	TRACE("Enter CancelTimerQueueTimer\n");
-	return pCancelTimerQueueTimer(queue, timer);
+	return_value = pCancelTimerQueueTimer(queue, timer);
+	TRACE("Leave CancelTimerQueueTimer\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CancelTimerQueueTimer(void);  /* ../dlls/kernel32/sync.c:468 */
@@ -2432,10 +2502,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CancelTimerQueueTimer,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CheckNameLegalDOS8Dot3A(char*  name, char*  oemname, DWORD  oemname_len, BOOL*  contains_spaces, BOOL*  is_legal) /* ../dlls/kernel32/path.c:1975 */
+WINAPI BOOL wine32b_kernel32_CheckNameLegalDOS8Dot3A(char*  name, char*  oemname, DWORD  oemname_len, BOOL*  contains_spaces, BOOL*  is_legal) /* ../dlls/kernel32/path.c:1975 */
 {
+	BOOL return_value;
 	TRACE("Enter CheckNameLegalDOS8Dot3A\n");
-	return pCheckNameLegalDOS8Dot3A(name, oemname, oemname_len, contains_spaces, is_legal);
+	return_value = pCheckNameLegalDOS8Dot3A(name, oemname, oemname_len, contains_spaces, is_legal);
+	TRACE("Leave CheckNameLegalDOS8Dot3A\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CheckNameLegalDOS8Dot3A(void);  /* ../dlls/kernel32/path.c:1975 */
@@ -2460,10 +2533,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CheckNameLegalDOS8Dot3A,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CheckNameLegalDOS8Dot3W(WCHAR*  name, char*  oemname, DWORD  oemname_len, BOOL*  contains_spaces_ret, BOOL*  is_legal) /* ../dlls/kernel32/path.c:1994 */
+WINAPI BOOL wine32b_kernel32_CheckNameLegalDOS8Dot3W(WCHAR*  name, char*  oemname, DWORD  oemname_len, BOOL*  contains_spaces_ret, BOOL*  is_legal) /* ../dlls/kernel32/path.c:1994 */
 {
+	BOOL return_value;
 	TRACE("Enter CheckNameLegalDOS8Dot3W\n");
-	return pCheckNameLegalDOS8Dot3W(name, oemname, oemname_len, contains_spaces_ret, is_legal);
+	return_value = pCheckNameLegalDOS8Dot3W(name, oemname, oemname_len, contains_spaces_ret, is_legal);
+	TRACE("Leave CheckNameLegalDOS8Dot3W\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CheckNameLegalDOS8Dot3W(void);  /* ../dlls/kernel32/path.c:1994 */
@@ -2488,10 +2564,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CheckNameLegalDOS8Dot3W,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CloseConsoleHandle(HANDLE  handle) /* ../dlls/kernel32/console.c:291 */
+WINAPI BOOL wine32b_kernel32_CloseConsoleHandle(HANDLE  handle) /* ../dlls/kernel32/console.c:291 */
 {
+	BOOL return_value;
 	TRACE("Enter CloseConsoleHandle\n");
-	return pCloseConsoleHandle(handle);
+	return_value = pCloseConsoleHandle(handle);
+	TRACE("Leave CloseConsoleHandle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CloseConsoleHandle(void);  /* ../dlls/kernel32/console.c:291 */
@@ -2513,10 +2592,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CloseConsoleHandle,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CloseHandle(HANDLE  handle) /* ../dlls/kernel32/process.c:3238 */
+WINAPI BOOL wine32b_kernel32_CloseHandle(HANDLE  handle) /* ../dlls/kernel32/process.c:3238 */
 {
+	BOOL return_value;
 	TRACE("Enter CloseHandle\n");
-	return pCloseHandle(handle);
+	return_value = pCloseHandle(handle);
+	TRACE("Leave CloseHandle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CloseHandle(void);  /* ../dlls/kernel32/process.c:3238 */
@@ -2538,10 +2620,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CloseHandle,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CloseProfileUserMapping(void) /* ../dlls/kernel32/profile.c:1786 */
+WINAPI BOOL wine32b_kernel32_CloseProfileUserMapping(void) /* ../dlls/kernel32/profile.c:1786 */
 {
+	BOOL return_value;
 	TRACE("Enter CloseProfileUserMapping\n");
-	return pCloseProfileUserMapping();
+	return_value = pCloseProfileUserMapping();
+	TRACE("Leave CloseProfileUserMapping\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CloseProfileUserMapping(void);  /* ../dlls/kernel32/profile.c:1786 */
@@ -2562,10 +2647,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CloseProfileUserMapping,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CmdBatNotification(BOOL  bBatchRunning) /* ../dlls/kernel32/process.c:3888 */
+WINAPI BOOL wine32b_kernel32_CmdBatNotification(BOOL  bBatchRunning) /* ../dlls/kernel32/process.c:3888 */
 {
+	BOOL return_value;
 	TRACE("Enter CmdBatNotification\n");
-	return pCmdBatNotification(bBatchRunning);
+	return_value = pCmdBatNotification(bBatchRunning);
+	TRACE("Leave CmdBatNotification\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CmdBatNotification(void);  /* ../dlls/kernel32/process.c:3888 */
@@ -2587,10 +2675,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CmdBatNotification,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CommConfigDialogA(LPCSTR  lpszDevice, HWND  hWnd, LPCOMMCONFIG  lpCommConfig) /* ../dlls/kernel32/comm.c:568 */
+WINAPI BOOL wine32b_kernel32_CommConfigDialogA(LPCSTR  lpszDevice, HWND  hWnd, LPCOMMCONFIG  lpCommConfig) /* ../dlls/kernel32/comm.c:568 */
 {
+	BOOL return_value;
 	TRACE("Enter CommConfigDialogA\n");
-	return pCommConfigDialogA(lpszDevice, hWnd, lpCommConfig);
+	return_value = pCommConfigDialogA(lpszDevice, hWnd, lpCommConfig);
+	TRACE("Leave CommConfigDialogA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CommConfigDialogA(void);  /* ../dlls/kernel32/comm.c:568 */
@@ -2614,10 +2705,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CommConfigDialogA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CommConfigDialogW(LPCWSTR  lpszDevice, HWND  hWnd, LPCOMMCONFIG  lpCommConfig) /* ../dlls/kernel32/comm.c:595 */
+WINAPI BOOL wine32b_kernel32_CommConfigDialogW(LPCWSTR  lpszDevice, HWND  hWnd, LPCOMMCONFIG  lpCommConfig) /* ../dlls/kernel32/comm.c:595 */
 {
+	BOOL return_value;
 	TRACE("Enter CommConfigDialogW\n");
-	return pCommConfigDialogW(lpszDevice, hWnd, lpCommConfig);
+	return_value = pCommConfigDialogW(lpszDevice, hWnd, lpCommConfig);
+	TRACE("Leave CommConfigDialogW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CommConfigDialogW(void);  /* ../dlls/kernel32/comm.c:595 */
@@ -2641,10 +2735,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CommConfigDialogW,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_CompareFileTime(FILETIME*  x, FILETIME*  y) /* ../dlls/kernel32/time.c:1274 */
+WINAPI INT wine32b_kernel32_CompareFileTime(FILETIME*  x, FILETIME*  y) /* ../dlls/kernel32/time.c:1274 */
 {
+	INT return_value;
 	TRACE("Enter CompareFileTime\n");
-	return pCompareFileTime(x, y);
+	return_value = pCompareFileTime(x, y);
+	TRACE("Leave CompareFileTime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CompareFileTime(void);  /* ../dlls/kernel32/time.c:1274 */
@@ -2667,10 +2764,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CompareFileTime,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_CompareStringA(LCID  lcid, DWORD  flags, LPCSTR  str1, INT  len1, LPCSTR  str2, INT  len2) /* ../dlls/kernel32/locale.c:3976 */
+WINAPI INT wine32b_kernel32_CompareStringA(LCID  lcid, DWORD  flags, LPCSTR  str1, INT  len1, LPCSTR  str2, INT  len2) /* ../dlls/kernel32/locale.c:3976 */
 {
+	INT return_value;
 	TRACE("Enter CompareStringA\n");
-	return pCompareStringA(lcid, flags, str1, len1, str2, len2);
+	return_value = pCompareStringA(lcid, flags, str1, len1, str2, len2);
+	TRACE("Leave CompareStringA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CompareStringA(void);  /* ../dlls/kernel32/locale.c:3976 */
@@ -2695,10 +2795,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CompareStringA,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_CompareStringW(LCID  lcid, DWORD  flags, LPCWSTR  str1, INT  len1, LPCWSTR  str2, INT  len2) /* ../dlls/kernel32/locale.c:3907 */
+WINAPI INT wine32b_kernel32_CompareStringW(LCID  lcid, DWORD  flags, LPCWSTR  str1, INT  len1, LPCWSTR  str2, INT  len2) /* ../dlls/kernel32/locale.c:3907 */
 {
+	INT return_value;
 	TRACE("Enter CompareStringW\n");
-	return pCompareStringW(lcid, flags, str1, len1, str2, len2);
+	return_value = pCompareStringW(lcid, flags, str1, len1, str2, len2);
+	TRACE("Leave CompareStringW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CompareStringW(void);  /* ../dlls/kernel32/locale.c:3907 */
@@ -2723,10 +2826,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CompareStringW,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_CompareStringEx(LPCWSTR  locale, DWORD  flags, LPCWSTR  str1, INT  len1, LPCWSTR  str2, INT  len2, LPNLSVERSIONINFO  version, LPVOID  reserved, LPARAM  lParam) /* ../dlls/kernel32/locale.c:3916 */
+WINAPI INT wine32b_kernel32_CompareStringEx(LPCWSTR  locale, DWORD  flags, LPCWSTR  str1, INT  len1, LPCWSTR  str2, INT  len2, LPNLSVERSIONINFO  version, LPVOID  reserved, LPARAM  lParam) /* ../dlls/kernel32/locale.c:3916 */
 {
+	INT return_value;
 	TRACE("Enter CompareStringEx\n");
-	return pCompareStringEx(locale, flags, str1, len1, str2, len2, version, reserved, lParam);
+	return_value = pCompareStringEx(locale, flags, str1, len1, str2, len2, version, reserved, lParam);
+	TRACE("Leave CompareStringEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CompareStringEx(void);  /* ../dlls/kernel32/locale.c:3916 */
@@ -2751,10 +2857,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CompareStringEx,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_CompareStringOrdinal(WCHAR*  str1, INT  len1, WCHAR*  str2, INT  len2, BOOL  ignore_case) /* ../dlls/kernel32/locale.c:4052 */
+WINAPI INT wine32b_kernel32_CompareStringOrdinal(WCHAR*  str1, INT  len1, WCHAR*  str2, INT  len2, BOOL  ignore_case) /* ../dlls/kernel32/locale.c:4052 */
 {
+	INT return_value;
 	TRACE("Enter CompareStringOrdinal\n");
-	return pCompareStringOrdinal(str1, len1, str2, len2, ignore_case);
+	return_value = pCompareStringOrdinal(str1, len1, str2, len2, ignore_case);
+	TRACE("Leave CompareStringOrdinal\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CompareStringOrdinal(void);  /* ../dlls/kernel32/locale.c:4052 */
@@ -2779,10 +2888,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CompareStringOrdinal,
 	"ret \n"
 )
 
-extern WINAPI LCID wine32b_kernel32_ConvertDefaultLocale(LCID  lcid) /* ../dlls/kernel32/locale.c:2871 */
+WINAPI LCID wine32b_kernel32_ConvertDefaultLocale(LCID  lcid) /* ../dlls/kernel32/locale.c:2871 */
 {
+	LCID return_value;
 	TRACE("Enter ConvertDefaultLocale\n");
-	return pConvertDefaultLocale(lcid);
+	return_value = pConvertDefaultLocale(lcid);
+	TRACE("Leave ConvertDefaultLocale\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_ConvertDefaultLocale(void);  /* ../dlls/kernel32/locale.c:2871 */
@@ -2804,10 +2916,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ConvertDefaultLocale,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_ConvertToGlobalHandle(HANDLE  hSrc) /* ../dlls/kernel32/process.c:3338 */
+WINAPI HANDLE wine32b_kernel32_ConvertToGlobalHandle(HANDLE  hSrc) /* ../dlls/kernel32/process.c:3338 */
 {
+	HANDLE return_value;
 	TRACE("Enter ConvertToGlobalHandle\n");
-	return pConvertToGlobalHandle(hSrc);
+	return_value = pConvertToGlobalHandle(hSrc);
+	TRACE("Leave ConvertToGlobalHandle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_ConvertToGlobalHandle(void);  /* ../dlls/kernel32/process.c:3338 */
@@ -2829,10 +2944,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ConvertToGlobalHandle,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CopyFileA(LPCSTR  source, LPCSTR  dest, BOOL  fail_if_exists) /* ../dlls/kernel32/path.c:1152 */
+WINAPI BOOL wine32b_kernel32_CopyFileA(LPCSTR  source, LPCSTR  dest, BOOL  fail_if_exists) /* ../dlls/kernel32/path.c:1152 */
 {
+	BOOL return_value;
 	TRACE("Enter CopyFileA\n");
-	return pCopyFileA(source, dest, fail_if_exists);
+	return_value = pCopyFileA(source, dest, fail_if_exists);
+	TRACE("Leave CopyFileA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CopyFileA(void);  /* ../dlls/kernel32/path.c:1152 */
@@ -2856,10 +2974,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CopyFileA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CopyFileExA(LPCSTR  sourceFilename, LPCSTR  destFilename, LPPROGRESS_ROUTINE  progressRoutine, LPVOID  appData, LPBOOL  cancelFlagPointer, DWORD  copyFlags) /* ../dlls/kernel32/path.c:1265 */
+WINAPI BOOL wine32b_kernel32_CopyFileExA(LPCSTR  sourceFilename, LPCSTR  destFilename, LPPROGRESS_ROUTINE  progressRoutine, LPVOID  appData, LPBOOL  cancelFlagPointer, DWORD  copyFlags) /* ../dlls/kernel32/path.c:1265 */
 {
+	BOOL return_value;
 	TRACE("Enter CopyFileExA\n");
-	return pCopyFileExA(sourceFilename, destFilename, progressRoutine, appData, cancelFlagPointer, copyFlags);
+	return_value = pCopyFileExA(sourceFilename, destFilename, progressRoutine, appData, cancelFlagPointer, copyFlags);
+	TRACE("Leave CopyFileExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CopyFileExA(void);  /* ../dlls/kernel32/path.c:1265 */
@@ -2884,10 +3005,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CopyFileExA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CopyFileExW(LPCWSTR  source, LPCWSTR  dest, LPPROGRESS_ROUTINE  progress, LPVOID  param, LPBOOL  cancel_ptr, DWORD  flags) /* ../dlls/kernel32/path.c:1170 */
+WINAPI BOOL wine32b_kernel32_CopyFileExW(LPCWSTR  source, LPCWSTR  dest, LPPROGRESS_ROUTINE  progress, LPVOID  param, LPBOOL  cancel_ptr, DWORD  flags) /* ../dlls/kernel32/path.c:1170 */
 {
+	BOOL return_value;
 	TRACE("Enter CopyFileExW\n");
-	return pCopyFileExW(source, dest, progress, param, cancel_ptr, flags);
+	return_value = pCopyFileExW(source, dest, progress, param, cancel_ptr, flags);
+	TRACE("Leave CopyFileExW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CopyFileExW(void);  /* ../dlls/kernel32/path.c:1170 */
@@ -2912,10 +3036,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CopyFileExW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CopyFileW(LPCWSTR  source, LPCWSTR  dest, BOOL  fail_if_exists) /* ../dlls/kernel32/path.c:1142 */
+WINAPI BOOL wine32b_kernel32_CopyFileW(LPCWSTR  source, LPCWSTR  dest, BOOL  fail_if_exists) /* ../dlls/kernel32/path.c:1142 */
 {
+	BOOL return_value;
 	TRACE("Enter CopyFileW\n");
-	return pCopyFileW(source, dest, fail_if_exists);
+	return_value = pCopyFileW(source, dest, fail_if_exists);
+	TRACE("Leave CopyFileW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CopyFileW(void);  /* ../dlls/kernel32/path.c:1142 */
@@ -2939,10 +3066,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CopyFileW,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_CreateActCtxA(PCACTCTXA  pActCtx) /* ../dlls/kernel32/actctx.c:41 */
+WINAPI HANDLE wine32b_kernel32_CreateActCtxA(PCACTCTXA  pActCtx) /* ../dlls/kernel32/actctx.c:41 */
 {
+	HANDLE return_value;
 	TRACE("Enter CreateActCtxA\n");
-	return pCreateActCtxA(pActCtx);
+	return_value = pCreateActCtxA(pActCtx);
+	TRACE("Leave CreateActCtxA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateActCtxA(void);  /* ../dlls/kernel32/actctx.c:41 */
@@ -2964,10 +3094,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateActCtxA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreateDirectoryExA(LPCSTR  template, LPCSTR  path, LPSECURITY_ATTRIBUTES  sa) /* ../dlls/kernel32/path.c:1610 */
+WINAPI BOOL wine32b_kernel32_CreateDirectoryExA(LPCSTR  template, LPCSTR  path, LPSECURITY_ATTRIBUTES  sa) /* ../dlls/kernel32/path.c:1610 */
 {
+	BOOL return_value;
 	TRACE("Enter CreateDirectoryExA\n");
-	return pCreateDirectoryExA(template, path, sa);
+	return_value = pCreateDirectoryExA(template, path, sa);
+	TRACE("Leave CreateDirectoryExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateDirectoryExA(void);  /* ../dlls/kernel32/path.c:1610 */
@@ -2991,10 +3124,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateDirectoryExA,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_CreateFileMappingA(HANDLE  file, SECURITY_ATTRIBUTES*  sa, DWORD  protect, DWORD  size_high, DWORD  size_low, LPCSTR  name) /* ../dlls/kernel32/sync.c:483 */
+WINAPI HANDLE wine32b_kernel32_CreateFileMappingA(HANDLE  file, SECURITY_ATTRIBUTES*  sa, DWORD  protect, DWORD  size_high, DWORD  size_low, LPCSTR  name) /* ../dlls/kernel32/sync.c:483 */
 {
+	HANDLE return_value;
 	TRACE("Enter CreateFileMappingA\n");
-	return pCreateFileMappingA(file, sa, protect, size_high, size_low, name);
+	return_value = pCreateFileMappingA(file, sa, protect, size_high, size_low, name);
+	TRACE("Leave CreateFileMappingA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateFileMappingA(void);  /* ../dlls/kernel32/sync.c:483 */
@@ -3019,10 +3155,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateFileMappingA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreateHardLinkA(LPCSTR  lpFileName, LPCSTR  lpExistingFileName, LPSECURITY_ATTRIBUTES  lpSecurityAttributes) /* ../dlls/kernel32/path.c:1582 */
+WINAPI BOOL wine32b_kernel32_CreateHardLinkA(LPCSTR  lpFileName, LPCSTR  lpExistingFileName, LPSECURITY_ATTRIBUTES  lpSecurityAttributes) /* ../dlls/kernel32/path.c:1582 */
 {
+	BOOL return_value;
 	TRACE("Enter CreateHardLinkA\n");
-	return pCreateHardLinkA(lpFileName, lpExistingFileName, lpSecurityAttributes);
+	return_value = pCreateHardLinkA(lpFileName, lpExistingFileName, lpSecurityAttributes);
+	TRACE("Leave CreateHardLinkA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateHardLinkA(void);  /* ../dlls/kernel32/path.c:1582 */
@@ -3046,10 +3185,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateHardLinkA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreateHardLinkTransactedA(LPCSTR  link, LPCSTR  target, LPSECURITY_ATTRIBUTES  sa, HANDLE  transaction) /* ../dlls/kernel32/path.c:1955 */
+WINAPI BOOL wine32b_kernel32_CreateHardLinkTransactedA(LPCSTR  link, LPCSTR  target, LPSECURITY_ATTRIBUTES  sa, HANDLE  transaction) /* ../dlls/kernel32/path.c:1955 */
 {
+	BOOL return_value;
 	TRACE("Enter CreateHardLinkTransactedA\n");
-	return pCreateHardLinkTransactedA(link, target, sa, transaction);
+	return_value = pCreateHardLinkTransactedA(link, target, sa, transaction);
+	TRACE("Leave CreateHardLinkTransactedA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateHardLinkTransactedA(void);  /* ../dlls/kernel32/path.c:1955 */
@@ -3074,10 +3216,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateHardLinkTransactedA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreateHardLinkTransactedW(LPCWSTR  link, LPCWSTR  target, LPSECURITY_ATTRIBUTES  sa, HANDLE  transaction) /* ../dlls/kernel32/path.c:1965 */
+WINAPI BOOL wine32b_kernel32_CreateHardLinkTransactedW(LPCWSTR  link, LPCWSTR  target, LPSECURITY_ATTRIBUTES  sa, HANDLE  transaction) /* ../dlls/kernel32/path.c:1965 */
 {
+	BOOL return_value;
 	TRACE("Enter CreateHardLinkTransactedW\n");
-	return pCreateHardLinkTransactedW(link, target, sa, transaction);
+	return_value = pCreateHardLinkTransactedW(link, target, sa, transaction);
+	TRACE("Leave CreateHardLinkTransactedW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateHardLinkTransactedW(void);  /* ../dlls/kernel32/path.c:1965 */
@@ -3102,10 +3247,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateHardLinkTransactedW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreateHardLinkW(LPCWSTR  lpFileName, LPCWSTR  lpExistingFileName, LPSECURITY_ATTRIBUTES  lpSecurityAttributes) /* ../dlls/kernel32/path.c:1525 */
+WINAPI BOOL wine32b_kernel32_CreateHardLinkW(LPCWSTR  lpFileName, LPCWSTR  lpExistingFileName, LPSECURITY_ATTRIBUTES  lpSecurityAttributes) /* ../dlls/kernel32/path.c:1525 */
 {
+	BOOL return_value;
 	TRACE("Enter CreateHardLinkW\n");
-	return pCreateHardLinkW(lpFileName, lpExistingFileName, lpSecurityAttributes);
+	return_value = pCreateHardLinkW(lpFileName, lpExistingFileName, lpSecurityAttributes);
+	TRACE("Leave CreateHardLinkW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateHardLinkW(void);  /* ../dlls/kernel32/path.c:1525 */
@@ -3129,10 +3277,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateHardLinkW,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_CreateJobObjectA(LPSECURITY_ATTRIBUTES  attr, LPCSTR  name) /* ../dlls/kernel32/sync.c:292 */
+WINAPI HANDLE wine32b_kernel32_CreateJobObjectA(LPSECURITY_ATTRIBUTES  attr, LPCSTR  name) /* ../dlls/kernel32/sync.c:292 */
 {
+	HANDLE return_value;
 	TRACE("Enter CreateJobObjectA\n");
-	return pCreateJobObjectA(attr, name);
+	return_value = pCreateJobObjectA(attr, name);
+	TRACE("Leave CreateJobObjectA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateJobObjectA(void);  /* ../dlls/kernel32/sync.c:292 */
@@ -3155,10 +3306,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateJobObjectA,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_CreateJobObjectW(LPSECURITY_ATTRIBUTES  sa, LPCWSTR  name) /* ../dlls/kernel32/sync.c:272 */
+WINAPI HANDLE wine32b_kernel32_CreateJobObjectW(LPSECURITY_ATTRIBUTES  sa, LPCWSTR  name) /* ../dlls/kernel32/sync.c:272 */
 {
+	HANDLE return_value;
 	TRACE("Enter CreateJobObjectW\n");
-	return pCreateJobObjectW(sa, name);
+	return_value = pCreateJobObjectW(sa, name);
+	TRACE("Leave CreateJobObjectW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateJobObjectW(void);  /* ../dlls/kernel32/sync.c:272 */
@@ -3181,10 +3335,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateJobObjectW,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_CreateMailslotA(LPCSTR  lpName, DWORD  nMaxMessageSize, DWORD  lReadTimeout, LPSECURITY_ATTRIBUTES  sa) /* ../dlls/kernel32/sync.c:816 */
+WINAPI HANDLE wine32b_kernel32_CreateMailslotA(LPCSTR  lpName, DWORD  nMaxMessageSize, DWORD  lReadTimeout, LPSECURITY_ATTRIBUTES  sa) /* ../dlls/kernel32/sync.c:816 */
 {
+	HANDLE return_value;
 	TRACE("Enter CreateMailslotA\n");
-	return pCreateMailslotA(lpName, nMaxMessageSize, lReadTimeout, sa);
+	return_value = pCreateMailslotA(lpName, nMaxMessageSize, lReadTimeout, sa);
+	TRACE("Leave CreateMailslotA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateMailslotA(void);  /* ../dlls/kernel32/sync.c:816 */
@@ -3209,10 +3366,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateMailslotA,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_CreateMailslotW(LPCWSTR  lpName, DWORD  nMaxMessageSize, DWORD  lReadTimeout, LPSECURITY_ATTRIBUTES  sa) /* ../dlls/kernel32/sync.c:856 */
+WINAPI HANDLE wine32b_kernel32_CreateMailslotW(LPCWSTR  lpName, DWORD  nMaxMessageSize, DWORD  lReadTimeout, LPSECURITY_ATTRIBUTES  sa) /* ../dlls/kernel32/sync.c:856 */
 {
+	HANDLE return_value;
 	TRACE("Enter CreateMailslotW\n");
-	return pCreateMailslotW(lpName, nMaxMessageSize, lReadTimeout, sa);
+	return_value = pCreateMailslotW(lpName, nMaxMessageSize, lReadTimeout, sa);
+	TRACE("Leave CreateMailslotW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateMailslotW(void);  /* ../dlls/kernel32/sync.c:856 */
@@ -3237,10 +3397,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateMailslotW,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_CreateNamedPipeA(LPCSTR  name, DWORD  dwOpenMode, DWORD  dwPipeMode, DWORD  nMaxInstances, DWORD  nOutBufferSize, DWORD  nInBufferSize, DWORD  nDefaultTimeOut, LPSECURITY_ATTRIBUTES  attr) /* ../dlls/kernel32/sync.c:525 */
+WINAPI HANDLE wine32b_kernel32_CreateNamedPipeA(LPCSTR  name, DWORD  dwOpenMode, DWORD  dwPipeMode, DWORD  nMaxInstances, DWORD  nOutBufferSize, DWORD  nInBufferSize, DWORD  nDefaultTimeOut, LPSECURITY_ATTRIBUTES  attr) /* ../dlls/kernel32/sync.c:525 */
 {
+	HANDLE return_value;
 	TRACE("Enter CreateNamedPipeA\n");
-	return pCreateNamedPipeA(name, dwOpenMode, dwPipeMode, nMaxInstances, nOutBufferSize, nInBufferSize, nDefaultTimeOut, attr);
+	return_value = pCreateNamedPipeA(name, dwOpenMode, dwPipeMode, nMaxInstances, nOutBufferSize, nInBufferSize, nDefaultTimeOut, attr);
+	TRACE("Leave CreateNamedPipeA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateNamedPipeA(void);  /* ../dlls/kernel32/sync.c:525 */
@@ -3265,10 +3428,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateNamedPipeA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreatePipe(PHANDLE  hReadPipe, PHANDLE  hWritePipe, LPSECURITY_ATTRIBUTES  sa, DWORD  size) /* ../dlls/kernel32/sync.c:746 */
+WINAPI BOOL wine32b_kernel32_CreatePipe(PHANDLE  hReadPipe, PHANDLE  hWritePipe, LPSECURITY_ATTRIBUTES  sa, DWORD  size) /* ../dlls/kernel32/sync.c:746 */
 {
+	BOOL return_value;
 	TRACE("Enter CreatePipe\n");
-	return pCreatePipe(hReadPipe, hWritePipe, sa, size);
+	return_value = pCreatePipe(hReadPipe, hWritePipe, sa, size);
+	TRACE("Leave CreatePipe\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreatePipe(void);  /* ../dlls/kernel32/sync.c:746 */
@@ -3293,10 +3459,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreatePipe,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreateProcessA(LPCSTR  app_name, LPSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCSTR  cur_dir, LPSTARTUPINFOA  startup_info, LPPROCESS_INFORMATION  info) /* ../dlls/kernel32/process.c:2911 */
+WINAPI BOOL wine32b_kernel32_CreateProcessA(LPCSTR  app_name, LPSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCSTR  cur_dir, LPSTARTUPINFOA  startup_info, LPPROCESS_INFORMATION  info) /* ../dlls/kernel32/process.c:2911 */
 {
+	BOOL return_value;
 	TRACE("Enter CreateProcessA\n");
-	return pCreateProcessA(app_name, cmd_line, process_attr, thread_attr, inherit, flags, env, cur_dir, startup_info, info);
+	return_value = pCreateProcessA(app_name, cmd_line, process_attr, thread_attr, inherit, flags, env, cur_dir, startup_info, info);
+	TRACE("Leave CreateProcessA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateProcessA(void);  /* ../dlls/kernel32/process.c:2911 */
@@ -3321,10 +3490,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateProcessA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreateProcessAsUserA(HANDLE  token, LPCSTR  app_name, LPSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCSTR  cur_dir, LPSTARTUPINFOA  startup_info, LPPROCESS_INFORMATION  info) /* ../dlls/kernel32/process.c:2937 */
+WINAPI BOOL wine32b_kernel32_CreateProcessAsUserA(HANDLE  token, LPCSTR  app_name, LPSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCSTR  cur_dir, LPSTARTUPINFOA  startup_info, LPPROCESS_INFORMATION  info) /* ../dlls/kernel32/process.c:2937 */
 {
+	BOOL return_value;
 	TRACE("Enter CreateProcessAsUserA\n");
-	return pCreateProcessAsUserA(token, app_name, cmd_line, process_attr, thread_attr, inherit, flags, env, cur_dir, startup_info, info);
+	return_value = pCreateProcessAsUserA(token, app_name, cmd_line, process_attr, thread_attr, inherit, flags, env, cur_dir, startup_info, info);
+	TRACE("Leave CreateProcessAsUserA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateProcessAsUserA(void);  /* ../dlls/kernel32/process.c:2937 */
@@ -3349,10 +3521,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateProcessAsUserA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreateProcessAsUserW(HANDLE  token, LPCWSTR  app_name, LPWSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCWSTR  cur_dir, LPSTARTUPINFOW  startup_info, LPPROCESS_INFORMATION  info) /* ../dlls/kernel32/process.c:2952 */
+WINAPI BOOL wine32b_kernel32_CreateProcessAsUserW(HANDLE  token, LPCWSTR  app_name, LPWSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCWSTR  cur_dir, LPSTARTUPINFOW  startup_info, LPPROCESS_INFORMATION  info) /* ../dlls/kernel32/process.c:2952 */
 {
+	BOOL return_value;
 	TRACE("Enter CreateProcessAsUserW\n");
-	return pCreateProcessAsUserW(token, app_name, cmd_line, process_attr, thread_attr, inherit, flags, env, cur_dir, startup_info, info);
+	return_value = pCreateProcessAsUserW(token, app_name, cmd_line, process_attr, thread_attr, inherit, flags, env, cur_dir, startup_info, info);
+	TRACE("Leave CreateProcessAsUserW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateProcessAsUserW(void);  /* ../dlls/kernel32/process.c:2952 */
@@ -3377,10 +3552,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateProcessAsUserW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreateProcessInternalA(HANDLE  token, LPCSTR  app_name, LPSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCSTR  cur_dir, LPSTARTUPINFOA  startup_info, LPPROCESS_INFORMATION  info, HANDLE*  new_token) /* ../dlls/kernel32/process.c:2868 */
+WINAPI BOOL wine32b_kernel32_CreateProcessInternalA(HANDLE  token, LPCSTR  app_name, LPSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCSTR  cur_dir, LPSTARTUPINFOA  startup_info, LPPROCESS_INFORMATION  info, HANDLE*  new_token) /* ../dlls/kernel32/process.c:2868 */
 {
+	BOOL return_value;
 	TRACE("Enter CreateProcessInternalA\n");
-	return pCreateProcessInternalA(token, app_name, cmd_line, process_attr, thread_attr, inherit, flags, env, cur_dir, startup_info, info, new_token);
+	return_value = pCreateProcessInternalA(token, app_name, cmd_line, process_attr, thread_attr, inherit, flags, env, cur_dir, startup_info, info, new_token);
+	TRACE("Leave CreateProcessInternalA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateProcessInternalA(void);  /* ../dlls/kernel32/process.c:2868 */
@@ -3405,10 +3583,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateProcessInternalA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreateProcessInternalW(HANDLE  token, LPCWSTR  app_name, LPWSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCWSTR  cur_dir, LPSTARTUPINFOW  startup_info, LPPROCESS_INFORMATION  info, HANDLE*  new_token) /* ../dlls/kernel32/process.c:2726 */
+WINAPI BOOL wine32b_kernel32_CreateProcessInternalW(HANDLE  token, LPCWSTR  app_name, LPWSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCWSTR  cur_dir, LPSTARTUPINFOW  startup_info, LPPROCESS_INFORMATION  info, HANDLE*  new_token) /* ../dlls/kernel32/process.c:2726 */
 {
+	BOOL return_value;
 	TRACE("Enter CreateProcessInternalW\n");
-	return pCreateProcessInternalW(token, app_name, cmd_line, process_attr, thread_attr, inherit, flags, env, cur_dir, startup_info, info, new_token);
+	return_value = pCreateProcessInternalW(token, app_name, cmd_line, process_attr, thread_attr, inherit, flags, env, cur_dir, startup_info, info, new_token);
+	TRACE("Leave CreateProcessInternalW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateProcessInternalW(void);  /* ../dlls/kernel32/process.c:2726 */
@@ -3433,10 +3614,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateProcessInternalW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreateProcessW(LPCWSTR  app_name, LPWSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCWSTR  cur_dir, LPSTARTUPINFOW  startup_info, LPPROCESS_INFORMATION  info) /* ../dlls/kernel32/process.c:2924 */
+WINAPI BOOL wine32b_kernel32_CreateProcessW(LPCWSTR  app_name, LPWSTR  cmd_line, LPSECURITY_ATTRIBUTES  process_attr, LPSECURITY_ATTRIBUTES  thread_attr, BOOL  inherit, DWORD  flags, LPVOID  env, LPCWSTR  cur_dir, LPSTARTUPINFOW  startup_info, LPPROCESS_INFORMATION  info) /* ../dlls/kernel32/process.c:2924 */
 {
+	BOOL return_value;
 	TRACE("Enter CreateProcessW\n");
-	return pCreateProcessW(app_name, cmd_line, process_attr, thread_attr, inherit, flags, env, cur_dir, startup_info, info);
+	return_value = pCreateProcessW(app_name, cmd_line, process_attr, thread_attr, inherit, flags, env, cur_dir, startup_info, info);
+	TRACE("Leave CreateProcessW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateProcessW(void);  /* ../dlls/kernel32/process.c:2924 */
@@ -3461,10 +3645,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateProcessW,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_CreateSemaphoreA(SECURITY_ATTRIBUTES*  sa, LONG  initial, LONG  max, LPCSTR  name) /* ../dlls/kernel32/sync.c:222 */
+WINAPI HANDLE wine32b_kernel32_CreateSemaphoreA(SECURITY_ATTRIBUTES*  sa, LONG  initial, LONG  max, LPCSTR  name) /* ../dlls/kernel32/sync.c:222 */
 {
+	HANDLE return_value;
 	TRACE("Enter CreateSemaphoreA\n");
-	return pCreateSemaphoreA(sa, initial, max, name);
+	return_value = pCreateSemaphoreA(sa, initial, max, name);
+	TRACE("Leave CreateSemaphoreA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateSemaphoreA(void);  /* ../dlls/kernel32/sync.c:222 */
@@ -3489,10 +3676,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateSemaphoreA,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_CreateSemaphoreExA(SECURITY_ATTRIBUTES*  sa, LONG  initial, LONG  max, LPCSTR  name, DWORD  flags, DWORD  access) /* ../dlls/kernel32/sync.c:231 */
+WINAPI HANDLE wine32b_kernel32_CreateSemaphoreExA(SECURITY_ATTRIBUTES*  sa, LONG  initial, LONG  max, LPCSTR  name, DWORD  flags, DWORD  access) /* ../dlls/kernel32/sync.c:231 */
 {
+	HANDLE return_value;
 	TRACE("Enter CreateSemaphoreExA\n");
-	return pCreateSemaphoreExA(sa, initial, max, name, flags, access);
+	return_value = pCreateSemaphoreExA(sa, initial, max, name, flags, access);
+	TRACE("Leave CreateSemaphoreExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateSemaphoreExA(void);  /* ../dlls/kernel32/sync.c:231 */
@@ -3517,10 +3707,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateSemaphoreExA,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_CreateSocketHandle(void) /* ../dlls/kernel32/process.c:3374 */
+WINAPI HANDLE wine32b_kernel32_CreateSocketHandle(void) /* ../dlls/kernel32/process.c:3374 */
 {
+	HANDLE return_value;
 	TRACE("Enter CreateSocketHandle\n");
-	return pCreateSocketHandle();
+	return_value = pCreateSocketHandle();
+	TRACE("Leave CreateSocketHandle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateSocketHandle(void);  /* ../dlls/kernel32/process.c:3374 */
@@ -3541,10 +3734,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateSocketHandle,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_kernel32_CreateSymbolicLinkA(LPCSTR  link, LPCSTR  target, DWORD  flags) /* ../dlls/kernel32/path.c:1946 */
+WINAPI BOOLEAN wine32b_kernel32_CreateSymbolicLinkA(LPCSTR  link, LPCSTR  target, DWORD  flags) /* ../dlls/kernel32/path.c:1946 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter CreateSymbolicLinkA\n");
-	return pCreateSymbolicLinkA(link, target, flags);
+	return_value = pCreateSymbolicLinkA(link, target, flags);
+	TRACE("Leave CreateSymbolicLinkA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateSymbolicLinkA(void);  /* ../dlls/kernel32/path.c:1946 */
@@ -3568,10 +3764,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateSymbolicLinkA,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_kernel32_CreateSymbolicLinkW(LPCWSTR  link, LPCWSTR  target, DWORD  flags) /* ../dlls/kernel32/path.c:1937 */
+WINAPI BOOLEAN wine32b_kernel32_CreateSymbolicLinkW(LPCWSTR  link, LPCWSTR  target, DWORD  flags) /* ../dlls/kernel32/path.c:1937 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter CreateSymbolicLinkW\n");
-	return pCreateSymbolicLinkW(link, target, flags);
+	return_value = pCreateSymbolicLinkW(link, target, flags);
+	TRACE("Leave CreateSymbolicLinkW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateSymbolicLinkW(void);  /* ../dlls/kernel32/path.c:1937 */
@@ -3595,10 +3794,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateSymbolicLinkW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_CreateTapePartition(HANDLE  device, DWORD  method, DWORD  count, DWORD  size) /* ../dlls/kernel32/tape.c:96 */
+WINAPI DWORD wine32b_kernel32_CreateTapePartition(HANDLE  device, DWORD  method, DWORD  count, DWORD  size) /* ../dlls/kernel32/tape.c:96 */
 {
+	DWORD return_value;
 	TRACE("Enter CreateTapePartition\n");
-	return pCreateTapePartition(device, method, count, size);
+	return_value = pCreateTapePartition(device, method, count, size);
+	TRACE("Leave CreateTapePartition\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateTapePartition(void);  /* ../dlls/kernel32/tape.c:96 */
@@ -3623,10 +3825,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateTapePartition,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_CreateToolhelp32Snapshot(DWORD  flags, DWORD  process) /* ../dlls/kernel32/toolhelp.c:293 */
+WINAPI HANDLE wine32b_kernel32_CreateToolhelp32Snapshot(DWORD  flags, DWORD  process) /* ../dlls/kernel32/toolhelp.c:293 */
 {
+	HANDLE return_value;
 	TRACE("Enter CreateToolhelp32Snapshot\n");
-	return pCreateToolhelp32Snapshot(flags, process);
+	return_value = pCreateToolhelp32Snapshot(flags, process);
+	TRACE("Leave CreateToolhelp32Snapshot\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateToolhelp32Snapshot(void);  /* ../dlls/kernel32/toolhelp.c:293 */
@@ -3649,10 +3854,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateToolhelp32Snapshot,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreateUmsCompletionList(PUMS_COMPLETION_LIST*  list) /* ../dlls/kernel32/process.c:4126 */
+WINAPI BOOL wine32b_kernel32_CreateUmsCompletionList(PUMS_COMPLETION_LIST*  list) /* ../dlls/kernel32/process.c:4126 */
 {
+	BOOL return_value;
 	TRACE("Enter CreateUmsCompletionList\n");
-	return pCreateUmsCompletionList(list);
+	return_value = pCreateUmsCompletionList(list);
+	TRACE("Leave CreateUmsCompletionList\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateUmsCompletionList(void);  /* ../dlls/kernel32/process.c:4126 */
@@ -3674,10 +3882,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateUmsCompletionList,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_CreateUmsThreadContext(PUMS_CONTEXT*  ctx) /* ../dlls/kernel32/process.c:4136 */
+WINAPI BOOL wine32b_kernel32_CreateUmsThreadContext(PUMS_CONTEXT*  ctx) /* ../dlls/kernel32/process.c:4136 */
 {
+	BOOL return_value;
 	TRACE("Enter CreateUmsThreadContext\n");
-	return pCreateUmsThreadContext(ctx);
+	return_value = pCreateUmsThreadContext(ctx);
+	TRACE("Leave CreateUmsThreadContext\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateUmsThreadContext(void);  /* ../dlls/kernel32/process.c:4136 */
@@ -3699,10 +3910,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateUmsThreadContext,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_CreateWaitableTimerA(SECURITY_ATTRIBUTES*  sa, BOOL  manual, LPCSTR  name) /* ../dlls/kernel32/sync.c:414 */
+WINAPI HANDLE wine32b_kernel32_CreateWaitableTimerA(SECURITY_ATTRIBUTES*  sa, BOOL  manual, LPCSTR  name) /* ../dlls/kernel32/sync.c:414 */
 {
+	HANDLE return_value;
 	TRACE("Enter CreateWaitableTimerA\n");
-	return pCreateWaitableTimerA(sa, manual, name);
+	return_value = pCreateWaitableTimerA(sa, manual, name);
+	TRACE("Leave CreateWaitableTimerA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateWaitableTimerA(void);  /* ../dlls/kernel32/sync.c:414 */
@@ -3726,10 +3940,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateWaitableTimerA,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_CreateWaitableTimerExA(SECURITY_ATTRIBUTES*  sa, LPCSTR  name, DWORD  flags, DWORD  access) /* ../dlls/kernel32/sync.c:424 */
+WINAPI HANDLE wine32b_kernel32_CreateWaitableTimerExA(SECURITY_ATTRIBUTES*  sa, LPCSTR  name, DWORD  flags, DWORD  access) /* ../dlls/kernel32/sync.c:424 */
 {
+	HANDLE return_value;
 	TRACE("Enter CreateWaitableTimerExA\n");
-	return pCreateWaitableTimerExA(sa, name, flags, access);
+	return_value = pCreateWaitableTimerExA(sa, name, flags, access);
+	TRACE("Leave CreateWaitableTimerExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_CreateWaitableTimerExA(void);  /* ../dlls/kernel32/sync.c:424 */
@@ -3754,10 +3971,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_CreateWaitableTimerExA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_DebugBreakProcess(HANDLE  process) /* ../dlls/kernel32/debugger.c:49 */
+WINAPI BOOL wine32b_kernel32_DebugBreakProcess(HANDLE  process) /* ../dlls/kernel32/debugger.c:49 */
 {
+	BOOL return_value;
 	TRACE("Enter DebugBreakProcess\n");
-	return pDebugBreakProcess(process);
+	return_value = pDebugBreakProcess(process);
+	TRACE("Leave DebugBreakProcess\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_DebugBreakProcess(void);  /* ../dlls/kernel32/debugger.c:49 */
@@ -3779,10 +3999,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DebugBreakProcess,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_DebugSetProcessKillOnExit(BOOL  kill) /* ../dlls/kernel32/debugger.c:73 */
+WINAPI BOOL wine32b_kernel32_DebugSetProcessKillOnExit(BOOL  kill) /* ../dlls/kernel32/debugger.c:73 */
 {
+	BOOL return_value;
 	TRACE("Enter DebugSetProcessKillOnExit\n");
-	return pDebugSetProcessKillOnExit(kill);
+	return_value = pDebugSetProcessKillOnExit(kill);
+	TRACE("Leave DebugSetProcessKillOnExit\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_DebugSetProcessKillOnExit(void);  /* ../dlls/kernel32/debugger.c:73 */
@@ -3804,10 +4027,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DebugSetProcessKillOnExit,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_DefineDosDeviceA(DWORD  flags, LPCSTR  devname, LPCSTR  targetpath) /* ../dlls/kernel32/volume.c:1210 */
+WINAPI BOOL wine32b_kernel32_DefineDosDeviceA(DWORD  flags, LPCSTR  devname, LPCSTR  targetpath) /* ../dlls/kernel32/volume.c:1210 */
 {
+	BOOL return_value;
 	TRACE("Enter DefineDosDeviceA\n");
-	return pDefineDosDeviceA(flags, devname, targetpath);
+	return_value = pDefineDosDeviceA(flags, devname, targetpath);
+	TRACE("Leave DefineDosDeviceA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_DefineDosDeviceA(void);  /* ../dlls/kernel32/volume.c:1210 */
@@ -3831,10 +4057,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DefineDosDeviceA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_DefineDosDeviceW(DWORD  flags, LPCWSTR  devname, LPCWSTR  targetpath) /* ../dlls/kernel32/volume.c:1137 */
+WINAPI BOOL wine32b_kernel32_DefineDosDeviceW(DWORD  flags, LPCWSTR  devname, LPCWSTR  targetpath) /* ../dlls/kernel32/volume.c:1137 */
 {
+	BOOL return_value;
 	TRACE("Enter DefineDosDeviceW\n");
-	return pDefineDosDeviceW(flags, devname, targetpath);
+	return_value = pDefineDosDeviceW(flags, devname, targetpath);
+	TRACE("Leave DefineDosDeviceW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_DefineDosDeviceW(void);  /* ../dlls/kernel32/volume.c:1137 */
@@ -3858,10 +4087,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DefineDosDeviceW,
 	"ret \n"
 )
 
-extern WINAPI FARPROC wine32b_kernel32_DelayLoadFailureHook(LPCSTR  name, LPCSTR  function) /* ../dlls/kernel32/module.c:1024 */
+WINAPI FARPROC wine32b_kernel32_DelayLoadFailureHook(LPCSTR  name, LPCSTR  function) /* ../dlls/kernel32/module.c:1024 */
 {
+	FARPROC return_value;
 	TRACE("Enter DelayLoadFailureHook\n");
-	return pDelayLoadFailureHook(name, function);
+	return_value = pDelayLoadFailureHook(name, function);
+	TRACE("Leave DelayLoadFailureHook\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_DelayLoadFailureHook(void);  /* ../dlls/kernel32/module.c:1024 */
@@ -3884,10 +4116,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DelayLoadFailureHook,
 	"ret \n"
 )
 
-extern WINAPI ATOM wine32b_kernel32_DeleteAtom(ATOM  atom) /* ../dlls/kernel32/atom.c:255 */
+WINAPI ATOM wine32b_kernel32_DeleteAtom(ATOM  atom) /* ../dlls/kernel32/atom.c:255 */
 {
+	ATOM return_value;
 	TRACE("Enter DeleteAtom\n");
-	return pDeleteAtom(atom);
+	return_value = pDeleteAtom(atom);
+	TRACE("Leave DeleteAtom\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_DeleteAtom(void);  /* ../dlls/kernel32/atom.c:255 */
@@ -3909,10 +4144,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DeleteAtom,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_DeleteTimerQueue(HANDLE  TimerQueue) /* ../dlls/kernel32/sync.c:460 */
+WINAPI BOOL wine32b_kernel32_DeleteTimerQueue(HANDLE  TimerQueue) /* ../dlls/kernel32/sync.c:460 */
 {
+	BOOL return_value;
 	TRACE("Enter DeleteTimerQueue\n");
-	return pDeleteTimerQueue(TimerQueue);
+	return_value = pDeleteTimerQueue(TimerQueue);
+	TRACE("Leave DeleteTimerQueue\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_DeleteTimerQueue(void);  /* ../dlls/kernel32/sync.c:460 */
@@ -3934,10 +4172,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DeleteTimerQueue,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_DeleteUmsCompletionList(PUMS_COMPLETION_LIST  list) /* ../dlls/kernel32/process.c:4146 */
+WINAPI BOOL wine32b_kernel32_DeleteUmsCompletionList(PUMS_COMPLETION_LIST  list) /* ../dlls/kernel32/process.c:4146 */
 {
+	BOOL return_value;
 	TRACE("Enter DeleteUmsCompletionList\n");
-	return pDeleteUmsCompletionList(list);
+	return_value = pDeleteUmsCompletionList(list);
+	TRACE("Leave DeleteUmsCompletionList\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_DeleteUmsCompletionList(void);  /* ../dlls/kernel32/process.c:4146 */
@@ -3959,10 +4200,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DeleteUmsCompletionList,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_DeleteUmsThreadContext(PUMS_CONTEXT  ctx) /* ../dlls/kernel32/process.c:4156 */
+WINAPI BOOL wine32b_kernel32_DeleteUmsThreadContext(PUMS_CONTEXT  ctx) /* ../dlls/kernel32/process.c:4156 */
 {
+	BOOL return_value;
 	TRACE("Enter DeleteUmsThreadContext\n");
-	return pDeleteUmsThreadContext(ctx);
+	return_value = pDeleteUmsThreadContext(ctx);
+	TRACE("Leave DeleteUmsThreadContext\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_DeleteUmsThreadContext(void);  /* ../dlls/kernel32/process.c:4156 */
@@ -3984,10 +4228,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DeleteUmsThreadContext,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_DeleteVolumeMountPointA(LPCSTR  mountpoint) /* ../dlls/kernel32/volume.c:2126 */
+WINAPI BOOL wine32b_kernel32_DeleteVolumeMountPointA(LPCSTR  mountpoint) /* ../dlls/kernel32/volume.c:2126 */
 {
+	BOOL return_value;
 	TRACE("Enter DeleteVolumeMountPointA\n");
-	return pDeleteVolumeMountPointA(mountpoint);
+	return_value = pDeleteVolumeMountPointA(mountpoint);
+	TRACE("Leave DeleteVolumeMountPointA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_DeleteVolumeMountPointA(void);  /* ../dlls/kernel32/volume.c:2126 */
@@ -4009,10 +4256,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DeleteVolumeMountPointA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_DeleteVolumeMountPointW(LPCWSTR  mountpoint) /* ../dlls/kernel32/volume.c:2135 */
+WINAPI BOOL wine32b_kernel32_DeleteVolumeMountPointW(LPCWSTR  mountpoint) /* ../dlls/kernel32/volume.c:2135 */
 {
+	BOOL return_value;
 	TRACE("Enter DeleteVolumeMountPointW\n");
-	return pDeleteVolumeMountPointW(mountpoint);
+	return_value = pDeleteVolumeMountPointW(mountpoint);
+	TRACE("Leave DeleteVolumeMountPointW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_DeleteVolumeMountPointW(void);  /* ../dlls/kernel32/volume.c:2135 */
@@ -4034,10 +4284,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DeleteVolumeMountPointW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_DequeueUmsCompletionListItems(void*  list, DWORD  timeout, PUMS_CONTEXT*  ctx) /* ../dlls/kernel32/process.c:4166 */
+WINAPI BOOL wine32b_kernel32_DequeueUmsCompletionListItems(void*  list, DWORD  timeout, PUMS_CONTEXT*  ctx) /* ../dlls/kernel32/process.c:4166 */
 {
+	BOOL return_value;
 	TRACE("Enter DequeueUmsCompletionListItems\n");
-	return pDequeueUmsCompletionListItems(list, timeout, ctx);
+	return_value = pDequeueUmsCompletionListItems(list, timeout, ctx);
+	TRACE("Leave DequeueUmsCompletionListItems\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_DequeueUmsCompletionListItems(void);  /* ../dlls/kernel32/process.c:4166 */
@@ -4061,10 +4314,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DequeueUmsCompletionListItems,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_DeviceIoControl(HANDLE  hDevice, DWORD  dwIoControlCode, LPVOID  lpvInBuffer, DWORD  cbInBuffer, LPVOID  lpvOutBuffer, DWORD  cbOutBuffer, LPDWORD  lpcbBytesReturned, LPOVERLAPPED  lpOverlapped) /* ../dlls/kernel32/file.c:1096 */
+WINAPI BOOL wine32b_kernel32_DeviceIoControl(HANDLE  hDevice, DWORD  dwIoControlCode, LPVOID  lpvInBuffer, DWORD  cbInBuffer, LPVOID  lpvOutBuffer, DWORD  cbOutBuffer, LPDWORD  lpcbBytesReturned, LPOVERLAPPED  lpOverlapped) /* ../dlls/kernel32/file.c:1096 */
 {
+	BOOL return_value;
 	TRACE("Enter DeviceIoControl\n");
-	return pDeviceIoControl(hDevice, dwIoControlCode, lpvInBuffer, cbInBuffer, lpvOutBuffer, cbOutBuffer, lpcbBytesReturned, lpOverlapped);
+	return_value = pDeviceIoControl(hDevice, dwIoControlCode, lpvInBuffer, cbInBuffer, lpvOutBuffer, cbOutBuffer, lpcbBytesReturned, lpOverlapped);
+	TRACE("Leave DeviceIoControl\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_DeviceIoControl(void);  /* ../dlls/kernel32/file.c:1096 */
@@ -4089,10 +4345,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DeviceIoControl,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_DnsHostnameToComputerNameA(LPCSTR  hostname, LPSTR  computername, LPDWORD  size) /* ../dlls/kernel32/computername.c:679 */
+WINAPI BOOL wine32b_kernel32_DnsHostnameToComputerNameA(LPCSTR  hostname, LPSTR  computername, LPDWORD  size) /* ../dlls/kernel32/computername.c:679 */
 {
+	BOOL return_value;
 	TRACE("Enter DnsHostnameToComputerNameA\n");
-	return pDnsHostnameToComputerNameA(hostname, computername, size);
+	return_value = pDnsHostnameToComputerNameA(hostname, computername, size);
+	TRACE("Leave DnsHostnameToComputerNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_DnsHostnameToComputerNameA(void);  /* ../dlls/kernel32/computername.c:679 */
@@ -4116,10 +4375,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DnsHostnameToComputerNameA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_DnsHostnameToComputerNameW(LPCWSTR  hostname, LPWSTR  computername, LPDWORD  size) /* ../dlls/kernel32/computername.c:707 */
+WINAPI BOOL wine32b_kernel32_DnsHostnameToComputerNameW(LPCWSTR  hostname, LPWSTR  computername, LPDWORD  size) /* ../dlls/kernel32/computername.c:707 */
 {
+	BOOL return_value;
 	TRACE("Enter DnsHostnameToComputerNameW\n");
-	return pDnsHostnameToComputerNameW(hostname, computername, size);
+	return_value = pDnsHostnameToComputerNameW(hostname, computername, size);
+	TRACE("Leave DnsHostnameToComputerNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_DnsHostnameToComputerNameW(void);  /* ../dlls/kernel32/computername.c:707 */
@@ -4143,10 +4405,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DnsHostnameToComputerNameW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_DosDateTimeToFileTime(WORD  fatdate, WORD  fattime, LPFILETIME  ft) /* ../dlls/kernel32/time.c:1358 */
+WINAPI BOOL wine32b_kernel32_DosDateTimeToFileTime(WORD  fatdate, WORD  fattime, LPFILETIME  ft) /* ../dlls/kernel32/time.c:1358 */
 {
+	BOOL return_value;
 	TRACE("Enter DosDateTimeToFileTime\n");
-	return pDosDateTimeToFileTime(fatdate, fattime, ft);
+	return_value = pDosDateTimeToFileTime(fatdate, fattime, ft);
+	TRACE("Leave DosDateTimeToFileTime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_DosDateTimeToFileTime(void);  /* ../dlls/kernel32/time.c:1358 */
@@ -4170,10 +4435,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DosDateTimeToFileTime,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_DuplicateConsoleHandle(HANDLE  handle, DWORD  access, BOOL  inherit, DWORD  options) /* ../dlls/kernel32/console.c:274 */
+WINAPI HANDLE wine32b_kernel32_DuplicateConsoleHandle(HANDLE  handle, DWORD  access, BOOL  inherit, DWORD  options) /* ../dlls/kernel32/console.c:274 */
 {
+	HANDLE return_value;
 	TRACE("Enter DuplicateConsoleHandle\n");
-	return pDuplicateConsoleHandle(handle, access, inherit, options);
+	return_value = pDuplicateConsoleHandle(handle, access, inherit, options);
+	TRACE("Leave DuplicateConsoleHandle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_DuplicateConsoleHandle(void);  /* ../dlls/kernel32/console.c:274 */
@@ -4198,10 +4466,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DuplicateConsoleHandle,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_DuplicateHandle(HANDLE  source_process, HANDLE  source, HANDLE  dest_process, HANDLE*  dest, DWORD  access, BOOL  inherit, DWORD  options) /* ../dlls/kernel32/process.c:3310 */
+WINAPI BOOL wine32b_kernel32_DuplicateHandle(HANDLE  source_process, HANDLE  source, HANDLE  dest_process, HANDLE*  dest, DWORD  access, BOOL  inherit, DWORD  options) /* ../dlls/kernel32/process.c:3310 */
 {
+	BOOL return_value;
 	TRACE("Enter DuplicateHandle\n");
-	return pDuplicateHandle(source_process, source, dest_process, dest, access, inherit, options);
+	return_value = pDuplicateHandle(source_process, source, dest_process, dest, access, inherit, options);
+	TRACE("Leave DuplicateHandle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_DuplicateHandle(void);  /* ../dlls/kernel32/process.c:3310 */
@@ -4226,10 +4497,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_DuplicateHandle,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EndUpdateResourceA(HANDLE  hUpdate, BOOL  fDiscard) /* ../dlls/kernel32/resource.c:1280 */
+WINAPI BOOL wine32b_kernel32_EndUpdateResourceA(HANDLE  hUpdate, BOOL  fDiscard) /* ../dlls/kernel32/resource.c:1280 */
 {
+	BOOL return_value;
 	TRACE("Enter EndUpdateResourceA\n");
-	return pEndUpdateResourceA(hUpdate, fDiscard);
+	return_value = pEndUpdateResourceA(hUpdate, fDiscard);
+	TRACE("Leave EndUpdateResourceA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EndUpdateResourceA(void);  /* ../dlls/kernel32/resource.c:1280 */
@@ -4252,10 +4526,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EndUpdateResourceA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EndUpdateResourceW(HANDLE  hUpdate, BOOL  fDiscard) /* ../dlls/kernel32/resource.c:1254 */
+WINAPI BOOL wine32b_kernel32_EndUpdateResourceW(HANDLE  hUpdate, BOOL  fDiscard) /* ../dlls/kernel32/resource.c:1254 */
 {
+	BOOL return_value;
 	TRACE("Enter EndUpdateResourceW\n");
-	return pEndUpdateResourceW(hUpdate, fDiscard);
+	return_value = pEndUpdateResourceW(hUpdate, fDiscard);
+	TRACE("Leave EndUpdateResourceW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EndUpdateResourceW(void);  /* ../dlls/kernel32/resource.c:1254 */
@@ -4278,10 +4555,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EndUpdateResourceW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumCalendarInfoA(CALINFO_ENUMPROCA  calinfoproc, LCID  locale, CALID  calendar, CALTYPE  caltype) /* ../dlls/kernel32/lcformat.c:2230 */
+WINAPI BOOL wine32b_kernel32_EnumCalendarInfoA(CALINFO_ENUMPROCA  calinfoproc, LCID  locale, CALID  calendar, CALTYPE  caltype) /* ../dlls/kernel32/lcformat.c:2230 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumCalendarInfoA\n");
-	return pEnumCalendarInfoA(calinfoproc, locale, calendar, caltype);
+	return_value = pEnumCalendarInfoA(calinfoproc, locale, calendar, caltype);
+	TRACE("Leave EnumCalendarInfoA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumCalendarInfoA(void);  /* ../dlls/kernel32/lcformat.c:2230 */
@@ -4306,10 +4586,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumCalendarInfoA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumCalendarInfoExA(CALINFO_ENUMPROCEXA  calinfoproc, LCID  locale, CALID  calendar, CALTYPE  caltype) /* ../dlls/kernel32/lcformat.c:2270 */
+WINAPI BOOL wine32b_kernel32_EnumCalendarInfoExA(CALINFO_ENUMPROCEXA  calinfoproc, LCID  locale, CALID  calendar, CALTYPE  caltype) /* ../dlls/kernel32/lcformat.c:2270 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumCalendarInfoExA\n");
-	return pEnumCalendarInfoExA(calinfoproc, locale, calendar, caltype);
+	return_value = pEnumCalendarInfoExA(calinfoproc, locale, calendar, caltype);
+	TRACE("Leave EnumCalendarInfoExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumCalendarInfoExA(void);  /* ../dlls/kernel32/lcformat.c:2270 */
@@ -4334,10 +4617,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumCalendarInfoExA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumCalendarInfoExEx(CALINFO_ENUMPROCEXEX  calinfoproc, LPCWSTR  locale, CALID  calendar, LPCWSTR  reserved, CALTYPE  caltype, LPARAM  lParam) /* ../dlls/kernel32/lcformat.c:2310 */
+WINAPI BOOL wine32b_kernel32_EnumCalendarInfoExEx(CALINFO_ENUMPROCEXEX  calinfoproc, LPCWSTR  locale, CALID  calendar, LPCWSTR  reserved, CALTYPE  caltype, LPARAM  lParam) /* ../dlls/kernel32/lcformat.c:2310 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumCalendarInfoExEx\n");
-	return pEnumCalendarInfoExEx(calinfoproc, locale, calendar, reserved, caltype, lParam);
+	return_value = pEnumCalendarInfoExEx(calinfoproc, locale, calendar, reserved, caltype, lParam);
+	TRACE("Leave EnumCalendarInfoExEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumCalendarInfoExEx(void);  /* ../dlls/kernel32/lcformat.c:2310 */
@@ -4362,10 +4648,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumCalendarInfoExEx,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumCalendarInfoExW(CALINFO_ENUMPROCEXW  calinfoproc, LCID  locale, CALID  calendar, CALTYPE  caltype) /* ../dlls/kernel32/lcformat.c:2290 */
+WINAPI BOOL wine32b_kernel32_EnumCalendarInfoExW(CALINFO_ENUMPROCEXW  calinfoproc, LCID  locale, CALID  calendar, CALTYPE  caltype) /* ../dlls/kernel32/lcformat.c:2290 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumCalendarInfoExW\n");
-	return pEnumCalendarInfoExW(calinfoproc, locale, calendar, caltype);
+	return_value = pEnumCalendarInfoExW(calinfoproc, locale, calendar, caltype);
+	TRACE("Leave EnumCalendarInfoExW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumCalendarInfoExW(void);  /* ../dlls/kernel32/lcformat.c:2290 */
@@ -4390,10 +4679,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumCalendarInfoExW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumCalendarInfoW(CALINFO_ENUMPROCW  calinfoproc, LCID  locale, CALID  calendar, CALTYPE  caltype) /* ../dlls/kernel32/lcformat.c:2250 */
+WINAPI BOOL wine32b_kernel32_EnumCalendarInfoW(CALINFO_ENUMPROCW  calinfoproc, LCID  locale, CALID  calendar, CALTYPE  caltype) /* ../dlls/kernel32/lcformat.c:2250 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumCalendarInfoW\n");
-	return pEnumCalendarInfoW(calinfoproc, locale, calendar, caltype);
+	return_value = pEnumCalendarInfoW(calinfoproc, locale, calendar, caltype);
+	TRACE("Leave EnumCalendarInfoW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumCalendarInfoW(void);  /* ../dlls/kernel32/lcformat.c:2250 */
@@ -4418,10 +4710,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumCalendarInfoW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumDateFormatsA(DATEFMT_ENUMPROCA  proc, LCID  lcid, DWORD  flags) /* ../dlls/kernel32/lcformat.c:1910 */
+WINAPI BOOL wine32b_kernel32_EnumDateFormatsA(DATEFMT_ENUMPROCA  proc, LCID  lcid, DWORD  flags) /* ../dlls/kernel32/lcformat.c:1910 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumDateFormatsA\n");
-	return pEnumDateFormatsA(proc, lcid, flags);
+	return_value = pEnumDateFormatsA(proc, lcid, flags);
+	TRACE("Leave EnumDateFormatsA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumDateFormatsA(void);  /* ../dlls/kernel32/lcformat.c:1910 */
@@ -4445,10 +4740,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumDateFormatsA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumDateFormatsExA(DATEFMT_ENUMPROCEXA  proc, LCID  lcid, DWORD  flags) /* ../dlls/kernel32/lcformat.c:1875 */
+WINAPI BOOL wine32b_kernel32_EnumDateFormatsExA(DATEFMT_ENUMPROCEXA  proc, LCID  lcid, DWORD  flags) /* ../dlls/kernel32/lcformat.c:1875 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumDateFormatsExA\n");
-	return pEnumDateFormatsExA(proc, lcid, flags);
+	return_value = pEnumDateFormatsExA(proc, lcid, flags);
+	TRACE("Leave EnumDateFormatsExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumDateFormatsExA(void);  /* ../dlls/kernel32/lcformat.c:1875 */
@@ -4472,10 +4770,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumDateFormatsExA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumDateFormatsExEx(DATEFMT_ENUMPROCEXEX  proc, WCHAR*  locale, DWORD  flags, LPARAM  lParam) /* ../dlls/kernel32/lcformat.c:1942 */
+WINAPI BOOL wine32b_kernel32_EnumDateFormatsExEx(DATEFMT_ENUMPROCEXEX  proc, WCHAR*  locale, DWORD  flags, LPARAM  lParam) /* ../dlls/kernel32/lcformat.c:1942 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumDateFormatsExEx\n");
-	return pEnumDateFormatsExEx(proc, locale, flags, lParam);
+	return_value = pEnumDateFormatsExEx(proc, locale, flags, lParam);
+	TRACE("Leave EnumDateFormatsExEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumDateFormatsExEx(void);  /* ../dlls/kernel32/lcformat.c:1942 */
@@ -4500,10 +4801,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumDateFormatsExEx,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumDateFormatsExW(DATEFMT_ENUMPROCEXW  proc, LCID  lcid, DWORD  flags) /* ../dlls/kernel32/lcformat.c:1891 */
+WINAPI BOOL wine32b_kernel32_EnumDateFormatsExW(DATEFMT_ENUMPROCEXW  proc, LCID  lcid, DWORD  flags) /* ../dlls/kernel32/lcformat.c:1891 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumDateFormatsExW\n");
-	return pEnumDateFormatsExW(proc, lcid, flags);
+	return_value = pEnumDateFormatsExW(proc, lcid, flags);
+	TRACE("Leave EnumDateFormatsExW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumDateFormatsExW(void);  /* ../dlls/kernel32/lcformat.c:1891 */
@@ -4527,10 +4831,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumDateFormatsExW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumDateFormatsW(DATEFMT_ENUMPROCW  proc, LCID  lcid, DWORD  flags) /* ../dlls/kernel32/lcformat.c:1926 */
+WINAPI BOOL wine32b_kernel32_EnumDateFormatsW(DATEFMT_ENUMPROCW  proc, LCID  lcid, DWORD  flags) /* ../dlls/kernel32/lcformat.c:1926 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumDateFormatsW\n");
-	return pEnumDateFormatsW(proc, lcid, flags);
+	return_value = pEnumDateFormatsW(proc, lcid, flags);
+	TRACE("Leave EnumDateFormatsW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumDateFormatsW(void);  /* ../dlls/kernel32/lcformat.c:1926 */
@@ -4554,10 +4861,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumDateFormatsW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumLanguageGroupLocalesA(LANGGROUPLOCALE_ENUMPROCA  pLangGrpLcEnumProc, LGRPID  lgrpid, DWORD  dwFlags, LONG_PTR  lParam) /* ../dlls/kernel32/locale.c:4553 */
+WINAPI BOOL wine32b_kernel32_EnumLanguageGroupLocalesA(LANGGROUPLOCALE_ENUMPROCA  pLangGrpLcEnumProc, LGRPID  lgrpid, DWORD  dwFlags, LONG_PTR  lParam) /* ../dlls/kernel32/locale.c:4553 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumLanguageGroupLocalesA\n");
-	return pEnumLanguageGroupLocalesA(pLangGrpLcEnumProc, lgrpid, dwFlags, lParam);
+	return_value = pEnumLanguageGroupLocalesA(pLangGrpLcEnumProc, lgrpid, dwFlags, lParam);
+	TRACE("Leave EnumLanguageGroupLocalesA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumLanguageGroupLocalesA(void);  /* ../dlls/kernel32/locale.c:4553 */
@@ -4582,10 +4892,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumLanguageGroupLocalesA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumLanguageGroupLocalesW(LANGGROUPLOCALE_ENUMPROCW  pLangGrpLcEnumProc, LGRPID  lgrpid, DWORD  dwFlags, LONG_PTR  lParam) /* ../dlls/kernel32/locale.c:4574 */
+WINAPI BOOL wine32b_kernel32_EnumLanguageGroupLocalesW(LANGGROUPLOCALE_ENUMPROCW  pLangGrpLcEnumProc, LGRPID  lgrpid, DWORD  dwFlags, LONG_PTR  lParam) /* ../dlls/kernel32/locale.c:4574 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumLanguageGroupLocalesW\n");
-	return pEnumLanguageGroupLocalesW(pLangGrpLcEnumProc, lgrpid, dwFlags, lParam);
+	return_value = pEnumLanguageGroupLocalesW(pLangGrpLcEnumProc, lgrpid, dwFlags, lParam);
+	TRACE("Leave EnumLanguageGroupLocalesW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumLanguageGroupLocalesW(void);  /* ../dlls/kernel32/locale.c:4574 */
@@ -4610,10 +4923,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumLanguageGroupLocalesW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumResourceLanguagesA(HMODULE  hmod, LPCSTR  type, LPCSTR  name, ENUMRESLANGPROCA  lpfun, LONG_PTR  lparam) /* ../dlls/kernel32/resource.c:139 */
+WINAPI BOOL wine32b_kernel32_EnumResourceLanguagesA(HMODULE  hmod, LPCSTR  type, LPCSTR  name, ENUMRESLANGPROCA  lpfun, LONG_PTR  lparam) /* ../dlls/kernel32/resource.c:139 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumResourceLanguagesA\n");
-	return pEnumResourceLanguagesA(hmod, type, name, lpfun, lparam);
+	return_value = pEnumResourceLanguagesA(hmod, type, name, lpfun, lparam);
+	TRACE("Leave EnumResourceLanguagesA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumResourceLanguagesA(void);  /* ../dlls/kernel32/resource.c:139 */
@@ -4638,10 +4954,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumResourceLanguagesA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumResourceLanguagesW(HMODULE  hmod, LPCWSTR  type, LPCWSTR  name, ENUMRESLANGPROCW  lpfun, LONG_PTR  lparam) /* ../dlls/kernel32/resource.c:149 */
+WINAPI BOOL wine32b_kernel32_EnumResourceLanguagesW(HMODULE  hmod, LPCWSTR  type, LPCWSTR  name, ENUMRESLANGPROCW  lpfun, LONG_PTR  lparam) /* ../dlls/kernel32/resource.c:149 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumResourceLanguagesW\n");
-	return pEnumResourceLanguagesW(hmod, type, name, lpfun, lparam);
+	return_value = pEnumResourceLanguagesW(hmod, type, name, lpfun, lparam);
+	TRACE("Leave EnumResourceLanguagesW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumResourceLanguagesW(void);  /* ../dlls/kernel32/resource.c:149 */
@@ -4666,10 +4985,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumResourceLanguagesW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumResourceNamesA(HMODULE  hmod, LPCSTR  type, ENUMRESNAMEPROCA  lpfun, LONG_PTR  lparam) /* ../dlls/kernel32/resource.c:130 */
+WINAPI BOOL wine32b_kernel32_EnumResourceNamesA(HMODULE  hmod, LPCSTR  type, ENUMRESNAMEPROCA  lpfun, LONG_PTR  lparam) /* ../dlls/kernel32/resource.c:130 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumResourceNamesA\n");
-	return pEnumResourceNamesA(hmod, type, lpfun, lparam);
+	return_value = pEnumResourceNamesA(hmod, type, lpfun, lparam);
+	TRACE("Leave EnumResourceNamesA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumResourceNamesA(void);  /* ../dlls/kernel32/resource.c:130 */
@@ -4694,10 +5016,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumResourceNamesA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumResourceTypesA(HMODULE  hmod, ENUMRESTYPEPROCA  lpfun, LONG_PTR  lparam) /* ../dlls/kernel32/resource.c:112 */
+WINAPI BOOL wine32b_kernel32_EnumResourceTypesA(HMODULE  hmod, ENUMRESTYPEPROCA  lpfun, LONG_PTR  lparam) /* ../dlls/kernel32/resource.c:112 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumResourceTypesA\n");
-	return pEnumResourceTypesA(hmod, lpfun, lparam);
+	return_value = pEnumResourceTypesA(hmod, lpfun, lparam);
+	TRACE("Leave EnumResourceTypesA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumResourceTypesA(void);  /* ../dlls/kernel32/resource.c:112 */
@@ -4721,10 +5046,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumResourceTypesA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumResourceTypesW(HMODULE  hmod, ENUMRESTYPEPROCW  lpfun, LONG_PTR  lparam) /* ../dlls/kernel32/resource.c:121 */
+WINAPI BOOL wine32b_kernel32_EnumResourceTypesW(HMODULE  hmod, ENUMRESTYPEPROCW  lpfun, LONG_PTR  lparam) /* ../dlls/kernel32/resource.c:121 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumResourceTypesW\n");
-	return pEnumResourceTypesW(hmod, lpfun, lparam);
+	return_value = pEnumResourceTypesW(hmod, lpfun, lparam);
+	TRACE("Leave EnumResourceTypesW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumResourceTypesW(void);  /* ../dlls/kernel32/resource.c:121 */
@@ -4748,10 +5076,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumResourceTypesW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumSystemCodePagesA(CODEPAGE_ENUMPROCA  lpfnCodePageEnum, DWORD  flags) /* ../dlls/kernel32/locale.c:2262 */
+WINAPI BOOL wine32b_kernel32_EnumSystemCodePagesA(CODEPAGE_ENUMPROCA  lpfnCodePageEnum, DWORD  flags) /* ../dlls/kernel32/locale.c:2262 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumSystemCodePagesA\n");
-	return pEnumSystemCodePagesA(lpfnCodePageEnum, flags);
+	return_value = pEnumSystemCodePagesA(lpfnCodePageEnum, flags);
+	TRACE("Leave EnumSystemCodePagesA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumSystemCodePagesA(void);  /* ../dlls/kernel32/locale.c:2262 */
@@ -4774,10 +5105,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumSystemCodePagesA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumSystemCodePagesW(CODEPAGE_ENUMPROCW  lpfnCodePageEnum, DWORD  flags) /* ../dlls/kernel32/locale.c:2283 */
+WINAPI BOOL wine32b_kernel32_EnumSystemCodePagesW(CODEPAGE_ENUMPROCW  lpfnCodePageEnum, DWORD  flags) /* ../dlls/kernel32/locale.c:2283 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumSystemCodePagesW\n");
-	return pEnumSystemCodePagesW(lpfnCodePageEnum, flags);
+	return_value = pEnumSystemCodePagesW(lpfnCodePageEnum, flags);
+	TRACE("Leave EnumSystemCodePagesW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumSystemCodePagesW(void);  /* ../dlls/kernel32/locale.c:2283 */
@@ -4800,10 +5134,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumSystemCodePagesW,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_EnumSystemFirmwareTables(DWORD  provider, void*  buffer, DWORD  size) /* ../dlls/kernel32/cpu.c:328 */
+WINAPI UINT wine32b_kernel32_EnumSystemFirmwareTables(DWORD  provider, void*  buffer, DWORD  size) /* ../dlls/kernel32/cpu.c:328 */
 {
+	UINT return_value;
 	TRACE("Enter EnumSystemFirmwareTables\n");
-	return pEnumSystemFirmwareTables(provider, buffer, size);
+	return_value = pEnumSystemFirmwareTables(provider, buffer, size);
+	TRACE("Leave EnumSystemFirmwareTables\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumSystemFirmwareTables(void);  /* ../dlls/kernel32/cpu.c:328 */
@@ -4827,10 +5164,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumSystemFirmwareTables,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumSystemGeoID(GEOCLASS  geoclass, GEOID  parent, GEO_ENUMPROC  enumproc) /* ../dlls/kernel32/locale.c:5228 */
+WINAPI BOOL wine32b_kernel32_EnumSystemGeoID(GEOCLASS  geoclass, GEOID  parent, GEO_ENUMPROC  enumproc) /* ../dlls/kernel32/locale.c:5228 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumSystemGeoID\n");
-	return pEnumSystemGeoID(geoclass, parent, enumproc);
+	return_value = pEnumSystemGeoID(geoclass, parent, enumproc);
+	TRACE("Leave EnumSystemGeoID\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumSystemGeoID(void);  /* ../dlls/kernel32/locale.c:5228 */
@@ -4854,10 +5194,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumSystemGeoID,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumSystemLanguageGroupsA(LANGUAGEGROUP_ENUMPROCA  pLangGrpEnumProc, DWORD  dwFlags, LONG_PTR  lParam) /* ../dlls/kernel32/locale.c:4354 */
+WINAPI BOOL wine32b_kernel32_EnumSystemLanguageGroupsA(LANGUAGEGROUP_ENUMPROCA  pLangGrpEnumProc, DWORD  dwFlags, LONG_PTR  lParam) /* ../dlls/kernel32/locale.c:4354 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumSystemLanguageGroupsA\n");
-	return pEnumSystemLanguageGroupsA(pLangGrpEnumProc, dwFlags, lParam);
+	return_value = pEnumSystemLanguageGroupsA(pLangGrpEnumProc, dwFlags, lParam);
+	TRACE("Leave EnumSystemLanguageGroupsA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumSystemLanguageGroupsA(void);  /* ../dlls/kernel32/locale.c:4354 */
@@ -4881,10 +5224,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumSystemLanguageGroupsA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumSystemLanguageGroupsW(LANGUAGEGROUP_ENUMPROCW  pLangGrpEnumProc, DWORD  dwFlags, LONG_PTR  lParam) /* ../dlls/kernel32/locale.c:4374 */
+WINAPI BOOL wine32b_kernel32_EnumSystemLanguageGroupsW(LANGUAGEGROUP_ENUMPROCW  pLangGrpEnumProc, DWORD  dwFlags, LONG_PTR  lParam) /* ../dlls/kernel32/locale.c:4374 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumSystemLanguageGroupsW\n");
-	return pEnumSystemLanguageGroupsW(pLangGrpEnumProc, dwFlags, lParam);
+	return_value = pEnumSystemLanguageGroupsW(pLangGrpEnumProc, dwFlags, lParam);
+	TRACE("Leave EnumSystemLanguageGroupsW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumSystemLanguageGroupsW(void);  /* ../dlls/kernel32/locale.c:4374 */
@@ -4908,10 +5254,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumSystemLanguageGroupsW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumSystemLocalesA(LOCALE_ENUMPROCA  lpfnLocaleEnum, DWORD  dwFlags) /* ../dlls/kernel32/locale.c:2976 */
+WINAPI BOOL wine32b_kernel32_EnumSystemLocalesA(LOCALE_ENUMPROCA  lpfnLocaleEnum, DWORD  dwFlags) /* ../dlls/kernel32/locale.c:2976 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumSystemLocalesA\n");
-	return pEnumSystemLocalesA(lpfnLocaleEnum, dwFlags);
+	return_value = pEnumSystemLocalesA(lpfnLocaleEnum, dwFlags);
+	TRACE("Leave EnumSystemLocalesA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumSystemLocalesA(void);  /* ../dlls/kernel32/locale.c:2976 */
@@ -4934,10 +5283,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumSystemLocalesA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumSystemLocalesEx(LOCALE_ENUMPROCEX  proc, DWORD  flags, LPARAM  lparam, LPVOID  reserved) /* ../dlls/kernel32/locale.c:3031 */
+WINAPI BOOL wine32b_kernel32_EnumSystemLocalesEx(LOCALE_ENUMPROCEX  proc, DWORD  flags, LPARAM  lparam, LPVOID  reserved) /* ../dlls/kernel32/locale.c:3031 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumSystemLocalesEx\n");
-	return pEnumSystemLocalesEx(proc, flags, lparam, reserved);
+	return_value = pEnumSystemLocalesEx(proc, flags, lparam, reserved);
+	TRACE("Leave EnumSystemLocalesEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumSystemLocalesEx(void);  /* ../dlls/kernel32/locale.c:3031 */
@@ -4962,10 +5314,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumSystemLocalesEx,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumSystemLocalesW(LOCALE_ENUMPROCW  lpfnLocaleEnum, DWORD  dwFlags) /* ../dlls/kernel32/locale.c:2991 */
+WINAPI BOOL wine32b_kernel32_EnumSystemLocalesW(LOCALE_ENUMPROCW  lpfnLocaleEnum, DWORD  dwFlags) /* ../dlls/kernel32/locale.c:2991 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumSystemLocalesW\n");
-	return pEnumSystemLocalesW(lpfnLocaleEnum, dwFlags);
+	return_value = pEnumSystemLocalesW(lpfnLocaleEnum, dwFlags);
+	TRACE("Leave EnumSystemLocalesW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumSystemLocalesW(void);  /* ../dlls/kernel32/locale.c:2991 */
@@ -4988,10 +5343,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumSystemLocalesW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumTimeFormatsA(TIMEFMT_ENUMPROCA  proc, LCID  lcid, DWORD  flags) /* ../dlls/kernel32/lcformat.c:2025 */
+WINAPI BOOL wine32b_kernel32_EnumTimeFormatsA(TIMEFMT_ENUMPROCA  proc, LCID  lcid, DWORD  flags) /* ../dlls/kernel32/lcformat.c:2025 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumTimeFormatsA\n");
-	return pEnumTimeFormatsA(proc, lcid, flags);
+	return_value = pEnumTimeFormatsA(proc, lcid, flags);
+	TRACE("Leave EnumTimeFormatsA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumTimeFormatsA(void);  /* ../dlls/kernel32/lcformat.c:2025 */
@@ -5015,10 +5373,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumTimeFormatsA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumTimeFormatsEx(TIMEFMT_ENUMPROCEX  proc, WCHAR*  locale, DWORD  flags, LPARAM  lParam) /* ../dlls/kernel32/lcformat.c:2064 */
+WINAPI BOOL wine32b_kernel32_EnumTimeFormatsEx(TIMEFMT_ENUMPROCEX  proc, WCHAR*  locale, DWORD  flags, LPARAM  lParam) /* ../dlls/kernel32/lcformat.c:2064 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumTimeFormatsEx\n");
-	return pEnumTimeFormatsEx(proc, locale, flags, lParam);
+	return_value = pEnumTimeFormatsEx(proc, locale, flags, lParam);
+	TRACE("Leave EnumTimeFormatsEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumTimeFormatsEx(void);  /* ../dlls/kernel32/lcformat.c:2064 */
@@ -5043,10 +5404,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumTimeFormatsEx,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumTimeFormatsW(TIMEFMT_ENUMPROCW  proc, LCID  lcid, DWORD  flags) /* ../dlls/kernel32/lcformat.c:2048 */
+WINAPI BOOL wine32b_kernel32_EnumTimeFormatsW(TIMEFMT_ENUMPROCW  proc, LCID  lcid, DWORD  flags) /* ../dlls/kernel32/lcformat.c:2048 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumTimeFormatsW\n");
-	return pEnumTimeFormatsW(proc, lcid, flags);
+	return_value = pEnumTimeFormatsW(proc, lcid, flags);
+	TRACE("Leave EnumTimeFormatsW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumTimeFormatsW(void);  /* ../dlls/kernel32/lcformat.c:2048 */
@@ -5070,10 +5434,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumTimeFormatsW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumUILanguagesA(UILANGUAGE_ENUMPROCA  pUILangEnumProc, DWORD  dwFlags, LONG_PTR  lParam) /* ../dlls/kernel32/locale.c:4718 */
+WINAPI BOOL wine32b_kernel32_EnumUILanguagesA(UILANGUAGE_ENUMPROCA  pUILangEnumProc, DWORD  dwFlags, LONG_PTR  lParam) /* ../dlls/kernel32/locale.c:4718 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumUILanguagesA\n");
-	return pEnumUILanguagesA(pUILangEnumProc, dwFlags, lParam);
+	return_value = pEnumUILanguagesA(pUILangEnumProc, dwFlags, lParam);
+	TRACE("Leave EnumUILanguagesA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumUILanguagesA(void);  /* ../dlls/kernel32/locale.c:4718 */
@@ -5097,10 +5464,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumUILanguagesA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnumUILanguagesW(UILANGUAGE_ENUMPROCW  pUILangEnumProc, DWORD  dwFlags, LONG_PTR  lParam) /* ../dlls/kernel32/locale.c:4746 */
+WINAPI BOOL wine32b_kernel32_EnumUILanguagesW(UILANGUAGE_ENUMPROCW  pUILangEnumProc, DWORD  dwFlags, LONG_PTR  lParam) /* ../dlls/kernel32/locale.c:4746 */
 {
+	BOOL return_value;
 	TRACE("Enter EnumUILanguagesW\n");
-	return pEnumUILanguagesW(pUILangEnumProc, dwFlags, lParam);
+	return_value = pEnumUILanguagesW(pUILangEnumProc, dwFlags, lParam);
+	TRACE("Leave EnumUILanguagesW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnumUILanguagesW(void);  /* ../dlls/kernel32/locale.c:4746 */
@@ -5124,10 +5494,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnumUILanguagesW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_EnterUmsSchedulingMode(UMS_SCHEDULER_STARTUP_INFO*  info) /* ../dlls/kernel32/process.c:4176 */
+WINAPI BOOL wine32b_kernel32_EnterUmsSchedulingMode(UMS_SCHEDULER_STARTUP_INFO*  info) /* ../dlls/kernel32/process.c:4176 */
 {
+	BOOL return_value;
 	TRACE("Enter EnterUmsSchedulingMode\n");
-	return pEnterUmsSchedulingMode(info);
+	return_value = pEnterUmsSchedulingMode(info);
+	TRACE("Leave EnterUmsSchedulingMode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EnterUmsSchedulingMode(void);  /* ../dlls/kernel32/process.c:4176 */
@@ -5149,10 +5522,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EnterUmsSchedulingMode,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_EraseTape(HANDLE  device, DWORD  type, BOOL  immediate) /* ../dlls/kernel32/tape.c:121 */
+WINAPI DWORD wine32b_kernel32_EraseTape(HANDLE  device, DWORD  type, BOOL  immediate) /* ../dlls/kernel32/tape.c:121 */
 {
+	DWORD return_value;
 	TRACE("Enter EraseTape\n");
-	return pEraseTape(device, type, immediate);
+	return_value = pEraseTape(device, type, immediate);
+	TRACE("Leave EraseTape\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_EraseTape(void);  /* ../dlls/kernel32/tape.c:121 */
@@ -5176,10 +5552,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_EraseTape,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_ExecuteUmsThread(PUMS_CONTEXT  ctx) /* ../dlls/kernel32/process.c:4186 */
+WINAPI BOOL wine32b_kernel32_ExecuteUmsThread(PUMS_CONTEXT  ctx) /* ../dlls/kernel32/process.c:4186 */
 {
+	BOOL return_value;
 	TRACE("Enter ExecuteUmsThread\n");
-	return pExecuteUmsThread(ctx);
+	return_value = pExecuteUmsThread(ctx);
+	TRACE("Leave ExecuteUmsThread\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_ExecuteUmsThread(void);  /* ../dlls/kernel32/process.c:4186 */
@@ -5201,10 +5580,11 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ExecuteUmsThread,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_ExitProcess(DWORD  status) /* ../dlls/kernel32/process.c:3158 */
+WINAPI void wine32b_kernel32_ExitProcess(DWORD  status) /* ../dlls/kernel32/process.c:3158 */
 {
 	TRACE("Enter ExitProcess\n");
-	return pExitProcess(status);
+	pExitProcess(status);
+	TRACE("Leave ExitProcess\n");
 }
 
 extern WINAPI void wine32a_kernel32_ExitProcess(void);  /* ../dlls/kernel32/process.c:3158 */
@@ -5226,10 +5606,11 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ExitProcess,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_ExpungeConsoleCommandHistoryA(LPCSTR  unknown) /* ../dlls/kernel32/console.c:1588 */
+WINAPI void wine32b_kernel32_ExpungeConsoleCommandHistoryA(LPCSTR  unknown) /* ../dlls/kernel32/console.c:1588 */
 {
 	TRACE("Enter ExpungeConsoleCommandHistoryA\n");
-	return pExpungeConsoleCommandHistoryA(unknown);
+	pExpungeConsoleCommandHistoryA(unknown);
+	TRACE("Leave ExpungeConsoleCommandHistoryA\n");
 }
 
 extern WINAPI void wine32a_kernel32_ExpungeConsoleCommandHistoryA(void);  /* ../dlls/kernel32/console.c:1588 */
@@ -5251,10 +5632,11 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ExpungeConsoleCommandHistoryA,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_ExpungeConsoleCommandHistoryW(LPCWSTR  unknown) /* ../dlls/kernel32/console.c:1594 */
+WINAPI void wine32b_kernel32_ExpungeConsoleCommandHistoryW(LPCWSTR  unknown) /* ../dlls/kernel32/console.c:1594 */
 {
 	TRACE("Enter ExpungeConsoleCommandHistoryW\n");
-	return pExpungeConsoleCommandHistoryW(unknown);
+	pExpungeConsoleCommandHistoryW(unknown);
+	TRACE("Leave ExpungeConsoleCommandHistoryW\n");
 }
 
 extern WINAPI void wine32a_kernel32_ExpungeConsoleCommandHistoryW(void);  /* ../dlls/kernel32/console.c:1594 */
@@ -5276,10 +5658,11 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ExpungeConsoleCommandHistoryW,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_FatalExit(int  code) /* ../dlls/kernel32/process.c:3198 */
+WINAPI void wine32b_kernel32_FatalExit(int  code) /* ../dlls/kernel32/process.c:3198 */
 {
 	TRACE("Enter FatalExit\n");
-	return pFatalExit(code);
+	pFatalExit(code);
+	TRACE("Leave FatalExit\n");
 }
 
 extern WINAPI void wine32a_kernel32_FatalExit(void);  /* ../dlls/kernel32/process.c:3198 */
@@ -5301,10 +5684,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FatalExit,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_FileTimeToDosDateTime(FILETIME*  ft, LPWORD  fatdate, LPWORD  fattime) /* ../dlls/kernel32/time.c:1388 */
+WINAPI BOOL wine32b_kernel32_FileTimeToDosDateTime(FILETIME*  ft, LPWORD  fatdate, LPWORD  fattime) /* ../dlls/kernel32/time.c:1388 */
 {
+	BOOL return_value;
 	TRACE("Enter FileTimeToDosDateTime\n");
-	return pFileTimeToDosDateTime(ft, fatdate, fattime);
+	return_value = pFileTimeToDosDateTime(ft, fatdate, fattime);
+	TRACE("Leave FileTimeToDosDateTime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FileTimeToDosDateTime(void);  /* ../dlls/kernel32/time.c:1388 */
@@ -5328,10 +5714,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FileTimeToDosDateTime,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_FileTimeToLocalFileTime(FILETIME*  utcft, LPFILETIME  localft) /* ../dlls/kernel32/time.c:1196 */
+WINAPI BOOL wine32b_kernel32_FileTimeToLocalFileTime(FILETIME*  utcft, LPFILETIME  localft) /* ../dlls/kernel32/time.c:1196 */
 {
+	BOOL return_value;
 	TRACE("Enter FileTimeToLocalFileTime\n");
-	return pFileTimeToLocalFileTime(utcft, localft);
+	return_value = pFileTimeToLocalFileTime(utcft, localft);
+	TRACE("Leave FileTimeToLocalFileTime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FileTimeToLocalFileTime(void);  /* ../dlls/kernel32/time.c:1196 */
@@ -5354,10 +5743,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FileTimeToLocalFileTime,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_FileTimeToSystemTime(FILETIME*  ft, LPSYSTEMTIME  syst) /* ../dlls/kernel32/time.c:1216 */
+WINAPI BOOL wine32b_kernel32_FileTimeToSystemTime(FILETIME*  ft, LPSYSTEMTIME  syst) /* ../dlls/kernel32/time.c:1216 */
 {
+	BOOL return_value;
 	TRACE("Enter FileTimeToSystemTime\n");
-	return pFileTimeToSystemTime(ft, syst);
+	return_value = pFileTimeToSystemTime(ft, syst);
+	TRACE("Leave FileTimeToSystemTime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FileTimeToSystemTime(void);  /* ../dlls/kernel32/time.c:1216 */
@@ -5380,10 +5772,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FileTimeToSystemTime,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_FindActCtxSectionStringA(DWORD  dwFlags, GUID*  lpExtGuid, ULONG  ulId, LPCSTR  lpSearchStr, PACTCTX_SECTION_KEYED_DATA  pInfo) /* ../dlls/kernel32/actctx.c:117 */
+WINAPI BOOL wine32b_kernel32_FindActCtxSectionStringA(DWORD  dwFlags, GUID*  lpExtGuid, ULONG  ulId, LPCSTR  lpSearchStr, PACTCTX_SECTION_KEYED_DATA  pInfo) /* ../dlls/kernel32/actctx.c:117 */
 {
+	BOOL return_value;
 	TRACE("Enter FindActCtxSectionStringA\n");
-	return pFindActCtxSectionStringA(dwFlags, lpExtGuid, ulId, lpSearchStr, pInfo);
+	return_value = pFindActCtxSectionStringA(dwFlags, lpExtGuid, ulId, lpSearchStr, pInfo);
+	TRACE("Leave FindActCtxSectionStringA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindActCtxSectionStringA(void);  /* ../dlls/kernel32/actctx.c:117 */
@@ -5408,10 +5803,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindActCtxSectionStringA,
 	"ret \n"
 )
 
-extern WINAPI ATOM wine32b_kernel32_FindAtomA(LPCSTR  str) /* ../dlls/kernel32/atom.c:315 */
+WINAPI ATOM wine32b_kernel32_FindAtomA(LPCSTR  str) /* ../dlls/kernel32/atom.c:315 */
 {
+	ATOM return_value;
 	TRACE("Enter FindAtomA\n");
-	return pFindAtomA(str);
+	return_value = pFindAtomA(str);
+	TRACE("Leave FindAtomA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindAtomA(void);  /* ../dlls/kernel32/atom.c:315 */
@@ -5433,10 +5831,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindAtomA,
 	"ret \n"
 )
 
-extern WINAPI ATOM wine32b_kernel32_FindAtomW(LPCWSTR  str) /* ../dlls/kernel32/atom.c:368 */
+WINAPI ATOM wine32b_kernel32_FindAtomW(LPCWSTR  str) /* ../dlls/kernel32/atom.c:368 */
 {
+	ATOM return_value;
 	TRACE("Enter FindAtomW\n");
-	return pFindAtomW(str);
+	return_value = pFindAtomW(str);
+	TRACE("Leave FindAtomW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindAtomW(void);  /* ../dlls/kernel32/atom.c:368 */
@@ -5458,10 +5859,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindAtomW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_FindClose(HANDLE  handle) /* ../dlls/kernel32/file.c:943 */
+WINAPI BOOL wine32b_kernel32_FindClose(HANDLE  handle) /* ../dlls/kernel32/file.c:943 */
 {
+	BOOL return_value;
 	TRACE("Enter FindClose\n");
-	return pFindClose(handle);
+	return_value = pFindClose(handle);
+	TRACE("Leave FindClose\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindClose(void);  /* ../dlls/kernel32/file.c:943 */
@@ -5483,10 +5887,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindClose,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_FindFirstFileA(LPCSTR  lpFileName, WIN32_FIND_DATAA*  lpFindData) /* ../dlls/kernel32/file.c:988 */
+WINAPI HANDLE wine32b_kernel32_FindFirstFileA(LPCSTR  lpFileName, WIN32_FIND_DATAA*  lpFindData) /* ../dlls/kernel32/file.c:988 */
 {
+	HANDLE return_value;
 	TRACE("Enter FindFirstFileA\n");
-	return pFindFirstFileA(lpFileName, lpFindData);
+	return_value = pFindFirstFileA(lpFileName, lpFindData);
+	TRACE("Leave FindFirstFileA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindFirstFileA(void);  /* ../dlls/kernel32/file.c:988 */
@@ -5509,10 +5916,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindFirstFileA,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_FindFirstFileExA(LPCSTR  lpFileName, FINDEX_INFO_LEVELS  fInfoLevelId, LPVOID  lpFindFileData, FINDEX_SEARCH_OPS  fSearchOp, LPVOID  lpSearchFilter, DWORD  dwAdditionalFlags) /* ../dlls/kernel32/file.c:997 */
+WINAPI HANDLE wine32b_kernel32_FindFirstFileExA(LPCSTR  lpFileName, FINDEX_INFO_LEVELS  fInfoLevelId, LPVOID  lpFindFileData, FINDEX_SEARCH_OPS  fSearchOp, LPVOID  lpSearchFilter, DWORD  dwAdditionalFlags) /* ../dlls/kernel32/file.c:997 */
 {
+	HANDLE return_value;
 	TRACE("Enter FindFirstFileExA\n");
-	return pFindFirstFileExA(lpFileName, fInfoLevelId, lpFindFileData, fSearchOp, lpSearchFilter, dwAdditionalFlags);
+	return_value = pFindFirstFileExA(lpFileName, fInfoLevelId, lpFindFileData, fSearchOp, lpSearchFilter, dwAdditionalFlags);
+	TRACE("Leave FindFirstFileExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindFirstFileExA(void);  /* ../dlls/kernel32/file.c:997 */
@@ -5537,10 +5947,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindFirstFileExA,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_FindFirstFileExW(LPCWSTR  filename, FINDEX_INFO_LEVELS  level, LPVOID  data, FINDEX_SEARCH_OPS  search_op, LPVOID  filter, DWORD  flags) /* ../dlls/kernel32/file.c:656 */
+WINAPI HANDLE wine32b_kernel32_FindFirstFileExW(LPCWSTR  filename, FINDEX_INFO_LEVELS  level, LPVOID  data, FINDEX_SEARCH_OPS  search_op, LPVOID  filter, DWORD  flags) /* ../dlls/kernel32/file.c:656 */
 {
+	HANDLE return_value;
 	TRACE("Enter FindFirstFileExW\n");
-	return pFindFirstFileExW(filename, level, data, search_op, filter, flags);
+	return_value = pFindFirstFileExW(filename, level, data, search_op, filter, flags);
+	TRACE("Leave FindFirstFileExW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindFirstFileExW(void);  /* ../dlls/kernel32/file.c:656 */
@@ -5565,10 +5978,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindFirstFileExW,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_FindFirstFileW(LPCWSTR  lpFileName, WIN32_FIND_DATAW*  lpFindData) /* ../dlls/kernel32/file.c:1028 */
+WINAPI HANDLE wine32b_kernel32_FindFirstFileW(LPCWSTR  lpFileName, WIN32_FIND_DATAW*  lpFindData) /* ../dlls/kernel32/file.c:1028 */
 {
+	HANDLE return_value;
 	TRACE("Enter FindFirstFileW\n");
-	return pFindFirstFileW(lpFileName, lpFindData);
+	return_value = pFindFirstFileW(lpFileName, lpFindData);
+	TRACE("Leave FindFirstFileW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindFirstFileW(void);  /* ../dlls/kernel32/file.c:1028 */
@@ -5591,10 +6007,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindFirstFileW,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_FindFirstStreamW(LPCWSTR  filename, STREAM_INFO_LEVELS  infolevel, void*  data, DWORD  flags) /* ../dlls/kernel32/file.c:1058 */
+WINAPI HANDLE wine32b_kernel32_FindFirstStreamW(LPCWSTR  filename, STREAM_INFO_LEVELS  infolevel, void*  data, DWORD  flags) /* ../dlls/kernel32/file.c:1058 */
 {
+	HANDLE return_value;
 	TRACE("Enter FindFirstStreamW\n");
-	return pFindFirstStreamW(filename, infolevel, data, flags);
+	return_value = pFindFirstStreamW(filename, infolevel, data, flags);
+	TRACE("Leave FindFirstStreamW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindFirstStreamW(void);  /* ../dlls/kernel32/file.c:1058 */
@@ -5619,10 +6038,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindFirstStreamW,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_FindFirstVolumeA(LPSTR  volume, DWORD  len) /* ../dlls/kernel32/volume.c:1977 */
+WINAPI HANDLE wine32b_kernel32_FindFirstVolumeA(LPSTR  volume, DWORD  len) /* ../dlls/kernel32/volume.c:1977 */
 {
+	HANDLE return_value;
 	TRACE("Enter FindFirstVolumeA\n");
-	return pFindFirstVolumeA(volume, len);
+	return_value = pFindFirstVolumeA(volume, len);
+	TRACE("Leave FindFirstVolumeA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindFirstVolumeA(void);  /* ../dlls/kernel32/volume.c:1977 */
@@ -5645,10 +6067,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindFirstVolumeA,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_FindFirstVolumeMountPointA(LPCSTR  root, LPSTR  mount_point, DWORD  len) /* ../dlls/kernel32/volume.c:2097 */
+WINAPI HANDLE wine32b_kernel32_FindFirstVolumeMountPointA(LPCSTR  root, LPSTR  mount_point, DWORD  len) /* ../dlls/kernel32/volume.c:2097 */
 {
+	HANDLE return_value;
 	TRACE("Enter FindFirstVolumeMountPointA\n");
-	return pFindFirstVolumeMountPointA(root, mount_point, len);
+	return_value = pFindFirstVolumeMountPointA(root, mount_point, len);
+	TRACE("Leave FindFirstVolumeMountPointA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindFirstVolumeMountPointA(void);  /* ../dlls/kernel32/volume.c:2097 */
@@ -5672,10 +6097,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindFirstVolumeMountPointA,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_FindFirstVolumeMountPointW(LPCWSTR  root, LPWSTR  mount_point, DWORD  len) /* ../dlls/kernel32/volume.c:2107 */
+WINAPI HANDLE wine32b_kernel32_FindFirstVolumeMountPointW(LPCWSTR  root, LPWSTR  mount_point, DWORD  len) /* ../dlls/kernel32/volume.c:2107 */
 {
+	HANDLE return_value;
 	TRACE("Enter FindFirstVolumeMountPointW\n");
-	return pFindFirstVolumeMountPointW(root, mount_point, len);
+	return_value = pFindFirstVolumeMountPointW(root, mount_point, len);
+	TRACE("Leave FindFirstVolumeMountPointW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindFirstVolumeMountPointW(void);  /* ../dlls/kernel32/volume.c:2107 */
@@ -5699,10 +6127,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindFirstVolumeMountPointW,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_FindFirstVolumeW(LPWSTR  volume, DWORD  len) /* ../dlls/kernel32/volume.c:1997 */
+WINAPI HANDLE wine32b_kernel32_FindFirstVolumeW(LPWSTR  volume, DWORD  len) /* ../dlls/kernel32/volume.c:1997 */
 {
+	HANDLE return_value;
 	TRACE("Enter FindFirstVolumeW\n");
-	return pFindFirstVolumeW(volume, len);
+	return_value = pFindFirstVolumeW(volume, len);
+	TRACE("Leave FindFirstVolumeW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindFirstVolumeW(void);  /* ../dlls/kernel32/volume.c:1997 */
@@ -5725,10 +6156,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindFirstVolumeW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_FindNextFileA(HANDLE  handle, WIN32_FIND_DATAA*  data) /* ../dlls/kernel32/file.c:1038 */
+WINAPI BOOL wine32b_kernel32_FindNextFileA(HANDLE  handle, WIN32_FIND_DATAA*  data) /* ../dlls/kernel32/file.c:1038 */
 {
+	BOOL return_value;
 	TRACE("Enter FindNextFileA\n");
-	return pFindNextFileA(handle, data);
+	return_value = pFindNextFileA(handle, data);
+	TRACE("Leave FindNextFileA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindNextFileA(void);  /* ../dlls/kernel32/file.c:1038 */
@@ -5751,10 +6185,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindNextFileA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_FindNextFileW(HANDLE  handle, WIN32_FIND_DATAW*  data) /* ../dlls/kernel32/file.c:837 */
+WINAPI BOOL wine32b_kernel32_FindNextFileW(HANDLE  handle, WIN32_FIND_DATAW*  data) /* ../dlls/kernel32/file.c:837 */
 {
+	BOOL return_value;
 	TRACE("Enter FindNextFileW\n");
-	return pFindNextFileW(handle, data);
+	return_value = pFindNextFileW(handle, data);
+	TRACE("Leave FindNextFileW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindNextFileW(void);  /* ../dlls/kernel32/file.c:837 */
@@ -5777,10 +6214,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindNextFileW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_FindNextStreamW(HANDLE  handle, void*  data) /* ../dlls/kernel32/file.c:1069 */
+WINAPI BOOL wine32b_kernel32_FindNextStreamW(HANDLE  handle, void*  data) /* ../dlls/kernel32/file.c:1069 */
 {
+	BOOL return_value;
 	TRACE("Enter FindNextStreamW\n");
-	return pFindNextStreamW(handle, data);
+	return_value = pFindNextStreamW(handle, data);
+	TRACE("Leave FindNextStreamW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindNextStreamW(void);  /* ../dlls/kernel32/file.c:1069 */
@@ -5803,10 +6243,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindNextStreamW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_FindNextVolumeA(HANDLE  handle, LPSTR  volume, DWORD  len) /* ../dlls/kernel32/volume.c:2042 */
+WINAPI BOOL wine32b_kernel32_FindNextVolumeA(HANDLE  handle, LPSTR  volume, DWORD  len) /* ../dlls/kernel32/volume.c:2042 */
 {
+	BOOL return_value;
 	TRACE("Enter FindNextVolumeA\n");
-	return pFindNextVolumeA(handle, volume, len);
+	return_value = pFindNextVolumeA(handle, volume, len);
+	TRACE("Leave FindNextVolumeA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindNextVolumeA(void);  /* ../dlls/kernel32/volume.c:2042 */
@@ -5830,10 +6273,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindNextVolumeA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_FindNextVolumeW(HANDLE  handle, LPWSTR  volume, DWORD  len) /* ../dlls/kernel32/volume.c:2058 */
+WINAPI BOOL wine32b_kernel32_FindNextVolumeW(HANDLE  handle, LPWSTR  volume, DWORD  len) /* ../dlls/kernel32/volume.c:2058 */
 {
+	BOOL return_value;
 	TRACE("Enter FindNextVolumeW\n");
-	return pFindNextVolumeW(handle, volume, len);
+	return_value = pFindNextVolumeW(handle, volume, len);
+	TRACE("Leave FindNextVolumeW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindNextVolumeW(void);  /* ../dlls/kernel32/volume.c:2058 */
@@ -5857,10 +6303,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindNextVolumeW,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_FindNLSStringEx(WCHAR*  localename, DWORD  flags, WCHAR*  src, INT  src_size, WCHAR*  value, INT  value_size, INT*  found, NLSVERSIONINFO*  version_info, void*  reserved, LPARAM  sort_handle) /* ../dlls/kernel32/locale.c:5910 */
+WINAPI INT wine32b_kernel32_FindNLSStringEx(WCHAR*  localename, DWORD  flags, WCHAR*  src, INT  src_size, WCHAR*  value, INT  value_size, INT*  found, NLSVERSIONINFO*  version_info, void*  reserved, LPARAM  sort_handle) /* ../dlls/kernel32/locale.c:5910 */
 {
+	INT return_value;
 	TRACE("Enter FindNLSStringEx\n");
-	return pFindNLSStringEx(localename, flags, src, src_size, value, value_size, found, version_info, reserved, sort_handle);
+	return_value = pFindNLSStringEx(localename, flags, src, src_size, value, value_size, found, version_info, reserved, sort_handle);
+	TRACE("Leave FindNLSStringEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindNLSStringEx(void);  /* ../dlls/kernel32/locale.c:5910 */
@@ -5885,10 +6334,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindNLSStringEx,
 	"ret \n"
 )
 
-extern WINAPI HRSRC wine32b_kernel32_FindResourceA(HMODULE  hModule, LPCSTR  name, LPCSTR  type) /* ../dlls/kernel32/resource.c:103 */
+WINAPI HRSRC wine32b_kernel32_FindResourceA(HMODULE  hModule, LPCSTR  name, LPCSTR  type) /* ../dlls/kernel32/resource.c:103 */
 {
+	HRSRC return_value;
 	TRACE("Enter FindResourceA\n");
-	return pFindResourceA(hModule, name, type);
+	return_value = pFindResourceA(hModule, name, type);
+	TRACE("Leave FindResourceA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindResourceA(void);  /* ../dlls/kernel32/resource.c:103 */
@@ -5912,10 +6364,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindResourceA,
 	"ret \n"
 )
 
-extern WINAPI HRSRC wine32b_kernel32_FindResourceExA(HMODULE  module, LPCSTR  type, LPCSTR  name, WORD  lang) /* ../dlls/kernel32/resource.c:69 */
+WINAPI HRSRC wine32b_kernel32_FindResourceExA(HMODULE  module, LPCSTR  type, LPCSTR  name, WORD  lang) /* ../dlls/kernel32/resource.c:69 */
 {
+	HRSRC return_value;
 	TRACE("Enter FindResourceExA\n");
-	return pFindResourceExA(module, type, name, lang);
+	return_value = pFindResourceExA(module, type, name, lang);
+	TRACE("Leave FindResourceExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindResourceExA(void);  /* ../dlls/kernel32/resource.c:69 */
@@ -5940,10 +6395,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindResourceExA,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_FindStringOrdinal(DWORD  flag, WCHAR*  src, INT  src_size, WCHAR*  val, INT  val_size, BOOL  ignore_case) /* ../dlls/kernel32/locale.c:5961 */
+WINAPI INT wine32b_kernel32_FindStringOrdinal(DWORD  flag, WCHAR*  src, INT  src_size, WCHAR*  val, INT  val_size, BOOL  ignore_case) /* ../dlls/kernel32/locale.c:5961 */
 {
+	INT return_value;
 	TRACE("Enter FindStringOrdinal\n");
-	return pFindStringOrdinal(flag, src, src_size, val, val_size, ignore_case);
+	return_value = pFindStringOrdinal(flag, src, src_size, val, val_size, ignore_case);
+	TRACE("Leave FindStringOrdinal\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindStringOrdinal(void);  /* ../dlls/kernel32/locale.c:5961 */
@@ -5968,10 +6426,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindStringOrdinal,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_FindVolumeClose(HANDLE  handle) /* ../dlls/kernel32/volume.c:2089 */
+WINAPI BOOL wine32b_kernel32_FindVolumeClose(HANDLE  handle) /* ../dlls/kernel32/volume.c:2089 */
 {
+	BOOL return_value;
 	TRACE("Enter FindVolumeClose\n");
-	return pFindVolumeClose(handle);
+	return_value = pFindVolumeClose(handle);
+	TRACE("Leave FindVolumeClose\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindVolumeClose(void);  /* ../dlls/kernel32/volume.c:2089 */
@@ -5993,10 +6454,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindVolumeClose,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_FindVolumeMountPointClose(HANDLE  h) /* ../dlls/kernel32/volume.c:2117 */
+WINAPI BOOL wine32b_kernel32_FindVolumeMountPointClose(HANDLE  h) /* ../dlls/kernel32/volume.c:2117 */
 {
+	BOOL return_value;
 	TRACE("Enter FindVolumeMountPointClose\n");
-	return pFindVolumeMountPointClose(h);
+	return_value = pFindVolumeMountPointClose(h);
+	TRACE("Leave FindVolumeMountPointClose\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FindVolumeMountPointClose(void);  /* ../dlls/kernel32/volume.c:2117 */
@@ -6018,10 +6482,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FindVolumeMountPointClose,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_FlushConsoleInputBuffer(HANDLE  handle) /* ../dlls/kernel32/console.c:464 */
+WINAPI BOOL wine32b_kernel32_FlushConsoleInputBuffer(HANDLE  handle) /* ../dlls/kernel32/console.c:464 */
 {
+	BOOL return_value;
 	TRACE("Enter FlushConsoleInputBuffer\n");
-	return pFlushConsoleInputBuffer(handle);
+	return_value = pFlushConsoleInputBuffer(handle);
+	TRACE("Leave FlushConsoleInputBuffer\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FlushConsoleInputBuffer(void);  /* ../dlls/kernel32/console.c:464 */
@@ -6043,10 +6510,11 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FlushConsoleInputBuffer,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_FlushProcessWriteBuffers(void) /* ../dlls/kernel32/process.c:4105 */
+WINAPI void wine32b_kernel32_FlushProcessWriteBuffers(void) /* ../dlls/kernel32/process.c:4105 */
 {
 	TRACE("Enter FlushProcessWriteBuffers\n");
-	return pFlushProcessWriteBuffers();
+	pFlushProcessWriteBuffers();
+	TRACE("Leave FlushProcessWriteBuffers\n");
 }
 
 extern WINAPI void wine32a_kernel32_FlushProcessWriteBuffers(void);  /* ../dlls/kernel32/process.c:4105 */
@@ -6067,10 +6535,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FlushProcessWriteBuffers,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_FoldStringA(DWORD  dwFlags, LPCSTR  src, INT  srclen, LPSTR  dst, INT  dstlen) /* ../dlls/kernel32/locale.c:3814 */
+WINAPI INT wine32b_kernel32_FoldStringA(DWORD  dwFlags, LPCSTR  src, INT  srclen, LPSTR  dst, INT  dstlen) /* ../dlls/kernel32/locale.c:3814 */
 {
+	INT return_value;
 	TRACE("Enter FoldStringA\n");
-	return pFoldStringA(dwFlags, src, srclen, dst, dstlen);
+	return_value = pFoldStringA(dwFlags, src, srclen, dst, dstlen);
+	TRACE("Leave FoldStringA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FoldStringA(void);  /* ../dlls/kernel32/locale.c:3814 */
@@ -6095,10 +6566,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FoldStringA,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_FoldStringW(DWORD  dwFlags, LPCWSTR  src, INT  srclen, LPWSTR  dst, INT  dstlen) /* ../dlls/kernel32/locale.c:3872 */
+WINAPI INT wine32b_kernel32_FoldStringW(DWORD  dwFlags, LPCWSTR  src, INT  srclen, LPWSTR  dst, INT  dstlen) /* ../dlls/kernel32/locale.c:3872 */
 {
+	INT return_value;
 	TRACE("Enter FoldStringW\n");
-	return pFoldStringW(dwFlags, src, srclen, dst, dstlen);
+	return_value = pFoldStringW(dwFlags, src, srclen, dst, dstlen);
+	TRACE("Leave FoldStringW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FoldStringW(void);  /* ../dlls/kernel32/locale.c:3872 */
@@ -6123,10 +6597,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FoldStringW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_FormatMessageA(DWORD  dwFlags, LPCVOID  lpSource, DWORD  dwMessageId, DWORD  dwLanguageId, LPSTR  lpBuffer, DWORD  nSize, __builtin_ms_va_list*  args) /* ../dlls/kernel32/format_msg.c:460 */
+WINAPI DWORD wine32b_kernel32_FormatMessageA(DWORD  dwFlags, LPCVOID  lpSource, DWORD  dwMessageId, DWORD  dwLanguageId, LPSTR  lpBuffer, DWORD  nSize, __builtin_ms_va_list*  args) /* ../dlls/kernel32/format_msg.c:460 */
 {
+	DWORD return_value;
 	TRACE("Enter FormatMessageA\n");
-	return pFormatMessageA(dwFlags, lpSource, dwMessageId, dwLanguageId, lpBuffer, nSize, args);
+	return_value = pFormatMessageA(dwFlags, lpSource, dwMessageId, dwLanguageId, lpBuffer, nSize, args);
+	TRACE("Leave FormatMessageA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FormatMessageA(void);  /* ../dlls/kernel32/format_msg.c:460 */
@@ -6151,10 +6628,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FormatMessageA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_FormatMessageW(DWORD  dwFlags, LPCVOID  lpSource, DWORD  dwMessageId, DWORD  dwLanguageId, LPWSTR  lpBuffer, DWORD  nSize, __builtin_ms_va_list*  args) /* ../dlls/kernel32/format_msg.c:560 */
+WINAPI DWORD wine32b_kernel32_FormatMessageW(DWORD  dwFlags, LPCVOID  lpSource, DWORD  dwMessageId, DWORD  dwLanguageId, LPWSTR  lpBuffer, DWORD  nSize, __builtin_ms_va_list*  args) /* ../dlls/kernel32/format_msg.c:560 */
 {
+	DWORD return_value;
 	TRACE("Enter FormatMessageW\n");
-	return pFormatMessageW(dwFlags, lpSource, dwMessageId, dwLanguageId, lpBuffer, nSize, args);
+	return_value = pFormatMessageW(dwFlags, lpSource, dwMessageId, dwLanguageId, lpBuffer, nSize, args);
+	TRACE("Leave FormatMessageW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FormatMessageW(void);  /* ../dlls/kernel32/format_msg.c:560 */
@@ -6179,10 +6659,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FormatMessageW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_FreeConsole(void) /* ../dlls/kernel32/console.c:540 */
+WINAPI BOOL wine32b_kernel32_FreeConsole(void) /* ../dlls/kernel32/console.c:540 */
 {
+	BOOL return_value;
 	TRACE("Enter FreeConsole\n");
-	return pFreeConsole();
+	return_value = pFreeConsole();
+	TRACE("Leave FreeConsole\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FreeConsole(void);  /* ../dlls/kernel32/console.c:540 */
@@ -6203,10 +6686,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FreeConsole,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_FreeLibrary(HINSTANCE  hLibModule) /* ../dlls/kernel32/module.c:887 */
+WINAPI BOOL wine32b_kernel32_FreeLibrary(HINSTANCE  hLibModule) /* ../dlls/kernel32/module.c:887 */
 {
+	BOOL return_value;
 	TRACE("Enter FreeLibrary\n");
-	return pFreeLibrary(hLibModule);
+	return_value = pFreeLibrary(hLibModule);
+	TRACE("Leave FreeLibrary\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FreeLibrary(void);  /* ../dlls/kernel32/module.c:887 */
@@ -6228,10 +6714,11 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FreeLibrary,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_FreeLibraryAndExitThread(HINSTANCE  hLibModule, DWORD  dwExitCode) /* ../dlls/kernel32/thread.c:40 */
+WINAPI void wine32b_kernel32_FreeLibraryAndExitThread(HINSTANCE  hLibModule, DWORD  dwExitCode) /* ../dlls/kernel32/thread.c:40 */
 {
 	TRACE("Enter FreeLibraryAndExitThread\n");
-	return pFreeLibraryAndExitThread(hLibModule, dwExitCode);
+	pFreeLibraryAndExitThread(hLibModule, dwExitCode);
+	TRACE("Leave FreeLibraryAndExitThread\n");
 }
 
 extern WINAPI void wine32a_kernel32_FreeLibraryAndExitThread(void);  /* ../dlls/kernel32/thread.c:40 */
@@ -6254,10 +6741,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FreeLibraryAndExitThread,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_FreeUserPhysicalPages(HANDLE  process, ULONG_PTR*  pages, ULONG_PTR*  userarray) /* ../dlls/kernel32/heap.c:936 */
+WINAPI BOOL wine32b_kernel32_FreeUserPhysicalPages(HANDLE  process, ULONG_PTR*  pages, ULONG_PTR*  userarray) /* ../dlls/kernel32/heap.c:936 */
 {
+	BOOL return_value;
 	TRACE("Enter FreeUserPhysicalPages\n");
-	return pFreeUserPhysicalPages(process, pages, userarray);
+	return_value = pFreeUserPhysicalPages(process, pages, userarray);
+	TRACE("Leave FreeUserPhysicalPages\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_FreeUserPhysicalPages(void);  /* ../dlls/kernel32/heap.c:936 */
@@ -6281,10 +6771,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_FreeUserPhysicalPages,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetACP(void) /* ../dlls/kernel32/locale.c:2009 */
+WINAPI UINT wine32b_kernel32_GetACP(void) /* ../dlls/kernel32/locale.c:2009 */
 {
+	UINT return_value;
 	TRACE("Enter GetACP\n");
-	return pGetACP();
+	return_value = pGetACP();
+	TRACE("Leave GetACP\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetACP(void);  /* ../dlls/kernel32/locale.c:2009 */
@@ -6305,10 +6798,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetACP,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetActiveProcessorCount(WORD  group) /* ../dlls/kernel32/cpu.c:257 */
+WINAPI DWORD wine32b_kernel32_GetActiveProcessorCount(WORD  group) /* ../dlls/kernel32/cpu.c:257 */
 {
+	DWORD return_value;
 	TRACE("Enter GetActiveProcessorCount\n");
-	return pGetActiveProcessorCount(group);
+	return_value = pGetActiveProcessorCount(group);
+	TRACE("Leave GetActiveProcessorCount\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetActiveProcessorCount(void);  /* ../dlls/kernel32/cpu.c:257 */
@@ -6330,10 +6826,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetActiveProcessorCount,
 	"ret \n"
 )
 
-extern WINAPI WORD wine32b_kernel32_GetActiveProcessorGroupCount(void) /* ../dlls/kernel32/cpu.c:248 */
+WINAPI WORD wine32b_kernel32_GetActiveProcessorGroupCount(void) /* ../dlls/kernel32/cpu.c:248 */
 {
+	WORD return_value;
 	TRACE("Enter GetActiveProcessorGroupCount\n");
-	return pGetActiveProcessorGroupCount();
+	return_value = pGetActiveProcessorGroupCount();
+	TRACE("Leave GetActiveProcessorGroupCount\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetActiveProcessorGroupCount(void);  /* ../dlls/kernel32/cpu.c:248 */
@@ -6354,10 +6853,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetActiveProcessorGroupCount,
 	"ret \n"
 )
 
-extern WINAPI HRESULT wine32b_kernel32_GetApplicationRestartSettings(HANDLE  process, WCHAR*  cmdline, DWORD*  size, DWORD*  flags) /* ../dlls/kernel32/process.c:3966 */
+WINAPI HRESULT wine32b_kernel32_GetApplicationRestartSettings(HANDLE  process, WCHAR*  cmdline, DWORD*  size, DWORD*  flags) /* ../dlls/kernel32/process.c:3966 */
 {
+	HRESULT return_value;
 	TRACE("Enter GetApplicationRestartSettings\n");
-	return pGetApplicationRestartSettings(process, cmdline, size, flags);
+	return_value = pGetApplicationRestartSettings(process, cmdline, size, flags);
+	TRACE("Leave GetApplicationRestartSettings\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetApplicationRestartSettings(void);  /* ../dlls/kernel32/process.c:3966 */
@@ -6382,10 +6884,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetApplicationRestartSettings,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetAtomNameA(ATOM  atom, LPSTR  buffer, INT  count) /* ../dlls/kernel32/atom.c:432 */
+WINAPI UINT wine32b_kernel32_GetAtomNameA(ATOM  atom, LPSTR  buffer, INT  count) /* ../dlls/kernel32/atom.c:432 */
 {
+	UINT return_value;
 	TRACE("Enter GetAtomNameA\n");
-	return pGetAtomNameA(atom, buffer, count);
+	return_value = pGetAtomNameA(atom, buffer, count);
+	TRACE("Leave GetAtomNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetAtomNameA(void);  /* ../dlls/kernel32/atom.c:432 */
@@ -6409,10 +6914,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetAtomNameA,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetAtomNameW(ATOM  atom, LPWSTR  buffer, INT  count) /* ../dlls/kernel32/atom.c:502 */
+WINAPI UINT wine32b_kernel32_GetAtomNameW(ATOM  atom, LPWSTR  buffer, INT  count) /* ../dlls/kernel32/atom.c:502 */
 {
+	UINT return_value;
 	TRACE("Enter GetAtomNameW\n");
-	return pGetAtomNameW(atom, buffer, count);
+	return_value = pGetAtomNameW(atom, buffer, count);
+	TRACE("Leave GetAtomNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetAtomNameW(void);  /* ../dlls/kernel32/atom.c:502 */
@@ -6436,10 +6944,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetAtomNameW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetBinaryTypeA(LPCSTR  lpApplicationName, LPDWORD  lpBinaryType) /* ../dlls/kernel32/module.c:356 */
+WINAPI BOOL wine32b_kernel32_GetBinaryTypeA(LPCSTR  lpApplicationName, LPDWORD  lpBinaryType) /* ../dlls/kernel32/module.c:356 */
 {
+	BOOL return_value;
 	TRACE("Enter GetBinaryTypeA\n");
-	return pGetBinaryTypeA(lpApplicationName, lpBinaryType);
+	return_value = pGetBinaryTypeA(lpApplicationName, lpBinaryType);
+	TRACE("Leave GetBinaryTypeA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetBinaryTypeA(void);  /* ../dlls/kernel32/module.c:356 */
@@ -6462,10 +6973,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetBinaryTypeA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetBinaryTypeW(LPCWSTR  name, LPDWORD  type) /* ../dlls/kernel32/module.c:270 */
+WINAPI BOOL wine32b_kernel32_GetBinaryTypeW(LPCWSTR  name, LPDWORD  type) /* ../dlls/kernel32/module.c:270 */
 {
+	BOOL return_value;
 	TRACE("Enter GetBinaryTypeW\n");
-	return pGetBinaryTypeW(name, type);
+	return_value = pGetBinaryTypeW(name, type);
+	TRACE("Leave GetBinaryTypeW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetBinaryTypeW(void);  /* ../dlls/kernel32/module.c:270 */
@@ -6488,10 +7002,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetBinaryTypeW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetCPInfo(UINT  codepage, LPCPINFO  cpinfo) /* ../dlls/kernel32/locale.c:2132 */
+WINAPI BOOL wine32b_kernel32_GetCPInfo(UINT  codepage, LPCPINFO  cpinfo) /* ../dlls/kernel32/locale.c:2132 */
 {
+	BOOL return_value;
 	TRACE("Enter GetCPInfo\n");
-	return pGetCPInfo(codepage, cpinfo);
+	return_value = pGetCPInfo(codepage, cpinfo);
+	TRACE("Leave GetCPInfo\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetCPInfo(void);  /* ../dlls/kernel32/locale.c:2132 */
@@ -6514,10 +7031,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCPInfo,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetCPInfoExA(UINT  codepage, DWORD  dwFlags, LPCPINFOEXA  cpinfo) /* ../dlls/kernel32/locale.c:2190 */
+WINAPI BOOL wine32b_kernel32_GetCPInfoExA(UINT  codepage, DWORD  dwFlags, LPCPINFOEXA  cpinfo) /* ../dlls/kernel32/locale.c:2190 */
 {
+	BOOL return_value;
 	TRACE("Enter GetCPInfoExA\n");
-	return pGetCPInfoExA(codepage, dwFlags, cpinfo);
+	return_value = pGetCPInfoExA(codepage, dwFlags, cpinfo);
+	TRACE("Leave GetCPInfoExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetCPInfoExA(void);  /* ../dlls/kernel32/locale.c:2190 */
@@ -6541,10 +7061,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCPInfoExA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetCPInfoExW(UINT  codepage, DWORD  dwFlags, LPCPINFOEXW  cpinfo) /* ../dlls/kernel32/locale.c:2208 */
+WINAPI BOOL wine32b_kernel32_GetCPInfoExW(UINT  codepage, DWORD  dwFlags, LPCPINFOEXW  cpinfo) /* ../dlls/kernel32/locale.c:2208 */
 {
+	BOOL return_value;
 	TRACE("Enter GetCPInfoExW\n");
-	return pGetCPInfoExW(codepage, dwFlags, cpinfo);
+	return_value = pGetCPInfoExW(codepage, dwFlags, cpinfo);
+	TRACE("Leave GetCPInfoExW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetCPInfoExW(void);  /* ../dlls/kernel32/locale.c:2208 */
@@ -6568,10 +7091,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCPInfoExW,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetCalendarInfoA(LCID  lcid, CALID  Calendar, CALTYPE  CalType, LPSTR  lpCalData, int  cchData, LPDWORD  lpValue) /* ../dlls/kernel32/time.c:910 */
+WINAPI INT wine32b_kernel32_GetCalendarInfoA(LCID  lcid, CALID  Calendar, CALTYPE  CalType, LPSTR  lpCalData, int  cchData, LPDWORD  lpValue) /* ../dlls/kernel32/time.c:910 */
 {
+	INT return_value;
 	TRACE("Enter GetCalendarInfoA\n");
-	return pGetCalendarInfoA(lcid, Calendar, CalType, lpCalData, cchData, lpValue);
+	return_value = pGetCalendarInfoA(lcid, Calendar, CalType, lpCalData, cchData, lpValue);
+	TRACE("Leave GetCalendarInfoA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetCalendarInfoA(void);  /* ../dlls/kernel32/time.c:910 */
@@ -6596,10 +7122,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCalendarInfoA,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetCalendarInfoW(LCID  Locale, CALID  Calendar, CALTYPE  CalType, LPWSTR  lpCalData, int  cchData, LPDWORD  lpValue) /* ../dlls/kernel32/time.c:941 */
+WINAPI INT wine32b_kernel32_GetCalendarInfoW(LCID  Locale, CALID  Calendar, CALTYPE  CalType, LPWSTR  lpCalData, int  cchData, LPDWORD  lpValue) /* ../dlls/kernel32/time.c:941 */
 {
+	INT return_value;
 	TRACE("Enter GetCalendarInfoW\n");
-	return pGetCalendarInfoW(Locale, Calendar, CalType, lpCalData, cchData, lpValue);
+	return_value = pGetCalendarInfoW(Locale, Calendar, CalType, lpCalData, cchData, lpValue);
+	TRACE("Leave GetCalendarInfoW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetCalendarInfoW(void);  /* ../dlls/kernel32/time.c:941 */
@@ -6624,10 +7153,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCalendarInfoW,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_kernel32_GetCalendarInfoEx(LPCWSTR  locale, CALID  calendar, LPCWSTR  lpReserved, CALTYPE  caltype, LPWSTR  data, int  len, DWORD*  value) /* ../dlls/kernel32/time.c:1138 */
+WINAPI int wine32b_kernel32_GetCalendarInfoEx(LPCWSTR  locale, CALID  calendar, LPCWSTR  lpReserved, CALTYPE  caltype, LPWSTR  data, int  len, DWORD*  value) /* ../dlls/kernel32/time.c:1138 */
 {
+	int return_value;
 	TRACE("Enter GetCalendarInfoEx\n");
-	return pGetCalendarInfoEx(locale, calendar, lpReserved, caltype, data, len, value);
+	return_value = pGetCalendarInfoEx(locale, calendar, lpReserved, caltype, data, len, value);
+	TRACE("Leave GetCalendarInfoEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetCalendarInfoEx(void);  /* ../dlls/kernel32/time.c:1138 */
@@ -6652,10 +7184,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCalendarInfoEx,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetComputerNameA(LPSTR  name, LPDWORD  size) /* ../dlls/kernel32/computername.c:382 */
+WINAPI BOOL wine32b_kernel32_GetComputerNameA(LPSTR  name, LPDWORD  size) /* ../dlls/kernel32/computername.c:382 */
 {
+	BOOL return_value;
 	TRACE("Enter GetComputerNameA\n");
-	return pGetComputerNameA(name, size);
+	return_value = pGetComputerNameA(name, size);
+	TRACE("Leave GetComputerNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetComputerNameA(void);  /* ../dlls/kernel32/computername.c:382 */
@@ -6678,10 +7213,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetComputerNameA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetComputerNameExA(COMPUTER_NAME_FORMAT  type, LPSTR  name, LPDWORD  size) /* ../dlls/kernel32/computername.c:421 */
+WINAPI BOOL wine32b_kernel32_GetComputerNameExA(COMPUTER_NAME_FORMAT  type, LPSTR  name, LPDWORD  size) /* ../dlls/kernel32/computername.c:421 */
 {
+	BOOL return_value;
 	TRACE("Enter GetComputerNameExA\n");
-	return pGetComputerNameExA(type, name, size);
+	return_value = pGetComputerNameExA(type, name, size);
+	TRACE("Leave GetComputerNameExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetComputerNameExA(void);  /* ../dlls/kernel32/computername.c:421 */
@@ -6705,10 +7243,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetComputerNameExA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetComputerNameExW(COMPUTER_NAME_FORMAT  type, LPWSTR  name, LPDWORD  size) /* ../dlls/kernel32/computername.c:477 */
+WINAPI BOOL wine32b_kernel32_GetComputerNameExW(COMPUTER_NAME_FORMAT  type, LPWSTR  name, LPDWORD  size) /* ../dlls/kernel32/computername.c:477 */
 {
+	BOOL return_value;
 	TRACE("Enter GetComputerNameExW\n");
-	return pGetComputerNameExW(type, name, size);
+	return_value = pGetComputerNameExW(type, name, size);
+	TRACE("Leave GetComputerNameExW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetComputerNameExW(void);  /* ../dlls/kernel32/computername.c:477 */
@@ -6732,10 +7273,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetComputerNameExW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetComputerNameW(LPWSTR  name, LPDWORD  size) /* ../dlls/kernel32/computername.c:313 */
+WINAPI BOOL wine32b_kernel32_GetComputerNameW(LPWSTR  name, LPDWORD  size) /* ../dlls/kernel32/computername.c:313 */
 {
+	BOOL return_value;
 	TRACE("Enter GetComputerNameW\n");
-	return pGetComputerNameW(name, size);
+	return_value = pGetComputerNameW(name, size);
+	TRACE("Leave GetComputerNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetComputerNameW(void);  /* ../dlls/kernel32/computername.c:313 */
@@ -6758,10 +7302,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetComputerNameW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetConsoleAliasExesLengthA(void) /* ../dlls/kernel32/console.c:1574 */
+WINAPI DWORD wine32b_kernel32_GetConsoleAliasExesLengthA(void) /* ../dlls/kernel32/console.c:1574 */
 {
+	DWORD return_value;
 	TRACE("Enter GetConsoleAliasExesLengthA\n");
-	return pGetConsoleAliasExesLengthA();
+	return_value = pGetConsoleAliasExesLengthA();
+	TRACE("Leave GetConsoleAliasExesLengthA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetConsoleAliasExesLengthA(void);  /* ../dlls/kernel32/console.c:1574 */
@@ -6782,10 +7329,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleAliasExesLengthA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetConsoleAliasExesLengthW(void) /* ../dlls/kernel32/console.c:1581 */
+WINAPI DWORD wine32b_kernel32_GetConsoleAliasExesLengthW(void) /* ../dlls/kernel32/console.c:1581 */
 {
+	DWORD return_value;
 	TRACE("Enter GetConsoleAliasExesLengthW\n");
-	return pGetConsoleAliasExesLengthW();
+	return_value = pGetConsoleAliasExesLengthW();
+	TRACE("Leave GetConsoleAliasExesLengthW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetConsoleAliasExesLengthW(void);  /* ../dlls/kernel32/console.c:1581 */
@@ -6806,10 +7356,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleAliasExesLengthW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetConsoleAliasW(LPWSTR  lpSource, LPWSTR  lpTargetBuffer, DWORD  TargetBufferLength, LPWSTR  lpExename) /* ../dlls/kernel32/console.c:1408 */
+WINAPI DWORD wine32b_kernel32_GetConsoleAliasW(LPWSTR  lpSource, LPWSTR  lpTargetBuffer, DWORD  TargetBufferLength, LPWSTR  lpExename) /* ../dlls/kernel32/console.c:1408 */
 {
+	DWORD return_value;
 	TRACE("Enter GetConsoleAliasW\n");
-	return pGetConsoleAliasW(lpSource, lpTargetBuffer, TargetBufferLength, lpExename);
+	return_value = pGetConsoleAliasW(lpSource, lpTargetBuffer, TargetBufferLength, lpExename);
+	TRACE("Leave GetConsoleAliasW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetConsoleAliasW(void);  /* ../dlls/kernel32/console.c:1408 */
@@ -6834,10 +7387,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleAliasW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetConsoleAliasesLengthA(LPSTR  unknown) /* ../dlls/kernel32/console.c:1560 */
+WINAPI DWORD wine32b_kernel32_GetConsoleAliasesLengthA(LPSTR  unknown) /* ../dlls/kernel32/console.c:1560 */
 {
+	DWORD return_value;
 	TRACE("Enter GetConsoleAliasesLengthA\n");
-	return pGetConsoleAliasesLengthA(unknown);
+	return_value = pGetConsoleAliasesLengthA(unknown);
+	TRACE("Leave GetConsoleAliasesLengthA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetConsoleAliasesLengthA(void);  /* ../dlls/kernel32/console.c:1560 */
@@ -6859,10 +7415,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleAliasesLengthA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetConsoleAliasesLengthW(LPWSTR  unknown) /* ../dlls/kernel32/console.c:1567 */
+WINAPI DWORD wine32b_kernel32_GetConsoleAliasesLengthW(LPWSTR  unknown) /* ../dlls/kernel32/console.c:1567 */
 {
+	DWORD return_value;
 	TRACE("Enter GetConsoleAliasesLengthW\n");
-	return pGetConsoleAliasesLengthW(unknown);
+	return_value = pGetConsoleAliasesLengthW(unknown);
+	TRACE("Leave GetConsoleAliasesLengthW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetConsoleAliasesLengthW(void);  /* ../dlls/kernel32/console.c:1567 */
@@ -6884,10 +7443,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleAliasesLengthW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetConsoleCommandHistoryA(DWORD  unknown1, DWORD  unknown2, DWORD  unknown3) /* ../dlls/kernel32/console.c:1526 */
+WINAPI DWORD wine32b_kernel32_GetConsoleCommandHistoryA(DWORD  unknown1, DWORD  unknown2, DWORD  unknown3) /* ../dlls/kernel32/console.c:1526 */
 {
+	DWORD return_value;
 	TRACE("Enter GetConsoleCommandHistoryA\n");
-	return pGetConsoleCommandHistoryA(unknown1, unknown2, unknown3);
+	return_value = pGetConsoleCommandHistoryA(unknown1, unknown2, unknown3);
+	TRACE("Leave GetConsoleCommandHistoryA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetConsoleCommandHistoryA(void);  /* ../dlls/kernel32/console.c:1526 */
@@ -6911,10 +7473,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleCommandHistoryA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetConsoleCommandHistoryLengthA(LPCSTR  unknown) /* ../dlls/kernel32/console.c:1544 */
+WINAPI DWORD wine32b_kernel32_GetConsoleCommandHistoryLengthA(LPCSTR  unknown) /* ../dlls/kernel32/console.c:1544 */
 {
+	DWORD return_value;
 	TRACE("Enter GetConsoleCommandHistoryLengthA\n");
-	return pGetConsoleCommandHistoryLengthA(unknown);
+	return_value = pGetConsoleCommandHistoryLengthA(unknown);
+	TRACE("Leave GetConsoleCommandHistoryLengthA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetConsoleCommandHistoryLengthA(void);  /* ../dlls/kernel32/console.c:1544 */
@@ -6936,10 +7501,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleCommandHistoryLengthA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetConsoleCommandHistoryLengthW(LPCWSTR  unknown) /* ../dlls/kernel32/console.c:1553 */
+WINAPI DWORD wine32b_kernel32_GetConsoleCommandHistoryLengthW(LPCWSTR  unknown) /* ../dlls/kernel32/console.c:1553 */
 {
+	DWORD return_value;
 	TRACE("Enter GetConsoleCommandHistoryLengthW\n");
-	return pGetConsoleCommandHistoryLengthW(unknown);
+	return_value = pGetConsoleCommandHistoryLengthW(unknown);
+	TRACE("Leave GetConsoleCommandHistoryLengthW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetConsoleCommandHistoryLengthW(void);  /* ../dlls/kernel32/console.c:1553 */
@@ -6961,10 +7529,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleCommandHistoryLengthW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetConsoleCommandHistoryW(DWORD  unknown1, DWORD  unknown2, DWORD  unknown3) /* ../dlls/kernel32/console.c:1535 */
+WINAPI DWORD wine32b_kernel32_GetConsoleCommandHistoryW(DWORD  unknown1, DWORD  unknown2, DWORD  unknown3) /* ../dlls/kernel32/console.c:1535 */
 {
+	DWORD return_value;
 	TRACE("Enter GetConsoleCommandHistoryW\n");
-	return pGetConsoleCommandHistoryW(unknown1, unknown2, unknown3);
+	return_value = pGetConsoleCommandHistoryW(unknown1, unknown2, unknown3);
+	TRACE("Leave GetConsoleCommandHistoryW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetConsoleCommandHistoryW(void);  /* ../dlls/kernel32/console.c:1535 */
@@ -6988,10 +7559,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleCommandHistoryW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetConsoleDisplayMode(LPDWORD  lpModeFlags) /* ../dlls/kernel32/console.c:1283 */
+WINAPI BOOL wine32b_kernel32_GetConsoleDisplayMode(LPDWORD  lpModeFlags) /* ../dlls/kernel32/console.c:1283 */
 {
+	BOOL return_value;
 	TRACE("Enter GetConsoleDisplayMode\n");
-	return pGetConsoleDisplayMode(lpModeFlags);
+	return_value = pGetConsoleDisplayMode(lpModeFlags);
+	TRACE("Leave GetConsoleDisplayMode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetConsoleDisplayMode(void);  /* ../dlls/kernel32/console.c:1283 */
@@ -7013,10 +7587,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleDisplayMode,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetConsoleFontInfo(HANDLE  hConsole, BOOL  maximize, DWORD  numfonts, CONSOLE_FONT_INFO*  info) /* ../dlls/kernel32/console.c:1711 */
+WINAPI BOOL wine32b_kernel32_GetConsoleFontInfo(HANDLE  hConsole, BOOL  maximize, DWORD  numfonts, CONSOLE_FONT_INFO*  info) /* ../dlls/kernel32/console.c:1711 */
 {
+	BOOL return_value;
 	TRACE("Enter GetConsoleFontInfo\n");
-	return pGetConsoleFontInfo(hConsole, maximize, numfonts, info);
+	return_value = pGetConsoleFontInfo(hConsole, maximize, numfonts, info);
+	TRACE("Leave GetConsoleFontInfo\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetConsoleFontInfo(void);  /* ../dlls/kernel32/console.c:1711 */
@@ -7041,10 +7618,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleFontInfo,
 	"ret \n"
 )
 
-extern WINAPI COORD wine32b_kernel32_GetConsoleFontSize(HANDLE  hConsole, DWORD  index) /* ../dlls/kernel32/console.c:1705 */
+WINAPI COORD wine32b_kernel32_GetConsoleFontSize(HANDLE  hConsole, DWORD  index) /* ../dlls/kernel32/console.c:1705 */
 {
+	COORD return_value;
 	TRACE("Enter GetConsoleFontSize\n");
-	return pGetConsoleFontSize(hConsole, index);
+	return_value = pGetConsoleFontSize(hConsole, index);
+	TRACE("Leave GetConsoleFontSize\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetConsoleFontSize(void);  /* ../dlls/kernel32/console.c:1705 */
@@ -7067,10 +7647,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleFontSize,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_GetConsoleInputWaitHandle(void) /* ../dlls/kernel32/console.c:306 */
+WINAPI HANDLE wine32b_kernel32_GetConsoleInputWaitHandle(void) /* ../dlls/kernel32/console.c:306 */
 {
+	HANDLE return_value;
 	TRACE("Enter GetConsoleInputWaitHandle\n");
-	return pGetConsoleInputWaitHandle();
+	return_value = pGetConsoleInputWaitHandle();
+	TRACE("Leave GetConsoleInputWaitHandle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetConsoleInputWaitHandle(void);  /* ../dlls/kernel32/console.c:306 */
@@ -7091,10 +7674,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleInputWaitHandle,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetConsoleKeyboardLayoutNameA(LPSTR  layoutName) /* ../dlls/kernel32/console.c:495 */
+WINAPI BOOL wine32b_kernel32_GetConsoleKeyboardLayoutNameA(LPSTR  layoutName) /* ../dlls/kernel32/console.c:495 */
 {
+	BOOL return_value;
 	TRACE("Enter GetConsoleKeyboardLayoutNameA\n");
-	return pGetConsoleKeyboardLayoutNameA(layoutName);
+	return_value = pGetConsoleKeyboardLayoutNameA(layoutName);
+	TRACE("Leave GetConsoleKeyboardLayoutNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetConsoleKeyboardLayoutNameA(void);  /* ../dlls/kernel32/console.c:495 */
@@ -7116,10 +7702,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleKeyboardLayoutNameA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetConsoleKeyboardLayoutNameW(LPWSTR  layoutName) /* ../dlls/kernel32/console.c:504 */
+WINAPI BOOL wine32b_kernel32_GetConsoleKeyboardLayoutNameW(LPWSTR  layoutName) /* ../dlls/kernel32/console.c:504 */
 {
+	BOOL return_value;
 	TRACE("Enter GetConsoleKeyboardLayoutNameW\n");
-	return pGetConsoleKeyboardLayoutNameW(layoutName);
+	return_value = pGetConsoleKeyboardLayoutNameW(layoutName);
+	TRACE("Leave GetConsoleKeyboardLayoutNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetConsoleKeyboardLayoutNameW(void);  /* ../dlls/kernel32/console.c:504 */
@@ -7141,10 +7730,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleKeyboardLayoutNameW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetConsoleProcessList(LPDWORD  processlist, DWORD  processcount) /* ../dlls/kernel32/console.c:1419 */
+WINAPI DWORD wine32b_kernel32_GetConsoleProcessList(LPDWORD  processlist, DWORD  processcount) /* ../dlls/kernel32/console.c:1419 */
 {
+	DWORD return_value;
 	TRACE("Enter GetConsoleProcessList\n");
-	return pGetConsoleProcessList(processlist, processcount);
+	return_value = pGetConsoleProcessList(processlist, processcount);
+	TRACE("Leave GetConsoleProcessList\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetConsoleProcessList(void);  /* ../dlls/kernel32/console.c:1419 */
@@ -7167,10 +7759,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleProcessList,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetConsoleTitleA(LPSTR  title, DWORD  size) /* ../dlls/kernel32/console.c:517 */
+WINAPI DWORD wine32b_kernel32_GetConsoleTitleA(LPSTR  title, DWORD  size) /* ../dlls/kernel32/console.c:517 */
 {
+	DWORD return_value;
 	TRACE("Enter GetConsoleTitleA\n");
-	return pGetConsoleTitleA(title, size);
+	return_value = pGetConsoleTitleA(title, size);
+	TRACE("Leave GetConsoleTitleA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetConsoleTitleA(void);  /* ../dlls/kernel32/console.c:517 */
@@ -7193,10 +7788,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleTitleA,
 	"ret \n"
 )
 
-extern WINAPI HWND wine32b_kernel32_GetConsoleWindow(void) /* ../dlls/kernel32/console.c:179 */
+WINAPI HWND wine32b_kernel32_GetConsoleWindow(void) /* ../dlls/kernel32/console.c:179 */
 {
+	HWND return_value;
 	TRACE("Enter GetConsoleWindow\n");
-	return pGetConsoleWindow();
+	return_value = pGetConsoleWindow();
+	TRACE("Leave GetConsoleWindow\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetConsoleWindow(void);  /* ../dlls/kernel32/console.c:179 */
@@ -7217,10 +7815,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetConsoleWindow,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetCurrencyFormatA(LCID  lcid, DWORD  dwFlags, LPCSTR  lpszValue, CURRENCYFMTA*  lpFormat, LPSTR  lpCurrencyStr, int  cchOut) /* ../dlls/kernel32/lcformat.c:1393 */
+WINAPI INT wine32b_kernel32_GetCurrencyFormatA(LCID  lcid, DWORD  dwFlags, LPCSTR  lpszValue, CURRENCYFMTA*  lpFormat, LPSTR  lpCurrencyStr, int  cchOut) /* ../dlls/kernel32/lcformat.c:1393 */
 {
+	INT return_value;
 	TRACE("Enter GetCurrencyFormatA\n");
-	return pGetCurrencyFormatA(lcid, dwFlags, lpszValue, lpFormat, lpCurrencyStr, cchOut);
+	return_value = pGetCurrencyFormatA(lcid, dwFlags, lpszValue, lpFormat, lpCurrencyStr, cchOut);
+	TRACE("Leave GetCurrencyFormatA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetCurrencyFormatA(void);  /* ../dlls/kernel32/lcformat.c:1393 */
@@ -7245,10 +7846,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrencyFormatA,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetCurrencyFormatEx(LPCWSTR  localename, DWORD  flags, LPCWSTR  value, CURRENCYFMTW*  format, LPWSTR  str, int  len) /* ../dlls/kernel32/lcformat.c:1762 */
+WINAPI INT wine32b_kernel32_GetCurrencyFormatEx(LPCWSTR  localename, DWORD  flags, LPCWSTR  value, CURRENCYFMTW*  format, LPWSTR  str, int  len) /* ../dlls/kernel32/lcformat.c:1762 */
 {
+	INT return_value;
 	TRACE("Enter GetCurrencyFormatEx\n");
-	return pGetCurrencyFormatEx(localename, flags, value, format, str, len);
+	return_value = pGetCurrencyFormatEx(localename, flags, value, format, str, len);
+	TRACE("Leave GetCurrencyFormatEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetCurrencyFormatEx(void);  /* ../dlls/kernel32/lcformat.c:1762 */
@@ -7273,10 +7877,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrencyFormatEx,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetCurrencyFormatW(LCID  lcid, DWORD  dwFlags, LPCWSTR  lpszValue, CURRENCYFMTW*  lpFormat, LPWSTR  lpCurrencyStr, int  cchOut) /* ../dlls/kernel32/lcformat.c:1475 */
+WINAPI INT wine32b_kernel32_GetCurrencyFormatW(LCID  lcid, DWORD  dwFlags, LPCWSTR  lpszValue, CURRENCYFMTW*  lpFormat, LPWSTR  lpCurrencyStr, int  cchOut) /* ../dlls/kernel32/lcformat.c:1475 */
 {
+	INT return_value;
 	TRACE("Enter GetCurrencyFormatW\n");
-	return pGetCurrencyFormatW(lcid, dwFlags, lpszValue, lpFormat, lpCurrencyStr, cchOut);
+	return_value = pGetCurrencyFormatW(lcid, dwFlags, lpszValue, lpFormat, lpCurrencyStr, cchOut);
+	TRACE("Leave GetCurrencyFormatW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetCurrencyFormatW(void);  /* ../dlls/kernel32/lcformat.c:1475 */
@@ -7301,10 +7908,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrencyFormatW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetCurrentConsoleFont(HANDLE  hConsole, BOOL  maxwindow, LPCONSOLE_FONT_INFO  fontinfo) /* ../dlls/kernel32/console.c:1642 */
+WINAPI BOOL wine32b_kernel32_GetCurrentConsoleFont(HANDLE  hConsole, BOOL  maxwindow, LPCONSOLE_FONT_INFO  fontinfo) /* ../dlls/kernel32/console.c:1642 */
 {
+	BOOL return_value;
 	TRACE("Enter GetCurrentConsoleFont\n");
-	return pGetCurrentConsoleFont(hConsole, maxwindow, fontinfo);
+	return_value = pGetCurrentConsoleFont(hConsole, maxwindow, fontinfo);
+	TRACE("Leave GetCurrentConsoleFont\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetCurrentConsoleFont(void);  /* ../dlls/kernel32/console.c:1642 */
@@ -7328,10 +7938,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentConsoleFont,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetCurrentDirectoryA(UINT  buflen, LPSTR  buf) /* ../dlls/kernel32/path.c:1701 */
+WINAPI UINT wine32b_kernel32_GetCurrentDirectoryA(UINT  buflen, LPSTR  buf) /* ../dlls/kernel32/path.c:1701 */
 {
+	UINT return_value;
 	TRACE("Enter GetCurrentDirectoryA\n");
-	return pGetCurrentDirectoryA(buflen, buf);
+	return_value = pGetCurrentDirectoryA(buflen, buf);
+	TRACE("Leave GetCurrentDirectoryA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetCurrentDirectoryA(void);  /* ../dlls/kernel32/path.c:1701 */
@@ -7354,10 +7967,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentDirectoryA,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetCurrentDirectoryW(UINT  buflen, LPWSTR  buf) /* ../dlls/kernel32/path.c:1692 */
+WINAPI UINT wine32b_kernel32_GetCurrentDirectoryW(UINT  buflen, LPWSTR  buf) /* ../dlls/kernel32/path.c:1692 */
 {
+	UINT return_value;
 	TRACE("Enter GetCurrentDirectoryW\n");
-	return pGetCurrentDirectoryW(buflen, buf);
+	return_value = pGetCurrentDirectoryW(buflen, buf);
+	TRACE("Leave GetCurrentDirectoryW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetCurrentDirectoryW(void);  /* ../dlls/kernel32/path.c:1692 */
@@ -7380,10 +7996,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentDirectoryW,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_kernel32_GetCurrentPackageFamilyName(UINT32*  length, PWSTR  name) /* ../dlls/kernel32/version.c:140 */
+WINAPI LONG wine32b_kernel32_GetCurrentPackageFamilyName(UINT32*  length, PWSTR  name) /* ../dlls/kernel32/version.c:140 */
 {
+	LONG return_value;
 	TRACE("Enter GetCurrentPackageFamilyName\n");
-	return pGetCurrentPackageFamilyName(length, name);
+	return_value = pGetCurrentPackageFamilyName(length, name);
+	TRACE("Leave GetCurrentPackageFamilyName\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetCurrentPackageFamilyName(void);  /* ../dlls/kernel32/version.c:140 */
@@ -7406,10 +8025,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentPackageFamilyName,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_kernel32_GetCurrentPackageFullName(UINT32*  length, PWSTR  name) /* ../dlls/kernel32/version.c:149 */
+WINAPI LONG wine32b_kernel32_GetCurrentPackageFullName(UINT32*  length, PWSTR  name) /* ../dlls/kernel32/version.c:149 */
 {
+	LONG return_value;
 	TRACE("Enter GetCurrentPackageFullName\n");
-	return pGetCurrentPackageFullName(length, name);
+	return_value = pGetCurrentPackageFullName(length, name);
+	TRACE("Leave GetCurrentPackageFullName\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetCurrentPackageFullName(void);  /* ../dlls/kernel32/version.c:149 */
@@ -7432,10 +8054,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentPackageFullName,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_kernel32_GetCurrentPackageId(UINT32*  len, BYTE*  buffer) /* ../dlls/kernel32/version.c:131 */
+WINAPI LONG wine32b_kernel32_GetCurrentPackageId(UINT32*  len, BYTE*  buffer) /* ../dlls/kernel32/version.c:131 */
 {
+	LONG return_value;
 	TRACE("Enter GetCurrentPackageId\n");
-	return pGetCurrentPackageId(len, buffer);
+	return_value = pGetCurrentPackageId(len, buffer);
+	TRACE("Leave GetCurrentPackageId\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetCurrentPackageId(void);  /* ../dlls/kernel32/version.c:131 */
@@ -7458,10 +8083,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentPackageId,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_GetCurrentProcess(void) /* ../dlls/kernel32/process.c:3811 */
+WINAPI HANDLE wine32b_kernel32_GetCurrentProcess(void) /* ../dlls/kernel32/process.c:3811 */
 {
+	HANDLE return_value;
 	TRACE("Enter GetCurrentProcess\n");
-	return pGetCurrentProcess();
+	return_value = pGetCurrentProcess();
+	TRACE("Leave GetCurrentProcess\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetCurrentProcess(void);  /* ../dlls/kernel32/process.c:3811 */
@@ -7482,10 +8110,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentProcess,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetCurrentProcessId(void) /* ../dlls/kernel32/thread.c:146 */
+WINAPI DWORD wine32b_kernel32_GetCurrentProcessId(void) /* ../dlls/kernel32/thread.c:146 */
 {
+	DWORD return_value;
 	TRACE("Enter GetCurrentProcessId\n");
-	return pGetCurrentProcessId();
+	return_value = pGetCurrentProcessId();
+	TRACE("Leave GetCurrentProcessId\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetCurrentProcessId(void);  /* ../dlls/kernel32/thread.c:146 */
@@ -7506,10 +8137,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentProcessId,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_GetCurrentThread(void) /* ../dlls/kernel32/thread.c:133 */
+WINAPI HANDLE wine32b_kernel32_GetCurrentThread(void) /* ../dlls/kernel32/thread.c:133 */
 {
+	HANDLE return_value;
 	TRACE("Enter GetCurrentThread\n");
-	return pGetCurrentThread();
+	return_value = pGetCurrentThread();
+	TRACE("Leave GetCurrentThread\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetCurrentThread(void);  /* ../dlls/kernel32/thread.c:133 */
@@ -7530,10 +8164,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentThread,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetCurrentThreadId(void) /* ../dlls/kernel32/thread.c:159 */
+WINAPI DWORD wine32b_kernel32_GetCurrentThreadId(void) /* ../dlls/kernel32/thread.c:159 */
 {
+	DWORD return_value;
 	TRACE("Enter GetCurrentThreadId\n");
-	return pGetCurrentThreadId();
+	return_value = pGetCurrentThreadId();
+	TRACE("Leave GetCurrentThreadId\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetCurrentThreadId(void);  /* ../dlls/kernel32/thread.c:159 */
@@ -7554,10 +8191,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentThreadId,
 	"ret \n"
 )
 
-extern WINAPI PUMS_CONTEXT wine32b_kernel32_GetCurrentUmsThread(void) /* ../dlls/kernel32/process.c:4196 */
+WINAPI PUMS_CONTEXT wine32b_kernel32_GetCurrentUmsThread(void) /* ../dlls/kernel32/process.c:4196 */
 {
+	PUMS_CONTEXT return_value;
 	TRACE("Enter GetCurrentUmsThread\n");
-	return pGetCurrentUmsThread();
+	return_value = pGetCurrentUmsThread();
+	TRACE("Leave GetCurrentUmsThread\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetCurrentUmsThread(void);  /* ../dlls/kernel32/process.c:4196 */
@@ -7578,10 +8218,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetCurrentUmsThread,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetDateFormatA(LCID  lcid, DWORD  dwFlags, SYSTEMTIME*  lpTime, LPCSTR  lpFormat, LPSTR  lpDateStr, INT  cchOut) /* ../dlls/kernel32/lcformat.c:839 */
+WINAPI INT wine32b_kernel32_GetDateFormatA(LCID  lcid, DWORD  dwFlags, SYSTEMTIME*  lpTime, LPCSTR  lpFormat, LPSTR  lpDateStr, INT  cchOut) /* ../dlls/kernel32/lcformat.c:839 */
 {
+	INT return_value;
 	TRACE("Enter GetDateFormatA\n");
-	return pGetDateFormatA(lcid, dwFlags, lpTime, lpFormat, lpDateStr, cchOut);
+	return_value = pGetDateFormatA(lcid, dwFlags, lpTime, lpFormat, lpDateStr, cchOut);
+	TRACE("Leave GetDateFormatA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetDateFormatA(void);  /* ../dlls/kernel32/lcformat.c:839 */
@@ -7606,10 +8249,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDateFormatA,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetDateFormatEx(LPCWSTR  localename, DWORD  flags, SYSTEMTIME*  date, LPCWSTR  format, LPWSTR  outbuf, INT  bufsize, LPCWSTR  calendar) /* ../dlls/kernel32/lcformat.c:870 */
+WINAPI INT wine32b_kernel32_GetDateFormatEx(LPCWSTR  localename, DWORD  flags, SYSTEMTIME*  date, LPCWSTR  format, LPWSTR  outbuf, INT  bufsize, LPCWSTR  calendar) /* ../dlls/kernel32/lcformat.c:870 */
 {
+	INT return_value;
 	TRACE("Enter GetDateFormatEx\n");
-	return pGetDateFormatEx(localename, flags, date, format, outbuf, bufsize, calendar);
+	return_value = pGetDateFormatEx(localename, flags, date, format, outbuf, bufsize, calendar);
+	TRACE("Leave GetDateFormatEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetDateFormatEx(void);  /* ../dlls/kernel32/lcformat.c:870 */
@@ -7634,10 +8280,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDateFormatEx,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetDateFormatW(LCID  lcid, DWORD  dwFlags, SYSTEMTIME*  lpTime, LPCWSTR  lpFormat, LPWSTR  lpDateStr, INT  cchOut) /* ../dlls/kernel32/lcformat.c:894 */
+WINAPI INT wine32b_kernel32_GetDateFormatW(LCID  lcid, DWORD  dwFlags, SYSTEMTIME*  lpTime, LPCWSTR  lpFormat, LPWSTR  lpDateStr, INT  cchOut) /* ../dlls/kernel32/lcformat.c:894 */
 {
+	INT return_value;
 	TRACE("Enter GetDateFormatW\n");
-	return pGetDateFormatW(lcid, dwFlags, lpTime, lpFormat, lpDateStr, cchOut);
+	return_value = pGetDateFormatW(lcid, dwFlags, lpTime, lpFormat, lpDateStr, cchOut);
+	TRACE("Leave GetDateFormatW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetDateFormatW(void);  /* ../dlls/kernel32/lcformat.c:894 */
@@ -7662,10 +8311,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDateFormatW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetDaylightFlag(void) /* ../dlls/kernel32/time.c:1346 */
+WINAPI BOOL wine32b_kernel32_GetDaylightFlag(void) /* ../dlls/kernel32/time.c:1346 */
 {
+	BOOL return_value;
 	TRACE("Enter GetDaylightFlag\n");
-	return pGetDaylightFlag();
+	return_value = pGetDaylightFlag();
+	TRACE("Leave GetDaylightFlag\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetDaylightFlag(void);  /* ../dlls/kernel32/time.c:1346 */
@@ -7686,10 +8338,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDaylightFlag,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetDefaultCommConfigA(LPCSTR  lpszName, LPCOMMCONFIG  lpCC, LPDWORD  lpdwSize) /* ../dlls/kernel32/comm.c:730 */
+WINAPI BOOL wine32b_kernel32_GetDefaultCommConfigA(LPCSTR  lpszName, LPCOMMCONFIG  lpCC, LPDWORD  lpdwSize) /* ../dlls/kernel32/comm.c:730 */
 {
+	BOOL return_value;
 	TRACE("Enter GetDefaultCommConfigA\n");
-	return pGetDefaultCommConfigA(lpszName, lpCC, lpdwSize);
+	return_value = pGetDefaultCommConfigA(lpszName, lpCC, lpdwSize);
+	TRACE("Leave GetDefaultCommConfigA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetDefaultCommConfigA(void);  /* ../dlls/kernel32/comm.c:730 */
@@ -7713,10 +8368,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDefaultCommConfigA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetDefaultCommConfigW(LPCWSTR  lpszName, LPCOMMCONFIG  lpCC, LPDWORD  lpdwSize) /* ../dlls/kernel32/comm.c:694 */
+WINAPI BOOL wine32b_kernel32_GetDefaultCommConfigW(LPCWSTR  lpszName, LPCOMMCONFIG  lpCC, LPDWORD  lpdwSize) /* ../dlls/kernel32/comm.c:694 */
 {
+	BOOL return_value;
 	TRACE("Enter GetDefaultCommConfigW\n");
-	return pGetDefaultCommConfigW(lpszName, lpCC, lpdwSize);
+	return_value = pGetDefaultCommConfigW(lpszName, lpCC, lpdwSize);
+	TRACE("Leave GetDefaultCommConfigW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetDefaultCommConfigW(void);  /* ../dlls/kernel32/comm.c:694 */
@@ -7740,10 +8398,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDefaultCommConfigW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetDevicePowerState(HANDLE  hDevice, BOOL*  pfOn) /* ../dlls/kernel32/powermgnt.c:37 */
+WINAPI BOOL wine32b_kernel32_GetDevicePowerState(HANDLE  hDevice, BOOL*  pfOn) /* ../dlls/kernel32/powermgnt.c:37 */
 {
+	BOOL return_value;
 	TRACE("Enter GetDevicePowerState\n");
-	return pGetDevicePowerState(hDevice, pfOn);
+	return_value = pGetDevicePowerState(hDevice, pfOn);
+	TRACE("Leave GetDevicePowerState\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetDevicePowerState(void);  /* ../dlls/kernel32/powermgnt.c:37 */
@@ -7766,10 +8427,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDevicePowerState,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetDiskFreeSpaceA(LPCSTR  root, LPDWORD  cluster_sectors, LPDWORD  sector_bytes, LPDWORD  free_clusters, LPDWORD  total_clusters) /* ../dlls/kernel32/volume.c:1625 */
+WINAPI BOOL wine32b_kernel32_GetDiskFreeSpaceA(LPCSTR  root, LPDWORD  cluster_sectors, LPDWORD  sector_bytes, LPDWORD  free_clusters, LPDWORD  total_clusters) /* ../dlls/kernel32/volume.c:1625 */
 {
+	BOOL return_value;
 	TRACE("Enter GetDiskFreeSpaceA\n");
-	return pGetDiskFreeSpaceA(root, cluster_sectors, sector_bytes, free_clusters, total_clusters);
+	return_value = pGetDiskFreeSpaceA(root, cluster_sectors, sector_bytes, free_clusters, total_clusters);
+	TRACE("Leave GetDiskFreeSpaceA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetDiskFreeSpaceA(void);  /* ../dlls/kernel32/volume.c:1625 */
@@ -7794,10 +8458,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDiskFreeSpaceA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetDiskFreeSpaceExA(LPCSTR  root, PULARGE_INTEGER  avail, PULARGE_INTEGER  total, PULARGE_INTEGER  totalfree) /* ../dlls/kernel32/volume.c:1559 */
+WINAPI BOOL wine32b_kernel32_GetDiskFreeSpaceExA(LPCSTR  root, PULARGE_INTEGER  avail, PULARGE_INTEGER  total, PULARGE_INTEGER  totalfree) /* ../dlls/kernel32/volume.c:1559 */
 {
+	BOOL return_value;
 	TRACE("Enter GetDiskFreeSpaceExA\n");
-	return pGetDiskFreeSpaceExA(root, avail, total, totalfree);
+	return_value = pGetDiskFreeSpaceExA(root, avail, total, totalfree);
+	TRACE("Leave GetDiskFreeSpaceExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetDiskFreeSpaceExA(void);  /* ../dlls/kernel32/volume.c:1559 */
@@ -7822,10 +8489,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDiskFreeSpaceExA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetDiskFreeSpaceExW(LPCWSTR  root, PULARGE_INTEGER  avail, PULARGE_INTEGER  total, PULARGE_INTEGER  totalfree) /* ../dlls/kernel32/volume.c:1524 */
+WINAPI BOOL wine32b_kernel32_GetDiskFreeSpaceExW(LPCWSTR  root, PULARGE_INTEGER  avail, PULARGE_INTEGER  total, PULARGE_INTEGER  totalfree) /* ../dlls/kernel32/volume.c:1524 */
 {
+	BOOL return_value;
 	TRACE("Enter GetDiskFreeSpaceExW\n");
-	return pGetDiskFreeSpaceExW(root, avail, total, totalfree);
+	return_value = pGetDiskFreeSpaceExW(root, avail, total, totalfree);
+	TRACE("Leave GetDiskFreeSpaceExW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetDiskFreeSpaceExW(void);  /* ../dlls/kernel32/volume.c:1524 */
@@ -7850,10 +8520,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDiskFreeSpaceExW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetDiskFreeSpaceW(LPCWSTR  root, LPDWORD  cluster_sectors, LPDWORD  sector_bytes, LPDWORD  free_clusters, LPDWORD  total_clusters) /* ../dlls/kernel32/volume.c:1572 */
+WINAPI BOOL wine32b_kernel32_GetDiskFreeSpaceW(LPCWSTR  root, LPDWORD  cluster_sectors, LPDWORD  sector_bytes, LPDWORD  free_clusters, LPDWORD  total_clusters) /* ../dlls/kernel32/volume.c:1572 */
 {
+	BOOL return_value;
 	TRACE("Enter GetDiskFreeSpaceW\n");
-	return pGetDiskFreeSpaceW(root, cluster_sectors, sector_bytes, free_clusters, total_clusters);
+	return_value = pGetDiskFreeSpaceW(root, cluster_sectors, sector_bytes, free_clusters, total_clusters);
+	TRACE("Leave GetDiskFreeSpaceW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetDiskFreeSpaceW(void);  /* ../dlls/kernel32/volume.c:1572 */
@@ -7878,10 +8551,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDiskFreeSpaceW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetDllDirectoryA(DWORD  buf_len, LPSTR  buffer) /* ../dlls/kernel32/module.c:83 */
+WINAPI DWORD wine32b_kernel32_GetDllDirectoryA(DWORD  buf_len, LPSTR  buffer) /* ../dlls/kernel32/module.c:83 */
 {
+	DWORD return_value;
 	TRACE("Enter GetDllDirectoryA\n");
-	return pGetDllDirectoryA(buf_len, buffer);
+	return_value = pGetDllDirectoryA(buf_len, buffer);
+	TRACE("Leave GetDllDirectoryA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetDllDirectoryA(void);  /* ../dlls/kernel32/module.c:83 */
@@ -7904,10 +8580,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDllDirectoryA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetDllDirectoryW(DWORD  buf_len, LPWSTR  buffer) /* ../dlls/kernel32/module.c:107 */
+WINAPI DWORD wine32b_kernel32_GetDllDirectoryW(DWORD  buf_len, LPWSTR  buffer) /* ../dlls/kernel32/module.c:107 */
 {
+	DWORD return_value;
 	TRACE("Enter GetDllDirectoryW\n");
-	return pGetDllDirectoryW(buf_len, buffer);
+	return_value = pGetDllDirectoryW(buf_len, buffer);
+	TRACE("Leave GetDllDirectoryW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetDllDirectoryW(void);  /* ../dlls/kernel32/module.c:107 */
@@ -7930,10 +8609,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDllDirectoryW,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetDriveTypeA(LPCSTR  root) /* ../dlls/kernel32/volume.c:1503 */
+WINAPI UINT wine32b_kernel32_GetDriveTypeA(LPCSTR  root) /* ../dlls/kernel32/volume.c:1503 */
 {
+	UINT return_value;
 	TRACE("Enter GetDriveTypeA\n");
-	return pGetDriveTypeA(root);
+	return_value = pGetDriveTypeA(root);
+	TRACE("Leave GetDriveTypeA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetDriveTypeA(void);  /* ../dlls/kernel32/volume.c:1503 */
@@ -7955,10 +8637,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDriveTypeA,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetDriveTypeW(LPCWSTR  root) /* ../dlls/kernel32/volume.c:1451 */
+WINAPI UINT wine32b_kernel32_GetDriveTypeW(LPCWSTR  root) /* ../dlls/kernel32/volume.c:1451 */
 {
+	UINT return_value;
 	TRACE("Enter GetDriveTypeW\n");
-	return pGetDriveTypeW(root);
+	return_value = pGetDriveTypeW(root);
+	TRACE("Leave GetDriveTypeW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetDriveTypeW(void);  /* ../dlls/kernel32/volume.c:1451 */
@@ -7980,10 +8665,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDriveTypeW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetDynamicTimeZoneInformation(DYNAMIC_TIME_ZONE_INFORMATION*  tzinfo) /* ../dlls/kernel32/time.c:1496 */
+WINAPI DWORD wine32b_kernel32_GetDynamicTimeZoneInformation(DYNAMIC_TIME_ZONE_INFORMATION*  tzinfo) /* ../dlls/kernel32/time.c:1496 */
 {
+	DWORD return_value;
 	TRACE("Enter GetDynamicTimeZoneInformation\n");
-	return pGetDynamicTimeZoneInformation(tzinfo);
+	return_value = pGetDynamicTimeZoneInformation(tzinfo);
+	TRACE("Leave GetDynamicTimeZoneInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetDynamicTimeZoneInformation(void);  /* ../dlls/kernel32/time.c:1496 */
@@ -8005,10 +8693,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDynamicTimeZoneInformation,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetDynamicTimeZoneInformationEffectiveYears(DYNAMIC_TIME_ZONE_INFORMATION*  tzinfo, DWORD*  first_year, DWORD*  last_year) /* ../dlls/kernel32/time.c:1521 */
+WINAPI DWORD wine32b_kernel32_GetDynamicTimeZoneInformationEffectiveYears(DYNAMIC_TIME_ZONE_INFORMATION*  tzinfo, DWORD*  first_year, DWORD*  last_year) /* ../dlls/kernel32/time.c:1521 */
 {
+	DWORD return_value;
 	TRACE("Enter GetDynamicTimeZoneInformationEffectiveYears\n");
-	return pGetDynamicTimeZoneInformationEffectiveYears(tzinfo, first_year, last_year);
+	return_value = pGetDynamicTimeZoneInformationEffectiveYears(tzinfo, first_year, last_year);
+	TRACE("Leave GetDynamicTimeZoneInformationEffectiveYears\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetDynamicTimeZoneInformationEffectiveYears(void);  /* ../dlls/kernel32/time.c:1521 */
@@ -8032,10 +8723,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetDynamicTimeZoneInformationEffectiveYears,
 	"ret \n"
 )
 
-extern WINAPI DWORD64 wine32b_kernel32_GetEnabledXStateFeatures(void) /* ../dlls/kernel32/cpu.c:287 */
+WINAPI DWORD64 wine32b_kernel32_GetEnabledXStateFeatures(void) /* ../dlls/kernel32/cpu.c:287 */
 {
+	DWORD64 return_value;
 	TRACE("Enter GetEnabledXStateFeatures\n");
-	return pGetEnabledXStateFeatures();
+	return_value = pGetEnabledXStateFeatures();
+	TRACE("Leave GetEnabledXStateFeatures\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetEnabledXStateFeatures(void);  /* ../dlls/kernel32/cpu.c:287 */
@@ -8056,10 +8750,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetEnabledXStateFeatures,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetExitCodeProcess(HANDLE  hProcess, LPDWORD  lpExitCode) /* ../dlls/kernel32/process.c:3178 */
+WINAPI BOOL wine32b_kernel32_GetExitCodeProcess(HANDLE  hProcess, LPDWORD  lpExitCode) /* ../dlls/kernel32/process.c:3178 */
 {
+	BOOL return_value;
 	TRACE("Enter GetExitCodeProcess\n");
-	return pGetExitCodeProcess(hProcess, lpExitCode);
+	return_value = pGetExitCodeProcess(hProcess, lpExitCode);
+	TRACE("Leave GetExitCodeProcess\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetExitCodeProcess(void);  /* ../dlls/kernel32/process.c:3178 */
@@ -8082,10 +8779,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetExitCodeProcess,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetExpandedNameA(LPSTR  in, LPSTR  out) /* ../dlls/kernel32/lzexpand.c:240 */
+WINAPI INT wine32b_kernel32_GetExpandedNameA(LPSTR  in, LPSTR  out) /* ../dlls/kernel32/lzexpand.c:240 */
 {
+	INT return_value;
 	TRACE("Enter GetExpandedNameA\n");
-	return pGetExpandedNameA(in, out);
+	return_value = pGetExpandedNameA(in, out);
+	TRACE("Leave GetExpandedNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetExpandedNameA(void);  /* ../dlls/kernel32/lzexpand.c:240 */
@@ -8108,10 +8808,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetExpandedNameA,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetExpandedNameW(LPWSTR  in, LPWSTR  out) /* ../dlls/kernel32/lzexpand.c:310 */
+WINAPI INT wine32b_kernel32_GetExpandedNameW(LPWSTR  in, LPWSTR  out) /* ../dlls/kernel32/lzexpand.c:310 */
 {
+	INT return_value;
 	TRACE("Enter GetExpandedNameW\n");
-	return pGetExpandedNameW(in, out);
+	return_value = pGetExpandedNameW(in, out);
+	TRACE("Leave GetExpandedNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetExpandedNameW(void);  /* ../dlls/kernel32/lzexpand.c:310 */
@@ -8134,10 +8837,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetExpandedNameW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetFileMUIInfo(DWORD  flags, PCWSTR  path, FILEMUIINFO*  info, DWORD*  size) /* ../dlls/kernel32/locale.c:5886 */
+WINAPI BOOL wine32b_kernel32_GetFileMUIInfo(DWORD  flags, PCWSTR  path, FILEMUIINFO*  info, DWORD*  size) /* ../dlls/kernel32/locale.c:5886 */
 {
+	BOOL return_value;
 	TRACE("Enter GetFileMUIInfo\n");
-	return pGetFileMUIInfo(flags, path, info, size);
+	return_value = pGetFileMUIInfo(flags, path, info, size);
+	TRACE("Leave GetFileMUIInfo\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetFileMUIInfo(void);  /* ../dlls/kernel32/locale.c:5886 */
@@ -8162,10 +8868,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetFileMUIInfo,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetFileMUIPath(DWORD  flags, PCWSTR  filepath, PWSTR  language, PULONG  languagelen, PWSTR  muipath, PULONG  muipathlen, PULONGLONG  enumerator) /* ../dlls/kernel32/locale.c:5871 */
+WINAPI BOOL wine32b_kernel32_GetFileMUIPath(DWORD  flags, PCWSTR  filepath, PWSTR  language, PULONG  languagelen, PWSTR  muipath, PULONG  muipathlen, PULONGLONG  enumerator) /* ../dlls/kernel32/locale.c:5871 */
 {
+	BOOL return_value;
 	TRACE("Enter GetFileMUIPath\n");
-	return pGetFileMUIPath(flags, filepath, language, languagelen, muipath, muipathlen, enumerator);
+	return_value = pGetFileMUIPath(flags, filepath, language, languagelen, muipath, muipathlen, enumerator);
+	TRACE("Leave GetFileMUIPath\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetFileMUIPath(void);  /* ../dlls/kernel32/locale.c:5871 */
@@ -8190,10 +8899,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetFileMUIPath,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetFinalPathNameByHandleA(HANDLE  file, LPSTR  path, DWORD  charcount, DWORD  flags) /* ../dlls/kernel32/file.c:1494 */
+WINAPI DWORD wine32b_kernel32_GetFinalPathNameByHandleA(HANDLE  file, LPSTR  path, DWORD  charcount, DWORD  flags) /* ../dlls/kernel32/file.c:1494 */
 {
+	DWORD return_value;
 	TRACE("Enter GetFinalPathNameByHandleA\n");
-	return pGetFinalPathNameByHandleA(file, path, charcount, flags);
+	return_value = pGetFinalPathNameByHandleA(file, path, charcount, flags);
+	TRACE("Leave GetFinalPathNameByHandleA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetFinalPathNameByHandleA(void);  /* ../dlls/kernel32/file.c:1494 */
@@ -8218,10 +8930,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetFinalPathNameByHandleA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetFinalPathNameByHandleW(HANDLE  file, LPWSTR  path, DWORD  charcount, DWORD  flags) /* ../dlls/kernel32/file.c:1341 */
+WINAPI DWORD wine32b_kernel32_GetFinalPathNameByHandleW(HANDLE  file, LPWSTR  path, DWORD  charcount, DWORD  flags) /* ../dlls/kernel32/file.c:1341 */
 {
+	DWORD return_value;
 	TRACE("Enter GetFinalPathNameByHandleW\n");
-	return pGetFinalPathNameByHandleW(file, path, charcount, flags);
+	return_value = pGetFinalPathNameByHandleW(file, path, charcount, flags);
+	TRACE("Leave GetFinalPathNameByHandleW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetFinalPathNameByHandleW(void);  /* ../dlls/kernel32/file.c:1341 */
@@ -8246,10 +8961,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetFinalPathNameByHandleW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetFirmwareEnvironmentVariableA(LPCSTR  name, LPCSTR  guid, PVOID  buffer, DWORD  size) /* ../dlls/kernel32/environ.c:100 */
+WINAPI DWORD wine32b_kernel32_GetFirmwareEnvironmentVariableA(LPCSTR  name, LPCSTR  guid, PVOID  buffer, DWORD  size) /* ../dlls/kernel32/environ.c:100 */
 {
+	DWORD return_value;
 	TRACE("Enter GetFirmwareEnvironmentVariableA\n");
-	return pGetFirmwareEnvironmentVariableA(name, guid, buffer, size);
+	return_value = pGetFirmwareEnvironmentVariableA(name, guid, buffer, size);
+	TRACE("Leave GetFirmwareEnvironmentVariableA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetFirmwareEnvironmentVariableA(void);  /* ../dlls/kernel32/environ.c:100 */
@@ -8274,10 +8992,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetFirmwareEnvironmentVariableA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetFirmwareEnvironmentVariableW(LPCWSTR  name, LPCWSTR  guid, PVOID  buffer, DWORD  size) /* ../dlls/kernel32/environ.c:110 */
+WINAPI DWORD wine32b_kernel32_GetFirmwareEnvironmentVariableW(LPCWSTR  name, LPCWSTR  guid, PVOID  buffer, DWORD  size) /* ../dlls/kernel32/environ.c:110 */
 {
+	DWORD return_value;
 	TRACE("Enter GetFirmwareEnvironmentVariableW\n");
-	return pGetFirmwareEnvironmentVariableW(name, guid, buffer, size);
+	return_value = pGetFirmwareEnvironmentVariableW(name, guid, buffer, size);
+	TRACE("Leave GetFirmwareEnvironmentVariableW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetFirmwareEnvironmentVariableW(void);  /* ../dlls/kernel32/environ.c:110 */
@@ -8302,10 +9023,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetFirmwareEnvironmentVariableW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetFullPathNameA(LPCSTR  name, DWORD  len, LPSTR  buffer, LPSTR*  lastpart) /* ../dlls/kernel32/path.c:252 */
+WINAPI DWORD wine32b_kernel32_GetFullPathNameA(LPCSTR  name, DWORD  len, LPSTR  buffer, LPSTR*  lastpart) /* ../dlls/kernel32/path.c:252 */
 {
+	DWORD return_value;
 	TRACE("Enter GetFullPathNameA\n");
-	return pGetFullPathNameA(name, len, buffer, lastpart);
+	return_value = pGetFullPathNameA(name, len, buffer, lastpart);
+	TRACE("Leave GetFullPathNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetFullPathNameA(void);  /* ../dlls/kernel32/path.c:252 */
@@ -8330,10 +9054,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetFullPathNameA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetFullPathNameW(LPCWSTR  name, DWORD  len, LPWSTR  buffer, LPWSTR*  lastpart) /* ../dlls/kernel32/path.c:241 */
+WINAPI DWORD wine32b_kernel32_GetFullPathNameW(LPCWSTR  name, DWORD  len, LPWSTR  buffer, LPWSTR*  lastpart) /* ../dlls/kernel32/path.c:241 */
 {
+	DWORD return_value;
 	TRACE("Enter GetFullPathNameW\n");
-	return pGetFullPathNameW(name, len, buffer, lastpart);
+	return_value = pGetFullPathNameW(name, len, buffer, lastpart);
+	TRACE("Leave GetFullPathNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetFullPathNameW(void);  /* ../dlls/kernel32/path.c:241 */
@@ -8358,10 +9085,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetFullPathNameW,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetGeoInfoA(GEOID  geoid, GEOTYPE  geotype, LPSTR  data, int  data_len, LANGID  lang) /* ../dlls/kernel32/locale.c:5184 */
+WINAPI INT wine32b_kernel32_GetGeoInfoA(GEOID  geoid, GEOTYPE  geotype, LPSTR  data, int  data_len, LANGID  lang) /* ../dlls/kernel32/locale.c:5184 */
 {
+	INT return_value;
 	TRACE("Enter GetGeoInfoA\n");
-	return pGetGeoInfoA(geoid, geotype, data, data_len, lang);
+	return_value = pGetGeoInfoA(geoid, geotype, data, data_len, lang);
+	TRACE("Leave GetGeoInfoA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetGeoInfoA(void);  /* ../dlls/kernel32/locale.c:5184 */
@@ -8386,10 +9116,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetGeoInfoA,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetGeoInfoW(GEOID  geoid, GEOTYPE  geotype, LPWSTR  data, int  data_len, LANGID  lang) /* ../dlls/kernel32/locale.c:5117 */
+WINAPI INT wine32b_kernel32_GetGeoInfoW(GEOID  geoid, GEOTYPE  geotype, LPWSTR  data, int  data_len, LANGID  lang) /* ../dlls/kernel32/locale.c:5117 */
 {
+	INT return_value;
 	TRACE("Enter GetGeoInfoW\n");
-	return pGetGeoInfoW(geoid, geotype, data, data_len, lang);
+	return_value = pGetGeoInfoW(geoid, geotype, data, data_len, lang);
+	TRACE("Leave GetGeoInfoW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetGeoInfoW(void);  /* ../dlls/kernel32/locale.c:5117 */
@@ -8414,10 +9147,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetGeoInfoW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetHandleContext(HANDLE  hnd) /* ../dlls/kernel32/process.c:3362 */
+WINAPI DWORD wine32b_kernel32_GetHandleContext(HANDLE  hnd) /* ../dlls/kernel32/process.c:3362 */
 {
+	DWORD return_value;
 	TRACE("Enter GetHandleContext\n");
-	return pGetHandleContext(hnd);
+	return_value = pGetHandleContext(hnd);
+	TRACE("Leave GetHandleContext\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetHandleContext(void);  /* ../dlls/kernel32/process.c:3362 */
@@ -8439,10 +9175,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetHandleContext,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetHandleInformation(HANDLE  handle, LPDWORD  flags) /* ../dlls/kernel32/process.c:3262 */
+WINAPI BOOL wine32b_kernel32_GetHandleInformation(HANDLE  handle, LPDWORD  flags) /* ../dlls/kernel32/process.c:3262 */
 {
+	BOOL return_value;
 	TRACE("Enter GetHandleInformation\n");
-	return pGetHandleInformation(handle, flags);
+	return_value = pGetHandleInformation(handle, flags);
+	TRACE("Leave GetHandleInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetHandleInformation(void);  /* ../dlls/kernel32/process.c:3262 */
@@ -8465,10 +9204,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetHandleInformation,
 	"ret \n"
 )
 
-extern WINAPI SIZE_T wine32b_kernel32_GetLargePageMinimum(void) /* ../dlls/kernel32/cpu.c:236 */
+WINAPI SIZE_T wine32b_kernel32_GetLargePageMinimum(void) /* ../dlls/kernel32/cpu.c:236 */
 {
+	SIZE_T return_value;
 	TRACE("Enter GetLargePageMinimum\n");
-	return pGetLargePageMinimum();
+	return_value = pGetLargePageMinimum();
+	TRACE("Leave GetLargePageMinimum\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetLargePageMinimum(void);  /* ../dlls/kernel32/cpu.c:236 */
@@ -8489,10 +9231,11 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetLargePageMinimum,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_GetLocalTime(LPSYSTEMTIME  systime) /* ../dlls/kernel32/time.c:1300 */
+WINAPI void wine32b_kernel32_GetLocalTime(LPSYSTEMTIME  systime) /* ../dlls/kernel32/time.c:1300 */
 {
 	TRACE("Enter GetLocalTime\n");
-	return pGetLocalTime(systime);
+	pGetLocalTime(systime);
+	TRACE("Leave GetLocalTime\n");
 }
 
 extern WINAPI void wine32a_kernel32_GetLocalTime(void);  /* ../dlls/kernel32/time.c:1300 */
@@ -8514,10 +9257,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetLocalTime,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetLocaleInfoA(LCID  lcid, LCTYPE  lctype, LPSTR  buffer, INT  len) /* ../dlls/kernel32/locale.c:1612 */
+WINAPI INT wine32b_kernel32_GetLocaleInfoA(LCID  lcid, LCTYPE  lctype, LPSTR  buffer, INT  len) /* ../dlls/kernel32/locale.c:1612 */
 {
+	INT return_value;
 	TRACE("Enter GetLocaleInfoA\n");
-	return pGetLocaleInfoA(lcid, lctype, buffer, len);
+	return_value = pGetLocaleInfoA(lcid, lctype, buffer, len);
+	TRACE("Leave GetLocaleInfoA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetLocaleInfoA(void);  /* ../dlls/kernel32/locale.c:1612 */
@@ -8542,10 +9288,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetLocaleInfoA,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetLocaleInfoW(LCID  lcid, LCTYPE  lctype, LPWSTR  buffer, INT  len) /* ../dlls/kernel32/locale.c:1678 */
+WINAPI INT wine32b_kernel32_GetLocaleInfoW(LCID  lcid, LCTYPE  lctype, LPWSTR  buffer, INT  len) /* ../dlls/kernel32/locale.c:1678 */
 {
+	INT return_value;
 	TRACE("Enter GetLocaleInfoW\n");
-	return pGetLocaleInfoW(lcid, lctype, buffer, len);
+	return_value = pGetLocaleInfoW(lcid, lctype, buffer, len);
+	TRACE("Leave GetLocaleInfoW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetLocaleInfoW(void);  /* ../dlls/kernel32/locale.c:1678 */
@@ -8570,10 +9319,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetLocaleInfoW,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetLocaleInfoEx(LPCWSTR  locale, LCTYPE  info, LPWSTR  buffer, INT  len) /* ../dlls/kernel32/locale.c:1824 */
+WINAPI INT wine32b_kernel32_GetLocaleInfoEx(LPCWSTR  locale, LCTYPE  info, LPWSTR  buffer, INT  len) /* ../dlls/kernel32/locale.c:1824 */
 {
+	INT return_value;
 	TRACE("Enter GetLocaleInfoEx\n");
-	return pGetLocaleInfoEx(locale, info, buffer, len);
+	return_value = pGetLocaleInfoEx(locale, info, buffer, len);
+	TRACE("Leave GetLocaleInfoEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetLocaleInfoEx(void);  /* ../dlls/kernel32/locale.c:1824 */
@@ -8598,10 +9350,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetLocaleInfoEx,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetLogicalDriveStringsA(UINT  len, LPSTR  buffer) /* ../dlls/kernel32/volume.c:1384 */
+WINAPI UINT wine32b_kernel32_GetLogicalDriveStringsA(UINT  len, LPSTR  buffer) /* ../dlls/kernel32/volume.c:1384 */
 {
+	UINT return_value;
 	TRACE("Enter GetLogicalDriveStringsA\n");
-	return pGetLogicalDriveStringsA(len, buffer);
+	return_value = pGetLogicalDriveStringsA(len, buffer);
+	TRACE("Leave GetLogicalDriveStringsA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetLogicalDriveStringsA(void);  /* ../dlls/kernel32/volume.c:1384 */
@@ -8624,10 +9379,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetLogicalDriveStringsA,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetLogicalDriveStringsW(UINT  len, LPWSTR  buffer) /* ../dlls/kernel32/volume.c:1410 */
+WINAPI UINT wine32b_kernel32_GetLogicalDriveStringsW(UINT  len, LPWSTR  buffer) /* ../dlls/kernel32/volume.c:1410 */
 {
+	UINT return_value;
 	TRACE("Enter GetLogicalDriveStringsW\n");
-	return pGetLogicalDriveStringsW(len, buffer);
+	return_value = pGetLogicalDriveStringsW(len, buffer);
+	TRACE("Leave GetLogicalDriveStringsW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetLogicalDriveStringsW(void);  /* ../dlls/kernel32/volume.c:1410 */
@@ -8650,10 +9408,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetLogicalDriveStringsW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetLogicalDrives(void) /* ../dlls/kernel32/volume.c:1346 */
+WINAPI DWORD wine32b_kernel32_GetLogicalDrives(void) /* ../dlls/kernel32/volume.c:1346 */
 {
+	DWORD return_value;
 	TRACE("Enter GetLogicalDrives\n");
-	return pGetLogicalDrives();
+	return_value = pGetLogicalDrives();
+	TRACE("Leave GetLogicalDrives\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetLogicalDrives(void);  /* ../dlls/kernel32/volume.c:1346 */
@@ -8674,10 +9435,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetLogicalDrives,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetLogicalProcessorInformation(PSYSTEM_LOGICAL_PROCESSOR_INFORMATION  buffer, PDWORD  pBufLen) /* ../dlls/kernel32/process.c:3819 */
+WINAPI BOOL wine32b_kernel32_GetLogicalProcessorInformation(PSYSTEM_LOGICAL_PROCESSOR_INFORMATION  buffer, PDWORD  pBufLen) /* ../dlls/kernel32/process.c:3819 */
 {
+	BOOL return_value;
 	TRACE("Enter GetLogicalProcessorInformation\n");
-	return pGetLogicalProcessorInformation(buffer, pBufLen);
+	return_value = pGetLogicalProcessorInformation(buffer, pBufLen);
+	TRACE("Leave GetLogicalProcessorInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetLogicalProcessorInformation(void);  /* ../dlls/kernel32/process.c:3819 */
@@ -8700,10 +9464,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetLogicalProcessorInformation,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetLogicalProcessorInformationEx(LOGICAL_PROCESSOR_RELATIONSHIP  relationship, SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX*  buffer, DWORD*  len) /* ../dlls/kernel32/process.c:3849 */
+WINAPI BOOL wine32b_kernel32_GetLogicalProcessorInformationEx(LOGICAL_PROCESSOR_RELATIONSHIP  relationship, SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX*  buffer, DWORD*  len) /* ../dlls/kernel32/process.c:3849 */
 {
+	BOOL return_value;
 	TRACE("Enter GetLogicalProcessorInformationEx\n");
-	return pGetLogicalProcessorInformationEx(relationship, buffer, len);
+	return_value = pGetLogicalProcessorInformationEx(relationship, buffer, len);
+	TRACE("Leave GetLogicalProcessorInformationEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetLogicalProcessorInformationEx(void);  /* ../dlls/kernel32/process.c:3849 */
@@ -8727,10 +9494,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetLogicalProcessorInformationEx,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetLongPathNameA(LPCSTR  shortpath, LPSTR  longpath, DWORD  longlen) /* ../dlls/kernel32/path.c:405 */
+WINAPI DWORD wine32b_kernel32_GetLongPathNameA(LPCSTR  shortpath, LPSTR  longpath, DWORD  longlen) /* ../dlls/kernel32/path.c:405 */
 {
+	DWORD return_value;
 	TRACE("Enter GetLongPathNameA\n");
-	return pGetLongPathNameA(shortpath, longpath, longlen);
+	return_value = pGetLongPathNameA(shortpath, longpath, longlen);
+	TRACE("Leave GetLongPathNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetLongPathNameA(void);  /* ../dlls/kernel32/path.c:405 */
@@ -8754,10 +9524,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetLongPathNameA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetLongPathNameW(LPCWSTR  shortpath, LPWSTR  longpath, DWORD  longlen) /* ../dlls/kernel32/path.c:289 */
+WINAPI DWORD wine32b_kernel32_GetLongPathNameW(LPCWSTR  shortpath, LPWSTR  longpath, DWORD  longlen) /* ../dlls/kernel32/path.c:289 */
 {
+	DWORD return_value;
 	TRACE("Enter GetLongPathNameW\n");
-	return pGetLongPathNameW(shortpath, longpath, longlen);
+	return_value = pGetLongPathNameW(shortpath, longpath, longlen);
+	TRACE("Leave GetLongPathNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetLongPathNameW(void);  /* ../dlls/kernel32/path.c:289 */
@@ -8781,10 +9554,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetLongPathNameW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetMailslotInfo(HANDLE  hMailslot, LPDWORD  lpMaxMessageSize, LPDWORD  lpNextSize, LPDWORD  lpMessageCount, LPDWORD  lpReadTimeout) /* ../dlls/kernel32/sync.c:923 */
+WINAPI BOOL wine32b_kernel32_GetMailslotInfo(HANDLE  hMailslot, LPDWORD  lpMaxMessageSize, LPDWORD  lpNextSize, LPDWORD  lpMessageCount, LPDWORD  lpReadTimeout) /* ../dlls/kernel32/sync.c:923 */
 {
+	BOOL return_value;
 	TRACE("Enter GetMailslotInfo\n");
-	return pGetMailslotInfo(hMailslot, lpMaxMessageSize, lpNextSize, lpMessageCount, lpReadTimeout);
+	return_value = pGetMailslotInfo(hMailslot, lpMaxMessageSize, lpNextSize, lpMessageCount, lpReadTimeout);
+	TRACE("Leave GetMailslotInfo\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetMailslotInfo(void);  /* ../dlls/kernel32/sync.c:923 */
@@ -8809,10 +9585,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetMailslotInfo,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetMaximumProcessorCount(WORD  group) /* ../dlls/kernel32/cpu.c:272 */
+WINAPI DWORD wine32b_kernel32_GetMaximumProcessorCount(WORD  group) /* ../dlls/kernel32/cpu.c:272 */
 {
+	DWORD return_value;
 	TRACE("Enter GetMaximumProcessorCount\n");
-	return pGetMaximumProcessorCount(group);
+	return_value = pGetMaximumProcessorCount(group);
+	TRACE("Leave GetMaximumProcessorCount\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetMaximumProcessorCount(void);  /* ../dlls/kernel32/cpu.c:272 */
@@ -8834,10 +9613,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetMaximumProcessorCount,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNamedPipeClientProcessId(HANDLE  pipe, ULONG*  id) /* ../dlls/kernel32/sync.c:566 */
+WINAPI BOOL wine32b_kernel32_GetNamedPipeClientProcessId(HANDLE  pipe, ULONG*  id) /* ../dlls/kernel32/sync.c:566 */
 {
+	BOOL return_value;
 	TRACE("Enter GetNamedPipeClientProcessId\n");
-	return pGetNamedPipeClientProcessId(pipe, id);
+	return_value = pGetNamedPipeClientProcessId(pipe, id);
+	TRACE("Leave GetNamedPipeClientProcessId\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetNamedPipeClientProcessId(void);  /* ../dlls/kernel32/sync.c:566 */
@@ -8860,10 +9642,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNamedPipeClientProcessId,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNamedPipeClientSessionId(HANDLE  pipe, ULONG*  id) /* ../dlls/kernel32/sync.c:606 */
+WINAPI BOOL wine32b_kernel32_GetNamedPipeClientSessionId(HANDLE  pipe, ULONG*  id) /* ../dlls/kernel32/sync.c:606 */
 {
+	BOOL return_value;
 	TRACE("Enter GetNamedPipeClientSessionId\n");
-	return pGetNamedPipeClientSessionId(pipe, id);
+	return_value = pGetNamedPipeClientSessionId(pipe, id);
+	TRACE("Leave GetNamedPipeClientSessionId\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetNamedPipeClientSessionId(void);  /* ../dlls/kernel32/sync.c:606 */
@@ -8886,10 +9671,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNamedPipeClientSessionId,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNamedPipeHandleStateA(HANDLE  hNamedPipe, LPDWORD  lpState, LPDWORD  lpCurInstances, LPDWORD  lpMaxCollectionCount, LPDWORD  lpCollectDataTimeout, LPSTR  lpUsername, DWORD  nUsernameMaxSize) /* ../dlls/kernel32/sync.c:630 */
+WINAPI BOOL wine32b_kernel32_GetNamedPipeHandleStateA(HANDLE  hNamedPipe, LPDWORD  lpState, LPDWORD  lpCurInstances, LPDWORD  lpMaxCollectionCount, LPDWORD  lpCollectDataTimeout, LPSTR  lpUsername, DWORD  nUsernameMaxSize) /* ../dlls/kernel32/sync.c:630 */
 {
+	BOOL return_value;
 	TRACE("Enter GetNamedPipeHandleStateA\n");
-	return pGetNamedPipeHandleStateA(hNamedPipe, lpState, lpCurInstances, lpMaxCollectionCount, lpCollectDataTimeout, lpUsername, nUsernameMaxSize);
+	return_value = pGetNamedPipeHandleStateA(hNamedPipe, lpState, lpCurInstances, lpMaxCollectionCount, lpCollectDataTimeout, lpUsername, nUsernameMaxSize);
+	TRACE("Leave GetNamedPipeHandleStateA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetNamedPipeHandleStateA(void);  /* ../dlls/kernel32/sync.c:630 */
@@ -8914,10 +9702,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNamedPipeHandleStateA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNamedPipeHandleStateW(HANDLE  hNamedPipe, LPDWORD  lpState, LPDWORD  lpCurInstances, LPDWORD  lpMaxCollectionCount, LPDWORD  lpCollectDataTimeout, LPWSTR  lpUsername, DWORD  nUsernameMaxSize) /* ../dlls/kernel32/sync.c:656 */
+WINAPI BOOL wine32b_kernel32_GetNamedPipeHandleStateW(HANDLE  hNamedPipe, LPDWORD  lpState, LPDWORD  lpCurInstances, LPDWORD  lpMaxCollectionCount, LPDWORD  lpCollectDataTimeout, LPWSTR  lpUsername, DWORD  nUsernameMaxSize) /* ../dlls/kernel32/sync.c:656 */
 {
+	BOOL return_value;
 	TRACE("Enter GetNamedPipeHandleStateW\n");
-	return pGetNamedPipeHandleStateW(hNamedPipe, lpState, lpCurInstances, lpMaxCollectionCount, lpCollectDataTimeout, lpUsername, nUsernameMaxSize);
+	return_value = pGetNamedPipeHandleStateW(hNamedPipe, lpState, lpCurInstances, lpMaxCollectionCount, lpCollectDataTimeout, lpUsername, nUsernameMaxSize);
+	TRACE("Leave GetNamedPipeHandleStateW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetNamedPipeHandleStateW(void);  /* ../dlls/kernel32/sync.c:656 */
@@ -8942,10 +9733,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNamedPipeHandleStateW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNamedPipeServerProcessId(HANDLE  pipe, ULONG*  id) /* ../dlls/kernel32/sync.c:586 */
+WINAPI BOOL wine32b_kernel32_GetNamedPipeServerProcessId(HANDLE  pipe, ULONG*  id) /* ../dlls/kernel32/sync.c:586 */
 {
+	BOOL return_value;
 	TRACE("Enter GetNamedPipeServerProcessId\n");
-	return pGetNamedPipeServerProcessId(pipe, id);
+	return_value = pGetNamedPipeServerProcessId(pipe, id);
+	TRACE("Leave GetNamedPipeServerProcessId\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetNamedPipeServerProcessId(void);  /* ../dlls/kernel32/sync.c:586 */
@@ -8968,10 +9762,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNamedPipeServerProcessId,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNamedPipeServerSessionId(HANDLE  pipe, ULONG*  id) /* ../dlls/kernel32/sync.c:618 */
+WINAPI BOOL wine32b_kernel32_GetNamedPipeServerSessionId(HANDLE  pipe, ULONG*  id) /* ../dlls/kernel32/sync.c:618 */
 {
+	BOOL return_value;
 	TRACE("Enter GetNamedPipeServerSessionId\n");
-	return pGetNamedPipeServerSessionId(pipe, id);
+	return_value = pGetNamedPipeServerSessionId(pipe, id);
+	TRACE("Leave GetNamedPipeServerSessionId\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetNamedPipeServerSessionId(void);  /* ../dlls/kernel32/sync.c:618 */
@@ -8994,10 +9791,11 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNamedPipeServerSessionId,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_GetNativeSystemInfo(LPSYSTEM_INFO  si) /* ../dlls/kernel32/cpu.c:129 */
+WINAPI void wine32b_kernel32_GetNativeSystemInfo(LPSYSTEM_INFO  si) /* ../dlls/kernel32/cpu.c:129 */
 {
 	TRACE("Enter GetNativeSystemInfo\n");
-	return pGetNativeSystemInfo(si);
+	pGetNativeSystemInfo(si);
+	TRACE("Leave GetNativeSystemInfo\n");
 }
 
 extern WINAPI void wine32a_kernel32_GetNativeSystemInfo(void);  /* ../dlls/kernel32/cpu.c:129 */
@@ -9019,10 +9817,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNativeSystemInfo,
 	"ret \n"
 )
 
-extern WINAPI PUMS_CONTEXT wine32b_kernel32_GetNextUmsListItem(PUMS_CONTEXT  ctx) /* ../dlls/kernel32/process.c:4206 */
+WINAPI PUMS_CONTEXT wine32b_kernel32_GetNextUmsListItem(PUMS_CONTEXT  ctx) /* ../dlls/kernel32/process.c:4206 */
 {
+	PUMS_CONTEXT return_value;
 	TRACE("Enter GetNextUmsListItem\n");
-	return pGetNextUmsListItem(ctx);
+	return_value = pGetNextUmsListItem(ctx);
+	TRACE("Leave GetNextUmsListItem\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetNextUmsListItem(void);  /* ../dlls/kernel32/process.c:4206 */
@@ -9044,10 +9845,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNextUmsListItem,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNumaAvailableMemoryNode(UCHAR  node, PULONGLONG  available_bytes) /* ../dlls/kernel32/process.c:4005 */
+WINAPI BOOL wine32b_kernel32_GetNumaAvailableMemoryNode(UCHAR  node, PULONGLONG  available_bytes) /* ../dlls/kernel32/process.c:4005 */
 {
+	BOOL return_value;
 	TRACE("Enter GetNumaAvailableMemoryNode\n");
-	return pGetNumaAvailableMemoryNode(node, available_bytes);
+	return_value = pGetNumaAvailableMemoryNode(node, available_bytes);
+	TRACE("Leave GetNumaAvailableMemoryNode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetNumaAvailableMemoryNode(void);  /* ../dlls/kernel32/process.c:4005 */
@@ -9070,10 +9874,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaAvailableMemoryNode,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNumaAvailableMemoryNodeEx(USHORT  node, PULONGLONG  available_bytes) /* ../dlls/kernel32/process.c:4015 */
+WINAPI BOOL wine32b_kernel32_GetNumaAvailableMemoryNodeEx(USHORT  node, PULONGLONG  available_bytes) /* ../dlls/kernel32/process.c:4015 */
 {
+	BOOL return_value;
 	TRACE("Enter GetNumaAvailableMemoryNodeEx\n");
-	return pGetNumaAvailableMemoryNodeEx(node, available_bytes);
+	return_value = pGetNumaAvailableMemoryNodeEx(node, available_bytes);
+	TRACE("Leave GetNumaAvailableMemoryNodeEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetNumaAvailableMemoryNodeEx(void);  /* ../dlls/kernel32/process.c:4015 */
@@ -9096,10 +9903,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaAvailableMemoryNodeEx,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNumaHighestNodeNumber(PULONG  highestnode) /* ../dlls/kernel32/process.c:3975 */
+WINAPI BOOL wine32b_kernel32_GetNumaHighestNodeNumber(PULONG  highestnode) /* ../dlls/kernel32/process.c:3975 */
 {
+	BOOL return_value;
 	TRACE("Enter GetNumaHighestNodeNumber\n");
-	return pGetNumaHighestNodeNumber(highestnode);
+	return_value = pGetNumaHighestNodeNumber(highestnode);
+	TRACE("Leave GetNumaHighestNodeNumber\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetNumaHighestNodeNumber(void);  /* ../dlls/kernel32/process.c:3975 */
@@ -9121,10 +9931,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaHighestNodeNumber,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNumaNodeProcessorMask(UCHAR  node, PULONGLONG  mask) /* ../dlls/kernel32/process.c:3985 */
+WINAPI BOOL wine32b_kernel32_GetNumaNodeProcessorMask(UCHAR  node, PULONGLONG  mask) /* ../dlls/kernel32/process.c:3985 */
 {
+	BOOL return_value;
 	TRACE("Enter GetNumaNodeProcessorMask\n");
-	return pGetNumaNodeProcessorMask(node, mask);
+	return_value = pGetNumaNodeProcessorMask(node, mask);
+	TRACE("Leave GetNumaNodeProcessorMask\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetNumaNodeProcessorMask(void);  /* ../dlls/kernel32/process.c:3985 */
@@ -9147,10 +9960,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaNodeProcessorMask,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNumaNodeProcessorMaskEx(USHORT  node, PGROUP_AFFINITY  mask) /* ../dlls/kernel32/process.c:3995 */
+WINAPI BOOL wine32b_kernel32_GetNumaNodeProcessorMaskEx(USHORT  node, PGROUP_AFFINITY  mask) /* ../dlls/kernel32/process.c:3995 */
 {
+	BOOL return_value;
 	TRACE("Enter GetNumaNodeProcessorMaskEx\n");
-	return pGetNumaNodeProcessorMaskEx(node, mask);
+	return_value = pGetNumaNodeProcessorMaskEx(node, mask);
+	TRACE("Leave GetNumaNodeProcessorMaskEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetNumaNodeProcessorMaskEx(void);  /* ../dlls/kernel32/process.c:3995 */
@@ -9173,10 +9989,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaNodeProcessorMaskEx,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNumaProcessorNode(UCHAR  processor, PUCHAR  node) /* ../dlls/kernel32/process.c:4025 */
+WINAPI BOOL wine32b_kernel32_GetNumaProcessorNode(UCHAR  processor, PUCHAR  node) /* ../dlls/kernel32/process.c:4025 */
 {
+	BOOL return_value;
 	TRACE("Enter GetNumaProcessorNode\n");
-	return pGetNumaProcessorNode(processor, node);
+	return_value = pGetNumaProcessorNode(processor, node);
+	TRACE("Leave GetNumaProcessorNode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetNumaProcessorNode(void);  /* ../dlls/kernel32/process.c:4025 */
@@ -9199,10 +10018,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaProcessorNode,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNumaProcessorNodeEx(PPROCESSOR_NUMBER  processor, PUSHORT  node_number) /* ../dlls/kernel32/process.c:4046 */
+WINAPI BOOL wine32b_kernel32_GetNumaProcessorNodeEx(PPROCESSOR_NUMBER  processor, PUSHORT  node_number) /* ../dlls/kernel32/process.c:4046 */
 {
+	BOOL return_value;
 	TRACE("Enter GetNumaProcessorNodeEx\n");
-	return pGetNumaProcessorNodeEx(processor, node_number);
+	return_value = pGetNumaProcessorNodeEx(processor, node_number);
+	TRACE("Leave GetNumaProcessorNodeEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetNumaProcessorNodeEx(void);  /* ../dlls/kernel32/process.c:4046 */
@@ -9225,10 +10047,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaProcessorNodeEx,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNumaProximityNode(ULONG  proximity_id, PUCHAR  node_number) /* ../dlls/kernel32/process.c:4055 */
+WINAPI BOOL wine32b_kernel32_GetNumaProximityNode(ULONG  proximity_id, PUCHAR  node_number) /* ../dlls/kernel32/process.c:4055 */
 {
+	BOOL return_value;
 	TRACE("Enter GetNumaProximityNode\n");
-	return pGetNumaProximityNode(proximity_id, node_number);
+	return_value = pGetNumaProximityNode(proximity_id, node_number);
+	TRACE("Leave GetNumaProximityNode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetNumaProximityNode(void);  /* ../dlls/kernel32/process.c:4055 */
@@ -9251,10 +10076,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaProximityNode,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNumaProximityNodeEx(ULONG  proximity_id, PUSHORT  node_number) /* ../dlls/kernel32/process.c:4064 */
+WINAPI BOOL wine32b_kernel32_GetNumaProximityNodeEx(ULONG  proximity_id, PUSHORT  node_number) /* ../dlls/kernel32/process.c:4064 */
 {
+	BOOL return_value;
 	TRACE("Enter GetNumaProximityNodeEx\n");
-	return pGetNumaProximityNodeEx(proximity_id, node_number);
+	return_value = pGetNumaProximityNodeEx(proximity_id, node_number);
+	TRACE("Leave GetNumaProximityNodeEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetNumaProximityNodeEx(void);  /* ../dlls/kernel32/process.c:4064 */
@@ -9277,10 +10105,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumaProximityNodeEx,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetNumberFormatA(LCID  lcid, DWORD  dwFlags, LPCSTR  lpszValue, NUMBERFMTA*  lpFormat, LPSTR  lpNumberStr, int  cchOut) /* ../dlls/kernel32/lcformat.c:1029 */
+WINAPI INT wine32b_kernel32_GetNumberFormatA(LCID  lcid, DWORD  dwFlags, LPCSTR  lpszValue, NUMBERFMTA*  lpFormat, LPSTR  lpNumberStr, int  cchOut) /* ../dlls/kernel32/lcformat.c:1029 */
 {
+	INT return_value;
 	TRACE("Enter GetNumberFormatA\n");
-	return pGetNumberFormatA(lcid, dwFlags, lpszValue, lpFormat, lpNumberStr, cchOut);
+	return_value = pGetNumberFormatA(lcid, dwFlags, lpszValue, lpFormat, lpNumberStr, cchOut);
+	TRACE("Leave GetNumberFormatA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetNumberFormatA(void);  /* ../dlls/kernel32/lcformat.c:1029 */
@@ -9305,10 +10136,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumberFormatA,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetNumberFormatEx(LPCWSTR  name, DWORD  flags, LPCWSTR  value, NUMBERFMTW*  format, LPWSTR  number, int  numout) /* ../dlls/kernel32/lcformat.c:1350 */
+WINAPI INT wine32b_kernel32_GetNumberFormatEx(LPCWSTR  name, DWORD  flags, LPCWSTR  value, NUMBERFMTW*  format, LPWSTR  number, int  numout) /* ../dlls/kernel32/lcformat.c:1350 */
 {
+	INT return_value;
 	TRACE("Enter GetNumberFormatEx\n");
-	return pGetNumberFormatEx(name, flags, value, format, number, numout);
+	return_value = pGetNumberFormatEx(name, flags, value, format, number, numout);
+	TRACE("Leave GetNumberFormatEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetNumberFormatEx(void);  /* ../dlls/kernel32/lcformat.c:1350 */
@@ -9333,10 +10167,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumberFormatEx,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetNumberFormatW(LCID  lcid, DWORD  dwFlags, LPCWSTR  lpszValue, NUMBERFMTW*  lpFormat, LPWSTR  lpNumberStr, int  cchOut) /* ../dlls/kernel32/lcformat.c:1111 */
+WINAPI INT wine32b_kernel32_GetNumberFormatW(LCID  lcid, DWORD  dwFlags, LPCWSTR  lpszValue, NUMBERFMTW*  lpFormat, LPWSTR  lpNumberStr, int  cchOut) /* ../dlls/kernel32/lcformat.c:1111 */
 {
+	INT return_value;
 	TRACE("Enter GetNumberFormatW\n");
-	return pGetNumberFormatW(lcid, dwFlags, lpszValue, lpFormat, lpNumberStr, cchOut);
+	return_value = pGetNumberFormatW(lcid, dwFlags, lpszValue, lpFormat, lpNumberStr, cchOut);
+	TRACE("Leave GetNumberFormatW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetNumberFormatW(void);  /* ../dlls/kernel32/lcformat.c:1111 */
@@ -9361,10 +10198,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumberFormatW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetNumberOfConsoleFonts(void) /* ../dlls/kernel32/console.c:1622 */
+WINAPI DWORD wine32b_kernel32_GetNumberOfConsoleFonts(void) /* ../dlls/kernel32/console.c:1622 */
 {
+	DWORD return_value;
 	TRACE("Enter GetNumberOfConsoleFonts\n");
-	return pGetNumberOfConsoleFonts();
+	return_value = pGetNumberOfConsoleFonts();
+	TRACE("Leave GetNumberOfConsoleFonts\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetNumberOfConsoleFonts(void);  /* ../dlls/kernel32/console.c:1622 */
@@ -9385,10 +10225,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumberOfConsoleFonts,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetNumberOfConsoleMouseButtons(LPDWORD  nrofbuttons) /* ../dlls/kernel32/console.c:832 */
+WINAPI BOOL wine32b_kernel32_GetNumberOfConsoleMouseButtons(LPDWORD  nrofbuttons) /* ../dlls/kernel32/console.c:832 */
 {
+	BOOL return_value;
 	TRACE("Enter GetNumberOfConsoleMouseButtons\n");
-	return pGetNumberOfConsoleMouseButtons(nrofbuttons);
+	return_value = pGetNumberOfConsoleMouseButtons(nrofbuttons);
+	TRACE("Leave GetNumberOfConsoleMouseButtons\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetNumberOfConsoleMouseButtons(void);  /* ../dlls/kernel32/console.c:832 */
@@ -9410,10 +10253,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetNumberOfConsoleMouseButtons,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetOEMCP(void) /* ../dlls/kernel32/locale.c:2048 */
+WINAPI UINT wine32b_kernel32_GetOEMCP(void) /* ../dlls/kernel32/locale.c:2048 */
 {
+	UINT return_value;
 	TRACE("Enter GetOEMCP\n");
-	return pGetOEMCP();
+	return_value = pGetOEMCP();
+	TRACE("Leave GetOEMCP\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetOEMCP(void);  /* ../dlls/kernel32/locale.c:2048 */
@@ -9434,10 +10280,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetOEMCP,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetUserPreferredUILanguages(DWORD  flags, ULONG*  count, WCHAR*  buffer, ULONG*  size) /* ../dlls/kernel32/locale.c:1351 */
+WINAPI BOOL wine32b_kernel32_GetUserPreferredUILanguages(DWORD  flags, ULONG*  count, WCHAR*  buffer, ULONG*  size) /* ../dlls/kernel32/locale.c:1351 */
 {
+	BOOL return_value;
 	TRACE("Enter GetUserPreferredUILanguages\n");
-	return pGetUserPreferredUILanguages(flags, count, buffer, size);
+	return_value = pGetUserPreferredUILanguages(flags, count, buffer, size);
+	TRACE("Leave GetUserPreferredUILanguages\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetUserPreferredUILanguages(void);  /* ../dlls/kernel32/locale.c:1351 */
@@ -9462,10 +10311,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetUserPreferredUILanguages,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_kernel32_GetPackageFullName(HANDLE  process, UINT32*  length, PWSTR  name) /* ../dlls/kernel32/version.c:158 */
+WINAPI LONG wine32b_kernel32_GetPackageFullName(HANDLE  process, UINT32*  length, PWSTR  name) /* ../dlls/kernel32/version.c:158 */
 {
+	LONG return_value;
 	TRACE("Enter GetPackageFullName\n");
-	return pGetPackageFullName(process, length, name);
+	return_value = pGetPackageFullName(process, length, name);
+	TRACE("Leave GetPackageFullName\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetPackageFullName(void);  /* ../dlls/kernel32/version.c:158 */
@@ -9489,10 +10341,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetPackageFullName,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetPhysicallyInstalledSystemMemory(ULONGLONG*  total_memory) /* ../dlls/kernel32/heap.c:897 */
+WINAPI BOOL wine32b_kernel32_GetPhysicallyInstalledSystemMemory(ULONGLONG*  total_memory) /* ../dlls/kernel32/heap.c:897 */
 {
+	BOOL return_value;
 	TRACE("Enter GetPhysicallyInstalledSystemMemory\n");
-	return pGetPhysicallyInstalledSystemMemory(total_memory);
+	return_value = pGetPhysicallyInstalledSystemMemory(total_memory);
+	TRACE("Leave GetPhysicallyInstalledSystemMemory\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetPhysicallyInstalledSystemMemory(void);  /* ../dlls/kernel32/heap.c:897 */
@@ -9514,10 +10369,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetPhysicallyInstalledSystemMemory,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetPrivateProfileIntA(LPCSTR  section, LPCSTR  entry, INT  def_val, LPCSTR  filename) /* ../dlls/kernel32/profile.c:1254 */
+WINAPI UINT wine32b_kernel32_GetPrivateProfileIntA(LPCSTR  section, LPCSTR  entry, INT  def_val, LPCSTR  filename) /* ../dlls/kernel32/profile.c:1254 */
 {
+	UINT return_value;
 	TRACE("Enter GetPrivateProfileIntA\n");
-	return pGetPrivateProfileIntA(section, entry, def_val, filename);
+	return_value = pGetPrivateProfileIntA(section, entry, def_val, filename);
+	TRACE("Leave GetPrivateProfileIntA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetPrivateProfileIntA(void);  /* ../dlls/kernel32/profile.c:1254 */
@@ -9542,10 +10400,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetPrivateProfileIntA,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetPrivateProfileIntW(LPCWSTR  section, LPCWSTR  entry, INT  def_val, LPCWSTR  filename) /* ../dlls/kernel32/profile.c:1226 */
+WINAPI UINT wine32b_kernel32_GetPrivateProfileIntW(LPCWSTR  section, LPCWSTR  entry, INT  def_val, LPCWSTR  filename) /* ../dlls/kernel32/profile.c:1226 */
 {
+	UINT return_value;
 	TRACE("Enter GetPrivateProfileIntW\n");
-	return pGetPrivateProfileIntW(section, entry, def_val, filename);
+	return_value = pGetPrivateProfileIntW(section, entry, def_val, filename);
+	TRACE("Leave GetPrivateProfileIntW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetPrivateProfileIntW(void);  /* ../dlls/kernel32/profile.c:1226 */
@@ -9570,10 +10431,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetPrivateProfileIntW,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetPrivateProfileSectionA(LPCSTR  section, LPSTR  buffer, DWORD  len, LPCSTR  filename) /* ../dlls/kernel32/profile.c:1302 */
+WINAPI INT wine32b_kernel32_GetPrivateProfileSectionA(LPCSTR  section, LPSTR  buffer, DWORD  len, LPCSTR  filename) /* ../dlls/kernel32/profile.c:1302 */
 {
+	INT return_value;
 	TRACE("Enter GetPrivateProfileSectionA\n");
-	return pGetPrivateProfileSectionA(section, buffer, len, filename);
+	return_value = pGetPrivateProfileSectionA(section, buffer, len, filename);
+	TRACE("Leave GetPrivateProfileSectionA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetPrivateProfileSectionA(void);  /* ../dlls/kernel32/profile.c:1302 */
@@ -9598,10 +10462,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetPrivateProfileSectionA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetPrivateProfileSectionNamesA(LPSTR  buffer, DWORD  size, LPCSTR  filename) /* ../dlls/kernel32/profile.c:1572 */
+WINAPI DWORD wine32b_kernel32_GetPrivateProfileSectionNamesA(LPSTR  buffer, DWORD  size, LPCSTR  filename) /* ../dlls/kernel32/profile.c:1572 */
 {
+	DWORD return_value;
 	TRACE("Enter GetPrivateProfileSectionNamesA\n");
-	return pGetPrivateProfileSectionNamesA(buffer, size, filename);
+	return_value = pGetPrivateProfileSectionNamesA(buffer, size, filename);
+	TRACE("Leave GetPrivateProfileSectionNamesA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetPrivateProfileSectionNamesA(void);  /* ../dlls/kernel32/profile.c:1572 */
@@ -9625,10 +10492,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetPrivateProfileSectionNamesA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetPrivateProfileSectionNamesW(LPWSTR  buffer, DWORD  size, LPCWSTR  filename) /* ../dlls/kernel32/profile.c:1553 */
+WINAPI DWORD wine32b_kernel32_GetPrivateProfileSectionNamesW(LPWSTR  buffer, DWORD  size, LPCWSTR  filename) /* ../dlls/kernel32/profile.c:1553 */
 {
+	DWORD return_value;
 	TRACE("Enter GetPrivateProfileSectionNamesW\n");
-	return pGetPrivateProfileSectionNamesW(buffer, size, filename);
+	return_value = pGetPrivateProfileSectionNamesW(buffer, size, filename);
+	TRACE("Leave GetPrivateProfileSectionNamesW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetPrivateProfileSectionNamesW(void);  /* ../dlls/kernel32/profile.c:1553 */
@@ -9652,10 +10522,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetPrivateProfileSectionNamesW,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetPrivateProfileSectionW(LPCWSTR  section, LPWSTR  buffer, DWORD  len, LPCWSTR  filename) /* ../dlls/kernel32/profile.c:1276 */
+WINAPI INT wine32b_kernel32_GetPrivateProfileSectionW(LPCWSTR  section, LPWSTR  buffer, DWORD  len, LPCWSTR  filename) /* ../dlls/kernel32/profile.c:1276 */
 {
+	INT return_value;
 	TRACE("Enter GetPrivateProfileSectionW\n");
-	return pGetPrivateProfileSectionW(section, buffer, len, filename);
+	return_value = pGetPrivateProfileSectionW(section, buffer, len, filename);
+	TRACE("Leave GetPrivateProfileSectionW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetPrivateProfileSectionW(void);  /* ../dlls/kernel32/profile.c:1276 */
@@ -9680,10 +10553,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetPrivateProfileSectionW,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetPrivateProfileStringA(LPCSTR  section, LPCSTR  entry, LPCSTR  def_val, LPSTR  buffer, UINT  len, LPCSTR  filename) /* ../dlls/kernel32/profile.c:1144 */
+WINAPI INT wine32b_kernel32_GetPrivateProfileStringA(LPCSTR  section, LPCSTR  entry, LPCSTR  def_val, LPSTR  buffer, UINT  len, LPCSTR  filename) /* ../dlls/kernel32/profile.c:1144 */
 {
+	INT return_value;
 	TRACE("Enter GetPrivateProfileStringA\n");
-	return pGetPrivateProfileStringA(section, entry, def_val, buffer, len, filename);
+	return_value = pGetPrivateProfileStringA(section, entry, def_val, buffer, len, filename);
+	TRACE("Leave GetPrivateProfileStringA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetPrivateProfileStringA(void);  /* ../dlls/kernel32/profile.c:1144 */
@@ -9708,10 +10584,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetPrivateProfileStringA,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetPrivateProfileStringW(LPCWSTR  section, LPCWSTR  entry, LPCWSTR  def_val, LPWSTR  buffer, UINT  len, LPCWSTR  filename) /* ../dlls/kernel32/profile.c:1088 */
+WINAPI INT wine32b_kernel32_GetPrivateProfileStringW(LPCWSTR  section, LPCWSTR  entry, LPCWSTR  def_val, LPWSTR  buffer, UINT  len, LPCWSTR  filename) /* ../dlls/kernel32/profile.c:1088 */
 {
+	INT return_value;
 	TRACE("Enter GetPrivateProfileStringW\n");
-	return pGetPrivateProfileStringW(section, entry, def_val, buffer, len, filename);
+	return_value = pGetPrivateProfileStringW(section, entry, def_val, buffer, len, filename);
+	TRACE("Leave GetPrivateProfileStringW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetPrivateProfileStringW(void);  /* ../dlls/kernel32/profile.c:1088 */
@@ -9736,10 +10615,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetPrivateProfileStringW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetPrivateProfileStructA(LPCSTR  section, LPCSTR  key, LPVOID  buffer, UINT  len, LPCSTR  filename) /* ../dlls/kernel32/profile.c:1681 */
+WINAPI BOOL wine32b_kernel32_GetPrivateProfileStructA(LPCSTR  section, LPCSTR  key, LPVOID  buffer, UINT  len, LPCSTR  filename) /* ../dlls/kernel32/profile.c:1681 */
 {
+	BOOL return_value;
 	TRACE("Enter GetPrivateProfileStructA\n");
-	return pGetPrivateProfileStructA(section, key, buffer, len, filename);
+	return_value = pGetPrivateProfileStructA(section, key, buffer, len, filename);
+	TRACE("Leave GetPrivateProfileStructA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetPrivateProfileStructA(void);  /* ../dlls/kernel32/profile.c:1681 */
@@ -9764,10 +10646,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetPrivateProfileStructA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetPrivateProfileStructW(LPCWSTR  section, LPCWSTR  key, LPVOID  buf, UINT  len, LPCWSTR  filename) /* ../dlls/kernel32/profile.c:1608 */
+WINAPI BOOL wine32b_kernel32_GetPrivateProfileStructW(LPCWSTR  section, LPCWSTR  key, LPVOID  buf, UINT  len, LPCWSTR  filename) /* ../dlls/kernel32/profile.c:1608 */
 {
+	BOOL return_value;
 	TRACE("Enter GetPrivateProfileStructW\n");
-	return pGetPrivateProfileStructW(section, key, buf, len, filename);
+	return_value = pGetPrivateProfileStructW(section, key, buf, len, filename);
+	TRACE("Leave GetPrivateProfileStructW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetPrivateProfileStructW(void);  /* ../dlls/kernel32/profile.c:1608 */
@@ -9792,10 +10677,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetPrivateProfileStructW,
 	"ret \n"
 )
 
-extern WINAPI FARPROC wine32b_kernel32_GetProcAddress(HMODULE  hModule, LPCSTR  function) /* ../dlls/kernel32/module.c:1016 */
+WINAPI FARPROC wine32b_kernel32_GetProcAddress(HMODULE  hModule, LPCSTR  function) /* ../dlls/kernel32/module.c:1016 */
 {
+	FARPROC return_value;
 	TRACE("Enter GetProcAddress\n");
-	return pGetProcAddress(hModule, function);
+	return_value = pGetProcAddress(hModule, function);
+	TRACE("Leave GetProcAddress\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetProcAddress(void);  /* ../dlls/kernel32/module.c:1016 */
@@ -9818,10 +10706,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcAddress,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetProcessAffinityMask(HANDLE  hProcess, PDWORD_PTR  process_mask, PDWORD_PTR  system_mask) /* ../dlls/kernel32/process.c:3404 */
+WINAPI BOOL wine32b_kernel32_GetProcessAffinityMask(HANDLE  hProcess, PDWORD_PTR  process_mask, PDWORD_PTR  system_mask) /* ../dlls/kernel32/process.c:3404 */
 {
+	BOOL return_value;
 	TRACE("Enter GetProcessAffinityMask\n");
-	return pGetProcessAffinityMask(hProcess, process_mask, system_mask);
+	return_value = pGetProcessAffinityMask(hProcess, process_mask, system_mask);
+	TRACE("Leave GetProcessAffinityMask\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetProcessAffinityMask(void);  /* ../dlls/kernel32/process.c:3404 */
@@ -9845,10 +10736,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcessAffinityMask,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetProcessDEPPolicy(HANDLE  process, LPDWORD  flags, PBOOL  permanent) /* ../dlls/kernel32/process.c:4073 */
+WINAPI BOOL wine32b_kernel32_GetProcessDEPPolicy(HANDLE  process, LPDWORD  flags, PBOOL  permanent) /* ../dlls/kernel32/process.c:4073 */
 {
+	BOOL return_value;
 	TRACE("Enter GetProcessDEPPolicy\n");
-	return pGetProcessDEPPolicy(process, flags, permanent);
+	return_value = pGetProcessDEPPolicy(process, flags, permanent);
+	TRACE("Leave GetProcessDEPPolicy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetProcessDEPPolicy(void);  /* ../dlls/kernel32/process.c:4073 */
@@ -9872,10 +10766,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcessDEPPolicy,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetProcessFlags(DWORD  processid) /* ../dlls/kernel32/process.c:3208 */
+WINAPI DWORD wine32b_kernel32_GetProcessFlags(DWORD  processid) /* ../dlls/kernel32/process.c:3208 */
 {
+	DWORD return_value;
 	TRACE("Enter GetProcessFlags\n");
-	return pGetProcessFlags(processid);
+	return_value = pGetProcessFlags(processid);
+	TRACE("Leave GetProcessFlags\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetProcessFlags(void);  /* ../dlls/kernel32/process.c:3208 */
@@ -9897,10 +10794,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcessFlags,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetProcessIoCounters(HANDLE  hProcess, PIO_COUNTERS  ioc) /* ../dlls/kernel32/process.c:3521 */
+WINAPI BOOL wine32b_kernel32_GetProcessIoCounters(HANDLE  hProcess, PIO_COUNTERS  ioc) /* ../dlls/kernel32/process.c:3521 */
 {
+	BOOL return_value;
 	TRACE("Enter GetProcessIoCounters\n");
-	return pGetProcessIoCounters(hProcess, ioc);
+	return_value = pGetProcessIoCounters(hProcess, ioc);
+	TRACE("Leave GetProcessIoCounters\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetProcessIoCounters(void);  /* ../dlls/kernel32/process.c:3521 */
@@ -9923,10 +10823,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcessIoCounters,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetProcessPreferredUILanguages(DWORD  flags, ULONG*  count, WCHAR*  buf, ULONG*  size) /* ../dlls/kernel32/locale.c:1291 */
+WINAPI BOOL wine32b_kernel32_GetProcessPreferredUILanguages(DWORD  flags, ULONG*  count, WCHAR*  buf, ULONG*  size) /* ../dlls/kernel32/locale.c:1291 */
 {
+	BOOL return_value;
 	TRACE("Enter GetProcessPreferredUILanguages\n");
-	return pGetProcessPreferredUILanguages(flags, count, buf, size);
+	return_value = pGetProcessPreferredUILanguages(flags, count, buf, size);
+	TRACE("Leave GetProcessPreferredUILanguages\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetProcessPreferredUILanguages(void);  /* ../dlls/kernel32/locale.c:1291 */
@@ -9951,10 +10854,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcessPreferredUILanguages,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetProcessTimes(HANDLE  hprocess, LPFILETIME  lpCreationTime, LPFILETIME  lpExitTime, LPFILETIME  lpKernelTime, LPFILETIME  lpUserTime) /* ../dlls/kernel32/time.c:890 */
+WINAPI BOOL wine32b_kernel32_GetProcessTimes(HANDLE  hprocess, LPFILETIME  lpCreationTime, LPFILETIME  lpExitTime, LPFILETIME  lpKernelTime, LPFILETIME  lpUserTime) /* ../dlls/kernel32/time.c:890 */
 {
+	BOOL return_value;
 	TRACE("Enter GetProcessTimes\n");
-	return pGetProcessTimes(hprocess, lpCreationTime, lpExitTime, lpKernelTime, lpUserTime);
+	return_value = pGetProcessTimes(hprocess, lpCreationTime, lpExitTime, lpKernelTime, lpUserTime);
+	TRACE("Leave GetProcessTimes\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetProcessTimes(void);  /* ../dlls/kernel32/time.c:890 */
@@ -9979,10 +10885,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcessTimes,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetProcessVersion(DWORD  pid) /* ../dlls/kernel32/process.c:3430 */
+WINAPI DWORD wine32b_kernel32_GetProcessVersion(DWORD  pid) /* ../dlls/kernel32/process.c:3430 */
 {
+	DWORD return_value;
 	TRACE("Enter GetProcessVersion\n");
-	return pGetProcessVersion(pid);
+	return_value = pGetProcessVersion(pid);
+	TRACE("Leave GetProcessVersion\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetProcessVersion(void);  /* ../dlls/kernel32/process.c:3430 */
@@ -10004,10 +10913,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcessVersion,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetProcessWorkingSetSize(HANDLE  process, SIZE_T*  minset, SIZE_T*  maxset) /* ../dlls/kernel32/process.c:3512 */
+WINAPI BOOL wine32b_kernel32_GetProcessWorkingSetSize(HANDLE  process, SIZE_T*  minset, SIZE_T*  maxset) /* ../dlls/kernel32/process.c:3512 */
 {
+	BOOL return_value;
 	TRACE("Enter GetProcessWorkingSetSize\n");
-	return pGetProcessWorkingSetSize(process, minset, maxset);
+	return_value = pGetProcessWorkingSetSize(process, minset, maxset);
+	TRACE("Leave GetProcessWorkingSetSize\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetProcessWorkingSetSize(void);  /* ../dlls/kernel32/process.c:3512 */
@@ -10031,10 +10943,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProcessWorkingSetSize,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetProductInfo(DWORD  dwOSMajorVersion, DWORD  dwOSMinorVersion, DWORD  dwSpMajorVersion, DWORD  dwSpMinorVersion, PDWORD  pdwReturnedProductType) /* ../dlls/kernel32/version.c:121 */
+WINAPI BOOL wine32b_kernel32_GetProductInfo(DWORD  dwOSMajorVersion, DWORD  dwOSMinorVersion, DWORD  dwSpMajorVersion, DWORD  dwSpMinorVersion, PDWORD  pdwReturnedProductType) /* ../dlls/kernel32/version.c:121 */
 {
+	BOOL return_value;
 	TRACE("Enter GetProductInfo\n");
-	return pGetProductInfo(dwOSMajorVersion, dwOSMinorVersion, dwSpMajorVersion, dwSpMinorVersion, pdwReturnedProductType);
+	return_value = pGetProductInfo(dwOSMajorVersion, dwOSMinorVersion, dwSpMajorVersion, dwSpMinorVersion, pdwReturnedProductType);
+	TRACE("Leave GetProductInfo\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetProductInfo(void);  /* ../dlls/kernel32/version.c:121 */
@@ -10059,10 +10974,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProductInfo,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetProfileIntA(LPCSTR  section, LPCSTR  entry, INT  def_val) /* ../dlls/kernel32/profile.c:1072 */
+WINAPI UINT wine32b_kernel32_GetProfileIntA(LPCSTR  section, LPCSTR  entry, INT  def_val) /* ../dlls/kernel32/profile.c:1072 */
 {
+	UINT return_value;
 	TRACE("Enter GetProfileIntA\n");
-	return pGetProfileIntA(section, entry, def_val);
+	return_value = pGetProfileIntA(section, entry, def_val);
+	TRACE("Leave GetProfileIntA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetProfileIntA(void);  /* ../dlls/kernel32/profile.c:1072 */
@@ -10086,10 +11004,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProfileIntA,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetProfileIntW(LPCWSTR  section, LPCWSTR  entry, INT  def_val) /* ../dlls/kernel32/profile.c:1080 */
+WINAPI UINT wine32b_kernel32_GetProfileIntW(LPCWSTR  section, LPCWSTR  entry, INT  def_val) /* ../dlls/kernel32/profile.c:1080 */
 {
+	UINT return_value;
 	TRACE("Enter GetProfileIntW\n");
-	return pGetProfileIntW(section, entry, def_val);
+	return_value = pGetProfileIntW(section, entry, def_val);
+	TRACE("Leave GetProfileIntW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetProfileIntW(void);  /* ../dlls/kernel32/profile.c:1080 */
@@ -10113,10 +11034,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProfileIntW,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetProfileSectionA(LPCSTR  section, LPSTR  buffer, DWORD  len) /* ../dlls/kernel32/profile.c:1348 */
+WINAPI INT wine32b_kernel32_GetProfileSectionA(LPCSTR  section, LPSTR  buffer, DWORD  len) /* ../dlls/kernel32/profile.c:1348 */
 {
+	INT return_value;
 	TRACE("Enter GetProfileSectionA\n");
-	return pGetProfileSectionA(section, buffer, len);
+	return_value = pGetProfileSectionA(section, buffer, len);
+	TRACE("Leave GetProfileSectionA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetProfileSectionA(void);  /* ../dlls/kernel32/profile.c:1348 */
@@ -10140,10 +11064,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProfileSectionA,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetProfileSectionW(LPCWSTR  section, LPWSTR  buffer, DWORD  len) /* ../dlls/kernel32/profile.c:1356 */
+WINAPI INT wine32b_kernel32_GetProfileSectionW(LPCWSTR  section, LPWSTR  buffer, DWORD  len) /* ../dlls/kernel32/profile.c:1356 */
 {
+	INT return_value;
 	TRACE("Enter GetProfileSectionW\n");
-	return pGetProfileSectionW(section, buffer, len);
+	return_value = pGetProfileSectionW(section, buffer, len);
+	TRACE("Leave GetProfileSectionW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetProfileSectionW(void);  /* ../dlls/kernel32/profile.c:1356 */
@@ -10167,10 +11094,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProfileSectionW,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetProfileStringA(LPCSTR  section, LPCSTR  entry, LPCSTR  def_val, LPSTR  buffer, UINT  len) /* ../dlls/kernel32/profile.c:1187 */
+WINAPI INT wine32b_kernel32_GetProfileStringA(LPCSTR  section, LPCSTR  entry, LPCSTR  def_val, LPSTR  buffer, UINT  len) /* ../dlls/kernel32/profile.c:1187 */
 {
+	INT return_value;
 	TRACE("Enter GetProfileStringA\n");
-	return pGetProfileStringA(section, entry, def_val, buffer, len);
+	return_value = pGetProfileStringA(section, entry, def_val, buffer, len);
+	TRACE("Leave GetProfileStringA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetProfileStringA(void);  /* ../dlls/kernel32/profile.c:1187 */
@@ -10195,10 +11125,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProfileStringA,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetProfileStringW(LPCWSTR  section, LPCWSTR  entry, LPCWSTR  def_val, LPWSTR  buffer, UINT  len) /* ../dlls/kernel32/profile.c:1197 */
+WINAPI INT wine32b_kernel32_GetProfileStringW(LPCWSTR  section, LPCWSTR  entry, LPCWSTR  def_val, LPWSTR  buffer, UINT  len) /* ../dlls/kernel32/profile.c:1197 */
 {
+	INT return_value;
 	TRACE("Enter GetProfileStringW\n");
-	return pGetProfileStringW(section, entry, def_val, buffer, len);
+	return_value = pGetProfileStringW(section, entry, def_val, buffer, len);
+	TRACE("Leave GetProfileStringW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetProfileStringW(void);  /* ../dlls/kernel32/profile.c:1197 */
@@ -10223,10 +11156,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetProfileStringW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetShortPathNameA(LPCSTR  longpath, LPSTR  shortpath, DWORD  shortlen) /* ../dlls/kernel32/path.c:574 */
+WINAPI DWORD wine32b_kernel32_GetShortPathNameA(LPCSTR  longpath, LPSTR  shortpath, DWORD  shortlen) /* ../dlls/kernel32/path.c:574 */
 {
+	DWORD return_value;
 	TRACE("Enter GetShortPathNameA\n");
-	return pGetShortPathNameA(longpath, shortpath, shortlen);
+	return_value = pGetShortPathNameA(longpath, shortpath, shortlen);
+	TRACE("Leave GetShortPathNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetShortPathNameA(void);  /* ../dlls/kernel32/path.c:574 */
@@ -10250,10 +11186,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetShortPathNameA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetShortPathNameW(LPCWSTR  longpath, LPWSTR  shortpath, DWORD  shortlen) /* ../dlls/kernel32/path.c:447 */
+WINAPI DWORD wine32b_kernel32_GetShortPathNameW(LPCWSTR  longpath, LPWSTR  shortpath, DWORD  shortlen) /* ../dlls/kernel32/path.c:447 */
 {
+	DWORD return_value;
 	TRACE("Enter GetShortPathNameW\n");
-	return pGetShortPathNameW(longpath, shortpath, shortlen);
+	return_value = pGetShortPathNameW(longpath, shortpath, shortlen);
+	TRACE("Leave GetShortPathNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetShortPathNameW(void);  /* ../dlls/kernel32/path.c:447 */
@@ -10277,10 +11216,11 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetShortPathNameW,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_GetStartupInfoA(LPSTARTUPINFOA  info) /* ../dlls/kernel32/environ.c:54 */
+WINAPI void wine32b_kernel32_GetStartupInfoA(LPSTARTUPINFOA  info) /* ../dlls/kernel32/environ.c:54 */
 {
 	TRACE("Enter GetStartupInfoA\n");
-	return pGetStartupInfoA(info);
+	pGetStartupInfoA(info);
+	TRACE("Leave GetStartupInfoA\n");
 }
 
 extern WINAPI void wine32a_kernel32_GetStartupInfoA(void);  /* ../dlls/kernel32/environ.c:54 */
@@ -10302,10 +11242,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetStartupInfoA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetStringTypeA(LCID  locale, DWORD  type, LPCSTR  src, INT  count, LPWORD  chartype) /* ../dlls/kernel32/locale.c:3181 */
+WINAPI BOOL wine32b_kernel32_GetStringTypeA(LCID  locale, DWORD  type, LPCSTR  src, INT  count, LPWORD  chartype) /* ../dlls/kernel32/locale.c:3181 */
 {
+	BOOL return_value;
 	TRACE("Enter GetStringTypeA\n");
-	return pGetStringTypeA(locale, type, src, count, chartype);
+	return_value = pGetStringTypeA(locale, type, src, count, chartype);
+	TRACE("Leave GetStringTypeA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetStringTypeA(void);  /* ../dlls/kernel32/locale.c:3181 */
@@ -10330,10 +11273,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetStringTypeA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetStringTypeExA(LCID  locale, DWORD  type, LPCSTR  src, INT  count, LPWORD  chartype) /* ../dlls/kernel32/locale.c:3228 */
+WINAPI BOOL wine32b_kernel32_GetStringTypeExA(LCID  locale, DWORD  type, LPCSTR  src, INT  count, LPWORD  chartype) /* ../dlls/kernel32/locale.c:3228 */
 {
+	BOOL return_value;
 	TRACE("Enter GetStringTypeExA\n");
-	return pGetStringTypeExA(locale, type, src, count, chartype);
+	return_value = pGetStringTypeExA(locale, type, src, count, chartype);
+	TRACE("Leave GetStringTypeExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetStringTypeExA(void);  /* ../dlls/kernel32/locale.c:3228 */
@@ -10358,10 +11304,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetStringTypeExA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetStringTypeExW(LCID  locale, DWORD  type, LPCWSTR  src, INT  count, LPWORD  chartype) /* ../dlls/kernel32/locale.c:3157 */
+WINAPI BOOL wine32b_kernel32_GetStringTypeExW(LCID  locale, DWORD  type, LPCWSTR  src, INT  count, LPWORD  chartype) /* ../dlls/kernel32/locale.c:3157 */
 {
+	BOOL return_value;
 	TRACE("Enter GetStringTypeExW\n");
-	return pGetStringTypeExW(locale, type, src, count, chartype);
+	return_value = pGetStringTypeExW(locale, type, src, count, chartype);
+	TRACE("Leave GetStringTypeExW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetStringTypeExW(void);  /* ../dlls/kernel32/locale.c:3157 */
@@ -10386,10 +11335,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetStringTypeExW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetStringTypeW(DWORD  type, LPCWSTR  src, INT  count, LPWORD  chartype) /* ../dlls/kernel32/locale.c:3087 */
+WINAPI BOOL wine32b_kernel32_GetStringTypeW(DWORD  type, LPCWSTR  src, INT  count, LPWORD  chartype) /* ../dlls/kernel32/locale.c:3087 */
 {
+	BOOL return_value;
 	TRACE("Enter GetStringTypeW\n");
-	return pGetStringTypeW(type, src, count, chartype);
+	return_value = pGetStringTypeW(type, src, count, chartype);
+	TRACE("Leave GetStringTypeW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetStringTypeW(void);  /* ../dlls/kernel32/locale.c:3087 */
@@ -10414,10 +11366,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetStringTypeW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetSystemFileCacheSize(PSIZE_T  mincache, PSIZE_T  maxcache, PDWORD  flags) /* ../dlls/kernel32/heap.c:915 */
+WINAPI BOOL wine32b_kernel32_GetSystemFileCacheSize(PSIZE_T  mincache, PSIZE_T  maxcache, PDWORD  flags) /* ../dlls/kernel32/heap.c:915 */
 {
+	BOOL return_value;
 	TRACE("Enter GetSystemFileCacheSize\n");
-	return pGetSystemFileCacheSize(mincache, maxcache, flags);
+	return_value = pGetSystemFileCacheSize(mincache, maxcache, flags);
+	TRACE("Leave GetSystemFileCacheSize\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetSystemFileCacheSize(void);  /* ../dlls/kernel32/heap.c:915 */
@@ -10441,10 +11396,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemFileCacheSize,
 	"ret \n"
 )
 
-extern WINAPI LCID wine32b_kernel32_GetSystemDefaultLCID(void) /* ../dlls/kernel32/locale.c:1226 */
+WINAPI LCID wine32b_kernel32_GetSystemDefaultLCID(void) /* ../dlls/kernel32/locale.c:1226 */
 {
+	LCID return_value;
 	TRACE("Enter GetSystemDefaultLCID\n");
-	return pGetSystemDefaultLCID();
+	return_value = pGetSystemDefaultLCID();
+	TRACE("Leave GetSystemDefaultLCID\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetSystemDefaultLCID(void);  /* ../dlls/kernel32/locale.c:1226 */
@@ -10465,10 +11423,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemDefaultLCID,
 	"ret \n"
 )
 
-extern WINAPI LANGID wine32b_kernel32_GetSystemDefaultLangID(void) /* ../dlls/kernel32/locale.c:1190 */
+WINAPI LANGID wine32b_kernel32_GetSystemDefaultLangID(void) /* ../dlls/kernel32/locale.c:1190 */
 {
+	LANGID return_value;
 	TRACE("Enter GetSystemDefaultLangID\n");
-	return pGetSystemDefaultLangID();
+	return_value = pGetSystemDefaultLangID();
+	TRACE("Leave GetSystemDefaultLangID\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetSystemDefaultLangID(void);  /* ../dlls/kernel32/locale.c:1190 */
@@ -10489,10 +11450,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemDefaultLangID,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetSystemDefaultLocaleName(LPWSTR  localename, INT  len) /* ../dlls/kernel32/locale.c:1236 */
+WINAPI INT wine32b_kernel32_GetSystemDefaultLocaleName(LPWSTR  localename, INT  len) /* ../dlls/kernel32/locale.c:1236 */
 {
+	INT return_value;
 	TRACE("Enter GetSystemDefaultLocaleName\n");
-	return pGetSystemDefaultLocaleName(localename, len);
+	return_value = pGetSystemDefaultLocaleName(localename, len);
+	TRACE("Leave GetSystemDefaultLocaleName\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetSystemDefaultLocaleName(void);  /* ../dlls/kernel32/locale.c:1236 */
@@ -10515,10 +11479,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemDefaultLocaleName,
 	"ret \n"
 )
 
-extern WINAPI LANGID wine32b_kernel32_GetSystemDefaultUILanguage(void) /* ../dlls/kernel32/locale.c:1405 */
+WINAPI LANGID wine32b_kernel32_GetSystemDefaultUILanguage(void) /* ../dlls/kernel32/locale.c:1405 */
 {
+	LANGID return_value;
 	TRACE("Enter GetSystemDefaultUILanguage\n");
-	return pGetSystemDefaultUILanguage();
+	return_value = pGetSystemDefaultUILanguage();
+	TRACE("Leave GetSystemDefaultUILanguage\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetSystemDefaultUILanguage(void);  /* ../dlls/kernel32/locale.c:1405 */
@@ -10539,10 +11506,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemDefaultUILanguage,
 	"ret \n"
 )
 
-extern WINAPI DEP_SYSTEM_POLICY_TYPE wine32b_kernel32_GetSystemDEPPolicy(void) /* ../dlls/kernel32/process.c:3918 */
+WINAPI DEP_SYSTEM_POLICY_TYPE wine32b_kernel32_GetSystemDEPPolicy(void) /* ../dlls/kernel32/process.c:3918 */
 {
+	DEP_SYSTEM_POLICY_TYPE return_value;
 	TRACE("Enter GetSystemDEPPolicy\n");
-	return pGetSystemDEPPolicy();
+	return_value = pGetSystemDEPPolicy();
+	TRACE("Leave GetSystemDEPPolicy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetSystemDEPPolicy(void);  /* ../dlls/kernel32/process.c:3918 */
@@ -10563,10 +11533,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemDEPPolicy,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetSystemDirectoryA(LPSTR  path, UINT  count) /* ../dlls/kernel32/path.c:1782 */
+WINAPI UINT wine32b_kernel32_GetSystemDirectoryA(LPSTR  path, UINT  count) /* ../dlls/kernel32/path.c:1782 */
 {
+	UINT return_value;
 	TRACE("Enter GetSystemDirectoryA\n");
-	return pGetSystemDirectoryA(path, count);
+	return_value = pGetSystemDirectoryA(path, count);
+	TRACE("Leave GetSystemDirectoryA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetSystemDirectoryA(void);  /* ../dlls/kernel32/path.c:1782 */
@@ -10589,10 +11562,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemDirectoryA,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetSystemDirectoryW(LPWSTR  path, UINT  count) /* ../dlls/kernel32/path.c:1765 */
+WINAPI UINT wine32b_kernel32_GetSystemDirectoryW(LPWSTR  path, UINT  count) /* ../dlls/kernel32/path.c:1765 */
 {
+	UINT return_value;
 	TRACE("Enter GetSystemDirectoryW\n");
-	return pGetSystemDirectoryW(path, count);
+	return_value = pGetSystemDirectoryW(path, count);
+	TRACE("Leave GetSystemDirectoryW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetSystemDirectoryW(void);  /* ../dlls/kernel32/path.c:1765 */
@@ -10615,10 +11591,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemDirectoryW,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetSystemFirmwareTable(DWORD  provider, DWORD  id, void*  buffer, DWORD  size) /* ../dlls/kernel32/cpu.c:296 */
+WINAPI UINT wine32b_kernel32_GetSystemFirmwareTable(DWORD  provider, DWORD  id, void*  buffer, DWORD  size) /* ../dlls/kernel32/cpu.c:296 */
 {
+	UINT return_value;
 	TRACE("Enter GetSystemFirmwareTable\n");
-	return pGetSystemFirmwareTable(provider, id, buffer, size);
+	return_value = pGetSystemFirmwareTable(provider, id, buffer, size);
+	TRACE("Leave GetSystemFirmwareTable\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetSystemFirmwareTable(void);  /* ../dlls/kernel32/cpu.c:296 */
@@ -10643,10 +11622,11 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemFirmwareTable,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_GetSystemInfo(LPSYSTEM_INFO  si) /* ../dlls/kernel32/cpu.c:57 */
+WINAPI void wine32b_kernel32_GetSystemInfo(LPSYSTEM_INFO  si) /* ../dlls/kernel32/cpu.c:57 */
 {
 	TRACE("Enter GetSystemInfo\n");
-	return pGetSystemInfo(si);
+	pGetSystemInfo(si);
+	TRACE("Leave GetSystemInfo\n");
 }
 
 extern WINAPI void wine32a_kernel32_GetSystemInfo(void);  /* ../dlls/kernel32/cpu.c:57 */
@@ -10668,10 +11648,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemInfo,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetSystemPowerStatus(LPSYSTEM_POWER_STATUS  ps) /* ../dlls/kernel32/powermgnt.c:46 */
+WINAPI BOOL wine32b_kernel32_GetSystemPowerStatus(LPSYSTEM_POWER_STATUS  ps) /* ../dlls/kernel32/powermgnt.c:46 */
 {
+	BOOL return_value;
 	TRACE("Enter GetSystemPowerStatus\n");
-	return pGetSystemPowerStatus(ps);
+	return_value = pGetSystemPowerStatus(ps);
+	TRACE("Leave GetSystemPowerStatus\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetSystemPowerStatus(void);  /* ../dlls/kernel32/powermgnt.c:46 */
@@ -10693,10 +11676,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemPowerStatus,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetSystemPreferredUILanguages(DWORD  flags, ULONG*  count, WCHAR*  buffer, ULONG*  size) /* ../dlls/kernel32/locale.c:1300 */
+WINAPI BOOL wine32b_kernel32_GetSystemPreferredUILanguages(DWORD  flags, ULONG*  count, WCHAR*  buffer, ULONG*  size) /* ../dlls/kernel32/locale.c:1300 */
 {
+	BOOL return_value;
 	TRACE("Enter GetSystemPreferredUILanguages\n");
-	return pGetSystemPreferredUILanguages(flags, count, buffer, size);
+	return_value = pGetSystemPreferredUILanguages(flags, count, buffer, size);
+	TRACE("Leave GetSystemPreferredUILanguages\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetSystemPreferredUILanguages(void);  /* ../dlls/kernel32/locale.c:1300 */
@@ -10721,10 +11707,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemPreferredUILanguages,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetSystemRegistryQuota(PDWORD  pdwQuotaAllowed, PDWORD  pdwQuotaUsed) /* ../dlls/kernel32/kernel_main.c:184 */
+WINAPI BOOL wine32b_kernel32_GetSystemRegistryQuota(PDWORD  pdwQuotaAllowed, PDWORD  pdwQuotaUsed) /* ../dlls/kernel32/kernel_main.c:184 */
 {
+	BOOL return_value;
 	TRACE("Enter GetSystemRegistryQuota\n");
-	return pGetSystemRegistryQuota(pdwQuotaAllowed, pdwQuotaUsed);
+	return_value = pGetSystemRegistryQuota(pdwQuotaAllowed, pdwQuotaUsed);
+	TRACE("Leave GetSystemRegistryQuota\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetSystemRegistryQuota(void);  /* ../dlls/kernel32/kernel_main.c:184 */
@@ -10747,10 +11736,11 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemRegistryQuota,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_GetSystemTime(LPSYSTEMTIME  systime) /* ../dlls/kernel32/time.c:1323 */
+WINAPI void wine32b_kernel32_GetSystemTime(LPSYSTEMTIME  systime) /* ../dlls/kernel32/time.c:1323 */
 {
 	TRACE("Enter GetSystemTime\n");
-	return pGetSystemTime(systime);
+	pGetSystemTime(systime);
+	TRACE("Leave GetSystemTime\n");
 }
 
 extern WINAPI void wine32a_kernel32_GetSystemTime(void);  /* ../dlls/kernel32/time.c:1323 */
@@ -10772,10 +11762,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemTime,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetSystemTimeAdjustment(PDWORD  lpTimeAdjustment, PDWORD  lpTimeIncrement, PBOOL  lpTimeAdjustmentDisabled) /* ../dlls/kernel32/time.c:566 */
+WINAPI BOOL wine32b_kernel32_GetSystemTimeAdjustment(PDWORD  lpTimeAdjustment, PDWORD  lpTimeIncrement, PBOOL  lpTimeAdjustmentDisabled) /* ../dlls/kernel32/time.c:566 */
 {
+	BOOL return_value;
 	TRACE("Enter GetSystemTimeAdjustment\n");
-	return pGetSystemTimeAdjustment(lpTimeAdjustment, lpTimeIncrement, lpTimeAdjustmentDisabled);
+	return_value = pGetSystemTimeAdjustment(lpTimeAdjustment, lpTimeIncrement, lpTimeAdjustmentDisabled);
+	TRACE("Leave GetSystemTimeAdjustment\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetSystemTimeAdjustment(void);  /* ../dlls/kernel32/time.c:566 */
@@ -10799,10 +11792,11 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemTimeAdjustment,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_GetSystemTimePreciseAsFileTime(FILETIME*  time) /* ../dlls/kernel32/time.c:798 */
+WINAPI void wine32b_kernel32_GetSystemTimePreciseAsFileTime(FILETIME*  time) /* ../dlls/kernel32/time.c:798 */
 {
 	TRACE("Enter GetSystemTimePreciseAsFileTime\n");
-	return pGetSystemTimePreciseAsFileTime(time);
+	pGetSystemTimePreciseAsFileTime(time);
+	TRACE("Leave GetSystemTimePreciseAsFileTime\n");
 }
 
 extern WINAPI void wine32a_kernel32_GetSystemTimePreciseAsFileTime(void);  /* ../dlls/kernel32/time.c:798 */
@@ -10824,10 +11818,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemTimePreciseAsFileTime,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetSystemTimes(LPFILETIME  lpIdleTime, LPFILETIME  lpKernelTime, LPFILETIME  lpUserTime) /* ../dlls/kernel32/time.c:1428 */
+WINAPI BOOL wine32b_kernel32_GetSystemTimes(LPFILETIME  lpIdleTime, LPFILETIME  lpKernelTime, LPFILETIME  lpUserTime) /* ../dlls/kernel32/time.c:1428 */
 {
+	BOOL return_value;
 	TRACE("Enter GetSystemTimes\n");
-	return pGetSystemTimes(lpIdleTime, lpKernelTime, lpUserTime);
+	return_value = pGetSystemTimes(lpIdleTime, lpKernelTime, lpUserTime);
+	TRACE("Leave GetSystemTimes\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetSystemTimes(void);  /* ../dlls/kernel32/time.c:1428 */
@@ -10851,10 +11848,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemTimes,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetSystemWow64DirectoryA(LPSTR  path, UINT  count) /* ../dlls/kernel32/path.c:1819 */
+WINAPI UINT wine32b_kernel32_GetSystemWow64DirectoryA(LPSTR  path, UINT  count) /* ../dlls/kernel32/path.c:1819 */
 {
+	UINT return_value;
 	TRACE("Enter GetSystemWow64DirectoryA\n");
-	return pGetSystemWow64DirectoryA(path, count);
+	return_value = pGetSystemWow64DirectoryA(path, count);
+	TRACE("Leave GetSystemWow64DirectoryA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetSystemWow64DirectoryA(void);  /* ../dlls/kernel32/path.c:1819 */
@@ -10877,10 +11877,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemWow64DirectoryA,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetSystemWow64DirectoryW(LPWSTR  path, UINT  count) /* ../dlls/kernel32/path.c:1795 */
+WINAPI UINT wine32b_kernel32_GetSystemWow64DirectoryW(LPWSTR  path, UINT  count) /* ../dlls/kernel32/path.c:1795 */
 {
+	UINT return_value;
 	TRACE("Enter GetSystemWow64DirectoryW\n");
-	return pGetSystemWow64DirectoryW(path, count);
+	return_value = pGetSystemWow64DirectoryW(path, count);
+	TRACE("Leave GetSystemWow64DirectoryW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetSystemWow64DirectoryW(void);  /* ../dlls/kernel32/path.c:1795 */
@@ -10903,10 +11906,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetSystemWow64DirectoryW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetTapeParameters(HANDLE  device, DWORD  operation, LPDWORD  size, LPVOID  info) /* ../dlls/kernel32/tape.c:144 */
+WINAPI DWORD wine32b_kernel32_GetTapeParameters(HANDLE  device, DWORD  operation, LPDWORD  size, LPVOID  info) /* ../dlls/kernel32/tape.c:144 */
 {
+	DWORD return_value;
 	TRACE("Enter GetTapeParameters\n");
-	return pGetTapeParameters(device, operation, size, info);
+	return_value = pGetTapeParameters(device, operation, size, info);
+	TRACE("Leave GetTapeParameters\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetTapeParameters(void);  /* ../dlls/kernel32/tape.c:144 */
@@ -10931,10 +11937,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetTapeParameters,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetTapePosition(HANDLE  device, DWORD  type, LPDWORD  partition, LPDWORD  offset_low, LPDWORD  offset_high) /* ../dlls/kernel32/tape.c:175 */
+WINAPI DWORD wine32b_kernel32_GetTapePosition(HANDLE  device, DWORD  type, LPDWORD  partition, LPDWORD  offset_low, LPDWORD  offset_high) /* ../dlls/kernel32/tape.c:175 */
 {
+	DWORD return_value;
 	TRACE("Enter GetTapePosition\n");
-	return pGetTapePosition(device, type, partition, offset_low, offset_high);
+	return_value = pGetTapePosition(device, type, partition, offset_low, offset_high);
+	TRACE("Leave GetTapePosition\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetTapePosition(void);  /* ../dlls/kernel32/tape.c:175 */
@@ -10959,10 +11968,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetTapePosition,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetTapeStatus(HANDLE  device) /* ../dlls/kernel32/tape.c:208 */
+WINAPI DWORD wine32b_kernel32_GetTapeStatus(HANDLE  device) /* ../dlls/kernel32/tape.c:208 */
 {
+	DWORD return_value;
 	TRACE("Enter GetTapeStatus\n");
-	return pGetTapeStatus(device);
+	return_value = pGetTapeStatus(device);
+	TRACE("Leave GetTapeStatus\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetTapeStatus(void);  /* ../dlls/kernel32/tape.c:208 */
@@ -10984,10 +11996,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetTapeStatus,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetTempFileNameA(LPCSTR  path, LPCSTR  prefix, UINT  unique, LPSTR  buffer) /* ../dlls/kernel32/path.c:682 */
+WINAPI UINT wine32b_kernel32_GetTempFileNameA(LPCSTR  path, LPCSTR  prefix, UINT  unique, LPSTR  buffer) /* ../dlls/kernel32/path.c:682 */
 {
+	UINT return_value;
 	TRACE("Enter GetTempFileNameA\n");
-	return pGetTempFileNameA(path, prefix, unique, buffer);
+	return_value = pGetTempFileNameA(path, prefix, unique, buffer);
+	TRACE("Leave GetTempFileNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetTempFileNameA(void);  /* ../dlls/kernel32/path.c:682 */
@@ -11012,10 +12027,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetTempFileNameA,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GetTempFileNameW(LPCWSTR  path, LPCWSTR  prefix, UINT  unique, LPWSTR  buffer) /* ../dlls/kernel32/path.c:701 */
+WINAPI UINT wine32b_kernel32_GetTempFileNameW(LPCWSTR  path, LPCWSTR  prefix, UINT  unique, LPWSTR  buffer) /* ../dlls/kernel32/path.c:701 */
 {
+	UINT return_value;
 	TRACE("Enter GetTempFileNameW\n");
-	return pGetTempFileNameW(path, prefix, unique, buffer);
+	return_value = pGetTempFileNameW(path, prefix, unique, buffer);
+	TRACE("Leave GetTempFileNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetTempFileNameW(void);  /* ../dlls/kernel32/path.c:701 */
@@ -11040,10 +12058,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetTempFileNameW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetTempPathA(DWORD  count, LPSTR  path) /* ../dlls/kernel32/path.c:599 */
+WINAPI DWORD wine32b_kernel32_GetTempPathA(DWORD  count, LPSTR  path) /* ../dlls/kernel32/path.c:599 */
 {
+	DWORD return_value;
 	TRACE("Enter GetTempPathA\n");
-	return pGetTempPathA(count, path);
+	return_value = pGetTempPathA(count, path);
+	TRACE("Leave GetTempPathA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetTempPathA(void);  /* ../dlls/kernel32/path.c:599 */
@@ -11066,10 +12087,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetTempPathA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetTempPathW(DWORD  count, LPWSTR  path) /* ../dlls/kernel32/path.c:621 */
+WINAPI DWORD wine32b_kernel32_GetTempPathW(DWORD  count, LPWSTR  path) /* ../dlls/kernel32/path.c:621 */
 {
+	DWORD return_value;
 	TRACE("Enter GetTempPathW\n");
-	return pGetTempPathW(count, path);
+	return_value = pGetTempPathW(count, path);
+	TRACE("Leave GetTempPathW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetTempPathW(void);  /* ../dlls/kernel32/path.c:621 */
@@ -11092,10 +12116,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetTempPathW,
 	"ret \n"
 )
 
-extern WINAPI LCID wine32b_kernel32_GetThreadLocale(void) /* ../dlls/kernel32/locale.c:2793 */
+WINAPI LCID wine32b_kernel32_GetThreadLocale(void) /* ../dlls/kernel32/locale.c:2793 */
 {
+	LCID return_value;
 	TRACE("Enter GetThreadLocale\n");
-	return pGetThreadLocale();
+	return_value = pGetThreadLocale();
+	TRACE("Leave GetThreadLocale\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetThreadLocale(void);  /* ../dlls/kernel32/locale.c:2793 */
@@ -11116,10 +12143,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetThreadLocale,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetThreadPreferredUILanguages(DWORD  flags, ULONG*  count, WCHAR*  buf, ULONG*  size) /* ../dlls/kernel32/locale.c:1342 */
+WINAPI BOOL wine32b_kernel32_GetThreadPreferredUILanguages(DWORD  flags, ULONG*  count, WCHAR*  buf, ULONG*  size) /* ../dlls/kernel32/locale.c:1342 */
 {
+	BOOL return_value;
 	TRACE("Enter GetThreadPreferredUILanguages\n");
-	return pGetThreadPreferredUILanguages(flags, count, buf, size);
+	return_value = pGetThreadPreferredUILanguages(flags, count, buf, size);
+	TRACE("Leave GetThreadPreferredUILanguages\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetThreadPreferredUILanguages(void);  /* ../dlls/kernel32/locale.c:1342 */
@@ -11144,10 +12174,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetThreadPreferredUILanguages,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetThreadSelectorEntry(HANDLE  hthread, DWORD  sel, LPLDT_ENTRY  ldtent) /* ../dlls/kernel32/thread.c:110 */
+WINAPI BOOL wine32b_kernel32_GetThreadSelectorEntry(HANDLE  hthread, DWORD  sel, LPLDT_ENTRY  ldtent) /* ../dlls/kernel32/thread.c:110 */
 {
+	BOOL return_value;
 	TRACE("Enter GetThreadSelectorEntry\n");
-	return pGetThreadSelectorEntry(hthread, sel, ldtent);
+	return_value = pGetThreadSelectorEntry(hthread, sel, ldtent);
+	TRACE("Leave GetThreadSelectorEntry\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetThreadSelectorEntry(void);  /* ../dlls/kernel32/thread.c:110 */
@@ -11171,10 +12204,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetThreadSelectorEntry,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetTickCount(void) /* ../dlls/kernel32/time.c:1584 */
+WINAPI DWORD wine32b_kernel32_GetTickCount(void) /* ../dlls/kernel32/time.c:1584 */
 {
+	DWORD return_value;
 	TRACE("Enter GetTickCount\n");
-	return pGetTickCount();
+	return_value = pGetTickCount();
+	TRACE("Leave GetTickCount\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetTickCount(void);  /* ../dlls/kernel32/time.c:1584 */
@@ -11195,10 +12231,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetTickCount,
 	"ret \n"
 )
 
-extern WINAPI ULONGLONG wine32b_kernel32_GetTickCount64(void) /* ../dlls/kernel32/time.c:1565 */
+WINAPI ULONGLONG wine32b_kernel32_GetTickCount64(void) /* ../dlls/kernel32/time.c:1565 */
 {
+	ULONGLONG return_value;
 	TRACE("Enter GetTickCount64\n");
-	return pGetTickCount64();
+	return_value = pGetTickCount64();
+	TRACE("Leave GetTickCount64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetTickCount64(void);  /* ../dlls/kernel32/time.c:1565 */
@@ -11219,10 +12258,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetTickCount64,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetTimeFormatA(LCID  lcid, DWORD  dwFlags, SYSTEMTIME*  lpTime, LPCSTR  lpFormat, LPSTR  lpTimeStr, INT  cchOut) /* ../dlls/kernel32/lcformat.c:945 */
+WINAPI INT wine32b_kernel32_GetTimeFormatA(LCID  lcid, DWORD  dwFlags, SYSTEMTIME*  lpTime, LPCSTR  lpFormat, LPSTR  lpTimeStr, INT  cchOut) /* ../dlls/kernel32/lcformat.c:945 */
 {
+	INT return_value;
 	TRACE("Enter GetTimeFormatA\n");
-	return pGetTimeFormatA(lcid, dwFlags, lpTime, lpFormat, lpTimeStr, cchOut);
+	return_value = pGetTimeFormatA(lcid, dwFlags, lpTime, lpFormat, lpTimeStr, cchOut);
+	TRACE("Leave GetTimeFormatA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetTimeFormatA(void);  /* ../dlls/kernel32/lcformat.c:945 */
@@ -11247,10 +12289,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetTimeFormatA,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetTimeFormatEx(LPCWSTR  localename, DWORD  flags, SYSTEMTIME*  time, LPCWSTR  format, LPWSTR  outbuf, INT  bufsize) /* ../dlls/kernel32/lcformat.c:975 */
+WINAPI INT wine32b_kernel32_GetTimeFormatEx(LPCWSTR  localename, DWORD  flags, SYSTEMTIME*  time, LPCWSTR  format, LPWSTR  outbuf, INT  bufsize) /* ../dlls/kernel32/lcformat.c:975 */
 {
+	INT return_value;
 	TRACE("Enter GetTimeFormatEx\n");
-	return pGetTimeFormatEx(localename, flags, time, format, outbuf, bufsize);
+	return_value = pGetTimeFormatEx(localename, flags, time, format, outbuf, bufsize);
+	TRACE("Leave GetTimeFormatEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetTimeFormatEx(void);  /* ../dlls/kernel32/lcformat.c:975 */
@@ -11275,10 +12320,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetTimeFormatEx,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetTimeFormatW(LCID  lcid, DWORD  dwFlags, SYSTEMTIME*  lpTime, LPCWSTR  lpFormat, LPWSTR  lpTimeStr, INT  cchOut) /* ../dlls/kernel32/lcformat.c:992 */
+WINAPI INT wine32b_kernel32_GetTimeFormatW(LCID  lcid, DWORD  dwFlags, SYSTEMTIME*  lpTime, LPCWSTR  lpFormat, LPWSTR  lpTimeStr, INT  cchOut) /* ../dlls/kernel32/lcformat.c:992 */
 {
+	INT return_value;
 	TRACE("Enter GetTimeFormatW\n");
-	return pGetTimeFormatW(lcid, dwFlags, lpTime, lpFormat, lpTimeStr, cchOut);
+	return_value = pGetTimeFormatW(lcid, dwFlags, lpTime, lpFormat, lpTimeStr, cchOut);
+	TRACE("Leave GetTimeFormatW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetTimeFormatW(void);  /* ../dlls/kernel32/lcformat.c:992 */
@@ -11303,10 +12351,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetTimeFormatW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_GetTimeZoneInformation(LPTIME_ZONE_INFORMATION  ret) /* ../dlls/kernel32/time.c:638 */
+WINAPI DWORD wine32b_kernel32_GetTimeZoneInformation(LPTIME_ZONE_INFORMATION  ret) /* ../dlls/kernel32/time.c:638 */
 {
+	DWORD return_value;
 	TRACE("Enter GetTimeZoneInformation\n");
-	return pGetTimeZoneInformation(ret);
+	return_value = pGetTimeZoneInformation(ret);
+	TRACE("Leave GetTimeZoneInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetTimeZoneInformation(void);  /* ../dlls/kernel32/time.c:638 */
@@ -11328,10 +12379,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetTimeZoneInformation,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetTimeZoneInformationForYear(USHORT  wYear, PDYNAMIC_TIME_ZONE_INFORMATION  pdtzi, LPTIME_ZONE_INFORMATION  ptzi) /* ../dlls/kernel32/time.c:652 */
+WINAPI BOOL wine32b_kernel32_GetTimeZoneInformationForYear(USHORT  wYear, PDYNAMIC_TIME_ZONE_INFORMATION  pdtzi, LPTIME_ZONE_INFORMATION  ptzi) /* ../dlls/kernel32/time.c:652 */
 {
+	BOOL return_value;
 	TRACE("Enter GetTimeZoneInformationForYear\n");
-	return pGetTimeZoneInformationForYear(wYear, pdtzi, ptzi);
+	return_value = pGetTimeZoneInformationForYear(wYear, pdtzi, ptzi);
+	TRACE("Leave GetTimeZoneInformationForYear\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetTimeZoneInformationForYear(void);  /* ../dlls/kernel32/time.c:652 */
@@ -11355,10 +12409,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetTimeZoneInformationForYear,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetUmsCompletionListEvent(PUMS_COMPLETION_LIST  list, HANDLE*  event) /* ../dlls/kernel32/process.c:4216 */
+WINAPI BOOL wine32b_kernel32_GetUmsCompletionListEvent(PUMS_COMPLETION_LIST  list, HANDLE*  event) /* ../dlls/kernel32/process.c:4216 */
 {
+	BOOL return_value;
 	TRACE("Enter GetUmsCompletionListEvent\n");
-	return pGetUmsCompletionListEvent(list, event);
+	return_value = pGetUmsCompletionListEvent(list, event);
+	TRACE("Leave GetUmsCompletionListEvent\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetUmsCompletionListEvent(void);  /* ../dlls/kernel32/process.c:4216 */
@@ -11381,10 +12438,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetUmsCompletionListEvent,
 	"ret \n"
 )
 
-extern WINAPI LCID wine32b_kernel32_GetUserDefaultLCID(void) /* ../dlls/kernel32/locale.c:1207 */
+WINAPI LCID wine32b_kernel32_GetUserDefaultLCID(void) /* ../dlls/kernel32/locale.c:1207 */
 {
+	LCID return_value;
 	TRACE("Enter GetUserDefaultLCID\n");
-	return pGetUserDefaultLCID();
+	return_value = pGetUserDefaultLCID();
+	TRACE("Leave GetUserDefaultLCID\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetUserDefaultLCID(void);  /* ../dlls/kernel32/locale.c:1207 */
@@ -11405,10 +12465,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetUserDefaultLCID,
 	"ret \n"
 )
 
-extern WINAPI LANGID wine32b_kernel32_GetUserDefaultLangID(void) /* ../dlls/kernel32/locale.c:1173 */
+WINAPI LANGID wine32b_kernel32_GetUserDefaultLangID(void) /* ../dlls/kernel32/locale.c:1173 */
 {
+	LANGID return_value;
 	TRACE("Enter GetUserDefaultLangID\n");
-	return pGetUserDefaultLangID();
+	return_value = pGetUserDefaultLangID();
+	TRACE("Leave GetUserDefaultLangID\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetUserDefaultLangID(void);  /* ../dlls/kernel32/locale.c:1173 */
@@ -11429,10 +12492,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetUserDefaultLangID,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_GetUserDefaultLocaleName(LPWSTR  localename, int  buffersize) /* ../dlls/kernel32/locale.c:5263 */
+WINAPI INT wine32b_kernel32_GetUserDefaultLocaleName(LPWSTR  localename, int  buffersize) /* ../dlls/kernel32/locale.c:5263 */
 {
+	INT return_value;
 	TRACE("Enter GetUserDefaultLocaleName\n");
-	return pGetUserDefaultLocaleName(localename, buffersize);
+	return_value = pGetUserDefaultLocaleName(localename, buffersize);
+	TRACE("Leave GetUserDefaultLocaleName\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetUserDefaultLocaleName(void);  /* ../dlls/kernel32/locale.c:5263 */
@@ -11455,10 +12521,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetUserDefaultLocaleName,
 	"ret \n"
 )
 
-extern WINAPI LANGID wine32b_kernel32_GetUserDefaultUILanguage(void) /* ../dlls/kernel32/locale.c:1385 */
+WINAPI LANGID wine32b_kernel32_GetUserDefaultUILanguage(void) /* ../dlls/kernel32/locale.c:1385 */
 {
+	LANGID return_value;
 	TRACE("Enter GetUserDefaultUILanguage\n");
-	return pGetUserDefaultUILanguage();
+	return_value = pGetUserDefaultUILanguage();
+	TRACE("Leave GetUserDefaultUILanguage\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetUserDefaultUILanguage(void);  /* ../dlls/kernel32/locale.c:1385 */
@@ -11479,10 +12548,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetUserDefaultUILanguage,
 	"ret \n"
 )
 
-extern WINAPI GEOID wine32b_kernel32_GetUserGeoID(GEOCLASS  GeoClass) /* ../dlls/kernel32/locale.c:4611 */
+WINAPI GEOID wine32b_kernel32_GetUserGeoID(GEOCLASS  GeoClass) /* ../dlls/kernel32/locale.c:4611 */
 {
+	GEOID return_value;
 	TRACE("Enter GetUserGeoID\n");
-	return pGetUserGeoID(GeoClass);
+	return_value = pGetUserGeoID(GeoClass);
+	TRACE("Leave GetUserGeoID\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetUserGeoID(void);  /* ../dlls/kernel32/locale.c:4611 */
@@ -11504,10 +12576,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetUserGeoID,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetVolumeInformationA(LPCSTR  root, LPSTR  label, DWORD  label_len, DWORD*  serial, DWORD*  filename_len, DWORD*  flags, LPSTR  fsname, DWORD  fsname_len) /* ../dlls/kernel32/volume.c:841 */
+WINAPI BOOL wine32b_kernel32_GetVolumeInformationA(LPCSTR  root, LPSTR  label, DWORD  label_len, DWORD*  serial, DWORD*  filename_len, DWORD*  flags, LPSTR  fsname, DWORD  fsname_len) /* ../dlls/kernel32/volume.c:841 */
 {
+	BOOL return_value;
 	TRACE("Enter GetVolumeInformationA\n");
-	return pGetVolumeInformationA(root, label, label_len, serial, filename_len, flags, fsname, fsname_len);
+	return_value = pGetVolumeInformationA(root, label, label_len, serial, filename_len, flags, fsname, fsname_len);
+	TRACE("Leave GetVolumeInformationA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetVolumeInformationA(void);  /* ../dlls/kernel32/volume.c:841 */
@@ -11532,10 +12607,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetVolumeInformationA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetVolumeInformationByHandleW(HANDLE  handle, WCHAR*  volnamebuf, DWORD  volnamesize, DWORD*  volserial, DWORD*  maxlength, DWORD*  flags, WCHAR*  fsnamebuf, DWORD  fsnamesize) /* ../dlls/kernel32/volume.c:2164 */
+WINAPI BOOL wine32b_kernel32_GetVolumeInformationByHandleW(HANDLE  handle, WCHAR*  volnamebuf, DWORD  volnamesize, DWORD*  volserial, DWORD*  maxlength, DWORD*  flags, WCHAR*  fsnamebuf, DWORD  fsnamesize) /* ../dlls/kernel32/volume.c:2164 */
 {
+	BOOL return_value;
 	TRACE("Enter GetVolumeInformationByHandleW\n");
-	return pGetVolumeInformationByHandleW(handle, volnamebuf, volnamesize, volserial, maxlength, flags, fsnamebuf, fsnamesize);
+	return_value = pGetVolumeInformationByHandleW(handle, volnamebuf, volnamesize, volserial, maxlength, flags, fsnamebuf, fsnamesize);
+	TRACE("Leave GetVolumeInformationByHandleW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetVolumeInformationByHandleW(void);  /* ../dlls/kernel32/volume.c:2164 */
@@ -11560,10 +12638,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetVolumeInformationByHandleW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetVolumeInformationW(LPCWSTR  root, LPWSTR  label, DWORD  label_len, DWORD*  serial, DWORD*  filename_len, DWORD*  flags, LPWSTR  fsname, DWORD  fsname_len) /* ../dlls/kernel32/volume.c:686 */
+WINAPI BOOL wine32b_kernel32_GetVolumeInformationW(LPCWSTR  root, LPWSTR  label, DWORD  label_len, DWORD*  serial, DWORD*  filename_len, DWORD*  flags, LPWSTR  fsname, DWORD  fsname_len) /* ../dlls/kernel32/volume.c:686 */
 {
+	BOOL return_value;
 	TRACE("Enter GetVolumeInformationW\n");
-	return pGetVolumeInformationW(root, label, label_len, serial, filename_len, flags, fsname, fsname_len);
+	return_value = pGetVolumeInformationW(root, label, label_len, serial, filename_len, flags, fsname, fsname_len);
+	TRACE("Leave GetVolumeInformationW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetVolumeInformationW(void);  /* ../dlls/kernel32/volume.c:686 */
@@ -11588,10 +12669,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetVolumeInformationW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetVolumeNameForVolumeMountPointA(LPCSTR  path, LPSTR  volume, DWORD  size) /* ../dlls/kernel32/volume.c:981 */
+WINAPI BOOL wine32b_kernel32_GetVolumeNameForVolumeMountPointA(LPCSTR  path, LPSTR  volume, DWORD  size) /* ../dlls/kernel32/volume.c:981 */
 {
+	BOOL return_value;
 	TRACE("Enter GetVolumeNameForVolumeMountPointA\n");
-	return pGetVolumeNameForVolumeMountPointA(path, volume, size);
+	return_value = pGetVolumeNameForVolumeMountPointA(path, volume, size);
+	TRACE("Leave GetVolumeNameForVolumeMountPointA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetVolumeNameForVolumeMountPointA(void);  /* ../dlls/kernel32/volume.c:981 */
@@ -11615,10 +12699,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetVolumeNameForVolumeMountPointA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetVolumeNameForVolumeMountPointW(LPCWSTR  path, LPWSTR  volume, DWORD  size) /* ../dlls/kernel32/volume.c:1002 */
+WINAPI BOOL wine32b_kernel32_GetVolumeNameForVolumeMountPointW(LPCWSTR  path, LPWSTR  volume, DWORD  size) /* ../dlls/kernel32/volume.c:1002 */
 {
+	BOOL return_value;
 	TRACE("Enter GetVolumeNameForVolumeMountPointW\n");
-	return pGetVolumeNameForVolumeMountPointW(path, volume, size);
+	return_value = pGetVolumeNameForVolumeMountPointW(path, volume, size);
+	TRACE("Leave GetVolumeNameForVolumeMountPointW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetVolumeNameForVolumeMountPointW(void);  /* ../dlls/kernel32/volume.c:1002 */
@@ -11642,10 +12729,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetVolumeNameForVolumeMountPointW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetVolumePathNameA(LPCSTR  filename, LPSTR  volumepathname, DWORD  buflen) /* ../dlls/kernel32/volume.c:1638 */
+WINAPI BOOL wine32b_kernel32_GetVolumePathNameA(LPCSTR  filename, LPSTR  volumepathname, DWORD  buflen) /* ../dlls/kernel32/volume.c:1638 */
 {
+	BOOL return_value;
 	TRACE("Enter GetVolumePathNameA\n");
-	return pGetVolumePathNameA(filename, volumepathname, buflen);
+	return_value = pGetVolumePathNameA(filename, volumepathname, buflen);
+	TRACE("Leave GetVolumePathNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetVolumePathNameA(void);  /* ../dlls/kernel32/volume.c:1638 */
@@ -11669,10 +12759,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetVolumePathNameA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetVolumePathNameW(LPCWSTR  filename, LPWSTR  volumepathname, DWORD  buflen) /* ../dlls/kernel32/volume.c:1666 */
+WINAPI BOOL wine32b_kernel32_GetVolumePathNameW(LPCWSTR  filename, LPWSTR  volumepathname, DWORD  buflen) /* ../dlls/kernel32/volume.c:1666 */
 {
+	BOOL return_value;
 	TRACE("Enter GetVolumePathNameW\n");
-	return pGetVolumePathNameW(filename, volumepathname, buflen);
+	return_value = pGetVolumePathNameW(filename, volumepathname, buflen);
+	TRACE("Leave GetVolumePathNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetVolumePathNameW(void);  /* ../dlls/kernel32/volume.c:1666 */
@@ -11696,10 +12789,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetVolumePathNameW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetVolumePathNamesForVolumeNameA(LPCSTR  volumename, LPSTR  volumepathname, DWORD  buflen, PDWORD  returnlen) /* ../dlls/kernel32/volume.c:1809 */
+WINAPI BOOL wine32b_kernel32_GetVolumePathNamesForVolumeNameA(LPCSTR  volumename, LPSTR  volumepathname, DWORD  buflen, PDWORD  returnlen) /* ../dlls/kernel32/volume.c:1809 */
 {
+	BOOL return_value;
 	TRACE("Enter GetVolumePathNamesForVolumeNameA\n");
-	return pGetVolumePathNamesForVolumeNameA(volumename, volumepathname, buflen, returnlen);
+	return_value = pGetVolumePathNamesForVolumeNameA(volumename, volumepathname, buflen, returnlen);
+	TRACE("Leave GetVolumePathNamesForVolumeNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetVolumePathNamesForVolumeNameA(void);  /* ../dlls/kernel32/volume.c:1809 */
@@ -11724,10 +12820,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetVolumePathNamesForVolumeNameA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GetVolumePathNamesForVolumeNameW(LPCWSTR  volumename, LPWSTR  volumepathname, DWORD  buflen, PDWORD  returnlen) /* ../dlls/kernel32/volume.c:1863 */
+WINAPI BOOL wine32b_kernel32_GetVolumePathNamesForVolumeNameW(LPCWSTR  volumename, LPWSTR  volumepathname, DWORD  buflen, PDWORD  returnlen) /* ../dlls/kernel32/volume.c:1863 */
 {
+	BOOL return_value;
 	TRACE("Enter GetVolumePathNamesForVolumeNameW\n");
-	return pGetVolumePathNamesForVolumeNameW(volumename, volumepathname, buflen, returnlen);
+	return_value = pGetVolumePathNamesForVolumeNameW(volumename, volumepathname, buflen, returnlen);
+	TRACE("Leave GetVolumePathNamesForVolumeNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GetVolumePathNamesForVolumeNameW(void);  /* ../dlls/kernel32/volume.c:1863 */
@@ -11752,10 +12851,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GetVolumePathNamesForVolumeNameW,
 	"ret \n"
 )
 
-extern WINAPI ATOM wine32b_kernel32_GlobalAddAtomA(LPCSTR  str) /* ../dlls/kernel32/atom.c:111 */
+WINAPI ATOM wine32b_kernel32_GlobalAddAtomA(LPCSTR  str) /* ../dlls/kernel32/atom.c:111 */
 {
+	ATOM return_value;
 	TRACE("Enter GlobalAddAtomA\n");
-	return pGlobalAddAtomA(str);
+	return_value = pGlobalAddAtomA(str);
+	TRACE("Leave GlobalAddAtomA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GlobalAddAtomA(void);  /* ../dlls/kernel32/atom.c:111 */
@@ -11777,10 +12879,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalAddAtomA,
 	"ret \n"
 )
 
-extern WINAPI ATOM wine32b_kernel32_GlobalAddAtomW(LPCWSTR  str) /* ../dlls/kernel32/atom.c:182 */
+WINAPI ATOM wine32b_kernel32_GlobalAddAtomW(LPCWSTR  str) /* ../dlls/kernel32/atom.c:182 */
 {
+	ATOM return_value;
 	TRACE("Enter GlobalAddAtomW\n");
-	return pGlobalAddAtomW(str);
+	return_value = pGlobalAddAtomW(str);
+	TRACE("Leave GlobalAddAtomW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GlobalAddAtomW(void);  /* ../dlls/kernel32/atom.c:182 */
@@ -11802,10 +12907,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalAddAtomW,
 	"ret \n"
 )
 
-extern WINAPI SIZE_T wine32b_kernel32_GlobalCompact(DWORD  minfree) /* ../dlls/kernel32/heap.c:509 */
+WINAPI SIZE_T wine32b_kernel32_GlobalCompact(DWORD  minfree) /* ../dlls/kernel32/heap.c:509 */
 {
+	SIZE_T return_value;
 	TRACE("Enter GlobalCompact\n");
-	return pGlobalCompact(minfree);
+	return_value = pGlobalCompact(minfree);
+	TRACE("Leave GlobalCompact\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GlobalCompact(void);  /* ../dlls/kernel32/heap.c:509 */
@@ -11827,10 +12935,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalCompact,
 	"ret \n"
 )
 
-extern WINAPI ATOM wine32b_kernel32_GlobalDeleteAtom(ATOM  atom) /* ../dlls/kernel32/atom.c:230 */
+WINAPI ATOM wine32b_kernel32_GlobalDeleteAtom(ATOM  atom) /* ../dlls/kernel32/atom.c:230 */
 {
+	ATOM return_value;
 	TRACE("Enter GlobalDeleteAtom\n");
-	return pGlobalDeleteAtom(atom);
+	return_value = pGlobalDeleteAtom(atom);
+	TRACE("Leave GlobalDeleteAtom\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GlobalDeleteAtom(void);  /* ../dlls/kernel32/atom.c:230 */
@@ -11852,10 +12963,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalDeleteAtom,
 	"ret \n"
 )
 
-extern WINAPI ATOM wine32b_kernel32_GlobalFindAtomA(LPCSTR  str) /* ../dlls/kernel32/atom.c:283 */
+WINAPI ATOM wine32b_kernel32_GlobalFindAtomA(LPCSTR  str) /* ../dlls/kernel32/atom.c:283 */
 {
+	ATOM return_value;
 	TRACE("Enter GlobalFindAtomA\n");
-	return pGlobalFindAtomA(str);
+	return_value = pGlobalFindAtomA(str);
+	TRACE("Leave GlobalFindAtomA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GlobalFindAtomA(void);  /* ../dlls/kernel32/atom.c:283 */
@@ -11877,10 +12991,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalFindAtomA,
 	"ret \n"
 )
 
-extern WINAPI ATOM wine32b_kernel32_GlobalFindAtomW(LPCWSTR  str) /* ../dlls/kernel32/atom.c:346 */
+WINAPI ATOM wine32b_kernel32_GlobalFindAtomW(LPCWSTR  str) /* ../dlls/kernel32/atom.c:346 */
 {
+	ATOM return_value;
 	TRACE("Enter GlobalFindAtomW\n");
-	return pGlobalFindAtomW(str);
+	return_value = pGlobalFindAtomW(str);
+	TRACE("Leave GlobalFindAtomW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GlobalFindAtomW(void);  /* ../dlls/kernel32/atom.c:346 */
@@ -11902,10 +13019,11 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalFindAtomW,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_GlobalFix(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:447 */
+WINAPI void wine32b_kernel32_GlobalFix(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:447 */
 {
 	TRACE("Enter GlobalFix\n");
-	return pGlobalFix(hmem);
+	pGlobalFix(hmem);
+	TRACE("Leave GlobalFix\n");
 }
 
 extern WINAPI void wine32a_kernel32_GlobalFix(void);  /* ../dlls/kernel32/heap.c:447 */
@@ -11927,10 +13045,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalFix,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GlobalFlags(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:475 */
+WINAPI UINT wine32b_kernel32_GlobalFlags(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:475 */
 {
+	UINT return_value;
 	TRACE("Enter GlobalFlags\n");
-	return pGlobalFlags(hmem);
+	return_value = pGlobalFlags(hmem);
+	TRACE("Leave GlobalFlags\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GlobalFlags(void);  /* ../dlls/kernel32/heap.c:475 */
@@ -11952,10 +13073,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalFlags,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GlobalGetAtomNameA(ATOM  atom, LPSTR  buffer, INT  count) /* ../dlls/kernel32/atom.c:396 */
+WINAPI UINT wine32b_kernel32_GlobalGetAtomNameA(ATOM  atom, LPSTR  buffer, INT  count) /* ../dlls/kernel32/atom.c:396 */
 {
+	UINT return_value;
 	TRACE("Enter GlobalGetAtomNameA\n");
-	return pGlobalGetAtomNameA(atom, buffer, count);
+	return_value = pGlobalGetAtomNameA(atom, buffer, count);
+	TRACE("Leave GlobalGetAtomNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GlobalGetAtomNameA(void);  /* ../dlls/kernel32/atom.c:396 */
@@ -11979,10 +13103,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalGetAtomNameA,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_GlobalGetAtomNameW(ATOM  atom, LPWSTR  buffer, INT  count) /* ../dlls/kernel32/atom.c:464 */
+WINAPI UINT wine32b_kernel32_GlobalGetAtomNameW(ATOM  atom, LPWSTR  buffer, INT  count) /* ../dlls/kernel32/atom.c:464 */
 {
+	UINT return_value;
 	TRACE("Enter GlobalGetAtomNameW\n");
-	return pGlobalGetAtomNameW(atom, buffer, count);
+	return_value = pGlobalGetAtomNameW(atom, buffer, count);
+	TRACE("Leave GlobalGetAtomNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GlobalGetAtomNameW(void);  /* ../dlls/kernel32/atom.c:464 */
@@ -12006,10 +13133,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalGetAtomNameW,
 	"ret \n"
 )
 
-extern WINAPI HGLOBAL wine32b_kernel32_GlobalHandle(LPCVOID  pmem) /* ../dlls/kernel32/heap.c:293 */
+WINAPI HGLOBAL wine32b_kernel32_GlobalHandle(LPCVOID  pmem) /* ../dlls/kernel32/heap.c:293 */
 {
+	HGLOBAL return_value;
 	TRACE("Enter GlobalHandle\n");
-	return pGlobalHandle(pmem);
+	return_value = pGlobalHandle(pmem);
+	TRACE("Leave GlobalHandle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GlobalHandle(void);  /* ../dlls/kernel32/heap.c:293 */
@@ -12031,10 +13161,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalHandle,
 	"ret \n"
 )
 
-extern WINAPI LPVOID wine32b_kernel32_GlobalLock(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:255 */
+WINAPI LPVOID wine32b_kernel32_GlobalLock(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:255 */
 {
+	LPVOID return_value;
 	TRACE("Enter GlobalLock\n");
-	return pGlobalLock(hmem);
+	return_value = pGlobalLock(hmem);
+	TRACE("Leave GlobalLock\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GlobalLock(void);  /* ../dlls/kernel32/heap.c:255 */
@@ -12056,10 +13189,11 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalLock,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_GlobalMemoryStatus(LPMEMORYSTATUS  lpBuffer) /* ../dlls/kernel32/heap.c:822 */
+WINAPI void wine32b_kernel32_GlobalMemoryStatus(LPMEMORYSTATUS  lpBuffer) /* ../dlls/kernel32/heap.c:822 */
 {
 	TRACE("Enter GlobalMemoryStatus\n");
-	return pGlobalMemoryStatus(lpBuffer);
+	pGlobalMemoryStatus(lpBuffer);
+	TRACE("Leave GlobalMemoryStatus\n");
 }
 
 extern WINAPI void wine32a_kernel32_GlobalMemoryStatus(void);  /* ../dlls/kernel32/heap.c:822 */
@@ -12081,10 +13215,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalMemoryStatus,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GlobalMemoryStatusEx(LPMEMORYSTATUSEX  lpmemex) /* ../dlls/kernel32/heap.c:601 */
+WINAPI BOOL wine32b_kernel32_GlobalMemoryStatusEx(LPMEMORYSTATUSEX  lpmemex) /* ../dlls/kernel32/heap.c:601 */
 {
+	BOOL return_value;
 	TRACE("Enter GlobalMemoryStatusEx\n");
-	return pGlobalMemoryStatusEx(lpmemex);
+	return_value = pGlobalMemoryStatusEx(lpmemex);
+	TRACE("Leave GlobalMemoryStatusEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GlobalMemoryStatusEx(void);  /* ../dlls/kernel32/heap.c:601 */
@@ -12106,10 +13243,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalMemoryStatusEx,
 	"ret \n"
 )
 
-extern WINAPI HGLOBAL wine32b_kernel32_GlobalReAlloc(HGLOBAL  hmem, SIZE_T  size, UINT  flags) /* ../dlls/kernel32/heap.c:355 */
+WINAPI HGLOBAL wine32b_kernel32_GlobalReAlloc(HGLOBAL  hmem, SIZE_T  size, UINT  flags) /* ../dlls/kernel32/heap.c:355 */
 {
+	HGLOBAL return_value;
 	TRACE("Enter GlobalReAlloc\n");
-	return pGlobalReAlloc(hmem, size, flags);
+	return_value = pGlobalReAlloc(hmem, size, flags);
+	TRACE("Leave GlobalReAlloc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GlobalReAlloc(void);  /* ../dlls/kernel32/heap.c:355 */
@@ -12133,10 +13273,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalReAlloc,
 	"ret \n"
 )
 
-extern WINAPI SIZE_T wine32b_kernel32_GlobalSize(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:377 */
+WINAPI SIZE_T wine32b_kernel32_GlobalSize(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:377 */
 {
+	SIZE_T return_value;
 	TRACE("Enter GlobalSize\n");
-	return pGlobalSize(hmem);
+	return_value = pGlobalSize(hmem);
+	TRACE("Leave GlobalSize\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GlobalSize(void);  /* ../dlls/kernel32/heap.c:377 */
@@ -12158,10 +13301,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalSize,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GlobalUnWire(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:438 */
+WINAPI BOOL wine32b_kernel32_GlobalUnWire(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:438 */
 {
+	BOOL return_value;
 	TRACE("Enter GlobalUnWire\n");
-	return pGlobalUnWire(hmem);
+	return_value = pGlobalUnWire(hmem);
+	TRACE("Leave GlobalUnWire\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GlobalUnWire(void);  /* ../dlls/kernel32/heap.c:438 */
@@ -12183,10 +13329,11 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalUnWire,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_GlobalUnfix(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:456 */
+WINAPI void wine32b_kernel32_GlobalUnfix(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:456 */
 {
 	TRACE("Enter GlobalUnfix\n");
-	return pGlobalUnfix(hmem);
+	pGlobalUnfix(hmem);
+	TRACE("Leave GlobalUnfix\n");
 }
 
 extern WINAPI void wine32a_kernel32_GlobalUnfix(void);  /* ../dlls/kernel32/heap.c:456 */
@@ -12208,10 +13355,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalUnfix,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_GlobalUnlock(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:277 */
+WINAPI BOOL wine32b_kernel32_GlobalUnlock(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:277 */
 {
+	BOOL return_value;
 	TRACE("Enter GlobalUnlock\n");
-	return pGlobalUnlock(hmem);
+	return_value = pGlobalUnlock(hmem);
+	TRACE("Leave GlobalUnlock\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GlobalUnlock(void);  /* ../dlls/kernel32/heap.c:277 */
@@ -12233,10 +13383,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalUnlock,
 	"ret \n"
 )
 
-extern WINAPI LPVOID wine32b_kernel32_GlobalWire(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:429 */
+WINAPI LPVOID wine32b_kernel32_GlobalWire(HGLOBAL  hmem) /* ../dlls/kernel32/heap.c:429 */
 {
+	LPVOID return_value;
 	TRACE("Enter GlobalWire\n");
-	return pGlobalWire(hmem);
+	return_value = pGlobalWire(hmem);
+	TRACE("Leave GlobalWire\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_GlobalWire(void);  /* ../dlls/kernel32/heap.c:429 */
@@ -12258,10 +13411,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_GlobalWire,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_Heap32ListFirst(HANDLE  hSnapshot, LPHEAPLIST32  lphl) /* ../dlls/kernel32/toolhelp.c:600 */
+WINAPI BOOL wine32b_kernel32_Heap32ListFirst(HANDLE  hSnapshot, LPHEAPLIST32  lphl) /* ../dlls/kernel32/toolhelp.c:600 */
 {
+	BOOL return_value;
 	TRACE("Enter Heap32ListFirst\n");
-	return pHeap32ListFirst(hSnapshot, lphl);
+	return_value = pHeap32ListFirst(hSnapshot, lphl);
+	TRACE("Leave Heap32ListFirst\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_Heap32ListFirst(void);  /* ../dlls/kernel32/toolhelp.c:600 */
@@ -12284,10 +13440,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_Heap32ListFirst,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_HeapCreate(DWORD  flags, SIZE_T  initialSize, SIZE_T  maxSize) /* ../dlls/kernel32/heap.c:130 */
+WINAPI HANDLE wine32b_kernel32_HeapCreate(DWORD  flags, SIZE_T  initialSize, SIZE_T  maxSize) /* ../dlls/kernel32/heap.c:130 */
 {
+	HANDLE return_value;
 	TRACE("Enter HeapCreate\n");
-	return pHeapCreate(flags, initialSize, maxSize);
+	return_value = pHeapCreate(flags, initialSize, maxSize);
+	TRACE("Leave HeapCreate\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_HeapCreate(void);  /* ../dlls/kernel32/heap.c:130 */
@@ -12311,10 +13470,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_HeapCreate,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_HeapDestroy(HANDLE  heap) /* ../dlls/kernel32/heap.c:161 */
+WINAPI BOOL wine32b_kernel32_HeapDestroy(HANDLE  heap) /* ../dlls/kernel32/heap.c:161 */
 {
+	BOOL return_value;
 	TRACE("Enter HeapDestroy\n");
-	return pHeapDestroy(heap);
+	return_value = pHeapDestroy(heap);
+	TRACE("Leave HeapDestroy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_HeapDestroy(void);  /* ../dlls/kernel32/heap.c:161 */
@@ -12336,10 +13498,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_HeapDestroy,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_HeapFree(HANDLE  heap, DWORD  flags, LPVOID  ptr) /* ../dlls/kernel32/heap.c:187 */
+WINAPI BOOL wine32b_kernel32_HeapFree(HANDLE  heap, DWORD  flags, LPVOID  ptr) /* ../dlls/kernel32/heap.c:187 */
 {
+	BOOL return_value;
 	TRACE("Enter HeapFree\n");
-	return pHeapFree(heap, flags, ptr);
+	return_value = pHeapFree(heap, flags, ptr);
+	TRACE("Leave HeapFree\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_HeapFree(void);  /* ../dlls/kernel32/heap.c:187 */
@@ -12363,10 +13528,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_HeapFree,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_IdnToAscii(DWORD  dwFlags, LPCWSTR  lpUnicodeCharStr, INT  cchUnicodeChar, LPWSTR  lpASCIICharStr, INT  cchASCIIChar) /* ../dlls/kernel32/locale.c:5366 */
+WINAPI INT wine32b_kernel32_IdnToAscii(DWORD  dwFlags, LPCWSTR  lpUnicodeCharStr, INT  cchUnicodeChar, LPWSTR  lpASCIICharStr, INT  cchASCIIChar) /* ../dlls/kernel32/locale.c:5366 */
 {
+	INT return_value;
 	TRACE("Enter IdnToAscii\n");
-	return pIdnToAscii(dwFlags, lpUnicodeCharStr, cchUnicodeChar, lpASCIICharStr, cchASCIIChar);
+	return_value = pIdnToAscii(dwFlags, lpUnicodeCharStr, cchUnicodeChar, lpASCIICharStr, cchASCIIChar);
+	TRACE("Leave IdnToAscii\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_IdnToAscii(void);  /* ../dlls/kernel32/locale.c:5366 */
@@ -12391,10 +13559,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IdnToAscii,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_IdnToNameprepUnicode(DWORD  dwFlags, LPCWSTR  lpUnicodeCharStr, INT  cchUnicodeChar, LPWSTR  lpNameprepCharStr, INT  cchNameprepChar) /* ../dlls/kernel32/locale.c:5504 */
+WINAPI INT wine32b_kernel32_IdnToNameprepUnicode(DWORD  dwFlags, LPCWSTR  lpUnicodeCharStr, INT  cchUnicodeChar, LPWSTR  lpNameprepCharStr, INT  cchNameprepChar) /* ../dlls/kernel32/locale.c:5504 */
 {
+	INT return_value;
 	TRACE("Enter IdnToNameprepUnicode\n");
-	return pIdnToNameprepUnicode(dwFlags, lpUnicodeCharStr, cchUnicodeChar, lpNameprepCharStr, cchNameprepChar);
+	return_value = pIdnToNameprepUnicode(dwFlags, lpUnicodeCharStr, cchUnicodeChar, lpNameprepCharStr, cchNameprepChar);
+	TRACE("Leave IdnToNameprepUnicode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_IdnToNameprepUnicode(void);  /* ../dlls/kernel32/locale.c:5504 */
@@ -12419,10 +13590,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IdnToNameprepUnicode,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_IdnToUnicode(DWORD  dwFlags, LPCWSTR  lpASCIICharStr, INT  cchASCIIChar, LPWSTR  lpUnicodeCharStr, INT  cchUnicodeChar) /* ../dlls/kernel32/locale.c:5716 */
+WINAPI INT wine32b_kernel32_IdnToUnicode(DWORD  dwFlags, LPCWSTR  lpASCIICharStr, INT  cchASCIIChar, LPWSTR  lpUnicodeCharStr, INT  cchUnicodeChar) /* ../dlls/kernel32/locale.c:5716 */
 {
+	INT return_value;
 	TRACE("Enter IdnToUnicode\n");
-	return pIdnToUnicode(dwFlags, lpASCIICharStr, cchASCIIChar, lpUnicodeCharStr, cchUnicodeChar);
+	return_value = pIdnToUnicode(dwFlags, lpASCIICharStr, cchASCIIChar, lpUnicodeCharStr, cchUnicodeChar);
+	TRACE("Leave IdnToUnicode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_IdnToUnicode(void);  /* ../dlls/kernel32/locale.c:5716 */
@@ -12447,10 +13621,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IdnToUnicode,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_InitAtomTable(DWORD  entries) /* ../dlls/kernel32/atom.c:79 */
+WINAPI BOOL wine32b_kernel32_InitAtomTable(DWORD  entries) /* ../dlls/kernel32/atom.c:79 */
 {
+	BOOL return_value;
 	TRACE("Enter InitAtomTable\n");
-	return pInitAtomTable(entries);
+	return_value = pInitAtomTable(entries);
+	TRACE("Leave InitAtomTable\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_InitAtomTable(void);  /* ../dlls/kernel32/atom.c:79 */
@@ -12472,10 +13649,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_InitAtomTable,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_InvalidateNLSCache(void) /* ../dlls/kernel32/locale.c:4602 */
+WINAPI BOOL wine32b_kernel32_InvalidateNLSCache(void) /* ../dlls/kernel32/locale.c:4602 */
 {
+	BOOL return_value;
 	TRACE("Enter InvalidateNLSCache\n");
-	return pInvalidateNLSCache();
+	return_value = pInvalidateNLSCache();
+	TRACE("Leave InvalidateNLSCache\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_InvalidateNLSCache(void);  /* ../dlls/kernel32/locale.c:4602 */
@@ -12496,10 +13676,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_InvalidateNLSCache,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsBadCodePtr(FARPROC  ptr) /* ../dlls/kernel32/virtual.c:183 */
+WINAPI BOOL wine32b_kernel32_IsBadCodePtr(FARPROC  ptr) /* ../dlls/kernel32/virtual.c:183 */
 {
+	BOOL return_value;
 	TRACE("Enter IsBadCodePtr\n");
-	return pIsBadCodePtr(ptr);
+	return_value = pIsBadCodePtr(ptr);
+	TRACE("Leave IsBadCodePtr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_IsBadCodePtr(void);  /* ../dlls/kernel32/virtual.c:183 */
@@ -12521,10 +13704,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsBadCodePtr,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsBadHugeReadPtr(LPCVOID  ptr, UINT_PTR  size) /* ../dlls/kernel32/virtual.c:146 */
+WINAPI BOOL wine32b_kernel32_IsBadHugeReadPtr(LPCVOID  ptr, UINT_PTR  size) /* ../dlls/kernel32/virtual.c:146 */
 {
+	BOOL return_value;
 	TRACE("Enter IsBadHugeReadPtr\n");
-	return pIsBadHugeReadPtr(ptr, size);
+	return_value = pIsBadHugeReadPtr(ptr, size);
+	TRACE("Leave IsBadHugeReadPtr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_IsBadHugeReadPtr(void);  /* ../dlls/kernel32/virtual.c:146 */
@@ -12547,10 +13733,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsBadHugeReadPtr,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsBadHugeWritePtr(LPVOID  ptr, UINT_PTR  size) /* ../dlls/kernel32/virtual.c:165 */
+WINAPI BOOL wine32b_kernel32_IsBadHugeWritePtr(LPVOID  ptr, UINT_PTR  size) /* ../dlls/kernel32/virtual.c:165 */
 {
+	BOOL return_value;
 	TRACE("Enter IsBadHugeWritePtr\n");
-	return pIsBadHugeWritePtr(ptr, size);
+	return_value = pIsBadHugeWritePtr(ptr, size);
+	TRACE("Leave IsBadHugeWritePtr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_IsBadHugeWritePtr(void);  /* ../dlls/kernel32/virtual.c:165 */
@@ -12573,10 +13762,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsBadHugeWritePtr,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsBadReadPtr(LPCVOID  ptr, UINT_PTR  size) /* ../dlls/kernel32/virtual.c:63 */
+WINAPI BOOL wine32b_kernel32_IsBadReadPtr(LPCVOID  ptr, UINT_PTR  size) /* ../dlls/kernel32/virtual.c:63 */
 {
+	BOOL return_value;
 	TRACE("Enter IsBadReadPtr\n");
-	return pIsBadReadPtr(ptr, size);
+	return_value = pIsBadReadPtr(ptr, size);
+	TRACE("Leave IsBadReadPtr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_IsBadReadPtr(void);  /* ../dlls/kernel32/virtual.c:63 */
@@ -12599,10 +13791,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsBadReadPtr,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsBadStringPtrA(LPCSTR  str, UINT_PTR  max) /* ../dlls/kernel32/virtual.c:202 */
+WINAPI BOOL wine32b_kernel32_IsBadStringPtrA(LPCSTR  str, UINT_PTR  max) /* ../dlls/kernel32/virtual.c:202 */
 {
+	BOOL return_value;
 	TRACE("Enter IsBadStringPtrA\n");
-	return pIsBadStringPtrA(str, max);
+	return_value = pIsBadStringPtrA(str, max);
+	TRACE("Leave IsBadStringPtrA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_IsBadStringPtrA(void);  /* ../dlls/kernel32/virtual.c:202 */
@@ -12625,10 +13820,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsBadStringPtrA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsBadStringPtrW(LPCWSTR  str, UINT_PTR  max) /* ../dlls/kernel32/virtual.c:226 */
+WINAPI BOOL wine32b_kernel32_IsBadStringPtrW(LPCWSTR  str, UINT_PTR  max) /* ../dlls/kernel32/virtual.c:226 */
 {
+	BOOL return_value;
 	TRACE("Enter IsBadStringPtrW\n");
-	return pIsBadStringPtrW(str, max);
+	return_value = pIsBadStringPtrW(str, max);
+	TRACE("Leave IsBadStringPtrW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_IsBadStringPtrW(void);  /* ../dlls/kernel32/virtual.c:226 */
@@ -12651,10 +13849,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsBadStringPtrW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsBadWritePtr(LPVOID  ptr, UINT_PTR  size) /* ../dlls/kernel32/virtual.c:105 */
+WINAPI BOOL wine32b_kernel32_IsBadWritePtr(LPVOID  ptr, UINT_PTR  size) /* ../dlls/kernel32/virtual.c:105 */
 {
+	BOOL return_value;
 	TRACE("Enter IsBadWritePtr\n");
-	return pIsBadWritePtr(ptr, size);
+	return_value = pIsBadWritePtr(ptr, size);
+	TRACE("Leave IsBadWritePtr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_IsBadWritePtr(void);  /* ../dlls/kernel32/virtual.c:105 */
@@ -12677,10 +13878,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsBadWritePtr,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsDBCSLeadByte(BYTE  testchar) /* ../dlls/kernel32/locale.c:2112 */
+WINAPI BOOL wine32b_kernel32_IsDBCSLeadByte(BYTE  testchar) /* ../dlls/kernel32/locale.c:2112 */
 {
+	BOOL return_value;
 	TRACE("Enter IsDBCSLeadByte\n");
-	return pIsDBCSLeadByte(testchar);
+	return_value = pIsDBCSLeadByte(testchar);
+	TRACE("Leave IsDBCSLeadByte\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_IsDBCSLeadByte(void);  /* ../dlls/kernel32/locale.c:2112 */
@@ -12702,10 +13906,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsDBCSLeadByte,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsDBCSLeadByteEx(UINT  codepage, BYTE  testchar) /* ../dlls/kernel32/locale.c:2092 */
+WINAPI BOOL wine32b_kernel32_IsDBCSLeadByteEx(UINT  codepage, BYTE  testchar) /* ../dlls/kernel32/locale.c:2092 */
 {
+	BOOL return_value;
 	TRACE("Enter IsDBCSLeadByteEx\n");
-	return pIsDBCSLeadByteEx(codepage, testchar);
+	return_value = pIsDBCSLeadByteEx(codepage, testchar);
+	TRACE("Leave IsDBCSLeadByteEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_IsDBCSLeadByteEx(void);  /* ../dlls/kernel32/locale.c:2092 */
@@ -12728,10 +13935,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsDBCSLeadByteEx,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsNormalizedString(NORM_FORM  NormForm, LPCWSTR  lpString, INT  cwLength) /* ../dlls/kernel32/locale.c:5333 */
+WINAPI BOOL wine32b_kernel32_IsNormalizedString(NORM_FORM  NormForm, LPCWSTR  lpString, INT  cwLength) /* ../dlls/kernel32/locale.c:5333 */
 {
+	BOOL return_value;
 	TRACE("Enter IsNormalizedString\n");
-	return pIsNormalizedString(NormForm, lpString, cwLength);
+	return_value = pIsNormalizedString(NormForm, lpString, cwLength);
+	TRACE("Leave IsNormalizedString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_IsNormalizedString(void);  /* ../dlls/kernel32/locale.c:5333 */
@@ -12755,10 +13965,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsNormalizedString,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsProcessInJob(HANDLE  process, HANDLE  job, PBOOL  result) /* ../dlls/kernel32/sync.c:388 */
+WINAPI BOOL wine32b_kernel32_IsProcessInJob(HANDLE  process, HANDLE  job, PBOOL  result) /* ../dlls/kernel32/sync.c:388 */
 {
+	BOOL return_value;
 	TRACE("Enter IsProcessInJob\n");
-	return pIsProcessInJob(process, job, result);
+	return_value = pIsProcessInJob(process, job, result);
+	TRACE("Leave IsProcessInJob\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_IsProcessInJob(void);  /* ../dlls/kernel32/sync.c:388 */
@@ -12782,10 +13995,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsProcessInJob,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsProcessorFeaturePresent(DWORD  feature) /* ../dlls/kernel32/cpu.c:157 */
+WINAPI BOOL wine32b_kernel32_IsProcessorFeaturePresent(DWORD  feature) /* ../dlls/kernel32/cpu.c:157 */
 {
+	BOOL return_value;
 	TRACE("Enter IsProcessorFeaturePresent\n");
-	return pIsProcessorFeaturePresent(feature);
+	return_value = pIsProcessorFeaturePresent(feature);
+	TRACE("Leave IsProcessorFeaturePresent\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_IsProcessorFeaturePresent(void);  /* ../dlls/kernel32/cpu.c:157 */
@@ -12807,10 +14023,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsProcessorFeaturePresent,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsSystemResumeAutomatic(void) /* ../dlls/kernel32/powermgnt.c:66 */
+WINAPI BOOL wine32b_kernel32_IsSystemResumeAutomatic(void) /* ../dlls/kernel32/powermgnt.c:66 */
 {
+	BOOL return_value;
 	TRACE("Enter IsSystemResumeAutomatic\n");
-	return pIsSystemResumeAutomatic();
+	return_value = pIsSystemResumeAutomatic();
+	TRACE("Leave IsSystemResumeAutomatic\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_IsSystemResumeAutomatic(void);  /* ../dlls/kernel32/powermgnt.c:66 */
@@ -12831,10 +14050,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsSystemResumeAutomatic,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsValidCodePage(UINT  codepage) /* ../dlls/kernel32/locale.c:2067 */
+WINAPI BOOL wine32b_kernel32_IsValidCodePage(UINT  codepage) /* ../dlls/kernel32/locale.c:2067 */
 {
+	BOOL return_value;
 	TRACE("Enter IsValidCodePage\n");
-	return pIsValidCodePage(codepage);
+	return_value = pIsValidCodePage(codepage);
+	TRACE("Leave IsValidCodePage\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_IsValidCodePage(void);  /* ../dlls/kernel32/locale.c:2067 */
@@ -12856,10 +14078,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsValidCodePage,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsValidLanguageGroup(LGRPID  lgrpid, DWORD  dwFlags) /* ../dlls/kernel32/locale.c:4402 */
+WINAPI BOOL wine32b_kernel32_IsValidLanguageGroup(LGRPID  lgrpid, DWORD  dwFlags) /* ../dlls/kernel32/locale.c:4402 */
 {
+	BOOL return_value;
 	TRACE("Enter IsValidLanguageGroup\n");
-	return pIsValidLanguageGroup(lgrpid, dwFlags);
+	return_value = pIsValidLanguageGroup(lgrpid, dwFlags);
+	TRACE("Leave IsValidLanguageGroup\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_IsValidLanguageGroup(void);  /* ../dlls/kernel32/locale.c:4402 */
@@ -12882,10 +14107,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsValidLanguageGroup,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsValidLocale(LCID  lcid, DWORD  flags) /* ../dlls/kernel32/locale.c:2917 */
+WINAPI BOOL wine32b_kernel32_IsValidLocale(LCID  lcid, DWORD  flags) /* ../dlls/kernel32/locale.c:2917 */
 {
+	BOOL return_value;
 	TRACE("Enter IsValidLocale\n");
-	return pIsValidLocale(lcid, flags);
+	return_value = pIsValidLocale(lcid, flags);
+	TRACE("Leave IsValidLocale\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_IsValidLocale(void);  /* ../dlls/kernel32/locale.c:2917 */
@@ -12908,10 +14136,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsValidLocale,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_IsValidLocaleName(LPCWSTR  locale) /* ../dlls/kernel32/locale.c:2927 */
+WINAPI BOOL wine32b_kernel32_IsValidLocaleName(LPCWSTR  locale) /* ../dlls/kernel32/locale.c:2927 */
 {
+	BOOL return_value;
 	TRACE("Enter IsValidLocaleName\n");
-	return pIsValidLocaleName(locale);
+	return_value = pIsValidLocaleName(locale);
+	TRACE("Leave IsValidLocaleName\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_IsValidLocaleName(void);  /* ../dlls/kernel32/locale.c:2927 */
@@ -12933,10 +14164,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_IsValidLocaleName,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32EmptyWorkingSet(HANDLE  hProcess) /* ../dlls/kernel32/process.c:3503 */
+WINAPI BOOL wine32b_kernel32_K32EmptyWorkingSet(HANDLE  hProcess) /* ../dlls/kernel32/process.c:3503 */
 {
+	BOOL return_value;
 	TRACE("Enter K32EmptyWorkingSet\n");
-	return pK32EmptyWorkingSet(hProcess);
+	return_value = pK32EmptyWorkingSet(hProcess);
+	TRACE("Leave K32EmptyWorkingSet\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32EmptyWorkingSet(void);  /* ../dlls/kernel32/process.c:3503 */
@@ -12958,10 +14192,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32EmptyWorkingSet,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32EnumDeviceDrivers(void**  image_base, DWORD  cb, DWORD*  needed) /* ../dlls/kernel32/file.c:1276 */
+WINAPI BOOL wine32b_kernel32_K32EnumDeviceDrivers(void**  image_base, DWORD  cb, DWORD*  needed) /* ../dlls/kernel32/file.c:1276 */
 {
+	BOOL return_value;
 	TRACE("Enter K32EnumDeviceDrivers\n");
-	return pK32EnumDeviceDrivers(image_base, cb, needed);
+	return_value = pK32EnumDeviceDrivers(image_base, cb, needed);
+	TRACE("Leave K32EnumDeviceDrivers\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32EnumDeviceDrivers(void);  /* ../dlls/kernel32/file.c:1276 */
@@ -12985,10 +14222,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32EnumDeviceDrivers,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32EnumPageFilesA(PENUM_PAGE_FILE_CALLBACKA  callback, LPVOID  context) /* ../dlls/kernel32/virtual.c:273 */
+WINAPI BOOL wine32b_kernel32_K32EnumPageFilesA(PENUM_PAGE_FILE_CALLBACKA  callback, LPVOID  context) /* ../dlls/kernel32/virtual.c:273 */
 {
+	BOOL return_value;
 	TRACE("Enter K32EnumPageFilesA\n");
-	return pK32EnumPageFilesA(callback, context);
+	return_value = pK32EnumPageFilesA(callback, context);
+	TRACE("Leave K32EnumPageFilesA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32EnumPageFilesA(void);  /* ../dlls/kernel32/virtual.c:273 */
@@ -13011,10 +14251,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32EnumPageFilesA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32EnumPageFilesW(PENUM_PAGE_FILE_CALLBACKW  callback, LPVOID  context) /* ../dlls/kernel32/virtual.c:282 */
+WINAPI BOOL wine32b_kernel32_K32EnumPageFilesW(PENUM_PAGE_FILE_CALLBACKW  callback, LPVOID  context) /* ../dlls/kernel32/virtual.c:282 */
 {
+	BOOL return_value;
 	TRACE("Enter K32EnumPageFilesW\n");
-	return pK32EnumPageFilesW(callback, context);
+	return_value = pK32EnumPageFilesW(callback, context);
+	TRACE("Leave K32EnumPageFilesW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32EnumPageFilesW(void);  /* ../dlls/kernel32/virtual.c:282 */
@@ -13037,10 +14280,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32EnumPageFilesW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32EnumProcessModules(HANDLE  process, HMODULE*  lphModule, DWORD  cb, DWORD*  needed) /* ../dlls/kernel32/module.c:1228 */
+WINAPI BOOL wine32b_kernel32_K32EnumProcessModules(HANDLE  process, HMODULE*  lphModule, DWORD  cb, DWORD*  needed) /* ../dlls/kernel32/module.c:1228 */
 {
+	BOOL return_value;
 	TRACE("Enter K32EnumProcessModules\n");
-	return pK32EnumProcessModules(process, lphModule, cb, needed);
+	return_value = pK32EnumProcessModules(process, lphModule, cb, needed);
+	TRACE("Leave K32EnumProcessModules\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32EnumProcessModules(void);  /* ../dlls/kernel32/module.c:1228 */
@@ -13065,10 +14311,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32EnumProcessModules,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32EnumProcessModulesEx(HANDLE  process, HMODULE*  lphModule, DWORD  cb, DWORD*  needed, DWORD  filter) /* ../dlls/kernel32/module.c:1273 */
+WINAPI BOOL wine32b_kernel32_K32EnumProcessModulesEx(HANDLE  process, HMODULE*  lphModule, DWORD  cb, DWORD*  needed, DWORD  filter) /* ../dlls/kernel32/module.c:1273 */
 {
+	BOOL return_value;
 	TRACE("Enter K32EnumProcessModulesEx\n");
-	return pK32EnumProcessModulesEx(process, lphModule, cb, needed, filter);
+	return_value = pK32EnumProcessModulesEx(process, lphModule, cb, needed, filter);
+	TRACE("Leave K32EnumProcessModulesEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32EnumProcessModulesEx(void);  /* ../dlls/kernel32/module.c:1273 */
@@ -13093,10 +14342,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32EnumProcessModulesEx,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32EnumProcesses(DWORD*  lpdwProcessIDs, DWORD  cb, DWORD*  lpcbUsed) /* ../dlls/kernel32/process.c:3653 */
+WINAPI BOOL wine32b_kernel32_K32EnumProcesses(DWORD*  lpdwProcessIDs, DWORD  cb, DWORD*  lpcbUsed) /* ../dlls/kernel32/process.c:3653 */
 {
+	BOOL return_value;
 	TRACE("Enter K32EnumProcesses\n");
-	return pK32EnumProcesses(lpdwProcessIDs, cb, lpcbUsed);
+	return_value = pK32EnumProcesses(lpdwProcessIDs, cb, lpcbUsed);
+	TRACE("Leave K32EnumProcesses\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32EnumProcesses(void);  /* ../dlls/kernel32/process.c:3653 */
@@ -13120,10 +14372,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32EnumProcesses,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_K32GetDeviceDriverBaseNameA(void*  image_base, LPSTR  base_name, DWORD  size) /* ../dlls/kernel32/file.c:1289 */
+WINAPI DWORD wine32b_kernel32_K32GetDeviceDriverBaseNameA(void*  image_base, LPSTR  base_name, DWORD  size) /* ../dlls/kernel32/file.c:1289 */
 {
+	DWORD return_value;
 	TRACE("Enter K32GetDeviceDriverBaseNameA\n");
-	return pK32GetDeviceDriverBaseNameA(image_base, base_name, size);
+	return_value = pK32GetDeviceDriverBaseNameA(image_base, base_name, size);
+	TRACE("Leave K32GetDeviceDriverBaseNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32GetDeviceDriverBaseNameA(void);  /* ../dlls/kernel32/file.c:1289 */
@@ -13147,10 +14402,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetDeviceDriverBaseNameA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_K32GetDeviceDriverBaseNameW(void*  image_base, LPWSTR  base_name, DWORD  size) /* ../dlls/kernel32/file.c:1302 */
+WINAPI DWORD wine32b_kernel32_K32GetDeviceDriverBaseNameW(void*  image_base, LPWSTR  base_name, DWORD  size) /* ../dlls/kernel32/file.c:1302 */
 {
+	DWORD return_value;
 	TRACE("Enter K32GetDeviceDriverBaseNameW\n");
-	return pK32GetDeviceDriverBaseNameW(image_base, base_name, size);
+	return_value = pK32GetDeviceDriverBaseNameW(image_base, base_name, size);
+	TRACE("Leave K32GetDeviceDriverBaseNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32GetDeviceDriverBaseNameW(void);  /* ../dlls/kernel32/file.c:1302 */
@@ -13174,10 +14432,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetDeviceDriverBaseNameW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_K32GetDeviceDriverFileNameA(void*  image_base, LPSTR  file_name, DWORD  size) /* ../dlls/kernel32/file.c:1315 */
+WINAPI DWORD wine32b_kernel32_K32GetDeviceDriverFileNameA(void*  image_base, LPSTR  file_name, DWORD  size) /* ../dlls/kernel32/file.c:1315 */
 {
+	DWORD return_value;
 	TRACE("Enter K32GetDeviceDriverFileNameA\n");
-	return pK32GetDeviceDriverFileNameA(image_base, file_name, size);
+	return_value = pK32GetDeviceDriverFileNameA(image_base, file_name, size);
+	TRACE("Leave K32GetDeviceDriverFileNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32GetDeviceDriverFileNameA(void);  /* ../dlls/kernel32/file.c:1315 */
@@ -13201,10 +14462,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetDeviceDriverFileNameA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_K32GetDeviceDriverFileNameW(void*  image_base, LPWSTR  file_name, DWORD  size) /* ../dlls/kernel32/file.c:1328 */
+WINAPI DWORD wine32b_kernel32_K32GetDeviceDriverFileNameW(void*  image_base, LPWSTR  file_name, DWORD  size) /* ../dlls/kernel32/file.c:1328 */
 {
+	DWORD return_value;
 	TRACE("Enter K32GetDeviceDriverFileNameW\n");
-	return pK32GetDeviceDriverFileNameW(image_base, file_name, size);
+	return_value = pK32GetDeviceDriverFileNameW(image_base, file_name, size);
+	TRACE("Leave K32GetDeviceDriverFileNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32GetDeviceDriverFileNameW(void);  /* ../dlls/kernel32/file.c:1328 */
@@ -13228,10 +14492,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetDeviceDriverFileNameW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_K32GetMappedFileNameA(HANDLE  process, LPVOID  lpv, LPSTR  file_name, DWORD  size) /* ../dlls/kernel32/virtual.c:247 */
+WINAPI DWORD wine32b_kernel32_K32GetMappedFileNameA(HANDLE  process, LPVOID  lpv, LPSTR  file_name, DWORD  size) /* ../dlls/kernel32/virtual.c:247 */
 {
+	DWORD return_value;
 	TRACE("Enter K32GetMappedFileNameA\n");
-	return pK32GetMappedFileNameA(process, lpv, file_name, size);
+	return_value = pK32GetMappedFileNameA(process, lpv, file_name, size);
+	TRACE("Leave K32GetMappedFileNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32GetMappedFileNameA(void);  /* ../dlls/kernel32/virtual.c:247 */
@@ -13256,10 +14523,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetMappedFileNameA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_K32GetMappedFileNameW(HANDLE  process, LPVOID  lpv, LPWSTR  file_name, DWORD  size) /* ../dlls/kernel32/virtual.c:260 */
+WINAPI DWORD wine32b_kernel32_K32GetMappedFileNameW(HANDLE  process, LPVOID  lpv, LPWSTR  file_name, DWORD  size) /* ../dlls/kernel32/virtual.c:260 */
 {
+	DWORD return_value;
 	TRACE("Enter K32GetMappedFileNameW\n");
-	return pK32GetMappedFileNameW(process, lpv, file_name, size);
+	return_value = pK32GetMappedFileNameW(process, lpv, file_name, size);
+	TRACE("Leave K32GetMappedFileNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32GetMappedFileNameW(void);  /* ../dlls/kernel32/virtual.c:260 */
@@ -13284,10 +14554,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetMappedFileNameW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_K32GetModuleBaseNameA(HANDLE  process, HMODULE  module, LPSTR  base_name, DWORD  size) /* ../dlls/kernel32/module.c:1323 */
+WINAPI DWORD wine32b_kernel32_K32GetModuleBaseNameA(HANDLE  process, HMODULE  module, LPSTR  base_name, DWORD  size) /* ../dlls/kernel32/module.c:1323 */
 {
+	DWORD return_value;
 	TRACE("Enter K32GetModuleBaseNameA\n");
-	return pK32GetModuleBaseNameA(process, module, base_name, size);
+	return_value = pK32GetModuleBaseNameA(process, module, base_name, size);
+	TRACE("Leave K32GetModuleBaseNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32GetModuleBaseNameA(void);  /* ../dlls/kernel32/module.c:1323 */
@@ -13312,10 +14585,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetModuleBaseNameA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_K32GetModuleBaseNameW(HANDLE  process, HMODULE  module, LPWSTR  base_name, DWORD  size) /* ../dlls/kernel32/module.c:1284 */
+WINAPI DWORD wine32b_kernel32_K32GetModuleBaseNameW(HANDLE  process, HMODULE  module, LPWSTR  base_name, DWORD  size) /* ../dlls/kernel32/module.c:1284 */
 {
+	DWORD return_value;
 	TRACE("Enter K32GetModuleBaseNameW\n");
-	return pK32GetModuleBaseNameW(process, module, base_name, size);
+	return_value = pK32GetModuleBaseNameW(process, module, base_name, size);
+	TRACE("Leave K32GetModuleBaseNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32GetModuleBaseNameW(void);  /* ../dlls/kernel32/module.c:1284 */
@@ -13340,10 +14616,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetModuleBaseNameW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_K32GetModuleFileNameExA(HANDLE  process, HMODULE  module, LPSTR  file_name, DWORD  size) /* ../dlls/kernel32/module.c:1403 */
+WINAPI DWORD wine32b_kernel32_K32GetModuleFileNameExA(HANDLE  process, HMODULE  module, LPSTR  file_name, DWORD  size) /* ../dlls/kernel32/module.c:1403 */
 {
+	DWORD return_value;
 	TRACE("Enter K32GetModuleFileNameExA\n");
-	return pK32GetModuleFileNameExA(process, module, file_name, size);
+	return_value = pK32GetModuleFileNameExA(process, module, file_name, size);
+	TRACE("Leave K32GetModuleFileNameExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32GetModuleFileNameExA(void);  /* ../dlls/kernel32/module.c:1403 */
@@ -13368,10 +14647,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetModuleFileNameExA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_K32GetModuleFileNameExW(HANDLE  process, HMODULE  module, LPWSTR  file_name, DWORD  size) /* ../dlls/kernel32/module.c:1353 */
+WINAPI DWORD wine32b_kernel32_K32GetModuleFileNameExW(HANDLE  process, HMODULE  module, LPWSTR  file_name, DWORD  size) /* ../dlls/kernel32/module.c:1353 */
 {
+	DWORD return_value;
 	TRACE("Enter K32GetModuleFileNameExW\n");
-	return pK32GetModuleFileNameExW(process, module, file_name, size);
+	return_value = pK32GetModuleFileNameExW(process, module, file_name, size);
+	TRACE("Leave K32GetModuleFileNameExW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32GetModuleFileNameExW(void);  /* ../dlls/kernel32/module.c:1353 */
@@ -13396,10 +14678,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetModuleFileNameExW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32GetModuleInformation(HANDLE  process, HMODULE  module, MODULEINFO*  modinfo, DWORD  cb) /* ../dlls/kernel32/module.c:1448 */
+WINAPI BOOL wine32b_kernel32_K32GetModuleInformation(HANDLE  process, HMODULE  module, MODULEINFO*  modinfo, DWORD  cb) /* ../dlls/kernel32/module.c:1448 */
 {
+	BOOL return_value;
 	TRACE("Enter K32GetModuleInformation\n");
-	return pK32GetModuleInformation(process, module, modinfo, cb);
+	return_value = pK32GetModuleInformation(process, module, modinfo, cb);
+	TRACE("Leave K32GetModuleInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32GetModuleInformation(void);  /* ../dlls/kernel32/module.c:1448 */
@@ -13424,10 +14709,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetModuleInformation,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32GetPerformanceInfo(PPERFORMANCE_INFORMATION  info, DWORD  size) /* ../dlls/kernel32/cpu.c:165 */
+WINAPI BOOL wine32b_kernel32_K32GetPerformanceInfo(PPERFORMANCE_INFORMATION  info, DWORD  size) /* ../dlls/kernel32/cpu.c:165 */
 {
+	BOOL return_value;
 	TRACE("Enter K32GetPerformanceInfo\n");
-	return pK32GetPerformanceInfo(info, size);
+	return_value = pK32GetPerformanceInfo(info, size);
+	TRACE("Leave K32GetPerformanceInfo\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32GetPerformanceInfo(void);  /* ../dlls/kernel32/cpu.c:165 */
@@ -13450,10 +14738,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetPerformanceInfo,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_K32GetProcessImageFileNameA(HANDLE  process, LPSTR  file, DWORD  size) /* ../dlls/kernel32/process.c:3637 */
+WINAPI DWORD wine32b_kernel32_K32GetProcessImageFileNameA(HANDLE  process, LPSTR  file, DWORD  size) /* ../dlls/kernel32/process.c:3637 */
 {
+	DWORD return_value;
 	TRACE("Enter K32GetProcessImageFileNameA\n");
-	return pK32GetProcessImageFileNameA(process, file, size);
+	return_value = pK32GetProcessImageFileNameA(process, file, size);
+	TRACE("Leave K32GetProcessImageFileNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32GetProcessImageFileNameA(void);  /* ../dlls/kernel32/process.c:3637 */
@@ -13477,10 +14768,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetProcessImageFileNameA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_K32GetProcessImageFileNameW(HANDLE  process, LPWSTR  file, DWORD  size) /* ../dlls/kernel32/process.c:3645 */
+WINAPI DWORD wine32b_kernel32_K32GetProcessImageFileNameW(HANDLE  process, LPWSTR  file, DWORD  size) /* ../dlls/kernel32/process.c:3645 */
 {
+	DWORD return_value;
 	TRACE("Enter K32GetProcessImageFileNameW\n");
-	return pK32GetProcessImageFileNameW(process, file, size);
+	return_value = pK32GetProcessImageFileNameW(process, file, size);
+	TRACE("Leave K32GetProcessImageFileNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32GetProcessImageFileNameW(void);  /* ../dlls/kernel32/process.c:3645 */
@@ -13504,10 +14798,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetProcessImageFileNameW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32GetProcessMemoryInfo(HANDLE  process, PPROCESS_MEMORY_COUNTERS  pmc, DWORD  cb) /* ../dlls/kernel32/process.c:3738 */
+WINAPI BOOL wine32b_kernel32_K32GetProcessMemoryInfo(HANDLE  process, PPROCESS_MEMORY_COUNTERS  pmc, DWORD  cb) /* ../dlls/kernel32/process.c:3738 */
 {
+	BOOL return_value;
 	TRACE("Enter K32GetProcessMemoryInfo\n");
-	return pK32GetProcessMemoryInfo(process, pmc, cb);
+	return_value = pK32GetProcessMemoryInfo(process, pmc, cb);
+	TRACE("Leave K32GetProcessMemoryInfo\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32GetProcessMemoryInfo(void);  /* ../dlls/kernel32/process.c:3738 */
@@ -13531,10 +14828,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetProcessMemoryInfo,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32GetWsChanges(HANDLE  process, PPSAPI_WS_WATCH_INFORMATION  watchinfo, DWORD  size) /* ../dlls/kernel32/virtual.c:291 */
+WINAPI BOOL wine32b_kernel32_K32GetWsChanges(HANDLE  process, PPSAPI_WS_WATCH_INFORMATION  watchinfo, DWORD  size) /* ../dlls/kernel32/virtual.c:291 */
 {
+	BOOL return_value;
 	TRACE("Enter K32GetWsChanges\n");
-	return pK32GetWsChanges(process, watchinfo, size);
+	return_value = pK32GetWsChanges(process, watchinfo, size);
+	TRACE("Leave K32GetWsChanges\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32GetWsChanges(void);  /* ../dlls/kernel32/virtual.c:291 */
@@ -13558,10 +14858,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetWsChanges,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32GetWsChangesEx(HANDLE  process, PSAPI_WS_WATCH_INFORMATION_EX*  watchinfoex, DWORD*  size) /* ../dlls/kernel32/virtual.c:310 */
+WINAPI BOOL wine32b_kernel32_K32GetWsChangesEx(HANDLE  process, PSAPI_WS_WATCH_INFORMATION_EX*  watchinfoex, DWORD*  size) /* ../dlls/kernel32/virtual.c:310 */
 {
+	BOOL return_value;
 	TRACE("Enter K32GetWsChangesEx\n");
-	return pK32GetWsChangesEx(process, watchinfoex, size);
+	return_value = pK32GetWsChangesEx(process, watchinfoex, size);
+	TRACE("Leave K32GetWsChangesEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32GetWsChangesEx(void);  /* ../dlls/kernel32/virtual.c:310 */
@@ -13585,10 +14888,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32GetWsChangesEx,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32InitializeProcessForWsWatch(HANDLE  process) /* ../dlls/kernel32/virtual.c:321 */
+WINAPI BOOL wine32b_kernel32_K32InitializeProcessForWsWatch(HANDLE  process) /* ../dlls/kernel32/virtual.c:321 */
 {
+	BOOL return_value;
 	TRACE("Enter K32InitializeProcessForWsWatch\n");
-	return pK32InitializeProcessForWsWatch(process);
+	return_value = pK32InitializeProcessForWsWatch(process);
+	TRACE("Leave K32InitializeProcessForWsWatch\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32InitializeProcessForWsWatch(void);  /* ../dlls/kernel32/virtual.c:321 */
@@ -13610,10 +14916,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32InitializeProcessForWsWatch,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32QueryWorkingSet(HANDLE  process, LPVOID  buffer, DWORD  size) /* ../dlls/kernel32/process.c:3697 */
+WINAPI BOOL wine32b_kernel32_K32QueryWorkingSet(HANDLE  process, LPVOID  buffer, DWORD  size) /* ../dlls/kernel32/process.c:3697 */
 {
+	BOOL return_value;
 	TRACE("Enter K32QueryWorkingSet\n");
-	return pK32QueryWorkingSet(process, buffer, size);
+	return_value = pK32QueryWorkingSet(process, buffer, size);
+	TRACE("Leave K32QueryWorkingSet\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32QueryWorkingSet(void);  /* ../dlls/kernel32/process.c:3697 */
@@ -13637,10 +14946,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32QueryWorkingSet,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_K32QueryWorkingSetEx(HANDLE  process, LPVOID  buffer, DWORD  size) /* ../dlls/kernel32/process.c:3716 */
+WINAPI BOOL wine32b_kernel32_K32QueryWorkingSetEx(HANDLE  process, LPVOID  buffer, DWORD  size) /* ../dlls/kernel32/process.c:3716 */
 {
+	BOOL return_value;
 	TRACE("Enter K32QueryWorkingSetEx\n");
-	return pK32QueryWorkingSetEx(process, buffer, size);
+	return_value = pK32QueryWorkingSetEx(process, buffer, size);
+	TRACE("Leave K32QueryWorkingSetEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_K32QueryWorkingSetEx(void);  /* ../dlls/kernel32/process.c:3716 */
@@ -13664,10 +14976,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_K32QueryWorkingSetEx,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_LCIDToLocaleName(LCID  lcid, LPWSTR  name, INT  count, DWORD  flags) /* ../dlls/kernel32/locale.c:1450 */
+WINAPI INT wine32b_kernel32_LCIDToLocaleName(LCID  lcid, LPWSTR  name, INT  count, DWORD  flags) /* ../dlls/kernel32/locale.c:1450 */
 {
+	INT return_value;
 	TRACE("Enter LCIDToLocaleName\n");
-	return pLCIDToLocaleName(lcid, name, count, flags);
+	return_value = pLCIDToLocaleName(lcid, name, count, flags);
+	TRACE("Leave LCIDToLocaleName\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LCIDToLocaleName(void);  /* ../dlls/kernel32/locale.c:1450 */
@@ -13692,10 +15007,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LCIDToLocaleName,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_LCMapStringA(LCID  lcid, DWORD  flags, LPCSTR  src, INT  srclen, LPSTR  dst, INT  dstlen) /* ../dlls/kernel32/locale.c:3724 */
+WINAPI INT wine32b_kernel32_LCMapStringA(LCID  lcid, DWORD  flags, LPCSTR  src, INT  srclen, LPSTR  dst, INT  dstlen) /* ../dlls/kernel32/locale.c:3724 */
 {
+	INT return_value;
 	TRACE("Enter LCMapStringA\n");
-	return pLCMapStringA(lcid, flags, src, srclen, dst, dstlen);
+	return_value = pLCMapStringA(lcid, flags, src, srclen, dst, dstlen);
+	TRACE("Leave LCMapStringA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LCMapStringA(void);  /* ../dlls/kernel32/locale.c:3724 */
@@ -13720,10 +15038,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LCMapStringA,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_LCMapStringEx(LPCWSTR  name, DWORD  flags, LPCWSTR  src, INT  srclen, LPWSTR  dst, INT  dstlen, LPNLSVERSIONINFO  version, LPVOID  reserved, LPARAM  lparam) /* ../dlls/kernel32/locale.c:3463 */
+WINAPI INT wine32b_kernel32_LCMapStringEx(LPCWSTR  name, DWORD  flags, LPCWSTR  src, INT  srclen, LPWSTR  dst, INT  dstlen, LPNLSVERSIONINFO  version, LPVOID  reserved, LPARAM  lparam) /* ../dlls/kernel32/locale.c:3463 */
 {
+	INT return_value;
 	TRACE("Enter LCMapStringEx\n");
-	return pLCMapStringEx(name, flags, src, srclen, dst, dstlen, version, reserved, lparam);
+	return_value = pLCMapStringEx(name, flags, src, srclen, dst, dstlen, version, reserved, lparam);
+	TRACE("Leave LCMapStringEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LCMapStringEx(void);  /* ../dlls/kernel32/locale.c:3463 */
@@ -13748,10 +15069,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LCMapStringEx,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_LCMapStringW(LCID  lcid, DWORD  flags, LPCWSTR  src, INT  srclen, LPWSTR  dst, INT  dstlen) /* ../dlls/kernel32/locale.c:3698 */
+WINAPI INT wine32b_kernel32_LCMapStringW(LCID  lcid, DWORD  flags, LPCWSTR  src, INT  srclen, LPWSTR  dst, INT  dstlen) /* ../dlls/kernel32/locale.c:3698 */
 {
+	INT return_value;
 	TRACE("Enter LCMapStringW\n");
-	return pLCMapStringW(lcid, flags, src, srclen, dst, dstlen);
+	return_value = pLCMapStringW(lcid, flags, src, srclen, dst, dstlen);
+	TRACE("Leave LCMapStringW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LCMapStringW(void);  /* ../dlls/kernel32/locale.c:3698 */
@@ -13776,10 +15100,11 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LCMapStringW,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_LZClose(HFILE  fd) /* ../dlls/kernel32/lzexpand.c:579 */
+WINAPI void wine32b_kernel32_LZClose(HFILE  fd) /* ../dlls/kernel32/lzexpand.c:579 */
 {
 	TRACE("Enter LZClose\n");
-	return pLZClose(fd);
+	pLZClose(fd);
+	TRACE("Leave LZClose\n");
 }
 
 extern WINAPI void wine32a_kernel32_LZClose(void);  /* ../dlls/kernel32/lzexpand.c:579 */
@@ -13801,10 +15126,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LZClose,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_kernel32_LZCopy(HFILE  src, HFILE  dest) /* ../dlls/kernel32/lzexpand.c:455 */
+WINAPI LONG wine32b_kernel32_LZCopy(HFILE  src, HFILE  dest) /* ../dlls/kernel32/lzexpand.c:455 */
 {
+	LONG return_value;
 	TRACE("Enter LZCopy\n");
-	return pLZCopy(src, dest);
+	return_value = pLZCopy(src, dest);
+	TRACE("Leave LZCopy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LZCopy(void);  /* ../dlls/kernel32/lzexpand.c:455 */
@@ -13827,10 +15155,11 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LZCopy,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_LZDone(void) /* ../dlls/kernel32/lzexpand.c:223 */
+WINAPI void wine32b_kernel32_LZDone(void) /* ../dlls/kernel32/lzexpand.c:223 */
 {
 	TRACE("Enter LZDone\n");
-	return pLZDone();
+	pLZDone();
+	TRACE("Leave LZDone\n");
 }
 
 extern WINAPI void wine32a_kernel32_LZDone(void);  /* ../dlls/kernel32/lzexpand.c:223 */
@@ -13851,10 +15180,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LZDone,
 	"ret \n"
 )
 
-extern WINAPI HFILE wine32b_kernel32_LZInit(HFILE  hfSrc) /* ../dlls/kernel32/lzexpand.c:180 */
+WINAPI HFILE wine32b_kernel32_LZInit(HFILE  hfSrc) /* ../dlls/kernel32/lzexpand.c:180 */
 {
+	HFILE return_value;
 	TRACE("Enter LZInit\n");
-	return pLZInit(hfSrc);
+	return_value = pLZInit(hfSrc);
+	TRACE("Leave LZInit\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LZInit(void);  /* ../dlls/kernel32/lzexpand.c:180 */
@@ -13876,10 +15208,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LZInit,
 	"ret \n"
 )
 
-extern WINAPI HFILE wine32b_kernel32_LZOpenFileA(LPSTR  fn, LPOFSTRUCT  ofs, WORD  mode) /* ../dlls/kernel32/lzexpand.c:535 */
+WINAPI HFILE wine32b_kernel32_LZOpenFileA(LPSTR  fn, LPOFSTRUCT  ofs, WORD  mode) /* ../dlls/kernel32/lzexpand.c:535 */
 {
+	HFILE return_value;
 	TRACE("Enter LZOpenFileA\n");
-	return pLZOpenFileA(fn, ofs, mode);
+	return_value = pLZOpenFileA(fn, ofs, mode);
+	TRACE("Leave LZOpenFileA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LZOpenFileA(void);  /* ../dlls/kernel32/lzexpand.c:535 */
@@ -13903,10 +15238,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LZOpenFileA,
 	"ret \n"
 )
 
-extern WINAPI HFILE wine32b_kernel32_LZOpenFileW(LPWSTR  fn, LPOFSTRUCT  ofs, WORD  mode) /* ../dlls/kernel32/lzexpand.c:564 */
+WINAPI HFILE wine32b_kernel32_LZOpenFileW(LPWSTR  fn, LPOFSTRUCT  ofs, WORD  mode) /* ../dlls/kernel32/lzexpand.c:564 */
 {
+	HFILE return_value;
 	TRACE("Enter LZOpenFileW\n");
-	return pLZOpenFileW(fn, ofs, mode);
+	return_value = pLZOpenFileW(fn, ofs, mode);
+	TRACE("Leave LZOpenFileW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LZOpenFileW(void);  /* ../dlls/kernel32/lzexpand.c:564 */
@@ -13930,10 +15268,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LZOpenFileW,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_LZRead(HFILE  fd, LPSTR  vbuf, INT  toread) /* ../dlls/kernel32/lzexpand.c:328 */
+WINAPI INT wine32b_kernel32_LZRead(HFILE  fd, LPSTR  vbuf, INT  toread) /* ../dlls/kernel32/lzexpand.c:328 */
 {
+	INT return_value;
 	TRACE("Enter LZRead\n");
-	return pLZRead(fd, vbuf, toread);
+	return_value = pLZRead(fd, vbuf, toread);
+	TRACE("Leave LZRead\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LZRead(void);  /* ../dlls/kernel32/lzexpand.c:328 */
@@ -13957,10 +15298,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LZRead,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_kernel32_LZSeek(HFILE  fd, LONG  off, INT  type) /* ../dlls/kernel32/lzexpand.c:419 */
+WINAPI LONG wine32b_kernel32_LZSeek(HFILE  fd, LONG  off, INT  type) /* ../dlls/kernel32/lzexpand.c:419 */
 {
+	LONG return_value;
 	TRACE("Enter LZSeek\n");
-	return pLZSeek(fd, off, type);
+	return_value = pLZSeek(fd, off, type);
+	TRACE("Leave LZSeek\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LZSeek(void);  /* ../dlls/kernel32/lzexpand.c:419 */
@@ -13984,10 +15328,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LZSeek,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_LZStart(void) /* ../dlls/kernel32/lzexpand.c:162 */
+WINAPI INT wine32b_kernel32_LZStart(void) /* ../dlls/kernel32/lzexpand.c:162 */
 {
+	INT return_value;
 	TRACE("Enter LZStart\n");
-	return pLZStart();
+	return_value = pLZStart();
+	TRACE("Leave LZStart\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LZStart(void);  /* ../dlls/kernel32/lzexpand.c:162 */
@@ -14008,10 +15355,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LZStart,
 	"ret \n"
 )
 
-extern WINAPI HMODULE wine32b_kernel32_LoadLibraryA(LPCSTR  libname) /* ../dlls/kernel32/module.c:860 */
+WINAPI HMODULE wine32b_kernel32_LoadLibraryA(LPCSTR  libname) /* ../dlls/kernel32/module.c:860 */
 {
+	HMODULE return_value;
 	TRACE("Enter LoadLibraryA\n");
-	return pLoadLibraryA(libname);
+	return_value = pLoadLibraryA(libname);
+	TRACE("Leave LoadLibraryA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LoadLibraryA(void);  /* ../dlls/kernel32/module.c:860 */
@@ -14033,10 +15383,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LoadLibraryA,
 	"ret \n"
 )
 
-extern WINAPI HMODULE wine32b_kernel32_LoadLibraryExA(LPCSTR  libname, HANDLE  hfile, DWORD  flags) /* ../dlls/kernel32/module.c:805 */
+WINAPI HMODULE wine32b_kernel32_LoadLibraryExA(LPCSTR  libname, HANDLE  hfile, DWORD  flags) /* ../dlls/kernel32/module.c:805 */
 {
+	HMODULE return_value;
 	TRACE("Enter LoadLibraryExA\n");
-	return pLoadLibraryExA(libname, hfile, flags);
+	return_value = pLoadLibraryExA(libname, hfile, flags);
+	TRACE("Leave LoadLibraryExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LoadLibraryExA(void);  /* ../dlls/kernel32/module.c:805 */
@@ -14060,10 +15413,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LoadLibraryExA,
 	"ret \n"
 )
 
-extern WINAPI HMODULE wine32b_kernel32_LoadLibraryExW(LPCWSTR  libnameW, HANDLE  hfile, DWORD  flags) /* ../dlls/kernel32/module.c:818 */
+WINAPI HMODULE wine32b_kernel32_LoadLibraryExW(LPCWSTR  libnameW, HANDLE  hfile, DWORD  flags) /* ../dlls/kernel32/module.c:818 */
 {
+	HMODULE return_value;
 	TRACE("Enter LoadLibraryExW\n");
-	return pLoadLibraryExW(libnameW, hfile, flags);
+	return_value = pLoadLibraryExW(libnameW, hfile, flags);
+	TRACE("Leave LoadLibraryExW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LoadLibraryExW(void);  /* ../dlls/kernel32/module.c:818 */
@@ -14087,10 +15443,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LoadLibraryExW,
 	"ret \n"
 )
 
-extern WINAPI HMODULE wine32b_kernel32_LoadLibraryW(LPCWSTR  libnameW) /* ../dlls/kernel32/module.c:870 */
+WINAPI HMODULE wine32b_kernel32_LoadLibraryW(LPCWSTR  libnameW) /* ../dlls/kernel32/module.c:870 */
 {
+	HMODULE return_value;
 	TRACE("Enter LoadLibraryW\n");
-	return pLoadLibraryW(libnameW);
+	return_value = pLoadLibraryW(libnameW);
+	TRACE("Leave LoadLibraryW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LoadLibraryW(void);  /* ../dlls/kernel32/module.c:870 */
@@ -14112,10 +15471,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LoadLibraryW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_LoadModule(LPCSTR  name, LPVOID  paramBlock) /* ../dlls/kernel32/process.c:3079 */
+WINAPI DWORD wine32b_kernel32_LoadModule(LPCSTR  name, LPVOID  paramBlock) /* ../dlls/kernel32/process.c:3079 */
 {
+	DWORD return_value;
 	TRACE("Enter LoadModule\n");
-	return pLoadModule(name, paramBlock);
+	return_value = pLoadModule(name, paramBlock);
+	TRACE("Leave LoadModule\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LoadModule(void);  /* ../dlls/kernel32/process.c:3079 */
@@ -14138,10 +15500,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LoadModule,
 	"ret \n"
 )
 
-extern WINAPI SIZE_T wine32b_kernel32_LocalCompact(UINT  minfree) /* ../dlls/kernel32/heap.c:518 */
+WINAPI SIZE_T wine32b_kernel32_LocalCompact(UINT  minfree) /* ../dlls/kernel32/heap.c:518 */
 {
+	SIZE_T return_value;
 	TRACE("Enter LocalCompact\n");
-	return pLocalCompact(minfree);
+	return_value = pLocalCompact(minfree);
+	TRACE("Leave LocalCompact\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LocalCompact(void);  /* ../dlls/kernel32/heap.c:518 */
@@ -14163,10 +15528,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LocalCompact,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_LocalFileTimeToFileTime(FILETIME*  localft, LPFILETIME  utcft) /* ../dlls/kernel32/time.c:1176 */
+WINAPI BOOL wine32b_kernel32_LocalFileTimeToFileTime(FILETIME*  localft, LPFILETIME  utcft) /* ../dlls/kernel32/time.c:1176 */
 {
+	BOOL return_value;
 	TRACE("Enter LocalFileTimeToFileTime\n");
-	return pLocalFileTimeToFileTime(localft, utcft);
+	return_value = pLocalFileTimeToFileTime(localft, utcft);
+	TRACE("Leave LocalFileTimeToFileTime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LocalFileTimeToFileTime(void);  /* ../dlls/kernel32/time.c:1176 */
@@ -14189,10 +15557,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LocalFileTimeToFileTime,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_LocalFlags(HLOCAL  handle) /* ../dlls/kernel32/heap.c:537 */
+WINAPI UINT wine32b_kernel32_LocalFlags(HLOCAL  handle) /* ../dlls/kernel32/heap.c:537 */
 {
+	UINT return_value;
 	TRACE("Enter LocalFlags\n");
-	return pLocalFlags(handle);
+	return_value = pLocalFlags(handle);
+	TRACE("Leave LocalFlags\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LocalFlags(void);  /* ../dlls/kernel32/heap.c:537 */
@@ -14214,10 +15585,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LocalFlags,
 	"ret \n"
 )
 
-extern WINAPI HLOCAL wine32b_kernel32_LocalHandle(LPCVOID  ptr) /* ../dlls/kernel32/heap.c:557 */
+WINAPI HLOCAL wine32b_kernel32_LocalHandle(LPCVOID  ptr) /* ../dlls/kernel32/heap.c:557 */
 {
+	HLOCAL return_value;
 	TRACE("Enter LocalHandle\n");
-	return pLocalHandle(ptr);
+	return_value = pLocalHandle(ptr);
+	TRACE("Leave LocalHandle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LocalHandle(void);  /* ../dlls/kernel32/heap.c:557 */
@@ -14239,10 +15613,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LocalHandle,
 	"ret \n"
 )
 
-extern WINAPI SIZE_T wine32b_kernel32_LocalShrink(HGLOBAL  handle, UINT  newsize) /* ../dlls/kernel32/heap.c:567 */
+WINAPI SIZE_T wine32b_kernel32_LocalShrink(HGLOBAL  handle, UINT  newsize) /* ../dlls/kernel32/heap.c:567 */
 {
+	SIZE_T return_value;
 	TRACE("Enter LocalShrink\n");
-	return pLocalShrink(handle, newsize);
+	return_value = pLocalShrink(handle, newsize);
+	TRACE("Leave LocalShrink\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LocalShrink(void);  /* ../dlls/kernel32/heap.c:567 */
@@ -14265,10 +15642,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LocalShrink,
 	"ret \n"
 )
 
-extern WINAPI SIZE_T wine32b_kernel32_LocalSize(HLOCAL  handle) /* ../dlls/kernel32/heap.c:586 */
+WINAPI SIZE_T wine32b_kernel32_LocalSize(HLOCAL  handle) /* ../dlls/kernel32/heap.c:586 */
 {
+	SIZE_T return_value;
 	TRACE("Enter LocalSize\n");
-	return pLocalSize(handle);
+	return_value = pLocalSize(handle);
+	TRACE("Leave LocalSize\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LocalSize(void);  /* ../dlls/kernel32/heap.c:586 */
@@ -14290,10 +15670,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LocalSize,
 	"ret \n"
 )
 
-extern WINAPI LCID wine32b_kernel32_LocaleNameToLCID(LPCWSTR  name, DWORD  flags) /* ../dlls/kernel32/locale.c:1416 */
+WINAPI LCID wine32b_kernel32_LocaleNameToLCID(LPCWSTR  name, DWORD  flags) /* ../dlls/kernel32/locale.c:1416 */
 {
+	LCID return_value;
 	TRACE("Enter LocaleNameToLCID\n");
-	return pLocaleNameToLCID(name, flags);
+	return_value = pLocaleNameToLCID(name, flags);
+	TRACE("Leave LocaleNameToLCID\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_LocaleNameToLCID(void);  /* ../dlls/kernel32/locale.c:1416 */
@@ -14316,10 +15699,11 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_LocaleNameToLCID,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_MakeCriticalSectionGlobal(CRITICAL_SECTION*  crit) /* ../dlls/kernel32/sync.c:147 */
+WINAPI void wine32b_kernel32_MakeCriticalSectionGlobal(CRITICAL_SECTION*  crit) /* ../dlls/kernel32/sync.c:147 */
 {
 	TRACE("Enter MakeCriticalSectionGlobal\n");
-	return pMakeCriticalSectionGlobal(crit);
+	pMakeCriticalSectionGlobal(crit);
+	TRACE("Leave MakeCriticalSectionGlobal\n");
 }
 
 extern WINAPI void wine32a_kernel32_MakeCriticalSectionGlobal(void);  /* ../dlls/kernel32/sync.c:147 */
@@ -14341,10 +15725,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_MakeCriticalSectionGlobal,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_MapUserPhysicalPages(PVOID  addr, ULONG_PTR  page_count, PULONG_PTR  pages) /* ../dlls/kernel32/heap.c:944 */
+WINAPI BOOL wine32b_kernel32_MapUserPhysicalPages(PVOID  addr, ULONG_PTR  page_count, PULONG_PTR  pages) /* ../dlls/kernel32/heap.c:944 */
 {
+	BOOL return_value;
 	TRACE("Enter MapUserPhysicalPages\n");
-	return pMapUserPhysicalPages(addr, page_count, pages);
+	return_value = pMapUserPhysicalPages(addr, page_count, pages);
+	TRACE("Leave MapUserPhysicalPages\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_MapUserPhysicalPages(void);  /* ../dlls/kernel32/heap.c:944 */
@@ -14368,10 +15755,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_MapUserPhysicalPages,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_Module32First(HANDLE  hSnapshot, LPMODULEENTRY32  lpme) /* ../dlls/kernel32/toolhelp.c:581 */
+WINAPI BOOL wine32b_kernel32_Module32First(HANDLE  hSnapshot, LPMODULEENTRY32  lpme) /* ../dlls/kernel32/toolhelp.c:581 */
 {
+	BOOL return_value;
 	TRACE("Enter Module32First\n");
-	return pModule32First(hSnapshot, lpme);
+	return_value = pModule32First(hSnapshot, lpme);
+	TRACE("Leave Module32First\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_Module32First(void);  /* ../dlls/kernel32/toolhelp.c:581 */
@@ -14394,10 +15784,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_Module32First,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_Module32FirstW(HANDLE  hSnapshot, LPMODULEENTRY32W  lpme) /* ../dlls/kernel32/toolhelp.c:528 */
+WINAPI BOOL wine32b_kernel32_Module32FirstW(HANDLE  hSnapshot, LPMODULEENTRY32W  lpme) /* ../dlls/kernel32/toolhelp.c:528 */
 {
+	BOOL return_value;
 	TRACE("Enter Module32FirstW\n");
-	return pModule32FirstW(hSnapshot, lpme);
+	return_value = pModule32FirstW(hSnapshot, lpme);
+	TRACE("Leave Module32FirstW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_Module32FirstW(void);  /* ../dlls/kernel32/toolhelp.c:528 */
@@ -14420,10 +15813,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_Module32FirstW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_Module32Next(HANDLE  hSnapshot, LPMODULEENTRY32  lpme) /* ../dlls/kernel32/toolhelp.c:591 */
+WINAPI BOOL wine32b_kernel32_Module32Next(HANDLE  hSnapshot, LPMODULEENTRY32  lpme) /* ../dlls/kernel32/toolhelp.c:591 */
 {
+	BOOL return_value;
 	TRACE("Enter Module32Next\n");
-	return pModule32Next(hSnapshot, lpme);
+	return_value = pModule32Next(hSnapshot, lpme);
+	TRACE("Leave Module32Next\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_Module32Next(void);  /* ../dlls/kernel32/toolhelp.c:591 */
@@ -14446,10 +15842,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_Module32Next,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_Module32NextW(HANDLE  hSnapshot, LPMODULEENTRY32W  lpme) /* ../dlls/kernel32/toolhelp.c:538 */
+WINAPI BOOL wine32b_kernel32_Module32NextW(HANDLE  hSnapshot, LPMODULEENTRY32W  lpme) /* ../dlls/kernel32/toolhelp.c:538 */
 {
+	BOOL return_value;
 	TRACE("Enter Module32NextW\n");
-	return pModule32NextW(hSnapshot, lpme);
+	return_value = pModule32NextW(hSnapshot, lpme);
+	TRACE("Leave Module32NextW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_Module32NextW(void);  /* ../dlls/kernel32/toolhelp.c:538 */
@@ -14472,10 +15871,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_Module32NextW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_MoveFileA(LPCSTR  source, LPCSTR  dest) /* ../dlls/kernel32/path.c:1516 */
+WINAPI BOOL wine32b_kernel32_MoveFileA(LPCSTR  source, LPCSTR  dest) /* ../dlls/kernel32/path.c:1516 */
 {
+	BOOL return_value;
 	TRACE("Enter MoveFileA\n");
-	return pMoveFileA(source, dest);
+	return_value = pMoveFileA(source, dest);
+	TRACE("Leave MoveFileA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_MoveFileA(void);  /* ../dlls/kernel32/path.c:1516 */
@@ -14498,10 +15900,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_MoveFileA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_MoveFileExA(LPCSTR  source, LPCSTR  dest, DWORD  flag) /* ../dlls/kernel32/path.c:1496 */
+WINAPI BOOL wine32b_kernel32_MoveFileExA(LPCSTR  source, LPCSTR  dest, DWORD  flag) /* ../dlls/kernel32/path.c:1496 */
 {
+	BOOL return_value;
 	TRACE("Enter MoveFileExA\n");
-	return pMoveFileExA(source, dest, flag);
+	return_value = pMoveFileExA(source, dest, flag);
+	TRACE("Leave MoveFileExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_MoveFileExA(void);  /* ../dlls/kernel32/path.c:1496 */
@@ -14525,10 +15930,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_MoveFileExA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_MoveFileExW(LPCWSTR  source, LPCWSTR  dest, DWORD  flag) /* ../dlls/kernel32/path.c:1488 */
+WINAPI BOOL wine32b_kernel32_MoveFileExW(LPCWSTR  source, LPCWSTR  dest, DWORD  flag) /* ../dlls/kernel32/path.c:1488 */
 {
+	BOOL return_value;
 	TRACE("Enter MoveFileExW\n");
-	return pMoveFileExW(source, dest, flag);
+	return_value = pMoveFileExW(source, dest, flag);
+	TRACE("Leave MoveFileExW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_MoveFileExW(void);  /* ../dlls/kernel32/path.c:1488 */
@@ -14552,10 +15960,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_MoveFileExW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_MoveFileTransactedA(char*  source, char*  dest, LPPROGRESS_ROUTINE  progress, void*  data, DWORD  flags, HANDLE  handle) /* ../dlls/kernel32/path.c:1289 */
+WINAPI BOOL wine32b_kernel32_MoveFileTransactedA(char*  source, char*  dest, LPPROGRESS_ROUTINE  progress, void*  data, DWORD  flags, HANDLE  handle) /* ../dlls/kernel32/path.c:1289 */
 {
+	BOOL return_value;
 	TRACE("Enter MoveFileTransactedA\n");
-	return pMoveFileTransactedA(source, dest, progress, data, flags, handle);
+	return_value = pMoveFileTransactedA(source, dest, progress, data, flags, handle);
+	TRACE("Leave MoveFileTransactedA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_MoveFileTransactedA(void);  /* ../dlls/kernel32/path.c:1289 */
@@ -14580,10 +15991,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_MoveFileTransactedA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_MoveFileTransactedW(WCHAR*  source, WCHAR*  dest, LPPROGRESS_ROUTINE  progress, void*  data, DWORD  flags, HANDLE  handle) /* ../dlls/kernel32/path.c:1299 */
+WINAPI BOOL wine32b_kernel32_MoveFileTransactedW(WCHAR*  source, WCHAR*  dest, LPPROGRESS_ROUTINE  progress, void*  data, DWORD  flags, HANDLE  handle) /* ../dlls/kernel32/path.c:1299 */
 {
+	BOOL return_value;
 	TRACE("Enter MoveFileTransactedW\n");
-	return pMoveFileTransactedW(source, dest, progress, data, flags, handle);
+	return_value = pMoveFileTransactedW(source, dest, progress, data, flags, handle);
+	TRACE("Leave MoveFileTransactedW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_MoveFileTransactedW(void);  /* ../dlls/kernel32/path.c:1299 */
@@ -14608,10 +16022,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_MoveFileTransactedW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_MoveFileW(LPCWSTR  source, LPCWSTR  dest) /* ../dlls/kernel32/path.c:1507 */
+WINAPI BOOL wine32b_kernel32_MoveFileW(LPCWSTR  source, LPCWSTR  dest) /* ../dlls/kernel32/path.c:1507 */
 {
+	BOOL return_value;
 	TRACE("Enter MoveFileW\n");
-	return pMoveFileW(source, dest);
+	return_value = pMoveFileW(source, dest);
+	TRACE("Leave MoveFileW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_MoveFileW(void);  /* ../dlls/kernel32/path.c:1507 */
@@ -14634,10 +16051,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_MoveFileW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_MoveFileWithProgressA(LPCSTR  source, LPCSTR  dest, LPPROGRESS_ROUTINE  fnProgress, LPVOID  param, DWORD  flag) /* ../dlls/kernel32/path.c:1465 */
+WINAPI BOOL wine32b_kernel32_MoveFileWithProgressA(LPCSTR  source, LPCSTR  dest, LPPROGRESS_ROUTINE  fnProgress, LPVOID  param, DWORD  flag) /* ../dlls/kernel32/path.c:1465 */
 {
+	BOOL return_value;
 	TRACE("Enter MoveFileWithProgressA\n");
-	return pMoveFileWithProgressA(source, dest, fnProgress, param, flag);
+	return_value = pMoveFileWithProgressA(source, dest, fnProgress, param, flag);
+	TRACE("Leave MoveFileWithProgressA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_MoveFileWithProgressA(void);  /* ../dlls/kernel32/path.c:1465 */
@@ -14662,10 +16082,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_MoveFileWithProgressA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_MoveFileWithProgressW(LPCWSTR  source, LPCWSTR  dest, LPPROGRESS_ROUTINE  fnProgress, LPVOID  param, DWORD  flag) /* ../dlls/kernel32/path.c:1309 */
+WINAPI BOOL wine32b_kernel32_MoveFileWithProgressW(LPCWSTR  source, LPCWSTR  dest, LPPROGRESS_ROUTINE  fnProgress, LPVOID  param, DWORD  flag) /* ../dlls/kernel32/path.c:1309 */
 {
+	BOOL return_value;
 	TRACE("Enter MoveFileWithProgressW\n");
-	return pMoveFileWithProgressW(source, dest, fnProgress, param, flag);
+	return_value = pMoveFileWithProgressW(source, dest, fnProgress, param, flag);
+	TRACE("Leave MoveFileWithProgressW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_MoveFileWithProgressW(void);  /* ../dlls/kernel32/path.c:1309 */
@@ -14690,10 +16113,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_MoveFileWithProgressW,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_MulDiv(INT  nMultiplicand, INT  nMultiplier, INT  nDivisor) /* ../dlls/kernel32/kernel_main.c:157 */
+WINAPI INT wine32b_kernel32_MulDiv(INT  nMultiplicand, INT  nMultiplier, INT  nDivisor) /* ../dlls/kernel32/kernel_main.c:157 */
 {
+	INT return_value;
 	TRACE("Enter MulDiv\n");
-	return pMulDiv(nMultiplicand, nMultiplier, nDivisor);
+	return_value = pMulDiv(nMultiplicand, nMultiplier, nDivisor);
+	TRACE("Leave MulDiv\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_MulDiv(void);  /* ../dlls/kernel32/kernel_main.c:157 */
@@ -14717,10 +16143,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_MulDiv,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_MultiByteToWideChar(UINT  page, DWORD  flags, LPCSTR  src, INT  srclen, LPWSTR  dst, INT  dstlen) /* ../dlls/kernel32/locale.c:2454 */
+WINAPI INT wine32b_kernel32_MultiByteToWideChar(UINT  page, DWORD  flags, LPCSTR  src, INT  srclen, LPWSTR  dst, INT  dstlen) /* ../dlls/kernel32/locale.c:2454 */
 {
+	INT return_value;
 	TRACE("Enter MultiByteToWideChar\n");
-	return pMultiByteToWideChar(page, flags, src, srclen, dst, dstlen);
+	return_value = pMultiByteToWideChar(page, flags, src, srclen, dst, dstlen);
+	TRACE("Leave MultiByteToWideChar\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_MultiByteToWideChar(void);  /* ../dlls/kernel32/locale.c:2454 */
@@ -14745,10 +16174,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_MultiByteToWideChar,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_NeedCurrentDirectoryForExePathA(LPCSTR  name) /* ../dlls/kernel32/path.c:1868 */
+WINAPI BOOL wine32b_kernel32_NeedCurrentDirectoryForExePathA(LPCSTR  name) /* ../dlls/kernel32/path.c:1868 */
 {
+	BOOL return_value;
 	TRACE("Enter NeedCurrentDirectoryForExePathA\n");
-	return pNeedCurrentDirectoryForExePathA(name);
+	return_value = pNeedCurrentDirectoryForExePathA(name);
+	TRACE("Leave NeedCurrentDirectoryForExePathA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_NeedCurrentDirectoryForExePathA(void);  /* ../dlls/kernel32/path.c:1868 */
@@ -14770,10 +16202,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_NeedCurrentDirectoryForExePathA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_NeedCurrentDirectoryForExePathW(LPCWSTR  name) /* ../dlls/kernel32/path.c:1844 */
+WINAPI BOOL wine32b_kernel32_NeedCurrentDirectoryForExePathW(LPCWSTR  name) /* ../dlls/kernel32/path.c:1844 */
 {
+	BOOL return_value;
 	TRACE("Enter NeedCurrentDirectoryForExePathW\n");
-	return pNeedCurrentDirectoryForExePathW(name);
+	return_value = pNeedCurrentDirectoryForExePathW(name);
+	TRACE("Leave NeedCurrentDirectoryForExePathW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_NeedCurrentDirectoryForExePathW(void);  /* ../dlls/kernel32/path.c:1844 */
@@ -14795,10 +16230,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_NeedCurrentDirectoryForExePathW,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_NormalizeString(NORM_FORM  form, WCHAR*  src, INT  src_len, WCHAR*  dst, INT  dst_len) /* ../dlls/kernel32/locale.c:5276 */
+WINAPI INT wine32b_kernel32_NormalizeString(NORM_FORM  form, WCHAR*  src, INT  src_len, WCHAR*  dst, INT  dst_len) /* ../dlls/kernel32/locale.c:5276 */
 {
+	INT return_value;
 	TRACE("Enter NormalizeString\n");
-	return pNormalizeString(form, src, src_len, dst, dst_len);
+	return_value = pNormalizeString(form, src, src_len, dst, dst_len);
+	TRACE("Leave NormalizeString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_NormalizeString(void);  /* ../dlls/kernel32/locale.c:5276 */
@@ -14823,10 +16261,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_NormalizeString,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_OpenConsoleW(LPCWSTR  name, DWORD  access, BOOL  inherit, DWORD  creation) /* ../dlls/kernel32/console.c:213 */
+WINAPI HANDLE wine32b_kernel32_OpenConsoleW(LPCWSTR  name, DWORD  access, BOOL  inherit, DWORD  creation) /* ../dlls/kernel32/console.c:213 */
 {
+	HANDLE return_value;
 	TRACE("Enter OpenConsoleW\n");
-	return pOpenConsoleW(name, access, inherit, creation);
+	return_value = pOpenConsoleW(name, access, inherit, creation);
+	TRACE("Leave OpenConsoleW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_OpenConsoleW(void);  /* ../dlls/kernel32/console.c:213 */
@@ -14851,10 +16292,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_OpenConsoleW,
 	"ret \n"
 )
 
-extern WINAPI HFILE wine32b_kernel32_OpenFile(LPCSTR  name, OFSTRUCT*  ofs, UINT  mode) /* ../dlls/kernel32/file.c:1164 */
+WINAPI HFILE wine32b_kernel32_OpenFile(LPCSTR  name, OFSTRUCT*  ofs, UINT  mode) /* ../dlls/kernel32/file.c:1164 */
 {
+	HFILE return_value;
 	TRACE("Enter OpenFile\n");
-	return pOpenFile(name, ofs, mode);
+	return_value = pOpenFile(name, ofs, mode);
+	TRACE("Leave OpenFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_OpenFile(void);  /* ../dlls/kernel32/file.c:1164 */
@@ -14878,10 +16322,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_OpenFile,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_OpenFileMappingA(DWORD  access, BOOL  inherit, LPCSTR  name) /* ../dlls/kernel32/sync.c:502 */
+WINAPI HANDLE wine32b_kernel32_OpenFileMappingA(DWORD  access, BOOL  inherit, LPCSTR  name) /* ../dlls/kernel32/sync.c:502 */
 {
+	HANDLE return_value;
 	TRACE("Enter OpenFileMappingA\n");
-	return pOpenFileMappingA(access, inherit, name);
+	return_value = pOpenFileMappingA(access, inherit, name);
+	TRACE("Leave OpenFileMappingA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_OpenFileMappingA(void);  /* ../dlls/kernel32/sync.c:502 */
@@ -14905,10 +16352,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_OpenFileMappingA,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_OpenJobObjectA(DWORD  access, BOOL  inherit, LPCSTR  name) /* ../dlls/kernel32/sync.c:330 */
+WINAPI HANDLE wine32b_kernel32_OpenJobObjectA(DWORD  access, BOOL  inherit, LPCSTR  name) /* ../dlls/kernel32/sync.c:330 */
 {
+	HANDLE return_value;
 	TRACE("Enter OpenJobObjectA\n");
-	return pOpenJobObjectA(access, inherit, name);
+	return_value = pOpenJobObjectA(access, inherit, name);
+	TRACE("Leave OpenJobObjectA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_OpenJobObjectA(void);  /* ../dlls/kernel32/sync.c:330 */
@@ -14932,10 +16382,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_OpenJobObjectA,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_OpenJobObjectW(DWORD  access, BOOL  inherit, LPCWSTR  name) /* ../dlls/kernel32/sync.c:309 */
+WINAPI HANDLE wine32b_kernel32_OpenJobObjectW(DWORD  access, BOOL  inherit, LPCWSTR  name) /* ../dlls/kernel32/sync.c:309 */
 {
+	HANDLE return_value;
 	TRACE("Enter OpenJobObjectW\n");
-	return pOpenJobObjectW(access, inherit, name);
+	return_value = pOpenJobObjectW(access, inherit, name);
+	TRACE("Leave OpenJobObjectW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_OpenJobObjectW(void);  /* ../dlls/kernel32/sync.c:309 */
@@ -14959,10 +16412,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_OpenJobObjectW,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_OpenMutexA(DWORD  access, BOOL  inherit, LPCSTR  name) /* ../dlls/kernel32/sync.c:197 */
+WINAPI HANDLE wine32b_kernel32_OpenMutexA(DWORD  access, BOOL  inherit, LPCSTR  name) /* ../dlls/kernel32/sync.c:197 */
 {
+	HANDLE return_value;
 	TRACE("Enter OpenMutexA\n");
-	return pOpenMutexA(access, inherit, name);
+	return_value = pOpenMutexA(access, inherit, name);
+	TRACE("Leave OpenMutexA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_OpenMutexA(void);  /* ../dlls/kernel32/sync.c:197 */
@@ -14986,10 +16442,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_OpenMutexA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_OpenProfileUserMapping(void) /* ../dlls/kernel32/profile.c:1777 */
+WINAPI BOOL wine32b_kernel32_OpenProfileUserMapping(void) /* ../dlls/kernel32/profile.c:1777 */
 {
+	BOOL return_value;
 	TRACE("Enter OpenProfileUserMapping\n");
-	return pOpenProfileUserMapping();
+	return_value = pOpenProfileUserMapping();
+	TRACE("Leave OpenProfileUserMapping\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_OpenProfileUserMapping(void);  /* ../dlls/kernel32/profile.c:1777 */
@@ -15010,10 +16469,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_OpenProfileUserMapping,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_OpenSemaphoreA(DWORD  access, BOOL  inherit, LPCSTR  name) /* ../dlls/kernel32/sync.c:250 */
+WINAPI HANDLE wine32b_kernel32_OpenSemaphoreA(DWORD  access, BOOL  inherit, LPCSTR  name) /* ../dlls/kernel32/sync.c:250 */
 {
+	HANDLE return_value;
 	TRACE("Enter OpenSemaphoreA\n");
-	return pOpenSemaphoreA(access, inherit, name);
+	return_value = pOpenSemaphoreA(access, inherit, name);
+	TRACE("Leave OpenSemaphoreA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_OpenSemaphoreA(void);  /* ../dlls/kernel32/sync.c:250 */
@@ -15037,10 +16499,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_OpenSemaphoreA,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_OpenVxDHandle(HANDLE  hHandleRing3) /* ../dlls/kernel32/file.c:1086 */
+WINAPI HANDLE wine32b_kernel32_OpenVxDHandle(HANDLE  hHandleRing3) /* ../dlls/kernel32/file.c:1086 */
 {
+	HANDLE return_value;
 	TRACE("Enter OpenVxDHandle\n");
-	return pOpenVxDHandle(hHandleRing3);
+	return_value = pOpenVxDHandle(hHandleRing3);
+	TRACE("Leave OpenVxDHandle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_OpenVxDHandle(void);  /* ../dlls/kernel32/file.c:1086 */
@@ -15062,10 +16527,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_OpenVxDHandle,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_OpenWaitableTimerA(DWORD  access, BOOL  inherit, LPCSTR  name) /* ../dlls/kernel32/sync.c:442 */
+WINAPI HANDLE wine32b_kernel32_OpenWaitableTimerA(DWORD  access, BOOL  inherit, LPCSTR  name) /* ../dlls/kernel32/sync.c:442 */
 {
+	HANDLE return_value;
 	TRACE("Enter OpenWaitableTimerA\n");
-	return pOpenWaitableTimerA(access, inherit, name);
+	return_value = pOpenWaitableTimerA(access, inherit, name);
+	TRACE("Leave OpenWaitableTimerA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_OpenWaitableTimerA(void);  /* ../dlls/kernel32/sync.c:442 */
@@ -15089,10 +16557,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_OpenWaitableTimerA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_PowerClearRequest(HANDLE  request, POWER_REQUEST_TYPE  type) /* ../dlls/kernel32/powermgnt.c:167 */
+WINAPI BOOL wine32b_kernel32_PowerClearRequest(HANDLE  request, POWER_REQUEST_TYPE  type) /* ../dlls/kernel32/powermgnt.c:167 */
 {
+	BOOL return_value;
 	TRACE("Enter PowerClearRequest\n");
-	return pPowerClearRequest(request, type);
+	return_value = pPowerClearRequest(request, type);
+	TRACE("Leave PowerClearRequest\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_PowerClearRequest(void);  /* ../dlls/kernel32/powermgnt.c:167 */
@@ -15115,10 +16586,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_PowerClearRequest,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_kernel32_PowerCreateRequest(REASON_CONTEXT*  context) /* ../dlls/kernel32/powermgnt.c:119 */
+WINAPI HANDLE wine32b_kernel32_PowerCreateRequest(REASON_CONTEXT*  context) /* ../dlls/kernel32/powermgnt.c:119 */
 {
+	HANDLE return_value;
 	TRACE("Enter PowerCreateRequest\n");
-	return pPowerCreateRequest(context);
+	return_value = pPowerCreateRequest(context);
+	TRACE("Leave PowerCreateRequest\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_PowerCreateRequest(void);  /* ../dlls/kernel32/powermgnt.c:119 */
@@ -15140,10 +16614,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_PowerCreateRequest,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_PowerSetRequest(HANDLE  request, POWER_REQUEST_TYPE  type) /* ../dlls/kernel32/powermgnt.c:156 */
+WINAPI BOOL wine32b_kernel32_PowerSetRequest(HANDLE  request, POWER_REQUEST_TYPE  type) /* ../dlls/kernel32/powermgnt.c:156 */
 {
+	BOOL return_value;
 	TRACE("Enter PowerSetRequest\n");
-	return pPowerSetRequest(request, type);
+	return_value = pPowerSetRequest(request, type);
+	TRACE("Leave PowerSetRequest\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_PowerSetRequest(void);  /* ../dlls/kernel32/powermgnt.c:156 */
@@ -15166,10 +16643,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_PowerSetRequest,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_PrepareTape(HANDLE  device, DWORD  operation, BOOL  immediate) /* ../dlls/kernel32/tape.c:227 */
+WINAPI DWORD wine32b_kernel32_PrepareTape(HANDLE  device, DWORD  operation, BOOL  immediate) /* ../dlls/kernel32/tape.c:227 */
 {
+	DWORD return_value;
 	TRACE("Enter PrepareTape\n");
-	return pPrepareTape(device, operation, immediate);
+	return_value = pPrepareTape(device, operation, immediate);
+	TRACE("Leave PrepareTape\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_PrepareTape(void);  /* ../dlls/kernel32/tape.c:227 */
@@ -15193,10 +16673,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_PrepareTape,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_Process32First(HANDLE  hSnapshot, LPPROCESSENTRY32  lppe) /* ../dlls/kernel32/toolhelp.c:456 */
+WINAPI BOOL wine32b_kernel32_Process32First(HANDLE  hSnapshot, LPPROCESSENTRY32  lppe) /* ../dlls/kernel32/toolhelp.c:456 */
 {
+	BOOL return_value;
 	TRACE("Enter Process32First\n");
-	return pProcess32First(hSnapshot, lppe);
+	return_value = pProcess32First(hSnapshot, lppe);
+	TRACE("Leave Process32First\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_Process32First(void);  /* ../dlls/kernel32/toolhelp.c:456 */
@@ -15219,10 +16702,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_Process32First,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_Process32FirstW(HANDLE  hSnapshot, LPPROCESSENTRY32W  lppe) /* ../dlls/kernel32/toolhelp.c:476 */
+WINAPI BOOL wine32b_kernel32_Process32FirstW(HANDLE  hSnapshot, LPPROCESSENTRY32W  lppe) /* ../dlls/kernel32/toolhelp.c:476 */
 {
+	BOOL return_value;
 	TRACE("Enter Process32FirstW\n");
-	return pProcess32FirstW(hSnapshot, lppe);
+	return_value = pProcess32FirstW(hSnapshot, lppe);
+	TRACE("Leave Process32FirstW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_Process32FirstW(void);  /* ../dlls/kernel32/toolhelp.c:476 */
@@ -15245,10 +16731,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_Process32FirstW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_Process32Next(HANDLE  hSnapshot, LPPROCESSENTRY32  lppe) /* ../dlls/kernel32/toolhelp.c:466 */
+WINAPI BOOL wine32b_kernel32_Process32Next(HANDLE  hSnapshot, LPPROCESSENTRY32  lppe) /* ../dlls/kernel32/toolhelp.c:466 */
 {
+	BOOL return_value;
 	TRACE("Enter Process32Next\n");
-	return pProcess32Next(hSnapshot, lppe);
+	return_value = pProcess32Next(hSnapshot, lppe);
+	TRACE("Leave Process32Next\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_Process32Next(void);  /* ../dlls/kernel32/toolhelp.c:466 */
@@ -15271,10 +16760,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_Process32Next,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_Process32NextW(HANDLE  hSnapshot, LPPROCESSENTRY32W  lppe) /* ../dlls/kernel32/toolhelp.c:486 */
+WINAPI BOOL wine32b_kernel32_Process32NextW(HANDLE  hSnapshot, LPPROCESSENTRY32W  lppe) /* ../dlls/kernel32/toolhelp.c:486 */
 {
+	BOOL return_value;
 	TRACE("Enter Process32NextW\n");
-	return pProcess32NextW(hSnapshot, lppe);
+	return_value = pProcess32NextW(hSnapshot, lppe);
+	TRACE("Leave Process32NextW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_Process32NextW(void);  /* ../dlls/kernel32/toolhelp.c:486 */
@@ -15297,10 +16789,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_Process32NextW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_ProcessIdToSessionId(DWORD  procid, DWORD*  sessionid_ptr) /* ../dlls/kernel32/process.c:3777 */
+WINAPI BOOL wine32b_kernel32_ProcessIdToSessionId(DWORD  procid, DWORD*  sessionid_ptr) /* ../dlls/kernel32/process.c:3777 */
 {
+	BOOL return_value;
 	TRACE("Enter ProcessIdToSessionId\n");
-	return pProcessIdToSessionId(procid, sessionid_ptr);
+	return_value = pProcessIdToSessionId(procid, sessionid_ptr);
+	TRACE("Leave ProcessIdToSessionId\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_ProcessIdToSessionId(void);  /* ../dlls/kernel32/process.c:3777 */
@@ -15323,10 +16818,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ProcessIdToSessionId,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_QueryDosDeviceA(LPCSTR  devname, LPSTR  target, DWORD  bufsize) /* ../dlls/kernel32/volume.c:1319 */
+WINAPI DWORD wine32b_kernel32_QueryDosDeviceA(LPCSTR  devname, LPSTR  target, DWORD  bufsize) /* ../dlls/kernel32/volume.c:1319 */
 {
+	DWORD return_value;
 	TRACE("Enter QueryDosDeviceA\n");
-	return pQueryDosDeviceA(devname, target, bufsize);
+	return_value = pQueryDosDeviceA(devname, target, bufsize);
+	TRACE("Leave QueryDosDeviceA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_QueryDosDeviceA(void);  /* ../dlls/kernel32/volume.c:1319 */
@@ -15350,10 +16848,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_QueryDosDeviceA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_QueryDosDeviceW(LPCWSTR  devname, LPWSTR  target, DWORD  bufsize) /* ../dlls/kernel32/volume.c:1228 */
+WINAPI DWORD wine32b_kernel32_QueryDosDeviceW(LPCWSTR  devname, LPWSTR  target, DWORD  bufsize) /* ../dlls/kernel32/volume.c:1228 */
 {
+	DWORD return_value;
 	TRACE("Enter QueryDosDeviceW\n");
-	return pQueryDosDeviceW(devname, target, bufsize);
+	return_value = pQueryDosDeviceW(devname, target, bufsize);
+	TRACE("Leave QueryDosDeviceW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_QueryDosDeviceW(void);  /* ../dlls/kernel32/volume.c:1228 */
@@ -15377,10 +16878,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_QueryDosDeviceW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_QueryFullProcessImageNameA(HANDLE  hProcess, DWORD  dwFlags, LPSTR  lpExeName, PDWORD  pdwSize) /* ../dlls/kernel32/process.c:3534 */
+WINAPI BOOL wine32b_kernel32_QueryFullProcessImageNameA(HANDLE  hProcess, DWORD  dwFlags, LPSTR  lpExeName, PDWORD  pdwSize) /* ../dlls/kernel32/process.c:3534 */
 {
+	BOOL return_value;
 	TRACE("Enter QueryFullProcessImageNameA\n");
-	return pQueryFullProcessImageNameA(hProcess, dwFlags, lpExeName, pdwSize);
+	return_value = pQueryFullProcessImageNameA(hProcess, dwFlags, lpExeName, pdwSize);
+	TRACE("Leave QueryFullProcessImageNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_QueryFullProcessImageNameA(void);  /* ../dlls/kernel32/process.c:3534 */
@@ -15405,10 +16909,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_QueryFullProcessImageNameA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_QueryFullProcessImageNameW(HANDLE  hProcess, DWORD  dwFlags, LPWSTR  lpExeName, PDWORD  pdwSize) /* ../dlls/kernel32/process.c:3555 */
+WINAPI BOOL wine32b_kernel32_QueryFullProcessImageNameW(HANDLE  hProcess, DWORD  dwFlags, LPWSTR  lpExeName, PDWORD  pdwSize) /* ../dlls/kernel32/process.c:3555 */
 {
+	BOOL return_value;
 	TRACE("Enter QueryFullProcessImageNameW\n");
-	return pQueryFullProcessImageNameW(hProcess, dwFlags, lpExeName, pdwSize);
+	return_value = pQueryFullProcessImageNameW(hProcess, dwFlags, lpExeName, pdwSize);
+	TRACE("Leave QueryFullProcessImageNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_QueryFullProcessImageNameW(void);  /* ../dlls/kernel32/process.c:3555 */
@@ -15433,10 +16940,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_QueryFullProcessImageNameW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_QueryInformationJobObject(HANDLE  job, JOBOBJECTINFOCLASS  class, LPVOID  info, DWORD  len, DWORD*  ret_len) /* ../dlls/kernel32/sync.c:357 */
+WINAPI BOOL wine32b_kernel32_QueryInformationJobObject(HANDLE  job, JOBOBJECTINFOCLASS  class, LPVOID  info, DWORD  len, DWORD*  ret_len) /* ../dlls/kernel32/sync.c:357 */
 {
+	BOOL return_value;
 	TRACE("Enter QueryInformationJobObject\n");
-	return pQueryInformationJobObject(job, class, info, len, ret_len);
+	return_value = pQueryInformationJobObject(job, class, info, len, ret_len);
+	TRACE("Leave QueryInformationJobObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_QueryInformationJobObject(void);  /* ../dlls/kernel32/sync.c:357 */
@@ -15461,10 +16971,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_QueryInformationJobObject,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_QueryProcessCycleTime(HANDLE  process, PULONG64  cycle) /* ../dlls/kernel32/time.c:1530 */
+WINAPI BOOL wine32b_kernel32_QueryProcessCycleTime(HANDLE  process, PULONG64  cycle) /* ../dlls/kernel32/time.c:1530 */
 {
+	BOOL return_value;
 	TRACE("Enter QueryProcessCycleTime\n");
-	return pQueryProcessCycleTime(process, cycle);
+	return_value = pQueryProcessCycleTime(process, cycle);
+	TRACE("Leave QueryProcessCycleTime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_QueryProcessCycleTime(void);  /* ../dlls/kernel32/time.c:1530 */
@@ -15487,10 +17000,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_QueryProcessCycleTime,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_QueryThreadCycleTime(HANDLE  thread, PULONG64  cycle) /* ../dlls/kernel32/time.c:1542 */
+WINAPI BOOL wine32b_kernel32_QueryThreadCycleTime(HANDLE  thread, PULONG64  cycle) /* ../dlls/kernel32/time.c:1542 */
 {
+	BOOL return_value;
 	TRACE("Enter QueryThreadCycleTime\n");
-	return pQueryThreadCycleTime(thread, cycle);
+	return_value = pQueryThreadCycleTime(thread, cycle);
+	TRACE("Leave QueryThreadCycleTime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_QueryThreadCycleTime(void);  /* ../dlls/kernel32/time.c:1542 */
@@ -15513,10 +17029,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_QueryThreadCycleTime,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_QueryUmsThreadInformation(PUMS_CONTEXT  ctx, UMS_THREAD_INFO_CLASS  class, void*  buf, ULONG  length, ULONG*  ret_length) /* ../dlls/kernel32/process.c:4226 */
+WINAPI BOOL wine32b_kernel32_QueryUmsThreadInformation(PUMS_CONTEXT  ctx, UMS_THREAD_INFO_CLASS  class, void*  buf, ULONG  length, ULONG*  ret_length) /* ../dlls/kernel32/process.c:4226 */
 {
+	BOOL return_value;
 	TRACE("Enter QueryUmsThreadInformation\n");
-	return pQueryUmsThreadInformation(ctx, class, buf, length, ret_length);
+	return_value = pQueryUmsThreadInformation(ctx, class, buf, length, ret_length);
+	TRACE("Leave QueryUmsThreadInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_QueryUmsThreadInformation(void);  /* ../dlls/kernel32/process.c:4226 */
@@ -15541,10 +17060,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_QueryUmsThreadInformation,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_QueryUnbiasedInterruptTime(ULONGLONG*  time) /* ../dlls/kernel32/time.c:1554 */
+WINAPI BOOL wine32b_kernel32_QueryUnbiasedInterruptTime(ULONGLONG*  time) /* ../dlls/kernel32/time.c:1554 */
 {
+	BOOL return_value;
 	TRACE("Enter QueryUnbiasedInterruptTime\n");
-	return pQueryUnbiasedInterruptTime(time);
+	return_value = pQueryUnbiasedInterruptTime(time);
+	TRACE("Leave QueryUnbiasedInterruptTime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_QueryUnbiasedInterruptTime(void);  /* ../dlls/kernel32/time.c:1554 */
@@ -15566,10 +17088,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_QueryUnbiasedInterruptTime,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_ReadConsoleInputW(HANDLE  hConsoleInput, PINPUT_RECORD  lpBuffer, DWORD  nLength, LPDWORD  lpNumberOfEventsRead) /* ../dlls/kernel32/console.c:807 */
+WINAPI BOOL wine32b_kernel32_ReadConsoleInputW(HANDLE  hConsoleInput, PINPUT_RECORD  lpBuffer, DWORD  nLength, LPDWORD  lpNumberOfEventsRead) /* ../dlls/kernel32/console.c:807 */
 {
+	BOOL return_value;
 	TRACE("Enter ReadConsoleInputW\n");
-	return pReadConsoleInputW(hConsoleInput, lpBuffer, nLength, lpNumberOfEventsRead);
+	return_value = pReadConsoleInputW(hConsoleInput, lpBuffer, nLength, lpNumberOfEventsRead);
+	TRACE("Leave ReadConsoleInputW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_ReadConsoleInputW(void);  /* ../dlls/kernel32/console.c:807 */
@@ -15594,10 +17119,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ReadConsoleInputW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_ReadConsoleW(HANDLE  hConsoleInput, LPVOID  lpBuffer, DWORD  nNumberOfCharsToRead, LPDWORD  lpNumberOfCharsRead, LPVOID  lpReserved) /* ../dlls/kernel32/console.c:732 */
+WINAPI BOOL wine32b_kernel32_ReadConsoleW(HANDLE  hConsoleInput, LPVOID  lpBuffer, DWORD  nNumberOfCharsToRead, LPDWORD  lpNumberOfCharsRead, LPVOID  lpReserved) /* ../dlls/kernel32/console.c:732 */
 {
+	BOOL return_value;
 	TRACE("Enter ReadConsoleW\n");
-	return pReadConsoleW(hConsoleInput, lpBuffer, nNumberOfCharsToRead, lpNumberOfCharsRead, lpReserved);
+	return_value = pReadConsoleW(hConsoleInput, lpBuffer, nNumberOfCharsToRead, lpNumberOfCharsRead, lpReserved);
+	TRACE("Leave ReadConsoleW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_ReadConsoleW(void);  /* ../dlls/kernel32/console.c:732 */
@@ -15622,10 +17150,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ReadConsoleW,
 	"ret \n"
 )
 
-extern WINAPI HRESULT wine32b_kernel32_RegisterApplicationRecoveryCallback(APPLICATION_RECOVERY_CALLBACK  callback, PVOID  param, DWORD  pingint, DWORD  flags) /* ../dlls/kernel32/process.c:3956 */
+WINAPI HRESULT wine32b_kernel32_RegisterApplicationRecoveryCallback(APPLICATION_RECOVERY_CALLBACK  callback, PVOID  param, DWORD  pingint, DWORD  flags) /* ../dlls/kernel32/process.c:3956 */
 {
+	HRESULT return_value;
 	TRACE("Enter RegisterApplicationRecoveryCallback\n");
-	return pRegisterApplicationRecoveryCallback(callback, param, pingint, flags);
+	return_value = pRegisterApplicationRecoveryCallback(callback, param, pingint, flags);
+	TRACE("Leave RegisterApplicationRecoveryCallback\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_RegisterApplicationRecoveryCallback(void);  /* ../dlls/kernel32/process.c:3956 */
@@ -15650,10 +17181,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_RegisterApplicationRecoveryCallback,
 	"ret \n"
 )
 
-extern WINAPI HRESULT wine32b_kernel32_RegisterApplicationRestart(PCWSTR  pwzCommandLine, DWORD  dwFlags) /* ../dlls/kernel32/process.c:3897 */
+WINAPI HRESULT wine32b_kernel32_RegisterApplicationRestart(PCWSTR  pwzCommandLine, DWORD  dwFlags) /* ../dlls/kernel32/process.c:3897 */
 {
+	HRESULT return_value;
 	TRACE("Enter RegisterApplicationRestart\n");
-	return pRegisterApplicationRestart(pwzCommandLine, dwFlags);
+	return_value = pRegisterApplicationRestart(pwzCommandLine, dwFlags);
+	TRACE("Leave RegisterApplicationRestart\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_RegisterApplicationRestart(void);  /* ../dlls/kernel32/process.c:3897 */
@@ -15676,10 +17210,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_RegisterApplicationRestart,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_RegisterServiceProcess(DWORD  dwProcessId, DWORD  dwType) /* ../dlls/kernel32/process.c:3793 */
+WINAPI DWORD wine32b_kernel32_RegisterServiceProcess(DWORD  dwProcessId, DWORD  dwType) /* ../dlls/kernel32/process.c:3793 */
 {
+	DWORD return_value;
 	TRACE("Enter RegisterServiceProcess\n");
-	return pRegisterServiceProcess(dwProcessId, dwType);
+	return_value = pRegisterServiceProcess(dwProcessId, dwType);
+	TRACE("Leave RegisterServiceProcess\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_RegisterServiceProcess(void);  /* ../dlls/kernel32/process.c:3793 */
@@ -15702,10 +17239,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_RegisterServiceProcess,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_RegisterWaitForSingleObject(PHANDLE  phNewWaitObject, HANDLE  hObject, WAITORTIMERCALLBACK  Callback, PVOID  Context, ULONG  dwMilliseconds, ULONG  dwFlags) /* ../dlls/kernel32/sync.c:107 */
+WINAPI BOOL wine32b_kernel32_RegisterWaitForSingleObject(PHANDLE  phNewWaitObject, HANDLE  hObject, WAITORTIMERCALLBACK  Callback, PVOID  Context, ULONG  dwMilliseconds, ULONG  dwFlags) /* ../dlls/kernel32/sync.c:107 */
 {
+	BOOL return_value;
 	TRACE("Enter RegisterWaitForSingleObject\n");
-	return pRegisterWaitForSingleObject(phNewWaitObject, hObject, Callback, Context, dwMilliseconds, dwFlags);
+	return_value = pRegisterWaitForSingleObject(phNewWaitObject, hObject, Callback, Context, dwMilliseconds, dwFlags);
+	TRACE("Leave RegisterWaitForSingleObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_RegisterWaitForSingleObject(void);  /* ../dlls/kernel32/sync.c:107 */
@@ -15730,10 +17270,11 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_RegisterWaitForSingleObject,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_ReinitializeCriticalSection(CRITICAL_SECTION*  crit) /* ../dlls/kernel32/sync.c:170 */
+WINAPI void wine32b_kernel32_ReinitializeCriticalSection(CRITICAL_SECTION*  crit) /* ../dlls/kernel32/sync.c:170 */
 {
 	TRACE("Enter ReinitializeCriticalSection\n");
-	return pReinitializeCriticalSection(crit);
+	pReinitializeCriticalSection(crit);
+	TRACE("Leave ReinitializeCriticalSection\n");
 }
 
 extern WINAPI void wine32a_kernel32_ReinitializeCriticalSection(void);  /* ../dlls/kernel32/sync.c:170 */
@@ -15755,10 +17296,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ReinitializeCriticalSection,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_RemoveDirectoryA(LPCSTR  path) /* ../dlls/kernel32/path.c:1680 */
+WINAPI BOOL wine32b_kernel32_RemoveDirectoryA(LPCSTR  path) /* ../dlls/kernel32/path.c:1680 */
 {
+	BOOL return_value;
 	TRACE("Enter RemoveDirectoryA\n");
-	return pRemoveDirectoryA(path);
+	return_value = pRemoveDirectoryA(path);
+	TRACE("Leave RemoveDirectoryA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_RemoveDirectoryA(void);  /* ../dlls/kernel32/path.c:1680 */
@@ -15780,10 +17324,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_RemoveDirectoryA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_RemoveDirectoryW(LPCWSTR  path) /* ../dlls/kernel32/path.c:1627 */
+WINAPI BOOL wine32b_kernel32_RemoveDirectoryW(LPCWSTR  path) /* ../dlls/kernel32/path.c:1627 */
 {
+	BOOL return_value;
 	TRACE("Enter RemoveDirectoryW\n");
-	return pRemoveDirectoryW(path);
+	return_value = pRemoveDirectoryW(path);
+	TRACE("Leave RemoveDirectoryW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_RemoveDirectoryW(void);  /* ../dlls/kernel32/path.c:1627 */
@@ -15805,10 +17352,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_RemoveDirectoryW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_ReplaceFileA(LPCSTR  lpReplacedFileName, LPCSTR  lpReplacementFileName, LPCSTR  lpBackupFileName, DWORD  dwReplaceFlags, LPVOID  lpExclude, LPVOID  lpReserved) /* ../dlls/kernel32/file.c:612 */
+WINAPI BOOL wine32b_kernel32_ReplaceFileA(LPCSTR  lpReplacedFileName, LPCSTR  lpReplacementFileName, LPCSTR  lpBackupFileName, DWORD  dwReplaceFlags, LPVOID  lpExclude, LPVOID  lpReserved) /* ../dlls/kernel32/file.c:612 */
 {
+	BOOL return_value;
 	TRACE("Enter ReplaceFileA\n");
-	return pReplaceFileA(lpReplacedFileName, lpReplacementFileName, lpBackupFileName, dwReplaceFlags, lpExclude, lpReserved);
+	return_value = pReplaceFileA(lpReplacedFileName, lpReplacementFileName, lpBackupFileName, dwReplaceFlags, lpExclude, lpReserved);
+	TRACE("Leave ReplaceFileA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_ReplaceFileA(void);  /* ../dlls/kernel32/file.c:612 */
@@ -15833,10 +17383,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ReplaceFileA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_ReplaceFileW(LPCWSTR  lpReplacedFileName, LPCWSTR  lpReplacementFileName, LPCWSTR  lpBackupFileName, DWORD  dwReplaceFlags, LPVOID  lpExclude, LPVOID  lpReserved) /* ../dlls/kernel32/file.c:425 */
+WINAPI BOOL wine32b_kernel32_ReplaceFileW(LPCWSTR  lpReplacedFileName, LPCWSTR  lpReplacementFileName, LPCWSTR  lpBackupFileName, DWORD  dwReplaceFlags, LPVOID  lpExclude, LPVOID  lpReserved) /* ../dlls/kernel32/file.c:425 */
 {
+	BOOL return_value;
 	TRACE("Enter ReplaceFileW\n");
-	return pReplaceFileW(lpReplacedFileName, lpReplacementFileName, lpBackupFileName, dwReplaceFlags, lpExclude, lpReserved);
+	return_value = pReplaceFileW(lpReplacedFileName, lpReplacementFileName, lpBackupFileName, dwReplaceFlags, lpExclude, lpReserved);
+	TRACE("Leave ReplaceFileW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_ReplaceFileW(void);  /* ../dlls/kernel32/file.c:425 */
@@ -15861,10 +17414,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ReplaceFileW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_RemoveDllDirectory(DLL_DIRECTORY_COOKIE  cookie) /* ../dlls/kernel32/module.c:201 */
+WINAPI BOOL wine32b_kernel32_RemoveDllDirectory(DLL_DIRECTORY_COOKIE  cookie) /* ../dlls/kernel32/module.c:201 */
 {
+	BOOL return_value;
 	TRACE("Enter RemoveDllDirectory\n");
-	return pRemoveDllDirectory(cookie);
+	return_value = pRemoveDllDirectory(cookie);
+	TRACE("Leave RemoveDllDirectory\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_RemoveDllDirectory(void);  /* ../dlls/kernel32/module.c:201 */
@@ -15886,10 +17442,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_RemoveDllDirectory,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_RequestDeviceWakeup(HANDLE  device) /* ../dlls/kernel32/powermgnt.c:84 */
+WINAPI BOOL wine32b_kernel32_RequestDeviceWakeup(HANDLE  device) /* ../dlls/kernel32/powermgnt.c:84 */
 {
+	BOOL return_value;
 	TRACE("Enter RequestDeviceWakeup\n");
-	return pRequestDeviceWakeup(device);
+	return_value = pRequestDeviceWakeup(device);
+	TRACE("Leave RequestDeviceWakeup\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_RequestDeviceWakeup(void);  /* ../dlls/kernel32/powermgnt.c:84 */
@@ -15911,10 +17470,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_RequestDeviceWakeup,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_RequestWakeupLatency(LATENCY_TIME  latency) /* ../dlls/kernel32/powermgnt.c:75 */
+WINAPI BOOL wine32b_kernel32_RequestWakeupLatency(LATENCY_TIME  latency) /* ../dlls/kernel32/powermgnt.c:75 */
 {
+	BOOL return_value;
 	TRACE("Enter RequestWakeupLatency\n");
-	return pRequestWakeupLatency(latency);
+	return_value = pRequestWakeupLatency(latency);
+	TRACE("Leave RequestWakeupLatency\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_RequestWakeupLatency(void);  /* ../dlls/kernel32/powermgnt.c:75 */
@@ -15936,10 +17498,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_RequestWakeupLatency,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_ResolveLocaleName(LPCWSTR  name, LPWSTR  localename, INT  len) /* ../dlls/kernel32/locale.c:5898 */
+WINAPI INT wine32b_kernel32_ResolveLocaleName(LPCWSTR  name, LPWSTR  localename, INT  len) /* ../dlls/kernel32/locale.c:5898 */
 {
+	INT return_value;
 	TRACE("Enter ResolveLocaleName\n");
-	return pResolveLocaleName(name, localename, len);
+	return_value = pResolveLocaleName(name, localename, len);
+	TRACE("Leave ResolveLocaleName\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_ResolveLocaleName(void);  /* ../dlls/kernel32/locale.c:5898 */
@@ -15963,10 +17528,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_ResolveLocaleName,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_SearchPathA(LPCSTR  path, LPCSTR  name, LPCSTR  ext, DWORD  buflen, LPSTR  buffer, LPSTR*  lastpart) /* ../dlls/kernel32/path.c:1081 */
+WINAPI DWORD wine32b_kernel32_SearchPathA(LPCSTR  path, LPCSTR  name, LPCSTR  ext, DWORD  buflen, LPSTR  buffer, LPSTR*  lastpart) /* ../dlls/kernel32/path.c:1081 */
 {
+	DWORD return_value;
 	TRACE("Enter SearchPathA\n");
-	return pSearchPathA(path, name, ext, buflen, buffer, lastpart);
+	return_value = pSearchPathA(path, name, ext, buflen, buffer, lastpart);
+	TRACE("Leave SearchPathA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SearchPathA(void);  /* ../dlls/kernel32/path.c:1081 */
@@ -15991,10 +17559,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SearchPathA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_SearchPathW(LPCWSTR  path, LPCWSTR  name, LPCWSTR  ext, DWORD  buflen, LPWSTR  buffer, LPWSTR*  lastpart) /* ../dlls/kernel32/path.c:950 */
+WINAPI DWORD wine32b_kernel32_SearchPathW(LPCWSTR  path, LPCWSTR  name, LPCWSTR  ext, DWORD  buflen, LPWSTR  buffer, LPWSTR*  lastpart) /* ../dlls/kernel32/path.c:950 */
 {
+	DWORD return_value;
 	TRACE("Enter SearchPathW\n");
-	return pSearchPathW(path, name, ext, buflen, buffer, lastpart);
+	return_value = pSearchPathW(path, name, ext, buflen, buffer, lastpart);
+	TRACE("Leave SearchPathW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SearchPathW(void);  /* ../dlls/kernel32/path.c:950 */
@@ -16019,10 +17590,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SearchPathW,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_SetCPGlobal(UINT  acp) /* ../dlls/kernel32/locale.c:2027 */
+WINAPI UINT wine32b_kernel32_SetCPGlobal(UINT  acp) /* ../dlls/kernel32/locale.c:2027 */
 {
+	UINT return_value;
 	TRACE("Enter SetCPGlobal\n");
-	return pSetCPGlobal(acp);
+	return_value = pSetCPGlobal(acp);
+	TRACE("Leave SetCPGlobal\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetCPGlobal(void);  /* ../dlls/kernel32/locale.c:2027 */
@@ -16044,10 +17618,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetCPGlobal,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_SetCalendarInfoA(LCID  Locale, CALID  Calendar, CALTYPE  CalType, LPCSTR  lpCalData) /* ../dlls/kernel32/time.c:1154 */
+WINAPI INT wine32b_kernel32_SetCalendarInfoA(LCID  Locale, CALID  Calendar, CALTYPE  CalType, LPCSTR  lpCalData) /* ../dlls/kernel32/time.c:1154 */
 {
+	INT return_value;
 	TRACE("Enter SetCalendarInfoA\n");
-	return pSetCalendarInfoA(Locale, Calendar, CalType, lpCalData);
+	return_value = pSetCalendarInfoA(Locale, Calendar, CalType, lpCalData);
+	TRACE("Leave SetCalendarInfoA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetCalendarInfoA(void);  /* ../dlls/kernel32/time.c:1154 */
@@ -16072,10 +17649,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetCalendarInfoA,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_SetCalendarInfoW(LCID  Locale, CALID  Calendar, CALTYPE  CalType, LPCWSTR  lpCalData) /* ../dlls/kernel32/time.c:1166 */
+WINAPI INT wine32b_kernel32_SetCalendarInfoW(LCID  Locale, CALID  Calendar, CALTYPE  CalType, LPCWSTR  lpCalData) /* ../dlls/kernel32/time.c:1166 */
 {
+	INT return_value;
 	TRACE("Enter SetCalendarInfoW\n");
-	return pSetCalendarInfoW(Locale, Calendar, CalType, lpCalData);
+	return_value = pSetCalendarInfoW(Locale, Calendar, CalType, lpCalData);
+	TRACE("Leave SetCalendarInfoW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetCalendarInfoW(void);  /* ../dlls/kernel32/time.c:1166 */
@@ -16100,10 +17680,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetCalendarInfoW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetComputerNameA(LPCSTR  lpComputerName) /* ../dlls/kernel32/computername.c:628 */
+WINAPI BOOL wine32b_kernel32_SetComputerNameA(LPCSTR  lpComputerName) /* ../dlls/kernel32/computername.c:628 */
 {
+	BOOL return_value;
 	TRACE("Enter SetComputerNameA\n");
-	return pSetComputerNameA(lpComputerName);
+	return_value = pSetComputerNameA(lpComputerName);
+	TRACE("Leave SetComputerNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetComputerNameA(void);  /* ../dlls/kernel32/computername.c:628 */
@@ -16125,10 +17708,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetComputerNameA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetComputerNameExA(COMPUTER_NAME_FORMAT  type, LPCSTR  lpComputerName) /* ../dlls/kernel32/computername.c:662 */
+WINAPI BOOL wine32b_kernel32_SetComputerNameExA(COMPUTER_NAME_FORMAT  type, LPCSTR  lpComputerName) /* ../dlls/kernel32/computername.c:662 */
 {
+	BOOL return_value;
 	TRACE("Enter SetComputerNameExA\n");
-	return pSetComputerNameExA(type, lpComputerName);
+	return_value = pSetComputerNameExA(type, lpComputerName);
+	TRACE("Leave SetComputerNameExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetComputerNameExA(void);  /* ../dlls/kernel32/computername.c:662 */
@@ -16151,10 +17737,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetComputerNameExA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetComputerNameExW(COMPUTER_NAME_FORMAT  type, LPCWSTR  lpComputerName) /* ../dlls/kernel32/computername.c:644 */
+WINAPI BOOL wine32b_kernel32_SetComputerNameExW(COMPUTER_NAME_FORMAT  type, LPCWSTR  lpComputerName) /* ../dlls/kernel32/computername.c:644 */
 {
+	BOOL return_value;
 	TRACE("Enter SetComputerNameExW\n");
-	return pSetComputerNameExW(type, lpComputerName);
+	return_value = pSetComputerNameExW(type, lpComputerName);
+	TRACE("Leave SetComputerNameExW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetComputerNameExW(void);  /* ../dlls/kernel32/computername.c:644 */
@@ -16177,10 +17766,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetComputerNameExW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetComputerNameW(LPCWSTR  lpComputerName) /* ../dlls/kernel32/computername.c:560 */
+WINAPI BOOL wine32b_kernel32_SetComputerNameW(LPCWSTR  lpComputerName) /* ../dlls/kernel32/computername.c:560 */
 {
+	BOOL return_value;
 	TRACE("Enter SetComputerNameW\n");
-	return pSetComputerNameW(lpComputerName);
+	return_value = pSetComputerNameW(lpComputerName);
+	TRACE("Leave SetComputerNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetComputerNameW(void);  /* ../dlls/kernel32/computername.c:560 */
@@ -16202,10 +17794,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetComputerNameW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetConsoleCtrlHandler(PHANDLER_ROUTINE  func, BOOL  add) /* ../dlls/kernel32/console.c:878 */
+WINAPI BOOL wine32b_kernel32_SetConsoleCtrlHandler(PHANDLER_ROUTINE  func, BOOL  add) /* ../dlls/kernel32/console.c:878 */
 {
+	BOOL return_value;
 	TRACE("Enter SetConsoleCtrlHandler\n");
-	return pSetConsoleCtrlHandler(func, add);
+	return_value = pSetConsoleCtrlHandler(func, add);
+	TRACE("Leave SetConsoleCtrlHandler\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetConsoleCtrlHandler(void);  /* ../dlls/kernel32/console.c:878 */
@@ -16228,10 +17823,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleCtrlHandler,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetConsoleDisplayMode(HANDLE  hConsoleOutput, DWORD  dwFlags, COORD*  lpNewScreenBufferDimensions) /* ../dlls/kernel32/console.c:1294 */
+WINAPI BOOL wine32b_kernel32_SetConsoleDisplayMode(HANDLE  hConsoleOutput, DWORD  dwFlags, COORD*  lpNewScreenBufferDimensions) /* ../dlls/kernel32/console.c:1294 */
 {
+	BOOL return_value;
 	TRACE("Enter SetConsoleDisplayMode\n");
-	return pSetConsoleDisplayMode(hConsoleOutput, dwFlags, lpNewScreenBufferDimensions);
+	return_value = pSetConsoleDisplayMode(hConsoleOutput, dwFlags, lpNewScreenBufferDimensions);
+	TRACE("Leave SetConsoleDisplayMode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetConsoleDisplayMode(void);  /* ../dlls/kernel32/console.c:1294 */
@@ -16255,10 +17853,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleDisplayMode,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetConsoleFont(HANDLE  hConsole, DWORD  index) /* ../dlls/kernel32/console.c:1627 */
+WINAPI BOOL wine32b_kernel32_SetConsoleFont(HANDLE  hConsole, DWORD  index) /* ../dlls/kernel32/console.c:1627 */
 {
+	BOOL return_value;
 	TRACE("Enter SetConsoleFont\n");
-	return pSetConsoleFont(hConsole, index);
+	return_value = pSetConsoleFont(hConsole, index);
+	TRACE("Leave SetConsoleFont\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetConsoleFont(void);  /* ../dlls/kernel32/console.c:1627 */
@@ -16281,10 +17882,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleFont,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetConsoleIcon(HICON  icon) /* ../dlls/kernel32/console.c:1615 */
+WINAPI BOOL wine32b_kernel32_SetConsoleIcon(HICON  icon) /* ../dlls/kernel32/console.c:1615 */
 {
+	BOOL return_value;
 	TRACE("Enter SetConsoleIcon\n");
-	return pSetConsoleIcon(icon);
+	return_value = pSetConsoleIcon(icon);
+	TRACE("Leave SetConsoleIcon\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetConsoleIcon(void);  /* ../dlls/kernel32/console.c:1615 */
@@ -16306,10 +17910,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleIcon,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetConsoleKeyShortcuts(BOOL  set, BYTE  keys, void*  a, DWORD  b) /* ../dlls/kernel32/console.c:1634 */
+WINAPI BOOL wine32b_kernel32_SetConsoleKeyShortcuts(BOOL  set, BYTE  keys, void*  a, DWORD  b) /* ../dlls/kernel32/console.c:1634 */
 {
+	BOOL return_value;
 	TRACE("Enter SetConsoleKeyShortcuts\n");
-	return pSetConsoleKeyShortcuts(set, keys, a, b);
+	return_value = pSetConsoleKeyShortcuts(set, keys, a, b);
+	TRACE("Leave SetConsoleKeyShortcuts\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetConsoleKeyShortcuts(void);  /* ../dlls/kernel32/console.c:1634 */
@@ -16334,10 +17941,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleKeyShortcuts,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetConsoleTitleA(LPCSTR  title) /* ../dlls/kernel32/console.c:478 */
+WINAPI BOOL wine32b_kernel32_SetConsoleTitleA(LPCSTR  title) /* ../dlls/kernel32/console.c:478 */
 {
+	BOOL return_value;
 	TRACE("Enter SetConsoleTitleA\n");
-	return pSetConsoleTitleA(title);
+	return_value = pSetConsoleTitleA(title);
+	TRACE("Leave SetConsoleTitleA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetConsoleTitleA(void);  /* ../dlls/kernel32/console.c:478 */
@@ -16359,10 +17969,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetConsoleTitleA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetCurrentConsoleFontEx(HANDLE  hConsole, BOOL  maxwindow, CONSOLE_FONT_INFOEX*  cfix) /* ../dlls/kernel32/console.c:1718 */
+WINAPI BOOL wine32b_kernel32_SetCurrentConsoleFontEx(HANDLE  hConsole, BOOL  maxwindow, CONSOLE_FONT_INFOEX*  cfix) /* ../dlls/kernel32/console.c:1718 */
 {
+	BOOL return_value;
 	TRACE("Enter SetCurrentConsoleFontEx\n");
-	return pSetCurrentConsoleFontEx(hConsole, maxwindow, cfix);
+	return_value = pSetCurrentConsoleFontEx(hConsole, maxwindow, cfix);
+	TRACE("Leave SetCurrentConsoleFontEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetCurrentConsoleFontEx(void);  /* ../dlls/kernel32/console.c:1718 */
@@ -16386,10 +17999,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetCurrentConsoleFontEx,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetCurrentDirectoryA(LPCSTR  dir) /* ../dlls/kernel32/path.c:1746 */
+WINAPI BOOL wine32b_kernel32_SetCurrentDirectoryA(LPCSTR  dir) /* ../dlls/kernel32/path.c:1746 */
 {
+	BOOL return_value;
 	TRACE("Enter SetCurrentDirectoryA\n");
-	return pSetCurrentDirectoryA(dir);
+	return_value = pSetCurrentDirectoryA(dir);
+	TRACE("Leave SetCurrentDirectoryA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetCurrentDirectoryA(void);  /* ../dlls/kernel32/path.c:1746 */
@@ -16411,10 +18027,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetCurrentDirectoryA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetCurrentDirectoryW(LPCWSTR  dir) /* ../dlls/kernel32/path.c:1731 */
+WINAPI BOOL wine32b_kernel32_SetCurrentDirectoryW(LPCWSTR  dir) /* ../dlls/kernel32/path.c:1731 */
 {
+	BOOL return_value;
 	TRACE("Enter SetCurrentDirectoryW\n");
-	return pSetCurrentDirectoryW(dir);
+	return_value = pSetCurrentDirectoryW(dir);
+	TRACE("Leave SetCurrentDirectoryW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetCurrentDirectoryW(void);  /* ../dlls/kernel32/path.c:1731 */
@@ -16436,10 +18055,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetCurrentDirectoryW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetDefaultCommConfigA(LPCSTR  lpszDevice, LPCOMMCONFIG  lpCommConfig, DWORD  dwSize) /* ../dlls/kernel32/comm.c:664 */
+WINAPI BOOL wine32b_kernel32_SetDefaultCommConfigA(LPCSTR  lpszDevice, LPCOMMCONFIG  lpCommConfig, DWORD  dwSize) /* ../dlls/kernel32/comm.c:664 */
 {
+	BOOL return_value;
 	TRACE("Enter SetDefaultCommConfigA\n");
-	return pSetDefaultCommConfigA(lpszDevice, lpCommConfig, dwSize);
+	return_value = pSetDefaultCommConfigA(lpszDevice, lpCommConfig, dwSize);
+	TRACE("Leave SetDefaultCommConfigA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetDefaultCommConfigA(void);  /* ../dlls/kernel32/comm.c:664 */
@@ -16463,10 +18085,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetDefaultCommConfigA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetDefaultCommConfigW(LPCWSTR  lpszDevice, LPCOMMCONFIG  lpCommConfig, DWORD  dwSize) /* ../dlls/kernel32/comm.c:634 */
+WINAPI BOOL wine32b_kernel32_SetDefaultCommConfigW(LPCWSTR  lpszDevice, LPCOMMCONFIG  lpCommConfig, DWORD  dwSize) /* ../dlls/kernel32/comm.c:634 */
 {
+	BOOL return_value;
 	TRACE("Enter SetDefaultCommConfigW\n");
-	return pSetDefaultCommConfigW(lpszDevice, lpCommConfig, dwSize);
+	return_value = pSetDefaultCommConfigW(lpszDevice, lpCommConfig, dwSize);
+	TRACE("Leave SetDefaultCommConfigW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetDefaultCommConfigW(void);  /* ../dlls/kernel32/comm.c:634 */
@@ -16490,10 +18115,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetDefaultCommConfigW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetDefaultDllDirectories(DWORD  flags) /* ../dlls/kernel32/module.c:218 */
+WINAPI BOOL wine32b_kernel32_SetDefaultDllDirectories(DWORD  flags) /* ../dlls/kernel32/module.c:218 */
 {
+	BOOL return_value;
 	TRACE("Enter SetDefaultDllDirectories\n");
-	return pSetDefaultDllDirectories(flags);
+	return_value = pSetDefaultDllDirectories(flags);
+	TRACE("Leave SetDefaultDllDirectories\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetDefaultDllDirectories(void);  /* ../dlls/kernel32/module.c:218 */
@@ -16515,10 +18143,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetDefaultDllDirectories,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetDllDirectoryA(LPCSTR  dir) /* ../dlls/kernel32/module.c:131 */
+WINAPI BOOL wine32b_kernel32_SetDllDirectoryA(LPCSTR  dir) /* ../dlls/kernel32/module.c:131 */
 {
+	BOOL return_value;
 	TRACE("Enter SetDllDirectoryA\n");
-	return pSetDllDirectoryA(dir);
+	return_value = pSetDllDirectoryA(dir);
+	TRACE("Leave SetDllDirectoryA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetDllDirectoryA(void);  /* ../dlls/kernel32/module.c:131 */
@@ -16540,10 +18171,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetDllDirectoryA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetDllDirectoryW(LPCWSTR  dir) /* ../dlls/kernel32/module.c:146 */
+WINAPI BOOL wine32b_kernel32_SetDllDirectoryW(LPCWSTR  dir) /* ../dlls/kernel32/module.c:146 */
 {
+	BOOL return_value;
 	TRACE("Enter SetDllDirectoryW\n");
-	return pSetDllDirectoryW(dir);
+	return_value = pSetDllDirectoryW(dir);
+	TRACE("Leave SetDllDirectoryW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetDllDirectoryW(void);  /* ../dlls/kernel32/module.c:146 */
@@ -16565,10 +18199,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetDllDirectoryW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetFileCompletionNotificationModes(HANDLE  file, UCHAR  flags) /* ../dlls/kernel32/file.c:393 */
+WINAPI BOOL wine32b_kernel32_SetFileCompletionNotificationModes(HANDLE  file, UCHAR  flags) /* ../dlls/kernel32/file.c:393 */
 {
+	BOOL return_value;
 	TRACE("Enter SetFileCompletionNotificationModes\n");
-	return pSetFileCompletionNotificationModes(file, flags);
+	return_value = pSetFileCompletionNotificationModes(file, flags);
+	TRACE("Leave SetFileCompletionNotificationModes\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetFileCompletionNotificationModes(void);  /* ../dlls/kernel32/file.c:393 */
@@ -16591,10 +18228,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetFileCompletionNotificationModes,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetHandleContext(HANDLE  hnd, DWORD  context) /* ../dlls/kernel32/process.c:3350 */
+WINAPI BOOL wine32b_kernel32_SetHandleContext(HANDLE  hnd, DWORD  context) /* ../dlls/kernel32/process.c:3350 */
 {
+	BOOL return_value;
 	TRACE("Enter SetHandleContext\n");
-	return pSetHandleContext(hnd, context);
+	return_value = pSetHandleContext(hnd, context);
+	TRACE("Leave SetHandleContext\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetHandleContext(void);  /* ../dlls/kernel32/process.c:3350 */
@@ -16617,10 +18257,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetHandleContext,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_SetHandleCount(UINT  count) /* ../dlls/kernel32/file.c:410 */
+WINAPI UINT wine32b_kernel32_SetHandleCount(UINT  count) /* ../dlls/kernel32/file.c:410 */
 {
+	UINT return_value;
 	TRACE("Enter SetHandleCount\n");
-	return pSetHandleCount(count);
+	return_value = pSetHandleCount(count);
+	TRACE("Leave SetHandleCount\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetHandleCount(void);  /* ../dlls/kernel32/file.c:410 */
@@ -16642,10 +18285,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetHandleCount,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetHandleInformation(HANDLE  handle, DWORD  mask, DWORD  flags) /* ../dlls/kernel32/process.c:3281 */
+WINAPI BOOL wine32b_kernel32_SetHandleInformation(HANDLE  handle, DWORD  mask, DWORD  flags) /* ../dlls/kernel32/process.c:3281 */
 {
+	BOOL return_value;
 	TRACE("Enter SetHandleInformation\n");
-	return pSetHandleInformation(handle, mask, flags);
+	return_value = pSetHandleInformation(handle, mask, flags);
+	TRACE("Leave SetHandleInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetHandleInformation(void);  /* ../dlls/kernel32/process.c:3281 */
@@ -16669,10 +18315,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetHandleInformation,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetInformationJobObject(HANDLE  job, JOBOBJECTINFOCLASS  class, LPVOID  info, DWORD  len) /* ../dlls/kernel32/sync.c:368 */
+WINAPI BOOL wine32b_kernel32_SetInformationJobObject(HANDLE  job, JOBOBJECTINFOCLASS  class, LPVOID  info, DWORD  len) /* ../dlls/kernel32/sync.c:368 */
 {
+	BOOL return_value;
 	TRACE("Enter SetInformationJobObject\n");
-	return pSetInformationJobObject(job, class, info, len);
+	return_value = pSetInformationJobObject(job, class, info, len);
+	TRACE("Leave SetInformationJobObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetInformationJobObject(void);  /* ../dlls/kernel32/sync.c:368 */
@@ -16697,10 +18346,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetInformationJobObject,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetLocalTime(SYSTEMTIME*  systime) /* ../dlls/kernel32/time.c:531 */
+WINAPI BOOL wine32b_kernel32_SetLocalTime(SYSTEMTIME*  systime) /* ../dlls/kernel32/time.c:531 */
 {
+	BOOL return_value;
 	TRACE("Enter SetLocalTime\n");
-	return pSetLocalTime(systime);
+	return_value = pSetLocalTime(systime);
+	TRACE("Leave SetLocalTime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetLocalTime(void);  /* ../dlls/kernel32/time.c:531 */
@@ -16722,10 +18374,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetLocalTime,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetLocaleInfoA(LCID  lcid, LCTYPE  lctype, LPCSTR  data) /* ../dlls/kernel32/locale.c:1878 */
+WINAPI BOOL wine32b_kernel32_SetLocaleInfoA(LCID  lcid, LCTYPE  lctype, LPCSTR  data) /* ../dlls/kernel32/locale.c:1878 */
 {
+	BOOL return_value;
 	TRACE("Enter SetLocaleInfoA\n");
-	return pSetLocaleInfoA(lcid, lctype, data);
+	return_value = pSetLocaleInfoA(lcid, lctype, data);
+	TRACE("Leave SetLocaleInfoA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetLocaleInfoA(void);  /* ../dlls/kernel32/locale.c:1878 */
@@ -16749,10 +18404,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetLocaleInfoA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetLocaleInfoW(LCID  lcid, LCTYPE  lctype, LPCWSTR  data) /* ../dlls/kernel32/locale.c:1910 */
+WINAPI BOOL wine32b_kernel32_SetLocaleInfoW(LCID  lcid, LCTYPE  lctype, LPCWSTR  data) /* ../dlls/kernel32/locale.c:1910 */
 {
+	BOOL return_value;
 	TRACE("Enter SetLocaleInfoW\n");
-	return pSetLocaleInfoW(lcid, lctype, data);
+	return_value = pSetLocaleInfoW(lcid, lctype, data);
+	TRACE("Leave SetLocaleInfoW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetLocaleInfoW(void);  /* ../dlls/kernel32/locale.c:1910 */
@@ -16776,10 +18434,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetLocaleInfoW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetMailslotInfo(HANDLE  hMailslot, DWORD  dwReadTimeout) /* ../dlls/kernel32/sync.c:973 */
+WINAPI BOOL wine32b_kernel32_SetMailslotInfo(HANDLE  hMailslot, DWORD  dwReadTimeout) /* ../dlls/kernel32/sync.c:973 */
 {
+	BOOL return_value;
 	TRACE("Enter SetMailslotInfo\n");
-	return pSetMailslotInfo(hMailslot, dwReadTimeout);
+	return_value = pSetMailslotInfo(hMailslot, dwReadTimeout);
+	TRACE("Leave SetMailslotInfo\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetMailslotInfo(void);  /* ../dlls/kernel32/sync.c:973 */
@@ -16802,10 +18463,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetMailslotInfo,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetProcessAffinityMask(HANDLE  hProcess, DWORD_PTR  affmask) /* ../dlls/kernel32/process.c:3386 */
+WINAPI BOOL wine32b_kernel32_SetProcessAffinityMask(HANDLE  hProcess, DWORD_PTR  affmask) /* ../dlls/kernel32/process.c:3386 */
 {
+	BOOL return_value;
 	TRACE("Enter SetProcessAffinityMask\n");
-	return pSetProcessAffinityMask(hProcess, affmask);
+	return_value = pSetProcessAffinityMask(hProcess, affmask);
+	TRACE("Leave SetProcessAffinityMask\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetProcessAffinityMask(void);  /* ../dlls/kernel32/process.c:3386 */
@@ -16828,10 +18492,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetProcessAffinityMask,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetProcessDEPPolicy(DWORD  newDEP) /* ../dlls/kernel32/process.c:3927 */
+WINAPI BOOL wine32b_kernel32_SetProcessDEPPolicy(DWORD  newDEP) /* ../dlls/kernel32/process.c:3927 */
 {
+	BOOL return_value;
 	TRACE("Enter SetProcessDEPPolicy\n");
-	return pSetProcessDEPPolicy(newDEP);
+	return_value = pSetProcessDEPPolicy(newDEP);
+	TRACE("Leave SetProcessDEPPolicy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetProcessDEPPolicy(void);  /* ../dlls/kernel32/process.c:3927 */
@@ -16853,10 +18520,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetProcessDEPPolicy,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetProcessPreferredUILanguages(DWORD  flags, PCZZWSTR  buffer, PULONG  count) /* ../dlls/kernel32/locale.c:1324 */
+WINAPI BOOL wine32b_kernel32_SetProcessPreferredUILanguages(DWORD  flags, PCZZWSTR  buffer, PULONG  count) /* ../dlls/kernel32/locale.c:1324 */
 {
+	BOOL return_value;
 	TRACE("Enter SetProcessPreferredUILanguages\n");
-	return pSetProcessPreferredUILanguages(flags, buffer, count);
+	return_value = pSetProcessPreferredUILanguages(flags, buffer, count);
+	TRACE("Leave SetProcessPreferredUILanguages\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetProcessPreferredUILanguages(void);  /* ../dlls/kernel32/locale.c:1324 */
@@ -16880,10 +18550,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetProcessPreferredUILanguages,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetProcessWorkingSetSize(HANDLE  process, SIZE_T  minset, SIZE_T  maxset) /* ../dlls/kernel32/process.c:3495 */
+WINAPI BOOL wine32b_kernel32_SetProcessWorkingSetSize(HANDLE  process, SIZE_T  minset, SIZE_T  maxset) /* ../dlls/kernel32/process.c:3495 */
 {
+	BOOL return_value;
 	TRACE("Enter SetProcessWorkingSetSize\n");
-	return pSetProcessWorkingSetSize(process, minset, maxset);
+	return_value = pSetProcessWorkingSetSize(process, minset, maxset);
+	TRACE("Leave SetProcessWorkingSetSize\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetProcessWorkingSetSize(void);  /* ../dlls/kernel32/process.c:3495 */
@@ -16907,10 +18580,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetProcessWorkingSetSize,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetSearchPathMode(DWORD  flags) /* ../dlls/kernel32/path.c:2024 */
+WINAPI BOOL wine32b_kernel32_SetSearchPathMode(DWORD  flags) /* ../dlls/kernel32/path.c:2024 */
 {
+	BOOL return_value;
 	TRACE("Enter SetSearchPathMode\n");
-	return pSetSearchPathMode(flags);
+	return_value = pSetSearchPathMode(flags);
+	TRACE("Leave SetSearchPathMode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetSearchPathMode(void);  /* ../dlls/kernel32/path.c:2024 */
@@ -16932,10 +18608,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetSearchPathMode,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetSystemFileCacheSize(SIZE_T  mincache, SIZE_T  maxcache, DWORD  flags) /* ../dlls/kernel32/heap.c:922 */
+WINAPI BOOL wine32b_kernel32_SetSystemFileCacheSize(SIZE_T  mincache, SIZE_T  maxcache, DWORD  flags) /* ../dlls/kernel32/heap.c:922 */
 {
+	BOOL return_value;
 	TRACE("Enter SetSystemFileCacheSize\n");
-	return pSetSystemFileCacheSize(mincache, maxcache, flags);
+	return_value = pSetSystemFileCacheSize(mincache, maxcache, flags);
+	TRACE("Leave SetSystemFileCacheSize\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetSystemFileCacheSize(void);  /* ../dlls/kernel32/heap.c:922 */
@@ -16959,10 +18638,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetSystemFileCacheSize,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetSystemPowerState(BOOL  suspend_or_hibernate, BOOL  force_flag) /* ../dlls/kernel32/powermgnt.c:94 */
+WINAPI BOOL wine32b_kernel32_SetSystemPowerState(BOOL  suspend_or_hibernate, BOOL  force_flag) /* ../dlls/kernel32/powermgnt.c:94 */
 {
+	BOOL return_value;
 	TRACE("Enter SetSystemPowerState\n");
-	return pSetSystemPowerState(suspend_or_hibernate, force_flag);
+	return_value = pSetSystemPowerState(suspend_or_hibernate, force_flag);
+	TRACE("Leave SetSystemPowerState\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetSystemPowerState(void);  /* ../dlls/kernel32/powermgnt.c:94 */
@@ -16985,10 +18667,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetSystemPowerState,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetSystemTime(SYSTEMTIME*  systime) /* ../dlls/kernel32/time.c:589 */
+WINAPI BOOL wine32b_kernel32_SetSystemTime(SYSTEMTIME*  systime) /* ../dlls/kernel32/time.c:589 */
 {
+	BOOL return_value;
 	TRACE("Enter SetSystemTime\n");
-	return pSetSystemTime(systime);
+	return_value = pSetSystemTime(systime);
+	TRACE("Leave SetSystemTime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetSystemTime(void);  /* ../dlls/kernel32/time.c:589 */
@@ -17010,10 +18695,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetSystemTime,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetSystemTimeAdjustment(DWORD  dwTimeAdjustment, BOOL  bTimeAdjustmentDisabled) /* ../dlls/kernel32/time.c:617 */
+WINAPI BOOL wine32b_kernel32_SetSystemTimeAdjustment(DWORD  dwTimeAdjustment, BOOL  bTimeAdjustmentDisabled) /* ../dlls/kernel32/time.c:617 */
 {
+	BOOL return_value;
 	TRACE("Enter SetSystemTimeAdjustment\n");
-	return pSetSystemTimeAdjustment(dwTimeAdjustment, bTimeAdjustmentDisabled);
+	return_value = pSetSystemTimeAdjustment(dwTimeAdjustment, bTimeAdjustmentDisabled);
+	TRACE("Leave SetSystemTimeAdjustment\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetSystemTimeAdjustment(void);  /* ../dlls/kernel32/time.c:617 */
@@ -17036,10 +18724,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetSystemTimeAdjustment,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_SetTapeParameters(HANDLE  device, DWORD  operation, LPVOID  info) /* ../dlls/kernel32/tape.c:250 */
+WINAPI DWORD wine32b_kernel32_SetTapeParameters(HANDLE  device, DWORD  operation, LPVOID  info) /* ../dlls/kernel32/tape.c:250 */
 {
+	DWORD return_value;
 	TRACE("Enter SetTapeParameters\n");
-	return pSetTapeParameters(device, operation, info);
+	return_value = pSetTapeParameters(device, operation, info);
+	TRACE("Leave SetTapeParameters\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetTapeParameters(void);  /* ../dlls/kernel32/tape.c:250 */
@@ -17063,10 +18754,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetTapeParameters,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_SetTapePosition(HANDLE  device, DWORD  method, DWORD  partition, DWORD  offset_low, DWORD  offset_high, BOOL  immediate) /* ../dlls/kernel32/tape.c:282 */
+WINAPI DWORD wine32b_kernel32_SetTapePosition(HANDLE  device, DWORD  method, DWORD  partition, DWORD  offset_low, DWORD  offset_high, BOOL  immediate) /* ../dlls/kernel32/tape.c:282 */
 {
+	DWORD return_value;
 	TRACE("Enter SetTapePosition\n");
-	return pSetTapePosition(device, method, partition, offset_low, offset_high, immediate);
+	return_value = pSetTapePosition(device, method, partition, offset_low, offset_high, immediate);
+	TRACE("Leave SetTapePosition\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetTapePosition(void);  /* ../dlls/kernel32/tape.c:282 */
@@ -17091,10 +18785,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetTapePosition,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_SetTermsrvAppInstallMode(BOOL  bInstallMode) /* ../dlls/kernel32/version.c:107 */
+WINAPI DWORD wine32b_kernel32_SetTermsrvAppInstallMode(BOOL  bInstallMode) /* ../dlls/kernel32/version.c:107 */
 {
+	DWORD return_value;
 	TRACE("Enter SetTermsrvAppInstallMode\n");
-	return pSetTermsrvAppInstallMode(bInstallMode);
+	return_value = pSetTermsrvAppInstallMode(bInstallMode);
+	TRACE("Leave SetTermsrvAppInstallMode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetTermsrvAppInstallMode(void);  /* ../dlls/kernel32/version.c:107 */
@@ -17116,10 +18813,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetTermsrvAppInstallMode,
 	"ret \n"
 )
 
-extern WINAPI DWORD_PTR wine32b_kernel32_SetThreadAffinityMask(HANDLE  hThread, DWORD_PTR  dwThreadAffinityMask) /* ../dlls/kernel32/thread.c:83 */
+WINAPI DWORD_PTR wine32b_kernel32_SetThreadAffinityMask(HANDLE  hThread, DWORD_PTR  dwThreadAffinityMask) /* ../dlls/kernel32/thread.c:83 */
 {
+	DWORD_PTR return_value;
 	TRACE("Enter SetThreadAffinityMask\n");
-	return pSetThreadAffinityMask(hThread, dwThreadAffinityMask);
+	return_value = pSetThreadAffinityMask(hThread, dwThreadAffinityMask);
+	TRACE("Leave SetThreadAffinityMask\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetThreadAffinityMask(void);  /* ../dlls/kernel32/thread.c:83 */
@@ -17142,10 +18842,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetThreadAffinityMask,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_SetThreadExecutionState(EXECUTION_STATE  flags) /* ../dlls/kernel32/powermgnt.c:107 */
+WINAPI DWORD wine32b_kernel32_SetThreadExecutionState(EXECUTION_STATE  flags) /* ../dlls/kernel32/powermgnt.c:107 */
 {
+	DWORD return_value;
 	TRACE("Enter SetThreadExecutionState\n");
-	return pSetThreadExecutionState(flags);
+	return_value = pSetThreadExecutionState(flags);
+	TRACE("Leave SetThreadExecutionState\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetThreadExecutionState(void);  /* ../dlls/kernel32/powermgnt.c:107 */
@@ -17167,10 +18870,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetThreadExecutionState,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetThreadLocale(LCID  lcid) /* ../dlls/kernel32/locale.c:2812 */
+WINAPI BOOL wine32b_kernel32_SetThreadLocale(LCID  lcid) /* ../dlls/kernel32/locale.c:2812 */
 {
+	BOOL return_value;
 	TRACE("Enter SetThreadLocale\n");
-	return pSetThreadLocale(lcid);
+	return_value = pSetThreadLocale(lcid);
+	TRACE("Leave SetThreadLocale\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetThreadLocale(void);  /* ../dlls/kernel32/locale.c:2812 */
@@ -17192,10 +18898,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetThreadLocale,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetThreadPreferredUILanguages(DWORD  flags, PCZZWSTR  buffer, PULONG  count) /* ../dlls/kernel32/locale.c:1333 */
+WINAPI BOOL wine32b_kernel32_SetThreadPreferredUILanguages(DWORD  flags, PCZZWSTR  buffer, PULONG  count) /* ../dlls/kernel32/locale.c:1333 */
 {
+	BOOL return_value;
 	TRACE("Enter SetThreadPreferredUILanguages\n");
-	return pSetThreadPreferredUILanguages(flags, buffer, count);
+	return_value = pSetThreadPreferredUILanguages(flags, buffer, count);
+	TRACE("Leave SetThreadPreferredUILanguages\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetThreadPreferredUILanguages(void);  /* ../dlls/kernel32/locale.c:1333 */
@@ -17219,10 +18928,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetThreadPreferredUILanguages,
 	"ret \n"
 )
 
-extern WINAPI LANGID wine32b_kernel32_SetThreadUILanguage(LANGID  langid) /* ../dlls/kernel32/locale.c:2846 */
+WINAPI LANGID wine32b_kernel32_SetThreadUILanguage(LANGID  langid) /* ../dlls/kernel32/locale.c:2846 */
 {
+	LANGID return_value;
 	TRACE("Enter SetThreadUILanguage\n");
-	return pSetThreadUILanguage(langid);
+	return_value = pSetThreadUILanguage(langid);
+	TRACE("Leave SetThreadUILanguage\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetThreadUILanguage(void);  /* ../dlls/kernel32/locale.c:2846 */
@@ -17244,10 +18956,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetThreadUILanguage,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetTimeZoneInformation(TIME_ZONE_INFORMATION*  tzinfo) /* ../dlls/kernel32/time.c:686 */
+WINAPI BOOL wine32b_kernel32_SetTimeZoneInformation(TIME_ZONE_INFORMATION*  tzinfo) /* ../dlls/kernel32/time.c:686 */
 {
+	BOOL return_value;
 	TRACE("Enter SetTimeZoneInformation\n");
-	return pSetTimeZoneInformation(tzinfo);
+	return_value = pSetTimeZoneInformation(tzinfo);
+	TRACE("Leave SetTimeZoneInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetTimeZoneInformation(void);  /* ../dlls/kernel32/time.c:686 */
@@ -17269,10 +18984,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetTimeZoneInformation,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetUmsThreadInformation(PUMS_CONTEXT  ctx, UMS_THREAD_INFO_CLASS  class, void*  buf, ULONG  length) /* ../dlls/kernel32/process.c:4237 */
+WINAPI BOOL wine32b_kernel32_SetUmsThreadInformation(PUMS_CONTEXT  ctx, UMS_THREAD_INFO_CLASS  class, void*  buf, ULONG  length) /* ../dlls/kernel32/process.c:4237 */
 {
+	BOOL return_value;
 	TRACE("Enter SetUmsThreadInformation\n");
-	return pSetUmsThreadInformation(ctx, class, buf, length);
+	return_value = pSetUmsThreadInformation(ctx, class, buf, length);
+	TRACE("Leave SetUmsThreadInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetUmsThreadInformation(void);  /* ../dlls/kernel32/process.c:4237 */
@@ -17297,10 +19015,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetUmsThreadInformation,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetUserGeoID(GEOID  GeoID) /* ../dlls/kernel32/locale.c:4648 */
+WINAPI BOOL wine32b_kernel32_SetUserGeoID(GEOID  GeoID) /* ../dlls/kernel32/locale.c:4648 */
 {
+	BOOL return_value;
 	TRACE("Enter SetUserGeoID\n");
-	return pSetUserGeoID(GeoID);
+	return_value = pSetUserGeoID(GeoID);
+	TRACE("Leave SetUserGeoID\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetUserGeoID(void);  /* ../dlls/kernel32/locale.c:4648 */
@@ -17322,10 +19043,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetUserGeoID,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetVolumeLabelA(LPCSTR  root, LPCSTR  volname) /* ../dlls/kernel32/volume.c:965 */
+WINAPI BOOL wine32b_kernel32_SetVolumeLabelA(LPCSTR  root, LPCSTR  volname) /* ../dlls/kernel32/volume.c:965 */
 {
+	BOOL return_value;
 	TRACE("Enter SetVolumeLabelA\n");
-	return pSetVolumeLabelA(root, volname);
+	return_value = pSetVolumeLabelA(root, volname);
+	TRACE("Leave SetVolumeLabelA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetVolumeLabelA(void);  /* ../dlls/kernel32/volume.c:965 */
@@ -17348,10 +19072,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetVolumeLabelA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetVolumeLabelW(LPCWSTR  root, LPCWSTR  label) /* ../dlls/kernel32/volume.c:872 */
+WINAPI BOOL wine32b_kernel32_SetVolumeLabelW(LPCWSTR  root, LPCWSTR  label) /* ../dlls/kernel32/volume.c:872 */
 {
+	BOOL return_value;
 	TRACE("Enter SetVolumeLabelW\n");
-	return pSetVolumeLabelW(root, label);
+	return_value = pSetVolumeLabelW(root, label);
+	TRACE("Leave SetVolumeLabelW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetVolumeLabelW(void);  /* ../dlls/kernel32/volume.c:872 */
@@ -17374,10 +19101,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetVolumeLabelW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetVolumeMountPointA(LPCSTR  path, LPCSTR  volume) /* ../dlls/kernel32/volume.c:2144 */
+WINAPI BOOL wine32b_kernel32_SetVolumeMountPointA(LPCSTR  path, LPCSTR  volume) /* ../dlls/kernel32/volume.c:2144 */
 {
+	BOOL return_value;
 	TRACE("Enter SetVolumeMountPointA\n");
-	return pSetVolumeMountPointA(path, volume);
+	return_value = pSetVolumeMountPointA(path, volume);
+	TRACE("Leave SetVolumeMountPointA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetVolumeMountPointA(void);  /* ../dlls/kernel32/volume.c:2144 */
@@ -17400,10 +19130,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetVolumeMountPointA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SetVolumeMountPointW(LPCWSTR  path, LPCWSTR  volume) /* ../dlls/kernel32/volume.c:2154 */
+WINAPI BOOL wine32b_kernel32_SetVolumeMountPointW(LPCWSTR  path, LPCWSTR  volume) /* ../dlls/kernel32/volume.c:2154 */
 {
+	BOOL return_value;
 	TRACE("Enter SetVolumeMountPointW\n");
-	return pSetVolumeMountPointW(path, volume);
+	return_value = pSetVolumeMountPointW(path, volume);
+	TRACE("Leave SetVolumeMountPointW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SetVolumeMountPointW(void);  /* ../dlls/kernel32/volume.c:2154 */
@@ -17426,10 +19159,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SetVolumeMountPointW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SystemTimeToFileTime(SYSTEMTIME*  syst, LPFILETIME  ft) /* ../dlls/kernel32/time.c:1239 */
+WINAPI BOOL wine32b_kernel32_SystemTimeToFileTime(SYSTEMTIME*  syst, LPFILETIME  ft) /* ../dlls/kernel32/time.c:1239 */
 {
+	BOOL return_value;
 	TRACE("Enter SystemTimeToFileTime\n");
-	return pSystemTimeToFileTime(syst, ft);
+	return_value = pSystemTimeToFileTime(syst, ft);
+	TRACE("Leave SystemTimeToFileTime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SystemTimeToFileTime(void);  /* ../dlls/kernel32/time.c:1239 */
@@ -17452,10 +19188,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SystemTimeToFileTime,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_SystemTimeToTzSpecificLocalTime(TIME_ZONE_INFORMATION*  lpTimeZoneInformation, SYSTEMTIME*  lpUniversalTime, LPSYSTEMTIME  lpLocalTime) /* ../dlls/kernel32/time.c:712 */
+WINAPI BOOL wine32b_kernel32_SystemTimeToTzSpecificLocalTime(TIME_ZONE_INFORMATION*  lpTimeZoneInformation, SYSTEMTIME*  lpUniversalTime, LPSYSTEMTIME  lpLocalTime) /* ../dlls/kernel32/time.c:712 */
 {
+	BOOL return_value;
 	TRACE("Enter SystemTimeToTzSpecificLocalTime\n");
-	return pSystemTimeToTzSpecificLocalTime(lpTimeZoneInformation, lpUniversalTime, lpLocalTime);
+	return_value = pSystemTimeToTzSpecificLocalTime(lpTimeZoneInformation, lpUniversalTime, lpLocalTime);
+	TRACE("Leave SystemTimeToTzSpecificLocalTime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_SystemTimeToTzSpecificLocalTime(void);  /* ../dlls/kernel32/time.c:712 */
@@ -17479,10 +19218,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_SystemTimeToTzSpecificLocalTime,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_TerminateJobObject(HANDLE  job, UINT  exit_code) /* ../dlls/kernel32/sync.c:347 */
+WINAPI BOOL wine32b_kernel32_TerminateJobObject(HANDLE  job, UINT  exit_code) /* ../dlls/kernel32/sync.c:347 */
 {
+	BOOL return_value;
 	TRACE("Enter TerminateJobObject\n");
-	return pTerminateJobObject(job, exit_code);
+	return_value = pTerminateJobObject(job, exit_code);
+	TRACE("Leave TerminateJobObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_TerminateJobObject(void);  /* ../dlls/kernel32/sync.c:347 */
@@ -17505,10 +19247,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_TerminateJobObject,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_TermsrvAppInstallMode(void) /* ../dlls/kernel32/version.c:91 */
+WINAPI BOOL wine32b_kernel32_TermsrvAppInstallMode(void) /* ../dlls/kernel32/version.c:91 */
 {
+	BOOL return_value;
 	TRACE("Enter TermsrvAppInstallMode\n");
-	return pTermsrvAppInstallMode();
+	return_value = pTermsrvAppInstallMode();
+	TRACE("Leave TermsrvAppInstallMode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_TermsrvAppInstallMode(void);  /* ../dlls/kernel32/version.c:91 */
@@ -17529,10 +19274,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_TermsrvAppInstallMode,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_Thread32First(HANDLE  hSnapShot, LPTHREADENTRY32  lpte) /* ../dlls/kernel32/toolhelp.c:382 */
+WINAPI BOOL wine32b_kernel32_Thread32First(HANDLE  hSnapShot, LPTHREADENTRY32  lpte) /* ../dlls/kernel32/toolhelp.c:382 */
 {
+	BOOL return_value;
 	TRACE("Enter Thread32First\n");
-	return pThread32First(hSnapShot, lpte);
+	return_value = pThread32First(hSnapShot, lpte);
+	TRACE("Leave Thread32First\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_Thread32First(void);  /* ../dlls/kernel32/toolhelp.c:382 */
@@ -17555,10 +19303,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_Thread32First,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_Thread32Next(HANDLE  hSnapShot, LPTHREADENTRY32  lpte) /* ../dlls/kernel32/toolhelp.c:392 */
+WINAPI BOOL wine32b_kernel32_Thread32Next(HANDLE  hSnapShot, LPTHREADENTRY32  lpte) /* ../dlls/kernel32/toolhelp.c:392 */
 {
+	BOOL return_value;
 	TRACE("Enter Thread32Next\n");
-	return pThread32Next(hSnapShot, lpte);
+	return_value = pThread32Next(hSnapShot, lpte);
+	TRACE("Leave Thread32Next\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_Thread32Next(void);  /* ../dlls/kernel32/toolhelp.c:392 */
@@ -17581,10 +19332,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_Thread32Next,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_Toolhelp32ReadProcessMemory(DWORD  pid, void*  base, void*  buf, SIZE_T  len, SIZE_T*  r) /* ../dlls/kernel32/toolhelp.c:611 */
+WINAPI BOOL wine32b_kernel32_Toolhelp32ReadProcessMemory(DWORD  pid, void*  base, void*  buf, SIZE_T  len, SIZE_T*  r) /* ../dlls/kernel32/toolhelp.c:611 */
 {
+	BOOL return_value;
 	TRACE("Enter Toolhelp32ReadProcessMemory\n");
-	return pToolhelp32ReadProcessMemory(pid, base, buf, len, r);
+	return_value = pToolhelp32ReadProcessMemory(pid, base, buf, len, r);
+	TRACE("Leave Toolhelp32ReadProcessMemory\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_Toolhelp32ReadProcessMemory(void);  /* ../dlls/kernel32/toolhelp.c:611 */
@@ -17609,10 +19363,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_Toolhelp32ReadProcessMemory,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_TzSpecificLocalTimeToSystemTime(TIME_ZONE_INFORMATION*  lpTimeZoneInformation, SYSTEMTIME*  lpLocalTime, LPSYSTEMTIME  lpUniversalTime) /* ../dlls/kernel32/time.c:757 */
+WINAPI BOOL wine32b_kernel32_TzSpecificLocalTimeToSystemTime(TIME_ZONE_INFORMATION*  lpTimeZoneInformation, SYSTEMTIME*  lpLocalTime, LPSYSTEMTIME  lpUniversalTime) /* ../dlls/kernel32/time.c:757 */
 {
+	BOOL return_value;
 	TRACE("Enter TzSpecificLocalTimeToSystemTime\n");
-	return pTzSpecificLocalTimeToSystemTime(lpTimeZoneInformation, lpLocalTime, lpUniversalTime);
+	return_value = pTzSpecificLocalTimeToSystemTime(lpTimeZoneInformation, lpLocalTime, lpUniversalTime);
+	TRACE("Leave TzSpecificLocalTimeToSystemTime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_TzSpecificLocalTimeToSystemTime(void);  /* ../dlls/kernel32/time.c:757 */
@@ -17636,10 +19393,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_TzSpecificLocalTimeToSystemTime,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_UmsThreadYield(void*  param) /* ../dlls/kernel32/process.c:4248 */
+WINAPI BOOL wine32b_kernel32_UmsThreadYield(void*  param) /* ../dlls/kernel32/process.c:4248 */
 {
+	BOOL return_value;
 	TRACE("Enter UmsThreadYield\n");
-	return pUmsThreadYield(param);
+	return_value = pUmsThreadYield(param);
+	TRACE("Leave UmsThreadYield\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_UmsThreadYield(void);  /* ../dlls/kernel32/process.c:4248 */
@@ -17661,10 +19421,11 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_UmsThreadYield,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_kernel32_UninitializeCriticalSection(CRITICAL_SECTION*  crit) /* ../dlls/kernel32/sync.c:188 */
+WINAPI void wine32b_kernel32_UninitializeCriticalSection(CRITICAL_SECTION*  crit) /* ../dlls/kernel32/sync.c:188 */
 {
 	TRACE("Enter UninitializeCriticalSection\n");
-	return pUninitializeCriticalSection(crit);
+	pUninitializeCriticalSection(crit);
+	TRACE("Leave UninitializeCriticalSection\n");
 }
 
 extern WINAPI void wine32a_kernel32_UninitializeCriticalSection(void);  /* ../dlls/kernel32/sync.c:188 */
@@ -17686,10 +19447,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_UninitializeCriticalSection,
 	"ret \n"
 )
 
-extern WINAPI HRESULT wine32b_kernel32_UnregisterApplicationRestart(void) /* ../dlls/kernel32/process.c:4116 */
+WINAPI HRESULT wine32b_kernel32_UnregisterApplicationRestart(void) /* ../dlls/kernel32/process.c:4116 */
 {
+	HRESULT return_value;
 	TRACE("Enter UnregisterApplicationRestart\n");
-	return pUnregisterApplicationRestart();
+	return_value = pUnregisterApplicationRestart();
+	TRACE("Leave UnregisterApplicationRestart\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_UnregisterApplicationRestart(void);  /* ../dlls/kernel32/process.c:4116 */
@@ -17710,10 +19474,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_UnregisterApplicationRestart,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_UnregisterWait(HANDLE  WaitHandle) /* ../dlls/kernel32/sync.c:129 */
+WINAPI BOOL wine32b_kernel32_UnregisterWait(HANDLE  WaitHandle) /* ../dlls/kernel32/sync.c:129 */
 {
+	BOOL return_value;
 	TRACE("Enter UnregisterWait\n");
-	return pUnregisterWait(WaitHandle);
+	return_value = pUnregisterWait(WaitHandle);
+	TRACE("Leave UnregisterWait\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_UnregisterWait(void);  /* ../dlls/kernel32/sync.c:129 */
@@ -17735,10 +19502,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_UnregisterWait,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_UpdateResourceA(HANDLE  hUpdate, LPCSTR  lpType, LPCSTR  lpName, WORD  wLanguage, LPVOID  lpData, DWORD  cbData) /* ../dlls/kernel32/resource.c:1321 */
+WINAPI BOOL wine32b_kernel32_UpdateResourceA(HANDLE  hUpdate, LPCSTR  lpType, LPCSTR  lpName, WORD  wLanguage, LPVOID  lpData, DWORD  cbData) /* ../dlls/kernel32/resource.c:1321 */
 {
+	BOOL return_value;
 	TRACE("Enter UpdateResourceA\n");
-	return pUpdateResourceA(hUpdate, lpType, lpName, wLanguage, lpData, cbData);
+	return_value = pUpdateResourceA(hUpdate, lpType, lpName, wLanguage, lpData, cbData);
+	TRACE("Leave UpdateResourceA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_UpdateResourceA(void);  /* ../dlls/kernel32/resource.c:1321 */
@@ -17763,10 +19533,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_UpdateResourceA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_UpdateResourceW(HANDLE  hUpdate, LPCWSTR  lpType, LPCWSTR  lpName, WORD  wLanguage, LPVOID  lpData, DWORD  cbData) /* ../dlls/kernel32/resource.c:1289 */
+WINAPI BOOL wine32b_kernel32_UpdateResourceW(HANDLE  hUpdate, LPCWSTR  lpType, LPCWSTR  lpName, WORD  wLanguage, LPVOID  lpData, DWORD  cbData) /* ../dlls/kernel32/resource.c:1289 */
 {
+	BOOL return_value;
 	TRACE("Enter UpdateResourceW\n");
-	return pUpdateResourceW(hUpdate, lpType, lpName, wLanguage, lpData, cbData);
+	return_value = pUpdateResourceW(hUpdate, lpType, lpName, wLanguage, lpData, cbData);
+	TRACE("Leave UpdateResourceW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_UpdateResourceW(void);  /* ../dlls/kernel32/resource.c:1289 */
@@ -17791,10 +19564,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_UpdateResourceW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_VerLanguageNameA(DWORD  wLang, LPSTR  szLang, DWORD  nSize) /* ../dlls/kernel32/locale.c:3065 */
+WINAPI DWORD wine32b_kernel32_VerLanguageNameA(DWORD  wLang, LPSTR  szLang, DWORD  nSize) /* ../dlls/kernel32/locale.c:3065 */
 {
+	DWORD return_value;
 	TRACE("Enter VerLanguageNameA\n");
-	return pVerLanguageNameA(wLang, szLang, nSize);
+	return_value = pVerLanguageNameA(wLang, szLang, nSize);
+	TRACE("Leave VerLanguageNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_VerLanguageNameA(void);  /* ../dlls/kernel32/locale.c:3065 */
@@ -17818,10 +19594,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_VerLanguageNameA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_VerLanguageNameW(DWORD  wLang, LPWSTR  szLang, DWORD  nSize) /* ../dlls/kernel32/locale.c:3076 */
+WINAPI DWORD wine32b_kernel32_VerLanguageNameW(DWORD  wLang, LPWSTR  szLang, DWORD  nSize) /* ../dlls/kernel32/locale.c:3076 */
 {
+	DWORD return_value;
 	TRACE("Enter VerLanguageNameW\n");
-	return pVerLanguageNameW(wLang, szLang, nSize);
+	return_value = pVerLanguageNameW(wLang, szLang, nSize);
+	TRACE("Leave VerLanguageNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_VerLanguageNameW(void);  /* ../dlls/kernel32/locale.c:3076 */
@@ -17845,10 +19624,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_VerLanguageNameW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_VerifyConsoleIoHandle(HANDLE  handle) /* ../dlls/kernel32/console.c:255 */
+WINAPI BOOL wine32b_kernel32_VerifyConsoleIoHandle(HANDLE  handle) /* ../dlls/kernel32/console.c:255 */
 {
+	BOOL return_value;
 	TRACE("Enter VerifyConsoleIoHandle\n");
-	return pVerifyConsoleIoHandle(handle);
+	return_value = pVerifyConsoleIoHandle(handle);
+	TRACE("Leave VerifyConsoleIoHandle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_VerifyConsoleIoHandle(void);  /* ../dlls/kernel32/console.c:255 */
@@ -17870,10 +19652,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_VerifyConsoleIoHandle,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_VerifyVersionInfoA(LPOSVERSIONINFOEXA  lpVersionInfo, DWORD  dwTypeMask, DWORDLONG  dwlConditionMask) /* ../dlls/kernel32/version.c:48 */
+WINAPI BOOL wine32b_kernel32_VerifyVersionInfoA(LPOSVERSIONINFOEXA  lpVersionInfo, DWORD  dwTypeMask, DWORDLONG  dwlConditionMask) /* ../dlls/kernel32/version.c:48 */
 {
+	BOOL return_value;
 	TRACE("Enter VerifyVersionInfoA\n");
-	return pVerifyVersionInfoA(lpVersionInfo, dwTypeMask, dwlConditionMask);
+	return_value = pVerifyVersionInfoA(lpVersionInfo, dwTypeMask, dwlConditionMask);
+	TRACE("Leave VerifyVersionInfoA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_VerifyVersionInfoA(void);  /* ../dlls/kernel32/version.c:48 */
@@ -17897,10 +19682,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_VerifyVersionInfoA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_VerifyVersionInfoW(LPOSVERSIONINFOEXW  lpVersionInfo, DWORD  dwTypeMask, DWORDLONG  dwlConditionMask) /* ../dlls/kernel32/version.c:71 */
+WINAPI BOOL wine32b_kernel32_VerifyVersionInfoW(LPOSVERSIONINFOEXW  lpVersionInfo, DWORD  dwTypeMask, DWORDLONG  dwlConditionMask) /* ../dlls/kernel32/version.c:71 */
 {
+	BOOL return_value;
 	TRACE("Enter VerifyVersionInfoW\n");
-	return pVerifyVersionInfoW(lpVersionInfo, dwTypeMask, dwlConditionMask);
+	return_value = pVerifyVersionInfoW(lpVersionInfo, dwTypeMask, dwlConditionMask);
+	TRACE("Leave VerifyVersionInfoW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_VerifyVersionInfoW(void);  /* ../dlls/kernel32/version.c:71 */
@@ -17924,10 +19712,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_VerifyVersionInfoW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_WTSGetActiveConsoleSessionId(void) /* ../dlls/kernel32/process.c:3907 */
+WINAPI DWORD wine32b_kernel32_WTSGetActiveConsoleSessionId(void) /* ../dlls/kernel32/process.c:3907 */
 {
+	DWORD return_value;
 	TRACE("Enter WTSGetActiveConsoleSessionId\n");
-	return pWTSGetActiveConsoleSessionId();
+	return_value = pWTSGetActiveConsoleSessionId();
+	TRACE("Leave WTSGetActiveConsoleSessionId\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WTSGetActiveConsoleSessionId(void);  /* ../dlls/kernel32/process.c:3907 */
@@ -17948,10 +19739,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WTSGetActiveConsoleSessionId,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_WaitNamedPipeA(LPCSTR  name, DWORD  nTimeOut) /* ../dlls/kernel32/sync.c:548 */
+WINAPI BOOL wine32b_kernel32_WaitNamedPipeA(LPCSTR  name, DWORD  nTimeOut) /* ../dlls/kernel32/sync.c:548 */
 {
+	BOOL return_value;
 	TRACE("Enter WaitNamedPipeA\n");
-	return pWaitNamedPipeA(name, nTimeOut);
+	return_value = pWaitNamedPipeA(name, nTimeOut);
+	TRACE("Leave WaitNamedPipeA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WaitNamedPipeA(void);  /* ../dlls/kernel32/sync.c:548 */
@@ -17974,10 +19768,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WaitNamedPipeA,
 	"ret \n"
 )
 
-extern WINAPI HRESULT wine32b_kernel32_WerRegisterFile(PCWSTR  file, WER_REGISTER_FILE_TYPE  regfiletype, DWORD  flags) /* ../dlls/kernel32/wer.c:37 */
+WINAPI HRESULT wine32b_kernel32_WerRegisterFile(PCWSTR  file, WER_REGISTER_FILE_TYPE  regfiletype, DWORD  flags) /* ../dlls/kernel32/wer.c:37 */
 {
+	HRESULT return_value;
 	TRACE("Enter WerRegisterFile\n");
-	return pWerRegisterFile(file, regfiletype, flags);
+	return_value = pWerRegisterFile(file, regfiletype, flags);
+	TRACE("Leave WerRegisterFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WerRegisterFile(void);  /* ../dlls/kernel32/wer.c:37 */
@@ -18001,10 +19798,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WerRegisterFile,
 	"ret \n"
 )
 
-extern WINAPI HRESULT wine32b_kernel32_WerRegisterMemoryBlock(void*  block, DWORD  size) /* ../dlls/kernel32/wer.c:70 */
+WINAPI HRESULT wine32b_kernel32_WerRegisterMemoryBlock(void*  block, DWORD  size) /* ../dlls/kernel32/wer.c:70 */
 {
+	HRESULT return_value;
 	TRACE("Enter WerRegisterMemoryBlock\n");
-	return pWerRegisterMemoryBlock(block, size);
+	return_value = pWerRegisterMemoryBlock(block, size);
+	TRACE("Leave WerRegisterMemoryBlock\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WerRegisterMemoryBlock(void);  /* ../dlls/kernel32/wer.c:70 */
@@ -18027,10 +19827,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WerRegisterMemoryBlock,
 	"ret \n"
 )
 
-extern WINAPI HRESULT wine32b_kernel32_WerRegisterRuntimeExceptionModule(PCWSTR  callbackdll, PVOID  context) /* ../dlls/kernel32/wer.c:49 */
+WINAPI HRESULT wine32b_kernel32_WerRegisterRuntimeExceptionModule(PCWSTR  callbackdll, PVOID  context) /* ../dlls/kernel32/wer.c:49 */
 {
+	HRESULT return_value;
 	TRACE("Enter WerRegisterRuntimeExceptionModule\n");
-	return pWerRegisterRuntimeExceptionModule(callbackdll, context);
+	return_value = pWerRegisterRuntimeExceptionModule(callbackdll, context);
+	TRACE("Leave WerRegisterRuntimeExceptionModule\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WerRegisterRuntimeExceptionModule(void);  /* ../dlls/kernel32/wer.c:49 */
@@ -18053,10 +19856,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WerRegisterRuntimeExceptionModule,
 	"ret \n"
 )
 
-extern WINAPI HRESULT wine32b_kernel32_WerSetFlags(DWORD  flags) /* ../dlls/kernel32/wer.c:61 */
+WINAPI HRESULT wine32b_kernel32_WerSetFlags(DWORD  flags) /* ../dlls/kernel32/wer.c:61 */
 {
+	HRESULT return_value;
 	TRACE("Enter WerSetFlags\n");
-	return pWerSetFlags(flags);
+	return_value = pWerSetFlags(flags);
+	TRACE("Leave WerSetFlags\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WerSetFlags(void);  /* ../dlls/kernel32/wer.c:61 */
@@ -18078,10 +19884,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WerSetFlags,
 	"ret \n"
 )
 
-extern WINAPI HRESULT wine32b_kernel32_WerUnregisterMemoryBlock(void*  block) /* ../dlls/kernel32/wer.c:79 */
+WINAPI HRESULT wine32b_kernel32_WerUnregisterMemoryBlock(void*  block) /* ../dlls/kernel32/wer.c:79 */
 {
+	HRESULT return_value;
 	TRACE("Enter WerUnregisterMemoryBlock\n");
-	return pWerUnregisterMemoryBlock(block);
+	return_value = pWerUnregisterMemoryBlock(block);
+	TRACE("Leave WerUnregisterMemoryBlock\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WerUnregisterMemoryBlock(void);  /* ../dlls/kernel32/wer.c:79 */
@@ -18103,10 +19912,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WerUnregisterMemoryBlock,
 	"ret \n"
 )
 
-extern WINAPI HRESULT wine32b_kernel32_WerUnregisterRuntimeExceptionModule(PCWSTR  callbackdll, PVOID  context) /* ../dlls/kernel32/wer.c:88 */
+WINAPI HRESULT wine32b_kernel32_WerUnregisterRuntimeExceptionModule(PCWSTR  callbackdll, PVOID  context) /* ../dlls/kernel32/wer.c:88 */
 {
+	HRESULT return_value;
 	TRACE("Enter WerUnregisterRuntimeExceptionModule\n");
-	return pWerUnregisterRuntimeExceptionModule(callbackdll, context);
+	return_value = pWerUnregisterRuntimeExceptionModule(callbackdll, context);
+	TRACE("Leave WerUnregisterRuntimeExceptionModule\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WerUnregisterRuntimeExceptionModule(void);  /* ../dlls/kernel32/wer.c:88 */
@@ -18129,10 +19941,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WerUnregisterRuntimeExceptionModule,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_kernel32_WideCharToMultiByte(UINT  page, DWORD  flags, LPCWSTR  src, INT  srclen, LPSTR  dst, INT  dstlen, LPCSTR  defchar, BOOL*  used) /* ../dlls/kernel32/locale.c:2680 */
+WINAPI INT wine32b_kernel32_WideCharToMultiByte(UINT  page, DWORD  flags, LPCWSTR  src, INT  srclen, LPSTR  dst, INT  dstlen, LPCSTR  defchar, BOOL*  used) /* ../dlls/kernel32/locale.c:2680 */
 {
+	INT return_value;
 	TRACE("Enter WideCharToMultiByte\n");
-	return pWideCharToMultiByte(page, flags, src, srclen, dst, dstlen, defchar, used);
+	return_value = pWideCharToMultiByte(page, flags, src, srclen, dst, dstlen, defchar, used);
+	TRACE("Leave WideCharToMultiByte\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WideCharToMultiByte(void);  /* ../dlls/kernel32/locale.c:2680 */
@@ -18157,10 +19972,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WideCharToMultiByte,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32_WinExec(LPCSTR  lpCmdLine, UINT  nCmdShow) /* ../dlls/kernel32/process.c:3039 */
+WINAPI UINT wine32b_kernel32_WinExec(LPCSTR  lpCmdLine, UINT  nCmdShow) /* ../dlls/kernel32/process.c:3039 */
 {
+	UINT return_value;
 	TRACE("Enter WinExec\n");
-	return pWinExec(lpCmdLine, nCmdShow);
+	return_value = pWinExec(lpCmdLine, nCmdShow);
+	TRACE("Leave WinExec\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WinExec(void);  /* ../dlls/kernel32/process.c:3039 */
@@ -18183,10 +20001,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WinExec,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_kernel32_Wow64EnableWow64FsRedirection(BOOLEAN  enable) /* ../dlls/kernel32/path.c:1833 */
+WINAPI BOOLEAN wine32b_kernel32_Wow64EnableWow64FsRedirection(BOOLEAN  enable) /* ../dlls/kernel32/path.c:1833 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter Wow64EnableWow64FsRedirection\n");
-	return pWow64EnableWow64FsRedirection(enable);
+	return_value = pWow64EnableWow64FsRedirection(enable);
+	TRACE("Leave Wow64EnableWow64FsRedirection\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_Wow64EnableWow64FsRedirection(void);  /* ../dlls/kernel32/path.c:1833 */
@@ -18208,10 +20029,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_Wow64EnableWow64FsRedirection,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_Wow64GetThreadContext(HANDLE  handle, WOW64_CONTEXT*  context) /* ../dlls/kernel32/thread.c:66 */
+WINAPI BOOL wine32b_kernel32_Wow64GetThreadContext(HANDLE  handle, WOW64_CONTEXT*  context) /* ../dlls/kernel32/thread.c:66 */
 {
+	BOOL return_value;
 	TRACE("Enter Wow64GetThreadContext\n");
-	return pWow64GetThreadContext(handle, context);
+	return_value = pWow64GetThreadContext(handle, context);
+	TRACE("Leave Wow64GetThreadContext\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_Wow64GetThreadContext(void);  /* ../dlls/kernel32/thread.c:66 */
@@ -18234,10 +20058,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_Wow64GetThreadContext,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_Wow64SetThreadContext(HANDLE  handle, WOW64_CONTEXT*  context) /* ../dlls/kernel32/thread.c:50 */
+WINAPI BOOL wine32b_kernel32_Wow64SetThreadContext(HANDLE  handle, WOW64_CONTEXT*  context) /* ../dlls/kernel32/thread.c:50 */
 {
+	BOOL return_value;
 	TRACE("Enter Wow64SetThreadContext\n");
-	return pWow64SetThreadContext(handle, context);
+	return_value = pWow64SetThreadContext(handle, context);
+	TRACE("Leave Wow64SetThreadContext\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_Wow64SetThreadContext(void);  /* ../dlls/kernel32/thread.c:50 */
@@ -18260,10 +20087,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_Wow64SetThreadContext,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_WriteConsoleW(HANDLE  hConsoleOutput, LPCVOID  lpBuffer, DWORD  nNumberOfCharsToWrite, LPDWORD  lpNumberOfCharsWritten, LPVOID  lpReserved) /* ../dlls/kernel32/console.c:1132 */
+WINAPI BOOL wine32b_kernel32_WriteConsoleW(HANDLE  hConsoleOutput, LPCVOID  lpBuffer, DWORD  nNumberOfCharsToWrite, LPDWORD  lpNumberOfCharsWritten, LPVOID  lpReserved) /* ../dlls/kernel32/console.c:1132 */
 {
+	BOOL return_value;
 	TRACE("Enter WriteConsoleW\n");
-	return pWriteConsoleW(hConsoleOutput, lpBuffer, nNumberOfCharsToWrite, lpNumberOfCharsWritten, lpReserved);
+	return_value = pWriteConsoleW(hConsoleOutput, lpBuffer, nNumberOfCharsToWrite, lpNumberOfCharsWritten, lpReserved);
+	TRACE("Leave WriteConsoleW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WriteConsoleW(void);  /* ../dlls/kernel32/console.c:1132 */
@@ -18288,10 +20118,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WriteConsoleW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_WritePrivateProfileSectionA(LPCSTR  section, LPCSTR  string, LPCSTR  filename) /* ../dlls/kernel32/profile.c:1465 */
+WINAPI BOOL wine32b_kernel32_WritePrivateProfileSectionA(LPCSTR  section, LPCSTR  string, LPCSTR  filename) /* ../dlls/kernel32/profile.c:1465 */
 {
+	BOOL return_value;
 	TRACE("Enter WritePrivateProfileSectionA\n");
-	return pWritePrivateProfileSectionA(section, string, filename);
+	return_value = pWritePrivateProfileSectionA(section, string, filename);
+	TRACE("Leave WritePrivateProfileSectionA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WritePrivateProfileSectionA(void);  /* ../dlls/kernel32/profile.c:1465 */
@@ -18315,10 +20148,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WritePrivateProfileSectionA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_WritePrivateProfileSectionW(LPCWSTR  section, LPCWSTR  string, LPCWSTR  filename) /* ../dlls/kernel32/profile.c:1423 */
+WINAPI BOOL wine32b_kernel32_WritePrivateProfileSectionW(LPCWSTR  section, LPCWSTR  string, LPCWSTR  filename) /* ../dlls/kernel32/profile.c:1423 */
 {
+	BOOL return_value;
 	TRACE("Enter WritePrivateProfileSectionW\n");
-	return pWritePrivateProfileSectionW(section, string, filename);
+	return_value = pWritePrivateProfileSectionW(section, string, filename);
+	TRACE("Leave WritePrivateProfileSectionW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WritePrivateProfileSectionW(void);  /* ../dlls/kernel32/profile.c:1423 */
@@ -18342,10 +20178,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WritePrivateProfileSectionW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_WritePrivateProfileStringA(LPCSTR  section, LPCSTR  entry, LPCSTR  string, LPCSTR  filename) /* ../dlls/kernel32/profile.c:1396 */
+WINAPI BOOL wine32b_kernel32_WritePrivateProfileStringA(LPCSTR  section, LPCSTR  entry, LPCSTR  string, LPCSTR  filename) /* ../dlls/kernel32/profile.c:1396 */
 {
+	BOOL return_value;
 	TRACE("Enter WritePrivateProfileStringA\n");
-	return pWritePrivateProfileStringA(section, entry, string, filename);
+	return_value = pWritePrivateProfileStringA(section, entry, string, filename);
+	TRACE("Leave WritePrivateProfileStringA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WritePrivateProfileStringA(void);  /* ../dlls/kernel32/profile.c:1396 */
@@ -18370,10 +20209,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WritePrivateProfileStringA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_WritePrivateProfileStringW(LPCWSTR  section, LPCWSTR  entry, LPCWSTR  string, LPCWSTR  filename) /* ../dlls/kernel32/profile.c:1365 */
+WINAPI BOOL wine32b_kernel32_WritePrivateProfileStringW(LPCWSTR  section, LPCWSTR  entry, LPCWSTR  string, LPCWSTR  filename) /* ../dlls/kernel32/profile.c:1365 */
 {
+	BOOL return_value;
 	TRACE("Enter WritePrivateProfileStringW\n");
-	return pWritePrivateProfileStringW(section, entry, string, filename);
+	return_value = pWritePrivateProfileStringW(section, entry, string, filename);
+	TRACE("Leave WritePrivateProfileStringW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WritePrivateProfileStringW(void);  /* ../dlls/kernel32/profile.c:1365 */
@@ -18398,10 +20240,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WritePrivateProfileStringW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_WritePrivateProfileStructA(LPCSTR  section, LPCSTR  key, LPVOID  buf, UINT  bufsize, LPCSTR  filename) /* ../dlls/kernel32/profile.c:1750 */
+WINAPI BOOL wine32b_kernel32_WritePrivateProfileStructA(LPCSTR  section, LPCSTR  key, LPVOID  buf, UINT  bufsize, LPCSTR  filename) /* ../dlls/kernel32/profile.c:1750 */
 {
+	BOOL return_value;
 	TRACE("Enter WritePrivateProfileStructA\n");
-	return pWritePrivateProfileStructA(section, key, buf, bufsize, filename);
+	return_value = pWritePrivateProfileStructA(section, key, buf, bufsize, filename);
+	TRACE("Leave WritePrivateProfileStructA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WritePrivateProfileStructA(void);  /* ../dlls/kernel32/profile.c:1750 */
@@ -18426,10 +20271,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WritePrivateProfileStructA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_WritePrivateProfileStructW(LPCWSTR  section, LPCWSTR  key, LPVOID  buf, UINT  bufsize, LPCWSTR  filename) /* ../dlls/kernel32/profile.c:1709 */
+WINAPI BOOL wine32b_kernel32_WritePrivateProfileStructW(LPCWSTR  section, LPCWSTR  key, LPVOID  buf, UINT  bufsize, LPCWSTR  filename) /* ../dlls/kernel32/profile.c:1709 */
 {
+	BOOL return_value;
 	TRACE("Enter WritePrivateProfileStructW\n");
-	return pWritePrivateProfileStructW(section, key, buf, bufsize, filename);
+	return_value = pWritePrivateProfileStructW(section, key, buf, bufsize, filename);
+	TRACE("Leave WritePrivateProfileStructW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WritePrivateProfileStructW(void);  /* ../dlls/kernel32/profile.c:1709 */
@@ -18454,10 +20302,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WritePrivateProfileStructW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_WriteProfileSectionA(LPCSTR  section, LPCSTR  keys_n_values) /* ../dlls/kernel32/profile.c:1501 */
+WINAPI BOOL wine32b_kernel32_WriteProfileSectionA(LPCSTR  section, LPCSTR  keys_n_values) /* ../dlls/kernel32/profile.c:1501 */
 {
+	BOOL return_value;
 	TRACE("Enter WriteProfileSectionA\n");
-	return pWriteProfileSectionA(section, keys_n_values);
+	return_value = pWriteProfileSectionA(section, keys_n_values);
+	TRACE("Leave WriteProfileSectionA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WriteProfileSectionA(void);  /* ../dlls/kernel32/profile.c:1501 */
@@ -18480,10 +20331,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WriteProfileSectionA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_WriteProfileSectionW(LPCWSTR  section, LPCWSTR  keys_n_values) /* ../dlls/kernel32/profile.c:1510 */
+WINAPI BOOL wine32b_kernel32_WriteProfileSectionW(LPCWSTR  section, LPCWSTR  keys_n_values) /* ../dlls/kernel32/profile.c:1510 */
 {
+	BOOL return_value;
 	TRACE("Enter WriteProfileSectionW\n");
-	return pWriteProfileSectionW(section, keys_n_values);
+	return_value = pWriteProfileSectionW(section, keys_n_values);
+	TRACE("Leave WriteProfileSectionW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WriteProfileSectionW(void);  /* ../dlls/kernel32/profile.c:1510 */
@@ -18506,10 +20360,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WriteProfileSectionW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_WriteProfileStringA(LPCSTR  section, LPCSTR  entry, LPCSTR  string) /* ../dlls/kernel32/profile.c:1207 */
+WINAPI BOOL wine32b_kernel32_WriteProfileStringA(LPCSTR  section, LPCSTR  entry, LPCSTR  string) /* ../dlls/kernel32/profile.c:1207 */
 {
+	BOOL return_value;
 	TRACE("Enter WriteProfileStringA\n");
-	return pWriteProfileStringA(section, entry, string);
+	return_value = pWriteProfileStringA(section, entry, string);
+	TRACE("Leave WriteProfileStringA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WriteProfileStringA(void);  /* ../dlls/kernel32/profile.c:1207 */
@@ -18533,10 +20390,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WriteProfileStringA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_kernel32_WriteProfileStringW(LPCWSTR  section, LPCWSTR  entry, LPCWSTR  string) /* ../dlls/kernel32/profile.c:1216 */
+WINAPI BOOL wine32b_kernel32_WriteProfileStringW(LPCWSTR  section, LPCWSTR  entry, LPCWSTR  string) /* ../dlls/kernel32/profile.c:1216 */
 {
+	BOOL return_value;
 	TRACE("Enter WriteProfileStringW\n");
-	return pWriteProfileStringW(section, entry, string);
+	return_value = pWriteProfileStringW(section, entry, string);
+	TRACE("Leave WriteProfileStringW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WriteProfileStringW(void);  /* ../dlls/kernel32/profile.c:1216 */
@@ -18560,10 +20420,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WriteProfileStringW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_kernel32_WriteTapemark(HANDLE  device, DWORD  type, DWORD  count, BOOL  immediate) /* ../dlls/kernel32/tape.c:310 */
+WINAPI DWORD wine32b_kernel32_WriteTapemark(HANDLE  device, DWORD  type, DWORD  count, BOOL  immediate) /* ../dlls/kernel32/tape.c:310 */
 {
+	DWORD return_value;
 	TRACE("Enter WriteTapemark\n");
-	return pWriteTapemark(device, type, count, immediate);
+	return_value = pWriteTapemark(device, type, count, immediate);
+	TRACE("Leave WriteTapemark\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_WriteTapemark(void);  /* ../dlls/kernel32/tape.c:310 */
@@ -18588,10 +20451,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_WriteTapemark,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_kernel32__hread(HFILE  hFile, LPVOID  buffer, LONG  count) /* ../dlls/kernel32/file.c:287 */
+WINAPI LONG wine32b_kernel32__hread(HFILE  hFile, LPVOID  buffer, LONG  count) /* ../dlls/kernel32/file.c:287 */
 {
+	LONG return_value;
 	TRACE("Enter _hread\n");
-	return p_hread(hFile, buffer, count);
+	return_value = p_hread(hFile, buffer, count);
+	TRACE("Leave _hread\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32__hread(void);  /* ../dlls/kernel32/file.c:287 */
@@ -18615,10 +20481,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32__hread,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_kernel32__hwrite(HFILE  handle, LPCSTR  buffer, LONG  count) /* ../dlls/kernel32/file.c:303 */
+WINAPI LONG wine32b_kernel32__hwrite(HFILE  handle, LPCSTR  buffer, LONG  count) /* ../dlls/kernel32/file.c:303 */
 {
+	LONG return_value;
 	TRACE("Enter _hwrite\n");
-	return p_hwrite(handle, buffer, count);
+	return_value = p_hwrite(handle, buffer, count);
+	TRACE("Leave _hwrite\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32__hwrite(void);  /* ../dlls/kernel32/file.c:303 */
@@ -18642,10 +20511,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32__hwrite,
 	"ret \n"
 )
 
-extern WINAPI HFILE wine32b_kernel32__lclose(HFILE  hFile) /* ../dlls/kernel32/file.c:324 */
+WINAPI HFILE wine32b_kernel32__lclose(HFILE  hFile) /* ../dlls/kernel32/file.c:324 */
 {
+	HFILE return_value;
 	TRACE("Enter _lclose\n");
-	return p_lclose(hFile);
+	return_value = p_lclose(hFile);
+	TRACE("Leave _lclose\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32__lclose(void);  /* ../dlls/kernel32/file.c:324 */
@@ -18667,10 +20539,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32__lclose,
 	"ret \n"
 )
 
-extern WINAPI HFILE wine32b_kernel32__lcreat(LPCSTR  path, INT  attr) /* ../dlls/kernel32/file.c:334 */
+WINAPI HFILE wine32b_kernel32__lcreat(LPCSTR  path, INT  attr) /* ../dlls/kernel32/file.c:334 */
 {
+	HFILE return_value;
 	TRACE("Enter _lcreat\n");
-	return p_lcreat(path, attr);
+	return_value = p_lcreat(path, attr);
+	TRACE("Leave _lcreat\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32__lcreat(void);  /* ../dlls/kernel32/file.c:334 */
@@ -18693,10 +20568,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32__lcreat,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_kernel32__llseek(HFILE  hFile, LONG  lOffset, INT  nOrigin) /* ../dlls/kernel32/file.c:375 */
+WINAPI LONG wine32b_kernel32__llseek(HFILE  hFile, LONG  lOffset, INT  nOrigin) /* ../dlls/kernel32/file.c:375 */
 {
+	LONG return_value;
 	TRACE("Enter _llseek\n");
-	return p_llseek(hFile, lOffset, nOrigin);
+	return_value = p_llseek(hFile, lOffset, nOrigin);
+	TRACE("Leave _llseek\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32__llseek(void);  /* ../dlls/kernel32/file.c:375 */
@@ -18720,10 +20598,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32__llseek,
 	"ret \n"
 )
 
-extern WINAPI HFILE wine32b_kernel32__lopen(LPCSTR  path, INT  mode) /* ../dlls/kernel32/file.c:351 */
+WINAPI HFILE wine32b_kernel32__lopen(LPCSTR  path, INT  mode) /* ../dlls/kernel32/file.c:351 */
 {
+	HFILE return_value;
 	TRACE("Enter _lopen\n");
-	return p_lopen(path, mode);
+	return_value = p_lopen(path, mode);
+	TRACE("Leave _lopen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32__lopen(void);  /* ../dlls/kernel32/file.c:351 */
@@ -18746,10 +20627,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32__lopen,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32__lread(HFILE  handle, LPVOID  buffer, UINT  count) /* ../dlls/kernel32/file.c:363 */
+WINAPI UINT wine32b_kernel32__lread(HFILE  handle, LPVOID  buffer, UINT  count) /* ../dlls/kernel32/file.c:363 */
 {
+	UINT return_value;
 	TRACE("Enter _lread\n");
-	return p_lread(handle, buffer, count);
+	return_value = p_lread(handle, buffer, count);
+	TRACE("Leave _lread\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32__lread(void);  /* ../dlls/kernel32/file.c:363 */
@@ -18773,10 +20657,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32__lread,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_kernel32__lwrite(HFILE  hFile, LPCSTR  buffer, UINT  count) /* ../dlls/kernel32/file.c:384 */
+WINAPI UINT wine32b_kernel32__lwrite(HFILE  hFile, LPCSTR  buffer, UINT  count) /* ../dlls/kernel32/file.c:384 */
 {
+	UINT return_value;
 	TRACE("Enter _lwrite\n");
-	return p_lwrite(hFile, buffer, count);
+	return_value = p_lwrite(hFile, buffer, count);
+	TRACE("Leave _lwrite\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32__lwrite(void);  /* ../dlls/kernel32/file.c:384 */
@@ -18800,10 +20687,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32__lwrite,
 	"ret \n"
 )
 
-extern WINAPI LPSTR wine32b_kernel32_lstrcatA(LPSTR  dst, LPCSTR  src) /* ../dlls/kernel32/string.c:41 */
+WINAPI LPSTR wine32b_kernel32_lstrcatA(LPSTR  dst, LPCSTR  src) /* ../dlls/kernel32/string.c:41 */
 {
+	LPSTR return_value;
 	TRACE("Enter lstrcatA\n");
-	return plstrcatA(dst, src);
+	return_value = plstrcatA(dst, src);
+	TRACE("Leave lstrcatA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_lstrcatA(void);  /* ../dlls/kernel32/string.c:41 */
@@ -18826,10 +20716,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_lstrcatA,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_kernel32_lstrcatW(LPWSTR  dst, LPCWSTR  src) /* ../dlls/kernel32/string.c:60 */
+WINAPI LPWSTR wine32b_kernel32_lstrcatW(LPWSTR  dst, LPCWSTR  src) /* ../dlls/kernel32/string.c:60 */
 {
+	LPWSTR return_value;
 	TRACE("Enter lstrcatW\n");
-	return plstrcatW(dst, src);
+	return_value = plstrcatW(dst, src);
+	TRACE("Leave lstrcatW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_lstrcatW(void);  /* ../dlls/kernel32/string.c:60 */
@@ -18852,10 +20745,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_lstrcatW,
 	"ret \n"
 )
 
-extern WINAPI LPSTR wine32b_kernel32_lstrcpyA(LPSTR  dst, LPCSTR  src) /* ../dlls/kernel32/string.c:80 */
+WINAPI LPSTR wine32b_kernel32_lstrcpyA(LPSTR  dst, LPCSTR  src) /* ../dlls/kernel32/string.c:80 */
 {
+	LPSTR return_value;
 	TRACE("Enter lstrcpyA\n");
-	return plstrcpyA(dst, src);
+	return_value = plstrcpyA(dst, src);
+	TRACE("Leave lstrcpyA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_lstrcpyA(void);  /* ../dlls/kernel32/string.c:80 */
@@ -18878,10 +20774,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_lstrcpyA,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_kernel32_lstrcpyW(LPWSTR  dst, LPCWSTR  src) /* ../dlls/kernel32/string.c:100 */
+WINAPI LPWSTR wine32b_kernel32_lstrcpyW(LPWSTR  dst, LPCWSTR  src) /* ../dlls/kernel32/string.c:100 */
 {
+	LPWSTR return_value;
 	TRACE("Enter lstrcpyW\n");
-	return plstrcpyW(dst, src);
+	return_value = plstrcpyW(dst, src);
+	TRACE("Leave lstrcpyW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_lstrcpyW(void);  /* ../dlls/kernel32/string.c:100 */
@@ -18904,10 +20803,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_lstrcpyW,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_kernel32_wine_get_unix_file_name(LPCWSTR  dosW) /* ../dlls/kernel32/path.c:1883 */
+WINAPI char* wine32b_kernel32_wine_get_unix_file_name(LPCWSTR  dosW) /* ../dlls/kernel32/path.c:1883 */
 {
+	char* return_value;
 	TRACE("Enter wine_get_unix_file_name\n");
-	return pwine_get_unix_file_name(dosW);
+	return_value = pwine_get_unix_file_name(dosW);
+	TRACE("Leave wine_get_unix_file_name\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_wine_get_unix_file_name(void);  /* ../dlls/kernel32/path.c:1883 */
@@ -18929,10 +20831,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_wine_get_unix_file_name,
 	"ret \n"
 )
 
-extern WINAPI WCHAR* wine32b_kernel32_wine_get_dos_file_name(LPCSTR  str) /* ../dlls/kernel32/path.c:1907 */
+WINAPI WCHAR* wine32b_kernel32_wine_get_dos_file_name(LPCSTR  str) /* ../dlls/kernel32/path.c:1907 */
 {
+	WCHAR* return_value;
 	TRACE("Enter wine_get_dos_file_name\n");
-	return pwine_get_dos_file_name(str);
+	return_value = pwine_get_dos_file_name(str);
+	TRACE("Leave wine_get_dos_file_name\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32_wine_get_dos_file_name(void);  /* ../dlls/kernel32/path.c:1907 */
@@ -18954,10 +20859,13 @@ __ASM_GLOBAL_FUNC(wine32a_kernel32_wine_get_dos_file_name,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_kernel32___wine_kernel_init(void) /* ../dlls/kernel32/process.c:1390 */
+WINAPI void* wine32b_kernel32___wine_kernel_init(void) /* ../dlls/kernel32/process.c:1390 */
 {
+	void* return_value;
 	TRACE("Enter __wine_kernel_init\n");
-	return p__wine_kernel_init();
+	return_value = p__wine_kernel_init();
+	TRACE("Leave __wine_kernel_init\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_kernel32___wine_kernel_init(void);  /* ../dlls/kernel32/process.c:1390 */

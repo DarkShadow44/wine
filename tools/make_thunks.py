@@ -167,6 +167,9 @@ class TypeChain:
 		else:
 			dependencies.append(self.normal)
 
+	def is_void(self):
+		return (self.chainType == TypeChainEnum.Normal) and (self.normal == 'void')
+
 class TypeDef(GenericTypeDef):
 	def __init__(self, source, target, location):
 		self.source = source
@@ -405,10 +408,22 @@ def make_thunk_callingconvention_32_to_64_b(contents_source, dllname, func):
 	funcname = func.identifier
 	arguments_decl = func.get_arguments_decl()
 	arguments_calling = func.get_arguments_calling()
-	contents_source.append(f'extern WINAPI {func.return_type.tostring("")} wine32b_{dllname}_{funcname}({arguments_decl}) /* {func.file}:{func.line} */')
+	return_type = func.return_type.tostring('return_value')
+	has_return = not func.return_type.is_void()
+	contents_source.append(f'WINAPI {func.return_type.tostring("")} wine32b_{dllname}_{funcname}({arguments_decl}) /* {func.file}:{func.line} */')
 	contents_source.append('{')
+	if has_return:
+		contents_source.append(f'\t{return_type};');
 	contents_source.append(f'\tTRACE("Enter {funcname}\\n");')
-	contents_source.append(f'\treturn p{funcname}({arguments_calling});')
+	if has_return:
+		contents_source.append(f'\treturn_value = p{funcname}({arguments_calling});')
+	else:
+		contents_source.append(f'\tp{funcname}({arguments_calling});')
+	if (func.return_type.chainType == TypeChainEnum.Function):
+		contents_source.append('\treturn_value = wine_thunk_get_for_any(return_value);')
+	contents_source.append(f'\tTRACE("Leave {funcname}\\n");')
+	if has_return:
+		contents_source.append('\treturn return_value;')
 	contents_source.append('}')
 	contents_source.append("")
 

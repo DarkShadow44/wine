@@ -1,8 +1,9 @@
-WINAPI DWORD wine_make_thunk_function(void* addr, void *func, const char *hint);
+WINAPI void* wine_make_thunk_function(void* addr, void *func, const char *hint);
 WINAPI void wine_thunk_initialize_any(const char *dll);
 WINAPI void *wine_thunk_get_for_any(void *func);
 WINAPI int get_import_stub_size(void);
-WINAPI DWORD create_import_stub(void *address, void *function);
+WINAPI void* create_import_stub(void *address, void *function);
+WINAPI void* wine_make_thunk_function_alloc(void *func);
 
 #define ASM_SWITCH_x86_to_x64() \
     ".byte 0x6A, 0x33\n"                   /* push  0x33 */ \

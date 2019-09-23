@@ -988,7 +988,7 @@ static BOOL import_dll32( HMODULE module, const IMAGE_IMPORT_DESCRIPTOR *descr, 
 
            if (func)
            {
-               thunk_list->u1.Function = wine_make_thunk_function(&input_stubs[pos], func, name);
+               thunk_list->u1.Function = (DWORD)(ULONGLONG)wine_make_thunk_function(&input_stubs[pos], func, name);
            }
         }
         else  /* import by name */
@@ -1011,7 +1011,7 @@ static BOOL import_dll32( HMODULE module, const IMAGE_IMPORT_DESCRIPTOR *descr, 
 
             if (func)
             {
-                thunk_list->u1.Function = wine_make_thunk_function(&input_stubs[pos], func, (const char*)pe_name->Name );
+                thunk_list->u1.Function = (DWORD)(ULONGLONG)wine_make_thunk_function(&input_stubs[pos], func, (const char*)pe_name->Name);
             }
         }
 

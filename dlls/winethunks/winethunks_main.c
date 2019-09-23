@@ -1,5 +1,6 @@
 #include <windows.h>
 #include "wine/winethunks.h"
+#include "wine/heap.h"
 #include "wine/debug.h"
 WINE_DEFAULT_DEBUG_CHANNEL(thunks);
 
@@ -28,16 +29,16 @@ WINAPI int get_import_stub_size(void)
     return sizeof(stub_buffer);
 }
 
-WINAPI DWORD create_import_stub(void *address, void *function)
+WINAPI void* create_import_stub(void *address, void *function)
 {
     memcpy(address, stub_buffer, sizeof(stub_buffer));
     memcpy(address, &function, sizeof(void *));
 
-    return (DWORD)(ULONGLONG)address + 8;
+    return address + 8;
 }
 
 
-WINAPI DWORD wine_make_thunk_function(void *addr, void *func, const char *hint)
+WINAPI void* wine_make_thunk_function(void *addr, void *func, const char *hint)
 {
     void *thunk = wine_thunk_get_for_any(func);
     if (thunk == func)
@@ -45,4 +46,10 @@ WINAPI DWORD wine_make_thunk_function(void *addr, void *func, const char *hint)
         ERR("Missing thunk!: '%s'\n", hint);
     }
     return create_import_stub(addr, thunk);
+}
+
+WINAPI void* wine_make_thunk_function_alloc(void *func)
+{
+	void *addr = heap_alloc(get_import_stub_size());
+	return wine_make_thunk_function(addr, func, 0);
 }

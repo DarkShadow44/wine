@@ -1638,10 +1638,13 @@ static WINAPI int (*pwprintf_s)(MSVCRT_wchar_t*  format);
 static WINAPI int (*pwscanf)(MSVCRT_wchar_t*  format);
 static WINAPI int (*pwscanf_s)(MSVCRT_wchar_t*  format);
 
-extern WINAPI int wine32b_msvcrt_MSVCRT_I10_OUTPUT(MSVCRT__LDOUBLE  ld80, int  prec, int  flag, struct _I10_OUTPUT_DATA*  data) /* ../dlls/msvcrt/string.c:1808 */
+WINAPI int wine32b_msvcrt_MSVCRT_I10_OUTPUT(MSVCRT__LDOUBLE  ld80, int  prec, int  flag, struct _I10_OUTPUT_DATA*  data) /* ../dlls/msvcrt/string.c:1808 */
 {
+	int return_value;
 	TRACE("Enter MSVCRT_I10_OUTPUT\n");
-	return pMSVCRT_I10_OUTPUT(ld80, prec, flag, data);
+	return_value = pMSVCRT_I10_OUTPUT(ld80, prec, flag, data);
+	TRACE("Leave MSVCRT_I10_OUTPUT\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_I10_OUTPUT(void);  /* ../dlls/msvcrt/string.c:1808 */
@@ -1666,10 +1669,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_I10_OUTPUT,
 	"ret \n"
 )
 
-extern WINAPI __non_rtti_object* wine32b_msvcrt_MSVCRT___non_rtti_object_copy_ctor(__non_rtti_object*  _this, __non_rtti_object*  rhs) /* ../dlls/msvcrt/cpp.c:363 */
+WINAPI __non_rtti_object* wine32b_msvcrt_MSVCRT___non_rtti_object_copy_ctor(__non_rtti_object*  _this, __non_rtti_object*  rhs) /* ../dlls/msvcrt/cpp.c:363 */
 {
+	__non_rtti_object* return_value;
 	TRACE("Enter MSVCRT___non_rtti_object_copy_ctor\n");
-	return pMSVCRT___non_rtti_object_copy_ctor(_this, rhs);
+	return_value = pMSVCRT___non_rtti_object_copy_ctor(_this, rhs);
+	TRACE("Leave MSVCRT___non_rtti_object_copy_ctor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT___non_rtti_object_copy_ctor(void);  /* ../dlls/msvcrt/cpp.c:363 */
@@ -1692,10 +1698,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT___non_rtti_object_copy_ctor,
 	"ret \n"
 )
 
-extern WINAPI __non_rtti_object* wine32b_msvcrt_MSVCRT___non_rtti_object_ctor(__non_rtti_object*  _this, char*  name) /* ../dlls/msvcrt/cpp.c:376 */
+WINAPI __non_rtti_object* wine32b_msvcrt_MSVCRT___non_rtti_object_ctor(__non_rtti_object*  _this, char*  name) /* ../dlls/msvcrt/cpp.c:376 */
 {
+	__non_rtti_object* return_value;
 	TRACE("Enter MSVCRT___non_rtti_object_ctor\n");
-	return pMSVCRT___non_rtti_object_ctor(_this, name);
+	return_value = pMSVCRT___non_rtti_object_ctor(_this, name);
+	TRACE("Leave MSVCRT___non_rtti_object_ctor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT___non_rtti_object_ctor(void);  /* ../dlls/msvcrt/cpp.c:376 */
@@ -1718,10 +1727,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT___non_rtti_object_ctor,
 	"ret \n"
 )
 
-extern WINAPI bad_cast* wine32b_msvcrt_MSVCRT_bad_cast_ctor(bad_cast*  _this, char**  name) /* ../dlls/msvcrt/cpp.c:447 */
+WINAPI bad_cast* wine32b_msvcrt_MSVCRT_bad_cast_ctor(bad_cast*  _this, char**  name) /* ../dlls/msvcrt/cpp.c:447 */
 {
+	bad_cast* return_value;
 	TRACE("Enter MSVCRT_bad_cast_ctor\n");
-	return pMSVCRT_bad_cast_ctor(_this, name);
+	return_value = pMSVCRT_bad_cast_ctor(_this, name);
+	TRACE("Leave MSVCRT_bad_cast_ctor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_bad_cast_ctor(void);  /* ../dlls/msvcrt/cpp.c:447 */
@@ -1744,10 +1756,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_bad_cast_ctor,
 	"ret \n"
 )
 
-extern WINAPI bad_cast* wine32b_msvcrt_MSVCRT_bad_cast_copy_ctor(bad_cast*  _this, bad_cast*  rhs) /* ../dlls/msvcrt/cpp.c:459 */
+WINAPI bad_cast* wine32b_msvcrt_MSVCRT_bad_cast_copy_ctor(bad_cast*  _this, bad_cast*  rhs) /* ../dlls/msvcrt/cpp.c:459 */
 {
+	bad_cast* return_value;
 	TRACE("Enter MSVCRT_bad_cast_copy_ctor\n");
-	return pMSVCRT_bad_cast_copy_ctor(_this, rhs);
+	return_value = pMSVCRT_bad_cast_copy_ctor(_this, rhs);
+	TRACE("Leave MSVCRT_bad_cast_copy_ctor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_bad_cast_copy_ctor(void);  /* ../dlls/msvcrt/cpp.c:459 */
@@ -1770,10 +1785,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_bad_cast_copy_ctor,
 	"ret \n"
 )
 
-extern WINAPI bad_cast* wine32b_msvcrt_MSVCRT_bad_cast_ctor_charptr(bad_cast*  _this, char*  name) /* ../dlls/msvcrt/cpp.c:471 */
+WINAPI bad_cast* wine32b_msvcrt_MSVCRT_bad_cast_ctor_charptr(bad_cast*  _this, char*  name) /* ../dlls/msvcrt/cpp.c:471 */
 {
+	bad_cast* return_value;
 	TRACE("Enter MSVCRT_bad_cast_ctor_charptr\n");
-	return pMSVCRT_bad_cast_ctor_charptr(_this, name);
+	return_value = pMSVCRT_bad_cast_ctor_charptr(_this, name);
+	TRACE("Leave MSVCRT_bad_cast_ctor_charptr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_bad_cast_ctor_charptr(void);  /* ../dlls/msvcrt/cpp.c:471 */
@@ -1796,10 +1814,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_bad_cast_ctor_charptr,
 	"ret \n"
 )
 
-extern WINAPI bad_typeid* wine32b_msvcrt_MSVCRT_bad_typeid_copy_ctor(bad_typeid*  _this, bad_typeid*  rhs) /* ../dlls/msvcrt/cpp.c:274 */
+WINAPI bad_typeid* wine32b_msvcrt_MSVCRT_bad_typeid_copy_ctor(bad_typeid*  _this, bad_typeid*  rhs) /* ../dlls/msvcrt/cpp.c:274 */
 {
+	bad_typeid* return_value;
 	TRACE("Enter MSVCRT_bad_typeid_copy_ctor\n");
-	return pMSVCRT_bad_typeid_copy_ctor(_this, rhs);
+	return_value = pMSVCRT_bad_typeid_copy_ctor(_this, rhs);
+	TRACE("Leave MSVCRT_bad_typeid_copy_ctor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_bad_typeid_copy_ctor(void);  /* ../dlls/msvcrt/cpp.c:274 */
@@ -1822,10 +1843,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_bad_typeid_copy_ctor,
 	"ret \n"
 )
 
-extern WINAPI bad_typeid* wine32b_msvcrt_MSVCRT_bad_typeid_ctor(bad_typeid*  _this, char*  name) /* ../dlls/msvcrt/cpp.c:286 */
+WINAPI bad_typeid* wine32b_msvcrt_MSVCRT_bad_typeid_ctor(bad_typeid*  _this, char*  name) /* ../dlls/msvcrt/cpp.c:286 */
 {
+	bad_typeid* return_value;
 	TRACE("Enter MSVCRT_bad_typeid_ctor\n");
-	return pMSVCRT_bad_typeid_ctor(_this, name);
+	return_value = pMSVCRT_bad_typeid_ctor(_this, name);
+	TRACE("Leave MSVCRT_bad_typeid_ctor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_bad_typeid_ctor(void);  /* ../dlls/msvcrt/cpp.c:286 */
@@ -1848,10 +1872,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_bad_typeid_ctor,
 	"ret \n"
 )
 
-extern WINAPI exception* wine32b_msvcrt_MSVCRT_exception_ctor(exception*  _this, char**  name) /* ../dlls/msvcrt/cpp.c:145 */
+WINAPI exception* wine32b_msvcrt_MSVCRT_exception_ctor(exception*  _this, char**  name) /* ../dlls/msvcrt/cpp.c:145 */
 {
+	exception* return_value;
 	TRACE("Enter MSVCRT_exception_ctor\n");
-	return pMSVCRT_exception_ctor(_this, name);
+	return_value = pMSVCRT_exception_ctor(_this, name);
+	TRACE("Leave MSVCRT_exception_ctor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_exception_ctor(void);  /* ../dlls/msvcrt/cpp.c:145 */
@@ -1874,10 +1901,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_exception_ctor,
 	"ret \n"
 )
 
-extern WINAPI exception* wine32b_msvcrt_MSVCRT_exception_ctor_noalloc(exception*  _this, char**  name, int  noalloc) /* ../dlls/msvcrt/cpp.c:156 */
+WINAPI exception* wine32b_msvcrt_MSVCRT_exception_ctor_noalloc(exception*  _this, char**  name, int  noalloc) /* ../dlls/msvcrt/cpp.c:156 */
 {
+	exception* return_value;
 	TRACE("Enter MSVCRT_exception_ctor_noalloc\n");
-	return pMSVCRT_exception_ctor_noalloc(_this, name, noalloc);
+	return_value = pMSVCRT_exception_ctor_noalloc(_this, name, noalloc);
+	TRACE("Leave MSVCRT_exception_ctor_noalloc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_exception_ctor_noalloc(void);  /* ../dlls/msvcrt/cpp.c:156 */
@@ -1901,10 +1931,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_exception_ctor_noalloc,
 	"ret \n"
 )
 
-extern WINAPI exception* wine32b_msvcrt_MSVCRT_exception_copy_ctor(exception*  _this, exception*  rhs) /* ../dlls/msvcrt/cpp.c:169 */
+WINAPI exception* wine32b_msvcrt_MSVCRT_exception_copy_ctor(exception*  _this, exception*  rhs) /* ../dlls/msvcrt/cpp.c:169 */
 {
+	exception* return_value;
 	TRACE("Enter MSVCRT_exception_copy_ctor\n");
-	return pMSVCRT_exception_copy_ctor(_this, rhs);
+	return_value = pMSVCRT_exception_copy_ctor(_this, rhs);
+	TRACE("Leave MSVCRT_exception_copy_ctor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_exception_copy_ctor(void);  /* ../dlls/msvcrt/cpp.c:169 */
@@ -1927,10 +1960,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_exception_copy_ctor,
 	"ret \n"
 )
 
-extern WINAPI exception* wine32b_msvcrt_MSVCRT_exception_default_ctor(exception*  _this) /* ../dlls/msvcrt/cpp.c:189 */
+WINAPI exception* wine32b_msvcrt_MSVCRT_exception_default_ctor(exception*  _this) /* ../dlls/msvcrt/cpp.c:189 */
 {
+	exception* return_value;
 	TRACE("Enter MSVCRT_exception_default_ctor\n");
-	return pMSVCRT_exception_default_ctor(_this);
+	return_value = pMSVCRT_exception_default_ctor(_this);
+	TRACE("Leave MSVCRT_exception_default_ctor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_exception_default_ctor(void);  /* ../dlls/msvcrt/cpp.c:189 */
@@ -1952,10 +1988,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_exception_default_ctor,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt_MSVCRT___non_rtti_object_dtor(__non_rtti_object*  _this) /* ../dlls/msvcrt/cpp.c:389 */
+WINAPI void wine32b_msvcrt_MSVCRT___non_rtti_object_dtor(__non_rtti_object*  _this) /* ../dlls/msvcrt/cpp.c:389 */
 {
 	TRACE("Enter MSVCRT___non_rtti_object_dtor\n");
-	return pMSVCRT___non_rtti_object_dtor(_this);
+	pMSVCRT___non_rtti_object_dtor(_this);
+	TRACE("Leave MSVCRT___non_rtti_object_dtor\n");
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT___non_rtti_object_dtor(void);  /* ../dlls/msvcrt/cpp.c:389 */
@@ -1977,10 +2014,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT___non_rtti_object_dtor,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt_MSVCRT_bad_cast_dtor(bad_cast*  _this) /* ../dlls/msvcrt/cpp.c:492 */
+WINAPI void wine32b_msvcrt_MSVCRT_bad_cast_dtor(bad_cast*  _this) /* ../dlls/msvcrt/cpp.c:492 */
 {
 	TRACE("Enter MSVCRT_bad_cast_dtor\n");
-	return pMSVCRT_bad_cast_dtor(_this);
+	pMSVCRT_bad_cast_dtor(_this);
+	TRACE("Leave MSVCRT_bad_cast_dtor\n");
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_bad_cast_dtor(void);  /* ../dlls/msvcrt/cpp.c:492 */
@@ -2002,10 +2040,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_bad_cast_dtor,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt_MSVCRT_bad_typeid_dtor(bad_typeid*  _this) /* ../dlls/msvcrt/cpp.c:307 */
+WINAPI void wine32b_msvcrt_MSVCRT_bad_typeid_dtor(bad_typeid*  _this) /* ../dlls/msvcrt/cpp.c:307 */
 {
 	TRACE("Enter MSVCRT_bad_typeid_dtor\n");
-	return pMSVCRT_bad_typeid_dtor(_this);
+	pMSVCRT_bad_typeid_dtor(_this);
+	TRACE("Leave MSVCRT_bad_typeid_dtor\n");
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_bad_typeid_dtor(void);  /* ../dlls/msvcrt/cpp.c:307 */
@@ -2027,10 +2066,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_bad_typeid_dtor,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt_MSVCRT_exception_dtor(exception*  _this) /* ../dlls/msvcrt/cpp.c:202 */
+WINAPI void wine32b_msvcrt_MSVCRT_exception_dtor(exception*  _this) /* ../dlls/msvcrt/cpp.c:202 */
 {
 	TRACE("Enter MSVCRT_exception_dtor\n");
-	return pMSVCRT_exception_dtor(_this);
+	pMSVCRT_exception_dtor(_this);
+	TRACE("Leave MSVCRT_exception_dtor\n");
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_exception_dtor(void);  /* ../dlls/msvcrt/cpp.c:202 */
@@ -2052,10 +2092,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_exception_dtor,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt_MSVCRT_type_info_dtor(type_info*  _this) /* ../dlls/msvcrt/cpp.c:581 */
+WINAPI void wine32b_msvcrt_MSVCRT_type_info_dtor(type_info*  _this) /* ../dlls/msvcrt/cpp.c:581 */
 {
 	TRACE("Enter MSVCRT_type_info_dtor\n");
-	return pMSVCRT_type_info_dtor(_this);
+	pMSVCRT_type_info_dtor(_this);
+	TRACE("Leave MSVCRT_type_info_dtor\n");
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_type_info_dtor(void);  /* ../dlls/msvcrt/cpp.c:581 */
@@ -2077,10 +2118,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_type_info_dtor,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt_MSVCRT_operator_new(MSVCRT_size_t  size) /* ../dlls/msvcrt/heap.c:131 */
+WINAPI void* wine32b_msvcrt_MSVCRT_operator_new(MSVCRT_size_t  size) /* ../dlls/msvcrt/heap.c:131 */
 {
+	void* return_value;
 	TRACE("Enter MSVCRT_operator_new\n");
-	return pMSVCRT_operator_new(size);
+	return_value = pMSVCRT_operator_new(size);
+	TRACE("Leave MSVCRT_operator_new\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_operator_new(void);  /* ../dlls/msvcrt/heap.c:131 */
@@ -2102,10 +2146,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_operator_new,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt_MSVCRT_operator_new_dbg(MSVCRT_size_t  size, int  type, char*  file, int  line) /* ../dlls/msvcrt/heap.c:164 */
+WINAPI void* wine32b_msvcrt_MSVCRT_operator_new_dbg(MSVCRT_size_t  size, int  type, char*  file, int  line) /* ../dlls/msvcrt/heap.c:164 */
 {
+	void* return_value;
 	TRACE("Enter MSVCRT_operator_new_dbg\n");
-	return pMSVCRT_operator_new_dbg(size, type, file, line);
+	return_value = pMSVCRT_operator_new_dbg(size, type, file, line);
+	TRACE("Leave MSVCRT_operator_new_dbg\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_operator_new_dbg(void);  /* ../dlls/msvcrt/heap.c:164 */
@@ -2130,10 +2177,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_operator_new_dbg,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt_MSVCRT_operator_delete(void*  mem) /* ../dlls/msvcrt/heap.c:173 */
+WINAPI void wine32b_msvcrt_MSVCRT_operator_delete(void*  mem) /* ../dlls/msvcrt/heap.c:173 */
 {
 	TRACE("Enter MSVCRT_operator_delete\n");
-	return pMSVCRT_operator_delete(mem);
+	pMSVCRT_operator_delete(mem);
+	TRACE("Leave MSVCRT_operator_delete\n");
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_operator_delete(void);  /* ../dlls/msvcrt/heap.c:173 */
@@ -2155,10 +2203,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_operator_delete,
 	"ret \n"
 )
 
-extern WINAPI __non_rtti_object* wine32b_msvcrt_MSVCRT___non_rtti_object_opequals(__non_rtti_object*  _this, __non_rtti_object*  rhs) /* ../dlls/msvcrt/cpp.c:399 */
+WINAPI __non_rtti_object* wine32b_msvcrt_MSVCRT___non_rtti_object_opequals(__non_rtti_object*  _this, __non_rtti_object*  rhs) /* ../dlls/msvcrt/cpp.c:399 */
 {
+	__non_rtti_object* return_value;
 	TRACE("Enter MSVCRT___non_rtti_object_opequals\n");
-	return pMSVCRT___non_rtti_object_opequals(_this, rhs);
+	return_value = pMSVCRT___non_rtti_object_opequals(_this, rhs);
+	TRACE("Leave MSVCRT___non_rtti_object_opequals\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT___non_rtti_object_opequals(void);  /* ../dlls/msvcrt/cpp.c:399 */
@@ -2181,10 +2232,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT___non_rtti_object_opequals,
 	"ret \n"
 )
 
-extern WINAPI bad_cast* wine32b_msvcrt_MSVCRT_bad_cast_opequals(bad_cast*  _this, bad_cast*  rhs) /* ../dlls/msvcrt/cpp.c:502 */
+WINAPI bad_cast* wine32b_msvcrt_MSVCRT_bad_cast_opequals(bad_cast*  _this, bad_cast*  rhs) /* ../dlls/msvcrt/cpp.c:502 */
 {
+	bad_cast* return_value;
 	TRACE("Enter MSVCRT_bad_cast_opequals\n");
-	return pMSVCRT_bad_cast_opequals(_this, rhs);
+	return_value = pMSVCRT_bad_cast_opequals(_this, rhs);
+	TRACE("Leave MSVCRT_bad_cast_opequals\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_bad_cast_opequals(void);  /* ../dlls/msvcrt/cpp.c:502 */
@@ -2207,10 +2261,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_bad_cast_opequals,
 	"ret \n"
 )
 
-extern WINAPI bad_typeid* wine32b_msvcrt_MSVCRT_bad_typeid_opequals(bad_typeid*  _this, bad_typeid*  rhs) /* ../dlls/msvcrt/cpp.c:317 */
+WINAPI bad_typeid* wine32b_msvcrt_MSVCRT_bad_typeid_opequals(bad_typeid*  _this, bad_typeid*  rhs) /* ../dlls/msvcrt/cpp.c:317 */
 {
+	bad_typeid* return_value;
 	TRACE("Enter MSVCRT_bad_typeid_opequals\n");
-	return pMSVCRT_bad_typeid_opequals(_this, rhs);
+	return_value = pMSVCRT_bad_typeid_opequals(_this, rhs);
+	TRACE("Leave MSVCRT_bad_typeid_opequals\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_bad_typeid_opequals(void);  /* ../dlls/msvcrt/cpp.c:317 */
@@ -2233,10 +2290,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_bad_typeid_opequals,
 	"ret \n"
 )
 
-extern WINAPI exception* wine32b_msvcrt_MSVCRT_exception_opequals(exception*  _this, exception*  rhs) /* ../dlls/msvcrt/cpp.c:213 */
+WINAPI exception* wine32b_msvcrt_MSVCRT_exception_opequals(exception*  _this, exception*  rhs) /* ../dlls/msvcrt/cpp.c:213 */
 {
+	exception* return_value;
 	TRACE("Enter MSVCRT_exception_opequals\n");
-	return pMSVCRT_exception_opequals(_this, rhs);
+	return_value = pMSVCRT_exception_opequals(_this, rhs);
+	TRACE("Leave MSVCRT_exception_opequals\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_exception_opequals(void);  /* ../dlls/msvcrt/cpp.c:213 */
@@ -2259,10 +2319,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_exception_opequals,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_MSVCRT_type_info_opequals_equals(type_info*  _this, type_info*  rhs) /* ../dlls/msvcrt/cpp.c:548 */
+WINAPI int wine32b_msvcrt_MSVCRT_type_info_opequals_equals(type_info*  _this, type_info*  rhs) /* ../dlls/msvcrt/cpp.c:548 */
 {
+	int return_value;
 	TRACE("Enter MSVCRT_type_info_opequals_equals\n");
-	return pMSVCRT_type_info_opequals_equals(_this, rhs);
+	return_value = pMSVCRT_type_info_opequals_equals(_this, rhs);
+	TRACE("Leave MSVCRT_type_info_opequals_equals\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_type_info_opequals_equals(void);  /* ../dlls/msvcrt/cpp.c:548 */
@@ -2285,10 +2348,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_type_info_opequals_equals,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_MSVCRT_type_info_opnot_equals(type_info*  _this, type_info*  rhs) /* ../dlls/msvcrt/cpp.c:559 */
+WINAPI int wine32b_msvcrt_MSVCRT_type_info_opnot_equals(type_info*  _this, type_info*  rhs) /* ../dlls/msvcrt/cpp.c:559 */
 {
+	int return_value;
 	TRACE("Enter MSVCRT_type_info_opnot_equals\n");
-	return pMSVCRT_type_info_opnot_equals(_this, rhs);
+	return_value = pMSVCRT_type_info_opnot_equals(_this, rhs);
+	TRACE("Leave MSVCRT_type_info_opnot_equals\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_type_info_opnot_equals(void);  /* ../dlls/msvcrt/cpp.c:559 */
@@ -2311,10 +2377,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_type_info_opnot_equals,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt_MSVCRT___non_rtti_object_vector_dtor(__non_rtti_object*  _this, unsigned int  flags) /* ../dlls/msvcrt/cpp.c:411 */
+WINAPI void* wine32b_msvcrt_MSVCRT___non_rtti_object_vector_dtor(__non_rtti_object*  _this, unsigned int  flags) /* ../dlls/msvcrt/cpp.c:411 */
 {
+	void* return_value;
 	TRACE("Enter MSVCRT___non_rtti_object_vector_dtor\n");
-	return pMSVCRT___non_rtti_object_vector_dtor(_this, flags);
+	return_value = pMSVCRT___non_rtti_object_vector_dtor(_this, flags);
+	TRACE("Leave MSVCRT___non_rtti_object_vector_dtor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT___non_rtti_object_vector_dtor(void);  /* ../dlls/msvcrt/cpp.c:411 */
@@ -2337,10 +2406,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT___non_rtti_object_vector_dtor,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt_MSVCRT_bad_cast_vector_dtor(bad_cast*  _this, unsigned int  flags) /* ../dlls/msvcrt/cpp.c:513 */
+WINAPI void* wine32b_msvcrt_MSVCRT_bad_cast_vector_dtor(bad_cast*  _this, unsigned int  flags) /* ../dlls/msvcrt/cpp.c:513 */
 {
+	void* return_value;
 	TRACE("Enter MSVCRT_bad_cast_vector_dtor\n");
-	return pMSVCRT_bad_cast_vector_dtor(_this, flags);
+	return_value = pMSVCRT_bad_cast_vector_dtor(_this, flags);
+	TRACE("Leave MSVCRT_bad_cast_vector_dtor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_bad_cast_vector_dtor(void);  /* ../dlls/msvcrt/cpp.c:513 */
@@ -2363,10 +2435,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_bad_cast_vector_dtor,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt_MSVCRT_bad_typeid_vector_dtor(bad_typeid*  _this, unsigned int  flags) /* ../dlls/msvcrt/cpp.c:328 */
+WINAPI void* wine32b_msvcrt_MSVCRT_bad_typeid_vector_dtor(bad_typeid*  _this, unsigned int  flags) /* ../dlls/msvcrt/cpp.c:328 */
 {
+	void* return_value;
 	TRACE("Enter MSVCRT_bad_typeid_vector_dtor\n");
-	return pMSVCRT_bad_typeid_vector_dtor(_this, flags);
+	return_value = pMSVCRT_bad_typeid_vector_dtor(_this, flags);
+	TRACE("Leave MSVCRT_bad_typeid_vector_dtor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_bad_typeid_vector_dtor(void);  /* ../dlls/msvcrt/cpp.c:328 */
@@ -2389,10 +2464,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_bad_typeid_vector_dtor,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt_MSVCRT_exception_vector_dtor(exception*  _this, unsigned int  flags) /* ../dlls/msvcrt/cpp.c:229 */
+WINAPI void* wine32b_msvcrt_MSVCRT_exception_vector_dtor(exception*  _this, unsigned int  flags) /* ../dlls/msvcrt/cpp.c:229 */
 {
+	void* return_value;
 	TRACE("Enter MSVCRT_exception_vector_dtor\n");
-	return pMSVCRT_exception_vector_dtor(_this, flags);
+	return_value = pMSVCRT_exception_vector_dtor(_this, flags);
+	TRACE("Leave MSVCRT_exception_vector_dtor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_exception_vector_dtor(void);  /* ../dlls/msvcrt/cpp.c:229 */
@@ -2415,10 +2493,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_exception_vector_dtor,
 	"ret \n"
 )
 
-extern WINAPI bad_cast* wine32b_msvcrt_MSVCRT_bad_cast_default_ctor(bad_cast*  _this) /* ../dlls/msvcrt/cpp.c:483 */
+WINAPI bad_cast* wine32b_msvcrt_MSVCRT_bad_cast_default_ctor(bad_cast*  _this) /* ../dlls/msvcrt/cpp.c:483 */
 {
+	bad_cast* return_value;
 	TRACE("Enter MSVCRT_bad_cast_default_ctor\n");
-	return pMSVCRT_bad_cast_default_ctor(_this);
+	return_value = pMSVCRT_bad_cast_default_ctor(_this);
+	TRACE("Leave MSVCRT_bad_cast_default_ctor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_bad_cast_default_ctor(void);  /* ../dlls/msvcrt/cpp.c:483 */
@@ -2440,10 +2521,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_bad_cast_default_ctor,
 	"ret \n"
 )
 
-extern WINAPI bad_typeid* wine32b_msvcrt_MSVCRT_bad_typeid_default_ctor(bad_typeid*  _this) /* ../dlls/msvcrt/cpp.c:298 */
+WINAPI bad_typeid* wine32b_msvcrt_MSVCRT_bad_typeid_default_ctor(bad_typeid*  _this) /* ../dlls/msvcrt/cpp.c:298 */
 {
+	bad_typeid* return_value;
 	TRACE("Enter MSVCRT_bad_typeid_default_ctor\n");
-	return pMSVCRT_bad_typeid_default_ctor(_this);
+	return_value = pMSVCRT_bad_typeid_default_ctor(_this);
+	TRACE("Leave MSVCRT_bad_typeid_default_ctor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_bad_typeid_default_ctor(void);  /* ../dlls/msvcrt/cpp.c:298 */
@@ -2465,10 +2549,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_bad_typeid_default_ctor,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt_MSVCRT___non_rtti_object_scalar_dtor(__non_rtti_object*  _this, unsigned int  flags) /* ../dlls/msvcrt/cpp.c:434 */
+WINAPI void* wine32b_msvcrt_MSVCRT___non_rtti_object_scalar_dtor(__non_rtti_object*  _this, unsigned int  flags) /* ../dlls/msvcrt/cpp.c:434 */
 {
+	void* return_value;
 	TRACE("Enter MSVCRT___non_rtti_object_scalar_dtor\n");
-	return pMSVCRT___non_rtti_object_scalar_dtor(_this, flags);
+	return_value = pMSVCRT___non_rtti_object_scalar_dtor(_this, flags);
+	TRACE("Leave MSVCRT___non_rtti_object_scalar_dtor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT___non_rtti_object_scalar_dtor(void);  /* ../dlls/msvcrt/cpp.c:434 */
@@ -2491,10 +2578,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT___non_rtti_object_scalar_dtor,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt_MSVCRT_bad_cast_scalar_dtor(bad_cast*  _this, unsigned int  flags) /* ../dlls/msvcrt/cpp.c:536 */
+WINAPI void* wine32b_msvcrt_MSVCRT_bad_cast_scalar_dtor(bad_cast*  _this, unsigned int  flags) /* ../dlls/msvcrt/cpp.c:536 */
 {
+	void* return_value;
 	TRACE("Enter MSVCRT_bad_cast_scalar_dtor\n");
-	return pMSVCRT_bad_cast_scalar_dtor(_this, flags);
+	return_value = pMSVCRT_bad_cast_scalar_dtor(_this, flags);
+	TRACE("Leave MSVCRT_bad_cast_scalar_dtor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_bad_cast_scalar_dtor(void);  /* ../dlls/msvcrt/cpp.c:536 */
@@ -2517,10 +2607,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_bad_cast_scalar_dtor,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt_MSVCRT_bad_typeid_scalar_dtor(bad_typeid*  _this, unsigned int  flags) /* ../dlls/msvcrt/cpp.c:351 */
+WINAPI void* wine32b_msvcrt_MSVCRT_bad_typeid_scalar_dtor(bad_typeid*  _this, unsigned int  flags) /* ../dlls/msvcrt/cpp.c:351 */
 {
+	void* return_value;
 	TRACE("Enter MSVCRT_bad_typeid_scalar_dtor\n");
-	return pMSVCRT_bad_typeid_scalar_dtor(_this, flags);
+	return_value = pMSVCRT_bad_typeid_scalar_dtor(_this, flags);
+	TRACE("Leave MSVCRT_bad_typeid_scalar_dtor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_bad_typeid_scalar_dtor(void);  /* ../dlls/msvcrt/cpp.c:351 */
@@ -2543,10 +2636,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_bad_typeid_scalar_dtor,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt_MSVCRT_exception_scalar_dtor(exception*  _this, unsigned int  flags) /* ../dlls/msvcrt/cpp.c:252 */
+WINAPI void* wine32b_msvcrt_MSVCRT_exception_scalar_dtor(exception*  _this, unsigned int  flags) /* ../dlls/msvcrt/cpp.c:252 */
 {
+	void* return_value;
 	TRACE("Enter MSVCRT_exception_scalar_dtor\n");
-	return pMSVCRT_exception_scalar_dtor(_this, flags);
+	return_value = pMSVCRT_exception_scalar_dtor(_this, flags);
+	TRACE("Leave MSVCRT_exception_scalar_dtor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_exception_scalar_dtor(void);  /* ../dlls/msvcrt/cpp.c:252 */
@@ -2569,10 +2665,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_exception_scalar_dtor,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_new_handler_func wine32b_msvcrt_MSVCRT__query_new_handler(void) /* ../dlls/msvcrt/heap.c:183 */
+WINAPI MSVCRT_new_handler_func wine32b_msvcrt_MSVCRT__query_new_handler(void) /* ../dlls/msvcrt/heap.c:183 */
 {
+	MSVCRT_new_handler_func return_value;
 	TRACE("Enter MSVCRT__query_new_handler\n");
-	return pMSVCRT__query_new_handler();
+	return_value = pMSVCRT__query_new_handler();
+	TRACE("Leave MSVCRT__query_new_handler\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT__query_new_handler(void);  /* ../dlls/msvcrt/heap.c:183 */
@@ -2593,10 +2692,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT__query_new_handler,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_MSVCRT__query_new_mode(void) /* ../dlls/msvcrt/heap.c:192 */
+WINAPI int wine32b_msvcrt_MSVCRT__query_new_mode(void) /* ../dlls/msvcrt/heap.c:192 */
 {
+	int return_value;
 	TRACE("Enter MSVCRT__query_new_mode\n");
-	return pMSVCRT__query_new_mode();
+	return_value = pMSVCRT__query_new_mode();
+	TRACE("Leave MSVCRT__query_new_mode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT__query_new_mode(void);  /* ../dlls/msvcrt/heap.c:192 */
@@ -2617,10 +2719,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT__query_new_mode,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_new_handler_func wine32b_msvcrt_MSVCRT__set_new_handler(MSVCRT_new_handler_func  func) /* ../dlls/msvcrt/heap.c:200 */
+WINAPI MSVCRT_new_handler_func wine32b_msvcrt_MSVCRT__set_new_handler(MSVCRT_new_handler_func  func) /* ../dlls/msvcrt/heap.c:200 */
 {
+	MSVCRT_new_handler_func return_value;
 	TRACE("Enter MSVCRT__set_new_handler\n");
-	return pMSVCRT__set_new_handler(func);
+	return_value = pMSVCRT__set_new_handler(func);
+	TRACE("Leave MSVCRT__set_new_handler\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT__set_new_handler(void);  /* ../dlls/msvcrt/heap.c:200 */
@@ -2642,10 +2747,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT__set_new_handler,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_MSVCRT__set_new_mode(int  mode) /* ../dlls/msvcrt/heap.c:223 */
+WINAPI int wine32b_msvcrt_MSVCRT__set_new_mode(int  mode) /* ../dlls/msvcrt/heap.c:223 */
 {
+	int return_value;
 	TRACE("Enter MSVCRT__set_new_mode\n");
-	return pMSVCRT__set_new_mode(mode);
+	return_value = pMSVCRT__set_new_mode(mode);
+	TRACE("Leave MSVCRT__set_new_mode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT__set_new_mode(void);  /* ../dlls/msvcrt/heap.c:223 */
@@ -2667,10 +2775,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT__set_new_mode,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT__se_translator_function wine32b_msvcrt_MSVCRT__set_se_translator(MSVCRT__se_translator_function  func) /* ../dlls/msvcrt/cpp.c:1249 */
+WINAPI MSVCRT__se_translator_function wine32b_msvcrt_MSVCRT__set_se_translator(MSVCRT__se_translator_function  func) /* ../dlls/msvcrt/cpp.c:1249 */
 {
+	MSVCRT__se_translator_function return_value;
 	TRACE("Enter MSVCRT__set_se_translator\n");
-	return pMSVCRT__set_se_translator(func);
+	return_value = pMSVCRT__set_se_translator(func);
+	TRACE("Leave MSVCRT__set_se_translator\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT__set_se_translator(void);  /* ../dlls/msvcrt/cpp.c:1249 */
@@ -2692,10 +2803,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT__set_se_translator,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_MSVCRT_type_info_before(type_info*  _this, type_info*  rhs) /* ../dlls/msvcrt/cpp.c:570 */
+WINAPI int wine32b_msvcrt_MSVCRT_type_info_before(type_info*  _this, type_info*  rhs) /* ../dlls/msvcrt/cpp.c:570 */
 {
+	int return_value;
 	TRACE("Enter MSVCRT_type_info_before\n");
-	return pMSVCRT_type_info_before(_this, rhs);
+	return_value = pMSVCRT_type_info_before(_this, rhs);
+	TRACE("Leave MSVCRT_type_info_before\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_type_info_before(void);  /* ../dlls/msvcrt/cpp.c:570 */
@@ -2718,10 +2832,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_type_info_before,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt_MSVCRT_type_info_name(type_info*  _this) /* ../dlls/msvcrt/cpp.c:591 */
+WINAPI char* wine32b_msvcrt_MSVCRT_type_info_name(type_info*  _this) /* ../dlls/msvcrt/cpp.c:591 */
 {
+	char* return_value;
 	TRACE("Enter MSVCRT_type_info_name\n");
-	return pMSVCRT_type_info_name(_this);
+	return_value = pMSVCRT_type_info_name(_this);
+	TRACE("Leave MSVCRT_type_info_name\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_type_info_name(void);  /* ../dlls/msvcrt/cpp.c:591 */
@@ -2743,10 +2860,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_type_info_name,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt_MSVCRT_type_info_raw_name(type_info*  _this) /* ../dlls/msvcrt/cpp.c:625 */
+WINAPI char* wine32b_msvcrt_MSVCRT_type_info_raw_name(type_info*  _this) /* ../dlls/msvcrt/cpp.c:625 */
 {
+	char* return_value;
 	TRACE("Enter MSVCRT_type_info_raw_name\n");
-	return pMSVCRT_type_info_raw_name(_this);
+	return_value = pMSVCRT_type_info_raw_name(_this);
+	TRACE("Leave MSVCRT_type_info_raw_name\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_type_info_raw_name(void);  /* ../dlls/msvcrt/cpp.c:625 */
@@ -2768,10 +2888,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_type_info_raw_name,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_new_handler_func wine32b_msvcrt_MSVCRT_set_new_handler(void*  func) /* ../dlls/msvcrt/heap.c:213 */
+WINAPI MSVCRT_new_handler_func wine32b_msvcrt_MSVCRT_set_new_handler(void*  func) /* ../dlls/msvcrt/heap.c:213 */
 {
+	MSVCRT_new_handler_func return_value;
 	TRACE("Enter MSVCRT_set_new_handler\n");
-	return pMSVCRT_set_new_handler(func);
+	return_value = pMSVCRT_set_new_handler(func);
+	TRACE("Leave MSVCRT_set_new_handler\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_set_new_handler(void);  /* ../dlls/msvcrt/heap.c:213 */
@@ -2793,10 +2916,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_set_new_handler,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_terminate_function wine32b_msvcrt_MSVCRT_set_terminate(MSVCRT_terminate_function  func) /* ../dlls/msvcrt/cpp.c:1197 */
+WINAPI MSVCRT_terminate_function wine32b_msvcrt_MSVCRT_set_terminate(MSVCRT_terminate_function  func) /* ../dlls/msvcrt/cpp.c:1197 */
 {
+	MSVCRT_terminate_function return_value;
 	TRACE("Enter MSVCRT_set_terminate\n");
-	return pMSVCRT_set_terminate(func);
+	return_value = pMSVCRT_set_terminate(func);
+	TRACE("Leave MSVCRT_set_terminate\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_set_terminate(void);  /* ../dlls/msvcrt/cpp.c:1197 */
@@ -2818,10 +2944,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_set_terminate,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_unexpected_function wine32b_msvcrt_MSVCRT_set_unexpected(MSVCRT_unexpected_function  func) /* ../dlls/msvcrt/cpp.c:1227 */
+WINAPI MSVCRT_unexpected_function wine32b_msvcrt_MSVCRT_set_unexpected(MSVCRT_unexpected_function  func) /* ../dlls/msvcrt/cpp.c:1227 */
 {
+	MSVCRT_unexpected_function return_value;
 	TRACE("Enter MSVCRT_set_unexpected\n");
-	return pMSVCRT_set_unexpected(func);
+	return_value = pMSVCRT_set_unexpected(func);
+	TRACE("Leave MSVCRT_set_unexpected\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_set_unexpected(void);  /* ../dlls/msvcrt/cpp.c:1227 */
@@ -2843,10 +2972,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_set_unexpected,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt_MSVCRT_terminate(void) /* ../dlls/msvcrt/cpp.c:1271 */
+WINAPI void wine32b_msvcrt_MSVCRT_terminate(void) /* ../dlls/msvcrt/cpp.c:1271 */
 {
 	TRACE("Enter MSVCRT_terminate\n");
-	return pMSVCRT_terminate();
+	pMSVCRT_terminate();
+	TRACE("Leave MSVCRT_terminate\n");
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_terminate(void);  /* ../dlls/msvcrt/cpp.c:1271 */
@@ -2867,10 +2997,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_terminate,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt_MSVCRT_unexpected(void) /* ../dlls/msvcrt/cpp.c:1281 */
+WINAPI void wine32b_msvcrt_MSVCRT_unexpected(void) /* ../dlls/msvcrt/cpp.c:1281 */
 {
 	TRACE("Enter MSVCRT_unexpected\n");
-	return pMSVCRT_unexpected();
+	pMSVCRT_unexpected();
+	TRACE("Leave MSVCRT_unexpected\n");
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_unexpected(void);  /* ../dlls/msvcrt/cpp.c:1281 */
@@ -2891,10 +3022,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_unexpected,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt_MSVCRT_what_exception(exception*  _this) /* ../dlls/msvcrt/cpp.c:264 */
+WINAPI char* wine32b_msvcrt_MSVCRT_what_exception(exception*  _this) /* ../dlls/msvcrt/cpp.c:264 */
 {
+	char* return_value;
 	TRACE("Enter MSVCRT_what_exception\n");
-	return pMSVCRT_what_exception(_this);
+	return_value = pMSVCRT_what_exception(_this);
+	TRACE("Leave MSVCRT_what_exception\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_MSVCRT_what_exception(void);  /* ../dlls/msvcrt/cpp.c:264 */
@@ -2916,10 +3050,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_MSVCRT_what_exception,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__CxxThrowException(exception*  object, cxx_exception_type*  type) /* ../dlls/msvcrt/cpp.c:1578 */
+WINAPI void wine32b_msvcrt__CxxThrowException(exception*  object, cxx_exception_type*  type) /* ../dlls/msvcrt/cpp.c:1578 */
 {
 	TRACE("Enter _CxxThrowException\n");
-	return p_CxxThrowException(object, type);
+	p_CxxThrowException(object, type);
+	TRACE("Leave _CxxThrowException\n");
 }
 
 extern WINAPI void wine32a_msvcrt__CxxThrowException(void);  /* ../dlls/msvcrt/cpp.c:1578 */
@@ -2942,10 +3077,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__CxxThrowException,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__Getdays(void) /* ../dlls/msvcrt/locale.c:456 */
+WINAPI char* wine32b_msvcrt__Getdays(void) /* ../dlls/msvcrt/locale.c:456 */
 {
+	char* return_value;
 	TRACE("Enter _Getdays\n");
-	return p_Getdays();
+	return_value = p_Getdays();
+	TRACE("Leave _Getdays\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__Getdays(void);  /* ../dlls/msvcrt/locale.c:456 */
@@ -2966,10 +3104,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__Getdays,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__Getmonths(void) /* ../dlls/msvcrt/locale.c:524 */
+WINAPI char* wine32b_msvcrt__Getmonths(void) /* ../dlls/msvcrt/locale.c:524 */
 {
+	char* return_value;
 	TRACE("Enter _Getmonths\n");
-	return p_Getmonths();
+	return_value = p_Getmonths();
+	TRACE("Leave _Getmonths\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__Getmonths(void);  /* ../dlls/msvcrt/locale.c:524 */
@@ -2990,10 +3131,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__Getmonths,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt__Gettnames(void) /* ../dlls/msvcrt/locale.c:592 */
+WINAPI void* wine32b_msvcrt__Gettnames(void) /* ../dlls/msvcrt/locale.c:592 */
 {
+	void* return_value;
 	TRACE("Enter _Gettnames\n");
-	return p_Gettnames();
+	return_value = p_Gettnames();
+	TRACE("Leave _Gettnames\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__Gettnames(void);  /* ../dlls/msvcrt/locale.c:592 */
@@ -3014,10 +3158,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__Gettnames,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt__Strftime(char*  str, MSVCRT_size_t  max, char*  format, struct MSVCRT_tm*  mstm, MSVCRT___lc_time_data*  time_data) /* ../dlls/msvcrt/time.c:1270 */
+WINAPI MSVCRT_size_t wine32b_msvcrt__Strftime(char*  str, MSVCRT_size_t  max, char*  format, struct MSVCRT_tm*  mstm, MSVCRT___lc_time_data*  time_data) /* ../dlls/msvcrt/time.c:1270 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter _Strftime\n");
-	return p_Strftime(str, max, format, mstm, time_data);
+	return_value = p_Strftime(str, max, format, mstm, time_data);
+	TRACE("Leave _Strftime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__Strftime(void);  /* ../dlls/msvcrt/time.c:1270 */
@@ -3042,10 +3189,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__Strftime,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__XcptFilter(NTSTATUS  ex, PEXCEPTION_POINTERS  ptr) /* ../dlls/msvcrt/except.c:274 */
+WINAPI int wine32b_msvcrt__XcptFilter(NTSTATUS  ex, PEXCEPTION_POINTERS  ptr) /* ../dlls/msvcrt/except.c:274 */
 {
+	int return_value;
 	TRACE("Enter _XcptFilter\n");
-	return p_XcptFilter(ex, ptr);
+	return_value = p_XcptFilter(ex, ptr);
+	TRACE("Leave _XcptFilter\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__XcptFilter(void);  /* ../dlls/msvcrt/except.c:274 */
@@ -3068,10 +3218,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__XcptFilter,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt___CppXcptFilter(NTSTATUS  ex, PEXCEPTION_POINTERS  ptr) /* ../dlls/msvcrt/except_x86_64.c:636 */
+WINAPI int wine32b_msvcrt___CppXcptFilter(NTSTATUS  ex, PEXCEPTION_POINTERS  ptr) /* ../dlls/msvcrt/except_x86_64.c:636 */
 {
+	int return_value;
 	TRACE("Enter __CppXcptFilter\n");
-	return p__CppXcptFilter(ex, ptr);
+	return_value = p__CppXcptFilter(ex, ptr);
+	TRACE("Leave __CppXcptFilter\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___CppXcptFilter(void);  /* ../dlls/msvcrt/except_x86_64.c:636 */
@@ -3094,10 +3247,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___CppXcptFilter,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_msvcrt___CxxDetectRethrow(PEXCEPTION_POINTERS  ptrs) /* ../dlls/msvcrt/except_x86_64.c:647 */
+WINAPI BOOL wine32b_msvcrt___CxxDetectRethrow(PEXCEPTION_POINTERS  ptrs) /* ../dlls/msvcrt/except_x86_64.c:647 */
 {
+	BOOL return_value;
 	TRACE("Enter __CxxDetectRethrow\n");
-	return p__CxxDetectRethrow(ptrs);
+	return_value = p__CxxDetectRethrow(ptrs);
+	TRACE("Leave __CxxDetectRethrow\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___CxxDetectRethrow(void);  /* ../dlls/msvcrt/except_x86_64.c:647 */
@@ -3119,10 +3275,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___CxxDetectRethrow,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt___CxxExceptionFilter(PEXCEPTION_POINTERS  ptrs, type_info*  ti, int  flags, void**  copy) /* ../dlls/msvcrt/except_x86_64.c:614 */
+WINAPI int wine32b_msvcrt___CxxExceptionFilter(PEXCEPTION_POINTERS  ptrs, type_info*  ti, int  flags, void**  copy) /* ../dlls/msvcrt/except_x86_64.c:614 */
 {
+	int return_value;
 	TRACE("Enter __CxxExceptionFilter\n");
-	return p__CxxExceptionFilter(ptrs, ti, flags, copy);
+	return_value = p__CxxExceptionFilter(ptrs, ti, flags, copy);
+	TRACE("Leave __CxxExceptionFilter\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___CxxExceptionFilter(void);  /* ../dlls/msvcrt/except_x86_64.c:614 */
@@ -3147,10 +3306,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___CxxExceptionFilter,
 	"ret \n"
 )
 
-extern WINAPI EXCEPTION_DISPOSITION wine32b_msvcrt___CxxFrameHandler(EXCEPTION_RECORD*  rec, ULONG64  frame, CONTEXT*  context, DISPATCHER_CONTEXT*  dispatch) /* ../dlls/msvcrt/except_x86_64.c:624 */
+WINAPI EXCEPTION_DISPOSITION wine32b_msvcrt___CxxFrameHandler(EXCEPTION_RECORD*  rec, ULONG64  frame, CONTEXT*  context, DISPATCHER_CONTEXT*  dispatch) /* ../dlls/msvcrt/except_x86_64.c:624 */
 {
+	EXCEPTION_DISPOSITION return_value;
 	TRACE("Enter __CxxFrameHandler\n");
-	return p__CxxFrameHandler(rec, frame, context, dispatch);
+	return_value = p__CxxFrameHandler(rec, frame, context, dispatch);
+	TRACE("Leave __CxxFrameHandler\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___CxxFrameHandler(void);  /* ../dlls/msvcrt/except_x86_64.c:624 */
@@ -3175,10 +3337,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___CxxFrameHandler,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt___CxxQueryExceptionSize(void) /* ../dlls/msvcrt/except_x86_64.c:671 */
+WINAPI unsigned int wine32b_msvcrt___CxxQueryExceptionSize(void) /* ../dlls/msvcrt/except_x86_64.c:671 */
 {
+	unsigned int return_value;
 	TRACE("Enter __CxxQueryExceptionSize\n");
-	return p__CxxQueryExceptionSize();
+	return_value = p__CxxQueryExceptionSize();
+	TRACE("Leave __CxxQueryExceptionSize\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___CxxQueryExceptionSize(void);  /* ../dlls/msvcrt/except_x86_64.c:671 */
@@ -3199,10 +3364,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___CxxQueryExceptionSize,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_msvcrt___CxxRegisterExceptionObject(EXCEPTION_POINTERS*  ep, cxx_frame_info*  frame_info) /* ../dlls/msvcrt/except.c:434 */
+WINAPI BOOL wine32b_msvcrt___CxxRegisterExceptionObject(EXCEPTION_POINTERS*  ep, cxx_frame_info*  frame_info) /* ../dlls/msvcrt/except.c:434 */
 {
+	BOOL return_value;
 	TRACE("Enter __CxxRegisterExceptionObject\n");
-	return p__CxxRegisterExceptionObject(ep, frame_info);
+	return_value = p__CxxRegisterExceptionObject(ep, frame_info);
+	TRACE("Leave __CxxRegisterExceptionObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___CxxRegisterExceptionObject(void);  /* ../dlls/msvcrt/except.c:434 */
@@ -3225,10 +3393,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___CxxRegisterExceptionObject,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt___CxxUnregisterExceptionObject(cxx_frame_info*  frame_info, BOOL  in_use) /* ../dlls/msvcrt/except.c:458 */
+WINAPI void wine32b_msvcrt___CxxUnregisterExceptionObject(cxx_frame_info*  frame_info, BOOL  in_use) /* ../dlls/msvcrt/except.c:458 */
 {
 	TRACE("Enter __CxxUnregisterExceptionObject\n");
-	return p__CxxUnregisterExceptionObject(frame_info, in_use);
+	p__CxxUnregisterExceptionObject(frame_info, in_use);
+	TRACE("Leave __CxxUnregisterExceptionObject\n");
 }
 
 extern WINAPI void wine32a_msvcrt___CxxUnregisterExceptionObject(void);  /* ../dlls/msvcrt/except.c:458 */
@@ -3251,10 +3420,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___CxxUnregisterExceptionObject,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt___DestructExceptionObject(EXCEPTION_RECORD*  rec) /* ../dlls/msvcrt/except.c:403 */
+WINAPI void wine32b_msvcrt___DestructExceptionObject(EXCEPTION_RECORD*  rec) /* ../dlls/msvcrt/except.c:403 */
 {
 	TRACE("Enter __DestructExceptionObject\n");
-	return p__DestructExceptionObject(rec);
+	p__DestructExceptionObject(rec);
+	TRACE("Leave __DestructExceptionObject\n");
 }
 
 extern WINAPI void wine32a_msvcrt___DestructExceptionObject(void);  /* ../dlls/msvcrt/except.c:403 */
@@ -3276,10 +3446,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___DestructExceptionObject,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt___RTCastToVoid(void*  cppobj) /* ../dlls/msvcrt/cpp.c:1541 */
+WINAPI void* wine32b_msvcrt___RTCastToVoid(void*  cppobj) /* ../dlls/msvcrt/cpp.c:1541 */
 {
+	void* return_value;
 	TRACE("Enter __RTCastToVoid\n");
-	return p__RTCastToVoid(cppobj);
+	return_value = p__RTCastToVoid(cppobj);
+	TRACE("Leave __RTCastToVoid\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___RTCastToVoid(void);  /* ../dlls/msvcrt/cpp.c:1541 */
@@ -3301,10 +3474,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___RTCastToVoid,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt___RTDynamicCast(void*  cppobj, int  unknown, type_info*  src, type_info*  dst, int  do_throw) /* ../dlls/msvcrt/cpp.c:1462 */
+WINAPI void* wine32b_msvcrt___RTDynamicCast(void*  cppobj, int  unknown, type_info*  src, type_info*  dst, int  do_throw) /* ../dlls/msvcrt/cpp.c:1462 */
 {
+	void* return_value;
 	TRACE("Enter __RTDynamicCast\n");
-	return p__RTDynamicCast(cppobj, unknown, src, dst, do_throw);
+	return_value = p__RTDynamicCast(cppobj, unknown, src, dst, do_throw);
+	TRACE("Leave __RTDynamicCast\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___RTDynamicCast(void);  /* ../dlls/msvcrt/cpp.c:1462 */
@@ -3329,10 +3505,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___RTDynamicCast,
 	"ret \n"
 )
 
-extern WINAPI type_info* wine32b_msvcrt___RTtypeid(void*  cppobj) /* ../dlls/msvcrt/cpp.c:1338 */
+WINAPI type_info* wine32b_msvcrt___RTtypeid(void*  cppobj) /* ../dlls/msvcrt/cpp.c:1338 */
 {
+	type_info* return_value;
 	TRACE("Enter __RTtypeid\n");
-	return p__RTtypeid(cppobj);
+	return_value = p__RTtypeid(cppobj);
+	TRACE("Leave __RTtypeid\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___RTtypeid(void);  /* ../dlls/msvcrt/cpp.c:1338 */
@@ -3354,10 +3533,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___RTtypeid,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt___STRINGTOLD(MSVCRT__LDOUBLE*  value, char**  endptr, char*  str, int  flags) /* ../dlls/msvcrt/string.c:908 */
+WINAPI int wine32b_msvcrt___STRINGTOLD(MSVCRT__LDOUBLE*  value, char**  endptr, char*  str, int  flags) /* ../dlls/msvcrt/string.c:908 */
 {
+	int return_value;
 	TRACE("Enter __STRINGTOLD\n");
-	return p__STRINGTOLD(value, endptr, str, flags);
+	return_value = p__STRINGTOLD(value, endptr, str, flags);
+	TRACE("Leave __STRINGTOLD\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___STRINGTOLD(void);  /* ../dlls/msvcrt/string.c:908 */
@@ -3382,10 +3564,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___STRINGTOLD,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt____lc_codepage_func(void) /* ../dlls/msvcrt/locale.c:767 */
+WINAPI unsigned int wine32b_msvcrt____lc_codepage_func(void) /* ../dlls/msvcrt/locale.c:767 */
 {
+	unsigned int return_value;
 	TRACE("Enter ___lc_codepage_func\n");
-	return p___lc_codepage_func();
+	return_value = p___lc_codepage_func();
+	TRACE("Leave ___lc_codepage_func\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt____lc_codepage_func(void);  /* ../dlls/msvcrt/locale.c:767 */
@@ -3406,10 +3591,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt____lc_codepage_func,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt____lc_collate_cp_func(void) /* ../dlls/msvcrt/locale.c:775 */
+WINAPI int wine32b_msvcrt____lc_collate_cp_func(void) /* ../dlls/msvcrt/locale.c:775 */
 {
+	int return_value;
 	TRACE("Enter ___lc_collate_cp_func\n");
-	return p___lc_collate_cp_func();
+	return_value = p___lc_collate_cp_func();
+	TRACE("Leave ___lc_collate_cp_func\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt____lc_collate_cp_func(void);  /* ../dlls/msvcrt/locale.c:775 */
@@ -3430,10 +3618,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt____lc_collate_cp_func,
 	"ret \n"
 )
 
-extern WINAPI LCID* wine32b_msvcrt____lc_handle_func(void) /* ../dlls/msvcrt/locale.c:749 */
+WINAPI LCID* wine32b_msvcrt____lc_handle_func(void) /* ../dlls/msvcrt/locale.c:749 */
 {
+	LCID* return_value;
 	TRACE("Enter ___lc_handle_func\n");
-	return p___lc_handle_func();
+	return_value = p___lc_handle_func();
+	TRACE("Leave ___lc_handle_func\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt____lc_handle_func(void);  /* ../dlls/msvcrt/locale.c:749 */
@@ -3454,10 +3645,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt____lc_handle_func,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt____mb_cur_max_func(void) /* ../dlls/msvcrt/mbcs.c:183 */
+WINAPI int wine32b_msvcrt____mb_cur_max_func(void) /* ../dlls/msvcrt/mbcs.c:183 */
 {
+	int return_value;
 	TRACE("Enter ___mb_cur_max_func\n");
-	return p___mb_cur_max_func();
+	return_value = p___mb_cur_max_func();
+	TRACE("Leave ___mb_cur_max_func\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt____mb_cur_max_func(void);  /* ../dlls/msvcrt/mbcs.c:183 */
@@ -3478,10 +3672,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt____mb_cur_max_func,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt____setlc_active_func(void) /* ../dlls/msvcrt/data.c:315 */
+WINAPI unsigned int wine32b_msvcrt____setlc_active_func(void) /* ../dlls/msvcrt/data.c:315 */
 {
+	unsigned int return_value;
 	TRACE("Enter ___setlc_active_func\n");
-	return p___setlc_active_func();
+	return_value = p___setlc_active_func();
+	TRACE("Leave ___setlc_active_func\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt____setlc_active_func(void);  /* ../dlls/msvcrt/data.c:315 */
@@ -3502,10 +3699,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt____setlc_active_func,
 	"ret \n"
 )
 
-extern WINAPI unsigned int* wine32b_msvcrt____unguarded_readlc_active_add_func(void) /* ../dlls/msvcrt/data.c:307 */
+WINAPI unsigned int* wine32b_msvcrt____unguarded_readlc_active_add_func(void) /* ../dlls/msvcrt/data.c:307 */
 {
+	unsigned int* return_value;
 	TRACE("Enter ___unguarded_readlc_active_add_func\n");
-	return p___unguarded_readlc_active_add_func();
+	return_value = p___unguarded_readlc_active_add_func();
+	TRACE("Leave ___unguarded_readlc_active_add_func\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt____unguarded_readlc_active_add_func(void);  /* ../dlls/msvcrt/data.c:307 */
@@ -3526,10 +3726,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt____unguarded_readlc_active_add_func,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt___crtCompareStringA(LCID  lcid, DWORD  flags, char*  src1, int  len1, char*  src2, int  len2) /* ../dlls/msvcrt/locale.c:656 */
+WINAPI int wine32b_msvcrt___crtCompareStringA(LCID  lcid, DWORD  flags, char*  src1, int  len1, char*  src2, int  len2) /* ../dlls/msvcrt/locale.c:656 */
 {
+	int return_value;
 	TRACE("Enter __crtCompareStringA\n");
-	return p__crtCompareStringA(lcid, flags, src1, len1, src2, len2);
+	return_value = p__crtCompareStringA(lcid, flags, src1, len1, src2, len2);
+	TRACE("Leave __crtCompareStringA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___crtCompareStringA(void);  /* ../dlls/msvcrt/locale.c:656 */
@@ -3554,10 +3757,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___crtCompareStringA,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt___crtCompareStringW(LCID  lcid, DWORD  flags, MSVCRT_wchar_t*  src1, int  len1, MSVCRT_wchar_t*  src2, int  len2) /* ../dlls/msvcrt/locale.c:668 */
+WINAPI int wine32b_msvcrt___crtCompareStringW(LCID  lcid, DWORD  flags, MSVCRT_wchar_t*  src1, int  len1, MSVCRT_wchar_t*  src2, int  len2) /* ../dlls/msvcrt/locale.c:668 */
 {
+	int return_value;
 	TRACE("Enter __crtCompareStringW\n");
-	return p__crtCompareStringW(lcid, flags, src1, len1, src2, len2);
+	return_value = p__crtCompareStringW(lcid, flags, src1, len1, src2, len2);
+	TRACE("Leave __crtCompareStringW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___crtCompareStringW(void);  /* ../dlls/msvcrt/locale.c:668 */
@@ -3582,10 +3788,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___crtCompareStringW,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt___crtGetLocaleInfoW(LCID  lcid, LCTYPE  type, MSVCRT_wchar_t*  buffer, int  len) /* ../dlls/msvcrt/locale.c:680 */
+WINAPI int wine32b_msvcrt___crtGetLocaleInfoW(LCID  lcid, LCTYPE  type, MSVCRT_wchar_t*  buffer, int  len) /* ../dlls/msvcrt/locale.c:680 */
 {
+	int return_value;
 	TRACE("Enter __crtGetLocaleInfoW\n");
-	return p__crtGetLocaleInfoW(lcid, type, buffer, len);
+	return_value = p__crtGetLocaleInfoW(lcid, type, buffer, len);
+	TRACE("Leave __crtGetLocaleInfoW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___crtGetLocaleInfoW(void);  /* ../dlls/msvcrt/locale.c:680 */
@@ -3610,10 +3819,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___crtGetLocaleInfoW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_msvcrt___crtGetStringTypeW(DWORD  unk, DWORD  type, MSVCRT_wchar_t*  buffer, int  len, WORD*  out) /* ../dlls/msvcrt/locale.c:719 */
+WINAPI BOOL wine32b_msvcrt___crtGetStringTypeW(DWORD  unk, DWORD  type, MSVCRT_wchar_t*  buffer, int  len, WORD*  out) /* ../dlls/msvcrt/locale.c:719 */
 {
+	BOOL return_value;
 	TRACE("Enter __crtGetStringTypeW\n");
-	return p__crtGetStringTypeW(unk, type, buffer, len, out);
+	return_value = p__crtGetStringTypeW(unk, type, buffer, len, out);
+	TRACE("Leave __crtGetStringTypeW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___crtGetStringTypeW(void);  /* ../dlls/msvcrt/locale.c:719 */
@@ -3638,10 +3850,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___crtGetStringTypeW,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt___crtLCMapStringA(LCID  lcid, DWORD  mapflags, char*  src, int  srclen, char*  dst, int  dstlen, unsigned int  codepage, int  xflag) /* ../dlls/msvcrt/locale.c:629 */
+WINAPI int wine32b_msvcrt___crtLCMapStringA(LCID  lcid, DWORD  mapflags, char*  src, int  srclen, char*  dst, int  dstlen, unsigned int  codepage, int  xflag) /* ../dlls/msvcrt/locale.c:629 */
 {
+	int return_value;
 	TRACE("Enter __crtLCMapStringA\n");
-	return p__crtLCMapStringA(lcid, mapflags, src, srclen, dst, dstlen, codepage, xflag);
+	return_value = p__crtLCMapStringA(lcid, mapflags, src, srclen, dst, dstlen, codepage, xflag);
+	TRACE("Leave __crtLCMapStringA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___crtLCMapStringA(void);  /* ../dlls/msvcrt/locale.c:629 */
@@ -3666,10 +3881,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___crtLCMapStringA,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt___crtLCMapStringW(LCID  lcid, DWORD  mapflags, MSVCRT_wchar_t*  src, int  srclen, MSVCRT_wchar_t*  dst, int  dstlen, unsigned int  codepage, int  xflag) /* ../dlls/msvcrt/locale.c:644 */
+WINAPI int wine32b_msvcrt___crtLCMapStringW(LCID  lcid, DWORD  mapflags, MSVCRT_wchar_t*  src, int  srclen, MSVCRT_wchar_t*  dst, int  dstlen, unsigned int  codepage, int  xflag) /* ../dlls/msvcrt/locale.c:644 */
 {
+	int return_value;
 	TRACE("Enter __crtLCMapStringW\n");
-	return p__crtLCMapStringW(lcid, mapflags, src, srclen, dst, dstlen, codepage, xflag);
+	return_value = p__crtLCMapStringW(lcid, mapflags, src, srclen, dst, dstlen, codepage, xflag);
+	TRACE("Leave __crtLCMapStringW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___crtLCMapStringW(void);  /* ../dlls/msvcrt/locale.c:644 */
@@ -3694,10 +3912,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___crtLCMapStringW,
 	"ret \n"
 )
 
-extern WINAPI int* wine32b_msvcrt___p__daylight(void) /* ../dlls/msvcrt/time.c:880 */
+WINAPI int* wine32b_msvcrt___p__daylight(void) /* ../dlls/msvcrt/time.c:880 */
 {
+	int* return_value;
 	TRACE("Enter __p__daylight\n");
-	return p__p__daylight();
+	return_value = p__p__daylight();
+	TRACE("Leave __p__daylight\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p__daylight(void);  /* ../dlls/msvcrt/time.c:880 */
@@ -3718,10 +3939,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p__daylight,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT__onexit_t wine32b_msvcrt___dllonexit(MSVCRT__onexit_t  func, MSVCRT__onexit_t**  start, MSVCRT__onexit_t**  end) /* ../dlls/msvcrt/exit.c:148 */
+WINAPI MSVCRT__onexit_t wine32b_msvcrt___dllonexit(MSVCRT__onexit_t  func, MSVCRT__onexit_t**  start, MSVCRT__onexit_t**  end) /* ../dlls/msvcrt/exit.c:148 */
 {
+	MSVCRT__onexit_t return_value;
 	TRACE("Enter __dllonexit\n");
-	return p__dllonexit(func, start, end);
+	return_value = p__dllonexit(func, start, end);
+	TRACE("Leave __dllonexit\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___dllonexit(void);  /* ../dlls/msvcrt/exit.c:148 */
@@ -3745,10 +3969,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___dllonexit,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_ulong* wine32b_msvcrt___doserrno(void) /* ../dlls/msvcrt/errno.c:222 */
+WINAPI MSVCRT_ulong* wine32b_msvcrt___doserrno(void) /* ../dlls/msvcrt/errno.c:222 */
 {
+	MSVCRT_ulong* return_value;
 	TRACE("Enter __doserrno\n");
-	return p__doserrno();
+	return_value = p__doserrno();
+	TRACE("Leave __doserrno\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___doserrno(void);  /* ../dlls/msvcrt/errno.c:222 */
@@ -3769,10 +3996,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___doserrno,
 	"ret \n"
 )
 
-extern WINAPI int* wine32b_msvcrt___p__dstbias(void) /* ../dlls/msvcrt/time.c:888 */
+WINAPI int* wine32b_msvcrt___p__dstbias(void) /* ../dlls/msvcrt/time.c:888 */
 {
+	int* return_value;
 	TRACE("Enter __p__dstbias\n");
-	return p__p__dstbias();
+	return_value = p__p__dstbias();
+	TRACE("Leave __p__dstbias\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p__dstbias(void);  /* ../dlls/msvcrt/time.c:888 */
@@ -3793,10 +4023,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p__dstbias,
 	"ret \n"
 )
 
-extern WINAPI int* wine32b_msvcrt___fpecode(void) /* ../dlls/msvcrt/math.c:1023 */
+WINAPI int* wine32b_msvcrt___fpecode(void) /* ../dlls/msvcrt/math.c:1023 */
 {
+	int* return_value;
 	TRACE("Enter __fpecode\n");
-	return p__fpecode();
+	return_value = p__fpecode();
+	TRACE("Leave __fpecode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___fpecode(void);  /* ../dlls/msvcrt/math.c:1023 */
@@ -3817,10 +4050,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___fpecode,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt___getmainargs(int*  argc, char***  argv, char***  envp, int  expand_wildcards, int*  new_mode) /* ../dlls/msvcrt/data.c:459 */
+WINAPI int wine32b_msvcrt___getmainargs(int*  argc, char***  argv, char***  envp, int  expand_wildcards, int*  new_mode) /* ../dlls/msvcrt/data.c:459 */
 {
+	int return_value;
 	TRACE("Enter __getmainargs\n");
-	return p__getmainargs(argc, argv, envp, expand_wildcards, new_mode);
+	return_value = p__getmainargs(argc, argv, envp, expand_wildcards, new_mode);
+	TRACE("Leave __getmainargs\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___getmainargs(void);  /* ../dlls/msvcrt/data.c:459 */
@@ -3845,10 +4081,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___getmainargs,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_FILE* wine32b_msvcrt___iob_func(void) /* ../dlls/msvcrt/file.c:787 */
+WINAPI MSVCRT_FILE* wine32b_msvcrt___iob_func(void) /* ../dlls/msvcrt/file.c:787 */
 {
+	MSVCRT_FILE* return_value;
 	TRACE("Enter __iob_func\n");
-	return p__iob_func();
+	return_value = p__iob_func();
+	TRACE("Leave __iob_func\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___iob_func(void);  /* ../dlls/msvcrt/file.c:787 */
@@ -3869,10 +4108,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___iob_func,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt___isascii(int  c) /* ../dlls/msvcrt/ctype.c:314 */
+WINAPI int wine32b_msvcrt___isascii(int  c) /* ../dlls/msvcrt/ctype.c:314 */
 {
+	int return_value;
 	TRACE("Enter __isascii\n");
-	return p__isascii(c);
+	return_value = p__isascii(c);
+	TRACE("Leave __isascii\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___isascii(void);  /* ../dlls/msvcrt/ctype.c:314 */
@@ -3894,10 +4136,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___isascii,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt___iscsym(int  c) /* ../dlls/msvcrt/ctype.c:339 */
+WINAPI int wine32b_msvcrt___iscsym(int  c) /* ../dlls/msvcrt/ctype.c:339 */
 {
+	int return_value;
 	TRACE("Enter __iscsym\n");
-	return p__iscsym(c);
+	return_value = p__iscsym(c);
+	TRACE("Leave __iscsym\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___iscsym(void);  /* ../dlls/msvcrt/ctype.c:339 */
@@ -3919,10 +4164,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___iscsym,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt___iscsymf(int  c) /* ../dlls/msvcrt/ctype.c:347 */
+WINAPI int wine32b_msvcrt___iscsymf(int  c) /* ../dlls/msvcrt/ctype.c:347 */
 {
+	int return_value;
 	TRACE("Enter __iscsymf\n");
-	return p__iscsymf(c);
+	return_value = p__iscsymf(c);
+	TRACE("Leave __iscsymf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___iscsymf(void);  /* ../dlls/msvcrt/ctype.c:347 */
@@ -3944,10 +4192,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___iscsymf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt___lconv_init(void) /* ../dlls/msvcrt/locale.c:739 */
+WINAPI int wine32b_msvcrt___lconv_init(void) /* ../dlls/msvcrt/locale.c:739 */
 {
+	int return_value;
 	TRACE("Enter __lconv_init\n");
-	return p__lconv_init();
+	return_value = p__lconv_init();
+	TRACE("Leave __lconv_init\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___lconv_init(void);  /* ../dlls/msvcrt/locale.c:739 */
@@ -3968,10 +4219,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___lconv_init,
 	"ret \n"
 )
 
-extern WINAPI int* wine32b_msvcrt___p___argc(void) /* ../dlls/msvcrt/data.c:148 */
+WINAPI int* wine32b_msvcrt___p___argc(void) /* ../dlls/msvcrt/data.c:148 */
 {
+	int* return_value;
 	TRACE("Enter __p___argc\n");
-	return p__p___argc();
+	return_value = p__p___argc();
+	TRACE("Leave __p___argc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p___argc(void);  /* ../dlls/msvcrt/data.c:148 */
@@ -3992,10 +4246,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p___argc,
 	"ret \n"
 )
 
-extern WINAPI char*** wine32b_msvcrt___p___argv(void) /* ../dlls/msvcrt/data.c:250 */
+WINAPI char*** wine32b_msvcrt___p___argv(void) /* ../dlls/msvcrt/data.c:250 */
 {
+	char*** return_value;
 	TRACE("Enter __p___argv\n");
-	return p__p___argv();
+	return_value = p__p___argv();
+	TRACE("Leave __p___argv\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p___argv(void);  /* ../dlls/msvcrt/data.c:250 */
@@ -4016,10 +4273,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p___argv,
 	"ret \n"
 )
 
-extern WINAPI char*** wine32b_msvcrt___p___initenv(void) /* ../dlls/msvcrt/data.c:276 */
+WINAPI char*** wine32b_msvcrt___p___initenv(void) /* ../dlls/msvcrt/data.c:276 */
 {
+	char*** return_value;
 	TRACE("Enter __p___initenv\n");
-	return p__p___initenv();
+	return_value = p__p___initenv();
+	TRACE("Leave __p___initenv\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p___initenv(void);  /* ../dlls/msvcrt/data.c:276 */
@@ -4040,10 +4300,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p___initenv,
 	"ret \n"
 )
 
-extern WINAPI int* wine32b_msvcrt___p___mb_cur_max(void) /* ../dlls/msvcrt/mbcs.c:175 */
+WINAPI int* wine32b_msvcrt___p___mb_cur_max(void) /* ../dlls/msvcrt/mbcs.c:175 */
 {
+	int* return_value;
 	TRACE("Enter __p___mb_cur_max\n");
-	return p__p___mb_cur_max();
+	return_value = p__p___mb_cur_max();
+	TRACE("Leave __p___mb_cur_max\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p___mb_cur_max(void);  /* ../dlls/msvcrt/mbcs.c:175 */
@@ -4064,10 +4327,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p___mb_cur_max,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t*** wine32b_msvcrt___p___wargv(void) /* ../dlls/msvcrt/data.c:255 */
+WINAPI MSVCRT_wchar_t*** wine32b_msvcrt___p___wargv(void) /* ../dlls/msvcrt/data.c:255 */
 {
+	MSVCRT_wchar_t*** return_value;
 	TRACE("Enter __p___wargv\n");
-	return p__p___wargv();
+	return_value = p__p___wargv();
+	TRACE("Leave __p___wargv\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p___wargv(void);  /* ../dlls/msvcrt/data.c:255 */
@@ -4088,10 +4354,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p___wargv,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t*** wine32b_msvcrt___p___winitenv(void) /* ../dlls/msvcrt/data.c:281 */
+WINAPI MSVCRT_wchar_t*** wine32b_msvcrt___p___winitenv(void) /* ../dlls/msvcrt/data.c:281 */
 {
+	MSVCRT_wchar_t*** return_value;
 	TRACE("Enter __p___winitenv\n");
-	return p__p___winitenv();
+	return_value = p__p___winitenv();
+	TRACE("Leave __p___winitenv\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p___winitenv(void);  /* ../dlls/msvcrt/data.c:281 */
@@ -4112,10 +4381,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p___winitenv,
 	"ret \n"
 )
 
-extern WINAPI char** wine32b_msvcrt___p__acmdln(void) /* ../dlls/msvcrt/data.c:240 */
+WINAPI char** wine32b_msvcrt___p__acmdln(void) /* ../dlls/msvcrt/data.c:240 */
 {
+	char** return_value;
 	TRACE("Enter __p__acmdln\n");
-	return p__p__acmdln();
+	return_value = p__p__acmdln();
+	TRACE("Leave __p__acmdln\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p__acmdln(void);  /* ../dlls/msvcrt/data.c:240 */
@@ -4136,10 +4408,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p__acmdln,
 	"ret \n"
 )
 
-extern WINAPI unsigned int* wine32b_msvcrt___p__amblksiz(void) /* ../dlls/msvcrt/heap.c:511 */
+WINAPI unsigned int* wine32b_msvcrt___p__amblksiz(void) /* ../dlls/msvcrt/heap.c:511 */
 {
+	unsigned int* return_value;
 	TRACE("Enter __p__amblksiz\n");
-	return p__p__amblksiz();
+	return_value = p__p__amblksiz();
+	TRACE("Leave __p__amblksiz\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p__amblksiz(void);  /* ../dlls/msvcrt/heap.c:511 */
@@ -4160,10 +4435,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p__amblksiz,
 	"ret \n"
 )
 
-extern WINAPI unsigned int* wine32b_msvcrt___p__commode(void) /* ../dlls/msvcrt/data.c:153 */
+WINAPI unsigned int* wine32b_msvcrt___p__commode(void) /* ../dlls/msvcrt/data.c:153 */
 {
+	unsigned int* return_value;
 	TRACE("Enter __p__commode\n");
-	return p__p__commode();
+	return_value = p__p__commode();
+	TRACE("Leave __p__commode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p__commode(void);  /* ../dlls/msvcrt/data.c:153 */
@@ -4184,10 +4462,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p__commode,
 	"ret \n"
 )
 
-extern WINAPI char*** wine32b_msvcrt___p__environ(void) /* ../dlls/msvcrt/data.c:260 */
+WINAPI char*** wine32b_msvcrt___p__environ(void) /* ../dlls/msvcrt/data.c:260 */
 {
+	char*** return_value;
 	TRACE("Enter __p__environ\n");
-	return p__p__environ();
+	return_value = p__p__environ();
+	TRACE("Leave __p__environ\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p__environ(void);  /* ../dlls/msvcrt/data.c:260 */
@@ -4208,10 +4489,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p__environ,
 	"ret \n"
 )
 
-extern WINAPI int* wine32b_msvcrt___p__fmode(void) /* ../dlls/msvcrt/data.c:190 */
+WINAPI int* wine32b_msvcrt___p__fmode(void) /* ../dlls/msvcrt/data.c:190 */
 {
+	int* return_value;
 	TRACE("Enter __p__fmode\n");
-	return p__p__fmode();
+	return_value = p__p__fmode();
+	TRACE("Leave __p__fmode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p__fmode(void);  /* ../dlls/msvcrt/data.c:190 */
@@ -4232,10 +4516,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p__fmode,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt___p__mbctype(void) /* ../dlls/msvcrt/mbcs.c:167 */
+WINAPI unsigned char* wine32b_msvcrt___p__mbctype(void) /* ../dlls/msvcrt/mbcs.c:167 */
 {
+	unsigned char* return_value;
 	TRACE("Enter __p__mbctype\n");
-	return p__p__mbctype();
+	return_value = p__p__mbctype();
+	TRACE("Leave __p__mbctype\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p__mbctype(void);  /* ../dlls/msvcrt/mbcs.c:167 */
@@ -4256,10 +4543,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p__mbctype,
 	"ret \n"
 )
 
-extern WINAPI unsigned int* wine32b_msvcrt___p__osver(void) /* ../dlls/msvcrt/data.c:220 */
+WINAPI unsigned int* wine32b_msvcrt___p__osver(void) /* ../dlls/msvcrt/data.c:220 */
 {
+	unsigned int* return_value;
 	TRACE("Enter __p__osver\n");
-	return p__p__osver();
+	return_value = p__p__osver();
+	TRACE("Leave __p__osver\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p__osver(void);  /* ../dlls/msvcrt/data.c:220 */
@@ -4280,10 +4570,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p__osver,
 	"ret \n"
 )
 
-extern WINAPI unsigned short** wine32b_msvcrt___p__pctype(void) /* ../dlls/msvcrt/ctype.c:57 */
+WINAPI unsigned short** wine32b_msvcrt___p__pctype(void) /* ../dlls/msvcrt/ctype.c:57 */
 {
+	unsigned short** return_value;
 	TRACE("Enter __p__pctype\n");
-	return p__p__pctype();
+	return_value = p__p__pctype();
+	TRACE("Leave __p__pctype\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p__pctype(void);  /* ../dlls/msvcrt/ctype.c:57 */
@@ -4304,10 +4597,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p__pctype,
 	"ret \n"
 )
 
-extern WINAPI char** wine32b_msvcrt___p__pgmptr(void) /* ../dlls/msvcrt/data.c:159 */
+WINAPI char** wine32b_msvcrt___p__pgmptr(void) /* ../dlls/msvcrt/data.c:159 */
 {
+	char** return_value;
 	TRACE("Enter __p__pgmptr\n");
-	return p__p__pgmptr();
+	return_value = p__p__pgmptr();
+	TRACE("Leave __p__pgmptr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p__pgmptr(void);  /* ../dlls/msvcrt/data.c:159 */
@@ -4328,10 +4624,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p__pgmptr,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_long* wine32b_msvcrt___p__timezone(void) /* ../dlls/msvcrt/time.c:908 */
+WINAPI MSVCRT_long* wine32b_msvcrt___p__timezone(void) /* ../dlls/msvcrt/time.c:908 */
 {
+	MSVCRT_long* return_value;
 	TRACE("Enter __p__timezone\n");
-	return p__p__timezone();
+	return_value = p__p__timezone();
+	TRACE("Leave __p__timezone\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p__timezone(void);  /* ../dlls/msvcrt/time.c:908 */
@@ -4352,10 +4651,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p__timezone,
 	"ret \n"
 )
 
-extern WINAPI char** wine32b_msvcrt___p__tzname(void) /* ../dlls/msvcrt/time.c:955 */
+WINAPI char** wine32b_msvcrt___p__tzname(void) /* ../dlls/msvcrt/time.c:955 */
 {
+	char** return_value;
 	TRACE("Enter __p__tzname\n");
-	return p__p__tzname();
+	return_value = p__p__tzname();
+	TRACE("Leave __p__tzname\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p__tzname(void);  /* ../dlls/msvcrt/time.c:955 */
@@ -4376,10 +4678,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p__tzname,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t** wine32b_msvcrt___p__wcmdln(void) /* ../dlls/msvcrt/data.c:245 */
+WINAPI MSVCRT_wchar_t** wine32b_msvcrt___p__wcmdln(void) /* ../dlls/msvcrt/data.c:245 */
 {
+	MSVCRT_wchar_t** return_value;
 	TRACE("Enter __p__wcmdln\n");
-	return p__p__wcmdln();
+	return_value = p__p__wcmdln();
+	TRACE("Leave __p__wcmdln\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p__wcmdln(void);  /* ../dlls/msvcrt/data.c:245 */
@@ -4400,10 +4705,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p__wcmdln,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t*** wine32b_msvcrt___p__wenviron(void) /* ../dlls/msvcrt/data.c:268 */
+WINAPI MSVCRT_wchar_t*** wine32b_msvcrt___p__wenviron(void) /* ../dlls/msvcrt/data.c:268 */
 {
+	MSVCRT_wchar_t*** return_value;
 	TRACE("Enter __p__wenviron\n");
-	return p__p__wenviron();
+	return_value = p__p__wenviron();
+	TRACE("Leave __p__wenviron\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p__wenviron(void);  /* ../dlls/msvcrt/data.c:268 */
@@ -4424,10 +4732,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p__wenviron,
 	"ret \n"
 )
 
-extern WINAPI unsigned int* wine32b_msvcrt___p__winmajor(void) /* ../dlls/msvcrt/data.c:225 */
+WINAPI unsigned int* wine32b_msvcrt___p__winmajor(void) /* ../dlls/msvcrt/data.c:225 */
 {
+	unsigned int* return_value;
 	TRACE("Enter __p__winmajor\n");
-	return p__p__winmajor();
+	return_value = p__p__winmajor();
+	TRACE("Leave __p__winmajor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p__winmajor(void);  /* ../dlls/msvcrt/data.c:225 */
@@ -4448,10 +4759,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p__winmajor,
 	"ret \n"
 )
 
-extern WINAPI unsigned int* wine32b_msvcrt___p__winminor(void) /* ../dlls/msvcrt/data.c:230 */
+WINAPI unsigned int* wine32b_msvcrt___p__winminor(void) /* ../dlls/msvcrt/data.c:230 */
 {
+	unsigned int* return_value;
 	TRACE("Enter __p__winminor\n");
-	return p__p__winminor();
+	return_value = p__p__winminor();
+	TRACE("Leave __p__winminor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p__winminor(void);  /* ../dlls/msvcrt/data.c:230 */
@@ -4472,10 +4786,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p__winminor,
 	"ret \n"
 )
 
-extern WINAPI unsigned int* wine32b_msvcrt___p__winver(void) /* ../dlls/msvcrt/data.c:235 */
+WINAPI unsigned int* wine32b_msvcrt___p__winver(void) /* ../dlls/msvcrt/data.c:235 */
 {
+	unsigned int* return_value;
 	TRACE("Enter __p__winver\n");
-	return p__p__winver();
+	return_value = p__p__winver();
+	TRACE("Leave __p__winver\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p__winver(void);  /* ../dlls/msvcrt/data.c:235 */
@@ -4496,10 +4813,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p__winver,
 	"ret \n"
 )
 
-extern WINAPI WCHAR** wine32b_msvcrt___p__wpgmptr(void) /* ../dlls/msvcrt/data.c:164 */
+WINAPI WCHAR** wine32b_msvcrt___p__wpgmptr(void) /* ../dlls/msvcrt/data.c:164 */
 {
+	WCHAR** return_value;
 	TRACE("Enter __p__wpgmptr\n");
-	return p__p__wpgmptr();
+	return_value = p__p__wpgmptr();
+	TRACE("Leave __p__wpgmptr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___p__wpgmptr(void);  /* ../dlls/msvcrt/data.c:164 */
@@ -4520,10 +4840,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___p__wpgmptr,
 	"ret \n"
 )
 
-extern WINAPI unsigned short* wine32b_msvcrt___pctype_func(void) /* ../dlls/msvcrt/ctype.c:65 */
+WINAPI unsigned short* wine32b_msvcrt___pctype_func(void) /* ../dlls/msvcrt/ctype.c:65 */
 {
+	unsigned short* return_value;
 	TRACE("Enter __pctype_func\n");
-	return p__pctype_func();
+	return_value = p__pctype_func();
+	TRACE("Leave __pctype_func\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___pctype_func(void);  /* ../dlls/msvcrt/ctype.c:65 */
@@ -4544,10 +4867,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___pctype_func,
 	"ret \n"
 )
 
-extern WINAPI void** wine32b_msvcrt___pxcptinfoptrs(void) /* ../dlls/msvcrt/except.c:71 */
+WINAPI void** wine32b_msvcrt___pxcptinfoptrs(void) /* ../dlls/msvcrt/except.c:71 */
 {
+	void** return_value;
 	TRACE("Enter __pxcptinfoptrs\n");
-	return p__pxcptinfoptrs();
+	return_value = p__pxcptinfoptrs();
+	TRACE("Leave __pxcptinfoptrs\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___pxcptinfoptrs(void);  /* ../dlls/msvcrt/except.c:71 */
@@ -4568,10 +4894,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___pxcptinfoptrs,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt___set_app_type(int  app_type) /* ../dlls/msvcrt/data.c:652 */
+WINAPI void wine32b_msvcrt___set_app_type(int  app_type) /* ../dlls/msvcrt/data.c:652 */
 {
 	TRACE("Enter __set_app_type\n");
-	return p__set_app_type(app_type);
+	p__set_app_type(app_type);
+	TRACE("Leave __set_app_type\n");
 }
 
 extern WINAPI void wine32a_msvcrt___set_app_type(void);  /* ../dlls/msvcrt/data.c:652 */
@@ -4593,10 +4920,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___set_app_type,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt___setusermatherr(MSVCRT_matherr_func  func) /* ../dlls/msvcrt/math.c:105 */
+WINAPI void wine32b_msvcrt___setusermatherr(MSVCRT_matherr_func  func) /* ../dlls/msvcrt/math.c:105 */
 {
 	TRACE("Enter __setusermatherr\n");
-	return p__setusermatherr(func);
+	p__setusermatherr(func);
+	TRACE("Leave __setusermatherr\n");
 }
 
 extern WINAPI void wine32a_msvcrt___setusermatherr(void);  /* ../dlls/msvcrt/math.c:105 */
@@ -4618,10 +4946,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___setusermatherr,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt___strncnt(char*  str, MSVCRT_size_t  size) /* ../dlls/msvcrt/string.c:2064 */
+WINAPI MSVCRT_size_t wine32b_msvcrt___strncnt(char*  str, MSVCRT_size_t  size) /* ../dlls/msvcrt/string.c:2064 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter __strncnt\n");
-	return p__strncnt(str, size);
+	return_value = p__strncnt(str, size);
+	TRACE("Leave __strncnt\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___strncnt(void);  /* ../dlls/msvcrt/string.c:2064 */
@@ -4644,10 +4975,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___strncnt,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt___toascii(int  c) /* ../dlls/msvcrt/ctype.c:322 */
+WINAPI int wine32b_msvcrt___toascii(int  c) /* ../dlls/msvcrt/ctype.c:322 */
 {
+	int return_value;
 	TRACE("Enter __toascii\n");
-	return p__toascii(c);
+	return_value = p__toascii(c);
+	TRACE("Leave __toascii\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___toascii(void);  /* ../dlls/msvcrt/ctype.c:322 */
@@ -4669,10 +5003,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___toascii,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_msvcrt___uncaught_exception(void) /* ../dlls/msvcrt/except.c:293 */
+WINAPI BOOL wine32b_msvcrt___uncaught_exception(void) /* ../dlls/msvcrt/except.c:293 */
 {
+	BOOL return_value;
 	TRACE("Enter __uncaught_exception\n");
-	return p__uncaught_exception();
+	return_value = p__uncaught_exception();
+	TRACE("Leave __uncaught_exception\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___uncaught_exception(void);  /* ../dlls/msvcrt/except.c:293 */
@@ -4693,10 +5030,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___uncaught_exception,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt___unDName(char*  buffer, char*  mangled, int  buflen, malloc_func_t  memget, free_func_t  memfree, unsigned short  flags) /* ../dlls/msvcrt/undname.c:1647 */
+WINAPI char* wine32b_msvcrt___unDName(char*  buffer, char*  mangled, int  buflen, malloc_func_t  memget, free_func_t  memfree, unsigned short  flags) /* ../dlls/msvcrt/undname.c:1647 */
 {
+	char* return_value;
 	TRACE("Enter __unDName\n");
-	return p__unDName(buffer, mangled, buflen, memget, memfree, flags);
+	return_value = p__unDName(buffer, mangled, buflen, memget, memfree, flags);
+	TRACE("Leave __unDName\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___unDName(void);  /* ../dlls/msvcrt/undname.c:1647 */
@@ -4721,10 +5061,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___unDName,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt___unDNameEx(char*  buffer, char*  mangled, int  buflen, malloc_func_t  memget, free_func_t  memfree, void*  unknown, unsigned short  flags) /* ../dlls/msvcrt/undname.c:1600 */
+WINAPI char* wine32b_msvcrt___unDNameEx(char*  buffer, char*  mangled, int  buflen, malloc_func_t  memget, free_func_t  memfree, void*  unknown, unsigned short  flags) /* ../dlls/msvcrt/undname.c:1600 */
 {
+	char* return_value;
 	TRACE("Enter __unDNameEx\n");
-	return p__unDNameEx(buffer, mangled, buflen, memget, memfree, unknown, flags);
+	return_value = p__unDNameEx(buffer, mangled, buflen, memget, memfree, unknown, flags);
+	TRACE("Leave __unDNameEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___unDNameEx(void);  /* ../dlls/msvcrt/undname.c:1600 */
@@ -4749,10 +5092,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___unDNameEx,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt___wcserror(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/errno.c:437 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt___wcserror(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/errno.c:437 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter __wcserror\n");
-	return p__wcserror(str);
+	return_value = p__wcserror(str);
+	TRACE("Leave __wcserror\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___wcserror(void);  /* ../dlls/msvcrt/errno.c:437 */
@@ -4774,10 +5120,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___wcserror,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt___wcserror_s(MSVCRT_wchar_t*  buffer, MSVCRT_size_t  nc, MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/errno.c:404 */
+WINAPI int wine32b_msvcrt___wcserror_s(MSVCRT_wchar_t*  buffer, MSVCRT_size_t  nc, MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/errno.c:404 */
 {
+	int return_value;
 	TRACE("Enter __wcserror_s\n");
-	return p__wcserror_s(buffer, nc, str);
+	return_value = p__wcserror_s(buffer, nc, str);
+	TRACE("Leave __wcserror_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___wcserror_s(void);  /* ../dlls/msvcrt/errno.c:404 */
@@ -4801,10 +5150,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___wcserror_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt___wgetmainargs(int*  argc, MSVCRT_wchar_t***  wargv, MSVCRT_wchar_t***  wenvp, int  expand_wildcards, int*  new_mode) /* ../dlls/msvcrt/data.c:569 */
+WINAPI int wine32b_msvcrt___wgetmainargs(int*  argc, MSVCRT_wchar_t***  wargv, MSVCRT_wchar_t***  wenvp, int  expand_wildcards, int*  new_mode) /* ../dlls/msvcrt/data.c:569 */
 {
+	int return_value;
 	TRACE("Enter __wgetmainargs\n");
-	return p__wgetmainargs(argc, wargv, wenvp, expand_wildcards, new_mode);
+	return_value = p__wgetmainargs(argc, wargv, wenvp, expand_wildcards, new_mode);
+	TRACE("Leave __wgetmainargs\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt___wgetmainargs(void);  /* ../dlls/msvcrt/data.c:569 */
@@ -4829,10 +5181,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt___wgetmainargs,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__abnormal_termination(void) /* ../dlls/msvcrt/except.c:284 */
+WINAPI int wine32b_msvcrt__abnormal_termination(void) /* ../dlls/msvcrt/except.c:284 */
 {
+	int return_value;
 	TRACE("Enter _abnormal_termination\n");
-	return p_abnormal_termination();
+	return_value = p_abnormal_termination();
+	TRACE("Leave _abnormal_termination\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__abnormal_termination(void);  /* ../dlls/msvcrt/except.c:284 */
@@ -4853,10 +5208,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__abnormal_termination,
 	"ret \n"
 )
 
-extern WINAPI long wine32b_msvcrt__abs64(long  n) /* ../dlls/msvcrt/math.c:816 */
+WINAPI long wine32b_msvcrt__abs64(long  n) /* ../dlls/msvcrt/math.c:816 */
 {
+	long return_value;
 	TRACE("Enter _abs64\n");
-	return p_abs64(n);
+	return_value = p_abs64(n);
+	TRACE("Leave _abs64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__abs64(void);  /* ../dlls/msvcrt/math.c:816 */
@@ -4878,10 +5236,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__abs64,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__access(char*  filename, int  mode) /* ../dlls/msvcrt/file.c:805 */
+WINAPI int wine32b_msvcrt__access(char*  filename, int  mode) /* ../dlls/msvcrt/file.c:805 */
 {
+	int return_value;
 	TRACE("Enter _access\n");
-	return p_access(filename, mode);
+	return_value = p_access(filename, mode);
+	TRACE("Leave _access\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__access(void);  /* ../dlls/msvcrt/file.c:805 */
@@ -4904,10 +5265,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__access,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__access_s(char*  filename, int  mode) /* ../dlls/msvcrt/file.c:827 */
+WINAPI int wine32b_msvcrt__access_s(char*  filename, int  mode) /* ../dlls/msvcrt/file.c:827 */
 {
+	int return_value;
 	TRACE("Enter _access_s\n");
-	return p_access_s(filename, mode);
+	return_value = p_access_s(filename, mode);
+	TRACE("Leave _access_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__access_s(void);  /* ../dlls/msvcrt/file.c:827 */
@@ -4930,10 +5294,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__access_s,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__aligned_free(void*  memblock) /* ../dlls/msvcrt/heap.c:550 */
+WINAPI void wine32b_msvcrt__aligned_free(void*  memblock) /* ../dlls/msvcrt/heap.c:550 */
 {
 	TRACE("Enter _aligned_free\n");
-	return p_aligned_free(memblock);
+	p_aligned_free(memblock);
+	TRACE("Leave _aligned_free\n");
 }
 
 extern WINAPI void wine32a_msvcrt__aligned_free(void);  /* ../dlls/msvcrt/heap.c:550 */
@@ -4955,10 +5320,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__aligned_free,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt__aligned_malloc(MSVCRT_size_t  size, MSVCRT_size_t  alignment) /* ../dlls/msvcrt/heap.c:607 */
+WINAPI void* wine32b_msvcrt__aligned_malloc(MSVCRT_size_t  size, MSVCRT_size_t  alignment) /* ../dlls/msvcrt/heap.c:607 */
 {
+	void* return_value;
 	TRACE("Enter _aligned_malloc\n");
-	return p_aligned_malloc(size, alignment);
+	return_value = p_aligned_malloc(size, alignment);
+	TRACE("Leave _aligned_malloc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__aligned_malloc(void);  /* ../dlls/msvcrt/heap.c:607 */
@@ -4981,10 +5349,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__aligned_malloc,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt__aligned_offset_malloc(MSVCRT_size_t  size, MSVCRT_size_t  alignment, MSVCRT_size_t  offset) /* ../dlls/msvcrt/heap.c:564 */
+WINAPI void* wine32b_msvcrt__aligned_offset_malloc(MSVCRT_size_t  size, MSVCRT_size_t  alignment, MSVCRT_size_t  offset) /* ../dlls/msvcrt/heap.c:564 */
 {
+	void* return_value;
 	TRACE("Enter _aligned_offset_malloc\n");
-	return p_aligned_offset_malloc(size, alignment, offset);
+	return_value = p_aligned_offset_malloc(size, alignment, offset);
+	TRACE("Leave _aligned_offset_malloc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__aligned_offset_malloc(void);  /* ../dlls/msvcrt/heap.c:564 */
@@ -5008,10 +5379,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__aligned_offset_malloc,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt__aligned_offset_realloc(void*  memblock, MSVCRT_size_t  size, MSVCRT_size_t  alignment, MSVCRT_size_t  offset) /* ../dlls/msvcrt/heap.c:616 */
+WINAPI void* wine32b_msvcrt__aligned_offset_realloc(void*  memblock, MSVCRT_size_t  size, MSVCRT_size_t  alignment, MSVCRT_size_t  offset) /* ../dlls/msvcrt/heap.c:616 */
 {
+	void* return_value;
 	TRACE("Enter _aligned_offset_realloc\n");
-	return p_aligned_offset_realloc(memblock, size, alignment, offset);
+	return_value = p_aligned_offset_realloc(memblock, size, alignment, offset);
+	TRACE("Leave _aligned_offset_realloc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__aligned_offset_realloc(void);  /* ../dlls/msvcrt/heap.c:616 */
@@ -5036,10 +5410,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__aligned_offset_realloc,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt__aligned_realloc(void*  memblock, MSVCRT_size_t  size, MSVCRT_size_t  alignment) /* ../dlls/msvcrt/heap.c:731 */
+WINAPI void* wine32b_msvcrt__aligned_realloc(void*  memblock, MSVCRT_size_t  size, MSVCRT_size_t  alignment) /* ../dlls/msvcrt/heap.c:731 */
 {
+	void* return_value;
 	TRACE("Enter _aligned_realloc\n");
-	return p_aligned_realloc(memblock, size, alignment);
+	return_value = p_aligned_realloc(memblock, size, alignment);
+	TRACE("Leave _aligned_realloc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__aligned_realloc(void);  /* ../dlls/msvcrt/heap.c:731 */
@@ -5063,10 +5440,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__aligned_realloc,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__amsg_exit(int  errnum) /* ../dlls/msvcrt/exit.c:232 */
+WINAPI void wine32b_msvcrt__amsg_exit(int  errnum) /* ../dlls/msvcrt/exit.c:232 */
 {
 	TRACE("Enter _amsg_exit\n");
-	return p_amsg_exit(errnum);
+	p_amsg_exit(errnum);
+	TRACE("Leave _amsg_exit\n");
 }
 
 extern WINAPI void wine32a_msvcrt__amsg_exit(void);  /* ../dlls/msvcrt/exit.c:232 */
@@ -5088,10 +5466,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__amsg_exit,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__assert(char*  str, char*  file, unsigned int  line) /* ../dlls/msvcrt/exit.c:317 */
+WINAPI void wine32b_msvcrt__assert(char*  str, char*  file, unsigned int  line) /* ../dlls/msvcrt/exit.c:317 */
 {
 	TRACE("Enter _assert\n");
-	return p_assert(str, file, line);
+	p_assert(str, file, line);
+	TRACE("Leave _assert\n");
 }
 
 extern WINAPI void wine32a_msvcrt__assert(void);  /* ../dlls/msvcrt/exit.c:317 */
@@ -5115,10 +5494,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__assert,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__atodbl(MSVCRT__CRT_DOUBLE*  value, char*  str) /* ../dlls/msvcrt/string.c:601 */
+WINAPI int wine32b_msvcrt__atodbl(MSVCRT__CRT_DOUBLE*  value, char*  str) /* ../dlls/msvcrt/string.c:601 */
 {
+	int return_value;
 	TRACE("Enter _atodbl\n");
-	return p_atodbl(value, str);
+	return_value = p_atodbl(value, str);
+	TRACE("Leave _atodbl\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__atodbl(void);  /* ../dlls/msvcrt/string.c:601 */
@@ -5141,10 +5523,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__atodbl,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__atodbl_l(MSVCRT__CRT_DOUBLE*  value, char*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:586 */
+WINAPI int wine32b_msvcrt__atodbl_l(MSVCRT__CRT_DOUBLE*  value, char*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:586 */
 {
+	int return_value;
 	TRACE("Enter _atodbl_l\n");
-	return p_atodbl_l(value, str, locale);
+	return_value = p_atodbl_l(value, str, locale);
+	TRACE("Leave _atodbl_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__atodbl_l(void);  /* ../dlls/msvcrt/string.c:586 */
@@ -5168,10 +5553,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__atodbl_l,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt__atof_l(char*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:553 */
+WINAPI double wine32b_msvcrt__atof_l(char*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:553 */
 {
+	double return_value;
 	TRACE("Enter _atof_l\n");
-	return p_atof_l(str, locale);
+	return_value = p_atof_l(str, locale);
+	TRACE("Leave _atof_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__atof_l(void);  /* ../dlls/msvcrt/string.c:553 */
@@ -5194,10 +5582,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__atof_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__atoflt_l(MSVCRT__CRT_FLOAT*  value, char*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:561 */
+WINAPI int wine32b_msvcrt__atoflt_l(MSVCRT__CRT_FLOAT*  value, char*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:561 */
 {
+	int return_value;
 	TRACE("Enter _atoflt_l\n");
-	return p_atoflt_l(value, str, locale);
+	return_value = p_atoflt_l(value, str, locale);
+	TRACE("Leave _atoflt_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__atoflt_l(void);  /* ../dlls/msvcrt/string.c:561 */
@@ -5221,10 +5612,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__atoflt_l,
 	"ret \n"
 )
 
-extern WINAPI long wine32b_msvcrt__atoi64(char*  str) /* ../dlls/msvcrt/string.c:1087 */
+WINAPI long wine32b_msvcrt__atoi64(char*  str) /* ../dlls/msvcrt/string.c:1087 */
 {
+	long return_value;
 	TRACE("Enter _atoi64\n");
-	return p_atoi64(str);
+	return_value = p_atoi64(str);
+	TRACE("Leave _atoi64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__atoi64(void);  /* ../dlls/msvcrt/string.c:1087 */
@@ -5246,10 +5640,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__atoi64,
 	"ret \n"
 )
 
-extern WINAPI long wine32b_msvcrt__atoi64_l(char*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:1079 */
+WINAPI long wine32b_msvcrt__atoi64_l(char*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:1079 */
 {
+	long return_value;
 	TRACE("Enter _atoi64_l\n");
-	return p_atoi64_l(str, locale);
+	return_value = p_atoi64_l(str, locale);
+	TRACE("Leave _atoi64_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__atoi64_l(void);  /* ../dlls/msvcrt/string.c:1079 */
@@ -5272,10 +5669,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__atoi64_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__atoi_l(char*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:1027 */
+WINAPI int wine32b_msvcrt__atoi_l(char*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:1027 */
 {
+	int return_value;
 	TRACE("Enter _atoi_l\n");
-	return p_atoi_l(str, locale);
+	return_value = p_atoi_l(str, locale);
+	TRACE("Leave _atoi_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__atoi_l(void);  /* ../dlls/msvcrt/string.c:1027 */
@@ -5298,10 +5698,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__atoi_l,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_long wine32b_msvcrt__atol_l(char*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:1095 */
+WINAPI MSVCRT_long wine32b_msvcrt__atol_l(char*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:1095 */
 {
+	MSVCRT_long return_value;
 	TRACE("Enter _atol_l\n");
-	return p_atol_l(str, locale);
+	return_value = p_atol_l(str, locale);
+	TRACE("Leave _atol_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__atol_l(void);  /* ../dlls/msvcrt/string.c:1095 */
@@ -5324,10 +5727,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__atol_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__atoldbl(MSVCRT__LDOUBLE*  value, char*  str) /* ../dlls/msvcrt/string.c:891 */
+WINAPI int wine32b_msvcrt__atoldbl(MSVCRT__LDOUBLE*  value, char*  str) /* ../dlls/msvcrt/string.c:891 */
 {
+	int return_value;
 	TRACE("Enter _atoldbl\n");
-	return p_atoldbl(value, str);
+	return_value = p_atoldbl(value, str);
+	TRACE("Leave _atoldbl\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__atoldbl(void);  /* ../dlls/msvcrt/string.c:891 */
@@ -5350,10 +5756,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__atoldbl,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__beep(unsigned int  freq, unsigned int  duration) /* ../dlls/msvcrt/misc.c:39 */
+WINAPI void wine32b_msvcrt__beep(unsigned int  freq, unsigned int  duration) /* ../dlls/msvcrt/misc.c:39 */
 {
 	TRACE("Enter _beep\n");
-	return p_beep(freq, duration);
+	p_beep(freq, duration);
+	TRACE("Leave _beep\n");
 }
 
 extern WINAPI void wine32a_msvcrt__beep(void);  /* ../dlls/msvcrt/misc.c:39 */
@@ -5376,10 +5783,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__beep,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_uintptr_t wine32b_msvcrt__beginthread(MSVCRT__beginthread_start_routine_t  start_address, unsigned int  stack_size, void*  arglist) /* ../dlls/msvcrt/thread.c:111 */
+WINAPI MSVCRT_uintptr_t wine32b_msvcrt__beginthread(MSVCRT__beginthread_start_routine_t  start_address, unsigned int  stack_size, void*  arglist) /* ../dlls/msvcrt/thread.c:111 */
 {
+	MSVCRT_uintptr_t return_value;
 	TRACE("Enter _beginthread\n");
-	return p_beginthread(start_address, stack_size, arglist);
+	return_value = p_beginthread(start_address, stack_size, arglist);
+	TRACE("Leave _beginthread\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__beginthread(void);  /* ../dlls/msvcrt/thread.c:111 */
@@ -5403,10 +5813,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__beginthread,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_uintptr_t wine32b_msvcrt__beginthreadex(void*  security, unsigned int  stack_size, MSVCRT__beginthreadex_start_routine_t  start_address, void*  arglist, unsigned int  initflag, unsigned int*  thrdaddr) /* ../dlls/msvcrt/thread.c:151 */
+WINAPI MSVCRT_uintptr_t wine32b_msvcrt__beginthreadex(void*  security, unsigned int  stack_size, MSVCRT__beginthreadex_start_routine_t  start_address, void*  arglist, unsigned int  initflag, unsigned int*  thrdaddr) /* ../dlls/msvcrt/thread.c:151 */
 {
+	MSVCRT_uintptr_t return_value;
 	TRACE("Enter _beginthreadex\n");
-	return p_beginthreadex(security, stack_size, start_address, arglist, initflag, thrdaddr);
+	return_value = p_beginthreadex(security, stack_size, start_address, arglist, initflag, thrdaddr);
+	TRACE("Leave _beginthreadex\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__beginthreadex(void);  /* ../dlls/msvcrt/thread.c:151 */
@@ -5431,10 +5844,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__beginthreadex,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__c_exit(void) /* ../dlls/msvcrt/exit.c:330 */
+WINAPI void wine32b_msvcrt__c_exit(void) /* ../dlls/msvcrt/exit.c:330 */
 {
 	TRACE("Enter _c_exit\n");
-	return p_c_exit();
+	p_c_exit();
+	TRACE("Leave _c_exit\n");
 }
 
 extern WINAPI void wine32a_msvcrt__c_exit(void);  /* ../dlls/msvcrt/exit.c:330 */
@@ -5455,10 +5869,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__c_exit,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt__cabs(struct MSVCRT__complex  num) /* ../dlls/msvcrt/math.c:1047 */
+WINAPI double wine32b_msvcrt__cabs(struct MSVCRT__complex  num) /* ../dlls/msvcrt/math.c:1047 */
 {
+	double return_value;
 	TRACE("Enter _cabs\n");
-	return p_cabs(num);
+	return_value = p_cabs(num);
+	TRACE("Leave _cabs\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__cabs(void);  /* ../dlls/msvcrt/math.c:1047 */
@@ -5480,10 +5897,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__cabs,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__callnewh(MSVCRT_size_t  size) /* ../dlls/msvcrt/heap.c:236 */
+WINAPI int wine32b_msvcrt__callnewh(MSVCRT_size_t  size) /* ../dlls/msvcrt/heap.c:236 */
 {
+	int return_value;
 	TRACE("Enter _callnewh\n");
-	return p_callnewh(size);
+	return_value = p_callnewh(size);
+	TRACE("Leave _callnewh\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__callnewh(void);  /* ../dlls/msvcrt/heap.c:236 */
@@ -5505,10 +5925,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__callnewh,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__cexit(void) /* ../dlls/msvcrt/exit.c:339 */
+WINAPI void wine32b_msvcrt__cexit(void) /* ../dlls/msvcrt/exit.c:339 */
 {
 	TRACE("Enter _cexit\n");
-	return p_cexit();
+	p_cexit();
+	TRACE("Leave _cexit\n");
 }
 
 extern WINAPI void wine32a_msvcrt__cexit(void);  /* ../dlls/msvcrt/exit.c:339 */
@@ -5529,10 +5950,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__cexit,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__cgets(char*  str) /* ../dlls/msvcrt/console.c:384 */
+WINAPI char* wine32b_msvcrt__cgets(char*  str) /* ../dlls/msvcrt/console.c:384 */
 {
+	char* return_value;
 	TRACE("Enter _cgets\n");
-	return p_cgets(str);
+	return_value = p_cgets(str);
+	TRACE("Leave _cgets\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__cgets(void);  /* ../dlls/msvcrt/console.c:384 */
@@ -5554,10 +5978,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__cgets,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__chdir(char*  newdir) /* ../dlls/msvcrt/dir.c:253 */
+WINAPI int wine32b_msvcrt__chdir(char*  newdir) /* ../dlls/msvcrt/dir.c:253 */
 {
+	int return_value;
 	TRACE("Enter _chdir\n");
-	return p_chdir(newdir);
+	return_value = p_chdir(newdir);
+	TRACE("Leave _chdir\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__chdir(void);  /* ../dlls/msvcrt/dir.c:253 */
@@ -5579,10 +6006,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__chdir,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__chdrive(int  newdrive) /* ../dlls/msvcrt/dir.c:293 */
+WINAPI int wine32b_msvcrt__chdrive(int  newdrive) /* ../dlls/msvcrt/dir.c:293 */
 {
+	int return_value;
 	TRACE("Enter _chdrive\n");
-	return p_chdrive(newdrive);
+	return_value = p_chdrive(newdrive);
+	TRACE("Leave _chdrive\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__chdrive(void);  /* ../dlls/msvcrt/dir.c:293 */
@@ -5604,10 +6034,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__chdrive,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt__chgsign(double  num) /* ../dlls/msvcrt/math.c:1055 */
+WINAPI double wine32b_msvcrt__chgsign(double  num) /* ../dlls/msvcrt/math.c:1055 */
 {
+	double return_value;
 	TRACE("Enter _chgsign\n");
-	return p_chgsign(num);
+	return_value = p_chgsign(num);
+	TRACE("Leave _chgsign\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__chgsign(void);  /* ../dlls/msvcrt/math.c:1055 */
@@ -5629,10 +6062,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__chgsign,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt__chgsignf(float  num) /* ../dlls/msvcrt/math.c:136 */
+WINAPI float wine32b_msvcrt__chgsignf(float  num) /* ../dlls/msvcrt/math.c:136 */
 {
+	float return_value;
 	TRACE("Enter _chgsignf\n");
-	return p_chgsignf(num);
+	return_value = p_chgsignf(num);
+	TRACE("Leave _chgsignf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__chgsignf(void);  /* ../dlls/msvcrt/math.c:136 */
@@ -5654,10 +6090,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__chgsignf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__chmod(char*  path, int  flags) /* ../dlls/msvcrt/file.c:875 */
+WINAPI int wine32b_msvcrt__chmod(char*  path, int  flags) /* ../dlls/msvcrt/file.c:875 */
 {
+	int return_value;
 	TRACE("Enter _chmod\n");
-	return p_chmod(path, flags);
+	return_value = p_chmod(path, flags);
+	TRACE("Leave _chmod\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__chmod(void);  /* ../dlls/msvcrt/file.c:875 */
@@ -5680,10 +6119,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__chmod,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__chsize(int  fd, MSVCRT_long  size) /* ../dlls/msvcrt/file.c:1488 */
+WINAPI int wine32b_msvcrt__chsize(int  fd, MSVCRT_long  size) /* ../dlls/msvcrt/file.c:1488 */
 {
+	int return_value;
 	TRACE("Enter _chsize\n");
-	return p_chsize(fd, size);
+	return_value = p_chsize(fd, size);
+	TRACE("Leave _chsize\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__chsize(void);  /* ../dlls/msvcrt/file.c:1488 */
@@ -5706,10 +6148,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__chsize,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__chsize_s(int  fd, long  size) /* ../dlls/msvcrt/file.c:1451 */
+WINAPI int wine32b_msvcrt__chsize_s(int  fd, long  size) /* ../dlls/msvcrt/file.c:1451 */
 {
+	int return_value;
 	TRACE("Enter _chsize_s\n");
-	return p_chsize_s(fd, size);
+	return_value = p_chsize_s(fd, size);
+	TRACE("Leave _chsize_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__chsize_s(void);  /* ../dlls/msvcrt/file.c:1451 */
@@ -5732,10 +6177,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__chsize_s,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt__clearfp(void) /* ../dlls/msvcrt/math.c:988 */
+WINAPI unsigned int wine32b_msvcrt__clearfp(void) /* ../dlls/msvcrt/math.c:988 */
 {
+	unsigned int return_value;
 	TRACE("Enter _clearfp\n");
-	return p_clearfp();
+	return_value = p_clearfp();
+	TRACE("Leave _clearfp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__clearfp(void);  /* ../dlls/msvcrt/math.c:988 */
@@ -5756,10 +6204,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__clearfp,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__close(int  fd) /* ../dlls/msvcrt/file.c:1049 */
+WINAPI int wine32b_msvcrt__close(int  fd) /* ../dlls/msvcrt/file.c:1049 */
 {
+	int return_value;
 	TRACE("Enter _close\n");
-	return p_close(fd);
+	return_value = p_close(fd);
+	TRACE("Leave _close\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__close(void);  /* ../dlls/msvcrt/file.c:1049 */
@@ -5781,10 +6232,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__close,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__commit(int  fd) /* ../dlls/msvcrt/file.c:939 */
+WINAPI int wine32b_msvcrt__commit(int  fd) /* ../dlls/msvcrt/file.c:939 */
 {
+	int return_value;
 	TRACE("Enter _commit\n");
-	return p_commit(fd);
+	return_value = p_commit(fd);
+	TRACE("Leave _commit\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__commit(void);  /* ../dlls/msvcrt/file.c:939 */
@@ -5806,10 +6260,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__commit,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt__control87(unsigned int  newval, unsigned int  mask) /* ../dlls/msvcrt/math.c:1201 */
+WINAPI unsigned int wine32b_msvcrt__control87(unsigned int  newval, unsigned int  mask) /* ../dlls/msvcrt/math.c:1201 */
 {
+	unsigned int return_value;
 	TRACE("Enter _control87\n");
-	return p_control87(newval, mask);
+	return_value = p_control87(newval, mask);
+	TRACE("Leave _control87\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__control87(void);  /* ../dlls/msvcrt/math.c:1201 */
@@ -5832,10 +6289,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__control87,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt__controlfp(unsigned int  newval, unsigned int  mask) /* ../dlls/msvcrt/math.c:1219 */
+WINAPI unsigned int wine32b_msvcrt__controlfp(unsigned int  newval, unsigned int  mask) /* ../dlls/msvcrt/math.c:1219 */
 {
+	unsigned int return_value;
 	TRACE("Enter _controlfp\n");
-	return p_controlfp(newval, mask);
+	return_value = p_controlfp(newval, mask);
+	TRACE("Leave _controlfp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__controlfp(void);  /* ../dlls/msvcrt/math.c:1219 */
@@ -5858,10 +6318,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__controlfp,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__controlfp_s(unsigned int*  cur, unsigned int  newval, unsigned int  mask) /* ../dlls/msvcrt/math.c:1235 */
+WINAPI int wine32b_msvcrt__controlfp_s(unsigned int*  cur, unsigned int  newval, unsigned int  mask) /* ../dlls/msvcrt/math.c:1235 */
 {
+	int return_value;
 	TRACE("Enter _controlfp_s\n");
-	return p_controlfp_s(cur, newval, mask);
+	return_value = p_controlfp_s(cur, newval, mask);
+	TRACE("Leave _controlfp_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__controlfp_s(void);  /* ../dlls/msvcrt/math.c:1235 */
@@ -5885,10 +6348,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__controlfp_s,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt__copysign(double  num, double  sign) /* ../dlls/msvcrt/math.c:1314 */
+WINAPI double wine32b_msvcrt__copysign(double  num, double  sign) /* ../dlls/msvcrt/math.c:1314 */
 {
+	double return_value;
 	TRACE("Enter _copysign\n");
-	return p_copysign(num, sign);
+	return_value = p_copysign(num, sign);
+	TRACE("Leave _copysign\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__copysign(void);  /* ../dlls/msvcrt/math.c:1314 */
@@ -5911,10 +6377,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__copysign,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt__copysignf(float  num, float  sign) /* ../dlls/msvcrt/math.c:145 */
+WINAPI float wine32b_msvcrt__copysignf(float  num, float  sign) /* ../dlls/msvcrt/math.c:145 */
 {
+	float return_value;
 	TRACE("Enter _copysignf\n");
-	return p_copysignf(num, sign);
+	return_value = p_copysignf(num, sign);
+	TRACE("Leave _copysignf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__copysignf(void);  /* ../dlls/msvcrt/math.c:145 */
@@ -5937,10 +6406,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__copysignf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__cprintf(char*  format) /* ../dlls/msvcrt/console.c:528 */
+WINAPI int wine32b_msvcrt__cprintf(char*  format) /* ../dlls/msvcrt/console.c:528 */
 {
+	int return_value;
 	TRACE("Enter _cprintf\n");
-	return p_cprintf(format);
+	return_value = p_cprintf(format);
+	TRACE("Leave _cprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__cprintf(void);  /* ../dlls/msvcrt/console.c:528 */
@@ -5962,10 +6434,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__cprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__cputs(char*  str) /* ../dlls/msvcrt/console.c:70 */
+WINAPI int wine32b_msvcrt__cputs(char*  str) /* ../dlls/msvcrt/console.c:70 */
 {
+	int return_value;
 	TRACE("Enter _cputs\n");
-	return p_cputs(str);
+	return_value = p_cputs(str);
+	TRACE("Leave _cputs\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__cputs(void);  /* ../dlls/msvcrt/console.c:70 */
@@ -5987,10 +6462,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__cputs,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__cputws(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/console.c:89 */
+WINAPI int wine32b_msvcrt__cputws(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/console.c:89 */
 {
+	int return_value;
 	TRACE("Enter _cputws\n");
-	return p_cputws(str);
+	return_value = p_cputws(str);
+	TRACE("Leave _cputws\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__cputws(void);  /* ../dlls/msvcrt/console.c:89 */
@@ -6012,10 +6490,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__cputws,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__creat(char*  path, int  pmode) /* ../dlls/msvcrt/file.c:2485 */
+WINAPI int wine32b_msvcrt__creat(char*  path, int  pmode) /* ../dlls/msvcrt/file.c:2485 */
 {
+	int return_value;
 	TRACE("Enter _creat\n");
-	return p_creat(path, pmode);
+	return_value = p_creat(path, pmode);
+	TRACE("Leave _creat\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__creat(void);  /* ../dlls/msvcrt/file.c:2485 */
@@ -6038,10 +6519,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__creat,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT__locale_t wine32b_msvcrt__create_locale(int  category, char*  locale) /* ../dlls/msvcrt/locale.c:1704 */
+WINAPI MSVCRT__locale_t wine32b_msvcrt__create_locale(int  category, char*  locale) /* ../dlls/msvcrt/locale.c:1704 */
 {
+	MSVCRT__locale_t return_value;
 	TRACE("Enter _create_locale\n");
-	return p_create_locale(category, locale);
+	return_value = p_create_locale(category, locale);
+	TRACE("Leave _create_locale\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__create_locale(void);  /* ../dlls/msvcrt/locale.c:1704 */
@@ -6064,10 +6548,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__create_locale,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__cscanf(char*  format) /* ../dlls/msvcrt/scanf.c:497 */
+WINAPI int wine32b_msvcrt__cscanf(char*  format) /* ../dlls/msvcrt/scanf.c:497 */
 {
+	int return_value;
 	TRACE("Enter _cscanf\n");
-	return p_cscanf(format);
+	return_value = p_cscanf(format);
+	TRACE("Leave _cscanf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__cscanf(void);  /* ../dlls/msvcrt/scanf.c:497 */
@@ -6089,10 +6576,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__cscanf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__cscanf_l(char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:511 */
+WINAPI int wine32b_msvcrt__cscanf_l(char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:511 */
 {
+	int return_value;
 	TRACE("Enter _cscanf_l\n");
-	return p_cscanf_l(format, locale);
+	return_value = p_cscanf_l(format, locale);
+	TRACE("Leave _cscanf_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__cscanf_l(void);  /* ../dlls/msvcrt/scanf.c:511 */
@@ -6115,10 +6605,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__cscanf_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__cscanf_s(char*  format) /* ../dlls/msvcrt/scanf.c:525 */
+WINAPI int wine32b_msvcrt__cscanf_s(char*  format) /* ../dlls/msvcrt/scanf.c:525 */
 {
+	int return_value;
 	TRACE("Enter _cscanf_s\n");
-	return p_cscanf_s(format);
+	return_value = p_cscanf_s(format);
+	TRACE("Leave _cscanf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__cscanf_s(void);  /* ../dlls/msvcrt/scanf.c:525 */
@@ -6140,10 +6633,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__cscanf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__cscanf_s_l(char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:539 */
+WINAPI int wine32b_msvcrt__cscanf_s_l(char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:539 */
 {
+	int return_value;
 	TRACE("Enter _cscanf_s_l\n");
-	return p_cscanf_s_l(format, locale);
+	return_value = p_cscanf_s_l(format, locale);
+	TRACE("Leave _cscanf_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__cscanf_s_l(void);  /* ../dlls/msvcrt/scanf.c:539 */
@@ -6166,10 +6662,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__cscanf_s_l,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__ctime32(MSVCRT___time32_t*  time) /* ../dlls/msvcrt/time.c:1486 */
+WINAPI char* wine32b_msvcrt__ctime32(MSVCRT___time32_t*  time) /* ../dlls/msvcrt/time.c:1486 */
 {
+	char* return_value;
 	TRACE("Enter _ctime32\n");
-	return p_ctime32(time);
+	return_value = p_ctime32(time);
+	TRACE("Leave _ctime32\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ctime32(void);  /* ../dlls/msvcrt/time.c:1486 */
@@ -6191,10 +6690,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ctime32,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ctime32_s(char*  res, MSVCRT_size_t  len, MSVCRT___time32_t*  time) /* ../dlls/msvcrt/time.c:1497 */
+WINAPI int wine32b_msvcrt__ctime32_s(char*  res, MSVCRT_size_t  len, MSVCRT___time32_t*  time) /* ../dlls/msvcrt/time.c:1497 */
 {
+	int return_value;
 	TRACE("Enter _ctime32_s\n");
-	return p_ctime32_s(res, len, time);
+	return_value = p_ctime32_s(res, len, time);
+	TRACE("Leave _ctime32_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ctime32_s(void);  /* ../dlls/msvcrt/time.c:1497 */
@@ -6218,10 +6720,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ctime32_s,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__ctime64(MSVCRT___time64_t*  time) /* ../dlls/msvcrt/time.c:1457 */
+WINAPI char* wine32b_msvcrt__ctime64(MSVCRT___time64_t*  time) /* ../dlls/msvcrt/time.c:1457 */
 {
+	char* return_value;
 	TRACE("Enter _ctime64\n");
-	return p_ctime64(time);
+	return_value = p_ctime64(time);
+	TRACE("Leave _ctime64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ctime64(void);  /* ../dlls/msvcrt/time.c:1457 */
@@ -6243,10 +6748,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ctime64,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ctime64_s(char*  res, MSVCRT_size_t  len, MSVCRT___time64_t*  time) /* ../dlls/msvcrt/time.c:1468 */
+WINAPI int wine32b_msvcrt__ctime64_s(char*  res, MSVCRT_size_t  len, MSVCRT___time64_t*  time) /* ../dlls/msvcrt/time.c:1468 */
 {
+	int return_value;
 	TRACE("Enter _ctime64_s\n");
-	return p_ctime64_s(res, len, time);
+	return_value = p_ctime64_s(res, len, time);
+	TRACE("Leave _ctime64_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ctime64_s(void);  /* ../dlls/msvcrt/time.c:1468 */
@@ -6270,10 +6778,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ctime64_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__cwait(int*  status, MSVCRT_intptr_t  pid, int  action) /* ../dlls/msvcrt/process.c:359 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__cwait(int*  status, MSVCRT_intptr_t  pid, int  action) /* ../dlls/msvcrt/process.c:359 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _cwait\n");
-	return p_cwait(status, pid, action);
+	return_value = p_cwait(status, pid, action);
+	TRACE("Leave _cwait\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__cwait(void);  /* ../dlls/msvcrt/process.c:359 */
@@ -6297,10 +6808,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__cwait,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__cwprintf(MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/console.c:552 */
+WINAPI int wine32b_msvcrt__cwprintf(MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/console.c:552 */
 {
+	int return_value;
 	TRACE("Enter _cwprintf\n");
-	return p_cwprintf(format);
+	return_value = p_cwprintf(format);
+	TRACE("Leave _cwprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__cwprintf(void);  /* ../dlls/msvcrt/console.c:552 */
@@ -6322,10 +6836,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__cwprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__cwscanf(MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/scanf.c:553 */
+WINAPI int wine32b_msvcrt__cwscanf(MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/scanf.c:553 */
 {
+	int return_value;
 	TRACE("Enter _cwscanf\n");
-	return p_cwscanf(format);
+	return_value = p_cwscanf(format);
+	TRACE("Leave _cwscanf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__cwscanf(void);  /* ../dlls/msvcrt/scanf.c:553 */
@@ -6347,10 +6864,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__cwscanf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__cwscanf_l(MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:567 */
+WINAPI int wine32b_msvcrt__cwscanf_l(MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:567 */
 {
+	int return_value;
 	TRACE("Enter _cwscanf_l\n");
-	return p_cwscanf_l(format, locale);
+	return_value = p_cwscanf_l(format, locale);
+	TRACE("Leave _cwscanf_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__cwscanf_l(void);  /* ../dlls/msvcrt/scanf.c:567 */
@@ -6373,10 +6893,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__cwscanf_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__cwscanf_s(MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/scanf.c:581 */
+WINAPI int wine32b_msvcrt__cwscanf_s(MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/scanf.c:581 */
 {
+	int return_value;
 	TRACE("Enter _cwscanf_s\n");
-	return p_cwscanf_s(format);
+	return_value = p_cwscanf_s(format);
+	TRACE("Leave _cwscanf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__cwscanf_s(void);  /* ../dlls/msvcrt/scanf.c:581 */
@@ -6398,10 +6921,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__cwscanf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__cwscanf_s_l(MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:595 */
+WINAPI int wine32b_msvcrt__cwscanf_s_l(MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:595 */
 {
+	int return_value;
 	TRACE("Enter _cwscanf_s_l\n");
-	return p_cwscanf_s_l(format, locale);
+	return_value = p_cwscanf_s_l(format, locale);
+	TRACE("Leave _cwscanf_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__cwscanf_s_l(void);  /* ../dlls/msvcrt/scanf.c:595 */
@@ -6424,10 +6950,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__cwscanf_s_l,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt__difftime32(MSVCRT___time32_t  time1, MSVCRT___time32_t  time2) /* ../dlls/msvcrt/time.c:745 */
+WINAPI double wine32b_msvcrt__difftime32(MSVCRT___time32_t  time1, MSVCRT___time32_t  time2) /* ../dlls/msvcrt/time.c:745 */
 {
+	double return_value;
 	TRACE("Enter _difftime32\n");
-	return p_difftime32(time1, time2);
+	return_value = p_difftime32(time1, time2);
+	TRACE("Leave _difftime32\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__difftime32(void);  /* ../dlls/msvcrt/time.c:745 */
@@ -6450,10 +6979,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__difftime32,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt__difftime64(MSVCRT___time64_t  time1, MSVCRT___time64_t  time2) /* ../dlls/msvcrt/time.c:737 */
+WINAPI double wine32b_msvcrt__difftime64(MSVCRT___time64_t  time1, MSVCRT___time64_t  time2) /* ../dlls/msvcrt/time.c:737 */
 {
+	double return_value;
 	TRACE("Enter _difftime64\n");
-	return p_difftime64(time1, time2);
+	return_value = p_difftime64(time1, time2);
+	TRACE("Leave _difftime64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__difftime64(void);  /* ../dlls/msvcrt/time.c:737 */
@@ -6476,10 +7008,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__difftime64,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__dup(int  od) /* ../dlls/msvcrt/file.c:1146 */
+WINAPI int wine32b_msvcrt__dup(int  od) /* ../dlls/msvcrt/file.c:1146 */
 {
+	int return_value;
 	TRACE("Enter _dup\n");
-	return p_dup(od);
+	return_value = p_dup(od);
+	TRACE("Leave _dup\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__dup(void);  /* ../dlls/msvcrt/file.c:1146 */
@@ -6501,10 +7036,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__dup,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__dup2(int  od, int  nd) /* ../dlls/msvcrt/file.c:1088 */
+WINAPI int wine32b_msvcrt__dup2(int  od, int  nd) /* ../dlls/msvcrt/file.c:1088 */
 {
+	int return_value;
 	TRACE("Enter _dup2\n");
-	return p_dup2(od, nd);
+	return_value = p_dup2(od, nd);
+	TRACE("Leave _dup2\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__dup2(void);  /* ../dlls/msvcrt/file.c:1088 */
@@ -6527,10 +7065,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__dup2,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__ecvt(double  number, int  ndigits, int*  decpt, int*  sign) /* ../dlls/msvcrt/math.c:1613 */
+WINAPI char* wine32b_msvcrt__ecvt(double  number, int  ndigits, int*  decpt, int*  sign) /* ../dlls/msvcrt/math.c:1613 */
 {
+	char* return_value;
 	TRACE("Enter _ecvt\n");
-	return p_ecvt(number, ndigits, decpt, sign);
+	return_value = p_ecvt(number, ndigits, decpt, sign);
+	TRACE("Leave _ecvt\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ecvt(void);  /* ../dlls/msvcrt/math.c:1613 */
@@ -6555,10 +7096,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ecvt,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ecvt_s(char*  buffer, MSVCRT_size_t  length, double  number, int  ndigits, int*  decpt, int*  sign) /* ../dlls/msvcrt/math.c:1657 */
+WINAPI int wine32b_msvcrt__ecvt_s(char*  buffer, MSVCRT_size_t  length, double  number, int  ndigits, int*  decpt, int*  sign) /* ../dlls/msvcrt/math.c:1657 */
 {
+	int return_value;
 	TRACE("Enter _ecvt_s\n");
-	return p_ecvt_s(buffer, length, number, ndigits, decpt, sign);
+	return_value = p_ecvt_s(buffer, length, number, ndigits, decpt, sign);
+	TRACE("Leave _ecvt_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ecvt_s(void);  /* ../dlls/msvcrt/math.c:1657 */
@@ -6583,10 +7127,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ecvt_s,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__endthread(void) /* ../dlls/msvcrt/thread.c:61 */
+WINAPI void wine32b_msvcrt__endthread(void) /* ../dlls/msvcrt/thread.c:61 */
 {
 	TRACE("Enter _endthread\n");
-	return p_endthread();
+	p_endthread();
+	TRACE("Leave _endthread\n");
 }
 
 extern WINAPI void wine32a_msvcrt__endthread(void);  /* ../dlls/msvcrt/thread.c:61 */
@@ -6607,10 +7152,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__endthread,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__endthreadex(unsigned int  retval) /* ../dlls/msvcrt/thread.c:82 */
+WINAPI void wine32b_msvcrt__endthreadex(unsigned int  retval) /* ../dlls/msvcrt/thread.c:82 */
 {
 	TRACE("Enter _endthreadex\n");
-	return p_endthreadex(retval);
+	p_endthreadex(retval);
+	TRACE("Leave _endthreadex\n");
 }
 
 extern WINAPI void wine32a_msvcrt__endthreadex(void);  /* ../dlls/msvcrt/thread.c:82 */
@@ -6632,10 +7178,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__endthreadex,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__eof(int  fd) /* ../dlls/msvcrt/file.c:1162 */
+WINAPI int wine32b_msvcrt__eof(int  fd) /* ../dlls/msvcrt/file.c:1162 */
 {
+	int return_value;
 	TRACE("Enter _eof\n");
-	return p_eof(fd);
+	return_value = p_eof(fd);
+	TRACE("Leave _eof\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__eof(void);  /* ../dlls/msvcrt/file.c:1162 */
@@ -6657,10 +7206,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__eof,
 	"ret \n"
 )
 
-extern WINAPI int* wine32b_msvcrt__errno(void) /* ../dlls/msvcrt/errno.c:214 */
+WINAPI int* wine32b_msvcrt__errno(void) /* ../dlls/msvcrt/errno.c:214 */
 {
+	int* return_value;
 	TRACE("Enter _errno\n");
-	return p_errno();
+	return_value = p_errno();
+	TRACE("Leave _errno\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__errno(void);  /* ../dlls/msvcrt/errno.c:214 */
@@ -6681,10 +7233,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__errno,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__execl(char*  name, char*  arg0) /* ../dlls/msvcrt/process.c:414 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__execl(char*  name, char*  arg0) /* ../dlls/msvcrt/process.c:414 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _execl\n");
-	return p_execl(name, arg0);
+	return_value = p_execl(name, arg0);
+	TRACE("Leave _execl\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__execl(void);  /* ../dlls/msvcrt/process.c:414 */
@@ -6707,10 +7262,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__execl,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__execle(char*  name, char*  arg0) /* ../dlls/msvcrt/process.c:465 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__execle(char*  name, char*  arg0) /* ../dlls/msvcrt/process.c:465 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _execle\n");
-	return p_execle(name, arg0);
+	return_value = p_execle(name, arg0);
+	TRACE("Leave _execle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__execle(void);  /* ../dlls/msvcrt/process.c:465 */
@@ -6733,10 +7291,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__execle,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__execlp(char*  name, char*  arg0) /* ../dlls/msvcrt/process.c:519 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__execlp(char*  name, char*  arg0) /* ../dlls/msvcrt/process.c:519 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _execlp\n");
-	return p_execlp(name, arg0);
+	return_value = p_execlp(name, arg0);
+	TRACE("Leave _execlp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__execlp(void);  /* ../dlls/msvcrt/process.c:519 */
@@ -6759,10 +7320,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__execlp,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__execlpe(char*  name, char*  arg0) /* ../dlls/msvcrt/process.c:570 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__execlpe(char*  name, char*  arg0) /* ../dlls/msvcrt/process.c:570 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _execlpe\n");
-	return p_execlpe(name, arg0);
+	return_value = p_execlpe(name, arg0);
+	TRACE("Leave _execlpe\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__execlpe(void);  /* ../dlls/msvcrt/process.c:570 */
@@ -6785,10 +7349,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__execlpe,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__execv(char*  name, char**  argv) /* ../dlls/msvcrt/process.c:613 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__execv(char*  name, char**  argv) /* ../dlls/msvcrt/process.c:613 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _execv\n");
-	return p_execv(name, argv);
+	return_value = p_execv(name, argv);
+	TRACE("Leave _execv\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__execv(void);  /* ../dlls/msvcrt/process.c:613 */
@@ -6811,10 +7378,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__execv,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__execve(char*  name, char**  argv, char**  envv) /* ../dlls/msvcrt/process.c:634 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__execve(char*  name, char**  argv, char**  envv) /* ../dlls/msvcrt/process.c:634 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _execve\n");
-	return p_execve(name, argv, envv);
+	return_value = p_execve(name, argv, envv);
+	TRACE("Leave _execve\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__execve(void);  /* ../dlls/msvcrt/process.c:634 */
@@ -6838,10 +7408,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__execve,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__execvp(char*  name, char**  argv) /* ../dlls/msvcrt/process.c:676 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__execvp(char*  name, char**  argv) /* ../dlls/msvcrt/process.c:676 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _execvp\n");
-	return p_execvp(name, argv);
+	return_value = p_execvp(name, argv);
+	TRACE("Leave _execvp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__execvp(void);  /* ../dlls/msvcrt/process.c:676 */
@@ -6864,10 +7437,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__execvp,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__execvpe(char*  name, char**  argv, char**  envv) /* ../dlls/msvcrt/process.c:655 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__execvpe(char*  name, char**  argv, char**  envv) /* ../dlls/msvcrt/process.c:655 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _execvpe\n");
-	return p_execvpe(name, argv, envv);
+	return_value = p_execvpe(name, argv, envv);
+	TRACE("Leave _execvpe\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__execvpe(void);  /* ../dlls/msvcrt/process.c:655 */
@@ -6891,10 +7467,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__execvpe,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__exit(int  exitcode) /* ../dlls/msvcrt/exit.c:181 */
+WINAPI void wine32b_msvcrt__exit(int  exitcode) /* ../dlls/msvcrt/exit.c:181 */
 {
 	TRACE("Enter _exit\n");
-	return p_exit(exitcode);
+	p_exit(exitcode);
+	TRACE("Leave _exit\n");
 }
 
 extern WINAPI void wine32a_msvcrt__exit(void);  /* ../dlls/msvcrt/exit.c:181 */
@@ -6916,10 +7493,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__exit,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt__expand(void*  mem, MSVCRT_size_t  size) /* ../dlls/msvcrt/heap.c:248 */
+WINAPI void* wine32b_msvcrt__expand(void*  mem, MSVCRT_size_t  size) /* ../dlls/msvcrt/heap.c:248 */
 {
+	void* return_value;
 	TRACE("Enter _expand\n");
-	return p_expand(mem, size);
+	return_value = p_expand(mem, size);
+	TRACE("Leave _expand\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__expand(void);  /* ../dlls/msvcrt/heap.c:248 */
@@ -6942,10 +7522,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__expand,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__fcloseall(void) /* ../dlls/msvcrt/file.c:1202 */
+WINAPI int wine32b_msvcrt__fcloseall(void) /* ../dlls/msvcrt/file.c:1202 */
 {
+	int return_value;
 	TRACE("Enter _fcloseall\n");
-	return p_fcloseall();
+	return_value = p_fcloseall();
+	TRACE("Leave _fcloseall\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__fcloseall(void);  /* ../dlls/msvcrt/file.c:1202 */
@@ -6966,10 +7549,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fcloseall,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__fcvt(double  number, int  ndigits, int*  decpt, int*  sign) /* ../dlls/msvcrt/math.c:1718 */
+WINAPI char* wine32b_msvcrt__fcvt(double  number, int  ndigits, int*  decpt, int*  sign) /* ../dlls/msvcrt/math.c:1718 */
 {
+	char* return_value;
 	TRACE("Enter _fcvt\n");
-	return p_fcvt(number, ndigits, decpt, sign);
+	return_value = p_fcvt(number, ndigits, decpt, sign);
+	TRACE("Leave _fcvt\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__fcvt(void);  /* ../dlls/msvcrt/math.c:1718 */
@@ -6994,10 +7580,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fcvt,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__fcvt_s(char*  outbuffer, MSVCRT_size_t  size, double  number, int  ndigits, int*  decpt, int*  sign) /* ../dlls/msvcrt/math.c:1799 */
+WINAPI int wine32b_msvcrt__fcvt_s(char*  outbuffer, MSVCRT_size_t  size, double  number, int  ndigits, int*  decpt, int*  sign) /* ../dlls/msvcrt/math.c:1799 */
 {
+	int return_value;
 	TRACE("Enter _fcvt_s\n");
-	return p_fcvt_s(outbuffer, size, number, ndigits, decpt, sign);
+	return_value = p_fcvt_s(outbuffer, size, number, ndigits, decpt, sign);
+	TRACE("Leave _fcvt_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__fcvt_s(void);  /* ../dlls/msvcrt/math.c:1799 */
@@ -7022,10 +7611,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fcvt_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_FILE* wine32b_msvcrt__fdopen(int  fd, char*  mode) /* ../dlls/msvcrt/file.c:1653 */
+WINAPI MSVCRT_FILE* wine32b_msvcrt__fdopen(int  fd, char*  mode) /* ../dlls/msvcrt/file.c:1653 */
 {
+	MSVCRT_FILE* return_value;
 	TRACE("Enter _fdopen\n");
-	return p_fdopen(fd, mode);
+	return_value = p_fdopen(fd, mode);
+	TRACE("Leave _fdopen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__fdopen(void);  /* ../dlls/msvcrt/file.c:1653 */
@@ -7048,10 +7640,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fdopen,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__fgetchar(void) /* ../dlls/msvcrt/file.c:3774 */
+WINAPI int wine32b_msvcrt__fgetchar(void) /* ../dlls/msvcrt/file.c:3774 */
 {
+	int return_value;
 	TRACE("Enter _fgetchar\n");
-	return p_fgetchar();
+	return_value = p_fgetchar();
+	TRACE("Leave _fgetchar\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__fgetchar(void);  /* ../dlls/msvcrt/file.c:3774 */
@@ -7072,10 +7667,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fgetchar,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wint_t wine32b_msvcrt__fgetwchar(void) /* ../dlls/msvcrt/file.c:3906 */
+WINAPI MSVCRT_wint_t wine32b_msvcrt__fgetwchar(void) /* ../dlls/msvcrt/file.c:3906 */
 {
+	MSVCRT_wint_t return_value;
 	TRACE("Enter _fgetwchar\n");
-	return p_fgetwchar();
+	return_value = p_fgetwchar();
+	TRACE("Leave _fgetwchar\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__fgetwchar(void);  /* ../dlls/msvcrt/file.c:3906 */
@@ -7096,10 +7694,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fgetwchar,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__filbuf(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3698 */
+WINAPI int wine32b_msvcrt__filbuf(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3698 */
 {
+	int return_value;
 	TRACE("Enter _filbuf\n");
-	return p_filbuf(file);
+	return_value = p_filbuf(file);
+	TRACE("Leave _filbuf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__filbuf(void);  /* ../dlls/msvcrt/file.c:3698 */
@@ -7121,10 +7722,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__filbuf,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_msvcrt__filelength(int  fd) /* ../dlls/msvcrt/file.c:1693 */
+WINAPI LONG wine32b_msvcrt__filelength(int  fd) /* ../dlls/msvcrt/file.c:1693 */
 {
+	LONG return_value;
 	TRACE("Enter _filelength\n");
-	return p_filelength(fd);
+	return_value = p_filelength(fd);
+	TRACE("Leave _filelength\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__filelength(void);  /* ../dlls/msvcrt/file.c:1693 */
@@ -7146,10 +7750,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__filelength,
 	"ret \n"
 )
 
-extern WINAPI long wine32b_msvcrt__filelengthi64(int  fd) /* ../dlls/msvcrt/file.c:1712 */
+WINAPI long wine32b_msvcrt__filelengthi64(int  fd) /* ../dlls/msvcrt/file.c:1712 */
 {
+	long return_value;
 	TRACE("Enter _filelengthi64\n");
-	return p_filelengthi64(fd);
+	return_value = p_filelengthi64(fd);
+	TRACE("Leave _filelengthi64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__filelengthi64(void);  /* ../dlls/msvcrt/file.c:1712 */
@@ -7171,10 +7778,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__filelengthi64,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__fileno(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:1731 */
+WINAPI int wine32b_msvcrt__fileno(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:1731 */
 {
+	int return_value;
 	TRACE("Enter _fileno\n");
-	return p_fileno(file);
+	return_value = p_fileno(file);
+	TRACE("Leave _fileno\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__fileno(void);  /* ../dlls/msvcrt/file.c:1731 */
@@ -7196,10 +7806,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fileno,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__findclose(MSVCRT_intptr_t  hand) /* ../dlls/msvcrt/dir.c:323 */
+WINAPI int wine32b_msvcrt__findclose(MSVCRT_intptr_t  hand) /* ../dlls/msvcrt/dir.c:323 */
 {
+	int return_value;
 	TRACE("Enter _findclose\n");
-	return p_findclose(hand);
+	return_value = p_findclose(hand);
+	TRACE("Leave _findclose\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__findclose(void);  /* ../dlls/msvcrt/dir.c:323 */
@@ -7221,10 +7834,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__findclose,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__findfirst(char*  fspec, struct MSVCRT__finddata64i32_t*  ft) /* ../dlls/msvcrt/dir.c:351 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__findfirst(char*  fspec, struct MSVCRT__finddata64i32_t*  ft) /* ../dlls/msvcrt/dir.c:351 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _findfirst\n");
-	return p_findfirst(fspec, ft);
+	return_value = p_findfirst(fspec, ft);
+	TRACE("Leave _findfirst\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__findfirst(void);  /* ../dlls/msvcrt/dir.c:351 */
@@ -7247,10 +7863,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__findfirst,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__findfirst32(char*  fspec, struct MSVCRT__finddata32_t*  ft) /* ../dlls/msvcrt/dir.c:370 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__findfirst32(char*  fspec, struct MSVCRT__finddata32_t*  ft) /* ../dlls/msvcrt/dir.c:370 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _findfirst32\n");
-	return p_findfirst32(fspec, ft);
+	return_value = p_findfirst32(fspec, ft);
+	TRACE("Leave _findfirst32\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__findfirst32(void);  /* ../dlls/msvcrt/dir.c:370 */
@@ -7273,10 +7892,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__findfirst32,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__findfirst64(char*  fspec, struct MSVCRT__finddata64_t*  ft) /* ../dlls/msvcrt/dir.c:454 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__findfirst64(char*  fspec, struct MSVCRT__finddata64_t*  ft) /* ../dlls/msvcrt/dir.c:454 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _findfirst64\n");
-	return p_findfirst64(fspec, ft);
+	return_value = p_findfirst64(fspec, ft);
+	TRACE("Leave _findfirst64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__findfirst64(void);  /* ../dlls/msvcrt/dir.c:454 */
@@ -7299,10 +7921,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__findfirst64,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__findfirst64i32(char*  fspec, struct MSVCRT__finddata64i32_t*  ft) /* ../dlls/msvcrt/dir.c:496 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__findfirst64i32(char*  fspec, struct MSVCRT__finddata64i32_t*  ft) /* ../dlls/msvcrt/dir.c:496 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _findfirst64i32\n");
-	return p_findfirst64i32(fspec, ft);
+	return_value = p_findfirst64i32(fspec, ft);
+	TRACE("Leave _findfirst64i32\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__findfirst64i32(void);  /* ../dlls/msvcrt/dir.c:496 */
@@ -7325,10 +7950,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__findfirst64i32,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__findfirsti64(char*  fspec, struct MSVCRT__finddata64_t*  ft) /* ../dlls/msvcrt/dir.c:433 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__findfirsti64(char*  fspec, struct MSVCRT__finddata64_t*  ft) /* ../dlls/msvcrt/dir.c:433 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _findfirsti64\n");
-	return p_findfirsti64(fspec, ft);
+	return_value = p_findfirsti64(fspec, ft);
+	TRACE("Leave _findfirsti64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__findfirsti64(void);  /* ../dlls/msvcrt/dir.c:433 */
@@ -7351,10 +7979,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__findfirsti64,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__findnext(MSVCRT_intptr_t  hand, struct MSVCRT__finddata64i32_t*  ft) /* ../dlls/msvcrt/dir.c:570 */
+WINAPI int wine32b_msvcrt__findnext(MSVCRT_intptr_t  hand, struct MSVCRT__finddata64i32_t*  ft) /* ../dlls/msvcrt/dir.c:570 */
 {
+	int return_value;
 	TRACE("Enter _findnext\n");
-	return p_findnext(hand, ft);
+	return_value = p_findnext(hand, ft);
+	TRACE("Leave _findnext\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__findnext(void);  /* ../dlls/msvcrt/dir.c:570 */
@@ -7377,10 +8008,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__findnext,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__findnext32(MSVCRT_intptr_t  hand, struct MSVCRT__finddata32_t*  ft) /* ../dlls/msvcrt/dir.c:587 */
+WINAPI int wine32b_msvcrt__findnext32(MSVCRT_intptr_t  hand, struct MSVCRT__finddata32_t*  ft) /* ../dlls/msvcrt/dir.c:587 */
 {
+	int return_value;
 	TRACE("Enter _findnext32\n");
-	return p_findnext32(hand, ft);
+	return_value = p_findnext32(hand, ft);
+	TRACE("Leave _findnext32\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__findnext32(void);  /* ../dlls/msvcrt/dir.c:587 */
@@ -7403,10 +8037,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__findnext32,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__findnext64(MSVCRT_intptr_t  hand, struct MSVCRT__finddata64_t*  ft) /* ../dlls/msvcrt/dir.c:661 */
+WINAPI int wine32b_msvcrt__findnext64(MSVCRT_intptr_t  hand, struct MSVCRT__finddata64_t*  ft) /* ../dlls/msvcrt/dir.c:661 */
 {
+	int return_value;
 	TRACE("Enter _findnext64\n");
-	return p_findnext64(hand, ft);
+	return_value = p_findnext64(hand, ft);
+	TRACE("Leave _findnext64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__findnext64(void);  /* ../dlls/msvcrt/dir.c:661 */
@@ -7429,10 +8066,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__findnext64,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__findnext64i32(MSVCRT_intptr_t  hand, struct MSVCRT__finddata64i32_t*  ft) /* ../dlls/msvcrt/dir.c:699 */
+WINAPI int wine32b_msvcrt__findnext64i32(MSVCRT_intptr_t  hand, struct MSVCRT__finddata64i32_t*  ft) /* ../dlls/msvcrt/dir.c:699 */
 {
+	int return_value;
 	TRACE("Enter _findnext64i32\n");
-	return p_findnext64i32(hand, ft);
+	return_value = p_findnext64i32(hand, ft);
+	TRACE("Leave _findnext64i32\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__findnext64i32(void);  /* ../dlls/msvcrt/dir.c:699 */
@@ -7455,10 +8095,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__findnext64i32,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__findnexti64(MSVCRT_intptr_t  hand, struct MSVCRT__finddata64_t*  ft) /* ../dlls/msvcrt/dir.c:642 */
+WINAPI int wine32b_msvcrt__findnexti64(MSVCRT_intptr_t  hand, struct MSVCRT__finddata64_t*  ft) /* ../dlls/msvcrt/dir.c:642 */
 {
+	int return_value;
 	TRACE("Enter _findnexti64\n");
-	return p_findnexti64(hand, ft);
+	return_value = p_findnexti64(hand, ft);
+	TRACE("Leave _findnexti64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__findnexti64(void);  /* ../dlls/msvcrt/dir.c:642 */
@@ -7481,10 +8124,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__findnexti64,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__finite(double  num) /* ../dlls/msvcrt/math.c:1324 */
+WINAPI int wine32b_msvcrt__finite(double  num) /* ../dlls/msvcrt/math.c:1324 */
 {
+	int return_value;
 	TRACE("Enter _finite\n");
-	return p_finite(num);
+	return_value = p_finite(num);
+	TRACE("Leave _finite\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__finite(void);  /* ../dlls/msvcrt/math.c:1324 */
@@ -7506,10 +8152,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__finite,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__finitef(float  num) /* ../dlls/msvcrt/math.c:178 */
+WINAPI int wine32b_msvcrt__finitef(float  num) /* ../dlls/msvcrt/math.c:178 */
 {
+	int return_value;
 	TRACE("Enter _finitef\n");
-	return p_finitef(num);
+	return_value = p_finitef(num);
+	TRACE("Leave _finitef\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__finitef(void);  /* ../dlls/msvcrt/math.c:178 */
@@ -7531,10 +8180,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__finitef,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__flsbuf(int  c, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3954 */
+WINAPI int wine32b_msvcrt__flsbuf(int  c, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3954 */
 {
+	int return_value;
 	TRACE("Enter _flsbuf\n");
-	return p_flsbuf(c, file);
+	return_value = p_flsbuf(c, file);
+	TRACE("Leave _flsbuf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__flsbuf(void);  /* ../dlls/msvcrt/file.c:3954 */
@@ -7557,10 +8209,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__flsbuf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__flushall(void) /* ../dlls/msvcrt/file.c:1004 */
+WINAPI int wine32b_msvcrt__flushall(void) /* ../dlls/msvcrt/file.c:1004 */
 {
+	int return_value;
 	TRACE("Enter _flushall\n");
-	return p_flushall();
+	return_value = p_flushall();
+	TRACE("Leave _flushall\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__flushall(void);  /* ../dlls/msvcrt/file.c:1004 */
@@ -7581,10 +8236,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__flushall,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__fpclass(double  num) /* ../dlls/msvcrt/math.c:700 */
+WINAPI int wine32b_msvcrt__fpclass(double  num) /* ../dlls/msvcrt/math.c:700 */
 {
+	int return_value;
 	TRACE("Enter _fpclass\n");
-	return p_fpclass(num);
+	return_value = p_fpclass(num);
+	TRACE("Leave _fpclass\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__fpclass(void);  /* ../dlls/msvcrt/math.c:700 */
@@ -7606,10 +8264,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fpclass,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__fpieee_flt(ULONG  exception_code, EXCEPTION_POINTERS*  ep, int (* handler) (void)) /* ../dlls/msvcrt/except_x86_64.c:715 */
+WINAPI int wine32b_msvcrt__fpieee_flt(ULONG  exception_code, EXCEPTION_POINTERS*  ep, int (* handler) (void)) /* ../dlls/msvcrt/except_x86_64.c:715 */
 {
+	int return_value;
 	TRACE("Enter _fpieee_flt\n");
-	return p_fpieee_flt(exception_code, ep, handler);
+	return_value = p_fpieee_flt(exception_code, ep, handler);
+	TRACE("Leave _fpieee_flt\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__fpieee_flt(void);  /* ../dlls/msvcrt/except_x86_64.c:715 */
@@ -7633,10 +8294,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fpieee_flt,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__fpreset(void) /* ../dlls/msvcrt/math.c:1332 */
+WINAPI void wine32b_msvcrt__fpreset(void) /* ../dlls/msvcrt/math.c:1332 */
 {
 	TRACE("Enter _fpreset\n");
-	return p_fpreset();
+	p_fpreset();
+	TRACE("Leave _fpreset\n");
 }
 
 extern WINAPI void wine32a_msvcrt__fpreset(void);  /* ../dlls/msvcrt/math.c:1332 */
@@ -7657,10 +8319,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fpreset,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__fputchar(int  c) /* ../dlls/msvcrt/file.c:4283 */
+WINAPI int wine32b_msvcrt__fputchar(int  c) /* ../dlls/msvcrt/file.c:4283 */
 {
+	int return_value;
 	TRACE("Enter _fputchar\n");
-	return p_fputchar(c);
+	return_value = p_fputchar(c);
+	TRACE("Leave _fputchar\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__fputchar(void);  /* ../dlls/msvcrt/file.c:4283 */
@@ -7682,10 +8347,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fputchar,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wint_t wine32b_msvcrt_putwchar(MSVCRT_wint_t  wc) /* ../dlls/msvcrt/file.c:4125 */
+WINAPI MSVCRT_wint_t wine32b_msvcrt_putwchar(MSVCRT_wint_t  wc) /* ../dlls/msvcrt/file.c:4125 */
 {
+	MSVCRT_wint_t return_value;
 	TRACE("Enter putwchar\n");
-	return pputwchar(wc);
+	return_value = pputwchar(wc);
+	TRACE("Leave putwchar\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_putwchar(void);  /* ../dlls/msvcrt/file.c:4125 */
@@ -7707,10 +8375,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_putwchar,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__free_locale(MSVCRT__locale_t  locale) /* ../dlls/msvcrt/locale.c:868 */
+WINAPI void wine32b_msvcrt__free_locale(MSVCRT__locale_t  locale) /* ../dlls/msvcrt/locale.c:868 */
 {
 	TRACE("Enter _free_locale\n");
-	return p_free_locale(locale);
+	p_free_locale(locale);
+	TRACE("Leave _free_locale\n");
 }
 
 extern WINAPI void wine32a_msvcrt__free_locale(void);  /* ../dlls/msvcrt/locale.c:868 */
@@ -7732,10 +8401,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__free_locale,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__fscanf_l(MSVCRT_FILE*  file, char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:165 */
+WINAPI int wine32b_msvcrt__fscanf_l(MSVCRT_FILE*  file, char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:165 */
 {
+	int return_value;
 	TRACE("Enter _fscanf_l\n");
-	return p_fscanf_l(file, format, locale);
+	return_value = p_fscanf_l(file, format, locale);
+	TRACE("Leave _fscanf_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__fscanf_l(void);  /* ../dlls/msvcrt/scanf.c:165 */
@@ -7759,10 +8431,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fscanf_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__fscanf_s_l(MSVCRT_FILE*  file, char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:194 */
+WINAPI int wine32b_msvcrt__fscanf_s_l(MSVCRT_FILE*  file, char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:194 */
 {
+	int return_value;
 	TRACE("Enter _fscanf_s_l\n");
-	return p_fscanf_s_l(file, format, locale);
+	return_value = p_fscanf_s_l(file, format, locale);
+	TRACE("Leave _fscanf_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__fscanf_s_l(void);  /* ../dlls/msvcrt/scanf.c:194 */
@@ -7786,10 +8461,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fscanf_s_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__fseeki64(MSVCRT_FILE*  file, long  offset, int  whence) /* ../dlls/msvcrt/file.c:1396 */
+WINAPI int wine32b_msvcrt__fseeki64(MSVCRT_FILE*  file, long  offset, int  whence) /* ../dlls/msvcrt/file.c:1396 */
 {
+	int return_value;
 	TRACE("Enter _fseeki64\n");
-	return p_fseeki64(file, offset, whence);
+	return_value = p_fseeki64(file, offset, whence);
+	TRACE("Leave _fseeki64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__fseeki64(void);  /* ../dlls/msvcrt/file.c:1396 */
@@ -7813,10 +8491,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fseeki64,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_FILE* wine32b_msvcrt__fsopen(char*  path, char*  mode, int  share) /* ../dlls/msvcrt/file.c:4167 */
+WINAPI MSVCRT_FILE* wine32b_msvcrt__fsopen(char*  path, char*  mode, int  share) /* ../dlls/msvcrt/file.c:4167 */
 {
+	MSVCRT_FILE* return_value;
 	TRACE("Enter _fsopen\n");
-	return p_fsopen(path, mode, share);
+	return_value = p_fsopen(path, mode, share);
+	TRACE("Leave _fsopen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__fsopen(void);  /* ../dlls/msvcrt/file.c:4167 */
@@ -7840,10 +8521,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fsopen,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__fstat(int  fd, struct MSVCRT__stat64i32*  buf) /* ../dlls/msvcrt/file.c:1819 */
+WINAPI int wine32b_msvcrt__fstat(int  fd, struct MSVCRT__stat64i32*  buf) /* ../dlls/msvcrt/file.c:1819 */
 {
+	int return_value;
 	TRACE("Enter _fstat\n");
-	return p_fstat(fd, buf);
+	return_value = p_fstat(fd, buf);
+	TRACE("Leave _fstat\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__fstat(void);  /* ../dlls/msvcrt/file.c:1819 */
@@ -7866,10 +8550,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fstat,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__fstat64(int  fd, struct MSVCRT__stat64*  buf) /* ../dlls/msvcrt/file.c:1740 */
+WINAPI int wine32b_msvcrt__fstat64(int  fd, struct MSVCRT__stat64*  buf) /* ../dlls/msvcrt/file.c:1740 */
 {
+	int return_value;
 	TRACE("Enter _fstat64\n");
-	return p_fstat64(fd, buf);
+	return_value = p_fstat64(fd, buf);
+	TRACE("Leave _fstat64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__fstat64(void);  /* ../dlls/msvcrt/file.c:1740 */
@@ -7892,10 +8579,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fstat64,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__fstati64(int  fd, struct MSVCRT__stat64*  buf) /* ../dlls/msvcrt/file.c:1805 */
+WINAPI int wine32b_msvcrt__fstati64(int  fd, struct MSVCRT__stat64*  buf) /* ../dlls/msvcrt/file.c:1805 */
 {
+	int return_value;
 	TRACE("Enter _fstati64\n");
-	return p_fstati64(fd, buf);
+	return_value = p_fstati64(fd, buf);
+	TRACE("Leave _fstati64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__fstati64(void);  /* ../dlls/msvcrt/file.c:1805 */
@@ -7918,10 +8608,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fstati64,
 	"ret \n"
 )
 
-extern WINAPI long wine32b_msvcrt__ftelli64(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4571 */
+WINAPI long wine32b_msvcrt__ftelli64(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4571 */
 {
+	long return_value;
 	TRACE("Enter _ftelli64\n");
-	return p_ftelli64(file);
+	return_value = p_ftelli64(file);
+	TRACE("Leave _ftelli64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ftelli64(void);  /* ../dlls/msvcrt/file.c:4571 */
@@ -7943,10 +8636,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ftelli64,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__ftime(struct MSVCRT___timeb64*  buf) /* ../dlls/msvcrt/time.c:823 */
+WINAPI void wine32b_msvcrt__ftime(struct MSVCRT___timeb64*  buf) /* ../dlls/msvcrt/time.c:823 */
 {
 	TRACE("Enter _ftime\n");
-	return p_ftime(buf);
+	p_ftime(buf);
+	TRACE("Leave _ftime\n");
 }
 
 extern WINAPI void wine32a_msvcrt__ftime(void);  /* ../dlls/msvcrt/time.c:823 */
@@ -7968,10 +8662,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ftime,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__ftime32(struct MSVCRT___timeb32*  buf) /* ../dlls/msvcrt/time.c:798 */
+WINAPI void wine32b_msvcrt__ftime32(struct MSVCRT___timeb32*  buf) /* ../dlls/msvcrt/time.c:798 */
 {
 	TRACE("Enter _ftime32\n");
-	return p_ftime32(buf);
+	p_ftime32(buf);
+	TRACE("Leave _ftime32\n");
 }
 
 extern WINAPI void wine32a_msvcrt__ftime32(void);  /* ../dlls/msvcrt/time.c:798 */
@@ -7993,10 +8688,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ftime32,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ftime32_s(struct MSVCRT___timeb32*  buf) /* ../dlls/msvcrt/time.c:812 */
+WINAPI int wine32b_msvcrt__ftime32_s(struct MSVCRT___timeb32*  buf) /* ../dlls/msvcrt/time.c:812 */
 {
+	int return_value;
 	TRACE("Enter _ftime32_s\n");
-	return p_ftime32_s(buf);
+	return_value = p_ftime32_s(buf);
+	TRACE("Leave _ftime32_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ftime32_s(void);  /* ../dlls/msvcrt/time.c:812 */
@@ -8018,10 +8716,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ftime32_s,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__ftime64(struct MSVCRT___timeb64*  buf) /* ../dlls/msvcrt/time.c:768 */
+WINAPI void wine32b_msvcrt__ftime64(struct MSVCRT___timeb64*  buf) /* ../dlls/msvcrt/time.c:768 */
 {
 	TRACE("Enter _ftime64\n");
-	return p_ftime64(buf);
+	p_ftime64(buf);
+	TRACE("Leave _ftime64\n");
 }
 
 extern WINAPI void wine32a_msvcrt__ftime64(void);  /* ../dlls/msvcrt/time.c:768 */
@@ -8043,10 +8742,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ftime64,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ftime64_s(struct MSVCRT___timeb64*  buf) /* ../dlls/msvcrt/time.c:788 */
+WINAPI int wine32b_msvcrt__ftime64_s(struct MSVCRT___timeb64*  buf) /* ../dlls/msvcrt/time.c:788 */
 {
+	int return_value;
 	TRACE("Enter _ftime64_s\n");
-	return p_ftime64_s(buf);
+	return_value = p_ftime64_s(buf);
+	TRACE("Leave _ftime64_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ftime64_s(void);  /* ../dlls/msvcrt/time.c:788 */
@@ -8068,10 +8770,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ftime64_s,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__fullpath(char*  absPath, char*  relPath, unsigned int  size) /* ../dlls/msvcrt/dir.c:1291 */
+WINAPI char* wine32b_msvcrt__fullpath(char*  absPath, char*  relPath, unsigned int  size) /* ../dlls/msvcrt/dir.c:1291 */
 {
+	char* return_value;
 	TRACE("Enter _fullpath\n");
-	return p_fullpath(absPath, relPath, size);
+	return_value = p_fullpath(absPath, relPath, size);
+	TRACE("Leave _fullpath\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__fullpath(void);  /* ../dlls/msvcrt/dir.c:1291 */
@@ -8095,10 +8800,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fullpath,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__futime(int  fd, struct MSVCRT___utimbuf64*  t) /* ../dlls/msvcrt/file.c:1920 */
+WINAPI int wine32b_msvcrt__futime(int  fd, struct MSVCRT___utimbuf64*  t) /* ../dlls/msvcrt/file.c:1920 */
 {
+	int return_value;
 	TRACE("Enter _futime\n");
-	return p_futime(fd, t);
+	return_value = p_futime(fd, t);
+	TRACE("Leave _futime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__futime(void);  /* ../dlls/msvcrt/file.c:1920 */
@@ -8121,10 +8829,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__futime,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__futime32(int  fd, struct MSVCRT___utimbuf32*  t) /* ../dlls/msvcrt/file.c:1903 */
+WINAPI int wine32b_msvcrt__futime32(int  fd, struct MSVCRT___utimbuf32*  t) /* ../dlls/msvcrt/file.c:1903 */
 {
+	int return_value;
 	TRACE("Enter _futime32\n");
-	return p_futime32(fd, t);
+	return_value = p_futime32(fd, t);
+	TRACE("Leave _futime32\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__futime32(void);  /* ../dlls/msvcrt/file.c:1903 */
@@ -8147,10 +8858,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__futime32,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__futime64(int  fd, struct MSVCRT___utimbuf64*  t) /* ../dlls/msvcrt/file.c:1874 */
+WINAPI int wine32b_msvcrt__futime64(int  fd, struct MSVCRT___utimbuf64*  t) /* ../dlls/msvcrt/file.c:1874 */
 {
+	int return_value;
 	TRACE("Enter _futime64\n");
-	return p_futime64(fd, t);
+	return_value = p_futime64(fd, t);
+	TRACE("Leave _futime64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__futime64(void);  /* ../dlls/msvcrt/file.c:1874 */
@@ -8173,10 +8887,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__futime64,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__fwprintf_l(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/file.c:5480 */
+WINAPI int wine32b_msvcrt__fwprintf_l(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/file.c:5480 */
 {
+	int return_value;
 	TRACE("Enter _fwprintf_l\n");
-	return p_fwprintf_l(file, format, locale);
+	return_value = p_fwprintf_l(file, format, locale);
+	TRACE("Leave _fwprintf_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__fwprintf_l(void);  /* ../dlls/msvcrt/file.c:5480 */
@@ -8200,10 +8917,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fwprintf_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__fwscanf_l(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:279 */
+WINAPI int wine32b_msvcrt__fwscanf_l(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:279 */
 {
+	int return_value;
 	TRACE("Enter _fwscanf_l\n");
-	return p_fwscanf_l(file, format, locale);
+	return_value = p_fwscanf_l(file, format, locale);
+	TRACE("Leave _fwscanf_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__fwscanf_l(void);  /* ../dlls/msvcrt/scanf.c:279 */
@@ -8227,10 +8947,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fwscanf_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__fwscanf_s_l(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:308 */
+WINAPI int wine32b_msvcrt__fwscanf_s_l(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:308 */
 {
+	int return_value;
 	TRACE("Enter _fwscanf_s_l\n");
-	return p_fwscanf_s_l(file, format, locale);
+	return_value = p_fwscanf_s_l(file, format, locale);
+	TRACE("Leave _fwscanf_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__fwscanf_s_l(void);  /* ../dlls/msvcrt/scanf.c:308 */
@@ -8254,10 +8977,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__fwscanf_s_l,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__gcvt(double  number, int  ndigit, char*  buff) /* ../dlls/msvcrt/math.c:1886 */
+WINAPI char* wine32b_msvcrt__gcvt(double  number, int  ndigit, char*  buff) /* ../dlls/msvcrt/math.c:1886 */
 {
+	char* return_value;
 	TRACE("Enter _gcvt\n");
-	return p_gcvt(number, ndigit, buff);
+	return_value = p_gcvt(number, ndigit, buff);
+	TRACE("Leave _gcvt\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__gcvt(void);  /* ../dlls/msvcrt/math.c:1886 */
@@ -8281,10 +9007,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__gcvt,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__gcvt_s(char*  buff, MSVCRT_size_t  size, double  number, int  digits) /* ../dlls/msvcrt/math.c:1905 */
+WINAPI int wine32b_msvcrt__gcvt_s(char*  buff, MSVCRT_size_t  size, double  number, int  digits) /* ../dlls/msvcrt/math.c:1905 */
 {
+	int return_value;
 	TRACE("Enter _gcvt_s\n");
-	return p_gcvt_s(buff, size, number, digits);
+	return_value = p_gcvt_s(buff, size, number, digits);
+	TRACE("Leave _gcvt_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__gcvt_s(void);  /* ../dlls/msvcrt/math.c:1905 */
@@ -8309,10 +9038,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__gcvt_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT__locale_t wine32b_msvcrt__get_current_locale(void) /* ../dlls/msvcrt/locale.c:852 */
+WINAPI MSVCRT__locale_t wine32b_msvcrt__get_current_locale(void) /* ../dlls/msvcrt/locale.c:852 */
 {
+	MSVCRT__locale_t return_value;
 	TRACE("Enter _get_current_locale\n");
-	return p_get_current_locale();
+	return_value = p_get_current_locale();
+	TRACE("Leave _get_current_locale\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__get_current_locale(void);  /* ../dlls/msvcrt/locale.c:852 */
@@ -8333,10 +9065,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__get_current_locale,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__get_doserrno(int*  pValue) /* ../dlls/msvcrt/errno.c:242 */
+WINAPI int wine32b_msvcrt__get_doserrno(int*  pValue) /* ../dlls/msvcrt/errno.c:242 */
 {
+	int return_value;
 	TRACE("Enter _get_doserrno\n");
-	return p_get_doserrno(pValue);
+	return_value = p_get_doserrno(pValue);
+	TRACE("Leave _get_doserrno\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__get_doserrno(void);  /* ../dlls/msvcrt/errno.c:242 */
@@ -8358,10 +9093,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__get_doserrno,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__get_environ(char***  ptr) /* ../dlls/msvcrt/environ.c:317 */
+WINAPI void wine32b_msvcrt__get_environ(char***  ptr) /* ../dlls/msvcrt/environ.c:317 */
 {
 	TRACE("Enter _get_environ\n");
-	return p_get_environ(ptr);
+	p_get_environ(ptr);
+	TRACE("Leave _get_environ\n");
 }
 
 extern WINAPI void wine32a_msvcrt__get_environ(void);  /* ../dlls/msvcrt/environ.c:317 */
@@ -8383,10 +9119,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__get_environ,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__get_errno(int*  pValue) /* ../dlls/msvcrt/errno.c:230 */
+WINAPI int wine32b_msvcrt__get_errno(int*  pValue) /* ../dlls/msvcrt/errno.c:230 */
 {
+	int return_value;
 	TRACE("Enter _get_errno\n");
-	return p_get_errno(pValue);
+	return_value = p_get_errno(pValue);
+	TRACE("Leave _get_errno\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__get_errno(void);  /* ../dlls/msvcrt/errno.c:230 */
@@ -8408,10 +9147,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__get_errno,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__get_fmode(int*  mode) /* ../dlls/msvcrt/data.c:208 */
+WINAPI int wine32b_msvcrt__get_fmode(int*  mode) /* ../dlls/msvcrt/data.c:208 */
 {
+	int return_value;
 	TRACE("Enter _get_fmode\n");
-	return p_get_fmode(mode);
+	return_value = p_get_fmode(mode);
+	TRACE("Leave _get_fmode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__get_fmode(void);  /* ../dlls/msvcrt/data.c:208 */
@@ -8433,10 +9175,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__get_fmode,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__get_heap_handle(void) /* ../dlls/msvcrt/heap.c:358 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__get_heap_handle(void) /* ../dlls/msvcrt/heap.c:358 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _get_heap_handle\n");
-	return p_get_heap_handle();
+	return_value = p_get_heap_handle();
+	TRACE("Leave _get_heap_handle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__get_heap_handle(void);  /* ../dlls/msvcrt/heap.c:358 */
@@ -8457,10 +9202,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__get_heap_handle,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__get_osfhandle(int  fd) /* ../dlls/msvcrt/file.c:1934 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__get_osfhandle(int  fd) /* ../dlls/msvcrt/file.c:1934 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _get_osfhandle\n");
-	return p_get_osfhandle(fd);
+	return_value = p_get_osfhandle(fd);
+	TRACE("Leave _get_osfhandle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__get_osfhandle(void);  /* ../dlls/msvcrt/file.c:1934 */
@@ -8482,10 +9230,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__get_osfhandle,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__get_osplatform(int*  pValue) /* ../dlls/msvcrt/data.c:286 */
+WINAPI int wine32b_msvcrt__get_osplatform(int*  pValue) /* ../dlls/msvcrt/data.c:286 */
 {
+	int return_value;
 	TRACE("Enter _get_osplatform\n");
-	return p_get_osplatform(pValue);
+	return_value = p_get_osplatform(pValue);
+	TRACE("Leave _get_osplatform\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__get_osplatform(void);  /* ../dlls/msvcrt/data.c:286 */
@@ -8507,10 +9258,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__get_osplatform,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__get_osver(int*  value) /* ../dlls/msvcrt/data.c:791 */
+WINAPI int wine32b_msvcrt__get_osver(int*  value) /* ../dlls/msvcrt/data.c:791 */
 {
+	int return_value;
 	TRACE("Enter _get_osver\n");
-	return p_get_osver(value);
+	return_value = p_get_osver(value);
+	TRACE("Leave _get_osver\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__get_osver(void);  /* ../dlls/msvcrt/data.c:791 */
@@ -8532,10 +9286,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__get_osver,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt__get_output_format(void) /* ../dlls/msvcrt/misc.c:400 */
+WINAPI unsigned int wine32b_msvcrt__get_output_format(void) /* ../dlls/msvcrt/misc.c:400 */
 {
+	unsigned int return_value;
 	TRACE("Enter _get_output_format\n");
-	return p_get_output_format();
+	return_value = p_get_output_format();
+	TRACE("Leave _get_output_format\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__get_output_format(void);  /* ../dlls/msvcrt/misc.c:400 */
@@ -8556,10 +9313,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__get_output_format,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__get_pgmptr(char**  p) /* ../dlls/msvcrt/data.c:169 */
+WINAPI int wine32b_msvcrt__get_pgmptr(char**  p) /* ../dlls/msvcrt/data.c:169 */
 {
+	int return_value;
 	TRACE("Enter _get_pgmptr\n");
-	return p_get_pgmptr(p);
+	return_value = p_get_pgmptr(p);
+	TRACE("Leave _get_pgmptr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__get_pgmptr(void);  /* ../dlls/msvcrt/data.c:169 */
@@ -8581,10 +9341,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__get_pgmptr,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt__get_sbh_threshold(void) /* ../dlls/msvcrt/heap.c:519 */
+WINAPI MSVCRT_size_t wine32b_msvcrt__get_sbh_threshold(void) /* ../dlls/msvcrt/heap.c:519 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter _get_sbh_threshold\n");
-	return p_get_sbh_threshold();
+	return_value = p_get_sbh_threshold();
+	TRACE("Leave _get_sbh_threshold\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__get_sbh_threshold(void);  /* ../dlls/msvcrt/heap.c:519 */
@@ -8605,10 +9368,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__get_sbh_threshold,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__get_wenviron(MSVCRT_wchar_t***  ptr) /* ../dlls/msvcrt/environ.c:325 */
+WINAPI void wine32b_msvcrt__get_wenviron(MSVCRT_wchar_t***  ptr) /* ../dlls/msvcrt/environ.c:325 */
 {
 	TRACE("Enter _get_wenviron\n");
-	return p_get_wenviron(ptr);
+	p_get_wenviron(ptr);
+	TRACE("Leave _get_wenviron\n");
 }
 
 extern WINAPI void wine32a_msvcrt__get_wenviron(void);  /* ../dlls/msvcrt/environ.c:325 */
@@ -8630,10 +9394,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__get_wenviron,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__get_winmajor(int*  value) /* ../dlls/msvcrt/data.c:771 */
+WINAPI int wine32b_msvcrt__get_winmajor(int*  value) /* ../dlls/msvcrt/data.c:771 */
 {
+	int return_value;
 	TRACE("Enter _get_winmajor\n");
-	return p_get_winmajor(value);
+	return_value = p_get_winmajor(value);
+	TRACE("Leave _get_winmajor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__get_winmajor(void);  /* ../dlls/msvcrt/data.c:771 */
@@ -8655,10 +9422,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__get_winmajor,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__get_winminor(int*  value) /* ../dlls/msvcrt/data.c:781 */
+WINAPI int wine32b_msvcrt__get_winminor(int*  value) /* ../dlls/msvcrt/data.c:781 */
 {
+	int return_value;
 	TRACE("Enter _get_winminor\n");
-	return p_get_winminor(value);
+	return_value = p_get_winminor(value);
+	TRACE("Leave _get_winminor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__get_winminor(void);  /* ../dlls/msvcrt/data.c:781 */
@@ -8680,10 +9450,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__get_winminor,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__get_wpgmptr(WCHAR**  p) /* ../dlls/msvcrt/data.c:180 */
+WINAPI int wine32b_msvcrt__get_wpgmptr(WCHAR**  p) /* ../dlls/msvcrt/data.c:180 */
 {
+	int return_value;
 	TRACE("Enter _get_wpgmptr\n");
-	return p_get_wpgmptr(p);
+	return_value = p_get_wpgmptr(p);
+	TRACE("Leave _get_wpgmptr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__get_wpgmptr(void);  /* ../dlls/msvcrt/data.c:180 */
@@ -8705,10 +9478,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__get_wpgmptr,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_terminate_function wine32b_msvcrt__get_terminate(void) /* ../dlls/msvcrt/cpp.c:1209 */
+WINAPI MSVCRT_terminate_function wine32b_msvcrt__get_terminate(void) /* ../dlls/msvcrt/cpp.c:1209 */
 {
+	MSVCRT_terminate_function return_value;
 	TRACE("Enter _get_terminate\n");
-	return p_get_terminate();
+	return_value = p_get_terminate();
+	TRACE("Leave _get_terminate\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__get_terminate(void);  /* ../dlls/msvcrt/cpp.c:1209 */
@@ -8729,10 +9505,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__get_terminate,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__get_tzname(MSVCRT_size_t*  ret, char*  buf, MSVCRT_size_t  bufsize, int  index) /* ../dlls/msvcrt/time.c:916 */
+WINAPI int wine32b_msvcrt__get_tzname(MSVCRT_size_t*  ret, char*  buf, MSVCRT_size_t  bufsize, int  index) /* ../dlls/msvcrt/time.c:916 */
 {
+	int return_value;
 	TRACE("Enter _get_tzname\n");
-	return p_get_tzname(ret, buf, bufsize, index);
+	return_value = p_get_tzname(ret, buf, bufsize, index);
+	TRACE("Leave _get_tzname\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__get_tzname(void);  /* ../dlls/msvcrt/time.c:916 */
@@ -8757,10 +9536,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__get_tzname,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_unexpected_function wine32b_msvcrt__get_unexpected(void) /* ../dlls/msvcrt/cpp.c:1239 */
+WINAPI MSVCRT_unexpected_function wine32b_msvcrt__get_unexpected(void) /* ../dlls/msvcrt/cpp.c:1239 */
 {
+	MSVCRT_unexpected_function return_value;
 	TRACE("Enter _get_unexpected\n");
-	return p_get_unexpected();
+	return_value = p_get_unexpected();
+	TRACE("Leave _get_unexpected\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__get_unexpected(void);  /* ../dlls/msvcrt/cpp.c:1239 */
@@ -8781,10 +9563,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__get_unexpected,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__getch(void) /* ../dlls/msvcrt/console.c:210 */
+WINAPI int wine32b_msvcrt__getch(void) /* ../dlls/msvcrt/console.c:210 */
 {
+	int return_value;
 	TRACE("Enter _getch\n");
-	return p_getch();
+	return_value = p_getch();
+	TRACE("Leave _getch\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__getch(void);  /* ../dlls/msvcrt/console.c:210 */
@@ -8805,10 +9590,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__getch,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__getche(void) /* ../dlls/msvcrt/console.c:346 */
+WINAPI int wine32b_msvcrt__getche(void) /* ../dlls/msvcrt/console.c:346 */
 {
+	int return_value;
 	TRACE("Enter _getche\n");
-	return p_getche();
+	return_value = p_getche();
+	TRACE("Leave _getche\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__getche(void);  /* ../dlls/msvcrt/console.c:346 */
@@ -8829,10 +9617,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__getche,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__getcwd(char*  buf, int  size) /* ../dlls/msvcrt/dir.c:765 */
+WINAPI char* wine32b_msvcrt__getcwd(char*  buf, int  size) /* ../dlls/msvcrt/dir.c:765 */
 {
+	char* return_value;
 	TRACE("Enter _getcwd\n");
-	return p_getcwd(buf, size);
+	return_value = p_getcwd(buf, size);
+	TRACE("Leave _getcwd\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__getcwd(void);  /* ../dlls/msvcrt/dir.c:765 */
@@ -8855,10 +9646,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__getcwd,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__getdcwd(int  drive, char*  buf, int  size) /* ../dlls/msvcrt/dir.c:850 */
+WINAPI char* wine32b_msvcrt__getdcwd(int  drive, char*  buf, int  size) /* ../dlls/msvcrt/dir.c:850 */
 {
+	char* return_value;
 	TRACE("Enter _getdcwd\n");
-	return p_getdcwd(drive, buf, size);
+	return_value = p_getdcwd(drive, buf, size);
+	TRACE("Leave _getdcwd\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__getdcwd(void);  /* ../dlls/msvcrt/dir.c:850 */
@@ -8882,10 +9676,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__getdcwd,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt__getdiskfree(unsigned int  disk, struct MSVCRT__diskfree_t*  d) /* ../dlls/msvcrt/dir.c:944 */
+WINAPI unsigned int wine32b_msvcrt__getdiskfree(unsigned int  disk, struct MSVCRT__diskfree_t*  d) /* ../dlls/msvcrt/dir.c:944 */
 {
+	unsigned int return_value;
 	TRACE("Enter _getdiskfree\n");
-	return p_getdiskfree(disk, d);
+	return_value = p_getdiskfree(disk, d);
+	TRACE("Leave _getdiskfree\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__getdiskfree(void);  /* ../dlls/msvcrt/dir.c:944 */
@@ -8908,10 +9705,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__getdiskfree,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt__getdllprocaddr(MSVCRT_intptr_t  dll, char*  name, int  ordinal) /* ../dlls/msvcrt/process.c:1309 */
+WINAPI void* wine32b_msvcrt__getdllprocaddr(MSVCRT_intptr_t  dll, char*  name, int  ordinal) /* ../dlls/msvcrt/process.c:1309 */
 {
+	void* return_value;
 	TRACE("Enter _getdllprocaddr\n");
-	return p_getdllprocaddr(dll, name, ordinal);
+	return_value = p_getdllprocaddr(dll, name, ordinal);
+	TRACE("Leave _getdllprocaddr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__getdllprocaddr(void);  /* ../dlls/msvcrt/process.c:1309 */
@@ -8935,10 +9735,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__getdllprocaddr,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__getdrive(void) /* ../dlls/msvcrt/dir.c:826 */
+WINAPI int wine32b_msvcrt__getdrive(void) /* ../dlls/msvcrt/dir.c:826 */
 {
+	int return_value;
 	TRACE("Enter _getdrive\n");
-	return p_getdrive();
+	return_value = p_getdrive();
+	TRACE("Leave _getdrive\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__getdrive(void);  /* ../dlls/msvcrt/dir.c:826 */
@@ -8959,10 +9762,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__getdrive,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__getmaxstdio(void) /* ../dlls/msvcrt/file.c:5649 */
+WINAPI int wine32b_msvcrt__getmaxstdio(void) /* ../dlls/msvcrt/file.c:5649 */
 {
+	int return_value;
 	TRACE("Enter _getmaxstdio\n");
-	return p_getmaxstdio();
+	return_value = p_getmaxstdio();
+	TRACE("Leave _getmaxstdio\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__getmaxstdio(void);  /* ../dlls/msvcrt/file.c:5649 */
@@ -8983,10 +9789,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__getmaxstdio,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__getmbcp(void) /* ../dlls/msvcrt/mbcs.c:382 */
+WINAPI int wine32b_msvcrt__getmbcp(void) /* ../dlls/msvcrt/mbcs.c:382 */
 {
+	int return_value;
 	TRACE("Enter _getmbcp\n");
-	return p_getmbcp();
+	return_value = p_getmbcp();
+	TRACE("Leave _getmbcp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__getmbcp(void);  /* ../dlls/msvcrt/mbcs.c:382 */
@@ -9007,10 +9816,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__getmbcp,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__getpid(void) /* ../dlls/msvcrt/process.c:1323 */
+WINAPI int wine32b_msvcrt__getpid(void) /* ../dlls/msvcrt/process.c:1323 */
 {
+	int return_value;
 	TRACE("Enter _getpid\n");
-	return p_getpid();
+	return_value = p_getpid();
+	TRACE("Leave _getpid\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__getpid(void);  /* ../dlls/msvcrt/process.c:1323 */
@@ -9031,10 +9843,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__getpid,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__getw(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3873 */
+WINAPI int wine32b_msvcrt__getw(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3873 */
 {
+	int return_value;
 	TRACE("Enter _getw\n");
-	return p_getw(file);
+	return_value = p_getw(file);
+	TRACE("Leave _getw\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__getw(void);  /* ../dlls/msvcrt/file.c:3873 */
@@ -9056,10 +9871,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__getw,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t wine32b_msvcrt__getwch(void) /* ../dlls/msvcrt/console.c:277 */
+WINAPI MSVCRT_wchar_t wine32b_msvcrt__getwch(void) /* ../dlls/msvcrt/console.c:277 */
 {
+	MSVCRT_wchar_t return_value;
 	TRACE("Enter _getwch\n");
-	return p_getwch();
+	return_value = p_getwch();
+	TRACE("Leave _getwch\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__getwch(void);  /* ../dlls/msvcrt/console.c:277 */
@@ -9080,10 +9898,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__getwch,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t wine32b_msvcrt__getwche(void) /* ../dlls/msvcrt/console.c:371 */
+WINAPI MSVCRT_wchar_t wine32b_msvcrt__getwche(void) /* ../dlls/msvcrt/console.c:371 */
 {
+	MSVCRT_wchar_t return_value;
 	TRACE("Enter _getwche\n");
-	return p_getwche();
+	return_value = p_getwche();
+	TRACE("Leave _getwche\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__getwche(void);  /* ../dlls/msvcrt/console.c:371 */
@@ -9104,10 +9925,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__getwche,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__getws(MSVCRT_wchar_t*  buf) /* ../dlls/msvcrt/file.c:4778 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__getws(MSVCRT_wchar_t*  buf) /* ../dlls/msvcrt/file.c:4778 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _getws\n");
-	return p_getws(buf);
+	return_value = p_getws(buf);
+	TRACE("Leave _getws\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__getws(void);  /* ../dlls/msvcrt/file.c:4778 */
@@ -9129,10 +9953,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__getws,
 	"ret \n"
 )
 
-extern WINAPI struct MSVCRT_tm* wine32b_msvcrt__gmtime32(MSVCRT___time32_t*  secs) /* ../dlls/msvcrt/time.c:548 */
+WINAPI struct MSVCRT_tm* wine32b_msvcrt__gmtime32(MSVCRT___time32_t*  secs) /* ../dlls/msvcrt/time.c:548 */
 {
+	struct MSVCRT_tm* return_value;
 	TRACE("Enter _gmtime32\n");
-	return p_gmtime32(secs);
+	return_value = p_gmtime32(secs);
+	TRACE("Leave _gmtime32\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__gmtime32(void);  /* ../dlls/msvcrt/time.c:548 */
@@ -9154,10 +9981,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__gmtime32,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__gmtime32_s(struct MSVCRT_tm*  res, MSVCRT___time32_t*  secs) /* ../dlls/msvcrt/time.c:534 */
+WINAPI int wine32b_msvcrt__gmtime32_s(struct MSVCRT_tm*  res, MSVCRT___time32_t*  secs) /* ../dlls/msvcrt/time.c:534 */
 {
+	int return_value;
 	TRACE("Enter _gmtime32_s\n");
-	return p_gmtime32_s(res, secs);
+	return_value = p_gmtime32_s(res, secs);
+	TRACE("Leave _gmtime32_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__gmtime32_s(void);  /* ../dlls/msvcrt/time.c:534 */
@@ -9180,10 +10010,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__gmtime32_s,
 	"ret \n"
 )
 
-extern WINAPI struct MSVCRT_tm* wine32b_msvcrt__gmtime64(MSVCRT___time64_t*  secs) /* ../dlls/msvcrt/time.c:519 */
+WINAPI struct MSVCRT_tm* wine32b_msvcrt__gmtime64(MSVCRT___time64_t*  secs) /* ../dlls/msvcrt/time.c:519 */
 {
+	struct MSVCRT_tm* return_value;
 	TRACE("Enter _gmtime64\n");
-	return p_gmtime64(secs);
+	return_value = p_gmtime64(secs);
+	TRACE("Leave _gmtime64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__gmtime64(void);  /* ../dlls/msvcrt/time.c:519 */
@@ -9205,10 +10038,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__gmtime64,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__gmtime64_s(struct MSVCRT_tm*  res, MSVCRT___time64_t*  secs) /* ../dlls/msvcrt/time.c:476 */
+WINAPI int wine32b_msvcrt__gmtime64_s(struct MSVCRT_tm*  res, MSVCRT___time64_t*  secs) /* ../dlls/msvcrt/time.c:476 */
 {
+	int return_value;
 	TRACE("Enter _gmtime64_s\n");
-	return p_gmtime64_s(res, secs);
+	return_value = p_gmtime64_s(res, secs);
+	TRACE("Leave _gmtime64_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__gmtime64_s(void);  /* ../dlls/msvcrt/time.c:476 */
@@ -9231,10 +10067,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__gmtime64_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__heapadd(void*  mem, MSVCRT_size_t  size) /* ../dlls/msvcrt/heap.c:348 */
+WINAPI int wine32b_msvcrt__heapadd(void*  mem, MSVCRT_size_t  size) /* ../dlls/msvcrt/heap.c:348 */
 {
+	int return_value;
 	TRACE("Enter _heapadd\n");
-	return p_heapadd(mem, size);
+	return_value = p_heapadd(mem, size);
+	TRACE("Leave _heapadd\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__heapadd(void);  /* ../dlls/msvcrt/heap.c:348 */
@@ -9257,10 +10096,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__heapadd,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__heapchk(void) /* ../dlls/msvcrt/heap.c:256 */
+WINAPI int wine32b_msvcrt__heapchk(void) /* ../dlls/msvcrt/heap.c:256 */
 {
+	int return_value;
 	TRACE("Enter _heapchk\n");
-	return p_heapchk();
+	return_value = p_heapchk();
+	TRACE("Leave _heapchk\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__heapchk(void);  /* ../dlls/msvcrt/heap.c:256 */
@@ -9281,10 +10123,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__heapchk,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__heapmin(void) /* ../dlls/msvcrt/heap.c:270 */
+WINAPI int wine32b_msvcrt__heapmin(void) /* ../dlls/msvcrt/heap.c:270 */
 {
+	int return_value;
 	TRACE("Enter _heapmin\n");
-	return p_heapmin();
+	return_value = p_heapmin();
+	TRACE("Leave _heapmin\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__heapmin(void);  /* ../dlls/msvcrt/heap.c:270 */
@@ -9305,10 +10150,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__heapmin,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__heapset(unsigned int  value) /* ../dlls/msvcrt/heap.c:329 */
+WINAPI int wine32b_msvcrt__heapset(unsigned int  value) /* ../dlls/msvcrt/heap.c:329 */
 {
+	int return_value;
 	TRACE("Enter _heapset\n");
-	return p_heapset(value);
+	return_value = p_heapset(value);
+	TRACE("Leave _heapset\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__heapset(void);  /* ../dlls/msvcrt/heap.c:329 */
@@ -9330,10 +10178,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__heapset,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__heapwalk(struct MSVCRT__heapinfo*  next) /* ../dlls/msvcrt/heap.c:285 */
+WINAPI int wine32b_msvcrt__heapwalk(struct MSVCRT__heapinfo*  next) /* ../dlls/msvcrt/heap.c:285 */
 {
+	int return_value;
 	TRACE("Enter _heapwalk\n");
-	return p_heapwalk(next);
+	return_value = p_heapwalk(next);
+	TRACE("Leave _heapwalk\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__heapwalk(void);  /* ../dlls/msvcrt/heap.c:285 */
@@ -9355,10 +10206,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__heapwalk,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt__hypot(double  x, double  y) /* ../dlls/msvcrt/math.c:835 */
+WINAPI double wine32b_msvcrt__hypot(double  x, double  y) /* ../dlls/msvcrt/math.c:835 */
 {
+	double return_value;
 	TRACE("Enter _hypot\n");
-	return p_hypot(x, y);
+	return_value = p_hypot(x, y);
+	TRACE("Leave _hypot\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__hypot(void);  /* ../dlls/msvcrt/math.c:835 */
@@ -9381,10 +10235,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__hypot,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt__hypotf(float  x, float  y) /* ../dlls/msvcrt/math.c:844 */
+WINAPI float wine32b_msvcrt__hypotf(float  x, float  y) /* ../dlls/msvcrt/math.c:844 */
 {
+	float return_value;
 	TRACE("Enter _hypotf\n");
-	return p_hypotf(x, y);
+	return_value = p_hypotf(x, y);
+	TRACE("Leave _hypotf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__hypotf(void);  /* ../dlls/msvcrt/math.c:844 */
@@ -9407,10 +10264,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__hypotf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__i64toa_s(long  value, char*  str, MSVCRT_size_t  size, int  radix) /* ../dlls/msvcrt/string.c:1637 */
+WINAPI int wine32b_msvcrt__i64toa_s(long  value, char*  str, MSVCRT_size_t  size, int  radix) /* ../dlls/msvcrt/string.c:1637 */
 {
+	int return_value;
 	TRACE("Enter _i64toa_s\n");
-	return p_i64toa_s(value, str, size, radix);
+	return_value = p_i64toa_s(value, str, size, radix);
+	TRACE("Leave _i64toa_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__i64toa_s(void);  /* ../dlls/msvcrt/string.c:1637 */
@@ -9435,10 +10295,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__i64toa_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__i64tow_s(long  value, MSVCRT_wchar_t*  str, MSVCRT_size_t  size, int  radix) /* ../dlls/msvcrt/string.c:1712 */
+WINAPI int wine32b_msvcrt__i64tow_s(long  value, MSVCRT_wchar_t*  str, MSVCRT_size_t  size, int  radix) /* ../dlls/msvcrt/string.c:1712 */
 {
+	int return_value;
 	TRACE("Enter _i64tow_s\n");
-	return p_i64tow_s(value, str, size, radix);
+	return_value = p_i64tow_s(value, str, size, radix);
+	TRACE("Leave _i64tow_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__i64tow_s(void);  /* ../dlls/msvcrt/string.c:1712 */
@@ -9463,10 +10326,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__i64tow_s,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__initterm(_INITTERMFUN*  start, _INITTERMFUN*  end) /* ../dlls/msvcrt/data.c:608 */
+WINAPI void wine32b_msvcrt__initterm(_INITTERMFUN*  start, _INITTERMFUN*  end) /* ../dlls/msvcrt/data.c:608 */
 {
 	TRACE("Enter _initterm\n");
-	return p_initterm(start, end);
+	p_initterm(start, end);
+	TRACE("Leave _initterm\n");
 }
 
 extern WINAPI void wine32a_msvcrt__initterm(void);  /* ../dlls/msvcrt/data.c:608 */
@@ -9489,10 +10353,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__initterm,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__initterm_e(_INITTERM_E_FN*  table, _INITTERM_E_FN*  end) /* ../dlls/msvcrt/data.c:630 */
+WINAPI int wine32b_msvcrt__initterm_e(_INITTERM_E_FN*  table, _INITTERM_E_FN*  end) /* ../dlls/msvcrt/data.c:630 */
 {
+	int return_value;
 	TRACE("Enter _initterm_e\n");
-	return p_initterm_e(table, end);
+	return_value = p_initterm_e(table, end);
+	TRACE("Leave _initterm_e\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__initterm_e(void);  /* ../dlls/msvcrt/data.c:630 */
@@ -9515,10 +10382,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__initterm_e,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__invalid_parameter(MSVCRT_wchar_t*  expr, MSVCRT_wchar_t*  func, MSVCRT_wchar_t*  file, unsigned int  line, MSVCRT_uintptr_t  arg) /* ../dlls/msvcrt/errno.c:462 */
+WINAPI void wine32b_msvcrt__invalid_parameter(MSVCRT_wchar_t*  expr, MSVCRT_wchar_t*  func, MSVCRT_wchar_t*  file, unsigned int  line, MSVCRT_uintptr_t  arg) /* ../dlls/msvcrt/errno.c:462 */
 {
 	TRACE("Enter _invalid_parameter\n");
-	return p_invalid_parameter(expr, func, file, line, arg);
+	p_invalid_parameter(expr, func, file, line, arg);
+	TRACE("Leave _invalid_parameter\n");
 }
 
 extern WINAPI void wine32a_msvcrt__invalid_parameter(void);  /* ../dlls/msvcrt/errno.c:462 */
@@ -9543,10 +10411,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__invalid_parameter,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__isalnum_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:114 */
+WINAPI int wine32b_msvcrt__isalnum_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:114 */
 {
+	int return_value;
 	TRACE("Enter _isalnum_l\n");
-	return p_isalnum_l(c, locale);
+	return_value = p_isalnum_l(c, locale);
+	TRACE("Leave _isalnum_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__isalnum_l(void);  /* ../dlls/msvcrt/ctype.c:114 */
@@ -9569,10 +10440,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__isalnum_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__isalpha_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:130 */
+WINAPI int wine32b_msvcrt__isalpha_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:130 */
 {
+	int return_value;
 	TRACE("Enter _isalpha_l\n");
-	return p_isalpha_l(c, locale);
+	return_value = p_isalpha_l(c, locale);
+	TRACE("Leave _isalpha_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__isalpha_l(void);  /* ../dlls/msvcrt/ctype.c:130 */
@@ -9595,10 +10469,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__isalpha_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__isatty(int  fd) /* ../dlls/msvcrt/file.c:679 */
+WINAPI int wine32b_msvcrt__isatty(int  fd) /* ../dlls/msvcrt/file.c:679 */
 {
+	int return_value;
 	TRACE("Enter _isatty\n");
-	return p_isatty(fd);
+	return_value = p_isatty(fd);
+	TRACE("Leave _isatty\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__isatty(void);  /* ../dlls/msvcrt/file.c:679 */
@@ -9620,10 +10497,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__isatty,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__iscntrl_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:146 */
+WINAPI int wine32b_msvcrt__iscntrl_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:146 */
 {
+	int return_value;
 	TRACE("Enter _iscntrl_l\n");
-	return p_iscntrl_l(c, locale);
+	return_value = p_iscntrl_l(c, locale);
+	TRACE("Leave _iscntrl_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__iscntrl_l(void);  /* ../dlls/msvcrt/ctype.c:146 */
@@ -9646,10 +10526,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__iscntrl_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__isctype(int  c, int  type) /* ../dlls/msvcrt/ctype.c:106 */
+WINAPI int wine32b_msvcrt__isctype(int  c, int  type) /* ../dlls/msvcrt/ctype.c:106 */
 {
+	int return_value;
 	TRACE("Enter _isctype\n");
-	return p_isctype(c, type);
+	return_value = p_isctype(c, type);
+	TRACE("Leave _isctype\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__isctype(void);  /* ../dlls/msvcrt/ctype.c:106 */
@@ -9672,10 +10555,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__isctype,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__isctype_l(int  c, int  type, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:73 */
+WINAPI int wine32b_msvcrt__isctype_l(int  c, int  type, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:73 */
 {
+	int return_value;
 	TRACE("Enter _isctype_l\n");
-	return p_isctype_l(c, type, locale);
+	return_value = p_isctype_l(c, type, locale);
+	TRACE("Leave _isctype_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__isctype_l(void);  /* ../dlls/msvcrt/ctype.c:73 */
@@ -9699,10 +10585,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__isctype_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__isdigit_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:162 */
+WINAPI int wine32b_msvcrt__isdigit_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:162 */
 {
+	int return_value;
 	TRACE("Enter _isdigit_l\n");
-	return p_isdigit_l(c, locale);
+	return_value = p_isdigit_l(c, locale);
+	TRACE("Leave _isdigit_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__isdigit_l(void);  /* ../dlls/msvcrt/ctype.c:162 */
@@ -9725,10 +10614,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__isdigit_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__isgraph_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:178 */
+WINAPI int wine32b_msvcrt__isgraph_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:178 */
 {
+	int return_value;
 	TRACE("Enter _isgraph_l\n");
-	return p_isgraph_l(c, locale);
+	return_value = p_isgraph_l(c, locale);
+	TRACE("Leave _isgraph_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__isgraph_l(void);  /* ../dlls/msvcrt/ctype.c:178 */
@@ -9751,10 +10643,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__isgraph_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__isleadbyte_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:194 */
+WINAPI int wine32b_msvcrt__isleadbyte_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:194 */
 {
+	int return_value;
 	TRACE("Enter _isleadbyte_l\n");
-	return p_isleadbyte_l(c, locale);
+	return_value = p_isleadbyte_l(c, locale);
+	TRACE("Leave _isleadbyte_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__isleadbyte_l(void);  /* ../dlls/msvcrt/ctype.c:194 */
@@ -9777,10 +10672,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__isleadbyte_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__islower_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:210 */
+WINAPI int wine32b_msvcrt__islower_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:210 */
 {
+	int return_value;
 	TRACE("Enter _islower_l\n");
-	return p_islower_l(c, locale);
+	return_value = p_islower_l(c, locale);
+	TRACE("Leave _islower_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__islower_l(void);  /* ../dlls/msvcrt/ctype.c:210 */
@@ -9803,10 +10701,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__islower_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbbkana(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:1397 */
+WINAPI int wine32b_msvcrt__ismbbkana(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:1397 */
 {
+	int return_value;
 	TRACE("Enter _ismbbkana\n");
-	return p_ismbbkana(c);
+	return_value = p_ismbbkana(c);
+	TRACE("Leave _ismbbkana\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbbkana(void);  /* ../dlls/msvcrt/mbcs.c:1397 */
@@ -9828,10 +10729,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbbkana,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbblead(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:1549 */
+WINAPI int wine32b_msvcrt__ismbblead(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:1549 */
 {
+	int return_value;
 	TRACE("Enter _ismbblead\n");
-	return p_ismbblead(c);
+	return_value = p_ismbblead(c);
+	TRACE("Leave _ismbblead\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbblead(void);  /* ../dlls/msvcrt/mbcs.c:1549 */
@@ -9853,10 +10757,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbblead,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbblead_l(unsigned int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:1534 */
+WINAPI int wine32b_msvcrt__ismbblead_l(unsigned int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:1534 */
 {
+	int return_value;
 	TRACE("Enter _ismbblead_l\n");
-	return p_ismbblead_l(c, locale);
+	return_value = p_ismbblead_l(c, locale);
+	TRACE("Leave _ismbblead_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbblead_l(void);  /* ../dlls/msvcrt/mbcs.c:1534 */
@@ -9879,10 +10786,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbblead_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbbtrail(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:1572 */
+WINAPI int wine32b_msvcrt__ismbbtrail(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:1572 */
 {
+	int return_value;
 	TRACE("Enter _ismbbtrail\n");
-	return p_ismbbtrail(c);
+	return_value = p_ismbbtrail(c);
+	TRACE("Leave _ismbbtrail\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbbtrail(void);  /* ../dlls/msvcrt/mbcs.c:1572 */
@@ -9904,10 +10814,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbbtrail,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbbtrail_l(unsigned int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:1557 */
+WINAPI int wine32b_msvcrt__ismbbtrail_l(unsigned int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:1557 */
 {
+	int return_value;
 	TRACE("Enter _ismbbtrail_l\n");
-	return p_ismbbtrail_l(c, locale);
+	return_value = p_ismbbtrail_l(c, locale);
+	TRACE("Leave _ismbbtrail_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbbtrail_l(void);  /* ../dlls/msvcrt/mbcs.c:1557 */
@@ -9930,10 +10843,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbbtrail_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbcalnum(unsigned int  ch) /* ../dlls/msvcrt/mbcs.c:1471 */
+WINAPI int wine32b_msvcrt__ismbcalnum(unsigned int  ch) /* ../dlls/msvcrt/mbcs.c:1471 */
 {
+	int return_value;
 	TRACE("Enter _ismbcalnum\n");
-	return p_ismbcalnum(ch);
+	return_value = p_ismbcalnum(ch);
+	TRACE("Leave _ismbcalnum\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbcalnum(void);  /* ../dlls/msvcrt/mbcs.c:1471 */
@@ -9955,10 +10871,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbcalnum,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbcalpha(unsigned int  ch) /* ../dlls/msvcrt/mbcs.c:1429 */
+WINAPI int wine32b_msvcrt__ismbcalpha(unsigned int  ch) /* ../dlls/msvcrt/mbcs.c:1429 */
 {
+	int return_value;
 	TRACE("Enter _ismbcalpha\n");
-	return p_ismbcalpha(ch);
+	return_value = p_ismbcalpha(ch);
+	TRACE("Leave _ismbcalpha\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbcalpha(void);  /* ../dlls/msvcrt/mbcs.c:1429 */
@@ -9980,10 +10899,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbcalpha,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbcdigit(unsigned int  ch) /* ../dlls/msvcrt/mbcs.c:1411 */
+WINAPI int wine32b_msvcrt__ismbcdigit(unsigned int  ch) /* ../dlls/msvcrt/mbcs.c:1411 */
 {
+	int return_value;
 	TRACE("Enter _ismbcdigit\n");
-	return p_ismbcdigit(ch);
+	return_value = p_ismbcdigit(ch);
+	TRACE("Leave _ismbcdigit\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbcdigit(void);  /* ../dlls/msvcrt/mbcs.c:1411 */
@@ -10005,10 +10927,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbcdigit,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbcgraph(unsigned int  ch) /* ../dlls/msvcrt/mbcs.c:1420 */
+WINAPI int wine32b_msvcrt__ismbcgraph(unsigned int  ch) /* ../dlls/msvcrt/mbcs.c:1420 */
 {
+	int return_value;
 	TRACE("Enter _ismbcgraph\n");
-	return p_ismbcgraph(ch);
+	return_value = p_ismbcgraph(ch);
+	TRACE("Leave _ismbcgraph\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbcgraph(void);  /* ../dlls/msvcrt/mbcs.c:1420 */
@@ -10030,10 +10955,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbcgraph,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbchira(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:1507 */
+WINAPI int wine32b_msvcrt__ismbchira(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:1507 */
 {
+	int return_value;
 	TRACE("Enter _ismbchira\n");
-	return p_ismbchira(c);
+	return_value = p_ismbchira(c);
+	TRACE("Leave _ismbchira\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbchira(void);  /* ../dlls/msvcrt/mbcs.c:1507 */
@@ -10055,10 +10983,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbchira,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbckata(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:1520 */
+WINAPI int wine32b_msvcrt__ismbckata(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:1520 */
 {
+	int return_value;
 	TRACE("Enter _ismbckata\n");
-	return p_ismbckata(c);
+	return_value = p_ismbckata(c);
+	TRACE("Leave _ismbckata\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbckata(void);  /* ../dlls/msvcrt/mbcs.c:1520 */
@@ -10080,10 +11011,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbckata,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbcl0(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:2556 */
+WINAPI int wine32b_msvcrt__ismbcl0(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:2556 */
 {
+	int return_value;
 	TRACE("Enter _ismbcl0\n");
-	return p_ismbcl0(c);
+	return_value = p_ismbcl0(c);
+	TRACE("Leave _ismbcl0\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbcl0(void);  /* ../dlls/msvcrt/mbcs.c:2556 */
@@ -10105,10 +11039,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbcl0,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbcl0_l(unsigned int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:2535 */
+WINAPI int wine32b_msvcrt__ismbcl0_l(unsigned int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:2535 */
 {
+	int return_value;
 	TRACE("Enter _ismbcl0_l\n");
-	return p_ismbcl0_l(c, locale);
+	return_value = p_ismbcl0_l(c, locale);
+	TRACE("Leave _ismbcl0_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbcl0_l(void);  /* ../dlls/msvcrt/mbcs.c:2535 */
@@ -10131,10 +11068,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbcl0_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbcl1(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:2585 */
+WINAPI int wine32b_msvcrt__ismbcl1(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:2585 */
 {
+	int return_value;
 	TRACE("Enter _ismbcl1\n");
-	return p_ismbcl1(c);
+	return_value = p_ismbcl1(c);
+	TRACE("Leave _ismbcl1\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbcl1(void);  /* ../dlls/msvcrt/mbcs.c:2585 */
@@ -10156,10 +11096,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbcl1,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbcl1_l(unsigned int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:2564 */
+WINAPI int wine32b_msvcrt__ismbcl1_l(unsigned int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:2564 */
 {
+	int return_value;
 	TRACE("Enter _ismbcl1_l\n");
-	return p_ismbcl1_l(c, locale);
+	return_value = p_ismbcl1_l(c, locale);
+	TRACE("Leave _ismbcl1_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbcl1_l(void);  /* ../dlls/msvcrt/mbcs.c:2564 */
@@ -10182,10 +11125,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbcl1_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbcl2(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:2614 */
+WINAPI int wine32b_msvcrt__ismbcl2(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:2614 */
 {
+	int return_value;
 	TRACE("Enter _ismbcl2\n");
-	return p_ismbcl2(c);
+	return_value = p_ismbcl2(c);
+	TRACE("Leave _ismbcl2\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbcl2(void);  /* ../dlls/msvcrt/mbcs.c:2614 */
@@ -10207,10 +11153,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbcl2,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbcl2_l(unsigned int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:2593 */
+WINAPI int wine32b_msvcrt__ismbcl2_l(unsigned int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:2593 */
 {
+	int return_value;
 	TRACE("Enter _ismbcl2_l\n");
-	return p_ismbcl2_l(c, locale);
+	return_value = p_ismbcl2_l(c, locale);
+	TRACE("Leave _ismbcl2_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbcl2_l(void);  /* ../dlls/msvcrt/mbcs.c:2593 */
@@ -10233,10 +11182,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbcl2_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbclegal(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:1588 */
+WINAPI int wine32b_msvcrt__ismbclegal(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:1588 */
 {
+	int return_value;
 	TRACE("Enter _ismbclegal\n");
-	return p_ismbclegal(c);
+	return_value = p_ismbclegal(c);
+	TRACE("Leave _ismbclegal\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbclegal(void);  /* ../dlls/msvcrt/mbcs.c:1588 */
@@ -10258,10 +11210,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbclegal,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbclegal_l(unsigned int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:1580 */
+WINAPI int wine32b_msvcrt__ismbclegal_l(unsigned int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:1580 */
 {
+	int return_value;
 	TRACE("Enter _ismbclegal_l\n");
-	return p_ismbclegal_l(c, locale);
+	return_value = p_ismbclegal_l(c, locale);
+	TRACE("Leave _ismbclegal_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbclegal_l(void);  /* ../dlls/msvcrt/mbcs.c:1580 */
@@ -10284,10 +11239,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbclegal_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbclower(unsigned int  ch) /* ../dlls/msvcrt/mbcs.c:1438 */
+WINAPI int wine32b_msvcrt__ismbclower(unsigned int  ch) /* ../dlls/msvcrt/mbcs.c:1438 */
 {
+	int return_value;
 	TRACE("Enter _ismbclower\n");
-	return p_ismbclower(ch);
+	return_value = p_ismbclower(ch);
+	TRACE("Leave _ismbclower\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbclower(void);  /* ../dlls/msvcrt/mbcs.c:1438 */
@@ -10309,10 +11267,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbclower,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbcprint(unsigned int  ch) /* ../dlls/msvcrt/mbcs.c:1489 */
+WINAPI int wine32b_msvcrt__ismbcprint(unsigned int  ch) /* ../dlls/msvcrt/mbcs.c:1489 */
 {
+	int return_value;
 	TRACE("Enter _ismbcprint\n");
-	return p_ismbcprint(ch);
+	return_value = p_ismbcprint(ch);
+	TRACE("Leave _ismbcprint\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbcprint(void);  /* ../dlls/msvcrt/mbcs.c:1489 */
@@ -10334,10 +11295,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbcprint,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbcpunct(unsigned int  ch) /* ../dlls/msvcrt/mbcs.c:1498 */
+WINAPI int wine32b_msvcrt__ismbcpunct(unsigned int  ch) /* ../dlls/msvcrt/mbcs.c:1498 */
 {
+	int return_value;
 	TRACE("Enter _ismbcpunct\n");
-	return p_ismbcpunct(ch);
+	return_value = p_ismbcpunct(ch);
+	TRACE("Leave _ismbcpunct\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbcpunct(void);  /* ../dlls/msvcrt/mbcs.c:1498 */
@@ -10359,10 +11323,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbcpunct,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbcspace(unsigned int  ch) /* ../dlls/msvcrt/mbcs.c:1480 */
+WINAPI int wine32b_msvcrt__ismbcspace(unsigned int  ch) /* ../dlls/msvcrt/mbcs.c:1480 */
 {
+	int return_value;
 	TRACE("Enter _ismbcspace\n");
-	return p_ismbcspace(ch);
+	return_value = p_ismbcspace(ch);
+	TRACE("Leave _ismbcspace\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbcspace(void);  /* ../dlls/msvcrt/mbcs.c:1480 */
@@ -10384,10 +11351,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbcspace,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbcsymbol(unsigned int  ch) /* ../dlls/msvcrt/mbcs.c:1456 */
+WINAPI int wine32b_msvcrt__ismbcsymbol(unsigned int  ch) /* ../dlls/msvcrt/mbcs.c:1456 */
 {
+	int return_value;
 	TRACE("Enter _ismbcsymbol\n");
-	return p_ismbcsymbol(ch);
+	return_value = p_ismbcsymbol(ch);
+	TRACE("Leave _ismbcsymbol\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbcsymbol(void);  /* ../dlls/msvcrt/mbcs.c:1456 */
@@ -10409,10 +11379,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbcsymbol,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbcupper(unsigned int  ch) /* ../dlls/msvcrt/mbcs.c:1447 */
+WINAPI int wine32b_msvcrt__ismbcupper(unsigned int  ch) /* ../dlls/msvcrt/mbcs.c:1447 */
 {
+	int return_value;
 	TRACE("Enter _ismbcupper\n");
-	return p_ismbcupper(ch);
+	return_value = p_ismbcupper(ch);
+	TRACE("Leave _ismbcupper\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbcupper(void);  /* ../dlls/msvcrt/mbcs.c:1447 */
@@ -10434,10 +11407,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbcupper,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbslead(unsigned char*  start, unsigned char*  str) /* ../dlls/msvcrt/mbcs.c:1596 */
+WINAPI int wine32b_msvcrt__ismbslead(unsigned char*  start, unsigned char*  str) /* ../dlls/msvcrt/mbcs.c:1596 */
 {
+	int return_value;
 	TRACE("Enter _ismbslead\n");
-	return p_ismbslead(start, str);
+	return_value = p_ismbslead(start, str);
+	TRACE("Leave _ismbslead\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbslead(void);  /* ../dlls/msvcrt/mbcs.c:1596 */
@@ -10460,10 +11436,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbslead,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ismbstrail(unsigned char*  start, unsigned char*  str) /* ../dlls/msvcrt/mbcs.c:1619 */
+WINAPI int wine32b_msvcrt__ismbstrail(unsigned char*  start, unsigned char*  str) /* ../dlls/msvcrt/mbcs.c:1619 */
 {
+	int return_value;
 	TRACE("Enter _ismbstrail\n");
-	return p_ismbstrail(start, str);
+	return_value = p_ismbstrail(start, str);
+	TRACE("Leave _ismbstrail\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ismbstrail(void);  /* ../dlls/msvcrt/mbcs.c:1619 */
@@ -10486,10 +11465,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ismbstrail,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt__isnan(double  num) /* ../dlls/msvcrt/math.c:1420 */
+WINAPI INT wine32b_msvcrt__isnan(double  num) /* ../dlls/msvcrt/math.c:1420 */
 {
+	INT return_value;
 	TRACE("Enter _isnan\n");
-	return p_isnan(num);
+	return_value = p_isnan(num);
+	TRACE("Leave _isnan\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__isnan(void);  /* ../dlls/msvcrt/math.c:1420 */
@@ -10511,10 +11493,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__isnan,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt__isnanf(float  num) /* ../dlls/msvcrt/math.c:186 */
+WINAPI INT wine32b_msvcrt__isnanf(float  num) /* ../dlls/msvcrt/math.c:186 */
 {
+	INT return_value;
 	TRACE("Enter _isnanf\n");
-	return p_isnanf(num);
+	return_value = p_isnanf(num);
+	TRACE("Leave _isnanf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__isnanf(void);  /* ../dlls/msvcrt/math.c:186 */
@@ -10536,10 +11521,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__isnanf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__isprint_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:226 */
+WINAPI int wine32b_msvcrt__isprint_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:226 */
 {
+	int return_value;
 	TRACE("Enter _isprint_l\n");
-	return p_isprint_l(c, locale);
+	return_value = p_isprint_l(c, locale);
+	TRACE("Leave _isprint_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__isprint_l(void);  /* ../dlls/msvcrt/ctype.c:226 */
@@ -10562,10 +11550,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__isprint_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__isspace_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:250 */
+WINAPI int wine32b_msvcrt__isspace_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:250 */
 {
+	int return_value;
 	TRACE("Enter _isspace_l\n");
-	return p_isspace_l(c, locale);
+	return_value = p_isspace_l(c, locale);
+	TRACE("Leave _isspace_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__isspace_l(void);  /* ../dlls/msvcrt/ctype.c:250 */
@@ -10588,10 +11579,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__isspace_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__isupper_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:266 */
+WINAPI int wine32b_msvcrt__isupper_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:266 */
 {
+	int return_value;
 	TRACE("Enter _isupper_l\n");
-	return p_isupper_l(c, locale);
+	return_value = p_isupper_l(c, locale);
+	TRACE("Leave _isupper_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__isupper_l(void);  /* ../dlls/msvcrt/ctype.c:266 */
@@ -10614,10 +11608,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__isupper_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__iswalnum_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1845 */
+WINAPI int wine32b_msvcrt__iswalnum_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1845 */
 {
+	int return_value;
 	TRACE("Enter _iswalnum_l\n");
-	return p_iswalnum_l(wc, locale);
+	return_value = p_iswalnum_l(wc, locale);
+	TRACE("Leave _iswalnum_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__iswalnum_l(void);  /* ../dlls/msvcrt/wcs.c:1845 */
@@ -10640,10 +11637,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__iswalnum_l,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt__iswalpha_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1861 */
+WINAPI INT wine32b_msvcrt__iswalpha_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1861 */
 {
+	INT return_value;
 	TRACE("Enter _iswalpha_l\n");
-	return p_iswalpha_l(wc, locale);
+	return_value = p_iswalpha_l(wc, locale);
+	TRACE("Leave _iswalpha_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__iswalpha_l(void);  /* ../dlls/msvcrt/wcs.c:1861 */
@@ -10666,10 +11666,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__iswalpha_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__iswcntrl_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1877 */
+WINAPI int wine32b_msvcrt__iswcntrl_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1877 */
 {
+	int return_value;
 	TRACE("Enter _iswcntrl_l\n");
-	return p_iswcntrl_l(wc, locale);
+	return_value = p_iswcntrl_l(wc, locale);
+	TRACE("Leave _iswcntrl_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__iswcntrl_l(void);  /* ../dlls/msvcrt/wcs.c:1877 */
@@ -10692,10 +11695,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__iswcntrl_l,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt__iswctype_l(MSVCRT_wchar_t  wc, MSVCRT_wctype_t  type, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2013 */
+WINAPI INT wine32b_msvcrt__iswctype_l(MSVCRT_wchar_t  wc, MSVCRT_wctype_t  type, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2013 */
 {
+	INT return_value;
 	TRACE("Enter _iswctype_l\n");
-	return p_iswctype_l(wc, type, locale);
+	return_value = p_iswctype_l(wc, type, locale);
+	TRACE("Leave _iswctype_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__iswctype_l(void);  /* ../dlls/msvcrt/wcs.c:2013 */
@@ -10719,10 +11725,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__iswctype_l,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt__iswdigit_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1893 */
+WINAPI INT wine32b_msvcrt__iswdigit_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1893 */
 {
+	INT return_value;
 	TRACE("Enter _iswdigit_l\n");
-	return p_iswdigit_l(wc, locale);
+	return_value = p_iswdigit_l(wc, locale);
+	TRACE("Leave _iswdigit_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__iswdigit_l(void);  /* ../dlls/msvcrt/wcs.c:1893 */
@@ -10745,10 +11754,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__iswdigit_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__iswgraph_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1909 */
+WINAPI int wine32b_msvcrt__iswgraph_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1909 */
 {
+	int return_value;
 	TRACE("Enter _iswgraph_l\n");
-	return p_iswgraph_l(wc, locale);
+	return_value = p_iswgraph_l(wc, locale);
+	TRACE("Leave _iswgraph_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__iswgraph_l(void);  /* ../dlls/msvcrt/wcs.c:1909 */
@@ -10771,10 +11783,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__iswgraph_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__iswlower_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1925 */
+WINAPI int wine32b_msvcrt__iswlower_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1925 */
 {
+	int return_value;
 	TRACE("Enter _iswlower_l\n");
-	return p_iswlower_l(wc, locale);
+	return_value = p_iswlower_l(wc, locale);
+	TRACE("Leave _iswlower_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__iswlower_l(void);  /* ../dlls/msvcrt/wcs.c:1925 */
@@ -10797,10 +11812,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__iswlower_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__iswprint_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1941 */
+WINAPI int wine32b_msvcrt__iswprint_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1941 */
 {
+	int return_value;
 	TRACE("Enter _iswprint_l\n");
-	return p_iswprint_l(wc, locale);
+	return_value = p_iswprint_l(wc, locale);
+	TRACE("Leave _iswprint_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__iswprint_l(void);  /* ../dlls/msvcrt/wcs.c:1941 */
@@ -10823,10 +11841,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__iswprint_l,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt__iswpunct_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1949 */
+WINAPI INT wine32b_msvcrt__iswpunct_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1949 */
 {
+	INT return_value;
 	TRACE("Enter _iswpunct_l\n");
-	return p_iswpunct_l(wc, locale);
+	return_value = p_iswpunct_l(wc, locale);
+	TRACE("Leave _iswpunct_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__iswpunct_l(void);  /* ../dlls/msvcrt/wcs.c:1949 */
@@ -10849,10 +11870,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__iswpunct_l,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt__iswspace_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1965 */
+WINAPI INT wine32b_msvcrt__iswspace_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1965 */
 {
+	INT return_value;
 	TRACE("Enter _iswspace_l\n");
-	return p_iswspace_l(wc, locale);
+	return_value = p_iswspace_l(wc, locale);
+	TRACE("Leave _iswspace_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__iswspace_l(void);  /* ../dlls/msvcrt/wcs.c:1965 */
@@ -10875,10 +11899,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__iswspace_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__iswupper_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1989 */
+WINAPI int wine32b_msvcrt__iswupper_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1989 */
 {
+	int return_value;
 	TRACE("Enter _iswupper_l\n");
-	return p_iswupper_l(wc, locale);
+	return_value = p_iswupper_l(wc, locale);
+	TRACE("Leave _iswupper_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__iswupper_l(void);  /* ../dlls/msvcrt/wcs.c:1989 */
@@ -10901,10 +11928,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__iswupper_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__iswxdigit_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2005 */
+WINAPI int wine32b_msvcrt__iswxdigit_l(MSVCRT_wchar_t  wc, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2005 */
 {
+	int return_value;
 	TRACE("Enter _iswxdigit_l\n");
-	return p_iswxdigit_l(wc, locale);
+	return_value = p_iswxdigit_l(wc, locale);
+	TRACE("Leave _iswxdigit_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__iswxdigit_l(void);  /* ../dlls/msvcrt/wcs.c:2005 */
@@ -10927,10 +11957,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__iswxdigit_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__isxdigit_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:282 */
+WINAPI int wine32b_msvcrt__isxdigit_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:282 */
 {
+	int return_value;
 	TRACE("Enter _isxdigit_l\n");
-	return p_isxdigit_l(c, locale);
+	return_value = p_isxdigit_l(c, locale);
+	TRACE("Leave _isxdigit_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__isxdigit_l(void);  /* ../dlls/msvcrt/ctype.c:282 */
@@ -10953,10 +11986,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__isxdigit_l,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__itoa(int  value, char*  str, int  radix) /* ../dlls/msvcrt/string.c:1436 */
+WINAPI char* wine32b_msvcrt__itoa(int  value, char*  str, int  radix) /* ../dlls/msvcrt/string.c:1436 */
 {
+	char* return_value;
 	TRACE("Enter _itoa\n");
-	return p_itoa(value, str, radix);
+	return_value = p_itoa(value, str, radix);
+	TRACE("Leave _itoa\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__itoa(void);  /* ../dlls/msvcrt/string.c:1436 */
@@ -10980,10 +12016,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__itoa,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__itoa_s(int  value, char*  str, MSVCRT_size_t  size, int  radix) /* ../dlls/msvcrt/string.c:1428 */
+WINAPI int wine32b_msvcrt__itoa_s(int  value, char*  str, MSVCRT_size_t  size, int  radix) /* ../dlls/msvcrt/string.c:1428 */
 {
+	int return_value;
 	TRACE("Enter _itoa_s\n");
-	return p_itoa_s(value, str, size, radix);
+	return_value = p_itoa_s(value, str, size, radix);
+	TRACE("Leave _itoa_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__itoa_s(void);  /* ../dlls/msvcrt/string.c:1428 */
@@ -11008,10 +12047,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__itoa_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__itow_s(int  value, MSVCRT_wchar_t*  str, MSVCRT_size_t  size, int  radix) /* ../dlls/msvcrt/string.c:1444 */
+WINAPI int wine32b_msvcrt__itow_s(int  value, MSVCRT_wchar_t*  str, MSVCRT_size_t  size, int  radix) /* ../dlls/msvcrt/string.c:1444 */
 {
+	int return_value;
 	TRACE("Enter _itow_s\n");
-	return p_itow_s(value, str, size, radix);
+	return_value = p_itow_s(value, str, size, radix);
+	TRACE("Leave _itow_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__itow_s(void);  /* ../dlls/msvcrt/string.c:1444 */
@@ -11036,10 +12078,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__itow_s,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt__j0(double  num) /* ../dlls/msvcrt/math.c:1431 */
+WINAPI double wine32b_msvcrt__j0(double  num) /* ../dlls/msvcrt/math.c:1431 */
 {
+	double return_value;
 	TRACE("Enter _j0\n");
-	return p_j0(num);
+	return_value = p_j0(num);
+	TRACE("Leave _j0\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__j0(void);  /* ../dlls/msvcrt/math.c:1431 */
@@ -11061,10 +12106,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__j0,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt__j1(double  num) /* ../dlls/msvcrt/math.c:1445 */
+WINAPI double wine32b_msvcrt__j1(double  num) /* ../dlls/msvcrt/math.c:1445 */
 {
+	double return_value;
 	TRACE("Enter _j1\n");
-	return p_j1(num);
+	return_value = p_j1(num);
+	TRACE("Leave _j1\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__j1(void);  /* ../dlls/msvcrt/math.c:1445 */
@@ -11086,10 +12134,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__j1,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt__jn(int  n, double  num) /* ../dlls/msvcrt/math.c:1459 */
+WINAPI double wine32b_msvcrt__jn(int  n, double  num) /* ../dlls/msvcrt/math.c:1459 */
 {
+	double return_value;
 	TRACE("Enter _jn\n");
-	return p_jn(n, num);
+	return_value = p_jn(n, num);
+	TRACE("Leave _jn\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__jn(void);  /* ../dlls/msvcrt/math.c:1459 */
@@ -11112,10 +12163,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__jn,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__kbhit(void) /* ../dlls/msvcrt/console.c:466 */
+WINAPI int wine32b_msvcrt__kbhit(void) /* ../dlls/msvcrt/console.c:466 */
 {
+	int return_value;
 	TRACE("Enter _kbhit\n");
-	return p_kbhit();
+	return_value = p_kbhit();
+	TRACE("Leave _kbhit\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__kbhit(void);  /* ../dlls/msvcrt/console.c:466 */
@@ -11136,10 +12190,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__kbhit,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt__lfind(void*  match, void*  start, unsigned int*  array_size, unsigned int  elem_size, int (* cf) (void)) /* ../dlls/msvcrt/misc.c:92 */
+WINAPI void* wine32b_msvcrt__lfind(void*  match, void*  start, unsigned int*  array_size, unsigned int  elem_size, int (* cf) (void)) /* ../dlls/msvcrt/misc.c:92 */
 {
+	void* return_value;
 	TRACE("Enter _lfind\n");
-	return p_lfind(match, start, array_size, elem_size, cf);
+	return_value = p_lfind(match, start, array_size, elem_size, cf);
+	TRACE("Leave _lfind\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__lfind(void);  /* ../dlls/msvcrt/misc.c:92 */
@@ -11164,10 +12221,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__lfind,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt__lfind_s(void*  match, void*  start, unsigned int*  array_size, unsigned int  elem_size, int (* cf) (void), void*  context) /* ../dlls/msvcrt/misc.c:110 */
+WINAPI void* wine32b_msvcrt__lfind_s(void*  match, void*  start, unsigned int*  array_size, unsigned int  elem_size, int (* cf) (void), void*  context) /* ../dlls/msvcrt/misc.c:110 */
 {
+	void* return_value;
 	TRACE("Enter _lfind_s\n");
-	return p_lfind_s(match, start, array_size, elem_size, cf, context);
+	return_value = p_lfind_s(match, start, array_size, elem_size, cf, context);
+	TRACE("Leave _lfind_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__lfind_s(void);  /* ../dlls/msvcrt/misc.c:110 */
@@ -11192,10 +12252,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__lfind_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__loaddll(char*  dllname) /* ../dlls/msvcrt/process.c:1286 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__loaddll(char*  dllname) /* ../dlls/msvcrt/process.c:1286 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _loaddll\n");
-	return p_loaddll(dllname);
+	return_value = p_loaddll(dllname);
+	TRACE("Leave _loaddll\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__loaddll(void);  /* ../dlls/msvcrt/process.c:1286 */
@@ -11217,10 +12280,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__loaddll,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__local_unwind(void*  frame, void*  target) /* ../dlls/msvcrt/except_x86_64.c:707 */
+WINAPI void wine32b_msvcrt__local_unwind(void*  frame, void*  target) /* ../dlls/msvcrt/except_x86_64.c:707 */
 {
 	TRACE("Enter _local_unwind\n");
-	return p_local_unwind(frame, target);
+	p_local_unwind(frame, target);
+	TRACE("Leave _local_unwind\n");
 }
 
 extern WINAPI void wine32a_msvcrt__local_unwind(void);  /* ../dlls/msvcrt/except_x86_64.c:707 */
@@ -11243,10 +12307,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__local_unwind,
 	"ret \n"
 )
 
-extern WINAPI struct MSVCRT_tm* wine32b_msvcrt__localtime32(MSVCRT___time32_t*  secs) /* ../dlls/msvcrt/time.c:427 */
+WINAPI struct MSVCRT_tm* wine32b_msvcrt__localtime32(MSVCRT___time32_t*  secs) /* ../dlls/msvcrt/time.c:427 */
 {
+	struct MSVCRT_tm* return_value;
 	TRACE("Enter _localtime32\n");
-	return p_localtime32(secs);
+	return_value = p_localtime32(secs);
+	TRACE("Leave _localtime32\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__localtime32(void);  /* ../dlls/msvcrt/time.c:427 */
@@ -11268,10 +12335,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__localtime32,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__localtime32_s(struct MSVCRT_tm*  time, MSVCRT___time32_t*  secs) /* ../dlls/msvcrt/time.c:441 */
+WINAPI int wine32b_msvcrt__localtime32_s(struct MSVCRT_tm*  time, MSVCRT___time32_t*  secs) /* ../dlls/msvcrt/time.c:441 */
 {
+	int return_value;
 	TRACE("Enter _localtime32_s\n");
-	return p_localtime32_s(time, secs);
+	return_value = p_localtime32_s(time, secs);
+	TRACE("Leave _localtime32_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__localtime32_s(void);  /* ../dlls/msvcrt/time.c:441 */
@@ -11294,10 +12364,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__localtime32_s,
 	"ret \n"
 )
 
-extern WINAPI struct MSVCRT_tm* wine32b_msvcrt__localtime64(MSVCRT___time64_t*  secs) /* ../dlls/msvcrt/time.c:412 */
+WINAPI struct MSVCRT_tm* wine32b_msvcrt__localtime64(MSVCRT___time64_t*  secs) /* ../dlls/msvcrt/time.c:412 */
 {
+	struct MSVCRT_tm* return_value;
 	TRACE("Enter _localtime64\n");
-	return p_localtime64(secs);
+	return_value = p_localtime64(secs);
+	TRACE("Leave _localtime64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__localtime64(void);  /* ../dlls/msvcrt/time.c:412 */
@@ -11319,10 +12392,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__localtime64,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__localtime64_s(struct MSVCRT_tm*  res, MSVCRT___time64_t*  secs) /* ../dlls/msvcrt/time.c:364 */
+WINAPI int wine32b_msvcrt__localtime64_s(struct MSVCRT_tm*  res, MSVCRT___time64_t*  secs) /* ../dlls/msvcrt/time.c:364 */
 {
+	int return_value;
 	TRACE("Enter _localtime64_s\n");
-	return p_localtime64_s(res, secs);
+	return_value = p_localtime64_s(res, secs);
+	TRACE("Leave _localtime64_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__localtime64_s(void);  /* ../dlls/msvcrt/time.c:364 */
@@ -11345,10 +12421,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__localtime64_s,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__lock(int  locknum) /* ../dlls/msvcrt/lock.c:89 */
+WINAPI void wine32b_msvcrt__lock(int  locknum) /* ../dlls/msvcrt/lock.c:89 */
 {
 	TRACE("Enter _lock\n");
-	return p_lock(locknum);
+	p_lock(locknum);
+	TRACE("Leave _lock\n");
 }
 
 extern WINAPI void wine32a_msvcrt__lock(void);  /* ../dlls/msvcrt/lock.c:89 */
@@ -11370,10 +12447,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__lock,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__lock_file(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:1314 */
+WINAPI void wine32b_msvcrt__lock_file(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:1314 */
 {
 	TRACE("Enter _lock_file\n");
-	return p_lock_file(file);
+	p_lock_file(file);
+	TRACE("Leave _lock_file\n");
 }
 
 extern WINAPI void wine32a_msvcrt__lock_file(void);  /* ../dlls/msvcrt/file.c:1314 */
@@ -11395,10 +12473,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__lock_file,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__locking(int  fd, int  mode, LONG  nbytes) /* ../dlls/msvcrt/file.c:1338 */
+WINAPI int wine32b_msvcrt__locking(int  fd, int  mode, LONG  nbytes) /* ../dlls/msvcrt/file.c:1338 */
 {
+	int return_value;
 	TRACE("Enter _locking\n");
-	return p_locking(fd, mode, nbytes);
+	return_value = p_locking(fd, mode, nbytes);
+	TRACE("Leave _locking\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__locking(void);  /* ../dlls/msvcrt/file.c:1338 */
@@ -11422,10 +12503,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__locking,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt__logb(double  num) /* ../dlls/msvcrt/math.c:824 */
+WINAPI double wine32b_msvcrt__logb(double  num) /* ../dlls/msvcrt/math.c:824 */
 {
+	double return_value;
 	TRACE("Enter _logb\n");
-	return p_logb(num);
+	return_value = p_logb(num);
+	TRACE("Leave _logb\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__logb(void);  /* ../dlls/msvcrt/math.c:824 */
@@ -11447,10 +12531,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__logb,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt__logbf(float  num) /* ../dlls/msvcrt/math.c:164 */
+WINAPI float wine32b_msvcrt__logbf(float  num) /* ../dlls/msvcrt/math.c:164 */
 {
+	float return_value;
 	TRACE("Enter _logbf\n");
-	return p_logbf(num);
+	return_value = p_logbf(num);
+	TRACE("Leave _logbf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__logbf(void);  /* ../dlls/msvcrt/math.c:164 */
@@ -11472,10 +12559,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__logbf,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt_longjmp(struct MSVCRT___JUMP_BUFFER*  jmp, int  retval) /* ../dlls/msvcrt/except_x86_64.c:686 */
+WINAPI void wine32b_msvcrt_longjmp(struct MSVCRT___JUMP_BUFFER*  jmp, int  retval) /* ../dlls/msvcrt/except_x86_64.c:686 */
 {
 	TRACE("Enter longjmp\n");
-	return plongjmp(jmp, retval);
+	plongjmp(jmp, retval);
+	TRACE("Leave longjmp\n");
 }
 
 extern WINAPI void wine32a_msvcrt_longjmp(void);  /* ../dlls/msvcrt/except_x86_64.c:686 */
@@ -11498,10 +12586,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_longjmp,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_ulong wine32b_msvcrt__lrotl(MSVCRT_ulong  num, int  shift) /* ../dlls/msvcrt/math.c:745 */
+WINAPI MSVCRT_ulong wine32b_msvcrt__lrotl(MSVCRT_ulong  num, int  shift) /* ../dlls/msvcrt/math.c:745 */
 {
+	MSVCRT_ulong return_value;
 	TRACE("Enter _lrotl\n");
-	return p_lrotl(num, shift);
+	return_value = p_lrotl(num, shift);
+	TRACE("Leave _lrotl\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__lrotl(void);  /* ../dlls/msvcrt/math.c:745 */
@@ -11524,10 +12615,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__lrotl,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_ulong wine32b_msvcrt__lrotr(MSVCRT_ulong  num, int  shift) /* ../dlls/msvcrt/math.c:754 */
+WINAPI MSVCRT_ulong wine32b_msvcrt__lrotr(MSVCRT_ulong  num, int  shift) /* ../dlls/msvcrt/math.c:754 */
 {
+	MSVCRT_ulong return_value;
 	TRACE("Enter _lrotr\n");
-	return p_lrotr(num, shift);
+	return_value = p_lrotr(num, shift);
+	TRACE("Leave _lrotr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__lrotr(void);  /* ../dlls/msvcrt/math.c:754 */
@@ -11550,10 +12644,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__lrotr,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt__lsearch(void*  match, void*  start, unsigned int*  array_size, unsigned int  elem_size, int (* cf) (void)) /* ../dlls/msvcrt/misc.c:136 */
+WINAPI void* wine32b_msvcrt__lsearch(void*  match, void*  start, unsigned int*  array_size, unsigned int  elem_size, int (* cf) (void)) /* ../dlls/msvcrt/misc.c:136 */
 {
+	void* return_value;
 	TRACE("Enter _lsearch\n");
-	return p_lsearch(match, start, array_size, elem_size, cf);
+	return_value = p_lsearch(match, start, array_size, elem_size, cf);
+	TRACE("Leave _lsearch\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__lsearch(void);  /* ../dlls/msvcrt/misc.c:136 */
@@ -11578,10 +12675,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__lsearch,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_msvcrt__lseek(int  fd, LONG  offset, int  whence) /* ../dlls/msvcrt/file.c:1306 */
+WINAPI LONG wine32b_msvcrt__lseek(int  fd, LONG  offset, int  whence) /* ../dlls/msvcrt/file.c:1306 */
 {
+	LONG return_value;
 	TRACE("Enter _lseek\n");
-	return p_lseek(fd, offset, whence);
+	return_value = p_lseek(fd, offset, whence);
+	TRACE("Leave _lseek\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__lseek(void);  /* ../dlls/msvcrt/file.c:1306 */
@@ -11605,10 +12705,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__lseek,
 	"ret \n"
 )
 
-extern WINAPI long wine32b_msvcrt__lseeki64(int  fd, long  offset, int  whence) /* ../dlls/msvcrt/file.c:1259 */
+WINAPI long wine32b_msvcrt__lseeki64(int  fd, long  offset, int  whence) /* ../dlls/msvcrt/file.c:1259 */
 {
+	long return_value;
 	TRACE("Enter _lseeki64\n");
-	return p_lseeki64(fd, offset, whence);
+	return_value = p_lseeki64(fd, offset, whence);
+	TRACE("Leave _lseeki64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__lseeki64(void);  /* ../dlls/msvcrt/file.c:1259 */
@@ -11632,10 +12735,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__lseeki64,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ltoa_s(MSVCRT_long  value, char*  str, MSVCRT_size_t  size, int  radix) /* ../dlls/msvcrt/string.c:1337 */
+WINAPI int wine32b_msvcrt__ltoa_s(MSVCRT_long  value, char*  str, MSVCRT_size_t  size, int  radix) /* ../dlls/msvcrt/string.c:1337 */
 {
+	int return_value;
 	TRACE("Enter _ltoa_s\n");
-	return p_ltoa_s(value, str, size, radix);
+	return_value = p_ltoa_s(value, str, size, radix);
+	TRACE("Leave _ltoa_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ltoa_s(void);  /* ../dlls/msvcrt/string.c:1337 */
@@ -11660,10 +12766,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ltoa_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ltow_s(MSVCRT_long  value, MSVCRT_wchar_t*  str, MSVCRT_size_t  size, int  radix) /* ../dlls/msvcrt/string.c:1353 */
+WINAPI int wine32b_msvcrt__ltow_s(MSVCRT_long  value, MSVCRT_wchar_t*  str, MSVCRT_size_t  size, int  radix) /* ../dlls/msvcrt/string.c:1353 */
 {
+	int return_value;
 	TRACE("Enter _ltow_s\n");
-	return p_ltow_s(value, str, size, radix);
+	return_value = p_ltow_s(value, str, size, radix);
+	TRACE("Leave _ltow_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ltow_s(void);  /* ../dlls/msvcrt/string.c:1353 */
@@ -11688,10 +12797,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ltow_s,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__makepath(char*  path, char*  drive, char*  directory, char*  filename, char*  extension) /* ../dlls/msvcrt/dir.c:1346 */
+WINAPI void wine32b_msvcrt__makepath(char*  path, char*  drive, char*  directory, char*  filename, char*  extension) /* ../dlls/msvcrt/dir.c:1346 */
 {
 	TRACE("Enter _makepath\n");
-	return p_makepath(path, drive, directory, filename, extension);
+	p_makepath(path, drive, directory, filename, extension);
+	TRACE("Leave _makepath\n");
 }
 
 extern WINAPI void wine32a_msvcrt__makepath(void);  /* ../dlls/msvcrt/dir.c:1346 */
@@ -11716,10 +12826,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__makepath,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__makepath_s(char*  path, MSVCRT_size_t  size, char*  drive, char*  directory, char*  filename, char*  extension) /* ../dlls/msvcrt/dir.c:1440 */
+WINAPI int wine32b_msvcrt__makepath_s(char*  path, MSVCRT_size_t  size, char*  drive, char*  directory, char*  filename, char*  extension) /* ../dlls/msvcrt/dir.c:1440 */
 {
+	int return_value;
 	TRACE("Enter _makepath_s\n");
-	return p_makepath_s(path, size, drive, directory, filename, extension);
+	return_value = p_makepath_s(path, size, drive, directory, filename, extension);
+	TRACE("Leave _makepath_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__makepath_s(void);  /* ../dlls/msvcrt/dir.c:1440 */
@@ -11744,10 +12857,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__makepath_s,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt__mbbtombc(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:1349 */
+WINAPI unsigned int wine32b_msvcrt__mbbtombc(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:1349 */
 {
+	unsigned int return_value;
 	TRACE("Enter _mbbtombc\n");
-	return p_mbbtombc(c);
+	return_value = p_mbbtombc(c);
+	TRACE("Leave _mbbtombc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbbtombc(void);  /* ../dlls/msvcrt/mbcs.c:1349 */
@@ -11769,10 +12885,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbbtombc,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbbtype(unsigned char  c, int  type) /* ../dlls/msvcrt/mbcs.c:1372 */
+WINAPI int wine32b_msvcrt__mbbtype(unsigned char  c, int  type) /* ../dlls/msvcrt/mbcs.c:1372 */
 {
+	int return_value;
 	TRACE("Enter _mbbtype\n");
-	return p_mbbtype(c, type);
+	return_value = p_mbbtype(c, type);
+	TRACE("Leave _mbbtype\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbbtype(void);  /* ../dlls/msvcrt/mbcs.c:1372 */
@@ -11795,10 +12914,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbbtype,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__mbccpy(unsigned char*  dest, unsigned char*  src) /* ../dlls/msvcrt/mbcs.c:665 */
+WINAPI void wine32b_msvcrt__mbccpy(unsigned char*  dest, unsigned char*  src) /* ../dlls/msvcrt/mbcs.c:665 */
 {
 	TRACE("Enter _mbccpy\n");
-	return p_mbccpy(dest, src);
+	p_mbccpy(dest, src);
+	TRACE("Leave _mbccpy\n");
 }
 
 extern WINAPI void wine32a_msvcrt__mbccpy(void);  /* ../dlls/msvcrt/mbcs.c:665 */
@@ -11821,10 +12941,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbccpy,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__mbccpy_l(unsigned char*  dest, unsigned char*  src, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:673 */
+WINAPI void wine32b_msvcrt__mbccpy_l(unsigned char*  dest, unsigned char*  src, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:673 */
 {
 	TRACE("Enter _mbccpy_l\n");
-	return p_mbccpy_l(dest, src, locale);
+	p_mbccpy_l(dest, src, locale);
+	TRACE("Leave _mbccpy_l\n");
 }
 
 extern WINAPI void wine32a_msvcrt__mbccpy_l(void);  /* ../dlls/msvcrt/mbcs.c:673 */
@@ -11848,10 +12969,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbccpy_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbccpy_s(unsigned char*  dest, MSVCRT_size_t  maxsize, int*  copied, unsigned char*  src) /* ../dlls/msvcrt/mbcs.c:682 */
+WINAPI int wine32b_msvcrt__mbccpy_s(unsigned char*  dest, MSVCRT_size_t  maxsize, int*  copied, unsigned char*  src) /* ../dlls/msvcrt/mbcs.c:682 */
 {
+	int return_value;
 	TRACE("Enter _mbccpy_s\n");
-	return p_mbccpy_s(dest, maxsize, copied, src);
+	return_value = p_mbccpy_s(dest, maxsize, copied, src);
+	TRACE("Leave _mbccpy_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbccpy_s(void);  /* ../dlls/msvcrt/mbcs.c:682 */
@@ -11876,10 +13000,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbccpy_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbccpy_s_l(unsigned char*  dest, MSVCRT_size_t  maxsize, int*  copied, unsigned char*  src, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:631 */
+WINAPI int wine32b_msvcrt__mbccpy_s_l(unsigned char*  dest, MSVCRT_size_t  maxsize, int*  copied, unsigned char*  src, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:631 */
 {
+	int return_value;
 	TRACE("Enter _mbccpy_s_l\n");
-	return p_mbccpy_s_l(dest, maxsize, copied, src, locale);
+	return_value = p_mbccpy_s_l(dest, maxsize, copied, src, locale);
+	TRACE("Leave _mbccpy_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbccpy_s_l(void);  /* ../dlls/msvcrt/mbcs.c:631 */
@@ -11904,10 +13031,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbccpy_s_l,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt__mbcjistojms(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:458 */
+WINAPI unsigned int wine32b_msvcrt__mbcjistojms(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:458 */
 {
+	unsigned int return_value;
 	TRACE("Enter _mbcjistojms\n");
-	return p_mbcjistojms(c);
+	return_value = p_mbcjistojms(c);
+	TRACE("Leave _mbcjistojms\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbcjistojms(void);  /* ../dlls/msvcrt/mbcs.c:458 */
@@ -11929,10 +13059,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbcjistojms,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt__mbcjmstojis(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:492 */
+WINAPI unsigned int wine32b_msvcrt__mbcjmstojis(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:492 */
 {
+	unsigned int return_value;
 	TRACE("Enter _mbcjmstojis\n");
-	return p_mbcjmstojis(c);
+	return_value = p_mbcjmstojis(c);
+	TRACE("Leave _mbcjmstojis\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbcjmstojis(void);  /* ../dlls/msvcrt/mbcs.c:492 */
@@ -11954,10 +13087,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbcjmstojis,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt__mbclen(unsigned char*  str) /* ../dlls/msvcrt/mbcs.c:537 */
+WINAPI unsigned int wine32b_msvcrt__mbclen(unsigned char*  str) /* ../dlls/msvcrt/mbcs.c:537 */
 {
+	unsigned int return_value;
 	TRACE("Enter _mbclen\n");
-	return p_mbclen(str);
+	return_value = p_mbclen(str);
+	TRACE("Leave _mbclen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbclen(void);  /* ../dlls/msvcrt/mbcs.c:537 */
@@ -11979,10 +13115,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbclen,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt__mbctohira(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:2513 */
+WINAPI unsigned int wine32b_msvcrt__mbctohira(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:2513 */
 {
+	unsigned int return_value;
 	TRACE("Enter _mbctohira\n");
-	return p_mbctohira(c);
+	return_value = p_mbctohira(c);
+	TRACE("Leave _mbctohira\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbctohira(void);  /* ../dlls/msvcrt/mbcs.c:2513 */
@@ -12004,10 +13143,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbctohira,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt__mbctokata(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:2525 */
+WINAPI unsigned int wine32b_msvcrt__mbctokata(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:2525 */
 {
+	unsigned int return_value;
 	TRACE("Enter _mbctokata\n");
-	return p_mbctokata(c);
+	return_value = p_mbctokata(c);
+	TRACE("Leave _mbctokata\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbctokata(void);  /* ../dlls/msvcrt/mbcs.c:2525 */
@@ -12029,10 +13171,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbctokata,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt__mbctolower(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:400 */
+WINAPI unsigned int wine32b_msvcrt__mbctolower(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:400 */
 {
+	unsigned int return_value;
 	TRACE("Enter _mbctolower\n");
-	return p_mbctolower(c);
+	return_value = p_mbctolower(c);
+	TRACE("Leave _mbctolower\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbctolower(void);  /* ../dlls/msvcrt/mbcs.c:400 */
@@ -12054,10 +13199,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbctolower,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt__mbctombb(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:426 */
+WINAPI unsigned int wine32b_msvcrt__mbctombb(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:426 */
 {
+	unsigned int return_value;
 	TRACE("Enter _mbctombb\n");
-	return p_mbctombb(c);
+	return_value = p_mbctombb(c);
+	TRACE("Leave _mbctombb\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbctombb(void);  /* ../dlls/msvcrt/mbcs.c:426 */
@@ -12079,10 +13227,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbctombb,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt__mbctoupper(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:413 */
+WINAPI unsigned int wine32b_msvcrt__mbctoupper(unsigned int  c) /* ../dlls/msvcrt/mbcs.c:413 */
 {
+	unsigned int return_value;
 	TRACE("Enter _mbctoupper\n");
-	return p_mbctoupper(c);
+	return_value = p_mbctoupper(c);
+	TRACE("Leave _mbctoupper\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbctoupper(void);  /* ../dlls/msvcrt/mbcs.c:413 */
@@ -12104,10 +13255,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbctoupper,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbsbtype(unsigned char*  str, MSVCRT_size_t  count) /* ../dlls/msvcrt/mbcs.c:1631 */
+WINAPI int wine32b_msvcrt__mbsbtype(unsigned char*  str, MSVCRT_size_t  count) /* ../dlls/msvcrt/mbcs.c:1631 */
 {
+	int return_value;
 	TRACE("Enter _mbsbtype\n");
-	return p_mbsbtype(str, count);
+	return_value = p_mbsbtype(str, count);
+	TRACE("Leave _mbsbtype\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsbtype(void);  /* ../dlls/msvcrt/mbcs.c:1631 */
@@ -12130,10 +13284,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsbtype,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbscat(unsigned char*  dst, unsigned char*  src) /* ../dlls/msvcrt/mbcs.c:1149 */
+WINAPI unsigned char* wine32b_msvcrt__mbscat(unsigned char*  dst, unsigned char*  src) /* ../dlls/msvcrt/mbcs.c:1149 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbscat\n");
-	return p_mbscat(dst, src);
+	return_value = p_mbscat(dst, src);
+	TRACE("Leave _mbscat\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbscat(void);  /* ../dlls/msvcrt/mbcs.c:1149 */
@@ -12156,10 +13313,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbscat,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbscat_s(unsigned char*  dst, MSVCRT_size_t  size, unsigned char*  src) /* ../dlls/msvcrt/mbcs.c:1200 */
+WINAPI int wine32b_msvcrt__mbscat_s(unsigned char*  dst, MSVCRT_size_t  size, unsigned char*  src) /* ../dlls/msvcrt/mbcs.c:1200 */
 {
+	int return_value;
 	TRACE("Enter _mbscat_s\n");
-	return p_mbscat_s(dst, size, src);
+	return_value = p_mbscat_s(dst, size, src);
+	TRACE("Leave _mbscat_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbscat_s(void);  /* ../dlls/msvcrt/mbcs.c:1200 */
@@ -12183,10 +13343,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbscat_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbscat_s_l(unsigned char*  dst, MSVCRT_size_t  size, unsigned char*  src, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:1158 */
+WINAPI int wine32b_msvcrt__mbscat_s_l(unsigned char*  dst, MSVCRT_size_t  size, unsigned char*  src, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:1158 */
 {
+	int return_value;
 	TRACE("Enter _mbscat_s_l\n");
-	return p_mbscat_s_l(dst, size, src, locale);
+	return_value = p_mbscat_s_l(dst, size, src, locale);
+	TRACE("Leave _mbscat_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbscat_s_l(void);  /* ../dlls/msvcrt/mbcs.c:1158 */
@@ -12211,10 +13374,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbscat_s_l,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbschr(unsigned char*  s, unsigned int  x) /* ../dlls/msvcrt/mbcs.c:1227 */
+WINAPI unsigned char* wine32b_msvcrt__mbschr(unsigned char*  s, unsigned int  x) /* ../dlls/msvcrt/mbcs.c:1227 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbschr\n");
-	return p_mbschr(s, x);
+	return_value = p_mbschr(s, x);
+	TRACE("Leave _mbschr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbschr(void);  /* ../dlls/msvcrt/mbcs.c:1227 */
@@ -12237,10 +13403,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbschr,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbscmp(unsigned char*  str, unsigned char*  cmp) /* ../dlls/msvcrt/mbcs.c:861 */
+WINAPI int wine32b_msvcrt__mbscmp(unsigned char*  str, unsigned char*  cmp) /* ../dlls/msvcrt/mbcs.c:861 */
 {
+	int return_value;
 	TRACE("Enter _mbscmp\n");
-	return p_mbscmp(str, cmp);
+	return_value = p_mbscmp(str, cmp);
+	TRACE("Leave _mbscmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbscmp(void);  /* ../dlls/msvcrt/mbcs.c:861 */
@@ -12263,10 +13432,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbscmp,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbscoll(unsigned char*  str, unsigned char*  cmp) /* ../dlls/msvcrt/mbcs.c:966 */
+WINAPI int wine32b_msvcrt__mbscoll(unsigned char*  str, unsigned char*  cmp) /* ../dlls/msvcrt/mbcs.c:966 */
 {
+	int return_value;
 	TRACE("Enter _mbscoll\n");
-	return p_mbscoll(str, cmp);
+	return_value = p_mbscoll(str, cmp);
+	TRACE("Leave _mbscoll\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbscoll(void);  /* ../dlls/msvcrt/mbcs.c:966 */
@@ -12289,10 +13461,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbscoll,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbscoll_l(unsigned char*  str1, unsigned char*  str2, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:950 */
+WINAPI int wine32b_msvcrt__mbscoll_l(unsigned char*  str1, unsigned char*  str2, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:950 */
 {
+	int return_value;
 	TRACE("Enter _mbscoll_l\n");
-	return p_mbscoll_l(str1, str2, locale);
+	return_value = p_mbscoll_l(str1, str2, locale);
+	TRACE("Leave _mbscoll_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbscoll_l(void);  /* ../dlls/msvcrt/mbcs.c:950 */
@@ -12316,10 +13491,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbscoll_l,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbscpy(unsigned char*  dst, unsigned char*  src) /* ../dlls/msvcrt/mbcs.c:1208 */
+WINAPI unsigned char* wine32b_msvcrt__mbscpy(unsigned char*  dst, unsigned char*  src) /* ../dlls/msvcrt/mbcs.c:1208 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbscpy\n");
-	return p_mbscpy(dst, src);
+	return_value = p_mbscpy(dst, src);
+	TRACE("Leave _mbscpy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbscpy(void);  /* ../dlls/msvcrt/mbcs.c:1208 */
@@ -12342,10 +13520,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbscpy,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbscpy_s(unsigned char*  dst, MSVCRT_size_t  size, unsigned char*  src) /* ../dlls/msvcrt/mbcs.c:817 */
+WINAPI int wine32b_msvcrt__mbscpy_s(unsigned char*  dst, MSVCRT_size_t  size, unsigned char*  src) /* ../dlls/msvcrt/mbcs.c:817 */
 {
+	int return_value;
 	TRACE("Enter _mbscpy_s\n");
-	return p_mbscpy_s(dst, size, src);
+	return_value = p_mbscpy_s(dst, size, src);
+	TRACE("Leave _mbscpy_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbscpy_s(void);  /* ../dlls/msvcrt/mbcs.c:817 */
@@ -12369,10 +13550,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbscpy_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbscpy_s_l(unsigned char*  dst, MSVCRT_size_t  size, unsigned char*  src, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:808 */
+WINAPI int wine32b_msvcrt__mbscpy_s_l(unsigned char*  dst, MSVCRT_size_t  size, unsigned char*  src, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:808 */
 {
+	int return_value;
 	TRACE("Enter _mbscpy_s_l\n");
-	return p_mbscpy_s_l(dst, size, src, locale);
+	return_value = p_mbscpy_s_l(dst, size, src, locale);
+	TRACE("Leave _mbscpy_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbscpy_s_l(void);  /* ../dlls/msvcrt/mbcs.c:808 */
@@ -12397,10 +13581,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbscpy_s_l,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt__mbscspn(unsigned char*  str, unsigned char*  cmp) /* ../dlls/msvcrt/mbcs.c:2070 */
+WINAPI MSVCRT_size_t wine32b_msvcrt__mbscspn(unsigned char*  str, unsigned char*  cmp) /* ../dlls/msvcrt/mbcs.c:2070 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter _mbscspn\n");
-	return p_mbscspn(str, cmp);
+	return_value = p_mbscspn(str, cmp);
+	TRACE("Leave _mbscspn\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbscspn(void);  /* ../dlls/msvcrt/mbcs.c:2070 */
@@ -12423,10 +13610,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbscspn,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbsdec(unsigned char*  start, unsigned char*  cur) /* ../dlls/msvcrt/mbcs.c:523 */
+WINAPI unsigned char* wine32b_msvcrt__mbsdec(unsigned char*  start, unsigned char*  cur) /* ../dlls/msvcrt/mbcs.c:523 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbsdec\n");
-	return p_mbsdec(start, cur);
+	return_value = p_mbsdec(start, cur);
+	TRACE("Leave _mbsdec\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsdec(void);  /* ../dlls/msvcrt/mbcs.c:523 */
@@ -12449,10 +13639,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsdec,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__strdup(char*  str) /* ../dlls/msvcrt/string.c:43 */
+WINAPI char* wine32b_msvcrt__strdup(char*  str) /* ../dlls/msvcrt/string.c:43 */
 {
+	char* return_value;
 	TRACE("Enter _strdup\n");
-	return p_strdup(str);
+	return_value = p_strdup(str);
+	TRACE("Leave _strdup\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strdup(void);  /* ../dlls/msvcrt/string.c:43 */
@@ -12474,10 +13667,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strdup,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbsicmp(unsigned char*  str, unsigned char*  cmp) /* ../dlls/msvcrt/mbcs.c:979 */
+WINAPI int wine32b_msvcrt__mbsicmp(unsigned char*  str, unsigned char*  cmp) /* ../dlls/msvcrt/mbcs.c:979 */
 {
+	int return_value;
 	TRACE("Enter _mbsicmp\n");
-	return p_mbsicmp(str, cmp);
+	return_value = p_mbsicmp(str, cmp);
+	TRACE("Leave _mbsicmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsicmp(void);  /* ../dlls/msvcrt/mbcs.c:979 */
@@ -12500,10 +13696,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsicmp,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbsicoll(unsigned char*  str, unsigned char*  cmp) /* ../dlls/msvcrt/mbcs.c:920 */
+WINAPI int wine32b_msvcrt__mbsicoll(unsigned char*  str, unsigned char*  cmp) /* ../dlls/msvcrt/mbcs.c:920 */
 {
+	int return_value;
 	TRACE("Enter _mbsicoll\n");
-	return p_mbsicoll(str, cmp);
+	return_value = p_mbsicoll(str, cmp);
+	TRACE("Leave _mbsicoll\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsicoll(void);  /* ../dlls/msvcrt/mbcs.c:920 */
@@ -12526,10 +13725,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsicoll,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbsicoll_l(unsigned char*  str1, unsigned char*  str2, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:904 */
+WINAPI int wine32b_msvcrt__mbsicoll_l(unsigned char*  str1, unsigned char*  str2, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:904 */
 {
+	int return_value;
 	TRACE("Enter _mbsicoll_l\n");
-	return p_mbsicoll_l(str1, str2, locale);
+	return_value = p_mbsicoll_l(str1, str2, locale);
+	TRACE("Leave _mbsicoll_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsicoll_l(void);  /* ../dlls/msvcrt/mbcs.c:904 */
@@ -12553,10 +13755,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsicoll_l,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbsinc(unsigned char*  str) /* ../dlls/msvcrt/mbcs.c:545 */
+WINAPI unsigned char* wine32b_msvcrt__mbsinc(unsigned char*  str) /* ../dlls/msvcrt/mbcs.c:545 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbsinc\n");
-	return p_mbsinc(str);
+	return_value = p_mbsinc(str);
+	TRACE("Leave _mbsinc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsinc(void);  /* ../dlls/msvcrt/mbcs.c:545 */
@@ -12578,10 +13783,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsinc,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt__mbslen(unsigned char*  str) /* ../dlls/msvcrt/mbcs.c:607 */
+WINAPI MSVCRT_size_t wine32b_msvcrt__mbslen(unsigned char*  str) /* ../dlls/msvcrt/mbcs.c:607 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter _mbslen\n");
-	return p_mbslen(str);
+	return_value = p_mbslen(str);
+	TRACE("Leave _mbslen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbslen(void);  /* ../dlls/msvcrt/mbcs.c:607 */
@@ -12603,10 +13811,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbslen,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt__mbslen_l(unsigned char*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:615 */
+WINAPI MSVCRT_size_t wine32b_msvcrt__mbslen_l(unsigned char*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:615 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter _mbslen_l\n");
-	return p_mbslen_l(str, locale);
+	return_value = p_mbslen_l(str, locale);
+	TRACE("Leave _mbslen_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbslen_l(void);  /* ../dlls/msvcrt/mbcs.c:615 */
@@ -12629,10 +13840,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbslen_l,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbslwr(unsigned char*  s) /* ../dlls/msvcrt/mbcs.c:1892 */
+WINAPI unsigned char* wine32b_msvcrt__mbslwr(unsigned char*  s) /* ../dlls/msvcrt/mbcs.c:1892 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbslwr\n");
-	return p_mbslwr(s);
+	return_value = p_mbslwr(s);
+	TRACE("Leave _mbslwr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbslwr(void);  /* ../dlls/msvcrt/mbcs.c:1892 */
@@ -12654,10 +13868,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbslwr,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbslwr_s(unsigned char*  s, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1920 */
+WINAPI int wine32b_msvcrt__mbslwr_s(unsigned char*  s, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1920 */
 {
+	int return_value;
 	TRACE("Enter _mbslwr_s\n");
-	return p_mbslwr_s(s, len);
+	return_value = p_mbslwr_s(s, len);
+	TRACE("Leave _mbslwr_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbslwr_s(void);  /* ../dlls/msvcrt/mbcs.c:1920 */
@@ -12680,10 +13897,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbslwr_s,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbsnbcat(unsigned char*  dst, unsigned char*  src, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1790 */
+WINAPI unsigned char* wine32b_msvcrt__mbsnbcat(unsigned char*  dst, unsigned char*  src, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1790 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbsnbcat\n");
-	return p_mbsnbcat(dst, src, len);
+	return_value = p_mbsnbcat(dst, src, len);
+	TRACE("Leave _mbsnbcat\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsnbcat(void);  /* ../dlls/msvcrt/mbcs.c:1790 */
@@ -12707,10 +13927,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsnbcat,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbsnbcat_s(unsigned char*  dst, MSVCRT_size_t  size, unsigned char*  src, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1813 */
+WINAPI int wine32b_msvcrt__mbsnbcat_s(unsigned char*  dst, MSVCRT_size_t  size, unsigned char*  src, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1813 */
 {
+	int return_value;
 	TRACE("Enter _mbsnbcat_s\n");
-	return p_mbsnbcat_s(dst, size, src, len);
+	return_value = p_mbsnbcat_s(dst, size, src, len);
+	TRACE("Leave _mbsnbcat_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsnbcat_s(void);  /* ../dlls/msvcrt/mbcs.c:1813 */
@@ -12735,10 +13958,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsnbcat_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbsnbcmp(unsigned char*  str, unsigned char*  cmp, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1034 */
+WINAPI int wine32b_msvcrt__mbsnbcmp(unsigned char*  str, unsigned char*  cmp, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1034 */
 {
+	int return_value;
 	TRACE("Enter _mbsnbcmp\n");
-	return p_mbsnbcmp(str, cmp, len);
+	return_value = p_mbsnbcmp(str, cmp, len);
+	TRACE("Leave _mbsnbcmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsnbcmp(void);  /* ../dlls/msvcrt/mbcs.c:1034 */
@@ -12762,10 +13988,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsnbcmp,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt__mbsnbcnt(unsigned char*  str, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1770 */
+WINAPI MSVCRT_size_t wine32b_msvcrt__mbsnbcnt(unsigned char*  str, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1770 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter _mbsnbcnt\n");
-	return p_mbsnbcnt(str, len);
+	return_value = p_mbsnbcnt(str, len);
+	TRACE("Leave _mbsnbcnt\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsnbcnt(void);  /* ../dlls/msvcrt/mbcs.c:1770 */
@@ -12788,10 +14017,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsnbcnt,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbsnbcoll(unsigned char*  str1, unsigned char*  str2, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:958 */
+WINAPI int wine32b_msvcrt__mbsnbcoll(unsigned char*  str1, unsigned char*  str2, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:958 */
 {
+	int return_value;
 	TRACE("Enter _mbsnbcoll\n");
-	return p_mbsnbcoll(str1, str2, len);
+	return_value = p_mbsnbcoll(str1, str2, len);
+	TRACE("Leave _mbsnbcoll\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsnbcoll(void);  /* ../dlls/msvcrt/mbcs.c:958 */
@@ -12815,10 +14047,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsnbcoll,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbsnbcoll_l(unsigned char*  str1, unsigned char*  str2, MSVCRT_size_t  len, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:933 */
+WINAPI int wine32b_msvcrt__mbsnbcoll_l(unsigned char*  str1, unsigned char*  str2, MSVCRT_size_t  len, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:933 */
 {
+	int return_value;
 	TRACE("Enter _mbsnbcoll_l\n");
-	return p_mbsnbcoll_l(str1, str2, len, locale);
+	return_value = p_mbsnbcoll_l(str1, str2, len, locale);
+	TRACE("Leave _mbsnbcoll_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsnbcoll_l(void);  /* ../dlls/msvcrt/mbcs.c:933 */
@@ -12843,10 +14078,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsnbcoll_l,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbsnbcpy(unsigned char*  dst, unsigned char*  src, MSVCRT_size_t  n) /* ../dlls/msvcrt/mbcs.c:828 */
+WINAPI unsigned char* wine32b_msvcrt__mbsnbcpy(unsigned char*  dst, unsigned char*  src, MSVCRT_size_t  n) /* ../dlls/msvcrt/mbcs.c:828 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbsnbcpy\n");
-	return p_mbsnbcpy(dst, src, n);
+	return_value = p_mbsnbcpy(dst, src, n);
+	TRACE("Leave _mbsnbcpy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsnbcpy(void);  /* ../dlls/msvcrt/mbcs.c:828 */
@@ -12870,10 +14108,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsnbcpy,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbsnbcpy_s(unsigned char*  dst, MSVCRT_size_t  size, unsigned char*  src, MSVCRT_size_t  n) /* ../dlls/msvcrt/mbcs.c:800 */
+WINAPI int wine32b_msvcrt__mbsnbcpy_s(unsigned char*  dst, MSVCRT_size_t  size, unsigned char*  src, MSVCRT_size_t  n) /* ../dlls/msvcrt/mbcs.c:800 */
 {
+	int return_value;
 	TRACE("Enter _mbsnbcpy_s\n");
-	return p_mbsnbcpy_s(dst, size, src, n);
+	return_value = p_mbsnbcpy_s(dst, size, src, n);
+	TRACE("Leave _mbsnbcpy_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsnbcpy_s(void);  /* ../dlls/msvcrt/mbcs.c:800 */
@@ -12898,10 +14139,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsnbcpy_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbsnbcpy_s_l(unsigned char*  dst, MSVCRT_size_t  size, unsigned char*  src, MSVCRT_size_t  n, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:737 */
+WINAPI int wine32b_msvcrt__mbsnbcpy_s_l(unsigned char*  dst, MSVCRT_size_t  size, unsigned char*  src, MSVCRT_size_t  n, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:737 */
 {
+	int return_value;
 	TRACE("Enter _mbsnbcpy_s_l\n");
-	return p_mbsnbcpy_s_l(dst, size, src, n, locale);
+	return_value = p_mbsnbcpy_s_l(dst, size, src, n, locale);
+	TRACE("Leave _mbsnbcpy_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsnbcpy_s_l(void);  /* ../dlls/msvcrt/mbcs.c:737 */
@@ -12926,10 +14170,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsnbcpy_s_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbsnbicmp(unsigned char*  str, unsigned char*  cmp, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1105 */
+WINAPI int wine32b_msvcrt__mbsnbicmp(unsigned char*  str, unsigned char*  cmp, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1105 */
 {
+	int return_value;
 	TRACE("Enter _mbsnbicmp\n");
-	return p_mbsnbicmp(str, cmp, len);
+	return_value = p_mbsnbicmp(str, cmp, len);
+	TRACE("Leave _mbsnbicmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsnbicmp(void);  /* ../dlls/msvcrt/mbcs.c:1105 */
@@ -12953,10 +14200,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsnbicmp,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbsnbicoll(unsigned char*  str1, unsigned char*  str2, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:912 */
+WINAPI int wine32b_msvcrt__mbsnbicoll(unsigned char*  str1, unsigned char*  str2, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:912 */
 {
+	int return_value;
 	TRACE("Enter _mbsnbicoll\n");
-	return p_mbsnbicoll(str1, str2, len);
+	return_value = p_mbsnbicoll(str1, str2, len);
+	TRACE("Leave _mbsnbicoll\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsnbicoll(void);  /* ../dlls/msvcrt/mbcs.c:912 */
@@ -12980,10 +14230,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsnbicoll,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbsnbicoll_l(unsigned char*  str1, unsigned char*  str2, MSVCRT_size_t  len, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:887 */
+WINAPI int wine32b_msvcrt__mbsnbicoll_l(unsigned char*  str1, unsigned char*  str2, MSVCRT_size_t  len, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:887 */
 {
+	int return_value;
 	TRACE("Enter _mbsnbicoll_l\n");
-	return p_mbsnbicoll_l(str1, str2, len, locale);
+	return_value = p_mbsnbicoll_l(str1, str2, len, locale);
+	TRACE("Leave _mbsnbicoll_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsnbicoll_l(void);  /* ../dlls/msvcrt/mbcs.c:887 */
@@ -13008,10 +14261,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsnbicoll_l,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbsnbset(unsigned char*  str, unsigned int  c, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1685 */
+WINAPI unsigned char* wine32b_msvcrt__mbsnbset(unsigned char*  str, unsigned int  c, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1685 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbsnbset\n");
-	return p_mbsnbset(str, c, len);
+	return_value = p_mbsnbset(str, c, len);
+	TRACE("Leave _mbsnbset\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsnbset(void);  /* ../dlls/msvcrt/mbcs.c:1685 */
@@ -13035,10 +14291,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsnbset,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbsncat(unsigned char*  dst, unsigned char*  src, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1866 */
+WINAPI unsigned char* wine32b_msvcrt__mbsncat(unsigned char*  dst, unsigned char*  src, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1866 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbsncat\n");
-	return p_mbsncat(dst, src, len);
+	return_value = p_mbsncat(dst, src, len);
+	TRACE("Leave _mbsncat\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsncat(void);  /* ../dlls/msvcrt/mbcs.c:1866 */
@@ -13062,10 +14321,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsncat,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt__mbsnccnt(unsigned char*  str, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1742 */
+WINAPI MSVCRT_size_t wine32b_msvcrt__mbsnccnt(unsigned char*  str, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1742 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter _mbsnccnt\n");
-	return p_mbsnccnt(str, len);
+	return_value = p_mbsnccnt(str, len);
+	TRACE("Leave _mbsnccnt\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsnccnt(void);  /* ../dlls/msvcrt/mbcs.c:1742 */
@@ -13088,10 +14350,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsnccnt,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbsncmp(unsigned char*  str, unsigned char*  cmp, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1003 */
+WINAPI int wine32b_msvcrt__mbsncmp(unsigned char*  str, unsigned char*  cmp, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1003 */
 {
+	int return_value;
 	TRACE("Enter _mbsncmp\n");
-	return p_mbsncmp(str, cmp, len);
+	return_value = p_mbsncmp(str, cmp, len);
+	TRACE("Leave _mbsncmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsncmp(void);  /* ../dlls/msvcrt/mbcs.c:1003 */
@@ -13115,10 +14380,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsncmp,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbsncpy(unsigned char*  dst, unsigned char*  src, MSVCRT_size_t  n) /* ../dlls/msvcrt/mbcs.c:694 */
+WINAPI unsigned char* wine32b_msvcrt__mbsncpy(unsigned char*  dst, unsigned char*  src, MSVCRT_size_t  n) /* ../dlls/msvcrt/mbcs.c:694 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbsncpy\n");
-	return p_mbsncpy(dst, src, n);
+	return_value = p_mbsncpy(dst, src, n);
+	TRACE("Leave _mbsncpy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsncpy(void);  /* ../dlls/msvcrt/mbcs.c:694 */
@@ -13142,10 +14410,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsncpy,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt__mbsnextc(unsigned char*  str) /* ../dlls/msvcrt/mbcs.c:390 */
+WINAPI unsigned int wine32b_msvcrt__mbsnextc(unsigned char*  str) /* ../dlls/msvcrt/mbcs.c:390 */
 {
+	unsigned int return_value;
 	TRACE("Enter _mbsnextc\n");
-	return p_mbsnextc(str);
+	return_value = p_mbsnextc(str);
+	TRACE("Leave _mbsnextc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsnextc(void);  /* ../dlls/msvcrt/mbcs.c:390 */
@@ -13167,10 +14438,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsnextc,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbsnicmp(unsigned char*  str, unsigned char*  cmp, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1078 */
+WINAPI int wine32b_msvcrt__mbsnicmp(unsigned char*  str, unsigned char*  cmp, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1078 */
 {
+	int return_value;
 	TRACE("Enter _mbsnicmp\n");
-	return p_mbsnicmp(str, cmp, len);
+	return_value = p_mbsnicmp(str, cmp, len);
+	TRACE("Leave _mbsnicmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsnicmp(void);  /* ../dlls/msvcrt/mbcs.c:1078 */
@@ -13194,10 +14468,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsnicmp,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbsninc(unsigned char*  str, MSVCRT_size_t  num) /* ../dlls/msvcrt/mbcs.c:553 */
+WINAPI unsigned char* wine32b_msvcrt__mbsninc(unsigned char*  str, MSVCRT_size_t  num) /* ../dlls/msvcrt/mbcs.c:553 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbsninc\n");
-	return p_mbsninc(str, num);
+	return_value = p_mbsninc(str, num);
+	TRACE("Leave _mbsninc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsninc(void);  /* ../dlls/msvcrt/mbcs.c:553 */
@@ -13220,10 +14497,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsninc,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt__mbsnlen(unsigned char*  str, MSVCRT_size_t  maxsize) /* ../dlls/msvcrt/mbcs.c:623 */
+WINAPI MSVCRT_size_t wine32b_msvcrt__mbsnlen(unsigned char*  str, MSVCRT_size_t  maxsize) /* ../dlls/msvcrt/mbcs.c:623 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter _mbsnlen\n");
-	return p_mbsnlen(str, maxsize);
+	return_value = p_mbsnlen(str, maxsize);
+	TRACE("Leave _mbsnlen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsnlen(void);  /* ../dlls/msvcrt/mbcs.c:623 */
@@ -13246,10 +14526,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsnlen,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt__mbsnlen_l(unsigned char*  str, MSVCRT_size_t  maxsize, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:576 */
+WINAPI MSVCRT_size_t wine32b_msvcrt__mbsnlen_l(unsigned char*  str, MSVCRT_size_t  maxsize, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:576 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter _mbsnlen_l\n");
-	return p_mbsnlen_l(str, maxsize, locale);
+	return_value = p_mbsnlen_l(str, maxsize, locale);
+	TRACE("Leave _mbsnlen_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsnlen_l(void);  /* ../dlls/msvcrt/mbcs.c:576 */
@@ -13273,10 +14556,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsnlen_l,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbsnset(unsigned char*  str, unsigned int  c, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1715 */
+WINAPI unsigned char* wine32b_msvcrt__mbsnset(unsigned char*  str, unsigned int  c, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1715 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbsnset\n");
-	return p_mbsnset(str, c, len);
+	return_value = p_mbsnset(str, c, len);
+	TRACE("Leave _mbsnset\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsnset(void);  /* ../dlls/msvcrt/mbcs.c:1715 */
@@ -13300,10 +14586,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsnset,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbspbrk(unsigned char*  str, unsigned char*  accept) /* ../dlls/msvcrt/mbcs.c:2127 */
+WINAPI unsigned char* wine32b_msvcrt__mbspbrk(unsigned char*  str, unsigned char*  accept) /* ../dlls/msvcrt/mbcs.c:2127 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbspbrk\n");
-	return p_mbspbrk(str, accept);
+	return_value = p_mbspbrk(str, accept);
+	TRACE("Leave _mbspbrk\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbspbrk(void);  /* ../dlls/msvcrt/mbcs.c:2127 */
@@ -13326,10 +14615,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbspbrk,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbsrchr(unsigned char*  s, unsigned int  x) /* ../dlls/msvcrt/mbcs.c:1248 */
+WINAPI unsigned char* wine32b_msvcrt__mbsrchr(unsigned char*  s, unsigned int  x) /* ../dlls/msvcrt/mbcs.c:1248 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbsrchr\n");
-	return p_mbsrchr(s, x);
+	return_value = p_mbsrchr(s, x);
+	TRACE("Leave _mbsrchr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsrchr(void);  /* ../dlls/msvcrt/mbcs.c:1248 */
@@ -13352,10 +14644,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsrchr,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbsrev(unsigned char*  str) /* ../dlls/msvcrt/mbcs.c:2080 */
+WINAPI unsigned char* wine32b_msvcrt__mbsrev(unsigned char*  str) /* ../dlls/msvcrt/mbcs.c:2080 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbsrev\n");
-	return p_mbsrev(str);
+	return_value = p_mbsrev(str);
+	TRACE("Leave _mbsrev\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsrev(void);  /* ../dlls/msvcrt/mbcs.c:2080 */
@@ -13377,10 +14672,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsrev,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbsset(unsigned char*  str, unsigned int  c) /* ../dlls/msvcrt/mbcs.c:1662 */
+WINAPI unsigned char* wine32b_msvcrt__mbsset(unsigned char*  str, unsigned int  c) /* ../dlls/msvcrt/mbcs.c:1662 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbsset\n");
-	return p_mbsset(str, c);
+	return_value = p_mbsset(str, c);
+	TRACE("Leave _mbsset\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsset(void);  /* ../dlls/msvcrt/mbcs.c:1662 */
@@ -13403,10 +14701,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsset,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt__mbsspn(unsigned char*  string, unsigned char*  set) /* ../dlls/msvcrt/mbcs.c:2028 */
+WINAPI MSVCRT_size_t wine32b_msvcrt__mbsspn(unsigned char*  string, unsigned char*  set) /* ../dlls/msvcrt/mbcs.c:2028 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter _mbsspn\n");
-	return p_mbsspn(string, set);
+	return_value = p_mbsspn(string, set);
+	TRACE("Leave _mbsspn\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsspn(void);  /* ../dlls/msvcrt/mbcs.c:2028 */
@@ -13429,10 +14730,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsspn,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbsspnp(unsigned char*  string, unsigned char*  set) /* ../dlls/msvcrt/mbcs.c:2061 */
+WINAPI unsigned char* wine32b_msvcrt__mbsspnp(unsigned char*  string, unsigned char*  set) /* ../dlls/msvcrt/mbcs.c:2061 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbsspnp\n");
-	return p_mbsspnp(string, set);
+	return_value = p_mbsspnp(string, set);
+	TRACE("Leave _mbsspnp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsspnp(void);  /* ../dlls/msvcrt/mbcs.c:2061 */
@@ -13455,10 +14759,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsspnp,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbsstr(unsigned char*  haystack, unsigned char*  needle) /* ../dlls/msvcrt/mbcs.c:1217 */
+WINAPI unsigned char* wine32b_msvcrt__mbsstr(unsigned char*  haystack, unsigned char*  needle) /* ../dlls/msvcrt/mbcs.c:1217 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbsstr\n");
-	return p_mbsstr(haystack, needle);
+	return_value = p_mbsstr(haystack, needle);
+	TRACE("Leave _mbsstr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsstr(void);  /* ../dlls/msvcrt/mbcs.c:1217 */
@@ -13481,10 +14788,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsstr,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbstok(unsigned char*  str, unsigned char*  delim) /* ../dlls/msvcrt/mbcs.c:1334 */
+WINAPI unsigned char* wine32b_msvcrt__mbstok(unsigned char*  str, unsigned char*  delim) /* ../dlls/msvcrt/mbcs.c:1334 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbstok\n");
-	return p_mbstok(str, delim);
+	return_value = p_mbstok(str, delim);
+	TRACE("Leave _mbstok\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbstok(void);  /* ../dlls/msvcrt/mbcs.c:1334 */
@@ -13507,10 +14817,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbstok,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbstok_l(unsigned char*  str, unsigned char*  delim, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:1325 */
+WINAPI unsigned char* wine32b_msvcrt__mbstok_l(unsigned char*  str, unsigned char*  delim, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:1325 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbstok_l\n");
-	return p_mbstok_l(str, delim, locale);
+	return_value = p_mbstok_l(str, delim, locale);
+	TRACE("Leave _mbstok_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbstok_l(void);  /* ../dlls/msvcrt/mbcs.c:1325 */
@@ -13534,10 +14847,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbstok_l,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbstok_s(unsigned char*  str, unsigned char*  delim, unsigned char**  ctx) /* ../dlls/msvcrt/mbcs.c:1316 */
+WINAPI unsigned char* wine32b_msvcrt__mbstok_s(unsigned char*  str, unsigned char*  delim, unsigned char**  ctx) /* ../dlls/msvcrt/mbcs.c:1316 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbstok_s\n");
-	return p_mbstok_s(str, delim, ctx);
+	return_value = p_mbstok_s(str, delim, ctx);
+	TRACE("Leave _mbstok_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbstok_s(void);  /* ../dlls/msvcrt/mbcs.c:1316 */
@@ -13561,10 +14877,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbstok_s,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbstok_s_l(unsigned char*  str, unsigned char*  delim, unsigned char**  ctx, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:1271 */
+WINAPI unsigned char* wine32b_msvcrt__mbstok_s_l(unsigned char*  str, unsigned char*  delim, unsigned char**  ctx, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:1271 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbstok_s_l\n");
-	return p_mbstok_s_l(str, delim, ctx, locale);
+	return_value = p_mbstok_s_l(str, delim, ctx, locale);
+	TRACE("Leave _mbstok_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbstok_s_l(void);  /* ../dlls/msvcrt/mbcs.c:1271 */
@@ -13589,10 +14908,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbstok_s_l,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt__mbstowcs_l(MSVCRT_wchar_t*  wcstr, char*  mbstr, MSVCRT_size_t  count, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:2328 */
+WINAPI MSVCRT_size_t wine32b_msvcrt__mbstowcs_l(MSVCRT_wchar_t*  wcstr, char*  mbstr, MSVCRT_size_t  count, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:2328 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter _mbstowcs_l\n");
-	return p_mbstowcs_l(wcstr, mbstr, count, locale);
+	return_value = p_mbstowcs_l(wcstr, mbstr, count, locale);
+	TRACE("Leave _mbstowcs_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbstowcs_l(void);  /* ../dlls/msvcrt/mbcs.c:2328 */
@@ -13617,10 +14939,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbstowcs_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbstowcs_s_l(MSVCRT_size_t*  ret, MSVCRT_wchar_t*  wcstr, MSVCRT_size_t  size, char*  mbstr, MSVCRT_size_t  count, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:2394 */
+WINAPI int wine32b_msvcrt__mbstowcs_s_l(MSVCRT_size_t*  ret, MSVCRT_wchar_t*  wcstr, MSVCRT_size_t  size, char*  mbstr, MSVCRT_size_t  count, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:2394 */
 {
+	int return_value;
 	TRACE("Enter _mbstowcs_s_l\n");
-	return p_mbstowcs_s_l(ret, wcstr, size, mbstr, count, locale);
+	return_value = p_mbstowcs_s_l(ret, wcstr, size, mbstr, count, locale);
+	TRACE("Leave _mbstowcs_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbstowcs_s_l(void);  /* ../dlls/msvcrt/mbcs.c:2394 */
@@ -13645,10 +14970,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbstowcs_s_l,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt__mbstrlen(char*  str) /* ../dlls/msvcrt/mbcs.c:2228 */
+WINAPI MSVCRT_size_t wine32b_msvcrt__mbstrlen(char*  str) /* ../dlls/msvcrt/mbcs.c:2228 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter _mbstrlen\n");
-	return p_mbstrlen(str);
+	return_value = p_mbstrlen(str);
+	TRACE("Leave _mbstrlen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbstrlen(void);  /* ../dlls/msvcrt/mbcs.c:2228 */
@@ -13670,10 +14998,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbstrlen,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt__mbstrlen_l(char*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:2202 */
+WINAPI MSVCRT_size_t wine32b_msvcrt__mbstrlen_l(char*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:2202 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter _mbstrlen_l\n");
-	return p_mbstrlen_l(str, locale);
+	return_value = p_mbstrlen_l(str, locale);
+	TRACE("Leave _mbstrlen_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbstrlen_l(void);  /* ../dlls/msvcrt/mbcs.c:2202 */
@@ -13696,10 +15027,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbstrlen_l,
 	"ret \n"
 )
 
-extern WINAPI unsigned char* wine32b_msvcrt__mbsupr(unsigned char*  s) /* ../dlls/msvcrt/mbcs.c:1960 */
+WINAPI unsigned char* wine32b_msvcrt__mbsupr(unsigned char*  s) /* ../dlls/msvcrt/mbcs.c:1960 */
 {
+	unsigned char* return_value;
 	TRACE("Enter _mbsupr\n");
-	return p_mbsupr(s);
+	return_value = p_mbsupr(s);
+	TRACE("Leave _mbsupr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsupr(void);  /* ../dlls/msvcrt/mbcs.c:1960 */
@@ -13721,10 +15055,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsupr,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbsupr_s(unsigned char*  s, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1988 */
+WINAPI int wine32b_msvcrt__mbsupr_s(unsigned char*  s, MSVCRT_size_t  len) /* ../dlls/msvcrt/mbcs.c:1988 */
 {
+	int return_value;
 	TRACE("Enter _mbsupr_s\n");
-	return p_mbsupr_s(s, len);
+	return_value = p_mbsupr_s(s, len);
+	TRACE("Leave _mbsupr_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbsupr_s(void);  /* ../dlls/msvcrt/mbcs.c:1988 */
@@ -13747,10 +15084,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbsupr_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mbtowc_l(MSVCRT_wchar_t*  dst, char*  str, MSVCRT_size_t  n, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:2236 */
+WINAPI int wine32b_msvcrt__mbtowc_l(MSVCRT_wchar_t*  dst, char*  str, MSVCRT_size_t  n, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/mbcs.c:2236 */
 {
+	int return_value;
 	TRACE("Enter _mbtowc_l\n");
-	return p_mbtowc_l(dst, str, n, locale);
+	return_value = p_mbtowc_l(dst, str, n, locale);
+	TRACE("Leave _mbtowc_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mbtowc_l(void);  /* ../dlls/msvcrt/mbcs.c:2236 */
@@ -13775,10 +15115,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mbtowc_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__memicmp(char*  s1, char*  s2, MSVCRT_size_t  len) /* ../dlls/msvcrt/string.c:2040 */
+WINAPI int wine32b_msvcrt__memicmp(char*  s1, char*  s2, MSVCRT_size_t  len) /* ../dlls/msvcrt/string.c:2040 */
 {
+	int return_value;
 	TRACE("Enter _memicmp\n");
-	return p_memicmp(s1, s2, len);
+	return_value = p_memicmp(s1, s2, len);
+	TRACE("Leave _memicmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__memicmp(void);  /* ../dlls/msvcrt/string.c:2040 */
@@ -13802,10 +15145,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__memicmp,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__memicmp_l(char*  s1, char*  s2, MSVCRT_size_t  len, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:2014 */
+WINAPI int wine32b_msvcrt__memicmp_l(char*  s1, char*  s2, MSVCRT_size_t  len, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:2014 */
 {
+	int return_value;
 	TRACE("Enter _memicmp_l\n");
-	return p_memicmp_l(s1, s2, len, locale);
+	return_value = p_memicmp_l(s1, s2, len, locale);
+	TRACE("Leave _memicmp_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__memicmp_l(void);  /* ../dlls/msvcrt/string.c:2014 */
@@ -13830,10 +15176,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__memicmp_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mkdir(char*  newdir) /* ../dlls/msvcrt/dir.c:983 */
+WINAPI int wine32b_msvcrt__mkdir(char*  newdir) /* ../dlls/msvcrt/dir.c:983 */
 {
+	int return_value;
 	TRACE("Enter _mkdir\n");
-	return p_mkdir(newdir);
+	return_value = p_mkdir(newdir);
+	TRACE("Leave _mkdir\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mkdir(void);  /* ../dlls/msvcrt/dir.c:983 */
@@ -13855,10 +15204,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mkdir,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT___time64_t wine32b_msvcrt__mkgmtime(struct MSVCRT_tm*  time) /* ../dlls/msvcrt/time.c:350 */
+WINAPI MSVCRT___time64_t wine32b_msvcrt__mkgmtime(struct MSVCRT_tm*  time) /* ../dlls/msvcrt/time.c:350 */
 {
+	MSVCRT___time64_t return_value;
 	TRACE("Enter _mkgmtime\n");
-	return p_mkgmtime(time);
+	return_value = p_mkgmtime(time);
+	TRACE("Leave _mkgmtime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mkgmtime(void);  /* ../dlls/msvcrt/time.c:350 */
@@ -13880,10 +15232,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mkgmtime,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT___time32_t wine32b_msvcrt__mkgmtime32(struct MSVCRT_tm*  time) /* ../dlls/msvcrt/time.c:340 */
+WINAPI MSVCRT___time32_t wine32b_msvcrt__mkgmtime32(struct MSVCRT_tm*  time) /* ../dlls/msvcrt/time.c:340 */
 {
+	MSVCRT___time32_t return_value;
 	TRACE("Enter _mkgmtime32\n");
-	return p_mkgmtime32(time);
+	return_value = p_mkgmtime32(time);
+	TRACE("Leave _mkgmtime32\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mkgmtime32(void);  /* ../dlls/msvcrt/time.c:340 */
@@ -13905,10 +15260,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mkgmtime32,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT___time64_t wine32b_msvcrt__mkgmtime64(struct MSVCRT_tm*  time) /* ../dlls/msvcrt/time.c:332 */
+WINAPI MSVCRT___time64_t wine32b_msvcrt__mkgmtime64(struct MSVCRT_tm*  time) /* ../dlls/msvcrt/time.c:332 */
 {
+	MSVCRT___time64_t return_value;
 	TRACE("Enter _mkgmtime64\n");
-	return p_mkgmtime64(time);
+	return_value = p_mkgmtime64(time);
+	TRACE("Leave _mkgmtime64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mkgmtime64(void);  /* ../dlls/msvcrt/time.c:332 */
@@ -13930,10 +15288,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mkgmtime64,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__mktemp(char*  pattern) /* ../dlls/msvcrt/file.c:1986 */
+WINAPI char* wine32b_msvcrt__mktemp(char*  pattern) /* ../dlls/msvcrt/file.c:1986 */
 {
+	char* return_value;
 	TRACE("Enter _mktemp\n");
-	return p_mktemp(pattern);
+	return_value = p_mktemp(pattern);
+	TRACE("Leave _mktemp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mktemp(void);  /* ../dlls/msvcrt/file.c:1986 */
@@ -13955,10 +15316,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mktemp,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__mktemp_s(char*  pattern, MSVCRT_size_t  size) /* ../dlls/msvcrt/file.c:1947 */
+WINAPI int wine32b_msvcrt__mktemp_s(char*  pattern, MSVCRT_size_t  size) /* ../dlls/msvcrt/file.c:1947 */
 {
+	int return_value;
 	TRACE("Enter _mktemp_s\n");
-	return p_mktemp_s(pattern, size);
+	return_value = p_mktemp_s(pattern, size);
+	TRACE("Leave _mktemp_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mktemp_s(void);  /* ../dlls/msvcrt/file.c:1947 */
@@ -13981,10 +15345,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mktemp_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT___time32_t wine32b_msvcrt__mktime32(struct MSVCRT_tm*  mstm) /* ../dlls/msvcrt/time.c:306 */
+WINAPI MSVCRT___time32_t wine32b_msvcrt__mktime32(struct MSVCRT_tm*  mstm) /* ../dlls/msvcrt/time.c:306 */
 {
+	MSVCRT___time32_t return_value;
 	TRACE("Enter _mktime32\n");
-	return p_mktime32(mstm);
+	return_value = p_mktime32(mstm);
+	TRACE("Leave _mktime32\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mktime32(void);  /* ../dlls/msvcrt/time.c:306 */
@@ -14006,10 +15373,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mktime32,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT___time64_t wine32b_msvcrt__mktime64(struct MSVCRT_tm*  mstm) /* ../dlls/msvcrt/time.c:298 */
+WINAPI MSVCRT___time64_t wine32b_msvcrt__mktime64(struct MSVCRT_tm*  mstm) /* ../dlls/msvcrt/time.c:298 */
 {
+	MSVCRT___time64_t return_value;
 	TRACE("Enter _mktime64\n");
-	return p_mktime64(mstm);
+	return_value = p_mktime64(mstm);
+	TRACE("Leave _mktime64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__mktime64(void);  /* ../dlls/msvcrt/time.c:298 */
@@ -14031,10 +15401,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__mktime64,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt__msize(void*  mem) /* ../dlls/msvcrt/heap.c:366 */
+WINAPI MSVCRT_size_t wine32b_msvcrt__msize(void*  mem) /* ../dlls/msvcrt/heap.c:366 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter _msize\n");
-	return p_msize(mem);
+	return_value = p_msize(mem);
+	TRACE("Leave _msize\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__msize(void);  /* ../dlls/msvcrt/heap.c:366 */
@@ -14056,10 +15429,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__msize,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt__nextafter(double  num, double  next) /* ../dlls/msvcrt/math.c:1602 */
+WINAPI double wine32b_msvcrt__nextafter(double  num, double  next) /* ../dlls/msvcrt/math.c:1602 */
 {
+	double return_value;
 	TRACE("Enter _nextafter\n");
-	return p_nextafter(num, next);
+	return_value = p_nextafter(num, next);
+	TRACE("Leave _nextafter\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__nextafter(void);  /* ../dlls/msvcrt/math.c:1602 */
@@ -14082,10 +15458,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__nextafter,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt__nextafterf(float  num, float  next) /* ../dlls/msvcrt/math.c:155 */
+WINAPI float wine32b_msvcrt__nextafterf(float  num, float  next) /* ../dlls/msvcrt/math.c:155 */
 {
+	float return_value;
 	TRACE("Enter _nextafterf\n");
-	return p_nextafterf(num, next);
+	return_value = p_nextafterf(num, next);
+	TRACE("Leave _nextafterf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__nextafterf(void);  /* ../dlls/msvcrt/math.c:155 */
@@ -14108,10 +15487,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__nextafterf,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT__onexit_t wine32b_msvcrt__onexit(MSVCRT__onexit_t  func) /* ../dlls/msvcrt/exit.c:350 */
+WINAPI MSVCRT__onexit_t wine32b_msvcrt__onexit(MSVCRT__onexit_t  func) /* ../dlls/msvcrt/exit.c:350 */
 {
+	MSVCRT__onexit_t return_value;
 	TRACE("Enter _onexit\n");
-	return p_onexit(func);
+	return_value = p_onexit(func);
+	TRACE("Leave _onexit\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__onexit(void);  /* ../dlls/msvcrt/exit.c:350 */
@@ -14133,10 +15515,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__onexit,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__open(char*  path, int  flags) /* ../dlls/msvcrt/file.c:2447 */
+WINAPI int wine32b_msvcrt__open(char*  path, int  flags) /* ../dlls/msvcrt/file.c:2447 */
 {
+	int return_value;
 	TRACE("Enter _open\n");
-	return p_open(path, flags);
+	return_value = p_open(path, flags);
+	TRACE("Leave _open\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__open(void);  /* ../dlls/msvcrt/file.c:2447 */
@@ -14159,10 +15544,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__open,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__open_osfhandle(MSVCRT_intptr_t  handle, int  oflags) /* ../dlls/msvcrt/file.c:2503 */
+WINAPI int wine32b_msvcrt__open_osfhandle(MSVCRT_intptr_t  handle, int  oflags) /* ../dlls/msvcrt/file.c:2503 */
 {
+	int return_value;
 	TRACE("Enter _open_osfhandle\n");
-	return p_open_osfhandle(handle, oflags);
+	return_value = p_open_osfhandle(handle, oflags);
+	TRACE("Leave _open_osfhandle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__open_osfhandle(void);  /* ../dlls/msvcrt/file.c:2503 */
@@ -14185,10 +15573,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__open_osfhandle,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__pclose(MSVCRT_FILE*  file) /* ../dlls/msvcrt/process.c:1182 */
+WINAPI int wine32b_msvcrt__pclose(MSVCRT_FILE*  file) /* ../dlls/msvcrt/process.c:1182 */
 {
+	int return_value;
 	TRACE("Enter _pclose\n");
-	return p_pclose(file);
+	return_value = p_pclose(file);
+	TRACE("Leave _pclose\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__pclose(void);  /* ../dlls/msvcrt/process.c:1182 */
@@ -14210,10 +15601,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__pclose,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__pipe(int*  pfds, unsigned int  psize, int  textmode) /* ../dlls/msvcrt/file.c:2125 */
+WINAPI int wine32b_msvcrt__pipe(int*  pfds, unsigned int  psize, int  textmode) /* ../dlls/msvcrt/file.c:2125 */
 {
+	int return_value;
 	TRACE("Enter _pipe\n");
-	return p_pipe(pfds, psize, textmode);
+	return_value = p_pipe(pfds, psize, textmode);
+	TRACE("Leave _pipe\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__pipe(void);  /* ../dlls/msvcrt/file.c:2125 */
@@ -14237,10 +15631,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__pipe,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_FILE* wine32b_msvcrt__popen(char*  command, char*  mode) /* ../dlls/msvcrt/process.c:1155 */
+WINAPI MSVCRT_FILE* wine32b_msvcrt__popen(char*  command, char*  mode) /* ../dlls/msvcrt/process.c:1155 */
 {
+	MSVCRT_FILE* return_value;
 	TRACE("Enter _popen\n");
-	return p_popen(command, mode);
+	return_value = p_popen(command, mode);
+	TRACE("Leave _popen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__popen(void);  /* ../dlls/msvcrt/process.c:1155 */
@@ -14263,10 +15660,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__popen,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__purecall(void) /* ../dlls/msvcrt/exit.c:498 */
+WINAPI void wine32b_msvcrt__purecall(void) /* ../dlls/msvcrt/exit.c:498 */
 {
 	TRACE("Enter _purecall\n");
-	return p_purecall();
+	p_purecall();
+	TRACE("Leave _purecall\n");
 }
 
 extern WINAPI void wine32a_msvcrt__purecall(void);  /* ../dlls/msvcrt/exit.c:498 */
@@ -14287,10 +15685,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__purecall,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__putch(int  c) /* ../dlls/msvcrt/console.c:301 */
+WINAPI int wine32b_msvcrt__putch(int  c) /* ../dlls/msvcrt/console.c:301 */
 {
+	int return_value;
 	TRACE("Enter _putch\n");
-	return p_putch(c);
+	return_value = p_putch(c);
+	TRACE("Leave _putch\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__putch(void);  /* ../dlls/msvcrt/console.c:301 */
@@ -14312,10 +15713,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__putch,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__putenv(char*  str) /* ../dlls/msvcrt/environ.c:78 */
+WINAPI int wine32b_msvcrt__putenv(char*  str) /* ../dlls/msvcrt/environ.c:78 */
 {
+	int return_value;
 	TRACE("Enter _putenv\n");
-	return p_putenv(str);
+	return_value = p_putenv(str);
+	TRACE("Leave _putenv\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__putenv(void);  /* ../dlls/msvcrt/environ.c:78 */
@@ -14337,10 +15741,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__putenv,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__putenv_s(char*  name, char*  value) /* ../dlls/msvcrt/environ.c:167 */
+WINAPI int wine32b_msvcrt__putenv_s(char*  name, char*  value) /* ../dlls/msvcrt/environ.c:167 */
 {
+	int return_value;
 	TRACE("Enter _putenv_s\n");
-	return p_putenv_s(name, value);
+	return_value = p_putenv_s(name, value);
+	TRACE("Leave _putenv_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__putenv_s(void);  /* ../dlls/msvcrt/environ.c:167 */
@@ -14363,10 +15770,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__putenv_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__putw(int  val, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3621 */
+WINAPI int wine32b_msvcrt__putw(int  val, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3621 */
 {
+	int return_value;
 	TRACE("Enter _putw\n");
-	return p_putw(val, file);
+	return_value = p_putw(val, file);
+	TRACE("Leave _putw\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__putw(void);  /* ../dlls/msvcrt/file.c:3621 */
@@ -14389,10 +15799,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__putw,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t wine32b_msvcrt__putwch(MSVCRT_wchar_t  c) /* ../dlls/msvcrt/console.c:323 */
+WINAPI MSVCRT_wchar_t wine32b_msvcrt__putwch(MSVCRT_wchar_t  c) /* ../dlls/msvcrt/console.c:323 */
 {
+	MSVCRT_wchar_t return_value;
 	TRACE("Enter _putwch\n");
-	return p_putwch(c);
+	return_value = p_putwch(c);
+	TRACE("Leave _putwch\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__putwch(void);  /* ../dlls/msvcrt/console.c:323 */
@@ -14414,10 +15827,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__putwch,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__putws(MSVCRT_wchar_t*  s) /* ../dlls/msvcrt/file.c:4841 */
+WINAPI int wine32b_msvcrt__putws(MSVCRT_wchar_t*  s) /* ../dlls/msvcrt/file.c:4841 */
 {
+	int return_value;
 	TRACE("Enter _putws\n");
-	return p_putws(s);
+	return_value = p_putws(s);
+	TRACE("Leave _putws\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__putws(void);  /* ../dlls/msvcrt/file.c:4841 */
@@ -14439,10 +15855,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__putws,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__read(int  fd, void*  buf, unsigned int  count) /* ../dlls/msvcrt/file.c:2913 */
+WINAPI int wine32b_msvcrt__read(int  fd, void*  buf, unsigned int  count) /* ../dlls/msvcrt/file.c:2913 */
 {
+	int return_value;
 	TRACE("Enter _read\n");
-	return p_read(fd, buf, count);
+	return_value = p_read(fd, buf, count);
+	TRACE("Leave _read\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__read(void);  /* ../dlls/msvcrt/file.c:2913 */
@@ -14466,10 +15885,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__read,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__resetstkoflw(void) /* ../dlls/msvcrt/misc.c:422 */
+WINAPI int wine32b_msvcrt__resetstkoflw(void) /* ../dlls/msvcrt/misc.c:422 */
 {
+	int return_value;
 	TRACE("Enter _resetstkoflw\n");
-	return p_resetstkoflw();
+	return_value = p_resetstkoflw();
+	TRACE("Leave _resetstkoflw\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__resetstkoflw(void);  /* ../dlls/msvcrt/misc.c:422 */
@@ -14490,10 +15912,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__resetstkoflw,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__rmdir(char*  dir) /* ../dlls/msvcrt/dir.c:1019 */
+WINAPI int wine32b_msvcrt__rmdir(char*  dir) /* ../dlls/msvcrt/dir.c:1019 */
 {
+	int return_value;
 	TRACE("Enter _rmdir\n");
-	return p_rmdir(dir);
+	return_value = p_rmdir(dir);
+	TRACE("Leave _rmdir\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__rmdir(void);  /* ../dlls/msvcrt/dir.c:1019 */
@@ -14515,10 +15940,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__rmdir,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__rmtmp(void) /* ../dlls/msvcrt/file.c:2540 */
+WINAPI int wine32b_msvcrt__rmtmp(void) /* ../dlls/msvcrt/file.c:2540 */
 {
+	int return_value;
 	TRACE("Enter _rmtmp\n");
-	return p_rmtmp();
+	return_value = p_rmtmp();
+	TRACE("Leave _rmtmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__rmtmp(void);  /* ../dlls/msvcrt/file.c:2540 */
@@ -14539,10 +15967,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__rmtmp,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt__rotl(unsigned int  num, int  shift) /* ../dlls/msvcrt/math.c:736 */
+WINAPI unsigned int wine32b_msvcrt__rotl(unsigned int  num, int  shift) /* ../dlls/msvcrt/math.c:736 */
 {
+	unsigned int return_value;
 	TRACE("Enter _rotl\n");
-	return p_rotl(num, shift);
+	return_value = p_rotl(num, shift);
+	TRACE("Leave _rotl\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__rotl(void);  /* ../dlls/msvcrt/math.c:736 */
@@ -14565,10 +15996,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__rotl,
 	"ret \n"
 )
 
-extern WINAPI unsigned long wine32b_msvcrt__rotl64(unsigned long  num, int  shift) /* ../dlls/msvcrt/math.c:772 */
+WINAPI unsigned long wine32b_msvcrt__rotl64(unsigned long  num, int  shift) /* ../dlls/msvcrt/math.c:772 */
 {
+	unsigned long return_value;
 	TRACE("Enter _rotl64\n");
-	return p_rotl64(num, shift);
+	return_value = p_rotl64(num, shift);
+	TRACE("Leave _rotl64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__rotl64(void);  /* ../dlls/msvcrt/math.c:772 */
@@ -14591,10 +16025,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__rotl64,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt__rotr(unsigned int  num, int  shift) /* ../dlls/msvcrt/math.c:763 */
+WINAPI unsigned int wine32b_msvcrt__rotr(unsigned int  num, int  shift) /* ../dlls/msvcrt/math.c:763 */
 {
+	unsigned int return_value;
 	TRACE("Enter _rotr\n");
-	return p_rotr(num, shift);
+	return_value = p_rotr(num, shift);
+	TRACE("Leave _rotr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__rotr(void);  /* ../dlls/msvcrt/math.c:763 */
@@ -14617,10 +16054,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__rotr,
 	"ret \n"
 )
 
-extern WINAPI unsigned long wine32b_msvcrt__rotr64(unsigned long  num, int  shift) /* ../dlls/msvcrt/math.c:781 */
+WINAPI unsigned long wine32b_msvcrt__rotr64(unsigned long  num, int  shift) /* ../dlls/msvcrt/math.c:781 */
 {
+	unsigned long return_value;
 	TRACE("Enter _rotr64\n");
-	return p_rotr64(num, shift);
+	return_value = p_rotr64(num, shift);
+	TRACE("Leave _rotr64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__rotr64(void);  /* ../dlls/msvcrt/math.c:781 */
@@ -14643,10 +16083,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__rotr64,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt__scalb(double  num, MSVCRT_long  power) /* ../dlls/msvcrt/math.c:3269 */
+WINAPI double wine32b_msvcrt__scalb(double  num, MSVCRT_long  power) /* ../dlls/msvcrt/math.c:3269 */
 {
+	double return_value;
 	TRACE("Enter _scalb\n");
-	return p_scalb(num, power);
+	return_value = p_scalb(num, power);
+	TRACE("Leave _scalb\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__scalb(void);  /* ../dlls/msvcrt/math.c:3269 */
@@ -14669,10 +16112,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__scalb,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt__scalbf(float  num, MSVCRT_long  power) /* ../dlls/msvcrt/math.c:3279 */
+WINAPI float wine32b_msvcrt__scalbf(float  num, MSVCRT_long  power) /* ../dlls/msvcrt/math.c:3279 */
 {
+	float return_value;
 	TRACE("Enter _scalbf\n");
-	return p_scalbf(num, power);
+	return_value = p_scalbf(num, power);
+	TRACE("Leave _scalbf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__scalbf(void);  /* ../dlls/msvcrt/math.c:3279 */
@@ -14695,10 +16141,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__scalbf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__scanf_l(char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:223 */
+WINAPI int wine32b_msvcrt__scanf_l(char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:223 */
 {
+	int return_value;
 	TRACE("Enter _scanf_l\n");
-	return p_scanf_l(format, locale);
+	return_value = p_scanf_l(format, locale);
+	TRACE("Leave _scanf_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__scanf_l(void);  /* ../dlls/msvcrt/scanf.c:223 */
@@ -14721,10 +16170,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__scanf_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__scanf_s_l(char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:251 */
+WINAPI int wine32b_msvcrt__scanf_s_l(char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:251 */
 {
+	int return_value;
 	TRACE("Enter _scanf_s_l\n");
-	return p_scanf_s_l(format, locale);
+	return_value = p_scanf_s_l(format, locale);
+	TRACE("Leave _scanf_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__scanf_s_l(void);  /* ../dlls/msvcrt/scanf.c:251 */
@@ -14747,10 +16199,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__scanf_s_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__scprintf(char*  format) /* ../dlls/msvcrt/wcs.c:1134 */
+WINAPI int wine32b_msvcrt__scprintf(char*  format) /* ../dlls/msvcrt/wcs.c:1134 */
 {
+	int return_value;
 	TRACE("Enter _scprintf\n");
-	return p_scprintf(format);
+	return_value = p_scprintf(format);
+	TRACE("Leave _scprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__scprintf(void);  /* ../dlls/msvcrt/wcs.c:1134 */
@@ -14772,10 +16227,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__scprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__scwprintf(MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/wcs.c:1396 */
+WINAPI int wine32b_msvcrt__scwprintf(MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/wcs.c:1396 */
 {
+	int return_value;
 	TRACE("Enter _scwprintf\n");
-	return p_scwprintf(format);
+	return_value = p_scwprintf(format);
+	TRACE("Leave _scwprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__scwprintf(void);  /* ../dlls/msvcrt/wcs.c:1396 */
@@ -14797,10 +16255,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__scwprintf,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__searchenv(char*  file, char*  env, char*  buf) /* ../dlls/msvcrt/dir.c:1657 */
+WINAPI void wine32b_msvcrt__searchenv(char*  file, char*  env, char*  buf) /* ../dlls/msvcrt/dir.c:1657 */
 {
 	TRACE("Enter _searchenv\n");
-	return p_searchenv(file, env, buf);
+	p_searchenv(file, env, buf);
+	TRACE("Leave _searchenv\n");
 }
 
 extern WINAPI void wine32a_msvcrt__searchenv(void);  /* ../dlls/msvcrt/dir.c:1657 */
@@ -14824,10 +16283,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__searchenv,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__searchenv_s(char*  file, char*  env, char*  buf, MSVCRT_size_t  count) /* ../dlls/msvcrt/dir.c:1713 */
+WINAPI int wine32b_msvcrt__searchenv_s(char*  file, char*  env, char*  buf, MSVCRT_size_t  count) /* ../dlls/msvcrt/dir.c:1713 */
 {
+	int return_value;
 	TRACE("Enter _searchenv_s\n");
-	return p_searchenv_s(file, env, buf, count);
+	return_value = p_searchenv_s(file, env, buf, count);
+	TRACE("Leave _searchenv_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__searchenv_s(void);  /* ../dlls/msvcrt/dir.c:1713 */
@@ -14852,10 +16314,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__searchenv_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__set_SSE2_enable(int  flag) /* ../dlls/msvcrt/math.c:114 */
+WINAPI int wine32b_msvcrt__set_SSE2_enable(int  flag) /* ../dlls/msvcrt/math.c:114 */
 {
+	int return_value;
 	TRACE("Enter _set_SSE2_enable\n");
-	return p_set_SSE2_enable(flag);
+	return_value = p_set_SSE2_enable(flag);
+	TRACE("Leave _set_SSE2_enable\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__set_SSE2_enable(void);  /* ../dlls/msvcrt/math.c:114 */
@@ -14877,10 +16342,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__set_SSE2_enable,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__set_controlfp(unsigned int  newval, unsigned int  mask) /* ../dlls/msvcrt/math.c:1227 */
+WINAPI void wine32b_msvcrt__set_controlfp(unsigned int  newval, unsigned int  mask) /* ../dlls/msvcrt/math.c:1227 */
 {
 	TRACE("Enter _set_controlfp\n");
-	return p_set_controlfp(newval, mask);
+	p_set_controlfp(newval, mask);
+	TRACE("Leave _set_controlfp\n");
 }
 
 extern WINAPI void wine32a_msvcrt__set_controlfp(void);  /* ../dlls/msvcrt/math.c:1227 */
@@ -14903,10 +16369,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__set_controlfp,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__set_doserrno(int  value) /* ../dlls/msvcrt/errno.c:263 */
+WINAPI int wine32b_msvcrt__set_doserrno(int  value) /* ../dlls/msvcrt/errno.c:263 */
 {
+	int return_value;
 	TRACE("Enter _set_doserrno\n");
-	return p_set_doserrno(value);
+	return_value = p_set_doserrno(value);
+	TRACE("Leave _set_doserrno\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__set_doserrno(void);  /* ../dlls/msvcrt/errno.c:263 */
@@ -14928,10 +16397,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__set_doserrno,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__set_errno(int  value) /* ../dlls/msvcrt/errno.c:254 */
+WINAPI int wine32b_msvcrt__set_errno(int  value) /* ../dlls/msvcrt/errno.c:254 */
 {
+	int return_value;
 	TRACE("Enter _set_errno\n");
-	return p_set_errno(value);
+	return_value = p_set_errno(value);
+	TRACE("Leave _set_errno\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__set_errno(void);  /* ../dlls/msvcrt/errno.c:254 */
@@ -14953,10 +16425,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__set_errno,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__set_error_mode(int  mode) /* ../dlls/msvcrt/exit.c:519 */
+WINAPI int wine32b_msvcrt__set_error_mode(int  mode) /* ../dlls/msvcrt/exit.c:519 */
 {
+	int return_value;
 	TRACE("Enter _set_error_mode\n");
-	return p_set_error_mode(mode);
+	return_value = p_set_error_mode(mode);
+	TRACE("Leave _set_error_mode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__set_error_mode(void);  /* ../dlls/msvcrt/exit.c:519 */
@@ -14978,10 +16453,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__set_error_mode,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__set_fmode(int  mode) /* ../dlls/msvcrt/data.c:195 */
+WINAPI int wine32b_msvcrt__set_fmode(int  mode) /* ../dlls/msvcrt/data.c:195 */
 {
+	int return_value;
 	TRACE("Enter _set_fmode\n");
-	return p_set_fmode(mode);
+	return_value = p_set_fmode(mode);
+	TRACE("Leave _set_fmode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__set_fmode(void);  /* ../dlls/msvcrt/data.c:195 */
@@ -15003,10 +16481,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__set_fmode,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt__set_output_format(unsigned int  new_output_format) /* ../dlls/msvcrt/misc.c:408 */
+WINAPI unsigned int wine32b_msvcrt__set_output_format(unsigned int  new_output_format) /* ../dlls/msvcrt/misc.c:408 */
 {
+	unsigned int return_value;
 	TRACE("Enter _set_output_format\n");
-	return p_set_output_format(new_output_format);
+	return_value = p_set_output_format(new_output_format);
+	TRACE("Leave _set_output_format\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__set_output_format(void);  /* ../dlls/msvcrt/misc.c:408 */
@@ -15028,10 +16509,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__set_output_format,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__set_sbh_threshold(MSVCRT_size_t  threshold) /* ../dlls/msvcrt/heap.c:527 */
+WINAPI int wine32b_msvcrt__set_sbh_threshold(MSVCRT_size_t  threshold) /* ../dlls/msvcrt/heap.c:527 */
 {
+	int return_value;
 	TRACE("Enter _set_sbh_threshold\n");
-	return p_set_sbh_threshold(threshold);
+	return_value = p_set_sbh_threshold(threshold);
+	TRACE("Leave _set_sbh_threshold\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__set_sbh_threshold(void);  /* ../dlls/msvcrt/heap.c:527 */
@@ -15053,10 +16537,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__set_sbh_threshold,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__seterrormode(int  mode) /* ../dlls/msvcrt/errno.c:454 */
+WINAPI void wine32b_msvcrt__seterrormode(int  mode) /* ../dlls/msvcrt/errno.c:454 */
 {
 	TRACE("Enter _seterrormode\n");
-	return p_seterrormode(mode);
+	p_seterrormode(mode);
+	TRACE("Leave _seterrormode\n");
 }
 
 extern WINAPI void wine32a_msvcrt__seterrormode(void);  /* ../dlls/msvcrt/errno.c:454 */
@@ -15078,10 +16563,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__seterrormode,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__setmaxstdio(int  newmax) /* ../dlls/msvcrt/file.c:5657 */
+WINAPI int wine32b_msvcrt__setmaxstdio(int  newmax) /* ../dlls/msvcrt/file.c:5657 */
 {
+	int return_value;
 	TRACE("Enter _setmaxstdio\n");
-	return p_setmaxstdio(newmax);
+	return_value = p_setmaxstdio(newmax);
+	TRACE("Leave _setmaxstdio\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__setmaxstdio(void);  /* ../dlls/msvcrt/file.c:5657 */
@@ -15103,10 +16591,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__setmaxstdio,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__setmbcp(int  cp) /* ../dlls/msvcrt/mbcs.c:374 */
+WINAPI int wine32b_msvcrt__setmbcp(int  cp) /* ../dlls/msvcrt/mbcs.c:374 */
 {
+	int return_value;
 	TRACE("Enter _setmbcp\n");
-	return p_setmbcp(cp);
+	return_value = p_setmbcp(cp);
+	TRACE("Leave _setmbcp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__setmbcp(void);  /* ../dlls/msvcrt/mbcs.c:374 */
@@ -15128,10 +16619,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__setmbcp,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__setmode(int  fd, int  mode) /* ../dlls/msvcrt/file.c:2932 */
+WINAPI int wine32b_msvcrt__setmode(int  fd, int  mode) /* ../dlls/msvcrt/file.c:2932 */
 {
+	int return_value;
 	TRACE("Enter _setmode\n");
-	return p_setmode(fd, mode);
+	return_value = p_setmode(fd, mode);
+	TRACE("Leave _setmode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__setmode(void);  /* ../dlls/msvcrt/file.c:2932 */
@@ -15154,10 +16648,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__setmode,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__sleep(MSVCRT_ulong  timeout) /* ../dlls/msvcrt/misc.c:83 */
+WINAPI void wine32b_msvcrt__sleep(MSVCRT_ulong  timeout) /* ../dlls/msvcrt/misc.c:83 */
 {
 	TRACE("Enter _sleep\n");
-	return p_sleep(timeout);
+	p_sleep(timeout);
+	TRACE("Leave _sleep\n");
 }
 
 extern WINAPI void wine32a_msvcrt__sleep(void);  /* ../dlls/msvcrt/misc.c:83 */
@@ -15179,10 +16674,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__sleep,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__snprintf(char*  str, unsigned int  len, char*  format) /* ../dlls/msvcrt/wcs.c:1093 */
+WINAPI int wine32b_msvcrt__snprintf(char*  str, unsigned int  len, char*  format) /* ../dlls/msvcrt/wcs.c:1093 */
 {
+	int return_value;
 	TRACE("Enter _snprintf\n");
-	return p_snprintf(str, len, format);
+	return_value = p_snprintf(str, len, format);
+	TRACE("Leave _snprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__snprintf(void);  /* ../dlls/msvcrt/wcs.c:1093 */
@@ -15206,10 +16704,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__snprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__snprintf_l(char*  str, unsigned int  count, MSVCRT__locale_t  locale, char*  format) /* ../dlls/msvcrt/wcs.c:1106 */
+WINAPI int wine32b_msvcrt__snprintf_l(char*  str, unsigned int  count, MSVCRT__locale_t  locale, char*  format) /* ../dlls/msvcrt/wcs.c:1106 */
 {
+	int return_value;
 	TRACE("Enter _snprintf_l\n");
-	return p_snprintf_l(str, count, locale, format);
+	return_value = p_snprintf_l(str, count, locale, format);
+	TRACE("Leave _snprintf_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__snprintf_l(void);  /* ../dlls/msvcrt/wcs.c:1106 */
@@ -15234,10 +16735,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__snprintf_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__snprintf_s(char*  str, unsigned int  len, unsigned int  count, char*  format) /* ../dlls/msvcrt/wcs.c:1120 */
+WINAPI int wine32b_msvcrt__snprintf_s(char*  str, unsigned int  len, unsigned int  count, char*  format) /* ../dlls/msvcrt/wcs.c:1120 */
 {
+	int return_value;
 	TRACE("Enter _snprintf_s\n");
-	return p_snprintf_s(str, len, count, format);
+	return_value = p_snprintf_s(str, len, count, format);
+	TRACE("Leave _snprintf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__snprintf_s(void);  /* ../dlls/msvcrt/wcs.c:1120 */
@@ -15262,10 +16766,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__snprintf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__snscanf(char*  input, MSVCRT_size_t  length, char*  format) /* ../dlls/msvcrt/scanf.c:609 */
+WINAPI int wine32b_msvcrt__snscanf(char*  input, MSVCRT_size_t  length, char*  format) /* ../dlls/msvcrt/scanf.c:609 */
 {
+	int return_value;
 	TRACE("Enter _snscanf\n");
-	return p_snscanf(input, length, format);
+	return_value = p_snscanf(input, length, format);
+	TRACE("Leave _snscanf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__snscanf(void);  /* ../dlls/msvcrt/scanf.c:609 */
@@ -15289,10 +16796,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__snscanf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__snscanf_l(char*  input, MSVCRT_size_t  length, char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:623 */
+WINAPI int wine32b_msvcrt__snscanf_l(char*  input, MSVCRT_size_t  length, char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:623 */
 {
+	int return_value;
 	TRACE("Enter _snscanf_l\n");
-	return p_snscanf_l(input, length, format, locale);
+	return_value = p_snscanf_l(input, length, format, locale);
+	TRACE("Leave _snscanf_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__snscanf_l(void);  /* ../dlls/msvcrt/scanf.c:623 */
@@ -15317,10 +16827,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__snscanf_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__snscanf_s(char*  input, MSVCRT_size_t  length, char*  format) /* ../dlls/msvcrt/scanf.c:638 */
+WINAPI int wine32b_msvcrt__snscanf_s(char*  input, MSVCRT_size_t  length, char*  format) /* ../dlls/msvcrt/scanf.c:638 */
 {
+	int return_value;
 	TRACE("Enter _snscanf_s\n");
-	return p_snscanf_s(input, length, format);
+	return_value = p_snscanf_s(input, length, format);
+	TRACE("Leave _snscanf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__snscanf_s(void);  /* ../dlls/msvcrt/scanf.c:638 */
@@ -15344,10 +16857,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__snscanf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__snscanf_s_l(char*  input, MSVCRT_size_t  length, char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:652 */
+WINAPI int wine32b_msvcrt__snscanf_s_l(char*  input, MSVCRT_size_t  length, char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:652 */
 {
+	int return_value;
 	TRACE("Enter _snscanf_s_l\n");
-	return p_snscanf_s_l(input, length, format, locale);
+	return_value = p_snscanf_s_l(input, length, format, locale);
+	TRACE("Leave _snscanf_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__snscanf_s_l(void);  /* ../dlls/msvcrt/scanf.c:652 */
@@ -15372,10 +16888,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__snscanf_s_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__snwprintf(MSVCRT_wchar_t*  str, unsigned int  len, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/wcs.c:1261 */
+WINAPI int wine32b_msvcrt__snwprintf(MSVCRT_wchar_t*  str, unsigned int  len, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/wcs.c:1261 */
 {
+	int return_value;
 	TRACE("Enter _snwprintf\n");
-	return p_snwprintf(str, len, format);
+	return_value = p_snwprintf(str, len, format);
+	TRACE("Leave _snwprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__snwprintf(void);  /* ../dlls/msvcrt/wcs.c:1261 */
@@ -15399,10 +16918,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__snwprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__snwprintf_l(MSVCRT_wchar_t*  str, unsigned int  len, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1274 */
+WINAPI int wine32b_msvcrt__snwprintf_l(MSVCRT_wchar_t*  str, unsigned int  len, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1274 */
 {
+	int return_value;
 	TRACE("Enter _snwprintf_l\n");
-	return p_snwprintf_l(str, len, format, locale);
+	return_value = p_snwprintf_l(str, len, format, locale);
+	TRACE("Leave _snwprintf_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__snwprintf_l(void);  /* ../dlls/msvcrt/wcs.c:1274 */
@@ -15427,10 +16949,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__snwprintf_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__snwprintf_s(MSVCRT_wchar_t*  str, unsigned int  len, unsigned int  count, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/wcs.c:1288 */
+WINAPI int wine32b_msvcrt__snwprintf_s(MSVCRT_wchar_t*  str, unsigned int  len, unsigned int  count, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/wcs.c:1288 */
 {
+	int return_value;
 	TRACE("Enter _snwprintf_s\n");
-	return p_snwprintf_s(str, len, count, format);
+	return_value = p_snwprintf_s(str, len, count, format);
+	TRACE("Leave _snwprintf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__snwprintf_s(void);  /* ../dlls/msvcrt/wcs.c:1288 */
@@ -15455,10 +16980,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__snwprintf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__snwprintf_s_l(MSVCRT_wchar_t*  str, unsigned int  len, unsigned int  count, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1302 */
+WINAPI int wine32b_msvcrt__snwprintf_s_l(MSVCRT_wchar_t*  str, unsigned int  len, unsigned int  count, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1302 */
 {
+	int return_value;
 	TRACE("Enter _snwprintf_s_l\n");
-	return p_snwprintf_s_l(str, len, count, format, locale);
+	return_value = p_snwprintf_s_l(str, len, count, format, locale);
+	TRACE("Leave _snwprintf_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__snwprintf_s_l(void);  /* ../dlls/msvcrt/wcs.c:1302 */
@@ -15483,10 +17011,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__snwprintf_s_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__snwscanf(MSVCRT_wchar_t*  input, MSVCRT_size_t  length, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/scanf.c:742 */
+WINAPI int wine32b_msvcrt__snwscanf(MSVCRT_wchar_t*  input, MSVCRT_size_t  length, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/scanf.c:742 */
 {
+	int return_value;
 	TRACE("Enter _snwscanf\n");
-	return p_snwscanf(input, length, format);
+	return_value = p_snwscanf(input, length, format);
+	TRACE("Leave _snwscanf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__snwscanf(void);  /* ../dlls/msvcrt/scanf.c:742 */
@@ -15510,10 +17041,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__snwscanf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__snwscanf_l(MSVCRT_wchar_t*  input, MSVCRT_size_t  length, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:757 */
+WINAPI int wine32b_msvcrt__snwscanf_l(MSVCRT_wchar_t*  input, MSVCRT_size_t  length, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:757 */
 {
+	int return_value;
 	TRACE("Enter _snwscanf_l\n");
-	return p_snwscanf_l(input, length, format, locale);
+	return_value = p_snwscanf_l(input, length, format, locale);
+	TRACE("Leave _snwscanf_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__snwscanf_l(void);  /* ../dlls/msvcrt/scanf.c:757 */
@@ -15538,10 +17072,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__snwscanf_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__snwscanf_s(MSVCRT_wchar_t*  input, MSVCRT_size_t  length, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/scanf.c:772 */
+WINAPI int wine32b_msvcrt__snwscanf_s(MSVCRT_wchar_t*  input, MSVCRT_size_t  length, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/scanf.c:772 */
 {
+	int return_value;
 	TRACE("Enter _snwscanf_s\n");
-	return p_snwscanf_s(input, length, format);
+	return_value = p_snwscanf_s(input, length, format);
+	TRACE("Leave _snwscanf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__snwscanf_s(void);  /* ../dlls/msvcrt/scanf.c:772 */
@@ -15565,10 +17102,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__snwscanf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__snwscanf_s_l(MSVCRT_wchar_t*  input, MSVCRT_size_t  length, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:787 */
+WINAPI int wine32b_msvcrt__snwscanf_s_l(MSVCRT_wchar_t*  input, MSVCRT_size_t  length, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:787 */
 {
+	int return_value;
 	TRACE("Enter _snwscanf_s_l\n");
-	return p_snwscanf_s_l(input, length, format, locale);
+	return_value = p_snwscanf_s_l(input, length, format, locale);
+	TRACE("Leave _snwscanf_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__snwscanf_s_l(void);  /* ../dlls/msvcrt/scanf.c:787 */
@@ -15593,10 +17133,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__snwscanf_s_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__sopen(char*  path, int  oflags, int  shflags) /* ../dlls/msvcrt/file.c:2425 */
+WINAPI int wine32b_msvcrt__sopen(char*  path, int  oflags, int  shflags) /* ../dlls/msvcrt/file.c:2425 */
 {
+	int return_value;
 	TRACE("Enter _sopen\n");
-	return p_sopen(path, oflags, shflags);
+	return_value = p_sopen(path, oflags, shflags);
+	TRACE("Leave _sopen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__sopen(void);  /* ../dlls/msvcrt/file.c:2425 */
@@ -15620,10 +17163,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__sopen,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__sopen_s(int*  fd, char*  path, int  oflags, int  shflags, int  pmode) /* ../dlls/msvcrt/file.c:2417 */
+WINAPI int wine32b_msvcrt__sopen_s(int*  fd, char*  path, int  oflags, int  shflags, int  pmode) /* ../dlls/msvcrt/file.c:2417 */
 {
+	int return_value;
 	TRACE("Enter _sopen_s\n");
-	return p_sopen_s(fd, path, oflags, shflags, pmode);
+	return_value = p_sopen_s(fd, path, oflags, shflags, pmode);
+	TRACE("Leave _sopen_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__sopen_s(void);  /* ../dlls/msvcrt/file.c:2417 */
@@ -15648,10 +17194,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__sopen_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__spawnl(int  flags, char*  name, char*  arg0) /* ../dlls/msvcrt/process.c:708 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__spawnl(int  flags, char*  name, char*  arg0) /* ../dlls/msvcrt/process.c:708 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _spawnl\n");
-	return p_spawnl(flags, name, arg0);
+	return_value = p_spawnl(flags, name, arg0);
+	TRACE("Leave _spawnl\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__spawnl(void);  /* ../dlls/msvcrt/process.c:708 */
@@ -15675,10 +17224,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__spawnl,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__spawnle(int  flags, char*  name, char*  arg0) /* ../dlls/msvcrt/process.c:759 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__spawnle(int  flags, char*  name, char*  arg0) /* ../dlls/msvcrt/process.c:759 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _spawnle\n");
-	return p_spawnle(flags, name, arg0);
+	return_value = p_spawnle(flags, name, arg0);
+	TRACE("Leave _spawnle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__spawnle(void);  /* ../dlls/msvcrt/process.c:759 */
@@ -15702,10 +17254,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__spawnle,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__spawnlp(int  flags, char*  name, char*  arg0) /* ../dlls/msvcrt/process.c:813 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__spawnlp(int  flags, char*  name, char*  arg0) /* ../dlls/msvcrt/process.c:813 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _spawnlp\n");
-	return p_spawnlp(flags, name, arg0);
+	return_value = p_spawnlp(flags, name, arg0);
+	TRACE("Leave _spawnlp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__spawnlp(void);  /* ../dlls/msvcrt/process.c:813 */
@@ -15729,10 +17284,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__spawnlp,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__spawnlpe(int  flags, char*  name, char*  arg0) /* ../dlls/msvcrt/process.c:864 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__spawnlpe(int  flags, char*  name, char*  arg0) /* ../dlls/msvcrt/process.c:864 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _spawnlpe\n");
-	return p_spawnlpe(flags, name, arg0);
+	return_value = p_spawnlpe(flags, name, arg0);
+	TRACE("Leave _spawnlpe\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__spawnlpe(void);  /* ../dlls/msvcrt/process.c:864 */
@@ -15756,10 +17314,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__spawnlpe,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__spawnv(int  flags, char*  name, char**  argv) /* ../dlls/msvcrt/process.c:943 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__spawnv(int  flags, char*  name, char**  argv) /* ../dlls/msvcrt/process.c:943 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _spawnv\n");
-	return p_spawnv(flags, name, argv);
+	return_value = p_spawnv(flags, name, argv);
+	TRACE("Leave _spawnv\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__spawnv(void);  /* ../dlls/msvcrt/process.c:943 */
@@ -15783,10 +17344,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__spawnv,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__spawnve(int  flags, char*  name, char**  argv, char**  envv) /* ../dlls/msvcrt/process.c:897 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__spawnve(int  flags, char*  name, char**  argv, char**  envv) /* ../dlls/msvcrt/process.c:897 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _spawnve\n");
-	return p_spawnve(flags, name, argv, envv);
+	return_value = p_spawnve(flags, name, argv, envv);
+	TRACE("Leave _spawnve\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__spawnve(void);  /* ../dlls/msvcrt/process.c:897 */
@@ -15811,10 +17375,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__spawnve,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__spawnvp(int  flags, char*  name, char**  argv) /* ../dlls/msvcrt/process.c:1010 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__spawnvp(int  flags, char*  name, char**  argv) /* ../dlls/msvcrt/process.c:1010 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _spawnvp\n");
-	return p_spawnvp(flags, name, argv);
+	return_value = p_spawnvp(flags, name, argv);
+	TRACE("Leave _spawnvp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__spawnvp(void);  /* ../dlls/msvcrt/process.c:1010 */
@@ -15838,10 +17405,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__spawnvp,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__spawnvpe(int  flags, char*  name, char**  argv, char**  envv) /* ../dlls/msvcrt/process.c:964 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__spawnvpe(int  flags, char*  name, char**  argv, char**  envv) /* ../dlls/msvcrt/process.c:964 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _spawnvpe\n");
-	return p_spawnvpe(flags, name, argv, envv);
+	return_value = p_spawnvpe(flags, name, argv, envv);
+	TRACE("Leave _spawnvpe\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__spawnvpe(void);  /* ../dlls/msvcrt/process.c:964 */
@@ -15866,10 +17436,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__spawnvpe,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__splitpath(char*  inpath, char*  drv, char*  dir, char*  fname, char*  ext) /* ../dlls/msvcrt/dir.c:1131 */
+WINAPI void wine32b_msvcrt__splitpath(char*  inpath, char*  drv, char*  dir, char*  fname, char*  ext) /* ../dlls/msvcrt/dir.c:1131 */
 {
 	TRACE("Enter _splitpath\n");
-	return p_splitpath(inpath, drv, dir, fname, ext);
+	p_splitpath(inpath, drv, dir, fname, ext);
+	TRACE("Leave _splitpath\n");
 }
 
 extern WINAPI void wine32a_msvcrt__splitpath(void);  /* ../dlls/msvcrt/dir.c:1131 */
@@ -15894,10 +17465,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__splitpath,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__splitpath_s(char*  inpath, char*  drive, MSVCRT_size_t  sz_drive, char*  dir, MSVCRT_size_t  sz_dir, char*  fname, MSVCRT_size_t  sz_fname, char*  ext, MSVCRT_size_t  sz_ext) /* ../dlls/msvcrt/dir.c:1043 */
+WINAPI int wine32b_msvcrt__splitpath_s(char*  inpath, char*  drive, MSVCRT_size_t  sz_drive, char*  dir, MSVCRT_size_t  sz_dir, char*  fname, MSVCRT_size_t  sz_fname, char*  ext, MSVCRT_size_t  sz_ext) /* ../dlls/msvcrt/dir.c:1043 */
 {
+	int return_value;
 	TRACE("Enter _splitpath_s\n");
-	return p_splitpath_s(inpath, drive, sz_drive, dir, sz_dir, fname, sz_fname, ext, sz_ext);
+	return_value = p_splitpath_s(inpath, drive, sz_drive, dir, sz_dir, fname, sz_fname, ext, sz_ext);
+	TRACE("Leave _splitpath_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__splitpath_s(void);  /* ../dlls/msvcrt/dir.c:1043 */
@@ -15922,10 +17496,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__splitpath_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__sprintf_l(char*  str, char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:853 */
+WINAPI int wine32b_msvcrt__sprintf_l(char*  str, char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:853 */
 {
+	int return_value;
 	TRACE("Enter _sprintf_l\n");
-	return p_sprintf_l(str, format, locale);
+	return_value = p_sprintf_l(str, format, locale);
+	TRACE("Leave _sprintf_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__sprintf_l(void);  /* ../dlls/msvcrt/wcs.c:853 */
@@ -15949,10 +17526,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__sprintf_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__sprintf_p_l(char*  buffer, MSVCRT_size_t  length, char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1584 */
+WINAPI int wine32b_msvcrt__sprintf_p_l(char*  buffer, MSVCRT_size_t  length, char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1584 */
 {
+	int return_value;
 	TRACE("Enter _sprintf_p_l\n");
-	return p_sprintf_p_l(buffer, length, format, locale);
+	return_value = p_sprintf_p_l(buffer, length, format, locale);
+	TRACE("Leave _sprintf_p_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__sprintf_p_l(void);  /* ../dlls/msvcrt/wcs.c:1584 */
@@ -15977,10 +17557,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__sprintf_p_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__sprintf_s_l(char*  str, MSVCRT_size_t  count, char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:949 */
+WINAPI int wine32b_msvcrt__sprintf_s_l(char*  str, MSVCRT_size_t  count, char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:949 */
 {
+	int return_value;
 	TRACE("Enter _sprintf_s_l\n");
-	return p_sprintf_s_l(str, count, format, locale);
+	return_value = p_sprintf_s_l(str, count, format, locale);
+	TRACE("Leave _sprintf_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__sprintf_s_l(void);  /* ../dlls/msvcrt/wcs.c:949 */
@@ -16005,10 +17588,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__sprintf_s_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__sscanf_l(char*  str, char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:395 */
+WINAPI int wine32b_msvcrt__sscanf_l(char*  str, char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:395 */
 {
+	int return_value;
 	TRACE("Enter _sscanf_l\n");
-	return p_sscanf_l(str, format, locale);
+	return_value = p_sscanf_l(str, format, locale);
+	TRACE("Leave _sscanf_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__sscanf_l(void);  /* ../dlls/msvcrt/scanf.c:395 */
@@ -16032,10 +17618,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__sscanf_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__sscanf_s_l(char*  str, char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:424 */
+WINAPI int wine32b_msvcrt__sscanf_s_l(char*  str, char*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:424 */
 {
+	int return_value;
 	TRACE("Enter _sscanf_s_l\n");
-	return p_sscanf_s_l(str, format, locale);
+	return_value = p_sscanf_s_l(str, format, locale);
+	TRACE("Leave _sscanf_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__sscanf_s_l(void);  /* ../dlls/msvcrt/scanf.c:424 */
@@ -16059,10 +17648,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__sscanf_s_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__stat(char*  path, struct MSVCRT__stat64i32*  buf) /* ../dlls/msvcrt/file.c:3069 */
+WINAPI int wine32b_msvcrt__stat(char*  path, struct MSVCRT__stat64i32*  buf) /* ../dlls/msvcrt/file.c:3069 */
 {
+	int return_value;
 	TRACE("Enter _stat\n");
-	return p_stat(path, buf);
+	return_value = p_stat(path, buf);
+	TRACE("Leave _stat\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__stat(void);  /* ../dlls/msvcrt/file.c:3069 */
@@ -16085,10 +17677,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__stat,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__stat64(char*  path, struct MSVCRT__stat64*  buf) /* ../dlls/msvcrt/file.c:2973 */
+WINAPI int wine32b_msvcrt__stat64(char*  path, struct MSVCRT__stat64*  buf) /* ../dlls/msvcrt/file.c:2973 */
 {
+	int return_value;
 	TRACE("Enter _stat64\n");
-	return p_stat64(path, buf);
+	return_value = p_stat64(path, buf);
+	TRACE("Leave _stat64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__stat64(void);  /* ../dlls/msvcrt/file.c:2973 */
@@ -16111,10 +17706,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__stat64,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__stati64(char*  path, struct MSVCRT__stat64*  buf) /* ../dlls/msvcrt/file.c:3055 */
+WINAPI int wine32b_msvcrt__stati64(char*  path, struct MSVCRT__stat64*  buf) /* ../dlls/msvcrt/file.c:3055 */
 {
+	int return_value;
 	TRACE("Enter _stati64\n");
-	return p_stati64(path, buf);
+	return_value = p_stati64(path, buf);
+	TRACE("Leave _stati64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__stati64(void);  /* ../dlls/msvcrt/file.c:3055 */
@@ -16137,10 +17735,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__stati64,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_msvcrt__statusfp(void) /* ../dlls/msvcrt/math.c:971 */
+WINAPI unsigned int wine32b_msvcrt__statusfp(void) /* ../dlls/msvcrt/math.c:971 */
 {
+	unsigned int return_value;
 	TRACE("Enter _statusfp\n");
-	return p_statusfp();
+	return_value = p_statusfp();
+	TRACE("Leave _statusfp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__statusfp(void);  /* ../dlls/msvcrt/math.c:971 */
@@ -16161,10 +17762,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__statusfp,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__stricmp(char*  s1, char*  s2) /* ../dlls/msvcrt/string.c:1998 */
+WINAPI int wine32b_msvcrt__stricmp(char*  s1, char*  s2) /* ../dlls/msvcrt/string.c:1998 */
 {
+	int return_value;
 	TRACE("Enter _stricmp\n");
-	return p_stricmp(s1, s2);
+	return_value = p_stricmp(s1, s2);
+	TRACE("Leave _stricmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__stricmp(void);  /* ../dlls/msvcrt/string.c:1998 */
@@ -16187,10 +17791,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__stricmp,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__strcoll_l(char*  str1, char*  str2, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:609 */
+WINAPI int wine32b_msvcrt__strcoll_l(char*  str1, char*  str2, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:609 */
 {
+	int return_value;
 	TRACE("Enter _strcoll_l\n");
-	return p_strcoll_l(str1, str2, locale);
+	return_value = p_strcoll_l(str1, str2, locale);
+	TRACE("Leave _strcoll_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strcoll_l(void);  /* ../dlls/msvcrt/string.c:609 */
@@ -16214,10 +17821,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strcoll_l,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__strdate(char*  date) /* ../dlls/msvcrt/time.c:577 */
+WINAPI char* wine32b_msvcrt__strdate(char*  date) /* ../dlls/msvcrt/time.c:577 */
 {
+	char* return_value;
 	TRACE("Enter _strdate\n");
-	return p_strdate(date);
+	return_value = p_strdate(date);
+	TRACE("Leave _strdate\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strdate(void);  /* ../dlls/msvcrt/time.c:577 */
@@ -16239,10 +17849,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strdate,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__strdate_s(char*  date, MSVCRT_size_t  size) /* ../dlls/msvcrt/time.c:589 */
+WINAPI int wine32b_msvcrt__strdate_s(char*  date, MSVCRT_size_t  size) /* ../dlls/msvcrt/time.c:589 */
 {
+	int return_value;
 	TRACE("Enter _strdate_s\n");
-	return p_strdate_s(date, size);
+	return_value = p_strdate_s(date, size);
+	TRACE("Leave _strdate_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strdate_s(void);  /* ../dlls/msvcrt/time.c:589 */
@@ -16265,10 +17878,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strdate_s,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__strerror(char*  str) /* ../dlls/msvcrt/errno.c:314 */
+WINAPI char* wine32b_msvcrt__strerror(char*  str) /* ../dlls/msvcrt/errno.c:314 */
 {
+	char* return_value;
 	TRACE("Enter _strerror\n");
-	return p_strerror(str);
+	return_value = p_strerror(str);
+	TRACE("Leave _strerror\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strerror(void);  /* ../dlls/msvcrt/errno.c:314 */
@@ -16290,10 +17906,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strerror,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__stricmp_l(char*  s1, char*  s2, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:1982 */
+WINAPI int wine32b_msvcrt__stricmp_l(char*  s1, char*  s2, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:1982 */
 {
+	int return_value;
 	TRACE("Enter _stricmp_l\n");
-	return p_stricmp_l(s1, s2, locale);
+	return_value = p_stricmp_l(s1, s2, locale);
+	TRACE("Leave _stricmp_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__stricmp_l(void);  /* ../dlls/msvcrt/string.c:1982 */
@@ -16317,10 +17936,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__stricmp_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__stricoll(char*  str1, char*  str2) /* ../dlls/msvcrt/string.c:652 */
+WINAPI int wine32b_msvcrt__stricoll(char*  str1, char*  str2) /* ../dlls/msvcrt/string.c:652 */
 {
+	int return_value;
 	TRACE("Enter _stricoll\n");
-	return p_stricoll(str1, str2);
+	return_value = p_stricoll(str1, str2);
+	TRACE("Leave _stricoll\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__stricoll(void);  /* ../dlls/msvcrt/string.c:652 */
@@ -16343,10 +17965,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__stricoll,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__stricoll_l(char*  str1, char*  str2, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:634 */
+WINAPI int wine32b_msvcrt__stricoll_l(char*  str1, char*  str2, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:634 */
 {
+	int return_value;
 	TRACE("Enter _stricoll_l\n");
-	return p_stricoll_l(str1, str2, locale);
+	return_value = p_stricoll_l(str1, str2, locale);
+	TRACE("Leave _stricoll_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__stricoll_l(void);  /* ../dlls/msvcrt/string.c:634 */
@@ -16370,10 +17995,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__stricoll_l,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__strlwr(char*  str) /* ../dlls/msvcrt/string.c:109 */
+WINAPI char* wine32b_msvcrt__strlwr(char*  str) /* ../dlls/msvcrt/string.c:109 */
 {
+	char* return_value;
 	TRACE("Enter _strlwr\n");
-	return p_strlwr(str);
+	return_value = p_strlwr(str);
+	TRACE("Leave _strlwr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strlwr(void);  /* ../dlls/msvcrt/string.c:109 */
@@ -16395,10 +18023,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strlwr,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__strlwr_l(char*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:100 */
+WINAPI char* wine32b_msvcrt__strlwr_l(char*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:100 */
 {
+	char* return_value;
 	TRACE("Enter _strlwr_l\n");
-	return p_strlwr_l(str, locale);
+	return_value = p_strlwr_l(str, locale);
+	TRACE("Leave _strlwr_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strlwr_l(void);  /* ../dlls/msvcrt/string.c:100 */
@@ -16421,10 +18052,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strlwr_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__strlwr_s(char*  str, MSVCRT_size_t  len) /* ../dlls/msvcrt/string.c:92 */
+WINAPI int wine32b_msvcrt__strlwr_s(char*  str, MSVCRT_size_t  len) /* ../dlls/msvcrt/string.c:92 */
 {
+	int return_value;
 	TRACE("Enter _strlwr_s\n");
-	return p_strlwr_s(str, len);
+	return_value = p_strlwr_s(str, len);
+	TRACE("Leave _strlwr_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strlwr_s(void);  /* ../dlls/msvcrt/string.c:92 */
@@ -16447,10 +18081,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strlwr_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__strlwr_s_l(char*  str, MSVCRT_size_t  len, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:57 */
+WINAPI int wine32b_msvcrt__strlwr_s_l(char*  str, MSVCRT_size_t  len, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:57 */
 {
+	int return_value;
 	TRACE("Enter _strlwr_s_l\n");
-	return p_strlwr_s_l(str, len, locale);
+	return_value = p_strlwr_s_l(str, len, locale);
+	TRACE("Leave _strlwr_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strlwr_s_l(void);  /* ../dlls/msvcrt/string.c:57 */
@@ -16474,10 +18111,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strlwr_s_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__strncoll(char*  str1, char*  str2, MSVCRT_size_t  count) /* ../dlls/msvcrt/string.c:679 */
+WINAPI int wine32b_msvcrt__strncoll(char*  str1, char*  str2, MSVCRT_size_t  count) /* ../dlls/msvcrt/string.c:679 */
 {
+	int return_value;
 	TRACE("Enter _strncoll\n");
-	return p_strncoll(str1, str2, count);
+	return_value = p_strncoll(str1, str2, count);
+	TRACE("Leave _strncoll\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strncoll(void);  /* ../dlls/msvcrt/string.c:679 */
@@ -16501,10 +18141,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strncoll,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__strncoll_l(char*  str1, char*  str2, MSVCRT_size_t  count, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:660 */
+WINAPI int wine32b_msvcrt__strncoll_l(char*  str1, char*  str2, MSVCRT_size_t  count, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:660 */
 {
+	int return_value;
 	TRACE("Enter _strncoll_l\n");
-	return p_strncoll_l(str1, str2, count, locale);
+	return_value = p_strncoll_l(str1, str2, count, locale);
+	TRACE("Leave _strncoll_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strncoll_l(void);  /* ../dlls/msvcrt/string.c:660 */
@@ -16529,10 +18172,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strncoll_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__strnicmp(char*  s1, char*  s2, MSVCRT_size_t  count) /* ../dlls/msvcrt/string.c:1990 */
+WINAPI int wine32b_msvcrt__strnicmp(char*  s1, char*  s2, MSVCRT_size_t  count) /* ../dlls/msvcrt/string.c:1990 */
 {
+	int return_value;
 	TRACE("Enter _strnicmp\n");
-	return p_strnicmp(s1, s2, count);
+	return_value = p_strnicmp(s1, s2, count);
+	TRACE("Leave _strnicmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strnicmp(void);  /* ../dlls/msvcrt/string.c:1990 */
@@ -16556,10 +18202,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strnicmp,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__strnicmp_l(char*  s1, char*  s2, MSVCRT_size_t  count, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:1960 */
+WINAPI int wine32b_msvcrt__strnicmp_l(char*  s1, char*  s2, MSVCRT_size_t  count, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:1960 */
 {
+	int return_value;
 	TRACE("Enter _strnicmp_l\n");
-	return p_strnicmp_l(s1, s2, count, locale);
+	return_value = p_strnicmp_l(s1, s2, count, locale);
+	TRACE("Leave _strnicmp_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strnicmp_l(void);  /* ../dlls/msvcrt/string.c:1960 */
@@ -16584,10 +18233,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strnicmp_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__strnicoll(char*  str1, char*  str2, MSVCRT_size_t  count) /* ../dlls/msvcrt/string.c:706 */
+WINAPI int wine32b_msvcrt__strnicoll(char*  str1, char*  str2, MSVCRT_size_t  count) /* ../dlls/msvcrt/string.c:706 */
 {
+	int return_value;
 	TRACE("Enter _strnicoll\n");
-	return p_strnicoll(str1, str2, count);
+	return_value = p_strnicoll(str1, str2, count);
+	TRACE("Leave _strnicoll\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strnicoll(void);  /* ../dlls/msvcrt/string.c:706 */
@@ -16611,10 +18263,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strnicoll,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__strnicoll_l(char*  str1, char*  str2, MSVCRT_size_t  count, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:687 */
+WINAPI int wine32b_msvcrt__strnicoll_l(char*  str1, char*  str2, MSVCRT_size_t  count, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:687 */
 {
+	int return_value;
 	TRACE("Enter _strnicoll_l\n");
-	return p_strnicoll_l(str1, str2, count, locale);
+	return_value = p_strnicoll_l(str1, str2, count, locale);
+	TRACE("Leave _strnicoll_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strnicoll_l(void);  /* ../dlls/msvcrt/string.c:687 */
@@ -16639,10 +18294,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strnicoll_l,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__strnset(char*  str, int  value, MSVCRT_size_t  len) /* ../dlls/msvcrt/string.c:221 */
+WINAPI char* wine32b_msvcrt__strnset(char*  str, int  value, MSVCRT_size_t  len) /* ../dlls/msvcrt/string.c:221 */
 {
+	char* return_value;
 	TRACE("Enter _strnset\n");
-	return p_strnset(str, value, len);
+	return_value = p_strnset(str, value, len);
+	TRACE("Leave _strnset\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strnset(void);  /* ../dlls/msvcrt/string.c:221 */
@@ -16666,10 +18324,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strnset,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__strnset_s(char*  str, MSVCRT_size_t  size, int  c, MSVCRT_size_t  count) /* ../dlls/msvcrt/string.c:197 */
+WINAPI int wine32b_msvcrt__strnset_s(char*  str, MSVCRT_size_t  size, int  c, MSVCRT_size_t  count) /* ../dlls/msvcrt/string.c:197 */
 {
+	int return_value;
 	TRACE("Enter _strnset_s\n");
-	return p_strnset_s(str, size, c, count);
+	return_value = p_strnset_s(str, size, c, count);
+	TRACE("Leave _strnset_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strnset_s(void);  /* ../dlls/msvcrt/string.c:197 */
@@ -16694,10 +18355,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strnset_s,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__strrev(char*  str) /* ../dlls/msvcrt/string.c:232 */
+WINAPI char* wine32b_msvcrt__strrev(char*  str) /* ../dlls/msvcrt/string.c:232 */
 {
+	char* return_value;
 	TRACE("Enter _strrev\n");
-	return p_strrev(str);
+	return_value = p_strrev(str);
+	TRACE("Leave _strrev\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strrev(void);  /* ../dlls/msvcrt/string.c:232 */
@@ -16719,10 +18383,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strrev,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__strset(char*  str, int  value) /* ../dlls/msvcrt/string.c:251 */
+WINAPI char* wine32b_msvcrt__strset(char*  str, int  value) /* ../dlls/msvcrt/string.c:251 */
 {
+	char* return_value;
 	TRACE("Enter _strset\n");
-	return p_strset(str, value);
+	return_value = p_strset(str, value);
+	TRACE("Leave _strset\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strset(void);  /* ../dlls/msvcrt/string.c:251 */
@@ -16745,10 +18412,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strset,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__strtime(char*  time) /* ../dlls/msvcrt/time.c:645 */
+WINAPI char* wine32b_msvcrt__strtime(char*  time) /* ../dlls/msvcrt/time.c:645 */
 {
+	char* return_value;
 	TRACE("Enter _strtime\n");
-	return p_strtime(time);
+	return_value = p_strtime(time);
+	TRACE("Leave _strtime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strtime(void);  /* ../dlls/msvcrt/time.c:645 */
@@ -16770,10 +18440,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strtime,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__strtime_s(char*  time, MSVCRT_size_t  size) /* ../dlls/msvcrt/time.c:657 */
+WINAPI int wine32b_msvcrt__strtime_s(char*  time, MSVCRT_size_t  size) /* ../dlls/msvcrt/time.c:657 */
 {
+	int return_value;
 	TRACE("Enter _strtime_s\n");
-	return p_strtime_s(time, size);
+	return_value = p_strtime_s(time, size);
+	TRACE("Leave _strtime_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strtime_s(void);  /* ../dlls/msvcrt/time.c:657 */
@@ -16796,10 +18469,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strtime_s,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt__strtod_l(char*  str, char**  end, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:509 */
+WINAPI double wine32b_msvcrt__strtod_l(char*  str, char**  end, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:509 */
 {
+	double return_value;
 	TRACE("Enter _strtod_l\n");
-	return p_strtod_l(str, end, locale);
+	return_value = p_strtod_l(str, end, locale);
+	TRACE("Leave _strtod_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strtod_l(void);  /* ../dlls/msvcrt/string.c:509 */
@@ -16823,10 +18499,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strtod_l,
 	"ret \n"
 )
 
-extern WINAPI long wine32b_msvcrt__strtoi64(char*  nptr, char**  endptr, int  base) /* ../dlls/msvcrt/string.c:1019 */
+WINAPI long wine32b_msvcrt__strtoi64(char*  nptr, char**  endptr, int  base) /* ../dlls/msvcrt/string.c:1019 */
 {
+	long return_value;
 	TRACE("Enter _strtoi64\n");
-	return p_strtoi64(nptr, endptr, base);
+	return_value = p_strtoi64(nptr, endptr, base);
+	TRACE("Leave _strtoi64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strtoi64(void);  /* ../dlls/msvcrt/string.c:1019 */
@@ -16850,10 +18529,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strtoi64,
 	"ret \n"
 )
 
-extern WINAPI long wine32b_msvcrt__strtoi64_l(char*  nptr, char**  endptr, int  base, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:947 */
+WINAPI long wine32b_msvcrt__strtoi64_l(char*  nptr, char**  endptr, int  base, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:947 */
 {
+	long return_value;
 	TRACE("Enter _strtoi64_l\n");
-	return p_strtoi64_l(nptr, endptr, base, locale);
+	return_value = p_strtoi64_l(nptr, endptr, base, locale);
+	TRACE("Leave _strtoi64_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strtoi64_l(void);  /* ../dlls/msvcrt/string.c:947 */
@@ -16878,10 +18560,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strtoi64_l,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_long wine32b_msvcrt__strtol_l(char*  nptr, char**  end, int  base, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:1144 */
+WINAPI MSVCRT_long wine32b_msvcrt__strtol_l(char*  nptr, char**  end, int  base, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:1144 */
 {
+	MSVCRT_long return_value;
 	TRACE("Enter _strtol_l\n");
-	return p_strtol_l(nptr, end, base, locale);
+	return_value = p_strtol_l(nptr, end, base, locale);
+	TRACE("Leave _strtol_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strtol_l(void);  /* ../dlls/msvcrt/string.c:1144 */
@@ -16906,10 +18591,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strtol_l,
 	"ret \n"
 )
 
-extern WINAPI unsigned long wine32b_msvcrt__strtoui64(char*  nptr, char**  endptr, int  base) /* ../dlls/msvcrt/string.c:1265 */
+WINAPI unsigned long wine32b_msvcrt__strtoui64(char*  nptr, char**  endptr, int  base) /* ../dlls/msvcrt/string.c:1265 */
 {
+	unsigned long return_value;
 	TRACE("Enter _strtoui64\n");
-	return p_strtoui64(nptr, endptr, base);
+	return_value = p_strtoui64(nptr, endptr, base);
+	TRACE("Leave _strtoui64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strtoui64(void);  /* ../dlls/msvcrt/string.c:1265 */
@@ -16933,10 +18621,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strtoui64,
 	"ret \n"
 )
 
-extern WINAPI unsigned long wine32b_msvcrt__strtoui64_l(char*  nptr, char**  endptr, int  base, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:1199 */
+WINAPI unsigned long wine32b_msvcrt__strtoui64_l(char*  nptr, char**  endptr, int  base, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:1199 */
 {
+	unsigned long return_value;
 	TRACE("Enter _strtoui64_l\n");
-	return p_strtoui64_l(nptr, endptr, base, locale);
+	return_value = p_strtoui64_l(nptr, endptr, base, locale);
+	TRACE("Leave _strtoui64_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strtoui64_l(void);  /* ../dlls/msvcrt/string.c:1199 */
@@ -16961,10 +18652,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strtoui64_l,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_ulong wine32b_msvcrt__strtoul_l(char*  nptr, char**  end, int  base, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:1171 */
+WINAPI MSVCRT_ulong wine32b_msvcrt__strtoul_l(char*  nptr, char**  end, int  base, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:1171 */
 {
+	MSVCRT_ulong return_value;
 	TRACE("Enter _strtoul_l\n");
-	return p_strtoul_l(nptr, end, base, locale);
+	return_value = p_strtoul_l(nptr, end, base, locale);
+	TRACE("Leave _strtoul_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strtoul_l(void);  /* ../dlls/msvcrt/string.c:1171 */
@@ -16989,10 +18683,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strtoul_l,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__strupr(char*  str) /* ../dlls/msvcrt/string.c:188 */
+WINAPI char* wine32b_msvcrt__strupr(char*  str) /* ../dlls/msvcrt/string.c:188 */
 {
+	char* return_value;
 	TRACE("Enter _strupr\n");
-	return p_strupr(str);
+	return_value = p_strupr(str);
+	TRACE("Leave _strupr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strupr(void);  /* ../dlls/msvcrt/string.c:188 */
@@ -17014,10 +18711,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strupr,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__strupr_l(char*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:179 */
+WINAPI char* wine32b_msvcrt__strupr_l(char*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:179 */
 {
+	char* return_value;
 	TRACE("Enter _strupr_l\n");
-	return p_strupr_l(str, locale);
+	return_value = p_strupr_l(str, locale);
+	TRACE("Leave _strupr_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strupr_l(void);  /* ../dlls/msvcrt/string.c:179 */
@@ -17040,10 +18740,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strupr_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__strupr_s(char*  str, MSVCRT_size_t  len) /* ../dlls/msvcrt/string.c:171 */
+WINAPI int wine32b_msvcrt__strupr_s(char*  str, MSVCRT_size_t  len) /* ../dlls/msvcrt/string.c:171 */
 {
+	int return_value;
 	TRACE("Enter _strupr_s\n");
-	return p_strupr_s(str, len);
+	return_value = p_strupr_s(str, len);
+	TRACE("Leave _strupr_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strupr_s(void);  /* ../dlls/msvcrt/string.c:171 */
@@ -17066,10 +18769,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strupr_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__strupr_s_l(char*  str, MSVCRT_size_t  len, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:118 */
+WINAPI int wine32b_msvcrt__strupr_s_l(char*  str, MSVCRT_size_t  len, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:118 */
 {
+	int return_value;
 	TRACE("Enter _strupr_s_l\n");
-	return p_strupr_s_l(str, len, locale);
+	return_value = p_strupr_s_l(str, len, locale);
+	TRACE("Leave _strupr_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strupr_s_l(void);  /* ../dlls/msvcrt/string.c:118 */
@@ -17093,10 +18799,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strupr_s_l,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt__strxfrm_l(char*  dest, char*  src, MSVCRT_size_t  len, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:837 */
+WINAPI MSVCRT_size_t wine32b_msvcrt__strxfrm_l(char*  dest, char*  src, MSVCRT_size_t  len, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/string.c:837 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter _strxfrm_l\n");
-	return p_strxfrm_l(dest, src, len, locale);
+	return_value = p_strxfrm_l(dest, src, len, locale);
+	TRACE("Leave _strxfrm_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__strxfrm_l(void);  /* ../dlls/msvcrt/string.c:837 */
@@ -17121,10 +18830,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__strxfrm_l,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__swab(char*  src, char*  dst, int  len) /* ../dlls/msvcrt/string.c:312 */
+WINAPI void wine32b_msvcrt__swab(char*  src, char*  dst, int  len) /* ../dlls/msvcrt/string.c:312 */
 {
 	TRACE("Enter _swab\n");
-	return p_swab(src, dst, len);
+	p_swab(src, dst, len);
+	TRACE("Leave _swab\n");
 }
 
 extern WINAPI void wine32a_msvcrt__swab(void);  /* ../dlls/msvcrt/string.c:312 */
@@ -17148,10 +18858,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__swab,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_swprintf(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/wcs.c:1410 */
+WINAPI int wine32b_msvcrt_swprintf(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/wcs.c:1410 */
 {
+	int return_value;
 	TRACE("Enter swprintf\n");
-	return pswprintf(str, format);
+	return_value = pswprintf(str, format);
+	TRACE("Leave swprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_swprintf(void);  /* ../dlls/msvcrt/wcs.c:1410 */
@@ -17174,10 +18887,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_swprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__swprintf_p_l(MSVCRT_wchar_t*  buffer, MSVCRT_size_t  length, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1631 */
+WINAPI int wine32b_msvcrt__swprintf_p_l(MSVCRT_wchar_t*  buffer, MSVCRT_size_t  length, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1631 */
 {
+	int return_value;
 	TRACE("Enter _swprintf_p_l\n");
-	return p_swprintf_p_l(buffer, length, format, locale);
+	return_value = p_swprintf_p_l(buffer, length, format, locale);
+	TRACE("Leave _swprintf_p_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__swprintf_p_l(void);  /* ../dlls/msvcrt/wcs.c:1631 */
@@ -17202,10 +18918,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__swprintf_p_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__swprintf_s_l(MSVCRT_wchar_t*  str, MSVCRT_size_t  numberOfElements, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1440 */
+WINAPI int wine32b_msvcrt__swprintf_s_l(MSVCRT_wchar_t*  str, MSVCRT_size_t  numberOfElements, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1440 */
 {
+	int return_value;
 	TRACE("Enter _swprintf_s_l\n");
-	return p_swprintf_s_l(str, numberOfElements, format, locale);
+	return_value = p_swprintf_s_l(str, numberOfElements, format, locale);
+	TRACE("Leave _swprintf_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__swprintf_s_l(void);  /* ../dlls/msvcrt/wcs.c:1440 */
@@ -17230,10 +18949,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__swprintf_s_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__swscanf_l(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:453 */
+WINAPI int wine32b_msvcrt__swscanf_l(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:453 */
 {
+	int return_value;
 	TRACE("Enter _swscanf_l\n");
-	return p_swscanf_l(str, format, locale);
+	return_value = p_swscanf_l(str, format, locale);
+	TRACE("Leave _swscanf_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__swscanf_l(void);  /* ../dlls/msvcrt/scanf.c:453 */
@@ -17257,10 +18979,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__swscanf_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__swscanf_s_l(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:482 */
+WINAPI int wine32b_msvcrt__swscanf_s_l(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:482 */
 {
+	int return_value;
 	TRACE("Enter _swscanf_s_l\n");
-	return p_swscanf_s_l(str, format, locale);
+	return_value = p_swscanf_s_l(str, format, locale);
+	TRACE("Leave _swscanf_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__swscanf_s_l(void);  /* ../dlls/msvcrt/scanf.c:482 */
@@ -17284,10 +19009,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__swscanf_s_l,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_long wine32b_msvcrt__tell(int  fd) /* ../dlls/msvcrt/file.c:3279 */
+WINAPI MSVCRT_long wine32b_msvcrt__tell(int  fd) /* ../dlls/msvcrt/file.c:3279 */
 {
+	MSVCRT_long return_value;
 	TRACE("Enter _tell\n");
-	return p_tell(fd);
+	return_value = p_tell(fd);
+	TRACE("Leave _tell\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__tell(void);  /* ../dlls/msvcrt/file.c:3279 */
@@ -17309,10 +19037,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__tell,
 	"ret \n"
 )
 
-extern WINAPI long wine32b_msvcrt__telli64(int  fd) /* ../dlls/msvcrt/file.c:3287 */
+WINAPI long wine32b_msvcrt__telli64(int  fd) /* ../dlls/msvcrt/file.c:3287 */
 {
+	long return_value;
 	TRACE("Enter _telli64\n");
-	return p_telli64(fd);
+	return_value = p_telli64(fd);
+	TRACE("Leave _telli64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__telli64(void);  /* ../dlls/msvcrt/file.c:3287 */
@@ -17334,10 +19065,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__telli64,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt__tempnam(char*  dir, char*  prefix) /* ../dlls/msvcrt/file.c:3295 */
+WINAPI char* wine32b_msvcrt__tempnam(char*  dir, char*  prefix) /* ../dlls/msvcrt/file.c:3295 */
 {
+	char* return_value;
 	TRACE("Enter _tempnam\n");
-	return p_tempnam(dir, prefix);
+	return_value = p_tempnam(dir, prefix);
+	TRACE("Leave _tempnam\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__tempnam(void);  /* ../dlls/msvcrt/file.c:3295 */
@@ -17360,10 +19094,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__tempnam,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT___time32_t wine32b_msvcrt__time32(MSVCRT___time32_t*  buf) /* ../dlls/msvcrt/time.c:851 */
+WINAPI MSVCRT___time32_t wine32b_msvcrt__time32(MSVCRT___time32_t*  buf) /* ../dlls/msvcrt/time.c:851 */
 {
+	MSVCRT___time32_t return_value;
 	TRACE("Enter _time32\n");
-	return p_time32(buf);
+	return_value = p_time32(buf);
+	TRACE("Leave _time32\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__time32(void);  /* ../dlls/msvcrt/time.c:851 */
@@ -17385,10 +19122,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__time32,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT___time64_t wine32b_msvcrt__time64(MSVCRT___time64_t*  buf) /* ../dlls/msvcrt/time.c:837 */
+WINAPI MSVCRT___time64_t wine32b_msvcrt__time64(MSVCRT___time64_t*  buf) /* ../dlls/msvcrt/time.c:837 */
 {
+	MSVCRT___time64_t return_value;
 	TRACE("Enter _time64\n");
-	return p_time64(buf);
+	return_value = p_time64(buf);
+	TRACE("Leave _time64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__time64(void);  /* ../dlls/msvcrt/time.c:837 */
@@ -17410,10 +19150,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__time64,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__tolower(int  c) /* ../dlls/msvcrt/ctype.c:471 */
+WINAPI int wine32b_msvcrt__tolower(int  c) /* ../dlls/msvcrt/ctype.c:471 */
 {
+	int return_value;
 	TRACE("Enter _tolower\n");
-	return p_tolower(c);
+	return_value = p_tolower(c);
+	TRACE("Leave _tolower\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__tolower(void);  /* ../dlls/msvcrt/ctype.c:471 */
@@ -17435,10 +19178,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__tolower,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__tolower_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:417 */
+WINAPI int wine32b_msvcrt__tolower_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:417 */
 {
+	int return_value;
 	TRACE("Enter _tolower_l\n");
-	return p_tolower_l(c, locale);
+	return_value = p_tolower_l(c, locale);
+	TRACE("Leave _tolower_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__tolower_l(void);  /* ../dlls/msvcrt/ctype.c:417 */
@@ -17461,10 +19207,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__tolower_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__toupper(int  c) /* ../dlls/msvcrt/ctype.c:409 */
+WINAPI int wine32b_msvcrt__toupper(int  c) /* ../dlls/msvcrt/ctype.c:409 */
 {
+	int return_value;
 	TRACE("Enter _toupper\n");
-	return p_toupper(c);
+	return_value = p_toupper(c);
+	TRACE("Leave _toupper\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__toupper(void);  /* ../dlls/msvcrt/ctype.c:409 */
@@ -17486,10 +19235,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__toupper,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__toupper_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:355 */
+WINAPI int wine32b_msvcrt__toupper_l(int  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/ctype.c:355 */
 {
+	int return_value;
 	TRACE("Enter _toupper_l\n");
-	return p_toupper_l(c, locale);
+	return_value = p_toupper_l(c, locale);
+	TRACE("Leave _toupper_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__toupper_l(void);  /* ../dlls/msvcrt/ctype.c:355 */
@@ -17512,10 +19264,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__toupper_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__towlower_l(MSVCRT_wint_t  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2537 */
+WINAPI int wine32b_msvcrt__towlower_l(MSVCRT_wint_t  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2537 */
 {
+	int return_value;
 	TRACE("Enter _towlower_l\n");
-	return p_towlower_l(c, locale);
+	return_value = p_towlower_l(c, locale);
+	TRACE("Leave _towlower_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__towlower_l(void);  /* ../dlls/msvcrt/wcs.c:2537 */
@@ -17538,10 +19293,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__towlower_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__towupper_l(MSVCRT_wint_t  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2508 */
+WINAPI int wine32b_msvcrt__towupper_l(MSVCRT_wint_t  c, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2508 */
 {
+	int return_value;
 	TRACE("Enter _towupper_l\n");
-	return p_towupper_l(c, locale);
+	return_value = p_towupper_l(c, locale);
+	TRACE("Leave _towupper_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__towupper_l(void);  /* ../dlls/msvcrt/wcs.c:2508 */
@@ -17564,10 +19322,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__towupper_l,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__tzset(void) /* ../dlls/msvcrt/time.c:94 */
+WINAPI void wine32b_msvcrt__tzset(void) /* ../dlls/msvcrt/time.c:94 */
 {
 	TRACE("Enter _tzset\n");
-	return p_tzset();
+	p_tzset();
+	TRACE("Leave _tzset\n");
 }
 
 extern WINAPI void wine32a_msvcrt__tzset(void);  /* ../dlls/msvcrt/time.c:94 */
@@ -17588,10 +19347,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__tzset,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ui64toa_s(unsigned long  value, char*  str, MSVCRT_size_t  size, int  radix) /* ../dlls/msvcrt/string.c:1452 */
+WINAPI int wine32b_msvcrt__ui64toa_s(unsigned long  value, char*  str, MSVCRT_size_t  size, int  radix) /* ../dlls/msvcrt/string.c:1452 */
 {
+	int return_value;
 	TRACE("Enter _ui64toa_s\n");
-	return p_ui64toa_s(value, str, size, radix);
+	return_value = p_ui64toa_s(value, str, size, radix);
+	TRACE("Leave _ui64toa_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ui64toa_s(void);  /* ../dlls/msvcrt/string.c:1452 */
@@ -17616,10 +19378,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ui64toa_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ui64tow_s(unsigned long  value, MSVCRT_wchar_t*  str, MSVCRT_size_t  size, int  radix) /* ../dlls/msvcrt/string.c:1491 */
+WINAPI int wine32b_msvcrt__ui64tow_s(unsigned long  value, MSVCRT_wchar_t*  str, MSVCRT_size_t  size, int  radix) /* ../dlls/msvcrt/string.c:1491 */
 {
+	int return_value;
 	TRACE("Enter _ui64tow_s\n");
-	return p_ui64tow_s(value, str, size, radix);
+	return_value = p_ui64tow_s(value, str, size, radix);
+	TRACE("Leave _ui64tow_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ui64tow_s(void);  /* ../dlls/msvcrt/string.c:1491 */
@@ -17644,10 +19409,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ui64tow_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ultoa_s(MSVCRT_ulong  value, char*  str, MSVCRT_size_t  size, int  radix) /* ../dlls/msvcrt/string.c:1529 */
+WINAPI int wine32b_msvcrt__ultoa_s(MSVCRT_ulong  value, char*  str, MSVCRT_size_t  size, int  radix) /* ../dlls/msvcrt/string.c:1529 */
 {
+	int return_value;
 	TRACE("Enter _ultoa_s\n");
-	return p_ultoa_s(value, str, size, radix);
+	return_value = p_ultoa_s(value, str, size, radix);
+	TRACE("Leave _ultoa_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ultoa_s(void);  /* ../dlls/msvcrt/string.c:1529 */
@@ -17672,10 +19440,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ultoa_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ultow_s(MSVCRT_ulong  value, MSVCRT_wchar_t*  str, MSVCRT_size_t  size, int  radix) /* ../dlls/msvcrt/string.c:1583 */
+WINAPI int wine32b_msvcrt__ultow_s(MSVCRT_ulong  value, MSVCRT_wchar_t*  str, MSVCRT_size_t  size, int  radix) /* ../dlls/msvcrt/string.c:1583 */
 {
+	int return_value;
 	TRACE("Enter _ultow_s\n");
-	return p_ultow_s(value, str, size, radix);
+	return_value = p_ultow_s(value, str, size, radix);
+	TRACE("Leave _ultow_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ultow_s(void);  /* ../dlls/msvcrt/string.c:1583 */
@@ -17700,10 +19471,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ultow_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__umask(int  umask) /* ../dlls/msvcrt/file.c:3338 */
+WINAPI int wine32b_msvcrt__umask(int  umask) /* ../dlls/msvcrt/file.c:3338 */
 {
+	int return_value;
 	TRACE("Enter _umask\n");
-	return p_umask(umask);
+	return_value = p_umask(umask);
+	TRACE("Leave _umask\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__umask(void);  /* ../dlls/msvcrt/file.c:3338 */
@@ -17725,10 +19499,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__umask,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__ungetch(int  c) /* ../dlls/msvcrt/console.c:433 */
+WINAPI int wine32b_msvcrt__ungetch(int  c) /* ../dlls/msvcrt/console.c:433 */
 {
+	int return_value;
 	TRACE("Enter _ungetch\n");
-	return p_ungetch(c);
+	return_value = p_ungetch(c);
+	TRACE("Leave _ungetch\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ungetch(void);  /* ../dlls/msvcrt/console.c:433 */
@@ -17750,10 +19527,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ungetch,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t wine32b_msvcrt__ungetwch(MSVCRT_wchar_t  c) /* ../dlls/msvcrt/console.c:455 */
+WINAPI MSVCRT_wchar_t wine32b_msvcrt__ungetwch(MSVCRT_wchar_t  c) /* ../dlls/msvcrt/console.c:455 */
 {
+	MSVCRT_wchar_t return_value;
 	TRACE("Enter _ungetwch\n");
-	return p_ungetwch(c);
+	return_value = p_ungetwch(c);
+	TRACE("Leave _ungetwch\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__ungetwch(void);  /* ../dlls/msvcrt/console.c:455 */
@@ -17775,10 +19555,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__ungetwch,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__unlink(char*  path) /* ../dlls/msvcrt/file.c:913 */
+WINAPI int wine32b_msvcrt__unlink(char*  path) /* ../dlls/msvcrt/file.c:913 */
 {
+	int return_value;
 	TRACE("Enter _unlink\n");
-	return p_unlink(path);
+	return_value = p_unlink(path);
+	TRACE("Leave _unlink\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__unlink(void);  /* ../dlls/msvcrt/file.c:913 */
@@ -17800,10 +19583,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__unlink,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__unloaddll(MSVCRT_intptr_t  dll) /* ../dlls/msvcrt/process.c:1294 */
+WINAPI int wine32b_msvcrt__unloaddll(MSVCRT_intptr_t  dll) /* ../dlls/msvcrt/process.c:1294 */
 {
+	int return_value;
 	TRACE("Enter _unloaddll\n");
-	return p_unloaddll(dll);
+	return_value = p_unloaddll(dll);
+	TRACE("Leave _unloaddll\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__unloaddll(void);  /* ../dlls/msvcrt/process.c:1294 */
@@ -17825,10 +19611,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__unloaddll,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__unlock(int  locknum) /* ../dlls/msvcrt/lock.c:118 */
+WINAPI void wine32b_msvcrt__unlock(int  locknum) /* ../dlls/msvcrt/lock.c:118 */
 {
 	TRACE("Enter _unlock\n");
-	return p_unlock(locknum);
+	p_unlock(locknum);
+	TRACE("Leave _unlock\n");
 }
 
 extern WINAPI void wine32a_msvcrt__unlock(void);  /* ../dlls/msvcrt/lock.c:118 */
@@ -17850,10 +19637,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__unlock,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__unlock_file(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:1325 */
+WINAPI void wine32b_msvcrt__unlock_file(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:1325 */
 {
 	TRACE("Enter _unlock_file\n");
-	return p_unlock_file(file);
+	p_unlock_file(file);
+	TRACE("Leave _unlock_file\n");
 }
 
 extern WINAPI void wine32a_msvcrt__unlock_file(void);  /* ../dlls/msvcrt/file.c:1325 */
@@ -17875,10 +19663,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__unlock_file,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__utime32(char*  path, struct MSVCRT___utimbuf32*  t) /* ../dlls/msvcrt/file.c:3365 */
+WINAPI int wine32b_msvcrt__utime32(char*  path, struct MSVCRT___utimbuf32*  t) /* ../dlls/msvcrt/file.c:3365 */
 {
+	int return_value;
 	TRACE("Enter _utime32\n");
-	return p_utime32(path, t);
+	return_value = p_utime32(path, t);
+	TRACE("Leave _utime32\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__utime32(void);  /* ../dlls/msvcrt/file.c:3365 */
@@ -17901,10 +19692,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__utime32,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__utime64(char*  path, struct MSVCRT___utimbuf64*  t) /* ../dlls/msvcrt/file.c:3349 */
+WINAPI int wine32b_msvcrt__utime64(char*  path, struct MSVCRT___utimbuf64*  t) /* ../dlls/msvcrt/file.c:3349 */
 {
+	int return_value;
 	TRACE("Enter _utime64\n");
-	return p_utime64(path, t);
+	return_value = p_utime64(path, t);
+	TRACE("Leave _utime64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__utime64(void);  /* ../dlls/msvcrt/file.c:3349 */
@@ -17927,10 +19721,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__utime64,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vcprintf(char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/console.c:520 */
+WINAPI int wine32b_msvcrt__vcprintf(char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/console.c:520 */
 {
+	int return_value;
 	TRACE("Enter _vcprintf\n");
-	return p_vcprintf(format, valist);
+	return_value = p_vcprintf(format, valist);
+	TRACE("Leave _vcprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vcprintf(void);  /* ../dlls/msvcrt/console.c:520 */
@@ -17953,10 +19750,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vcprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vcwprintf(MSVCRT_wchar_t*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/console.c:544 */
+WINAPI int wine32b_msvcrt__vcwprintf(MSVCRT_wchar_t*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/console.c:544 */
 {
+	int return_value;
 	TRACE("Enter _vcwprintf\n");
-	return p_vcwprintf(format, valist);
+	return_value = p_vcwprintf(format, valist);
+	TRACE("Leave _vcwprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vcwprintf(void);  /* ../dlls/msvcrt/console.c:544 */
@@ -17979,10 +19779,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vcwprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vfprintf_l(MSVCRT_FILE*  file, char*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5342 */
+WINAPI int wine32b_msvcrt__vfprintf_l(MSVCRT_FILE*  file, char*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5342 */
 {
+	int return_value;
 	TRACE("Enter _vfprintf_l\n");
-	return p_vfprintf_l(file, format, locale, valist);
+	return_value = p_vfprintf_l(file, format, locale, valist);
+	TRACE("Leave _vfprintf_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vfprintf_l(void);  /* ../dlls/msvcrt/file.c:5342 */
@@ -18007,10 +19810,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vfprintf_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vfprintf_p(MSVCRT_FILE*  file, char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5370 */
+WINAPI int wine32b_msvcrt__vfprintf_p(MSVCRT_FILE*  file, char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5370 */
 {
+	int return_value;
 	TRACE("Enter _vfprintf_p\n");
-	return p_vfprintf_p(file, format, valist);
+	return_value = p_vfprintf_p(file, format, valist);
+	TRACE("Leave _vfprintf_p\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vfprintf_p(void);  /* ../dlls/msvcrt/file.c:5370 */
@@ -18034,10 +19840,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vfprintf_p,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vfprintf_p_l(MSVCRT_FILE*  file, char*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5360 */
+WINAPI int wine32b_msvcrt__vfprintf_p_l(MSVCRT_FILE*  file, char*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5360 */
 {
+	int return_value;
 	TRACE("Enter _vfprintf_p_l\n");
-	return p_vfprintf_p_l(file, format, locale, valist);
+	return_value = p_vfprintf_p_l(file, format, locale, valist);
+	TRACE("Leave _vfprintf_p_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vfprintf_p_l(void);  /* ../dlls/msvcrt/file.c:5360 */
@@ -18062,10 +19871,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vfprintf_p_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vfprintf_s_l(MSVCRT_FILE*  file, char*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5238 */
+WINAPI int wine32b_msvcrt__vfprintf_s_l(MSVCRT_FILE*  file, char*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5238 */
 {
+	int return_value;
 	TRACE("Enter _vfprintf_s_l\n");
-	return p_vfprintf_s_l(file, format, locale, valist);
+	return_value = p_vfprintf_s_l(file, format, locale, valist);
+	TRACE("Leave _vfprintf_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vfprintf_s_l(void);  /* ../dlls/msvcrt/file.c:5238 */
@@ -18090,10 +19902,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vfprintf_s_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vfwprintf_l(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5351 */
+WINAPI int wine32b_msvcrt__vfwprintf_l(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5351 */
 {
+	int return_value;
 	TRACE("Enter _vfwprintf_l\n");
-	return p_vfwprintf_l(file, format, locale, valist);
+	return_value = p_vfwprintf_l(file, format, locale, valist);
+	TRACE("Leave _vfwprintf_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vfwprintf_l(void);  /* ../dlls/msvcrt/file.c:5351 */
@@ -18118,10 +19933,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vfwprintf_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vfwprintf_p(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5388 */
+WINAPI int wine32b_msvcrt__vfwprintf_p(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5388 */
 {
+	int return_value;
 	TRACE("Enter _vfwprintf_p\n");
-	return p_vfwprintf_p(file, format, valist);
+	return_value = p_vfwprintf_p(file, format, valist);
+	TRACE("Leave _vfwprintf_p\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vfwprintf_p(void);  /* ../dlls/msvcrt/file.c:5388 */
@@ -18145,10 +19963,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vfwprintf_p,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vfwprintf_p_l(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5378 */
+WINAPI int wine32b_msvcrt__vfwprintf_p_l(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5378 */
 {
+	int return_value;
 	TRACE("Enter _vfwprintf_p_l\n");
-	return p_vfwprintf_p_l(file, format, locale, valist);
+	return_value = p_vfwprintf_p_l(file, format, locale, valist);
+	TRACE("Leave _vfwprintf_p_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vfwprintf_p_l(void);  /* ../dlls/msvcrt/file.c:5378 */
@@ -18173,10 +19994,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vfwprintf_p_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vfwprintf_s_l(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5247 */
+WINAPI int wine32b_msvcrt__vfwprintf_s_l(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5247 */
 {
+	int return_value;
 	TRACE("Enter _vfwprintf_s_l\n");
-	return p_vfwprintf_s_l(file, format, locale, valist);
+	return_value = p_vfwprintf_s_l(file, format, locale, valist);
+	TRACE("Leave _vfwprintf_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vfwprintf_s_l(void);  /* ../dlls/msvcrt/file.c:5247 */
@@ -18201,10 +20025,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vfwprintf_s_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__utime(char*  path, struct MSVCRT___utimbuf64*  t) /* ../dlls/msvcrt/file.c:3382 */
+WINAPI int wine32b_msvcrt__utime(char*  path, struct MSVCRT___utimbuf64*  t) /* ../dlls/msvcrt/file.c:3382 */
 {
+	int return_value;
 	TRACE("Enter _utime\n");
-	return p_utime(path, t);
+	return_value = p_utime(path, t);
+	TRACE("Leave _utime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__utime(void);  /* ../dlls/msvcrt/file.c:3382 */
@@ -18227,10 +20054,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__utime,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vscprintf(char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:1038 */
+WINAPI int wine32b_msvcrt__vscprintf(char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:1038 */
 {
+	int return_value;
 	TRACE("Enter _vscprintf\n");
-	return p_vscprintf(format, valist);
+	return_value = p_vscprintf(format, valist);
+	TRACE("Leave _vscprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vscprintf(void);  /* ../dlls/msvcrt/wcs.c:1038 */
@@ -18253,10 +20083,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vscprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vscprintf_l(char*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:1046 */
+WINAPI int wine32b_msvcrt__vscprintf_l(char*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:1046 */
 {
+	int return_value;
 	TRACE("Enter _vscprintf_l\n");
-	return p_vscprintf_l(format, locale, valist);
+	return_value = p_vscprintf_l(format, locale, valist);
+	TRACE("Leave _vscprintf_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vscprintf_l(void);  /* ../dlls/msvcrt/wcs.c:1046 */
@@ -18280,10 +20113,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vscprintf_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vscprintf_p_l(char*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1055 */
+WINAPI int wine32b_msvcrt__vscprintf_p_l(char*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1055 */
 {
+	int return_value;
 	TRACE("Enter _vscprintf_p_l\n");
-	return p_vscprintf_p_l(format, locale, args);
+	return_value = p_vscprintf_p_l(format, locale, args);
+	TRACE("Leave _vscprintf_p_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vscprintf_p_l(void);  /* ../dlls/msvcrt/wcs.c:1055 */
@@ -18307,10 +20143,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vscprintf_p_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vscwprintf(MSVCRT_wchar_t*  format, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1473 */
+WINAPI int wine32b_msvcrt__vscwprintf(MSVCRT_wchar_t*  format, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1473 */
 {
+	int return_value;
 	TRACE("Enter _vscwprintf\n");
-	return p_vscwprintf(format, args);
+	return_value = p_vscwprintf(format, args);
+	TRACE("Leave _vscwprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vscwprintf(void);  /* ../dlls/msvcrt/wcs.c:1473 */
@@ -18333,10 +20172,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vscwprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vscwprintf_l(MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1481 */
+WINAPI int wine32b_msvcrt__vscwprintf_l(MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1481 */
 {
+	int return_value;
 	TRACE("Enter _vscwprintf_l\n");
-	return p_vscwprintf_l(format, locale, args);
+	return_value = p_vscwprintf_l(format, locale, args);
+	TRACE("Leave _vscwprintf_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vscwprintf_l(void);  /* ../dlls/msvcrt/wcs.c:1481 */
@@ -18360,10 +20202,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vscwprintf_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vscwprintf_p_l(MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1489 */
+WINAPI int wine32b_msvcrt__vscwprintf_p_l(MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1489 */
 {
+	int return_value;
 	TRACE("Enter _vscwprintf_p_l\n");
-	return p_vscwprintf_p_l(format, locale, args);
+	return_value = p_vscwprintf_p_l(format, locale, args);
+	TRACE("Leave _vscwprintf_p_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vscwprintf_p_l(void);  /* ../dlls/msvcrt/wcs.c:1489 */
@@ -18387,10 +20232,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vscwprintf_p_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_vsnprintf(char*  str, MSVCRT_size_t  len, char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:761 */
+WINAPI int wine32b_msvcrt_vsnprintf(char*  str, MSVCRT_size_t  len, char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:761 */
 {
+	int return_value;
 	TRACE("Enter vsnprintf\n");
-	return pvsnprintf(str, len, format, valist);
+	return_value = pvsnprintf(str, len, format, valist);
+	TRACE("Leave vsnprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_vsnprintf(void);  /* ../dlls/msvcrt/wcs.c:761 */
@@ -18415,10 +20263,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_vsnprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vsnprintf_l(char*  str, MSVCRT_size_t  len, char*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:828 */
+WINAPI int wine32b_msvcrt__vsnprintf_l(char*  str, MSVCRT_size_t  len, char*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:828 */
 {
+	int return_value;
 	TRACE("Enter _vsnprintf_l\n");
-	return p_vsnprintf_l(str, len, format, locale, valist);
+	return_value = p_vsnprintf_l(str, len, format, locale, valist);
+	TRACE("Leave _vsnprintf_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vsnprintf_l(void);  /* ../dlls/msvcrt/wcs.c:828 */
@@ -18443,10 +20294,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vsnprintf_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vsnprintf_s(char*  str, MSVCRT_size_t  sizeOfBuffer, MSVCRT_size_t  count, char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:963 */
+WINAPI int wine32b_msvcrt__vsnprintf_s(char*  str, MSVCRT_size_t  sizeOfBuffer, MSVCRT_size_t  count, char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:963 */
 {
+	int return_value;
 	TRACE("Enter _vsnprintf_s\n");
-	return p_vsnprintf_s(str, sizeOfBuffer, count, format, valist);
+	return_value = p_vsnprintf_s(str, sizeOfBuffer, count, format, valist);
+	TRACE("Leave _vsnprintf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vsnprintf_s(void);  /* ../dlls/msvcrt/wcs.c:963 */
@@ -18471,10 +20325,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vsnprintf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vsnprintf_s_l(char*  str, MSVCRT_size_t  sizeOfBuffer, MSVCRT_size_t  count, char*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:930 */
+WINAPI int wine32b_msvcrt__vsnprintf_s_l(char*  str, MSVCRT_size_t  sizeOfBuffer, MSVCRT_size_t  count, char*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:930 */
 {
+	int return_value;
 	TRACE("Enter _vsnprintf_s_l\n");
-	return p_vsnprintf_s_l(str, sizeOfBuffer, count, format, locale, valist);
+	return_value = p_vsnprintf_s_l(str, sizeOfBuffer, count, format, locale, valist);
+	TRACE("Leave _vsnprintf_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vsnprintf_s_l(void);  /* ../dlls/msvcrt/wcs.c:930 */
@@ -18499,10 +20356,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vsnprintf_s_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vswprintf_c(MSVCRT_wchar_t*  str, MSVCRT_size_t  len, MSVCRT_wchar_t*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:1147 */
+WINAPI int wine32b_msvcrt__vswprintf_c(MSVCRT_wchar_t*  str, MSVCRT_size_t  len, MSVCRT_wchar_t*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:1147 */
 {
+	int return_value;
 	TRACE("Enter _vswprintf_c\n");
-	return p_vswprintf_c(str, len, format, valist);
+	return_value = p_vswprintf_c(str, len, format, valist);
+	TRACE("Leave _vswprintf_c\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vswprintf_c(void);  /* ../dlls/msvcrt/wcs.c:1147 */
@@ -18527,10 +20387,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vswprintf_c,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vswprintf_c_l(MSVCRT_wchar_t*  str, MSVCRT_size_t  len, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:1163 */
+WINAPI int wine32b_msvcrt__vswprintf_c_l(MSVCRT_wchar_t*  str, MSVCRT_size_t  len, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:1163 */
 {
+	int return_value;
 	TRACE("Enter _vswprintf_c_l\n");
-	return p_vswprintf_c_l(str, len, format, locale, valist);
+	return_value = p_vswprintf_c_l(str, len, format, locale, valist);
+	TRACE("Leave _vswprintf_c_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vswprintf_c_l(void);  /* ../dlls/msvcrt/wcs.c:1163 */
@@ -18555,10 +20418,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vswprintf_c_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vsnwprintf_s(MSVCRT_wchar_t*  str, MSVCRT_size_t  sizeOfBuffer, MSVCRT_size_t  count, MSVCRT_wchar_t*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:1251 */
+WINAPI int wine32b_msvcrt__vsnwprintf_s(MSVCRT_wchar_t*  str, MSVCRT_size_t  sizeOfBuffer, MSVCRT_size_t  count, MSVCRT_wchar_t*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:1251 */
 {
+	int return_value;
 	TRACE("Enter _vsnwprintf_s\n");
-	return p_vsnwprintf_s(str, sizeOfBuffer, count, format, valist);
+	return_value = p_vsnwprintf_s(str, sizeOfBuffer, count, format, valist);
+	TRACE("Leave _vsnwprintf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vsnwprintf_s(void);  /* ../dlls/msvcrt/wcs.c:1251 */
@@ -18583,10 +20449,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vsnwprintf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vsnwprintf_s_l(MSVCRT_wchar_t*  str, MSVCRT_size_t  sizeOfBuffer, MSVCRT_size_t  count, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:1241 */
+WINAPI int wine32b_msvcrt__vsnwprintf_s_l(MSVCRT_wchar_t*  str, MSVCRT_size_t  sizeOfBuffer, MSVCRT_size_t  count, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:1241 */
 {
+	int return_value;
 	TRACE("Enter _vsnwprintf_s_l\n");
-	return p_vsnwprintf_s_l(str, sizeOfBuffer, count, format, locale, valist);
+	return_value = p_vsnwprintf_s_l(str, sizeOfBuffer, count, format, locale, valist);
+	TRACE("Leave _vsnwprintf_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vsnwprintf_s_l(void);  /* ../dlls/msvcrt/wcs.c:1241 */
@@ -18611,10 +20480,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vsnwprintf_s_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vsprintf_l(char*  str, char*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:844 */
+WINAPI int wine32b_msvcrt__vsprintf_l(char*  str, char*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:844 */
 {
+	int return_value;
 	TRACE("Enter _vsprintf_l\n");
-	return p_vsprintf_l(str, format, locale, valist);
+	return_value = p_vsprintf_l(str, format, locale, valist);
+	TRACE("Leave _vsprintf_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vsprintf_l(void);  /* ../dlls/msvcrt/wcs.c:844 */
@@ -18639,10 +20511,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vsprintf_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vsprintf_p(char*  buffer, MSVCRT_size_t  length, char*  format, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1562 */
+WINAPI int wine32b_msvcrt__vsprintf_p(char*  buffer, MSVCRT_size_t  length, char*  format, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1562 */
 {
+	int return_value;
 	TRACE("Enter _vsprintf_p\n");
-	return p_vsprintf_p(buffer, length, format, args);
+	return_value = p_vsprintf_p(buffer, length, format, args);
+	TRACE("Leave _vsprintf_p\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vsprintf_p(void);  /* ../dlls/msvcrt/wcs.c:1562 */
@@ -18667,10 +20542,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vsprintf_p,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vsprintf_p_l(char*  buffer, MSVCRT_size_t  length, char*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1553 */
+WINAPI int wine32b_msvcrt__vsprintf_p_l(char*  buffer, MSVCRT_size_t  length, char*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1553 */
 {
+	int return_value;
 	TRACE("Enter _vsprintf_p_l\n");
-	return p_vsprintf_p_l(buffer, length, format, locale, args);
+	return_value = p_vsprintf_p_l(buffer, length, format, locale, args);
+	TRACE("Leave _vsprintf_p_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vsprintf_p_l(void);  /* ../dlls/msvcrt/wcs.c:1553 */
@@ -18695,10 +20573,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vsprintf_p_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vsprintf_s_l(char*  str, MSVCRT_size_t  count, char*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:940 */
+WINAPI int wine32b_msvcrt__vsprintf_s_l(char*  str, MSVCRT_size_t  count, char*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:940 */
 {
+	int return_value;
 	TRACE("Enter _vsprintf_s_l\n");
-	return p_vsprintf_s_l(str, count, format, locale, valist);
+	return_value = p_vsprintf_s_l(str, count, format, locale, valist);
+	TRACE("Leave _vsprintf_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vsprintf_s_l(void);  /* ../dlls/msvcrt/wcs.c:940 */
@@ -18723,10 +20604,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vsprintf_s_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_vswprintf(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  format, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1456 */
+WINAPI int wine32b_msvcrt_vswprintf(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  format, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1456 */
 {
+	int return_value;
 	TRACE("Enter vswprintf\n");
-	return pvswprintf(str, format, args);
+	return_value = pvswprintf(str, format, args);
+	TRACE("Leave vswprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_vswprintf(void);  /* ../dlls/msvcrt/wcs.c:1456 */
@@ -18750,10 +20634,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_vswprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vswprintf_l(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1464 */
+WINAPI int wine32b_msvcrt__vswprintf_l(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1464 */
 {
+	int return_value;
 	TRACE("Enter _vswprintf_l\n");
-	return p_vswprintf_l(str, format, locale, args);
+	return_value = p_vswprintf_l(str, format, locale, args);
+	TRACE("Leave _vswprintf_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vswprintf_l(void);  /* ../dlls/msvcrt/wcs.c:1464 */
@@ -18778,10 +20665,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vswprintf_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vswprintf_p_l(MSVCRT_wchar_t*  buffer, MSVCRT_size_t  length, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1207 */
+WINAPI int wine32b_msvcrt__vswprintf_p_l(MSVCRT_wchar_t*  buffer, MSVCRT_size_t  length, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1207 */
 {
+	int return_value;
 	TRACE("Enter _vswprintf_p_l\n");
-	return p_vswprintf_p_l(buffer, length, format, locale, args);
+	return_value = p_vswprintf_p_l(buffer, length, format, locale, args);
+	TRACE("Leave _vswprintf_p_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vswprintf_p_l(void);  /* ../dlls/msvcrt/wcs.c:1207 */
@@ -18806,10 +20696,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vswprintf_p_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__vswprintf_s_l(MSVCRT_wchar_t*  str, MSVCRT_size_t  numberOfElements, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1516 */
+WINAPI int wine32b_msvcrt__vswprintf_s_l(MSVCRT_wchar_t*  str, MSVCRT_size_t  numberOfElements, MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1516 */
 {
+	int return_value;
 	TRACE("Enter _vswprintf_s_l\n");
-	return p_vswprintf_s_l(str, numberOfElements, format, locale, args);
+	return_value = p_vswprintf_s_l(str, numberOfElements, format, locale, args);
+	TRACE("Leave _vswprintf_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__vswprintf_s_l(void);  /* ../dlls/msvcrt/wcs.c:1516 */
@@ -18834,10 +20727,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__vswprintf_s_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__waccess(MSVCRT_wchar_t*  filename, int  mode) /* ../dlls/msvcrt/file.c:840 */
+WINAPI int wine32b_msvcrt__waccess(MSVCRT_wchar_t*  filename, int  mode) /* ../dlls/msvcrt/file.c:840 */
 {
+	int return_value;
 	TRACE("Enter _waccess\n");
-	return p_waccess(filename, mode);
+	return_value = p_waccess(filename, mode);
+	TRACE("Leave _waccess\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__waccess(void);  /* ../dlls/msvcrt/file.c:840 */
@@ -18860,10 +20756,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__waccess,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__waccess_s(MSVCRT_wchar_t*  filename, int  mode) /* ../dlls/msvcrt/file.c:862 */
+WINAPI int wine32b_msvcrt__waccess_s(MSVCRT_wchar_t*  filename, int  mode) /* ../dlls/msvcrt/file.c:862 */
 {
+	int return_value;
 	TRACE("Enter _waccess_s\n");
-	return p_waccess_s(filename, mode);
+	return_value = p_waccess_s(filename, mode);
+	TRACE("Leave _waccess_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__waccess_s(void);  /* ../dlls/msvcrt/file.c:862 */
@@ -18886,10 +20785,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__waccess_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wasctime(struct MSVCRT_tm*  mstm) /* ../dlls/msvcrt/time.c:1414 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wasctime(struct MSVCRT_tm*  mstm) /* ../dlls/msvcrt/time.c:1414 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wasctime\n");
-	return p_wasctime(mstm);
+	return_value = p_wasctime(mstm);
+	TRACE("Leave _wasctime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wasctime(void);  /* ../dlls/msvcrt/time.c:1414 */
@@ -18911,10 +20813,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wasctime,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wasctime_s(MSVCRT_wchar_t*  time, MSVCRT_size_t  size, struct MSVCRT_tm*  mstm) /* ../dlls/msvcrt/time.c:1437 */
+WINAPI int wine32b_msvcrt__wasctime_s(MSVCRT_wchar_t*  time, MSVCRT_size_t  size, struct MSVCRT_tm*  mstm) /* ../dlls/msvcrt/time.c:1437 */
 {
+	int return_value;
 	TRACE("Enter _wasctime_s\n");
-	return p_wasctime_s(time, size, mstm);
+	return_value = p_wasctime_s(time, size, mstm);
+	TRACE("Leave _wasctime_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wasctime_s(void);  /* ../dlls/msvcrt/time.c:1437 */
@@ -18938,10 +20843,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wasctime_s,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__wassert(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  file, unsigned int  line) /* ../dlls/msvcrt/exit.c:290 */
+WINAPI void wine32b_msvcrt__wassert(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  file, unsigned int  line) /* ../dlls/msvcrt/exit.c:290 */
 {
 	TRACE("Enter _wassert\n");
-	return p_wassert(str, file, line);
+	p_wassert(str, file, line);
+	TRACE("Leave _wassert\n");
 }
 
 extern WINAPI void wine32a_msvcrt__wassert(void);  /* ../dlls/msvcrt/exit.c:290 */
@@ -18965,10 +20871,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wassert,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wchdir(MSVCRT_wchar_t*  newdir) /* ../dlls/msvcrt/dir.c:268 */
+WINAPI int wine32b_msvcrt__wchdir(MSVCRT_wchar_t*  newdir) /* ../dlls/msvcrt/dir.c:268 */
 {
+	int return_value;
 	TRACE("Enter _wchdir\n");
-	return p_wchdir(newdir);
+	return_value = p_wchdir(newdir);
+	TRACE("Leave _wchdir\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wchdir(void);  /* ../dlls/msvcrt/dir.c:268 */
@@ -18990,10 +20899,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wchdir,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wchmod(MSVCRT_wchar_t*  path, int  flags) /* ../dlls/msvcrt/file.c:894 */
+WINAPI int wine32b_msvcrt__wchmod(MSVCRT_wchar_t*  path, int  flags) /* ../dlls/msvcrt/file.c:894 */
 {
+	int return_value;
 	TRACE("Enter _wchmod\n");
-	return p_wchmod(path, flags);
+	return_value = p_wchmod(path, flags);
+	TRACE("Leave _wchmod\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wchmod(void);  /* ../dlls/msvcrt/file.c:894 */
@@ -19016,10 +20928,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wchmod,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wcreat(MSVCRT_wchar_t*  path, int  pmode) /* ../dlls/msvcrt/file.c:2494 */
+WINAPI int wine32b_msvcrt__wcreat(MSVCRT_wchar_t*  path, int  pmode) /* ../dlls/msvcrt/file.c:2494 */
 {
+	int return_value;
 	TRACE("Enter _wcreat\n");
-	return p_wcreat(path, pmode);
+	return_value = p_wcreat(path, pmode);
+	TRACE("Leave _wcreat\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcreat(void);  /* ../dlls/msvcrt/file.c:2494 */
@@ -19042,10 +20957,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcreat,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wcscoll_l(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1647 */
+WINAPI int wine32b_msvcrt__wcscoll_l(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1647 */
 {
+	int return_value;
 	TRACE("Enter _wcscoll_l\n");
-	return p_wcscoll_l(str1, str2, locale);
+	return_value = p_wcscoll_l(str1, str2, locale);
+	TRACE("Leave _wcscoll_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcscoll_l(void);  /* ../dlls/msvcrt/wcs.c:1647 */
@@ -19069,10 +20987,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcscoll_l,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wcsdup(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/wcs.c:68 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wcsdup(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/wcs.c:68 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wcsdup\n");
-	return p_wcsdup(str);
+	return_value = p_wcsdup(str);
+	TRACE("Leave _wcsdup\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsdup(void);  /* ../dlls/msvcrt/wcs.c:68 */
@@ -19094,10 +21015,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsdup,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wcserror(int  err) /* ../dlls/msvcrt/errno.c:391 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wcserror(int  err) /* ../dlls/msvcrt/errno.c:391 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wcserror\n");
-	return p_wcserror(err);
+	return_value = p_wcserror(err);
+	TRACE("Leave _wcserror\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcserror(void);  /* ../dlls/msvcrt/errno.c:391 */
@@ -19119,10 +21043,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcserror,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wcserror_s(MSVCRT_wchar_t*  buffer, MSVCRT_size_t  nc, int  err) /* ../dlls/msvcrt/errno.c:378 */
+WINAPI int wine32b_msvcrt__wcserror_s(MSVCRT_wchar_t*  buffer, MSVCRT_size_t  nc, int  err) /* ../dlls/msvcrt/errno.c:378 */
 {
+	int return_value;
 	TRACE("Enter _wcserror_s\n");
-	return p_wcserror_s(buffer, nc, err);
+	return_value = p_wcserror_s(buffer, nc, err);
+	TRACE("Leave _wcserror_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcserror_s(void);  /* ../dlls/msvcrt/errno.c:378 */
@@ -19146,10 +21073,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcserror_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt__wcsftime_l(MSVCRT_wchar_t*  str, MSVCRT_size_t  max, MSVCRT_wchar_t*  format, struct MSVCRT_tm*  mstm, MSVCRT__locale_t  loc) /* ../dlls/msvcrt/time.c:1313 */
+WINAPI MSVCRT_size_t wine32b_msvcrt__wcsftime_l(MSVCRT_wchar_t*  str, MSVCRT_size_t  max, MSVCRT_wchar_t*  format, struct MSVCRT_tm*  mstm, MSVCRT__locale_t  loc) /* ../dlls/msvcrt/time.c:1313 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter _wcsftime_l\n");
-	return p_wcsftime_l(str, max, format, mstm, loc);
+	return_value = p_wcsftime_l(str, max, format, mstm, loc);
+	TRACE("Leave _wcsftime_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsftime_l(void);  /* ../dlls/msvcrt/time.c:1313 */
@@ -19174,10 +21104,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsftime_l,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt__wcsicmp(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2) /* ../dlls/msvcrt/wcs.c:91 */
+WINAPI INT wine32b_msvcrt__wcsicmp(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2) /* ../dlls/msvcrt/wcs.c:91 */
 {
+	INT return_value;
 	TRACE("Enter _wcsicmp\n");
-	return p_wcsicmp(str1, str2);
+	return_value = p_wcsicmp(str1, str2);
+	TRACE("Leave _wcsicmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsicmp(void);  /* ../dlls/msvcrt/wcs.c:91 */
@@ -19200,10 +21133,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsicmp,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt__wcsicmp_l(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:80 */
+WINAPI INT wine32b_msvcrt__wcsicmp_l(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:80 */
 {
+	INT return_value;
 	TRACE("Enter _wcsicmp_l\n");
-	return p_wcsicmp_l(str1, str2, locale);
+	return_value = p_wcsicmp_l(str1, str2, locale);
+	TRACE("Leave _wcsicmp_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsicmp_l(void);  /* ../dlls/msvcrt/wcs.c:80 */
@@ -19227,10 +21163,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsicmp_l,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt__wcsicoll(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2) /* ../dlls/msvcrt/wcs.c:133 */
+WINAPI INT wine32b_msvcrt__wcsicoll(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2) /* ../dlls/msvcrt/wcs.c:133 */
 {
+	INT return_value;
 	TRACE("Enter _wcsicoll\n");
-	return p_wcsicoll(str1, str2);
+	return_value = p_wcsicoll(str1, str2);
+	TRACE("Leave _wcsicoll\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsicoll(void);  /* ../dlls/msvcrt/wcs.c:133 */
@@ -19253,10 +21192,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsicoll,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wcsicoll_l(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:115 */
+WINAPI int wine32b_msvcrt__wcsicoll_l(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:115 */
 {
+	int return_value;
 	TRACE("Enter _wcsicoll_l\n");
-	return p_wcsicoll_l(str1, str2, locale);
+	return_value = p_wcsicoll_l(str1, str2, locale);
+	TRACE("Leave _wcsicoll_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsicoll_l(void);  /* ../dlls/msvcrt/wcs.c:115 */
@@ -19280,10 +21222,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsicoll_l,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wcslwr(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/wcs.c:350 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wcslwr(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/wcs.c:350 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wcslwr\n");
-	return p_wcslwr(str);
+	return_value = p_wcslwr(str);
+	TRACE("Leave _wcslwr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcslwr(void);  /* ../dlls/msvcrt/wcs.c:350 */
@@ -19305,10 +21250,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcslwr,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wcslwr_l(MSVCRT_wchar_t*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:341 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wcslwr_l(MSVCRT_wchar_t*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:341 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wcslwr_l\n");
-	return p_wcslwr_l(str, locale);
+	return_value = p_wcslwr_l(str, locale);
+	TRACE("Leave _wcslwr_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcslwr_l(void);  /* ../dlls/msvcrt/wcs.c:341 */
@@ -19331,10 +21279,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcslwr_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wcslwr_s(MSVCRT_wchar_t*  str, MSVCRT_size_t  n) /* ../dlls/msvcrt/wcs.c:333 */
+WINAPI int wine32b_msvcrt__wcslwr_s(MSVCRT_wchar_t*  str, MSVCRT_size_t  n) /* ../dlls/msvcrt/wcs.c:333 */
 {
+	int return_value;
 	TRACE("Enter _wcslwr_s\n");
-	return p_wcslwr_s(str, n);
+	return_value = p_wcslwr_s(str, n);
+	TRACE("Leave _wcslwr_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcslwr_s(void);  /* ../dlls/msvcrt/wcs.c:333 */
@@ -19357,10 +21308,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcslwr_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wcslwr_s_l(MSVCRT_wchar_t*  str, MSVCRT_size_t  n, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:305 */
+WINAPI int wine32b_msvcrt__wcslwr_s_l(MSVCRT_wchar_t*  str, MSVCRT_size_t  n, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:305 */
 {
+	int return_value;
 	TRACE("Enter _wcslwr_s_l\n");
-	return p_wcslwr_s_l(str, n, locale);
+	return_value = p_wcslwr_s_l(str, n, locale);
+	TRACE("Leave _wcslwr_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcslwr_s_l(void);  /* ../dlls/msvcrt/wcs.c:305 */
@@ -19384,10 +21338,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcslwr_s_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wcsncoll(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2, MSVCRT_size_t  count) /* ../dlls/msvcrt/wcs.c:379 */
+WINAPI int wine32b_msvcrt__wcsncoll(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2, MSVCRT_size_t  count) /* ../dlls/msvcrt/wcs.c:379 */
 {
+	int return_value;
 	TRACE("Enter _wcsncoll\n");
-	return p_wcsncoll(str1, str2, count);
+	return_value = p_wcsncoll(str1, str2, count);
+	TRACE("Leave _wcsncoll\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsncoll(void);  /* ../dlls/msvcrt/wcs.c:379 */
@@ -19411,10 +21368,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsncoll,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wcsncoll_l(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2, MSVCRT_size_t  count, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:359 */
+WINAPI int wine32b_msvcrt__wcsncoll_l(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2, MSVCRT_size_t  count, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:359 */
 {
+	int return_value;
 	TRACE("Enter _wcsncoll_l\n");
-	return p_wcsncoll_l(str1, str2, count, locale);
+	return_value = p_wcsncoll_l(str1, str2, count, locale);
+	TRACE("Leave _wcsncoll_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsncoll_l(void);  /* ../dlls/msvcrt/wcs.c:359 */
@@ -19439,10 +21399,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsncoll_l,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt__wcsnicmp(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2, INT  n) /* ../dlls/msvcrt/wcs.c:107 */
+WINAPI INT wine32b_msvcrt__wcsnicmp(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2, INT  n) /* ../dlls/msvcrt/wcs.c:107 */
 {
+	INT return_value;
 	TRACE("Enter _wcsnicmp\n");
-	return p_wcsnicmp(str1, str2, n);
+	return_value = p_wcsnicmp(str1, str2, n);
+	TRACE("Leave _wcsnicmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsnicmp(void);  /* ../dlls/msvcrt/wcs.c:107 */
@@ -19466,10 +21429,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsnicmp,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt__wcsnicmp_l(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2, INT  n, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:99 */
+WINAPI INT wine32b_msvcrt__wcsnicmp_l(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2, INT  n, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:99 */
 {
+	INT return_value;
 	TRACE("Enter _wcsnicmp_l\n");
-	return p_wcsnicmp_l(str1, str2, n, locale);
+	return_value = p_wcsnicmp_l(str1, str2, n, locale);
+	TRACE("Leave _wcsnicmp_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsnicmp_l(void);  /* ../dlls/msvcrt/wcs.c:99 */
@@ -19494,10 +21460,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsnicmp_l,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt__wcsnicoll(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2, MSVCRT_size_t  count) /* ../dlls/msvcrt/wcs.c:161 */
+WINAPI INT wine32b_msvcrt__wcsnicoll(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2, MSVCRT_size_t  count) /* ../dlls/msvcrt/wcs.c:161 */
 {
+	INT return_value;
 	TRACE("Enter _wcsnicoll\n");
-	return p_wcsnicoll(str1, str2, count);
+	return_value = p_wcsnicoll(str1, str2, count);
+	TRACE("Leave _wcsnicoll\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsnicoll(void);  /* ../dlls/msvcrt/wcs.c:161 */
@@ -19521,10 +21490,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsnicoll,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wcsnicoll_l(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2, MSVCRT_size_t  count, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:141 */
+WINAPI int wine32b_msvcrt__wcsnicoll_l(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2, MSVCRT_size_t  count, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:141 */
 {
+	int return_value;
 	TRACE("Enter _wcsnicoll_l\n");
-	return p_wcsnicoll_l(str1, str2, count, locale);
+	return_value = p_wcsnicoll_l(str1, str2, count, locale);
+	TRACE("Leave _wcsnicoll_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsnicoll_l(void);  /* ../dlls/msvcrt/wcs.c:141 */
@@ -19549,10 +21521,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsnicoll_l,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wcsnset(MSVCRT_wchar_t*  str, MSVCRT_wchar_t  c, MSVCRT_size_t  n) /* ../dlls/msvcrt/wcs.c:169 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wcsnset(MSVCRT_wchar_t*  str, MSVCRT_wchar_t  c, MSVCRT_size_t  n) /* ../dlls/msvcrt/wcs.c:169 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wcsnset\n");
-	return p_wcsnset(str, c, n);
+	return_value = p_wcsnset(str, c, n);
+	TRACE("Leave _wcsnset\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsnset(void);  /* ../dlls/msvcrt/wcs.c:169 */
@@ -19576,10 +21551,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsnset,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wcsnset_s(MSVCRT_wchar_t*  str, MSVCRT_size_t  size, MSVCRT_wchar_t  c, MSVCRT_size_t  count) /* ../dlls/msvcrt/wcs.c:179 */
+WINAPI int wine32b_msvcrt__wcsnset_s(MSVCRT_wchar_t*  str, MSVCRT_size_t  size, MSVCRT_wchar_t  c, MSVCRT_size_t  count) /* ../dlls/msvcrt/wcs.c:179 */
 {
+	int return_value;
 	TRACE("Enter _wcsnset_s\n");
-	return p_wcsnset_s(str, size, c, count);
+	return_value = p_wcsnset_s(str, size, c, count);
+	TRACE("Leave _wcsnset_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsnset_s(void);  /* ../dlls/msvcrt/wcs.c:179 */
@@ -19604,10 +21582,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsnset_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wcsrev(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/wcs.c:203 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wcsrev(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/wcs.c:203 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wcsrev\n");
-	return p_wcsrev(str);
+	return_value = p_wcsrev(str);
+	TRACE("Leave _wcsrev\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsrev(void);  /* ../dlls/msvcrt/wcs.c:203 */
@@ -19629,10 +21610,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsrev,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wcsset(MSVCRT_wchar_t*  str, MSVCRT_wchar_t  c) /* ../dlls/msvcrt/wcs.c:239 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wcsset(MSVCRT_wchar_t*  str, MSVCRT_wchar_t  c) /* ../dlls/msvcrt/wcs.c:239 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wcsset\n");
-	return p_wcsset(str, c);
+	return_value = p_wcsset(str, c);
+	TRACE("Leave _wcsset\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsset(void);  /* ../dlls/msvcrt/wcs.c:239 */
@@ -19655,10 +21639,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsset,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wcsset_s(MSVCRT_wchar_t*  str, MSVCRT_size_t  n, MSVCRT_wchar_t  c) /* ../dlls/msvcrt/wcs.c:219 */
+WINAPI int wine32b_msvcrt__wcsset_s(MSVCRT_wchar_t*  str, MSVCRT_size_t  n, MSVCRT_wchar_t  c) /* ../dlls/msvcrt/wcs.c:219 */
 {
+	int return_value;
 	TRACE("Enter _wcsset_s\n");
-	return p_wcsset_s(str, n, c);
+	return_value = p_wcsset_s(str, n, c);
+	TRACE("Leave _wcsset_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsset_s(void);  /* ../dlls/msvcrt/wcs.c:219 */
@@ -19682,10 +21669,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsset_s,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt__wcstod_l(MSVCRT_wchar_t*  str, MSVCRT_wchar_t**  end, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:387 */
+WINAPI double wine32b_msvcrt__wcstod_l(MSVCRT_wchar_t*  str, MSVCRT_wchar_t**  end, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:387 */
 {
+	double return_value;
 	TRACE("Enter _wcstod_l\n");
-	return p_wcstod_l(str, end, locale);
+	return_value = p_wcstod_l(str, end, locale);
+	TRACE("Leave _wcstod_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcstod_l(void);  /* ../dlls/msvcrt/wcs.c:387 */
@@ -19709,10 +21699,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcstod_l,
 	"ret \n"
 )
 
-extern WINAPI long wine32b_msvcrt__wcstoi64(MSVCRT_wchar_t*  nptr, MSVCRT_wchar_t**  endptr, int  base) /* ../dlls/msvcrt/wcs.c:2297 */
+WINAPI long wine32b_msvcrt__wcstoi64(MSVCRT_wchar_t*  nptr, MSVCRT_wchar_t**  endptr, int  base) /* ../dlls/msvcrt/wcs.c:2297 */
 {
+	long return_value;
 	TRACE("Enter _wcstoi64\n");
-	return p_wcstoi64(nptr, endptr, base);
+	return_value = p_wcstoi64(nptr, endptr, base);
+	TRACE("Leave _wcstoi64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcstoi64(void);  /* ../dlls/msvcrt/wcs.c:2297 */
@@ -19736,10 +21729,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcstoi64,
 	"ret \n"
 )
 
-extern WINAPI long wine32b_msvcrt__wcstoi64_l(MSVCRT_wchar_t*  nptr, MSVCRT_wchar_t**  endptr, int  base, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2232 */
+WINAPI long wine32b_msvcrt__wcstoi64_l(MSVCRT_wchar_t*  nptr, MSVCRT_wchar_t**  endptr, int  base, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2232 */
 {
+	long return_value;
 	TRACE("Enter _wcstoi64_l\n");
-	return p_wcstoi64_l(nptr, endptr, base, locale);
+	return_value = p_wcstoi64_l(nptr, endptr, base, locale);
+	TRACE("Leave _wcstoi64_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcstoi64_l(void);  /* ../dlls/msvcrt/wcs.c:2232 */
@@ -19764,10 +21760,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcstoi64_l,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_long wine32b_msvcrt__wcstol_l(MSVCRT_wchar_t*  s, MSVCRT_wchar_t**  end, int  base, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2306 */
+WINAPI MSVCRT_long wine32b_msvcrt__wcstol_l(MSVCRT_wchar_t*  s, MSVCRT_wchar_t**  end, int  base, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2306 */
 {
+	MSVCRT_long return_value;
 	TRACE("Enter _wcstol_l\n");
-	return p_wcstol_l(s, end, base, locale);
+	return_value = p_wcstol_l(s, end, base, locale);
+	TRACE("Leave _wcstol_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcstol_l(void);  /* ../dlls/msvcrt/wcs.c:2306 */
@@ -19792,10 +21791,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcstol_l,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt__wcstombs_l(char*  mbstr, MSVCRT_wchar_t*  wcstr, MSVCRT_size_t  count, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:575 */
+WINAPI MSVCRT_size_t wine32b_msvcrt__wcstombs_l(char*  mbstr, MSVCRT_wchar_t*  wcstr, MSVCRT_size_t  count, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:575 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter _wcstombs_l\n");
-	return p_wcstombs_l(mbstr, wcstr, count, locale);
+	return_value = p_wcstombs_l(mbstr, wcstr, count, locale);
+	TRACE("Leave _wcstombs_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcstombs_l(void);  /* ../dlls/msvcrt/wcs.c:575 */
@@ -19820,10 +21822,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcstombs_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wcstombs_s_l(MSVCRT_size_t*  ret, char*  mbstr, MSVCRT_size_t  size, MSVCRT_wchar_t*  wcstr, MSVCRT_size_t  count, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:654 */
+WINAPI int wine32b_msvcrt__wcstombs_s_l(MSVCRT_size_t*  ret, char*  mbstr, MSVCRT_size_t  size, MSVCRT_wchar_t*  wcstr, MSVCRT_size_t  count, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:654 */
 {
+	int return_value;
 	TRACE("Enter _wcstombs_s_l\n");
-	return p_wcstombs_s_l(ret, mbstr, size, wcstr, count, locale);
+	return_value = p_wcstombs_s_l(ret, mbstr, size, wcstr, count, locale);
+	TRACE("Leave _wcstombs_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcstombs_s_l(void);  /* ../dlls/msvcrt/wcs.c:654 */
@@ -19848,10 +21853,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcstombs_s_l,
 	"ret \n"
 )
 
-extern WINAPI unsigned long wine32b_msvcrt__wcstoui64(MSVCRT_wchar_t*  nptr, MSVCRT_wchar_t**  endptr, int  base) /* ../dlls/msvcrt/wcs.c:2464 */
+WINAPI unsigned long wine32b_msvcrt__wcstoui64(MSVCRT_wchar_t*  nptr, MSVCRT_wchar_t**  endptr, int  base) /* ../dlls/msvcrt/wcs.c:2464 */
 {
+	unsigned long return_value;
 	TRACE("Enter _wcstoui64\n");
-	return p_wcstoui64(nptr, endptr, base);
+	return_value = p_wcstoui64(nptr, endptr, base);
+	TRACE("Leave _wcstoui64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcstoui64(void);  /* ../dlls/msvcrt/wcs.c:2464 */
@@ -19875,10 +21883,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcstoui64,
 	"ret \n"
 )
 
-extern WINAPI unsigned long wine32b_msvcrt__wcstoui64_l(MSVCRT_wchar_t*  nptr, MSVCRT_wchar_t**  endptr, int  base, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2405 */
+WINAPI unsigned long wine32b_msvcrt__wcstoui64_l(MSVCRT_wchar_t*  nptr, MSVCRT_wchar_t**  endptr, int  base, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2405 */
 {
+	unsigned long return_value;
 	TRACE("Enter _wcstoui64_l\n");
-	return p_wcstoui64_l(nptr, endptr, base, locale);
+	return_value = p_wcstoui64_l(nptr, endptr, base, locale);
+	TRACE("Leave _wcstoui64_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcstoui64_l(void);  /* ../dlls/msvcrt/wcs.c:2405 */
@@ -19903,10 +21914,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcstoui64_l,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_ulong wine32b_msvcrt__wcstoul_l(MSVCRT_wchar_t*  s, MSVCRT_wchar_t**  end, int  base, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2473 */
+WINAPI MSVCRT_ulong wine32b_msvcrt__wcstoul_l(MSVCRT_wchar_t*  s, MSVCRT_wchar_t**  end, int  base, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2473 */
 {
+	MSVCRT_ulong return_value;
 	TRACE("Enter _wcstoul_l\n");
-	return p_wcstoul_l(s, end, base, locale);
+	return_value = p_wcstoul_l(s, end, base, locale);
+	TRACE("Leave _wcstoul_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcstoul_l(void);  /* ../dlls/msvcrt/wcs.c:2473 */
@@ -19931,10 +21945,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcstoul_l,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wcsupr(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/wcs.c:297 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wcsupr(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/wcs.c:297 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wcsupr\n");
-	return p_wcsupr(str);
+	return_value = p_wcsupr(str);
+	TRACE("Leave _wcsupr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsupr(void);  /* ../dlls/msvcrt/wcs.c:297 */
@@ -19956,10 +21973,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsupr,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wcsupr_l(MSVCRT_wchar_t*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:288 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wcsupr_l(MSVCRT_wchar_t*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:288 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wcsupr_l\n");
-	return p_wcsupr_l(str, locale);
+	return_value = p_wcsupr_l(str, locale);
+	TRACE("Leave _wcsupr_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsupr_l(void);  /* ../dlls/msvcrt/wcs.c:288 */
@@ -19982,10 +22002,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsupr_l,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt__wcsupr_s(MSVCRT_wchar_t*  str, MSVCRT_size_t  n) /* ../dlls/msvcrt/wcs.c:280 */
+WINAPI INT wine32b_msvcrt__wcsupr_s(MSVCRT_wchar_t*  str, MSVCRT_size_t  n) /* ../dlls/msvcrt/wcs.c:280 */
 {
+	INT return_value;
 	TRACE("Enter _wcsupr_s\n");
-	return p_wcsupr_s(str, n);
+	return_value = p_wcsupr_s(str, n);
+	TRACE("Leave _wcsupr_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsupr_s(void);  /* ../dlls/msvcrt/wcs.c:280 */
@@ -20008,10 +22031,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsupr_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wcsupr_s_l(MSVCRT_wchar_t*  str, MSVCRT_size_t  n, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:249 */
+WINAPI int wine32b_msvcrt__wcsupr_s_l(MSVCRT_wchar_t*  str, MSVCRT_size_t  n, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:249 */
 {
+	int return_value;
 	TRACE("Enter _wcsupr_s_l\n");
-	return p_wcsupr_s_l(str, n, locale);
+	return_value = p_wcsupr_s_l(str, n, locale);
+	TRACE("Leave _wcsupr_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsupr_s_l(void);  /* ../dlls/msvcrt/wcs.c:249 */
@@ -20035,10 +22061,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsupr_s_l,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt__wcsxfrm_l(MSVCRT_wchar_t*  dest, MSVCRT_wchar_t*  src, MSVCRT_size_t  len, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2641 */
+WINAPI MSVCRT_size_t wine32b_msvcrt__wcsxfrm_l(MSVCRT_wchar_t*  dest, MSVCRT_wchar_t*  src, MSVCRT_size_t  len, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2641 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter _wcsxfrm_l\n");
-	return p_wcsxfrm_l(dest, src, len, locale);
+	return_value = p_wcsxfrm_l(dest, src, len, locale);
+	TRACE("Leave _wcsxfrm_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wcsxfrm_l(void);  /* ../dlls/msvcrt/wcs.c:2641 */
@@ -20063,10 +22092,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wcsxfrm_l,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wctime(MSVCRT___time64_t*  time) /* ../dlls/msvcrt/time.c:1547 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wctime(MSVCRT___time64_t*  time) /* ../dlls/msvcrt/time.c:1547 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wctime\n");
-	return p_wctime(time);
+	return_value = p_wctime(time);
+	TRACE("Leave _wctime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wctime(void);  /* ../dlls/msvcrt/time.c:1547 */
@@ -20088,10 +22120,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wctime,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wctime32(MSVCRT___time32_t*  time) /* ../dlls/msvcrt/time.c:1538 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wctime32(MSVCRT___time32_t*  time) /* ../dlls/msvcrt/time.c:1538 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wctime32\n");
-	return p_wctime32(time);
+	return_value = p_wctime32(time);
+	TRACE("Leave _wctime32\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wctime32(void);  /* ../dlls/msvcrt/time.c:1538 */
@@ -20113,10 +22148,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wctime32,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wctime32_s(MSVCRT_wchar_t*  buf, MSVCRT_size_t  size, MSVCRT___time32_t*  time) /* ../dlls/msvcrt/time.c:1584 */
+WINAPI int wine32b_msvcrt__wctime32_s(MSVCRT_wchar_t*  buf, MSVCRT_size_t  size, MSVCRT___time32_t*  time) /* ../dlls/msvcrt/time.c:1584 */
 {
+	int return_value;
 	TRACE("Enter _wctime32_s\n");
-	return p_wctime32_s(buf, size, time);
+	return_value = p_wctime32_s(buf, size, time);
+	TRACE("Leave _wctime32_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wctime32_s(void);  /* ../dlls/msvcrt/time.c:1584 */
@@ -20140,10 +22178,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wctime32_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wctime64(MSVCRT___time64_t*  time) /* ../dlls/msvcrt/time.c:1530 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wctime64(MSVCRT___time64_t*  time) /* ../dlls/msvcrt/time.c:1530 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wctime64\n");
-	return p_wctime64(time);
+	return_value = p_wctime64(time);
+	TRACE("Leave _wctime64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wctime64(void);  /* ../dlls/msvcrt/time.c:1530 */
@@ -20165,10 +22206,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wctime64,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wctime64_s(MSVCRT_wchar_t*  buf, MSVCRT_size_t  size, MSVCRT___time64_t*  time) /* ../dlls/msvcrt/time.c:1561 */
+WINAPI int wine32b_msvcrt__wctime64_s(MSVCRT_wchar_t*  buf, MSVCRT_size_t  size, MSVCRT___time64_t*  time) /* ../dlls/msvcrt/time.c:1561 */
 {
+	int return_value;
 	TRACE("Enter _wctime64_s\n");
-	return p_wctime64_s(buf, size, time);
+	return_value = p_wctime64_s(buf, size, time);
+	TRACE("Leave _wctime64_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wctime64_s(void);  /* ../dlls/msvcrt/time.c:1561 */
@@ -20192,10 +22236,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wctime64_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wctomb_l(char*  dst, MSVCRT_wchar_t  ch, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1789 */
+WINAPI int wine32b_msvcrt__wctomb_l(char*  dst, MSVCRT_wchar_t  ch, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1789 */
 {
+	int return_value;
 	TRACE("Enter _wctomb_l\n");
-	return p_wctomb_l(dst, ch, locale);
+	return_value = p_wctomb_l(dst, ch, locale);
+	TRACE("Leave _wctomb_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wctomb_l(void);  /* ../dlls/msvcrt/wcs.c:1789 */
@@ -20219,10 +22266,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wctomb_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wctomb_s_l(int*  len, char*  mbchar, MSVCRT_size_t  size, MSVCRT_wchar_t  wch, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1718 */
+WINAPI int wine32b_msvcrt__wctomb_s_l(int*  len, char*  mbchar, MSVCRT_size_t  size, MSVCRT_wchar_t  wch, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:1718 */
 {
+	int return_value;
 	TRACE("Enter _wctomb_s_l\n");
-	return p_wctomb_s_l(len, mbchar, size, wch, locale);
+	return_value = p_wctomb_s_l(len, mbchar, size, wch, locale);
+	TRACE("Leave _wctomb_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wctomb_s_l(void);  /* ../dlls/msvcrt/wcs.c:1718 */
@@ -20247,10 +22297,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wctomb_s_l,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__wexecl(MSVCRT_wchar_t*  name, MSVCRT_wchar_t*  arg0) /* ../dlls/msvcrt/process.c:392 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__wexecl(MSVCRT_wchar_t*  name, MSVCRT_wchar_t*  arg0) /* ../dlls/msvcrt/process.c:392 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _wexecl\n");
-	return p_wexecl(name, arg0);
+	return_value = p_wexecl(name, arg0);
+	TRACE("Leave _wexecl\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wexecl(void);  /* ../dlls/msvcrt/process.c:392 */
@@ -20273,10 +22326,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wexecl,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__wexecle(MSVCRT_wchar_t*  name, MSVCRT_wchar_t*  arg0) /* ../dlls/msvcrt/process.c:438 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__wexecle(MSVCRT_wchar_t*  name, MSVCRT_wchar_t*  arg0) /* ../dlls/msvcrt/process.c:438 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _wexecle\n");
-	return p_wexecle(name, arg0);
+	return_value = p_wexecle(name, arg0);
+	TRACE("Leave _wexecle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wexecle(void);  /* ../dlls/msvcrt/process.c:438 */
@@ -20299,10 +22355,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wexecle,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__wexeclp(MSVCRT_wchar_t*  name, MSVCRT_wchar_t*  arg0) /* ../dlls/msvcrt/process.c:497 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__wexeclp(MSVCRT_wchar_t*  name, MSVCRT_wchar_t*  arg0) /* ../dlls/msvcrt/process.c:497 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _wexeclp\n");
-	return p_wexeclp(name, arg0);
+	return_value = p_wexeclp(name, arg0);
+	TRACE("Leave _wexeclp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wexeclp(void);  /* ../dlls/msvcrt/process.c:497 */
@@ -20325,10 +22384,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wexeclp,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__wexeclpe(MSVCRT_wchar_t*  name, MSVCRT_wchar_t*  arg0) /* ../dlls/msvcrt/process.c:543 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__wexeclpe(MSVCRT_wchar_t*  name, MSVCRT_wchar_t*  arg0) /* ../dlls/msvcrt/process.c:543 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _wexeclpe\n");
-	return p_wexeclpe(name, arg0);
+	return_value = p_wexeclpe(name, arg0);
+	TRACE("Leave _wexeclpe\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wexeclpe(void);  /* ../dlls/msvcrt/process.c:543 */
@@ -20351,10 +22413,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wexeclpe,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__wexecv(MSVCRT_wchar_t*  name, MSVCRT_wchar_t**  argv) /* ../dlls/msvcrt/process.c:602 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__wexecv(MSVCRT_wchar_t*  name, MSVCRT_wchar_t**  argv) /* ../dlls/msvcrt/process.c:602 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _wexecv\n");
-	return p_wexecv(name, argv);
+	return_value = p_wexecv(name, argv);
+	TRACE("Leave _wexecv\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wexecv(void);  /* ../dlls/msvcrt/process.c:602 */
@@ -20377,10 +22442,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wexecv,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__wexecve(MSVCRT_wchar_t*  name, MSVCRT_wchar_t**  argv, MSVCRT_wchar_t**  envv) /* ../dlls/msvcrt/process.c:623 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__wexecve(MSVCRT_wchar_t*  name, MSVCRT_wchar_t**  argv, MSVCRT_wchar_t**  envv) /* ../dlls/msvcrt/process.c:623 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _wexecve\n");
-	return p_wexecve(name, argv, envv);
+	return_value = p_wexecve(name, argv, envv);
+	TRACE("Leave _wexecve\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wexecve(void);  /* ../dlls/msvcrt/process.c:623 */
@@ -20404,10 +22472,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wexecve,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__wexecvp(MSVCRT_wchar_t*  name, MSVCRT_wchar_t**  argv) /* ../dlls/msvcrt/process.c:665 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__wexecvp(MSVCRT_wchar_t*  name, MSVCRT_wchar_t**  argv) /* ../dlls/msvcrt/process.c:665 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _wexecvp\n");
-	return p_wexecvp(name, argv);
+	return_value = p_wexecvp(name, argv);
+	TRACE("Leave _wexecvp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wexecvp(void);  /* ../dlls/msvcrt/process.c:665 */
@@ -20430,10 +22501,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wexecvp,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__wexecvpe(MSVCRT_wchar_t*  name, MSVCRT_wchar_t**  argv, MSVCRT_wchar_t**  envv) /* ../dlls/msvcrt/process.c:644 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__wexecvpe(MSVCRT_wchar_t*  name, MSVCRT_wchar_t**  argv, MSVCRT_wchar_t**  envv) /* ../dlls/msvcrt/process.c:644 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _wexecvpe\n");
-	return p_wexecvpe(name, argv, envv);
+	return_value = p_wexecvpe(name, argv, envv);
+	TRACE("Leave _wexecvpe\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wexecvpe(void);  /* ../dlls/msvcrt/process.c:644 */
@@ -20457,10 +22531,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wexecvpe,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_FILE* wine32b_msvcrt__wfdopen(int  fd, MSVCRT_wchar_t*  mode) /* ../dlls/msvcrt/file.c:1669 */
+WINAPI MSVCRT_FILE* wine32b_msvcrt__wfdopen(int  fd, MSVCRT_wchar_t*  mode) /* ../dlls/msvcrt/file.c:1669 */
 {
+	MSVCRT_FILE* return_value;
 	TRACE("Enter _wfdopen\n");
-	return p_wfdopen(fd, mode);
+	return_value = p_wfdopen(fd, mode);
+	TRACE("Leave _wfdopen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wfdopen(void);  /* ../dlls/msvcrt/file.c:1669 */
@@ -20483,10 +22560,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wfdopen,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__wfindfirst(MSVCRT_wchar_t*  fspec, struct MSVCRT__wfinddata64i32_t*  ft) /* ../dlls/msvcrt/dir.c:391 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__wfindfirst(MSVCRT_wchar_t*  fspec, struct MSVCRT__wfinddata64i32_t*  ft) /* ../dlls/msvcrt/dir.c:391 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _wfindfirst\n");
-	return p_wfindfirst(fspec, ft);
+	return_value = p_wfindfirst(fspec, ft);
+	TRACE("Leave _wfindfirst\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wfindfirst(void);  /* ../dlls/msvcrt/dir.c:391 */
@@ -20509,10 +22589,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wfindfirst,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__wfindfirst32(MSVCRT_wchar_t*  fspec, struct MSVCRT__wfinddata32_t*  ft) /* ../dlls/msvcrt/dir.c:412 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__wfindfirst32(MSVCRT_wchar_t*  fspec, struct MSVCRT__wfinddata32_t*  ft) /* ../dlls/msvcrt/dir.c:412 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _wfindfirst32\n");
-	return p_wfindfirst32(fspec, ft);
+	return_value = p_wfindfirst32(fspec, ft);
+	TRACE("Leave _wfindfirst32\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wfindfirst32(void);  /* ../dlls/msvcrt/dir.c:412 */
@@ -20535,10 +22618,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wfindfirst32,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__wfindfirst64(MSVCRT_wchar_t*  fspec, struct MSVCRT__wfinddata64_t*  ft) /* ../dlls/msvcrt/dir.c:475 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__wfindfirst64(MSVCRT_wchar_t*  fspec, struct MSVCRT__wfinddata64_t*  ft) /* ../dlls/msvcrt/dir.c:475 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _wfindfirst64\n");
-	return p_wfindfirst64(fspec, ft);
+	return_value = p_wfindfirst64(fspec, ft);
+	TRACE("Leave _wfindfirst64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wfindfirst64(void);  /* ../dlls/msvcrt/dir.c:475 */
@@ -20561,10 +22647,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wfindfirst64,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__wfindfirsti64(MSVCRT_wchar_t*  fspec, struct MSVCRT__wfinddata64_t*  ft) /* ../dlls/msvcrt/dir.c:538 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__wfindfirsti64(MSVCRT_wchar_t*  fspec, struct MSVCRT__wfinddata64_t*  ft) /* ../dlls/msvcrt/dir.c:538 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _wfindfirsti64\n");
-	return p_wfindfirsti64(fspec, ft);
+	return_value = p_wfindfirsti64(fspec, ft);
+	TRACE("Leave _wfindfirsti64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wfindfirsti64(void);  /* ../dlls/msvcrt/dir.c:538 */
@@ -20587,10 +22676,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wfindfirsti64,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__wfindfirst64i32(MSVCRT_wchar_t*  fspec, struct MSVCRT__wfinddata64i32_t*  ft) /* ../dlls/msvcrt/dir.c:517 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__wfindfirst64i32(MSVCRT_wchar_t*  fspec, struct MSVCRT__wfinddata64i32_t*  ft) /* ../dlls/msvcrt/dir.c:517 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _wfindfirst64i32\n");
-	return p_wfindfirst64i32(fspec, ft);
+	return_value = p_wfindfirst64i32(fspec, ft);
+	TRACE("Leave _wfindfirst64i32\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wfindfirst64i32(void);  /* ../dlls/msvcrt/dir.c:517 */
@@ -20613,10 +22705,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wfindfirst64i32,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wfindnext(MSVCRT_intptr_t  hand, struct MSVCRT__wfinddata64i32_t*  ft) /* ../dlls/msvcrt/dir.c:623 */
+WINAPI int wine32b_msvcrt__wfindnext(MSVCRT_intptr_t  hand, struct MSVCRT__wfinddata64i32_t*  ft) /* ../dlls/msvcrt/dir.c:623 */
 {
+	int return_value;
 	TRACE("Enter _wfindnext\n");
-	return p_wfindnext(hand, ft);
+	return_value = p_wfindnext(hand, ft);
+	TRACE("Leave _wfindnext\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wfindnext(void);  /* ../dlls/msvcrt/dir.c:623 */
@@ -20639,10 +22734,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wfindnext,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wfindnext64(MSVCRT_intptr_t  hand, struct MSVCRT__wfinddata64_t*  ft) /* ../dlls/msvcrt/dir.c:680 */
+WINAPI int wine32b_msvcrt__wfindnext64(MSVCRT_intptr_t  hand, struct MSVCRT__wfinddata64_t*  ft) /* ../dlls/msvcrt/dir.c:680 */
 {
+	int return_value;
 	TRACE("Enter _wfindnext64\n");
-	return p_wfindnext64(hand, ft);
+	return_value = p_wfindnext64(hand, ft);
+	TRACE("Leave _wfindnext64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wfindnext64(void);  /* ../dlls/msvcrt/dir.c:680 */
@@ -20665,10 +22763,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wfindnext64,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wfindnext64i32(MSVCRT_intptr_t  hand, struct MSVCRT__wfinddata64i32_t*  ft) /* ../dlls/msvcrt/dir.c:737 */
+WINAPI int wine32b_msvcrt__wfindnext64i32(MSVCRT_intptr_t  hand, struct MSVCRT__wfinddata64i32_t*  ft) /* ../dlls/msvcrt/dir.c:737 */
 {
+	int return_value;
 	TRACE("Enter _wfindnext64i32\n");
-	return p_wfindnext64i32(hand, ft);
+	return_value = p_wfindnext64i32(hand, ft);
+	TRACE("Leave _wfindnext64i32\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wfindnext64i32(void);  /* ../dlls/msvcrt/dir.c:737 */
@@ -20691,10 +22792,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wfindnext64i32,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wfindnexti64(MSVCRT_intptr_t  hand, struct MSVCRT__wfinddata64_t*  ft) /* ../dlls/msvcrt/dir.c:718 */
+WINAPI int wine32b_msvcrt__wfindnexti64(MSVCRT_intptr_t  hand, struct MSVCRT__wfinddata64_t*  ft) /* ../dlls/msvcrt/dir.c:718 */
 {
+	int return_value;
 	TRACE("Enter _wfindnexti64\n");
-	return p_wfindnexti64(hand, ft);
+	return_value = p_wfindnexti64(hand, ft);
+	TRACE("Leave _wfindnexti64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wfindnexti64(void);  /* ../dlls/msvcrt/dir.c:718 */
@@ -20717,10 +22821,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wfindnexti64,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_FILE* wine32b_msvcrt__wfopen(MSVCRT_wchar_t*  path, MSVCRT_wchar_t*  mode) /* ../dlls/msvcrt/file.c:4220 */
+WINAPI MSVCRT_FILE* wine32b_msvcrt__wfopen(MSVCRT_wchar_t*  path, MSVCRT_wchar_t*  mode) /* ../dlls/msvcrt/file.c:4220 */
 {
+	MSVCRT_FILE* return_value;
 	TRACE("Enter _wfopen\n");
-	return p_wfopen(path, mode);
+	return_value = p_wfopen(path, mode);
+	TRACE("Leave _wfopen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wfopen(void);  /* ../dlls/msvcrt/file.c:4220 */
@@ -20743,10 +22850,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wfopen,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wfopen_s(MSVCRT_FILE**  pFile, MSVCRT_wchar_t*  filename, MSVCRT_wchar_t*  mode) /* ../dlls/msvcrt/file.c:4228 */
+WINAPI int wine32b_msvcrt__wfopen_s(MSVCRT_FILE**  pFile, MSVCRT_wchar_t*  filename, MSVCRT_wchar_t*  mode) /* ../dlls/msvcrt/file.c:4228 */
 {
+	int return_value;
 	TRACE("Enter _wfopen_s\n");
-	return p_wfopen_s(pFile, filename, mode);
+	return_value = p_wfopen_s(pFile, filename, mode);
+	TRACE("Leave _wfopen_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wfopen_s(void);  /* ../dlls/msvcrt/file.c:4228 */
@@ -20770,10 +22880,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wfopen_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_FILE* wine32b_msvcrt__wfreopen(MSVCRT_wchar_t*  path, MSVCRT_wchar_t*  mode, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4463 */
+WINAPI MSVCRT_FILE* wine32b_msvcrt__wfreopen(MSVCRT_wchar_t*  path, MSVCRT_wchar_t*  mode, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4463 */
 {
+	MSVCRT_FILE* return_value;
 	TRACE("Enter _wfreopen\n");
-	return p_wfreopen(path, mode, file);
+	return_value = p_wfreopen(path, mode, file);
+	TRACE("Leave _wfreopen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wfreopen(void);  /* ../dlls/msvcrt/file.c:4463 */
@@ -20797,10 +22910,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wfreopen,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wfreopen_s(MSVCRT_FILE**  pFile, MSVCRT_wchar_t*  path, MSVCRT_wchar_t*  mode, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4492 */
+WINAPI int wine32b_msvcrt__wfreopen_s(MSVCRT_FILE**  pFile, MSVCRT_wchar_t*  path, MSVCRT_wchar_t*  mode, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4492 */
 {
+	int return_value;
 	TRACE("Enter _wfreopen_s\n");
-	return p_wfreopen_s(pFile, path, mode, file);
+	return_value = p_wfreopen_s(pFile, path, mode, file);
+	TRACE("Leave _wfreopen_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wfreopen_s(void);  /* ../dlls/msvcrt/file.c:4492 */
@@ -20825,10 +22941,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wfreopen_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_FILE* wine32b_msvcrt__wfsopen(MSVCRT_wchar_t*  path, MSVCRT_wchar_t*  mode, int  share) /* ../dlls/msvcrt/file.c:4133 */
+WINAPI MSVCRT_FILE* wine32b_msvcrt__wfsopen(MSVCRT_wchar_t*  path, MSVCRT_wchar_t*  mode, int  share) /* ../dlls/msvcrt/file.c:4133 */
 {
+	MSVCRT_FILE* return_value;
 	TRACE("Enter _wfsopen\n");
-	return p_wfsopen(path, mode, share);
+	return_value = p_wfsopen(path, mode, share);
+	TRACE("Leave _wfsopen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wfsopen(void);  /* ../dlls/msvcrt/file.c:4133 */
@@ -20852,10 +22971,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wfsopen,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wfullpath(MSVCRT_wchar_t*  absPath, MSVCRT_wchar_t*  relPath, MSVCRT_size_t  size) /* ../dlls/msvcrt/dir.c:1237 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wfullpath(MSVCRT_wchar_t*  absPath, MSVCRT_wchar_t*  relPath, MSVCRT_size_t  size) /* ../dlls/msvcrt/dir.c:1237 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wfullpath\n");
-	return p_wfullpath(absPath, relPath, size);
+	return_value = p_wfullpath(absPath, relPath, size);
+	TRACE("Leave _wfullpath\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wfullpath(void);  /* ../dlls/msvcrt/dir.c:1237 */
@@ -20879,10 +23001,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wfullpath,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wgetcwd(MSVCRT_wchar_t*  buf, int  size) /* ../dlls/msvcrt/dir.c:792 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wgetcwd(MSVCRT_wchar_t*  buf, int  size) /* ../dlls/msvcrt/dir.c:792 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wgetcwd\n");
-	return p_wgetcwd(buf, size);
+	return_value = p_wgetcwd(buf, size);
+	TRACE("Leave _wgetcwd\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wgetcwd(void);  /* ../dlls/msvcrt/dir.c:792 */
@@ -20905,10 +23030,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wgetcwd,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wgetdcwd(int  drive, MSVCRT_wchar_t*  buf, int  size) /* ../dlls/msvcrt/dir.c:892 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wgetdcwd(int  drive, MSVCRT_wchar_t*  buf, int  size) /* ../dlls/msvcrt/dir.c:892 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wgetdcwd\n");
-	return p_wgetdcwd(drive, buf, size);
+	return_value = p_wgetdcwd(drive, buf, size);
+	TRACE("Leave _wgetdcwd\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wgetdcwd(void);  /* ../dlls/msvcrt/dir.c:892 */
@@ -20932,10 +23060,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wgetdcwd,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wgetenv(MSVCRT_wchar_t*  name) /* ../dlls/msvcrt/environ.c:53 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wgetenv(MSVCRT_wchar_t*  name) /* ../dlls/msvcrt/environ.c:53 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wgetenv\n");
-	return p_wgetenv(name);
+	return_value = p_wgetenv(name);
+	TRACE("Leave _wgetenv\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wgetenv(void);  /* ../dlls/msvcrt/environ.c:53 */
@@ -20957,10 +23088,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wgetenv,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wgetenv_s(MSVCRT_size_t*  pReturnValue, MSVCRT_wchar_t*  buffer, MSVCRT_size_t  numberOfElements, MSVCRT_wchar_t*  varname) /* ../dlls/msvcrt/environ.c:291 */
+WINAPI int wine32b_msvcrt__wgetenv_s(MSVCRT_size_t*  pReturnValue, MSVCRT_wchar_t*  buffer, MSVCRT_size_t  numberOfElements, MSVCRT_wchar_t*  varname) /* ../dlls/msvcrt/environ.c:291 */
 {
+	int return_value;
 	TRACE("Enter _wgetenv_s\n");
-	return p_wgetenv_s(pReturnValue, buffer, numberOfElements, varname);
+	return_value = p_wgetenv_s(pReturnValue, buffer, numberOfElements, varname);
+	TRACE("Leave _wgetenv_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wgetenv_s(void);  /* ../dlls/msvcrt/environ.c:291 */
@@ -20985,10 +23119,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wgetenv_s,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__wmakepath(MSVCRT_wchar_t*  path, MSVCRT_wchar_t*  drive, MSVCRT_wchar_t*  directory, MSVCRT_wchar_t*  filename, MSVCRT_wchar_t*  extension) /* ../dlls/msvcrt/dir.c:1393 */
+WINAPI void wine32b_msvcrt__wmakepath(MSVCRT_wchar_t*  path, MSVCRT_wchar_t*  drive, MSVCRT_wchar_t*  directory, MSVCRT_wchar_t*  filename, MSVCRT_wchar_t*  extension) /* ../dlls/msvcrt/dir.c:1393 */
 {
 	TRACE("Enter _wmakepath\n");
-	return p_wmakepath(path, drive, directory, filename, extension);
+	p_wmakepath(path, drive, directory, filename, extension);
+	TRACE("Leave _wmakepath\n");
 }
 
 extern WINAPI void wine32a_msvcrt__wmakepath(void);  /* ../dlls/msvcrt/dir.c:1393 */
@@ -21013,10 +23148,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wmakepath,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wmakepath_s(MSVCRT_wchar_t*  path, MSVCRT_size_t  size, MSVCRT_wchar_t*  drive, MSVCRT_wchar_t*  directory, MSVCRT_wchar_t*  filename, MSVCRT_wchar_t*  extension) /* ../dlls/msvcrt/dir.c:1544 */
+WINAPI int wine32b_msvcrt__wmakepath_s(MSVCRT_wchar_t*  path, MSVCRT_size_t  size, MSVCRT_wchar_t*  drive, MSVCRT_wchar_t*  directory, MSVCRT_wchar_t*  filename, MSVCRT_wchar_t*  extension) /* ../dlls/msvcrt/dir.c:1544 */
 {
+	int return_value;
 	TRACE("Enter _wmakepath_s\n");
-	return p_wmakepath_s(path, size, drive, directory, filename, extension);
+	return_value = p_wmakepath_s(path, size, drive, directory, filename, extension);
+	TRACE("Leave _wmakepath_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wmakepath_s(void);  /* ../dlls/msvcrt/dir.c:1544 */
@@ -21041,10 +23179,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wmakepath_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wmkdir(MSVCRT_wchar_t*  newdir) /* ../dlls/msvcrt/dir.c:996 */
+WINAPI int wine32b_msvcrt__wmkdir(MSVCRT_wchar_t*  newdir) /* ../dlls/msvcrt/dir.c:996 */
 {
+	int return_value;
 	TRACE("Enter _wmkdir\n");
-	return p_wmkdir(newdir);
+	return_value = p_wmkdir(newdir);
+	TRACE("Leave _wmkdir\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wmkdir(void);  /* ../dlls/msvcrt/dir.c:996 */
@@ -21066,10 +23207,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wmkdir,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wmktemp(MSVCRT_wchar_t*  pattern) /* ../dlls/msvcrt/file.c:2061 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wmktemp(MSVCRT_wchar_t*  pattern) /* ../dlls/msvcrt/file.c:2061 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wmktemp\n");
-	return p_wmktemp(pattern);
+	return_value = p_wmktemp(pattern);
+	TRACE("Leave _wmktemp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wmktemp(void);  /* ../dlls/msvcrt/file.c:2061 */
@@ -21091,10 +23235,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wmktemp,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wmktemp_s(MSVCRT_wchar_t*  pattern, MSVCRT_size_t  size) /* ../dlls/msvcrt/file.c:2022 */
+WINAPI int wine32b_msvcrt__wmktemp_s(MSVCRT_wchar_t*  pattern, MSVCRT_size_t  size) /* ../dlls/msvcrt/file.c:2022 */
 {
+	int return_value;
 	TRACE("Enter _wmktemp_s\n");
-	return p_wmktemp_s(pattern, size);
+	return_value = p_wmktemp_s(pattern, size);
+	TRACE("Leave _wmktemp_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wmktemp_s(void);  /* ../dlls/msvcrt/file.c:2022 */
@@ -21117,10 +23264,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wmktemp_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wopen(MSVCRT_wchar_t*  path, int  flags) /* ../dlls/msvcrt/file.c:2466 */
+WINAPI int wine32b_msvcrt__wopen(MSVCRT_wchar_t*  path, int  flags) /* ../dlls/msvcrt/file.c:2466 */
 {
+	int return_value;
 	TRACE("Enter _wopen\n");
-	return p_wopen(path, flags);
+	return_value = p_wopen(path, flags);
+	TRACE("Leave _wopen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wopen(void);  /* ../dlls/msvcrt/file.c:2466 */
@@ -21143,10 +23293,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wopen,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__wperror(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/errno.c:353 */
+WINAPI void wine32b_msvcrt__wperror(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/errno.c:353 */
 {
 	TRACE("Enter _wperror\n");
-	return p_wperror(str);
+	p_wperror(str);
+	TRACE("Leave _wperror\n");
 }
 
 extern WINAPI void wine32a_msvcrt__wperror(void);  /* ../dlls/msvcrt/errno.c:353 */
@@ -21168,10 +23319,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wperror,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_FILE* wine32b_msvcrt__wpopen(MSVCRT_wchar_t*  command, MSVCRT_wchar_t*  mode) /* ../dlls/msvcrt/process.c:1041 */
+WINAPI MSVCRT_FILE* wine32b_msvcrt__wpopen(MSVCRT_wchar_t*  command, MSVCRT_wchar_t*  mode) /* ../dlls/msvcrt/process.c:1041 */
 {
+	MSVCRT_FILE* return_value;
 	TRACE("Enter _wpopen\n");
-	return p_wpopen(command, mode);
+	return_value = p_wpopen(command, mode);
+	TRACE("Leave _wpopen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wpopen(void);  /* ../dlls/msvcrt/process.c:1041 */
@@ -21194,10 +23348,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wpopen,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wputenv(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/environ.c:124 */
+WINAPI int wine32b_msvcrt__wputenv(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/environ.c:124 */
 {
+	int return_value;
 	TRACE("Enter _wputenv\n");
-	return p_wputenv(str);
+	return_value = p_wputenv(str);
+	TRACE("Leave _wputenv\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wputenv(void);  /* ../dlls/msvcrt/environ.c:124 */
@@ -21219,10 +23376,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wputenv,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wputenv_s(MSVCRT_wchar_t*  name, MSVCRT_wchar_t*  value) /* ../dlls/msvcrt/environ.c:190 */
+WINAPI int wine32b_msvcrt__wputenv_s(MSVCRT_wchar_t*  name, MSVCRT_wchar_t*  value) /* ../dlls/msvcrt/environ.c:190 */
 {
+	int return_value;
 	TRACE("Enter _wputenv_s\n");
-	return p_wputenv_s(name, value);
+	return_value = p_wputenv_s(name, value);
+	TRACE("Leave _wputenv_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wputenv_s(void);  /* ../dlls/msvcrt/environ.c:190 */
@@ -21245,10 +23405,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wputenv_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wremove(MSVCRT_wchar_t*  path) /* ../dlls/msvcrt/file.c:4874 */
+WINAPI int wine32b_msvcrt__wremove(MSVCRT_wchar_t*  path) /* ../dlls/msvcrt/file.c:4874 */
 {
+	int return_value;
 	TRACE("Enter _wremove\n");
-	return p_wremove(path);
+	return_value = p_wremove(path);
+	TRACE("Leave _wremove\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wremove(void);  /* ../dlls/msvcrt/file.c:4874 */
@@ -21270,10 +23433,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wremove,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wrename(MSVCRT_wchar_t*  oldpath, MSVCRT_wchar_t*  newpath) /* ../dlls/msvcrt/file.c:4900 */
+WINAPI int wine32b_msvcrt__wrename(MSVCRT_wchar_t*  oldpath, MSVCRT_wchar_t*  newpath) /* ../dlls/msvcrt/file.c:4900 */
 {
+	int return_value;
 	TRACE("Enter _wrename\n");
-	return p_wrename(oldpath, newpath);
+	return_value = p_wrename(oldpath, newpath);
+	TRACE("Leave _wrename\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wrename(void);  /* ../dlls/msvcrt/file.c:4900 */
@@ -21296,10 +23462,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wrename,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__write(int  fd, void*  buf, unsigned int  count) /* ../dlls/msvcrt/file.c:3443 */
+WINAPI int wine32b_msvcrt__write(int  fd, void*  buf, unsigned int  count) /* ../dlls/msvcrt/file.c:3443 */
 {
+	int return_value;
 	TRACE("Enter _write\n");
-	return p_write(fd, buf, count);
+	return_value = p_write(fd, buf, count);
+	TRACE("Leave _write\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__write(void);  /* ../dlls/msvcrt/file.c:3443 */
@@ -21323,10 +23492,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__write,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wrmdir(MSVCRT_wchar_t*  dir) /* ../dlls/msvcrt/dir.c:1032 */
+WINAPI int wine32b_msvcrt__wrmdir(MSVCRT_wchar_t*  dir) /* ../dlls/msvcrt/dir.c:1032 */
 {
+	int return_value;
 	TRACE("Enter _wrmdir\n");
-	return p_wrmdir(dir);
+	return_value = p_wrmdir(dir);
+	TRACE("Leave _wrmdir\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wrmdir(void);  /* ../dlls/msvcrt/dir.c:1032 */
@@ -21348,10 +23520,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wrmdir,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wscanf_l(MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:337 */
+WINAPI int wine32b_msvcrt__wscanf_l(MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:337 */
 {
+	int return_value;
 	TRACE("Enter _wscanf_l\n");
-	return p_wscanf_l(format, locale);
+	return_value = p_wscanf_l(format, locale);
+	TRACE("Leave _wscanf_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wscanf_l(void);  /* ../dlls/msvcrt/scanf.c:337 */
@@ -21374,10 +23549,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wscanf_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wscanf_s_l(MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:366 */
+WINAPI int wine32b_msvcrt__wscanf_s_l(MSVCRT_wchar_t*  format, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/scanf.c:366 */
 {
+	int return_value;
 	TRACE("Enter _wscanf_s_l\n");
-	return p_wscanf_s_l(format, locale);
+	return_value = p_wscanf_s_l(format, locale);
+	TRACE("Leave _wscanf_s_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wscanf_s_l(void);  /* ../dlls/msvcrt/scanf.c:366 */
@@ -21400,10 +23578,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wscanf_s_l,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__wsearchenv(MSVCRT_wchar_t*  file, MSVCRT_wchar_t*  env, MSVCRT_wchar_t*  buf) /* ../dlls/msvcrt/dir.c:1785 */
+WINAPI void wine32b_msvcrt__wsearchenv(MSVCRT_wchar_t*  file, MSVCRT_wchar_t*  env, MSVCRT_wchar_t*  buf) /* ../dlls/msvcrt/dir.c:1785 */
 {
 	TRACE("Enter _wsearchenv\n");
-	return p_wsearchenv(file, env, buf);
+	p_wsearchenv(file, env, buf);
+	TRACE("Leave _wsearchenv\n");
 }
 
 extern WINAPI void wine32a_msvcrt__wsearchenv(void);  /* ../dlls/msvcrt/dir.c:1785 */
@@ -21427,10 +23606,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wsearchenv,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wsearchenv_s(MSVCRT_wchar_t*  file, MSVCRT_wchar_t*  env, MSVCRT_wchar_t*  buf, MSVCRT_size_t  count) /* ../dlls/msvcrt/dir.c:1841 */
+WINAPI int wine32b_msvcrt__wsearchenv_s(MSVCRT_wchar_t*  file, MSVCRT_wchar_t*  env, MSVCRT_wchar_t*  buf, MSVCRT_size_t  count) /* ../dlls/msvcrt/dir.c:1841 */
 {
+	int return_value;
 	TRACE("Enter _wsearchenv_s\n");
-	return p_wsearchenv_s(file, env, buf, count);
+	return_value = p_wsearchenv_s(file, env, buf, count);
+	TRACE("Leave _wsearchenv_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wsearchenv_s(void);  /* ../dlls/msvcrt/dir.c:1841 */
@@ -21455,10 +23637,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wsearchenv_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wsetlocale(int  category, MSVCRT_wchar_t*  wlocale) /* ../dlls/msvcrt/locale.c:1972 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wsetlocale(int  category, MSVCRT_wchar_t*  wlocale) /* ../dlls/msvcrt/locale.c:1972 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wsetlocale\n");
-	return p_wsetlocale(category, wlocale);
+	return_value = p_wsetlocale(category, wlocale);
+	TRACE("Leave _wsetlocale\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wsetlocale(void);  /* ../dlls/msvcrt/locale.c:1972 */
@@ -21481,10 +23666,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wsetlocale,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wsopen(MSVCRT_wchar_t*  path, int  oflags, int  shflags) /* ../dlls/msvcrt/file.c:2374 */
+WINAPI int wine32b_msvcrt__wsopen(MSVCRT_wchar_t*  path, int  oflags, int  shflags) /* ../dlls/msvcrt/file.c:2374 */
 {
+	int return_value;
 	TRACE("Enter _wsopen\n");
-	return p_wsopen(path, oflags, shflags);
+	return_value = p_wsopen(path, oflags, shflags);
+	TRACE("Leave _wsopen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wsopen(void);  /* ../dlls/msvcrt/file.c:2374 */
@@ -21508,10 +23696,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wsopen,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wsopen_s(int*  fd, MSVCRT_wchar_t*  path, int  oflags, int  shflags, int  pmode) /* ../dlls/msvcrt/file.c:2366 */
+WINAPI int wine32b_msvcrt__wsopen_s(int*  fd, MSVCRT_wchar_t*  path, int  oflags, int  shflags, int  pmode) /* ../dlls/msvcrt/file.c:2366 */
 {
+	int return_value;
 	TRACE("Enter _wsopen_s\n");
-	return p_wsopen_s(fd, path, oflags, shflags, pmode);
+	return_value = p_wsopen_s(fd, path, oflags, shflags, pmode);
+	TRACE("Leave _wsopen_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wsopen_s(void);  /* ../dlls/msvcrt/file.c:2366 */
@@ -21536,10 +23727,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wsopen_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__wspawnl(int  flags, MSVCRT_wchar_t*  name, MSVCRT_wchar_t*  arg0) /* ../dlls/msvcrt/process.c:686 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__wspawnl(int  flags, MSVCRT_wchar_t*  name, MSVCRT_wchar_t*  arg0) /* ../dlls/msvcrt/process.c:686 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _wspawnl\n");
-	return p_wspawnl(flags, name, arg0);
+	return_value = p_wspawnl(flags, name, arg0);
+	TRACE("Leave _wspawnl\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wspawnl(void);  /* ../dlls/msvcrt/process.c:686 */
@@ -21563,10 +23757,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wspawnl,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__wspawnle(int  flags, MSVCRT_wchar_t*  name, MSVCRT_wchar_t*  arg0) /* ../dlls/msvcrt/process.c:732 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__wspawnle(int  flags, MSVCRT_wchar_t*  name, MSVCRT_wchar_t*  arg0) /* ../dlls/msvcrt/process.c:732 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _wspawnle\n");
-	return p_wspawnle(flags, name, arg0);
+	return_value = p_wspawnle(flags, name, arg0);
+	TRACE("Leave _wspawnle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wspawnle(void);  /* ../dlls/msvcrt/process.c:732 */
@@ -21590,10 +23787,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wspawnle,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__wspawnlp(int  flags, MSVCRT_wchar_t*  name, MSVCRT_wchar_t*  arg0) /* ../dlls/msvcrt/process.c:791 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__wspawnlp(int  flags, MSVCRT_wchar_t*  name, MSVCRT_wchar_t*  arg0) /* ../dlls/msvcrt/process.c:791 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _wspawnlp\n");
-	return p_wspawnlp(flags, name, arg0);
+	return_value = p_wspawnlp(flags, name, arg0);
+	TRACE("Leave _wspawnlp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wspawnlp(void);  /* ../dlls/msvcrt/process.c:791 */
@@ -21617,10 +23817,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wspawnlp,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__wspawnlpe(int  flags, MSVCRT_wchar_t*  name, MSVCRT_wchar_t*  arg0) /* ../dlls/msvcrt/process.c:837 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__wspawnlpe(int  flags, MSVCRT_wchar_t*  name, MSVCRT_wchar_t*  arg0) /* ../dlls/msvcrt/process.c:837 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _wspawnlpe\n");
-	return p_wspawnlpe(flags, name, arg0);
+	return_value = p_wspawnlpe(flags, name, arg0);
+	TRACE("Leave _wspawnlpe\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wspawnlpe(void);  /* ../dlls/msvcrt/process.c:837 */
@@ -21644,10 +23847,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wspawnlpe,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__wspawnv(int  flags, MSVCRT_wchar_t*  name, MSVCRT_wchar_t**  argv) /* ../dlls/msvcrt/process.c:953 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__wspawnv(int  flags, MSVCRT_wchar_t*  name, MSVCRT_wchar_t**  argv) /* ../dlls/msvcrt/process.c:953 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _wspawnv\n");
-	return p_wspawnv(flags, name, argv);
+	return_value = p_wspawnv(flags, name, argv);
+	TRACE("Leave _wspawnv\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wspawnv(void);  /* ../dlls/msvcrt/process.c:953 */
@@ -21671,10 +23877,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wspawnv,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__wspawnve(int  flags, MSVCRT_wchar_t*  name, MSVCRT_wchar_t**  argv, MSVCRT_wchar_t**  envv) /* ../dlls/msvcrt/process.c:921 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__wspawnve(int  flags, MSVCRT_wchar_t*  name, MSVCRT_wchar_t**  argv, MSVCRT_wchar_t**  envv) /* ../dlls/msvcrt/process.c:921 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _wspawnve\n");
-	return p_wspawnve(flags, name, argv, envv);
+	return_value = p_wspawnve(flags, name, argv, envv);
+	TRACE("Leave _wspawnve\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wspawnve(void);  /* ../dlls/msvcrt/process.c:921 */
@@ -21699,10 +23908,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wspawnve,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__wspawnvp(int  flags, MSVCRT_wchar_t*  name, MSVCRT_wchar_t**  argv) /* ../dlls/msvcrt/process.c:1020 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__wspawnvp(int  flags, MSVCRT_wchar_t*  name, MSVCRT_wchar_t**  argv) /* ../dlls/msvcrt/process.c:1020 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _wspawnvp\n");
-	return p_wspawnvp(flags, name, argv);
+	return_value = p_wspawnvp(flags, name, argv);
+	TRACE("Leave _wspawnvp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wspawnvp(void);  /* ../dlls/msvcrt/process.c:1020 */
@@ -21726,10 +23938,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wspawnvp,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_intptr_t wine32b_msvcrt__wspawnvpe(int  flags, MSVCRT_wchar_t*  name, MSVCRT_wchar_t**  argv, MSVCRT_wchar_t**  envv) /* ../dlls/msvcrt/process.c:988 */
+WINAPI MSVCRT_intptr_t wine32b_msvcrt__wspawnvpe(int  flags, MSVCRT_wchar_t*  name, MSVCRT_wchar_t**  argv, MSVCRT_wchar_t**  envv) /* ../dlls/msvcrt/process.c:988 */
 {
+	MSVCRT_intptr_t return_value;
 	TRACE("Enter _wspawnvpe\n");
-	return p_wspawnvpe(flags, name, argv, envv);
+	return_value = p_wspawnvpe(flags, name, argv, envv);
+	TRACE("Leave _wspawnvpe\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wspawnvpe(void);  /* ../dlls/msvcrt/process.c:988 */
@@ -21754,10 +23969,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wspawnvpe,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt__wsplitpath(MSVCRT_wchar_t*  inpath, MSVCRT_wchar_t*  drv, MSVCRT_wchar_t*  dir, MSVCRT_wchar_t*  fname, MSVCRT_wchar_t*  ext) /* ../dlls/msvcrt/dir.c:1225 */
+WINAPI void wine32b_msvcrt__wsplitpath(MSVCRT_wchar_t*  inpath, MSVCRT_wchar_t*  drv, MSVCRT_wchar_t*  dir, MSVCRT_wchar_t*  fname, MSVCRT_wchar_t*  ext) /* ../dlls/msvcrt/dir.c:1225 */
 {
 	TRACE("Enter _wsplitpath\n");
-	return p_wsplitpath(inpath, drv, dir, fname, ext);
+	p_wsplitpath(inpath, drv, dir, fname, ext);
+	TRACE("Leave _wsplitpath\n");
 }
 
 extern WINAPI void wine32a_msvcrt__wsplitpath(void);  /* ../dlls/msvcrt/dir.c:1225 */
@@ -21782,10 +23998,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wsplitpath,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wsplitpath_s(MSVCRT_wchar_t*  inpath, MSVCRT_wchar_t*  drive, MSVCRT_size_t  sz_drive, MSVCRT_wchar_t*  dir, MSVCRT_size_t  sz_dir, MSVCRT_wchar_t*  fname, MSVCRT_size_t  sz_fname, MSVCRT_wchar_t*  ext, MSVCRT_size_t  sz_ext) /* ../dlls/msvcrt/dir.c:1143 */
+WINAPI int wine32b_msvcrt__wsplitpath_s(MSVCRT_wchar_t*  inpath, MSVCRT_wchar_t*  drive, MSVCRT_size_t  sz_drive, MSVCRT_wchar_t*  dir, MSVCRT_size_t  sz_dir, MSVCRT_wchar_t*  fname, MSVCRT_size_t  sz_fname, MSVCRT_wchar_t*  ext, MSVCRT_size_t  sz_ext) /* ../dlls/msvcrt/dir.c:1143 */
 {
+	int return_value;
 	TRACE("Enter _wsplitpath_s\n");
-	return p_wsplitpath_s(inpath, drive, sz_drive, dir, sz_dir, fname, sz_fname, ext, sz_ext);
+	return_value = p_wsplitpath_s(inpath, drive, sz_drive, dir, sz_dir, fname, sz_fname, ext, sz_ext);
+	TRACE("Leave _wsplitpath_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wsplitpath_s(void);  /* ../dlls/msvcrt/dir.c:1143 */
@@ -21810,10 +24029,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wsplitpath_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wstat(MSVCRT_wchar_t*  path, struct MSVCRT__stat64i32*  buf) /* ../dlls/msvcrt/file.c:3220 */
+WINAPI int wine32b_msvcrt__wstat(MSVCRT_wchar_t*  path, struct MSVCRT__stat64i32*  buf) /* ../dlls/msvcrt/file.c:3220 */
 {
+	int return_value;
 	TRACE("Enter _wstat\n");
-	return p_wstat(path, buf);
+	return_value = p_wstat(path, buf);
+	TRACE("Leave _wstat\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wstat(void);  /* ../dlls/msvcrt/file.c:3220 */
@@ -21836,10 +24058,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wstat,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wstati64(MSVCRT_wchar_t*  path, struct MSVCRT__stat64*  buf) /* ../dlls/msvcrt/file.c:3206 */
+WINAPI int wine32b_msvcrt__wstati64(MSVCRT_wchar_t*  path, struct MSVCRT__stat64*  buf) /* ../dlls/msvcrt/file.c:3206 */
 {
+	int return_value;
 	TRACE("Enter _wstati64\n");
-	return p_wstati64(path, buf);
+	return_value = p_wstati64(path, buf);
+	TRACE("Leave _wstati64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wstati64(void);  /* ../dlls/msvcrt/file.c:3206 */
@@ -21862,10 +24087,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wstati64,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wstat64(MSVCRT_wchar_t*  path, struct MSVCRT__stat64*  buf) /* ../dlls/msvcrt/file.c:3129 */
+WINAPI int wine32b_msvcrt__wstat64(MSVCRT_wchar_t*  path, struct MSVCRT__stat64*  buf) /* ../dlls/msvcrt/file.c:3129 */
 {
+	int return_value;
 	TRACE("Enter _wstat64\n");
-	return p_wstat64(path, buf);
+	return_value = p_wstat64(path, buf);
+	TRACE("Leave _wstat64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wstat64(void);  /* ../dlls/msvcrt/file.c:3129 */
@@ -21888,10 +24116,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wstat64,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wstrdate(MSVCRT_wchar_t*  date) /* ../dlls/msvcrt/time.c:611 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wstrdate(MSVCRT_wchar_t*  date) /* ../dlls/msvcrt/time.c:611 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wstrdate\n");
-	return p_wstrdate(date);
+	return_value = p_wstrdate(date);
+	TRACE("Leave _wstrdate\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wstrdate(void);  /* ../dlls/msvcrt/time.c:611 */
@@ -21913,10 +24144,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wstrdate,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wstrdate_s(MSVCRT_wchar_t*  date, MSVCRT_size_t  size) /* ../dlls/msvcrt/time.c:623 */
+WINAPI int wine32b_msvcrt__wstrdate_s(MSVCRT_wchar_t*  date, MSVCRT_size_t  size) /* ../dlls/msvcrt/time.c:623 */
 {
+	int return_value;
 	TRACE("Enter _wstrdate_s\n");
-	return p_wstrdate_s(date, size);
+	return_value = p_wstrdate_s(date, size);
+	TRACE("Leave _wstrdate_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wstrdate_s(void);  /* ../dlls/msvcrt/time.c:623 */
@@ -21939,10 +24173,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wstrdate_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wstrtime(MSVCRT_wchar_t*  time) /* ../dlls/msvcrt/time.c:679 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wstrtime(MSVCRT_wchar_t*  time) /* ../dlls/msvcrt/time.c:679 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wstrtime\n");
-	return p_wstrtime(time);
+	return_value = p_wstrtime(time);
+	TRACE("Leave _wstrtime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wstrtime(void);  /* ../dlls/msvcrt/time.c:679 */
@@ -21964,10 +24201,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wstrtime,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wstrtime_s(MSVCRT_wchar_t*  time, MSVCRT_size_t  size) /* ../dlls/msvcrt/time.c:691 */
+WINAPI int wine32b_msvcrt__wstrtime_s(MSVCRT_wchar_t*  time, MSVCRT_size_t  size) /* ../dlls/msvcrt/time.c:691 */
 {
+	int return_value;
 	TRACE("Enter _wstrtime_s\n");
-	return p_wstrtime_s(time, size);
+	return_value = p_wstrtime_s(time, size);
+	TRACE("Leave _wstrtime_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wstrtime_s(void);  /* ../dlls/msvcrt/time.c:691 */
@@ -21990,10 +24230,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wstrtime_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wsystem(MSVCRT_wchar_t*  cmd) /* ../dlls/msvcrt/process.c:1223 */
+WINAPI int wine32b_msvcrt__wsystem(MSVCRT_wchar_t*  cmd) /* ../dlls/msvcrt/process.c:1223 */
 {
+	int return_value;
 	TRACE("Enter _wsystem\n");
-	return p_wsystem(cmd);
+	return_value = p_wsystem(cmd);
+	TRACE("Leave _wsystem\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wsystem(void);  /* ../dlls/msvcrt/process.c:1223 */
@@ -22015,10 +24258,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wsystem,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wtempnam(MSVCRT_wchar_t*  dir, MSVCRT_wchar_t*  prefix) /* ../dlls/msvcrt/file.c:3316 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wtempnam(MSVCRT_wchar_t*  dir, MSVCRT_wchar_t*  prefix) /* ../dlls/msvcrt/file.c:3316 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wtempnam\n");
-	return p_wtempnam(dir, prefix);
+	return_value = p_wtempnam(dir, prefix);
+	TRACE("Leave _wtempnam\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wtempnam(void);  /* ../dlls/msvcrt/file.c:3316 */
@@ -22041,10 +24287,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wtempnam,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wtmpnam(MSVCRT_wchar_t*  s) /* ../dlls/msvcrt/file.c:5089 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt__wtmpnam(MSVCRT_wchar_t*  s) /* ../dlls/msvcrt/file.c:5089 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter _wtmpnam\n");
-	return p_wtmpnam(s);
+	return_value = p_wtmpnam(s);
+	TRACE("Leave _wtmpnam\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wtmpnam(void);  /* ../dlls/msvcrt/file.c:5089 */
@@ -22066,10 +24315,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wtmpnam,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wtmpnam_s(MSVCRT_wchar_t*  s, MSVCRT_size_t  size) /* ../dlls/msvcrt/file.c:5081 */
+WINAPI int wine32b_msvcrt__wtmpnam_s(MSVCRT_wchar_t*  s, MSVCRT_size_t  size) /* ../dlls/msvcrt/file.c:5081 */
 {
+	int return_value;
 	TRACE("Enter _wtmpnam_s\n");
-	return p_wtmpnam_s(s, size);
+	return_value = p_wtmpnam_s(s, size);
+	TRACE("Leave _wtmpnam_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wtmpnam_s(void);  /* ../dlls/msvcrt/file.c:5081 */
@@ -22092,10 +24344,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wtmpnam_s,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt__wtof(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/wcs.c:693 */
+WINAPI double wine32b_msvcrt__wtof(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/wcs.c:693 */
 {
+	double return_value;
 	TRACE("Enter _wtof\n");
-	return p_wtof(str);
+	return_value = p_wtof(str);
+	TRACE("Leave _wtof\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wtof(void);  /* ../dlls/msvcrt/wcs.c:693 */
@@ -22117,10 +24372,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wtof,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt__wtof_l(MSVCRT_wchar_t*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:701 */
+WINAPI double wine32b_msvcrt__wtof_l(MSVCRT_wchar_t*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:701 */
 {
+	double return_value;
 	TRACE("Enter _wtof_l\n");
-	return p_wtof_l(str, locale);
+	return_value = p_wtof_l(str, locale);
+	TRACE("Leave _wtof_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wtof_l(void);  /* ../dlls/msvcrt/wcs.c:701 */
@@ -22143,10 +24401,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wtof_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wtoi(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/wcs.c:2350 */
+WINAPI int wine32b_msvcrt__wtoi(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/wcs.c:2350 */
 {
+	int return_value;
 	TRACE("Enter _wtoi\n");
-	return p_wtoi(str);
+	return_value = p_wtoi(str);
+	TRACE("Leave _wtoi\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wtoi(void);  /* ../dlls/msvcrt/wcs.c:2350 */
@@ -22168,10 +24429,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wtoi,
 	"ret \n"
 )
 
-extern WINAPI long wine32b_msvcrt__wtoi64(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/wcs.c:2625 */
+WINAPI long wine32b_msvcrt__wtoi64(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/wcs.c:2625 */
 {
+	long return_value;
 	TRACE("Enter _wtoi64\n");
-	return p_wtoi64(str);
+	return_value = p_wtoi64(str);
+	TRACE("Leave _wtoi64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wtoi64(void);  /* ../dlls/msvcrt/wcs.c:2625 */
@@ -22193,10 +24457,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wtoi64,
 	"ret \n"
 )
 
-extern WINAPI long wine32b_msvcrt__wtoi64_l(MSVCRT_wchar_t*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2598 */
+WINAPI long wine32b_msvcrt__wtoi64_l(MSVCRT_wchar_t*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2598 */
 {
+	long return_value;
 	TRACE("Enter _wtoi64_l\n");
-	return p_wtoi64_l(str, locale);
+	return_value = p_wtoi64_l(str, locale);
+	TRACE("Leave _wtoi64_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wtoi64_l(void);  /* ../dlls/msvcrt/wcs.c:2598 */
@@ -22219,10 +24486,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wtoi64_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wtoi_l(MSVCRT_wchar_t*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2333 */
+WINAPI int wine32b_msvcrt__wtoi_l(MSVCRT_wchar_t*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2333 */
 {
+	int return_value;
 	TRACE("Enter _wtoi_l\n");
-	return p_wtoi_l(str, locale);
+	return_value = p_wtoi_l(str, locale);
+	TRACE("Leave _wtoi_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wtoi_l(void);  /* ../dlls/msvcrt/wcs.c:2333 */
@@ -22245,10 +24515,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wtoi_l,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_long wine32b_msvcrt__wtol(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/wcs.c:2375 */
+WINAPI MSVCRT_long wine32b_msvcrt__wtol(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/wcs.c:2375 */
 {
+	MSVCRT_long return_value;
 	TRACE("Enter _wtol\n");
-	return p_wtol(str);
+	return_value = p_wtol(str);
+	TRACE("Leave _wtol\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wtol(void);  /* ../dlls/msvcrt/wcs.c:2375 */
@@ -22270,10 +24543,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wtol,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_long wine32b_msvcrt__wtol_l(MSVCRT_wchar_t*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2358 */
+WINAPI MSVCRT_long wine32b_msvcrt__wtol_l(MSVCRT_wchar_t*  str, MSVCRT__locale_t  locale) /* ../dlls/msvcrt/wcs.c:2358 */
 {
+	MSVCRT_long return_value;
 	TRACE("Enter _wtol_l\n");
-	return p_wtol_l(str, locale);
+	return_value = p_wtol_l(str, locale);
+	TRACE("Leave _wtol_l\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wtol_l(void);  /* ../dlls/msvcrt/wcs.c:2358 */
@@ -22296,10 +24572,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wtol_l,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wunlink(MSVCRT_wchar_t*  path) /* ../dlls/msvcrt/file.c:926 */
+WINAPI int wine32b_msvcrt__wunlink(MSVCRT_wchar_t*  path) /* ../dlls/msvcrt/file.c:926 */
 {
+	int return_value;
 	TRACE("Enter _wunlink\n");
-	return p_wunlink(path);
+	return_value = p_wunlink(path);
+	TRACE("Leave _wunlink\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wunlink(void);  /* ../dlls/msvcrt/file.c:926 */
@@ -22321,10 +24600,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wunlink,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wutime(MSVCRT_wchar_t*  path, struct MSVCRT___utimbuf64*  t) /* ../dlls/msvcrt/file.c:3429 */
+WINAPI int wine32b_msvcrt__wutime(MSVCRT_wchar_t*  path, struct MSVCRT___utimbuf64*  t) /* ../dlls/msvcrt/file.c:3429 */
 {
+	int return_value;
 	TRACE("Enter _wutime\n");
-	return p_wutime(path, t);
+	return_value = p_wutime(path, t);
+	TRACE("Leave _wutime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wutime(void);  /* ../dlls/msvcrt/file.c:3429 */
@@ -22347,10 +24629,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wutime,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wutime32(MSVCRT_wchar_t*  path, struct MSVCRT___utimbuf32*  t) /* ../dlls/msvcrt/file.c:3412 */
+WINAPI int wine32b_msvcrt__wutime32(MSVCRT_wchar_t*  path, struct MSVCRT___utimbuf32*  t) /* ../dlls/msvcrt/file.c:3412 */
 {
+	int return_value;
 	TRACE("Enter _wutime32\n");
-	return p_wutime32(path, t);
+	return_value = p_wutime32(path, t);
+	TRACE("Leave _wutime32\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wutime32(void);  /* ../dlls/msvcrt/file.c:3412 */
@@ -22373,10 +24658,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wutime32,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt__wutime64(MSVCRT_wchar_t*  path, struct MSVCRT___utimbuf64*  t) /* ../dlls/msvcrt/file.c:3396 */
+WINAPI int wine32b_msvcrt__wutime64(MSVCRT_wchar_t*  path, struct MSVCRT___utimbuf64*  t) /* ../dlls/msvcrt/file.c:3396 */
 {
+	int return_value;
 	TRACE("Enter _wutime64\n");
-	return p_wutime64(path, t);
+	return_value = p_wutime64(path, t);
+	TRACE("Leave _wutime64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__wutime64(void);  /* ../dlls/msvcrt/file.c:3396 */
@@ -22399,10 +24687,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__wutime64,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt__y0(double  num) /* ../dlls/msvcrt/math.c:1473 */
+WINAPI double wine32b_msvcrt__y0(double  num) /* ../dlls/msvcrt/math.c:1473 */
 {
+	double return_value;
 	TRACE("Enter _y0\n");
-	return p_y0(num);
+	return_value = p_y0(num);
+	TRACE("Leave _y0\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__y0(void);  /* ../dlls/msvcrt/math.c:1473 */
@@ -22424,10 +24715,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__y0,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt__y1(double  num) /* ../dlls/msvcrt/math.c:1494 */
+WINAPI double wine32b_msvcrt__y1(double  num) /* ../dlls/msvcrt/math.c:1494 */
 {
+	double return_value;
 	TRACE("Enter _y1\n");
-	return p_y1(num);
+	return_value = p_y1(num);
+	TRACE("Leave _y1\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__y1(void);  /* ../dlls/msvcrt/math.c:1494 */
@@ -22449,10 +24743,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__y1,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt__yn(int  order, double  num) /* ../dlls/msvcrt/math.c:1515 */
+WINAPI double wine32b_msvcrt__yn(int  order, double  num) /* ../dlls/msvcrt/math.c:1515 */
 {
+	double return_value;
 	TRACE("Enter _yn\n");
-	return p_yn(order, num);
+	return_value = p_yn(order, num);
+	TRACE("Leave _yn\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt__yn(void);  /* ../dlls/msvcrt/math.c:1515 */
@@ -22475,10 +24772,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt__yn,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt_abort(void) /* ../dlls/msvcrt/exit.c:251 */
+WINAPI void wine32b_msvcrt_abort(void) /* ../dlls/msvcrt/exit.c:251 */
 {
 	TRACE("Enter abort\n");
-	return pabort();
+	pabort();
+	TRACE("Leave abort\n");
 }
 
 extern WINAPI void wine32a_msvcrt_abort(void);  /* ../dlls/msvcrt/exit.c:251 */
@@ -22499,10 +24797,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_abort,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_abs(int  n) /* ../dlls/msvcrt/math.c:790 */
+WINAPI int wine32b_msvcrt_abs(int  n) /* ../dlls/msvcrt/math.c:790 */
 {
+	int return_value;
 	TRACE("Enter abs\n");
-	return pabs(n);
+	return_value = pabs(n);
+	TRACE("Leave abs\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_abs(void);  /* ../dlls/msvcrt/math.c:790 */
@@ -22524,10 +24825,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_abs,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_acos(double  x) /* ../dlls/msvcrt/math.c:411 */
+WINAPI double wine32b_msvcrt_acos(double  x) /* ../dlls/msvcrt/math.c:411 */
 {
+	double return_value;
 	TRACE("Enter acos\n");
-	return pacos(x);
+	return_value = pacos(x);
+	TRACE("Leave acos\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_acos(void);  /* ../dlls/msvcrt/math.c:411 */
@@ -22549,10 +24853,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_acos,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_acosf(float  x) /* ../dlls/msvcrt/math.c:197 */
+WINAPI float wine32b_msvcrt_acosf(float  x) /* ../dlls/msvcrt/math.c:197 */
 {
+	float return_value;
 	TRACE("Enter acosf\n");
-	return pacosf(x);
+	return_value = pacosf(x);
+	TRACE("Leave acosf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_acosf(void);  /* ../dlls/msvcrt/math.c:197 */
@@ -22574,10 +24881,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_acosf,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt_asctime(struct MSVCRT_tm*  mstm) /* ../dlls/msvcrt/time.c:1373 */
+WINAPI char* wine32b_msvcrt_asctime(struct MSVCRT_tm*  mstm) /* ../dlls/msvcrt/time.c:1373 */
 {
+	char* return_value;
 	TRACE("Enter asctime\n");
-	return pasctime(mstm);
+	return_value = pasctime(mstm);
+	TRACE("Leave asctime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_asctime(void);  /* ../dlls/msvcrt/time.c:1373 */
@@ -22599,10 +24909,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_asctime,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_asctime_s(char*  time, MSVCRT_size_t  size, struct MSVCRT_tm*  mstm) /* ../dlls/msvcrt/time.c:1392 */
+WINAPI int wine32b_msvcrt_asctime_s(char*  time, MSVCRT_size_t  size, struct MSVCRT_tm*  mstm) /* ../dlls/msvcrt/time.c:1392 */
 {
+	int return_value;
 	TRACE("Enter asctime_s\n");
-	return pasctime_s(time, size, mstm);
+	return_value = pasctime_s(time, size, mstm);
+	TRACE("Leave asctime_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_asctime_s(void);  /* ../dlls/msvcrt/time.c:1392 */
@@ -22626,10 +24939,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_asctime_s,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_asin(double  x) /* ../dlls/msvcrt/math.c:426 */
+WINAPI double wine32b_msvcrt_asin(double  x) /* ../dlls/msvcrt/math.c:426 */
 {
+	double return_value;
 	TRACE("Enter asin\n");
-	return pasin(x);
+	return_value = pasin(x);
+	TRACE("Leave asin\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_asin(void);  /* ../dlls/msvcrt/math.c:426 */
@@ -22651,10 +24967,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_asin,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_atan(double  x) /* ../dlls/msvcrt/math.c:436 */
+WINAPI double wine32b_msvcrt_atan(double  x) /* ../dlls/msvcrt/math.c:436 */
 {
+	double return_value;
 	TRACE("Enter atan\n");
-	return patan(x);
+	return_value = patan(x);
+	TRACE("Leave atan\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_atan(void);  /* ../dlls/msvcrt/math.c:436 */
@@ -22676,10 +24995,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_atan,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_atan2(double  x, double  y) /* ../dlls/msvcrt/math.c:446 */
+WINAPI double wine32b_msvcrt_atan2(double  x, double  y) /* ../dlls/msvcrt/math.c:446 */
 {
+	double return_value;
 	TRACE("Enter atan2\n");
-	return patan2(x, y);
+	return_value = patan2(x, y);
+	TRACE("Leave atan2\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_atan2(void);  /* ../dlls/msvcrt/math.c:446 */
@@ -22702,10 +25024,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_atan2,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_asinf(float  x) /* ../dlls/msvcrt/math.c:212 */
+WINAPI float wine32b_msvcrt_asinf(float  x) /* ../dlls/msvcrt/math.c:212 */
 {
+	float return_value;
 	TRACE("Enter asinf\n");
-	return pasinf(x);
+	return_value = pasinf(x);
+	TRACE("Leave asinf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_asinf(void);  /* ../dlls/msvcrt/math.c:212 */
@@ -22727,10 +25052,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_asinf,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_atanf(float  x) /* ../dlls/msvcrt/math.c:222 */
+WINAPI float wine32b_msvcrt_atanf(float  x) /* ../dlls/msvcrt/math.c:222 */
 {
+	float return_value;
 	TRACE("Enter atanf\n");
-	return patanf(x);
+	return_value = patanf(x);
+	TRACE("Leave atanf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_atanf(void);  /* ../dlls/msvcrt/math.c:222 */
@@ -22752,10 +25080,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_atanf,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_atan2f(float  x, float  y) /* ../dlls/msvcrt/math.c:232 */
+WINAPI float wine32b_msvcrt_atan2f(float  x, float  y) /* ../dlls/msvcrt/math.c:232 */
 {
+	float return_value;
 	TRACE("Enter atan2f\n");
-	return patan2f(x, y);
+	return_value = patan2f(x, y);
+	TRACE("Leave atan2f\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_atan2f(void);  /* ../dlls/msvcrt/math.c:232 */
@@ -22778,10 +25109,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_atan2f,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_atof(char*  str) /* ../dlls/msvcrt/string.c:545 */
+WINAPI double wine32b_msvcrt_atof(char*  str) /* ../dlls/msvcrt/string.c:545 */
 {
+	double return_value;
 	TRACE("Enter atof\n");
-	return patof(str);
+	return_value = patof(str);
+	TRACE("Leave atof\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_atof(void);  /* ../dlls/msvcrt/string.c:545 */
@@ -22803,10 +25137,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_atof,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_atoi(char*  str) /* ../dlls/msvcrt/string.c:1045 */
+WINAPI int wine32b_msvcrt_atoi(char*  str) /* ../dlls/msvcrt/string.c:1045 */
 {
+	int return_value;
 	TRACE("Enter atoi\n");
-	return patoi(str);
+	return_value = patoi(str);
+	TRACE("Leave atoi\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_atoi(void);  /* ../dlls/msvcrt/string.c:1045 */
@@ -22828,10 +25165,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_atoi,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_long wine32b_msvcrt_atol(char*  str) /* ../dlls/msvcrt/string.c:1112 */
+WINAPI MSVCRT_long wine32b_msvcrt_atol(char*  str) /* ../dlls/msvcrt/string.c:1112 */
 {
+	MSVCRT_long return_value;
 	TRACE("Enter atol\n");
-	return patol(str);
+	return_value = patol(str);
+	TRACE("Leave atol\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_atol(void);  /* ../dlls/msvcrt/string.c:1112 */
@@ -22853,10 +25193,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_atol,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt_bsearch(void*  key, void*  base, MSVCRT_size_t  nmemb, MSVCRT_size_t  size, int (* compar) (void)) /* ../dlls/msvcrt/misc.c:191 */
+WINAPI void* wine32b_msvcrt_bsearch(void*  key, void*  base, MSVCRT_size_t  nmemb, MSVCRT_size_t  size, int (* compar) (void)) /* ../dlls/msvcrt/misc.c:191 */
 {
+	void* return_value;
 	TRACE("Enter bsearch\n");
-	return pbsearch(key, base, nmemb, size, compar);
+	return_value = pbsearch(key, base, nmemb, size, compar);
+	TRACE("Leave bsearch\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_bsearch(void);  /* ../dlls/msvcrt/misc.c:191 */
@@ -22881,10 +25224,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_bsearch,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt_bsearch_s(void*  key, void*  base, MSVCRT_size_t  nmemb, MSVCRT_size_t  size, int (* compare) (void), void*  ctx) /* ../dlls/msvcrt/misc.c:158 */
+WINAPI void* wine32b_msvcrt_bsearch_s(void*  key, void*  base, MSVCRT_size_t  nmemb, MSVCRT_size_t  size, int (* compare) (void), void*  ctx) /* ../dlls/msvcrt/misc.c:158 */
 {
+	void* return_value;
 	TRACE("Enter bsearch_s\n");
-	return pbsearch_s(key, base, nmemb, size, compare, ctx);
+	return_value = pbsearch_s(key, base, nmemb, size, compare, ctx);
+	TRACE("Leave bsearch_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_bsearch_s(void);  /* ../dlls/msvcrt/misc.c:158 */
@@ -22909,10 +25255,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_bsearch_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wint_t wine32b_msvcrt_btowc(int  c) /* ../dlls/msvcrt/locale.c:701 */
+WINAPI MSVCRT_wint_t wine32b_msvcrt_btowc(int  c) /* ../dlls/msvcrt/locale.c:701 */
 {
+	MSVCRT_wint_t return_value;
 	TRACE("Enter btowc\n");
-	return pbtowc(c);
+	return_value = pbtowc(c);
+	TRACE("Leave btowc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_btowc(void);  /* ../dlls/msvcrt/locale.c:701 */
@@ -22934,10 +25283,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_btowc,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt_calloc(MSVCRT_size_t  count, MSVCRT_size_t  size) /* ../dlls/msvcrt/heap.c:398 */
+WINAPI void* wine32b_msvcrt_calloc(MSVCRT_size_t  count, MSVCRT_size_t  size) /* ../dlls/msvcrt/heap.c:398 */
 {
+	void* return_value;
 	TRACE("Enter calloc\n");
-	return pcalloc(count, size);
+	return_value = pcalloc(count, size);
+	TRACE("Leave calloc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_calloc(void);  /* ../dlls/msvcrt/heap.c:398 */
@@ -22960,10 +25312,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_calloc,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_ceil(double  x) /* ../dlls/msvcrt/math.c:853 */
+WINAPI double wine32b_msvcrt_ceil(double  x) /* ../dlls/msvcrt/math.c:853 */
 {
+	double return_value;
 	TRACE("Enter ceil\n");
-	return pceil(x);
+	return_value = pceil(x);
+	TRACE("Leave ceil\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_ceil(void);  /* ../dlls/msvcrt/math.c:853 */
@@ -22985,10 +25340,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_ceil,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_ceilf(float  x) /* ../dlls/msvcrt/math.c:369 */
+WINAPI float wine32b_msvcrt_ceilf(float  x) /* ../dlls/msvcrt/math.c:369 */
 {
+	float return_value;
 	TRACE("Enter ceilf\n");
-	return pceilf(x);
+	return_value = pceilf(x);
+	TRACE("Leave ceilf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_ceilf(void);  /* ../dlls/msvcrt/math.c:369 */
@@ -23010,10 +25368,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_ceilf,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt_clearerr(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:1497 */
+WINAPI void wine32b_msvcrt_clearerr(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:1497 */
 {
 	TRACE("Enter clearerr\n");
-	return pclearerr(file);
+	pclearerr(file);
+	TRACE("Leave clearerr\n");
 }
 
 extern WINAPI void wine32a_msvcrt_clearerr(void);  /* ../dlls/msvcrt/file.c:1497 */
@@ -23035,10 +25394,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_clearerr,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_clearerr_s(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:1509 */
+WINAPI int wine32b_msvcrt_clearerr_s(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:1509 */
 {
+	int return_value;
 	TRACE("Enter clearerr_s\n");
-	return pclearerr_s(file);
+	return_value = pclearerr_s(file);
+	TRACE("Leave clearerr_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_clearerr_s(void);  /* ../dlls/msvcrt/file.c:1509 */
@@ -23060,10 +25422,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_clearerr_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_clock_t wine32b_msvcrt_clock(void) /* ../dlls/msvcrt/time.c:713 */
+WINAPI MSVCRT_clock_t wine32b_msvcrt_clock(void) /* ../dlls/msvcrt/time.c:713 */
 {
+	MSVCRT_clock_t return_value;
 	TRACE("Enter clock\n");
-	return pclock();
+	return_value = pclock();
+	TRACE("Leave clock\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_clock(void);  /* ../dlls/msvcrt/time.c:713 */
@@ -23084,10 +25449,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_clock,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_cos(double  x) /* ../dlls/msvcrt/math.c:456 */
+WINAPI double wine32b_msvcrt_cos(double  x) /* ../dlls/msvcrt/math.c:456 */
 {
+	double return_value;
 	TRACE("Enter cos\n");
-	return pcos(x);
+	return_value = pcos(x);
+	TRACE("Leave cos\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_cos(void);  /* ../dlls/msvcrt/math.c:456 */
@@ -23109,10 +25477,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_cos,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_cosh(double  x) /* ../dlls/msvcrt/math.c:466 */
+WINAPI double wine32b_msvcrt_cosh(double  x) /* ../dlls/msvcrt/math.c:466 */
 {
+	double return_value;
 	TRACE("Enter cosh\n");
-	return pcosh(x);
+	return_value = pcosh(x);
+	TRACE("Leave cosh\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_cosh(void);  /* ../dlls/msvcrt/math.c:466 */
@@ -23134,10 +25505,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_cosh,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_cosf(float  x) /* ../dlls/msvcrt/math.c:242 */
+WINAPI float wine32b_msvcrt_cosf(float  x) /* ../dlls/msvcrt/math.c:242 */
 {
+	float return_value;
 	TRACE("Enter cosf\n");
-	return pcosf(x);
+	return_value = pcosf(x);
+	TRACE("Leave cosf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_cosf(void);  /* ../dlls/msvcrt/math.c:242 */
@@ -23159,10 +25533,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_cosf,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_coshf(float  x) /* ../dlls/msvcrt/math.c:252 */
+WINAPI float wine32b_msvcrt_coshf(float  x) /* ../dlls/msvcrt/math.c:252 */
 {
+	float return_value;
 	TRACE("Enter coshf\n");
-	return pcoshf(x);
+	return_value = pcoshf(x);
+	TRACE("Leave coshf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_coshf(void);  /* ../dlls/msvcrt/math.c:252 */
@@ -23184,10 +25561,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_coshf,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt_ctime(MSVCRT___time64_t*  time) /* ../dlls/msvcrt/time.c:1516 */
+WINAPI char* wine32b_msvcrt_ctime(MSVCRT___time64_t*  time) /* ../dlls/msvcrt/time.c:1516 */
 {
+	char* return_value;
 	TRACE("Enter ctime\n");
-	return pctime(time);
+	return_value = pctime(time);
+	TRACE("Leave ctime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_ctime(void);  /* ../dlls/msvcrt/time.c:1516 */
@@ -23209,10 +25589,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_ctime,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_difftime(MSVCRT___time64_t  time1, MSVCRT___time64_t  time2) /* ../dlls/msvcrt/time.c:754 */
+WINAPI double wine32b_msvcrt_difftime(MSVCRT___time64_t  time1, MSVCRT___time64_t  time2) /* ../dlls/msvcrt/time.c:754 */
 {
+	double return_value;
 	TRACE("Enter difftime\n");
-	return pdifftime(time1, time2);
+	return_value = pdifftime(time1, time2);
+	TRACE("Leave difftime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_difftime(void);  /* ../dlls/msvcrt/time.c:754 */
@@ -23235,10 +25618,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_difftime,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_div_t wine32b_msvcrt_div(int  num, int  denom) /* ../dlls/msvcrt/math.c:1952 */
+WINAPI MSVCRT_div_t wine32b_msvcrt_div(int  num, int  denom) /* ../dlls/msvcrt/math.c:1952 */
 {
+	MSVCRT_div_t return_value;
 	TRACE("Enter div\n");
-	return pdiv(num, denom);
+	return_value = pdiv(num, denom);
+	TRACE("Leave div\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_div(void);  /* ../dlls/msvcrt/math.c:1952 */
@@ -23261,10 +25647,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_div,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt_exit(int  exitcode) /* ../dlls/msvcrt/exit.c:367 */
+WINAPI void wine32b_msvcrt_exit(int  exitcode) /* ../dlls/msvcrt/exit.c:367 */
 {
 	TRACE("Enter exit\n");
-	return pexit(exitcode);
+	pexit(exitcode);
+	TRACE("Leave exit\n");
 }
 
 extern WINAPI void wine32a_msvcrt_exit(void);  /* ../dlls/msvcrt/exit.c:367 */
@@ -23286,10 +25673,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_exit,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_exp(double  x) /* ../dlls/msvcrt/math.c:476 */
+WINAPI double wine32b_msvcrt_exp(double  x) /* ../dlls/msvcrt/math.c:476 */
 {
+	double return_value;
 	TRACE("Enter exp\n");
-	return pexp(x);
+	return_value = pexp(x);
+	TRACE("Leave exp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_exp(void);  /* ../dlls/msvcrt/math.c:476 */
@@ -23311,10 +25701,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_exp,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_expf(float  x) /* ../dlls/msvcrt/math.c:262 */
+WINAPI float wine32b_msvcrt_expf(float  x) /* ../dlls/msvcrt/math.c:262 */
 {
+	float return_value;
 	TRACE("Enter expf\n");
-	return pexpf(x);
+	return_value = pexpf(x);
+	TRACE("Leave expf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_expf(void);  /* ../dlls/msvcrt/math.c:262 */
@@ -23336,10 +25729,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_expf,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_fabs(double  x) /* ../dlls/msvcrt/math.c:901 */
+WINAPI double wine32b_msvcrt_fabs(double  x) /* ../dlls/msvcrt/math.c:901 */
 {
+	double return_value;
 	TRACE("Enter fabs\n");
-	return pfabs(x);
+	return_value = pfabs(x);
+	TRACE("Leave fabs\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fabs(void);  /* ../dlls/msvcrt/math.c:901 */
@@ -23361,10 +25757,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fabs,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_fabsf(float  x) /* ../dlls/msvcrt/math.c:377 */
+WINAPI float wine32b_msvcrt_fabsf(float  x) /* ../dlls/msvcrt/math.c:377 */
 {
+	float return_value;
 	TRACE("Enter fabsf\n");
-	return pfabsf(x);
+	return_value = pfabsf(x);
+	TRACE("Leave fabsf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fabsf(void);  /* ../dlls/msvcrt/math.c:377 */
@@ -23386,10 +25785,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fabsf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_fclose(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3640 */
+WINAPI int wine32b_msvcrt_fclose(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3640 */
 {
+	int return_value;
 	TRACE("Enter fclose\n");
-	return pfclose(file);
+	return_value = pfclose(file);
+	TRACE("Leave fclose\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fclose(void);  /* ../dlls/msvcrt/file.c:3640 */
@@ -23411,10 +25813,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fclose,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_feof(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3682 */
+WINAPI int wine32b_msvcrt_feof(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3682 */
 {
+	int return_value;
 	TRACE("Enter feof\n");
-	return pfeof(file);
+	return_value = pfeof(file);
+	TRACE("Leave feof\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_feof(void);  /* ../dlls/msvcrt/file.c:3682 */
@@ -23436,10 +25841,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_feof,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_ferror(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3690 */
+WINAPI int wine32b_msvcrt_ferror(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3690 */
 {
+	int return_value;
 	TRACE("Enter ferror\n");
-	return pferror(file);
+	return_value = pferror(file);
+	TRACE("Leave ferror\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_ferror(void);  /* ../dlls/msvcrt/file.c:3690 */
@@ -23461,10 +25869,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_ferror,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_fflush(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:1012 */
+WINAPI int wine32b_msvcrt_fflush(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:1012 */
 {
+	int return_value;
 	TRACE("Enter fflush\n");
-	return pfflush(file);
+	return_value = pfflush(file);
+	TRACE("Leave fflush\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fflush(void);  /* ../dlls/msvcrt/file.c:1012 */
@@ -23486,10 +25897,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fflush,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_fgetc(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3742 */
+WINAPI int wine32b_msvcrt_fgetc(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3742 */
 {
+	int return_value;
 	TRACE("Enter fgetc\n");
-	return pfgetc(file);
+	return_value = pfgetc(file);
+	TRACE("Leave fgetc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fgetc(void);  /* ../dlls/msvcrt/file.c:3742 */
@@ -23511,10 +25925,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fgetc,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_fgetpos(MSVCRT_FILE*  file, MSVCRT_fpos_t*  pos) /* ../dlls/msvcrt/file.c:4657 */
+WINAPI int wine32b_msvcrt_fgetpos(MSVCRT_FILE*  file, MSVCRT_fpos_t*  pos) /* ../dlls/msvcrt/file.c:4657 */
 {
+	int return_value;
 	TRACE("Enter fgetpos\n");
-	return pfgetpos(file, pos);
+	return_value = pfgetpos(file, pos);
+	TRACE("Leave fgetpos\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fgetpos(void);  /* ../dlls/msvcrt/file.c:4657 */
@@ -23537,10 +25954,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fgetpos,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt_fgets(char*  s, int  size, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3782 */
+WINAPI char* wine32b_msvcrt_fgets(char*  s, int  size, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3782 */
 {
+	char* return_value;
 	TRACE("Enter fgets\n");
-	return pfgets(s, size, file);
+	return_value = pfgets(s, size, file);
+	TRACE("Leave fgets\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fgets(void);  /* ../dlls/msvcrt/file.c:3782 */
@@ -23564,10 +25984,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fgets,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wint_t wine32b_msvcrt_fgetwc(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3814 */
+WINAPI MSVCRT_wint_t wine32b_msvcrt_fgetwc(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3814 */
 {
+	MSVCRT_wint_t return_value;
 	TRACE("Enter fgetwc\n");
-	return pfgetwc(file);
+	return_value = pfgetwc(file);
+	TRACE("Leave fgetwc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fgetwc(void);  /* ../dlls/msvcrt/file.c:3814 */
@@ -23589,10 +26012,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fgetwc,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt_fgetws(MSVCRT_wchar_t*  s, int  size, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3922 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt_fgetws(MSVCRT_wchar_t*  s, int  size, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3922 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter fgetws\n");
-	return pfgetws(s, size, file);
+	return_value = pfgetws(s, size, file);
+	TRACE("Leave fgetws\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fgetws(void);  /* ../dlls/msvcrt/file.c:3922 */
@@ -23616,10 +26042,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fgetws,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_floor(double  x) /* ../dlls/msvcrt/math.c:861 */
+WINAPI double wine32b_msvcrt_floor(double  x) /* ../dlls/msvcrt/math.c:861 */
 {
+	double return_value;
 	TRACE("Enter floor\n");
-	return pfloor(x);
+	return_value = pfloor(x);
+	TRACE("Leave floor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_floor(void);  /* ../dlls/msvcrt/math.c:861 */
@@ -23641,10 +26070,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_floor,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_floorf(float  x) /* ../dlls/msvcrt/math.c:385 */
+WINAPI float wine32b_msvcrt_floorf(float  x) /* ../dlls/msvcrt/math.c:385 */
 {
+	float return_value;
 	TRACE("Enter floorf\n");
-	return pfloorf(x);
+	return_value = pfloorf(x);
+	TRACE("Leave floorf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_floorf(void);  /* ../dlls/msvcrt/math.c:385 */
@@ -23666,10 +26098,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_floorf,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_fma(double  x, double  y, double  z) /* ../dlls/msvcrt/math.c:869 */
+WINAPI double wine32b_msvcrt_fma(double  x, double  y, double  z) /* ../dlls/msvcrt/math.c:869 */
 {
+	double return_value;
 	TRACE("Enter fma\n");
-	return pfma(x, y, z);
+	return_value = pfma(x, y, z);
+	TRACE("Leave fma\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fma(void);  /* ../dlls/msvcrt/math.c:869 */
@@ -23693,10 +26128,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fma,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_fmaf(float  x, float  y, float  z) /* ../dlls/msvcrt/math.c:885 */
+WINAPI float wine32b_msvcrt_fmaf(float  x, float  y, float  z) /* ../dlls/msvcrt/math.c:885 */
 {
+	float return_value;
 	TRACE("Enter fmaf\n");
-	return pfmaf(x, y, z);
+	return_value = pfmaf(x, y, z);
+	TRACE("Leave fmaf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fmaf(void);  /* ../dlls/msvcrt/math.c:885 */
@@ -23720,10 +26158,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fmaf,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_fmod(double  x, double  y) /* ../dlls/msvcrt/math.c:488 */
+WINAPI double wine32b_msvcrt_fmod(double  x, double  y) /* ../dlls/msvcrt/math.c:488 */
 {
+	double return_value;
 	TRACE("Enter fmod\n");
-	return pfmod(x, y);
+	return_value = pfmod(x, y);
+	TRACE("Leave fmod\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fmod(void);  /* ../dlls/msvcrt/math.c:488 */
@@ -23746,10 +26187,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fmod,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_fmodf(float  x, float  y) /* ../dlls/msvcrt/math.c:274 */
+WINAPI float wine32b_msvcrt_fmodf(float  x, float  y) /* ../dlls/msvcrt/math.c:274 */
 {
+	float return_value;
 	TRACE("Enter fmodf\n");
-	return pfmodf(x, y);
+	return_value = pfmodf(x, y);
+	TRACE("Leave fmodf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fmodf(void);  /* ../dlls/msvcrt/math.c:274 */
@@ -23772,10 +26216,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fmodf,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_FILE* wine32b_msvcrt_fopen(char*  path, char*  mode) /* ../dlls/msvcrt/file.c:4195 */
+WINAPI MSVCRT_FILE* wine32b_msvcrt_fopen(char*  path, char*  mode) /* ../dlls/msvcrt/file.c:4195 */
 {
+	MSVCRT_FILE* return_value;
 	TRACE("Enter fopen\n");
-	return pfopen(path, mode);
+	return_value = pfopen(path, mode);
+	TRACE("Leave fopen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fopen(void);  /* ../dlls/msvcrt/file.c:4195 */
@@ -23798,10 +26245,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fopen,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_fopen_s(MSVCRT_FILE**  pFile, char*  filename, char*  mode) /* ../dlls/msvcrt/file.c:4203 */
+WINAPI int wine32b_msvcrt_fopen_s(MSVCRT_FILE**  pFile, char*  filename, char*  mode) /* ../dlls/msvcrt/file.c:4203 */
 {
+	int return_value;
 	TRACE("Enter fopen_s\n");
-	return pfopen_s(pFile, filename, mode);
+	return_value = pfopen_s(pFile, filename, mode);
+	TRACE("Leave fopen_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fopen_s(void);  /* ../dlls/msvcrt/file.c:4203 */
@@ -23825,10 +26275,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fopen_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_fprintf(MSVCRT_FILE*  file, char*  format) /* ../dlls/msvcrt/file.c:5428 */
+WINAPI int wine32b_msvcrt_fprintf(MSVCRT_FILE*  file, char*  format) /* ../dlls/msvcrt/file.c:5428 */
 {
+	int return_value;
 	TRACE("Enter fprintf\n");
-	return pfprintf(file, format);
+	return_value = pfprintf(file, format);
+	TRACE("Leave fprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fprintf(void);  /* ../dlls/msvcrt/file.c:5428 */
@@ -23851,10 +26304,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_fprintf_s(MSVCRT_FILE*  file, char*  format) /* ../dlls/msvcrt/file.c:5441 */
+WINAPI int wine32b_msvcrt_fprintf_s(MSVCRT_FILE*  file, char*  format) /* ../dlls/msvcrt/file.c:5441 */
 {
+	int return_value;
 	TRACE("Enter fprintf_s\n");
-	return pfprintf_s(file, format);
+	return_value = pfprintf_s(file, format);
+	TRACE("Leave fprintf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fprintf_s(void);  /* ../dlls/msvcrt/file.c:5441 */
@@ -23877,10 +26333,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fprintf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_fputc(int  c, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4245 */
+WINAPI int wine32b_msvcrt_fputc(int  c, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4245 */
 {
+	int return_value;
 	TRACE("Enter fputc\n");
-	return pfputc(c, file);
+	return_value = pfputc(c, file);
+	TRACE("Leave fputc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fputc(void);  /* ../dlls/msvcrt/file.c:4245 */
@@ -23903,10 +26362,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fputc,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_fputs(char*  s, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4668 */
+WINAPI int wine32b_msvcrt_fputs(char*  s, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4668 */
 {
+	int return_value;
 	TRACE("Enter fputs\n");
-	return pfputs(s, file);
+	return_value = pfputs(s, file);
+	TRACE("Leave fputs\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fputs(void);  /* ../dlls/msvcrt/file.c:4668 */
@@ -23929,10 +26391,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fputs,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wint_t wine32b_msvcrt_putwc(MSVCRT_wint_t  wc, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4082 */
+WINAPI MSVCRT_wint_t wine32b_msvcrt_putwc(MSVCRT_wint_t  wc, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4082 */
 {
+	MSVCRT_wint_t return_value;
 	TRACE("Enter putwc\n");
-	return pputwc(wc, file);
+	return_value = pputwc(wc, file);
+	TRACE("Leave putwc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_putwc(void);  /* ../dlls/msvcrt/file.c:4082 */
@@ -23955,10 +26420,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_putwc,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_fputws(MSVCRT_wchar_t*  s, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4682 */
+WINAPI int wine32b_msvcrt_fputws(MSVCRT_wchar_t*  s, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4682 */
 {
+	int return_value;
 	TRACE("Enter fputws\n");
-	return pfputws(s, file);
+	return_value = pfputws(s, file);
+	TRACE("Leave fputws\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fputws(void);  /* ../dlls/msvcrt/file.c:4682 */
@@ -23981,10 +26449,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fputws,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt_fread(void*  ptr, MSVCRT_size_t  size, MSVCRT_size_t  nmemb, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4291 */
+WINAPI MSVCRT_size_t wine32b_msvcrt_fread(void*  ptr, MSVCRT_size_t  size, MSVCRT_size_t  nmemb, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4291 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter fread\n");
-	return pfread(ptr, size, nmemb, file);
+	return_value = pfread(ptr, size, nmemb, file);
+	TRACE("Leave fread\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fread(void);  /* ../dlls/msvcrt/file.c:4291 */
@@ -24009,10 +26480,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fread,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt_free(void*  ptr) /* ../dlls/msvcrt/heap.c:424 */
+WINAPI void wine32b_msvcrt_free(void*  ptr) /* ../dlls/msvcrt/heap.c:424 */
 {
 	TRACE("Enter free\n");
-	return pfree(ptr);
+	pfree(ptr);
+	TRACE("Leave free\n");
 }
 
 extern WINAPI void wine32a_msvcrt_free(void);  /* ../dlls/msvcrt/heap.c:424 */
@@ -24034,10 +26506,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_free,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_FILE* wine32b_msvcrt_freopen(char*  path, char*  mode, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4511 */
+WINAPI MSVCRT_FILE* wine32b_msvcrt_freopen(char*  path, char*  mode, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4511 */
 {
+	MSVCRT_FILE* return_value;
 	TRACE("Enter freopen\n");
-	return pfreopen(path, mode, file);
+	return_value = pfreopen(path, mode, file);
+	TRACE("Leave freopen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_freopen(void);  /* ../dlls/msvcrt/file.c:4511 */
@@ -24061,10 +26536,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_freopen,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_freopen_s(MSVCRT_FILE**  pFile, char*  path, char*  mode, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4533 */
+WINAPI int wine32b_msvcrt_freopen_s(MSVCRT_FILE**  pFile, char*  path, char*  mode, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4533 */
 {
+	int return_value;
 	TRACE("Enter freopen_s\n");
-	return pfreopen_s(pFile, path, mode, file);
+	return_value = pfreopen_s(pFile, path, mode, file);
+	TRACE("Leave freopen_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_freopen_s(void);  /* ../dlls/msvcrt/file.c:4533 */
@@ -24089,10 +26567,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_freopen_s,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_frexp(double  x, int*  exp) /* ../dlls/msvcrt/math.c:909 */
+WINAPI double wine32b_msvcrt_frexp(double  x, int*  exp) /* ../dlls/msvcrt/math.c:909 */
 {
+	double return_value;
 	TRACE("Enter frexp\n");
-	return pfrexp(x, exp);
+	return_value = pfrexp(x, exp);
+	TRACE("Leave frexp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_frexp(void);  /* ../dlls/msvcrt/math.c:909 */
@@ -24115,10 +26596,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_frexp,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_frexpf(float  x, int*  exp) /* ../dlls/msvcrt/math.c:393 */
+WINAPI float wine32b_msvcrt_frexpf(float  x, int*  exp) /* ../dlls/msvcrt/math.c:393 */
 {
+	float return_value;
 	TRACE("Enter frexpf\n");
-	return pfrexpf(x, exp);
+	return_value = pfrexpf(x, exp);
+	TRACE("Leave frexpf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_frexpf(void);  /* ../dlls/msvcrt/math.c:393 */
@@ -24141,10 +26625,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_frexpf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_fscanf(MSVCRT_FILE*  file, char*  format) /* ../dlls/msvcrt/scanf.c:151 */
+WINAPI int wine32b_msvcrt_fscanf(MSVCRT_FILE*  file, char*  format) /* ../dlls/msvcrt/scanf.c:151 */
 {
+	int return_value;
 	TRACE("Enter fscanf\n");
-	return pfscanf(file, format);
+	return_value = pfscanf(file, format);
+	TRACE("Leave fscanf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fscanf(void);  /* ../dlls/msvcrt/scanf.c:151 */
@@ -24167,10 +26654,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fscanf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_fscanf_s(MSVCRT_FILE*  file, char*  format) /* ../dlls/msvcrt/scanf.c:180 */
+WINAPI int wine32b_msvcrt_fscanf_s(MSVCRT_FILE*  file, char*  format) /* ../dlls/msvcrt/scanf.c:180 */
 {
+	int return_value;
 	TRACE("Enter fscanf_s\n");
-	return pfscanf_s(file, format);
+	return_value = pfscanf_s(file, format);
+	TRACE("Leave fscanf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fscanf_s(void);  /* ../dlls/msvcrt/scanf.c:180 */
@@ -24193,10 +26683,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fscanf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_fseek(MSVCRT_FILE*  file, MSVCRT_long  offset, int  whence) /* ../dlls/msvcrt/file.c:1435 */
+WINAPI int wine32b_msvcrt_fseek(MSVCRT_FILE*  file, MSVCRT_long  offset, int  whence) /* ../dlls/msvcrt/file.c:1435 */
 {
+	int return_value;
 	TRACE("Enter fseek\n");
-	return pfseek(file, offset, whence);
+	return_value = pfseek(file, offset, whence);
+	TRACE("Leave fseek\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fseek(void);  /* ../dlls/msvcrt/file.c:1435 */
@@ -24220,10 +26713,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fseek,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_fsetpos(MSVCRT_FILE*  file, MSVCRT_fpos_t*  pos) /* ../dlls/msvcrt/file.c:4551 */
+WINAPI int wine32b_msvcrt_fsetpos(MSVCRT_FILE*  file, MSVCRT_fpos_t*  pos) /* ../dlls/msvcrt/file.c:4551 */
 {
+	int return_value;
 	TRACE("Enter fsetpos\n");
-	return pfsetpos(file, pos);
+	return_value = pfsetpos(file, pos);
+	TRACE("Leave fsetpos\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fsetpos(void);  /* ../dlls/msvcrt/file.c:4551 */
@@ -24246,10 +26742,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fsetpos,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_msvcrt_ftell(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4639 */
+WINAPI LONG wine32b_msvcrt_ftell(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4639 */
 {
+	LONG return_value;
 	TRACE("Enter ftell\n");
-	return pftell(file);
+	return_value = pftell(file);
+	TRACE("Leave ftell\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_ftell(void);  /* ../dlls/msvcrt/file.c:4639 */
@@ -24271,10 +26770,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_ftell,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_fwprintf(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/file.c:5454 */
+WINAPI int wine32b_msvcrt_fwprintf(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/file.c:5454 */
 {
+	int return_value;
 	TRACE("Enter fwprintf\n");
-	return pfwprintf(file, format);
+	return_value = pfwprintf(file, format);
+	TRACE("Leave fwprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fwprintf(void);  /* ../dlls/msvcrt/file.c:5454 */
@@ -24297,10 +26799,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fwprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_fwprintf_s(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/file.c:5467 */
+WINAPI int wine32b_msvcrt_fwprintf_s(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/file.c:5467 */
 {
+	int return_value;
 	TRACE("Enter fwprintf_s\n");
-	return pfwprintf_s(file, format);
+	return_value = pfwprintf_s(file, format);
+	TRACE("Leave fwprintf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fwprintf_s(void);  /* ../dlls/msvcrt/file.c:5467 */
@@ -24323,10 +26828,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fwprintf_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt_fwrite(void*  ptr, MSVCRT_size_t  size, MSVCRT_size_t  nmemb, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4008 */
+WINAPI MSVCRT_size_t wine32b_msvcrt_fwrite(void*  ptr, MSVCRT_size_t  size, MSVCRT_size_t  nmemb, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4008 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter fwrite\n");
-	return pfwrite(ptr, size, nmemb, file);
+	return_value = pfwrite(ptr, size, nmemb, file);
+	TRACE("Leave fwrite\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fwrite(void);  /* ../dlls/msvcrt/file.c:4008 */
@@ -24351,10 +26859,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fwrite,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_fwscanf(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/scanf.c:265 */
+WINAPI int wine32b_msvcrt_fwscanf(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/scanf.c:265 */
 {
+	int return_value;
 	TRACE("Enter fwscanf\n");
-	return pfwscanf(file, format);
+	return_value = pfwscanf(file, format);
+	TRACE("Leave fwscanf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fwscanf(void);  /* ../dlls/msvcrt/scanf.c:265 */
@@ -24377,10 +26888,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fwscanf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_fwscanf_s(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/scanf.c:294 */
+WINAPI int wine32b_msvcrt_fwscanf_s(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/scanf.c:294 */
 {
+	int return_value;
 	TRACE("Enter fwscanf_s\n");
-	return pfwscanf_s(file, format);
+	return_value = pfwscanf_s(file, format);
+	TRACE("Leave fwscanf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_fwscanf_s(void);  /* ../dlls/msvcrt/scanf.c:294 */
@@ -24403,10 +26917,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_fwscanf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_getc(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4720 */
+WINAPI int wine32b_msvcrt_getc(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4720 */
 {
+	int return_value;
 	TRACE("Enter getc\n");
-	return pgetc(file);
+	return_value = pgetc(file);
+	TRACE("Leave getc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_getc(void);  /* ../dlls/msvcrt/file.c:4720 */
@@ -24428,10 +26945,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_getc,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_getchar(void) /* ../dlls/msvcrt/file.c:4712 */
+WINAPI int wine32b_msvcrt_getchar(void) /* ../dlls/msvcrt/file.c:4712 */
 {
+	int return_value;
 	TRACE("Enter getchar\n");
-	return pgetchar();
+	return_value = pgetchar();
+	TRACE("Leave getchar\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_getchar(void);  /* ../dlls/msvcrt/file.c:4712 */
@@ -24452,10 +26972,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_getchar,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt_getenv(char*  name) /* ../dlls/msvcrt/environ.c:32 */
+WINAPI char* wine32b_msvcrt_getenv(char*  name) /* ../dlls/msvcrt/environ.c:32 */
 {
+	char* return_value;
 	TRACE("Enter getenv\n");
-	return pgetenv(name);
+	return_value = pgetenv(name);
+	TRACE("Leave getenv\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_getenv(void);  /* ../dlls/msvcrt/environ.c:32 */
@@ -24477,10 +27000,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_getenv,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_getenv_s(MSVCRT_size_t*  pReturnValue, char*  buffer, MSVCRT_size_t  numberOfElements, char*  varname) /* ../dlls/msvcrt/environ.c:266 */
+WINAPI int wine32b_msvcrt_getenv_s(MSVCRT_size_t*  pReturnValue, char*  buffer, MSVCRT_size_t  numberOfElements, char*  varname) /* ../dlls/msvcrt/environ.c:266 */
 {
+	int return_value;
 	TRACE("Enter getenv_s\n");
-	return pgetenv_s(pReturnValue, buffer, numberOfElements, varname);
+	return_value = pgetenv_s(pReturnValue, buffer, numberOfElements, varname);
+	TRACE("Leave getenv_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_getenv_s(void);  /* ../dlls/msvcrt/environ.c:266 */
@@ -24505,10 +27031,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_getenv_s,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt_gets(char*  buf) /* ../dlls/msvcrt/file.c:4770 */
+WINAPI char* wine32b_msvcrt_gets(char*  buf) /* ../dlls/msvcrt/file.c:4770 */
 {
+	char* return_value;
 	TRACE("Enter gets\n");
-	return pgets(buf);
+	return_value = pgets(buf);
+	TRACE("Leave gets\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_gets(void);  /* ../dlls/msvcrt/file.c:4770 */
@@ -24530,10 +27059,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_gets,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wint_t wine32b_msvcrt_getwc(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3898 */
+WINAPI MSVCRT_wint_t wine32b_msvcrt_getwc(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:3898 */
 {
+	MSVCRT_wint_t return_value;
 	TRACE("Enter getwc\n");
-	return pgetwc(file);
+	return_value = pgetwc(file);
+	TRACE("Leave getwc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_getwc(void);  /* ../dlls/msvcrt/file.c:3898 */
@@ -24555,10 +27087,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_getwc,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wint_t wine32b_msvcrt_getwchar(void) /* ../dlls/msvcrt/file.c:3914 */
+WINAPI MSVCRT_wint_t wine32b_msvcrt_getwchar(void) /* ../dlls/msvcrt/file.c:3914 */
 {
+	MSVCRT_wint_t return_value;
 	TRACE("Enter getwchar\n");
-	return pgetwchar();
+	return_value = pgetwchar();
+	TRACE("Leave getwchar\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_getwchar(void);  /* ../dlls/msvcrt/file.c:3914 */
@@ -24579,10 +27114,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_getwchar,
 	"ret \n"
 )
 
-extern WINAPI struct MSVCRT_tm* wine32b_msvcrt_gmtime(MSVCRT___time64_t*  secs) /* ../dlls/msvcrt/time.c:563 */
+WINAPI struct MSVCRT_tm* wine32b_msvcrt_gmtime(MSVCRT___time64_t*  secs) /* ../dlls/msvcrt/time.c:563 */
 {
+	struct MSVCRT_tm* return_value;
 	TRACE("Enter gmtime\n");
-	return pgmtime(secs);
+	return_value = pgmtime(secs);
+	TRACE("Leave gmtime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_gmtime(void);  /* ../dlls/msvcrt/time.c:563 */
@@ -24604,10 +27142,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_gmtime,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_isalnum(int  c) /* ../dlls/msvcrt/ctype.c:122 */
+WINAPI int wine32b_msvcrt_isalnum(int  c) /* ../dlls/msvcrt/ctype.c:122 */
 {
+	int return_value;
 	TRACE("Enter isalnum\n");
-	return pisalnum(c);
+	return_value = pisalnum(c);
+	TRACE("Leave isalnum\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_isalnum(void);  /* ../dlls/msvcrt/ctype.c:122 */
@@ -24629,10 +27170,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_isalnum,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_isalpha(int  c) /* ../dlls/msvcrt/ctype.c:138 */
+WINAPI int wine32b_msvcrt_isalpha(int  c) /* ../dlls/msvcrt/ctype.c:138 */
 {
+	int return_value;
 	TRACE("Enter isalpha\n");
-	return pisalpha(c);
+	return_value = pisalpha(c);
+	TRACE("Leave isalpha\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_isalpha(void);  /* ../dlls/msvcrt/ctype.c:138 */
@@ -24654,10 +27198,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_isalpha,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_iscntrl(int  c) /* ../dlls/msvcrt/ctype.c:154 */
+WINAPI int wine32b_msvcrt_iscntrl(int  c) /* ../dlls/msvcrt/ctype.c:154 */
 {
+	int return_value;
 	TRACE("Enter iscntrl\n");
-	return piscntrl(c);
+	return_value = piscntrl(c);
+	TRACE("Leave iscntrl\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_iscntrl(void);  /* ../dlls/msvcrt/ctype.c:154 */
@@ -24679,10 +27226,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_iscntrl,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_isdigit(int  c) /* ../dlls/msvcrt/ctype.c:170 */
+WINAPI int wine32b_msvcrt_isdigit(int  c) /* ../dlls/msvcrt/ctype.c:170 */
 {
+	int return_value;
 	TRACE("Enter isdigit\n");
-	return pisdigit(c);
+	return_value = pisdigit(c);
+	TRACE("Leave isdigit\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_isdigit(void);  /* ../dlls/msvcrt/ctype.c:170 */
@@ -24704,10 +27254,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_isdigit,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_isgraph(int  c) /* ../dlls/msvcrt/ctype.c:186 */
+WINAPI int wine32b_msvcrt_isgraph(int  c) /* ../dlls/msvcrt/ctype.c:186 */
 {
+	int return_value;
 	TRACE("Enter isgraph\n");
-	return pisgraph(c);
+	return_value = pisgraph(c);
+	TRACE("Leave isgraph\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_isgraph(void);  /* ../dlls/msvcrt/ctype.c:186 */
@@ -24729,10 +27282,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_isgraph,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_isleadbyte(int  c) /* ../dlls/msvcrt/ctype.c:202 */
+WINAPI int wine32b_msvcrt_isleadbyte(int  c) /* ../dlls/msvcrt/ctype.c:202 */
 {
+	int return_value;
 	TRACE("Enter isleadbyte\n");
-	return pisleadbyte(c);
+	return_value = pisleadbyte(c);
+	TRACE("Leave isleadbyte\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_isleadbyte(void);  /* ../dlls/msvcrt/ctype.c:202 */
@@ -24754,10 +27310,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_isleadbyte,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_islower(int  c) /* ../dlls/msvcrt/ctype.c:218 */
+WINAPI int wine32b_msvcrt_islower(int  c) /* ../dlls/msvcrt/ctype.c:218 */
 {
+	int return_value;
 	TRACE("Enter islower\n");
-	return pislower(c);
+	return_value = pislower(c);
+	TRACE("Leave islower\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_islower(void);  /* ../dlls/msvcrt/ctype.c:218 */
@@ -24779,10 +27338,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_islower,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_isprint(int  c) /* ../dlls/msvcrt/ctype.c:234 */
+WINAPI int wine32b_msvcrt_isprint(int  c) /* ../dlls/msvcrt/ctype.c:234 */
 {
+	int return_value;
 	TRACE("Enter isprint\n");
-	return pisprint(c);
+	return_value = pisprint(c);
+	TRACE("Leave isprint\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_isprint(void);  /* ../dlls/msvcrt/ctype.c:234 */
@@ -24804,10 +27366,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_isprint,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_ispunct(int  c) /* ../dlls/msvcrt/ctype.c:242 */
+WINAPI int wine32b_msvcrt_ispunct(int  c) /* ../dlls/msvcrt/ctype.c:242 */
 {
+	int return_value;
 	TRACE("Enter ispunct\n");
-	return pispunct(c);
+	return_value = pispunct(c);
+	TRACE("Leave ispunct\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_ispunct(void);  /* ../dlls/msvcrt/ctype.c:242 */
@@ -24829,10 +27394,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_ispunct,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_isspace(int  c) /* ../dlls/msvcrt/ctype.c:258 */
+WINAPI int wine32b_msvcrt_isspace(int  c) /* ../dlls/msvcrt/ctype.c:258 */
 {
+	int return_value;
 	TRACE("Enter isspace\n");
-	return pisspace(c);
+	return_value = pisspace(c);
+	TRACE("Leave isspace\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_isspace(void);  /* ../dlls/msvcrt/ctype.c:258 */
@@ -24854,10 +27422,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_isspace,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_isupper(int  c) /* ../dlls/msvcrt/ctype.c:274 */
+WINAPI int wine32b_msvcrt_isupper(int  c) /* ../dlls/msvcrt/ctype.c:274 */
 {
+	int return_value;
 	TRACE("Enter isupper\n");
-	return pisupper(c);
+	return_value = pisupper(c);
+	TRACE("Leave isupper\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_isupper(void);  /* ../dlls/msvcrt/ctype.c:274 */
@@ -24879,10 +27450,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_isupper,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt_iswalnum(MSVCRT_wchar_t  wc) /* ../dlls/msvcrt/wcs.c:1837 */
+WINAPI INT wine32b_msvcrt_iswalnum(MSVCRT_wchar_t  wc) /* ../dlls/msvcrt/wcs.c:1837 */
 {
+	INT return_value;
 	TRACE("Enter iswalnum\n");
-	return piswalnum(wc);
+	return_value = piswalnum(wc);
+	TRACE("Leave iswalnum\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_iswalnum(void);  /* ../dlls/msvcrt/wcs.c:1837 */
@@ -24904,10 +27478,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_iswalnum,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_iswascii(MSVCRT_wchar_t  c) /* ../dlls/msvcrt/ctype.c:331 */
+WINAPI int wine32b_msvcrt_iswascii(MSVCRT_wchar_t  c) /* ../dlls/msvcrt/ctype.c:331 */
 {
+	int return_value;
 	TRACE("Enter iswascii\n");
-	return piswascii(c);
+	return_value = piswascii(c);
+	TRACE("Leave iswascii\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_iswascii(void);  /* ../dlls/msvcrt/ctype.c:331 */
@@ -24929,10 +27506,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_iswascii,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt_iswcntrl(MSVCRT_wchar_t  wc) /* ../dlls/msvcrt/wcs.c:1869 */
+WINAPI INT wine32b_msvcrt_iswcntrl(MSVCRT_wchar_t  wc) /* ../dlls/msvcrt/wcs.c:1869 */
 {
+	INT return_value;
 	TRACE("Enter iswcntrl\n");
-	return piswcntrl(wc);
+	return_value = piswcntrl(wc);
+	TRACE("Leave iswcntrl\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_iswcntrl(void);  /* ../dlls/msvcrt/wcs.c:1869 */
@@ -24954,10 +27534,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_iswcntrl,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_iswdigit(MSVCRT_wchar_t  wc) /* ../dlls/msvcrt/wcs.c:1885 */
+WINAPI int wine32b_msvcrt_iswdigit(MSVCRT_wchar_t  wc) /* ../dlls/msvcrt/wcs.c:1885 */
 {
+	int return_value;
 	TRACE("Enter iswdigit\n");
-	return piswdigit(wc);
+	return_value = piswdigit(wc);
+	TRACE("Leave iswdigit\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_iswdigit(void);  /* ../dlls/msvcrt/wcs.c:1885 */
@@ -24979,10 +27562,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_iswdigit,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt_iswgraph(MSVCRT_wchar_t  wc) /* ../dlls/msvcrt/wcs.c:1901 */
+WINAPI INT wine32b_msvcrt_iswgraph(MSVCRT_wchar_t  wc) /* ../dlls/msvcrt/wcs.c:1901 */
 {
+	INT return_value;
 	TRACE("Enter iswgraph\n");
-	return piswgraph(wc);
+	return_value = piswgraph(wc);
+	TRACE("Leave iswgraph\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_iswgraph(void);  /* ../dlls/msvcrt/wcs.c:1901 */
@@ -25004,10 +27590,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_iswgraph,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt_iswlower(MSVCRT_wchar_t  wc) /* ../dlls/msvcrt/wcs.c:1917 */
+WINAPI INT wine32b_msvcrt_iswlower(MSVCRT_wchar_t  wc) /* ../dlls/msvcrt/wcs.c:1917 */
 {
+	INT return_value;
 	TRACE("Enter iswlower\n");
-	return piswlower(wc);
+	return_value = piswlower(wc);
+	TRACE("Leave iswlower\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_iswlower(void);  /* ../dlls/msvcrt/wcs.c:1917 */
@@ -25029,10 +27618,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_iswlower,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt_iswprint(MSVCRT_wchar_t  wc) /* ../dlls/msvcrt/wcs.c:1933 */
+WINAPI INT wine32b_msvcrt_iswprint(MSVCRT_wchar_t  wc) /* ../dlls/msvcrt/wcs.c:1933 */
 {
+	INT return_value;
 	TRACE("Enter iswprint\n");
-	return piswprint(wc);
+	return_value = piswprint(wc);
+	TRACE("Leave iswprint\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_iswprint(void);  /* ../dlls/msvcrt/wcs.c:1933 */
@@ -25054,10 +27646,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_iswprint,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt_iswpunct(MSVCRT_wchar_t  wc) /* ../dlls/msvcrt/wcs.c:1957 */
+WINAPI INT wine32b_msvcrt_iswpunct(MSVCRT_wchar_t  wc) /* ../dlls/msvcrt/wcs.c:1957 */
 {
+	INT return_value;
 	TRACE("Enter iswpunct\n");
-	return piswpunct(wc);
+	return_value = piswpunct(wc);
+	TRACE("Leave iswpunct\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_iswpunct(void);  /* ../dlls/msvcrt/wcs.c:1957 */
@@ -25079,10 +27674,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_iswpunct,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_iswspace(MSVCRT_wchar_t  wc) /* ../dlls/msvcrt/wcs.c:1973 */
+WINAPI int wine32b_msvcrt_iswspace(MSVCRT_wchar_t  wc) /* ../dlls/msvcrt/wcs.c:1973 */
 {
+	int return_value;
 	TRACE("Enter iswspace\n");
-	return piswspace(wc);
+	return_value = piswspace(wc);
+	TRACE("Leave iswspace\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_iswspace(void);  /* ../dlls/msvcrt/wcs.c:1973 */
@@ -25104,10 +27702,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_iswspace,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt_iswupper(MSVCRT_wchar_t  wc) /* ../dlls/msvcrt/wcs.c:1981 */
+WINAPI INT wine32b_msvcrt_iswupper(MSVCRT_wchar_t  wc) /* ../dlls/msvcrt/wcs.c:1981 */
 {
+	INT return_value;
 	TRACE("Enter iswupper\n");
-	return piswupper(wc);
+	return_value = piswupper(wc);
+	TRACE("Leave iswupper\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_iswupper(void);  /* ../dlls/msvcrt/wcs.c:1981 */
@@ -25129,10 +27730,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_iswupper,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt_iswxdigit(MSVCRT_wchar_t  wc) /* ../dlls/msvcrt/wcs.c:1997 */
+WINAPI INT wine32b_msvcrt_iswxdigit(MSVCRT_wchar_t  wc) /* ../dlls/msvcrt/wcs.c:1997 */
 {
+	INT return_value;
 	TRACE("Enter iswxdigit\n");
-	return piswxdigit(wc);
+	return_value = piswxdigit(wc);
+	TRACE("Leave iswxdigit\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_iswxdigit(void);  /* ../dlls/msvcrt/wcs.c:1997 */
@@ -25154,10 +27758,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_iswxdigit,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_isxdigit(int  c) /* ../dlls/msvcrt/ctype.c:290 */
+WINAPI int wine32b_msvcrt_isxdigit(int  c) /* ../dlls/msvcrt/ctype.c:290 */
 {
+	int return_value;
 	TRACE("Enter isxdigit\n");
-	return pisxdigit(c);
+	return_value = pisxdigit(c);
+	TRACE("Leave isxdigit\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_isxdigit(void);  /* ../dlls/msvcrt/ctype.c:290 */
@@ -25179,10 +27786,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_isxdigit,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_long wine32b_msvcrt_labs(MSVCRT_long  n) /* ../dlls/msvcrt/math.c:798 */
+WINAPI MSVCRT_long wine32b_msvcrt_labs(MSVCRT_long  n) /* ../dlls/msvcrt/math.c:798 */
 {
+	MSVCRT_long return_value;
 	TRACE("Enter labs\n");
-	return plabs(n);
+	return_value = plabs(n);
+	TRACE("Leave labs\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_labs(void);  /* ../dlls/msvcrt/math.c:798 */
@@ -25204,10 +27814,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_labs,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_ldexp(double  num, MSVCRT_long  exp) /* ../dlls/msvcrt/math.c:1031 */
+WINAPI double wine32b_msvcrt_ldexp(double  num, MSVCRT_long  exp) /* ../dlls/msvcrt/math.c:1031 */
 {
+	double return_value;
 	TRACE("Enter ldexp\n");
-	return pldexp(num, exp);
+	return_value = pldexp(num, exp);
+	TRACE("Leave ldexp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_ldexp(void);  /* ../dlls/msvcrt/math.c:1031 */
@@ -25230,10 +27843,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_ldexp,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_ldiv_t wine32b_msvcrt_ldiv(MSVCRT_long  num, MSVCRT_long  denom) /* ../dlls/msvcrt/math.c:1982 */
+WINAPI MSVCRT_ldiv_t wine32b_msvcrt_ldiv(MSVCRT_long  num, MSVCRT_long  denom) /* ../dlls/msvcrt/math.c:1982 */
 {
+	MSVCRT_ldiv_t return_value;
 	TRACE("Enter ldiv\n");
-	return pldiv(num, denom);
+	return_value = pldiv(num, denom);
+	TRACE("Leave ldiv\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_ldiv(void);  /* ../dlls/msvcrt/math.c:1982 */
@@ -25256,10 +27872,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_ldiv,
 	"ret \n"
 )
 
-extern WINAPI struct MSVCRT_lconv* wine32b_msvcrt_localeconv(void) /* ../dlls/msvcrt/locale.c:731 */
+WINAPI struct MSVCRT_lconv* wine32b_msvcrt_localeconv(void) /* ../dlls/msvcrt/locale.c:731 */
 {
+	struct MSVCRT_lconv* return_value;
 	TRACE("Enter localeconv\n");
-	return plocaleconv();
+	return_value = plocaleconv();
+	TRACE("Leave localeconv\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_localeconv(void);  /* ../dlls/msvcrt/locale.c:731 */
@@ -25280,10 +27899,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_localeconv,
 	"ret \n"
 )
 
-extern WINAPI struct MSVCRT_tm* wine32b_msvcrt_localtime(MSVCRT___time64_t*  secs) /* ../dlls/msvcrt/time.c:462 */
+WINAPI struct MSVCRT_tm* wine32b_msvcrt_localtime(MSVCRT___time64_t*  secs) /* ../dlls/msvcrt/time.c:462 */
 {
+	struct MSVCRT_tm* return_value;
 	TRACE("Enter localtime\n");
-	return plocaltime(secs);
+	return_value = plocaltime(secs);
+	TRACE("Leave localtime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_localtime(void);  /* ../dlls/msvcrt/time.c:462 */
@@ -25305,10 +27927,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_localtime,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_log(double  x) /* ../dlls/msvcrt/math.c:498 */
+WINAPI double wine32b_msvcrt_log(double  x) /* ../dlls/msvcrt/math.c:498 */
 {
+	double return_value;
 	TRACE("Enter log\n");
-	return plog(x);
+	return_value = plog(x);
+	TRACE("Leave log\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_log(void);  /* ../dlls/msvcrt/math.c:498 */
@@ -25330,10 +27955,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_log,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_log10(double  x) /* ../dlls/msvcrt/math.c:509 */
+WINAPI double wine32b_msvcrt_log10(double  x) /* ../dlls/msvcrt/math.c:509 */
 {
+	double return_value;
 	TRACE("Enter log10\n");
-	return plog10(x);
+	return_value = plog10(x);
+	TRACE("Leave log10\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_log10(void);  /* ../dlls/msvcrt/math.c:509 */
@@ -25355,10 +27983,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_log10,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_logf(float  x) /* ../dlls/msvcrt/math.c:284 */
+WINAPI float wine32b_msvcrt_logf(float  x) /* ../dlls/msvcrt/math.c:284 */
 {
+	float return_value;
 	TRACE("Enter logf\n");
-	return plogf(x);
+	return_value = plogf(x);
+	TRACE("Leave logf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_logf(void);  /* ../dlls/msvcrt/math.c:284 */
@@ -25380,10 +28011,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_logf,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_log10f(float  x) /* ../dlls/msvcrt/math.c:295 */
+WINAPI float wine32b_msvcrt_log10f(float  x) /* ../dlls/msvcrt/math.c:295 */
 {
+	float return_value;
 	TRACE("Enter log10f\n");
-	return plog10f(x);
+	return_value = plog10f(x);
+	TRACE("Leave log10f\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_log10f(void);  /* ../dlls/msvcrt/math.c:295 */
@@ -25405,10 +28039,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_log10f,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt_malloc(MSVCRT_size_t  size) /* ../dlls/msvcrt/heap.c:442 */
+WINAPI void* wine32b_msvcrt_malloc(MSVCRT_size_t  size) /* ../dlls/msvcrt/heap.c:442 */
 {
+	void* return_value;
 	TRACE("Enter malloc\n");
-	return pmalloc(size);
+	return_value = pmalloc(size);
+	TRACE("Leave malloc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_malloc(void);  /* ../dlls/msvcrt/heap.c:442 */
@@ -25430,10 +28067,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_malloc,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_mblen(char*  str, MSVCRT_size_t  size) /* ../dlls/msvcrt/mbcs.c:2155 */
+WINAPI int wine32b_msvcrt_mblen(char*  str, MSVCRT_size_t  size) /* ../dlls/msvcrt/mbcs.c:2155 */
 {
+	int return_value;
 	TRACE("Enter mblen\n");
-	return pmblen(str, size);
+	return_value = pmblen(str, size);
+	TRACE("Leave mblen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_mblen(void);  /* ../dlls/msvcrt/mbcs.c:2155 */
@@ -25456,10 +28096,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_mblen,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt_mbrlen(char*  str, MSVCRT_size_t  len, MSVCRT_mbstate_t*  state) /* ../dlls/msvcrt/mbcs.c:2170 */
+WINAPI MSVCRT_size_t wine32b_msvcrt_mbrlen(char*  str, MSVCRT_size_t  len, MSVCRT_mbstate_t*  state) /* ../dlls/msvcrt/mbcs.c:2170 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter mbrlen\n");
-	return pmbrlen(str, len, state);
+	return_value = pmbrlen(str, len, state);
+	TRACE("Leave mbrlen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_mbrlen(void);  /* ../dlls/msvcrt/mbcs.c:2170 */
@@ -25483,10 +28126,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_mbrlen,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt_mbrtowc(MSVCRT_wchar_t*  dst, char*  str, MSVCRT_size_t  n, MSVCRT_mbstate_t*  state) /* ../dlls/msvcrt/mbcs.c:2281 */
+WINAPI MSVCRT_size_t wine32b_msvcrt_mbrtowc(MSVCRT_wchar_t*  dst, char*  str, MSVCRT_size_t  n, MSVCRT_mbstate_t*  state) /* ../dlls/msvcrt/mbcs.c:2281 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter mbrtowc\n");
-	return pmbrtowc(dst, str, n, state);
+	return_value = pmbrtowc(dst, str, n, state);
+	TRACE("Leave mbrtowc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_mbrtowc(void);  /* ../dlls/msvcrt/mbcs.c:2281 */
@@ -25511,10 +28157,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_mbrtowc,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt_mbsrtowcs(MSVCRT_wchar_t*  wcstr, char**  pmbstr, MSVCRT_size_t  count, MSVCRT_mbstate_t*  state) /* ../dlls/msvcrt/mbcs.c:2447 */
+WINAPI MSVCRT_size_t wine32b_msvcrt_mbsrtowcs(MSVCRT_wchar_t*  wcstr, char**  pmbstr, MSVCRT_size_t  count, MSVCRT_mbstate_t*  state) /* ../dlls/msvcrt/mbcs.c:2447 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter mbsrtowcs\n");
-	return pmbsrtowcs(wcstr, pmbstr, count, state);
+	return_value = pmbsrtowcs(wcstr, pmbstr, count, state);
+	TRACE("Leave mbsrtowcs\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_mbsrtowcs(void);  /* ../dlls/msvcrt/mbcs.c:2447 */
@@ -25539,10 +28188,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_mbsrtowcs,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_mbsrtowcs_s(MSVCRT_size_t*  ret, MSVCRT_wchar_t*  wcstr, MSVCRT_size_t  len, char**  mbstr, MSVCRT_size_t  count, MSVCRT_mbstate_t*  state) /* ../dlls/msvcrt/mbcs.c:2482 */
+WINAPI int wine32b_msvcrt_mbsrtowcs_s(MSVCRT_size_t*  ret, MSVCRT_wchar_t*  wcstr, MSVCRT_size_t  len, char**  mbstr, MSVCRT_size_t  count, MSVCRT_mbstate_t*  state) /* ../dlls/msvcrt/mbcs.c:2482 */
 {
+	int return_value;
 	TRACE("Enter mbsrtowcs_s\n");
-	return pmbsrtowcs_s(ret, wcstr, len, mbstr, count, state);
+	return_value = pmbsrtowcs_s(ret, wcstr, len, mbstr, count, state);
+	TRACE("Leave mbsrtowcs_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_mbsrtowcs_s(void);  /* ../dlls/msvcrt/mbcs.c:2482 */
@@ -25567,10 +28219,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_mbsrtowcs_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt_mbstowcs(MSVCRT_wchar_t*  wcstr, char*  mbstr, MSVCRT_size_t  count) /* ../dlls/msvcrt/mbcs.c:2385 */
+WINAPI MSVCRT_size_t wine32b_msvcrt_mbstowcs(MSVCRT_wchar_t*  wcstr, char*  mbstr, MSVCRT_size_t  count) /* ../dlls/msvcrt/mbcs.c:2385 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter mbstowcs\n");
-	return pmbstowcs(wcstr, mbstr, count);
+	return_value = pmbstowcs(wcstr, mbstr, count);
+	TRACE("Leave mbstowcs\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_mbstowcs(void);  /* ../dlls/msvcrt/mbcs.c:2385 */
@@ -25594,10 +28249,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_mbstowcs,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_mbstowcs_s(MSVCRT_size_t*  ret, MSVCRT_wchar_t*  wcstr, MSVCRT_size_t  size, char*  mbstr, MSVCRT_size_t  count) /* ../dlls/msvcrt/mbcs.c:2438 */
+WINAPI int wine32b_msvcrt_mbstowcs_s(MSVCRT_size_t*  ret, MSVCRT_wchar_t*  wcstr, MSVCRT_size_t  size, char*  mbstr, MSVCRT_size_t  count) /* ../dlls/msvcrt/mbcs.c:2438 */
 {
+	int return_value;
 	TRACE("Enter mbstowcs_s\n");
-	return pmbstowcs_s(ret, wcstr, size, mbstr, count);
+	return_value = pmbstowcs_s(ret, wcstr, size, mbstr, count);
+	TRACE("Leave mbstowcs_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_mbstowcs_s(void);  /* ../dlls/msvcrt/mbcs.c:2438 */
@@ -25622,10 +28280,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_mbstowcs_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_mbtowc(MSVCRT_wchar_t*  dst, char*  str, MSVCRT_size_t  n) /* ../dlls/msvcrt/mbcs.c:2273 */
+WINAPI int wine32b_msvcrt_mbtowc(MSVCRT_wchar_t*  dst, char*  str, MSVCRT_size_t  n) /* ../dlls/msvcrt/mbcs.c:2273 */
 {
+	int return_value;
 	TRACE("Enter mbtowc\n");
-	return pmbtowc(dst, str, n);
+	return_value = pmbtowc(dst, str, n);
+	TRACE("Leave mbtowc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_mbtowc(void);  /* ../dlls/msvcrt/mbcs.c:2273 */
@@ -25649,10 +28310,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_mbtowc,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt_memchr(void*  ptr, int  c, MSVCRT_size_t  n) /* ../dlls/msvcrt/string.c:1936 */
+WINAPI void* wine32b_msvcrt_memchr(void*  ptr, int  c, MSVCRT_size_t  n) /* ../dlls/msvcrt/string.c:1936 */
 {
+	void* return_value;
 	TRACE("Enter memchr\n");
-	return pmemchr(ptr, c, n);
+	return_value = pmemchr(ptr, c, n);
+	TRACE("Leave memchr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_memchr(void);  /* ../dlls/msvcrt/string.c:1936 */
@@ -25676,10 +28340,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_memchr,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_memcmp(void*  ptr1, void*  ptr2, MSVCRT_size_t  n) /* ../dlls/msvcrt/string.c:1888 */
+WINAPI int wine32b_msvcrt_memcmp(void*  ptr1, void*  ptr2, MSVCRT_size_t  n) /* ../dlls/msvcrt/string.c:1888 */
 {
+	int return_value;
 	TRACE("Enter memcmp\n");
-	return pmemcmp(ptr1, ptr2, n);
+	return_value = pmemcmp(ptr1, ptr2, n);
+	TRACE("Leave memcmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_memcmp(void);  /* ../dlls/msvcrt/string.c:1888 */
@@ -25703,10 +28370,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_memcmp,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt_memcpy(void*  dst, void*  src, MSVCRT_size_t  n) /* ../dlls/msvcrt/string.c:1896 */
+WINAPI void* wine32b_msvcrt_memcpy(void*  dst, void*  src, MSVCRT_size_t  n) /* ../dlls/msvcrt/string.c:1896 */
 {
+	void* return_value;
 	TRACE("Enter memcpy\n");
-	return pmemcpy(dst, src, n);
+	return_value = pmemcpy(dst, src, n);
+	TRACE("Leave memcpy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_memcpy(void);  /* ../dlls/msvcrt/string.c:1896 */
@@ -25730,10 +28400,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_memcpy,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_memcpy_s(void*  dest, MSVCRT_size_t  numberOfElements, void*  src, MSVCRT_size_t  count) /* ../dlls/msvcrt/heap.c:783 */
+WINAPI int wine32b_msvcrt_memcpy_s(void*  dest, MSVCRT_size_t  numberOfElements, void*  src, MSVCRT_size_t  count) /* ../dlls/msvcrt/heap.c:783 */
 {
+	int return_value;
 	TRACE("Enter memcpy_s\n");
-	return pmemcpy_s(dest, numberOfElements, src, count);
+	return_value = pmemcpy_s(dest, numberOfElements, src, count);
+	TRACE("Leave memcpy_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_memcpy_s(void);  /* ../dlls/msvcrt/heap.c:783 */
@@ -25758,10 +28431,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_memcpy_s,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt_memmove(void*  dst, void*  src, MSVCRT_size_t  n) /* ../dlls/msvcrt/string.c:1904 */
+WINAPI void* wine32b_msvcrt_memmove(void*  dst, void*  src, MSVCRT_size_t  n) /* ../dlls/msvcrt/string.c:1904 */
 {
+	void* return_value;
 	TRACE("Enter memmove\n");
-	return pmemmove(dst, src, n);
+	return_value = pmemmove(dst, src, n);
+	TRACE("Leave memmove\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_memmove(void);  /* ../dlls/msvcrt/string.c:1904 */
@@ -25785,10 +28461,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_memmove,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_memmove_s(void*  dest, MSVCRT_size_t  numberOfElements, void*  src, MSVCRT_size_t  count) /* ../dlls/msvcrt/heap.c:740 */
+WINAPI int wine32b_msvcrt_memmove_s(void*  dest, MSVCRT_size_t  numberOfElements, void*  src, MSVCRT_size_t  count) /* ../dlls/msvcrt/heap.c:740 */
 {
+	int return_value;
 	TRACE("Enter memmove_s\n");
-	return pmemmove_s(dest, numberOfElements, src, count);
+	return_value = pmemmove_s(dest, numberOfElements, src, count);
+	TRACE("Leave memmove_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_memmove_s(void);  /* ../dlls/msvcrt/heap.c:740 */
@@ -25813,10 +28492,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_memmove_s,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt_memset(void*  dst, int  c, MSVCRT_size_t  n) /* ../dlls/msvcrt/string.c:1912 */
+WINAPI void* wine32b_msvcrt_memset(void*  dst, int  c, MSVCRT_size_t  n) /* ../dlls/msvcrt/string.c:1912 */
 {
+	void* return_value;
 	TRACE("Enter memset\n");
-	return pmemset(dst, c, n);
+	return_value = pmemset(dst, c, n);
+	TRACE("Leave memset\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_memset(void);  /* ../dlls/msvcrt/string.c:1912 */
@@ -25840,10 +28522,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_memset,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT___time64_t wine32b_msvcrt_mktime(struct MSVCRT_tm*  mstm) /* ../dlls/msvcrt/time.c:316 */
+WINAPI MSVCRT___time64_t wine32b_msvcrt_mktime(struct MSVCRT_tm*  mstm) /* ../dlls/msvcrt/time.c:316 */
 {
+	MSVCRT___time64_t return_value;
 	TRACE("Enter mktime\n");
-	return pmktime(mstm);
+	return_value = pmktime(mstm);
+	TRACE("Leave mktime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_mktime(void);  /* ../dlls/msvcrt/time.c:316 */
@@ -25865,10 +28550,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_mktime,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_modf(double  x, double*  iptr) /* ../dlls/msvcrt/math.c:917 */
+WINAPI double wine32b_msvcrt_modf(double  x, double*  iptr) /* ../dlls/msvcrt/math.c:917 */
 {
+	double return_value;
 	TRACE("Enter modf\n");
-	return pmodf(x, iptr);
+	return_value = pmodf(x, iptr);
+	TRACE("Leave modf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_modf(void);  /* ../dlls/msvcrt/math.c:917 */
@@ -25891,10 +28579,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_modf,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_modff(float  x, float*  iptr) /* ../dlls/msvcrt/math.c:401 */
+WINAPI float wine32b_msvcrt_modff(float  x, float*  iptr) /* ../dlls/msvcrt/math.c:401 */
 {
+	float return_value;
 	TRACE("Enter modff\n");
-	return pmodff(x, iptr);
+	return_value = pmodff(x, iptr);
+	TRACE("Leave modff\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_modff(void);  /* ../dlls/msvcrt/math.c:401 */
@@ -25917,10 +28608,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_modff,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt_perror(char*  str) /* ../dlls/msvcrt/errno.c:336 */
+WINAPI void wine32b_msvcrt_perror(char*  str) /* ../dlls/msvcrt/errno.c:336 */
 {
 	TRACE("Enter perror\n");
-	return pperror(str);
+	pperror(str);
+	TRACE("Leave perror\n");
 }
 
 extern WINAPI void wine32a_msvcrt_perror(void);  /* ../dlls/msvcrt/errno.c:336 */
@@ -25942,10 +28634,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_perror,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_pow(double  x, double  y) /* ../dlls/msvcrt/math.c:520 */
+WINAPI double wine32b_msvcrt_pow(double  x, double  y) /* ../dlls/msvcrt/math.c:520 */
 {
+	double return_value;
 	TRACE("Enter pow\n");
-	return ppow(x, y);
+	return_value = ppow(x, y);
+	TRACE("Leave pow\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_pow(void);  /* ../dlls/msvcrt/math.c:520 */
@@ -25968,10 +28663,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_pow,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_powf(float  x, float  y) /* ../dlls/msvcrt/math.c:306 */
+WINAPI float wine32b_msvcrt_powf(float  x, float  y) /* ../dlls/msvcrt/math.c:306 */
 {
+	float return_value;
 	TRACE("Enter powf\n");
-	return ppowf(x, y);
+	return_value = ppowf(x, y);
+	TRACE("Leave powf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_powf(void);  /* ../dlls/msvcrt/math.c:306 */
@@ -25994,10 +28692,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_powf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_printf(char*  format) /* ../dlls/msvcrt/file.c:5493 */
+WINAPI int wine32b_msvcrt_printf(char*  format) /* ../dlls/msvcrt/file.c:5493 */
 {
+	int return_value;
 	TRACE("Enter printf\n");
-	return pprintf(format);
+	return_value = pprintf(format);
+	TRACE("Leave printf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_printf(void);  /* ../dlls/msvcrt/file.c:5493 */
@@ -26019,10 +28720,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_printf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_printf_s(char*  format) /* ../dlls/msvcrt/file.c:5506 */
+WINAPI int wine32b_msvcrt_printf_s(char*  format) /* ../dlls/msvcrt/file.c:5506 */
 {
+	int return_value;
 	TRACE("Enter printf_s\n");
-	return pprintf_s(format);
+	return_value = pprintf_s(format);
+	TRACE("Leave printf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_printf_s(void);  /* ../dlls/msvcrt/file.c:5506 */
@@ -26044,10 +28748,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_printf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_putc(int  c, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4806 */
+WINAPI int wine32b_msvcrt_putc(int  c, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:4806 */
 {
+	int return_value;
 	TRACE("Enter putc\n");
-	return pputc(c, file);
+	return_value = pputc(c, file);
+	TRACE("Leave putc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_putc(void);  /* ../dlls/msvcrt/file.c:4806 */
@@ -26070,10 +28777,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_putc,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_putchar(int  c) /* ../dlls/msvcrt/file.c:4814 */
+WINAPI int wine32b_msvcrt_putchar(int  c) /* ../dlls/msvcrt/file.c:4814 */
 {
+	int return_value;
 	TRACE("Enter putchar\n");
-	return pputchar(c);
+	return_value = pputchar(c);
+	TRACE("Leave putchar\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_putchar(void);  /* ../dlls/msvcrt/file.c:4814 */
@@ -26095,10 +28805,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_putchar,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_puts(char*  s) /* ../dlls/msvcrt/file.c:4822 */
+WINAPI int wine32b_msvcrt_puts(char*  s) /* ../dlls/msvcrt/file.c:4822 */
 {
+	int return_value;
 	TRACE("Enter puts\n");
-	return pputs(s);
+	return_value = pputs(s);
+	TRACE("Leave puts\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_puts(void);  /* ../dlls/msvcrt/file.c:4822 */
@@ -26120,10 +28833,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_puts,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt_qsort(void*  base, MSVCRT_size_t  nmemb, MSVCRT_size_t  size, int (* compar) (void)) /* ../dlls/msvcrt/misc.c:391 */
+WINAPI void wine32b_msvcrt_qsort(void*  base, MSVCRT_size_t  nmemb, MSVCRT_size_t  size, int (* compar) (void)) /* ../dlls/msvcrt/misc.c:391 */
 {
 	TRACE("Enter qsort\n");
-	return pqsort(base, nmemb, size, compar);
+	pqsort(base, nmemb, size, compar);
+	TRACE("Leave qsort\n");
 }
 
 extern WINAPI void wine32a_msvcrt_qsort(void);  /* ../dlls/msvcrt/misc.c:391 */
@@ -26148,10 +28862,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_qsort,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt_qsort_s(void*  base, MSVCRT_size_t  nmemb, MSVCRT_size_t  size, int (* compar) (void), void*  context) /* ../dlls/msvcrt/misc.c:373 */
+WINAPI void wine32b_msvcrt_qsort_s(void*  base, MSVCRT_size_t  nmemb, MSVCRT_size_t  size, int (* compar) (void), void*  context) /* ../dlls/msvcrt/misc.c:373 */
 {
 	TRACE("Enter qsort_s\n");
-	return pqsort_s(base, nmemb, size, compar, context);
+	pqsort_s(base, nmemb, size, compar, context);
+	TRACE("Leave qsort_s\n");
 }
 
 extern WINAPI void wine32a_msvcrt_qsort_s(void);  /* ../dlls/msvcrt/misc.c:373 */
@@ -26176,10 +28891,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_qsort_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_raise(int  sig) /* ../dlls/msvcrt/except.c:225 */
+WINAPI int wine32b_msvcrt_raise(int  sig) /* ../dlls/msvcrt/except.c:225 */
 {
+	int return_value;
 	TRACE("Enter raise\n");
-	return praise(sig);
+	return_value = praise(sig);
+	TRACE("Leave raise\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_raise(void);  /* ../dlls/msvcrt/except.c:225 */
@@ -26201,10 +28919,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_raise,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_rand(void) /* ../dlls/msvcrt/misc.c:57 */
+WINAPI int wine32b_msvcrt_rand(void) /* ../dlls/msvcrt/misc.c:57 */
 {
+	int return_value;
 	TRACE("Enter rand\n");
-	return prand();
+	return_value = prand();
+	TRACE("Leave rand\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_rand(void);  /* ../dlls/msvcrt/misc.c:57 */
@@ -26225,10 +28946,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_rand,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_rand_s(unsigned int*  pval) /* ../dlls/msvcrt/misc.c:70 */
+WINAPI int wine32b_msvcrt_rand_s(unsigned int*  pval) /* ../dlls/msvcrt/misc.c:70 */
 {
+	int return_value;
 	TRACE("Enter rand_s\n");
-	return prand_s(pval);
+	return_value = prand_s(pval);
+	TRACE("Leave rand_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_rand_s(void);  /* ../dlls/msvcrt/misc.c:70 */
@@ -26250,10 +28974,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_rand_s,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_msvcrt_realloc(void*  ptr, MSVCRT_size_t  size) /* ../dlls/msvcrt/heap.c:463 */
+WINAPI void* wine32b_msvcrt_realloc(void*  ptr, MSVCRT_size_t  size) /* ../dlls/msvcrt/heap.c:463 */
 {
+	void* return_value;
 	TRACE("Enter realloc\n");
-	return prealloc(ptr, size);
+	return_value = prealloc(ptr, size);
+	TRACE("Leave realloc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_realloc(void);  /* ../dlls/msvcrt/heap.c:463 */
@@ -26276,10 +29003,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_realloc,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_remove(char*  path) /* ../dlls/msvcrt/file.c:4861 */
+WINAPI int wine32b_msvcrt_remove(char*  path) /* ../dlls/msvcrt/file.c:4861 */
 {
+	int return_value;
 	TRACE("Enter remove\n");
-	return premove(path);
+	return_value = premove(path);
+	TRACE("Leave remove\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_remove(void);  /* ../dlls/msvcrt/file.c:4861 */
@@ -26301,10 +29031,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_remove,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_rename(char*  oldpath, char*  newpath) /* ../dlls/msvcrt/file.c:4887 */
+WINAPI int wine32b_msvcrt_rename(char*  oldpath, char*  newpath) /* ../dlls/msvcrt/file.c:4887 */
 {
+	int return_value;
 	TRACE("Enter rename\n");
-	return prename(oldpath, newpath);
+	return_value = prename(oldpath, newpath);
+	TRACE("Leave rename\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_rename(void);  /* ../dlls/msvcrt/file.c:4887 */
@@ -26327,10 +29060,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_rename,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt_rewind(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:1524 */
+WINAPI void wine32b_msvcrt_rewind(MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:1524 */
 {
 	TRACE("Enter rewind\n");
-	return prewind(file);
+	prewind(file);
+	TRACE("Leave rewind\n");
 }
 
 extern WINAPI void wine32a_msvcrt_rewind(void);  /* ../dlls/msvcrt/file.c:1524 */
@@ -26352,10 +29086,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_rewind,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_scanf(char*  format) /* ../dlls/msvcrt/scanf.c:209 */
+WINAPI int wine32b_msvcrt_scanf(char*  format) /* ../dlls/msvcrt/scanf.c:209 */
 {
+	int return_value;
 	TRACE("Enter scanf\n");
-	return pscanf(format);
+	return_value = pscanf(format);
+	TRACE("Leave scanf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_scanf(void);  /* ../dlls/msvcrt/scanf.c:209 */
@@ -26377,10 +29114,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_scanf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_scanf_s(char*  format) /* ../dlls/msvcrt/scanf.c:237 */
+WINAPI int wine32b_msvcrt_scanf_s(char*  format) /* ../dlls/msvcrt/scanf.c:237 */
 {
+	int return_value;
 	TRACE("Enter scanf_s\n");
-	return pscanf_s(format);
+	return_value = pscanf_s(format);
+	TRACE("Leave scanf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_scanf_s(void);  /* ../dlls/msvcrt/scanf.c:237 */
@@ -26402,10 +29142,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_scanf_s,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt_setbuf(MSVCRT_FILE*  file, char*  buf) /* ../dlls/msvcrt/file.c:4953 */
+WINAPI void wine32b_msvcrt_setbuf(MSVCRT_FILE*  file, char*  buf) /* ../dlls/msvcrt/file.c:4953 */
 {
 	TRACE("Enter setbuf\n");
-	return psetbuf(file, buf);
+	psetbuf(file, buf);
+	TRACE("Leave setbuf\n");
 }
 
 extern WINAPI void wine32a_msvcrt_setbuf(void);  /* ../dlls/msvcrt/file.c:4953 */
@@ -26428,10 +29169,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_setbuf,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt_setlocale(int  category, char*  locale) /* ../dlls/msvcrt/locale.c:1761 */
+WINAPI char* wine32b_msvcrt_setlocale(int  category, char*  locale) /* ../dlls/msvcrt/locale.c:1761 */
 {
+	char* return_value;
 	TRACE("Enter setlocale\n");
-	return psetlocale(category, locale);
+	return_value = psetlocale(category, locale);
+	TRACE("Leave setlocale\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_setlocale(void);  /* ../dlls/msvcrt/locale.c:1761 */
@@ -26454,10 +29198,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_setlocale,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_setvbuf(MSVCRT_FILE*  file, char*  buf, int  mode, MSVCRT_size_t  size) /* ../dlls/msvcrt/file.c:4913 */
+WINAPI int wine32b_msvcrt_setvbuf(MSVCRT_FILE*  file, char*  buf, int  mode, MSVCRT_size_t  size) /* ../dlls/msvcrt/file.c:4913 */
 {
+	int return_value;
 	TRACE("Enter setvbuf\n");
-	return psetvbuf(file, buf, mode, size);
+	return_value = psetvbuf(file, buf, mode, size);
+	TRACE("Leave setvbuf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_setvbuf(void);  /* ../dlls/msvcrt/file.c:4913 */
@@ -26482,10 +29229,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_setvbuf,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT___sighandler_t wine32b_msvcrt_signal(int  sig, MSVCRT___sighandler_t  func) /* ../dlls/msvcrt/except.c:193 */
+WINAPI MSVCRT___sighandler_t wine32b_msvcrt_signal(int  sig, MSVCRT___sighandler_t  func) /* ../dlls/msvcrt/except.c:193 */
 {
+	MSVCRT___sighandler_t return_value;
 	TRACE("Enter signal\n");
-	return psignal(sig, func);
+	return_value = psignal(sig, func);
+	TRACE("Leave signal\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_signal(void);  /* ../dlls/msvcrt/except.c:193 */
@@ -26508,10 +29258,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_signal,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_sin(double  x) /* ../dlls/msvcrt/math.c:533 */
+WINAPI double wine32b_msvcrt_sin(double  x) /* ../dlls/msvcrt/math.c:533 */
 {
+	double return_value;
 	TRACE("Enter sin\n");
-	return psin(x);
+	return_value = psin(x);
+	TRACE("Leave sin\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_sin(void);  /* ../dlls/msvcrt/math.c:533 */
@@ -26533,10 +29286,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_sin,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_sinh(double  x) /* ../dlls/msvcrt/math.c:543 */
+WINAPI double wine32b_msvcrt_sinh(double  x) /* ../dlls/msvcrt/math.c:543 */
 {
+	double return_value;
 	TRACE("Enter sinh\n");
-	return psinh(x);
+	return_value = psinh(x);
+	TRACE("Leave sinh\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_sinh(void);  /* ../dlls/msvcrt/math.c:543 */
@@ -26558,10 +29314,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_sinh,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_sinf(float  x) /* ../dlls/msvcrt/math.c:319 */
+WINAPI float wine32b_msvcrt_sinf(float  x) /* ../dlls/msvcrt/math.c:319 */
 {
+	float return_value;
 	TRACE("Enter sinf\n");
-	return psinf(x);
+	return_value = psinf(x);
+	TRACE("Leave sinf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_sinf(void);  /* ../dlls/msvcrt/math.c:319 */
@@ -26583,10 +29342,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_sinf,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_sinhf(float  x) /* ../dlls/msvcrt/math.c:329 */
+WINAPI float wine32b_msvcrt_sinhf(float  x) /* ../dlls/msvcrt/math.c:329 */
 {
+	float return_value;
 	TRACE("Enter sinhf\n");
-	return psinhf(x);
+	return_value = psinhf(x);
+	TRACE("Leave sinhf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_sinhf(void);  /* ../dlls/msvcrt/math.c:329 */
@@ -26608,10 +29370,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_sinhf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_sprintf(char*  str, char*  format) /* ../dlls/msvcrt/wcs.c:1368 */
+WINAPI int wine32b_msvcrt_sprintf(char*  str, char*  format) /* ../dlls/msvcrt/wcs.c:1368 */
 {
+	int return_value;
 	TRACE("Enter sprintf\n");
-	return psprintf(str, format);
+	return_value = psprintf(str, format);
+	TRACE("Leave sprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_sprintf(void);  /* ../dlls/msvcrt/wcs.c:1368 */
@@ -26634,10 +29399,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_sprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_sprintf_s(char*  str, MSVCRT_size_t  num, char*  format) /* ../dlls/msvcrt/wcs.c:1382 */
+WINAPI int wine32b_msvcrt_sprintf_s(char*  str, MSVCRT_size_t  num, char*  format) /* ../dlls/msvcrt/wcs.c:1382 */
 {
+	int return_value;
 	TRACE("Enter sprintf_s\n");
-	return psprintf_s(str, num, format);
+	return_value = psprintf_s(str, num, format);
+	TRACE("Leave sprintf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_sprintf_s(void);  /* ../dlls/msvcrt/wcs.c:1382 */
@@ -26661,10 +29429,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_sprintf_s,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_sqrt(double  x) /* ../dlls/msvcrt/math.c:553 */
+WINAPI double wine32b_msvcrt_sqrt(double  x) /* ../dlls/msvcrt/math.c:553 */
 {
+	double return_value;
 	TRACE("Enter sqrt\n");
-	return psqrt(x);
+	return_value = psqrt(x);
+	TRACE("Leave sqrt\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_sqrt(void);  /* ../dlls/msvcrt/math.c:553 */
@@ -26686,10 +29457,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_sqrt,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_sqrtf(float  x) /* ../dlls/msvcrt/math.c:339 */
+WINAPI float wine32b_msvcrt_sqrtf(float  x) /* ../dlls/msvcrt/math.c:339 */
 {
+	float return_value;
 	TRACE("Enter sqrtf\n");
-	return psqrtf(x);
+	return_value = psqrtf(x);
+	TRACE("Leave sqrtf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_sqrtf(void);  /* ../dlls/msvcrt/math.c:339 */
@@ -26711,10 +29485,11 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_sqrtf,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_msvcrt_srand(unsigned int  seed) /* ../dlls/msvcrt/misc.c:48 */
+WINAPI void wine32b_msvcrt_srand(unsigned int  seed) /* ../dlls/msvcrt/misc.c:48 */
 {
 	TRACE("Enter srand\n");
-	return psrand(seed);
+	psrand(seed);
+	TRACE("Leave srand\n");
 }
 
 extern WINAPI void wine32a_msvcrt_srand(void);  /* ../dlls/msvcrt/misc.c:48 */
@@ -26736,10 +29511,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_srand,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_sscanf(char*  str, char*  format) /* ../dlls/msvcrt/scanf.c:381 */
+WINAPI int wine32b_msvcrt_sscanf(char*  str, char*  format) /* ../dlls/msvcrt/scanf.c:381 */
 {
+	int return_value;
 	TRACE("Enter sscanf\n");
-	return psscanf(str, format);
+	return_value = psscanf(str, format);
+	TRACE("Leave sscanf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_sscanf(void);  /* ../dlls/msvcrt/scanf.c:381 */
@@ -26762,10 +29540,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_sscanf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_sscanf_s(char*  str, char*  format) /* ../dlls/msvcrt/scanf.c:410 */
+WINAPI int wine32b_msvcrt_sscanf_s(char*  str, char*  format) /* ../dlls/msvcrt/scanf.c:410 */
 {
+	int return_value;
 	TRACE("Enter sscanf_s\n");
-	return psscanf_s(str, format);
+	return_value = psscanf_s(str, format);
+	TRACE("Leave sscanf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_sscanf_s(void);  /* ../dlls/msvcrt/scanf.c:410 */
@@ -26788,10 +29569,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_sscanf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_strcat_s(char*  dst, MSVCRT_size_t  elem, char*  src) /* ../dlls/msvcrt/string.c:761 */
+WINAPI int wine32b_msvcrt_strcat_s(char*  dst, MSVCRT_size_t  elem, char*  src) /* ../dlls/msvcrt/string.c:761 */
 {
+	int return_value;
 	TRACE("Enter strcat_s\n");
-	return pstrcat_s(dst, elem, src);
+	return_value = pstrcat_s(dst, elem, src);
+	TRACE("Leave strcat_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strcat_s(void);  /* ../dlls/msvcrt/string.c:761 */
@@ -26815,10 +29599,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strcat_s,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt_strchr(char*  str, int  c) /* ../dlls/msvcrt/string.c:1920 */
+WINAPI char* wine32b_msvcrt_strchr(char*  str, int  c) /* ../dlls/msvcrt/string.c:1920 */
 {
+	char* return_value;
 	TRACE("Enter strchr\n");
-	return pstrchr(str, c);
+	return_value = pstrchr(str, c);
+	TRACE("Leave strchr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strchr(void);  /* ../dlls/msvcrt/string.c:1920 */
@@ -26841,10 +29628,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strchr,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_strcmp(char*  str1, char*  str2) /* ../dlls/msvcrt/string.c:1944 */
+WINAPI int wine32b_msvcrt_strcmp(char*  str1, char*  str2) /* ../dlls/msvcrt/string.c:1944 */
 {
+	int return_value;
 	TRACE("Enter strcmp\n");
-	return pstrcmp(str1, str2);
+	return_value = pstrcmp(str1, str2);
+	TRACE("Leave strcmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strcmp(void);  /* ../dlls/msvcrt/string.c:1944 */
@@ -26867,10 +29657,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strcmp,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_strcoll(char*  str1, char*  str2) /* ../dlls/msvcrt/string.c:626 */
+WINAPI int wine32b_msvcrt_strcoll(char*  str1, char*  str2) /* ../dlls/msvcrt/string.c:626 */
 {
+	int return_value;
 	TRACE("Enter strcoll\n");
-	return pstrcoll(str1, str2);
+	return_value = pstrcoll(str1, str2);
+	TRACE("Leave strcoll\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strcoll(void);  /* ../dlls/msvcrt/string.c:626 */
@@ -26893,10 +29686,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strcoll,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt_strcpy(char*  dst, char*  src) /* ../dlls/msvcrt/string.c:729 */
+WINAPI char* wine32b_msvcrt_strcpy(char*  dst, char*  src) /* ../dlls/msvcrt/string.c:729 */
 {
+	char* return_value;
 	TRACE("Enter strcpy\n");
-	return pstrcpy(dst, src);
+	return_value = pstrcpy(dst, src);
+	TRACE("Leave strcpy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strcpy(void);  /* ../dlls/msvcrt/string.c:729 */
@@ -26919,10 +29715,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strcpy,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_strcpy_s(char*  dst, MSVCRT_size_t  elem, char*  src) /* ../dlls/msvcrt/string.c:739 */
+WINAPI int wine32b_msvcrt_strcpy_s(char*  dst, MSVCRT_size_t  elem, char*  src) /* ../dlls/msvcrt/string.c:739 */
 {
+	int return_value;
 	TRACE("Enter strcpy_s\n");
-	return pstrcpy_s(dst, elem, src);
+	return_value = pstrcpy_s(dst, elem, src);
+	TRACE("Leave strcpy_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strcpy_s(void);  /* ../dlls/msvcrt/string.c:739 */
@@ -26946,10 +29745,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strcpy_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt_strcspn(char*  str, char*  reject) /* ../dlls/msvcrt/string.c:2048 */
+WINAPI MSVCRT_size_t wine32b_msvcrt_strcspn(char*  str, char*  reject) /* ../dlls/msvcrt/string.c:2048 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter strcspn\n");
-	return pstrcspn(str, reject);
+	return_value = pstrcspn(str, reject);
+	TRACE("Leave strcspn\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strcspn(void);  /* ../dlls/msvcrt/string.c:2048 */
@@ -26972,10 +29774,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strcspn,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt_strerror(int  err) /* ../dlls/msvcrt/errno.c:272 */
+WINAPI char* wine32b_msvcrt_strerror(int  err) /* ../dlls/msvcrt/errno.c:272 */
 {
+	char* return_value;
 	TRACE("Enter strerror\n");
-	return pstrerror(err);
+	return_value = pstrerror(err);
+	TRACE("Leave strerror\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strerror(void);  /* ../dlls/msvcrt/errno.c:272 */
@@ -26997,10 +29802,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strerror,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_strerror_s(char*  buffer, MSVCRT_size_t  numberOfElements, int  errnum) /* ../dlls/msvcrt/errno.c:287 */
+WINAPI int wine32b_msvcrt_strerror_s(char*  buffer, MSVCRT_size_t  numberOfElements, int  errnum) /* ../dlls/msvcrt/errno.c:287 */
 {
+	int return_value;
 	TRACE("Enter strerror_s\n");
-	return pstrerror_s(buffer, numberOfElements, errnum);
+	return_value = pstrerror_s(buffer, numberOfElements, errnum);
+	TRACE("Leave strerror_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strerror_s(void);  /* ../dlls/msvcrt/errno.c:287 */
@@ -27024,10 +29832,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strerror_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt_strftime(char*  str, MSVCRT_size_t  max, char*  format, struct MSVCRT_tm*  mstm) /* ../dlls/msvcrt/time.c:1279 */
+WINAPI MSVCRT_size_t wine32b_msvcrt_strftime(char*  str, MSVCRT_size_t  max, char*  format, struct MSVCRT_tm*  mstm) /* ../dlls/msvcrt/time.c:1279 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter strftime\n");
-	return pstrftime(str, max, format, mstm);
+	return_value = pstrftime(str, max, format, mstm);
+	TRACE("Leave strftime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strftime(void);  /* ../dlls/msvcrt/time.c:1279 */
@@ -27052,10 +29863,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strftime,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt_strlen(char*  str) /* ../dlls/msvcrt/string.c:924 */
+WINAPI MSVCRT_size_t wine32b_msvcrt_strlen(char*  str) /* ../dlls/msvcrt/string.c:924 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter strlen\n");
-	return pstrlen(str);
+	return_value = pstrlen(str);
+	TRACE("Leave strlen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strlen(void);  /* ../dlls/msvcrt/string.c:924 */
@@ -27077,10 +29891,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strlen,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt_strncat(char*  dst, char*  src, MSVCRT_size_t  len) /* ../dlls/msvcrt/string.c:829 */
+WINAPI char* wine32b_msvcrt_strncat(char*  dst, char*  src, MSVCRT_size_t  len) /* ../dlls/msvcrt/string.c:829 */
 {
+	char* return_value;
 	TRACE("Enter strncat\n");
-	return pstrncat(dst, src, len);
+	return_value = pstrncat(dst, src, len);
+	TRACE("Leave strncat\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strncat(void);  /* ../dlls/msvcrt/string.c:829 */
@@ -27104,10 +29921,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strncat,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_strncat_s(char*  dst, MSVCRT_size_t  elem, char*  src, MSVCRT_size_t  count) /* ../dlls/msvcrt/string.c:790 */
+WINAPI int wine32b_msvcrt_strncat_s(char*  dst, MSVCRT_size_t  elem, char*  src, MSVCRT_size_t  count) /* ../dlls/msvcrt/string.c:790 */
 {
+	int return_value;
 	TRACE("Enter strncat_s\n");
-	return pstrncat_s(dst, elem, src, count);
+	return_value = pstrncat_s(dst, elem, src, count);
+	TRACE("Leave strncat_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strncat_s(void);  /* ../dlls/msvcrt/string.c:790 */
@@ -27132,10 +29952,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strncat_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_strncmp(char*  str1, char*  str2, MSVCRT_size_t  len) /* ../dlls/msvcrt/string.c:1952 */
+WINAPI int wine32b_msvcrt_strncmp(char*  str1, char*  str2, MSVCRT_size_t  len) /* ../dlls/msvcrt/string.c:1952 */
 {
+	int return_value;
 	TRACE("Enter strncmp\n");
-	return pstrncmp(str1, str2, len);
+	return_value = pstrncmp(str1, str2, len);
+	TRACE("Leave strncmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strncmp(void);  /* ../dlls/msvcrt/string.c:1952 */
@@ -27159,10 +29982,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strncmp,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt_strncpy(char*  dst, char*  src, MSVCRT_size_t  len) /* ../dlls/msvcrt/string.c:714 */
+WINAPI char* wine32b_msvcrt_strncpy(char*  dst, char*  src, MSVCRT_size_t  len) /* ../dlls/msvcrt/string.c:714 */
 {
+	char* return_value;
 	TRACE("Enter strncpy\n");
-	return pstrncpy(dst, src, len);
+	return_value = pstrncpy(dst, src, len);
+	TRACE("Leave strncpy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strncpy(void);  /* ../dlls/msvcrt/string.c:714 */
@@ -27186,10 +30012,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strncpy,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_strncpy_s(char*  dest, MSVCRT_size_t  numberOfElements, char*  src, MSVCRT_size_t  count) /* ../dlls/msvcrt/heap.c:837 */
+WINAPI int wine32b_msvcrt_strncpy_s(char*  dest, MSVCRT_size_t  numberOfElements, char*  src, MSVCRT_size_t  count) /* ../dlls/msvcrt/heap.c:837 */
 {
+	int return_value;
 	TRACE("Enter strncpy_s\n");
-	return pstrncpy_s(dest, numberOfElements, src, count);
+	return_value = pstrncpy_s(dest, numberOfElements, src, count);
+	TRACE("Leave strncpy_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strncpy_s(void);  /* ../dlls/msvcrt/heap.c:837 */
@@ -27214,10 +30043,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strncpy_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt_strnlen(char*  s, MSVCRT_size_t  maxlen) /* ../dlls/msvcrt/string.c:932 */
+WINAPI MSVCRT_size_t wine32b_msvcrt_strnlen(char*  s, MSVCRT_size_t  maxlen) /* ../dlls/msvcrt/string.c:932 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter strnlen\n");
-	return pstrnlen(s, maxlen);
+	return_value = pstrnlen(s, maxlen);
+	TRACE("Leave strnlen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strnlen(void);  /* ../dlls/msvcrt/string.c:932 */
@@ -27240,10 +30072,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strnlen,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt_strpbrk(char*  str, char*  accept) /* ../dlls/msvcrt/string.c:2056 */
+WINAPI char* wine32b_msvcrt_strpbrk(char*  str, char*  accept) /* ../dlls/msvcrt/string.c:2056 */
 {
+	char* return_value;
 	TRACE("Enter strpbrk\n");
-	return pstrpbrk(str, accept);
+	return_value = pstrpbrk(str, accept);
+	TRACE("Leave strpbrk\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strpbrk(void);  /* ../dlls/msvcrt/string.c:2056 */
@@ -27266,10 +30101,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strpbrk,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt_strrchr(char*  str, int  c) /* ../dlls/msvcrt/string.c:1928 */
+WINAPI char* wine32b_msvcrt_strrchr(char*  str, int  c) /* ../dlls/msvcrt/string.c:1928 */
 {
+	char* return_value;
 	TRACE("Enter strrchr\n");
-	return pstrrchr(str, c);
+	return_value = pstrrchr(str, c);
+	TRACE("Leave strrchr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strrchr(void);  /* ../dlls/msvcrt/string.c:1928 */
@@ -27292,10 +30130,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strrchr,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt_strstr(char*  haystack, char*  needle) /* ../dlls/msvcrt/string.c:2006 */
+WINAPI char* wine32b_msvcrt_strstr(char*  haystack, char*  needle) /* ../dlls/msvcrt/string.c:2006 */
 {
+	char* return_value;
 	TRACE("Enter strstr\n");
-	return pstrstr(haystack, needle);
+	return_value = pstrstr(haystack, needle);
+	TRACE("Leave strstr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strstr(void);  /* ../dlls/msvcrt/string.c:2006 */
@@ -27318,10 +30159,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strstr,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_strtod(char*  str, char**  end) /* ../dlls/msvcrt/string.c:517 */
+WINAPI double wine32b_msvcrt_strtod(char*  str, char**  end) /* ../dlls/msvcrt/string.c:517 */
 {
+	double return_value;
 	TRACE("Enter strtod\n");
-	return pstrtod(str, end);
+	return_value = pstrtod(str, end);
+	TRACE("Leave strtod\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strtod(void);  /* ../dlls/msvcrt/string.c:517 */
@@ -27344,10 +30188,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strtod,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt_strtok(char*  str, char*  delim) /* ../dlls/msvcrt/string.c:263 */
+WINAPI char* wine32b_msvcrt_strtok(char*  str, char*  delim) /* ../dlls/msvcrt/string.c:263 */
 {
+	char* return_value;
 	TRACE("Enter strtok\n");
-	return pstrtok(str, delim);
+	return_value = pstrtok(str, delim);
+	TRACE("Leave strtok\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strtok(void);  /* ../dlls/msvcrt/string.c:263 */
@@ -27370,10 +30217,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strtok,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt_strtok_s(char*  str, char*  delim, char**  ctx) /* ../dlls/msvcrt/string.c:283 */
+WINAPI char* wine32b_msvcrt_strtok_s(char*  str, char*  delim, char**  ctx) /* ../dlls/msvcrt/string.c:283 */
 {
+	char* return_value;
 	TRACE("Enter strtok_s\n");
-	return pstrtok_s(str, delim, ctx);
+	return_value = pstrtok_s(str, delim, ctx);
+	TRACE("Leave strtok_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strtok_s(void);  /* ../dlls/msvcrt/string.c:283 */
@@ -27397,10 +30247,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strtok_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_long wine32b_msvcrt_strtol(char*  nptr, char**  end, int  base) /* ../dlls/msvcrt/string.c:1163 */
+WINAPI MSVCRT_long wine32b_msvcrt_strtol(char*  nptr, char**  end, int  base) /* ../dlls/msvcrt/string.c:1163 */
 {
+	MSVCRT_long return_value;
 	TRACE("Enter strtol\n");
-	return pstrtol(nptr, end, base);
+	return_value = pstrtol(nptr, end, base);
+	TRACE("Leave strtol\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strtol(void);  /* ../dlls/msvcrt/string.c:1163 */
@@ -27424,10 +30277,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strtol,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_ulong wine32b_msvcrt_strtoul(char*  nptr, char**  end, int  base) /* ../dlls/msvcrt/string.c:1189 */
+WINAPI MSVCRT_ulong wine32b_msvcrt_strtoul(char*  nptr, char**  end, int  base) /* ../dlls/msvcrt/string.c:1189 */
 {
+	MSVCRT_ulong return_value;
 	TRACE("Enter strtoul\n");
-	return pstrtoul(nptr, end, base);
+	return_value = pstrtoul(nptr, end, base);
+	TRACE("Leave strtoul\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strtoul(void);  /* ../dlls/msvcrt/string.c:1189 */
@@ -27451,10 +30307,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strtoul,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt_strxfrm(char*  dest, char*  src, MSVCRT_size_t  len) /* ../dlls/msvcrt/string.c:883 */
+WINAPI MSVCRT_size_t wine32b_msvcrt_strxfrm(char*  dest, char*  src, MSVCRT_size_t  len) /* ../dlls/msvcrt/string.c:883 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter strxfrm\n");
-	return pstrxfrm(dest, src, len);
+	return_value = pstrxfrm(dest, src, len);
+	TRACE("Leave strxfrm\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_strxfrm(void);  /* ../dlls/msvcrt/string.c:883 */
@@ -27478,10 +30337,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_strxfrm,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_swprintf_s(MSVCRT_wchar_t*  str, MSVCRT_size_t  numberOfElements, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/wcs.c:1424 */
+WINAPI int wine32b_msvcrt_swprintf_s(MSVCRT_wchar_t*  str, MSVCRT_size_t  numberOfElements, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/wcs.c:1424 */
 {
+	int return_value;
 	TRACE("Enter swprintf_s\n");
-	return pswprintf_s(str, numberOfElements, format);
+	return_value = pswprintf_s(str, numberOfElements, format);
+	TRACE("Leave swprintf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_swprintf_s(void);  /* ../dlls/msvcrt/wcs.c:1424 */
@@ -27505,10 +30367,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_swprintf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_swscanf(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/scanf.c:439 */
+WINAPI int wine32b_msvcrt_swscanf(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/scanf.c:439 */
 {
+	int return_value;
 	TRACE("Enter swscanf\n");
-	return pswscanf(str, format);
+	return_value = pswscanf(str, format);
+	TRACE("Leave swscanf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_swscanf(void);  /* ../dlls/msvcrt/scanf.c:439 */
@@ -27531,10 +30396,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_swscanf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_swscanf_s(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/scanf.c:468 */
+WINAPI int wine32b_msvcrt_swscanf_s(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/scanf.c:468 */
 {
+	int return_value;
 	TRACE("Enter swscanf_s\n");
-	return pswscanf_s(str, format);
+	return_value = pswscanf_s(str, format);
+	TRACE("Leave swscanf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_swscanf_s(void);  /* ../dlls/msvcrt/scanf.c:468 */
@@ -27557,10 +30425,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_swscanf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_system(char*  cmd) /* ../dlls/msvcrt/process.c:1267 */
+WINAPI int wine32b_msvcrt_system(char*  cmd) /* ../dlls/msvcrt/process.c:1267 */
 {
+	int return_value;
 	TRACE("Enter system\n");
-	return psystem(cmd);
+	return_value = psystem(cmd);
+	TRACE("Leave system\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_system(void);  /* ../dlls/msvcrt/process.c:1267 */
@@ -27582,10 +30453,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_system,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_tan(double  x) /* ../dlls/msvcrt/math.c:563 */
+WINAPI double wine32b_msvcrt_tan(double  x) /* ../dlls/msvcrt/math.c:563 */
 {
+	double return_value;
 	TRACE("Enter tan\n");
-	return ptan(x);
+	return_value = ptan(x);
+	TRACE("Leave tan\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_tan(void);  /* ../dlls/msvcrt/math.c:563 */
@@ -27607,10 +30481,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_tan,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_tanh(double  x) /* ../dlls/msvcrt/math.c:573 */
+WINAPI double wine32b_msvcrt_tanh(double  x) /* ../dlls/msvcrt/math.c:573 */
 {
+	double return_value;
 	TRACE("Enter tanh\n");
-	return ptanh(x);
+	return_value = ptanh(x);
+	TRACE("Leave tanh\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_tanh(void);  /* ../dlls/msvcrt/math.c:573 */
@@ -27632,10 +30509,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_tanh,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_tanf(float  x) /* ../dlls/msvcrt/math.c:349 */
+WINAPI float wine32b_msvcrt_tanf(float  x) /* ../dlls/msvcrt/math.c:349 */
 {
+	float return_value;
 	TRACE("Enter tanf\n");
-	return ptanf(x);
+	return_value = ptanf(x);
+	TRACE("Leave tanf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_tanf(void);  /* ../dlls/msvcrt/math.c:349 */
@@ -27657,10 +30537,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_tanf,
 	"ret \n"
 )
 
-extern WINAPI float wine32b_msvcrt_tanhf(float  x) /* ../dlls/msvcrt/math.c:359 */
+WINAPI float wine32b_msvcrt_tanhf(float  x) /* ../dlls/msvcrt/math.c:359 */
 {
+	float return_value;
 	TRACE("Enter tanhf\n");
-	return ptanhf(x);
+	return_value = ptanhf(x);
+	TRACE("Leave tanhf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_tanhf(void);  /* ../dlls/msvcrt/math.c:359 */
@@ -27682,10 +30565,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_tanhf,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT___time64_t wine32b_msvcrt_time(MSVCRT___time64_t*  buf) /* ../dlls/msvcrt/time.c:866 */
+WINAPI MSVCRT___time64_t wine32b_msvcrt_time(MSVCRT___time64_t*  buf) /* ../dlls/msvcrt/time.c:866 */
 {
+	MSVCRT___time64_t return_value;
 	TRACE("Enter time\n");
-	return ptime(buf);
+	return_value = ptime(buf);
+	TRACE("Leave time\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_time(void);  /* ../dlls/msvcrt/time.c:866 */
@@ -27707,10 +30593,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_time,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_FILE* wine32b_msvcrt_tmpfile(void) /* ../dlls/msvcrt/file.c:5106 */
+WINAPI MSVCRT_FILE* wine32b_msvcrt_tmpfile(void) /* ../dlls/msvcrt/file.c:5106 */
 {
+	MSVCRT_FILE* return_value;
 	TRACE("Enter tmpfile\n");
-	return ptmpfile();
+	return_value = ptmpfile();
+	TRACE("Leave tmpfile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_tmpfile(void);  /* ../dlls/msvcrt/file.c:5106 */
@@ -27731,10 +30620,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_tmpfile,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_tmpfile_s(MSVCRT_FILE**  file) /* ../dlls/msvcrt/file.c:5135 */
+WINAPI int wine32b_msvcrt_tmpfile_s(MSVCRT_FILE**  file) /* ../dlls/msvcrt/file.c:5135 */
 {
+	int return_value;
 	TRACE("Enter tmpfile_s\n");
-	return ptmpfile_s(file);
+	return_value = ptmpfile_s(file);
+	TRACE("Leave tmpfile_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_tmpfile_s(void);  /* ../dlls/msvcrt/file.c:5135 */
@@ -27756,10 +30648,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_tmpfile_s,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_msvcrt_tmpnam(char*  s) /* ../dlls/msvcrt/file.c:5015 */
+WINAPI char* wine32b_msvcrt_tmpnam(char*  s) /* ../dlls/msvcrt/file.c:5015 */
 {
+	char* return_value;
 	TRACE("Enter tmpnam\n");
-	return ptmpnam(s);
+	return_value = ptmpnam(s);
+	TRACE("Leave tmpnam\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_tmpnam(void);  /* ../dlls/msvcrt/file.c:5015 */
@@ -27781,10 +30676,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_tmpnam,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_tmpnam_s(char*  s, MSVCRT_size_t  size) /* ../dlls/msvcrt/file.c:5007 */
+WINAPI int wine32b_msvcrt_tmpnam_s(char*  s, MSVCRT_size_t  size) /* ../dlls/msvcrt/file.c:5007 */
 {
+	int return_value;
 	TRACE("Enter tmpnam_s\n");
-	return ptmpnam_s(s, size);
+	return_value = ptmpnam_s(s, size);
+	TRACE("Leave tmpnam_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_tmpnam_s(void);  /* ../dlls/msvcrt/file.c:5007 */
@@ -27807,10 +30705,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_tmpnam_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_tolower(int  c) /* ../dlls/msvcrt/ctype.c:461 */
+WINAPI int wine32b_msvcrt_tolower(int  c) /* ../dlls/msvcrt/ctype.c:461 */
 {
+	int return_value;
 	TRACE("Enter tolower\n");
-	return ptolower(c);
+	return_value = ptolower(c);
+	TRACE("Leave tolower\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_tolower(void);  /* ../dlls/msvcrt/ctype.c:461 */
@@ -27832,10 +30733,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_tolower,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_toupper(int  c) /* ../dlls/msvcrt/ctype.c:399 */
+WINAPI int wine32b_msvcrt_toupper(int  c) /* ../dlls/msvcrt/ctype.c:399 */
 {
+	int return_value;
 	TRACE("Enter toupper\n");
-	return ptoupper(c);
+	return_value = ptoupper(c);
+	TRACE("Leave toupper\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_toupper(void);  /* ../dlls/msvcrt/ctype.c:399 */
@@ -27857,10 +30761,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_toupper,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_towlower(MSVCRT_wint_t  c) /* ../dlls/msvcrt/wcs.c:2558 */
+WINAPI int wine32b_msvcrt_towlower(MSVCRT_wint_t  c) /* ../dlls/msvcrt/wcs.c:2558 */
 {
+	int return_value;
 	TRACE("Enter towlower\n");
-	return ptowlower(c);
+	return_value = ptowlower(c);
+	TRACE("Leave towlower\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_towlower(void);  /* ../dlls/msvcrt/wcs.c:2558 */
@@ -27882,10 +30789,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_towlower,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_towupper(MSVCRT_wint_t  c) /* ../dlls/msvcrt/wcs.c:2529 */
+WINAPI int wine32b_msvcrt_towupper(MSVCRT_wint_t  c) /* ../dlls/msvcrt/wcs.c:2529 */
 {
+	int return_value;
 	TRACE("Enter towupper\n");
-	return ptowupper(c);
+	return_value = ptowupper(c);
+	TRACE("Leave towupper\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_towupper(void);  /* ../dlls/msvcrt/wcs.c:2529 */
@@ -27907,10 +30817,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_towupper,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_ungetc(int  c, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:5519 */
+WINAPI int wine32b_msvcrt_ungetc(int  c, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:5519 */
 {
+	int return_value;
 	TRACE("Enter ungetc\n");
-	return pungetc(c, file);
+	return_value = pungetc(c, file);
+	TRACE("Leave ungetc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_ungetc(void);  /* ../dlls/msvcrt/file.c:5519 */
@@ -27933,10 +30846,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_ungetc,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wint_t wine32b_msvcrt_ungetwc(MSVCRT_wint_t  wc, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:5570 */
+WINAPI MSVCRT_wint_t wine32b_msvcrt_ungetwc(MSVCRT_wint_t  wc, MSVCRT_FILE*  file) /* ../dlls/msvcrt/file.c:5570 */
 {
+	MSVCRT_wint_t return_value;
 	TRACE("Enter ungetwc\n");
-	return pungetwc(wc, file);
+	return_value = pungetwc(wc, file);
+	TRACE("Leave ungetwc\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_ungetwc(void);  /* ../dlls/msvcrt/file.c:5570 */
@@ -27959,10 +30875,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_ungetwc,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_vfprintf(MSVCRT_FILE*  file, char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5256 */
+WINAPI int wine32b_msvcrt_vfprintf(MSVCRT_FILE*  file, char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5256 */
 {
+	int return_value;
 	TRACE("Enter vfprintf\n");
-	return pvfprintf(file, format, valist);
+	return_value = pvfprintf(file, format, valist);
+	TRACE("Leave vfprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_vfprintf(void);  /* ../dlls/msvcrt/file.c:5256 */
@@ -27986,10 +30905,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_vfprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_vfprintf_s(MSVCRT_FILE*  file, char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5264 */
+WINAPI int wine32b_msvcrt_vfprintf_s(MSVCRT_FILE*  file, char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5264 */
 {
+	int return_value;
 	TRACE("Enter vfprintf_s\n");
-	return pvfprintf_s(file, format, valist);
+	return_value = pvfprintf_s(file, format, valist);
+	TRACE("Leave vfprintf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_vfprintf_s(void);  /* ../dlls/msvcrt/file.c:5264 */
@@ -28013,10 +30935,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_vfprintf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_vfwprintf(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5272 */
+WINAPI int wine32b_msvcrt_vfwprintf(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5272 */
 {
+	int return_value;
 	TRACE("Enter vfwprintf\n");
-	return pvfwprintf(file, format, valist);
+	return_value = pvfwprintf(file, format, valist);
+	TRACE("Leave vfwprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_vfwprintf(void);  /* ../dlls/msvcrt/file.c:5272 */
@@ -28040,10 +30965,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_vfwprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_vfwprintf_s(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5280 */
+WINAPI int wine32b_msvcrt_vfwprintf_s(MSVCRT_FILE*  file, MSVCRT_wchar_t*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5280 */
 {
+	int return_value;
 	TRACE("Enter vfwprintf_s\n");
-	return pvfwprintf_s(file, format, valist);
+	return_value = pvfwprintf_s(file, format, valist);
+	TRACE("Leave vfwprintf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_vfwprintf_s(void);  /* ../dlls/msvcrt/file.c:5280 */
@@ -28067,10 +30995,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_vfwprintf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_vprintf(char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5396 */
+WINAPI int wine32b_msvcrt_vprintf(char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5396 */
 {
+	int return_value;
 	TRACE("Enter vprintf\n");
-	return pvprintf(format, valist);
+	return_value = pvprintf(format, valist);
+	TRACE("Leave vprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_vprintf(void);  /* ../dlls/msvcrt/file.c:5396 */
@@ -28093,10 +31024,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_vprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_vprintf_s(char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5404 */
+WINAPI int wine32b_msvcrt_vprintf_s(char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5404 */
 {
+	int return_value;
 	TRACE("Enter vprintf_s\n");
-	return pvprintf_s(format, valist);
+	return_value = pvprintf_s(format, valist);
+	TRACE("Leave vprintf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_vprintf_s(void);  /* ../dlls/msvcrt/file.c:5404 */
@@ -28119,10 +31053,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_vprintf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_vsprintf(char*  str, char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:1022 */
+WINAPI int wine32b_msvcrt_vsprintf(char*  str, char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:1022 */
 {
+	int return_value;
 	TRACE("Enter vsprintf\n");
-	return pvsprintf(str, format, valist);
+	return_value = pvsprintf(str, format, valist);
+	TRACE("Leave vsprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_vsprintf(void);  /* ../dlls/msvcrt/wcs.c:1022 */
@@ -28146,10 +31083,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_vsprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_vsprintf_s(char*  str, MSVCRT_size_t  num, char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:1030 */
+WINAPI int wine32b_msvcrt_vsprintf_s(char*  str, MSVCRT_size_t  num, char*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/wcs.c:1030 */
 {
+	int return_value;
 	TRACE("Enter vsprintf_s\n");
-	return pvsprintf_s(str, num, format, valist);
+	return_value = pvsprintf_s(str, num, format, valist);
+	TRACE("Leave vsprintf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_vsprintf_s(void);  /* ../dlls/msvcrt/wcs.c:1030 */
@@ -28174,10 +31114,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_vsprintf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_vswprintf_s(MSVCRT_wchar_t*  str, MSVCRT_size_t  numberOfElements, MSVCRT_wchar_t*  format, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1507 */
+WINAPI int wine32b_msvcrt_vswprintf_s(MSVCRT_wchar_t*  str, MSVCRT_size_t  numberOfElements, MSVCRT_wchar_t*  format, __builtin_ms_va_list  args) /* ../dlls/msvcrt/wcs.c:1507 */
 {
+	int return_value;
 	TRACE("Enter vswprintf_s\n");
-	return pvswprintf_s(str, numberOfElements, format, args);
+	return_value = pvswprintf_s(str, numberOfElements, format, args);
+	TRACE("Leave vswprintf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_vswprintf_s(void);  /* ../dlls/msvcrt/wcs.c:1507 */
@@ -28202,10 +31145,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_vswprintf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_vwprintf(MSVCRT_wchar_t*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5412 */
+WINAPI int wine32b_msvcrt_vwprintf(MSVCRT_wchar_t*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5412 */
 {
+	int return_value;
 	TRACE("Enter vwprintf\n");
-	return pvwprintf(format, valist);
+	return_value = pvwprintf(format, valist);
+	TRACE("Leave vwprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_vwprintf(void);  /* ../dlls/msvcrt/file.c:5412 */
@@ -28228,10 +31174,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_vwprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_vwprintf_s(MSVCRT_wchar_t*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5420 */
+WINAPI int wine32b_msvcrt_vwprintf_s(MSVCRT_wchar_t*  format, __builtin_ms_va_list  valist) /* ../dlls/msvcrt/file.c:5420 */
 {
+	int return_value;
 	TRACE("Enter vwprintf_s\n");
-	return pvwprintf_s(format, valist);
+	return_value = pvwprintf_s(format, valist);
+	TRACE("Leave vwprintf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_vwprintf_s(void);  /* ../dlls/msvcrt/file.c:5420 */
@@ -28254,10 +31203,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_vwprintf_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt_wcrtomb(char*  dst, MSVCRT_wchar_t  ch, MSVCRT_mbstate_t*  s) /* ../dlls/msvcrt/wcs.c:1827 */
+WINAPI MSVCRT_size_t wine32b_msvcrt_wcrtomb(char*  dst, MSVCRT_wchar_t  ch, MSVCRT_mbstate_t*  s) /* ../dlls/msvcrt/wcs.c:1827 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter wcrtomb\n");
-	return pwcrtomb(dst, ch, s);
+	return_value = pwcrtomb(dst, ch, s);
+	TRACE("Leave wcrtomb\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcrtomb(void);  /* ../dlls/msvcrt/wcs.c:1827 */
@@ -28281,10 +31233,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcrtomb,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt_wcscat_s(MSVCRT_wchar_t*  dst, MSVCRT_size_t  elem, MSVCRT_wchar_t*  src) /* ../dlls/msvcrt/wcs.c:2124 */
+WINAPI INT wine32b_msvcrt_wcscat_s(MSVCRT_wchar_t*  dst, MSVCRT_size_t  elem, MSVCRT_wchar_t*  src) /* ../dlls/msvcrt/wcs.c:2124 */
 {
+	INT return_value;
 	TRACE("Enter wcscat_s\n");
-	return pwcscat_s(dst, elem, src);
+	return_value = pwcscat_s(dst, elem, src);
+	TRACE("Leave wcscat_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcscat_s(void);  /* ../dlls/msvcrt/wcs.c:2124 */
@@ -28308,10 +31263,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcscat_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt_wcschr(MSVCRT_wchar_t*  str, MSVCRT_wchar_t  ch) /* ../dlls/msvcrt/wcs.c:2566 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt_wcschr(MSVCRT_wchar_t*  str, MSVCRT_wchar_t  ch) /* ../dlls/msvcrt/wcs.c:2566 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter wcschr\n");
-	return pwcschr(str, ch);
+	return_value = pwcschr(str, ch);
+	TRACE("Leave wcschr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcschr(void);  /* ../dlls/msvcrt/wcs.c:2566 */
@@ -28334,10 +31292,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcschr,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_wcscmp(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2) /* ../dlls/msvcrt/wcs.c:2699 */
+WINAPI int wine32b_msvcrt_wcscmp(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2) /* ../dlls/msvcrt/wcs.c:2699 */
 {
+	int return_value;
 	TRACE("Enter wcscmp\n");
-	return pwcscmp(str1, str2);
+	return_value = pwcscmp(str1, str2);
+	TRACE("Leave wcscmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcscmp(void);  /* ../dlls/msvcrt/wcs.c:2699 */
@@ -28360,10 +31321,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcscmp,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_wcscoll(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2) /* ../dlls/msvcrt/wcs.c:1664 */
+WINAPI int wine32b_msvcrt_wcscoll(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2) /* ../dlls/msvcrt/wcs.c:1664 */
 {
+	int return_value;
 	TRACE("Enter wcscoll\n");
-	return pwcscoll(str1, str2);
+	return_value = pwcscoll(str1, str2);
+	TRACE("Leave wcscoll\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcscoll(void);  /* ../dlls/msvcrt/wcs.c:1664 */
@@ -28386,10 +31350,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcscoll,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt_wcscpy_s(MSVCRT_wchar_t*  wcDest, MSVCRT_size_t  numElement, MSVCRT_wchar_t*  wcSrc) /* ../dlls/msvcrt/wcs.c:2037 */
+WINAPI INT wine32b_msvcrt_wcscpy_s(MSVCRT_wchar_t*  wcDest, MSVCRT_size_t  numElement, MSVCRT_wchar_t*  wcSrc) /* ../dlls/msvcrt/wcs.c:2037 */
 {
+	INT return_value;
 	TRACE("Enter wcscpy_s\n");
-	return pwcscpy_s(wcDest, numElement, wcSrc);
+	return_value = pwcscpy_s(wcDest, numElement, wcSrc);
+	TRACE("Leave wcscpy_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcscpy_s(void);  /* ../dlls/msvcrt/wcs.c:2037 */
@@ -28413,10 +31380,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcscpy_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt_wcsftime(MSVCRT_wchar_t*  str, MSVCRT_size_t  max, MSVCRT_wchar_t*  format, struct MSVCRT_tm*  mstm) /* ../dlls/msvcrt/time.c:1322 */
+WINAPI MSVCRT_size_t wine32b_msvcrt_wcsftime(MSVCRT_wchar_t*  str, MSVCRT_size_t  max, MSVCRT_wchar_t*  format, struct MSVCRT_tm*  mstm) /* ../dlls/msvcrt/time.c:1322 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter wcsftime\n");
-	return pwcsftime(str, max, format, mstm);
+	return_value = pwcsftime(str, max, format, mstm);
+	TRACE("Leave wcsftime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcsftime(void);  /* ../dlls/msvcrt/time.c:1322 */
@@ -28441,10 +31411,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcsftime,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_wcslen(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/wcs.c:2582 */
+WINAPI int wine32b_msvcrt_wcslen(MSVCRT_wchar_t*  str) /* ../dlls/msvcrt/wcs.c:2582 */
 {
+	int return_value;
 	TRACE("Enter wcslen\n");
-	return pwcslen(str);
+	return_value = pwcslen(str);
+	TRACE("Leave wcslen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcslen(void);  /* ../dlls/msvcrt/wcs.c:2582 */
@@ -28466,10 +31439,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcslen,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt_wcsncat_s(MSVCRT_wchar_t*  dst, MSVCRT_size_t  elem, MSVCRT_wchar_t*  src, MSVCRT_size_t  count) /* ../dlls/msvcrt/wcs.c:2150 */
+WINAPI INT wine32b_msvcrt_wcsncat_s(MSVCRT_wchar_t*  dst, MSVCRT_size_t  elem, MSVCRT_wchar_t*  src, MSVCRT_size_t  count) /* ../dlls/msvcrt/wcs.c:2150 */
 {
+	INT return_value;
 	TRACE("Enter wcsncat_s\n");
-	return pwcsncat_s(dst, elem, src, count);
+	return_value = pwcsncat_s(dst, elem, src, count);
+	TRACE("Leave wcsncat_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcsncat_s(void);  /* ../dlls/msvcrt/wcs.c:2150 */
@@ -28494,10 +31470,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcsncat_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_wcsncmp(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2, int  n) /* ../dlls/msvcrt/wcs.c:2633 */
+WINAPI int wine32b_msvcrt_wcsncmp(MSVCRT_wchar_t*  str1, MSVCRT_wchar_t*  str2, int  n) /* ../dlls/msvcrt/wcs.c:2633 */
 {
+	int return_value;
 	TRACE("Enter wcsncmp\n");
-	return pwcsncmp(str1, str2, n);
+	return_value = pwcsncmp(str1, str2, n);
+	TRACE("Leave wcsncmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcsncmp(void);  /* ../dlls/msvcrt/wcs.c:2633 */
@@ -28521,10 +31500,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcsncmp,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt_wcsncpy(MSVCRT_wchar_t*  s1, MSVCRT_wchar_t*  s2, MSVCRT_size_t  n) /* ../dlls/msvcrt/wcs.c:2066 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt_wcsncpy(MSVCRT_wchar_t*  s1, MSVCRT_wchar_t*  s2, MSVCRT_size_t  n) /* ../dlls/msvcrt/wcs.c:2066 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter wcsncpy\n");
-	return pwcsncpy(s1, s2, n);
+	return_value = pwcsncpy(s1, s2, n);
+	TRACE("Leave wcsncpy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcsncpy(void);  /* ../dlls/msvcrt/wcs.c:2066 */
@@ -28548,10 +31530,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcsncpy,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt_wcsncpy_s(MSVCRT_wchar_t*  wcDest, MSVCRT_size_t  numElement, MSVCRT_wchar_t*  wcSrc, MSVCRT_size_t  count) /* ../dlls/msvcrt/wcs.c:2081 */
+WINAPI INT wine32b_msvcrt_wcsncpy_s(MSVCRT_wchar_t*  wcDest, MSVCRT_size_t  numElement, MSVCRT_wchar_t*  wcSrc, MSVCRT_size_t  count) /* ../dlls/msvcrt/wcs.c:2081 */
 {
+	INT return_value;
 	TRACE("Enter wcsncpy_s\n");
-	return pwcsncpy_s(wcDest, numElement, wcSrc, count);
+	return_value = pwcsncpy_s(wcDest, numElement, wcSrc, count);
+	TRACE("Leave wcsncpy_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcsncpy_s(void);  /* ../dlls/msvcrt/wcs.c:2081 */
@@ -28576,10 +31561,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcsncpy_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt_wcsnlen(MSVCRT_wchar_t*  s, MSVCRT_size_t  maxlen) /* ../dlls/msvcrt/wcs.c:2496 */
+WINAPI MSVCRT_size_t wine32b_msvcrt_wcsnlen(MSVCRT_wchar_t*  s, MSVCRT_size_t  maxlen) /* ../dlls/msvcrt/wcs.c:2496 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter wcsnlen\n");
-	return pwcsnlen(s, maxlen);
+	return_value = pwcsnlen(s, maxlen);
+	TRACE("Leave wcsnlen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcsnlen(void);  /* ../dlls/msvcrt/wcs.c:2496 */
@@ -28602,10 +31590,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcsnlen,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt_wcspbrk(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  accept) /* ../dlls/msvcrt/wcs.c:1672 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt_wcspbrk(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  accept) /* ../dlls/msvcrt/wcs.c:1672 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter wcspbrk\n");
-	return pwcspbrk(str, accept);
+	return_value = pwcspbrk(str, accept);
+	TRACE("Leave wcspbrk\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcspbrk(void);  /* ../dlls/msvcrt/wcs.c:1672 */
@@ -28628,10 +31619,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcspbrk,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt_wcsrchr(MSVCRT_wchar_t*  str, MSVCRT_wchar_t  ch) /* ../dlls/msvcrt/wcs.c:2574 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt_wcsrchr(MSVCRT_wchar_t*  str, MSVCRT_wchar_t  ch) /* ../dlls/msvcrt/wcs.c:2574 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter wcsrchr\n");
-	return pwcsrchr(str, ch);
+	return_value = pwcsrchr(str, ch);
+	TRACE("Leave wcsrchr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcsrchr(void);  /* ../dlls/msvcrt/wcs.c:2574 */
@@ -28654,10 +31648,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcsrchr,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt_wcsrtombs(char*  mbstr, MSVCRT_wchar_t**  wcstr, MSVCRT_size_t  count, MSVCRT_mbstate_t*  mbstate) /* ../dlls/msvcrt/wcs.c:593 */
+WINAPI MSVCRT_size_t wine32b_msvcrt_wcsrtombs(char*  mbstr, MSVCRT_wchar_t**  wcstr, MSVCRT_size_t  count, MSVCRT_mbstate_t*  mbstate) /* ../dlls/msvcrt/wcs.c:593 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter wcsrtombs\n");
-	return pwcsrtombs(mbstr, wcstr, count, mbstate);
+	return_value = pwcsrtombs(mbstr, wcstr, count, mbstate);
+	TRACE("Leave wcsrtombs\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcsrtombs(void);  /* ../dlls/msvcrt/wcs.c:593 */
@@ -28682,10 +31679,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcsrtombs,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_wcsrtombs_s(MSVCRT_size_t*  ret, char*  mbstr, MSVCRT_size_t  size, MSVCRT_wchar_t**  wcstr, MSVCRT_size_t  count, MSVCRT_mbstate_t*  mbstate) /* ../dlls/msvcrt/wcs.c:673 */
+WINAPI int wine32b_msvcrt_wcsrtombs_s(MSVCRT_size_t*  ret, char*  mbstr, MSVCRT_size_t  size, MSVCRT_wchar_t**  wcstr, MSVCRT_size_t  count, MSVCRT_mbstate_t*  mbstate) /* ../dlls/msvcrt/wcs.c:673 */
 {
+	int return_value;
 	TRACE("Enter wcsrtombs_s\n");
-	return pwcsrtombs_s(ret, mbstr, size, wcstr, count, mbstate);
+	return_value = pwcsrtombs_s(ret, mbstr, size, wcstr, count, mbstate);
+	TRACE("Leave wcsrtombs_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcsrtombs_s(void);  /* ../dlls/msvcrt/wcs.c:673 */
@@ -28710,10 +31710,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcsrtombs_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt_wcsstr(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  sub) /* ../dlls/msvcrt/wcs.c:2590 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt_wcsstr(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  sub) /* ../dlls/msvcrt/wcs.c:2590 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter wcsstr\n");
-	return pwcsstr(str, sub);
+	return_value = pwcsstr(str, sub);
+	TRACE("Leave wcsstr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcsstr(void);  /* ../dlls/msvcrt/wcs.c:2590 */
@@ -28736,10 +31739,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcsstr,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_msvcrt_wcstod(MSVCRT_wchar_t*  lpszStr, MSVCRT_wchar_t**  end) /* ../dlls/msvcrt/wcs.c:685 */
+WINAPI double wine32b_msvcrt_wcstod(MSVCRT_wchar_t*  lpszStr, MSVCRT_wchar_t**  end) /* ../dlls/msvcrt/wcs.c:685 */
 {
+	double return_value;
 	TRACE("Enter wcstod\n");
-	return pwcstod(lpszStr, end);
+	return_value = pwcstod(lpszStr, end);
+	TRACE("Leave wcstod\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcstod(void);  /* ../dlls/msvcrt/wcs.c:685 */
@@ -28762,10 +31768,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcstod,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt_wcstok(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  delim) /* ../dlls/msvcrt/wcs.c:1710 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt_wcstok(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  delim) /* ../dlls/msvcrt/wcs.c:1710 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter wcstok\n");
-	return pwcstok(str, delim);
+	return_value = pwcstok(str, delim);
+	TRACE("Leave wcstok\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcstok(void);  /* ../dlls/msvcrt/wcs.c:1710 */
@@ -28788,10 +31797,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcstok,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_wchar_t* wine32b_msvcrt_wcstok_s(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  delim, MSVCRT_wchar_t**  next_token) /* ../dlls/msvcrt/wcs.c:1687 */
+WINAPI MSVCRT_wchar_t* wine32b_msvcrt_wcstok_s(MSVCRT_wchar_t*  str, MSVCRT_wchar_t*  delim, MSVCRT_wchar_t**  next_token) /* ../dlls/msvcrt/wcs.c:1687 */
 {
+	MSVCRT_wchar_t* return_value;
 	TRACE("Enter wcstok_s\n");
-	return pwcstok_s(str, delim, next_token);
+	return_value = pwcstok_s(str, delim, next_token);
+	TRACE("Leave wcstok_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcstok_s(void);  /* ../dlls/msvcrt/wcs.c:1687 */
@@ -28815,10 +31827,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcstok_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_long wine32b_msvcrt_wcstol(MSVCRT_wchar_t*  s, MSVCRT_wchar_t**  end, int  base) /* ../dlls/msvcrt/wcs.c:2324 */
+WINAPI MSVCRT_long wine32b_msvcrt_wcstol(MSVCRT_wchar_t*  s, MSVCRT_wchar_t**  end, int  base) /* ../dlls/msvcrt/wcs.c:2324 */
 {
+	MSVCRT_long return_value;
 	TRACE("Enter wcstol\n");
-	return pwcstol(s, end, base);
+	return_value = pwcstol(s, end, base);
+	TRACE("Leave wcstol\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcstol(void);  /* ../dlls/msvcrt/wcs.c:2324 */
@@ -28842,10 +31857,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcstol,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt_wcstombs(char*  mbstr, MSVCRT_wchar_t*  wcstr, MSVCRT_size_t  count) /* ../dlls/msvcrt/wcs.c:584 */
+WINAPI MSVCRT_size_t wine32b_msvcrt_wcstombs(char*  mbstr, MSVCRT_wchar_t*  wcstr, MSVCRT_size_t  count) /* ../dlls/msvcrt/wcs.c:584 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter wcstombs\n");
-	return pwcstombs(mbstr, wcstr, count);
+	return_value = pwcstombs(mbstr, wcstr, count);
+	TRACE("Leave wcstombs\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcstombs(void);  /* ../dlls/msvcrt/wcs.c:584 */
@@ -28869,10 +31887,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcstombs,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_wcstombs_s(MSVCRT_size_t*  ret, char*  mbstr, MSVCRT_size_t  size, MSVCRT_wchar_t*  wcstr, MSVCRT_size_t  count) /* ../dlls/msvcrt/wcs.c:664 */
+WINAPI int wine32b_msvcrt_wcstombs_s(MSVCRT_size_t*  ret, char*  mbstr, MSVCRT_size_t  size, MSVCRT_wchar_t*  wcstr, MSVCRT_size_t  count) /* ../dlls/msvcrt/wcs.c:664 */
 {
+	int return_value;
 	TRACE("Enter wcstombs_s\n");
-	return pwcstombs_s(ret, mbstr, size, wcstr, count);
+	return_value = pwcstombs_s(ret, mbstr, size, wcstr, count);
+	TRACE("Leave wcstombs_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcstombs_s(void);  /* ../dlls/msvcrt/wcs.c:664 */
@@ -28897,10 +31918,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcstombs_s,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_ulong wine32b_msvcrt_wcstoul(MSVCRT_wchar_t*  s, MSVCRT_wchar_t**  end, int  base) /* ../dlls/msvcrt/wcs.c:2488 */
+WINAPI MSVCRT_ulong wine32b_msvcrt_wcstoul(MSVCRT_wchar_t*  s, MSVCRT_wchar_t**  end, int  base) /* ../dlls/msvcrt/wcs.c:2488 */
 {
+	MSVCRT_ulong return_value;
 	TRACE("Enter wcstoul\n");
-	return pwcstoul(s, end, base);
+	return_value = pwcstoul(s, end, base);
+	TRACE("Leave wcstoul\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcstoul(void);  /* ../dlls/msvcrt/wcs.c:2488 */
@@ -28924,10 +31948,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcstoul,
 	"ret \n"
 )
 
-extern WINAPI MSVCRT_size_t wine32b_msvcrt_wcsxfrm(MSVCRT_wchar_t*  dest, MSVCRT_wchar_t*  src, MSVCRT_size_t  len) /* ../dlls/msvcrt/wcs.c:2690 */
+WINAPI MSVCRT_size_t wine32b_msvcrt_wcsxfrm(MSVCRT_wchar_t*  dest, MSVCRT_wchar_t*  src, MSVCRT_size_t  len) /* ../dlls/msvcrt/wcs.c:2690 */
 {
+	MSVCRT_size_t return_value;
 	TRACE("Enter wcsxfrm\n");
-	return pwcsxfrm(dest, src, len);
+	return_value = pwcsxfrm(dest, src, len);
+	TRACE("Leave wcsxfrm\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wcsxfrm(void);  /* ../dlls/msvcrt/wcs.c:2690 */
@@ -28951,10 +31978,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wcsxfrm,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt_wctob(MSVCRT_wint_t  wchar) /* ../dlls/msvcrt/wcs.c:1808 */
+WINAPI INT wine32b_msvcrt_wctob(MSVCRT_wint_t  wchar) /* ../dlls/msvcrt/wcs.c:1808 */
 {
+	INT return_value;
 	TRACE("Enter wctob\n");
-	return pwctob(wchar);
+	return_value = pwctob(wchar);
+	TRACE("Leave wctob\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wctob(void);  /* ../dlls/msvcrt/wcs.c:1808 */
@@ -28976,10 +32006,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wctob,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_msvcrt_wctomb(char*  dst, MSVCRT_wchar_t  ch) /* ../dlls/msvcrt/wcs.c:1800 */
+WINAPI INT wine32b_msvcrt_wctomb(char*  dst, MSVCRT_wchar_t  ch) /* ../dlls/msvcrt/wcs.c:1800 */
 {
+	INT return_value;
 	TRACE("Enter wctomb\n");
-	return pwctomb(dst, ch);
+	return_value = pwctomb(dst, ch);
+	TRACE("Leave wctomb\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wctomb(void);  /* ../dlls/msvcrt/wcs.c:1800 */
@@ -29002,10 +32035,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wctomb,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_wctomb_s(int*  len, char*  mbchar, MSVCRT_size_t  size, MSVCRT_wchar_t  wch) /* ../dlls/msvcrt/wcs.c:1781 */
+WINAPI int wine32b_msvcrt_wctomb_s(int*  len, char*  mbchar, MSVCRT_size_t  size, MSVCRT_wchar_t  wch) /* ../dlls/msvcrt/wcs.c:1781 */
 {
+	int return_value;
 	TRACE("Enter wctomb_s\n");
-	return pwctomb_s(len, mbchar, size, wch);
+	return_value = pwctomb_s(len, mbchar, size, wch);
+	TRACE("Leave wctomb_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wctomb_s(void);  /* ../dlls/msvcrt/wcs.c:1781 */
@@ -29030,10 +32066,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wctomb_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_wprintf(MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/file.c:5623 */
+WINAPI int wine32b_msvcrt_wprintf(MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/file.c:5623 */
 {
+	int return_value;
 	TRACE("Enter wprintf\n");
-	return pwprintf(format);
+	return_value = pwprintf(format);
+	TRACE("Leave wprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wprintf(void);  /* ../dlls/msvcrt/file.c:5623 */
@@ -29055,10 +32094,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_wprintf_s(MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/file.c:5636 */
+WINAPI int wine32b_msvcrt_wprintf_s(MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/file.c:5636 */
 {
+	int return_value;
 	TRACE("Enter wprintf_s\n");
-	return pwprintf_s(format);
+	return_value = pwprintf_s(format);
+	TRACE("Leave wprintf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wprintf_s(void);  /* ../dlls/msvcrt/file.c:5636 */
@@ -29080,10 +32122,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wprintf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_wscanf(MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/scanf.c:323 */
+WINAPI int wine32b_msvcrt_wscanf(MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/scanf.c:323 */
 {
+	int return_value;
 	TRACE("Enter wscanf\n");
-	return pwscanf(format);
+	return_value = pwscanf(format);
+	TRACE("Leave wscanf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wscanf(void);  /* ../dlls/msvcrt/scanf.c:323 */
@@ -29105,10 +32150,13 @@ __ASM_GLOBAL_FUNC(wine32a_msvcrt_wscanf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_msvcrt_wscanf_s(MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/scanf.c:352 */
+WINAPI int wine32b_msvcrt_wscanf_s(MSVCRT_wchar_t*  format) /* ../dlls/msvcrt/scanf.c:352 */
 {
+	int return_value;
 	TRACE("Enter wscanf_s\n");
-	return pwscanf_s(format);
+	return_value = pwscanf_s(format);
+	TRACE("Leave wscanf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_msvcrt_wscanf_s(void);  /* ../dlls/msvcrt/scanf.c:352 */

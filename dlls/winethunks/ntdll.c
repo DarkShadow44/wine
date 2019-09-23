@@ -2110,10 +2110,11 @@ static WINAPI int (*p__wine_set_signal_handler)(unsigned int  sig, wine_signal_h
 static WINAPI NTSTATUS (*pwine_nt_to_unix_file_name)(UNICODE_STRING*  nameW, ANSI_STRING*  unix_name_ret, UINT  disposition, BOOLEAN  check_case);
 static WINAPI NTSTATUS (*pwine_unix_to_nt_file_name)(ANSI_STRING*  name, UNICODE_STRING*  nt);
 
-extern WINAPI void wine32b_ntdll_A_SHAFinal(PSHA_CTX  Context, PULONG  Result) /* ../dlls/ntdll/crypt.c:180 */
+WINAPI void wine32b_ntdll_A_SHAFinal(PSHA_CTX  Context, PULONG  Result) /* ../dlls/ntdll/crypt.c:180 */
 {
 	TRACE("Enter A_SHAFinal\n");
-	return pA_SHAFinal(Context, Result);
+	pA_SHAFinal(Context, Result);
+	TRACE("Leave A_SHAFinal\n");
 }
 
 extern WINAPI void wine32a_ntdll_A_SHAFinal(void);  /* ../dlls/ntdll/crypt.c:180 */
@@ -2136,10 +2137,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_A_SHAFinal,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_A_SHAInit(PSHA_CTX  Context) /* ../dlls/ntdll/crypt.c:113 */
+WINAPI void wine32b_ntdll_A_SHAInit(PSHA_CTX  Context) /* ../dlls/ntdll/crypt.c:113 */
 {
 	TRACE("Enter A_SHAInit\n");
-	return pA_SHAInit(Context);
+	pA_SHAInit(Context);
+	TRACE("Leave A_SHAInit\n");
 }
 
 extern WINAPI void wine32a_ntdll_A_SHAInit(void);  /* ../dlls/ntdll/crypt.c:113 */
@@ -2161,10 +2163,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_A_SHAInit,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_A_SHAUpdate(PSHA_CTX  Context, unsigned char*  Buffer, UINT  BufferSize) /* ../dlls/ntdll/crypt.c:138 */
+WINAPI void wine32b_ntdll_A_SHAUpdate(PSHA_CTX  Context, unsigned char*  Buffer, UINT  BufferSize) /* ../dlls/ntdll/crypt.c:138 */
 {
 	TRACE("Enter A_SHAUpdate\n");
-	return pA_SHAUpdate(Context, Buffer, BufferSize);
+	pA_SHAUpdate(Context, Buffer, BufferSize);
+	TRACE("Leave A_SHAUpdate\n");
 }
 
 extern WINAPI void wine32a_ntdll_A_SHAUpdate(void);  /* ../dlls/ntdll/crypt.c:138 */
@@ -2188,10 +2191,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_A_SHAUpdate,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_ntdll_ApiSetQueryApiSetPresence(UNICODE_STRING*  namespace, BOOLEAN*  present) /* ../dlls/ntdll/misc.c:612 */
+WINAPI BOOL wine32b_ntdll_ApiSetQueryApiSetPresence(UNICODE_STRING*  namespace, BOOLEAN*  present) /* ../dlls/ntdll/misc.c:612 */
 {
+	BOOL return_value;
 	TRACE("Enter ApiSetQueryApiSetPresence\n");
-	return pApiSetQueryApiSetPresence(namespace, present);
+	return_value = pApiSetQueryApiSetPresence(namespace, present);
+	TRACE("Leave ApiSetQueryApiSetPresence\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_ApiSetQueryApiSetPresence(void);  /* ../dlls/ntdll/misc.c:612 */
@@ -2214,10 +2220,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_ApiSetQueryApiSetPresence,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_DbgPrint(LPCSTR  fmt) /* ../dlls/ntdll/rtl.c:303 */
+WINAPI NTSTATUS wine32b_ntdll_DbgPrint(LPCSTR  fmt) /* ../dlls/ntdll/rtl.c:303 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter DbgPrint\n");
-	return pDbgPrint(fmt);
+	return_value = pDbgPrint(fmt);
+	TRACE("Leave DbgPrint\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_DbgPrint(void);  /* ../dlls/ntdll/rtl.c:303 */
@@ -2239,10 +2248,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_DbgPrint,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_DbgPrintEx(ULONG  iComponentId, ULONG  Level, LPCSTR  fmt) /* ../dlls/ntdll/rtl.c:321 */
+WINAPI NTSTATUS wine32b_ntdll_DbgPrintEx(ULONG  iComponentId, ULONG  Level, LPCSTR  fmt) /* ../dlls/ntdll/rtl.c:321 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter DbgPrintEx\n");
-	return pDbgPrintEx(iComponentId, Level, fmt);
+	return_value = pDbgPrintEx(iComponentId, Level, fmt);
+	TRACE("Leave DbgPrintEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_DbgPrintEx(void);  /* ../dlls/ntdll/rtl.c:321 */
@@ -2266,10 +2278,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_DbgPrintEx,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_DbgUiIssueRemoteBreakin(HANDLE  process) /* ../dlls/ntdll/process.c:1382 */
+WINAPI NTSTATUS wine32b_ntdll_DbgUiIssueRemoteBreakin(HANDLE  process) /* ../dlls/ntdll/process.c:1382 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter DbgUiIssueRemoteBreakin\n");
-	return pDbgUiIssueRemoteBreakin(process);
+	return_value = pDbgUiIssueRemoteBreakin(process);
+	TRACE("Leave DbgUiIssueRemoteBreakin\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_DbgUiIssueRemoteBreakin(void);  /* ../dlls/ntdll/process.c:1382 */
@@ -2291,10 +2306,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_DbgUiIssueRemoteBreakin,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_DbgUiRemoteBreakin(void*  arg) /* ../dlls/ntdll/process.c:1372 */
+WINAPI void wine32b_ntdll_DbgUiRemoteBreakin(void*  arg) /* ../dlls/ntdll/process.c:1372 */
 {
 	TRACE("Enter DbgUiRemoteBreakin\n");
-	return pDbgUiRemoteBreakin(arg);
+	pDbgUiRemoteBreakin(arg);
+	TRACE("Leave DbgUiRemoteBreakin\n");
 }
 
 extern WINAPI void wine32a_ntdll_DbgUiRemoteBreakin(void);  /* ../dlls/ntdll/process.c:1372 */
@@ -2316,10 +2332,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_DbgUiRemoteBreakin,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_EtwEventActivityIdControl(ULONG  code, GUID*  guid) /* ../dlls/ntdll/misc.c:381 */
+WINAPI ULONG wine32b_ntdll_EtwEventActivityIdControl(ULONG  code, GUID*  guid) /* ../dlls/ntdll/misc.c:381 */
 {
+	ULONG return_value;
 	TRACE("Enter EtwEventActivityIdControl\n");
-	return pEtwEventActivityIdControl(code, guid);
+	return_value = pEtwEventActivityIdControl(code, guid);
+	TRACE("Leave EtwEventActivityIdControl\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_EtwEventActivityIdControl(void);  /* ../dlls/ntdll/misc.c:381 */
@@ -2342,10 +2361,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_EtwEventActivityIdControl,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_EtwEventEnabled(REGHANDLE  handle, EVENT_DESCRIPTOR*  descriptor) /* ../dlls/ntdll/misc.c:521 */
+WINAPI BOOLEAN wine32b_ntdll_EtwEventEnabled(REGHANDLE  handle, EVENT_DESCRIPTOR*  descriptor) /* ../dlls/ntdll/misc.c:521 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter EtwEventEnabled\n");
-	return pEtwEventEnabled(handle, descriptor);
+	return_value = pEtwEventEnabled(handle, descriptor);
+	TRACE("Leave EtwEventEnabled\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_EtwEventEnabled(void);  /* ../dlls/ntdll/misc.c:521 */
@@ -2368,10 +2390,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_EtwEventEnabled,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_EtwEventProviderEnabled(REGHANDLE  handle, UCHAR  level, ULONGLONG  keyword) /* ../dlls/ntdll/misc.c:392 */
+WINAPI BOOLEAN wine32b_ntdll_EtwEventProviderEnabled(REGHANDLE  handle, UCHAR  level, ULONGLONG  keyword) /* ../dlls/ntdll/misc.c:392 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter EtwEventProviderEnabled\n");
-	return pEtwEventProviderEnabled(handle, level, keyword);
+	return_value = pEtwEventProviderEnabled(handle, level, keyword);
+	TRACE("Leave EtwEventProviderEnabled\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_EtwEventProviderEnabled(void);  /* ../dlls/ntdll/misc.c:392 */
@@ -2395,10 +2420,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_EtwEventProviderEnabled,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_EtwEventRegister(LPCGUID  provider, PENABLECALLBACK  callback, PVOID  context, PREGHANDLE  handle) /* ../dlls/ntdll/misc.c:401 */
+WINAPI ULONG wine32b_ntdll_EtwEventRegister(LPCGUID  provider, PENABLECALLBACK  callback, PVOID  context, PREGHANDLE  handle) /* ../dlls/ntdll/misc.c:401 */
 {
+	ULONG return_value;
 	TRACE("Enter EtwEventRegister\n");
-	return pEtwEventRegister(provider, callback, context, handle);
+	return_value = pEtwEventRegister(provider, callback, context, handle);
+	TRACE("Leave EtwEventRegister\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_EtwEventRegister(void);  /* ../dlls/ntdll/misc.c:401 */
@@ -2423,10 +2451,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_EtwEventRegister,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_EtwEventSetInformation(REGHANDLE  handle, EVENT_INFO_CLASS  class, void*  info, ULONG  length) /* ../dlls/ntdll/misc.c:422 */
+WINAPI ULONG wine32b_ntdll_EtwEventSetInformation(REGHANDLE  handle, EVENT_INFO_CLASS  class, void*  info, ULONG  length) /* ../dlls/ntdll/misc.c:422 */
 {
+	ULONG return_value;
 	TRACE("Enter EtwEventSetInformation\n");
-	return pEtwEventSetInformation(handle, class, info, length);
+	return_value = pEtwEventSetInformation(handle, class, info, length);
+	TRACE("Leave EtwEventSetInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_EtwEventSetInformation(void);  /* ../dlls/ntdll/misc.c:422 */
@@ -2451,10 +2482,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_EtwEventSetInformation,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_EtwEventUnregister(REGHANDLE  handle) /* ../dlls/ntdll/misc.c:413 */
+WINAPI ULONG wine32b_ntdll_EtwEventUnregister(REGHANDLE  handle) /* ../dlls/ntdll/misc.c:413 */
 {
+	ULONG return_value;
 	TRACE("Enter EtwEventUnregister\n");
-	return pEtwEventUnregister(handle);
+	return_value = pEtwEventUnregister(handle);
+	TRACE("Leave EtwEventUnregister\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_EtwEventUnregister(void);  /* ../dlls/ntdll/misc.c:413 */
@@ -2476,10 +2510,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_EtwEventUnregister,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_EtwEventWrite(REGHANDLE  handle, EVENT_DESCRIPTOR*  descriptor, ULONG  count, EVENT_DATA_DESCRIPTOR*  data) /* ../dlls/ntdll/misc.c:530 */
+WINAPI ULONG wine32b_ntdll_EtwEventWrite(REGHANDLE  handle, EVENT_DESCRIPTOR*  descriptor, ULONG  count, EVENT_DATA_DESCRIPTOR*  data) /* ../dlls/ntdll/misc.c:530 */
 {
+	ULONG return_value;
 	TRACE("Enter EtwEventWrite\n");
-	return pEtwEventWrite(handle, descriptor, count, data);
+	return_value = pEtwEventWrite(handle, descriptor, count, data);
+	TRACE("Leave EtwEventWrite\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_EtwEventWrite(void);  /* ../dlls/ntdll/misc.c:530 */
@@ -2504,10 +2541,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_EtwEventWrite,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_EtwEventWriteString(REGHANDLE  handle, UCHAR  level, ULONGLONG  keyword, PCWSTR  string) /* ../dlls/ntdll/misc.c:432 */
+WINAPI ULONG wine32b_ntdll_EtwEventWriteString(REGHANDLE  handle, UCHAR  level, ULONGLONG  keyword, PCWSTR  string) /* ../dlls/ntdll/misc.c:432 */
 {
+	ULONG return_value;
 	TRACE("Enter EtwEventWriteString\n");
-	return pEtwEventWriteString(handle, level, keyword, string);
+	return_value = pEtwEventWriteString(handle, level, keyword, string);
+	TRACE("Leave EtwEventWriteString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_EtwEventWriteString(void);  /* ../dlls/ntdll/misc.c:432 */
@@ -2532,10 +2572,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_EtwEventWriteString,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_EtwEventWriteTransfer(REGHANDLE  handle, PCEVENT_DESCRIPTOR  descriptor, LPCGUID  activity, LPCGUID  related, ULONG  count, PEVENT_DATA_DESCRIPTOR  data) /* ../dlls/ntdll/misc.c:442 */
+WINAPI ULONG wine32b_ntdll_EtwEventWriteTransfer(REGHANDLE  handle, PCEVENT_DESCRIPTOR  descriptor, LPCGUID  activity, LPCGUID  related, ULONG  count, PEVENT_DATA_DESCRIPTOR  data) /* ../dlls/ntdll/misc.c:442 */
 {
+	ULONG return_value;
 	TRACE("Enter EtwEventWriteTransfer\n");
-	return pEtwEventWriteTransfer(handle, descriptor, activity, related, count, data);
+	return_value = pEtwEventWriteTransfer(handle, descriptor, activity, related, count, data);
+	TRACE("Leave EtwEventWriteTransfer\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_EtwEventWriteTransfer(void);  /* ../dlls/ntdll/misc.c:442 */
@@ -2560,10 +2603,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_EtwEventWriteTransfer,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_EtwGetTraceEnableFlags(TRACEHANDLE  handle) /* ../dlls/ntdll/misc.c:540 */
+WINAPI ULONG wine32b_ntdll_EtwGetTraceEnableFlags(TRACEHANDLE  handle) /* ../dlls/ntdll/misc.c:540 */
 {
+	ULONG return_value;
 	TRACE("Enter EtwGetTraceEnableFlags\n");
-	return pEtwGetTraceEnableFlags(handle);
+	return_value = pEtwGetTraceEnableFlags(handle);
+	TRACE("Leave EtwGetTraceEnableFlags\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_EtwGetTraceEnableFlags(void);  /* ../dlls/ntdll/misc.c:540 */
@@ -2585,10 +2631,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_EtwGetTraceEnableFlags,
 	"ret \n"
 )
 
-extern WINAPI UCHAR wine32b_ntdll_EtwGetTraceEnableLevel(TRACEHANDLE  handle) /* ../dlls/ntdll/misc.c:549 */
+WINAPI UCHAR wine32b_ntdll_EtwGetTraceEnableLevel(TRACEHANDLE  handle) /* ../dlls/ntdll/misc.c:549 */
 {
+	UCHAR return_value;
 	TRACE("Enter EtwGetTraceEnableLevel\n");
-	return pEtwGetTraceEnableLevel(handle);
+	return_value = pEtwGetTraceEnableLevel(handle);
+	TRACE("Leave EtwGetTraceEnableLevel\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_EtwGetTraceEnableLevel(void);  /* ../dlls/ntdll/misc.c:549 */
@@ -2610,10 +2659,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_EtwGetTraceEnableLevel,
 	"ret \n"
 )
 
-extern WINAPI TRACEHANDLE wine32b_ntdll_EtwGetTraceLoggerHandle(PVOID  buf) /* ../dlls/ntdll/misc.c:558 */
+WINAPI TRACEHANDLE wine32b_ntdll_EtwGetTraceLoggerHandle(PVOID  buf) /* ../dlls/ntdll/misc.c:558 */
 {
+	TRACEHANDLE return_value;
 	TRACE("Enter EtwGetTraceLoggerHandle\n");
-	return pEtwGetTraceLoggerHandle(buf);
+	return_value = pEtwGetTraceLoggerHandle(buf);
+	TRACE("Leave EtwGetTraceLoggerHandle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_EtwGetTraceLoggerHandle(void);  /* ../dlls/ntdll/misc.c:558 */
@@ -2635,10 +2687,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_EtwGetTraceLoggerHandle,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_EtwLogTraceEvent(TRACEHANDLE  SessionHandle, PEVENT_TRACE_HEADER  EventTrace) /* ../dlls/ntdll/misc.c:567 */
+WINAPI ULONG wine32b_ntdll_EtwLogTraceEvent(TRACEHANDLE  SessionHandle, PEVENT_TRACE_HEADER  EventTrace) /* ../dlls/ntdll/misc.c:567 */
 {
+	ULONG return_value;
 	TRACE("Enter EtwLogTraceEvent\n");
-	return pEtwLogTraceEvent(SessionHandle, EventTrace);
+	return_value = pEtwLogTraceEvent(SessionHandle, EventTrace);
+	TRACE("Leave EtwLogTraceEvent\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_EtwLogTraceEvent(void);  /* ../dlls/ntdll/misc.c:567 */
@@ -2661,10 +2716,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_EtwLogTraceEvent,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_EtwRegisterTraceGuidsA(WMIDPREQUEST  RequestAddress, void*  RequestContext, GUID*  ControlGuid, ULONG  GuidCount, TRACE_GUID_REGISTRATION*  TraceGuidReg, char*  MofImagePath, char*  MofResourceName, TRACEHANDLE*  RegistrationHandle) /* ../dlls/ntdll/misc.c:495 */
+WINAPI ULONG wine32b_ntdll_EtwRegisterTraceGuidsA(WMIDPREQUEST  RequestAddress, void*  RequestContext, GUID*  ControlGuid, ULONG  GuidCount, TRACE_GUID_REGISTRATION*  TraceGuidReg, char*  MofImagePath, char*  MofResourceName, TRACEHANDLE*  RegistrationHandle) /* ../dlls/ntdll/misc.c:495 */
 {
+	ULONG return_value;
 	TRACE("Enter EtwRegisterTraceGuidsA\n");
-	return pEtwRegisterTraceGuidsA(RequestAddress, RequestContext, ControlGuid, GuidCount, TraceGuidReg, MofImagePath, MofResourceName, RegistrationHandle);
+	return_value = pEtwRegisterTraceGuidsA(RequestAddress, RequestContext, ControlGuid, GuidCount, TraceGuidReg, MofImagePath, MofResourceName, RegistrationHandle);
+	TRACE("Leave EtwRegisterTraceGuidsA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_EtwRegisterTraceGuidsA(void);  /* ../dlls/ntdll/misc.c:495 */
@@ -2689,10 +2747,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_EtwRegisterTraceGuidsA,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_EtwRegisterTraceGuidsW(WMIDPREQUEST  RequestAddress, void*  RequestContext, GUID*  ControlGuid, ULONG  GuidCount, TRACE_GUID_REGISTRATION*  TraceGuidReg, WCHAR*  MofImagePath, WCHAR*  MofResourceName, TRACEHANDLE*  RegistrationHandle) /* ../dlls/ntdll/misc.c:470 */
+WINAPI ULONG wine32b_ntdll_EtwRegisterTraceGuidsW(WMIDPREQUEST  RequestAddress, void*  RequestContext, GUID*  ControlGuid, ULONG  GuidCount, TRACE_GUID_REGISTRATION*  TraceGuidReg, WCHAR*  MofImagePath, WCHAR*  MofResourceName, TRACEHANDLE*  RegistrationHandle) /* ../dlls/ntdll/misc.c:470 */
 {
+	ULONG return_value;
 	TRACE("Enter EtwRegisterTraceGuidsW\n");
-	return pEtwRegisterTraceGuidsW(RequestAddress, RequestContext, ControlGuid, GuidCount, TraceGuidReg, MofImagePath, MofResourceName, RegistrationHandle);
+	return_value = pEtwRegisterTraceGuidsW(RequestAddress, RequestContext, ControlGuid, GuidCount, TraceGuidReg, MofImagePath, MofResourceName, RegistrationHandle);
+	TRACE("Leave EtwRegisterTraceGuidsW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_EtwRegisterTraceGuidsW(void);  /* ../dlls/ntdll/misc.c:470 */
@@ -2717,10 +2778,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_EtwRegisterTraceGuidsW,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_EtwTraceMessage(TRACEHANDLE  handle, ULONG  flags, LPGUID  guid, USHORT  number) /* ../dlls/ntdll/misc.c:586 */
+WINAPI ULONG wine32b_ntdll_EtwTraceMessage(TRACEHANDLE  handle, ULONG  flags, LPGUID  guid, USHORT  number) /* ../dlls/ntdll/misc.c:586 */
 {
+	ULONG return_value;
 	TRACE("Enter EtwTraceMessage\n");
-	return pEtwTraceMessage(handle, flags, guid, number);
+	return_value = pEtwTraceMessage(handle, flags, guid, number);
+	TRACE("Leave EtwTraceMessage\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_EtwTraceMessage(void);  /* ../dlls/ntdll/misc.c:586 */
@@ -2745,10 +2809,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_EtwTraceMessage,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_EtwTraceMessageVa(TRACEHANDLE  handle, ULONG  flags, LPGUID  guid, USHORT  number, __builtin_ms_va_list  args) /* ../dlls/ntdll/misc.c:576 */
+WINAPI ULONG wine32b_ntdll_EtwTraceMessageVa(TRACEHANDLE  handle, ULONG  flags, LPGUID  guid, USHORT  number, __builtin_ms_va_list  args) /* ../dlls/ntdll/misc.c:576 */
 {
+	ULONG return_value;
 	TRACE("Enter EtwTraceMessageVa\n");
-	return pEtwTraceMessageVa(handle, flags, guid, number, args);
+	return_value = pEtwTraceMessageVa(handle, flags, guid, number, args);
+	TRACE("Leave EtwTraceMessageVa\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_EtwTraceMessageVa(void);  /* ../dlls/ntdll/misc.c:576 */
@@ -2773,10 +2840,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_EtwTraceMessageVa,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_EtwUnregisterTraceGuids(TRACEHANDLE  RegistrationHandle) /* ../dlls/ntdll/misc.c:509 */
+WINAPI ULONG wine32b_ntdll_EtwUnregisterTraceGuids(TRACEHANDLE  RegistrationHandle) /* ../dlls/ntdll/misc.c:509 */
 {
+	ULONG return_value;
 	TRACE("Enter EtwUnregisterTraceGuids\n");
-	return pEtwUnregisterTraceGuids(RegistrationHandle);
+	return_value = pEtwUnregisterTraceGuids(RegistrationHandle);
+	TRACE("Leave EtwUnregisterTraceGuids\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_EtwUnregisterTraceGuids(void);  /* ../dlls/ntdll/misc.c:509 */
@@ -2798,10 +2868,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_EtwUnregisterTraceGuids,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrAccessResource(HMODULE  hmod, IMAGE_RESOURCE_DATA_ENTRY*  entry, void**  ptr, ULONG*  size) /* ../dlls/ntdll/resource.c:378 */
+WINAPI NTSTATUS wine32b_ntdll_LdrAccessResource(HMODULE  hmod, IMAGE_RESOURCE_DATA_ENTRY*  entry, void**  ptr, ULONG*  size) /* ../dlls/ntdll/resource.c:378 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LdrAccessResource\n");
-	return pLdrAccessResource(hmod, entry, ptr, size);
+	return_value = pLdrAccessResource(hmod, entry, ptr, size);
+	TRACE("Leave LdrAccessResource\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_LdrAccessResource(void);  /* ../dlls/ntdll/resource.c:378 */
@@ -2826,10 +2899,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrAccessResource,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrAddRefDll(ULONG  flags, HMODULE  module) /* ../dlls/ntdll/loader.c:3163 */
+WINAPI NTSTATUS wine32b_ntdll_LdrAddRefDll(ULONG  flags, HMODULE  module) /* ../dlls/ntdll/loader.c:3163 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LdrAddRefDll\n");
-	return pLdrAddRefDll(flags, module);
+	return_value = pLdrAddRefDll(flags, module);
+	TRACE("Leave LdrAddRefDll\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_LdrAddRefDll(void);  /* ../dlls/ntdll/loader.c:3163 */
@@ -2852,10 +2928,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrAddRefDll,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrDisableThreadCalloutsForDll(HMODULE  hModule) /* ../dlls/ntdll/loader.c:1688 */
+WINAPI NTSTATUS wine32b_ntdll_LdrDisableThreadCalloutsForDll(HMODULE  hModule) /* ../dlls/ntdll/loader.c:1688 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LdrDisableThreadCalloutsForDll\n");
-	return pLdrDisableThreadCalloutsForDll(hModule);
+	return_value = pLdrDisableThreadCalloutsForDll(hModule);
+	TRACE("Leave LdrDisableThreadCalloutsForDll\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_LdrDisableThreadCalloutsForDll(void);  /* ../dlls/ntdll/loader.c:1688 */
@@ -2877,10 +2956,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrDisableThreadCalloutsForDll,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrEnumerateLoadedModules(void*  unknown, LDRENUMPROC  callback, void*  context) /* ../dlls/ntdll/loader.c:1733 */
+WINAPI NTSTATUS wine32b_ntdll_LdrEnumerateLoadedModules(void*  unknown, LDRENUMPROC  callback, void*  context) /* ../dlls/ntdll/loader.c:1733 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LdrEnumerateLoadedModules\n");
-	return pLdrEnumerateLoadedModules(unknown, callback, context);
+	return_value = pLdrEnumerateLoadedModules(unknown, callback, context);
+	TRACE("Leave LdrEnumerateLoadedModules\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_LdrEnumerateLoadedModules(void);  /* ../dlls/ntdll/loader.c:1733 */
@@ -2904,10 +2986,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrEnumerateLoadedModules,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrFindEntryForAddress(void*  addr, PLDR_MODULE*  pmod) /* ../dlls/ntdll/loader.c:1711 */
+WINAPI NTSTATUS wine32b_ntdll_LdrFindEntryForAddress(void*  addr, PLDR_MODULE*  pmod) /* ../dlls/ntdll/loader.c:1711 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LdrFindEntryForAddress\n");
-	return pLdrFindEntryForAddress(addr, pmod);
+	return_value = pLdrFindEntryForAddress(addr, pmod);
+	TRACE("Leave LdrFindEntryForAddress\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_LdrFindEntryForAddress(void);  /* ../dlls/ntdll/loader.c:1711 */
@@ -2930,10 +3015,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrFindEntryForAddress,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrFindResourceDirectory_U(HMODULE  hmod, LDR_RESOURCE_INFO*  info, ULONG  level, IMAGE_RESOURCE_DIRECTORY**  dir) /* ../dlls/ntdll/resource.c:263 */
+WINAPI NTSTATUS wine32b_ntdll_LdrFindResourceDirectory_U(HMODULE  hmod, LDR_RESOURCE_INFO*  info, ULONG  level, IMAGE_RESOURCE_DIRECTORY**  dir) /* ../dlls/ntdll/resource.c:263 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LdrFindResourceDirectory_U\n");
-	return pLdrFindResourceDirectory_U(hmod, info, level, dir);
+	return_value = pLdrFindResourceDirectory_U(hmod, info, level, dir);
+	TRACE("Leave LdrFindResourceDirectory_U\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_LdrFindResourceDirectory_U(void);  /* ../dlls/ntdll/resource.c:263 */
@@ -2958,10 +3046,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrFindResourceDirectory_U,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrFindResource_U(HMODULE  hmod, LDR_RESOURCE_INFO*  info, ULONG  level, IMAGE_RESOURCE_DATA_ENTRY**  entry) /* ../dlls/ntdll/resource.c:291 */
+WINAPI NTSTATUS wine32b_ntdll_LdrFindResource_U(HMODULE  hmod, LDR_RESOURCE_INFO*  info, ULONG  level, IMAGE_RESOURCE_DATA_ENTRY**  entry) /* ../dlls/ntdll/resource.c:291 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LdrFindResource_U\n");
-	return pLdrFindResource_U(hmod, info, level, entry);
+	return_value = pLdrFindResource_U(hmod, info, level, entry);
+	TRACE("Leave LdrFindResource_U\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_LdrFindResource_U(void);  /* ../dlls/ntdll/resource.c:291 */
@@ -2986,10 +3077,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrFindResource_U,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrGetDllHandle(LPCWSTR  load_path, ULONG  flags, UNICODE_STRING*  name, HMODULE*  base) /* ../dlls/ntdll/loader.c:3131 */
+WINAPI NTSTATUS wine32b_ntdll_LdrGetDllHandle(LPCWSTR  load_path, ULONG  flags, UNICODE_STRING*  name, HMODULE*  base) /* ../dlls/ntdll/loader.c:3131 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LdrGetDllHandle\n");
-	return pLdrGetDllHandle(load_path, flags, name, base);
+	return_value = pLdrGetDllHandle(load_path, flags, name, base);
+	TRACE("Leave LdrGetDllHandle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_LdrGetDllHandle(void);  /* ../dlls/ntdll/loader.c:3131 */
@@ -3014,10 +3108,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrGetDllHandle,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrGetProcedureAddress(HMODULE  module, ANSI_STRING*  name, ULONG  ord, PVOID*  address) /* ../dlls/ntdll/loader.c:1858 */
+WINAPI NTSTATUS wine32b_ntdll_LdrGetProcedureAddress(HMODULE  module, ANSI_STRING*  name, ULONG  ord, PVOID*  address) /* ../dlls/ntdll/loader.c:1858 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LdrGetProcedureAddress\n");
-	return pLdrGetProcedureAddress(module, name, ord, address);
+	return_value = pLdrGetProcedureAddress(module, name, ord, address);
+	TRACE("Leave LdrGetProcedureAddress\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_LdrGetProcedureAddress(void);  /* ../dlls/ntdll/loader.c:1858 */
@@ -3042,10 +3139,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrGetProcedureAddress,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_LdrInitializeThunk(CONTEXT*  context, void**  entry, ULONG_PTR  unknown3, ULONG_PTR  unknown4) /* ../dlls/ntdll/loader.c:3755 */
+WINAPI void wine32b_ntdll_LdrInitializeThunk(CONTEXT*  context, void**  entry, ULONG_PTR  unknown3, ULONG_PTR  unknown4) /* ../dlls/ntdll/loader.c:3755 */
 {
 	TRACE("Enter LdrInitializeThunk\n");
-	return pLdrInitializeThunk(context, entry, unknown3, unknown4);
+	pLdrInitializeThunk(context, entry, unknown3, unknown4);
+	TRACE("Leave LdrInitializeThunk\n");
 }
 
 extern WINAPI void wine32a_ntdll_LdrInitializeThunk(void);  /* ../dlls/ntdll/loader.c:3755 */
@@ -3070,10 +3168,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrInitializeThunk,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrLoadDll(LPCWSTR  path_name, DWORD  flags, UNICODE_STRING*  libname, HMODULE*  hModule) /* ../dlls/ntdll/loader.c:3101 */
+WINAPI NTSTATUS wine32b_ntdll_LdrLoadDll(LPCWSTR  path_name, DWORD  flags, UNICODE_STRING*  libname, HMODULE*  hModule) /* ../dlls/ntdll/loader.c:3101 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LdrLoadDll\n");
-	return pLdrLoadDll(path_name, flags, libname, hModule);
+	return_value = pLdrLoadDll(path_name, flags, libname, hModule);
+	TRACE("Leave LdrLoadDll\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_LdrLoadDll(void);  /* ../dlls/ntdll/loader.c:3101 */
@@ -3098,10 +3199,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrLoadDll,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrLockLoaderLock(ULONG  flags, ULONG*  result, ULONG_PTR*  magic) /* ../dlls/ntdll/loader.c:1812 */
+WINAPI NTSTATUS wine32b_ntdll_LdrLockLoaderLock(ULONG  flags, ULONG*  result, ULONG_PTR*  magic) /* ../dlls/ntdll/loader.c:1812 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LdrLockLoaderLock\n");
-	return pLdrLockLoaderLock(flags, result, magic);
+	return_value = pLdrLockLoaderLock(flags, result, magic);
+	TRACE("Leave LdrLockLoaderLock\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_LdrLockLoaderLock(void);  /* ../dlls/ntdll/loader.c:1812 */
@@ -3125,10 +3229,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrLockLoaderLock,
 	"ret \n"
 )
 
-extern WINAPI IMAGE_BASE_RELOCATION* wine32b_ntdll_LdrProcessRelocationBlock(void*  page, UINT  count, USHORT*  relocs, INT_PTR  delta) /* ../dlls/ntdll/loader.c:3192 */
+WINAPI IMAGE_BASE_RELOCATION* wine32b_ntdll_LdrProcessRelocationBlock(void*  page, UINT  count, USHORT*  relocs, INT_PTR  delta) /* ../dlls/ntdll/loader.c:3192 */
 {
+	IMAGE_BASE_RELOCATION* return_value;
 	TRACE("Enter LdrProcessRelocationBlock\n");
-	return pLdrProcessRelocationBlock(page, count, relocs, delta);
+	return_value = pLdrProcessRelocationBlock(page, count, relocs, delta);
+	TRACE("Leave LdrProcessRelocationBlock\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_LdrProcessRelocationBlock(void);  /* ../dlls/ntdll/loader.c:3192 */
@@ -3153,10 +3260,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrProcessRelocationBlock,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrQueryImageFileExecutionOptions(UNICODE_STRING*  key, LPCWSTR  value, ULONG  type, void*  data, ULONG  in_size, ULONG*  out_size) /* ../dlls/ntdll/loader.c:3371 */
+WINAPI NTSTATUS wine32b_ntdll_LdrQueryImageFileExecutionOptions(UNICODE_STRING*  key, LPCWSTR  value, ULONG  type, void*  data, ULONG  in_size, ULONG*  out_size) /* ../dlls/ntdll/loader.c:3371 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LdrQueryImageFileExecutionOptions\n");
-	return pLdrQueryImageFileExecutionOptions(key, value, type, data, in_size, out_size);
+	return_value = pLdrQueryImageFileExecutionOptions(key, value, type, data, in_size, out_size);
+	TRACE("Leave LdrQueryImageFileExecutionOptions\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_LdrQueryImageFileExecutionOptions(void);  /* ../dlls/ntdll/loader.c:3371 */
@@ -3181,10 +3291,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrQueryImageFileExecutionOptions,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrQueryProcessModuleInformation(PSYSTEM_MODULE_INFORMATION  smi, ULONG  buf_size, ULONG*  req_size) /* ../dlls/ntdll/loader.c:3269 */
+WINAPI NTSTATUS wine32b_ntdll_LdrQueryProcessModuleInformation(PSYSTEM_MODULE_INFORMATION  smi, ULONG  buf_size, ULONG*  req_size) /* ../dlls/ntdll/loader.c:3269 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LdrQueryProcessModuleInformation\n");
-	return pLdrQueryProcessModuleInformation(smi, buf_size, req_size);
+	return_value = pLdrQueryProcessModuleInformation(smi, buf_size, req_size);
+	TRACE("Leave LdrQueryProcessModuleInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_LdrQueryProcessModuleInformation(void);  /* ../dlls/ntdll/loader.c:3269 */
@@ -3208,10 +3321,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrQueryProcessModuleInformation,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrRegisterDllNotification(ULONG  flags, PLDR_DLL_NOTIFICATION_FUNCTION  callback, void*  context, void**  cookie) /* ../dlls/ntdll/loader.c:1761 */
+WINAPI NTSTATUS wine32b_ntdll_LdrRegisterDllNotification(ULONG  flags, PLDR_DLL_NOTIFICATION_FUNCTION  callback, void*  context, void**  cookie) /* ../dlls/ntdll/loader.c:1761 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LdrRegisterDllNotification\n");
-	return pLdrRegisterDllNotification(flags, callback, context, cookie);
+	return_value = pLdrRegisterDllNotification(flags, callback, context, cookie);
+	TRACE("Leave LdrRegisterDllNotification\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_LdrRegisterDllNotification(void);  /* ../dlls/ntdll/loader.c:1761 */
@@ -3236,10 +3352,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrRegisterDllNotification,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_ntdll_LdrResolveDelayLoadedAPI(void*  base, IMAGE_DELAYLOAD_DESCRIPTOR*  desc, PDELAYLOAD_FAILURE_DLL_CALLBACK  dllhook, PDELAYLOAD_FAILURE_SYSTEM_ROUTINE  syshook, IMAGE_THUNK_DATA*  addr, ULONG  flags) /* ../dlls/ntdll/loader.c:3430 */
+WINAPI void* wine32b_ntdll_LdrResolveDelayLoadedAPI(void*  base, IMAGE_DELAYLOAD_DESCRIPTOR*  desc, PDELAYLOAD_FAILURE_DLL_CALLBACK  dllhook, PDELAYLOAD_FAILURE_SYSTEM_ROUTINE  syshook, IMAGE_THUNK_DATA*  addr, ULONG  flags) /* ../dlls/ntdll/loader.c:3430 */
 {
+	void* return_value;
 	TRACE("Enter LdrResolveDelayLoadedAPI\n");
-	return pLdrResolveDelayLoadedAPI(base, desc, dllhook, syshook, addr, flags);
+	return_value = pLdrResolveDelayLoadedAPI(base, desc, dllhook, syshook, addr, flags);
+	TRACE("Leave LdrResolveDelayLoadedAPI\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_LdrResolveDelayLoadedAPI(void);  /* ../dlls/ntdll/loader.c:3430 */
@@ -3264,10 +3383,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrResolveDelayLoadedAPI,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_LdrShutdownProcess(void) /* ../dlls/ntdll/loader.c:3510 */
+WINAPI void wine32b_ntdll_LdrShutdownProcess(void) /* ../dlls/ntdll/loader.c:3510 */
 {
 	TRACE("Enter LdrShutdownProcess\n");
-	return pLdrShutdownProcess();
+	pLdrShutdownProcess();
+	TRACE("Leave LdrShutdownProcess\n");
 }
 
 extern WINAPI void wine32a_ntdll_LdrShutdownProcess(void);  /* ../dlls/ntdll/loader.c:3510 */
@@ -3288,10 +3408,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrShutdownProcess,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_LdrShutdownThread(void) /* ../dlls/ntdll/loader.c:3535 */
+WINAPI void wine32b_ntdll_LdrShutdownThread(void) /* ../dlls/ntdll/loader.c:3535 */
 {
 	TRACE("Enter LdrShutdownThread\n");
-	return pLdrShutdownThread();
+	pLdrShutdownThread();
+	TRACE("Leave LdrShutdownThread\n");
 }
 
 extern WINAPI void wine32a_ntdll_LdrShutdownThread(void);  /* ../dlls/ntdll/loader.c:3535 */
@@ -3312,10 +3433,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrShutdownThread,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrUnloadDll(HMODULE  hModule) /* ../dlls/ntdll/loader.c:3684 */
+WINAPI NTSTATUS wine32b_ntdll_LdrUnloadDll(HMODULE  hModule) /* ../dlls/ntdll/loader.c:3684 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LdrUnloadDll\n");
-	return pLdrUnloadDll(hModule);
+	return_value = pLdrUnloadDll(hModule);
+	TRACE("Leave LdrUnloadDll\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_LdrUnloadDll(void);  /* ../dlls/ntdll/loader.c:3684 */
@@ -3337,10 +3461,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrUnloadDll,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrUnlockLoaderLock(ULONG  flags, ULONG_PTR  magic) /* ../dlls/ntdll/loader.c:1844 */
+WINAPI NTSTATUS wine32b_ntdll_LdrUnlockLoaderLock(ULONG  flags, ULONG_PTR  magic) /* ../dlls/ntdll/loader.c:1844 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LdrUnlockLoaderLock\n");
-	return pLdrUnlockLoaderLock(flags, magic);
+	return_value = pLdrUnlockLoaderLock(flags, magic);
+	TRACE("Leave LdrUnlockLoaderLock\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_LdrUnlockLoaderLock(void);  /* ../dlls/ntdll/loader.c:1844 */
@@ -3363,10 +3490,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrUnlockLoaderLock,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_LdrUnregisterDllNotification(void*  cookie) /* ../dlls/ntdll/loader.c:1790 */
+WINAPI NTSTATUS wine32b_ntdll_LdrUnregisterDllNotification(void*  cookie) /* ../dlls/ntdll/loader.c:1790 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LdrUnregisterDllNotification\n");
-	return pLdrUnregisterDllNotification(cookie);
+	return_value = pLdrUnregisterDllNotification(cookie);
+	TRACE("Leave LdrUnregisterDllNotification\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_LdrUnregisterDllNotification(void);  /* ../dlls/ntdll/loader.c:1790 */
@@ -3388,10 +3518,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_LdrUnregisterDllNotification,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_MD4Final(MD4_CTX*  ctx) /* ../dlls/ntdll/crypt.c:407 */
+WINAPI void wine32b_ntdll_MD4Final(MD4_CTX*  ctx) /* ../dlls/ntdll/crypt.c:407 */
 {
 	TRACE("Enter MD4Final\n");
-	return pMD4Final(ctx);
+	pMD4Final(ctx);
+	TRACE("Leave MD4Final\n");
 }
 
 extern WINAPI void wine32a_ntdll_MD4Final(void);  /* ../dlls/ntdll/crypt.c:407 */
@@ -3413,10 +3544,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_MD4Final,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_MD4Init(MD4_CTX*  ctx) /* ../dlls/ntdll/crypt.c:335 */
+WINAPI void wine32b_ntdll_MD4Init(MD4_CTX*  ctx) /* ../dlls/ntdll/crypt.c:335 */
 {
 	TRACE("Enter MD4Init\n");
-	return pMD4Init(ctx);
+	pMD4Init(ctx);
+	TRACE("Leave MD4Init\n");
 }
 
 extern WINAPI void wine32a_ntdll_MD4Init(void);  /* ../dlls/ntdll/crypt.c:335 */
@@ -3438,10 +3570,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_MD4Init,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_MD4Update(MD4_CTX*  ctx, unsigned char*  buf, unsigned int  len) /* ../dlls/ntdll/crypt.c:351 */
+WINAPI void wine32b_ntdll_MD4Update(MD4_CTX*  ctx, unsigned char*  buf, unsigned int  len) /* ../dlls/ntdll/crypt.c:351 */
 {
 	TRACE("Enter MD4Update\n");
-	return pMD4Update(ctx, buf, len);
+	pMD4Update(ctx, buf, len);
+	TRACE("Leave MD4Update\n");
 }
 
 extern WINAPI void wine32a_ntdll_MD4Update(void);  /* ../dlls/ntdll/crypt.c:351 */
@@ -3465,10 +3598,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_MD4Update,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_MD5Final(MD5_CTX*  ctx) /* ../dlls/ntdll/crypt.c:648 */
+WINAPI void wine32b_ntdll_MD5Final(MD5_CTX*  ctx) /* ../dlls/ntdll/crypt.c:648 */
 {
 	TRACE("Enter MD5Final\n");
-	return pMD5Final(ctx);
+	pMD5Final(ctx);
+	TRACE("Leave MD5Final\n");
 }
 
 extern WINAPI void wine32a_ntdll_MD5Final(void);  /* ../dlls/ntdll/crypt.c:648 */
@@ -3490,10 +3624,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_MD5Final,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_MD5Init(MD5_CTX*  ctx) /* ../dlls/ntdll/crypt.c:576 */
+WINAPI void wine32b_ntdll_MD5Init(MD5_CTX*  ctx) /* ../dlls/ntdll/crypt.c:576 */
 {
 	TRACE("Enter MD5Init\n");
-	return pMD5Init(ctx);
+	pMD5Init(ctx);
+	TRACE("Leave MD5Init\n");
 }
 
 extern WINAPI void wine32a_ntdll_MD5Init(void);  /* ../dlls/ntdll/crypt.c:576 */
@@ -3515,10 +3650,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_MD5Init,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_MD5Update(MD5_CTX*  ctx, unsigned char*  buf, unsigned int  len) /* ../dlls/ntdll/crypt.c:592 */
+WINAPI void wine32b_ntdll_MD5Update(MD5_CTX*  ctx, unsigned char*  buf, unsigned int  len) /* ../dlls/ntdll/crypt.c:592 */
 {
 	TRACE("Enter MD5Update\n");
-	return pMD5Update(ctx, buf, len);
+	pMD5Update(ctx, buf, len);
+	TRACE("Leave MD5Update\n");
 }
 
 extern WINAPI void wine32a_ntdll_MD5Update(void);  /* ../dlls/ntdll/crypt.c:592 */
@@ -3542,10 +3678,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_MD5Update,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtAcceptConnectPort(PHANDLE  PortHandle, ULONG  PortIdentifier, PLPC_MESSAGE  pLpcMessage, BOOLEAN  Accept, PLPC_SECTION_WRITE  WriteSection, PLPC_SECTION_READ  ReadSection) /* ../dlls/ntdll/nt.c:841 */
+WINAPI NTSTATUS wine32b_ntdll_NtAcceptConnectPort(PHANDLE  PortHandle, ULONG  PortIdentifier, PLPC_MESSAGE  pLpcMessage, BOOLEAN  Accept, PLPC_SECTION_WRITE  WriteSection, PLPC_SECTION_READ  ReadSection) /* ../dlls/ntdll/nt.c:841 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtAcceptConnectPort\n");
-	return pNtAcceptConnectPort(PortHandle, PortIdentifier, pLpcMessage, Accept, WriteSection, ReadSection);
+	return_value = pNtAcceptConnectPort(PortHandle, PortIdentifier, pLpcMessage, Accept, WriteSection, ReadSection);
+	TRACE("Leave NtAcceptConnectPort\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtAcceptConnectPort(void);  /* ../dlls/ntdll/nt.c:841 */
@@ -3570,10 +3709,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtAcceptConnectPort,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtAccessCheck(PSECURITY_DESCRIPTOR  SecurityDescriptor, HANDLE  ClientToken, ACCESS_MASK  DesiredAccess, PGENERIC_MAPPING  GenericMapping, PPRIVILEGE_SET  PrivilegeSet, PULONG  ReturnLength, PULONG  GrantedAccess, NTSTATUS*  AccessStatus) /* ../dlls/ntdll/sec.c:1652 */
+WINAPI NTSTATUS wine32b_ntdll_NtAccessCheck(PSECURITY_DESCRIPTOR  SecurityDescriptor, HANDLE  ClientToken, ACCESS_MASK  DesiredAccess, PGENERIC_MAPPING  GenericMapping, PPRIVILEGE_SET  PrivilegeSet, PULONG  ReturnLength, PULONG  GrantedAccess, NTSTATUS*  AccessStatus) /* ../dlls/ntdll/sec.c:1652 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtAccessCheck\n");
-	return pNtAccessCheck(SecurityDescriptor, ClientToken, DesiredAccess, GenericMapping, PrivilegeSet, ReturnLength, GrantedAccess, AccessStatus);
+	return_value = pNtAccessCheck(SecurityDescriptor, ClientToken, DesiredAccess, GenericMapping, PrivilegeSet, ReturnLength, GrantedAccess, AccessStatus);
+	TRACE("Leave NtAccessCheck\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtAccessCheck(void);  /* ../dlls/ntdll/sec.c:1652 */
@@ -3598,10 +3740,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtAccessCheck,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtAccessCheckAndAuditAlarm(PUNICODE_STRING  SubsystemName, HANDLE  HandleId, PUNICODE_STRING  ObjectTypeName, PUNICODE_STRING  ObjectName, PSECURITY_DESCRIPTOR  SecurityDescriptor, ACCESS_MASK  DesiredAccess, PGENERIC_MAPPING  GenericMapping, BOOLEAN  ObjectCreation, PACCESS_MASK  GrantedAccess, PBOOLEAN  AccessStatus, PBOOLEAN  GenerateOnClose) /* ../dlls/ntdll/nt.c:3401 */
+WINAPI NTSTATUS wine32b_ntdll_NtAccessCheckAndAuditAlarm(PUNICODE_STRING  SubsystemName, HANDLE  HandleId, PUNICODE_STRING  ObjectTypeName, PUNICODE_STRING  ObjectName, PSECURITY_DESCRIPTOR  SecurityDescriptor, ACCESS_MASK  DesiredAccess, PGENERIC_MAPPING  GenericMapping, BOOLEAN  ObjectCreation, PACCESS_MASK  GrantedAccess, PBOOLEAN  AccessStatus, PBOOLEAN  GenerateOnClose) /* ../dlls/ntdll/nt.c:3401 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtAccessCheckAndAuditAlarm\n");
-	return pNtAccessCheckAndAuditAlarm(SubsystemName, HandleId, ObjectTypeName, ObjectName, SecurityDescriptor, DesiredAccess, GenericMapping, ObjectCreation, GrantedAccess, AccessStatus, GenerateOnClose);
+	return_value = pNtAccessCheckAndAuditAlarm(SubsystemName, HandleId, ObjectTypeName, ObjectName, SecurityDescriptor, DesiredAccess, GenericMapping, ObjectCreation, GrantedAccess, AccessStatus, GenerateOnClose);
+	TRACE("Leave NtAccessCheckAndAuditAlarm\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtAccessCheckAndAuditAlarm(void);  /* ../dlls/ntdll/nt.c:3401 */
@@ -3626,10 +3771,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtAccessCheckAndAuditAlarm,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtAddAtom(WCHAR*  name, ULONG  length, RTL_ATOM*  atom) /* ../dlls/ntdll/atom.c:314 */
+WINAPI NTSTATUS wine32b_ntdll_NtAddAtom(WCHAR*  name, ULONG  length, RTL_ATOM*  atom) /* ../dlls/ntdll/atom.c:314 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtAddAtom\n");
-	return pNtAddAtom(name, length, atom);
+	return_value = pNtAddAtom(name, length, atom);
+	TRACE("Leave NtAddAtom\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtAddAtom(void);  /* ../dlls/ntdll/atom.c:314 */
@@ -3653,10 +3801,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtAddAtom,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtAdjustGroupsToken(HANDLE  TokenHandle, BOOLEAN  ResetToDefault, PTOKEN_GROUPS  NewState, ULONG  BufferLength, PTOKEN_GROUPS  PreviousState, PULONG  ReturnLength) /* ../dlls/ntdll/nt.c:725 */
+WINAPI NTSTATUS wine32b_ntdll_NtAdjustGroupsToken(HANDLE  TokenHandle, BOOLEAN  ResetToDefault, PTOKEN_GROUPS  NewState, ULONG  BufferLength, PTOKEN_GROUPS  PreviousState, PULONG  ReturnLength) /* ../dlls/ntdll/nt.c:725 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtAdjustGroupsToken\n");
-	return pNtAdjustGroupsToken(TokenHandle, ResetToDefault, NewState, BufferLength, PreviousState, ReturnLength);
+	return_value = pNtAdjustGroupsToken(TokenHandle, ResetToDefault, NewState, BufferLength, PreviousState, ReturnLength);
+	TRACE("Leave NtAdjustGroupsToken\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtAdjustGroupsToken(void);  /* ../dlls/ntdll/nt.c:725 */
@@ -3681,10 +3832,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtAdjustGroupsToken,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtAdjustPrivilegesToken(HANDLE  TokenHandle, BOOLEAN  DisableAllPrivileges, PTOKEN_PRIVILEGES  NewState, DWORD  BufferLength, PTOKEN_PRIVILEGES  PreviousState, PDWORD  ReturnLength) /* ../dlls/ntdll/nt.c:264 */
+WINAPI NTSTATUS wine32b_ntdll_NtAdjustPrivilegesToken(HANDLE  TokenHandle, BOOLEAN  DisableAllPrivileges, PTOKEN_PRIVILEGES  NewState, DWORD  BufferLength, PTOKEN_PRIVILEGES  PreviousState, PDWORD  ReturnLength) /* ../dlls/ntdll/nt.c:264 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtAdjustPrivilegesToken\n");
-	return pNtAdjustPrivilegesToken(TokenHandle, DisableAllPrivileges, NewState, BufferLength, PreviousState, ReturnLength);
+	return_value = pNtAdjustPrivilegesToken(TokenHandle, DisableAllPrivileges, NewState, BufferLength, PreviousState, ReturnLength);
+	TRACE("Leave NtAdjustPrivilegesToken\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtAdjustPrivilegesToken(void);  /* ../dlls/ntdll/nt.c:264 */
@@ -3709,10 +3863,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtAdjustPrivilegesToken,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtAlertResumeThread(HANDLE  handle, PULONG  count) /* ../dlls/ntdll/thread.c:634 */
+WINAPI NTSTATUS wine32b_ntdll_NtAlertResumeThread(HANDLE  handle, PULONG  count) /* ../dlls/ntdll/thread.c:634 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtAlertResumeThread\n");
-	return pNtAlertResumeThread(handle, count);
+	return_value = pNtAlertResumeThread(handle, count);
+	TRACE("Leave NtAlertResumeThread\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtAlertResumeThread(void);  /* ../dlls/ntdll/thread.c:634 */
@@ -3735,10 +3892,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtAlertResumeThread,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtAlertThread(HANDLE  handle) /* ../dlls/ntdll/thread.c:645 */
+WINAPI NTSTATUS wine32b_ntdll_NtAlertThread(HANDLE  handle) /* ../dlls/ntdll/thread.c:645 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtAlertThread\n");
-	return pNtAlertThread(handle);
+	return_value = pNtAlertThread(handle);
+	TRACE("Leave NtAlertThread\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtAlertThread(void);  /* ../dlls/ntdll/thread.c:645 */
@@ -3760,10 +3920,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtAlertThread,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtAllocateLocallyUniqueId(PLUID  Luid) /* ../dlls/ntdll/nt.c:3343 */
+WINAPI NTSTATUS wine32b_ntdll_NtAllocateLocallyUniqueId(PLUID  Luid) /* ../dlls/ntdll/nt.c:3343 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtAllocateLocallyUniqueId\n");
-	return pNtAllocateLocallyUniqueId(Luid);
+	return_value = pNtAllocateLocallyUniqueId(Luid);
+	TRACE("Leave NtAllocateLocallyUniqueId\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtAllocateLocallyUniqueId(void);  /* ../dlls/ntdll/nt.c:3343 */
@@ -3785,10 +3948,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtAllocateLocallyUniqueId,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtAllocateUuids(ULARGE_INTEGER*  time, ULONG*  delta, ULONG*  sequence, UCHAR*  seed) /* ../dlls/ntdll/om.c:714 */
+WINAPI NTSTATUS wine32b_ntdll_NtAllocateUuids(ULARGE_INTEGER*  time, ULONG*  delta, ULONG*  sequence, UCHAR*  seed) /* ../dlls/ntdll/om.c:714 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtAllocateUuids\n");
-	return pNtAllocateUuids(time, delta, sequence, seed);
+	return_value = pNtAllocateUuids(time, delta, sequence, seed);
+	TRACE("Leave NtAllocateUuids\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtAllocateUuids(void);  /* ../dlls/ntdll/om.c:714 */
@@ -3813,10 +3979,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtAllocateUuids,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtAllocateVirtualMemory(HANDLE  process, PVOID*  ret, ULONG_PTR  zero_bits, SIZE_T*  size_ptr, ULONG  type, ULONG  protect) /* ../dlls/ntdll/virtual.c:2551 */
+WINAPI NTSTATUS wine32b_ntdll_NtAllocateVirtualMemory(HANDLE  process, PVOID*  ret, ULONG_PTR  zero_bits, SIZE_T*  size_ptr, ULONG  type, ULONG  protect) /* ../dlls/ntdll/virtual.c:2551 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtAllocateVirtualMemory\n");
-	return pNtAllocateVirtualMemory(process, ret, zero_bits, size_ptr, type, protect);
+	return_value = pNtAllocateVirtualMemory(process, ret, zero_bits, size_ptr, type, protect);
+	TRACE("Leave NtAllocateVirtualMemory\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtAllocateVirtualMemory(void);  /* ../dlls/ntdll/virtual.c:2551 */
@@ -3841,10 +4010,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtAllocateVirtualMemory,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtAreMappedFilesTheSame(PVOID  addr1, PVOID  addr2) /* ../dlls/ntdll/virtual.c:3577 */
+WINAPI NTSTATUS wine32b_ntdll_NtAreMappedFilesTheSame(PVOID  addr1, PVOID  addr2) /* ../dlls/ntdll/virtual.c:3577 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtAreMappedFilesTheSame\n");
-	return pNtAreMappedFilesTheSame(addr1, addr2);
+	return_value = pNtAreMappedFilesTheSame(addr1, addr2);
+	TRACE("Leave NtAreMappedFilesTheSame\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtAreMappedFilesTheSame(void);  /* ../dlls/ntdll/virtual.c:3577 */
@@ -3867,10 +4039,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtAreMappedFilesTheSame,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtAssignProcessToJobObject(HANDLE  job, HANDLE  process) /* ../dlls/ntdll/sync.c:847 */
+WINAPI NTSTATUS wine32b_ntdll_NtAssignProcessToJobObject(HANDLE  job, HANDLE  process) /* ../dlls/ntdll/sync.c:847 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtAssignProcessToJobObject\n");
-	return pNtAssignProcessToJobObject(job, process);
+	return_value = pNtAssignProcessToJobObject(job, process);
+	TRACE("Leave NtAssignProcessToJobObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtAssignProcessToJobObject(void);  /* ../dlls/ntdll/sync.c:847 */
@@ -3893,10 +4068,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtAssignProcessToJobObject,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCancelIoFile(HANDLE  hFile, PIO_STATUS_BLOCK  io_status) /* ../dlls/ntdll/file.c:3557 */
+WINAPI NTSTATUS wine32b_ntdll_NtCancelIoFile(HANDLE  hFile, PIO_STATUS_BLOCK  io_status) /* ../dlls/ntdll/file.c:3557 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCancelIoFile\n");
-	return pNtCancelIoFile(hFile, io_status);
+	return_value = pNtCancelIoFile(hFile, io_status);
+	TRACE("Leave NtCancelIoFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCancelIoFile(void);  /* ../dlls/ntdll/file.c:3557 */
@@ -3919,10 +4097,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCancelIoFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCancelIoFileEx(HANDLE  hFile, PIO_STATUS_BLOCK  iosb, PIO_STATUS_BLOCK  io_status) /* ../dlls/ntdll/file.c:3536 */
+WINAPI NTSTATUS wine32b_ntdll_NtCancelIoFileEx(HANDLE  hFile, PIO_STATUS_BLOCK  iosb, PIO_STATUS_BLOCK  io_status) /* ../dlls/ntdll/file.c:3536 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCancelIoFileEx\n");
-	return pNtCancelIoFileEx(hFile, iosb, io_status);
+	return_value = pNtCancelIoFileEx(hFile, iosb, io_status);
+	TRACE("Leave NtCancelIoFileEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCancelIoFileEx(void);  /* ../dlls/ntdll/file.c:3536 */
@@ -3946,10 +4127,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCancelIoFileEx,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCancelTimer(HANDLE  handle, BOOLEAN*  state) /* ../dlls/ntdll/sync.c:963 */
+WINAPI NTSTATUS wine32b_ntdll_NtCancelTimer(HANDLE  handle, BOOLEAN*  state) /* ../dlls/ntdll/sync.c:963 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCancelTimer\n");
-	return pNtCancelTimer(handle, state);
+	return_value = pNtCancelTimer(handle, state);
+	TRACE("Leave NtCancelTimer\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCancelTimer(void);  /* ../dlls/ntdll/sync.c:963 */
@@ -3972,10 +4156,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCancelTimer,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtClearEvent(HANDLE  handle) /* ../dlls/ntdll/sync.c:443 */
+WINAPI NTSTATUS wine32b_ntdll_NtClearEvent(HANDLE  handle) /* ../dlls/ntdll/sync.c:443 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtClearEvent\n");
-	return pNtClearEvent(handle);
+	return_value = pNtClearEvent(handle);
+	TRACE("Leave NtClearEvent\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtClearEvent(void);  /* ../dlls/ntdll/sync.c:443 */
@@ -3997,10 +4184,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtClearEvent,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtClearPowerRequest(HANDLE  handle, POWER_REQUEST_TYPE  type) /* ../dlls/ntdll/nt.c:3104 */
+WINAPI NTSTATUS wine32b_ntdll_NtClearPowerRequest(HANDLE  handle, POWER_REQUEST_TYPE  type) /* ../dlls/ntdll/nt.c:3104 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtClearPowerRequest\n");
-	return pNtClearPowerRequest(handle, type);
+	return_value = pNtClearPowerRequest(handle, type);
+	TRACE("Leave NtClearPowerRequest\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtClearPowerRequest(void);  /* ../dlls/ntdll/nt.c:3104 */
@@ -4023,10 +4213,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtClearPowerRequest,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtClose(HANDLE  Handle) /* ../dlls/ntdll/om.c:431 */
+WINAPI NTSTATUS wine32b_ntdll_NtClose(HANDLE  Handle) /* ../dlls/ntdll/om.c:431 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtClose\n");
-	return pNtClose(Handle);
+	return_value = pNtClose(Handle);
+	TRACE("Leave NtClose\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtClose(void);  /* ../dlls/ntdll/om.c:431 */
@@ -4048,10 +4241,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtClose,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCompleteConnectPort(HANDLE  PortHandle) /* ../dlls/ntdll/nt.c:858 */
+WINAPI NTSTATUS wine32b_ntdll_NtCompleteConnectPort(HANDLE  PortHandle) /* ../dlls/ntdll/nt.c:858 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCompleteConnectPort\n");
-	return pNtCompleteConnectPort(PortHandle);
+	return_value = pNtCompleteConnectPort(PortHandle);
+	TRACE("Leave NtCompleteConnectPort\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCompleteConnectPort(void);  /* ../dlls/ntdll/nt.c:858 */
@@ -4073,10 +4269,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCompleteConnectPort,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtConnectPort(PHANDLE  PortHandle, PUNICODE_STRING  PortName, PSECURITY_QUALITY_OF_SERVICE  SecurityQos, PLPC_SECTION_WRITE  WriteSection, PLPC_SECTION_READ  ReadSection, PULONG  MaximumMessageLength, PVOID  ConnectInfo, PULONG  pConnectInfoLength) /* ../dlls/ntdll/nt.c:786 */
+WINAPI NTSTATUS wine32b_ntdll_NtConnectPort(PHANDLE  PortHandle, PUNICODE_STRING  PortName, PSECURITY_QUALITY_OF_SERVICE  SecurityQos, PLPC_SECTION_WRITE  WriteSection, PLPC_SECTION_READ  ReadSection, PULONG  MaximumMessageLength, PVOID  ConnectInfo, PULONG  pConnectInfoLength) /* ../dlls/ntdll/nt.c:786 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtConnectPort\n");
-	return pNtConnectPort(PortHandle, PortName, SecurityQos, WriteSection, ReadSection, MaximumMessageLength, ConnectInfo, pConnectInfoLength);
+	return_value = pNtConnectPort(PortHandle, PortName, SecurityQos, WriteSection, ReadSection, MaximumMessageLength, ConnectInfo, pConnectInfoLength);
+	TRACE("Leave NtConnectPort\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtConnectPort(void);  /* ../dlls/ntdll/nt.c:786 */
@@ -4101,10 +4300,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtConnectPort,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCreateDirectoryObject(PHANDLE  DirectoryHandle, ACCESS_MASK  DesiredAccess, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/om.c:493 */
+WINAPI NTSTATUS wine32b_ntdll_NtCreateDirectoryObject(PHANDLE  DirectoryHandle, ACCESS_MASK  DesiredAccess, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/om.c:493 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCreateDirectoryObject\n");
-	return pNtCreateDirectoryObject(DirectoryHandle, DesiredAccess, attr);
+	return_value = pNtCreateDirectoryObject(DirectoryHandle, DesiredAccess, attr);
+	TRACE("Leave NtCreateDirectoryObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCreateDirectoryObject(void);  /* ../dlls/ntdll/om.c:493 */
@@ -4128,10 +4330,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCreateDirectoryObject,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCreateEvent(PHANDLE  EventHandle, ACCESS_MASK  DesiredAccess, OBJECT_ATTRIBUTES*  attr, EVENT_TYPE  type, BOOLEAN  InitialState) /* ../dlls/ntdll/sync.c:353 */
+WINAPI NTSTATUS wine32b_ntdll_NtCreateEvent(PHANDLE  EventHandle, ACCESS_MASK  DesiredAccess, OBJECT_ATTRIBUTES*  attr, EVENT_TYPE  type, BOOLEAN  InitialState) /* ../dlls/ntdll/sync.c:353 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCreateEvent\n");
-	return pNtCreateEvent(EventHandle, DesiredAccess, attr, type, InitialState);
+	return_value = pNtCreateEvent(EventHandle, DesiredAccess, attr, type, InitialState);
+	TRACE("Leave NtCreateEvent\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCreateEvent(void);  /* ../dlls/ntdll/sync.c:353 */
@@ -4156,10 +4361,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCreateEvent,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCreateFile(PHANDLE  handle, ACCESS_MASK  access, POBJECT_ATTRIBUTES  attr, PIO_STATUS_BLOCK  io, PLARGE_INTEGER  alloc_size, ULONG  attributes, ULONG  sharing, ULONG  disposition, ULONG  options, PVOID  ea_buffer, ULONG  ea_length) /* ../dlls/ntdll/file.c:336 */
+WINAPI NTSTATUS wine32b_ntdll_NtCreateFile(PHANDLE  handle, ACCESS_MASK  access, POBJECT_ATTRIBUTES  attr, PIO_STATUS_BLOCK  io, PLARGE_INTEGER  alloc_size, ULONG  attributes, ULONG  sharing, ULONG  disposition, ULONG  options, PVOID  ea_buffer, ULONG  ea_length) /* ../dlls/ntdll/file.c:336 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCreateFile\n");
-	return pNtCreateFile(handle, access, attr, io, alloc_size, attributes, sharing, disposition, options, ea_buffer, ea_length);
+	return_value = pNtCreateFile(handle, access, attr, io, alloc_size, attributes, sharing, disposition, options, ea_buffer, ea_length);
+	TRACE("Leave NtCreateFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCreateFile(void);  /* ../dlls/ntdll/file.c:336 */
@@ -4184,10 +4392,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCreateFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCreateIoCompletion(PHANDLE  CompletionPort, ACCESS_MASK  DesiredAccess, POBJECT_ATTRIBUTES  attr, ULONG  NumberOfConcurrentThreads) /* ../dlls/ntdll/sync.c:1284 */
+WINAPI NTSTATUS wine32b_ntdll_NtCreateIoCompletion(PHANDLE  CompletionPort, ACCESS_MASK  DesiredAccess, POBJECT_ATTRIBUTES  attr, ULONG  NumberOfConcurrentThreads) /* ../dlls/ntdll/sync.c:1284 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCreateIoCompletion\n");
-	return pNtCreateIoCompletion(CompletionPort, DesiredAccess, attr, NumberOfConcurrentThreads);
+	return_value = pNtCreateIoCompletion(CompletionPort, DesiredAccess, attr, NumberOfConcurrentThreads);
+	TRACE("Leave NtCreateIoCompletion\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCreateIoCompletion(void);  /* ../dlls/ntdll/sync.c:1284 */
@@ -4212,10 +4423,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCreateIoCompletion,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCreateJobObject(PHANDLE  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/sync.c:624 */
+WINAPI NTSTATUS wine32b_ntdll_NtCreateJobObject(PHANDLE  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/sync.c:624 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCreateJobObject\n");
-	return pNtCreateJobObject(handle, access, attr);
+	return_value = pNtCreateJobObject(handle, access, attr);
+	TRACE("Leave NtCreateJobObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCreateJobObject(void);  /* ../dlls/ntdll/sync.c:624 */
@@ -4239,10 +4453,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCreateJobObject,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCreateKey(PHANDLE  retkey, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, ULONG  TitleIndex, UNICODE_STRING*  class, ULONG  options, PULONG  dispos) /* ../dlls/ntdll/reg.c:52 */
+WINAPI NTSTATUS wine32b_ntdll_NtCreateKey(PHANDLE  retkey, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, ULONG  TitleIndex, UNICODE_STRING*  class, ULONG  options, PULONG  dispos) /* ../dlls/ntdll/reg.c:52 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCreateKey\n");
-	return pNtCreateKey(retkey, access, attr, TitleIndex, class, options, dispos);
+	return_value = pNtCreateKey(retkey, access, attr, TitleIndex, class, options, dispos);
+	TRACE("Leave NtCreateKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCreateKey(void);  /* ../dlls/ntdll/reg.c:52 */
@@ -4267,10 +4484,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCreateKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCreateKeyTransacted(PHANDLE  retkey, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, ULONG  TitleIndex, UNICODE_STRING*  class, ULONG  options, HANDLE  transacted, ULONG*  dispos) /* ../dlls/ntdll/reg.c:85 */
+WINAPI NTSTATUS wine32b_ntdll_NtCreateKeyTransacted(PHANDLE  retkey, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, ULONG  TitleIndex, UNICODE_STRING*  class, ULONG  options, HANDLE  transacted, ULONG*  dispos) /* ../dlls/ntdll/reg.c:85 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCreateKeyTransacted\n");
-	return pNtCreateKeyTransacted(retkey, access, attr, TitleIndex, class, options, transacted, dispos);
+	return_value = pNtCreateKeyTransacted(retkey, access, attr, TitleIndex, class, options, transacted, dispos);
+	TRACE("Leave NtCreateKeyTransacted\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCreateKeyTransacted(void);  /* ../dlls/ntdll/reg.c:85 */
@@ -4295,10 +4515,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCreateKeyTransacted,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCreateKeyedEvent(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, ULONG  flags) /* ../dlls/ntdll/sync.c:1190 */
+WINAPI NTSTATUS wine32b_ntdll_NtCreateKeyedEvent(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, ULONG  flags) /* ../dlls/ntdll/sync.c:1190 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCreateKeyedEvent\n");
-	return pNtCreateKeyedEvent(handle, access, attr, flags);
+	return_value = pNtCreateKeyedEvent(handle, access, attr, flags);
+	TRACE("Leave NtCreateKeyedEvent\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCreateKeyedEvent(void);  /* ../dlls/ntdll/sync.c:1190 */
@@ -4323,10 +4546,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCreateKeyedEvent,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCreateLowBoxToken(HANDLE*  token_handle, HANDLE  existing_token_handle, ACCESS_MASK  desired_access, OBJECT_ATTRIBUTES*  object_attributes, SID*  package_sid, ULONG  capability_count, SID_AND_ATTRIBUTES*  capabilities, ULONG  handle_count, HANDLE*  handle) /* ../dlls/ntdll/misc.c:597 */
+WINAPI NTSTATUS wine32b_ntdll_NtCreateLowBoxToken(HANDLE*  token_handle, HANDLE  existing_token_handle, ACCESS_MASK  desired_access, OBJECT_ATTRIBUTES*  object_attributes, SID*  package_sid, ULONG  capability_count, SID_AND_ATTRIBUTES*  capabilities, ULONG  handle_count, HANDLE*  handle) /* ../dlls/ntdll/misc.c:597 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCreateLowBoxToken\n");
-	return pNtCreateLowBoxToken(token_handle, existing_token_handle, desired_access, object_attributes, package_sid, capability_count, capabilities, handle_count, handle);
+	return_value = pNtCreateLowBoxToken(token_handle, existing_token_handle, desired_access, object_attributes, package_sid, capability_count, capabilities, handle_count, handle);
+	TRACE("Leave NtCreateLowBoxToken\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCreateLowBoxToken(void);  /* ../dlls/ntdll/misc.c:597 */
@@ -4351,10 +4577,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCreateLowBoxToken,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCreateMailslotFile(PHANDLE  pHandle, ULONG  DesiredAccess, POBJECT_ATTRIBUTES  attr, PIO_STATUS_BLOCK  IoStatusBlock, ULONG  CreateOptions, ULONG  MailslotQuota, ULONG  MaxMessageSize, PLARGE_INTEGER  TimeOut) /* ../dlls/ntdll/file.c:3590 */
+WINAPI NTSTATUS wine32b_ntdll_NtCreateMailslotFile(PHANDLE  pHandle, ULONG  DesiredAccess, POBJECT_ATTRIBUTES  attr, PIO_STATUS_BLOCK  IoStatusBlock, ULONG  CreateOptions, ULONG  MailslotQuota, ULONG  MaxMessageSize, PLARGE_INTEGER  TimeOut) /* ../dlls/ntdll/file.c:3590 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCreateMailslotFile\n");
-	return pNtCreateMailslotFile(pHandle, DesiredAccess, attr, IoStatusBlock, CreateOptions, MailslotQuota, MaxMessageSize, TimeOut);
+	return_value = pNtCreateMailslotFile(pHandle, DesiredAccess, attr, IoStatusBlock, CreateOptions, MailslotQuota, MaxMessageSize, TimeOut);
+	TRACE("Leave NtCreateMailslotFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCreateMailslotFile(void);  /* ../dlls/ntdll/file.c:3590 */
@@ -4379,10 +4608,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCreateMailslotFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCreateMutant(HANDLE*  MutantHandle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, BOOLEAN  InitialOwner) /* ../dlls/ntdll/sync.c:512 */
+WINAPI NTSTATUS wine32b_ntdll_NtCreateMutant(HANDLE*  MutantHandle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, BOOLEAN  InitialOwner) /* ../dlls/ntdll/sync.c:512 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCreateMutant\n");
-	return pNtCreateMutant(MutantHandle, access, attr, InitialOwner);
+	return_value = pNtCreateMutant(MutantHandle, access, attr, InitialOwner);
+	TRACE("Leave NtCreateMutant\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCreateMutant(void);  /* ../dlls/ntdll/sync.c:512 */
@@ -4407,10 +4639,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCreateMutant,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCreateNamedPipeFile(PHANDLE  handle, ULONG  access, POBJECT_ATTRIBUTES  attr, PIO_STATUS_BLOCK  iosb, ULONG  sharing, ULONG  dispo, ULONG  options, ULONG  pipe_type, ULONG  read_mode, ULONG  completion_mode, ULONG  max_inst, ULONG  inbound_quota, ULONG  outbound_quota, PLARGE_INTEGER  timeout) /* ../dlls/ntdll/file.c:3463 */
+WINAPI NTSTATUS wine32b_ntdll_NtCreateNamedPipeFile(PHANDLE  handle, ULONG  access, POBJECT_ATTRIBUTES  attr, PIO_STATUS_BLOCK  iosb, ULONG  sharing, ULONG  dispo, ULONG  options, ULONG  pipe_type, ULONG  read_mode, ULONG  completion_mode, ULONG  max_inst, ULONG  inbound_quota, ULONG  outbound_quota, PLARGE_INTEGER  timeout) /* ../dlls/ntdll/file.c:3463 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCreateNamedPipeFile\n");
-	return pNtCreateNamedPipeFile(handle, access, attr, iosb, sharing, dispo, options, pipe_type, read_mode, completion_mode, max_inst, inbound_quota, outbound_quota, timeout);
+	return_value = pNtCreateNamedPipeFile(handle, access, attr, iosb, sharing, dispo, options, pipe_type, read_mode, completion_mode, max_inst, inbound_quota, outbound_quota, timeout);
+	TRACE("Leave NtCreateNamedPipeFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCreateNamedPipeFile(void);  /* ../dlls/ntdll/file.c:3463 */
@@ -4435,10 +4670,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCreateNamedPipeFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCreatePagingFile(PUNICODE_STRING  PageFileName, PLARGE_INTEGER  MinimumSize, PLARGE_INTEGER  MaximumSize, PLARGE_INTEGER  ActualSize) /* ../dlls/ntdll/nt.c:3018 */
+WINAPI NTSTATUS wine32b_ntdll_NtCreatePagingFile(PUNICODE_STRING  PageFileName, PLARGE_INTEGER  MinimumSize, PLARGE_INTEGER  MaximumSize, PLARGE_INTEGER  ActualSize) /* ../dlls/ntdll/nt.c:3018 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCreatePagingFile\n");
-	return pNtCreatePagingFile(PageFileName, MinimumSize, MaximumSize, ActualSize);
+	return_value = pNtCreatePagingFile(PageFileName, MinimumSize, MaximumSize, ActualSize);
+	TRACE("Leave NtCreatePagingFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCreatePagingFile(void);  /* ../dlls/ntdll/nt.c:3018 */
@@ -4463,10 +4701,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCreatePagingFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCreatePort(PHANDLE  PortHandle, POBJECT_ATTRIBUTES  ObjectAttributes, ULONG  MaxConnectInfoLength, ULONG  MaxDataLength, PULONG  reserved) /* ../dlls/ntdll/nt.c:774 */
+WINAPI NTSTATUS wine32b_ntdll_NtCreatePort(PHANDLE  PortHandle, POBJECT_ATTRIBUTES  ObjectAttributes, ULONG  MaxConnectInfoLength, ULONG  MaxDataLength, PULONG  reserved) /* ../dlls/ntdll/nt.c:774 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCreatePort\n");
-	return pNtCreatePort(PortHandle, ObjectAttributes, MaxConnectInfoLength, MaxDataLength, reserved);
+	return_value = pNtCreatePort(PortHandle, ObjectAttributes, MaxConnectInfoLength, MaxDataLength, reserved);
+	TRACE("Leave NtCreatePort\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCreatePort(void);  /* ../dlls/ntdll/nt.c:774 */
@@ -4491,10 +4732,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCreatePort,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCreatePowerRequest(HANDLE*  handle, COUNTED_REASON_CONTEXT*  context) /* ../dlls/ntdll/nt.c:3082 */
+WINAPI NTSTATUS wine32b_ntdll_NtCreatePowerRequest(HANDLE*  handle, COUNTED_REASON_CONTEXT*  context) /* ../dlls/ntdll/nt.c:3082 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCreatePowerRequest\n");
-	return pNtCreatePowerRequest(handle, context);
+	return_value = pNtCreatePowerRequest(handle, context);
+	TRACE("Leave NtCreatePowerRequest\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCreatePowerRequest(void);  /* ../dlls/ntdll/nt.c:3082 */
@@ -4517,10 +4761,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCreatePowerRequest,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCreateSection(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, LARGE_INTEGER*  size, ULONG  protect, ULONG  sec_flags, HANDLE  file) /* ../dlls/ntdll/virtual.c:3121 */
+WINAPI NTSTATUS wine32b_ntdll_NtCreateSection(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, LARGE_INTEGER*  size, ULONG  protect, ULONG  sec_flags, HANDLE  file) /* ../dlls/ntdll/virtual.c:3121 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCreateSection\n");
-	return pNtCreateSection(handle, access, attr, size, protect, sec_flags, file);
+	return_value = pNtCreateSection(handle, access, attr, size, protect, sec_flags, file);
+	TRACE("Leave NtCreateSection\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCreateSection(void);  /* ../dlls/ntdll/virtual.c:3121 */
@@ -4545,10 +4792,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCreateSection,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCreateSemaphore(PHANDLE  SemaphoreHandle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, LONG  InitialCount, LONG  MaximumCount) /* ../dlls/ntdll/sync.c:239 */
+WINAPI NTSTATUS wine32b_ntdll_NtCreateSemaphore(PHANDLE  SemaphoreHandle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, LONG  InitialCount, LONG  MaximumCount) /* ../dlls/ntdll/sync.c:239 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCreateSemaphore\n");
-	return pNtCreateSemaphore(SemaphoreHandle, access, attr, InitialCount, MaximumCount);
+	return_value = pNtCreateSemaphore(SemaphoreHandle, access, attr, InitialCount, MaximumCount);
+	TRACE("Leave NtCreateSemaphore\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCreateSemaphore(void);  /* ../dlls/ntdll/sync.c:239 */
@@ -4573,10 +4823,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCreateSemaphore,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCreateSymbolicLinkObject(PHANDLE  SymbolicLinkHandle, ACCESS_MASK  DesiredAccess, POBJECT_ATTRIBUTES  attr, PUNICODE_STRING  TargetName) /* ../dlls/ntdll/om.c:642 */
+WINAPI NTSTATUS wine32b_ntdll_NtCreateSymbolicLinkObject(PHANDLE  SymbolicLinkHandle, ACCESS_MASK  DesiredAccess, POBJECT_ATTRIBUTES  attr, PUNICODE_STRING  TargetName) /* ../dlls/ntdll/om.c:642 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCreateSymbolicLinkObject\n");
-	return pNtCreateSymbolicLinkObject(SymbolicLinkHandle, DesiredAccess, attr, TargetName);
+	return_value = pNtCreateSymbolicLinkObject(SymbolicLinkHandle, DesiredAccess, attr, TargetName);
+	TRACE("Leave NtCreateSymbolicLinkObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCreateSymbolicLinkObject(void);  /* ../dlls/ntdll/om.c:642 */
@@ -4601,10 +4854,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCreateSymbolicLinkObject,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCreateThreadEx(HANDLE*  handle_ptr, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, HANDLE  process, LPTHREAD_START_ROUTINE  start, void*  param, ULONG  flags, ULONG  zero_bits, ULONG  stack_commit, ULONG  stack_reserve, void*  attribute_list) /* ../dlls/ntdll/thread.c:383 */
+WINAPI NTSTATUS wine32b_ntdll_NtCreateThreadEx(HANDLE*  handle_ptr, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, HANDLE  process, LPTHREAD_START_ROUTINE  start, void*  param, ULONG  flags, ULONG  zero_bits, ULONG  stack_commit, ULONG  stack_reserve, void*  attribute_list) /* ../dlls/ntdll/thread.c:383 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCreateThreadEx\n");
-	return pNtCreateThreadEx(handle_ptr, access, attr, process, start, param, flags, zero_bits, stack_commit, stack_reserve, attribute_list);
+	return_value = pNtCreateThreadEx(handle_ptr, access, attr, process, start, param, flags, zero_bits, stack_commit, stack_reserve, attribute_list);
+	TRACE("Leave NtCreateThreadEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCreateThreadEx(void);  /* ../dlls/ntdll/thread.c:383 */
@@ -4629,10 +4885,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCreateThreadEx,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtCreateTimer(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, TIMER_TYPE  timer_type) /* ../dlls/ntdll/sync.c:872 */
+WINAPI NTSTATUS wine32b_ntdll_NtCreateTimer(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, TIMER_TYPE  timer_type) /* ../dlls/ntdll/sync.c:872 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtCreateTimer\n");
-	return pNtCreateTimer(handle, access, attr, timer_type);
+	return_value = pNtCreateTimer(handle, access, attr, timer_type);
+	TRACE("Leave NtCreateTimer\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtCreateTimer(void);  /* ../dlls/ntdll/sync.c:872 */
@@ -4657,10 +4916,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtCreateTimer,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtDelayExecution(BOOLEAN  alertable, LARGE_INTEGER*  timeout) /* ../dlls/ntdll/sync.c:1147 */
+WINAPI NTSTATUS wine32b_ntdll_NtDelayExecution(BOOLEAN  alertable, LARGE_INTEGER*  timeout) /* ../dlls/ntdll/sync.c:1147 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtDelayExecution\n");
-	return pNtDelayExecution(alertable, timeout);
+	return_value = pNtDelayExecution(alertable, timeout);
+	TRACE("Leave NtDelayExecution\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtDelayExecution(void);  /* ../dlls/ntdll/sync.c:1147 */
@@ -4683,10 +4945,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtDelayExecution,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtDeleteAtom(RTL_ATOM  atom) /* ../dlls/ntdll/atom.c:338 */
+WINAPI NTSTATUS wine32b_ntdll_NtDeleteAtom(RTL_ATOM  atom) /* ../dlls/ntdll/atom.c:338 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtDeleteAtom\n");
-	return pNtDeleteAtom(atom);
+	return_value = pNtDeleteAtom(atom);
+	TRACE("Leave NtDeleteAtom\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtDeleteAtom(void);  /* ../dlls/ntdll/atom.c:338 */
@@ -4708,10 +4973,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtDeleteAtom,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtDeleteFile(POBJECT_ATTRIBUTES  ObjectAttributes) /* ../dlls/ntdll/file.c:3516 */
+WINAPI NTSTATUS wine32b_ntdll_NtDeleteFile(POBJECT_ATTRIBUTES  ObjectAttributes) /* ../dlls/ntdll/file.c:3516 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtDeleteFile\n");
-	return pNtDeleteFile(ObjectAttributes);
+	return_value = pNtDeleteFile(ObjectAttributes);
+	TRACE("Leave NtDeleteFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtDeleteFile(void);  /* ../dlls/ntdll/file.c:3516 */
@@ -4733,10 +5001,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtDeleteFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtDeleteKey(HANDLE  hkey) /* ../dlls/ntdll/reg.c:198 */
+WINAPI NTSTATUS wine32b_ntdll_NtDeleteKey(HANDLE  hkey) /* ../dlls/ntdll/reg.c:198 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtDeleteKey\n");
-	return pNtDeleteKey(hkey);
+	return_value = pNtDeleteKey(hkey);
+	TRACE("Leave NtDeleteKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtDeleteKey(void);  /* ../dlls/ntdll/reg.c:198 */
@@ -4758,10 +5029,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtDeleteKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtDeleteValueKey(HANDLE  hkey, UNICODE_STRING*  name) /* ../dlls/ntdll/reg.c:227 */
+WINAPI NTSTATUS wine32b_ntdll_NtDeleteValueKey(HANDLE  hkey, UNICODE_STRING*  name) /* ../dlls/ntdll/reg.c:227 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtDeleteValueKey\n");
-	return pNtDeleteValueKey(hkey, name);
+	return_value = pNtDeleteValueKey(hkey, name);
+	TRACE("Leave NtDeleteValueKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtDeleteValueKey(void);  /* ../dlls/ntdll/reg.c:227 */
@@ -4784,10 +5058,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtDeleteValueKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtDeviceIoControlFile(HANDLE  handle, HANDLE  event, PIO_APC_ROUTINE  apc, PVOID  apc_context, PIO_STATUS_BLOCK  io, ULONG  code, PVOID  in_buffer, ULONG  in_size, PVOID  out_buffer, ULONG  out_size) /* ../dlls/ntdll/file.c:1600 */
+WINAPI NTSTATUS wine32b_ntdll_NtDeviceIoControlFile(HANDLE  handle, HANDLE  event, PIO_APC_ROUTINE  apc, PVOID  apc_context, PIO_STATUS_BLOCK  io, ULONG  code, PVOID  in_buffer, ULONG  in_size, PVOID  out_buffer, ULONG  out_size) /* ../dlls/ntdll/file.c:1600 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtDeviceIoControlFile\n");
-	return pNtDeviceIoControlFile(handle, event, apc, apc_context, io, code, in_buffer, in_size, out_buffer, out_size);
+	return_value = pNtDeviceIoControlFile(handle, event, apc, apc_context, io, code, in_buffer, in_size, out_buffer, out_size);
+	TRACE("Leave NtDeviceIoControlFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtDeviceIoControlFile(void);  /* ../dlls/ntdll/file.c:1600 */
@@ -4812,10 +5089,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtDeviceIoControlFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtDisplayString(PUNICODE_STRING  string) /* ../dlls/ntdll/nt.c:3033 */
+WINAPI NTSTATUS wine32b_ntdll_NtDisplayString(PUNICODE_STRING  string) /* ../dlls/ntdll/nt.c:3033 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtDisplayString\n");
-	return pNtDisplayString(string);
+	return_value = pNtDisplayString(string);
+	TRACE("Leave NtDisplayString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtDisplayString(void);  /* ../dlls/ntdll/nt.c:3033 */
@@ -4837,10 +5117,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtDisplayString,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtDuplicateObject(HANDLE  source_process, HANDLE  source, HANDLE  dest_process, PHANDLE  dest, ACCESS_MASK  access, ULONG  attributes, ULONG  options) /* ../dlls/ntdll/om.c:350 */
+WINAPI NTSTATUS wine32b_ntdll_NtDuplicateObject(HANDLE  source_process, HANDLE  source, HANDLE  dest_process, PHANDLE  dest, ACCESS_MASK  access, ULONG  attributes, ULONG  options) /* ../dlls/ntdll/om.c:350 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtDuplicateObject\n");
-	return pNtDuplicateObject(source_process, source, dest_process, dest, access, attributes, options);
+	return_value = pNtDuplicateObject(source_process, source, dest_process, dest, access, attributes, options);
+	TRACE("Leave NtDuplicateObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtDuplicateObject(void);  /* ../dlls/ntdll/om.c:350 */
@@ -4865,10 +5148,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtDuplicateObject,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtDuplicateToken(HANDLE  ExistingToken, ACCESS_MASK  DesiredAccess, POBJECT_ATTRIBUTES  ObjectAttributes, SECURITY_IMPERSONATION_LEVEL  ImpersonationLevel, TOKEN_TYPE  TokenType, PHANDLE  NewToken) /* ../dlls/ntdll/nt.c:139 */
+WINAPI NTSTATUS wine32b_ntdll_NtDuplicateToken(HANDLE  ExistingToken, ACCESS_MASK  DesiredAccess, POBJECT_ATTRIBUTES  ObjectAttributes, SECURITY_IMPERSONATION_LEVEL  ImpersonationLevel, TOKEN_TYPE  TokenType, PHANDLE  NewToken) /* ../dlls/ntdll/nt.c:139 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtDuplicateToken\n");
-	return pNtDuplicateToken(ExistingToken, DesiredAccess, ObjectAttributes, ImpersonationLevel, TokenType, NewToken);
+	return_value = pNtDuplicateToken(ExistingToken, DesiredAccess, ObjectAttributes, ImpersonationLevel, TokenType, NewToken);
+	TRACE("Leave NtDuplicateToken\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtDuplicateToken(void);  /* ../dlls/ntdll/nt.c:139 */
@@ -4893,10 +5179,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtDuplicateToken,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtEnumerateKey(HANDLE  handle, ULONG  index, KEY_INFORMATION_CLASS  info_class, void*  info, DWORD  length, DWORD*  result_len) /* ../dlls/ntdll/reg.c:371 */
+WINAPI NTSTATUS wine32b_ntdll_NtEnumerateKey(HANDLE  handle, ULONG  index, KEY_INFORMATION_CLASS  info_class, void*  info, DWORD  length, DWORD*  result_len) /* ../dlls/ntdll/reg.c:371 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtEnumerateKey\n");
-	return pNtEnumerateKey(handle, index, info_class, info, length, result_len);
+	return_value = pNtEnumerateKey(handle, index, info_class, info, length, result_len);
+	TRACE("Leave NtEnumerateKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtEnumerateKey(void);  /* ../dlls/ntdll/reg.c:371 */
@@ -4921,10 +5210,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtEnumerateKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtEnumerateValueKey(HANDLE  handle, ULONG  index, KEY_VALUE_INFORMATION_CLASS  info_class, void*  info, DWORD  length, DWORD*  result_len) /* ../dlls/ntdll/reg.c:485 */
+WINAPI NTSTATUS wine32b_ntdll_NtEnumerateValueKey(HANDLE  handle, ULONG  index, KEY_VALUE_INFORMATION_CLASS  info_class, void*  info, DWORD  length, DWORD*  result_len) /* ../dlls/ntdll/reg.c:485 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtEnumerateValueKey\n");
-	return pNtEnumerateValueKey(handle, index, info_class, info, length, result_len);
+	return_value = pNtEnumerateValueKey(handle, index, info_class, info, length, result_len);
+	TRACE("Leave NtEnumerateValueKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtEnumerateValueKey(void);  /* ../dlls/ntdll/reg.c:485 */
@@ -4949,10 +5241,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtEnumerateValueKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtFindAtom(WCHAR*  name, ULONG  length, RTL_ATOM*  atom) /* ../dlls/ntdll/atom.c:355 */
+WINAPI NTSTATUS wine32b_ntdll_NtFindAtom(WCHAR*  name, ULONG  length, RTL_ATOM*  atom) /* ../dlls/ntdll/atom.c:355 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtFindAtom\n");
-	return pNtFindAtom(name, length, atom);
+	return_value = pNtFindAtom(name, length, atom);
+	TRACE("Leave NtFindAtom\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtFindAtom(void);  /* ../dlls/ntdll/atom.c:355 */
@@ -4976,10 +5271,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtFindAtom,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtFlushBuffersFile(HANDLE  hFile, IO_STATUS_BLOCK*  io) /* ../dlls/ntdll/file.c:3307 */
+WINAPI NTSTATUS wine32b_ntdll_NtFlushBuffersFile(HANDLE  hFile, IO_STATUS_BLOCK*  io) /* ../dlls/ntdll/file.c:3307 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtFlushBuffersFile\n");
-	return pNtFlushBuffersFile(hFile, io);
+	return_value = pNtFlushBuffersFile(hFile, io);
+	TRACE("Leave NtFlushBuffersFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtFlushBuffersFile(void);  /* ../dlls/ntdll/file.c:3307 */
@@ -5002,10 +5300,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtFlushBuffersFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtFlushInstructionCache(HANDLE  handle, void*  addr, SIZE_T  size) /* ../dlls/ntdll/process.c:718 */
+WINAPI NTSTATUS wine32b_ntdll_NtFlushInstructionCache(HANDLE  handle, void*  addr, SIZE_T  size) /* ../dlls/ntdll/process.c:718 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtFlushInstructionCache\n");
-	return pNtFlushInstructionCache(handle, addr, size);
+	return_value = pNtFlushInstructionCache(handle, addr, size);
+	TRACE("Leave NtFlushInstructionCache\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtFlushInstructionCache(void);  /* ../dlls/ntdll/process.c:718 */
@@ -5029,10 +5330,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtFlushInstructionCache,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtFlushKey(HANDLE  key) /* ../dlls/ntdll/reg.c:635 */
+WINAPI NTSTATUS wine32b_ntdll_NtFlushKey(HANDLE  key) /* ../dlls/ntdll/reg.c:635 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtFlushKey\n");
-	return pNtFlushKey(key);
+	return_value = pNtFlushKey(key);
+	TRACE("Leave NtFlushKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtFlushKey(void);  /* ../dlls/ntdll/reg.c:635 */
@@ -5054,10 +5358,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtFlushKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtFlushVirtualMemory(HANDLE  process, LPCVOID*  addr_ptr, SIZE_T*  size_ptr, ULONG  unknown) /* ../dlls/ntdll/virtual.c:3395 */
+WINAPI NTSTATUS wine32b_ntdll_NtFlushVirtualMemory(HANDLE  process, LPCVOID*  addr_ptr, SIZE_T*  size_ptr, ULONG  unknown) /* ../dlls/ntdll/virtual.c:3395 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtFlushVirtualMemory\n");
-	return pNtFlushVirtualMemory(process, addr_ptr, size_ptr, unknown);
+	return_value = pNtFlushVirtualMemory(process, addr_ptr, size_ptr, unknown);
+	TRACE("Leave NtFlushVirtualMemory\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtFlushVirtualMemory(void);  /* ../dlls/ntdll/virtual.c:3395 */
@@ -5082,10 +5389,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtFlushVirtualMemory,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtFreeVirtualMemory(HANDLE  process, PVOID*  addr_ptr, SIZE_T*  size_ptr, ULONG  type) /* ../dlls/ntdll/virtual.c:2703 */
+WINAPI NTSTATUS wine32b_ntdll_NtFreeVirtualMemory(HANDLE  process, PVOID*  addr_ptr, SIZE_T*  size_ptr, ULONG  type) /* ../dlls/ntdll/virtual.c:2703 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtFreeVirtualMemory\n");
-	return pNtFreeVirtualMemory(process, addr_ptr, size_ptr, type);
+	return_value = pNtFreeVirtualMemory(process, addr_ptr, size_ptr, type);
+	TRACE("Leave NtFreeVirtualMemory\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtFreeVirtualMemory(void);  /* ../dlls/ntdll/virtual.c:2703 */
@@ -5110,10 +5420,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtFreeVirtualMemory,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtFsControlFile(HANDLE  handle, HANDLE  event, PIO_APC_ROUTINE  apc, PVOID  apc_context, PIO_STATUS_BLOCK  io, ULONG  code, PVOID  in_buffer, ULONG  in_size, PVOID  out_buffer, ULONG  out_size) /* ../dlls/ntdll/file.c:1664 */
+WINAPI NTSTATUS wine32b_ntdll_NtFsControlFile(HANDLE  handle, HANDLE  event, PIO_APC_ROUTINE  apc, PVOID  apc_context, PIO_STATUS_BLOCK  io, ULONG  code, PVOID  in_buffer, ULONG  in_size, PVOID  out_buffer, ULONG  out_size) /* ../dlls/ntdll/file.c:1664 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtFsControlFile\n");
-	return pNtFsControlFile(handle, event, apc, apc_context, io, code, in_buffer, in_size, out_buffer, out_size);
+	return_value = pNtFsControlFile(handle, event, apc, apc_context, io, code, in_buffer, in_size, out_buffer, out_size);
+	TRACE("Leave NtFsControlFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtFsControlFile(void);  /* ../dlls/ntdll/file.c:1664 */
@@ -5138,10 +5451,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtFsControlFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtGetContextThread(HANDLE  handle, CONTEXT*  context) /* ../dlls/ntdll/signal_x86_64.c:2201 */
+WINAPI NTSTATUS wine32b_ntdll_NtGetContextThread(HANDLE  handle, CONTEXT*  context) /* ../dlls/ntdll/signal_x86_64.c:2201 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtGetContextThread\n");
-	return pNtGetContextThread(handle, context);
+	return_value = pNtGetContextThread(handle, context);
+	TRACE("Leave NtGetContextThread\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtGetContextThread(void);  /* ../dlls/ntdll/signal_x86_64.c:2201 */
@@ -5164,10 +5480,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtGetContextThread,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_NtGetCurrentProcessorNumber(void) /* ../dlls/ntdll/thread.c:1246 */
+WINAPI ULONG wine32b_ntdll_NtGetCurrentProcessorNumber(void) /* ../dlls/ntdll/thread.c:1246 */
 {
+	ULONG return_value;
 	TRACE("Enter NtGetCurrentProcessorNumber\n");
-	return pNtGetCurrentProcessorNumber();
+	return_value = pNtGetCurrentProcessorNumber();
+	TRACE("Leave NtGetCurrentProcessorNumber\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtGetCurrentProcessorNumber(void);  /* ../dlls/ntdll/thread.c:1246 */
@@ -5188,10 +5507,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtGetCurrentProcessorNumber,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_NtGetTickCount(void) /* ../dlls/ntdll/time.c:577 */
+WINAPI ULONG wine32b_ntdll_NtGetTickCount(void) /* ../dlls/ntdll/time.c:577 */
 {
+	ULONG return_value;
 	TRACE("Enter NtGetTickCount\n");
-	return pNtGetTickCount();
+	return_value = pNtGetTickCount();
+	TRACE("Leave NtGetTickCount\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtGetTickCount(void);  /* ../dlls/ntdll/time.c:577 */
@@ -5212,10 +5534,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtGetTickCount,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtGetWriteWatch(HANDLE  process, ULONG  flags, PVOID  base, SIZE_T  size, PVOID*  addresses, ULONG_PTR*  count, ULONG*  granularity) /* ../dlls/ntdll/virtual.c:3443 */
+WINAPI NTSTATUS wine32b_ntdll_NtGetWriteWatch(HANDLE  process, ULONG  flags, PVOID  base, SIZE_T  size, PVOID*  addresses, ULONG_PTR*  count, ULONG*  granularity) /* ../dlls/ntdll/virtual.c:3443 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtGetWriteWatch\n");
-	return pNtGetWriteWatch(process, flags, base, size, addresses, count, granularity);
+	return_value = pNtGetWriteWatch(process, flags, base, size, addresses, count, granularity);
+	TRACE("Leave NtGetWriteWatch\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtGetWriteWatch(void);  /* ../dlls/ntdll/virtual.c:3443 */
@@ -5240,10 +5565,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtGetWriteWatch,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtImpersonateAnonymousToken(HANDLE  thread) /* ../dlls/ntdll/sec.c:1618 */
+WINAPI NTSTATUS wine32b_ntdll_NtImpersonateAnonymousToken(HANDLE  thread) /* ../dlls/ntdll/sec.c:1618 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtImpersonateAnonymousToken\n");
-	return pNtImpersonateAnonymousToken(thread);
+	return_value = pNtImpersonateAnonymousToken(thread);
+	TRACE("Leave NtImpersonateAnonymousToken\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtImpersonateAnonymousToken(void);  /* ../dlls/ntdll/sec.c:1618 */
@@ -5265,10 +5593,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtImpersonateAnonymousToken,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtInitiatePowerAction(POWER_ACTION  SystemAction, SYSTEM_POWER_STATE  MinSystemState, ULONG  Flags, BOOLEAN  Asynchronous) /* ../dlls/ntdll/nt.c:3050 */
+WINAPI NTSTATUS wine32b_ntdll_NtInitiatePowerAction(POWER_ACTION  SystemAction, SYSTEM_POWER_STATE  MinSystemState, ULONG  Flags, BOOLEAN  Asynchronous) /* ../dlls/ntdll/nt.c:3050 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtInitiatePowerAction\n");
-	return pNtInitiatePowerAction(SystemAction, MinSystemState, Flags, Asynchronous);
+	return_value = pNtInitiatePowerAction(SystemAction, MinSystemState, Flags, Asynchronous);
+	TRACE("Leave NtInitiatePowerAction\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtInitiatePowerAction(void);  /* ../dlls/ntdll/nt.c:3050 */
@@ -5293,10 +5624,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtInitiatePowerAction,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtIsProcessInJob(HANDLE  process, HANDLE  job) /* ../dlls/ntdll/sync.c:826 */
+WINAPI NTSTATUS wine32b_ntdll_NtIsProcessInJob(HANDLE  process, HANDLE  job) /* ../dlls/ntdll/sync.c:826 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtIsProcessInJob\n");
-	return pNtIsProcessInJob(process, job);
+	return_value = pNtIsProcessInJob(process, job);
+	TRACE("Leave NtIsProcessInJob\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtIsProcessInJob(void);  /* ../dlls/ntdll/sync.c:826 */
@@ -5319,10 +5653,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtIsProcessInJob,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtListenPort(HANDLE  PortHandle, PLPC_MESSAGE  pLpcMessage) /* ../dlls/ntdll/nt.c:831 */
+WINAPI NTSTATUS wine32b_ntdll_NtListenPort(HANDLE  PortHandle, PLPC_MESSAGE  pLpcMessage) /* ../dlls/ntdll/nt.c:831 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtListenPort\n");
-	return pNtListenPort(PortHandle, pLpcMessage);
+	return_value = pNtListenPort(PortHandle, pLpcMessage);
+	TRACE("Leave NtListenPort\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtListenPort(void);  /* ../dlls/ntdll/nt.c:831 */
@@ -5345,10 +5682,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtListenPort,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtLoadDriver(UNICODE_STRING*  DriverServiceName) /* ../dlls/ntdll/loader.c:3972 */
+WINAPI NTSTATUS wine32b_ntdll_NtLoadDriver(UNICODE_STRING*  DriverServiceName) /* ../dlls/ntdll/loader.c:3972 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtLoadDriver\n");
-	return pNtLoadDriver(DriverServiceName);
+	return_value = pNtLoadDriver(DriverServiceName);
+	TRACE("Leave NtLoadDriver\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtLoadDriver(void);  /* ../dlls/ntdll/loader.c:3972 */
@@ -5370,10 +5710,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtLoadDriver,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtLoadKey2(OBJECT_ATTRIBUTES*  attr, OBJECT_ATTRIBUTES*  file, ULONG  flags) /* ../dlls/ntdll/reg.c:688 */
+WINAPI NTSTATUS wine32b_ntdll_NtLoadKey2(OBJECT_ATTRIBUTES*  attr, OBJECT_ATTRIBUTES*  file, ULONG  flags) /* ../dlls/ntdll/reg.c:688 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtLoadKey2\n");
-	return pNtLoadKey2(attr, file, flags);
+	return_value = pNtLoadKey2(attr, file, flags);
+	TRACE("Leave NtLoadKey2\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtLoadKey2(void);  /* ../dlls/ntdll/reg.c:688 */
@@ -5397,10 +5740,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtLoadKey2,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtLoadKey(OBJECT_ATTRIBUTES*  attr, OBJECT_ATTRIBUTES*  file) /* ../dlls/ntdll/reg.c:655 */
+WINAPI NTSTATUS wine32b_ntdll_NtLoadKey(OBJECT_ATTRIBUTES*  attr, OBJECT_ATTRIBUTES*  file) /* ../dlls/ntdll/reg.c:655 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtLoadKey\n");
-	return pNtLoadKey(attr, file);
+	return_value = pNtLoadKey(attr, file);
+	TRACE("Leave NtLoadKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtLoadKey(void);  /* ../dlls/ntdll/reg.c:655 */
@@ -5423,10 +5769,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtLoadKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtLockFile(HANDLE  hFile, HANDLE  lock_granted_event, PIO_APC_ROUTINE  apc, void*  apc_user, PIO_STATUS_BLOCK  io_status, PLARGE_INTEGER  offset, PLARGE_INTEGER  count, ULONG*  key, BOOLEAN  dont_wait, BOOLEAN  exclusive) /* ../dlls/ntdll/file.c:3360 */
+WINAPI NTSTATUS wine32b_ntdll_NtLockFile(HANDLE  hFile, HANDLE  lock_granted_event, PIO_APC_ROUTINE  apc, void*  apc_user, PIO_STATUS_BLOCK  io_status, PLARGE_INTEGER  offset, PLARGE_INTEGER  count, ULONG*  key, BOOLEAN  dont_wait, BOOLEAN  exclusive) /* ../dlls/ntdll/file.c:3360 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtLockFile\n");
-	return pNtLockFile(hFile, lock_granted_event, apc, apc_user, io_status, offset, count, key, dont_wait, exclusive);
+	return_value = pNtLockFile(hFile, lock_granted_event, apc, apc_user, io_status, offset, count, key, dont_wait, exclusive);
+	TRACE("Leave NtLockFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtLockFile(void);  /* ../dlls/ntdll/file.c:3360 */
@@ -5451,10 +5800,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtLockFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtLockVirtualMemory(HANDLE  process, PVOID*  addr, SIZE_T*  size, ULONG  unknown) /* ../dlls/ntdll/virtual.c:3047 */
+WINAPI NTSTATUS wine32b_ntdll_NtLockVirtualMemory(HANDLE  process, PVOID*  addr, SIZE_T*  size, ULONG  unknown) /* ../dlls/ntdll/virtual.c:3047 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtLockVirtualMemory\n");
-	return pNtLockVirtualMemory(process, addr, size, unknown);
+	return_value = pNtLockVirtualMemory(process, addr, size, unknown);
+	TRACE("Leave NtLockVirtualMemory\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtLockVirtualMemory(void);  /* ../dlls/ntdll/virtual.c:3047 */
@@ -5479,10 +5831,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtLockVirtualMemory,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtMakeTemporaryObject(HANDLE  Handle) /* ../dlls/ntdll/om.c:733 */
+WINAPI NTSTATUS wine32b_ntdll_NtMakeTemporaryObject(HANDLE  Handle) /* ../dlls/ntdll/om.c:733 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtMakeTemporaryObject\n");
-	return pNtMakeTemporaryObject(Handle);
+	return_value = pNtMakeTemporaryObject(Handle);
+	TRACE("Leave NtMakeTemporaryObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtMakeTemporaryObject(void);  /* ../dlls/ntdll/om.c:733 */
@@ -5504,10 +5859,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtMakeTemporaryObject,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtMapViewOfSection(HANDLE  handle, HANDLE  process, PVOID*  addr_ptr, ULONG_PTR  zero_bits, SIZE_T  commit_size, LARGE_INTEGER*  offset_ptr, SIZE_T*  size_ptr, SECTION_INHERIT  inherit, ULONG  alloc_type, ULONG  protect) /* ../dlls/ntdll/virtual.c:3183 */
+WINAPI NTSTATUS wine32b_ntdll_NtMapViewOfSection(HANDLE  handle, HANDLE  process, PVOID*  addr_ptr, ULONG_PTR  zero_bits, SIZE_T  commit_size, LARGE_INTEGER*  offset_ptr, SIZE_T*  size_ptr, SECTION_INHERIT  inherit, ULONG  alloc_type, ULONG  protect) /* ../dlls/ntdll/virtual.c:3183 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtMapViewOfSection\n");
-	return pNtMapViewOfSection(handle, process, addr_ptr, zero_bits, commit_size, offset_ptr, size_ptr, inherit, alloc_type, protect);
+	return_value = pNtMapViewOfSection(handle, process, addr_ptr, zero_bits, commit_size, offset_ptr, size_ptr, inherit, alloc_type, protect);
+	TRACE("Leave NtMapViewOfSection\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtMapViewOfSection(void);  /* ../dlls/ntdll/virtual.c:3183 */
@@ -5532,10 +5890,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtMapViewOfSection,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtNotifyChangeDirectoryFile(HANDLE  handle, HANDLE  event, PIO_APC_ROUTINE  apc, void*  apc_context, PIO_STATUS_BLOCK  iosb, void*  buffer, ULONG  buffer_size, ULONG  filter, BOOLEAN  subtree) /* ../dlls/ntdll/file.c:1833 */
+WINAPI NTSTATUS wine32b_ntdll_NtNotifyChangeDirectoryFile(HANDLE  handle, HANDLE  event, PIO_APC_ROUTINE  apc, void*  apc_context, PIO_STATUS_BLOCK  iosb, void*  buffer, ULONG  buffer_size, ULONG  filter, BOOLEAN  subtree) /* ../dlls/ntdll/file.c:1833 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtNotifyChangeDirectoryFile\n");
-	return pNtNotifyChangeDirectoryFile(handle, event, apc, apc_context, iosb, buffer, buffer_size, filter, subtree);
+	return_value = pNtNotifyChangeDirectoryFile(handle, event, apc, apc_context, iosb, buffer, buffer_size, filter, subtree);
+	TRACE("Leave NtNotifyChangeDirectoryFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtNotifyChangeDirectoryFile(void);  /* ../dlls/ntdll/file.c:1833 */
@@ -5560,10 +5921,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtNotifyChangeDirectoryFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtNotifyChangeKey(HANDLE  KeyHandle, HANDLE  Event, PIO_APC_ROUTINE  ApcRoutine, PVOID  ApcContext, PIO_STATUS_BLOCK  IoStatusBlock, ULONG  CompletionFilter, BOOLEAN  WatchSubtree, PVOID  ChangeBuffer, ULONG  Length, BOOLEAN  Asynchronous) /* ../dlls/ntdll/reg.c:754 */
+WINAPI NTSTATUS wine32b_ntdll_NtNotifyChangeKey(HANDLE  KeyHandle, HANDLE  Event, PIO_APC_ROUTINE  ApcRoutine, PVOID  ApcContext, PIO_STATUS_BLOCK  IoStatusBlock, ULONG  CompletionFilter, BOOLEAN  WatchSubtree, PVOID  ChangeBuffer, ULONG  Length, BOOLEAN  Asynchronous) /* ../dlls/ntdll/reg.c:754 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtNotifyChangeKey\n");
-	return pNtNotifyChangeKey(KeyHandle, Event, ApcRoutine, ApcContext, IoStatusBlock, CompletionFilter, WatchSubtree, ChangeBuffer, Length, Asynchronous);
+	return_value = pNtNotifyChangeKey(KeyHandle, Event, ApcRoutine, ApcContext, IoStatusBlock, CompletionFilter, WatchSubtree, ChangeBuffer, Length, Asynchronous);
+	TRACE("Leave NtNotifyChangeKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtNotifyChangeKey(void);  /* ../dlls/ntdll/reg.c:754 */
@@ -5588,10 +5952,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtNotifyChangeKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtNotifyChangeMultipleKeys(HANDLE  KeyHandle, ULONG  Count, OBJECT_ATTRIBUTES*  SubordinateObjects, HANDLE  Event, PIO_APC_ROUTINE  ApcRoutine, PVOID  ApcContext, PIO_STATUS_BLOCK  IoStatusBlock, ULONG  CompletionFilter, BOOLEAN  WatchSubtree, PVOID  ChangeBuffer, ULONG  Length, BOOLEAN  Asynchronous) /* ../dlls/ntdll/reg.c:698 */
+WINAPI NTSTATUS wine32b_ntdll_NtNotifyChangeMultipleKeys(HANDLE  KeyHandle, ULONG  Count, OBJECT_ATTRIBUTES*  SubordinateObjects, HANDLE  Event, PIO_APC_ROUTINE  ApcRoutine, PVOID  ApcContext, PIO_STATUS_BLOCK  IoStatusBlock, ULONG  CompletionFilter, BOOLEAN  WatchSubtree, PVOID  ChangeBuffer, ULONG  Length, BOOLEAN  Asynchronous) /* ../dlls/ntdll/reg.c:698 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtNotifyChangeMultipleKeys\n");
-	return pNtNotifyChangeMultipleKeys(KeyHandle, Count, SubordinateObjects, Event, ApcRoutine, ApcContext, IoStatusBlock, CompletionFilter, WatchSubtree, ChangeBuffer, Length, Asynchronous);
+	return_value = pNtNotifyChangeMultipleKeys(KeyHandle, Count, SubordinateObjects, Event, ApcRoutine, ApcContext, IoStatusBlock, CompletionFilter, WatchSubtree, ChangeBuffer, Length, Asynchronous);
+	TRACE("Leave NtNotifyChangeMultipleKeys\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtNotifyChangeMultipleKeys(void);  /* ../dlls/ntdll/reg.c:698 */
@@ -5616,10 +5983,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtNotifyChangeMultipleKeys,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenDirectoryObject(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/om.c:455 */
+WINAPI NTSTATUS wine32b_ntdll_NtOpenDirectoryObject(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/om.c:455 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtOpenDirectoryObject\n");
-	return pNtOpenDirectoryObject(handle, access, attr);
+	return_value = pNtOpenDirectoryObject(handle, access, attr);
+	TRACE("Leave NtOpenDirectoryObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtOpenDirectoryObject(void);  /* ../dlls/ntdll/om.c:455 */
@@ -5643,10 +6013,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenDirectoryObject,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenEvent(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/sync.c:381 */
+WINAPI NTSTATUS wine32b_ntdll_NtOpenEvent(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/sync.c:381 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtOpenEvent\n");
-	return pNtOpenEvent(handle, access, attr);
+	return_value = pNtOpenEvent(handle, access, attr);
+	TRACE("Leave NtOpenEvent\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtOpenEvent(void);  /* ../dlls/ntdll/sync.c:381 */
@@ -5670,10 +6043,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenEvent,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenFile(PHANDLE  handle, ACCESS_MASK  access, POBJECT_ATTRIBUTES  attr, PIO_STATUS_BLOCK  io, ULONG  sharing, ULONG  options) /* ../dlls/ntdll/file.c:304 */
+WINAPI NTSTATUS wine32b_ntdll_NtOpenFile(PHANDLE  handle, ACCESS_MASK  access, POBJECT_ATTRIBUTES  attr, PIO_STATUS_BLOCK  io, ULONG  sharing, ULONG  options) /* ../dlls/ntdll/file.c:304 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtOpenFile\n");
-	return pNtOpenFile(handle, access, attr, io, sharing, options);
+	return_value = pNtOpenFile(handle, access, attr, io, sharing, options);
+	TRACE("Leave NtOpenFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtOpenFile(void);  /* ../dlls/ntdll/file.c:304 */
@@ -5698,10 +6074,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenIoCompletion(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/sync.c:1453 */
+WINAPI NTSTATUS wine32b_ntdll_NtOpenIoCompletion(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/sync.c:1453 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtOpenIoCompletion\n");
-	return pNtOpenIoCompletion(handle, access, attr);
+	return_value = pNtOpenIoCompletion(handle, access, attr);
+	TRACE("Leave NtOpenIoCompletion\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtOpenIoCompletion(void);  /* ../dlls/ntdll/sync.c:1453 */
@@ -5725,10 +6104,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenIoCompletion,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenJobObject(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/sync.c:649 */
+WINAPI NTSTATUS wine32b_ntdll_NtOpenJobObject(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/sync.c:649 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtOpenJobObject\n");
-	return pNtOpenJobObject(handle, access, attr);
+	return_value = pNtOpenJobObject(handle, access, attr);
+	TRACE("Leave NtOpenJobObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtOpenJobObject(void);  /* ../dlls/ntdll/sync.c:649 */
@@ -5752,10 +6134,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenJobObject,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenKey(PHANDLE  retkey, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/reg.c:164 */
+WINAPI NTSTATUS wine32b_ntdll_NtOpenKey(PHANDLE  retkey, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/reg.c:164 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtOpenKey\n");
-	return pNtOpenKey(retkey, access, attr);
+	return_value = pNtOpenKey(retkey, access, attr);
+	TRACE("Leave NtOpenKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtOpenKey(void);  /* ../dlls/ntdll/reg.c:164 */
@@ -5779,10 +6164,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenKeyEx(PHANDLE  retkey, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, ULONG  options) /* ../dlls/ntdll/reg.c:151 */
+WINAPI NTSTATUS wine32b_ntdll_NtOpenKeyEx(PHANDLE  retkey, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, ULONG  options) /* ../dlls/ntdll/reg.c:151 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtOpenKeyEx\n");
-	return pNtOpenKeyEx(retkey, access, attr, options);
+	return_value = pNtOpenKeyEx(retkey, access, attr, options);
+	TRACE("Leave NtOpenKeyEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtOpenKeyEx(void);  /* ../dlls/ntdll/reg.c:151 */
@@ -5807,10 +6195,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenKeyEx,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenKeyTransacted(PHANDLE  retkey, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, HANDLE  transaction) /* ../dlls/ntdll/reg.c:176 */
+WINAPI NTSTATUS wine32b_ntdll_NtOpenKeyTransacted(PHANDLE  retkey, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, HANDLE  transaction) /* ../dlls/ntdll/reg.c:176 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtOpenKeyTransacted\n");
-	return pNtOpenKeyTransacted(retkey, access, attr, transaction);
+	return_value = pNtOpenKeyTransacted(retkey, access, attr, transaction);
+	TRACE("Leave NtOpenKeyTransacted\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtOpenKeyTransacted(void);  /* ../dlls/ntdll/reg.c:176 */
@@ -5835,10 +6226,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenKeyTransacted,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenKeyTransactedEx(PHANDLE  retkey, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, ULONG  options, HANDLE  transaction) /* ../dlls/ntdll/reg.c:169 */
+WINAPI NTSTATUS wine32b_ntdll_NtOpenKeyTransactedEx(PHANDLE  retkey, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, ULONG  options, HANDLE  transaction) /* ../dlls/ntdll/reg.c:169 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtOpenKeyTransactedEx\n");
-	return pNtOpenKeyTransactedEx(retkey, access, attr, options, transaction);
+	return_value = pNtOpenKeyTransactedEx(retkey, access, attr, options, transaction);
+	TRACE("Leave NtOpenKeyTransactedEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtOpenKeyTransactedEx(void);  /* ../dlls/ntdll/reg.c:169 */
@@ -5863,10 +6257,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenKeyTransactedEx,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenKeyedEvent(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/sync.c:1215 */
+WINAPI NTSTATUS wine32b_ntdll_NtOpenKeyedEvent(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/sync.c:1215 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtOpenKeyedEvent\n");
-	return pNtOpenKeyedEvent(handle, access, attr);
+	return_value = pNtOpenKeyedEvent(handle, access, attr);
+	TRACE("Leave NtOpenKeyedEvent\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtOpenKeyedEvent(void);  /* ../dlls/ntdll/sync.c:1215 */
@@ -5890,10 +6287,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenKeyedEvent,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenMutant(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/sync.c:541 */
+WINAPI NTSTATUS wine32b_ntdll_NtOpenMutant(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/sync.c:541 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtOpenMutant\n");
-	return pNtOpenMutant(handle, access, attr);
+	return_value = pNtOpenMutant(handle, access, attr);
+	TRACE("Leave NtOpenMutant\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtOpenMutant(void);  /* ../dlls/ntdll/sync.c:541 */
@@ -5917,10 +6317,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenMutant,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenProcess(PHANDLE  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, CLIENT_ID*  cid) /* ../dlls/ntdll/process.c:743 */
+WINAPI NTSTATUS wine32b_ntdll_NtOpenProcess(PHANDLE  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, CLIENT_ID*  cid) /* ../dlls/ntdll/process.c:743 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtOpenProcess\n");
-	return pNtOpenProcess(handle, access, attr, cid);
+	return_value = pNtOpenProcess(handle, access, attr, cid);
+	TRACE("Leave NtOpenProcess\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtOpenProcess(void);  /* ../dlls/ntdll/process.c:743 */
@@ -5945,10 +6348,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenProcess,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenProcessToken(HANDLE  ProcessHandle, DWORD  DesiredAccess, HANDLE*  TokenHandle) /* ../dlls/ntdll/nt.c:187 */
+WINAPI NTSTATUS wine32b_ntdll_NtOpenProcessToken(HANDLE  ProcessHandle, DWORD  DesiredAccess, HANDLE*  TokenHandle) /* ../dlls/ntdll/nt.c:187 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtOpenProcessToken\n");
-	return pNtOpenProcessToken(ProcessHandle, DesiredAccess, TokenHandle);
+	return_value = pNtOpenProcessToken(ProcessHandle, DesiredAccess, TokenHandle);
+	TRACE("Leave NtOpenProcessToken\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtOpenProcessToken(void);  /* ../dlls/ntdll/nt.c:187 */
@@ -5972,10 +6378,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenProcessToken,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenProcessTokenEx(HANDLE  process, DWORD  access, DWORD  attributes, HANDLE*  handle) /* ../dlls/ntdll/nt.c:199 */
+WINAPI NTSTATUS wine32b_ntdll_NtOpenProcessTokenEx(HANDLE  process, DWORD  access, DWORD  attributes, HANDLE*  handle) /* ../dlls/ntdll/nt.c:199 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtOpenProcessTokenEx\n");
-	return pNtOpenProcessTokenEx(process, access, attributes, handle);
+	return_value = pNtOpenProcessTokenEx(process, access, attributes, handle);
+	TRACE("Leave NtOpenProcessTokenEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtOpenProcessTokenEx(void);  /* ../dlls/ntdll/nt.c:199 */
@@ -6000,10 +6409,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenProcessTokenEx,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenSection(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/virtual.c:3158 */
+WINAPI NTSTATUS wine32b_ntdll_NtOpenSection(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/virtual.c:3158 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtOpenSection\n");
-	return pNtOpenSection(handle, access, attr);
+	return_value = pNtOpenSection(handle, access, attr);
+	TRACE("Leave NtOpenSection\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtOpenSection(void);  /* ../dlls/ntdll/virtual.c:3158 */
@@ -6027,10 +6439,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenSection,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenSemaphore(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/sync.c:272 */
+WINAPI NTSTATUS wine32b_ntdll_NtOpenSemaphore(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/sync.c:272 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtOpenSemaphore\n");
-	return pNtOpenSemaphore(handle, access, attr);
+	return_value = pNtOpenSemaphore(handle, access, attr);
+	TRACE("Leave NtOpenSemaphore\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtOpenSemaphore(void);  /* ../dlls/ntdll/sync.c:272 */
@@ -6054,10 +6469,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenSemaphore,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenSymbolicLinkObject(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/om.c:602 */
+WINAPI NTSTATUS wine32b_ntdll_NtOpenSymbolicLinkObject(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/om.c:602 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtOpenSymbolicLinkObject\n");
-	return pNtOpenSymbolicLinkObject(handle, access, attr);
+	return_value = pNtOpenSymbolicLinkObject(handle, access, attr);
+	TRACE("Leave NtOpenSymbolicLinkObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtOpenSymbolicLinkObject(void);  /* ../dlls/ntdll/om.c:602 */
@@ -6081,10 +6499,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenSymbolicLinkObject,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenThread(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, CLIENT_ID*  id) /* ../dlls/ntdll/thread.c:570 */
+WINAPI NTSTATUS wine32b_ntdll_NtOpenThread(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, CLIENT_ID*  id) /* ../dlls/ntdll/thread.c:570 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtOpenThread\n");
-	return pNtOpenThread(handle, access, attr, id);
+	return_value = pNtOpenThread(handle, access, attr, id);
+	TRACE("Leave NtOpenThread\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtOpenThread(void);  /* ../dlls/ntdll/thread.c:570 */
@@ -6109,10 +6530,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenThread,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenThreadToken(HANDLE  ThreadHandle, DWORD  DesiredAccess, BOOLEAN  OpenAsSelf, HANDLE*  TokenHandle) /* ../dlls/ntdll/nt.c:223 */
+WINAPI NTSTATUS wine32b_ntdll_NtOpenThreadToken(HANDLE  ThreadHandle, DWORD  DesiredAccess, BOOLEAN  OpenAsSelf, HANDLE*  TokenHandle) /* ../dlls/ntdll/nt.c:223 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtOpenThreadToken\n");
-	return pNtOpenThreadToken(ThreadHandle, DesiredAccess, OpenAsSelf, TokenHandle);
+	return_value = pNtOpenThreadToken(ThreadHandle, DesiredAccess, OpenAsSelf, TokenHandle);
+	TRACE("Leave NtOpenThreadToken\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtOpenThreadToken(void);  /* ../dlls/ntdll/nt.c:223 */
@@ -6137,10 +6561,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenThreadToken,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenThreadTokenEx(HANDLE  thread, DWORD  access, BOOLEAN  as_self, DWORD  attributes, HANDLE*  handle) /* ../dlls/ntdll/nt.c:236 */
+WINAPI NTSTATUS wine32b_ntdll_NtOpenThreadTokenEx(HANDLE  thread, DWORD  access, BOOLEAN  as_self, DWORD  attributes, HANDLE*  handle) /* ../dlls/ntdll/nt.c:236 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtOpenThreadTokenEx\n");
-	return pNtOpenThreadTokenEx(thread, access, as_self, attributes, handle);
+	return_value = pNtOpenThreadTokenEx(thread, access, as_self, attributes, handle);
+	TRACE("Leave NtOpenThreadTokenEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtOpenThreadTokenEx(void);  /* ../dlls/ntdll/nt.c:236 */
@@ -6165,10 +6592,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenThreadTokenEx,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtOpenTimer(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/sync.c:905 */
+WINAPI NTSTATUS wine32b_ntdll_NtOpenTimer(HANDLE*  handle, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/sync.c:905 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtOpenTimer\n");
-	return pNtOpenTimer(handle, access, attr);
+	return_value = pNtOpenTimer(handle, access, attr);
+	TRACE("Leave NtOpenTimer\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtOpenTimer(void);  /* ../dlls/ntdll/sync.c:905 */
@@ -6192,10 +6622,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtOpenTimer,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtPowerInformation(POWER_INFORMATION_LEVEL  InformationLevel, PVOID  lpInputBuffer, ULONG  nInputBufferSize, PVOID  lpOutputBuffer, ULONG  nOutputBufferSize) /* ../dlls/ntdll/nt.c:3144 */
+WINAPI NTSTATUS wine32b_ntdll_NtPowerInformation(POWER_INFORMATION_LEVEL  InformationLevel, PVOID  lpInputBuffer, ULONG  nInputBufferSize, PVOID  lpOutputBuffer, ULONG  nOutputBufferSize) /* ../dlls/ntdll/nt.c:3144 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtPowerInformation\n");
-	return pNtPowerInformation(InformationLevel, lpInputBuffer, nInputBufferSize, lpOutputBuffer, nOutputBufferSize);
+	return_value = pNtPowerInformation(InformationLevel, lpInputBuffer, nInputBufferSize, lpOutputBuffer, nOutputBufferSize);
+	TRACE("Leave NtPowerInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtPowerInformation(void);  /* ../dlls/ntdll/nt.c:3144 */
@@ -6220,10 +6653,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtPowerInformation,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtPrivilegeCheck(HANDLE  ClientToken, PPRIVILEGE_SET  RequiredPrivileges, PBOOLEAN  Result) /* ../dlls/ntdll/nt.c:742 */
+WINAPI NTSTATUS wine32b_ntdll_NtPrivilegeCheck(HANDLE  ClientToken, PPRIVILEGE_SET  RequiredPrivileges, PBOOLEAN  Result) /* ../dlls/ntdll/nt.c:742 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtPrivilegeCheck\n");
-	return pNtPrivilegeCheck(ClientToken, RequiredPrivileges, Result);
+	return_value = pNtPrivilegeCheck(ClientToken, RequiredPrivileges, Result);
+	TRACE("Leave NtPrivilegeCheck\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtPrivilegeCheck(void);  /* ../dlls/ntdll/nt.c:742 */
@@ -6247,10 +6683,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtPrivilegeCheck,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtProtectVirtualMemory(HANDLE  process, PVOID*  addr_ptr, SIZE_T*  size_ptr, ULONG  new_prot, ULONG*  old_prot) /* ../dlls/ntdll/virtual.c:2786 */
+WINAPI NTSTATUS wine32b_ntdll_NtProtectVirtualMemory(HANDLE  process, PVOID*  addr_ptr, SIZE_T*  size_ptr, ULONG  new_prot, ULONG*  old_prot) /* ../dlls/ntdll/virtual.c:2786 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtProtectVirtualMemory\n");
-	return pNtProtectVirtualMemory(process, addr_ptr, size_ptr, new_prot, old_prot);
+	return_value = pNtProtectVirtualMemory(process, addr_ptr, size_ptr, new_prot, old_prot);
+	TRACE("Leave NtProtectVirtualMemory\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtProtectVirtualMemory(void);  /* ../dlls/ntdll/virtual.c:2786 */
@@ -6275,10 +6714,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtProtectVirtualMemory,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtPulseEvent(HANDLE  handle, LONG*  prev_state) /* ../dlls/ntdll/sync.c:454 */
+WINAPI NTSTATUS wine32b_ntdll_NtPulseEvent(HANDLE  handle, LONG*  prev_state) /* ../dlls/ntdll/sync.c:454 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtPulseEvent\n");
-	return pNtPulseEvent(handle, prev_state);
+	return_value = pNtPulseEvent(handle, prev_state);
+	TRACE("Leave NtPulseEvent\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtPulseEvent(void);  /* ../dlls/ntdll/sync.c:454 */
@@ -6301,10 +6743,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtPulseEvent,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryAttributesFile(OBJECT_ATTRIBUTES*  attr, FILE_BASIC_INFORMATION*  info) /* ../dlls/ntdll/file.c:2877 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryAttributesFile(OBJECT_ATTRIBUTES*  attr, FILE_BASIC_INFORMATION*  info) /* ../dlls/ntdll/file.c:2877 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryAttributesFile\n");
-	return pNtQueryAttributesFile(attr, info);
+	return_value = pNtQueryAttributesFile(attr, info);
+	TRACE("Leave NtQueryAttributesFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryAttributesFile(void);  /* ../dlls/ntdll/file.c:2877 */
@@ -6327,10 +6772,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryAttributesFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryDefaultLocale(BOOLEAN  user, LCID*  lcid) /* ../dlls/ntdll/resource.c:458 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryDefaultLocale(BOOLEAN  user, LCID*  lcid) /* ../dlls/ntdll/resource.c:458 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryDefaultLocale\n");
-	return pNtQueryDefaultLocale(user, lcid);
+	return_value = pNtQueryDefaultLocale(user, lcid);
+	TRACE("Leave NtQueryDefaultLocale\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryDefaultLocale(void);  /* ../dlls/ntdll/resource.c:458 */
@@ -6353,10 +6801,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryDefaultLocale,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryDefaultUILanguage(LANGID*  lang) /* ../dlls/ntdll/resource.c:483 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryDefaultUILanguage(LANGID*  lang) /* ../dlls/ntdll/resource.c:483 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryDefaultUILanguage\n");
-	return pNtQueryDefaultUILanguage(lang);
+	return_value = pNtQueryDefaultUILanguage(lang);
+	TRACE("Leave NtQueryDefaultUILanguage\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryDefaultUILanguage(void);  /* ../dlls/ntdll/resource.c:483 */
@@ -6378,10 +6829,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryDefaultUILanguage,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryDirectoryFile(HANDLE  handle, HANDLE  event, PIO_APC_ROUTINE  apc_routine, PVOID  apc_context, PIO_STATUS_BLOCK  io, PVOID  buffer, ULONG  length, FILE_INFORMATION_CLASS  info_class, BOOLEAN  single_entry, PUNICODE_STRING  mask, BOOLEAN  restart_scan) /* ../dlls/ntdll/directory.c:1943 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryDirectoryFile(HANDLE  handle, HANDLE  event, PIO_APC_ROUTINE  apc_routine, PVOID  apc_context, PIO_STATUS_BLOCK  io, PVOID  buffer, ULONG  length, FILE_INFORMATION_CLASS  info_class, BOOLEAN  single_entry, PUNICODE_STRING  mask, BOOLEAN  restart_scan) /* ../dlls/ntdll/directory.c:1943 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryDirectoryFile\n");
-	return pNtQueryDirectoryFile(handle, event, apc_routine, apc_context, io, buffer, length, info_class, single_entry, mask, restart_scan);
+	return_value = pNtQueryDirectoryFile(handle, event, apc_routine, apc_context, io, buffer, length, info_class, single_entry, mask, restart_scan);
+	TRACE("Leave NtQueryDirectoryFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryDirectoryFile(void);  /* ../dlls/ntdll/directory.c:1943 */
@@ -6406,10 +6860,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryDirectoryFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryDirectoryObject(HANDLE  handle, PDIRECTORY_BASIC_INFORMATION  buffer, ULONG  size, BOOLEAN  single_entry, BOOLEAN  restart, PULONG  context, PULONG  ret_size) /* ../dlls/ntdll/om.c:537 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryDirectoryObject(HANDLE  handle, PDIRECTORY_BASIC_INFORMATION  buffer, ULONG  size, BOOLEAN  single_entry, BOOLEAN  restart, PULONG  context, PULONG  ret_size) /* ../dlls/ntdll/om.c:537 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryDirectoryObject\n");
-	return pNtQueryDirectoryObject(handle, buffer, size, single_entry, restart, context, ret_size);
+	return_value = pNtQueryDirectoryObject(handle, buffer, size, single_entry, restart, context, ret_size);
+	TRACE("Leave NtQueryDirectoryObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryDirectoryObject(void);  /* ../dlls/ntdll/om.c:537 */
@@ -6434,10 +6891,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryDirectoryObject,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryEaFile(HANDLE  hFile, PIO_STATUS_BLOCK  iosb, PVOID  buffer, ULONG  length, BOOLEAN  single_entry, PVOID  ea_list, ULONG  ea_list_len, PULONG  ea_index, BOOLEAN  restart) /* ../dlls/ntdll/file.c:3261 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryEaFile(HANDLE  hFile, PIO_STATUS_BLOCK  iosb, PVOID  buffer, ULONG  length, BOOLEAN  single_entry, PVOID  ea_list, ULONG  ea_list_len, PULONG  ea_index, BOOLEAN  restart) /* ../dlls/ntdll/file.c:3261 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryEaFile\n");
-	return pNtQueryEaFile(hFile, iosb, buffer, length, single_entry, ea_list, ea_list_len, ea_index, restart);
+	return_value = pNtQueryEaFile(hFile, iosb, buffer, length, single_entry, ea_list, ea_list_len, ea_index, restart);
+	TRACE("Leave NtQueryEaFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryEaFile(void);  /* ../dlls/ntdll/file.c:3261 */
@@ -6462,10 +6922,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryEaFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryEvent(HANDLE  handle, EVENT_INFORMATION_CLASS  class, void*  info, ULONG  len, ULONG*  ret_len) /* ../dlls/ntdll/sync.c:472 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryEvent(HANDLE  handle, EVENT_INFORMATION_CLASS  class, void*  info, ULONG  len, ULONG*  ret_len) /* ../dlls/ntdll/sync.c:472 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryEvent\n");
-	return pNtQueryEvent(handle, class, info, len, ret_len);
+	return_value = pNtQueryEvent(handle, class, info, len, ret_len);
+	TRACE("Leave NtQueryEvent\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryEvent(void);  /* ../dlls/ntdll/sync.c:472 */
@@ -6490,10 +6953,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryEvent,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryFullAttributesFile(OBJECT_ATTRIBUTES*  attr, FILE_NETWORK_OPEN_INFORMATION*  info) /* ../dlls/ntdll/file.c:2833 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryFullAttributesFile(OBJECT_ATTRIBUTES*  attr, FILE_NETWORK_OPEN_INFORMATION*  info) /* ../dlls/ntdll/file.c:2833 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryFullAttributesFile\n");
-	return pNtQueryFullAttributesFile(attr, info);
+	return_value = pNtQueryFullAttributesFile(attr, info);
+	TRACE("Leave NtQueryFullAttributesFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryFullAttributesFile(void);  /* ../dlls/ntdll/file.c:2833 */
@@ -6516,10 +6982,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryFullAttributesFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryInformationAtom(RTL_ATOM  atom, ATOM_INFORMATION_CLASS  class, PVOID  ptr, ULONG  size, PULONG  psize) /* ../dlls/ntdll/atom.c:379 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryInformationAtom(RTL_ATOM  atom, ATOM_INFORMATION_CLASS  class, PVOID  ptr, ULONG  size, PULONG  psize) /* ../dlls/ntdll/atom.c:379 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryInformationAtom\n");
-	return pNtQueryInformationAtom(atom, class, ptr, size, psize);
+	return_value = pNtQueryInformationAtom(atom, class, ptr, size, psize);
+	TRACE("Leave NtQueryInformationAtom\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryInformationAtom(void);  /* ../dlls/ntdll/atom.c:379 */
@@ -6544,10 +7013,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryInformationAtom,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryInformationFile(HANDLE  hFile, PIO_STATUS_BLOCK  io, PVOID  ptr, LONG  len, FILE_INFORMATION_CLASS  class) /* ../dlls/ntdll/file.c:2216 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryInformationFile(HANDLE  hFile, PIO_STATUS_BLOCK  io, PVOID  ptr, LONG  len, FILE_INFORMATION_CLASS  class) /* ../dlls/ntdll/file.c:2216 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryInformationFile\n");
-	return pNtQueryInformationFile(hFile, io, ptr, len, class);
+	return_value = pNtQueryInformationFile(hFile, io, ptr, len, class);
+	TRACE("Leave NtQueryInformationFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryInformationFile(void);  /* ../dlls/ntdll/file.c:2216 */
@@ -6572,10 +7044,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryInformationFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryInformationJobObject(HANDLE  handle, JOBOBJECTINFOCLASS  class, PVOID  info, ULONG  len, PULONG  ret_len) /* ../dlls/ntdll/sync.c:694 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryInformationJobObject(HANDLE  handle, JOBOBJECTINFOCLASS  class, PVOID  info, ULONG  len, PULONG  ret_len) /* ../dlls/ntdll/sync.c:694 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryInformationJobObject\n");
-	return pNtQueryInformationJobObject(handle, class, info, len, ret_len);
+	return_value = pNtQueryInformationJobObject(handle, class, info, len, ret_len);
+	TRACE("Leave NtQueryInformationJobObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryInformationJobObject(void);  /* ../dlls/ntdll/sync.c:694 */
@@ -6600,10 +7075,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryInformationJobObject,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryInformationProcess(HANDLE  ProcessHandle, PROCESSINFOCLASS  ProcessInformationClass, PVOID  ProcessInformation, ULONG  ProcessInformationLength, PULONG  ReturnLength) /* ../dlls/ntdll/process.c:198 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryInformationProcess(HANDLE  ProcessHandle, PROCESSINFOCLASS  ProcessInformationClass, PVOID  ProcessInformation, ULONG  ProcessInformationLength, PULONG  ReturnLength) /* ../dlls/ntdll/process.c:198 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryInformationProcess\n");
-	return pNtQueryInformationProcess(ProcessHandle, ProcessInformationClass, ProcessInformation, ProcessInformationLength, ReturnLength);
+	return_value = pNtQueryInformationProcess(ProcessHandle, ProcessInformationClass, ProcessInformation, ProcessInformationLength, ReturnLength);
+	TRACE("Leave NtQueryInformationProcess\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryInformationProcess(void);  /* ../dlls/ntdll/process.c:198 */
@@ -6628,10 +7106,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryInformationProcess,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryInformationThread(HANDLE  handle, THREADINFOCLASS  class, void*  data, ULONG  length, ULONG*  ret_len) /* ../dlls/ntdll/thread.c:826 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryInformationThread(HANDLE  handle, THREADINFOCLASS  class, void*  data, ULONG  length, ULONG*  ret_len) /* ../dlls/ntdll/thread.c:826 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryInformationThread\n");
-	return pNtQueryInformationThread(handle, class, data, length, ret_len);
+	return_value = pNtQueryInformationThread(handle, class, data, length, ret_len);
+	TRACE("Leave NtQueryInformationThread\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryInformationThread(void);  /* ../dlls/ntdll/thread.c:826 */
@@ -6656,10 +7137,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryInformationThread,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryInformationToken(HANDLE  token, TOKEN_INFORMATION_CLASS  tokeninfoclass, PVOID  tokeninfo, ULONG  tokeninfolength, PULONG  retlen) /* ../dlls/ntdll/nt.c:312 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryInformationToken(HANDLE  token, TOKEN_INFORMATION_CLASS  tokeninfoclass, PVOID  tokeninfo, ULONG  tokeninfolength, PULONG  retlen) /* ../dlls/ntdll/nt.c:312 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryInformationToken\n");
-	return pNtQueryInformationToken(token, tokeninfoclass, tokeninfo, tokeninfolength, retlen);
+	return_value = pNtQueryInformationToken(token, tokeninfoclass, tokeninfo, tokeninfolength, retlen);
+	TRACE("Leave NtQueryInformationToken\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryInformationToken(void);  /* ../dlls/ntdll/nt.c:312 */
@@ -6684,10 +7168,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryInformationToken,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryInstallUILanguage(LANGID*  lang) /* ../dlls/ntdll/resource.c:503 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryInstallUILanguage(LANGID*  lang) /* ../dlls/ntdll/resource.c:503 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryInstallUILanguage\n");
-	return pNtQueryInstallUILanguage(lang);
+	return_value = pNtQueryInstallUILanguage(lang);
+	TRACE("Leave NtQueryInstallUILanguage\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryInstallUILanguage(void);  /* ../dlls/ntdll/resource.c:503 */
@@ -6709,10 +7196,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryInstallUILanguage,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryIoCompletion(HANDLE  CompletionPort, IO_COMPLETION_INFORMATION_CLASS  InformationClass, PVOID  CompletionInformation, ULONG  BufferLength, PULONG  RequiredLength) /* ../dlls/ntdll/sync.c:1488 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryIoCompletion(HANDLE  CompletionPort, IO_COMPLETION_INFORMATION_CLASS  InformationClass, PVOID  CompletionInformation, ULONG  BufferLength, PULONG  RequiredLength) /* ../dlls/ntdll/sync.c:1488 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryIoCompletion\n");
-	return pNtQueryIoCompletion(CompletionPort, InformationClass, CompletionInformation, BufferLength, RequiredLength);
+	return_value = pNtQueryIoCompletion(CompletionPort, InformationClass, CompletionInformation, BufferLength, RequiredLength);
+	TRACE("Leave NtQueryIoCompletion\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryIoCompletion(void);  /* ../dlls/ntdll/sync.c:1488 */
@@ -6737,10 +7227,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryIoCompletion,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryKey(HANDLE  handle, KEY_INFORMATION_CLASS  info_class, void*  info, DWORD  length, DWORD*  result_len) /* ../dlls/ntdll/reg.c:430 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryKey(HANDLE  handle, KEY_INFORMATION_CLASS  info_class, void*  info, DWORD  length, DWORD*  result_len) /* ../dlls/ntdll/reg.c:430 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryKey\n");
-	return pNtQueryKey(handle, info_class, info, length, result_len);
+	return_value = pNtQueryKey(handle, info_class, info, length, result_len);
+	TRACE("Leave NtQueryKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryKey(void);  /* ../dlls/ntdll/reg.c:430 */
@@ -6765,10 +7258,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryLicenseValue(UNICODE_STRING*  name, ULONG*  result_type, PVOID  data, ULONG  length, ULONG*  result_len) /* ../dlls/ntdll/reg.c:1544 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryLicenseValue(UNICODE_STRING*  name, ULONG*  result_type, PVOID  data, ULONG  length, ULONG*  result_len) /* ../dlls/ntdll/reg.c:1544 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryLicenseValue\n");
-	return pNtQueryLicenseValue(name, result_type, data, length, result_len);
+	return_value = pNtQueryLicenseValue(name, result_type, data, length, result_len);
+	TRACE("Leave NtQueryLicenseValue\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryLicenseValue(void);  /* ../dlls/ntdll/reg.c:1544 */
@@ -6793,10 +7289,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryLicenseValue,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryMultipleValueKey(HANDLE  KeyHandle, PKEY_MULTIPLE_VALUE_INFORMATION  ListOfValuesToQuery, ULONG  NumberOfItems, PVOID  MultipleValueInformation, ULONG  Length, PULONG  ReturnLength) /* ../dlls/ntdll/reg.c:776 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryMultipleValueKey(HANDLE  KeyHandle, PKEY_MULTIPLE_VALUE_INFORMATION  ListOfValuesToQuery, ULONG  NumberOfItems, PVOID  MultipleValueInformation, ULONG  Length, PULONG  ReturnLength) /* ../dlls/ntdll/reg.c:776 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryMultipleValueKey\n");
-	return pNtQueryMultipleValueKey(KeyHandle, ListOfValuesToQuery, NumberOfItems, MultipleValueInformation, Length, ReturnLength);
+	return_value = pNtQueryMultipleValueKey(KeyHandle, ListOfValuesToQuery, NumberOfItems, MultipleValueInformation, Length, ReturnLength);
+	TRACE("Leave NtQueryMultipleValueKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryMultipleValueKey(void);  /* ../dlls/ntdll/reg.c:776 */
@@ -6821,10 +7320,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryMultipleValueKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryMutant(HANDLE  handle, MUTANT_INFORMATION_CLASS  class, void*  info, ULONG  len, ULONG*  ret_len) /* ../dlls/ntdll/sync.c:583 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryMutant(HANDLE  handle, MUTANT_INFORMATION_CLASS  class, void*  info, ULONG  len, ULONG*  ret_len) /* ../dlls/ntdll/sync.c:583 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryMutant\n");
-	return pNtQueryMutant(handle, class, info, len, ret_len);
+	return_value = pNtQueryMutant(handle, class, info, len, ret_len);
+	TRACE("Leave NtQueryMutant\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryMutant(void);  /* ../dlls/ntdll/sync.c:583 */
@@ -6849,10 +7351,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryMutant,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryObject(HANDLE  handle, OBJECT_INFORMATION_CLASS  info_class, PVOID  ptr, ULONG  len, PULONG  used_len) /* ../dlls/ntdll/om.c:51 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryObject(HANDLE  handle, OBJECT_INFORMATION_CLASS  info_class, PVOID  ptr, ULONG  len, PULONG  used_len) /* ../dlls/ntdll/om.c:51 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryObject\n");
-	return pNtQueryObject(handle, info_class, ptr, len, used_len);
+	return_value = pNtQueryObject(handle, info_class, ptr, len, used_len);
+	TRACE("Leave NtQueryObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryObject(void);  /* ../dlls/ntdll/om.c:51 */
@@ -6877,10 +7382,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryObject,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryPerformanceCounter(LARGE_INTEGER*  counter, LARGE_INTEGER*  frequency) /* ../dlls/ntdll/time.c:539 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryPerformanceCounter(LARGE_INTEGER*  counter, LARGE_INTEGER*  frequency) /* ../dlls/ntdll/time.c:539 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryPerformanceCounter\n");
-	return pNtQueryPerformanceCounter(counter, frequency);
+	return_value = pNtQueryPerformanceCounter(counter, frequency);
+	TRACE("Leave NtQueryPerformanceCounter\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryPerformanceCounter(void);  /* ../dlls/ntdll/time.c:539 */
@@ -6903,10 +7411,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryPerformanceCounter,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQuerySection(HANDLE  handle, SECTION_INFORMATION_CLASS  class, void*  ptr, SIZE_T  size, SIZE_T*  ret_size) /* ../dlls/ntdll/virtual.c:3341 */
+WINAPI NTSTATUS wine32b_ntdll_NtQuerySection(HANDLE  handle, SECTION_INFORMATION_CLASS  class, void*  ptr, SIZE_T  size, SIZE_T*  ret_size) /* ../dlls/ntdll/virtual.c:3341 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQuerySection\n");
-	return pNtQuerySection(handle, class, ptr, size, ret_size);
+	return_value = pNtQuerySection(handle, class, ptr, size, ret_size);
+	TRACE("Leave NtQuerySection\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQuerySection(void);  /* ../dlls/ntdll/virtual.c:3341 */
@@ -6931,10 +7442,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQuerySection,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQuerySecurityObject(HANDLE  Object, SECURITY_INFORMATION  RequestedInformation, PSECURITY_DESCRIPTOR  pSecurityDescriptor, ULONG  Length, PULONG  ResultLength) /* ../dlls/ntdll/om.c:265 */
+WINAPI NTSTATUS wine32b_ntdll_NtQuerySecurityObject(HANDLE  Object, SECURITY_INFORMATION  RequestedInformation, PSECURITY_DESCRIPTOR  pSecurityDescriptor, ULONG  Length, PULONG  ResultLength) /* ../dlls/ntdll/om.c:265 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQuerySecurityObject\n");
-	return pNtQuerySecurityObject(Object, RequestedInformation, pSecurityDescriptor, Length, ResultLength);
+	return_value = pNtQuerySecurityObject(Object, RequestedInformation, pSecurityDescriptor, Length, ResultLength);
+	TRACE("Leave NtQuerySecurityObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQuerySecurityObject(void);  /* ../dlls/ntdll/om.c:265 */
@@ -6959,10 +7473,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQuerySecurityObject,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQuerySemaphore(HANDLE  handle, SEMAPHORE_INFORMATION_CLASS  class, void*  info, ULONG  len, ULONG*  ret_len) /* ../dlls/ntdll/sync.c:295 */
+WINAPI NTSTATUS wine32b_ntdll_NtQuerySemaphore(HANDLE  handle, SEMAPHORE_INFORMATION_CLASS  class, void*  info, ULONG  len, ULONG*  ret_len) /* ../dlls/ntdll/sync.c:295 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQuerySemaphore\n");
-	return pNtQuerySemaphore(handle, class, info, len, ret_len);
+	return_value = pNtQuerySemaphore(handle, class, info, len, ret_len);
+	TRACE("Leave NtQuerySemaphore\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQuerySemaphore(void);  /* ../dlls/ntdll/sync.c:295 */
@@ -6987,10 +7504,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQuerySemaphore,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQuerySymbolicLinkObject(HANDLE  handle, PUNICODE_STRING  target, PULONG  length) /* ../dlls/ntdll/om.c:686 */
+WINAPI NTSTATUS wine32b_ntdll_NtQuerySymbolicLinkObject(HANDLE  handle, PUNICODE_STRING  target, PULONG  length) /* ../dlls/ntdll/om.c:686 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQuerySymbolicLinkObject\n");
-	return pNtQuerySymbolicLinkObject(handle, target, length);
+	return_value = pNtQuerySymbolicLinkObject(handle, target, length);
+	TRACE("Leave NtQuerySymbolicLinkObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQuerySymbolicLinkObject(void);  /* ../dlls/ntdll/om.c:686 */
@@ -7014,10 +7534,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQuerySymbolicLinkObject,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQuerySystemEnvironmentValue(PUNICODE_STRING  VariableName, PWCHAR  Value, ULONG  ValueBufferLength, PULONG  RequiredLength) /* ../dlls/ntdll/env.c:54 */
+WINAPI NTSTATUS wine32b_ntdll_NtQuerySystemEnvironmentValue(PUNICODE_STRING  VariableName, PWCHAR  Value, ULONG  ValueBufferLength, PULONG  RequiredLength) /* ../dlls/ntdll/env.c:54 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQuerySystemEnvironmentValue\n");
-	return pNtQuerySystemEnvironmentValue(VariableName, Value, ValueBufferLength, RequiredLength);
+	return_value = pNtQuerySystemEnvironmentValue(VariableName, Value, ValueBufferLength, RequiredLength);
+	TRACE("Leave NtQuerySystemEnvironmentValue\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQuerySystemEnvironmentValue(void);  /* ../dlls/ntdll/env.c:54 */
@@ -7042,10 +7565,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQuerySystemEnvironmentValue,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQuerySystemEnvironmentValueEx(PUNICODE_STRING  name, LPGUID  vendor, PVOID  value, PULONG  retlength, PULONG  attrib) /* ../dlls/ntdll/env.c:66 */
+WINAPI NTSTATUS wine32b_ntdll_NtQuerySystemEnvironmentValueEx(PUNICODE_STRING  name, LPGUID  vendor, PVOID  value, PULONG  retlength, PULONG  attrib) /* ../dlls/ntdll/env.c:66 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQuerySystemEnvironmentValueEx\n");
-	return pNtQuerySystemEnvironmentValueEx(name, vendor, value, retlength, attrib);
+	return_value = pNtQuerySystemEnvironmentValueEx(name, vendor, value, retlength, attrib);
+	TRACE("Leave NtQuerySystemEnvironmentValueEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQuerySystemEnvironmentValueEx(void);  /* ../dlls/ntdll/env.c:66 */
@@ -7070,10 +7596,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQuerySystemEnvironmentValueEx,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQuerySystemInformation(SYSTEM_INFORMATION_CLASS  SystemInformationClass, PVOID  SystemInformation, ULONG  Length, PULONG  ResultLength) /* ../dlls/ntdll/nt.c:2377 */
+WINAPI NTSTATUS wine32b_ntdll_NtQuerySystemInformation(SYSTEM_INFORMATION_CLASS  SystemInformationClass, PVOID  SystemInformation, ULONG  Length, PULONG  ResultLength) /* ../dlls/ntdll/nt.c:2377 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQuerySystemInformation\n");
-	return pNtQuerySystemInformation(SystemInformationClass, SystemInformation, Length, ResultLength);
+	return_value = pNtQuerySystemInformation(SystemInformationClass, SystemInformation, Length, ResultLength);
+	TRACE("Leave NtQuerySystemInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQuerySystemInformation(void);  /* ../dlls/ntdll/nt.c:2377 */
@@ -7098,10 +7627,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQuerySystemInformation,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQuerySystemInformationEx(SYSTEM_INFORMATION_CLASS  SystemInformationClass, void*  Query, ULONG  QueryLength, void*  SystemInformation, ULONG  Length, ULONG*  ResultLength) /* ../dlls/ntdll/nt.c:2940 */
+WINAPI NTSTATUS wine32b_ntdll_NtQuerySystemInformationEx(SYSTEM_INFORMATION_CLASS  SystemInformationClass, void*  Query, ULONG  QueryLength, void*  SystemInformation, ULONG  Length, ULONG*  ResultLength) /* ../dlls/ntdll/nt.c:2940 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQuerySystemInformationEx\n");
-	return pNtQuerySystemInformationEx(SystemInformationClass, Query, QueryLength, SystemInformation, Length, ResultLength);
+	return_value = pNtQuerySystemInformationEx(SystemInformationClass, Query, QueryLength, SystemInformation, Length, ResultLength);
+	TRACE("Leave NtQuerySystemInformationEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQuerySystemInformationEx(void);  /* ../dlls/ntdll/nt.c:2940 */
@@ -7126,10 +7658,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQuerySystemInformationEx,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQuerySystemTime(LARGE_INTEGER*  time) /* ../dlls/ntdll/time.c:467 */
+WINAPI NTSTATUS wine32b_ntdll_NtQuerySystemTime(LARGE_INTEGER*  time) /* ../dlls/ntdll/time.c:467 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQuerySystemTime\n");
-	return pNtQuerySystemTime(time);
+	return_value = pNtQuerySystemTime(time);
+	TRACE("Leave NtQuerySystemTime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQuerySystemTime(void);  /* ../dlls/ntdll/time.c:467 */
@@ -7151,10 +7686,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQuerySystemTime,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryTimer(HANDLE  TimerHandle, TIMER_INFORMATION_CLASS  TimerInformationClass, PVOID  TimerInformation, ULONG  Length, PULONG  ReturnLength) /* ../dlls/ntdll/sync.c:997 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryTimer(HANDLE  TimerHandle, TIMER_INFORMATION_CLASS  TimerInformationClass, PVOID  TimerInformation, ULONG  Length, PULONG  ReturnLength) /* ../dlls/ntdll/sync.c:997 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryTimer\n");
-	return pNtQueryTimer(TimerHandle, TimerInformationClass, TimerInformation, Length, ReturnLength);
+	return_value = pNtQueryTimer(TimerHandle, TimerInformationClass, TimerInformation, Length, ReturnLength);
+	TRACE("Leave NtQueryTimer\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryTimer(void);  /* ../dlls/ntdll/sync.c:997 */
@@ -7179,10 +7717,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryTimer,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryTimerResolution(ULONG*  min_resolution, ULONG*  max_resolution, ULONG*  current_resolution) /* ../dlls/ntdll/sync.c:1048 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryTimerResolution(ULONG*  min_resolution, ULONG*  max_resolution, ULONG*  current_resolution) /* ../dlls/ntdll/sync.c:1048 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryTimerResolution\n");
-	return pNtQueryTimerResolution(min_resolution, max_resolution, current_resolution);
+	return_value = pNtQueryTimerResolution(min_resolution, max_resolution, current_resolution);
+	TRACE("Leave NtQueryTimerResolution\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryTimerResolution(void);  /* ../dlls/ntdll/sync.c:1048 */
@@ -7206,10 +7747,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryTimerResolution,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryValueKey(HANDLE  handle, UNICODE_STRING*  name, KEY_VALUE_INFORMATION_CLASS  info_class, void*  info, DWORD  length, DWORD*  result_len) /* ../dlls/ntdll/reg.c:533 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryValueKey(HANDLE  handle, UNICODE_STRING*  name, KEY_VALUE_INFORMATION_CLASS  info_class, void*  info, DWORD  length, DWORD*  result_len) /* ../dlls/ntdll/reg.c:533 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryValueKey\n");
-	return pNtQueryValueKey(handle, name, info_class, info, length, result_len);
+	return_value = pNtQueryValueKey(handle, name, info_class, info, length, result_len);
+	TRACE("Leave NtQueryValueKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryValueKey(void);  /* ../dlls/ntdll/reg.c:533 */
@@ -7234,10 +7778,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryValueKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryVirtualMemory(HANDLE  process, LPCVOID  addr, MEMORY_INFORMATION_CLASS  info_class, PVOID  buffer, SIZE_T  len, SIZE_T*  res_len) /* ../dlls/ntdll/virtual.c:2904 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryVirtualMemory(HANDLE  process, LPCVOID  addr, MEMORY_INFORMATION_CLASS  info_class, PVOID  buffer, SIZE_T  len, SIZE_T*  res_len) /* ../dlls/ntdll/virtual.c:2904 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryVirtualMemory\n");
-	return pNtQueryVirtualMemory(process, addr, info_class, buffer, len, res_len);
+	return_value = pNtQueryVirtualMemory(process, addr, info_class, buffer, len, res_len);
+	TRACE("Leave NtQueryVirtualMemory\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryVirtualMemory(void);  /* ../dlls/ntdll/virtual.c:2904 */
@@ -7262,10 +7809,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryVirtualMemory,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueryVolumeInformationFile(HANDLE  handle, PIO_STATUS_BLOCK  io, PVOID  buffer, ULONG  length, FS_INFORMATION_CLASS  info_class) /* ../dlls/ntdll/file.c:3100 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueryVolumeInformationFile(HANDLE  handle, PIO_STATUS_BLOCK  io, PVOID  buffer, ULONG  length, FS_INFORMATION_CLASS  info_class) /* ../dlls/ntdll/file.c:3100 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueryVolumeInformationFile\n");
-	return pNtQueryVolumeInformationFile(handle, io, buffer, length, info_class);
+	return_value = pNtQueryVolumeInformationFile(handle, io, buffer, length, info_class);
+	TRACE("Leave NtQueryVolumeInformationFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueryVolumeInformationFile(void);  /* ../dlls/ntdll/file.c:3100 */
@@ -7290,10 +7840,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueryVolumeInformationFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtQueueApcThread(HANDLE  handle, PNTAPCFUNC  func, ULONG_PTR  arg1, ULONG_PTR  arg2, ULONG_PTR  arg3) /* ../dlls/ntdll/thread.c:678 */
+WINAPI NTSTATUS wine32b_ntdll_NtQueueApcThread(HANDLE  handle, PNTAPCFUNC  func, ULONG_PTR  arg1, ULONG_PTR  arg2, ULONG_PTR  arg3) /* ../dlls/ntdll/thread.c:678 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtQueueApcThread\n");
-	return pNtQueueApcThread(handle, func, arg1, arg2, arg3);
+	return_value = pNtQueueApcThread(handle, func, arg1, arg2, arg3);
+	TRACE("Leave NtQueueApcThread\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtQueueApcThread(void);  /* ../dlls/ntdll/thread.c:678 */
@@ -7318,10 +7871,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtQueueApcThread,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtRaiseException(EXCEPTION_RECORD*  rec, CONTEXT*  context, BOOL  first_chance) /* ../dlls/ntdll/signal_x86_64.c:2650 */
+WINAPI NTSTATUS wine32b_ntdll_NtRaiseException(EXCEPTION_RECORD*  rec, CONTEXT*  context, BOOL  first_chance) /* ../dlls/ntdll/signal_x86_64.c:2650 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtRaiseException\n");
-	return pNtRaiseException(rec, context, first_chance);
+	return_value = pNtRaiseException(rec, context, first_chance);
+	TRACE("Leave NtRaiseException\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtRaiseException(void);  /* ../dlls/ntdll/signal_x86_64.c:2650 */
@@ -7345,10 +7901,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtRaiseException,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtRaiseHardError(NTSTATUS  ErrorStatus, ULONG  NumberOfParameters, PUNICODE_STRING  UnicodeStringParameterMask, PVOID*  Parameters, HARDERROR_RESPONSE_OPTION  ResponseOption, PHARDERROR_RESPONSE  Response) /* ../dlls/ntdll/error.c:135 */
+WINAPI NTSTATUS wine32b_ntdll_NtRaiseHardError(NTSTATUS  ErrorStatus, ULONG  NumberOfParameters, PUNICODE_STRING  UnicodeStringParameterMask, PVOID*  Parameters, HARDERROR_RESPONSE_OPTION  ResponseOption, PHARDERROR_RESPONSE  Response) /* ../dlls/ntdll/error.c:135 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtRaiseHardError\n");
-	return pNtRaiseHardError(ErrorStatus, NumberOfParameters, UnicodeStringParameterMask, Parameters, ResponseOption, Response);
+	return_value = pNtRaiseHardError(ErrorStatus, NumberOfParameters, UnicodeStringParameterMask, Parameters, ResponseOption, Response);
+	TRACE("Leave NtRaiseHardError\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtRaiseHardError(void);  /* ../dlls/ntdll/error.c:135 */
@@ -7373,10 +7932,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtRaiseHardError,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtReadFile(HANDLE  hFile, HANDLE  hEvent, PIO_APC_ROUTINE  apc, void*  apc_user, PIO_STATUS_BLOCK  io_status, void*  buffer, ULONG  length, PLARGE_INTEGER  offset, PULONG  key) /* ../dlls/ntdll/file.c:822 */
+WINAPI NTSTATUS wine32b_ntdll_NtReadFile(HANDLE  hFile, HANDLE  hEvent, PIO_APC_ROUTINE  apc, void*  apc_user, PIO_STATUS_BLOCK  io_status, void*  buffer, ULONG  length, PLARGE_INTEGER  offset, PULONG  key) /* ../dlls/ntdll/file.c:822 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtReadFile\n");
-	return pNtReadFile(hFile, hEvent, apc, apc_user, io_status, buffer, length, offset, key);
+	return_value = pNtReadFile(hFile, hEvent, apc, apc_user, io_status, buffer, length, offset, key);
+	TRACE("Leave NtReadFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtReadFile(void);  /* ../dlls/ntdll/file.c:822 */
@@ -7401,10 +7963,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtReadFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtReadFileScatter(HANDLE  file, HANDLE  event, PIO_APC_ROUTINE  apc, void*  apc_user, PIO_STATUS_BLOCK  io_status, FILE_SEGMENT_ELEMENT*  segments, ULONG  length, PLARGE_INTEGER  offset, PULONG  key) /* ../dlls/ntdll/file.c:1024 */
+WINAPI NTSTATUS wine32b_ntdll_NtReadFileScatter(HANDLE  file, HANDLE  event, PIO_APC_ROUTINE  apc, void*  apc_user, PIO_STATUS_BLOCK  io_status, FILE_SEGMENT_ELEMENT*  segments, ULONG  length, PLARGE_INTEGER  offset, PULONG  key) /* ../dlls/ntdll/file.c:1024 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtReadFileScatter\n");
-	return pNtReadFileScatter(file, event, apc, apc_user, io_status, segments, length, offset, key);
+	return_value = pNtReadFileScatter(file, event, apc, apc_user, io_status, segments, length, offset, key);
+	TRACE("Leave NtReadFileScatter\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtReadFileScatter(void);  /* ../dlls/ntdll/file.c:1024 */
@@ -7429,10 +7994,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtReadFileScatter,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtReadVirtualMemory(HANDLE  process, void*  addr, void*  buffer, SIZE_T  size, SIZE_T*  bytes_read) /* ../dlls/ntdll/virtual.c:3517 */
+WINAPI NTSTATUS wine32b_ntdll_NtReadVirtualMemory(HANDLE  process, void*  addr, void*  buffer, SIZE_T  size, SIZE_T*  bytes_read) /* ../dlls/ntdll/virtual.c:3517 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtReadVirtualMemory\n");
-	return pNtReadVirtualMemory(process, addr, buffer, size, bytes_read);
+	return_value = pNtReadVirtualMemory(process, addr, buffer, size, bytes_read);
+	TRACE("Leave NtReadVirtualMemory\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtReadVirtualMemory(void);  /* ../dlls/ntdll/virtual.c:3517 */
@@ -7457,10 +8025,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtReadVirtualMemory,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtRegisterThreadTerminatePort(HANDLE  PortHandle) /* ../dlls/ntdll/nt.c:868 */
+WINAPI NTSTATUS wine32b_ntdll_NtRegisterThreadTerminatePort(HANDLE  PortHandle) /* ../dlls/ntdll/nt.c:868 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtRegisterThreadTerminatePort\n");
-	return pNtRegisterThreadTerminatePort(PortHandle);
+	return_value = pNtRegisterThreadTerminatePort(PortHandle);
+	TRACE("Leave NtRegisterThreadTerminatePort\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtRegisterThreadTerminatePort(void);  /* ../dlls/ntdll/nt.c:868 */
@@ -7482,10 +8053,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtRegisterThreadTerminatePort,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtReleaseKeyedEvent(HANDLE  handle, void*  key, BOOLEAN  alertable, LARGE_INTEGER*  timeout) /* ../dlls/ntdll/sync.c:1256 */
+WINAPI NTSTATUS wine32b_ntdll_NtReleaseKeyedEvent(HANDLE  handle, void*  key, BOOLEAN  alertable, LARGE_INTEGER*  timeout) /* ../dlls/ntdll/sync.c:1256 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtReleaseKeyedEvent\n");
-	return pNtReleaseKeyedEvent(handle, key, alertable, timeout);
+	return_value = pNtReleaseKeyedEvent(handle, key, alertable, timeout);
+	TRACE("Leave NtReleaseKeyedEvent\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtReleaseKeyedEvent(void);  /* ../dlls/ntdll/sync.c:1256 */
@@ -7510,10 +8084,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtReleaseKeyedEvent,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtReleaseMutant(HANDLE  handle, PLONG  prev_count) /* ../dlls/ntdll/sync.c:565 */
+WINAPI NTSTATUS wine32b_ntdll_NtReleaseMutant(HANDLE  handle, PLONG  prev_count) /* ../dlls/ntdll/sync.c:565 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtReleaseMutant\n");
-	return pNtReleaseMutant(handle, prev_count);
+	return_value = pNtReleaseMutant(handle, prev_count);
+	TRACE("Leave NtReleaseMutant\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtReleaseMutant(void);  /* ../dlls/ntdll/sync.c:565 */
@@ -7536,10 +8113,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtReleaseMutant,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtReleaseSemaphore(HANDLE  handle, ULONG  count, PULONG  previous) /* ../dlls/ntdll/sync.c:329 */
+WINAPI NTSTATUS wine32b_ntdll_NtReleaseSemaphore(HANDLE  handle, ULONG  count, PULONG  previous) /* ../dlls/ntdll/sync.c:329 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtReleaseSemaphore\n");
-	return pNtReleaseSemaphore(handle, count, previous);
+	return_value = pNtReleaseSemaphore(handle, count, previous);
+	TRACE("Leave NtReleaseSemaphore\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtReleaseSemaphore(void);  /* ../dlls/ntdll/sync.c:329 */
@@ -7563,10 +8143,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtReleaseSemaphore,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtRemoveIoCompletion(HANDLE  CompletionPort, PULONG_PTR  CompletionKey, PULONG_PTR  CompletionValue, PIO_STATUS_BLOCK  iosb, PLARGE_INTEGER  WaitTime) /* ../dlls/ntdll/sync.c:1361 */
+WINAPI NTSTATUS wine32b_ntdll_NtRemoveIoCompletion(HANDLE  CompletionPort, PULONG_PTR  CompletionKey, PULONG_PTR  CompletionValue, PIO_STATUS_BLOCK  iosb, PLARGE_INTEGER  WaitTime) /* ../dlls/ntdll/sync.c:1361 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtRemoveIoCompletion\n");
-	return pNtRemoveIoCompletion(CompletionPort, CompletionKey, CompletionValue, iosb, WaitTime);
+	return_value = pNtRemoveIoCompletion(CompletionPort, CompletionKey, CompletionValue, iosb, WaitTime);
+	TRACE("Leave NtRemoveIoCompletion\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtRemoveIoCompletion(void);  /* ../dlls/ntdll/sync.c:1361 */
@@ -7591,10 +8174,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtRemoveIoCompletion,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtRemoveIoCompletionEx(HANDLE  port, FILE_IO_COMPLETION_INFORMATION*  info, ULONG  count, ULONG*  written, LARGE_INTEGER*  timeout, BOOLEAN  alertable) /* ../dlls/ntdll/sync.c:1396 */
+WINAPI NTSTATUS wine32b_ntdll_NtRemoveIoCompletionEx(HANDLE  port, FILE_IO_COMPLETION_INFORMATION*  info, ULONG  count, ULONG*  written, LARGE_INTEGER*  timeout, BOOLEAN  alertable) /* ../dlls/ntdll/sync.c:1396 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtRemoveIoCompletionEx\n");
-	return pNtRemoveIoCompletionEx(port, info, count, written, timeout, alertable);
+	return_value = pNtRemoveIoCompletionEx(port, info, count, written, timeout, alertable);
+	TRACE("Leave NtRemoveIoCompletionEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtRemoveIoCompletionEx(void);  /* ../dlls/ntdll/sync.c:1396 */
@@ -7619,10 +8205,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtRemoveIoCompletionEx,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtRenameKey(HANDLE  handle, UNICODE_STRING*  name) /* ../dlls/ntdll/reg.c:94 */
+WINAPI NTSTATUS wine32b_ntdll_NtRenameKey(HANDLE  handle, UNICODE_STRING*  name) /* ../dlls/ntdll/reg.c:94 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtRenameKey\n");
-	return pNtRenameKey(handle, name);
+	return_value = pNtRenameKey(handle, name);
+	TRACE("Leave NtRenameKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtRenameKey(void);  /* ../dlls/ntdll/reg.c:94 */
@@ -7645,10 +8234,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtRenameKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtReplaceKey(POBJECT_ATTRIBUTES  ObjectAttributes, HANDLE  Key, POBJECT_ATTRIBUTES  ReplacedObjectAttributes) /* ../dlls/ntdll/reg.c:794 */
+WINAPI NTSTATUS wine32b_ntdll_NtReplaceKey(POBJECT_ATTRIBUTES  ObjectAttributes, HANDLE  Key, POBJECT_ATTRIBUTES  ReplacedObjectAttributes) /* ../dlls/ntdll/reg.c:794 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtReplaceKey\n");
-	return pNtReplaceKey(ObjectAttributes, Key, ReplacedObjectAttributes);
+	return_value = pNtReplaceKey(ObjectAttributes, Key, ReplacedObjectAttributes);
+	TRACE("Leave NtReplaceKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtReplaceKey(void);  /* ../dlls/ntdll/reg.c:794 */
@@ -7672,10 +8264,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtReplaceKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtReplyWaitReceivePort(HANDLE  PortHandle, PULONG  PortIdentifier, PLPC_MESSAGE  ReplyMessage, PLPC_MESSAGE  Message) /* ../dlls/ntdll/nt.c:905 */
+WINAPI NTSTATUS wine32b_ntdll_NtReplyWaitReceivePort(HANDLE  PortHandle, PULONG  PortIdentifier, PLPC_MESSAGE  ReplyMessage, PLPC_MESSAGE  Message) /* ../dlls/ntdll/nt.c:905 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtReplyWaitReceivePort\n");
-	return pNtReplyWaitReceivePort(PortHandle, PortIdentifier, ReplyMessage, Message);
+	return_value = pNtReplyWaitReceivePort(PortHandle, PortIdentifier, ReplyMessage, Message);
+	TRACE("Leave NtReplyWaitReceivePort\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtReplyWaitReceivePort(void);  /* ../dlls/ntdll/nt.c:905 */
@@ -7700,10 +8295,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtReplyWaitReceivePort,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtRequestWaitReplyPort(HANDLE  PortHandle, PLPC_MESSAGE  pLpcMessageIn, PLPC_MESSAGE  pLpcMessageOut) /* ../dlls/ntdll/nt.c:878 */
+WINAPI NTSTATUS wine32b_ntdll_NtRequestWaitReplyPort(HANDLE  PortHandle, PLPC_MESSAGE  pLpcMessageIn, PLPC_MESSAGE  pLpcMessageOut) /* ../dlls/ntdll/nt.c:878 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtRequestWaitReplyPort\n");
-	return pNtRequestWaitReplyPort(PortHandle, pLpcMessageIn, pLpcMessageOut);
+	return_value = pNtRequestWaitReplyPort(PortHandle, pLpcMessageIn, pLpcMessageOut);
+	TRACE("Leave NtRequestWaitReplyPort\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtRequestWaitReplyPort(void);  /* ../dlls/ntdll/nt.c:878 */
@@ -7727,10 +8325,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtRequestWaitReplyPort,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtResetEvent(HANDLE  handle, LONG*  prev_state) /* ../dlls/ntdll/sync.c:423 */
+WINAPI NTSTATUS wine32b_ntdll_NtResetEvent(HANDLE  handle, LONG*  prev_state) /* ../dlls/ntdll/sync.c:423 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtResetEvent\n");
-	return pNtResetEvent(handle, prev_state);
+	return_value = pNtResetEvent(handle, prev_state);
+	TRACE("Leave NtResetEvent\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtResetEvent(void);  /* ../dlls/ntdll/sync.c:423 */
@@ -7753,10 +8354,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtResetEvent,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtResetWriteWatch(HANDLE  process, PVOID  base, SIZE_T  size) /* ../dlls/ntdll/virtual.c:3489 */
+WINAPI NTSTATUS wine32b_ntdll_NtResetWriteWatch(HANDLE  process, PVOID  base, SIZE_T  size) /* ../dlls/ntdll/virtual.c:3489 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtResetWriteWatch\n");
-	return pNtResetWriteWatch(process, base, size);
+	return_value = pNtResetWriteWatch(process, base, size);
+	TRACE("Leave NtResetWriteWatch\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtResetWriteWatch(void);  /* ../dlls/ntdll/virtual.c:3489 */
@@ -7780,10 +8384,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtResetWriteWatch,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtRestoreKey(HANDLE  KeyHandle, HANDLE  FileHandle, ULONG  RestoreFlags) /* ../dlls/ntdll/reg.c:807 */
+WINAPI NTSTATUS wine32b_ntdll_NtRestoreKey(HANDLE  KeyHandle, HANDLE  FileHandle, ULONG  RestoreFlags) /* ../dlls/ntdll/reg.c:807 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtRestoreKey\n");
-	return pNtRestoreKey(KeyHandle, FileHandle, RestoreFlags);
+	return_value = pNtRestoreKey(KeyHandle, FileHandle, RestoreFlags);
+	TRACE("Leave NtRestoreKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtRestoreKey(void);  /* ../dlls/ntdll/reg.c:807 */
@@ -7807,10 +8414,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtRestoreKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtResumeProcess(HANDLE  handle) /* ../dlls/ntdll/process.c:764 */
+WINAPI NTSTATUS wine32b_ntdll_NtResumeProcess(HANDLE  handle) /* ../dlls/ntdll/process.c:764 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtResumeProcess\n");
-	return pNtResumeProcess(handle);
+	return_value = pNtResumeProcess(handle);
+	TRACE("Leave NtResumeProcess\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtResumeProcess(void);  /* ../dlls/ntdll/process.c:764 */
@@ -7832,10 +8442,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtResumeProcess,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtResumeThread(HANDLE  handle, PULONG  count) /* ../dlls/ntdll/thread.c:613 */
+WINAPI NTSTATUS wine32b_ntdll_NtResumeThread(HANDLE  handle, PULONG  count) /* ../dlls/ntdll/thread.c:613 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtResumeThread\n");
-	return pNtResumeThread(handle, count);
+	return_value = pNtResumeThread(handle, count);
+	TRACE("Leave NtResumeThread\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtResumeThread(void);  /* ../dlls/ntdll/thread.c:613 */
@@ -7858,10 +8471,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtResumeThread,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSaveKey(HANDLE  KeyHandle, HANDLE  FileHandle) /* ../dlls/ntdll/reg.c:820 */
+WINAPI NTSTATUS wine32b_ntdll_NtSaveKey(HANDLE  KeyHandle, HANDLE  FileHandle) /* ../dlls/ntdll/reg.c:820 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSaveKey\n");
-	return pNtSaveKey(KeyHandle, FileHandle);
+	return_value = pNtSaveKey(KeyHandle, FileHandle);
+	TRACE("Leave NtSaveKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSaveKey(void);  /* ../dlls/ntdll/reg.c:820 */
@@ -7884,10 +8500,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSaveKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSecureConnectPort(PHANDLE  PortHandle, PUNICODE_STRING  PortName, PSECURITY_QUALITY_OF_SERVICE  SecurityQos, PLPC_SECTION_WRITE  WriteSection, PSID  pSid, PLPC_SECTION_READ  ReadSection, PULONG  MaximumMessageLength, PVOID  ConnectInfo, PULONG  pConnectInfoLength) /* ../dlls/ntdll/nt.c:809 */
+WINAPI NTSTATUS wine32b_ntdll_NtSecureConnectPort(PHANDLE  PortHandle, PUNICODE_STRING  PortName, PSECURITY_QUALITY_OF_SERVICE  SecurityQos, PLPC_SECTION_WRITE  WriteSection, PSID  pSid, PLPC_SECTION_READ  ReadSection, PULONG  MaximumMessageLength, PVOID  ConnectInfo, PULONG  pConnectInfoLength) /* ../dlls/ntdll/nt.c:809 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSecureConnectPort\n");
-	return pNtSecureConnectPort(PortHandle, PortName, SecurityQos, WriteSection, pSid, ReadSection, MaximumMessageLength, ConnectInfo, pConnectInfoLength);
+	return_value = pNtSecureConnectPort(PortHandle, PortName, SecurityQos, WriteSection, pSid, ReadSection, MaximumMessageLength, ConnectInfo, pConnectInfoLength);
+	TRACE("Leave NtSecureConnectPort\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSecureConnectPort(void);  /* ../dlls/ntdll/nt.c:809 */
@@ -7912,10 +8531,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSecureConnectPort,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetContextThread(HANDLE  handle, CONTEXT*  context) /* ../dlls/ntdll/signal_x86_64.c:2172 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetContextThread(HANDLE  handle, CONTEXT*  context) /* ../dlls/ntdll/signal_x86_64.c:2172 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetContextThread\n");
-	return pNtSetContextThread(handle, context);
+	return_value = pNtSetContextThread(handle, context);
+	TRACE("Leave NtSetContextThread\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetContextThread(void);  /* ../dlls/ntdll/signal_x86_64.c:2172 */
@@ -7938,10 +8560,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetContextThread,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetDefaultLocale(BOOLEAN  user, LCID  lcid) /* ../dlls/ntdll/resource.c:468 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetDefaultLocale(BOOLEAN  user, LCID  lcid) /* ../dlls/ntdll/resource.c:468 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetDefaultLocale\n");
-	return pNtSetDefaultLocale(user, lcid);
+	return_value = pNtSetDefaultLocale(user, lcid);
+	TRACE("Leave NtSetDefaultLocale\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetDefaultLocale(void);  /* ../dlls/ntdll/resource.c:468 */
@@ -7964,10 +8589,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetDefaultLocale,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetDefaultUILanguage(LANGID  lang) /* ../dlls/ntdll/resource.c:493 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetDefaultUILanguage(LANGID  lang) /* ../dlls/ntdll/resource.c:493 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetDefaultUILanguage\n");
-	return pNtSetDefaultUILanguage(lang);
+	return_value = pNtSetDefaultUILanguage(lang);
+	TRACE("Leave NtSetDefaultUILanguage\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetDefaultUILanguage(void);  /* ../dlls/ntdll/resource.c:493 */
@@ -7989,10 +8617,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetDefaultUILanguage,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetEaFile(HANDLE  hFile, PIO_STATUS_BLOCK  iosb, PVOID  buffer, ULONG  length) /* ../dlls/ntdll/file.c:3287 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetEaFile(HANDLE  hFile, PIO_STATUS_BLOCK  iosb, PVOID  buffer, ULONG  length) /* ../dlls/ntdll/file.c:3287 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetEaFile\n");
-	return pNtSetEaFile(hFile, iosb, buffer, length);
+	return_value = pNtSetEaFile(hFile, iosb, buffer, length);
+	TRACE("Leave NtSetEaFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetEaFile(void);  /* ../dlls/ntdll/file.c:3287 */
@@ -8017,10 +8648,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetEaFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetEvent(HANDLE  handle, LONG*  prev_state) /* ../dlls/ntdll/sync.c:406 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetEvent(HANDLE  handle, LONG*  prev_state) /* ../dlls/ntdll/sync.c:406 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetEvent\n");
-	return pNtSetEvent(handle, prev_state);
+	return_value = pNtSetEvent(handle, prev_state);
+	TRACE("Leave NtSetEvent\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetEvent(void);  /* ../dlls/ntdll/sync.c:406 */
@@ -8043,10 +8677,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetEvent,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetInformationFile(HANDLE  handle, PIO_STATUS_BLOCK  io, PVOID  ptr, ULONG  len, FILE_INFORMATION_CLASS  class) /* ../dlls/ntdll/file.c:2501 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetInformationFile(HANDLE  handle, PIO_STATUS_BLOCK  io, PVOID  ptr, ULONG  len, FILE_INFORMATION_CLASS  class) /* ../dlls/ntdll/file.c:2501 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetInformationFile\n");
-	return pNtSetInformationFile(handle, io, ptr, len, class);
+	return_value = pNtSetInformationFile(handle, io, ptr, len, class);
+	TRACE("Leave NtSetInformationFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetInformationFile(void);  /* ../dlls/ntdll/file.c:2501 */
@@ -8071,10 +8708,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetInformationFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetInformationJobObject(HANDLE  handle, JOBOBJECTINFOCLASS  class, PVOID  info, ULONG  len) /* ../dlls/ntdll/sync.c:761 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetInformationJobObject(HANDLE  handle, JOBOBJECTINFOCLASS  class, PVOID  info, ULONG  len) /* ../dlls/ntdll/sync.c:761 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetInformationJobObject\n");
-	return pNtSetInformationJobObject(handle, class, info, len);
+	return_value = pNtSetInformationJobObject(handle, class, info, len);
+	TRACE("Leave NtSetInformationJobObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetInformationJobObject(void);  /* ../dlls/ntdll/sync.c:761 */
@@ -8099,10 +8739,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetInformationJobObject,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetInformationKey(HANDLE  KeyHandle, int  KeyInformationClass, PVOID  KeyInformation, ULONG  KeyInformationLength) /* ../dlls/ntdll/reg.c:840 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetInformationKey(HANDLE  KeyHandle, int  KeyInformationClass, PVOID  KeyInformation, ULONG  KeyInformationLength) /* ../dlls/ntdll/reg.c:840 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetInformationKey\n");
-	return pNtSetInformationKey(KeyHandle, KeyInformationClass, KeyInformation, KeyInformationLength);
+	return_value = pNtSetInformationKey(KeyHandle, KeyInformationClass, KeyInformation, KeyInformationLength);
+	TRACE("Leave NtSetInformationKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetInformationKey(void);  /* ../dlls/ntdll/reg.c:840 */
@@ -8127,10 +8770,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetInformationKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetInformationObject(HANDLE  handle, OBJECT_INFORMATION_CLASS  info_class, PVOID  ptr, ULONG  len) /* ../dlls/ntdll/om.c:222 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetInformationObject(HANDLE  handle, OBJECT_INFORMATION_CLASS  info_class, PVOID  ptr, ULONG  len) /* ../dlls/ntdll/om.c:222 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetInformationObject\n");
-	return pNtSetInformationObject(handle, info_class, ptr, len);
+	return_value = pNtSetInformationObject(handle, info_class, ptr, len);
+	TRACE("Leave NtSetInformationObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetInformationObject(void);  /* ../dlls/ntdll/om.c:222 */
@@ -8155,10 +8801,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetInformationObject,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetInformationProcess(HANDLE  ProcessHandle, PROCESSINFOCLASS  ProcessInformationClass, PVOID  ProcessInformation, ULONG  ProcessInformationLength) /* ../dlls/ntdll/process.c:628 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetInformationProcess(HANDLE  ProcessHandle, PROCESSINFOCLASS  ProcessInformationClass, PVOID  ProcessInformation, ULONG  ProcessInformationLength) /* ../dlls/ntdll/process.c:628 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetInformationProcess\n");
-	return pNtSetInformationProcess(ProcessHandle, ProcessInformationClass, ProcessInformation, ProcessInformationLength);
+	return_value = pNtSetInformationProcess(ProcessHandle, ProcessInformationClass, ProcessInformation, ProcessInformationLength);
+	TRACE("Leave NtSetInformationProcess\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetInformationProcess(void);  /* ../dlls/ntdll/process.c:628 */
@@ -8183,10 +8832,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetInformationProcess,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetInformationThread(HANDLE  handle, THREADINFOCLASS  class, LPCVOID  data, ULONG  length) /* ../dlls/ntdll/thread.c:1088 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetInformationThread(HANDLE  handle, THREADINFOCLASS  class, LPCVOID  data, ULONG  length) /* ../dlls/ntdll/thread.c:1088 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetInformationThread\n");
-	return pNtSetInformationThread(handle, class, data, length);
+	return_value = pNtSetInformationThread(handle, class, data, length);
+	TRACE("Leave NtSetInformationThread\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetInformationThread(void);  /* ../dlls/ntdll/thread.c:1088 */
@@ -8211,10 +8863,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetInformationThread,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetInformationToken(HANDLE  TokenHandle, TOKEN_INFORMATION_CLASS  TokenInformationClass, PVOID  TokenInformation, ULONG  TokenInformationLength) /* ../dlls/ntdll/nt.c:657 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetInformationToken(HANDLE  TokenHandle, TOKEN_INFORMATION_CLASS  TokenInformationClass, PVOID  TokenInformation, ULONG  TokenInformationLength) /* ../dlls/ntdll/nt.c:657 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetInformationToken\n");
-	return pNtSetInformationToken(TokenHandle, TokenInformationClass, TokenInformation, TokenInformationLength);
+	return_value = pNtSetInformationToken(TokenHandle, TokenInformationClass, TokenInformation, TokenInformationLength);
+	TRACE("Leave NtSetInformationToken\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetInformationToken(void);  /* ../dlls/ntdll/nt.c:657 */
@@ -8239,10 +8894,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetInformationToken,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetIntervalProfile(ULONG  Interval, KPROFILE_SOURCE  Source) /* ../dlls/ntdll/nt.c:923 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetIntervalProfile(ULONG  Interval, KPROFILE_SOURCE  Source) /* ../dlls/ntdll/nt.c:923 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetIntervalProfile\n");
-	return pNtSetIntervalProfile(Interval, Source);
+	return_value = pNtSetIntervalProfile(Interval, Source);
+	TRACE("Leave NtSetIntervalProfile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetIntervalProfile(void);  /* ../dlls/ntdll/nt.c:923 */
@@ -8265,10 +8923,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetIntervalProfile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetIoCompletion(HANDLE  CompletionPort, ULONG_PTR  CompletionKey, ULONG_PTR  CompletionValue, NTSTATUS  Status, SIZE_T  NumberOfBytesTransferred) /* ../dlls/ntdll/sync.c:1325 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetIoCompletion(HANDLE  CompletionPort, ULONG_PTR  CompletionKey, ULONG_PTR  CompletionValue, NTSTATUS  Status, SIZE_T  NumberOfBytesTransferred) /* ../dlls/ntdll/sync.c:1325 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetIoCompletion\n");
-	return pNtSetIoCompletion(CompletionPort, CompletionKey, CompletionValue, Status, NumberOfBytesTransferred);
+	return_value = pNtSetIoCompletion(CompletionPort, CompletionKey, CompletionValue, Status, NumberOfBytesTransferred);
+	TRACE("Leave NtSetIoCompletion\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetIoCompletion(void);  /* ../dlls/ntdll/sync.c:1325 */
@@ -8293,10 +8954,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetIoCompletion,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetLdtEntries(ULONG  selector1, ULONG  entry1_low, ULONG  entry1_high, ULONG  selector2, ULONG  entry2_low, ULONG  entry2_high) /* ../dlls/ntdll/nt.c:3429 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetLdtEntries(ULONG  selector1, ULONG  entry1_low, ULONG  entry1_high, ULONG  selector2, ULONG  entry2_low, ULONG  entry2_high) /* ../dlls/ntdll/nt.c:3429 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetLdtEntries\n");
-	return pNtSetLdtEntries(selector1, entry1_low, entry1_high, selector2, entry2_low, entry2_high);
+	return_value = pNtSetLdtEntries(selector1, entry1_low, entry1_high, selector2, entry2_low, entry2_high);
+	TRACE("Leave NtSetLdtEntries\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetLdtEntries(void);  /* ../dlls/ntdll/nt.c:3429 */
@@ -8321,10 +8985,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetLdtEntries,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetPowerRequest(HANDLE  handle, POWER_REQUEST_TYPE  type) /* ../dlls/ntdll/nt.c:3093 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetPowerRequest(HANDLE  handle, POWER_REQUEST_TYPE  type) /* ../dlls/ntdll/nt.c:3093 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetPowerRequest\n");
-	return pNtSetPowerRequest(handle, type);
+	return_value = pNtSetPowerRequest(handle, type);
+	TRACE("Leave NtSetPowerRequest\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetPowerRequest(void);  /* ../dlls/ntdll/nt.c:3093 */
@@ -8347,10 +9014,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetPowerRequest,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetSecurityObject(HANDLE  Handle, SECURITY_INFORMATION  SecurityInformation, PSECURITY_DESCRIPTOR  SecurityDescriptor) /* ../dlls/ntdll/sec.c:1740 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetSecurityObject(HANDLE  Handle, SECURITY_INFORMATION  SecurityInformation, PSECURITY_DESCRIPTOR  SecurityDescriptor) /* ../dlls/ntdll/sec.c:1740 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetSecurityObject\n");
-	return pNtSetSecurityObject(Handle, SecurityInformation, SecurityDescriptor);
+	return_value = pNtSetSecurityObject(Handle, SecurityInformation, SecurityDescriptor);
+	TRACE("Leave NtSetSecurityObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetSecurityObject(void);  /* ../dlls/ntdll/sec.c:1740 */
@@ -8374,10 +9044,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetSecurityObject,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetSystemInformation(SYSTEM_INFORMATION_CLASS  SystemInformationClass, PVOID  SystemInformation, ULONG  Length) /* ../dlls/ntdll/nt.c:3008 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetSystemInformation(SYSTEM_INFORMATION_CLASS  SystemInformationClass, PVOID  SystemInformation, ULONG  Length) /* ../dlls/ntdll/nt.c:3008 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetSystemInformation\n");
-	return pNtSetSystemInformation(SystemInformationClass, SystemInformation, Length);
+	return_value = pNtSetSystemInformation(SystemInformationClass, SystemInformation, Length);
+	TRACE("Leave NtSetSystemInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetSystemInformation(void);  /* ../dlls/ntdll/nt.c:3008 */
@@ -8401,10 +9074,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetSystemInformation,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetSystemTime(LARGE_INTEGER*  NewTime, LARGE_INTEGER*  OldTime) /* ../dlls/ntdll/time.c:1074 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetSystemTime(LARGE_INTEGER*  NewTime, LARGE_INTEGER*  OldTime) /* ../dlls/ntdll/time.c:1074 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetSystemTime\n");
-	return pNtSetSystemTime(NewTime, OldTime);
+	return_value = pNtSetSystemTime(NewTime, OldTime);
+	TRACE("Leave NtSetSystemTime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetSystemTime(void);  /* ../dlls/ntdll/time.c:1074 */
@@ -8427,10 +9103,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetSystemTime,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetThreadExecutionState(EXECUTION_STATE  new_state, EXECUTION_STATE*  old_state) /* ../dlls/ntdll/nt.c:3065 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetThreadExecutionState(EXECUTION_STATE  new_state, EXECUTION_STATE*  old_state) /* ../dlls/ntdll/nt.c:3065 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetThreadExecutionState\n");
-	return pNtSetThreadExecutionState(new_state, old_state);
+	return_value = pNtSetThreadExecutionState(new_state, old_state);
+	TRACE("Leave NtSetThreadExecutionState\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetThreadExecutionState(void);  /* ../dlls/ntdll/nt.c:3065 */
@@ -8453,10 +9132,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetThreadExecutionState,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetTimer(HANDLE  handle, LARGE_INTEGER*  when, PTIMER_APC_ROUTINE  callback, PVOID  callback_arg, BOOLEAN  resume, ULONG  period, PBOOLEAN  state) /* ../dlls/ntdll/sync.c:929 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetTimer(HANDLE  handle, LARGE_INTEGER*  when, PTIMER_APC_ROUTINE  callback, PVOID  callback_arg, BOOLEAN  resume, ULONG  period, PBOOLEAN  state) /* ../dlls/ntdll/sync.c:929 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetTimer\n");
-	return pNtSetTimer(handle, when, callback, callback_arg, resume, period, state);
+	return_value = pNtSetTimer(handle, when, callback, callback_arg, resume, period, state);
+	TRACE("Leave NtSetTimer\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetTimer(void);  /* ../dlls/ntdll/sync.c:929 */
@@ -8481,10 +9163,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetTimer,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetTimerResolution(ULONG  resolution, BOOLEAN  set_resolution, ULONG*  current_resolution) /* ../dlls/ntdll/sync.c:1061 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetTimerResolution(ULONG  resolution, BOOLEAN  set_resolution, ULONG*  current_resolution) /* ../dlls/ntdll/sync.c:1061 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetTimerResolution\n");
-	return pNtSetTimerResolution(resolution, set_resolution, current_resolution);
+	return_value = pNtSetTimerResolution(resolution, set_resolution, current_resolution);
+	TRACE("Leave NtSetTimerResolution\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetTimerResolution(void);  /* ../dlls/ntdll/sync.c:1061 */
@@ -8508,10 +9193,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetTimerResolution,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetValueKey(HANDLE  hkey, UNICODE_STRING*  name, ULONG  TitleIndex, ULONG  type, void*  data, ULONG  count) /* ../dlls/ntdll/reg.c:860 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetValueKey(HANDLE  hkey, UNICODE_STRING*  name, ULONG  TitleIndex, ULONG  type, void*  data, ULONG  count) /* ../dlls/ntdll/reg.c:860 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetValueKey\n");
-	return pNtSetValueKey(hkey, name, TitleIndex, type, data, count);
+	return_value = pNtSetValueKey(hkey, name, TitleIndex, type, data, count);
+	TRACE("Leave NtSetValueKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetValueKey(void);  /* ../dlls/ntdll/reg.c:860 */
@@ -8536,10 +9224,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetValueKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSetVolumeInformationFile(HANDLE  FileHandle, PIO_STATUS_BLOCK  IoStatusBlock, PVOID  FsInformation, ULONG  Length, FS_INFORMATION_CLASS  FsInformationClass) /* ../dlls/ntdll/file.c:1886 */
+WINAPI NTSTATUS wine32b_ntdll_NtSetVolumeInformationFile(HANDLE  FileHandle, PIO_STATUS_BLOCK  IoStatusBlock, PVOID  FsInformation, ULONG  Length, FS_INFORMATION_CLASS  FsInformationClass) /* ../dlls/ntdll/file.c:1886 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSetVolumeInformationFile\n");
-	return pNtSetVolumeInformationFile(FileHandle, IoStatusBlock, FsInformation, Length, FsInformationClass);
+	return_value = pNtSetVolumeInformationFile(FileHandle, IoStatusBlock, FsInformation, Length, FsInformationClass);
+	TRACE("Leave NtSetVolumeInformationFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSetVolumeInformationFile(void);  /* ../dlls/ntdll/file.c:1886 */
@@ -8564,10 +9255,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSetVolumeInformationFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtShutdownSystem(SHUTDOWN_ACTION  Action) /* ../dlls/ntdll/nt.c:3334 */
+WINAPI NTSTATUS wine32b_ntdll_NtShutdownSystem(SHUTDOWN_ACTION  Action) /* ../dlls/ntdll/nt.c:3334 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtShutdownSystem\n");
-	return pNtShutdownSystem(Action);
+	return_value = pNtShutdownSystem(Action);
+	TRACE("Leave NtShutdownSystem\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtShutdownSystem(void);  /* ../dlls/ntdll/nt.c:3334 */
@@ -8589,10 +9283,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtShutdownSystem,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSignalAndWaitForSingleObject(HANDLE  hSignalObject, HANDLE  hWaitObject, BOOLEAN  alertable, LARGE_INTEGER*  timeout) /* ../dlls/ntdll/sync.c:1114 */
+WINAPI NTSTATUS wine32b_ntdll_NtSignalAndWaitForSingleObject(HANDLE  hSignalObject, HANDLE  hWaitObject, BOOLEAN  alertable, LARGE_INTEGER*  timeout) /* ../dlls/ntdll/sync.c:1114 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSignalAndWaitForSingleObject\n");
-	return pNtSignalAndWaitForSingleObject(hSignalObject, hWaitObject, alertable, timeout);
+	return_value = pNtSignalAndWaitForSingleObject(hSignalObject, hWaitObject, alertable, timeout);
+	TRACE("Leave NtSignalAndWaitForSingleObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSignalAndWaitForSingleObject(void);  /* ../dlls/ntdll/sync.c:1114 */
@@ -8617,10 +9314,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSignalAndWaitForSingleObject,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSuspendProcess(HANDLE  handle) /* ../dlls/ntdll/process.c:782 */
+WINAPI NTSTATUS wine32b_ntdll_NtSuspendProcess(HANDLE  handle) /* ../dlls/ntdll/process.c:782 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSuspendProcess\n");
-	return pNtSuspendProcess(handle);
+	return_value = pNtSuspendProcess(handle);
+	TRACE("Leave NtSuspendProcess\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSuspendProcess(void);  /* ../dlls/ntdll/process.c:782 */
@@ -8642,10 +9342,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSuspendProcess,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSuspendThread(HANDLE  handle, PULONG  count) /* ../dlls/ntdll/thread.c:592 */
+WINAPI NTSTATUS wine32b_ntdll_NtSuspendThread(HANDLE  handle, PULONG  count) /* ../dlls/ntdll/thread.c:592 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSuspendThread\n");
-	return pNtSuspendThread(handle, count);
+	return_value = pNtSuspendThread(handle, count);
+	TRACE("Leave NtSuspendThread\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSuspendThread(void);  /* ../dlls/ntdll/thread.c:592 */
@@ -8668,10 +9371,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSuspendThread,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtSystemDebugControl(SYSDBG_COMMAND  command, PVOID  inbuffer, ULONG  inbuflength, PVOID  outbuffer, ULONG  outbuflength, PULONG  retlength) /* ../dlls/ntdll/nt.c:3417 */
+WINAPI NTSTATUS wine32b_ntdll_NtSystemDebugControl(SYSDBG_COMMAND  command, PVOID  inbuffer, ULONG  inbuflength, PVOID  outbuffer, ULONG  outbuflength, PULONG  retlength) /* ../dlls/ntdll/nt.c:3417 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtSystemDebugControl\n");
-	return pNtSystemDebugControl(command, inbuffer, inbuflength, outbuffer, outbuflength, retlength);
+	return_value = pNtSystemDebugControl(command, inbuffer, inbuflength, outbuffer, outbuflength, retlength);
+	TRACE("Leave NtSystemDebugControl\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtSystemDebugControl(void);  /* ../dlls/ntdll/nt.c:3417 */
@@ -8696,10 +9402,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtSystemDebugControl,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtTerminateJobObject(HANDLE  handle, NTSTATUS  status) /* ../dlls/ntdll/sync.c:673 */
+WINAPI NTSTATUS wine32b_ntdll_NtTerminateJobObject(HANDLE  handle, NTSTATUS  status) /* ../dlls/ntdll/sync.c:673 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtTerminateJobObject\n");
-	return pNtTerminateJobObject(handle, status);
+	return_value = pNtTerminateJobObject(handle, status);
+	TRACE("Leave NtTerminateJobObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtTerminateJobObject(void);  /* ../dlls/ntdll/sync.c:673 */
@@ -8722,10 +9431,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtTerminateJobObject,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtTerminateProcess(HANDLE  handle, LONG  exit_code) /* ../dlls/ntdll/process.c:79 */
+WINAPI NTSTATUS wine32b_ntdll_NtTerminateProcess(HANDLE  handle, LONG  exit_code) /* ../dlls/ntdll/process.c:79 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtTerminateProcess\n");
-	return pNtTerminateProcess(handle, exit_code);
+	return_value = pNtTerminateProcess(handle, exit_code);
+	TRACE("Leave NtTerminateProcess\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtTerminateProcess(void);  /* ../dlls/ntdll/process.c:79 */
@@ -8748,10 +9460,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtTerminateProcess,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtTerminateThread(HANDLE  handle, LONG  exit_code) /* ../dlls/ntdll/thread.c:656 */
+WINAPI NTSTATUS wine32b_ntdll_NtTerminateThread(HANDLE  handle, LONG  exit_code) /* ../dlls/ntdll/thread.c:656 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtTerminateThread\n");
-	return pNtTerminateThread(handle, exit_code);
+	return_value = pNtTerminateThread(handle, exit_code);
+	TRACE("Leave NtTerminateThread\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtTerminateThread(void);  /* ../dlls/ntdll/thread.c:656 */
@@ -8774,10 +9489,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtTerminateThread,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtUnloadDriver(UNICODE_STRING*  DriverServiceName) /* ../dlls/ntdll/loader.c:3983 */
+WINAPI NTSTATUS wine32b_ntdll_NtUnloadDriver(UNICODE_STRING*  DriverServiceName) /* ../dlls/ntdll/loader.c:3983 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtUnloadDriver\n");
-	return pNtUnloadDriver(DriverServiceName);
+	return_value = pNtUnloadDriver(DriverServiceName);
+	TRACE("Leave NtUnloadDriver\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtUnloadDriver(void);  /* ../dlls/ntdll/loader.c:3983 */
@@ -8799,10 +9517,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtUnloadDriver,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtUnloadKey(POBJECT_ATTRIBUTES  attr) /* ../dlls/ntdll/reg.c:899 */
+WINAPI NTSTATUS wine32b_ntdll_NtUnloadKey(POBJECT_ATTRIBUTES  attr) /* ../dlls/ntdll/reg.c:899 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtUnloadKey\n");
-	return pNtUnloadKey(attr);
+	return_value = pNtUnloadKey(attr);
+	TRACE("Leave NtUnloadKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtUnloadKey(void);  /* ../dlls/ntdll/reg.c:899 */
@@ -8824,10 +9545,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtUnloadKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtUnlockFile(HANDLE  hFile, PIO_STATUS_BLOCK  io_status, PLARGE_INTEGER  offset, PLARGE_INTEGER  count, PULONG  key) /* ../dlls/ntdll/file.c:3432 */
+WINAPI NTSTATUS wine32b_ntdll_NtUnlockFile(HANDLE  hFile, PIO_STATUS_BLOCK  io_status, PLARGE_INTEGER  offset, PLARGE_INTEGER  count, PULONG  key) /* ../dlls/ntdll/file.c:3432 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtUnlockFile\n");
-	return pNtUnlockFile(hFile, io_status, offset, count, key);
+	return_value = pNtUnlockFile(hFile, io_status, offset, count, key);
+	TRACE("Leave NtUnlockFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtUnlockFile(void);  /* ../dlls/ntdll/file.c:3432 */
@@ -8852,10 +9576,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtUnlockFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtUnlockVirtualMemory(HANDLE  process, PVOID*  addr, SIZE_T*  size, ULONG  unknown) /* ../dlls/ntdll/virtual.c:3084 */
+WINAPI NTSTATUS wine32b_ntdll_NtUnlockVirtualMemory(HANDLE  process, PVOID*  addr, SIZE_T*  size, ULONG  unknown) /* ../dlls/ntdll/virtual.c:3084 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtUnlockVirtualMemory\n");
-	return pNtUnlockVirtualMemory(process, addr, size, unknown);
+	return_value = pNtUnlockVirtualMemory(process, addr, size, unknown);
+	TRACE("Leave NtUnlockVirtualMemory\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtUnlockVirtualMemory(void);  /* ../dlls/ntdll/virtual.c:3084 */
@@ -8880,10 +9607,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtUnlockVirtualMemory,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtUnmapViewOfSection(HANDLE  process, PVOID  addr) /* ../dlls/ntdll/virtual.c:3259 */
+WINAPI NTSTATUS wine32b_ntdll_NtUnmapViewOfSection(HANDLE  process, PVOID  addr) /* ../dlls/ntdll/virtual.c:3259 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtUnmapViewOfSection\n");
-	return pNtUnmapViewOfSection(process, addr);
+	return_value = pNtUnmapViewOfSection(process, addr);
+	TRACE("Leave NtUnmapViewOfSection\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtUnmapViewOfSection(void);  /* ../dlls/ntdll/virtual.c:3259 */
@@ -8906,10 +9636,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtUnmapViewOfSection,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtWaitForKeyedEvent(HANDLE  handle, void*  key, BOOLEAN  alertable, LARGE_INTEGER*  timeout) /* ../dlls/ntdll/sync.c:1238 */
+WINAPI NTSTATUS wine32b_ntdll_NtWaitForKeyedEvent(HANDLE  handle, void*  key, BOOLEAN  alertable, LARGE_INTEGER*  timeout) /* ../dlls/ntdll/sync.c:1238 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtWaitForKeyedEvent\n");
-	return pNtWaitForKeyedEvent(handle, key, alertable, timeout);
+	return_value = pNtWaitForKeyedEvent(handle, key, alertable, timeout);
+	TRACE("Leave NtWaitForKeyedEvent\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtWaitForKeyedEvent(void);  /* ../dlls/ntdll/sync.c:1238 */
@@ -8934,10 +9667,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtWaitForKeyedEvent,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtWaitForMultipleObjects(DWORD  count, HANDLE*  handles, BOOLEAN  wait_any, BOOLEAN  alertable, LARGE_INTEGER*  timeout) /* ../dlls/ntdll/sync.c:1094 */
+WINAPI NTSTATUS wine32b_ntdll_NtWaitForMultipleObjects(DWORD  count, HANDLE*  handles, BOOLEAN  wait_any, BOOLEAN  alertable, LARGE_INTEGER*  timeout) /* ../dlls/ntdll/sync.c:1094 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtWaitForMultipleObjects\n");
-	return pNtWaitForMultipleObjects(count, handles, wait_any, alertable, timeout);
+	return_value = pNtWaitForMultipleObjects(count, handles, wait_any, alertable, timeout);
+	TRACE("Leave NtWaitForMultipleObjects\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtWaitForMultipleObjects(void);  /* ../dlls/ntdll/sync.c:1094 */
@@ -8962,10 +9698,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtWaitForMultipleObjects,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtWaitForSingleObject(HANDLE  handle, BOOLEAN  alertable, LARGE_INTEGER*  timeout) /* ../dlls/ntdll/sync.c:1105 */
+WINAPI NTSTATUS wine32b_ntdll_NtWaitForSingleObject(HANDLE  handle, BOOLEAN  alertable, LARGE_INTEGER*  timeout) /* ../dlls/ntdll/sync.c:1105 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtWaitForSingleObject\n");
-	return pNtWaitForSingleObject(handle, alertable, timeout);
+	return_value = pNtWaitForSingleObject(handle, alertable, timeout);
+	TRACE("Leave NtWaitForSingleObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtWaitForSingleObject(void);  /* ../dlls/ntdll/sync.c:1105 */
@@ -8989,10 +9728,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtWaitForSingleObject,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtWriteFile(HANDLE  hFile, HANDLE  hEvent, PIO_APC_ROUTINE  apc, void*  apc_user, PIO_STATUS_BLOCK  io_status, void*  buffer, ULONG  length, PLARGE_INTEGER  offset, PULONG  key) /* ../dlls/ntdll/file.c:1189 */
+WINAPI NTSTATUS wine32b_ntdll_NtWriteFile(HANDLE  hFile, HANDLE  hEvent, PIO_APC_ROUTINE  apc, void*  apc_user, PIO_STATUS_BLOCK  io_status, void*  buffer, ULONG  length, PLARGE_INTEGER  offset, PULONG  key) /* ../dlls/ntdll/file.c:1189 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtWriteFile\n");
-	return pNtWriteFile(hFile, hEvent, apc, apc_user, io_status, buffer, length, offset, key);
+	return_value = pNtWriteFile(hFile, hEvent, apc, apc_user, io_status, buffer, length, offset, key);
+	TRACE("Leave NtWriteFile\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtWriteFile(void);  /* ../dlls/ntdll/file.c:1189 */
@@ -9017,10 +9759,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtWriteFile,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtWriteFileGather(HANDLE  file, HANDLE  event, PIO_APC_ROUTINE  apc, void*  apc_user, PIO_STATUS_BLOCK  io_status, FILE_SEGMENT_ELEMENT*  segments, ULONG  length, PLARGE_INTEGER  offset, PULONG  key) /* ../dlls/ntdll/file.c:1419 */
+WINAPI NTSTATUS wine32b_ntdll_NtWriteFileGather(HANDLE  file, HANDLE  event, PIO_APC_ROUTINE  apc, void*  apc_user, PIO_STATUS_BLOCK  io_status, FILE_SEGMENT_ELEMENT*  segments, ULONG  length, PLARGE_INTEGER  offset, PULONG  key) /* ../dlls/ntdll/file.c:1419 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtWriteFileGather\n");
-	return pNtWriteFileGather(file, event, apc, apc_user, io_status, segments, length, offset, key);
+	return_value = pNtWriteFileGather(file, event, apc, apc_user, io_status, segments, length, offset, key);
+	TRACE("Leave NtWriteFileGather\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtWriteFileGather(void);  /* ../dlls/ntdll/file.c:1419 */
@@ -9045,10 +9790,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtWriteFileGather,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtWriteVirtualMemory(HANDLE  process, void*  addr, void*  buffer, SIZE_T  size, SIZE_T*  bytes_written) /* ../dlls/ntdll/virtual.c:3547 */
+WINAPI NTSTATUS wine32b_ntdll_NtWriteVirtualMemory(HANDLE  process, void*  addr, void*  buffer, SIZE_T  size, SIZE_T*  bytes_written) /* ../dlls/ntdll/virtual.c:3547 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtWriteVirtualMemory\n");
-	return pNtWriteVirtualMemory(process, addr, buffer, size, bytes_written);
+	return_value = pNtWriteVirtualMemory(process, addr, buffer, size, bytes_written);
+	TRACE("Leave NtWriteVirtualMemory\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtWriteVirtualMemory(void);  /* ../dlls/ntdll/virtual.c:3547 */
@@ -9073,10 +9821,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtWriteVirtualMemory,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_NtYieldExecution(void) /* ../dlls/ntdll/sync.c:1133 */
+WINAPI NTSTATUS wine32b_ntdll_NtYieldExecution(void) /* ../dlls/ntdll/sync.c:1133 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter NtYieldExecution\n");
-	return pNtYieldExecution();
+	return_value = pNtYieldExecution();
+	TRACE("Leave NtYieldExecution\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_NtYieldExecution(void);  /* ../dlls/ntdll/sync.c:1133 */
@@ -9097,10 +9848,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_NtYieldExecution,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlAbsoluteToSelfRelativeSD(PSECURITY_DESCRIPTOR  AbsoluteSecurityDescriptor, PSECURITY_DESCRIPTOR  SelfRelativeSecurityDescriptor, PULONG  BufferLength) /* ../dlls/ntdll/sec.c:1095 */
+WINAPI NTSTATUS wine32b_ntdll_RtlAbsoluteToSelfRelativeSD(PSECURITY_DESCRIPTOR  AbsoluteSecurityDescriptor, PSECURITY_DESCRIPTOR  SelfRelativeSecurityDescriptor, PULONG  BufferLength) /* ../dlls/ntdll/sec.c:1095 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlAbsoluteToSelfRelativeSD\n");
-	return pRtlAbsoluteToSelfRelativeSD(AbsoluteSecurityDescriptor, SelfRelativeSecurityDescriptor, BufferLength);
+	return_value = pRtlAbsoluteToSelfRelativeSD(AbsoluteSecurityDescriptor, SelfRelativeSecurityDescriptor, BufferLength);
+	TRACE("Leave RtlAbsoluteToSelfRelativeSD\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAbsoluteToSelfRelativeSD(void);  /* ../dlls/ntdll/sec.c:1095 */
@@ -9124,10 +9878,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAbsoluteToSelfRelativeSD,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlAcquirePebLock(void) /* ../dlls/ntdll/rtl.c:363 */
+WINAPI void wine32b_ntdll_RtlAcquirePebLock(void) /* ../dlls/ntdll/rtl.c:363 */
 {
 	TRACE("Enter RtlAcquirePebLock\n");
-	return pRtlAcquirePebLock();
+	pRtlAcquirePebLock();
+	TRACE("Leave RtlAcquirePebLock\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlAcquirePebLock(void);  /* ../dlls/ntdll/rtl.c:363 */
@@ -9148,10 +9903,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAcquirePebLock,
 	"ret \n"
 )
 
-extern WINAPI BYTE wine32b_ntdll_RtlAcquireResourceExclusive(LPRTL_RWLOCK  rwl, BYTE  fWait) /* ../dlls/ntdll/rtl.c:153 */
+WINAPI BYTE wine32b_ntdll_RtlAcquireResourceExclusive(LPRTL_RWLOCK  rwl, BYTE  fWait) /* ../dlls/ntdll/rtl.c:153 */
 {
+	BYTE return_value;
 	TRACE("Enter RtlAcquireResourceExclusive\n");
-	return pRtlAcquireResourceExclusive(rwl, fWait);
+	return_value = pRtlAcquireResourceExclusive(rwl, fWait);
+	TRACE("Leave RtlAcquireResourceExclusive\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAcquireResourceExclusive(void);  /* ../dlls/ntdll/rtl.c:153 */
@@ -9174,10 +9932,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAcquireResourceExclusive,
 	"ret \n"
 )
 
-extern WINAPI BYTE wine32b_ntdll_RtlAcquireResourceShared(LPRTL_RWLOCK  rwl, BYTE  fWait) /* ../dlls/ntdll/rtl.c:201 */
+WINAPI BYTE wine32b_ntdll_RtlAcquireResourceShared(LPRTL_RWLOCK  rwl, BYTE  fWait) /* ../dlls/ntdll/rtl.c:201 */
 {
+	BYTE return_value;
 	TRACE("Enter RtlAcquireResourceShared\n");
-	return pRtlAcquireResourceShared(rwl, fWait);
+	return_value = pRtlAcquireResourceShared(rwl, fWait);
+	TRACE("Leave RtlAcquireResourceShared\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAcquireResourceShared(void);  /* ../dlls/ntdll/rtl.c:201 */
@@ -9200,10 +9961,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAcquireResourceShared,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlAcquireSRWLockExclusive(RTL_SRWLOCK*  lock) /* ../dlls/ntdll/sync.c:2070 */
+WINAPI void wine32b_ntdll_RtlAcquireSRWLockExclusive(RTL_SRWLOCK*  lock) /* ../dlls/ntdll/sync.c:2070 */
 {
 	TRACE("Enter RtlAcquireSRWLockExclusive\n");
-	return pRtlAcquireSRWLockExclusive(lock);
+	pRtlAcquireSRWLockExclusive(lock);
+	TRACE("Leave RtlAcquireSRWLockExclusive\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlAcquireSRWLockExclusive(void);  /* ../dlls/ntdll/sync.c:2070 */
@@ -9225,10 +9987,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAcquireSRWLockExclusive,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlAcquireSRWLockShared(RTL_SRWLOCK*  lock) /* ../dlls/ntdll/sync.c:2086 */
+WINAPI void wine32b_ntdll_RtlAcquireSRWLockShared(RTL_SRWLOCK*  lock) /* ../dlls/ntdll/sync.c:2086 */
 {
 	TRACE("Enter RtlAcquireSRWLockShared\n");
-	return pRtlAcquireSRWLockShared(lock);
+	pRtlAcquireSRWLockShared(lock);
+	TRACE("Leave RtlAcquireSRWLockShared\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlAcquireSRWLockShared(void);  /* ../dlls/ntdll/sync.c:2086 */
@@ -9250,10 +10013,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAcquireSRWLockShared,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlActivateActivationContext(ULONG  unknown, HANDLE  handle, PULONG_PTR  cookie) /* ../dlls/ntdll/actctx.c:5124 */
+WINAPI NTSTATUS wine32b_ntdll_RtlActivateActivationContext(ULONG  unknown, HANDLE  handle, PULONG_PTR  cookie) /* ../dlls/ntdll/actctx.c:5124 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlActivateActivationContext\n");
-	return pRtlActivateActivationContext(unknown, handle, cookie);
+	return_value = pRtlActivateActivationContext(unknown, handle, cookie);
+	TRACE("Leave RtlActivateActivationContext\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlActivateActivationContext(void);  /* ../dlls/ntdll/actctx.c:5124 */
@@ -9277,10 +10043,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlActivateActivationContext,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlAddAccessAllowedAce(PACL  pAcl, DWORD  dwAceRevision, DWORD  AccessMask, PSID  pSid) /* ../dlls/ntdll/sec.c:1236 */
+WINAPI NTSTATUS wine32b_ntdll_RtlAddAccessAllowedAce(PACL  pAcl, DWORD  dwAceRevision, DWORD  AccessMask, PSID  pSid) /* ../dlls/ntdll/sec.c:1236 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlAddAccessAllowedAce\n");
-	return pRtlAddAccessAllowedAce(pAcl, dwAceRevision, AccessMask, pSid);
+	return_value = pRtlAddAccessAllowedAce(pAcl, dwAceRevision, AccessMask, pSid);
+	TRACE("Leave RtlAddAccessAllowedAce\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAddAccessAllowedAce(void);  /* ../dlls/ntdll/sec.c:1236 */
@@ -9305,10 +10074,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAddAccessAllowedAce,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlAddAccessAllowedAceEx(PACL  pAcl, DWORD  dwAceRevision, DWORD  AceFlags, DWORD  AccessMask, PSID  pSid) /* ../dlls/ntdll/sec.c:1248 */
+WINAPI NTSTATUS wine32b_ntdll_RtlAddAccessAllowedAceEx(PACL  pAcl, DWORD  dwAceRevision, DWORD  AceFlags, DWORD  AccessMask, PSID  pSid) /* ../dlls/ntdll/sec.c:1248 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlAddAccessAllowedAceEx\n");
-	return pRtlAddAccessAllowedAceEx(pAcl, dwAceRevision, AceFlags, AccessMask, pSid);
+	return_value = pRtlAddAccessAllowedAceEx(pAcl, dwAceRevision, AceFlags, AccessMask, pSid);
+	TRACE("Leave RtlAddAccessAllowedAceEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAddAccessAllowedAceEx(void);  /* ../dlls/ntdll/sec.c:1248 */
@@ -9333,10 +10105,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAddAccessAllowedAceEx,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlAddAccessAllowedObjectAce(PACL  pAcl, DWORD  dwAceRevision, DWORD  dwAceFlags, DWORD  dwAccessMask, GUID*  pObjectTypeGuid, GUID*  pInheritedObjectTypeGuid, PSID  pSid) /* ../dlls/ntdll/sec.c:1264 */
+WINAPI NTSTATUS wine32b_ntdll_RtlAddAccessAllowedObjectAce(PACL  pAcl, DWORD  dwAceRevision, DWORD  dwAceFlags, DWORD  dwAccessMask, GUID*  pObjectTypeGuid, GUID*  pInheritedObjectTypeGuid, PSID  pSid) /* ../dlls/ntdll/sec.c:1264 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlAddAccessAllowedObjectAce\n");
-	return pRtlAddAccessAllowedObjectAce(pAcl, dwAceRevision, dwAceFlags, dwAccessMask, pObjectTypeGuid, pInheritedObjectTypeGuid, pSid);
+	return_value = pRtlAddAccessAllowedObjectAce(pAcl, dwAceRevision, dwAceFlags, dwAccessMask, pObjectTypeGuid, pInheritedObjectTypeGuid, pSid);
+	TRACE("Leave RtlAddAccessAllowedObjectAce\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAddAccessAllowedObjectAce(void);  /* ../dlls/ntdll/sec.c:1264 */
@@ -9361,10 +10136,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAddAccessAllowedObjectAce,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlAddAccessDeniedAce(PACL  pAcl, DWORD  dwAceRevision, DWORD  AccessMask, PSID  pSid) /* ../dlls/ntdll/sec.c:1281 */
+WINAPI NTSTATUS wine32b_ntdll_RtlAddAccessDeniedAce(PACL  pAcl, DWORD  dwAceRevision, DWORD  AccessMask, PSID  pSid) /* ../dlls/ntdll/sec.c:1281 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlAddAccessDeniedAce\n");
-	return pRtlAddAccessDeniedAce(pAcl, dwAceRevision, AccessMask, pSid);
+	return_value = pRtlAddAccessDeniedAce(pAcl, dwAceRevision, AccessMask, pSid);
+	TRACE("Leave RtlAddAccessDeniedAce\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAddAccessDeniedAce(void);  /* ../dlls/ntdll/sec.c:1281 */
@@ -9389,10 +10167,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAddAccessDeniedAce,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlAddAccessDeniedAceEx(PACL  pAcl, DWORD  dwAceRevision, DWORD  AceFlags, DWORD  AccessMask, PSID  pSid) /* ../dlls/ntdll/sec.c:1293 */
+WINAPI NTSTATUS wine32b_ntdll_RtlAddAccessDeniedAceEx(PACL  pAcl, DWORD  dwAceRevision, DWORD  AceFlags, DWORD  AccessMask, PSID  pSid) /* ../dlls/ntdll/sec.c:1293 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlAddAccessDeniedAceEx\n");
-	return pRtlAddAccessDeniedAceEx(pAcl, dwAceRevision, AceFlags, AccessMask, pSid);
+	return_value = pRtlAddAccessDeniedAceEx(pAcl, dwAceRevision, AceFlags, AccessMask, pSid);
+	TRACE("Leave RtlAddAccessDeniedAceEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAddAccessDeniedAceEx(void);  /* ../dlls/ntdll/sec.c:1293 */
@@ -9417,10 +10198,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAddAccessDeniedAceEx,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlAddAccessDeniedObjectAce(PACL  pAcl, DWORD  dwAceRevision, DWORD  dwAceFlags, DWORD  dwAccessMask, GUID*  pObjectTypeGuid, GUID*  pInheritedObjectTypeGuid, PSID  pSid) /* ../dlls/ntdll/sec.c:1309 */
+WINAPI NTSTATUS wine32b_ntdll_RtlAddAccessDeniedObjectAce(PACL  pAcl, DWORD  dwAceRevision, DWORD  dwAceFlags, DWORD  dwAccessMask, GUID*  pObjectTypeGuid, GUID*  pInheritedObjectTypeGuid, PSID  pSid) /* ../dlls/ntdll/sec.c:1309 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlAddAccessDeniedObjectAce\n");
-	return pRtlAddAccessDeniedObjectAce(pAcl, dwAceRevision, dwAceFlags, dwAccessMask, pObjectTypeGuid, pInheritedObjectTypeGuid, pSid);
+	return_value = pRtlAddAccessDeniedObjectAce(pAcl, dwAceRevision, dwAceFlags, dwAccessMask, pObjectTypeGuid, pInheritedObjectTypeGuid, pSid);
+	TRACE("Leave RtlAddAccessDeniedObjectAce\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAddAccessDeniedObjectAce(void);  /* ../dlls/ntdll/sec.c:1309 */
@@ -9445,10 +10229,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAddAccessDeniedObjectAce,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlAddAce(PACL  acl, DWORD  rev, DWORD  xnrofaces, PACE_HEADER  acestart, DWORD  acelen) /* ../dlls/ntdll/sec.c:1169 */
+WINAPI NTSTATUS wine32b_ntdll_RtlAddAce(PACL  acl, DWORD  rev, DWORD  xnrofaces, PACE_HEADER  acestart, DWORD  acelen) /* ../dlls/ntdll/sec.c:1169 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlAddAce\n");
-	return pRtlAddAce(acl, rev, xnrofaces, acestart, acelen);
+	return_value = pRtlAddAce(acl, rev, xnrofaces, acestart, acelen);
+	TRACE("Leave RtlAddAce\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAddAce(void);  /* ../dlls/ntdll/sec.c:1169 */
@@ -9473,10 +10260,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAddAce,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlAddAtomToAtomTable(RTL_ATOM_TABLE  table, WCHAR*  name, RTL_ATOM*  atom) /* ../dlls/ntdll/atom.c:208 */
+WINAPI NTSTATUS wine32b_ntdll_RtlAddAtomToAtomTable(RTL_ATOM_TABLE  table, WCHAR*  name, RTL_ATOM*  atom) /* ../dlls/ntdll/atom.c:208 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlAddAtomToAtomTable\n");
-	return pRtlAddAtomToAtomTable(table, name, atom);
+	return_value = pRtlAddAtomToAtomTable(table, name, atom);
+	TRACE("Leave RtlAddAtomToAtomTable\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAddAtomToAtomTable(void);  /* ../dlls/ntdll/atom.c:208 */
@@ -9500,10 +10290,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAddAtomToAtomTable,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlAddAuditAccessAce(PACL  pAcl, DWORD  dwAceRevision, DWORD  dwAccessMask, PSID  pSid, BOOL  bAuditSuccess, BOOL  bAuditFailure) /* ../dlls/ntdll/sec.c:1351 */
+WINAPI NTSTATUS wine32b_ntdll_RtlAddAuditAccessAce(PACL  pAcl, DWORD  dwAceRevision, DWORD  dwAccessMask, PSID  pSid, BOOL  bAuditSuccess, BOOL  bAuditFailure) /* ../dlls/ntdll/sec.c:1351 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlAddAuditAccessAce\n");
-	return pRtlAddAuditAccessAce(pAcl, dwAceRevision, dwAccessMask, pSid, bAuditSuccess, bAuditFailure);
+	return_value = pRtlAddAuditAccessAce(pAcl, dwAceRevision, dwAccessMask, pSid, bAuditSuccess, bAuditFailure);
+	TRACE("Leave RtlAddAuditAccessAce\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAddAuditAccessAce(void);  /* ../dlls/ntdll/sec.c:1351 */
@@ -9528,10 +10321,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAddAuditAccessAce,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlAddAuditAccessAceEx(PACL  pAcl, DWORD  dwAceRevision, DWORD  dwAceFlags, DWORD  dwAccessMask, PSID  pSid, BOOL  bAuditSuccess, BOOL  bAuditFailure) /* ../dlls/ntdll/sec.c:1326 */
+WINAPI NTSTATUS wine32b_ntdll_RtlAddAuditAccessAceEx(PACL  pAcl, DWORD  dwAceRevision, DWORD  dwAceFlags, DWORD  dwAccessMask, PSID  pSid, BOOL  bAuditSuccess, BOOL  bAuditFailure) /* ../dlls/ntdll/sec.c:1326 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlAddAuditAccessAceEx\n");
-	return pRtlAddAuditAccessAceEx(pAcl, dwAceRevision, dwAceFlags, dwAccessMask, pSid, bAuditSuccess, bAuditFailure);
+	return_value = pRtlAddAuditAccessAceEx(pAcl, dwAceRevision, dwAceFlags, dwAccessMask, pSid, bAuditSuccess, bAuditFailure);
+	TRACE("Leave RtlAddAuditAccessAceEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAddAuditAccessAceEx(void);  /* ../dlls/ntdll/sec.c:1326 */
@@ -9556,10 +10352,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAddAuditAccessAceEx,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlAddAuditAccessObjectAce(PACL  pAcl, DWORD  dwAceRevision, DWORD  dwAceFlags, DWORD  dwAccessMask, GUID*  pObjectTypeGuid, GUID*  pInheritedObjectTypeGuid, PSID  pSid, BOOL  bAuditSuccess, BOOL  bAuditFailure) /* ../dlls/ntdll/sec.c:1365 */
+WINAPI NTSTATUS wine32b_ntdll_RtlAddAuditAccessObjectAce(PACL  pAcl, DWORD  dwAceRevision, DWORD  dwAceFlags, DWORD  dwAccessMask, GUID*  pObjectTypeGuid, GUID*  pInheritedObjectTypeGuid, PSID  pSid, BOOL  bAuditSuccess, BOOL  bAuditFailure) /* ../dlls/ntdll/sec.c:1365 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlAddAuditAccessObjectAce\n");
-	return pRtlAddAuditAccessObjectAce(pAcl, dwAceRevision, dwAceFlags, dwAccessMask, pObjectTypeGuid, pInheritedObjectTypeGuid, pSid, bAuditSuccess, bAuditFailure);
+	return_value = pRtlAddAuditAccessObjectAce(pAcl, dwAceRevision, dwAceFlags, dwAccessMask, pObjectTypeGuid, pInheritedObjectTypeGuid, pSid, bAuditSuccess, bAuditFailure);
+	TRACE("Leave RtlAddAuditAccessObjectAce\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAddAuditAccessObjectAce(void);  /* ../dlls/ntdll/sec.c:1365 */
@@ -9584,10 +10383,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAddAuditAccessObjectAce,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlAddMandatoryAce(PACL  pAcl, DWORD  dwAceRevision, DWORD  dwAceFlags, DWORD  dwMandatoryFlags, DWORD  dwAceType, PSID  pSid) /* ../dlls/ntdll/sec.c:1384 */
+WINAPI NTSTATUS wine32b_ntdll_RtlAddMandatoryAce(PACL  pAcl, DWORD  dwAceRevision, DWORD  dwAceFlags, DWORD  dwMandatoryFlags, DWORD  dwAceType, PSID  pSid) /* ../dlls/ntdll/sec.c:1384 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlAddMandatoryAce\n");
-	return pRtlAddMandatoryAce(pAcl, dwAceRevision, dwAceFlags, dwMandatoryFlags, dwAceType, pSid);
+	return_value = pRtlAddMandatoryAce(pAcl, dwAceRevision, dwAceFlags, dwMandatoryFlags, dwAceType, pSid);
+	TRACE("Leave RtlAddMandatoryAce\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAddMandatoryAce(void);  /* ../dlls/ntdll/sec.c:1384 */
@@ -9612,10 +10414,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAddMandatoryAce,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlAddFunctionTable(RUNTIME_FUNCTION*  table, DWORD  count, ULONG_PTR  addr) /* ../dlls/ntdll/exception.c:398 */
+WINAPI BOOLEAN wine32b_ntdll_RtlAddFunctionTable(RUNTIME_FUNCTION*  table, DWORD  count, ULONG_PTR  addr) /* ../dlls/ntdll/exception.c:398 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlAddFunctionTable\n");
-	return pRtlAddFunctionTable(table, count, addr);
+	return_value = pRtlAddFunctionTable(table, count, addr);
+	TRACE("Leave RtlAddFunctionTable\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAddFunctionTable(void);  /* ../dlls/ntdll/exception.c:398 */
@@ -9639,10 +10444,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAddFunctionTable,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_ntdll_RtlAddGrowableFunctionTable(void**  table, RUNTIME_FUNCTION*  functions, DWORD  count, DWORD  max_count, ULONG_PTR  base, ULONG_PTR  end) /* ../dlls/ntdll/exception.c:465 */
+WINAPI DWORD wine32b_ntdll_RtlAddGrowableFunctionTable(void**  table, RUNTIME_FUNCTION*  functions, DWORD  count, DWORD  max_count, ULONG_PTR  base, ULONG_PTR  end) /* ../dlls/ntdll/exception.c:465 */
 {
+	DWORD return_value;
 	TRACE("Enter RtlAddGrowableFunctionTable\n");
-	return pRtlAddGrowableFunctionTable(table, functions, count, max_count, base, end);
+	return_value = pRtlAddGrowableFunctionTable(table, functions, count, max_count, base, end);
+	TRACE("Leave RtlAddGrowableFunctionTable\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAddGrowableFunctionTable(void);  /* ../dlls/ntdll/exception.c:465 */
@@ -9667,10 +10475,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAddGrowableFunctionTable,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlAddRefActivationContext(HANDLE  handle) /* ../dlls/ntdll/actctx.c:5092 */
+WINAPI void wine32b_ntdll_RtlAddRefActivationContext(HANDLE  handle) /* ../dlls/ntdll/actctx.c:5092 */
 {
 	TRACE("Enter RtlAddRefActivationContext\n");
-	return pRtlAddRefActivationContext(handle);
+	pRtlAddRefActivationContext(handle);
+	TRACE("Leave RtlAddRefActivationContext\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlAddRefActivationContext(void);  /* ../dlls/ntdll/actctx.c:5092 */
@@ -9692,10 +10501,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAddRefActivationContext,
 	"ret \n"
 )
 
-extern WINAPI PVOID wine32b_ntdll_RtlAddVectoredContinueHandler(ULONG  first, PVECTORED_EXCEPTION_HANDLER  func) /* ../dlls/ntdll/exception.c:280 */
+WINAPI PVOID wine32b_ntdll_RtlAddVectoredContinueHandler(ULONG  first, PVECTORED_EXCEPTION_HANDLER  func) /* ../dlls/ntdll/exception.c:280 */
 {
+	PVOID return_value;
 	TRACE("Enter RtlAddVectoredContinueHandler\n");
-	return pRtlAddVectoredContinueHandler(first, func);
+	return_value = pRtlAddVectoredContinueHandler(first, func);
+	TRACE("Leave RtlAddVectoredContinueHandler\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAddVectoredContinueHandler(void);  /* ../dlls/ntdll/exception.c:280 */
@@ -9718,10 +10530,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAddVectoredContinueHandler,
 	"ret \n"
 )
 
-extern WINAPI PVOID wine32b_ntdll_RtlAddVectoredExceptionHandler(ULONG  first, PVECTORED_EXCEPTION_HANDLER  func) /* ../dlls/ntdll/exception.c:298 */
+WINAPI PVOID wine32b_ntdll_RtlAddVectoredExceptionHandler(ULONG  first, PVECTORED_EXCEPTION_HANDLER  func) /* ../dlls/ntdll/exception.c:298 */
 {
+	PVOID return_value;
 	TRACE("Enter RtlAddVectoredExceptionHandler\n");
-	return pRtlAddVectoredExceptionHandler(first, func);
+	return_value = pRtlAddVectoredExceptionHandler(first, func);
+	TRACE("Leave RtlAddVectoredExceptionHandler\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAddVectoredExceptionHandler(void);  /* ../dlls/ntdll/exception.c:298 */
@@ -9744,10 +10559,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAddVectoredExceptionHandler,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlAdjustPrivilege(ULONG  Privilege, BOOLEAN  Enable, BOOLEAN  CurrentThread, PBOOLEAN  Enabled) /* ../dlls/ntdll/sec.c:1494 */
+WINAPI NTSTATUS wine32b_ntdll_RtlAdjustPrivilege(ULONG  Privilege, BOOLEAN  Enable, BOOLEAN  CurrentThread, PBOOLEAN  Enabled) /* ../dlls/ntdll/sec.c:1494 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlAdjustPrivilege\n");
-	return pRtlAdjustPrivilege(Privilege, Enable, CurrentThread, Enabled);
+	return_value = pRtlAdjustPrivilege(Privilege, Enable, CurrentThread, Enabled);
+	TRACE("Leave RtlAdjustPrivilege\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAdjustPrivilege(void);  /* ../dlls/ntdll/sec.c:1494 */
@@ -9772,10 +10590,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAdjustPrivilege,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlAllocateAndInitializeSid(PSID_IDENTIFIER_AUTHORITY  pIdentifierAuthority, BYTE  nSubAuthorityCount, DWORD  nSubAuthority0, DWORD  nSubAuthority1, DWORD  nSubAuthority2, DWORD  nSubAuthority3, DWORD  nSubAuthority4, DWORD  nSubAuthority5, DWORD  nSubAuthority6, DWORD  nSubAuthority7, PSID*  pSid) /* ../dlls/ntdll/sec.c:136 */
+WINAPI NTSTATUS wine32b_ntdll_RtlAllocateAndInitializeSid(PSID_IDENTIFIER_AUTHORITY  pIdentifierAuthority, BYTE  nSubAuthorityCount, DWORD  nSubAuthority0, DWORD  nSubAuthority1, DWORD  nSubAuthority2, DWORD  nSubAuthority3, DWORD  nSubAuthority4, DWORD  nSubAuthority5, DWORD  nSubAuthority6, DWORD  nSubAuthority7, PSID*  pSid) /* ../dlls/ntdll/sec.c:136 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlAllocateAndInitializeSid\n");
-	return pRtlAllocateAndInitializeSid(pIdentifierAuthority, nSubAuthorityCount, nSubAuthority0, nSubAuthority1, nSubAuthority2, nSubAuthority3, nSubAuthority4, nSubAuthority5, nSubAuthority6, nSubAuthority7, pSid);
+	return_value = pRtlAllocateAndInitializeSid(pIdentifierAuthority, nSubAuthorityCount, nSubAuthority0, nSubAuthority1, nSubAuthority2, nSubAuthority3, nSubAuthority4, nSubAuthority5, nSubAuthority6, nSubAuthority7, pSid);
+	TRACE("Leave RtlAllocateAndInitializeSid\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAllocateAndInitializeSid(void);  /* ../dlls/ntdll/sec.c:136 */
@@ -9800,10 +10621,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAllocateAndInitializeSid,
 	"ret \n"
 )
 
-extern WINAPI RTL_HANDLE* wine32b_ntdll_RtlAllocateHandle(RTL_HANDLE_TABLE*  HandleTable, ULONG*  HandleIndex) /* ../dlls/ntdll/handletable.c:202 */
+WINAPI RTL_HANDLE* wine32b_ntdll_RtlAllocateHandle(RTL_HANDLE_TABLE*  HandleTable, ULONG*  HandleIndex) /* ../dlls/ntdll/handletable.c:202 */
 {
+	RTL_HANDLE* return_value;
 	TRACE("Enter RtlAllocateHandle\n");
-	return pRtlAllocateHandle(HandleTable, HandleIndex);
+	return_value = pRtlAllocateHandle(HandleTable, HandleIndex);
+	TRACE("Leave RtlAllocateHandle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAllocateHandle(void);  /* ../dlls/ntdll/handletable.c:202 */
@@ -9826,10 +10650,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAllocateHandle,
 	"ret \n"
 )
 
-extern WINAPI PVOID wine32b_ntdll_RtlAllocateHeap(HANDLE  heap, ULONG  flags, SIZE_T  size) /* ../dlls/ntdll/heap.c:1664 */
+WINAPI PVOID wine32b_ntdll_RtlAllocateHeap(HANDLE  heap, ULONG  flags, SIZE_T  size) /* ../dlls/ntdll/heap.c:1664 */
 {
+	PVOID return_value;
 	TRACE("Enter RtlAllocateHeap\n");
-	return pRtlAllocateHeap(heap, flags, size);
+	return_value = pRtlAllocateHeap(heap, flags, size);
+	TRACE("Leave RtlAllocateHeap\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAllocateHeap(void);  /* ../dlls/ntdll/heap.c:1664 */
@@ -9853,10 +10680,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAllocateHeap,
 	"ret \n"
 )
 
-extern WINAPI WCHAR wine32b_ntdll_RtlAnsiCharToUnicodeChar(LPSTR*  ansi) /* ../dlls/ntdll/rtlstr.c:651 */
+WINAPI WCHAR wine32b_ntdll_RtlAnsiCharToUnicodeChar(LPSTR*  ansi) /* ../dlls/ntdll/rtlstr.c:651 */
 {
+	WCHAR return_value;
 	TRACE("Enter RtlAnsiCharToUnicodeChar\n");
-	return pRtlAnsiCharToUnicodeChar(ansi);
+	return_value = pRtlAnsiCharToUnicodeChar(ansi);
+	TRACE("Leave RtlAnsiCharToUnicodeChar\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAnsiCharToUnicodeChar(void);  /* ../dlls/ntdll/rtlstr.c:651 */
@@ -9878,10 +10708,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAnsiCharToUnicodeChar,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_ntdll_RtlAnsiStringToUnicodeSize(STRING*  str) /* ../dlls/ntdll/rtlstr.c:1311 */
+WINAPI DWORD wine32b_ntdll_RtlAnsiStringToUnicodeSize(STRING*  str) /* ../dlls/ntdll/rtlstr.c:1311 */
 {
+	DWORD return_value;
 	TRACE("Enter RtlAnsiStringToUnicodeSize\n");
-	return pRtlAnsiStringToUnicodeSize(str);
+	return_value = pRtlAnsiStringToUnicodeSize(str);
+	TRACE("Leave RtlAnsiStringToUnicodeSize\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAnsiStringToUnicodeSize(void);  /* ../dlls/ntdll/rtlstr.c:1311 */
@@ -9903,10 +10736,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAnsiStringToUnicodeSize,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlAnsiStringToUnicodeString(PUNICODE_STRING  uni, PCANSI_STRING  ansi, BOOLEAN  doalloc) /* ../dlls/ntdll/rtlstr.c:685 */
+WINAPI NTSTATUS wine32b_ntdll_RtlAnsiStringToUnicodeString(PUNICODE_STRING  uni, PCANSI_STRING  ansi, BOOLEAN  doalloc) /* ../dlls/ntdll/rtlstr.c:685 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlAnsiStringToUnicodeString\n");
-	return pRtlAnsiStringToUnicodeString(uni, ansi, doalloc);
+	return_value = pRtlAnsiStringToUnicodeString(uni, ansi, doalloc);
+	TRACE("Leave RtlAnsiStringToUnicodeString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAnsiStringToUnicodeString(void);  /* ../dlls/ntdll/rtlstr.c:685 */
@@ -9930,10 +10766,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAnsiStringToUnicodeString,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlAppendAsciizToString(STRING*  dest, LPCSTR  src) /* ../dlls/ntdll/rtlstr.c:1417 */
+WINAPI NTSTATUS wine32b_ntdll_RtlAppendAsciizToString(STRING*  dest, LPCSTR  src) /* ../dlls/ntdll/rtlstr.c:1417 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlAppendAsciizToString\n");
-	return pRtlAppendAsciizToString(dest, src);
+	return_value = pRtlAppendAsciizToString(dest, src);
+	TRACE("Leave RtlAppendAsciizToString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAppendAsciizToString(void);  /* ../dlls/ntdll/rtlstr.c:1417 */
@@ -9956,10 +10795,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAppendAsciizToString,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlAppendStringToString(STRING*  dest, STRING*  src) /* ../dlls/ntdll/rtlstr.c:1447 */
+WINAPI NTSTATUS wine32b_ntdll_RtlAppendStringToString(STRING*  dest, STRING*  src) /* ../dlls/ntdll/rtlstr.c:1447 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlAppendStringToString\n");
-	return pRtlAppendStringToString(dest, src);
+	return_value = pRtlAppendStringToString(dest, src);
+	TRACE("Leave RtlAppendStringToString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAppendStringToString(void);  /* ../dlls/ntdll/rtlstr.c:1447 */
@@ -9982,10 +10824,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAppendStringToString,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlAppendUnicodeStringToString(UNICODE_STRING*  dest, UNICODE_STRING*  src) /* ../dlls/ntdll/rtlstr.c:1521 */
+WINAPI NTSTATUS wine32b_ntdll_RtlAppendUnicodeStringToString(UNICODE_STRING*  dest, UNICODE_STRING*  src) /* ../dlls/ntdll/rtlstr.c:1521 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlAppendUnicodeStringToString\n");
-	return pRtlAppendUnicodeStringToString(dest, src);
+	return_value = pRtlAppendUnicodeStringToString(dest, src);
+	TRACE("Leave RtlAppendUnicodeStringToString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAppendUnicodeStringToString(void);  /* ../dlls/ntdll/rtlstr.c:1521 */
@@ -10008,10 +10853,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAppendUnicodeStringToString,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlAppendUnicodeToString(UNICODE_STRING*  dest, LPCWSTR  src) /* ../dlls/ntdll/rtlstr.c:1482 */
+WINAPI NTSTATUS wine32b_ntdll_RtlAppendUnicodeToString(UNICODE_STRING*  dest, LPCWSTR  src) /* ../dlls/ntdll/rtlstr.c:1482 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlAppendUnicodeToString\n");
-	return pRtlAppendUnicodeToString(dest, src);
+	return_value = pRtlAppendUnicodeToString(dest, src);
+	TRACE("Leave RtlAppendUnicodeToString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAppendUnicodeToString(void);  /* ../dlls/ntdll/rtlstr.c:1482 */
@@ -10034,10 +10882,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAppendUnicodeToString,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlAreAllAccessesGranted(ACCESS_MASK  GrantedAccess, ACCESS_MASK  DesiredAccess) /* ../dlls/ntdll/rtl.c:763 */
+WINAPI BOOLEAN wine32b_ntdll_RtlAreAllAccessesGranted(ACCESS_MASK  GrantedAccess, ACCESS_MASK  DesiredAccess) /* ../dlls/ntdll/rtl.c:763 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlAreAllAccessesGranted\n");
-	return pRtlAreAllAccessesGranted(GrantedAccess, DesiredAccess);
+	return_value = pRtlAreAllAccessesGranted(GrantedAccess, DesiredAccess);
+	TRACE("Leave RtlAreAllAccessesGranted\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAreAllAccessesGranted(void);  /* ../dlls/ntdll/rtl.c:763 */
@@ -10060,10 +10911,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAreAllAccessesGranted,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlAreAnyAccessesGranted(ACCESS_MASK  GrantedAccess, ACCESS_MASK  DesiredAccess) /* ../dlls/ntdll/rtl.c:784 */
+WINAPI BOOLEAN wine32b_ntdll_RtlAreAnyAccessesGranted(ACCESS_MASK  GrantedAccess, ACCESS_MASK  DesiredAccess) /* ../dlls/ntdll/rtl.c:784 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlAreAnyAccessesGranted\n");
-	return pRtlAreAnyAccessesGranted(GrantedAccess, DesiredAccess);
+	return_value = pRtlAreAnyAccessesGranted(GrantedAccess, DesiredAccess);
+	TRACE("Leave RtlAreAnyAccessesGranted\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAreAnyAccessesGranted(void);  /* ../dlls/ntdll/rtl.c:784 */
@@ -10086,10 +10940,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAreAnyAccessesGranted,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlAreBitsClear(PCRTL_BITMAP  lpBits, ULONG  ulStart, ULONG  ulCount) /* ../dlls/ntdll/rtlbitmap.c:325 */
+WINAPI BOOLEAN wine32b_ntdll_RtlAreBitsClear(PCRTL_BITMAP  lpBits, ULONG  ulStart, ULONG  ulCount) /* ../dlls/ntdll/rtlbitmap.c:325 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlAreBitsClear\n");
-	return pRtlAreBitsClear(lpBits, ulStart, ulCount);
+	return_value = pRtlAreBitsClear(lpBits, ulStart, ulCount);
+	TRACE("Leave RtlAreBitsClear\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAreBitsClear(void);  /* ../dlls/ntdll/rtlbitmap.c:325 */
@@ -10113,10 +10970,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAreBitsClear,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlAreBitsSet(PCRTL_BITMAP  lpBits, ULONG  ulStart, ULONG  ulCount) /* ../dlls/ntdll/rtlbitmap.c:252 */
+WINAPI BOOLEAN wine32b_ntdll_RtlAreBitsSet(PCRTL_BITMAP  lpBits, ULONG  ulStart, ULONG  ulCount) /* ../dlls/ntdll/rtlbitmap.c:252 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlAreBitsSet\n");
-	return pRtlAreBitsSet(lpBits, ulStart, ulCount);
+	return_value = pRtlAreBitsSet(lpBits, ulStart, ulCount);
+	TRACE("Leave RtlAreBitsSet\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlAreBitsSet(void);  /* ../dlls/ntdll/rtlbitmap.c:252 */
@@ -10140,10 +11000,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAreBitsSet,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlAssert(void*  assertion, void*  filename, ULONG  linenumber, char*  message) /* ../dlls/ntdll/rtl.c:549 */
+WINAPI void wine32b_ntdll_RtlAssert(void*  assertion, void*  filename, ULONG  linenumber, char*  message) /* ../dlls/ntdll/rtl.c:549 */
 {
 	TRACE("Enter RtlAssert\n");
-	return pRtlAssert(assertion, filename, linenumber, message);
+	pRtlAssert(assertion, filename, linenumber, message);
+	TRACE("Leave RtlAssert\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlAssert(void);  /* ../dlls/ntdll/rtl.c:549 */
@@ -10168,10 +11029,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlAssert,
 	"ret \n"
 )
 
-extern WINAPI USHORT wine32b_ntdll_RtlCaptureStackBackTrace(ULONG  skip, ULONG  count, PVOID*  buffer, ULONG*  hash) /* ../dlls/ntdll/signal_x86_64.c:4123 */
+WINAPI USHORT wine32b_ntdll_RtlCaptureStackBackTrace(ULONG  skip, ULONG  count, PVOID*  buffer, ULONG*  hash) /* ../dlls/ntdll/signal_x86_64.c:4123 */
 {
+	USHORT return_value;
 	TRACE("Enter RtlCaptureStackBackTrace\n");
-	return pRtlCaptureStackBackTrace(skip, count, buffer, hash);
+	return_value = pRtlCaptureStackBackTrace(skip, count, buffer, hash);
+	TRACE("Leave RtlCaptureStackBackTrace\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCaptureStackBackTrace(void);  /* ../dlls/ntdll/signal_x86_64.c:4123 */
@@ -10196,10 +11060,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCaptureStackBackTrace,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlCharToInteger(PCSZ  str, ULONG  base, ULONG*  value) /* ../dlls/ntdll/rtlstr.c:1759 */
+WINAPI NTSTATUS wine32b_ntdll_RtlCharToInteger(PCSZ  str, ULONG  base, ULONG*  value) /* ../dlls/ntdll/rtlstr.c:1759 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlCharToInteger\n");
-	return pRtlCharToInteger(str, base, value);
+	return_value = pRtlCharToInteger(str, base, value);
+	TRACE("Leave RtlCharToInteger\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCharToInteger(void);  /* ../dlls/ntdll/rtlstr.c:1759 */
@@ -10223,10 +11090,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCharToInteger,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlCheckRegistryKey(ULONG  RelativeTo, PWSTR  Path) /* ../dlls/ntdll/reg.c:1407 */
+WINAPI NTSTATUS wine32b_ntdll_RtlCheckRegistryKey(ULONG  RelativeTo, PWSTR  Path) /* ../dlls/ntdll/reg.c:1407 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlCheckRegistryKey\n");
-	return pRtlCheckRegistryKey(RelativeTo, Path);
+	return_value = pRtlCheckRegistryKey(RelativeTo, Path);
+	TRACE("Leave RtlCheckRegistryKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCheckRegistryKey(void);  /* ../dlls/ntdll/reg.c:1407 */
@@ -10249,10 +11119,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCheckRegistryKey,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlClearAllBits(PRTL_BITMAP  lpBits) /* ../dlls/ntdll/rtlbitmap.c:110 */
+WINAPI void wine32b_ntdll_RtlClearAllBits(PRTL_BITMAP  lpBits) /* ../dlls/ntdll/rtlbitmap.c:110 */
 {
 	TRACE("Enter RtlClearAllBits\n");
-	return pRtlClearAllBits(lpBits);
+	pRtlClearAllBits(lpBits);
+	TRACE("Leave RtlClearAllBits\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlClearAllBits(void);  /* ../dlls/ntdll/rtlbitmap.c:110 */
@@ -10274,10 +11145,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlClearAllBits,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlClearBits(PRTL_BITMAP  lpBits, ULONG  ulStart, ULONG  ulCount) /* ../dlls/ntdll/rtlbitmap.c:190 */
+WINAPI void wine32b_ntdll_RtlClearBits(PRTL_BITMAP  lpBits, ULONG  ulStart, ULONG  ulCount) /* ../dlls/ntdll/rtlbitmap.c:190 */
 {
 	TRACE("Enter RtlClearBits\n");
-	return pRtlClearBits(lpBits, ulStart, ulCount);
+	pRtlClearBits(lpBits, ulStart, ulCount);
+	TRACE("Leave RtlClearBits\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlClearBits(void);  /* ../dlls/ntdll/rtlbitmap.c:190 */
@@ -10301,10 +11173,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlClearBits,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlCompactHeap(HANDLE  heap, ULONG  flags) /* ../dlls/ntdll/heap.c:1957 */
+WINAPI ULONG wine32b_ntdll_RtlCompactHeap(HANDLE  heap, ULONG  flags) /* ../dlls/ntdll/heap.c:1957 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlCompactHeap\n");
-	return pRtlCompactHeap(heap, flags);
+	return_value = pRtlCompactHeap(heap, flags);
+	TRACE("Leave RtlCompactHeap\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCompactHeap(void);  /* ../dlls/ntdll/heap.c:1957 */
@@ -10327,10 +11202,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCompactHeap,
 	"ret \n"
 )
 
-extern WINAPI SIZE_T wine32b_ntdll_RtlCompareMemory(void*  Source1, void*  Source2, SIZE_T  Length) /* ../dlls/ntdll/rtl.c:502 */
+WINAPI SIZE_T wine32b_ntdll_RtlCompareMemory(void*  Source1, void*  Source2, SIZE_T  Length) /* ../dlls/ntdll/rtl.c:502 */
 {
+	SIZE_T return_value;
 	TRACE("Enter RtlCompareMemory\n");
-	return pRtlCompareMemory(Source1, Source2, Length);
+	return_value = pRtlCompareMemory(Source1, Source2, Length);
+	TRACE("Leave RtlCompareMemory\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCompareMemory(void);  /* ../dlls/ntdll/rtl.c:502 */
@@ -10354,10 +11232,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCompareMemory,
 	"ret \n"
 )
 
-extern WINAPI SIZE_T wine32b_ntdll_RtlCompareMemoryUlong(ULONG*  Source1, SIZE_T  Length, ULONG  dwVal) /* ../dlls/ntdll/rtl.c:522 */
+WINAPI SIZE_T wine32b_ntdll_RtlCompareMemoryUlong(ULONG*  Source1, SIZE_T  Length, ULONG  dwVal) /* ../dlls/ntdll/rtl.c:522 */
 {
+	SIZE_T return_value;
 	TRACE("Enter RtlCompareMemoryUlong\n");
-	return pRtlCompareMemoryUlong(Source1, Length, dwVal);
+	return_value = pRtlCompareMemoryUlong(Source1, Length, dwVal);
+	TRACE("Leave RtlCompareMemoryUlong\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCompareMemoryUlong(void);  /* ../dlls/ntdll/rtl.c:522 */
@@ -10381,10 +11262,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCompareMemoryUlong,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_ntdll_RtlCompareString(STRING*  s1, STRING*  s2, BOOLEAN  CaseInsensitive) /* ../dlls/ntdll/rtlstr.c:433 */
+WINAPI LONG wine32b_ntdll_RtlCompareString(STRING*  s1, STRING*  s2, BOOLEAN  CaseInsensitive) /* ../dlls/ntdll/rtlstr.c:433 */
 {
+	LONG return_value;
 	TRACE("Enter RtlCompareString\n");
-	return pRtlCompareString(s1, s2, CaseInsensitive);
+	return_value = pRtlCompareString(s1, s2, CaseInsensitive);
+	TRACE("Leave RtlCompareString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCompareString(void);  /* ../dlls/ntdll/rtlstr.c:433 */
@@ -10408,10 +11292,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCompareString,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_ntdll_RtlCompareUnicodeString(UNICODE_STRING*  s1, UNICODE_STRING*  s2, BOOLEAN  CaseInsensitive) /* ../dlls/ntdll/rtlstr.c:481 */
+WINAPI LONG wine32b_ntdll_RtlCompareUnicodeString(UNICODE_STRING*  s1, UNICODE_STRING*  s2, BOOLEAN  CaseInsensitive) /* ../dlls/ntdll/rtlstr.c:481 */
 {
+	LONG return_value;
 	TRACE("Enter RtlCompareUnicodeString\n");
-	return pRtlCompareUnicodeString(s1, s2, CaseInsensitive);
+	return_value = pRtlCompareUnicodeString(s1, s2, CaseInsensitive);
+	TRACE("Leave RtlCompareUnicodeString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCompareUnicodeString(void);  /* ../dlls/ntdll/rtlstr.c:481 */
@@ -10435,10 +11322,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCompareUnicodeString,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_ntdll_RtlCompareUnicodeStrings(WCHAR*  s1, SIZE_T  len1, WCHAR*  s2, SIZE_T  len2, BOOLEAN  case_insensitive) /* ../dlls/ntdll/rtlstr.c:459 */
+WINAPI LONG wine32b_ntdll_RtlCompareUnicodeStrings(WCHAR*  s1, SIZE_T  len1, WCHAR*  s2, SIZE_T  len2, BOOLEAN  case_insensitive) /* ../dlls/ntdll/rtlstr.c:459 */
 {
+	LONG return_value;
 	TRACE("Enter RtlCompareUnicodeStrings\n");
-	return pRtlCompareUnicodeStrings(s1, len1, s2, len2, case_insensitive);
+	return_value = pRtlCompareUnicodeStrings(s1, len1, s2, len2, case_insensitive);
+	TRACE("Leave RtlCompareUnicodeStrings\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCompareUnicodeStrings(void);  /* ../dlls/ntdll/rtlstr.c:459 */
@@ -10463,10 +11353,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCompareUnicodeStrings,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlCompressBuffer(USHORT  format, PUCHAR  uncompressed, ULONG  uncompressed_size, PUCHAR  compressed, ULONG  compressed_size, ULONG  chunk_size, PULONG  final_size, PVOID  workspace) /* ../dlls/ntdll/rtl.c:1493 */
+WINAPI NTSTATUS wine32b_ntdll_RtlCompressBuffer(USHORT  format, PUCHAR  uncompressed, ULONG  uncompressed_size, PUCHAR  compressed, ULONG  compressed_size, ULONG  chunk_size, PULONG  final_size, PVOID  workspace) /* ../dlls/ntdll/rtl.c:1493 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlCompressBuffer\n");
-	return pRtlCompressBuffer(format, uncompressed, uncompressed_size, compressed, compressed_size, chunk_size, final_size, workspace);
+	return_value = pRtlCompressBuffer(format, uncompressed, uncompressed_size, compressed, compressed_size, chunk_size, final_size, workspace);
+	TRACE("Leave RtlCompressBuffer\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCompressBuffer(void);  /* ../dlls/ntdll/rtl.c:1493 */
@@ -10491,10 +11384,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCompressBuffer,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_ntdll_RtlComputeCrc32(DWORD  dwInitial, BYTE*  pData, INT  iLen) /* ../dlls/ntdll/rtl.c:590 */
+WINAPI DWORD wine32b_ntdll_RtlComputeCrc32(DWORD  dwInitial, BYTE*  pData, INT  iLen) /* ../dlls/ntdll/rtl.c:590 */
 {
+	DWORD return_value;
 	TRACE("Enter RtlComputeCrc32\n");
-	return pRtlComputeCrc32(dwInitial, pData, iLen);
+	return_value = pRtlComputeCrc32(dwInitial, pData, iLen);
+	TRACE("Leave RtlComputeCrc32\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlComputeCrc32(void);  /* ../dlls/ntdll/rtl.c:590 */
@@ -10518,10 +11414,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlComputeCrc32,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlConvertSidToUnicodeString(PUNICODE_STRING  String, PSID  pSid, BOOLEAN  AllocateString) /* ../dlls/ntdll/sec.c:1819 */
+WINAPI NTSTATUS wine32b_ntdll_RtlConvertSidToUnicodeString(PUNICODE_STRING  String, PSID  pSid, BOOLEAN  AllocateString) /* ../dlls/ntdll/sec.c:1819 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlConvertSidToUnicodeString\n");
-	return pRtlConvertSidToUnicodeString(String, pSid, AllocateString);
+	return_value = pRtlConvertSidToUnicodeString(String, pSid, AllocateString);
+	TRACE("Leave RtlConvertSidToUnicodeString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlConvertSidToUnicodeString(void);  /* ../dlls/ntdll/sec.c:1819 */
@@ -10545,10 +11444,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlConvertSidToUnicodeString,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_ntdll_RtlConvertToAutoInheritSecurityObject(PSECURITY_DESCRIPTOR  pdesc, PSECURITY_DESCRIPTOR  cdesc, PSECURITY_DESCRIPTOR*  ndesc, GUID*  objtype, BOOL  isdir, PGENERIC_MAPPING  genmap) /* ../dlls/ntdll/sec.c:1913 */
+WINAPI BOOL wine32b_ntdll_RtlConvertToAutoInheritSecurityObject(PSECURITY_DESCRIPTOR  pdesc, PSECURITY_DESCRIPTOR  cdesc, PSECURITY_DESCRIPTOR*  ndesc, GUID*  objtype, BOOL  isdir, PGENERIC_MAPPING  genmap) /* ../dlls/ntdll/sec.c:1913 */
 {
+	BOOL return_value;
 	TRACE("Enter RtlConvertToAutoInheritSecurityObject\n");
-	return pRtlConvertToAutoInheritSecurityObject(pdesc, cdesc, ndesc, objtype, isdir, genmap);
+	return_value = pRtlConvertToAutoInheritSecurityObject(pdesc, cdesc, ndesc, objtype, isdir, genmap);
+	TRACE("Leave RtlConvertToAutoInheritSecurityObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlConvertToAutoInheritSecurityObject(void);  /* ../dlls/ntdll/sec.c:1913 */
@@ -10573,10 +11475,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlConvertToAutoInheritSecurityObject,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlCopyLuid(PLUID  LuidDest, LUID*  LuidSrc) /* ../dlls/ntdll/rtl.c:836 */
+WINAPI void wine32b_ntdll_RtlCopyLuid(PLUID  LuidDest, LUID*  LuidSrc) /* ../dlls/ntdll/rtl.c:836 */
 {
 	TRACE("Enter RtlCopyLuid\n");
-	return pRtlCopyLuid(LuidDest, LuidSrc);
+	pRtlCopyLuid(LuidDest, LuidSrc);
+	TRACE("Leave RtlCopyLuid\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlCopyLuid(void);  /* ../dlls/ntdll/rtl.c:836 */
@@ -10599,10 +11502,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCopyLuid,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlCopyLuidAndAttributesArray(ULONG  Count, LUID_AND_ATTRIBUTES*  Src, PLUID_AND_ATTRIBUTES  Dest) /* ../dlls/ntdll/rtl.c:877 */
+WINAPI void wine32b_ntdll_RtlCopyLuidAndAttributesArray(ULONG  Count, LUID_AND_ATTRIBUTES*  Src, PLUID_AND_ATTRIBUTES  Dest) /* ../dlls/ntdll/rtl.c:877 */
 {
 	TRACE("Enter RtlCopyLuidAndAttributesArray\n");
-	return pRtlCopyLuidAndAttributesArray(Count, Src, Dest);
+	pRtlCopyLuidAndAttributesArray(Count, Src, Dest);
+	TRACE("Leave RtlCopyLuidAndAttributesArray\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlCopyLuidAndAttributesArray(void);  /* ../dlls/ntdll/rtl.c:877 */
@@ -10626,10 +11530,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCopyLuidAndAttributesArray,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlCopyMemory(void*  dest, void*  src, SIZE_T  len) /* ../dlls/ntdll/rtl.c:533 */
+WINAPI void wine32b_ntdll_RtlCopyMemory(void*  dest, void*  src, SIZE_T  len) /* ../dlls/ntdll/rtl.c:533 */
 {
 	TRACE("Enter RtlCopyMemory\n");
-	return pRtlCopyMemory(dest, src, len);
+	pRtlCopyMemory(dest, src, len);
+	TRACE("Leave RtlCopyMemory\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlCopyMemory(void);  /* ../dlls/ntdll/rtl.c:533 */
@@ -10653,10 +11558,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCopyMemory,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlCopySecurityDescriptor(PSECURITY_DESCRIPTOR  pSourceSD, PSECURITY_DESCRIPTOR  pDestinationSD) /* ../dlls/ntdll/sec.c:459 */
+WINAPI NTSTATUS wine32b_ntdll_RtlCopySecurityDescriptor(PSECURITY_DESCRIPTOR  pSourceSD, PSECURITY_DESCRIPTOR  pDestinationSD) /* ../dlls/ntdll/sec.c:459 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlCopySecurityDescriptor\n");
-	return pRtlCopySecurityDescriptor(pSourceSD, pDestinationSD);
+	return_value = pRtlCopySecurityDescriptor(pSourceSD, pDestinationSD);
+	TRACE("Leave RtlCopySecurityDescriptor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCopySecurityDescriptor(void);  /* ../dlls/ntdll/sec.c:459 */
@@ -10679,10 +11587,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCopySecurityDescriptor,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlCopySid(DWORD  nDestinationSidLength, PSID  pDestinationSid, PSID  pSourceSid) /* ../dlls/ntdll/sec.c:372 */
+WINAPI BOOLEAN wine32b_ntdll_RtlCopySid(DWORD  nDestinationSidLength, PSID  pDestinationSid, PSID  pSourceSid) /* ../dlls/ntdll/sec.c:372 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlCopySid\n");
-	return pRtlCopySid(nDestinationSidLength, pDestinationSid, pSourceSid);
+	return_value = pRtlCopySid(nDestinationSidLength, pDestinationSid, pSourceSid);
+	TRACE("Leave RtlCopySid\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCopySid(void);  /* ../dlls/ntdll/sec.c:372 */
@@ -10706,10 +11617,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCopySid,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlCopyString(STRING*  dst, STRING*  src) /* ../dlls/ntdll/rtlstr.c:193 */
+WINAPI void wine32b_ntdll_RtlCopyString(STRING*  dst, STRING*  src) /* ../dlls/ntdll/rtlstr.c:193 */
 {
 	TRACE("Enter RtlCopyString\n");
-	return pRtlCopyString(dst, src);
+	pRtlCopyString(dst, src);
+	TRACE("Leave RtlCopyString\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlCopyString(void);  /* ../dlls/ntdll/rtlstr.c:193 */
@@ -10732,10 +11644,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCopyString,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlCopyUnicodeString(UNICODE_STRING*  dst, UNICODE_STRING*  src) /* ../dlls/ntdll/rtlstr.c:335 */
+WINAPI void wine32b_ntdll_RtlCopyUnicodeString(UNICODE_STRING*  dst, UNICODE_STRING*  src) /* ../dlls/ntdll/rtlstr.c:335 */
 {
 	TRACE("Enter RtlCopyUnicodeString\n");
-	return pRtlCopyUnicodeString(dst, src);
+	pRtlCopyUnicodeString(dst, src);
+	TRACE("Leave RtlCopyUnicodeString\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlCopyUnicodeString(void);  /* ../dlls/ntdll/rtlstr.c:335 */
@@ -10758,10 +11671,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCopyUnicodeString,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlCreateAcl(PACL  acl, DWORD  size, DWORD  rev) /* ../dlls/ntdll/sec.c:1123 */
+WINAPI NTSTATUS wine32b_ntdll_RtlCreateAcl(PACL  acl, DWORD  size, DWORD  rev) /* ../dlls/ntdll/sec.c:1123 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlCreateAcl\n");
-	return pRtlCreateAcl(acl, size, rev);
+	return_value = pRtlCreateAcl(acl, size, rev);
+	TRACE("Leave RtlCreateAcl\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCreateAcl(void);  /* ../dlls/ntdll/sec.c:1123 */
@@ -10785,10 +11701,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCreateAcl,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlCreateActivationContext(HANDLE*  handle, void*  ptr) /* ../dlls/ntdll/actctx.c:4953 */
+WINAPI NTSTATUS wine32b_ntdll_RtlCreateActivationContext(HANDLE*  handle, void*  ptr) /* ../dlls/ntdll/actctx.c:4953 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlCreateActivationContext\n");
-	return pRtlCreateActivationContext(handle, ptr);
+	return_value = pRtlCreateActivationContext(handle, ptr);
+	TRACE("Leave RtlCreateActivationContext\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCreateActivationContext(void);  /* ../dlls/ntdll/actctx.c:4953 */
@@ -10811,10 +11730,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCreateActivationContext,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlCreateAtomTable(ULONG  size, RTL_ATOM_TABLE*  table) /* ../dlls/ntdll/atom.c:174 */
+WINAPI NTSTATUS wine32b_ntdll_RtlCreateAtomTable(ULONG  size, RTL_ATOM_TABLE*  table) /* ../dlls/ntdll/atom.c:174 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlCreateAtomTable\n");
-	return pRtlCreateAtomTable(size, table);
+	return_value = pRtlCreateAtomTable(size, table);
+	TRACE("Leave RtlCreateAtomTable\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCreateAtomTable(void);  /* ../dlls/ntdll/atom.c:174 */
@@ -10837,10 +11759,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCreateAtomTable,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlCreateEnvironment(BOOLEAN  inherit, PWSTR*  env) /* ../dlls/ntdll/env.c:76 */
+WINAPI NTSTATUS wine32b_ntdll_RtlCreateEnvironment(BOOLEAN  inherit, PWSTR*  env) /* ../dlls/ntdll/env.c:76 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlCreateEnvironment\n");
-	return pRtlCreateEnvironment(inherit, env);
+	return_value = pRtlCreateEnvironment(inherit, env);
+	TRACE("Leave RtlCreateEnvironment\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCreateEnvironment(void);  /* ../dlls/ntdll/env.c:76 */
@@ -10863,10 +11788,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCreateEnvironment,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_ntdll_RtlCreateHeap(ULONG  flags, PVOID  addr, SIZE_T  totalSize, SIZE_T  commitSize, PVOID  unknown, PRTL_HEAP_DEFINITION  definition) /* ../dlls/ntdll/heap.c:1549 */
+WINAPI HANDLE wine32b_ntdll_RtlCreateHeap(ULONG  flags, PVOID  addr, SIZE_T  totalSize, SIZE_T  commitSize, PVOID  unknown, PRTL_HEAP_DEFINITION  definition) /* ../dlls/ntdll/heap.c:1549 */
 {
+	HANDLE return_value;
 	TRACE("Enter RtlCreateHeap\n");
-	return pRtlCreateHeap(flags, addr, totalSize, commitSize, unknown, definition);
+	return_value = pRtlCreateHeap(flags, addr, totalSize, commitSize, unknown, definition);
+	TRACE("Leave RtlCreateHeap\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCreateHeap(void);  /* ../dlls/ntdll/heap.c:1549 */
@@ -10891,10 +11819,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCreateHeap,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlCreateProcessParameters(RTL_USER_PROCESS_PARAMETERS**  result, UNICODE_STRING*  image, UNICODE_STRING*  dllpath, UNICODE_STRING*  curdir, UNICODE_STRING*  cmdline, PWSTR  env, UNICODE_STRING*  title, UNICODE_STRING*  desktop, UNICODE_STRING*  shellinfo, UNICODE_STRING*  runtime) /* ../dlls/ntdll/env.c:514 */
+WINAPI NTSTATUS wine32b_ntdll_RtlCreateProcessParameters(RTL_USER_PROCESS_PARAMETERS**  result, UNICODE_STRING*  image, UNICODE_STRING*  dllpath, UNICODE_STRING*  curdir, UNICODE_STRING*  cmdline, PWSTR  env, UNICODE_STRING*  title, UNICODE_STRING*  desktop, UNICODE_STRING*  shellinfo, UNICODE_STRING*  runtime) /* ../dlls/ntdll/env.c:514 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlCreateProcessParameters\n");
-	return pRtlCreateProcessParameters(result, image, dllpath, curdir, cmdline, env, title, desktop, shellinfo, runtime);
+	return_value = pRtlCreateProcessParameters(result, image, dllpath, curdir, cmdline, env, title, desktop, shellinfo, runtime);
+	TRACE("Leave RtlCreateProcessParameters\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCreateProcessParameters(void);  /* ../dlls/ntdll/env.c:514 */
@@ -10919,10 +11850,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCreateProcessParameters,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlCreateProcessParametersEx(RTL_USER_PROCESS_PARAMETERS**  result, UNICODE_STRING*  ImagePathName, UNICODE_STRING*  DllPath, UNICODE_STRING*  CurrentDirectoryName, UNICODE_STRING*  CommandLine, PWSTR  Environment, UNICODE_STRING*  WindowTitle, UNICODE_STRING*  Desktop, UNICODE_STRING*  ShellInfo, UNICODE_STRING*  RuntimeInfo, ULONG  flags) /* ../dlls/ntdll/env.c:432 */
+WINAPI NTSTATUS wine32b_ntdll_RtlCreateProcessParametersEx(RTL_USER_PROCESS_PARAMETERS**  result, UNICODE_STRING*  ImagePathName, UNICODE_STRING*  DllPath, UNICODE_STRING*  CurrentDirectoryName, UNICODE_STRING*  CommandLine, PWSTR  Environment, UNICODE_STRING*  WindowTitle, UNICODE_STRING*  Desktop, UNICODE_STRING*  ShellInfo, UNICODE_STRING*  RuntimeInfo, ULONG  flags) /* ../dlls/ntdll/env.c:432 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlCreateProcessParametersEx\n");
-	return pRtlCreateProcessParametersEx(result, ImagePathName, DllPath, CurrentDirectoryName, CommandLine, Environment, WindowTitle, Desktop, ShellInfo, RuntimeInfo, flags);
+	return_value = pRtlCreateProcessParametersEx(result, ImagePathName, DllPath, CurrentDirectoryName, CommandLine, Environment, WindowTitle, Desktop, ShellInfo, RuntimeInfo, flags);
+	TRACE("Leave RtlCreateProcessParametersEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCreateProcessParametersEx(void);  /* ../dlls/ntdll/env.c:432 */
@@ -10947,10 +11881,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCreateProcessParametersEx,
 	"ret \n"
 )
 
-extern WINAPI PDEBUG_BUFFER wine32b_ntdll_RtlCreateQueryDebugBuffer(ULONG  iSize, BOOLEAN  iEventPair) /* ../dlls/ntdll/debugbuffer.c:92 */
+WINAPI PDEBUG_BUFFER wine32b_ntdll_RtlCreateQueryDebugBuffer(ULONG  iSize, BOOLEAN  iEventPair) /* ../dlls/ntdll/debugbuffer.c:92 */
 {
+	PDEBUG_BUFFER return_value;
 	TRACE("Enter RtlCreateQueryDebugBuffer\n");
-	return pRtlCreateQueryDebugBuffer(iSize, iEventPair);
+	return_value = pRtlCreateQueryDebugBuffer(iSize, iEventPair);
+	TRACE("Leave RtlCreateQueryDebugBuffer\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCreateQueryDebugBuffer(void);  /* ../dlls/ntdll/debugbuffer.c:92 */
@@ -10973,10 +11910,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCreateQueryDebugBuffer,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlCreateRegistryKey(ULONG  RelativeTo, PWSTR  path) /* ../dlls/ntdll/reg.c:1439 */
+WINAPI NTSTATUS wine32b_ntdll_RtlCreateRegistryKey(ULONG  RelativeTo, PWSTR  path) /* ../dlls/ntdll/reg.c:1439 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlCreateRegistryKey\n");
-	return pRtlCreateRegistryKey(RelativeTo, path);
+	return_value = pRtlCreateRegistryKey(RelativeTo, path);
+	TRACE("Leave RtlCreateRegistryKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCreateRegistryKey(void);  /* ../dlls/ntdll/reg.c:1439 */
@@ -10999,10 +11939,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCreateRegistryKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlCreateSecurityDescriptor(PSECURITY_DESCRIPTOR  lpsd, DWORD  rev) /* ../dlls/ntdll/sec.c:435 */
+WINAPI NTSTATUS wine32b_ntdll_RtlCreateSecurityDescriptor(PSECURITY_DESCRIPTOR  lpsd, DWORD  rev) /* ../dlls/ntdll/sec.c:435 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlCreateSecurityDescriptor\n");
-	return pRtlCreateSecurityDescriptor(lpsd, rev);
+	return_value = pRtlCreateSecurityDescriptor(lpsd, rev);
+	TRACE("Leave RtlCreateSecurityDescriptor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCreateSecurityDescriptor(void);  /* ../dlls/ntdll/sec.c:435 */
@@ -11025,10 +11968,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCreateSecurityDescriptor,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlCreateTimer(PHANDLE  NewTimer, HANDLE  TimerQueue, RTL_WAITORTIMERCALLBACKFUNC  Callback, PVOID  Parameter, DWORD  DueTime, DWORD  Period, ULONG  Flags) /* ../dlls/ntdll/threadpool.c:1072 */
+WINAPI NTSTATUS wine32b_ntdll_RtlCreateTimer(PHANDLE  NewTimer, HANDLE  TimerQueue, RTL_WAITORTIMERCALLBACKFUNC  Callback, PVOID  Parameter, DWORD  DueTime, DWORD  Period, ULONG  Flags) /* ../dlls/ntdll/threadpool.c:1072 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlCreateTimer\n");
-	return pRtlCreateTimer(NewTimer, TimerQueue, Callback, Parameter, DueTime, Period, Flags);
+	return_value = pRtlCreateTimer(NewTimer, TimerQueue, Callback, Parameter, DueTime, Period, Flags);
+	TRACE("Leave RtlCreateTimer\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCreateTimer(void);  /* ../dlls/ntdll/threadpool.c:1072 */
@@ -11053,10 +11999,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCreateTimer,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlCreateTimerQueue(PHANDLE  NewTimerQueue) /* ../dlls/ntdll/threadpool.c:932 */
+WINAPI NTSTATUS wine32b_ntdll_RtlCreateTimerQueue(PHANDLE  NewTimerQueue) /* ../dlls/ntdll/threadpool.c:932 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlCreateTimerQueue\n");
-	return pRtlCreateTimerQueue(NewTimerQueue);
+	return_value = pRtlCreateTimerQueue(NewTimerQueue);
+	TRACE("Leave RtlCreateTimerQueue\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCreateTimerQueue(void);  /* ../dlls/ntdll/threadpool.c:932 */
@@ -11078,10 +12027,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCreateTimerQueue,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlCreateUnicodeString(PUNICODE_STRING  target, LPCWSTR  src) /* ../dlls/ntdll/rtlstr.c:280 */
+WINAPI BOOLEAN wine32b_ntdll_RtlCreateUnicodeString(PUNICODE_STRING  target, LPCWSTR  src) /* ../dlls/ntdll/rtlstr.c:280 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlCreateUnicodeString\n");
-	return pRtlCreateUnicodeString(target, src);
+	return_value = pRtlCreateUnicodeString(target, src);
+	TRACE("Leave RtlCreateUnicodeString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCreateUnicodeString(void);  /* ../dlls/ntdll/rtlstr.c:280 */
@@ -11104,10 +12056,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCreateUnicodeString,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlCreateUnicodeStringFromAsciiz(PUNICODE_STRING  target, LPCSTR  src) /* ../dlls/ntdll/rtlstr.c:300 */
+WINAPI BOOLEAN wine32b_ntdll_RtlCreateUnicodeStringFromAsciiz(PUNICODE_STRING  target, LPCSTR  src) /* ../dlls/ntdll/rtlstr.c:300 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlCreateUnicodeStringFromAsciiz\n");
-	return pRtlCreateUnicodeStringFromAsciiz(target, src);
+	return_value = pRtlCreateUnicodeStringFromAsciiz(target, src);
+	TRACE("Leave RtlCreateUnicodeStringFromAsciiz\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCreateUnicodeStringFromAsciiz(void);  /* ../dlls/ntdll/rtlstr.c:300 */
@@ -11130,10 +12085,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCreateUnicodeStringFromAsciiz,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlCreateUserProcess(UNICODE_STRING*  path, ULONG  attributes, RTL_USER_PROCESS_PARAMETERS*  params, SECURITY_DESCRIPTOR*  process_descr, SECURITY_DESCRIPTOR*  thread_descr, HANDLE  parent, BOOLEAN  inherit, HANDLE  debug, HANDLE  exception, RTL_USER_PROCESS_INFORMATION*  info) /* ../dlls/ntdll/process.c:1212 */
+WINAPI NTSTATUS wine32b_ntdll_RtlCreateUserProcess(UNICODE_STRING*  path, ULONG  attributes, RTL_USER_PROCESS_PARAMETERS*  params, SECURITY_DESCRIPTOR*  process_descr, SECURITY_DESCRIPTOR*  thread_descr, HANDLE  parent, BOOLEAN  inherit, HANDLE  debug, HANDLE  exception, RTL_USER_PROCESS_INFORMATION*  info) /* ../dlls/ntdll/process.c:1212 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlCreateUserProcess\n");
-	return pRtlCreateUserProcess(path, attributes, params, process_descr, thread_descr, parent, inherit, debug, exception, info);
+	return_value = pRtlCreateUserProcess(path, attributes, params, process_descr, thread_descr, parent, inherit, debug, exception, info);
+	TRACE("Leave RtlCreateUserProcess\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCreateUserProcess(void);  /* ../dlls/ntdll/process.c:1212 */
@@ -11158,10 +12116,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCreateUserProcess,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlCreateUserStack(SIZE_T  commit, SIZE_T  reserve, ULONG  zero_bits, SIZE_T  commit_align, SIZE_T  reserve_align, INITIAL_TEB*  stack) /* ../dlls/ntdll/virtual.c:2050 */
+WINAPI NTSTATUS wine32b_ntdll_RtlCreateUserStack(SIZE_T  commit, SIZE_T  reserve, ULONG  zero_bits, SIZE_T  commit_align, SIZE_T  reserve_align, INITIAL_TEB*  stack) /* ../dlls/ntdll/virtual.c:2050 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlCreateUserStack\n");
-	return pRtlCreateUserStack(commit, reserve, zero_bits, commit_align, reserve_align, stack);
+	return_value = pRtlCreateUserStack(commit, reserve, zero_bits, commit_align, reserve_align, stack);
+	TRACE("Leave RtlCreateUserStack\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCreateUserStack(void);  /* ../dlls/ntdll/virtual.c:2050 */
@@ -11186,10 +12147,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCreateUserStack,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlCreateUserThread(HANDLE  process, SECURITY_DESCRIPTOR*  descr, BOOLEAN  suspended, PVOID  stack_addr, SIZE_T  stack_reserve, SIZE_T  stack_commit, PRTL_THREAD_START_ROUTINE  start, void*  param, HANDLE*  handle_ptr, CLIENT_ID*  id) /* ../dlls/ntdll/thread.c:400 */
+WINAPI NTSTATUS wine32b_ntdll_RtlCreateUserThread(HANDLE  process, SECURITY_DESCRIPTOR*  descr, BOOLEAN  suspended, PVOID  stack_addr, SIZE_T  stack_reserve, SIZE_T  stack_commit, PRTL_THREAD_START_ROUTINE  start, void*  param, HANDLE*  handle_ptr, CLIENT_ID*  id) /* ../dlls/ntdll/thread.c:400 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlCreateUserThread\n");
-	return pRtlCreateUserThread(process, descr, suspended, stack_addr, stack_reserve, stack_commit, start, param, handle_ptr, id);
+	return_value = pRtlCreateUserThread(process, descr, suspended, stack_addr, stack_reserve, stack_commit, start, param, handle_ptr, id);
+	TRACE("Leave RtlCreateUserThread\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlCreateUserThread(void);  /* ../dlls/ntdll/thread.c:400 */
@@ -11214,10 +12178,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlCreateUserThread,
 	"ret \n"
 )
 
-extern WINAPI PRTL_USER_PROCESS_PARAMETERS wine32b_ntdll_RtlDeNormalizeProcessParams(RTL_USER_PROCESS_PARAMETERS*  params) /* ../dlls/ntdll/env.c:393 */
+WINAPI PRTL_USER_PROCESS_PARAMETERS wine32b_ntdll_RtlDeNormalizeProcessParams(RTL_USER_PROCESS_PARAMETERS*  params) /* ../dlls/ntdll/env.c:393 */
 {
+	PRTL_USER_PROCESS_PARAMETERS return_value;
 	TRACE("Enter RtlDeNormalizeProcessParams\n");
-	return pRtlDeNormalizeProcessParams(params);
+	return_value = pRtlDeNormalizeProcessParams(params);
+	TRACE("Leave RtlDeNormalizeProcessParams\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDeNormalizeProcessParams(void);  /* ../dlls/ntdll/env.c:393 */
@@ -11239,10 +12206,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDeNormalizeProcessParams,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlDeactivateActivationContext(ULONG  flags, ULONG_PTR  cookie) /* ../dlls/ntdll/actctx.c:5146 */
+WINAPI void wine32b_ntdll_RtlDeactivateActivationContext(ULONG  flags, ULONG_PTR  cookie) /* ../dlls/ntdll/actctx.c:5146 */
 {
 	TRACE("Enter RtlDeactivateActivationContext\n");
-	return pRtlDeactivateActivationContext(flags, cookie);
+	pRtlDeactivateActivationContext(flags, cookie);
+	TRACE("Leave RtlDeactivateActivationContext\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlDeactivateActivationContext(void);  /* ../dlls/ntdll/actctx.c:5146 */
@@ -11265,10 +12233,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDeactivateActivationContext,
 	"ret \n"
 )
 
-extern WINAPI PVOID wine32b_ntdll_RtlDecodePointer(PVOID  ptr) /* ../dlls/ntdll/rtl.c:1235 */
+WINAPI PVOID wine32b_ntdll_RtlDecodePointer(PVOID  ptr) /* ../dlls/ntdll/rtl.c:1235 */
 {
+	PVOID return_value;
 	TRACE("Enter RtlDecodePointer\n");
-	return pRtlDecodePointer(ptr);
+	return_value = pRtlDecodePointer(ptr);
+	TRACE("Leave RtlDecodePointer\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDecodePointer(void);  /* ../dlls/ntdll/rtl.c:1235 */
@@ -11290,10 +12261,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDecodePointer,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlDecompressBuffer(USHORT  format, PUCHAR  uncompressed, ULONG  uncompressed_size, PUCHAR  compressed, ULONG  compressed_size, PULONG  final_size) /* ../dlls/ntdll/rtl.c:1723 */
+WINAPI NTSTATUS wine32b_ntdll_RtlDecompressBuffer(USHORT  format, PUCHAR  uncompressed, ULONG  uncompressed_size, PUCHAR  compressed, ULONG  compressed_size, PULONG  final_size) /* ../dlls/ntdll/rtl.c:1723 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlDecompressBuffer\n");
-	return pRtlDecompressBuffer(format, uncompressed, uncompressed_size, compressed, compressed_size, final_size);
+	return_value = pRtlDecompressBuffer(format, uncompressed, uncompressed_size, compressed, compressed_size, final_size);
+	TRACE("Leave RtlDecompressBuffer\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDecompressBuffer(void);  /* ../dlls/ntdll/rtl.c:1723 */
@@ -11318,10 +12292,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDecompressBuffer,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlDecompressFragment(USHORT  format, PUCHAR  uncompressed, ULONG  uncompressed_size, PUCHAR  compressed, ULONG  compressed_size, ULONG  offset, PULONG  final_size, PVOID  workspace) /* ../dlls/ntdll/rtl.c:1696 */
+WINAPI NTSTATUS wine32b_ntdll_RtlDecompressFragment(USHORT  format, PUCHAR  uncompressed, ULONG  uncompressed_size, PUCHAR  compressed, ULONG  compressed_size, ULONG  offset, PULONG  final_size, PVOID  workspace) /* ../dlls/ntdll/rtl.c:1696 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlDecompressFragment\n");
-	return pRtlDecompressFragment(format, uncompressed, uncompressed_size, compressed, compressed_size, offset, final_size, workspace);
+	return_value = pRtlDecompressFragment(format, uncompressed, uncompressed_size, compressed, compressed_size, offset, final_size, workspace);
+	TRACE("Leave RtlDecompressFragment\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDecompressFragment(void);  /* ../dlls/ntdll/rtl.c:1696 */
@@ -11346,10 +12323,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDecompressFragment,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlDeleteAce(PACL  pAcl, DWORD  dwAceIndex) /* ../dlls/ntdll/sec.c:1200 */
+WINAPI NTSTATUS wine32b_ntdll_RtlDeleteAce(PACL  pAcl, DWORD  dwAceIndex) /* ../dlls/ntdll/sec.c:1200 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlDeleteAce\n");
-	return pRtlDeleteAce(pAcl, dwAceIndex);
+	return_value = pRtlDeleteAce(pAcl, dwAceIndex);
+	TRACE("Leave RtlDeleteAce\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDeleteAce(void);  /* ../dlls/ntdll/sec.c:1200 */
@@ -11372,10 +12352,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDeleteAce,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlDeleteAtomFromAtomTable(RTL_ATOM_TABLE  table, RTL_ATOM  atom) /* ../dlls/ntdll/atom.c:82 */
+WINAPI NTSTATUS wine32b_ntdll_RtlDeleteAtomFromAtomTable(RTL_ATOM_TABLE  table, RTL_ATOM  atom) /* ../dlls/ntdll/atom.c:82 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlDeleteAtomFromAtomTable\n");
-	return pRtlDeleteAtomFromAtomTable(table, atom);
+	return_value = pRtlDeleteAtomFromAtomTable(table, atom);
+	TRACE("Leave RtlDeleteAtomFromAtomTable\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDeleteAtomFromAtomTable(void);  /* ../dlls/ntdll/atom.c:82 */
@@ -11398,10 +12381,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDeleteAtomFromAtomTable,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlDeleteCriticalSection(RTL_CRITICAL_SECTION*  crit) /* ../dlls/ntdll/critsection.c:402 */
+WINAPI NTSTATUS wine32b_ntdll_RtlDeleteCriticalSection(RTL_CRITICAL_SECTION*  crit) /* ../dlls/ntdll/critsection.c:402 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlDeleteCriticalSection\n");
-	return pRtlDeleteCriticalSection(crit);
+	return_value = pRtlDeleteCriticalSection(crit);
+	TRACE("Leave RtlDeleteCriticalSection\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDeleteCriticalSection(void);  /* ../dlls/ntdll/critsection.c:402 */
@@ -11423,10 +12409,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDeleteCriticalSection,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlDeleteGrowableFunctionTable(void*  table) /* ../dlls/ntdll/exception.c:520 */
+WINAPI void wine32b_ntdll_RtlDeleteGrowableFunctionTable(void*  table) /* ../dlls/ntdll/exception.c:520 */
 {
 	TRACE("Enter RtlDeleteGrowableFunctionTable\n");
-	return pRtlDeleteGrowableFunctionTable(table);
+	pRtlDeleteGrowableFunctionTable(table);
+	TRACE("Leave RtlDeleteGrowableFunctionTable\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlDeleteGrowableFunctionTable(void);  /* ../dlls/ntdll/exception.c:520 */
@@ -11448,10 +12435,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDeleteGrowableFunctionTable,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlDeleteFunctionTable(RUNTIME_FUNCTION*  table) /* ../dlls/ntdll/exception.c:545 */
+WINAPI BOOLEAN wine32b_ntdll_RtlDeleteFunctionTable(RUNTIME_FUNCTION*  table) /* ../dlls/ntdll/exception.c:545 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlDeleteFunctionTable\n");
-	return pRtlDeleteFunctionTable(table);
+	return_value = pRtlDeleteFunctionTable(table);
+	TRACE("Leave RtlDeleteFunctionTable\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDeleteFunctionTable(void);  /* ../dlls/ntdll/exception.c:545 */
@@ -11473,10 +12463,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDeleteFunctionTable,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlDeleteRegistryValue(ULONG  RelativeTo, PCWSTR  Path, PCWSTR  ValueName) /* ../dlls/ntdll/reg.c:1475 */
+WINAPI NTSTATUS wine32b_ntdll_RtlDeleteRegistryValue(ULONG  RelativeTo, PCWSTR  Path, PCWSTR  ValueName) /* ../dlls/ntdll/reg.c:1475 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlDeleteRegistryValue\n");
-	return pRtlDeleteRegistryValue(RelativeTo, Path, ValueName);
+	return_value = pRtlDeleteRegistryValue(RelativeTo, Path, ValueName);
+	TRACE("Leave RtlDeleteRegistryValue\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDeleteRegistryValue(void);  /* ../dlls/ntdll/reg.c:1475 */
@@ -11500,10 +12493,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDeleteRegistryValue,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlDeleteResource(LPRTL_RWLOCK  rwl) /* ../dlls/ntdll/rtl.c:131 */
+WINAPI void wine32b_ntdll_RtlDeleteResource(LPRTL_RWLOCK  rwl) /* ../dlls/ntdll/rtl.c:131 */
 {
 	TRACE("Enter RtlDeleteResource\n");
-	return pRtlDeleteResource(rwl);
+	pRtlDeleteResource(rwl);
+	TRACE("Leave RtlDeleteResource\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlDeleteResource(void);  /* ../dlls/ntdll/rtl.c:131 */
@@ -11525,10 +12519,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDeleteResource,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlDeleteSecurityObject(PSECURITY_DESCRIPTOR*  ObjectDescriptor) /* ../dlls/ntdll/rtl.c:396 */
+WINAPI NTSTATUS wine32b_ntdll_RtlDeleteSecurityObject(PSECURITY_DESCRIPTOR*  ObjectDescriptor) /* ../dlls/ntdll/rtl.c:396 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlDeleteSecurityObject\n");
-	return pRtlDeleteSecurityObject(ObjectDescriptor);
+	return_value = pRtlDeleteSecurityObject(ObjectDescriptor);
+	TRACE("Leave RtlDeleteSecurityObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDeleteSecurityObject(void);  /* ../dlls/ntdll/rtl.c:396 */
@@ -11550,10 +12547,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDeleteSecurityObject,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlDeleteTimer(HANDLE  TimerQueue, HANDLE  Timer, HANDLE  CompletionEvent) /* ../dlls/ntdll/threadpool.c:1167 */
+WINAPI NTSTATUS wine32b_ntdll_RtlDeleteTimer(HANDLE  TimerQueue, HANDLE  Timer, HANDLE  CompletionEvent) /* ../dlls/ntdll/threadpool.c:1167 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlDeleteTimer\n");
-	return pRtlDeleteTimer(TimerQueue, Timer, CompletionEvent);
+	return_value = pRtlDeleteTimer(TimerQueue, Timer, CompletionEvent);
+	TRACE("Leave RtlDeleteTimer\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDeleteTimer(void);  /* ../dlls/ntdll/threadpool.c:1167 */
@@ -11577,10 +12577,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDeleteTimer,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlDeleteTimerQueueEx(HANDLE  TimerQueue, HANDLE  CompletionEvent) /* ../dlls/ntdll/threadpool.c:978 */
+WINAPI NTSTATUS wine32b_ntdll_RtlDeleteTimerQueueEx(HANDLE  TimerQueue, HANDLE  CompletionEvent) /* ../dlls/ntdll/threadpool.c:978 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlDeleteTimerQueueEx\n");
-	return pRtlDeleteTimerQueueEx(TimerQueue, CompletionEvent);
+	return_value = pRtlDeleteTimerQueueEx(TimerQueue, CompletionEvent);
+	TRACE("Leave RtlDeleteTimerQueueEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDeleteTimerQueueEx(void);  /* ../dlls/ntdll/threadpool.c:978 */
@@ -11603,10 +12606,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDeleteTimerQueueEx,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlDeregisterWait(HANDLE  WaitHandle) /* ../dlls/ntdll/threadpool.c:706 */
+WINAPI NTSTATUS wine32b_ntdll_RtlDeregisterWait(HANDLE  WaitHandle) /* ../dlls/ntdll/threadpool.c:706 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlDeregisterWait\n");
-	return pRtlDeregisterWait(WaitHandle);
+	return_value = pRtlDeregisterWait(WaitHandle);
+	TRACE("Leave RtlDeregisterWait\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDeregisterWait(void);  /* ../dlls/ntdll/threadpool.c:706 */
@@ -11628,10 +12634,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDeregisterWait,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlDeregisterWaitEx(HANDLE  WaitHandle, HANDLE  CompletionEvent) /* ../dlls/ntdll/threadpool.c:642 */
+WINAPI NTSTATUS wine32b_ntdll_RtlDeregisterWaitEx(HANDLE  WaitHandle, HANDLE  CompletionEvent) /* ../dlls/ntdll/threadpool.c:642 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlDeregisterWaitEx\n");
-	return pRtlDeregisterWaitEx(WaitHandle, CompletionEvent);
+	return_value = pRtlDeregisterWaitEx(WaitHandle, CompletionEvent);
+	TRACE("Leave RtlDeregisterWaitEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDeregisterWaitEx(void);  /* ../dlls/ntdll/threadpool.c:642 */
@@ -11654,10 +12663,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDeregisterWaitEx,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlDestroyAtomTable(RTL_ATOM_TABLE  table) /* ../dlls/ntdll/atom.c:199 */
+WINAPI NTSTATUS wine32b_ntdll_RtlDestroyAtomTable(RTL_ATOM_TABLE  table) /* ../dlls/ntdll/atom.c:199 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlDestroyAtomTable\n");
-	return pRtlDestroyAtomTable(table);
+	return_value = pRtlDestroyAtomTable(table);
+	TRACE("Leave RtlDestroyAtomTable\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDestroyAtomTable(void);  /* ../dlls/ntdll/atom.c:199 */
@@ -11679,10 +12691,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDestroyAtomTable,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlDestroyEnvironment(PWSTR  env) /* ../dlls/ntdll/env.c:98 */
+WINAPI NTSTATUS wine32b_ntdll_RtlDestroyEnvironment(PWSTR  env) /* ../dlls/ntdll/env.c:98 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlDestroyEnvironment\n");
-	return pRtlDestroyEnvironment(env);
+	return_value = pRtlDestroyEnvironment(env);
+	TRACE("Leave RtlDestroyEnvironment\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDestroyEnvironment(void);  /* ../dlls/ntdll/env.c:98 */
@@ -11704,10 +12719,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDestroyEnvironment,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlDestroyHandleTable(RTL_HANDLE_TABLE*  HandleTable) /* ../dlls/ntdll/handletable.c:77 */
+WINAPI NTSTATUS wine32b_ntdll_RtlDestroyHandleTable(RTL_HANDLE_TABLE*  HandleTable) /* ../dlls/ntdll/handletable.c:77 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlDestroyHandleTable\n");
-	return pRtlDestroyHandleTable(HandleTable);
+	return_value = pRtlDestroyHandleTable(HandleTable);
+	TRACE("Leave RtlDestroyHandleTable\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDestroyHandleTable(void);  /* ../dlls/ntdll/handletable.c:77 */
@@ -11729,10 +12747,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDestroyHandleTable,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_ntdll_RtlDestroyHeap(HANDLE  heap) /* ../dlls/ntdll/heap.c:1596 */
+WINAPI HANDLE wine32b_ntdll_RtlDestroyHeap(HANDLE  heap) /* ../dlls/ntdll/heap.c:1596 */
 {
+	HANDLE return_value;
 	TRACE("Enter RtlDestroyHeap\n");
-	return pRtlDestroyHeap(heap);
+	return_value = pRtlDestroyHeap(heap);
+	TRACE("Leave RtlDestroyHeap\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDestroyHeap(void);  /* ../dlls/ntdll/heap.c:1596 */
@@ -11754,10 +12775,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDestroyHeap,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlDestroyProcessParameters(RTL_USER_PROCESS_PARAMETERS*  params) /* ../dlls/ntdll/env.c:533 */
+WINAPI void wine32b_ntdll_RtlDestroyProcessParameters(RTL_USER_PROCESS_PARAMETERS*  params) /* ../dlls/ntdll/env.c:533 */
 {
 	TRACE("Enter RtlDestroyProcessParameters\n");
-	return pRtlDestroyProcessParameters(params);
+	pRtlDestroyProcessParameters(params);
+	TRACE("Leave RtlDestroyProcessParameters\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlDestroyProcessParameters(void);  /* ../dlls/ntdll/env.c:533 */
@@ -11779,10 +12801,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDestroyProcessParameters,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlDestroyQueryDebugBuffer(PDEBUG_BUFFER  iBuf) /* ../dlls/ntdll/debugbuffer.c:105 */
+WINAPI NTSTATUS wine32b_ntdll_RtlDestroyQueryDebugBuffer(PDEBUG_BUFFER  iBuf) /* ../dlls/ntdll/debugbuffer.c:105 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlDestroyQueryDebugBuffer\n");
-	return pRtlDestroyQueryDebugBuffer(iBuf);
+	return_value = pRtlDestroyQueryDebugBuffer(iBuf);
+	TRACE("Leave RtlDestroyQueryDebugBuffer\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDestroyQueryDebugBuffer(void);  /* ../dlls/ntdll/debugbuffer.c:105 */
@@ -11804,10 +12829,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDestroyQueryDebugBuffer,
 	"ret \n"
 )
 
-extern WINAPI DOS_PATHNAME_TYPE wine32b_ntdll_RtlDetermineDosPathNameType_U(PCWSTR  path) /* ../dlls/ntdll/path.c:242 */
+WINAPI DOS_PATHNAME_TYPE wine32b_ntdll_RtlDetermineDosPathNameType_U(PCWSTR  path) /* ../dlls/ntdll/path.c:242 */
 {
+	DOS_PATHNAME_TYPE return_value;
 	TRACE("Enter RtlDetermineDosPathNameType_U\n");
-	return pRtlDetermineDosPathNameType_U(path);
+	return_value = pRtlDetermineDosPathNameType_U(path);
+	TRACE("Leave RtlDetermineDosPathNameType_U\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDetermineDosPathNameType_U(void);  /* ../dlls/ntdll/path.c:242 */
@@ -11829,10 +12857,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDetermineDosPathNameType_U,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlDllShutdownInProgress(void) /* ../dlls/ntdll/loader.c:3422 */
+WINAPI BOOLEAN wine32b_ntdll_RtlDllShutdownInProgress(void) /* ../dlls/ntdll/loader.c:3422 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlDllShutdownInProgress\n");
-	return pRtlDllShutdownInProgress();
+	return_value = pRtlDllShutdownInProgress();
+	TRACE("Leave RtlDllShutdownInProgress\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDllShutdownInProgress(void);  /* ../dlls/ntdll/loader.c:3422 */
@@ -11853,10 +12884,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDllShutdownInProgress,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlDoesFileExists_U(LPCWSTR  file_name) /* ../dlls/ntdll/directory.c:2905 */
+WINAPI BOOLEAN wine32b_ntdll_RtlDoesFileExists_U(LPCWSTR  file_name) /* ../dlls/ntdll/directory.c:2905 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlDoesFileExists_U\n");
-	return pRtlDoesFileExists_U(file_name);
+	return_value = pRtlDoesFileExists_U(file_name);
+	TRACE("Leave RtlDoesFileExists_U\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDoesFileExists_U(void);  /* ../dlls/ntdll/directory.c:2905 */
@@ -11878,10 +12912,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDoesFileExists_U,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlDosPathNameToNtPathName_U(PCWSTR  dos_path, PUNICODE_STRING  ntpath, PWSTR*  file_part, CURDIR*  cd) /* ../dlls/ntdll/path.c:433 */
+WINAPI BOOLEAN wine32b_ntdll_RtlDosPathNameToNtPathName_U(PCWSTR  dos_path, PUNICODE_STRING  ntpath, PWSTR*  file_part, CURDIR*  cd) /* ../dlls/ntdll/path.c:433 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlDosPathNameToNtPathName_U\n");
-	return pRtlDosPathNameToNtPathName_U(dos_path, ntpath, file_part, cd);
+	return_value = pRtlDosPathNameToNtPathName_U(dos_path, ntpath, file_part, cd);
+	TRACE("Leave RtlDosPathNameToNtPathName_U\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDosPathNameToNtPathName_U(void);  /* ../dlls/ntdll/path.c:433 */
@@ -11906,10 +12943,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDosPathNameToNtPathName_U,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlDosPathNameToNtPathName_U_WithStatus(WCHAR*  dos_path, UNICODE_STRING*  ntpath, WCHAR**  file_part, CURDIR*  cd) /* ../dlls/ntdll/path.c:340 */
+WINAPI NTSTATUS wine32b_ntdll_RtlDosPathNameToNtPathName_U_WithStatus(WCHAR*  dos_path, UNICODE_STRING*  ntpath, WCHAR**  file_part, CURDIR*  cd) /* ../dlls/ntdll/path.c:340 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlDosPathNameToNtPathName_U_WithStatus\n");
-	return pRtlDosPathNameToNtPathName_U_WithStatus(dos_path, ntpath, file_part, cd);
+	return_value = pRtlDosPathNameToNtPathName_U_WithStatus(dos_path, ntpath, file_part, cd);
+	TRACE("Leave RtlDosPathNameToNtPathName_U_WithStatus\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDosPathNameToNtPathName_U_WithStatus(void);  /* ../dlls/ntdll/path.c:340 */
@@ -11934,10 +12974,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDosPathNameToNtPathName_U_WithStatus,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlDosPathNameToRelativeNtPathName_U_WithStatus(WCHAR*  dos_path, UNICODE_STRING*  ntpath, WCHAR**  file_part, RTL_RELATIVE_NAME*  relative) /* ../dlls/ntdll/path.c:446 */
+WINAPI NTSTATUS wine32b_ntdll_RtlDosPathNameToRelativeNtPathName_U_WithStatus(WCHAR*  dos_path, UNICODE_STRING*  ntpath, WCHAR**  file_part, RTL_RELATIVE_NAME*  relative) /* ../dlls/ntdll/path.c:446 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlDosPathNameToRelativeNtPathName_U_WithStatus\n");
-	return pRtlDosPathNameToRelativeNtPathName_U_WithStatus(dos_path, ntpath, file_part, relative);
+	return_value = pRtlDosPathNameToRelativeNtPathName_U_WithStatus(dos_path, ntpath, file_part, relative);
+	TRACE("Leave RtlDosPathNameToRelativeNtPathName_U_WithStatus\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDosPathNameToRelativeNtPathName_U_WithStatus(void);  /* ../dlls/ntdll/path.c:446 */
@@ -11962,10 +13005,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDosPathNameToRelativeNtPathName_U_WithStatus,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlDosSearchPath_U(LPCWSTR  paths, LPCWSTR  search, LPCWSTR  ext, ULONG  buffer_size, LPWSTR  buffer, LPWSTR*  file_part) /* ../dlls/ntdll/path.c:480 */
+WINAPI ULONG wine32b_ntdll_RtlDosSearchPath_U(LPCWSTR  paths, LPCWSTR  search, LPCWSTR  ext, ULONG  buffer_size, LPWSTR  buffer, LPWSTR*  file_part) /* ../dlls/ntdll/path.c:480 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlDosSearchPath_U\n");
-	return pRtlDosSearchPath_U(paths, search, ext, buffer_size, buffer, file_part);
+	return_value = pRtlDosSearchPath_U(paths, search, ext, buffer_size, buffer, file_part);
+	TRACE("Leave RtlDosSearchPath_U\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDosSearchPath_U(void);  /* ../dlls/ntdll/path.c:480 */
@@ -11990,10 +13036,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDosSearchPath_U,
 	"ret \n"
 )
 
-extern WINAPI WCHAR wine32b_ntdll_RtlDowncaseUnicodeChar(WCHAR  wch) /* ../dlls/ntdll/rtlstr.c:1031 */
+WINAPI WCHAR wine32b_ntdll_RtlDowncaseUnicodeChar(WCHAR  wch) /* ../dlls/ntdll/rtlstr.c:1031 */
 {
+	WCHAR return_value;
 	TRACE("Enter RtlDowncaseUnicodeChar\n");
-	return pRtlDowncaseUnicodeChar(wch);
+	return_value = pRtlDowncaseUnicodeChar(wch);
+	TRACE("Leave RtlDowncaseUnicodeChar\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDowncaseUnicodeChar(void);  /* ../dlls/ntdll/rtlstr.c:1031 */
@@ -12015,10 +13064,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDowncaseUnicodeChar,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlDowncaseUnicodeString(UNICODE_STRING*  dest, UNICODE_STRING*  src, BOOLEAN  doalloc) /* ../dlls/ntdll/rtlstr.c:1095 */
+WINAPI NTSTATUS wine32b_ntdll_RtlDowncaseUnicodeString(UNICODE_STRING*  dest, UNICODE_STRING*  src, BOOLEAN  doalloc) /* ../dlls/ntdll/rtlstr.c:1095 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlDowncaseUnicodeString\n");
-	return pRtlDowncaseUnicodeString(dest, src, doalloc);
+	return_value = pRtlDowncaseUnicodeString(dest, src, doalloc);
+	TRACE("Leave RtlDowncaseUnicodeString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDowncaseUnicodeString(void);  /* ../dlls/ntdll/rtlstr.c:1095 */
@@ -12042,10 +13094,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDowncaseUnicodeString,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlDumpResource(LPRTL_RWLOCK  rwl) /* ../dlls/ntdll/rtl.c:285 */
+WINAPI void wine32b_ntdll_RtlDumpResource(LPRTL_RWLOCK  rwl) /* ../dlls/ntdll/rtl.c:285 */
 {
 	TRACE("Enter RtlDumpResource\n");
-	return pRtlDumpResource(rwl);
+	pRtlDumpResource(rwl);
+	TRACE("Leave RtlDumpResource\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlDumpResource(void);  /* ../dlls/ntdll/rtl.c:285 */
@@ -12067,10 +13120,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDumpResource,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlDuplicateUnicodeString(int  add_nul, UNICODE_STRING*  source, UNICODE_STRING*  destination) /* ../dlls/ntdll/rtlstr.c:367 */
+WINAPI NTSTATUS wine32b_ntdll_RtlDuplicateUnicodeString(int  add_nul, UNICODE_STRING*  source, UNICODE_STRING*  destination) /* ../dlls/ntdll/rtlstr.c:367 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlDuplicateUnicodeString\n");
-	return pRtlDuplicateUnicodeString(add_nul, source, destination);
+	return_value = pRtlDuplicateUnicodeString(add_nul, source, destination);
+	TRACE("Leave RtlDuplicateUnicodeString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlDuplicateUnicodeString(void);  /* ../dlls/ntdll/rtlstr.c:367 */
@@ -12094,10 +13150,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlDuplicateUnicodeString,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlEmptyAtomTable(RTL_ATOM_TABLE  table, BOOLEAN  delete_pinned) /* ../dlls/ntdll/atom.c:267 */
+WINAPI NTSTATUS wine32b_ntdll_RtlEmptyAtomTable(RTL_ATOM_TABLE  table, BOOLEAN  delete_pinned) /* ../dlls/ntdll/atom.c:267 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlEmptyAtomTable\n");
-	return pRtlEmptyAtomTable(table, delete_pinned);
+	return_value = pRtlEmptyAtomTable(table, delete_pinned);
+	TRACE("Leave RtlEmptyAtomTable\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlEmptyAtomTable(void);  /* ../dlls/ntdll/atom.c:267 */
@@ -12120,10 +13179,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlEmptyAtomTable,
 	"ret \n"
 )
 
-extern WINAPI PVOID wine32b_ntdll_RtlEncodePointer(PVOID  ptr) /* ../dlls/ntdll/rtl.c:1229 */
+WINAPI PVOID wine32b_ntdll_RtlEncodePointer(PVOID  ptr) /* ../dlls/ntdll/rtl.c:1229 */
 {
+	PVOID return_value;
 	TRACE("Enter RtlEncodePointer\n");
-	return pRtlEncodePointer(ptr);
+	return_value = pRtlEncodePointer(ptr);
+	TRACE("Leave RtlEncodePointer\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlEncodePointer(void);  /* ../dlls/ntdll/rtl.c:1229 */
@@ -12145,10 +13207,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlEncodePointer,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlEnterCriticalSection(RTL_CRITICAL_SECTION*  crit) /* ../dlls/ntdll/critsection.c:556 */
+WINAPI NTSTATUS wine32b_ntdll_RtlEnterCriticalSection(RTL_CRITICAL_SECTION*  crit) /* ../dlls/ntdll/critsection.c:556 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlEnterCriticalSection\n");
-	return pRtlEnterCriticalSection(crit);
+	return_value = pRtlEnterCriticalSection(crit);
+	TRACE("Leave RtlEnterCriticalSection\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlEnterCriticalSection(void);  /* ../dlls/ntdll/critsection.c:556 */
@@ -12170,10 +13235,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlEnterCriticalSection,
 	"ret \n"
 )
 
-extern WINAPI PVOID wine32b_ntdll_RtlEnumerateGenericTableWithoutSplaying(PVOID  pTable, PVOID*  RestartKey) /* ../dlls/ntdll/rtl.c:414 */
+WINAPI PVOID wine32b_ntdll_RtlEnumerateGenericTableWithoutSplaying(PVOID  pTable, PVOID*  RestartKey) /* ../dlls/ntdll/rtl.c:414 */
 {
+	PVOID return_value;
 	TRACE("Enter RtlEnumerateGenericTableWithoutSplaying\n");
-	return pRtlEnumerateGenericTableWithoutSplaying(pTable, RestartKey);
+	return_value = pRtlEnumerateGenericTableWithoutSplaying(pTable, RestartKey);
+	TRACE("Leave RtlEnumerateGenericTableWithoutSplaying\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlEnumerateGenericTableWithoutSplaying(void);  /* ../dlls/ntdll/rtl.c:414 */
@@ -12196,10 +13264,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlEnumerateGenericTableWithoutSplaying,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlEqualComputerName(UNICODE_STRING*  left, UNICODE_STRING*  right) /* ../dlls/ntdll/rtlstr.c:595 */
+WINAPI NTSTATUS wine32b_ntdll_RtlEqualComputerName(UNICODE_STRING*  left, UNICODE_STRING*  right) /* ../dlls/ntdll/rtlstr.c:595 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlEqualComputerName\n");
-	return pRtlEqualComputerName(left, right);
+	return_value = pRtlEqualComputerName(left, right);
+	TRACE("Leave RtlEqualComputerName\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlEqualComputerName(void);  /* ../dlls/ntdll/rtlstr.c:595 */
@@ -12222,10 +13293,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlEqualComputerName,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlEqualDomainName(UNICODE_STRING*  left, UNICODE_STRING*  right) /* ../dlls/ntdll/rtlstr.c:629 */
+WINAPI NTSTATUS wine32b_ntdll_RtlEqualDomainName(UNICODE_STRING*  left, UNICODE_STRING*  right) /* ../dlls/ntdll/rtlstr.c:629 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlEqualDomainName\n");
-	return pRtlEqualDomainName(left, right);
+	return_value = pRtlEqualDomainName(left, right);
+	TRACE("Leave RtlEqualDomainName\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlEqualDomainName(void);  /* ../dlls/ntdll/rtlstr.c:629 */
@@ -12248,10 +13322,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlEqualDomainName,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlEqualLuid(LUID*  Luid1, LUID*  Luid2) /* ../dlls/ntdll/rtl.c:855 */
+WINAPI BOOLEAN wine32b_ntdll_RtlEqualLuid(LUID*  Luid1, LUID*  Luid2) /* ../dlls/ntdll/rtl.c:855 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlEqualLuid\n");
-	return pRtlEqualLuid(Luid1, Luid2);
+	return_value = pRtlEqualLuid(Luid1, Luid2);
+	TRACE("Leave RtlEqualLuid\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlEqualLuid(void);  /* ../dlls/ntdll/rtl.c:855 */
@@ -12274,10 +13351,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlEqualLuid,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_ntdll_RtlEqualPrefixSid(PSID  pSid1, PSID  pSid2) /* ../dlls/ntdll/sec.c:217 */
+WINAPI BOOL wine32b_ntdll_RtlEqualPrefixSid(PSID  pSid1, PSID  pSid2) /* ../dlls/ntdll/sec.c:217 */
 {
+	BOOL return_value;
 	TRACE("Enter RtlEqualPrefixSid\n");
-	return pRtlEqualPrefixSid(pSid1, pSid2);
+	return_value = pRtlEqualPrefixSid(pSid1, pSid2);
+	TRACE("Leave RtlEqualPrefixSid\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlEqualPrefixSid(void);  /* ../dlls/ntdll/sec.c:217 */
@@ -12300,10 +13380,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlEqualPrefixSid,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_ntdll_RtlEqualSid(PSID  pSid1, PSID  pSid2) /* ../dlls/ntdll/sec.c:200 */
+WINAPI BOOL wine32b_ntdll_RtlEqualSid(PSID  pSid1, PSID  pSid2) /* ../dlls/ntdll/sec.c:200 */
 {
+	BOOL return_value;
 	TRACE("Enter RtlEqualSid\n");
-	return pRtlEqualSid(pSid1, pSid2);
+	return_value = pRtlEqualSid(pSid1, pSid2);
+	TRACE("Leave RtlEqualSid\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlEqualSid(void);  /* ../dlls/ntdll/sec.c:200 */
@@ -12326,10 +13409,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlEqualSid,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlEqualString(STRING*  s1, STRING*  s2, BOOLEAN  CaseInsensitive) /* ../dlls/ntdll/rtlstr.c:502 */
+WINAPI BOOLEAN wine32b_ntdll_RtlEqualString(STRING*  s1, STRING*  s2, BOOLEAN  CaseInsensitive) /* ../dlls/ntdll/rtlstr.c:502 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlEqualString\n");
-	return pRtlEqualString(s1, s2, CaseInsensitive);
+	return_value = pRtlEqualString(s1, s2, CaseInsensitive);
+	TRACE("Leave RtlEqualString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlEqualString(void);  /* ../dlls/ntdll/rtlstr.c:502 */
@@ -12353,10 +13439,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlEqualString,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlEqualUnicodeString(UNICODE_STRING*  s1, UNICODE_STRING*  s2, BOOLEAN  CaseInsensitive) /* ../dlls/ntdll/rtlstr.c:514 */
+WINAPI BOOLEAN wine32b_ntdll_RtlEqualUnicodeString(UNICODE_STRING*  s1, UNICODE_STRING*  s2, BOOLEAN  CaseInsensitive) /* ../dlls/ntdll/rtlstr.c:514 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlEqualUnicodeString\n");
-	return pRtlEqualUnicodeString(s1, s2, CaseInsensitive);
+	return_value = pRtlEqualUnicodeString(s1, s2, CaseInsensitive);
+	TRACE("Leave RtlEqualUnicodeString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlEqualUnicodeString(void);  /* ../dlls/ntdll/rtlstr.c:514 */
@@ -12380,10 +13469,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlEqualUnicodeString,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlEraseUnicodeString(UNICODE_STRING*  str) /* ../dlls/ntdll/rtlstr.c:415 */
+WINAPI void wine32b_ntdll_RtlEraseUnicodeString(UNICODE_STRING*  str) /* ../dlls/ntdll/rtlstr.c:415 */
 {
 	TRACE("Enter RtlEraseUnicodeString\n");
-	return pRtlEraseUnicodeString(str);
+	pRtlEraseUnicodeString(str);
+	TRACE("Leave RtlEraseUnicodeString\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlEraseUnicodeString(void);  /* ../dlls/ntdll/rtlstr.c:415 */
@@ -12405,10 +13495,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlEraseUnicodeString,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlExitUserProcess(DWORD  status) /* ../dlls/ntdll/loader.c:3521 */
+WINAPI void wine32b_ntdll_RtlExitUserProcess(DWORD  status) /* ../dlls/ntdll/loader.c:3521 */
 {
 	TRACE("Enter RtlExitUserProcess\n");
-	return pRtlExitUserProcess(status);
+	pRtlExitUserProcess(status);
+	TRACE("Leave RtlExitUserProcess\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlExitUserProcess(void);  /* ../dlls/ntdll/loader.c:3521 */
@@ -12430,10 +13521,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlExitUserProcess,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlExitUserThread(ULONG  status) /* ../dlls/ntdll/thread.c:315 */
+WINAPI void wine32b_ntdll_RtlExitUserThread(ULONG  status) /* ../dlls/ntdll/thread.c:315 */
 {
 	TRACE("Enter RtlExitUserThread\n");
-	return pRtlExitUserThread(status);
+	pRtlExitUserThread(status);
+	TRACE("Leave RtlExitUserThread\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlExitUserThread(void);  /* ../dlls/ntdll/thread.c:315 */
@@ -12455,10 +13547,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlExitUserThread,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlExpandEnvironmentStrings(WCHAR*  renv, WCHAR*  src, SIZE_T  src_len, WCHAR*  dst, SIZE_T  count, SIZE_T*  plen) /* ../dlls/ntdll/env.c:274 */
+WINAPI NTSTATUS wine32b_ntdll_RtlExpandEnvironmentStrings(WCHAR*  renv, WCHAR*  src, SIZE_T  src_len, WCHAR*  dst, SIZE_T  count, SIZE_T*  plen) /* ../dlls/ntdll/env.c:274 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlExpandEnvironmentStrings\n");
-	return pRtlExpandEnvironmentStrings(renv, src, src_len, dst, count, plen);
+	return_value = pRtlExpandEnvironmentStrings(renv, src, src_len, dst, count, plen);
+	TRACE("Leave RtlExpandEnvironmentStrings\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlExpandEnvironmentStrings(void);  /* ../dlls/ntdll/env.c:274 */
@@ -12483,10 +13578,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlExpandEnvironmentStrings,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlExpandEnvironmentStrings_U(WCHAR*  env, UNICODE_STRING*  src, UNICODE_STRING*  dst, ULONG*  plen) /* ../dlls/ntdll/env.c:345 */
+WINAPI NTSTATUS wine32b_ntdll_RtlExpandEnvironmentStrings_U(WCHAR*  env, UNICODE_STRING*  src, UNICODE_STRING*  dst, ULONG*  plen) /* ../dlls/ntdll/env.c:345 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlExpandEnvironmentStrings_U\n");
-	return pRtlExpandEnvironmentStrings_U(env, src, dst, plen);
+	return_value = pRtlExpandEnvironmentStrings_U(env, src, dst, plen);
+	TRACE("Leave RtlExpandEnvironmentStrings_U\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlExpandEnvironmentStrings_U(void);  /* ../dlls/ntdll/env.c:345 */
@@ -12511,10 +13609,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlExpandEnvironmentStrings_U,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlFillMemory(void*  Destination, SIZE_T  Length, BYTE  Fill) /* ../dlls/ntdll/rtl.c:465 */
+WINAPI void wine32b_ntdll_RtlFillMemory(void*  Destination, SIZE_T  Length, BYTE  Fill) /* ../dlls/ntdll/rtl.c:465 */
 {
 	TRACE("Enter RtlFillMemory\n");
-	return pRtlFillMemory(Destination, Length, Fill);
+	pRtlFillMemory(Destination, Length, Fill);
+	TRACE("Leave RtlFillMemory\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlFillMemory(void);  /* ../dlls/ntdll/rtl.c:465 */
@@ -12538,10 +13637,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFillMemory,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlFillMemoryUlong(ULONG*  lpDest, ULONG  ulCount, ULONG  ulValue) /* ../dlls/ntdll/rtl.c:568 */
+WINAPI void wine32b_ntdll_RtlFillMemoryUlong(ULONG*  lpDest, ULONG  ulCount, ULONG  ulValue) /* ../dlls/ntdll/rtl.c:568 */
 {
 	TRACE("Enter RtlFillMemoryUlong\n");
-	return pRtlFillMemoryUlong(lpDest, ulCount, ulValue);
+	pRtlFillMemoryUlong(lpDest, ulCount, ulValue);
+	TRACE("Leave RtlFillMemoryUlong\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlFillMemoryUlong(void);  /* ../dlls/ntdll/rtl.c:568 */
@@ -12565,10 +13665,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFillMemoryUlong,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlFindActivationContextSectionGuid(ULONG  flags, GUID*  extguid, ULONG  section_kind, GUID*  guid, void*  ptr) /* ../dlls/ntdll/actctx.c:5529 */
+WINAPI NTSTATUS wine32b_ntdll_RtlFindActivationContextSectionGuid(ULONG  flags, GUID*  extguid, ULONG  section_kind, GUID*  guid, void*  ptr) /* ../dlls/ntdll/actctx.c:5529 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlFindActivationContextSectionGuid\n");
-	return pRtlFindActivationContextSectionGuid(flags, extguid, section_kind, guid, ptr);
+	return_value = pRtlFindActivationContextSectionGuid(flags, extguid, section_kind, guid, ptr);
+	TRACE("Leave RtlFindActivationContextSectionGuid\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFindActivationContextSectionGuid(void);  /* ../dlls/ntdll/actctx.c:5529 */
@@ -12593,10 +13696,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFindActivationContextSectionGuid,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlFindActivationContextSectionString(ULONG  flags, GUID*  guid, ULONG  section_kind, UNICODE_STRING*  section_name, PVOID  ptr) /* ../dlls/ntdll/actctx.c:5485 */
+WINAPI NTSTATUS wine32b_ntdll_RtlFindActivationContextSectionString(ULONG  flags, GUID*  guid, ULONG  section_kind, UNICODE_STRING*  section_name, PVOID  ptr) /* ../dlls/ntdll/actctx.c:5485 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlFindActivationContextSectionString\n");
-	return pRtlFindActivationContextSectionString(flags, guid, section_kind, section_name, ptr);
+	return_value = pRtlFindActivationContextSectionString(flags, guid, section_kind, section_name, ptr);
+	TRACE("Leave RtlFindActivationContextSectionString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFindActivationContextSectionString(void);  /* ../dlls/ntdll/actctx.c:5485 */
@@ -12621,10 +13727,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFindActivationContextSectionString,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlFindCharInUnicodeString(int  flags, UNICODE_STRING*  main_str, UNICODE_STRING*  search_chars, USHORT*  pos) /* ../dlls/ntdll/rtlstr.c:1549 */
+WINAPI NTSTATUS wine32b_ntdll_RtlFindCharInUnicodeString(int  flags, UNICODE_STRING*  main_str, UNICODE_STRING*  search_chars, USHORT*  pos) /* ../dlls/ntdll/rtlstr.c:1549 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlFindCharInUnicodeString\n");
-	return pRtlFindCharInUnicodeString(flags, main_str, search_chars, pos);
+	return_value = pRtlFindCharInUnicodeString(flags, main_str, search_chars, pos);
+	TRACE("Leave RtlFindCharInUnicodeString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFindCharInUnicodeString(void);  /* ../dlls/ntdll/rtlstr.c:1549 */
@@ -12649,10 +13758,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFindCharInUnicodeString,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlFindClearBits(PCRTL_BITMAP  lpBits, ULONG  ulCount, ULONG  ulHint) /* ../dlls/ntdll/rtlbitmap.c:441 */
+WINAPI ULONG wine32b_ntdll_RtlFindClearBits(PCRTL_BITMAP  lpBits, ULONG  ulCount, ULONG  ulHint) /* ../dlls/ntdll/rtlbitmap.c:441 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlFindClearBits\n");
-	return pRtlFindClearBits(lpBits, ulCount, ulHint);
+	return_value = pRtlFindClearBits(lpBits, ulCount, ulHint);
+	TRACE("Leave RtlFindClearBits\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFindClearBits(void);  /* ../dlls/ntdll/rtlbitmap.c:441 */
@@ -12676,10 +13788,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFindClearBits,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlFindClearBitsAndSet(PRTL_BITMAP  lpBits, ULONG  ulCount, ULONG  ulHint) /* ../dlls/ntdll/rtlbitmap.c:513 */
+WINAPI ULONG wine32b_ntdll_RtlFindClearBitsAndSet(PRTL_BITMAP  lpBits, ULONG  ulCount, ULONG  ulHint) /* ../dlls/ntdll/rtlbitmap.c:513 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlFindClearBitsAndSet\n");
-	return pRtlFindClearBitsAndSet(lpBits, ulCount, ulHint);
+	return_value = pRtlFindClearBitsAndSet(lpBits, ulCount, ulHint);
+	TRACE("Leave RtlFindClearBitsAndSet\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFindClearBitsAndSet(void);  /* ../dlls/ntdll/rtlbitmap.c:513 */
@@ -12703,10 +13818,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFindClearBitsAndSet,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlFindClearRuns(PCRTL_BITMAP  lpBits, PRTL_BITMAP_RUN  lpSeries, ULONG  ulCount, BOOLEAN  bLongest) /* ../dlls/ntdll/rtlbitmap.c:1055 */
+WINAPI ULONG wine32b_ntdll_RtlFindClearRuns(PCRTL_BITMAP  lpBits, PRTL_BITMAP_RUN  lpSeries, ULONG  ulCount, BOOLEAN  bLongest) /* ../dlls/ntdll/rtlbitmap.c:1055 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlFindClearRuns\n");
-	return pRtlFindClearRuns(lpBits, lpSeries, ulCount, bLongest);
+	return_value = pRtlFindClearRuns(lpBits, lpSeries, ulCount, bLongest);
+	TRACE("Leave RtlFindClearRuns\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFindClearRuns(void);  /* ../dlls/ntdll/rtlbitmap.c:1055 */
@@ -12731,10 +13849,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFindClearRuns,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlFindLastBackwardRunClear(PCRTL_BITMAP  lpBits, ULONG  ulStart, PULONG  lpPos) /* ../dlls/ntdll/rtlbitmap.c:956 */
+WINAPI ULONG wine32b_ntdll_RtlFindLastBackwardRunClear(PCRTL_BITMAP  lpBits, ULONG  ulStart, PULONG  lpPos) /* ../dlls/ntdll/rtlbitmap.c:956 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlFindLastBackwardRunClear\n");
-	return pRtlFindLastBackwardRunClear(lpBits, ulStart, lpPos);
+	return_value = pRtlFindLastBackwardRunClear(lpBits, ulStart, lpPos);
+	TRACE("Leave RtlFindLastBackwardRunClear\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFindLastBackwardRunClear(void);  /* ../dlls/ntdll/rtlbitmap.c:956 */
@@ -12758,10 +13879,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFindLastBackwardRunClear,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlFindLastBackwardRunSet(PCRTL_BITMAP  lpBits, ULONG  ulStart, PULONG  lpPos) /* ../dlls/ntdll/rtlbitmap.c:935 */
+WINAPI ULONG wine32b_ntdll_RtlFindLastBackwardRunSet(PCRTL_BITMAP  lpBits, ULONG  ulStart, PULONG  lpPos) /* ../dlls/ntdll/rtlbitmap.c:935 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlFindLastBackwardRunSet\n");
-	return pRtlFindLastBackwardRunSet(lpBits, ulStart, lpPos);
+	return_value = pRtlFindLastBackwardRunSet(lpBits, ulStart, lpPos);
+	TRACE("Leave RtlFindLastBackwardRunSet\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFindLastBackwardRunSet(void);  /* ../dlls/ntdll/rtlbitmap.c:935 */
@@ -12785,10 +13909,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFindLastBackwardRunSet,
 	"ret \n"
 )
 
-extern WINAPI CCHAR wine32b_ntdll_RtlFindLeastSignificantBit(ULONGLONG  ulLong) /* ../dlls/ntdll/rtlbitmap.c:632 */
+WINAPI CCHAR wine32b_ntdll_RtlFindLeastSignificantBit(ULONGLONG  ulLong) /* ../dlls/ntdll/rtlbitmap.c:632 */
 {
+	CCHAR return_value;
 	TRACE("Enter RtlFindLeastSignificantBit\n");
-	return pRtlFindLeastSignificantBit(ulLong);
+	return_value = pRtlFindLeastSignificantBit(ulLong);
+	TRACE("Leave RtlFindLeastSignificantBit\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFindLeastSignificantBit(void);  /* ../dlls/ntdll/rtlbitmap.c:632 */
@@ -12810,10 +13937,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFindLeastSignificantBit,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlFindLongestRunClear(PCRTL_BITMAP  lpBits, PULONG  pulStart) /* ../dlls/ntdll/rtlbitmap.c:1102 */
+WINAPI ULONG wine32b_ntdll_RtlFindLongestRunClear(PCRTL_BITMAP  lpBits, PULONG  pulStart) /* ../dlls/ntdll/rtlbitmap.c:1102 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlFindLongestRunClear\n");
-	return pRtlFindLongestRunClear(lpBits, pulStart);
+	return_value = pRtlFindLongestRunClear(lpBits, pulStart);
+	TRACE("Leave RtlFindLongestRunClear\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFindLongestRunClear(void);  /* ../dlls/ntdll/rtlbitmap.c:1102 */
@@ -12836,10 +13966,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFindLongestRunClear,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlFindLongestRunSet(PCRTL_BITMAP  lpBits, PULONG  pulStart) /* ../dlls/ntdll/rtlbitmap.c:1075 */
+WINAPI ULONG wine32b_ntdll_RtlFindLongestRunSet(PCRTL_BITMAP  lpBits, PULONG  pulStart) /* ../dlls/ntdll/rtlbitmap.c:1075 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlFindLongestRunSet\n");
-	return pRtlFindLongestRunSet(lpBits, pulStart);
+	return_value = pRtlFindLongestRunSet(lpBits, pulStart);
+	TRACE("Leave RtlFindLongestRunSet\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFindLongestRunSet(void);  /* ../dlls/ntdll/rtlbitmap.c:1075 */
@@ -12862,10 +13995,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFindLongestRunSet,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlFindMessage(HMODULE  hmod, ULONG  type, ULONG  lang, ULONG  msg_id, MESSAGE_RESOURCE_ENTRY**  ret) /* ../dlls/ntdll/resource.c:388 */
+WINAPI NTSTATUS wine32b_ntdll_RtlFindMessage(HMODULE  hmod, ULONG  type, ULONG  lang, ULONG  msg_id, MESSAGE_RESOURCE_ENTRY**  ret) /* ../dlls/ntdll/resource.c:388 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlFindMessage\n");
-	return pRtlFindMessage(hmod, type, lang, msg_id, ret);
+	return_value = pRtlFindMessage(hmod, type, lang, msg_id, ret);
+	TRACE("Leave RtlFindMessage\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFindMessage(void);  /* ../dlls/ntdll/resource.c:388 */
@@ -12890,10 +14026,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFindMessage,
 	"ret \n"
 )
 
-extern WINAPI CCHAR wine32b_ntdll_RtlFindMostSignificantBit(ULONGLONG  ulLong) /* ../dlls/ntdll/rtlbitmap.c:596 */
+WINAPI CCHAR wine32b_ntdll_RtlFindMostSignificantBit(ULONGLONG  ulLong) /* ../dlls/ntdll/rtlbitmap.c:596 */
 {
+	CCHAR return_value;
 	TRACE("Enter RtlFindMostSignificantBit\n");
-	return pRtlFindMostSignificantBit(ulLong);
+	return_value = pRtlFindMostSignificantBit(ulLong);
+	TRACE("Leave RtlFindMostSignificantBit\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFindMostSignificantBit(void);  /* ../dlls/ntdll/rtlbitmap.c:596 */
@@ -12915,10 +14054,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFindMostSignificantBit,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlFindNextForwardRunClear(PCRTL_BITMAP  lpBits, ULONG  ulStart, PULONG  lpPos) /* ../dlls/ntdll/rtlbitmap.c:908 */
+WINAPI ULONG wine32b_ntdll_RtlFindNextForwardRunClear(PCRTL_BITMAP  lpBits, ULONG  ulStart, PULONG  lpPos) /* ../dlls/ntdll/rtlbitmap.c:908 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlFindNextForwardRunClear\n");
-	return pRtlFindNextForwardRunClear(lpBits, ulStart, lpPos);
+	return_value = pRtlFindNextForwardRunClear(lpBits, ulStart, lpPos);
+	TRACE("Leave RtlFindNextForwardRunClear\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFindNextForwardRunClear(void);  /* ../dlls/ntdll/rtlbitmap.c:908 */
@@ -12942,10 +14084,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFindNextForwardRunClear,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlFindNextForwardRunSet(PCRTL_BITMAP  lpBits, ULONG  ulStart, PULONG  lpPos) /* ../dlls/ntdll/rtlbitmap.c:881 */
+WINAPI ULONG wine32b_ntdll_RtlFindNextForwardRunSet(PCRTL_BITMAP  lpBits, ULONG  ulStart, PULONG  lpPos) /* ../dlls/ntdll/rtlbitmap.c:881 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlFindNextForwardRunSet\n");
-	return pRtlFindNextForwardRunSet(lpBits, ulStart, lpPos);
+	return_value = pRtlFindNextForwardRunSet(lpBits, ulStart, lpPos);
+	TRACE("Leave RtlFindNextForwardRunSet\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFindNextForwardRunSet(void);  /* ../dlls/ntdll/rtlbitmap.c:881 */
@@ -12969,10 +14114,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFindNextForwardRunSet,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlFindSetBits(PCRTL_BITMAP  lpBits, ULONG  ulCount, ULONG  ulHint) /* ../dlls/ntdll/rtlbitmap.c:394 */
+WINAPI ULONG wine32b_ntdll_RtlFindSetBits(PCRTL_BITMAP  lpBits, ULONG  ulCount, ULONG  ulHint) /* ../dlls/ntdll/rtlbitmap.c:394 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlFindSetBits\n");
-	return pRtlFindSetBits(lpBits, ulCount, ulHint);
+	return_value = pRtlFindSetBits(lpBits, ulCount, ulHint);
+	TRACE("Leave RtlFindSetBits\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFindSetBits(void);  /* ../dlls/ntdll/rtlbitmap.c:394 */
@@ -12996,10 +14144,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFindSetBits,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlFindSetBitsAndClear(PRTL_BITMAP  lpBits, ULONG  ulCount, ULONG  ulHint) /* ../dlls/ntdll/rtlbitmap.c:488 */
+WINAPI ULONG wine32b_ntdll_RtlFindSetBitsAndClear(PRTL_BITMAP  lpBits, ULONG  ulCount, ULONG  ulHint) /* ../dlls/ntdll/rtlbitmap.c:488 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlFindSetBitsAndClear\n");
-	return pRtlFindSetBitsAndClear(lpBits, ulCount, ulHint);
+	return_value = pRtlFindSetBitsAndClear(lpBits, ulCount, ulHint);
+	TRACE("Leave RtlFindSetBitsAndClear\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFindSetBitsAndClear(void);  /* ../dlls/ntdll/rtlbitmap.c:488 */
@@ -13023,10 +14174,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFindSetBitsAndClear,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlFindSetRuns(PCRTL_BITMAP  lpBits, PRTL_BITMAP_RUN  lpSeries, ULONG  ulCount, BOOLEAN  bLongest) /* ../dlls/ntdll/rtlbitmap.c:1033 */
+WINAPI ULONG wine32b_ntdll_RtlFindSetRuns(PCRTL_BITMAP  lpBits, PRTL_BITMAP_RUN  lpSeries, ULONG  ulCount, BOOLEAN  bLongest) /* ../dlls/ntdll/rtlbitmap.c:1033 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlFindSetRuns\n");
-	return pRtlFindSetRuns(lpBits, lpSeries, ulCount, bLongest);
+	return_value = pRtlFindSetRuns(lpBits, lpSeries, ulCount, bLongest);
+	TRACE("Leave RtlFindSetRuns\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFindSetRuns(void);  /* ../dlls/ntdll/rtlbitmap.c:1033 */
@@ -13051,10 +14205,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFindSetRuns,
 	"ret \n"
 )
 
-extern WINAPI PSLIST_ENTRY wine32b_ntdll_RtlFirstEntrySList(SLIST_HEADER*  list) /* ../dlls/ntdll/rtl.c:1269 */
+WINAPI PSLIST_ENTRY wine32b_ntdll_RtlFirstEntrySList(SLIST_HEADER*  list) /* ../dlls/ntdll/rtl.c:1269 */
 {
+	PSLIST_ENTRY return_value;
 	TRACE("Enter RtlFirstEntrySList\n");
-	return pRtlFirstEntrySList(list);
+	return_value = pRtlFirstEntrySList(list);
+	TRACE("Leave RtlFirstEntrySList\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFirstEntrySList(void);  /* ../dlls/ntdll/rtl.c:1269 */
@@ -13076,10 +14233,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFirstEntrySList,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlFirstFreeAce(PACL  acl, PACE_HEADER*  x) /* ../dlls/ntdll/sec.c:1146 */
+WINAPI BOOLEAN wine32b_ntdll_RtlFirstFreeAce(PACL  acl, PACE_HEADER*  x) /* ../dlls/ntdll/sec.c:1146 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlFirstFreeAce\n");
-	return pRtlFirstFreeAce(acl, x);
+	return_value = pRtlFirstFreeAce(acl, x);
+	TRACE("Leave RtlFirstFreeAce\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFirstFreeAce(void);  /* ../dlls/ntdll/sec.c:1146 */
@@ -13102,10 +14262,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFirstFreeAce,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlFormatCurrentUserKeyPath(PUNICODE_STRING  KeyPath) /* ../dlls/ntdll/reg.c:919 */
+WINAPI NTSTATUS wine32b_ntdll_RtlFormatCurrentUserKeyPath(PUNICODE_STRING  KeyPath) /* ../dlls/ntdll/reg.c:919 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlFormatCurrentUserKeyPath\n");
-	return pRtlFormatCurrentUserKeyPath(KeyPath);
+	return_value = pRtlFormatCurrentUserKeyPath(KeyPath);
+	TRACE("Leave RtlFormatCurrentUserKeyPath\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFormatCurrentUserKeyPath(void);  /* ../dlls/ntdll/reg.c:919 */
@@ -13127,10 +14290,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFormatCurrentUserKeyPath,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlFormatMessage(LPWSTR  Message, UCHAR  MaxWidth, BOOLEAN  IgnoreInserts, BOOLEAN  Ansi, BOOLEAN  ArgumentIsArray, __builtin_ms_va_list*  Arguments, LPWSTR  Buffer, ULONG  BufferSize) /* ../dlls/ntdll/resource.c:443 */
+WINAPI NTSTATUS wine32b_ntdll_RtlFormatMessage(LPWSTR  Message, UCHAR  MaxWidth, BOOLEAN  IgnoreInserts, BOOLEAN  Ansi, BOOLEAN  ArgumentIsArray, __builtin_ms_va_list*  Arguments, LPWSTR  Buffer, ULONG  BufferSize) /* ../dlls/ntdll/resource.c:443 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlFormatMessage\n");
-	return pRtlFormatMessage(Message, MaxWidth, IgnoreInserts, Ansi, ArgumentIsArray, Arguments, Buffer, BufferSize);
+	return_value = pRtlFormatMessage(Message, MaxWidth, IgnoreInserts, Ansi, ArgumentIsArray, Arguments, Buffer, BufferSize);
+	TRACE("Leave RtlFormatMessage\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFormatMessage(void);  /* ../dlls/ntdll/resource.c:443 */
@@ -13155,10 +14321,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFormatMessage,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlFreeAnsiString(PSTRING  str) /* ../dlls/ntdll/rtlstr.c:171 */
+WINAPI void wine32b_ntdll_RtlFreeAnsiString(PSTRING  str) /* ../dlls/ntdll/rtlstr.c:171 */
 {
 	TRACE("Enter RtlFreeAnsiString\n");
-	return pRtlFreeAnsiString(str);
+	pRtlFreeAnsiString(str);
+	TRACE("Leave RtlFreeAnsiString\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlFreeAnsiString(void);  /* ../dlls/ntdll/rtlstr.c:171 */
@@ -13180,10 +14347,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFreeAnsiString,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlFreeHandle(RTL_HANDLE_TABLE*  HandleTable, RTL_HANDLE*  Handle) /* ../dlls/ntdll/handletable.c:236 */
+WINAPI BOOLEAN wine32b_ntdll_RtlFreeHandle(RTL_HANDLE_TABLE*  HandleTable, RTL_HANDLE*  Handle) /* ../dlls/ntdll/handletable.c:236 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlFreeHandle\n");
-	return pRtlFreeHandle(HandleTable, Handle);
+	return_value = pRtlFreeHandle(HandleTable, Handle);
+	TRACE("Leave RtlFreeHandle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFreeHandle(void);  /* ../dlls/ntdll/handletable.c:236 */
@@ -13206,10 +14376,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFreeHandle,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlFreeHeap(HANDLE  heap, ULONG  flags, void*  ptr) /* ../dlls/ntdll/heap.c:1749 */
+WINAPI BOOLEAN wine32b_ntdll_RtlFreeHeap(HANDLE  heap, ULONG  flags, void*  ptr) /* ../dlls/ntdll/heap.c:1749 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlFreeHeap\n");
-	return pRtlFreeHeap(heap, flags, ptr);
+	return_value = pRtlFreeHeap(heap, flags, ptr);
+	TRACE("Leave RtlFreeHeap\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFreeHeap(void);  /* ../dlls/ntdll/heap.c:1749 */
@@ -13233,10 +14406,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFreeHeap,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlFreeOemString(PSTRING  str) /* ../dlls/ntdll/rtlstr.c:184 */
+WINAPI void wine32b_ntdll_RtlFreeOemString(PSTRING  str) /* ../dlls/ntdll/rtlstr.c:184 */
 {
 	TRACE("Enter RtlFreeOemString\n");
-	return pRtlFreeOemString(str);
+	pRtlFreeOemString(str);
+	TRACE("Leave RtlFreeOemString\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlFreeOemString(void);  /* ../dlls/ntdll/rtlstr.c:184 */
@@ -13258,10 +14432,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFreeOemString,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_ntdll_RtlFreeSid(PSID  pSid) /* ../dlls/ntdll/sec.c:243 */
+WINAPI DWORD wine32b_ntdll_RtlFreeSid(PSID  pSid) /* ../dlls/ntdll/sec.c:243 */
 {
+	DWORD return_value;
 	TRACE("Enter RtlFreeSid\n");
-	return pRtlFreeSid(pSid);
+	return_value = pRtlFreeSid(pSid);
+	TRACE("Leave RtlFreeSid\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlFreeSid(void);  /* ../dlls/ntdll/sec.c:243 */
@@ -13283,10 +14460,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFreeSid,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlFreeThreadActivationContextStack(void) /* ../dlls/ntdll/actctx.c:5179 */
+WINAPI void wine32b_ntdll_RtlFreeThreadActivationContextStack(void) /* ../dlls/ntdll/actctx.c:5179 */
 {
 	TRACE("Enter RtlFreeThreadActivationContextStack\n");
-	return pRtlFreeThreadActivationContextStack();
+	pRtlFreeThreadActivationContextStack();
+	TRACE("Leave RtlFreeThreadActivationContextStack\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlFreeThreadActivationContextStack(void);  /* ../dlls/ntdll/actctx.c:5179 */
@@ -13307,10 +14485,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFreeThreadActivationContextStack,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlFreeUnicodeString(PUNICODE_STRING  str) /* ../dlls/ntdll/rtlstr.c:317 */
+WINAPI void wine32b_ntdll_RtlFreeUnicodeString(PUNICODE_STRING  str) /* ../dlls/ntdll/rtlstr.c:317 */
 {
 	TRACE("Enter RtlFreeUnicodeString\n");
-	return pRtlFreeUnicodeString(str);
+	pRtlFreeUnicodeString(str);
+	TRACE("Leave RtlFreeUnicodeString\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlFreeUnicodeString(void);  /* ../dlls/ntdll/rtlstr.c:317 */
@@ -13332,10 +14511,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFreeUnicodeString,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlFreeUserStack(void*  stack) /* ../dlls/ntdll/virtual.c:2075 */
+WINAPI void wine32b_ntdll_RtlFreeUserStack(void*  stack) /* ../dlls/ntdll/virtual.c:2075 */
 {
 	TRACE("Enter RtlFreeUserStack\n");
-	return pRtlFreeUserStack(stack);
+	pRtlFreeUserStack(stack);
+	TRACE("Leave RtlFreeUserStack\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlFreeUserStack(void);  /* ../dlls/ntdll/virtual.c:2075 */
@@ -13357,10 +14537,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlFreeUserStack,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlGUIDFromString(PUNICODE_STRING  str, GUID*  guid) /* ../dlls/ntdll/rtlstr.c:2067 */
+WINAPI NTSTATUS wine32b_ntdll_RtlGUIDFromString(PUNICODE_STRING  str, GUID*  guid) /* ../dlls/ntdll/rtlstr.c:2067 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlGUIDFromString\n");
-	return pRtlGUIDFromString(str, guid);
+	return_value = pRtlGUIDFromString(str, guid);
+	TRACE("Leave RtlGUIDFromString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGUIDFromString(void);  /* ../dlls/ntdll/rtlstr.c:2067 */
@@ -13383,10 +14566,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGUIDFromString,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlGetAce(PACL  pAcl, DWORD  dwAceIndex, LPVOID*  pAce) /* ../dlls/ntdll/sec.c:1452 */
+WINAPI NTSTATUS wine32b_ntdll_RtlGetAce(PACL  pAcl, DWORD  dwAceIndex, LPVOID*  pAce) /* ../dlls/ntdll/sec.c:1452 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlGetAce\n");
-	return pRtlGetAce(pAcl, dwAceIndex, pAce);
+	return_value = pRtlGetAce(pAcl, dwAceIndex, pAce);
+	TRACE("Leave RtlGetAce\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetAce(void);  /* ../dlls/ntdll/sec.c:1452 */
@@ -13410,10 +14596,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetAce,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlGetActiveActivationContext(HANDLE*  handle) /* ../dlls/ntdll/actctx.c:5198 */
+WINAPI NTSTATUS wine32b_ntdll_RtlGetActiveActivationContext(HANDLE*  handle) /* ../dlls/ntdll/actctx.c:5198 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlGetActiveActivationContext\n");
-	return pRtlGetActiveActivationContext(handle);
+	return_value = pRtlGetActiveActivationContext(handle);
+	TRACE("Leave RtlGetActiveActivationContext\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetActiveActivationContext(void);  /* ../dlls/ntdll/actctx.c:5198 */
@@ -13435,10 +14624,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetActiveActivationContext,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlGetCompressionWorkSpaceSize(USHORT  format, PULONG  compress_workspace, PULONG  decompress_workspace) /* ../dlls/ntdll/rtl.c:1431 */
+WINAPI NTSTATUS wine32b_ntdll_RtlGetCompressionWorkSpaceSize(USHORT  format, PULONG  compress_workspace, PULONG  decompress_workspace) /* ../dlls/ntdll/rtl.c:1431 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlGetCompressionWorkSpaceSize\n");
-	return pRtlGetCompressionWorkSpaceSize(format, compress_workspace, decompress_workspace);
+	return_value = pRtlGetCompressionWorkSpaceSize(format, compress_workspace, decompress_workspace);
+	TRACE("Leave RtlGetCompressionWorkSpaceSize\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetCompressionWorkSpaceSize(void);  /* ../dlls/ntdll/rtl.c:1431 */
@@ -13462,10 +14654,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetCompressionWorkSpaceSize,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlGetControlSecurityDescriptor(PSECURITY_DESCRIPTOR  pSecurityDescriptor, PSECURITY_DESCRIPTOR_CONTROL  pControl, LPDWORD  lpdwRevision) /* ../dlls/ntdll/sec.c:1043 */
+WINAPI NTSTATUS wine32b_ntdll_RtlGetControlSecurityDescriptor(PSECURITY_DESCRIPTOR  pSecurityDescriptor, PSECURITY_DESCRIPTOR_CONTROL  pControl, LPDWORD  lpdwRevision) /* ../dlls/ntdll/sec.c:1043 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlGetControlSecurityDescriptor\n");
-	return pRtlGetControlSecurityDescriptor(pSecurityDescriptor, pControl, lpdwRevision);
+	return_value = pRtlGetControlSecurityDescriptor(pSecurityDescriptor, pControl, lpdwRevision);
+	TRACE("Leave RtlGetControlSecurityDescriptor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetControlSecurityDescriptor(void);  /* ../dlls/ntdll/sec.c:1043 */
@@ -13489,10 +14684,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetControlSecurityDescriptor,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlGetCurrentDirectory_U(ULONG  buflen, LPWSTR  buf) /* ../dlls/ntdll/path.c:957 */
+WINAPI ULONG wine32b_ntdll_RtlGetCurrentDirectory_U(ULONG  buflen, LPWSTR  buf) /* ../dlls/ntdll/path.c:957 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlGetCurrentDirectory_U\n");
-	return pRtlGetCurrentDirectory_U(buflen, buf);
+	return_value = pRtlGetCurrentDirectory_U(buflen, buf);
+	TRACE("Leave RtlGetCurrentDirectory_U\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetCurrentDirectory_U(void);  /* ../dlls/ntdll/path.c:957 */
@@ -13515,10 +14713,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetCurrentDirectory_U,
 	"ret \n"
 )
 
-extern WINAPI PEB* wine32b_ntdll_RtlGetCurrentPeb(void) /* ../dlls/ntdll/process.c:99 */
+WINAPI PEB* wine32b_ntdll_RtlGetCurrentPeb(void) /* ../dlls/ntdll/process.c:99 */
 {
+	PEB* return_value;
 	TRACE("Enter RtlGetCurrentPeb\n");
-	return pRtlGetCurrentPeb();
+	return_value = pRtlGetCurrentPeb();
+	TRACE("Leave RtlGetCurrentPeb\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetCurrentPeb(void);  /* ../dlls/ntdll/process.c:99 */
@@ -13539,10 +14740,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetCurrentPeb,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlGetCurrentProcessorNumberEx(PROCESSOR_NUMBER*  processor) /* ../dlls/ntdll/rtl.c:1795 */
+WINAPI void wine32b_ntdll_RtlGetCurrentProcessorNumberEx(PROCESSOR_NUMBER*  processor) /* ../dlls/ntdll/rtl.c:1795 */
 {
 	TRACE("Enter RtlGetCurrentProcessorNumberEx\n");
-	return pRtlGetCurrentProcessorNumberEx(processor);
+	pRtlGetCurrentProcessorNumberEx(processor);
+	TRACE("Leave RtlGetCurrentProcessorNumberEx\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetCurrentProcessorNumberEx(void);  /* ../dlls/ntdll/rtl.c:1795 */
@@ -13564,10 +14766,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetCurrentProcessorNumberEx,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_ntdll_RtlGetCurrentTransaction(void) /* ../dlls/ntdll/rtl.c:1777 */
+WINAPI HANDLE wine32b_ntdll_RtlGetCurrentTransaction(void) /* ../dlls/ntdll/rtl.c:1777 */
 {
+	HANDLE return_value;
 	TRACE("Enter RtlGetCurrentTransaction\n");
-	return pRtlGetCurrentTransaction();
+	return_value = pRtlGetCurrentTransaction();
+	TRACE("Leave RtlGetCurrentTransaction\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetCurrentTransaction(void);  /* ../dlls/ntdll/rtl.c:1777 */
@@ -13588,10 +14793,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetCurrentTransaction,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlGetDaclSecurityDescriptor(PSECURITY_DESCRIPTOR  pSecurityDescriptor, PBOOLEAN  lpbDaclPresent, PACL*  pDacl, PBOOLEAN  lpbDaclDefaulted) /* ../dlls/ntdll/sec.c:606 */
+WINAPI NTSTATUS wine32b_ntdll_RtlGetDaclSecurityDescriptor(PSECURITY_DESCRIPTOR  pSecurityDescriptor, PBOOLEAN  lpbDaclPresent, PACL*  pDacl, PBOOLEAN  lpbDaclDefaulted) /* ../dlls/ntdll/sec.c:606 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlGetDaclSecurityDescriptor\n");
-	return pRtlGetDaclSecurityDescriptor(pSecurityDescriptor, lpbDaclPresent, pDacl, lpbDaclDefaulted);
+	return_value = pRtlGetDaclSecurityDescriptor(pSecurityDescriptor, lpbDaclPresent, pDacl, lpbDaclDefaulted);
+	TRACE("Leave RtlGetDaclSecurityDescriptor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetDaclSecurityDescriptor(void);  /* ../dlls/ntdll/sec.c:606 */
@@ -13616,10 +14824,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetDaclSecurityDescriptor,
 	"ret \n"
 )
 
-extern WINAPI TEB_ACTIVE_FRAME* wine32b_ntdll_RtlGetFrame(void) /* ../dlls/ntdll/thread.c:723 */
+WINAPI TEB_ACTIVE_FRAME* wine32b_ntdll_RtlGetFrame(void) /* ../dlls/ntdll/thread.c:723 */
 {
+	TEB_ACTIVE_FRAME* return_value;
 	TRACE("Enter RtlGetFrame\n");
-	return pRtlGetFrame();
+	return_value = pRtlGetFrame();
+	TRACE("Leave RtlGetFrame\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetFrame(void);  /* ../dlls/ntdll/thread.c:723 */
@@ -13640,10 +14851,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetFrame,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlGetFullPathName_U(WCHAR*  name, ULONG  size, WCHAR*  buffer, WCHAR**  file_part) /* ../dlls/ntdll/path.c:818 */
+WINAPI ULONG wine32b_ntdll_RtlGetFullPathName_U(WCHAR*  name, ULONG  size, WCHAR*  buffer, WCHAR**  file_part) /* ../dlls/ntdll/path.c:818 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlGetFullPathName_U\n");
-	return pRtlGetFullPathName_U(name, size, buffer, file_part);
+	return_value = pRtlGetFullPathName_U(name, size, buffer, file_part);
+	TRACE("Leave RtlGetFullPathName_U\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetFullPathName_U(void);  /* ../dlls/ntdll/path.c:818 */
@@ -13668,10 +14882,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetFullPathName_U,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlGetGroupSecurityDescriptor(PSECURITY_DESCRIPTOR  pSecurityDescriptor, PSID*  Group, PBOOLEAN  GroupDefaulted) /* ../dlls/ntdll/sec.c:814 */
+WINAPI NTSTATUS wine32b_ntdll_RtlGetGroupSecurityDescriptor(PSECURITY_DESCRIPTOR  pSecurityDescriptor, PSID*  Group, PBOOLEAN  GroupDefaulted) /* ../dlls/ntdll/sec.c:814 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlGetGroupSecurityDescriptor\n");
-	return pRtlGetGroupSecurityDescriptor(pSecurityDescriptor, Group, GroupDefaulted);
+	return_value = pRtlGetGroupSecurityDescriptor(pSecurityDescriptor, Group, GroupDefaulted);
+	TRACE("Leave RtlGetGroupSecurityDescriptor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetGroupSecurityDescriptor(void);  /* ../dlls/ntdll/sec.c:814 */
@@ -13695,10 +14912,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetGroupSecurityDescriptor,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlGetLastNtStatus(void) /* ../dlls/ntdll/error.c:111 */
+WINAPI NTSTATUS wine32b_ntdll_RtlGetLastNtStatus(void) /* ../dlls/ntdll/error.c:111 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlGetLastNtStatus\n");
-	return pRtlGetLastNtStatus();
+	return_value = pRtlGetLastNtStatus();
+	TRACE("Leave RtlGetLastNtStatus\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetLastNtStatus(void);  /* ../dlls/ntdll/error.c:111 */
@@ -13719,10 +14939,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetLastNtStatus,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_ntdll_RtlGetLastWin32Error(void) /* ../dlls/ntdll/error.c:127 */
+WINAPI DWORD wine32b_ntdll_RtlGetLastWin32Error(void) /* ../dlls/ntdll/error.c:127 */
 {
+	DWORD return_value;
 	TRACE("Enter RtlGetLastWin32Error\n");
-	return pRtlGetLastWin32Error();
+	return_value = pRtlGetLastWin32Error();
+	TRACE("Leave RtlGetLastWin32Error\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetLastWin32Error(void);  /* ../dlls/ntdll/error.c:127 */
@@ -13743,10 +14966,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetLastWin32Error,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_ntdll_RtlGetLongestNtPathLength(void) /* ../dlls/ntdll/path.c:878 */
+WINAPI DWORD wine32b_ntdll_RtlGetLongestNtPathLength(void) /* ../dlls/ntdll/path.c:878 */
 {
+	DWORD return_value;
 	TRACE("Enter RtlGetLongestNtPathLength\n");
-	return pRtlGetLongestNtPathLength();
+	return_value = pRtlGetLongestNtPathLength();
+	TRACE("Leave RtlGetLongestNtPathLength\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetLongestNtPathLength(void);  /* ../dlls/ntdll/path.c:878 */
@@ -13767,10 +14993,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetLongestNtPathLength,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlGetNtGlobalFlags(void) /* ../dlls/ntdll/thread.c:559 */
+WINAPI ULONG wine32b_ntdll_RtlGetNtGlobalFlags(void) /* ../dlls/ntdll/thread.c:559 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlGetNtGlobalFlags\n");
-	return pRtlGetNtGlobalFlags();
+	return_value = pRtlGetNtGlobalFlags();
+	TRACE("Leave RtlGetNtGlobalFlags\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetNtGlobalFlags(void);  /* ../dlls/ntdll/thread.c:559 */
@@ -13791,10 +15020,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetNtGlobalFlags,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlGetNtProductType(LPDWORD  type) /* ../dlls/ntdll/version.c:654 */
+WINAPI BOOLEAN wine32b_ntdll_RtlGetNtProductType(LPDWORD  type) /* ../dlls/ntdll/version.c:654 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlGetNtProductType\n");
-	return pRtlGetNtProductType(type);
+	return_value = pRtlGetNtProductType(type);
+	TRACE("Leave RtlGetNtProductType\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetNtProductType(void);  /* ../dlls/ntdll/version.c:654 */
@@ -13816,10 +15048,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetNtProductType,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlGetNtVersionNumbers(LPDWORD  major, LPDWORD  minor, LPDWORD  build) /* ../dlls/ntdll/version.c:642 */
+WINAPI void wine32b_ntdll_RtlGetNtVersionNumbers(LPDWORD  major, LPDWORD  minor, LPDWORD  build) /* ../dlls/ntdll/version.c:642 */
 {
 	TRACE("Enter RtlGetNtVersionNumbers\n");
-	return pRtlGetNtVersionNumbers(major, minor, build);
+	pRtlGetNtVersionNumbers(major, minor, build);
+	TRACE("Leave RtlGetNtVersionNumbers\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetNtVersionNumbers(void);  /* ../dlls/ntdll/version.c:642 */
@@ -13843,10 +15076,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetNtVersionNumbers,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlGetOwnerSecurityDescriptor(PSECURITY_DESCRIPTOR  pSecurityDescriptor, PSID*  Owner, PBOOLEAN  OwnerDefaulted) /* ../dlls/ntdll/sec.c:738 */
+WINAPI NTSTATUS wine32b_ntdll_RtlGetOwnerSecurityDescriptor(PSECURITY_DESCRIPTOR  pSecurityDescriptor, PSID*  Owner, PBOOLEAN  OwnerDefaulted) /* ../dlls/ntdll/sec.c:738 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlGetOwnerSecurityDescriptor\n");
-	return pRtlGetOwnerSecurityDescriptor(pSecurityDescriptor, Owner, OwnerDefaulted);
+	return_value = pRtlGetOwnerSecurityDescriptor(pSecurityDescriptor, Owner, OwnerDefaulted);
+	TRACE("Leave RtlGetOwnerSecurityDescriptor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetOwnerSecurityDescriptor(void);  /* ../dlls/ntdll/sec.c:738 */
@@ -13870,10 +15106,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetOwnerSecurityDescriptor,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlGetProductInfo(DWORD  dwOSMajorVersion, DWORD  dwOSMinorVersion, DWORD  dwSpMajorVersion, DWORD  dwSpMinorVersion, PDWORD  pdwReturnedProductType) /* ../dlls/ntdll/version.c:582 */
+WINAPI BOOLEAN wine32b_ntdll_RtlGetProductInfo(DWORD  dwOSMajorVersion, DWORD  dwOSMinorVersion, DWORD  dwSpMajorVersion, DWORD  dwSpMinorVersion, PDWORD  pdwReturnedProductType) /* ../dlls/ntdll/version.c:582 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlGetProductInfo\n");
-	return pRtlGetProductInfo(dwOSMajorVersion, dwOSMinorVersion, dwSpMajorVersion, dwSpMinorVersion, pdwReturnedProductType);
+	return_value = pRtlGetProductInfo(dwOSMajorVersion, dwOSMinorVersion, dwSpMajorVersion, dwSpMinorVersion, pdwReturnedProductType);
+	TRACE("Leave RtlGetProductInfo\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetProductInfo(void);  /* ../dlls/ntdll/version.c:582 */
@@ -13898,10 +15137,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetProductInfo,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlGetProcessHeaps(ULONG  count, HANDLE*  heaps) /* ../dlls/ntdll/heap.c:2225 */
+WINAPI ULONG wine32b_ntdll_RtlGetProcessHeaps(ULONG  count, HANDLE*  heaps) /* ../dlls/ntdll/heap.c:2225 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlGetProcessHeaps\n");
-	return pRtlGetProcessHeaps(count, heaps);
+	return_value = pRtlGetProcessHeaps(count, heaps);
+	TRACE("Leave RtlGetProcessHeaps\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetProcessHeaps(void);  /* ../dlls/ntdll/heap.c:2225 */
@@ -13924,10 +15166,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetProcessHeaps,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlGetSaclSecurityDescriptor(PSECURITY_DESCRIPTOR  pSecurityDescriptor, PBOOLEAN  lpbSaclPresent, PACL*  pSacl, PBOOLEAN  lpbSaclDefaulted) /* ../dlls/ntdll/sec.c:678 */
+WINAPI NTSTATUS wine32b_ntdll_RtlGetSaclSecurityDescriptor(PSECURITY_DESCRIPTOR  pSecurityDescriptor, PBOOLEAN  lpbSaclPresent, PACL*  pSacl, PBOOLEAN  lpbSaclDefaulted) /* ../dlls/ntdll/sec.c:678 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlGetSaclSecurityDescriptor\n");
-	return pRtlGetSaclSecurityDescriptor(pSecurityDescriptor, lpbSaclPresent, pSacl, lpbSaclDefaulted);
+	return_value = pRtlGetSaclSecurityDescriptor(pSecurityDescriptor, lpbSaclPresent, pSacl, lpbSaclDefaulted);
+	TRACE("Leave RtlGetSaclSecurityDescriptor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetSaclSecurityDescriptor(void);  /* ../dlls/ntdll/sec.c:678 */
@@ -13952,10 +15197,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetSaclSecurityDescriptor,
 	"ret \n"
 )
 
-extern WINAPI LONGLONG wine32b_ntdll_RtlGetSystemTimePrecise(void) /* ../dlls/ntdll/time.c:511 */
+WINAPI LONGLONG wine32b_ntdll_RtlGetSystemTimePrecise(void) /* ../dlls/ntdll/time.c:511 */
 {
+	LONGLONG return_value;
 	TRACE("Enter RtlGetSystemTimePrecise\n");
-	return pRtlGetSystemTimePrecise();
+	return_value = pRtlGetSystemTimePrecise();
+	TRACE("Leave RtlGetSystemTimePrecise\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetSystemTimePrecise(void);  /* ../dlls/ntdll/time.c:511 */
@@ -13976,10 +15224,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetSystemTimePrecise,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_ntdll_RtlGetThreadErrorMode(void) /* ../dlls/ntdll/rtl.c:1769 */
+WINAPI DWORD wine32b_ntdll_RtlGetThreadErrorMode(void) /* ../dlls/ntdll/rtl.c:1769 */
 {
+	DWORD return_value;
 	TRACE("Enter RtlGetThreadErrorMode\n");
-	return pRtlGetThreadErrorMode();
+	return_value = pRtlGetThreadErrorMode();
+	TRACE("Leave RtlGetThreadErrorMode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetThreadErrorMode(void);  /* ../dlls/ntdll/rtl.c:1769 */
@@ -14000,10 +15251,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetThreadErrorMode,
 	"ret \n"
 )
 
-extern WINAPI RTL_UNLOAD_EVENT_TRACE* wine32b_ntdll_RtlGetUnloadEventTrace(void) /* ../dlls/ntdll/loader.c:198 */
+WINAPI RTL_UNLOAD_EVENT_TRACE* wine32b_ntdll_RtlGetUnloadEventTrace(void) /* ../dlls/ntdll/loader.c:198 */
 {
+	RTL_UNLOAD_EVENT_TRACE* return_value;
 	TRACE("Enter RtlGetUnloadEventTrace\n");
-	return pRtlGetUnloadEventTrace();
+	return_value = pRtlGetUnloadEventTrace();
+	TRACE("Leave RtlGetUnloadEventTrace\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetUnloadEventTrace(void);  /* ../dlls/ntdll/loader.c:198 */
@@ -14024,10 +15278,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetUnloadEventTrace,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlGetUnloadEventTraceEx(ULONG**  size, ULONG**  count, void**  trace) /* ../dlls/ntdll/loader.c:206 */
+WINAPI void wine32b_ntdll_RtlGetUnloadEventTraceEx(ULONG**  size, ULONG**  count, void**  trace) /* ../dlls/ntdll/loader.c:206 */
 {
 	TRACE("Enter RtlGetUnloadEventTraceEx\n");
-	return pRtlGetUnloadEventTraceEx(size, count, trace);
+	pRtlGetUnloadEventTraceEx(size, count, trace);
+	TRACE("Leave RtlGetUnloadEventTraceEx\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetUnloadEventTraceEx(void);  /* ../dlls/ntdll/loader.c:206 */
@@ -14051,10 +15306,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetUnloadEventTraceEx,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlGetVersion(RTL_OSVERSIONINFOEXW*  info) /* ../dlls/ntdll/version.c:608 */
+WINAPI NTSTATUS wine32b_ntdll_RtlGetVersion(RTL_OSVERSIONINFOEXW*  info) /* ../dlls/ntdll/version.c:608 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlGetVersion\n");
-	return pRtlGetVersion(info);
+	return_value = pRtlGetVersion(info);
+	TRACE("Leave RtlGetVersion\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlGetVersion(void);  /* ../dlls/ntdll/version.c:608 */
@@ -14076,10 +15334,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGetVersion,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlGrowFunctionTable(void*  table, DWORD  count) /* ../dlls/ntdll/exception.c:497 */
+WINAPI void wine32b_ntdll_RtlGrowFunctionTable(void*  table, DWORD  count) /* ../dlls/ntdll/exception.c:497 */
 {
 	TRACE("Enter RtlGrowFunctionTable\n");
-	return pRtlGrowFunctionTable(table, count);
+	pRtlGrowFunctionTable(table, count);
+	TRACE("Leave RtlGrowFunctionTable\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlGrowFunctionTable(void);  /* ../dlls/ntdll/exception.c:497 */
@@ -14102,10 +15361,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlGrowFunctionTable,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlHashUnicodeString(PCUNICODE_STRING  string, BOOLEAN  case_insensitive, ULONG  alg, ULONG*  hash) /* ../dlls/ntdll/rtlstr.c:2186 */
+WINAPI NTSTATUS wine32b_ntdll_RtlHashUnicodeString(PCUNICODE_STRING  string, BOOLEAN  case_insensitive, ULONG  alg, ULONG*  hash) /* ../dlls/ntdll/rtlstr.c:2186 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlHashUnicodeString\n");
-	return pRtlHashUnicodeString(string, case_insensitive, alg, hash);
+	return_value = pRtlHashUnicodeString(string, case_insensitive, alg, hash);
+	TRACE("Leave RtlHashUnicodeString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlHashUnicodeString(void);  /* ../dlls/ntdll/rtlstr.c:2186 */
@@ -14130,10 +15392,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlHashUnicodeString,
 	"ret \n"
 )
 
-extern WINAPI PSID_IDENTIFIER_AUTHORITY wine32b_ntdll_RtlIdentifierAuthoritySid(PSID  pSid) /* ../dlls/ntdll/sec.c:348 */
+WINAPI PSID_IDENTIFIER_AUTHORITY wine32b_ntdll_RtlIdentifierAuthoritySid(PSID  pSid) /* ../dlls/ntdll/sec.c:348 */
 {
+	PSID_IDENTIFIER_AUTHORITY return_value;
 	TRACE("Enter RtlIdentifierAuthoritySid\n");
-	return pRtlIdentifierAuthoritySid(pSid);
+	return_value = pRtlIdentifierAuthoritySid(pSid);
+	TRACE("Leave RtlIdentifierAuthoritySid\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlIdentifierAuthoritySid(void);  /* ../dlls/ntdll/sec.c:348 */
@@ -14155,10 +15420,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIdentifierAuthoritySid,
 	"ret \n"
 )
 
-extern WINAPI PVOID wine32b_ntdll_RtlImageDirectoryEntryToData(HMODULE  module, BOOL  image, WORD  dir, ULONG*  size) /* ../dlls/ntdll/loader.c:3878 */
+WINAPI PVOID wine32b_ntdll_RtlImageDirectoryEntryToData(HMODULE  module, BOOL  image, WORD  dir, ULONG*  size) /* ../dlls/ntdll/loader.c:3878 */
 {
+	PVOID return_value;
 	TRACE("Enter RtlImageDirectoryEntryToData\n");
-	return pRtlImageDirectoryEntryToData(module, image, dir, size);
+	return_value = pRtlImageDirectoryEntryToData(module, image, dir, size);
+	TRACE("Leave RtlImageDirectoryEntryToData\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlImageDirectoryEntryToData(void);  /* ../dlls/ntdll/loader.c:3878 */
@@ -14183,10 +15451,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlImageDirectoryEntryToData,
 	"ret \n"
 )
 
-extern WINAPI PIMAGE_NT_HEADERS wine32b_ntdll_RtlImageNtHeader(HMODULE  hModule) /* ../dlls/ntdll/loader.c:3725 */
+WINAPI PIMAGE_NT_HEADERS wine32b_ntdll_RtlImageNtHeader(HMODULE  hModule) /* ../dlls/ntdll/loader.c:3725 */
 {
+	PIMAGE_NT_HEADERS return_value;
 	TRACE("Enter RtlImageNtHeader\n");
-	return pRtlImageNtHeader(hModule);
+	return_value = pRtlImageNtHeader(hModule);
+	TRACE("Leave RtlImageNtHeader\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlImageNtHeader(void);  /* ../dlls/ntdll/loader.c:3725 */
@@ -14208,10 +15479,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlImageNtHeader,
 	"ret \n"
 )
 
-extern WINAPI PIMAGE_SECTION_HEADER wine32b_ntdll_RtlImageRvaToSection(IMAGE_NT_HEADERS*  nt, HMODULE  module, DWORD  rva) /* ../dlls/ntdll/loader.c:3914 */
+WINAPI PIMAGE_SECTION_HEADER wine32b_ntdll_RtlImageRvaToSection(IMAGE_NT_HEADERS*  nt, HMODULE  module, DWORD  rva) /* ../dlls/ntdll/loader.c:3914 */
 {
+	PIMAGE_SECTION_HEADER return_value;
 	TRACE("Enter RtlImageRvaToSection\n");
-	return pRtlImageRvaToSection(nt, module, rva);
+	return_value = pRtlImageRvaToSection(nt, module, rva);
+	TRACE("Leave RtlImageRvaToSection\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlImageRvaToSection(void);  /* ../dlls/ntdll/loader.c:3914 */
@@ -14235,10 +15509,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlImageRvaToSection,
 	"ret \n"
 )
 
-extern WINAPI PVOID wine32b_ntdll_RtlImageRvaToVa(IMAGE_NT_HEADERS*  nt, HMODULE  module, DWORD  rva, IMAGE_SECTION_HEADER**  section) /* ../dlls/ntdll/loader.c:3934 */
+WINAPI PVOID wine32b_ntdll_RtlImageRvaToVa(IMAGE_NT_HEADERS*  nt, HMODULE  module, DWORD  rva, IMAGE_SECTION_HEADER**  section) /* ../dlls/ntdll/loader.c:3934 */
 {
+	PVOID return_value;
 	TRACE("Enter RtlImageRvaToVa\n");
-	return pRtlImageRvaToVa(nt, module, rva, section);
+	return_value = pRtlImageRvaToVa(nt, module, rva, section);
+	TRACE("Leave RtlImageRvaToVa\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlImageRvaToVa(void);  /* ../dlls/ntdll/loader.c:3934 */
@@ -14263,10 +15540,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlImageRvaToVa,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlImpersonateSelf(SECURITY_IMPERSONATION_LEVEL  ImpersonationLevel) /* ../dlls/ntdll/sec.c:1575 */
+WINAPI NTSTATUS wine32b_ntdll_RtlImpersonateSelf(SECURITY_IMPERSONATION_LEVEL  ImpersonationLevel) /* ../dlls/ntdll/sec.c:1575 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlImpersonateSelf\n");
-	return pRtlImpersonateSelf(ImpersonationLevel);
+	return_value = pRtlImpersonateSelf(ImpersonationLevel);
+	TRACE("Leave RtlImpersonateSelf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlImpersonateSelf(void);  /* ../dlls/ntdll/sec.c:1575 */
@@ -14288,10 +15568,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlImpersonateSelf,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlInitAnsiString(PANSI_STRING  target, PCSZ  source) /* ../dlls/ntdll/rtlstr.c:101 */
+WINAPI void wine32b_ntdll_RtlInitAnsiString(PANSI_STRING  target, PCSZ  source) /* ../dlls/ntdll/rtlstr.c:101 */
 {
 	TRACE("Enter RtlInitAnsiString\n");
-	return pRtlInitAnsiString(target, source);
+	pRtlInitAnsiString(target, source);
+	TRACE("Leave RtlInitAnsiString\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlInitAnsiString(void);  /* ../dlls/ntdll/rtlstr.c:101 */
@@ -14314,10 +15595,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInitAnsiString,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlInitAnsiStringEx(PANSI_STRING  target, PCSZ  source) /* ../dlls/ntdll/rtlstr.c:126 */
+WINAPI NTSTATUS wine32b_ntdll_RtlInitAnsiStringEx(PANSI_STRING  target, PCSZ  source) /* ../dlls/ntdll/rtlstr.c:126 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlInitAnsiStringEx\n");
-	return pRtlInitAnsiStringEx(target, source);
+	return_value = pRtlInitAnsiStringEx(target, source);
+	TRACE("Leave RtlInitAnsiStringEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlInitAnsiStringEx(void);  /* ../dlls/ntdll/rtlstr.c:126 */
@@ -14340,10 +15624,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInitAnsiStringEx,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlInitString(PSTRING  target, PCSZ  source) /* ../dlls/ntdll/rtlstr.c:160 */
+WINAPI void wine32b_ntdll_RtlInitString(PSTRING  target, PCSZ  source) /* ../dlls/ntdll/rtlstr.c:160 */
 {
 	TRACE("Enter RtlInitString\n");
-	return pRtlInitString(target, source);
+	pRtlInitString(target, source);
+	TRACE("Leave RtlInitString\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlInitString(void);  /* ../dlls/ntdll/rtlstr.c:160 */
@@ -14366,10 +15651,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInitString,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlInitUnicodeString(PUNICODE_STRING  target, PCWSTR  source) /* ../dlls/ntdll/rtlstr.c:218 */
+WINAPI void wine32b_ntdll_RtlInitUnicodeString(PUNICODE_STRING  target, PCWSTR  source) /* ../dlls/ntdll/rtlstr.c:218 */
 {
 	TRACE("Enter RtlInitUnicodeString\n");
-	return pRtlInitUnicodeString(target, source);
+	pRtlInitUnicodeString(target, source);
+	TRACE("Leave RtlInitUnicodeString\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlInitUnicodeString(void);  /* ../dlls/ntdll/rtlstr.c:218 */
@@ -14392,10 +15678,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInitUnicodeString,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlInitUnicodeStringEx(PUNICODE_STRING  target, PCWSTR  source) /* ../dlls/ntdll/rtlstr.c:248 */
+WINAPI NTSTATUS wine32b_ntdll_RtlInitUnicodeStringEx(PUNICODE_STRING  target, PCWSTR  source) /* ../dlls/ntdll/rtlstr.c:248 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlInitUnicodeStringEx\n");
-	return pRtlInitUnicodeStringEx(target, source);
+	return_value = pRtlInitUnicodeStringEx(target, source);
+	TRACE("Leave RtlInitUnicodeStringEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlInitUnicodeStringEx(void);  /* ../dlls/ntdll/rtlstr.c:248 */
@@ -14418,10 +15707,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInitUnicodeStringEx,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlInitializeBitMap(PRTL_BITMAP  lpBits, PULONG  lpBuff, ULONG  ulSize) /* ../dlls/ntdll/rtlbitmap.c:75 */
+WINAPI void wine32b_ntdll_RtlInitializeBitMap(PRTL_BITMAP  lpBits, PULONG  lpBuff, ULONG  ulSize) /* ../dlls/ntdll/rtlbitmap.c:75 */
 {
 	TRACE("Enter RtlInitializeBitMap\n");
-	return pRtlInitializeBitMap(lpBits, lpBuff, ulSize);
+	pRtlInitializeBitMap(lpBits, lpBuff, ulSize);
+	TRACE("Leave RtlInitializeBitMap\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlInitializeBitMap(void);  /* ../dlls/ntdll/rtlbitmap.c:75 */
@@ -14445,10 +15735,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInitializeBitMap,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlInitializeConditionVariable(RTL_CONDITION_VARIABLE*  variable) /* ../dlls/ntdll/sync.c:2233 */
+WINAPI void wine32b_ntdll_RtlInitializeConditionVariable(RTL_CONDITION_VARIABLE*  variable) /* ../dlls/ntdll/sync.c:2233 */
 {
 	TRACE("Enter RtlInitializeConditionVariable\n");
-	return pRtlInitializeConditionVariable(variable);
+	pRtlInitializeConditionVariable(variable);
+	TRACE("Leave RtlInitializeConditionVariable\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlInitializeConditionVariable(void);  /* ../dlls/ntdll/sync.c:2233 */
@@ -14470,10 +15761,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInitializeConditionVariable,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlInitializeCriticalSection(RTL_CRITICAL_SECTION*  crit) /* ../dlls/ntdll/critsection.c:267 */
+WINAPI NTSTATUS wine32b_ntdll_RtlInitializeCriticalSection(RTL_CRITICAL_SECTION*  crit) /* ../dlls/ntdll/critsection.c:267 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlInitializeCriticalSection\n");
-	return pRtlInitializeCriticalSection(crit);
+	return_value = pRtlInitializeCriticalSection(crit);
+	TRACE("Leave RtlInitializeCriticalSection\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlInitializeCriticalSection(void);  /* ../dlls/ntdll/critsection.c:267 */
@@ -14495,10 +15789,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInitializeCriticalSection,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlInitializeCriticalSectionAndSpinCount(RTL_CRITICAL_SECTION*  crit, ULONG  spincount) /* ../dlls/ntdll/critsection.c:293 */
+WINAPI NTSTATUS wine32b_ntdll_RtlInitializeCriticalSectionAndSpinCount(RTL_CRITICAL_SECTION*  crit, ULONG  spincount) /* ../dlls/ntdll/critsection.c:293 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlInitializeCriticalSectionAndSpinCount\n");
-	return pRtlInitializeCriticalSectionAndSpinCount(crit, spincount);
+	return_value = pRtlInitializeCriticalSectionAndSpinCount(crit, spincount);
+	TRACE("Leave RtlInitializeCriticalSectionAndSpinCount\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlInitializeCriticalSectionAndSpinCount(void);  /* ../dlls/ntdll/critsection.c:293 */
@@ -14521,10 +15818,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInitializeCriticalSectionAndSpinCount,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlInitializeCriticalSectionEx(RTL_CRITICAL_SECTION*  crit, ULONG  spincount, ULONG  flags) /* ../dlls/ntdll/critsection.c:319 */
+WINAPI NTSTATUS wine32b_ntdll_RtlInitializeCriticalSectionEx(RTL_CRITICAL_SECTION*  crit, ULONG  spincount, ULONG  flags) /* ../dlls/ntdll/critsection.c:319 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlInitializeCriticalSectionEx\n");
-	return pRtlInitializeCriticalSectionEx(crit, spincount, flags);
+	return_value = pRtlInitializeCriticalSectionEx(crit, spincount, flags);
+	TRACE("Leave RtlInitializeCriticalSectionEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlInitializeCriticalSectionEx(void);  /* ../dlls/ntdll/critsection.c:319 */
@@ -14548,10 +15848,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInitializeCriticalSectionEx,
 	"ret \n"
 )
 
-extern WINAPI PVOID wine32b_ntdll_RtlInitializeGenericTable(PVOID  pTable, PVOID  arg2, PVOID  arg3, PVOID  arg4, PVOID  arg5) /* ../dlls/ntdll/rtl.c:405 */
+WINAPI PVOID wine32b_ntdll_RtlInitializeGenericTable(PVOID  pTable, PVOID  arg2, PVOID  arg3, PVOID  arg4, PVOID  arg5) /* ../dlls/ntdll/rtl.c:405 */
 {
+	PVOID return_value;
 	TRACE("Enter RtlInitializeGenericTable\n");
-	return pRtlInitializeGenericTable(pTable, arg2, arg3, arg4, arg5);
+	return_value = pRtlInitializeGenericTable(pTable, arg2, arg3, arg4, arg5);
+	TRACE("Leave RtlInitializeGenericTable\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlInitializeGenericTable(void);  /* ../dlls/ntdll/rtl.c:405 */
@@ -14576,10 +15879,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInitializeGenericTable,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlInitializeGenericTableAvl(PRTL_AVL_TABLE  table, PRTL_AVL_COMPARE_ROUTINE  compare, PRTL_AVL_ALLOCATE_ROUTINE  allocate, PRTL_AVL_FREE_ROUTINE  free, void*  context) /* ../dlls/ntdll/rtl.c:1806 */
+WINAPI void wine32b_ntdll_RtlInitializeGenericTableAvl(PRTL_AVL_TABLE  table, PRTL_AVL_COMPARE_ROUTINE  compare, PRTL_AVL_ALLOCATE_ROUTINE  allocate, PRTL_AVL_FREE_ROUTINE  free, void*  context) /* ../dlls/ntdll/rtl.c:1806 */
 {
 	TRACE("Enter RtlInitializeGenericTableAvl\n");
-	return pRtlInitializeGenericTableAvl(table, compare, allocate, free, context);
+	pRtlInitializeGenericTableAvl(table, compare, allocate, free, context);
+	TRACE("Leave RtlInitializeGenericTableAvl\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlInitializeGenericTableAvl(void);  /* ../dlls/ntdll/rtl.c:1806 */
@@ -14604,10 +15908,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInitializeGenericTableAvl,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlInitializeHandleTable(ULONG  MaxHandleCount, ULONG  HandleSize, RTL_HANDLE_TABLE*  HandleTable) /* ../dlls/ntdll/handletable.c:48 */
+WINAPI void wine32b_ntdll_RtlInitializeHandleTable(ULONG  MaxHandleCount, ULONG  HandleSize, RTL_HANDLE_TABLE*  HandleTable) /* ../dlls/ntdll/handletable.c:48 */
 {
 	TRACE("Enter RtlInitializeHandleTable\n");
-	return pRtlInitializeHandleTable(MaxHandleCount, HandleSize, HandleTable);
+	pRtlInitializeHandleTable(MaxHandleCount, HandleSize, HandleTable);
+	TRACE("Leave RtlInitializeHandleTable\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlInitializeHandleTable(void);  /* ../dlls/ntdll/handletable.c:48 */
@@ -14631,10 +15936,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInitializeHandleTable,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlInitializeResource(LPRTL_RWLOCK  rwl) /* ../dlls/ntdll/rtl.c:111 */
+WINAPI void wine32b_ntdll_RtlInitializeResource(LPRTL_RWLOCK  rwl) /* ../dlls/ntdll/rtl.c:111 */
 {
 	TRACE("Enter RtlInitializeResource\n");
-	return pRtlInitializeResource(rwl);
+	pRtlInitializeResource(rwl);
+	TRACE("Leave RtlInitializeResource\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlInitializeResource(void);  /* ../dlls/ntdll/rtl.c:111 */
@@ -14656,10 +15962,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInitializeResource,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlInitializeSListHead(PSLIST_HEADER  list) /* ../dlls/ntdll/rtl.c:1244 */
+WINAPI void wine32b_ntdll_RtlInitializeSListHead(PSLIST_HEADER  list) /* ../dlls/ntdll/rtl.c:1244 */
 {
 	TRACE("Enter RtlInitializeSListHead\n");
-	return pRtlInitializeSListHead(list);
+	pRtlInitializeSListHead(list);
+	TRACE("Leave RtlInitializeSListHead\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlInitializeSListHead(void);  /* ../dlls/ntdll/rtl.c:1244 */
@@ -14681,10 +15988,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInitializeSListHead,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlInitializeSRWLock(RTL_SRWLOCK*  lock) /* ../dlls/ntdll/sync.c:2057 */
+WINAPI void wine32b_ntdll_RtlInitializeSRWLock(RTL_SRWLOCK*  lock) /* ../dlls/ntdll/sync.c:2057 */
 {
 	TRACE("Enter RtlInitializeSRWLock\n");
-	return pRtlInitializeSRWLock(lock);
+	pRtlInitializeSRWLock(lock);
+	TRACE("Leave RtlInitializeSRWLock\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlInitializeSRWLock(void);  /* ../dlls/ntdll/sync.c:2057 */
@@ -14706,10 +16014,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInitializeSRWLock,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_ntdll_RtlInitializeSid(PSID  pSid, PSID_IDENTIFIER_AUTHORITY  pIdentifierAuthority, BYTE  nSubAuthorityCount) /* ../dlls/ntdll/sec.c:298 */
+WINAPI BOOL wine32b_ntdll_RtlInitializeSid(PSID  pSid, PSID_IDENTIFIER_AUTHORITY  pIdentifierAuthority, BYTE  nSubAuthorityCount) /* ../dlls/ntdll/sec.c:298 */
 {
+	BOOL return_value;
 	TRACE("Enter RtlInitializeSid\n");
-	return pRtlInitializeSid(pSid, pIdentifierAuthority, nSubAuthorityCount);
+	return_value = pRtlInitializeSid(pSid, pIdentifierAuthority, nSubAuthorityCount);
+	TRACE("Leave RtlInitializeSid\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlInitializeSid(void);  /* ../dlls/ntdll/sec.c:298 */
@@ -14733,10 +16044,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInitializeSid,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlInsertElementGenericTableAvl(PRTL_AVL_TABLE  table, void*  buffer, ULONG  size, BOOL*  element) /* ../dlls/ntdll/rtl.c:1815 */
+WINAPI void wine32b_ntdll_RtlInsertElementGenericTableAvl(PRTL_AVL_TABLE  table, void*  buffer, ULONG  size, BOOL*  element) /* ../dlls/ntdll/rtl.c:1815 */
 {
 	TRACE("Enter RtlInsertElementGenericTableAvl\n");
-	return pRtlInsertElementGenericTableAvl(table, buffer, size, element);
+	pRtlInsertElementGenericTableAvl(table, buffer, size, element);
+	TRACE("Leave RtlInsertElementGenericTableAvl\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlInsertElementGenericTableAvl(void);  /* ../dlls/ntdll/rtl.c:1815 */
@@ -14761,10 +16073,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInsertElementGenericTableAvl,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlInstallFunctionTableCallback(ULONG_PTR  table, ULONG_PTR  base, DWORD  length, PGET_RUNTIME_FUNCTION_CALLBACK  callback, PVOID  context, PCWSTR  dll) /* ../dlls/ntdll/exception.c:428 */
+WINAPI BOOLEAN wine32b_ntdll_RtlInstallFunctionTableCallback(ULONG_PTR  table, ULONG_PTR  base, DWORD  length, PGET_RUNTIME_FUNCTION_CALLBACK  callback, PVOID  context, PCWSTR  dll) /* ../dlls/ntdll/exception.c:428 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlInstallFunctionTableCallback\n");
-	return pRtlInstallFunctionTableCallback(table, base, length, callback, context, dll);
+	return_value = pRtlInstallFunctionTableCallback(table, base, length, callback, context, dll);
+	TRACE("Leave RtlInstallFunctionTableCallback\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlInstallFunctionTableCallback(void);  /* ../dlls/ntdll/exception.c:428 */
@@ -14789,10 +16104,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInstallFunctionTableCallback,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlInt64ToUnicodeString(ULONGLONG  value, ULONG  base, UNICODE_STRING*  str) /* ../dlls/ntdll/large_int.c:484 */
+WINAPI NTSTATUS wine32b_ntdll_RtlInt64ToUnicodeString(ULONGLONG  value, ULONG  base, UNICODE_STRING*  str) /* ../dlls/ntdll/large_int.c:484 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlInt64ToUnicodeString\n");
-	return pRtlInt64ToUnicodeString(value, base, str);
+	return_value = pRtlInt64ToUnicodeString(value, base, str);
+	TRACE("Leave RtlInt64ToUnicodeString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlInt64ToUnicodeString(void);  /* ../dlls/ntdll/large_int.c:484 */
@@ -14816,10 +16134,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInt64ToUnicodeString,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlIntegerToChar(ULONG  value, ULONG  base, ULONG  length, PCHAR  str) /* ../dlls/ntdll/rtlstr.c:1844 */
+WINAPI NTSTATUS wine32b_ntdll_RtlIntegerToChar(ULONG  value, ULONG  base, ULONG  length, PCHAR  str) /* ../dlls/ntdll/rtlstr.c:1844 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlIntegerToChar\n");
-	return pRtlIntegerToChar(value, base, length, str);
+	return_value = pRtlIntegerToChar(value, base, length, str);
+	TRACE("Leave RtlIntegerToChar\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlIntegerToChar(void);  /* ../dlls/ntdll/rtlstr.c:1844 */
@@ -14844,10 +16165,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIntegerToChar,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlIntegerToUnicodeString(ULONG  value, ULONG  base, UNICODE_STRING*  str) /* ../dlls/ntdll/rtlstr.c:2012 */
+WINAPI NTSTATUS wine32b_ntdll_RtlIntegerToUnicodeString(ULONG  value, ULONG  base, UNICODE_STRING*  str) /* ../dlls/ntdll/rtlstr.c:2012 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlIntegerToUnicodeString\n");
-	return pRtlIntegerToUnicodeString(value, base, str);
+	return_value = pRtlIntegerToUnicodeString(value, base, str);
+	TRACE("Leave RtlIntegerToUnicodeString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlIntegerToUnicodeString(void);  /* ../dlls/ntdll/rtlstr.c:2012 */
@@ -14871,10 +16195,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIntegerToUnicodeString,
 	"ret \n"
 )
 
-extern WINAPI PSLIST_ENTRY wine32b_ntdll_RtlInterlockedFlushSList(PSLIST_HEADER  list) /* ../dlls/ntdll/rtl.c:1281 */
+WINAPI PSLIST_ENTRY wine32b_ntdll_RtlInterlockedFlushSList(PSLIST_HEADER  list) /* ../dlls/ntdll/rtl.c:1281 */
 {
+	PSLIST_ENTRY return_value;
 	TRACE("Enter RtlInterlockedFlushSList\n");
-	return pRtlInterlockedFlushSList(list);
+	return_value = pRtlInterlockedFlushSList(list);
+	TRACE("Leave RtlInterlockedFlushSList\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlInterlockedFlushSList(void);  /* ../dlls/ntdll/rtl.c:1281 */
@@ -14896,10 +16223,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInterlockedFlushSList,
 	"ret \n"
 )
 
-extern WINAPI PSLIST_ENTRY wine32b_ntdll_RtlInterlockedPopEntrySList(PSLIST_HEADER  list) /* ../dlls/ntdll/rtl.c:1342 */
+WINAPI PSLIST_ENTRY wine32b_ntdll_RtlInterlockedPopEntrySList(PSLIST_HEADER  list) /* ../dlls/ntdll/rtl.c:1342 */
 {
+	PSLIST_ENTRY return_value;
 	TRACE("Enter RtlInterlockedPopEntrySList\n");
-	return pRtlInterlockedPopEntrySList(list);
+	return_value = pRtlInterlockedPopEntrySList(list);
+	TRACE("Leave RtlInterlockedPopEntrySList\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlInterlockedPopEntrySList(void);  /* ../dlls/ntdll/rtl.c:1342 */
@@ -14921,10 +16251,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInterlockedPopEntrySList,
 	"ret \n"
 )
 
-extern WINAPI PSLIST_ENTRY wine32b_ntdll_RtlInterlockedPushEntrySList(PSLIST_HEADER  list, PSLIST_ENTRY  entry) /* ../dlls/ntdll/rtl.c:1311 */
+WINAPI PSLIST_ENTRY wine32b_ntdll_RtlInterlockedPushEntrySList(PSLIST_HEADER  list, PSLIST_ENTRY  entry) /* ../dlls/ntdll/rtl.c:1311 */
 {
+	PSLIST_ENTRY return_value;
 	TRACE("Enter RtlInterlockedPushEntrySList\n");
-	return pRtlInterlockedPushEntrySList(list, entry);
+	return_value = pRtlInterlockedPushEntrySList(list, entry);
+	TRACE("Leave RtlInterlockedPushEntrySList\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlInterlockedPushEntrySList(void);  /* ../dlls/ntdll/rtl.c:1311 */
@@ -14947,10 +16280,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInterlockedPushEntrySList,
 	"ret \n"
 )
 
-extern WINAPI PSLIST_ENTRY wine32b_ntdll_RtlInterlockedPushListSList(PSLIST_HEADER  list, PSLIST_ENTRY  first, PSLIST_ENTRY  last, ULONG  count) /* ../dlls/ntdll/rtl.c:1422 */
+WINAPI PSLIST_ENTRY wine32b_ntdll_RtlInterlockedPushListSList(PSLIST_HEADER  list, PSLIST_ENTRY  first, PSLIST_ENTRY  last, ULONG  count) /* ../dlls/ntdll/rtl.c:1422 */
 {
+	PSLIST_ENTRY return_value;
 	TRACE("Enter RtlInterlockedPushListSList\n");
-	return pRtlInterlockedPushListSList(list, first, last, count);
+	return_value = pRtlInterlockedPushListSList(list, first, last, count);
+	TRACE("Leave RtlInterlockedPushListSList\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlInterlockedPushListSList(void);  /* ../dlls/ntdll/rtl.c:1422 */
@@ -14975,10 +16311,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInterlockedPushListSList,
 	"ret \n"
 )
 
-extern WINAPI PSLIST_ENTRY wine32b_ntdll_RtlInterlockedPushListSListEx(PSLIST_HEADER  list, PSLIST_ENTRY  first, PSLIST_ENTRY  last, ULONG  count) /* ../dlls/ntdll/rtl.c:1389 */
+WINAPI PSLIST_ENTRY wine32b_ntdll_RtlInterlockedPushListSListEx(PSLIST_HEADER  list, PSLIST_ENTRY  first, PSLIST_ENTRY  last, ULONG  count) /* ../dlls/ntdll/rtl.c:1389 */
 {
+	PSLIST_ENTRY return_value;
 	TRACE("Enter RtlInterlockedPushListSListEx\n");
-	return pRtlInterlockedPushListSListEx(list, first, last, count);
+	return_value = pRtlInterlockedPushListSListEx(list, first, last, count);
+	TRACE("Leave RtlInterlockedPushListSListEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlInterlockedPushListSListEx(void);  /* ../dlls/ntdll/rtl.c:1389 */
@@ -15003,10 +16342,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlInterlockedPushListSListEx,
 	"ret \n"
 )
 
-extern WINAPI CHAR* wine32b_ntdll_RtlIpv4AddressToStringA(IN_ADDR*  pin, LPSTR  buffer) /* ../dlls/ntdll/rtl.c:1191 */
+WINAPI CHAR* wine32b_ntdll_RtlIpv4AddressToStringA(IN_ADDR*  pin, LPSTR  buffer) /* ../dlls/ntdll/rtl.c:1191 */
 {
+	CHAR* return_value;
 	TRACE("Enter RtlIpv4AddressToStringA\n");
-	return pRtlIpv4AddressToStringA(pin, buffer);
+	return_value = pRtlIpv4AddressToStringA(pin, buffer);
+	TRACE("Leave RtlIpv4AddressToStringA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlIpv4AddressToStringA(void);  /* ../dlls/ntdll/rtl.c:1191 */
@@ -15029,10 +16371,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIpv4AddressToStringA,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlIpv4AddressToStringExA(IN_ADDR*  pin, USHORT  port, LPSTR  buffer, PULONG  psize) /* ../dlls/ntdll/rtl.c:1137 */
+WINAPI NTSTATUS wine32b_ntdll_RtlIpv4AddressToStringExA(IN_ADDR*  pin, USHORT  port, LPSTR  buffer, PULONG  psize) /* ../dlls/ntdll/rtl.c:1137 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlIpv4AddressToStringExA\n");
-	return pRtlIpv4AddressToStringExA(pin, port, buffer, psize);
+	return_value = pRtlIpv4AddressToStringExA(pin, port, buffer, psize);
+	TRACE("Leave RtlIpv4AddressToStringExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlIpv4AddressToStringExA(void);  /* ../dlls/ntdll/rtl.c:1137 */
@@ -15057,10 +16402,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIpv4AddressToStringExA,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlIpv4AddressToStringExW(IN_ADDR*  pin, USHORT  port, LPWSTR  buffer, PULONG  psize) /* ../dlls/ntdll/rtl.c:1102 */
+WINAPI NTSTATUS wine32b_ntdll_RtlIpv4AddressToStringExW(IN_ADDR*  pin, USHORT  port, LPWSTR  buffer, PULONG  psize) /* ../dlls/ntdll/rtl.c:1102 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlIpv4AddressToStringExW\n");
-	return pRtlIpv4AddressToStringExW(pin, port, buffer, psize);
+	return_value = pRtlIpv4AddressToStringExW(pin, port, buffer, psize);
+	TRACE("Leave RtlIpv4AddressToStringExW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlIpv4AddressToStringExW(void);  /* ../dlls/ntdll/rtl.c:1102 */
@@ -15085,10 +16433,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIpv4AddressToStringExW,
 	"ret \n"
 )
 
-extern WINAPI WCHAR* wine32b_ntdll_RtlIpv4AddressToStringW(IN_ADDR*  pin, LPWSTR  buffer) /* ../dlls/ntdll/rtl.c:1176 */
+WINAPI WCHAR* wine32b_ntdll_RtlIpv4AddressToStringW(IN_ADDR*  pin, LPWSTR  buffer) /* ../dlls/ntdll/rtl.c:1176 */
 {
+	WCHAR* return_value;
 	TRACE("Enter RtlIpv4AddressToStringW\n");
-	return pRtlIpv4AddressToStringW(pin, buffer);
+	return_value = pRtlIpv4AddressToStringW(pin, buffer);
+	TRACE("Leave RtlIpv4AddressToStringW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlIpv4AddressToStringW(void);  /* ../dlls/ntdll/rtl.c:1176 */
@@ -15111,10 +16462,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIpv4AddressToStringW,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlIpv4StringToAddressA(char*  str, BOOLEAN  strict, char**  terminator, IN_ADDR*  address) /* ../dlls/ntdll/rtl.c:1062 */
+WINAPI NTSTATUS wine32b_ntdll_RtlIpv4StringToAddressA(char*  str, BOOLEAN  strict, char**  terminator, IN_ADDR*  address) /* ../dlls/ntdll/rtl.c:1062 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlIpv4StringToAddressA\n");
-	return pRtlIpv4StringToAddressA(str, strict, terminator, address);
+	return_value = pRtlIpv4StringToAddressA(str, strict, terminator, address);
+	TRACE("Leave RtlIpv4StringToAddressA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlIpv4StringToAddressA(void);  /* ../dlls/ntdll/rtl.c:1062 */
@@ -15139,10 +16493,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIpv4StringToAddressA,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlIpv4StringToAddressExA(char*  str, BOOLEAN  strict, IN_ADDR*  address, USHORT*  port) /* ../dlls/ntdll/rtl.c:1045 */
+WINAPI NTSTATUS wine32b_ntdll_RtlIpv4StringToAddressExA(char*  str, BOOLEAN  strict, IN_ADDR*  address, USHORT*  port) /* ../dlls/ntdll/rtl.c:1045 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlIpv4StringToAddressExA\n");
-	return pRtlIpv4StringToAddressExA(str, strict, address, port);
+	return_value = pRtlIpv4StringToAddressExA(str, strict, address, port);
+	TRACE("Leave RtlIpv4StringToAddressExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlIpv4StringToAddressExA(void);  /* ../dlls/ntdll/rtl.c:1045 */
@@ -15167,10 +16524,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIpv4StringToAddressExA,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlIpv4StringToAddressExW(WCHAR*  str, BOOLEAN  strict, IN_ADDR*  address, USHORT*  port) /* ../dlls/ntdll/rtl.c:1026 */
+WINAPI NTSTATUS wine32b_ntdll_RtlIpv4StringToAddressExW(WCHAR*  str, BOOLEAN  strict, IN_ADDR*  address, USHORT*  port) /* ../dlls/ntdll/rtl.c:1026 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlIpv4StringToAddressExW\n");
-	return pRtlIpv4StringToAddressExW(str, strict, address, port);
+	return_value = pRtlIpv4StringToAddressExW(str, strict, address, port);
+	TRACE("Leave RtlIpv4StringToAddressExW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlIpv4StringToAddressExW(void);  /* ../dlls/ntdll/rtl.c:1026 */
@@ -15195,10 +16555,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIpv4StringToAddressExW,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlIpv4StringToAddressW(WCHAR*  str, BOOLEAN  strict, WCHAR**  terminator, IN_ADDR*  address) /* ../dlls/ntdll/rtl.c:1036 */
+WINAPI NTSTATUS wine32b_ntdll_RtlIpv4StringToAddressW(WCHAR*  str, BOOLEAN  strict, WCHAR**  terminator, IN_ADDR*  address) /* ../dlls/ntdll/rtl.c:1036 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlIpv4StringToAddressW\n");
-	return pRtlIpv4StringToAddressW(str, strict, terminator, address);
+	return_value = pRtlIpv4StringToAddressW(str, strict, terminator, address);
+	TRACE("Leave RtlIpv4StringToAddressW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlIpv4StringToAddressW(void);  /* ../dlls/ntdll/rtl.c:1036 */
@@ -15223,10 +16586,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIpv4StringToAddressW,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlIpv6StringToAddressExW(WCHAR*  str, IN6_ADDR*  address, ULONG*  scope, USHORT*  port) /* ../dlls/ntdll/rtl.c:1080 */
+WINAPI NTSTATUS wine32b_ntdll_RtlIpv6StringToAddressExW(WCHAR*  str, IN6_ADDR*  address, ULONG*  scope, USHORT*  port) /* ../dlls/ntdll/rtl.c:1080 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlIpv6StringToAddressExW\n");
-	return pRtlIpv6StringToAddressExW(str, address, scope, port);
+	return_value = pRtlIpv6StringToAddressExW(str, address, scope, port);
+	TRACE("Leave RtlIpv6StringToAddressExW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlIpv6StringToAddressExW(void);  /* ../dlls/ntdll/rtl.c:1080 */
@@ -15251,10 +16617,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIpv6StringToAddressExW,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlIsActivationContextActive(HANDLE  handle) /* ../dlls/ntdll/actctx.c:5215 */
+WINAPI BOOLEAN wine32b_ntdll_RtlIsActivationContextActive(HANDLE  handle) /* ../dlls/ntdll/actctx.c:5215 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlIsActivationContextActive\n");
-	return pRtlIsActivationContextActive(handle);
+	return_value = pRtlIsActivationContextActive(handle);
+	TRACE("Leave RtlIsActivationContextActive\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlIsActivationContextActive(void);  /* ../dlls/ntdll/actctx.c:5215 */
@@ -15276,10 +16645,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIsActivationContextActive,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_ntdll_RtlIsCriticalSectionLocked(RTL_CRITICAL_SECTION*  crit) /* ../dlls/ntdll/critsection.c:641 */
+WINAPI BOOL wine32b_ntdll_RtlIsCriticalSectionLocked(RTL_CRITICAL_SECTION*  crit) /* ../dlls/ntdll/critsection.c:641 */
 {
+	BOOL return_value;
 	TRACE("Enter RtlIsCriticalSectionLocked\n");
-	return pRtlIsCriticalSectionLocked(crit);
+	return_value = pRtlIsCriticalSectionLocked(crit);
+	TRACE("Leave RtlIsCriticalSectionLocked\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlIsCriticalSectionLocked(void);  /* ../dlls/ntdll/critsection.c:641 */
@@ -15301,10 +16673,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIsCriticalSectionLocked,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_ntdll_RtlIsCriticalSectionLockedByThread(RTL_CRITICAL_SECTION*  crit) /* ../dlls/ntdll/critsection.c:659 */
+WINAPI BOOL wine32b_ntdll_RtlIsCriticalSectionLockedByThread(RTL_CRITICAL_SECTION*  crit) /* ../dlls/ntdll/critsection.c:659 */
 {
+	BOOL return_value;
 	TRACE("Enter RtlIsCriticalSectionLockedByThread\n");
-	return pRtlIsCriticalSectionLockedByThread(crit);
+	return_value = pRtlIsCriticalSectionLockedByThread(crit);
+	TRACE("Leave RtlIsCriticalSectionLockedByThread\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlIsCriticalSectionLockedByThread(void);  /* ../dlls/ntdll/critsection.c:659 */
@@ -15326,10 +16701,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIsCriticalSectionLockedByThread,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlIsDosDeviceName_U(PCWSTR  dos_name) /* ../dlls/ntdll/path.c:269 */
+WINAPI ULONG wine32b_ntdll_RtlIsDosDeviceName_U(PCWSTR  dos_name) /* ../dlls/ntdll/path.c:269 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlIsDosDeviceName_U\n");
-	return pRtlIsDosDeviceName_U(dos_name);
+	return_value = pRtlIsDosDeviceName_U(dos_name);
+	TRACE("Leave RtlIsDosDeviceName_U\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlIsDosDeviceName_U(void);  /* ../dlls/ntdll/path.c:269 */
@@ -15351,10 +16729,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIsDosDeviceName_U,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlIsNameLegalDOS8Dot3(UNICODE_STRING*  unicode, OEM_STRING*  oem, BOOLEAN*  spaces) /* ../dlls/ntdll/path.c:890 */
+WINAPI BOOLEAN wine32b_ntdll_RtlIsNameLegalDOS8Dot3(UNICODE_STRING*  unicode, OEM_STRING*  oem, BOOLEAN*  spaces) /* ../dlls/ntdll/path.c:890 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlIsNameLegalDOS8Dot3\n");
-	return pRtlIsNameLegalDOS8Dot3(unicode, oem, spaces);
+	return_value = pRtlIsNameLegalDOS8Dot3(unicode, oem, spaces);
+	TRACE("Leave RtlIsNameLegalDOS8Dot3\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlIsNameLegalDOS8Dot3(void);  /* ../dlls/ntdll/path.c:890 */
@@ -15378,10 +16759,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIsNameLegalDOS8Dot3,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlIsProcessorFeaturePresent(UINT  feature) /* ../dlls/ntdll/nt.c:2353 */
+WINAPI BOOLEAN wine32b_ntdll_RtlIsProcessorFeaturePresent(UINT  feature) /* ../dlls/ntdll/nt.c:2353 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlIsProcessorFeaturePresent\n");
-	return pRtlIsProcessorFeaturePresent(feature);
+	return_value = pRtlIsProcessorFeaturePresent(feature);
+	TRACE("Leave RtlIsProcessorFeaturePresent\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlIsProcessorFeaturePresent(void);  /* ../dlls/ntdll/nt.c:2353 */
@@ -15403,10 +16787,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIsProcessorFeaturePresent,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlIsTextUnicode(LPCVOID  buf, INT  len, INT*  pf) /* ../dlls/ntdll/rtlstr.c:1635 */
+WINAPI BOOLEAN wine32b_ntdll_RtlIsTextUnicode(LPCVOID  buf, INT  len, INT*  pf) /* ../dlls/ntdll/rtlstr.c:1635 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlIsTextUnicode\n");
-	return pRtlIsTextUnicode(buf, len, pf);
+	return_value = pRtlIsTextUnicode(buf, len, pf);
+	TRACE("Leave RtlIsTextUnicode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlIsTextUnicode(void);  /* ../dlls/ntdll/rtlstr.c:1635 */
@@ -15430,10 +16817,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIsTextUnicode,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlIsValidHandle(RTL_HANDLE_TABLE*  HandleTable, RTL_HANDLE*  Handle) /* ../dlls/ntdll/handletable.c:262 */
+WINAPI BOOLEAN wine32b_ntdll_RtlIsValidHandle(RTL_HANDLE_TABLE*  HandleTable, RTL_HANDLE*  Handle) /* ../dlls/ntdll/handletable.c:262 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlIsValidHandle\n");
-	return pRtlIsValidHandle(HandleTable, Handle);
+	return_value = pRtlIsValidHandle(HandleTable, Handle);
+	TRACE("Leave RtlIsValidHandle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlIsValidHandle(void);  /* ../dlls/ntdll/handletable.c:262 */
@@ -15456,10 +16846,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIsValidHandle,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlIsValidIndexHandle(RTL_HANDLE_TABLE*  HandleTable, ULONG  Index, RTL_HANDLE**  ValidHandle) /* ../dlls/ntdll/handletable.c:291 */
+WINAPI BOOLEAN wine32b_ntdll_RtlIsValidIndexHandle(RTL_HANDLE_TABLE*  HandleTable, ULONG  Index, RTL_HANDLE**  ValidHandle) /* ../dlls/ntdll/handletable.c:291 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlIsValidIndexHandle\n");
-	return pRtlIsValidIndexHandle(HandleTable, Index, ValidHandle);
+	return_value = pRtlIsValidIndexHandle(HandleTable, Index, ValidHandle);
+	TRACE("Leave RtlIsValidIndexHandle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlIsValidIndexHandle(void);  /* ../dlls/ntdll/handletable.c:291 */
@@ -15483,10 +16876,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlIsValidIndexHandle,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlLargeIntegerToChar(ULONGLONG*  value_ptr, ULONG  base, ULONG  length, PCHAR  str) /* ../dlls/ntdll/large_int.c:413 */
+WINAPI NTSTATUS wine32b_ntdll_RtlLargeIntegerToChar(ULONGLONG*  value_ptr, ULONG  base, ULONG  length, PCHAR  str) /* ../dlls/ntdll/large_int.c:413 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlLargeIntegerToChar\n");
-	return pRtlLargeIntegerToChar(value_ptr, base, length, str);
+	return_value = pRtlLargeIntegerToChar(value_ptr, base, length, str);
+	TRACE("Leave RtlLargeIntegerToChar\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlLargeIntegerToChar(void);  /* ../dlls/ntdll/large_int.c:413 */
@@ -15511,10 +16907,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlLargeIntegerToChar,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlLeaveCriticalSection(RTL_CRITICAL_SECTION*  crit) /* ../dlls/ntdll/critsection.c:683 */
+WINAPI NTSTATUS wine32b_ntdll_RtlLeaveCriticalSection(RTL_CRITICAL_SECTION*  crit) /* ../dlls/ntdll/critsection.c:683 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlLeaveCriticalSection\n");
-	return pRtlLeaveCriticalSection(crit);
+	return_value = pRtlLeaveCriticalSection(crit);
+	TRACE("Leave RtlLeaveCriticalSection\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlLeaveCriticalSection(void);  /* ../dlls/ntdll/critsection.c:683 */
@@ -15536,10 +16935,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlLeaveCriticalSection,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_ntdll_RtlLengthRequiredSid(DWORD  nrofsubauths) /* ../dlls/ntdll/sec.c:261 */
+WINAPI DWORD wine32b_ntdll_RtlLengthRequiredSid(DWORD  nrofsubauths) /* ../dlls/ntdll/sec.c:261 */
 {
+	DWORD return_value;
 	TRACE("Enter RtlLengthRequiredSid\n");
-	return pRtlLengthRequiredSid(nrofsubauths);
+	return_value = pRtlLengthRequiredSid(nrofsubauths);
+	TRACE("Leave RtlLengthRequiredSid\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlLengthRequiredSid(void);  /* ../dlls/ntdll/sec.c:261 */
@@ -15561,10 +16963,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlLengthRequiredSid,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlLengthSecurityDescriptor(PSECURITY_DESCRIPTOR  pSecurityDescriptor) /* ../dlls/ntdll/sec.c:571 */
+WINAPI ULONG wine32b_ntdll_RtlLengthSecurityDescriptor(PSECURITY_DESCRIPTOR  pSecurityDescriptor) /* ../dlls/ntdll/sec.c:571 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlLengthSecurityDescriptor\n");
-	return pRtlLengthSecurityDescriptor(pSecurityDescriptor);
+	return_value = pRtlLengthSecurityDescriptor(pSecurityDescriptor);
+	TRACE("Leave RtlLengthSecurityDescriptor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlLengthSecurityDescriptor(void);  /* ../dlls/ntdll/sec.c:571 */
@@ -15586,10 +16991,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlLengthSecurityDescriptor,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_ntdll_RtlLengthSid(PSID  pSid) /* ../dlls/ntdll/sec.c:277 */
+WINAPI DWORD wine32b_ntdll_RtlLengthSid(PSID  pSid) /* ../dlls/ntdll/sec.c:277 */
 {
+	DWORD return_value;
 	TRACE("Enter RtlLengthSid\n");
-	return pRtlLengthSid(pSid);
+	return_value = pRtlLengthSid(pSid);
+	TRACE("Leave RtlLengthSid\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlLengthSid(void);  /* ../dlls/ntdll/sec.c:277 */
@@ -15611,10 +17019,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlLengthSid,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlLocalTimeToSystemTime(LARGE_INTEGER*  LocalTime, PLARGE_INTEGER  SystemTime) /* ../dlls/ntdll/time.c:308 */
+WINAPI NTSTATUS wine32b_ntdll_RtlLocalTimeToSystemTime(LARGE_INTEGER*  LocalTime, PLARGE_INTEGER  SystemTime) /* ../dlls/ntdll/time.c:308 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlLocalTimeToSystemTime\n");
-	return pRtlLocalTimeToSystemTime(LocalTime, SystemTime);
+	return_value = pRtlLocalTimeToSystemTime(LocalTime, SystemTime);
+	TRACE("Leave RtlLocalTimeToSystemTime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlLocalTimeToSystemTime(void);  /* ../dlls/ntdll/time.c:308 */
@@ -15637,10 +17048,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlLocalTimeToSystemTime,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlLockHeap(HANDLE  heap) /* ../dlls/ntdll/heap.c:1977 */
+WINAPI BOOLEAN wine32b_ntdll_RtlLockHeap(HANDLE  heap) /* ../dlls/ntdll/heap.c:1977 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlLockHeap\n");
-	return pRtlLockHeap(heap);
+	return_value = pRtlLockHeap(heap);
+	TRACE("Leave RtlLockHeap\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlLockHeap(void);  /* ../dlls/ntdll/heap.c:1977 */
@@ -15662,10 +17076,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlLockHeap,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlLookupAtomInAtomTable(RTL_ATOM_TABLE  table, WCHAR*  name, RTL_ATOM*  atom) /* ../dlls/ntdll/atom.c:238 */
+WINAPI NTSTATUS wine32b_ntdll_RtlLookupAtomInAtomTable(RTL_ATOM_TABLE  table, WCHAR*  name, RTL_ATOM*  atom) /* ../dlls/ntdll/atom.c:238 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlLookupAtomInAtomTable\n");
-	return pRtlLookupAtomInAtomTable(table, name, atom);
+	return_value = pRtlLookupAtomInAtomTable(table, name, atom);
+	TRACE("Leave RtlLookupAtomInAtomTable\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlLookupAtomInAtomTable(void);  /* ../dlls/ntdll/atom.c:238 */
@@ -15689,10 +17106,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlLookupAtomInAtomTable,
 	"ret \n"
 )
 
-extern WINAPI PRUNTIME_FUNCTION wine32b_ntdll_RtlLookupFunctionEntry(ULONG_PTR  pc, ULONG_PTR*  base, UNWIND_HISTORY_TABLE*  table) /* ../dlls/ntdll/exception.c:652 */
+WINAPI PRUNTIME_FUNCTION wine32b_ntdll_RtlLookupFunctionEntry(ULONG_PTR  pc, ULONG_PTR*  base, UNWIND_HISTORY_TABLE*  table) /* ../dlls/ntdll/exception.c:652 */
 {
+	PRUNTIME_FUNCTION return_value;
 	TRACE("Enter RtlLookupFunctionEntry\n");
-	return pRtlLookupFunctionEntry(pc, base, table);
+	return_value = pRtlLookupFunctionEntry(pc, base, table);
+	TRACE("Leave RtlLookupFunctionEntry\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlLookupFunctionEntry(void);  /* ../dlls/ntdll/exception.c:652 */
@@ -15716,10 +17136,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlLookupFunctionEntry,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlMakeSelfRelativeSD(PSECURITY_DESCRIPTOR  pAbsoluteSecurityDescriptor, PSECURITY_DESCRIPTOR  pSelfRelativeSecurityDescriptor, LPDWORD  lpdwBufferLength) /* ../dlls/ntdll/sec.c:844 */
+WINAPI NTSTATUS wine32b_ntdll_RtlMakeSelfRelativeSD(PSECURITY_DESCRIPTOR  pAbsoluteSecurityDescriptor, PSECURITY_DESCRIPTOR  pSelfRelativeSecurityDescriptor, LPDWORD  lpdwBufferLength) /* ../dlls/ntdll/sec.c:844 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlMakeSelfRelativeSD\n");
-	return pRtlMakeSelfRelativeSD(pAbsoluteSecurityDescriptor, pSelfRelativeSecurityDescriptor, lpdwBufferLength);
+	return_value = pRtlMakeSelfRelativeSD(pAbsoluteSecurityDescriptor, pSelfRelativeSecurityDescriptor, lpdwBufferLength);
+	TRACE("Leave RtlMakeSelfRelativeSD\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlMakeSelfRelativeSD(void);  /* ../dlls/ntdll/sec.c:844 */
@@ -15743,10 +17166,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlMakeSelfRelativeSD,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlMapGenericMask(PACCESS_MASK  AccessMask, GENERIC_MAPPING*  GenericMapping) /* ../dlls/ntdll/rtl.c:800 */
+WINAPI void wine32b_ntdll_RtlMapGenericMask(PACCESS_MASK  AccessMask, GENERIC_MAPPING*  GenericMapping) /* ../dlls/ntdll/rtl.c:800 */
 {
 	TRACE("Enter RtlMapGenericMask\n");
-	return pRtlMapGenericMask(AccessMask, GenericMapping);
+	pRtlMapGenericMask(AccessMask, GenericMapping);
+	TRACE("Leave RtlMapGenericMask\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlMapGenericMask(void);  /* ../dlls/ntdll/rtl.c:800 */
@@ -15769,10 +17193,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlMapGenericMask,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlMoveMemory(void*  Destination, void*  Source, SIZE_T  Length) /* ../dlls/ntdll/rtl.c:446 */
+WINAPI void wine32b_ntdll_RtlMoveMemory(void*  Destination, void*  Source, SIZE_T  Length) /* ../dlls/ntdll/rtl.c:446 */
 {
 	TRACE("Enter RtlMoveMemory\n");
-	return pRtlMoveMemory(Destination, Source, Length);
+	pRtlMoveMemory(Destination, Source, Length);
+	TRACE("Leave RtlMoveMemory\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlMoveMemory(void);  /* ../dlls/ntdll/rtl.c:446 */
@@ -15796,10 +17221,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlMoveMemory,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlMultiByteToUnicodeN(LPWSTR  dst, DWORD  dstlen, LPDWORD  reslen, LPCSTR  src, DWORD  srclen) /* ../dlls/ntdll/rtlstr.c:844 */
+WINAPI NTSTATUS wine32b_ntdll_RtlMultiByteToUnicodeN(LPWSTR  dst, DWORD  dstlen, LPDWORD  reslen, LPCSTR  src, DWORD  srclen) /* ../dlls/ntdll/rtlstr.c:844 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlMultiByteToUnicodeN\n");
-	return pRtlMultiByteToUnicodeN(dst, dstlen, reslen, src, srclen);
+	return_value = pRtlMultiByteToUnicodeN(dst, dstlen, reslen, src, srclen);
+	TRACE("Leave RtlMultiByteToUnicodeN\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlMultiByteToUnicodeN(void);  /* ../dlls/ntdll/rtlstr.c:844 */
@@ -15824,10 +17252,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlMultiByteToUnicodeN,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlMultiByteToUnicodeSize(DWORD*  size, LPCSTR  str, UINT  len) /* ../dlls/ntdll/rtlstr.c:1333 */
+WINAPI NTSTATUS wine32b_ntdll_RtlMultiByteToUnicodeSize(DWORD*  size, LPCSTR  str, UINT  len) /* ../dlls/ntdll/rtlstr.c:1333 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlMultiByteToUnicodeSize\n");
-	return pRtlMultiByteToUnicodeSize(size, str, len);
+	return_value = pRtlMultiByteToUnicodeSize(size, str, len);
+	TRACE("Leave RtlMultiByteToUnicodeSize\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlMultiByteToUnicodeSize(void);  /* ../dlls/ntdll/rtlstr.c:1333 */
@@ -15851,10 +17282,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlMultiByteToUnicodeSize,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlNewSecurityObject(PSECURITY_DESCRIPTOR  ParentDescriptor, PSECURITY_DESCRIPTOR  CreatorDescriptor, PSECURITY_DESCRIPTOR*  NewDescriptor, BOOLEAN  IsDirectoryObject, HANDLE  Token, PGENERIC_MAPPING  GenericMapping) /* ../dlls/ntdll/rtl.c:380 */
+WINAPI NTSTATUS wine32b_ntdll_RtlNewSecurityObject(PSECURITY_DESCRIPTOR  ParentDescriptor, PSECURITY_DESCRIPTOR  CreatorDescriptor, PSECURITY_DESCRIPTOR*  NewDescriptor, BOOLEAN  IsDirectoryObject, HANDLE  Token, PGENERIC_MAPPING  GenericMapping) /* ../dlls/ntdll/rtl.c:380 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlNewSecurityObject\n");
-	return pRtlNewSecurityObject(ParentDescriptor, CreatorDescriptor, NewDescriptor, IsDirectoryObject, Token, GenericMapping);
+	return_value = pRtlNewSecurityObject(ParentDescriptor, CreatorDescriptor, NewDescriptor, IsDirectoryObject, Token, GenericMapping);
+	TRACE("Leave RtlNewSecurityObject\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlNewSecurityObject(void);  /* ../dlls/ntdll/rtl.c:380 */
@@ -15879,10 +17313,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlNewSecurityObject,
 	"ret \n"
 )
 
-extern WINAPI PRTL_USER_PROCESS_PARAMETERS wine32b_ntdll_RtlNormalizeProcessParams(RTL_USER_PROCESS_PARAMETERS*  params) /* ../dlls/ntdll/env.c:367 */
+WINAPI PRTL_USER_PROCESS_PARAMETERS wine32b_ntdll_RtlNormalizeProcessParams(RTL_USER_PROCESS_PARAMETERS*  params) /* ../dlls/ntdll/env.c:367 */
 {
+	PRTL_USER_PROCESS_PARAMETERS return_value;
 	TRACE("Enter RtlNormalizeProcessParams\n");
-	return pRtlNormalizeProcessParams(params);
+	return_value = pRtlNormalizeProcessParams(params);
+	TRACE("Leave RtlNormalizeProcessParams\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlNormalizeProcessParams(void);  /* ../dlls/ntdll/env.c:367 */
@@ -15904,10 +17341,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlNormalizeProcessParams,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlNtStatusToDosError(NTSTATUS  status) /* ../dlls/ntdll/error.c:100 */
+WINAPI ULONG wine32b_ntdll_RtlNtStatusToDosError(NTSTATUS  status) /* ../dlls/ntdll/error.c:100 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlNtStatusToDosError\n");
-	return pRtlNtStatusToDosError(status);
+	return_value = pRtlNtStatusToDosError(status);
+	TRACE("Leave RtlNtStatusToDosError\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlNtStatusToDosError(void);  /* ../dlls/ntdll/error.c:100 */
@@ -15929,10 +17369,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlNtStatusToDosError,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlNtStatusToDosErrorNoTeb(NTSTATUS  status) /* ../dlls/ntdll/error.c:57 */
+WINAPI ULONG wine32b_ntdll_RtlNtStatusToDosErrorNoTeb(NTSTATUS  status) /* ../dlls/ntdll/error.c:57 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlNtStatusToDosErrorNoTeb\n");
-	return pRtlNtStatusToDosErrorNoTeb(status);
+	return_value = pRtlNtStatusToDosErrorNoTeb(status);
+	TRACE("Leave RtlNtStatusToDosErrorNoTeb\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlNtStatusToDosErrorNoTeb(void);  /* ../dlls/ntdll/error.c:57 */
@@ -15954,10 +17397,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlNtStatusToDosErrorNoTeb,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlNumberGenericTableElements(PVOID  pTable) /* ../dlls/ntdll/rtl.c:426 */
+WINAPI ULONG wine32b_ntdll_RtlNumberGenericTableElements(PVOID  pTable) /* ../dlls/ntdll/rtl.c:426 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlNumberGenericTableElements\n");
-	return pRtlNumberGenericTableElements(pTable);
+	return_value = pRtlNumberGenericTableElements(pTable);
+	TRACE("Leave RtlNumberGenericTableElements\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlNumberGenericTableElements(void);  /* ../dlls/ntdll/rtl.c:426 */
@@ -15979,10 +17425,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlNumberGenericTableElements,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlNumberOfClearBits(PCRTL_BITMAP  lpBits) /* ../dlls/ntdll/rtlbitmap.c:579 */
+WINAPI ULONG wine32b_ntdll_RtlNumberOfClearBits(PCRTL_BITMAP  lpBits) /* ../dlls/ntdll/rtlbitmap.c:579 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlNumberOfClearBits\n");
-	return pRtlNumberOfClearBits(lpBits);
+	return_value = pRtlNumberOfClearBits(lpBits);
+	TRACE("Leave RtlNumberOfClearBits\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlNumberOfClearBits(void);  /* ../dlls/ntdll/rtlbitmap.c:579 */
@@ -16004,10 +17453,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlNumberOfClearBits,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlNumberOfSetBits(PCRTL_BITMAP  lpBits) /* ../dlls/ntdll/rtlbitmap.c:536 */
+WINAPI ULONG wine32b_ntdll_RtlNumberOfSetBits(PCRTL_BITMAP  lpBits) /* ../dlls/ntdll/rtlbitmap.c:536 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlNumberOfSetBits\n");
-	return pRtlNumberOfSetBits(lpBits);
+	return_value = pRtlNumberOfSetBits(lpBits);
+	TRACE("Leave RtlNumberOfSetBits\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlNumberOfSetBits(void);  /* ../dlls/ntdll/rtlbitmap.c:536 */
@@ -16029,10 +17481,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlNumberOfSetBits,
 	"ret \n"
 )
 
-extern WINAPI UINT wine32b_ntdll_RtlOemStringToUnicodeSize(STRING*  str) /* ../dlls/ntdll/rtlstr.c:1291 */
+WINAPI UINT wine32b_ntdll_RtlOemStringToUnicodeSize(STRING*  str) /* ../dlls/ntdll/rtlstr.c:1291 */
 {
+	UINT return_value;
 	TRACE("Enter RtlOemStringToUnicodeSize\n");
-	return pRtlOemStringToUnicodeSize(str);
+	return_value = pRtlOemStringToUnicodeSize(str);
+	TRACE("Leave RtlOemStringToUnicodeSize\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlOemStringToUnicodeSize(void);  /* ../dlls/ntdll/rtlstr.c:1291 */
@@ -16054,10 +17509,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlOemStringToUnicodeSize,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlOemStringToUnicodeString(UNICODE_STRING*  uni, STRING*  oem, BOOLEAN  doalloc) /* ../dlls/ntdll/rtlstr.c:722 */
+WINAPI NTSTATUS wine32b_ntdll_RtlOemStringToUnicodeString(UNICODE_STRING*  uni, STRING*  oem, BOOLEAN  doalloc) /* ../dlls/ntdll/rtlstr.c:722 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlOemStringToUnicodeString\n");
-	return pRtlOemStringToUnicodeString(uni, oem, doalloc);
+	return_value = pRtlOemStringToUnicodeString(uni, oem, doalloc);
+	TRACE("Leave RtlOemStringToUnicodeString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlOemStringToUnicodeString(void);  /* ../dlls/ntdll/rtlstr.c:722 */
@@ -16081,10 +17539,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlOemStringToUnicodeString,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlOemToUnicodeN(LPWSTR  dst, DWORD  dstlen, LPDWORD  reslen, LPCSTR  src, DWORD  srclen) /* ../dlls/ntdll/rtlstr.c:863 */
+WINAPI NTSTATUS wine32b_ntdll_RtlOemToUnicodeN(LPWSTR  dst, DWORD  dstlen, LPDWORD  reslen, LPCSTR  src, DWORD  srclen) /* ../dlls/ntdll/rtlstr.c:863 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlOemToUnicodeN\n");
-	return pRtlOemToUnicodeN(dst, dstlen, reslen, src, srclen);
+	return_value = pRtlOemToUnicodeN(dst, dstlen, reslen, src, srclen);
+	TRACE("Leave RtlOemToUnicodeN\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlOemToUnicodeN(void);  /* ../dlls/ntdll/rtlstr.c:863 */
@@ -16109,10 +17570,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlOemToUnicodeN,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlOpenCurrentUser(ACCESS_MASK  DesiredAccess, PHANDLE  KeyHandle) /* ../dlls/ntdll/reg.c:960 */
+WINAPI NTSTATUS wine32b_ntdll_RtlOpenCurrentUser(ACCESS_MASK  DesiredAccess, PHANDLE  KeyHandle) /* ../dlls/ntdll/reg.c:960 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlOpenCurrentUser\n");
-	return pRtlOpenCurrentUser(DesiredAccess, KeyHandle);
+	return_value = pRtlOpenCurrentUser(DesiredAccess, KeyHandle);
+	TRACE("Leave RtlOpenCurrentUser\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlOpenCurrentUser(void);  /* ../dlls/ntdll/reg.c:960 */
@@ -16135,10 +17599,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlOpenCurrentUser,
 	"ret \n"
 )
 
-extern WINAPI PVOID wine32b_ntdll_RtlPcToFileHeader(PVOID  pc, PVOID*  address) /* ../dlls/ntdll/loader.c:3955 */
+WINAPI PVOID wine32b_ntdll_RtlPcToFileHeader(PVOID  pc, PVOID*  address) /* ../dlls/ntdll/loader.c:3955 */
 {
+	PVOID return_value;
 	TRACE("Enter RtlPcToFileHeader\n");
-	return pRtlPcToFileHeader(pc, address);
+	return_value = pRtlPcToFileHeader(pc, address);
+	TRACE("Leave RtlPcToFileHeader\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlPcToFileHeader(void);  /* ../dlls/ntdll/loader.c:3955 */
@@ -16161,10 +17628,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlPcToFileHeader,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlPinAtomInAtomTable(RTL_ATOM_TABLE  table, RTL_ATOM  atom) /* ../dlls/ntdll/atom.c:288 */
+WINAPI NTSTATUS wine32b_ntdll_RtlPinAtomInAtomTable(RTL_ATOM_TABLE  table, RTL_ATOM  atom) /* ../dlls/ntdll/atom.c:288 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlPinAtomInAtomTable\n");
-	return pRtlPinAtomInAtomTable(table, atom);
+	return_value = pRtlPinAtomInAtomTable(table, atom);
+	TRACE("Leave RtlPinAtomInAtomTable\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlPinAtomInAtomTable(void);  /* ../dlls/ntdll/atom.c:288 */
@@ -16187,10 +17657,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlPinAtomInAtomTable,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlPopFrame(TEB_ACTIVE_FRAME*  frame) /* ../dlls/ntdll/thread.c:714 */
+WINAPI void wine32b_ntdll_RtlPopFrame(TEB_ACTIVE_FRAME*  frame) /* ../dlls/ntdll/thread.c:714 */
 {
 	TRACE("Enter RtlPopFrame\n");
-	return pRtlPopFrame(frame);
+	pRtlPopFrame(frame);
+	TRACE("Leave RtlPopFrame\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlPopFrame(void);  /* ../dlls/ntdll/thread.c:714 */
@@ -16212,10 +17683,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlPopFrame,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlPrefixString(STRING*  s1, STRING*  s2, BOOLEAN  ignore_case) /* ../dlls/ntdll/rtlstr.c:535 */
+WINAPI BOOLEAN wine32b_ntdll_RtlPrefixString(STRING*  s1, STRING*  s2, BOOLEAN  ignore_case) /* ../dlls/ntdll/rtlstr.c:535 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlPrefixString\n");
-	return pRtlPrefixString(s1, s2, ignore_case);
+	return_value = pRtlPrefixString(s1, s2, ignore_case);
+	TRACE("Leave RtlPrefixString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlPrefixString(void);  /* ../dlls/ntdll/rtlstr.c:535 */
@@ -16239,10 +17713,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlPrefixString,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlPrefixUnicodeString(UNICODE_STRING*  s1, UNICODE_STRING*  s2, BOOLEAN  ignore_case) /* ../dlls/ntdll/rtlstr.c:559 */
+WINAPI BOOLEAN wine32b_ntdll_RtlPrefixUnicodeString(UNICODE_STRING*  s1, UNICODE_STRING*  s2, BOOLEAN  ignore_case) /* ../dlls/ntdll/rtlstr.c:559 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlPrefixUnicodeString\n");
-	return pRtlPrefixUnicodeString(s1, s2, ignore_case);
+	return_value = pRtlPrefixUnicodeString(s1, s2, ignore_case);
+	TRACE("Leave RtlPrefixUnicodeString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlPrefixUnicodeString(void);  /* ../dlls/ntdll/rtlstr.c:559 */
@@ -16266,10 +17743,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlPrefixUnicodeString,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlPushFrame(TEB_ACTIVE_FRAME*  frame) /* ../dlls/ntdll/thread.c:704 */
+WINAPI void wine32b_ntdll_RtlPushFrame(TEB_ACTIVE_FRAME*  frame) /* ../dlls/ntdll/thread.c:704 */
 {
 	TRACE("Enter RtlPushFrame\n");
-	return pRtlPushFrame(frame);
+	pRtlPushFrame(frame);
+	TRACE("Leave RtlPushFrame\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlPushFrame(void);  /* ../dlls/ntdll/thread.c:704 */
@@ -16291,10 +17769,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlPushFrame,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlQueryActivationContextApplicationSettings(DWORD  flags, HANDLE  handle, WCHAR*  ns, WCHAR*  settings, WCHAR*  buffer, SIZE_T  size, SIZE_T*  written) /* ../dlls/ntdll/actctx.c:5568 */
+WINAPI NTSTATUS wine32b_ntdll_RtlQueryActivationContextApplicationSettings(DWORD  flags, HANDLE  handle, WCHAR*  ns, WCHAR*  settings, WCHAR*  buffer, SIZE_T  size, SIZE_T*  written) /* ../dlls/ntdll/actctx.c:5568 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlQueryActivationContextApplicationSettings\n");
-	return pRtlQueryActivationContextApplicationSettings(flags, handle, ns, settings, buffer, size, written);
+	return_value = pRtlQueryActivationContextApplicationSettings(flags, handle, ns, settings, buffer, size, written);
+	TRACE("Leave RtlQueryActivationContextApplicationSettings\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlQueryActivationContextApplicationSettings(void);  /* ../dlls/ntdll/actctx.c:5568 */
@@ -16319,10 +17800,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlQueryActivationContextApplicationSettings,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlQueryAtomInAtomTable(RTL_ATOM_TABLE  table, RTL_ATOM  atom, ULONG*  ref, ULONG*  pin, WCHAR*  name, ULONG*  len) /* ../dlls/ntdll/atom.c:123 */
+WINAPI NTSTATUS wine32b_ntdll_RtlQueryAtomInAtomTable(RTL_ATOM_TABLE  table, RTL_ATOM  atom, ULONG*  ref, ULONG*  pin, WCHAR*  name, ULONG*  len) /* ../dlls/ntdll/atom.c:123 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlQueryAtomInAtomTable\n");
-	return pRtlQueryAtomInAtomTable(table, atom, ref, pin, name, len);
+	return_value = pRtlQueryAtomInAtomTable(table, atom, ref, pin, name, len);
+	TRACE("Leave RtlQueryAtomInAtomTable\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlQueryAtomInAtomTable(void);  /* ../dlls/ntdll/atom.c:123 */
@@ -16347,10 +17831,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlQueryAtomInAtomTable,
 	"ret \n"
 )
 
-extern WINAPI WORD wine32b_ntdll_RtlQueryDepthSList(PSLIST_HEADER  list) /* ../dlls/ntdll/rtl.c:1257 */
+WINAPI WORD wine32b_ntdll_RtlQueryDepthSList(PSLIST_HEADER  list) /* ../dlls/ntdll/rtl.c:1257 */
 {
+	WORD return_value;
 	TRACE("Enter RtlQueryDepthSList\n");
-	return pRtlQueryDepthSList(list);
+	return_value = pRtlQueryDepthSList(list);
+	TRACE("Leave RtlQueryDepthSList\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlQueryDepthSList(void);  /* ../dlls/ntdll/rtl.c:1257 */
@@ -16372,10 +17859,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlQueryDepthSList,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlQueryDynamicTimeZoneInformation(RTL_DYNAMIC_TIME_ZONE_INFORMATION*  tzinfo) /* ../dlls/ntdll/time.c:1035 */
+WINAPI NTSTATUS wine32b_ntdll_RtlQueryDynamicTimeZoneInformation(RTL_DYNAMIC_TIME_ZONE_INFORMATION*  tzinfo) /* ../dlls/ntdll/time.c:1035 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlQueryDynamicTimeZoneInformation\n");
-	return pRtlQueryDynamicTimeZoneInformation(tzinfo);
+	return_value = pRtlQueryDynamicTimeZoneInformation(tzinfo);
+	TRACE("Leave RtlQueryDynamicTimeZoneInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlQueryDynamicTimeZoneInformation(void);  /* ../dlls/ntdll/time.c:1035 */
@@ -16397,10 +17887,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlQueryDynamicTimeZoneInformation,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlQueryEnvironmentVariable_U(PWSTR  env, PUNICODE_STRING  name, PUNICODE_STRING  value) /* ../dlls/ntdll/env.c:128 */
+WINAPI NTSTATUS wine32b_ntdll_RtlQueryEnvironmentVariable_U(PWSTR  env, PUNICODE_STRING  name, PUNICODE_STRING  value) /* ../dlls/ntdll/env.c:128 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlQueryEnvironmentVariable_U\n");
-	return pRtlQueryEnvironmentVariable_U(env, name, value);
+	return_value = pRtlQueryEnvironmentVariable_U(env, name, value);
+	TRACE("Leave RtlQueryEnvironmentVariable_U\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlQueryEnvironmentVariable_U(void);  /* ../dlls/ntdll/env.c:128 */
@@ -16424,10 +17917,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlQueryEnvironmentVariable_U,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlQueryHeapInformation(HANDLE  heap, HEAP_INFORMATION_CLASS  info_class, PVOID  info, SIZE_T  size_in, PSIZE_T  size_out) /* ../dlls/ntdll/heap.c:2245 */
+WINAPI NTSTATUS wine32b_ntdll_RtlQueryHeapInformation(HANDLE  heap, HEAP_INFORMATION_CLASS  info_class, PVOID  info, SIZE_T  size_in, PSIZE_T  size_out) /* ../dlls/ntdll/heap.c:2245 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlQueryHeapInformation\n");
-	return pRtlQueryHeapInformation(heap, info_class, info, size_in, size_out);
+	return_value = pRtlQueryHeapInformation(heap, info_class, info, size_in, size_out);
+	TRACE("Leave RtlQueryHeapInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlQueryHeapInformation(void);  /* ../dlls/ntdll/heap.c:2245 */
@@ -16452,10 +17948,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlQueryHeapInformation,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlQueryInformationAcl(PACL  pAcl, LPVOID  pAclInformation, DWORD  nAclInformationLength, ACL_INFORMATION_CLASS  dwAclInformationClass) /* ../dlls/ntdll/sec.c:1857 */
+WINAPI NTSTATUS wine32b_ntdll_RtlQueryInformationAcl(PACL  pAcl, LPVOID  pAclInformation, DWORD  nAclInformationLength, ACL_INFORMATION_CLASS  dwAclInformationClass) /* ../dlls/ntdll/sec.c:1857 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlQueryInformationAcl\n");
-	return pRtlQueryInformationAcl(pAcl, pAclInformation, nAclInformationLength, dwAclInformationClass);
+	return_value = pRtlQueryInformationAcl(pAcl, pAclInformation, nAclInformationLength, dwAclInformationClass);
+	TRACE("Leave RtlQueryInformationAcl\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlQueryInformationAcl(void);  /* ../dlls/ntdll/sec.c:1857 */
@@ -16480,10 +17979,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlQueryInformationAcl,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlQueryInformationActivationContext(ULONG  flags, HANDLE  handle, PVOID  subinst, ULONG  class, PVOID  buffer, SIZE_T  bufsize, SIZE_T*  retlen) /* ../dlls/ntdll/actctx.c:5231 */
+WINAPI NTSTATUS wine32b_ntdll_RtlQueryInformationActivationContext(ULONG  flags, HANDLE  handle, PVOID  subinst, ULONG  class, PVOID  buffer, SIZE_T  bufsize, SIZE_T*  retlen) /* ../dlls/ntdll/actctx.c:5231 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlQueryInformationActivationContext\n");
-	return pRtlQueryInformationActivationContext(flags, handle, subinst, class, buffer, bufsize, retlen);
+	return_value = pRtlQueryInformationActivationContext(flags, handle, subinst, class, buffer, bufsize, retlen);
+	TRACE("Leave RtlQueryInformationActivationContext\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlQueryInformationActivationContext(void);  /* ../dlls/ntdll/actctx.c:5231 */
@@ -16508,10 +18010,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlQueryInformationActivationContext,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlQueryPackageIdentity(HANDLE  token, WCHAR*  fullname, SIZE_T*  fullname_size, WCHAR*  appid, SIZE_T*  appid_size, BOOLEAN*  packaged) /* ../dlls/ntdll/rtl.c:1823 */
+WINAPI NTSTATUS wine32b_ntdll_RtlQueryPackageIdentity(HANDLE  token, WCHAR*  fullname, SIZE_T*  fullname_size, WCHAR*  appid, SIZE_T*  appid_size, BOOLEAN*  packaged) /* ../dlls/ntdll/rtl.c:1823 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlQueryPackageIdentity\n");
-	return pRtlQueryPackageIdentity(token, fullname, fullname_size, appid, appid_size, packaged);
+	return_value = pRtlQueryPackageIdentity(token, fullname, fullname_size, appid, appid_size, packaged);
+	TRACE("Leave RtlQueryPackageIdentity\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlQueryPackageIdentity(void);  /* ../dlls/ntdll/rtl.c:1823 */
@@ -16536,10 +18041,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlQueryPackageIdentity,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_ntdll_RtlQueryPerformanceCounter(LARGE_INTEGER*  counter) /* ../dlls/ntdll/time.c:558 */
+WINAPI BOOL wine32b_ntdll_RtlQueryPerformanceCounter(LARGE_INTEGER*  counter) /* ../dlls/ntdll/time.c:558 */
 {
+	BOOL return_value;
 	TRACE("Enter RtlQueryPerformanceCounter\n");
-	return pRtlQueryPerformanceCounter(counter);
+	return_value = pRtlQueryPerformanceCounter(counter);
+	TRACE("Leave RtlQueryPerformanceCounter\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlQueryPerformanceCounter(void);  /* ../dlls/ntdll/time.c:558 */
@@ -16561,10 +18069,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlQueryPerformanceCounter,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_ntdll_RtlQueryPerformanceFrequency(LARGE_INTEGER*  frequency) /* ../dlls/ntdll/time.c:567 */
+WINAPI BOOL wine32b_ntdll_RtlQueryPerformanceFrequency(LARGE_INTEGER*  frequency) /* ../dlls/ntdll/time.c:567 */
 {
+	BOOL return_value;
 	TRACE("Enter RtlQueryPerformanceFrequency\n");
-	return pRtlQueryPerformanceFrequency(frequency);
+	return_value = pRtlQueryPerformanceFrequency(frequency);
+	TRACE("Leave RtlQueryPerformanceFrequency\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlQueryPerformanceFrequency(void);  /* ../dlls/ntdll/time.c:567 */
@@ -16586,10 +18097,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlQueryPerformanceFrequency,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlQueryProcessDebugInformation(ULONG  iProcessId, ULONG  iDebugInfoMask, PDEBUG_BUFFER  iBuf) /* ../dlls/ntdll/debugbuffer.c:118 */
+WINAPI NTSTATUS wine32b_ntdll_RtlQueryProcessDebugInformation(ULONG  iProcessId, ULONG  iDebugInfoMask, PDEBUG_BUFFER  iBuf) /* ../dlls/ntdll/debugbuffer.c:118 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlQueryProcessDebugInformation\n");
-	return pRtlQueryProcessDebugInformation(iProcessId, iDebugInfoMask, iBuf);
+	return_value = pRtlQueryProcessDebugInformation(iProcessId, iDebugInfoMask, iBuf);
+	TRACE("Leave RtlQueryProcessDebugInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlQueryProcessDebugInformation(void);  /* ../dlls/ntdll/debugbuffer.c:118 */
@@ -16613,10 +18127,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlQueryProcessDebugInformation,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlQueryRegistryValues(ULONG  RelativeTo, PCWSTR  Path, PRTL_QUERY_REGISTRY_TABLE  QueryTable, PVOID  Context, PVOID  Environment) /* ../dlls/ntdll/reg.c:1233 */
+WINAPI NTSTATUS wine32b_ntdll_RtlQueryRegistryValues(ULONG  RelativeTo, PCWSTR  Path, PRTL_QUERY_REGISTRY_TABLE  QueryTable, PVOID  Context, PVOID  Environment) /* ../dlls/ntdll/reg.c:1233 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlQueryRegistryValues\n");
-	return pRtlQueryRegistryValues(RelativeTo, Path, QueryTable, Context, Environment);
+	return_value = pRtlQueryRegistryValues(RelativeTo, Path, QueryTable, Context, Environment);
+	TRACE("Leave RtlQueryRegistryValues\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlQueryRegistryValues(void);  /* ../dlls/ntdll/reg.c:1233 */
@@ -16641,10 +18158,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlQueryRegistryValues,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlQueryTimeZoneInformation(RTL_TIME_ZONE_INFORMATION*  ret) /* ../dlls/ntdll/time.c:1014 */
+WINAPI NTSTATUS wine32b_ntdll_RtlQueryTimeZoneInformation(RTL_TIME_ZONE_INFORMATION*  ret) /* ../dlls/ntdll/time.c:1014 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlQueryTimeZoneInformation\n");
-	return pRtlQueryTimeZoneInformation(ret);
+	return_value = pRtlQueryTimeZoneInformation(ret);
+	TRACE("Leave RtlQueryTimeZoneInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlQueryTimeZoneInformation(void);  /* ../dlls/ntdll/time.c:1014 */
@@ -16666,10 +18186,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlQueryTimeZoneInformation,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlQueryUnbiasedInterruptTime(ULONGLONG*  time) /* ../dlls/ntdll/time.c:1120 */
+WINAPI NTSTATUS wine32b_ntdll_RtlQueryUnbiasedInterruptTime(ULONGLONG*  time) /* ../dlls/ntdll/time.c:1120 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlQueryUnbiasedInterruptTime\n");
-	return pRtlQueryUnbiasedInterruptTime(time);
+	return_value = pRtlQueryUnbiasedInterruptTime(time);
+	TRACE("Leave RtlQueryUnbiasedInterruptTime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlQueryUnbiasedInterruptTime(void);  /* ../dlls/ntdll/time.c:1120 */
@@ -16691,10 +18214,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlQueryUnbiasedInterruptTime,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlQueueWorkItem(PRTL_WORK_ITEM_ROUTINE  function, PVOID  context, ULONG  flags) /* ../dlls/ntdll/threadpool.c:377 */
+WINAPI NTSTATUS wine32b_ntdll_RtlQueueWorkItem(PRTL_WORK_ITEM_ROUTINE  function, PVOID  context, ULONG  flags) /* ../dlls/ntdll/threadpool.c:377 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlQueueWorkItem\n");
-	return pRtlQueueWorkItem(function, context, flags);
+	return_value = pRtlQueueWorkItem(function, context, flags);
+	TRACE("Leave RtlQueueWorkItem\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlQueueWorkItem(void);  /* ../dlls/ntdll/threadpool.c:377 */
@@ -16718,10 +18244,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlQueueWorkItem,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlRaiseStatus(NTSTATUS  status) /* ../dlls/ntdll/exception.c:271 */
+WINAPI void wine32b_ntdll_RtlRaiseStatus(NTSTATUS  status) /* ../dlls/ntdll/exception.c:271 */
 {
 	TRACE("Enter RtlRaiseStatus\n");
-	return pRtlRaiseStatus(status);
+	pRtlRaiseStatus(status);
+	TRACE("Leave RtlRaiseStatus\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlRaiseStatus(void);  /* ../dlls/ntdll/exception.c:271 */
@@ -16743,10 +18270,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlRaiseStatus,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlRandom(PULONG  seed) /* ../dlls/ntdll/rtl.c:713 */
+WINAPI ULONG wine32b_ntdll_RtlRandom(PULONG  seed) /* ../dlls/ntdll/rtl.c:713 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlRandom\n");
-	return pRtlRandom(seed);
+	return_value = pRtlRandom(seed);
+	TRACE("Leave RtlRandom\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlRandom(void);  /* ../dlls/ntdll/rtl.c:713 */
@@ -16768,10 +18298,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlRandom,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlRandomEx(ULONG*  seed) /* ../dlls/ntdll/rtl.c:748 */
+WINAPI ULONG wine32b_ntdll_RtlRandomEx(ULONG*  seed) /* ../dlls/ntdll/rtl.c:748 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlRandomEx\n");
-	return pRtlRandomEx(seed);
+	return_value = pRtlRandomEx(seed);
+	TRACE("Leave RtlRandomEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlRandomEx(void);  /* ../dlls/ntdll/rtl.c:748 */
@@ -16793,10 +18326,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlRandomEx,
 	"ret \n"
 )
 
-extern WINAPI PVOID wine32b_ntdll_RtlReAllocateHeap(HANDLE  heap, ULONG  flags, PVOID  ptr, SIZE_T  size) /* ../dlls/ntdll/heap.c:1809 */
+WINAPI PVOID wine32b_ntdll_RtlReAllocateHeap(HANDLE  heap, ULONG  flags, PVOID  ptr, SIZE_T  size) /* ../dlls/ntdll/heap.c:1809 */
 {
+	PVOID return_value;
 	TRACE("Enter RtlReAllocateHeap\n");
-	return pRtlReAllocateHeap(heap, flags, ptr, size);
+	return_value = pRtlReAllocateHeap(heap, flags, ptr, size);
+	TRACE("Leave RtlReAllocateHeap\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlReAllocateHeap(void);  /* ../dlls/ntdll/heap.c:1809 */
@@ -16821,10 +18357,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlReAllocateHeap,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlRegisterWait(PHANDLE  NewWaitObject, HANDLE  Object, RTL_WAITORTIMERCALLBACKFUNC  Callback, PVOID  Context, ULONG  Milliseconds, ULONG  Flags) /* ../dlls/ntdll/threadpool.c:587 */
+WINAPI NTSTATUS wine32b_ntdll_RtlRegisterWait(PHANDLE  NewWaitObject, HANDLE  Object, RTL_WAITORTIMERCALLBACKFUNC  Callback, PVOID  Context, ULONG  Milliseconds, ULONG  Flags) /* ../dlls/ntdll/threadpool.c:587 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlRegisterWait\n");
-	return pRtlRegisterWait(NewWaitObject, Object, Callback, Context, Milliseconds, Flags);
+	return_value = pRtlRegisterWait(NewWaitObject, Object, Callback, Context, Milliseconds, Flags);
+	TRACE("Leave RtlRegisterWait\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlRegisterWait(void);  /* ../dlls/ntdll/threadpool.c:587 */
@@ -16849,10 +18388,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlRegisterWait,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlReleaseActivationContext(HANDLE  handle) /* ../dlls/ntdll/actctx.c:5103 */
+WINAPI void wine32b_ntdll_RtlReleaseActivationContext(HANDLE  handle) /* ../dlls/ntdll/actctx.c:5103 */
 {
 	TRACE("Enter RtlReleaseActivationContext\n");
-	return pRtlReleaseActivationContext(handle);
+	pRtlReleaseActivationContext(handle);
+	TRACE("Leave RtlReleaseActivationContext\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlReleaseActivationContext(void);  /* ../dlls/ntdll/actctx.c:5103 */
@@ -16874,10 +18414,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlReleaseActivationContext,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlReleasePebLock(void) /* ../dlls/ntdll/rtl.c:371 */
+WINAPI void wine32b_ntdll_RtlReleasePebLock(void) /* ../dlls/ntdll/rtl.c:371 */
 {
 	TRACE("Enter RtlReleasePebLock\n");
-	return pRtlReleasePebLock();
+	pRtlReleasePebLock();
+	TRACE("Leave RtlReleasePebLock\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlReleasePebLock(void);  /* ../dlls/ntdll/rtl.c:371 */
@@ -16898,10 +18439,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlReleasePebLock,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlReleaseRelativeName(RTL_RELATIVE_NAME*  relative) /* ../dlls/ntdll/path.c:465 */
+WINAPI void wine32b_ntdll_RtlReleaseRelativeName(RTL_RELATIVE_NAME*  relative) /* ../dlls/ntdll/path.c:465 */
 {
 	TRACE("Enter RtlReleaseRelativeName\n");
-	return pRtlReleaseRelativeName(relative);
+	pRtlReleaseRelativeName(relative);
+	TRACE("Leave RtlReleaseRelativeName\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlReleaseRelativeName(void);  /* ../dlls/ntdll/path.c:465 */
@@ -16923,10 +18465,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlReleaseRelativeName,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlReleaseResource(LPRTL_RWLOCK  rwl) /* ../dlls/ntdll/rtl.c:243 */
+WINAPI void wine32b_ntdll_RtlReleaseResource(LPRTL_RWLOCK  rwl) /* ../dlls/ntdll/rtl.c:243 */
 {
 	TRACE("Enter RtlReleaseResource\n");
-	return pRtlReleaseResource(rwl);
+	pRtlReleaseResource(rwl);
+	TRACE("Leave RtlReleaseResource\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlReleaseResource(void);  /* ../dlls/ntdll/rtl.c:243 */
@@ -16948,10 +18491,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlReleaseResource,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlReleaseSRWLockExclusive(RTL_SRWLOCK*  lock) /* ../dlls/ntdll/sync.c:2121 */
+WINAPI void wine32b_ntdll_RtlReleaseSRWLockExclusive(RTL_SRWLOCK*  lock) /* ../dlls/ntdll/sync.c:2121 */
 {
 	TRACE("Enter RtlReleaseSRWLockExclusive\n");
-	return pRtlReleaseSRWLockExclusive(lock);
+	pRtlReleaseSRWLockExclusive(lock);
+	TRACE("Leave RtlReleaseSRWLockExclusive\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlReleaseSRWLockExclusive(void);  /* ../dlls/ntdll/sync.c:2121 */
@@ -16973,10 +18517,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlReleaseSRWLockExclusive,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlReleaseSRWLockShared(RTL_SRWLOCK*  lock) /* ../dlls/ntdll/sync.c:2133 */
+WINAPI void wine32b_ntdll_RtlReleaseSRWLockShared(RTL_SRWLOCK*  lock) /* ../dlls/ntdll/sync.c:2133 */
 {
 	TRACE("Enter RtlReleaseSRWLockShared\n");
-	return pRtlReleaseSRWLockShared(lock);
+	pRtlReleaseSRWLockShared(lock);
+	TRACE("Leave RtlReleaseSRWLockShared\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlReleaseSRWLockShared(void);  /* ../dlls/ntdll/sync.c:2133 */
@@ -16998,10 +18543,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlReleaseSRWLockShared,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlRemoveVectoredContinueHandler(PVOID  handler) /* ../dlls/ntdll/exception.c:289 */
+WINAPI ULONG wine32b_ntdll_RtlRemoveVectoredContinueHandler(PVOID  handler) /* ../dlls/ntdll/exception.c:289 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlRemoveVectoredContinueHandler\n");
-	return pRtlRemoveVectoredContinueHandler(handler);
+	return_value = pRtlRemoveVectoredContinueHandler(handler);
+	TRACE("Leave RtlRemoveVectoredContinueHandler\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlRemoveVectoredContinueHandler(void);  /* ../dlls/ntdll/exception.c:289 */
@@ -17023,10 +18571,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlRemoveVectoredContinueHandler,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlRemoveVectoredExceptionHandler(PVOID  handler) /* ../dlls/ntdll/exception.c:307 */
+WINAPI ULONG wine32b_ntdll_RtlRemoveVectoredExceptionHandler(PVOID  handler) /* ../dlls/ntdll/exception.c:307 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlRemoveVectoredExceptionHandler\n");
-	return pRtlRemoveVectoredExceptionHandler(handler);
+	return_value = pRtlRemoveVectoredExceptionHandler(handler);
+	TRACE("Leave RtlRemoveVectoredExceptionHandler\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlRemoveVectoredExceptionHandler(void);  /* ../dlls/ntdll/exception.c:307 */
@@ -17048,10 +18599,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlRemoveVectoredExceptionHandler,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlRestoreContext(CONTEXT*  context, EXCEPTION_RECORD*  rec) /* ../dlls/ntdll/signal_x86_64.c:3800 */
+WINAPI void wine32b_ntdll_RtlRestoreContext(CONTEXT*  context, EXCEPTION_RECORD*  rec) /* ../dlls/ntdll/signal_x86_64.c:3800 */
 {
 	TRACE("Enter RtlRestoreContext\n");
-	return pRtlRestoreContext(context, rec);
+	pRtlRestoreContext(context, rec);
+	TRACE("Leave RtlRestoreContext\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlRestoreContext(void);  /* ../dlls/ntdll/signal_x86_64.c:3800 */
@@ -17074,10 +18626,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlRestoreContext,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_ntdll_RtlRunOnceBeginInitialize(RTL_RUN_ONCE*  once, ULONG  flags, void**  context) /* ../dlls/ntdll/sync.c:1554 */
+WINAPI DWORD wine32b_ntdll_RtlRunOnceBeginInitialize(RTL_RUN_ONCE*  once, ULONG  flags, void**  context) /* ../dlls/ntdll/sync.c:1554 */
 {
+	DWORD return_value;
 	TRACE("Enter RtlRunOnceBeginInitialize\n");
-	return pRtlRunOnceBeginInitialize(once, flags, context);
+	return_value = pRtlRunOnceBeginInitialize(once, flags, context);
+	TRACE("Leave RtlRunOnceBeginInitialize\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlRunOnceBeginInitialize(void);  /* ../dlls/ntdll/sync.c:1554 */
@@ -17101,10 +18656,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlRunOnceBeginInitialize,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_ntdll_RtlRunOnceComplete(RTL_RUN_ONCE*  once, ULONG  flags, void*  context) /* ../dlls/ntdll/sync.c:1600 */
+WINAPI DWORD wine32b_ntdll_RtlRunOnceComplete(RTL_RUN_ONCE*  once, ULONG  flags, void*  context) /* ../dlls/ntdll/sync.c:1600 */
 {
+	DWORD return_value;
 	TRACE("Enter RtlRunOnceComplete\n");
-	return pRtlRunOnceComplete(once, flags, context);
+	return_value = pRtlRunOnceComplete(once, flags, context);
+	TRACE("Leave RtlRunOnceComplete\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlRunOnceComplete(void);  /* ../dlls/ntdll/sync.c:1600 */
@@ -17128,10 +18686,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlRunOnceComplete,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_ntdll_RtlRunOnceExecuteOnce(RTL_RUN_ONCE*  once, PRTL_RUN_ONCE_INIT_FN  func, void*  param, void**  context) /* ../dlls/ntdll/sync.c:1642 */
+WINAPI DWORD wine32b_ntdll_RtlRunOnceExecuteOnce(RTL_RUN_ONCE*  once, PRTL_RUN_ONCE_INIT_FN  func, void*  param, void**  context) /* ../dlls/ntdll/sync.c:1642 */
 {
+	DWORD return_value;
 	TRACE("Enter RtlRunOnceExecuteOnce\n");
-	return pRtlRunOnceExecuteOnce(once, func, param, context);
+	return_value = pRtlRunOnceExecuteOnce(once, func, param, context);
+	TRACE("Leave RtlRunOnceExecuteOnce\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlRunOnceExecuteOnce(void);  /* ../dlls/ntdll/sync.c:1642 */
@@ -17156,10 +18717,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlRunOnceExecuteOnce,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlRunOnceInitialize(RTL_RUN_ONCE*  once) /* ../dlls/ntdll/sync.c:1546 */
+WINAPI void wine32b_ntdll_RtlRunOnceInitialize(RTL_RUN_ONCE*  once) /* ../dlls/ntdll/sync.c:1546 */
 {
 	TRACE("Enter RtlRunOnceInitialize\n");
-	return pRtlRunOnceInitialize(once);
+	pRtlRunOnceInitialize(once);
+	TRACE("Leave RtlRunOnceInitialize\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlRunOnceInitialize(void);  /* ../dlls/ntdll/sync.c:1546 */
@@ -17181,10 +18743,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlRunOnceInitialize,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlSecondsSince1970ToTime(DWORD  Seconds, LARGE_INTEGER*  Time) /* ../dlls/ntdll/time.c:399 */
+WINAPI void wine32b_ntdll_RtlSecondsSince1970ToTime(DWORD  Seconds, LARGE_INTEGER*  Time) /* ../dlls/ntdll/time.c:399 */
 {
 	TRACE("Enter RtlSecondsSince1970ToTime\n");
-	return pRtlSecondsSince1970ToTime(Seconds, Time);
+	pRtlSecondsSince1970ToTime(Seconds, Time);
+	TRACE("Leave RtlSecondsSince1970ToTime\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlSecondsSince1970ToTime(void);  /* ../dlls/ntdll/time.c:399 */
@@ -17207,10 +18770,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSecondsSince1970ToTime,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlSecondsSince1980ToTime(DWORD  Seconds, LARGE_INTEGER*  Time) /* ../dlls/ntdll/time.c:416 */
+WINAPI void wine32b_ntdll_RtlSecondsSince1980ToTime(DWORD  Seconds, LARGE_INTEGER*  Time) /* ../dlls/ntdll/time.c:416 */
 {
 	TRACE("Enter RtlSecondsSince1980ToTime\n");
-	return pRtlSecondsSince1980ToTime(Seconds, Time);
+	pRtlSecondsSince1980ToTime(Seconds, Time);
+	TRACE("Leave RtlSecondsSince1980ToTime\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlSecondsSince1980ToTime(void);  /* ../dlls/ntdll/time.c:416 */
@@ -17233,10 +18797,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSecondsSince1980ToTime,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlSelfRelativeToAbsoluteSD(PSECURITY_DESCRIPTOR  pSelfRelativeSecurityDescriptor, PSECURITY_DESCRIPTOR  pAbsoluteSecurityDescriptor, LPDWORD  lpdwAbsoluteSecurityDescriptorSize, PACL  pDacl, LPDWORD  lpdwDaclSize, PACL  pSacl, LPDWORD  lpdwSaclSize, PSID  pOwner, LPDWORD  lpdwOwnerSize, PSID  pPrimaryGroup, LPDWORD  lpdwPrimaryGroupSize) /* ../dlls/ntdll/sec.c:936 */
+WINAPI NTSTATUS wine32b_ntdll_RtlSelfRelativeToAbsoluteSD(PSECURITY_DESCRIPTOR  pSelfRelativeSecurityDescriptor, PSECURITY_DESCRIPTOR  pAbsoluteSecurityDescriptor, LPDWORD  lpdwAbsoluteSecurityDescriptorSize, PACL  pDacl, LPDWORD  lpdwDaclSize, PACL  pSacl, LPDWORD  lpdwSaclSize, PSID  pOwner, LPDWORD  lpdwOwnerSize, PSID  pPrimaryGroup, LPDWORD  lpdwPrimaryGroupSize) /* ../dlls/ntdll/sec.c:936 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlSelfRelativeToAbsoluteSD\n");
-	return pRtlSelfRelativeToAbsoluteSD(pSelfRelativeSecurityDescriptor, pAbsoluteSecurityDescriptor, lpdwAbsoluteSecurityDescriptorSize, pDacl, lpdwDaclSize, pSacl, lpdwSaclSize, pOwner, lpdwOwnerSize, pPrimaryGroup, lpdwPrimaryGroupSize);
+	return_value = pRtlSelfRelativeToAbsoluteSD(pSelfRelativeSecurityDescriptor, pAbsoluteSecurityDescriptor, lpdwAbsoluteSecurityDescriptorSize, pDacl, lpdwDaclSize, pSacl, lpdwSaclSize, pOwner, lpdwOwnerSize, pPrimaryGroup, lpdwPrimaryGroupSize);
+	TRACE("Leave RtlSelfRelativeToAbsoluteSD\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlSelfRelativeToAbsoluteSD(void);  /* ../dlls/ntdll/sec.c:936 */
@@ -17261,10 +18828,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSelfRelativeToAbsoluteSD,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlSetAllBits(PRTL_BITMAP  lpBits) /* ../dlls/ntdll/rtlbitmap.c:93 */
+WINAPI void wine32b_ntdll_RtlSetAllBits(PRTL_BITMAP  lpBits) /* ../dlls/ntdll/rtlbitmap.c:93 */
 {
 	TRACE("Enter RtlSetAllBits\n");
-	return pRtlSetAllBits(lpBits);
+	pRtlSetAllBits(lpBits);
+	TRACE("Leave RtlSetAllBits\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlSetAllBits(void);  /* ../dlls/ntdll/rtlbitmap.c:93 */
@@ -17286,10 +18854,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetAllBits,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlSetBits(PRTL_BITMAP  lpBits, ULONG  ulStart, ULONG  ulCount) /* ../dlls/ntdll/rtlbitmap.c:129 */
+WINAPI void wine32b_ntdll_RtlSetBits(PRTL_BITMAP  lpBits, ULONG  ulStart, ULONG  ulCount) /* ../dlls/ntdll/rtlbitmap.c:129 */
 {
 	TRACE("Enter RtlSetBits\n");
-	return pRtlSetBits(lpBits, ulStart, ulCount);
+	pRtlSetBits(lpBits, ulStart, ulCount);
+	TRACE("Leave RtlSetBits\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlSetBits(void);  /* ../dlls/ntdll/rtlbitmap.c:129 */
@@ -17313,10 +18882,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetBits,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlSetControlSecurityDescriptor(PSECURITY_DESCRIPTOR  SecurityDescriptor, SECURITY_DESCRIPTOR_CONTROL  ControlBitsOfInterest, SECURITY_DESCRIPTOR_CONTROL  ControlBitsToSet) /* ../dlls/ntdll/sec.c:1065 */
+WINAPI NTSTATUS wine32b_ntdll_RtlSetControlSecurityDescriptor(PSECURITY_DESCRIPTOR  SecurityDescriptor, SECURITY_DESCRIPTOR_CONTROL  ControlBitsOfInterest, SECURITY_DESCRIPTOR_CONTROL  ControlBitsToSet) /* ../dlls/ntdll/sec.c:1065 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlSetControlSecurityDescriptor\n");
-	return pRtlSetControlSecurityDescriptor(SecurityDescriptor, ControlBitsOfInterest, ControlBitsToSet);
+	return_value = pRtlSetControlSecurityDescriptor(SecurityDescriptor, ControlBitsOfInterest, ControlBitsToSet);
+	TRACE("Leave RtlSetControlSecurityDescriptor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlSetControlSecurityDescriptor(void);  /* ../dlls/ntdll/sec.c:1065 */
@@ -17340,10 +18912,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetControlSecurityDescriptor,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlSetCriticalSectionSpinCount(RTL_CRITICAL_SECTION*  crit, ULONG  spincount) /* ../dlls/ntdll/critsection.c:377 */
+WINAPI ULONG wine32b_ntdll_RtlSetCriticalSectionSpinCount(RTL_CRITICAL_SECTION*  crit, ULONG  spincount) /* ../dlls/ntdll/critsection.c:377 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlSetCriticalSectionSpinCount\n");
-	return pRtlSetCriticalSectionSpinCount(crit, spincount);
+	return_value = pRtlSetCriticalSectionSpinCount(crit, spincount);
+	TRACE("Leave RtlSetCriticalSectionSpinCount\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlSetCriticalSectionSpinCount(void);  /* ../dlls/ntdll/critsection.c:377 */
@@ -17366,10 +18941,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetCriticalSectionSpinCount,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlSetCurrentDirectory_U(UNICODE_STRING*  dir) /* ../dlls/ntdll/path.c:994 */
+WINAPI NTSTATUS wine32b_ntdll_RtlSetCurrentDirectory_U(UNICODE_STRING*  dir) /* ../dlls/ntdll/path.c:994 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlSetCurrentDirectory_U\n");
-	return pRtlSetCurrentDirectory_U(dir);
+	return_value = pRtlSetCurrentDirectory_U(dir);
+	TRACE("Leave RtlSetCurrentDirectory_U\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlSetCurrentDirectory_U(void);  /* ../dlls/ntdll/path.c:994 */
@@ -17391,10 +18969,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetCurrentDirectory_U,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlSetCurrentEnvironment(PWSTR  new_env, PWSTR*  old_env) /* ../dlls/ntdll/env.c:171 */
+WINAPI void wine32b_ntdll_RtlSetCurrentEnvironment(PWSTR  new_env, PWSTR*  old_env) /* ../dlls/ntdll/env.c:171 */
 {
 	TRACE("Enter RtlSetCurrentEnvironment\n");
-	return pRtlSetCurrentEnvironment(new_env, old_env);
+	pRtlSetCurrentEnvironment(new_env, old_env);
+	TRACE("Leave RtlSetCurrentEnvironment\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlSetCurrentEnvironment(void);  /* ../dlls/ntdll/env.c:171 */
@@ -17417,10 +18996,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetCurrentEnvironment,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_ntdll_RtlSetCurrentTransaction(HANDLE  new_transaction) /* ../dlls/ntdll/rtl.c:1786 */
+WINAPI BOOL wine32b_ntdll_RtlSetCurrentTransaction(HANDLE  new_transaction) /* ../dlls/ntdll/rtl.c:1786 */
 {
+	BOOL return_value;
 	TRACE("Enter RtlSetCurrentTransaction\n");
-	return pRtlSetCurrentTransaction(new_transaction);
+	return_value = pRtlSetCurrentTransaction(new_transaction);
+	TRACE("Leave RtlSetCurrentTransaction\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlSetCurrentTransaction(void);  /* ../dlls/ntdll/rtl.c:1786 */
@@ -17442,10 +19024,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetCurrentTransaction,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlSetDaclSecurityDescriptor(PSECURITY_DESCRIPTOR  pSecurityDescriptor, BOOLEAN  daclpresent, PACL  dacl, BOOLEAN  dacldefaulted) /* ../dlls/ntdll/sec.c:644 */
+WINAPI NTSTATUS wine32b_ntdll_RtlSetDaclSecurityDescriptor(PSECURITY_DESCRIPTOR  pSecurityDescriptor, BOOLEAN  daclpresent, PACL  dacl, BOOLEAN  dacldefaulted) /* ../dlls/ntdll/sec.c:644 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlSetDaclSecurityDescriptor\n");
-	return pRtlSetDaclSecurityDescriptor(pSecurityDescriptor, daclpresent, dacl, dacldefaulted);
+	return_value = pRtlSetDaclSecurityDescriptor(pSecurityDescriptor, daclpresent, dacl, dacldefaulted);
+	TRACE("Leave RtlSetDaclSecurityDescriptor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlSetDaclSecurityDescriptor(void);  /* ../dlls/ntdll/sec.c:644 */
@@ -17470,10 +19055,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetDaclSecurityDescriptor,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlSetEnvironmentVariable(PWSTR*  penv, PUNICODE_STRING  name, PUNICODE_STRING  value) /* ../dlls/ntdll/env.c:187 */
+WINAPI NTSTATUS wine32b_ntdll_RtlSetEnvironmentVariable(PWSTR*  penv, PUNICODE_STRING  name, PUNICODE_STRING  value) /* ../dlls/ntdll/env.c:187 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlSetEnvironmentVariable\n");
-	return pRtlSetEnvironmentVariable(penv, name, value);
+	return_value = pRtlSetEnvironmentVariable(penv, name, value);
+	TRACE("Leave RtlSetEnvironmentVariable\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlSetEnvironmentVariable(void);  /* ../dlls/ntdll/env.c:187 */
@@ -17497,10 +19085,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetEnvironmentVariable,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlSetGroupSecurityDescriptor(PSECURITY_DESCRIPTOR  pSecurityDescriptor, PSID  group, BOOLEAN  groupdefaulted) /* ../dlls/ntdll/sec.c:791 */
+WINAPI NTSTATUS wine32b_ntdll_RtlSetGroupSecurityDescriptor(PSECURITY_DESCRIPTOR  pSecurityDescriptor, PSID  group, BOOLEAN  groupdefaulted) /* ../dlls/ntdll/sec.c:791 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlSetGroupSecurityDescriptor\n");
-	return pRtlSetGroupSecurityDescriptor(pSecurityDescriptor, group, groupdefaulted);
+	return_value = pRtlSetGroupSecurityDescriptor(pSecurityDescriptor, group, groupdefaulted);
+	TRACE("Leave RtlSetGroupSecurityDescriptor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlSetGroupSecurityDescriptor(void);  /* ../dlls/ntdll/sec.c:791 */
@@ -17524,10 +19115,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetGroupSecurityDescriptor,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlSetHeapInformation(HANDLE  heap, HEAP_INFORMATION_CLASS  info_class, PVOID  info, SIZE_T  size) /* ../dlls/ntdll/heap.c:2268 */
+WINAPI NTSTATUS wine32b_ntdll_RtlSetHeapInformation(HANDLE  heap, HEAP_INFORMATION_CLASS  info_class, PVOID  info, SIZE_T  size) /* ../dlls/ntdll/heap.c:2268 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlSetHeapInformation\n");
-	return pRtlSetHeapInformation(heap, info_class, info, size);
+	return_value = pRtlSetHeapInformation(heap, info_class, info, size);
+	TRACE("Leave RtlSetHeapInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlSetHeapInformation(void);  /* ../dlls/ntdll/heap.c:2268 */
@@ -17552,10 +19146,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetHeapInformation,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlSetIoCompletionCallback(HANDLE  FileHandle, PRTL_OVERLAPPED_COMPLETION_ROUTINE  Function, ULONG  Flags) /* ../dlls/ntdll/threadpool.c:451 */
+WINAPI NTSTATUS wine32b_ntdll_RtlSetIoCompletionCallback(HANDLE  FileHandle, PRTL_OVERLAPPED_COMPLETION_ROUTINE  Function, ULONG  Flags) /* ../dlls/ntdll/threadpool.c:451 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlSetIoCompletionCallback\n");
-	return pRtlSetIoCompletionCallback(FileHandle, Function, Flags);
+	return_value = pRtlSetIoCompletionCallback(FileHandle, Function, Flags);
+	TRACE("Leave RtlSetIoCompletionCallback\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlSetIoCompletionCallback(void);  /* ../dlls/ntdll/threadpool.c:451 */
@@ -17579,10 +19176,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetIoCompletionCallback,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlSetLastWin32Error(DWORD  err) /* ../dlls/ntdll/error.c:155 */
+WINAPI void wine32b_ntdll_RtlSetLastWin32Error(DWORD  err) /* ../dlls/ntdll/error.c:155 */
 {
 	TRACE("Enter RtlSetLastWin32Error\n");
-	return pRtlSetLastWin32Error(err);
+	pRtlSetLastWin32Error(err);
+	TRACE("Leave RtlSetLastWin32Error\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlSetLastWin32Error(void);  /* ../dlls/ntdll/error.c:155 */
@@ -17604,10 +19202,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetLastWin32Error,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlSetLastWin32ErrorAndNtStatusFromNtStatus(NTSTATUS  status) /* ../dlls/ntdll/error.c:171 */
+WINAPI void wine32b_ntdll_RtlSetLastWin32ErrorAndNtStatusFromNtStatus(NTSTATUS  status) /* ../dlls/ntdll/error.c:171 */
 {
 	TRACE("Enter RtlSetLastWin32ErrorAndNtStatusFromNtStatus\n");
-	return pRtlSetLastWin32ErrorAndNtStatusFromNtStatus(status);
+	pRtlSetLastWin32ErrorAndNtStatusFromNtStatus(status);
+	TRACE("Leave RtlSetLastWin32ErrorAndNtStatusFromNtStatus\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlSetLastWin32ErrorAndNtStatusFromNtStatus(void);  /* ../dlls/ntdll/error.c:171 */
@@ -17629,10 +19228,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetLastWin32ErrorAndNtStatusFromNtStatus,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlSetOwnerSecurityDescriptor(PSECURITY_DESCRIPTOR  pSecurityDescriptor, PSID  owner, BOOLEAN  ownerdefaulted) /* ../dlls/ntdll/sec.c:768 */
+WINAPI NTSTATUS wine32b_ntdll_RtlSetOwnerSecurityDescriptor(PSECURITY_DESCRIPTOR  pSecurityDescriptor, PSID  owner, BOOLEAN  ownerdefaulted) /* ../dlls/ntdll/sec.c:768 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlSetOwnerSecurityDescriptor\n");
-	return pRtlSetOwnerSecurityDescriptor(pSecurityDescriptor, owner, ownerdefaulted);
+	return_value = pRtlSetOwnerSecurityDescriptor(pSecurityDescriptor, owner, ownerdefaulted);
+	TRACE("Leave RtlSetOwnerSecurityDescriptor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlSetOwnerSecurityDescriptor(void);  /* ../dlls/ntdll/sec.c:768 */
@@ -17656,10 +19258,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetOwnerSecurityDescriptor,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlSetSaclSecurityDescriptor(PSECURITY_DESCRIPTOR  pSecurityDescriptor, BOOLEAN  saclpresent, PACL  sacl, BOOLEAN  sacldefaulted) /* ../dlls/ntdll/sec.c:710 */
+WINAPI NTSTATUS wine32b_ntdll_RtlSetSaclSecurityDescriptor(PSECURITY_DESCRIPTOR  pSecurityDescriptor, BOOLEAN  saclpresent, PACL  sacl, BOOLEAN  sacldefaulted) /* ../dlls/ntdll/sec.c:710 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlSetSaclSecurityDescriptor\n");
-	return pRtlSetSaclSecurityDescriptor(pSecurityDescriptor, saclpresent, sacl, sacldefaulted);
+	return_value = pRtlSetSaclSecurityDescriptor(pSecurityDescriptor, saclpresent, sacl, sacldefaulted);
+	TRACE("Leave RtlSetSaclSecurityDescriptor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlSetSaclSecurityDescriptor(void);  /* ../dlls/ntdll/sec.c:710 */
@@ -17684,10 +19289,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetSaclSecurityDescriptor,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlSetThreadErrorMode(DWORD  mode, LPDWORD  oldmode) /* ../dlls/ntdll/rtl.c:1746 */
+WINAPI NTSTATUS wine32b_ntdll_RtlSetThreadErrorMode(DWORD  mode, LPDWORD  oldmode) /* ../dlls/ntdll/rtl.c:1746 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlSetThreadErrorMode\n");
-	return pRtlSetThreadErrorMode(mode, oldmode);
+	return_value = pRtlSetThreadErrorMode(mode, oldmode);
+	TRACE("Leave RtlSetThreadErrorMode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlSetThreadErrorMode(void);  /* ../dlls/ntdll/rtl.c:1746 */
@@ -17710,10 +19318,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetThreadErrorMode,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlSetTimeZoneInformation(RTL_TIME_ZONE_INFORMATION*  tzinfo) /* ../dlls/ntdll/time.c:1055 */
+WINAPI NTSTATUS wine32b_ntdll_RtlSetTimeZoneInformation(RTL_TIME_ZONE_INFORMATION*  tzinfo) /* ../dlls/ntdll/time.c:1055 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlSetTimeZoneInformation\n");
-	return pRtlSetTimeZoneInformation(tzinfo);
+	return_value = pRtlSetTimeZoneInformation(tzinfo);
+	TRACE("Leave RtlSetTimeZoneInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlSetTimeZoneInformation(void);  /* ../dlls/ntdll/time.c:1055 */
@@ -17735,10 +19346,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetTimeZoneInformation,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlSetUnhandledExceptionFilter(PRTL_EXCEPTION_FILTER  filter) /* ../dlls/ntdll/exception.c:316 */
+WINAPI void wine32b_ntdll_RtlSetUnhandledExceptionFilter(PRTL_EXCEPTION_FILTER  filter) /* ../dlls/ntdll/exception.c:316 */
 {
 	TRACE("Enter RtlSetUnhandledExceptionFilter\n");
-	return pRtlSetUnhandledExceptionFilter(filter);
+	pRtlSetUnhandledExceptionFilter(filter);
+	TRACE("Leave RtlSetUnhandledExceptionFilter\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlSetUnhandledExceptionFilter(void);  /* ../dlls/ntdll/exception.c:316 */
@@ -17760,10 +19372,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSetUnhandledExceptionFilter,
 	"ret \n"
 )
 
-extern WINAPI SIZE_T wine32b_ntdll_RtlSizeHeap(HANDLE  heap, ULONG  flags, void*  ptr) /* ../dlls/ntdll/heap.c:2024 */
+WINAPI SIZE_T wine32b_ntdll_RtlSizeHeap(HANDLE  heap, ULONG  flags, void*  ptr) /* ../dlls/ntdll/heap.c:2024 */
 {
+	SIZE_T return_value;
 	TRACE("Enter RtlSizeHeap\n");
-	return pRtlSizeHeap(heap, flags, ptr);
+	return_value = pRtlSizeHeap(heap, flags, ptr);
+	TRACE("Leave RtlSizeHeap\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlSizeHeap(void);  /* ../dlls/ntdll/heap.c:2024 */
@@ -17787,10 +19402,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSizeHeap,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlSleepConditionVariableCS(RTL_CONDITION_VARIABLE*  variable, RTL_CRITICAL_SECTION*  crit, LARGE_INTEGER*  timeout) /* ../dlls/ntdll/sync.c:2287 */
+WINAPI NTSTATUS wine32b_ntdll_RtlSleepConditionVariableCS(RTL_CONDITION_VARIABLE*  variable, RTL_CRITICAL_SECTION*  crit, LARGE_INTEGER*  timeout) /* ../dlls/ntdll/sync.c:2287 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlSleepConditionVariableCS\n");
-	return pRtlSleepConditionVariableCS(variable, crit, timeout);
+	return_value = pRtlSleepConditionVariableCS(variable, crit, timeout);
+	TRACE("Leave RtlSleepConditionVariableCS\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlSleepConditionVariableCS(void);  /* ../dlls/ntdll/sync.c:2287 */
@@ -17814,10 +19432,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSleepConditionVariableCS,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlSleepConditionVariableSRW(RTL_CONDITION_VARIABLE*  variable, RTL_SRWLOCK*  lock, LARGE_INTEGER*  timeout, ULONG  flags) /* ../dlls/ntdll/sync.c:2322 */
+WINAPI NTSTATUS wine32b_ntdll_RtlSleepConditionVariableSRW(RTL_CONDITION_VARIABLE*  variable, RTL_SRWLOCK*  lock, LARGE_INTEGER*  timeout, ULONG  flags) /* ../dlls/ntdll/sync.c:2322 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlSleepConditionVariableSRW\n");
-	return pRtlSleepConditionVariableSRW(variable, lock, timeout, flags);
+	return_value = pRtlSleepConditionVariableSRW(variable, lock, timeout, flags);
+	TRACE("Leave RtlSleepConditionVariableSRW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlSleepConditionVariableSRW(void);  /* ../dlls/ntdll/sync.c:2322 */
@@ -17842,10 +19463,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSleepConditionVariableSRW,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlStringFromGUID(GUID*  guid, UNICODE_STRING*  str) /* ../dlls/ntdll/rtlstr.c:2159 */
+WINAPI NTSTATUS wine32b_ntdll_RtlStringFromGUID(GUID*  guid, UNICODE_STRING*  str) /* ../dlls/ntdll/rtlstr.c:2159 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlStringFromGUID\n");
-	return pRtlStringFromGUID(guid, str);
+	return_value = pRtlStringFromGUID(guid, str);
+	TRACE("Leave RtlStringFromGUID\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlStringFromGUID(void);  /* ../dlls/ntdll/rtlstr.c:2159 */
@@ -17868,10 +19492,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlStringFromGUID,
 	"ret \n"
 )
 
-extern WINAPI LPBYTE wine32b_ntdll_RtlSubAuthorityCountSid(PSID  pSid) /* ../dlls/ntdll/sec.c:364 */
+WINAPI LPBYTE wine32b_ntdll_RtlSubAuthorityCountSid(PSID  pSid) /* ../dlls/ntdll/sec.c:364 */
 {
+	LPBYTE return_value;
 	TRACE("Enter RtlSubAuthorityCountSid\n");
-	return pRtlSubAuthorityCountSid(pSid);
+	return_value = pRtlSubAuthorityCountSid(pSid);
+	TRACE("Leave RtlSubAuthorityCountSid\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlSubAuthorityCountSid(void);  /* ../dlls/ntdll/sec.c:364 */
@@ -17893,10 +19520,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSubAuthorityCountSid,
 	"ret \n"
 )
 
-extern WINAPI LPDWORD wine32b_ntdll_RtlSubAuthoritySid(PSID  pSid, DWORD  nSubAuthority) /* ../dlls/ntdll/sec.c:332 */
+WINAPI LPDWORD wine32b_ntdll_RtlSubAuthoritySid(PSID  pSid, DWORD  nSubAuthority) /* ../dlls/ntdll/sec.c:332 */
 {
+	LPDWORD return_value;
 	TRACE("Enter RtlSubAuthoritySid\n");
-	return pRtlSubAuthoritySid(pSid, nSubAuthority);
+	return_value = pRtlSubAuthoritySid(pSid, nSubAuthority);
+	TRACE("Leave RtlSubAuthoritySid\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlSubAuthoritySid(void);  /* ../dlls/ntdll/sec.c:332 */
@@ -17919,10 +19549,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSubAuthoritySid,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlSystemTimeToLocalTime(LARGE_INTEGER*  SystemTime, PLARGE_INTEGER  LocalTime) /* ../dlls/ntdll/time.c:333 */
+WINAPI NTSTATUS wine32b_ntdll_RtlSystemTimeToLocalTime(LARGE_INTEGER*  SystemTime, PLARGE_INTEGER  LocalTime) /* ../dlls/ntdll/time.c:333 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlSystemTimeToLocalTime\n");
-	return pRtlSystemTimeToLocalTime(SystemTime, LocalTime);
+	return_value = pRtlSystemTimeToLocalTime(SystemTime, LocalTime);
+	TRACE("Leave RtlSystemTimeToLocalTime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlSystemTimeToLocalTime(void);  /* ../dlls/ntdll/time.c:333 */
@@ -17945,10 +19578,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlSystemTimeToLocalTime,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlTimeFieldsToTime(PTIME_FIELDS  tfTimeFields, PLARGE_INTEGER  Time) /* ../dlls/ntdll/time.c:207 */
+WINAPI BOOLEAN wine32b_ntdll_RtlTimeFieldsToTime(PTIME_FIELDS  tfTimeFields, PLARGE_INTEGER  Time) /* ../dlls/ntdll/time.c:207 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlTimeFieldsToTime\n");
-	return pRtlTimeFieldsToTime(tfTimeFields, Time);
+	return_value = pRtlTimeFieldsToTime(tfTimeFields, Time);
+	TRACE("Leave RtlTimeFieldsToTime\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlTimeFieldsToTime(void);  /* ../dlls/ntdll/time.c:207 */
@@ -17971,10 +19607,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlTimeFieldsToTime,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlTimeToElapsedTimeFields(LARGE_INTEGER*  Time, PTIME_FIELDS  TimeFields) /* ../dlls/ntdll/time.c:433 */
+WINAPI void wine32b_ntdll_RtlTimeToElapsedTimeFields(LARGE_INTEGER*  Time, PTIME_FIELDS  TimeFields) /* ../dlls/ntdll/time.c:433 */
 {
 	TRACE("Enter RtlTimeToElapsedTimeFields\n");
-	return pRtlTimeToElapsedTimeFields(Time, TimeFields);
+	pRtlTimeToElapsedTimeFields(Time, TimeFields);
+	TRACE("Leave RtlTimeToElapsedTimeFields\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlTimeToElapsedTimeFields(void);  /* ../dlls/ntdll/time.c:433 */
@@ -17997,10 +19634,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlTimeToElapsedTimeFields,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlTimeToSecondsSince1970(LARGE_INTEGER*  Time, LPDWORD  Seconds) /* ../dlls/ntdll/time.c:358 */
+WINAPI BOOLEAN wine32b_ntdll_RtlTimeToSecondsSince1970(LARGE_INTEGER*  Time, LPDWORD  Seconds) /* ../dlls/ntdll/time.c:358 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlTimeToSecondsSince1970\n");
-	return pRtlTimeToSecondsSince1970(Time, Seconds);
+	return_value = pRtlTimeToSecondsSince1970(Time, Seconds);
+	TRACE("Leave RtlTimeToSecondsSince1970\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlTimeToSecondsSince1970(void);  /* ../dlls/ntdll/time.c:358 */
@@ -18023,10 +19663,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlTimeToSecondsSince1970,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlTimeToSecondsSince1980(LARGE_INTEGER*  Time, LPDWORD  Seconds) /* ../dlls/ntdll/time.c:379 */
+WINAPI BOOLEAN wine32b_ntdll_RtlTimeToSecondsSince1980(LARGE_INTEGER*  Time, LPDWORD  Seconds) /* ../dlls/ntdll/time.c:379 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlTimeToSecondsSince1980\n");
-	return pRtlTimeToSecondsSince1980(Time, Seconds);
+	return_value = pRtlTimeToSecondsSince1980(Time, Seconds);
+	TRACE("Leave RtlTimeToSecondsSince1980\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlTimeToSecondsSince1980(void);  /* ../dlls/ntdll/time.c:379 */
@@ -18049,10 +19692,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlTimeToSecondsSince1980,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlTimeToTimeFields(LARGE_INTEGER*  liTime, PTIME_FIELDS  TimeFields) /* ../dlls/ntdll/time.c:141 */
+WINAPI void wine32b_ntdll_RtlTimeToTimeFields(LARGE_INTEGER*  liTime, PTIME_FIELDS  TimeFields) /* ../dlls/ntdll/time.c:141 */
 {
 	TRACE("Enter RtlTimeToTimeFields\n");
-	return pRtlTimeToTimeFields(liTime, TimeFields);
+	pRtlTimeToTimeFields(liTime, TimeFields);
+	TRACE("Leave RtlTimeToTimeFields\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlTimeToTimeFields(void);  /* ../dlls/ntdll/time.c:141 */
@@ -18075,10 +19719,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlTimeToTimeFields,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlTryAcquireSRWLockExclusive(RTL_SRWLOCK*  lock) /* ../dlls/ntdll/sync.c:2149 */
+WINAPI BOOLEAN wine32b_ntdll_RtlTryAcquireSRWLockExclusive(RTL_SRWLOCK*  lock) /* ../dlls/ntdll/sync.c:2149 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlTryAcquireSRWLockExclusive\n");
-	return pRtlTryAcquireSRWLockExclusive(lock);
+	return_value = pRtlTryAcquireSRWLockExclusive(lock);
+	TRACE("Leave RtlTryAcquireSRWLockExclusive\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlTryAcquireSRWLockExclusive(void);  /* ../dlls/ntdll/sync.c:2149 */
@@ -18100,10 +19747,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlTryAcquireSRWLockExclusive,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlTryAcquireSRWLockShared(RTL_SRWLOCK*  lock) /* ../dlls/ntdll/sync.c:2163 */
+WINAPI BOOLEAN wine32b_ntdll_RtlTryAcquireSRWLockShared(RTL_SRWLOCK*  lock) /* ../dlls/ntdll/sync.c:2163 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlTryAcquireSRWLockShared\n");
-	return pRtlTryAcquireSRWLockShared(lock);
+	return_value = pRtlTryAcquireSRWLockShared(lock);
+	TRACE("Leave RtlTryAcquireSRWLockShared\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlTryAcquireSRWLockShared(void);  /* ../dlls/ntdll/sync.c:2163 */
@@ -18125,10 +19775,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlTryAcquireSRWLockShared,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_ntdll_RtlTryEnterCriticalSection(RTL_CRITICAL_SECTION*  crit) /* ../dlls/ntdll/critsection.c:610 */
+WINAPI BOOL wine32b_ntdll_RtlTryEnterCriticalSection(RTL_CRITICAL_SECTION*  crit) /* ../dlls/ntdll/critsection.c:610 */
 {
+	BOOL return_value;
 	TRACE("Enter RtlTryEnterCriticalSection\n");
-	return pRtlTryEnterCriticalSection(crit);
+	return_value = pRtlTryEnterCriticalSection(crit);
+	TRACE("Leave RtlTryEnterCriticalSection\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlTryEnterCriticalSection(void);  /* ../dlls/ntdll/critsection.c:610 */
@@ -18150,10 +19803,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlTryEnterCriticalSection,
 	"ret \n"
 )
 
-extern WINAPI ULONGLONG wine32b_ntdll_RtlUlonglongByteSwap(ULONGLONG  i) /* ../dlls/ntdll/rtl.c:617 */
+WINAPI ULONGLONG wine32b_ntdll_RtlUlonglongByteSwap(ULONGLONG  i) /* ../dlls/ntdll/rtl.c:617 */
 {
+	ULONGLONG return_value;
 	TRACE("Enter RtlUlonglongByteSwap\n");
-	return pRtlUlonglongByteSwap(i);
+	return_value = pRtlUlonglongByteSwap(i);
+	TRACE("Leave RtlUlonglongByteSwap\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlUlonglongByteSwap(void);  /* ../dlls/ntdll/rtl.c:617 */
@@ -18175,10 +19831,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUlonglongByteSwap,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_ntdll_RtlUnicodeStringToAnsiSize(UNICODE_STRING*  str) /* ../dlls/ntdll/rtlstr.c:1374 */
+WINAPI DWORD wine32b_ntdll_RtlUnicodeStringToAnsiSize(UNICODE_STRING*  str) /* ../dlls/ntdll/rtlstr.c:1374 */
 {
+	DWORD return_value;
 	TRACE("Enter RtlUnicodeStringToAnsiSize\n");
-	return pRtlUnicodeStringToAnsiSize(str);
+	return_value = pRtlUnicodeStringToAnsiSize(str);
+	TRACE("Leave RtlUnicodeStringToAnsiSize\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlUnicodeStringToAnsiSize(void);  /* ../dlls/ntdll/rtlstr.c:1374 */
@@ -18200,10 +19859,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUnicodeStringToAnsiSize,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlUnicodeStringToAnsiString(STRING*  ansi, UNICODE_STRING*  uni, BOOLEAN  doalloc) /* ../dlls/ntdll/rtlstr.c:759 */
+WINAPI NTSTATUS wine32b_ntdll_RtlUnicodeStringToAnsiString(STRING*  ansi, UNICODE_STRING*  uni, BOOLEAN  doalloc) /* ../dlls/ntdll/rtlstr.c:759 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlUnicodeStringToAnsiString\n");
-	return pRtlUnicodeStringToAnsiString(ansi, uni, doalloc);
+	return_value = pRtlUnicodeStringToAnsiString(ansi, uni, doalloc);
+	TRACE("Leave RtlUnicodeStringToAnsiString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlUnicodeStringToAnsiString(void);  /* ../dlls/ntdll/rtlstr.c:759 */
@@ -18227,10 +19889,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUnicodeStringToAnsiString,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlUnicodeStringToInteger(UNICODE_STRING*  str, ULONG  base, ULONG*  value) /* ../dlls/ntdll/rtlstr.c:1911 */
+WINAPI NTSTATUS wine32b_ntdll_RtlUnicodeStringToInteger(UNICODE_STRING*  str, ULONG  base, ULONG*  value) /* ../dlls/ntdll/rtlstr.c:1911 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlUnicodeStringToInteger\n");
-	return pRtlUnicodeStringToInteger(str, base, value);
+	return_value = pRtlUnicodeStringToInteger(str, base, value);
+	TRACE("Leave RtlUnicodeStringToInteger\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlUnicodeStringToInteger(void);  /* ../dlls/ntdll/rtlstr.c:1911 */
@@ -18254,10 +19919,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUnicodeStringToInteger,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_ntdll_RtlUnicodeStringToOemSize(UNICODE_STRING*  str) /* ../dlls/ntdll/rtlstr.c:1395 */
+WINAPI DWORD wine32b_ntdll_RtlUnicodeStringToOemSize(UNICODE_STRING*  str) /* ../dlls/ntdll/rtlstr.c:1395 */
 {
+	DWORD return_value;
 	TRACE("Enter RtlUnicodeStringToOemSize\n");
-	return pRtlUnicodeStringToOemSize(str);
+	return_value = pRtlUnicodeStringToOemSize(str);
+	TRACE("Leave RtlUnicodeStringToOemSize\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlUnicodeStringToOemSize(void);  /* ../dlls/ntdll/rtlstr.c:1395 */
@@ -18279,10 +19947,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUnicodeStringToOemSize,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlUnicodeStringToOemString(STRING*  oem, UNICODE_STRING*  uni, BOOLEAN  doalloc) /* ../dlls/ntdll/rtlstr.c:806 */
+WINAPI NTSTATUS wine32b_ntdll_RtlUnicodeStringToOemString(STRING*  oem, UNICODE_STRING*  uni, BOOLEAN  doalloc) /* ../dlls/ntdll/rtlstr.c:806 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlUnicodeStringToOemString\n");
-	return pRtlUnicodeStringToOemString(oem, uni, doalloc);
+	return_value = pRtlUnicodeStringToOemString(oem, uni, doalloc);
+	TRACE("Leave RtlUnicodeStringToOemString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlUnicodeStringToOemString(void);  /* ../dlls/ntdll/rtlstr.c:806 */
@@ -18306,10 +19977,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUnicodeStringToOemString,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlUnicodeToMultiByteN(LPSTR  dst, DWORD  dstlen, LPDWORD  reslen, LPCWSTR  src, DWORD  srclen) /* ../dlls/ntdll/rtlstr.c:881 */
+WINAPI NTSTATUS wine32b_ntdll_RtlUnicodeToMultiByteN(LPSTR  dst, DWORD  dstlen, LPDWORD  reslen, LPCWSTR  src, DWORD  srclen) /* ../dlls/ntdll/rtlstr.c:881 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlUnicodeToMultiByteN\n");
-	return pRtlUnicodeToMultiByteN(dst, dstlen, reslen, src, srclen);
+	return_value = pRtlUnicodeToMultiByteN(dst, dstlen, reslen, src, srclen);
+	TRACE("Leave RtlUnicodeToMultiByteN\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlUnicodeToMultiByteN(void);  /* ../dlls/ntdll/rtlstr.c:881 */
@@ -18334,10 +20008,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUnicodeToMultiByteN,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlUnicodeToMultiByteSize(PULONG  size, LPCWSTR  str, ULONG  len) /* ../dlls/ntdll/rtlstr.c:1354 */
+WINAPI NTSTATUS wine32b_ntdll_RtlUnicodeToMultiByteSize(PULONG  size, LPCWSTR  str, ULONG  len) /* ../dlls/ntdll/rtlstr.c:1354 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlUnicodeToMultiByteSize\n");
-	return pRtlUnicodeToMultiByteSize(size, str, len);
+	return_value = pRtlUnicodeToMultiByteSize(size, str, len);
+	TRACE("Leave RtlUnicodeToMultiByteSize\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlUnicodeToMultiByteSize(void);  /* ../dlls/ntdll/rtlstr.c:1354 */
@@ -18361,10 +20038,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUnicodeToMultiByteSize,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlUnicodeToOemN(LPSTR  dst, DWORD  dstlen, LPDWORD  reslen, LPCWSTR  src, DWORD  srclen) /* ../dlls/ntdll/rtlstr.c:900 */
+WINAPI NTSTATUS wine32b_ntdll_RtlUnicodeToOemN(LPSTR  dst, DWORD  dstlen, LPDWORD  reslen, LPCWSTR  src, DWORD  srclen) /* ../dlls/ntdll/rtlstr.c:900 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlUnicodeToOemN\n");
-	return pRtlUnicodeToOemN(dst, dstlen, reslen, src, srclen);
+	return_value = pRtlUnicodeToOemN(dst, dstlen, reslen, src, srclen);
+	TRACE("Leave RtlUnicodeToOemN\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlUnicodeToOemN(void);  /* ../dlls/ntdll/rtlstr.c:900 */
@@ -18389,10 +20069,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUnicodeToOemN,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlUnicodeToUTF8N(LPSTR  dst, DWORD  dstlen, LPDWORD  reslen, LPCWSTR  src, DWORD  srclen) /* ../dlls/ntdll/rtlstr.c:919 */
+WINAPI NTSTATUS wine32b_ntdll_RtlUnicodeToUTF8N(LPSTR  dst, DWORD  dstlen, LPDWORD  reslen, LPCWSTR  src, DWORD  srclen) /* ../dlls/ntdll/rtlstr.c:919 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlUnicodeToUTF8N\n");
-	return pRtlUnicodeToUTF8N(dst, dstlen, reslen, src, srclen);
+	return_value = pRtlUnicodeToUTF8N(dst, dstlen, reslen, src, srclen);
+	TRACE("Leave RtlUnicodeToUTF8N\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlUnicodeToUTF8N(void);  /* ../dlls/ntdll/rtlstr.c:919 */
@@ -18417,10 +20100,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUnicodeToUTF8N,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_RtlUniform(PULONG  seed) /* ../dlls/ntdll/rtl.c:678 */
+WINAPI ULONG wine32b_ntdll_RtlUniform(PULONG  seed) /* ../dlls/ntdll/rtl.c:678 */
 {
+	ULONG return_value;
 	TRACE("Enter RtlUniform\n");
-	return pRtlUniform(seed);
+	return_value = pRtlUniform(seed);
+	TRACE("Leave RtlUniform\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlUniform(void);  /* ../dlls/ntdll/rtl.c:678 */
@@ -18442,10 +20128,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUniform,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlUnlockHeap(HANDLE  heap) /* ../dlls/ntdll/heap.c:1998 */
+WINAPI BOOLEAN wine32b_ntdll_RtlUnlockHeap(HANDLE  heap) /* ../dlls/ntdll/heap.c:1998 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlUnlockHeap\n");
-	return pRtlUnlockHeap(heap);
+	return_value = pRtlUnlockHeap(heap);
+	TRACE("Leave RtlUnlockHeap\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlUnlockHeap(void);  /* ../dlls/ntdll/heap.c:1998 */
@@ -18467,10 +20156,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUnlockHeap,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlUnwind(void*  frame, void*  target_ip, EXCEPTION_RECORD*  rec, void*  retval) /* ../dlls/ntdll/signal_x86_64.c:3982 */
+WINAPI void wine32b_ntdll_RtlUnwind(void*  frame, void*  target_ip, EXCEPTION_RECORD*  rec, void*  retval) /* ../dlls/ntdll/signal_x86_64.c:3982 */
 {
 	TRACE("Enter RtlUnwind\n");
-	return pRtlUnwind(frame, target_ip, rec, retval);
+	pRtlUnwind(frame, target_ip, rec, retval);
+	TRACE("Leave RtlUnwind\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlUnwind(void);  /* ../dlls/ntdll/signal_x86_64.c:3982 */
@@ -18495,10 +20185,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUnwind,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlUnwindEx(PVOID  end_frame, PVOID  target_ip, EXCEPTION_RECORD*  rec, PVOID  retval, CONTEXT*  context, UNWIND_HISTORY_TABLE*  table) /* ../dlls/ntdll/signal_x86_64.c:3850 */
+WINAPI void wine32b_ntdll_RtlUnwindEx(PVOID  end_frame, PVOID  target_ip, EXCEPTION_RECORD*  rec, PVOID  retval, CONTEXT*  context, UNWIND_HISTORY_TABLE*  table) /* ../dlls/ntdll/signal_x86_64.c:3850 */
 {
 	TRACE("Enter RtlUnwindEx\n");
-	return pRtlUnwindEx(end_frame, target_ip, rec, retval, context, table);
+	pRtlUnwindEx(end_frame, target_ip, rec, retval, context, table);
+	TRACE("Leave RtlUnwindEx\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlUnwindEx(void);  /* ../dlls/ntdll/signal_x86_64.c:3850 */
@@ -18523,10 +20214,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUnwindEx,
 	"ret \n"
 )
 
-extern WINAPI WCHAR wine32b_ntdll_RtlUpcaseUnicodeChar(WCHAR  wch) /* ../dlls/ntdll/rtlstr.c:1014 */
+WINAPI WCHAR wine32b_ntdll_RtlUpcaseUnicodeChar(WCHAR  wch) /* ../dlls/ntdll/rtlstr.c:1014 */
 {
+	WCHAR return_value;
 	TRACE("Enter RtlUpcaseUnicodeChar\n");
-	return pRtlUpcaseUnicodeChar(wch);
+	return_value = pRtlUpcaseUnicodeChar(wch);
+	TRACE("Leave RtlUpcaseUnicodeChar\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlUpcaseUnicodeChar(void);  /* ../dlls/ntdll/rtlstr.c:1014 */
@@ -18548,10 +20242,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUpcaseUnicodeChar,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlUpcaseUnicodeString(UNICODE_STRING*  dest, UNICODE_STRING*  src, BOOLEAN  doalloc) /* ../dlls/ntdll/rtlstr.c:1056 */
+WINAPI NTSTATUS wine32b_ntdll_RtlUpcaseUnicodeString(UNICODE_STRING*  dest, UNICODE_STRING*  src, BOOLEAN  doalloc) /* ../dlls/ntdll/rtlstr.c:1056 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlUpcaseUnicodeString\n");
-	return pRtlUpcaseUnicodeString(dest, src, doalloc);
+	return_value = pRtlUpcaseUnicodeString(dest, src, doalloc);
+	TRACE("Leave RtlUpcaseUnicodeString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlUpcaseUnicodeString(void);  /* ../dlls/ntdll/rtlstr.c:1056 */
@@ -18575,10 +20272,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUpcaseUnicodeString,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlUpcaseUnicodeStringToAnsiString(STRING*  dst, UNICODE_STRING*  src, BOOLEAN  doalloc) /* ../dlls/ntdll/rtlstr.c:1131 */
+WINAPI NTSTATUS wine32b_ntdll_RtlUpcaseUnicodeStringToAnsiString(STRING*  dst, UNICODE_STRING*  src, BOOLEAN  doalloc) /* ../dlls/ntdll/rtlstr.c:1131 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlUpcaseUnicodeStringToAnsiString\n");
-	return pRtlUpcaseUnicodeStringToAnsiString(dst, src, doalloc);
+	return_value = pRtlUpcaseUnicodeStringToAnsiString(dst, src, doalloc);
+	TRACE("Leave RtlUpcaseUnicodeStringToAnsiString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlUpcaseUnicodeStringToAnsiString(void);  /* ../dlls/ntdll/rtlstr.c:1131 */
@@ -18602,10 +20302,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUpcaseUnicodeStringToAnsiString,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlUpcaseUnicodeStringToCountedOemString(STRING*  oem, UNICODE_STRING*  uni, BOOLEAN  doalloc) /* ../dlls/ntdll/rtlstr.c:1187 */
+WINAPI NTSTATUS wine32b_ntdll_RtlUpcaseUnicodeStringToCountedOemString(STRING*  oem, UNICODE_STRING*  uni, BOOLEAN  doalloc) /* ../dlls/ntdll/rtlstr.c:1187 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlUpcaseUnicodeStringToCountedOemString\n");
-	return pRtlUpcaseUnicodeStringToCountedOemString(oem, uni, doalloc);
+	return_value = pRtlUpcaseUnicodeStringToCountedOemString(oem, uni, doalloc);
+	TRACE("Leave RtlUpcaseUnicodeStringToCountedOemString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlUpcaseUnicodeStringToCountedOemString(void);  /* ../dlls/ntdll/rtlstr.c:1187 */
@@ -18629,10 +20332,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUpcaseUnicodeStringToCountedOemString,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlUpcaseUnicodeStringToOemString(STRING*  dst, UNICODE_STRING*  src, BOOLEAN  doalloc) /* ../dlls/ntdll/rtlstr.c:1159 */
+WINAPI NTSTATUS wine32b_ntdll_RtlUpcaseUnicodeStringToOemString(STRING*  dst, UNICODE_STRING*  src, BOOLEAN  doalloc) /* ../dlls/ntdll/rtlstr.c:1159 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlUpcaseUnicodeStringToOemString\n");
-	return pRtlUpcaseUnicodeStringToOemString(dst, src, doalloc);
+	return_value = pRtlUpcaseUnicodeStringToOemString(dst, src, doalloc);
+	TRACE("Leave RtlUpcaseUnicodeStringToOemString\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlUpcaseUnicodeStringToOemString(void);  /* ../dlls/ntdll/rtlstr.c:1159 */
@@ -18656,10 +20362,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUpcaseUnicodeStringToOemString,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlUpcaseUnicodeToMultiByteN(LPSTR  dst, DWORD  dstlen, LPDWORD  reslen, LPCWSTR  src, DWORD  srclen) /* ../dlls/ntdll/rtlstr.c:1235 */
+WINAPI NTSTATUS wine32b_ntdll_RtlUpcaseUnicodeToMultiByteN(LPSTR  dst, DWORD  dstlen, LPDWORD  reslen, LPCWSTR  src, DWORD  srclen) /* ../dlls/ntdll/rtlstr.c:1235 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlUpcaseUnicodeToMultiByteN\n");
-	return pRtlUpcaseUnicodeToMultiByteN(dst, dstlen, reslen, src, srclen);
+	return_value = pRtlUpcaseUnicodeToMultiByteN(dst, dstlen, reslen, src, srclen);
+	TRACE("Leave RtlUpcaseUnicodeToMultiByteN\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlUpcaseUnicodeToMultiByteN(void);  /* ../dlls/ntdll/rtlstr.c:1235 */
@@ -18684,10 +20393,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUpcaseUnicodeToMultiByteN,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlUpcaseUnicodeToOemN(LPSTR  dst, DWORD  dstlen, LPDWORD  reslen, LPCWSTR  src, DWORD  srclen) /* ../dlls/ntdll/rtlstr.c:1258 */
+WINAPI NTSTATUS wine32b_ntdll_RtlUpcaseUnicodeToOemN(LPSTR  dst, DWORD  dstlen, LPDWORD  reslen, LPCWSTR  src, DWORD  srclen) /* ../dlls/ntdll/rtlstr.c:1258 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlUpcaseUnicodeToOemN\n");
-	return pRtlUpcaseUnicodeToOemN(dst, dstlen, reslen, src, srclen);
+	return_value = pRtlUpcaseUnicodeToOemN(dst, dstlen, reslen, src, srclen);
+	TRACE("Leave RtlUpcaseUnicodeToOemN\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlUpcaseUnicodeToOemN(void);  /* ../dlls/ntdll/rtlstr.c:1258 */
@@ -18712,10 +20424,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUpcaseUnicodeToOemN,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlUpdateTimer(HANDLE  TimerQueue, HANDLE  Timer, DWORD  DueTime, DWORD  Period) /* ../dlls/ntdll/threadpool.c:1131 */
+WINAPI NTSTATUS wine32b_ntdll_RtlUpdateTimer(HANDLE  TimerQueue, HANDLE  Timer, DWORD  DueTime, DWORD  Period) /* ../dlls/ntdll/threadpool.c:1131 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlUpdateTimer\n");
-	return pRtlUpdateTimer(TimerQueue, Timer, DueTime, Period);
+	return_value = pRtlUpdateTimer(TimerQueue, Timer, DueTime, Period);
+	TRACE("Leave RtlUpdateTimer\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlUpdateTimer(void);  /* ../dlls/ntdll/threadpool.c:1131 */
@@ -18740,10 +20455,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUpdateTimer,
 	"ret \n"
 )
 
-extern WINAPI CHAR wine32b_ntdll_RtlUpperChar(CHAR  ch) /* ../dlls/ntdll/rtlstr.c:965 */
+WINAPI CHAR wine32b_ntdll_RtlUpperChar(CHAR  ch) /* ../dlls/ntdll/rtlstr.c:965 */
 {
+	CHAR return_value;
 	TRACE("Enter RtlUpperChar\n");
-	return pRtlUpperChar(ch);
+	return_value = pRtlUpperChar(ch);
+	TRACE("Leave RtlUpperChar\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlUpperChar(void);  /* ../dlls/ntdll/rtlstr.c:965 */
@@ -18765,10 +20483,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUpperChar,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlUpperString(STRING*  dst, STRING*  src) /* ../dlls/ntdll/rtlstr.c:994 */
+WINAPI void wine32b_ntdll_RtlUpperString(STRING*  dst, STRING*  src) /* ../dlls/ntdll/rtlstr.c:994 */
 {
 	TRACE("Enter RtlUpperString\n");
-	return pRtlUpperString(dst, src);
+	pRtlUpperString(dst, src);
+	TRACE("Leave RtlUpperString\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlUpperString(void);  /* ../dlls/ntdll/rtlstr.c:994 */
@@ -18791,10 +20510,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlUpperString,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlValidAcl(PACL  pAcl) /* ../dlls/ntdll/sec.c:1411 */
+WINAPI BOOLEAN wine32b_ntdll_RtlValidAcl(PACL  pAcl) /* ../dlls/ntdll/sec.c:1411 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlValidAcl\n");
-	return pRtlValidAcl(pAcl);
+	return_value = pRtlValidAcl(pAcl);
+	TRACE("Leave RtlValidAcl\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlValidAcl(void);  /* ../dlls/ntdll/sec.c:1411 */
@@ -18816,10 +20538,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlValidAcl,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlValidRelativeSecurityDescriptor(PSECURITY_DESCRIPTOR  descriptor, ULONG  length, SECURITY_INFORMATION  info) /* ../dlls/ntdll/sec.c:561 */
+WINAPI BOOLEAN wine32b_ntdll_RtlValidRelativeSecurityDescriptor(PSECURITY_DESCRIPTOR  descriptor, ULONG  length, SECURITY_INFORMATION  info) /* ../dlls/ntdll/sec.c:561 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlValidRelativeSecurityDescriptor\n");
-	return pRtlValidRelativeSecurityDescriptor(descriptor, length, info);
+	return_value = pRtlValidRelativeSecurityDescriptor(descriptor, length, info);
+	TRACE("Leave RtlValidRelativeSecurityDescriptor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlValidRelativeSecurityDescriptor(void);  /* ../dlls/ntdll/sec.c:561 */
@@ -18843,10 +20568,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlValidRelativeSecurityDescriptor,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlValidSecurityDescriptor(PSECURITY_DESCRIPTOR  SecurityDescriptor) /* ../dlls/ntdll/sec.c:547 */
+WINAPI NTSTATUS wine32b_ntdll_RtlValidSecurityDescriptor(PSECURITY_DESCRIPTOR  SecurityDescriptor) /* ../dlls/ntdll/sec.c:547 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlValidSecurityDescriptor\n");
-	return pRtlValidSecurityDescriptor(SecurityDescriptor);
+	return_value = pRtlValidSecurityDescriptor(SecurityDescriptor);
+	TRACE("Leave RtlValidSecurityDescriptor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlValidSecurityDescriptor(void);  /* ../dlls/ntdll/sec.c:547 */
@@ -18868,10 +20596,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlValidSecurityDescriptor,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlValidSid(PSID  pSid) /* ../dlls/ntdll/sec.c:396 */
+WINAPI BOOLEAN wine32b_ntdll_RtlValidSid(PSID  pSid) /* ../dlls/ntdll/sec.c:396 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlValidSid\n");
-	return pRtlValidSid(pSid);
+	return_value = pRtlValidSid(pSid);
+	TRACE("Leave RtlValidSid\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlValidSid(void);  /* ../dlls/ntdll/sec.c:396 */
@@ -18893,10 +20624,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlValidSid,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_ntdll_RtlValidateHeap(HANDLE  heap, ULONG  flags, LPCVOID  ptr) /* ../dlls/ntdll/heap.c:2076 */
+WINAPI BOOLEAN wine32b_ntdll_RtlValidateHeap(HANDLE  heap, ULONG  flags, LPCVOID  ptr) /* ../dlls/ntdll/heap.c:2076 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter RtlValidateHeap\n");
-	return pRtlValidateHeap(heap, flags, ptr);
+	return_value = pRtlValidateHeap(heap, flags, ptr);
+	TRACE("Leave RtlValidateHeap\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlValidateHeap(void);  /* ../dlls/ntdll/heap.c:2076 */
@@ -18920,10 +20654,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlValidateHeap,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlVerifyVersionInfo(RTL_OSVERSIONINFOEXW*  info, DWORD  dwTypeMask, DWORDLONG  dwlConditionMask) /* ../dlls/ntdll/version.c:716 */
+WINAPI NTSTATUS wine32b_ntdll_RtlVerifyVersionInfo(RTL_OSVERSIONINFOEXW*  info, DWORD  dwTypeMask, DWORDLONG  dwlConditionMask) /* ../dlls/ntdll/version.c:716 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlVerifyVersionInfo\n");
-	return pRtlVerifyVersionInfo(info, dwTypeMask, dwlConditionMask);
+	return_value = pRtlVerifyVersionInfo(info, dwTypeMask, dwlConditionMask);
+	TRACE("Leave RtlVerifyVersionInfo\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlVerifyVersionInfo(void);  /* ../dlls/ntdll/version.c:716 */
@@ -18947,10 +20684,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlVerifyVersionInfo,
 	"ret \n"
 )
 
-extern WINAPI PVOID wine32b_ntdll_RtlVirtualUnwind(ULONG  type, ULONG64  base, ULONG64  pc, RUNTIME_FUNCTION*  function, CONTEXT*  context, PVOID*  data, ULONG64*  frame_ret, KNONVOLATILE_CONTEXT_POINTERS*  ctx_ptr) /* ../dlls/ntdll/signal_x86_64.c:3534 */
+WINAPI PVOID wine32b_ntdll_RtlVirtualUnwind(ULONG  type, ULONG64  base, ULONG64  pc, RUNTIME_FUNCTION*  function, CONTEXT*  context, PVOID*  data, ULONG64*  frame_ret, KNONVOLATILE_CONTEXT_POINTERS*  ctx_ptr) /* ../dlls/ntdll/signal_x86_64.c:3534 */
 {
+	PVOID return_value;
 	TRACE("Enter RtlVirtualUnwind\n");
-	return pRtlVirtualUnwind(type, base, pc, function, context, data, frame_ret, ctx_ptr);
+	return_value = pRtlVirtualUnwind(type, base, pc, function, context, data, frame_ret, ctx_ptr);
+	TRACE("Leave RtlVirtualUnwind\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlVirtualUnwind(void);  /* ../dlls/ntdll/signal_x86_64.c:3534 */
@@ -18975,10 +20715,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlVirtualUnwind,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlWaitOnAddress(void*  addr, void*  cmp, SIZE_T  size, LARGE_INTEGER*  timeout) /* ../dlls/ntdll/sync.c:2449 */
+WINAPI NTSTATUS wine32b_ntdll_RtlWaitOnAddress(void*  addr, void*  cmp, SIZE_T  size, LARGE_INTEGER*  timeout) /* ../dlls/ntdll/sync.c:2449 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlWaitOnAddress\n");
-	return pRtlWaitOnAddress(addr, cmp, size, timeout);
+	return_value = pRtlWaitOnAddress(addr, cmp, size, timeout);
+	TRACE("Leave RtlWaitOnAddress\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlWaitOnAddress(void);  /* ../dlls/ntdll/sync.c:2449 */
@@ -19003,10 +20746,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlWaitOnAddress,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlWakeAddressAll(void*  addr) /* ../dlls/ntdll/sync.c:2519 */
+WINAPI void wine32b_ntdll_RtlWakeAddressAll(void*  addr) /* ../dlls/ntdll/sync.c:2519 */
 {
 	TRACE("Enter RtlWakeAddressAll\n");
-	return pRtlWakeAddressAll(addr);
+	pRtlWakeAddressAll(addr);
+	TRACE("Leave RtlWakeAddressAll\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlWakeAddressAll(void);  /* ../dlls/ntdll/sync.c:2519 */
@@ -19028,10 +20772,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlWakeAddressAll,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlWakeAddressSingle(void*  addr) /* ../dlls/ntdll/sync.c:2532 */
+WINAPI void wine32b_ntdll_RtlWakeAddressSingle(void*  addr) /* ../dlls/ntdll/sync.c:2532 */
 {
 	TRACE("Enter RtlWakeAddressSingle\n");
-	return pRtlWakeAddressSingle(addr);
+	pRtlWakeAddressSingle(addr);
+	TRACE("Leave RtlWakeAddressSingle\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlWakeAddressSingle(void);  /* ../dlls/ntdll/sync.c:2532 */
@@ -19053,10 +20798,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlWakeAddressSingle,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlWakeAllConditionVariable(RTL_CONDITION_VARIABLE*  variable) /* ../dlls/ntdll/sync.c:2265 */
+WINAPI void wine32b_ntdll_RtlWakeAllConditionVariable(RTL_CONDITION_VARIABLE*  variable) /* ../dlls/ntdll/sync.c:2265 */
 {
 	TRACE("Enter RtlWakeAllConditionVariable\n");
-	return pRtlWakeAllConditionVariable(variable);
+	pRtlWakeAllConditionVariable(variable);
+	TRACE("Leave RtlWakeAllConditionVariable\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlWakeAllConditionVariable(void);  /* ../dlls/ntdll/sync.c:2265 */
@@ -19078,10 +20824,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlWakeAllConditionVariable,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlWakeConditionVariable(RTL_CONDITION_VARIABLE*  variable) /* ../dlls/ntdll/sync.c:2253 */
+WINAPI void wine32b_ntdll_RtlWakeConditionVariable(RTL_CONDITION_VARIABLE*  variable) /* ../dlls/ntdll/sync.c:2253 */
 {
 	TRACE("Enter RtlWakeConditionVariable\n");
-	return pRtlWakeConditionVariable(variable);
+	pRtlWakeConditionVariable(variable);
+	TRACE("Leave RtlWakeConditionVariable\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlWakeConditionVariable(void);  /* ../dlls/ntdll/sync.c:2253 */
@@ -19103,10 +20850,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlWakeConditionVariable,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlWalkHeap(HANDLE  heap, PVOID  entry_ptr) /* ../dlls/ntdll/heap.c:2091 */
+WINAPI NTSTATUS wine32b_ntdll_RtlWalkHeap(HANDLE  heap, PVOID  entry_ptr) /* ../dlls/ntdll/heap.c:2091 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlWalkHeap\n");
-	return pRtlWalkHeap(heap, entry_ptr);
+	return_value = pRtlWalkHeap(heap, entry_ptr);
+	TRACE("Leave RtlWalkHeap\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlWalkHeap(void);  /* ../dlls/ntdll/heap.c:2091 */
@@ -19129,10 +20879,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlWalkHeap,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlWow64EnableFsRedirection(BOOLEAN  enable) /* ../dlls/ntdll/directory.c:2872 */
+WINAPI NTSTATUS wine32b_ntdll_RtlWow64EnableFsRedirection(BOOLEAN  enable) /* ../dlls/ntdll/directory.c:2872 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlWow64EnableFsRedirection\n");
-	return pRtlWow64EnableFsRedirection(enable);
+	return_value = pRtlWow64EnableFsRedirection(enable);
+	TRACE("Leave RtlWow64EnableFsRedirection\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlWow64EnableFsRedirection(void);  /* ../dlls/ntdll/directory.c:2872 */
@@ -19154,10 +20907,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlWow64EnableFsRedirection,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlWow64EnableFsRedirectionEx(ULONG  disable, ULONG*  old_value) /* ../dlls/ntdll/directory.c:2883 */
+WINAPI NTSTATUS wine32b_ntdll_RtlWow64EnableFsRedirectionEx(ULONG  disable, ULONG*  old_value) /* ../dlls/ntdll/directory.c:2883 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlWow64EnableFsRedirectionEx\n");
-	return pRtlWow64EnableFsRedirectionEx(disable, old_value);
+	return_value = pRtlWow64EnableFsRedirectionEx(disable, old_value);
+	TRACE("Leave RtlWow64EnableFsRedirectionEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlWow64EnableFsRedirectionEx(void);  /* ../dlls/ntdll/directory.c:2883 */
@@ -19180,10 +20936,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlWow64EnableFsRedirectionEx,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlWow64GetThreadContext(HANDLE  handle, WOW64_CONTEXT*  context) /* ../dlls/ntdll/signal_x86_64.c:2404 */
+WINAPI NTSTATUS wine32b_ntdll_RtlWow64GetThreadContext(HANDLE  handle, WOW64_CONTEXT*  context) /* ../dlls/ntdll/signal_x86_64.c:2404 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlWow64GetThreadContext\n");
-	return pRtlWow64GetThreadContext(handle, context);
+	return_value = pRtlWow64GetThreadContext(handle, context);
+	TRACE("Leave RtlWow64GetThreadContext\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlWow64GetThreadContext(void);  /* ../dlls/ntdll/signal_x86_64.c:2404 */
@@ -19206,10 +20965,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlWow64GetThreadContext,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlWow64SetThreadContext(HANDLE  handle, WOW64_CONTEXT*  context) /* ../dlls/ntdll/signal_x86_64.c:2420 */
+WINAPI NTSTATUS wine32b_ntdll_RtlWow64SetThreadContext(HANDLE  handle, WOW64_CONTEXT*  context) /* ../dlls/ntdll/signal_x86_64.c:2420 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlWow64SetThreadContext\n");
-	return pRtlWow64SetThreadContext(handle, context);
+	return_value = pRtlWow64SetThreadContext(handle, context);
+	TRACE("Leave RtlWow64SetThreadContext\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlWow64SetThreadContext(void);  /* ../dlls/ntdll/signal_x86_64.c:2420 */
@@ -19232,10 +20994,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlWow64SetThreadContext,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlWriteRegistryValue(ULONG  RelativeTo, PCWSTR  path, PCWSTR  name, ULONG  type, PVOID  data, ULONG  length) /* ../dlls/ntdll/reg.c:1512 */
+WINAPI NTSTATUS wine32b_ntdll_RtlWriteRegistryValue(ULONG  RelativeTo, PCWSTR  path, PCWSTR  name, ULONG  type, PVOID  data, ULONG  length) /* ../dlls/ntdll/reg.c:1512 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlWriteRegistryValue\n");
-	return pRtlWriteRegistryValue(RelativeTo, path, name, type, data, length);
+	return_value = pRtlWriteRegistryValue(RelativeTo, path, name, type, data, length);
+	TRACE("Leave RtlWriteRegistryValue\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlWriteRegistryValue(void);  /* ../dlls/ntdll/reg.c:1512 */
@@ -19260,10 +21025,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlWriteRegistryValue,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_RtlZeroMemory(void*  Destination, SIZE_T  Length) /* ../dlls/ntdll/rtl.c:483 */
+WINAPI void wine32b_ntdll_RtlZeroMemory(void*  Destination, SIZE_T  Length) /* ../dlls/ntdll/rtl.c:483 */
 {
 	TRACE("Enter RtlZeroMemory\n");
-	return pRtlZeroMemory(Destination, Length);
+	pRtlZeroMemory(Destination, Length);
+	TRACE("Leave RtlZeroMemory\n");
 }
 
 extern WINAPI void wine32a_ntdll_RtlZeroMemory(void);  /* ../dlls/ntdll/rtl.c:483 */
@@ -19286,10 +21052,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlZeroMemory,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlZombifyActivationContext(HANDLE  handle) /* ../dlls/ntdll/actctx.c:5115 */
+WINAPI NTSTATUS wine32b_ntdll_RtlZombifyActivationContext(HANDLE  handle) /* ../dlls/ntdll/actctx.c:5115 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlZombifyActivationContext\n");
-	return pRtlZombifyActivationContext(handle);
+	return_value = pRtlZombifyActivationContext(handle);
+	TRACE("Leave RtlZombifyActivationContext\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlZombifyActivationContext(void);  /* ../dlls/ntdll/actctx.c:5115 */
@@ -19311,10 +21080,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlZombifyActivationContext,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlpNtCreateKey(PHANDLE  retkey, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, ULONG  TitleIndex, UNICODE_STRING*  class, ULONG  options, PULONG  dispos) /* ../dlls/ntdll/reg.c:105 */
+WINAPI NTSTATUS wine32b_ntdll_RtlpNtCreateKey(PHANDLE  retkey, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr, ULONG  TitleIndex, UNICODE_STRING*  class, ULONG  options, PULONG  dispos) /* ../dlls/ntdll/reg.c:105 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlpNtCreateKey\n");
-	return pRtlpNtCreateKey(retkey, access, attr, TitleIndex, class, options, dispos);
+	return_value = pRtlpNtCreateKey(retkey, access, attr, TitleIndex, class, options, dispos);
+	TRACE("Leave RtlpNtCreateKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlpNtCreateKey(void);  /* ../dlls/ntdll/reg.c:105 */
@@ -19339,10 +21111,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlpNtCreateKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlpNtEnumerateSubKey(HANDLE  handle, UNICODE_STRING*  out, ULONG  index) /* ../dlls/ntdll/reg.c:384 */
+WINAPI NTSTATUS wine32b_ntdll_RtlpNtEnumerateSubKey(HANDLE  handle, UNICODE_STRING*  out, ULONG  index) /* ../dlls/ntdll/reg.c:384 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlpNtEnumerateSubKey\n");
-	return pRtlpNtEnumerateSubKey(handle, out, index);
+	return_value = pRtlpNtEnumerateSubKey(handle, out, index);
+	TRACE("Leave RtlpNtEnumerateSubKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlpNtEnumerateSubKey(void);  /* ../dlls/ntdll/reg.c:384 */
@@ -19366,10 +21141,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlpNtEnumerateSubKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlpNtMakeTemporaryKey(HANDLE  hkey) /* ../dlls/ntdll/reg.c:218 */
+WINAPI NTSTATUS wine32b_ntdll_RtlpNtMakeTemporaryKey(HANDLE  hkey) /* ../dlls/ntdll/reg.c:218 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlpNtMakeTemporaryKey\n");
-	return pRtlpNtMakeTemporaryKey(hkey);
+	return_value = pRtlpNtMakeTemporaryKey(hkey);
+	TRACE("Leave RtlpNtMakeTemporaryKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlpNtMakeTemporaryKey(void);  /* ../dlls/ntdll/reg.c:218 */
@@ -19391,10 +21169,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlpNtMakeTemporaryKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlpNtOpenKey(PHANDLE  retkey, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/reg.c:187 */
+WINAPI NTSTATUS wine32b_ntdll_RtlpNtOpenKey(PHANDLE  retkey, ACCESS_MASK  access, OBJECT_ATTRIBUTES*  attr) /* ../dlls/ntdll/reg.c:187 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlpNtOpenKey\n");
-	return pRtlpNtOpenKey(retkey, access, attr);
+	return_value = pRtlpNtOpenKey(retkey, access, attr);
+	TRACE("Leave RtlpNtOpenKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlpNtOpenKey(void);  /* ../dlls/ntdll/reg.c:187 */
@@ -19418,10 +21199,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlpNtOpenKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlpNtQueryValueKey(HANDLE  handle, ULONG*  result_type, PBYTE  dest, DWORD*  result_len, void*  unknown) /* ../dlls/ntdll/reg.c:599 */
+WINAPI NTSTATUS wine32b_ntdll_RtlpNtQueryValueKey(HANDLE  handle, ULONG*  result_type, PBYTE  dest, DWORD*  result_len, void*  unknown) /* ../dlls/ntdll/reg.c:599 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlpNtQueryValueKey\n");
-	return pRtlpNtQueryValueKey(handle, result_type, dest, result_len, unknown);
+	return_value = pRtlpNtQueryValueKey(handle, result_type, dest, result_len, unknown);
+	TRACE("Leave RtlpNtQueryValueKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlpNtQueryValueKey(void);  /* ../dlls/ntdll/reg.c:599 */
@@ -19446,10 +21230,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlpNtQueryValueKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlpNtSetValueKey(HANDLE  hkey, ULONG  type, void*  data, ULONG  count) /* ../dlls/ntdll/reg.c:886 */
+WINAPI NTSTATUS wine32b_ntdll_RtlpNtSetValueKey(HANDLE  hkey, ULONG  type, void*  data, ULONG  count) /* ../dlls/ntdll/reg.c:886 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlpNtSetValueKey\n");
-	return pRtlpNtSetValueKey(hkey, type, data, count);
+	return_value = pRtlpNtSetValueKey(hkey, type, data, count);
+	TRACE("Leave RtlpNtSetValueKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlpNtSetValueKey(void);  /* ../dlls/ntdll/reg.c:886 */
@@ -19474,10 +21261,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlpNtSetValueKey,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlpUnWaitCriticalSection(RTL_CRITICAL_SECTION*  crit) /* ../dlls/ntdll/critsection.c:524 */
+WINAPI NTSTATUS wine32b_ntdll_RtlpUnWaitCriticalSection(RTL_CRITICAL_SECTION*  crit) /* ../dlls/ntdll/critsection.c:524 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlpUnWaitCriticalSection\n");
-	return pRtlpUnWaitCriticalSection(crit);
+	return_value = pRtlpUnWaitCriticalSection(crit);
+	TRACE("Leave RtlpUnWaitCriticalSection\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlpUnWaitCriticalSection(void);  /* ../dlls/ntdll/critsection.c:524 */
@@ -19499,10 +21289,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlpUnWaitCriticalSection,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_RtlpWaitForCriticalSection(RTL_CRITICAL_SECTION*  crit) /* ../dlls/ntdll/critsection.c:444 */
+WINAPI NTSTATUS wine32b_ntdll_RtlpWaitForCriticalSection(RTL_CRITICAL_SECTION*  crit) /* ../dlls/ntdll/critsection.c:444 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter RtlpWaitForCriticalSection\n");
-	return pRtlpWaitForCriticalSection(crit);
+	return_value = pRtlpWaitForCriticalSection(crit);
+	TRACE("Leave RtlpWaitForCriticalSection\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_RtlpWaitForCriticalSection(void);  /* ../dlls/ntdll/critsection.c:444 */
@@ -19524,10 +21317,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_RtlpWaitForCriticalSection,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_TpAllocCleanupGroup(TP_CLEANUP_GROUP**  out) /* ../dlls/ntdll/threadpool.c:2301 */
+WINAPI NTSTATUS wine32b_ntdll_TpAllocCleanupGroup(TP_CLEANUP_GROUP**  out) /* ../dlls/ntdll/threadpool.c:2301 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter TpAllocCleanupGroup\n");
-	return pTpAllocCleanupGroup(out);
+	return_value = pTpAllocCleanupGroup(out);
+	TRACE("Leave TpAllocCleanupGroup\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_TpAllocCleanupGroup(void);  /* ../dlls/ntdll/threadpool.c:2301 */
@@ -19549,10 +21345,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpAllocCleanupGroup,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_TpAllocPool(TP_POOL**  out, PVOID  reserved) /* ../dlls/ntdll/threadpool.c:2311 */
+WINAPI NTSTATUS wine32b_ntdll_TpAllocPool(TP_POOL**  out, PVOID  reserved) /* ../dlls/ntdll/threadpool.c:2311 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter TpAllocPool\n");
-	return pTpAllocPool(out, reserved);
+	return_value = pTpAllocPool(out, reserved);
+	TRACE("Leave TpAllocPool\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_TpAllocPool(void);  /* ../dlls/ntdll/threadpool.c:2311 */
@@ -19575,10 +21374,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpAllocPool,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_TpAllocTimer(TP_TIMER**  out, PTP_TIMER_CALLBACK  callback, PVOID  userdata, TP_CALLBACK_ENVIRON*  environment) /* ../dlls/ntdll/threadpool.c:2324 */
+WINAPI NTSTATUS wine32b_ntdll_TpAllocTimer(TP_TIMER**  out, PTP_TIMER_CALLBACK  callback, PVOID  userdata, TP_CALLBACK_ENVIRON*  environment) /* ../dlls/ntdll/threadpool.c:2324 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter TpAllocTimer\n");
-	return pTpAllocTimer(out, callback, userdata, environment);
+	return_value = pTpAllocTimer(out, callback, userdata, environment);
+	TRACE("Leave TpAllocTimer\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_TpAllocTimer(void);  /* ../dlls/ntdll/threadpool.c:2324 */
@@ -19603,10 +21405,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpAllocTimer,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_TpAllocWait(TP_WAIT**  out, PTP_WAIT_CALLBACK  callback, PVOID  userdata, TP_CALLBACK_ENVIRON*  environment) /* ../dlls/ntdll/threadpool.c:2364 */
+WINAPI NTSTATUS wine32b_ntdll_TpAllocWait(TP_WAIT**  out, PTP_WAIT_CALLBACK  callback, PVOID  userdata, TP_CALLBACK_ENVIRON*  environment) /* ../dlls/ntdll/threadpool.c:2364 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter TpAllocWait\n");
-	return pTpAllocWait(out, callback, userdata, environment);
+	return_value = pTpAllocWait(out, callback, userdata, environment);
+	TRACE("Leave TpAllocWait\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_TpAllocWait(void);  /* ../dlls/ntdll/threadpool.c:2364 */
@@ -19631,10 +21436,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpAllocWait,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_TpAllocWork(TP_WORK**  out, PTP_WORK_CALLBACK  callback, PVOID  userdata, TP_CALLBACK_ENVIRON*  environment) /* ../dlls/ntdll/threadpool.c:2404 */
+WINAPI NTSTATUS wine32b_ntdll_TpAllocWork(TP_WORK**  out, PTP_WORK_CALLBACK  callback, PVOID  userdata, TP_CALLBACK_ENVIRON*  environment) /* ../dlls/ntdll/threadpool.c:2404 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter TpAllocWork\n");
-	return pTpAllocWork(out, callback, userdata, environment);
+	return_value = pTpAllocWork(out, callback, userdata, environment);
+	TRACE("Leave TpAllocWork\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_TpAllocWork(void);  /* ../dlls/ntdll/threadpool.c:2404 */
@@ -19659,10 +21467,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpAllocWork,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_TpCallbackLeaveCriticalSectionOnCompletion(TP_CALLBACK_INSTANCE*  instance, CRITICAL_SECTION*  crit) /* ../dlls/ntdll/threadpool.c:2435 */
+WINAPI void wine32b_ntdll_TpCallbackLeaveCriticalSectionOnCompletion(TP_CALLBACK_INSTANCE*  instance, CRITICAL_SECTION*  crit) /* ../dlls/ntdll/threadpool.c:2435 */
 {
 	TRACE("Enter TpCallbackLeaveCriticalSectionOnCompletion\n");
-	return pTpCallbackLeaveCriticalSectionOnCompletion(instance, crit);
+	pTpCallbackLeaveCriticalSectionOnCompletion(instance, crit);
+	TRACE("Leave TpCallbackLeaveCriticalSectionOnCompletion\n");
 }
 
 extern WINAPI void wine32a_ntdll_TpCallbackLeaveCriticalSectionOnCompletion(void);  /* ../dlls/ntdll/threadpool.c:2435 */
@@ -19685,10 +21494,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpCallbackLeaveCriticalSectionOnCompletion,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_TpCallbackMayRunLong(TP_CALLBACK_INSTANCE*  instance) /* ../dlls/ntdll/threadpool.c:2448 */
+WINAPI NTSTATUS wine32b_ntdll_TpCallbackMayRunLong(TP_CALLBACK_INSTANCE*  instance) /* ../dlls/ntdll/threadpool.c:2448 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter TpCallbackMayRunLong\n");
-	return pTpCallbackMayRunLong(instance);
+	return_value = pTpCallbackMayRunLong(instance);
+	TRACE("Leave TpCallbackMayRunLong\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_TpCallbackMayRunLong(void);  /* ../dlls/ntdll/threadpool.c:2448 */
@@ -19710,10 +21522,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpCallbackMayRunLong,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_TpCallbackReleaseMutexOnCompletion(TP_CALLBACK_INSTANCE*  instance, HANDLE  mutex) /* ../dlls/ntdll/threadpool.c:2490 */
+WINAPI void wine32b_ntdll_TpCallbackReleaseMutexOnCompletion(TP_CALLBACK_INSTANCE*  instance, HANDLE  mutex) /* ../dlls/ntdll/threadpool.c:2490 */
 {
 	TRACE("Enter TpCallbackReleaseMutexOnCompletion\n");
-	return pTpCallbackReleaseMutexOnCompletion(instance, mutex);
+	pTpCallbackReleaseMutexOnCompletion(instance, mutex);
+	TRACE("Leave TpCallbackReleaseMutexOnCompletion\n");
 }
 
 extern WINAPI void wine32a_ntdll_TpCallbackReleaseMutexOnCompletion(void);  /* ../dlls/ntdll/threadpool.c:2490 */
@@ -19736,10 +21549,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpCallbackReleaseMutexOnCompletion,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_TpCallbackReleaseSemaphoreOnCompletion(TP_CALLBACK_INSTANCE*  instance, HANDLE  semaphore, DWORD  count) /* ../dlls/ntdll/threadpool.c:2503 */
+WINAPI void wine32b_ntdll_TpCallbackReleaseSemaphoreOnCompletion(TP_CALLBACK_INSTANCE*  instance, HANDLE  semaphore, DWORD  count) /* ../dlls/ntdll/threadpool.c:2503 */
 {
 	TRACE("Enter TpCallbackReleaseSemaphoreOnCompletion\n");
-	return pTpCallbackReleaseSemaphoreOnCompletion(instance, semaphore, count);
+	pTpCallbackReleaseSemaphoreOnCompletion(instance, semaphore, count);
+	TRACE("Leave TpCallbackReleaseSemaphoreOnCompletion\n");
 }
 
 extern WINAPI void wine32a_ntdll_TpCallbackReleaseSemaphoreOnCompletion(void);  /* ../dlls/ntdll/threadpool.c:2503 */
@@ -19763,10 +21577,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpCallbackReleaseSemaphoreOnCompletion,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_TpCallbackSetEventOnCompletion(TP_CALLBACK_INSTANCE*  instance, HANDLE  event) /* ../dlls/ntdll/threadpool.c:2519 */
+WINAPI void wine32b_ntdll_TpCallbackSetEventOnCompletion(TP_CALLBACK_INSTANCE*  instance, HANDLE  event) /* ../dlls/ntdll/threadpool.c:2519 */
 {
 	TRACE("Enter TpCallbackSetEventOnCompletion\n");
-	return pTpCallbackSetEventOnCompletion(instance, event);
+	pTpCallbackSetEventOnCompletion(instance, event);
+	TRACE("Leave TpCallbackSetEventOnCompletion\n");
 }
 
 extern WINAPI void wine32a_ntdll_TpCallbackSetEventOnCompletion(void);  /* ../dlls/ntdll/threadpool.c:2519 */
@@ -19789,10 +21604,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpCallbackSetEventOnCompletion,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_TpCallbackUnloadDllOnCompletion(TP_CALLBACK_INSTANCE*  instance, HMODULE  module) /* ../dlls/ntdll/threadpool.c:2532 */
+WINAPI void wine32b_ntdll_TpCallbackUnloadDllOnCompletion(TP_CALLBACK_INSTANCE*  instance, HMODULE  module) /* ../dlls/ntdll/threadpool.c:2532 */
 {
 	TRACE("Enter TpCallbackUnloadDllOnCompletion\n");
-	return pTpCallbackUnloadDllOnCompletion(instance, module);
+	pTpCallbackUnloadDllOnCompletion(instance, module);
+	TRACE("Leave TpCallbackUnloadDllOnCompletion\n");
 }
 
 extern WINAPI void wine32a_ntdll_TpCallbackUnloadDllOnCompletion(void);  /* ../dlls/ntdll/threadpool.c:2532 */
@@ -19815,10 +21631,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpCallbackUnloadDllOnCompletion,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_TpDisassociateCallback(TP_CALLBACK_INSTANCE*  instance) /* ../dlls/ntdll/threadpool.c:2545 */
+WINAPI void wine32b_ntdll_TpDisassociateCallback(TP_CALLBACK_INSTANCE*  instance) /* ../dlls/ntdll/threadpool.c:2545 */
 {
 	TRACE("Enter TpDisassociateCallback\n");
-	return pTpDisassociateCallback(instance);
+	pTpDisassociateCallback(instance);
+	TRACE("Leave TpDisassociateCallback\n");
 }
 
 extern WINAPI void wine32a_ntdll_TpDisassociateCallback(void);  /* ../dlls/ntdll/threadpool.c:2545 */
@@ -19840,10 +21657,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpDisassociateCallback,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_ntdll_TpIsTimerSet(TP_TIMER*  timer) /* ../dlls/ntdll/threadpool.c:2576 */
+WINAPI BOOL wine32b_ntdll_TpIsTimerSet(TP_TIMER*  timer) /* ../dlls/ntdll/threadpool.c:2576 */
 {
+	BOOL return_value;
 	TRACE("Enter TpIsTimerSet\n");
-	return pTpIsTimerSet(timer);
+	return_value = pTpIsTimerSet(timer);
+	TRACE("Leave TpIsTimerSet\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_TpIsTimerSet(void);  /* ../dlls/ntdll/threadpool.c:2576 */
@@ -19865,10 +21685,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpIsTimerSet,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_TpPostWork(TP_WORK*  work) /* ../dlls/ntdll/threadpool.c:2588 */
+WINAPI void wine32b_ntdll_TpPostWork(TP_WORK*  work) /* ../dlls/ntdll/threadpool.c:2588 */
 {
 	TRACE("Enter TpPostWork\n");
-	return pTpPostWork(work);
+	pTpPostWork(work);
+	TRACE("Leave TpPostWork\n");
 }
 
 extern WINAPI void wine32a_ntdll_TpPostWork(void);  /* ../dlls/ntdll/threadpool.c:2588 */
@@ -19890,10 +21711,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpPostWork,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_TpReleaseCleanupGroup(TP_CLEANUP_GROUP*  group) /* ../dlls/ntdll/threadpool.c:2600 */
+WINAPI void wine32b_ntdll_TpReleaseCleanupGroup(TP_CLEANUP_GROUP*  group) /* ../dlls/ntdll/threadpool.c:2600 */
 {
 	TRACE("Enter TpReleaseCleanupGroup\n");
-	return pTpReleaseCleanupGroup(group);
+	pTpReleaseCleanupGroup(group);
+	TRACE("Leave TpReleaseCleanupGroup\n");
 }
 
 extern WINAPI void wine32a_ntdll_TpReleaseCleanupGroup(void);  /* ../dlls/ntdll/threadpool.c:2600 */
@@ -19915,10 +21737,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpReleaseCleanupGroup,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_TpReleaseCleanupGroupMembers(TP_CLEANUP_GROUP*  group, BOOL  cancel_pending, PVOID  userdata) /* ../dlls/ntdll/threadpool.c:2613 */
+WINAPI void wine32b_ntdll_TpReleaseCleanupGroupMembers(TP_CLEANUP_GROUP*  group, BOOL  cancel_pending, PVOID  userdata) /* ../dlls/ntdll/threadpool.c:2613 */
 {
 	TRACE("Enter TpReleaseCleanupGroupMembers\n");
-	return pTpReleaseCleanupGroupMembers(group, cancel_pending, userdata);
+	pTpReleaseCleanupGroupMembers(group, cancel_pending, userdata);
+	TRACE("Leave TpReleaseCleanupGroupMembers\n");
 }
 
 extern WINAPI void wine32a_ntdll_TpReleaseCleanupGroupMembers(void);  /* ../dlls/ntdll/threadpool.c:2613 */
@@ -19942,10 +21765,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpReleaseCleanupGroupMembers,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_TpReleasePool(TP_POOL*  pool) /* ../dlls/ntdll/threadpool.c:2686 */
+WINAPI void wine32b_ntdll_TpReleasePool(TP_POOL*  pool) /* ../dlls/ntdll/threadpool.c:2686 */
 {
 	TRACE("Enter TpReleasePool\n");
-	return pTpReleasePool(pool);
+	pTpReleasePool(pool);
+	TRACE("Leave TpReleasePool\n");
 }
 
 extern WINAPI void wine32a_ntdll_TpReleasePool(void);  /* ../dlls/ntdll/threadpool.c:2686 */
@@ -19967,10 +21791,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpReleasePool,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_TpReleaseTimer(TP_TIMER*  timer) /* ../dlls/ntdll/threadpool.c:2699 */
+WINAPI void wine32b_ntdll_TpReleaseTimer(TP_TIMER*  timer) /* ../dlls/ntdll/threadpool.c:2699 */
 {
 	TRACE("Enter TpReleaseTimer\n");
-	return pTpReleaseTimer(timer);
+	pTpReleaseTimer(timer);
+	TRACE("Leave TpReleaseTimer\n");
 }
 
 extern WINAPI void wine32a_ntdll_TpReleaseTimer(void);  /* ../dlls/ntdll/threadpool.c:2699 */
@@ -19992,10 +21817,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpReleaseTimer,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_TpReleaseWait(TP_WAIT*  wait) /* ../dlls/ntdll/threadpool.c:2713 */
+WINAPI void wine32b_ntdll_TpReleaseWait(TP_WAIT*  wait) /* ../dlls/ntdll/threadpool.c:2713 */
 {
 	TRACE("Enter TpReleaseWait\n");
-	return pTpReleaseWait(wait);
+	pTpReleaseWait(wait);
+	TRACE("Leave TpReleaseWait\n");
 }
 
 extern WINAPI void wine32a_ntdll_TpReleaseWait(void);  /* ../dlls/ntdll/threadpool.c:2713 */
@@ -20017,10 +21843,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpReleaseWait,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_TpReleaseWork(TP_WORK*  work) /* ../dlls/ntdll/threadpool.c:2727 */
+WINAPI void wine32b_ntdll_TpReleaseWork(TP_WORK*  work) /* ../dlls/ntdll/threadpool.c:2727 */
 {
 	TRACE("Enter TpReleaseWork\n");
-	return pTpReleaseWork(work);
+	pTpReleaseWork(work);
+	TRACE("Leave TpReleaseWork\n");
 }
 
 extern WINAPI void wine32a_ntdll_TpReleaseWork(void);  /* ../dlls/ntdll/threadpool.c:2727 */
@@ -20042,10 +21869,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpReleaseWork,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_TpSetPoolMaxThreads(TP_POOL*  pool, DWORD  maximum) /* ../dlls/ntdll/threadpool.c:2741 */
+WINAPI void wine32b_ntdll_TpSetPoolMaxThreads(TP_POOL*  pool, DWORD  maximum) /* ../dlls/ntdll/threadpool.c:2741 */
 {
 	TRACE("Enter TpSetPoolMaxThreads\n");
-	return pTpSetPoolMaxThreads(pool, maximum);
+	pTpSetPoolMaxThreads(pool, maximum);
+	TRACE("Leave TpSetPoolMaxThreads\n");
 }
 
 extern WINAPI void wine32a_ntdll_TpSetPoolMaxThreads(void);  /* ../dlls/ntdll/threadpool.c:2741 */
@@ -20068,10 +21896,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpSetPoolMaxThreads,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_ntdll_TpSetPoolMinThreads(TP_POOL*  pool, DWORD  minimum) /* ../dlls/ntdll/threadpool.c:2756 */
+WINAPI BOOL wine32b_ntdll_TpSetPoolMinThreads(TP_POOL*  pool, DWORD  minimum) /* ../dlls/ntdll/threadpool.c:2756 */
 {
+	BOOL return_value;
 	TRACE("Enter TpSetPoolMinThreads\n");
-	return pTpSetPoolMinThreads(pool, minimum);
+	return_value = pTpSetPoolMinThreads(pool, minimum);
+	TRACE("Leave TpSetPoolMinThreads\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_TpSetPoolMinThreads(void);  /* ../dlls/ntdll/threadpool.c:2756 */
@@ -20094,10 +21925,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpSetPoolMinThreads,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_TpSetTimer(TP_TIMER*  timer, LARGE_INTEGER*  timeout, LONG  period, LONG  window_length) /* ../dlls/ntdll/threadpool.c:2785 */
+WINAPI void wine32b_ntdll_TpSetTimer(TP_TIMER*  timer, LARGE_INTEGER*  timeout, LONG  period, LONG  window_length) /* ../dlls/ntdll/threadpool.c:2785 */
 {
 	TRACE("Enter TpSetTimer\n");
-	return pTpSetTimer(timer, timeout, period, window_length);
+	pTpSetTimer(timer, timeout, period, window_length);
+	TRACE("Leave TpSetTimer\n");
 }
 
 extern WINAPI void wine32a_ntdll_TpSetTimer(void);  /* ../dlls/ntdll/threadpool.c:2785 */
@@ -20122,10 +21954,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpSetTimer,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_TpSetWait(TP_WAIT*  wait, HANDLE  handle, LARGE_INTEGER*  timeout) /* ../dlls/ntdll/threadpool.c:2863 */
+WINAPI void wine32b_ntdll_TpSetWait(TP_WAIT*  wait, HANDLE  handle, LARGE_INTEGER*  timeout) /* ../dlls/ntdll/threadpool.c:2863 */
 {
 	TRACE("Enter TpSetWait\n");
-	return pTpSetWait(wait, handle, timeout);
+	pTpSetWait(wait, handle, timeout);
+	TRACE("Leave TpSetWait\n");
 }
 
 extern WINAPI void wine32a_ntdll_TpSetWait(void);  /* ../dlls/ntdll/threadpool.c:2863 */
@@ -20149,10 +21982,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpSetWait,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_TpSimpleTryPost(PTP_SIMPLE_CALLBACK  callback, PVOID  userdata, TP_CALLBACK_ENVIRON*  environment) /* ../dlls/ntdll/threadpool.c:2924 */
+WINAPI NTSTATUS wine32b_ntdll_TpSimpleTryPost(PTP_SIMPLE_CALLBACK  callback, PVOID  userdata, TP_CALLBACK_ENVIRON*  environment) /* ../dlls/ntdll/threadpool.c:2924 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter TpSimpleTryPost\n");
-	return pTpSimpleTryPost(callback, userdata, environment);
+	return_value = pTpSimpleTryPost(callback, userdata, environment);
+	TRACE("Leave TpSimpleTryPost\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_TpSimpleTryPost(void);  /* ../dlls/ntdll/threadpool.c:2924 */
@@ -20176,10 +22012,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpSimpleTryPost,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_TpWaitForTimer(TP_TIMER*  timer, BOOL  cancel_pending) /* ../dlls/ntdll/threadpool.c:2954 */
+WINAPI void wine32b_ntdll_TpWaitForTimer(TP_TIMER*  timer, BOOL  cancel_pending) /* ../dlls/ntdll/threadpool.c:2954 */
 {
 	TRACE("Enter TpWaitForTimer\n");
-	return pTpWaitForTimer(timer, cancel_pending);
+	pTpWaitForTimer(timer, cancel_pending);
+	TRACE("Leave TpWaitForTimer\n");
 }
 
 extern WINAPI void wine32a_ntdll_TpWaitForTimer(void);  /* ../dlls/ntdll/threadpool.c:2954 */
@@ -20202,10 +22039,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpWaitForTimer,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_TpWaitForWait(TP_WAIT*  wait, BOOL  cancel_pending) /* ../dlls/ntdll/threadpool.c:2968 */
+WINAPI void wine32b_ntdll_TpWaitForWait(TP_WAIT*  wait, BOOL  cancel_pending) /* ../dlls/ntdll/threadpool.c:2968 */
 {
 	TRACE("Enter TpWaitForWait\n");
-	return pTpWaitForWait(wait, cancel_pending);
+	pTpWaitForWait(wait, cancel_pending);
+	TRACE("Leave TpWaitForWait\n");
 }
 
 extern WINAPI void wine32a_ntdll_TpWaitForWait(void);  /* ../dlls/ntdll/threadpool.c:2968 */
@@ -20228,10 +22066,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpWaitForWait,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_TpWaitForWork(TP_WORK*  work, BOOL  cancel_pending) /* ../dlls/ntdll/threadpool.c:2982 */
+WINAPI void wine32b_ntdll_TpWaitForWork(TP_WORK*  work, BOOL  cancel_pending) /* ../dlls/ntdll/threadpool.c:2982 */
 {
 	TRACE("Enter TpWaitForWork\n");
-	return pTpWaitForWork(work, cancel_pending);
+	pTpWaitForWork(work, cancel_pending);
+	TRACE("Leave TpWaitForWork\n");
 }
 
 extern WINAPI void wine32a_ntdll_TpWaitForWork(void);  /* ../dlls/ntdll/threadpool.c:2982 */
@@ -20254,10 +22093,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_TpWaitForWork,
 	"ret \n"
 )
 
-extern WINAPI ULONGLONG wine32b_ntdll_VerSetConditionMask(ULONGLONG  dwlConditionMask, DWORD  dwTypeBitMask, BYTE  dwConditionMask) /* ../dlls/ntdll/nt.c:3369 */
+WINAPI ULONGLONG wine32b_ntdll_VerSetConditionMask(ULONGLONG  dwlConditionMask, DWORD  dwTypeBitMask, BYTE  dwConditionMask) /* ../dlls/ntdll/nt.c:3369 */
 {
+	ULONGLONG return_value;
 	TRACE("Enter VerSetConditionMask\n");
-	return pVerSetConditionMask(dwlConditionMask, dwTypeBitMask, dwConditionMask);
+	return_value = pVerSetConditionMask(dwlConditionMask, dwTypeBitMask, dwConditionMask);
+	TRACE("Leave VerSetConditionMask\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_VerSetConditionMask(void);  /* ../dlls/ntdll/nt.c:3369 */
@@ -20281,10 +22123,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_VerSetConditionMask,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_WinSqmEndSession(HANDLE  session) /* ../dlls/ntdll/misc.c:338 */
+WINAPI NTSTATUS wine32b_ntdll_WinSqmEndSession(HANDLE  session) /* ../dlls/ntdll/misc.c:338 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter WinSqmEndSession\n");
-	return pWinSqmEndSession(session);
+	return_value = pWinSqmEndSession(session);
+	TRACE("Leave WinSqmEndSession\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_WinSqmEndSession(void);  /* ../dlls/ntdll/misc.c:338 */
@@ -20306,10 +22151,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_WinSqmEndSession,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_WinSqmIncrementDWORD(DWORD  unk1, DWORD  unk2, DWORD  unk3) /* ../dlls/ntdll/misc.c:347 */
+WINAPI void wine32b_ntdll_WinSqmIncrementDWORD(DWORD  unk1, DWORD  unk2, DWORD  unk3) /* ../dlls/ntdll/misc.c:347 */
 {
 	TRACE("Enter WinSqmIncrementDWORD\n");
-	return pWinSqmIncrementDWORD(unk1, unk2, unk3);
+	pWinSqmIncrementDWORD(unk1, unk2, unk3);
+	TRACE("Leave WinSqmIncrementDWORD\n");
 }
 
 extern WINAPI void wine32a_ntdll_WinSqmIncrementDWORD(void);  /* ../dlls/ntdll/misc.c:347 */
@@ -20333,10 +22179,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_WinSqmIncrementDWORD,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_ntdll_WinSqmIsOptedIn(void) /* ../dlls/ntdll/misc.c:355 */
+WINAPI BOOL wine32b_ntdll_WinSqmIsOptedIn(void) /* ../dlls/ntdll/misc.c:355 */
 {
+	BOOL return_value;
 	TRACE("Enter WinSqmIsOptedIn\n");
-	return pWinSqmIsOptedIn();
+	return_value = pWinSqmIsOptedIn();
+	TRACE("Leave WinSqmIsOptedIn\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_WinSqmIsOptedIn(void);  /* ../dlls/ntdll/misc.c:355 */
@@ -20357,10 +22206,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_WinSqmIsOptedIn,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_WinSqmSetDWORD(HANDLE  session, DWORD  datapoint_id, DWORD  datapoint_value) /* ../dlls/ntdll/misc.c:373 */
+WINAPI void wine32b_ntdll_WinSqmSetDWORD(HANDLE  session, DWORD  datapoint_id, DWORD  datapoint_value) /* ../dlls/ntdll/misc.c:373 */
 {
 	TRACE("Enter WinSqmSetDWORD\n");
-	return pWinSqmSetDWORD(session, datapoint_id, datapoint_value);
+	pWinSqmSetDWORD(session, datapoint_id, datapoint_value);
+	TRACE("Leave WinSqmSetDWORD\n");
 }
 
 extern WINAPI void wine32a_ntdll_WinSqmSetDWORD(void);  /* ../dlls/ntdll/misc.c:373 */
@@ -20384,10 +22234,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_WinSqmSetDWORD,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_ntdll_WinSqmStartSession(GUID*  sessionguid, DWORD  sessionid, DWORD  unknown1) /* ../dlls/ntdll/misc.c:364 */
+WINAPI HANDLE wine32b_ntdll_WinSqmStartSession(GUID*  sessionguid, DWORD  sessionid, DWORD  unknown1) /* ../dlls/ntdll/misc.c:364 */
 {
+	HANDLE return_value;
 	TRACE("Enter WinSqmStartSession\n");
-	return pWinSqmStartSession(sessionguid, sessionid, unknown1);
+	return_value = pWinSqmStartSession(sessionguid, sessionid, unknown1);
+	TRACE("Leave WinSqmStartSession\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_WinSqmStartSession(void);  /* ../dlls/ntdll/misc.c:364 */
@@ -20411,10 +22264,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_WinSqmStartSession,
 	"ret \n"
 )
 
-extern WINAPI EXCEPTION_DISPOSITION wine32b_ntdll___C_specific_handler(EXCEPTION_RECORD*  rec, void*  frame, CONTEXT*  context, struct _DISPATCHER_CONTEXT*  dispatch) /* ../dlls/ntdll/signal_x86_64.c:4001 */
+WINAPI EXCEPTION_DISPOSITION wine32b_ntdll___C_specific_handler(EXCEPTION_RECORD*  rec, void*  frame, CONTEXT*  context, struct _DISPATCHER_CONTEXT*  dispatch) /* ../dlls/ntdll/signal_x86_64.c:4001 */
 {
+	EXCEPTION_DISPOSITION return_value;
 	TRACE("Enter __C_specific_handler\n");
-	return p__C_specific_handler(rec, frame, context, dispatch);
+	return_value = p__C_specific_handler(rec, frame, context, dispatch);
+	TRACE("Leave __C_specific_handler\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll___C_specific_handler(void);  /* ../dlls/ntdll/signal_x86_64.c:4001 */
@@ -20439,10 +22295,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll___C_specific_handler,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll___isascii(int  c) /* ../dlls/ntdll/string.c:455 */
+WINAPI int wine32b_ntdll___isascii(int  c) /* ../dlls/ntdll/string.c:455 */
 {
+	int return_value;
 	TRACE("Enter __isascii\n");
-	return p__isascii(c);
+	return_value = p__isascii(c);
+	TRACE("Leave __isascii\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll___isascii(void);  /* ../dlls/ntdll/string.c:455 */
@@ -20464,10 +22323,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll___isascii,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll___iscsym(int  c) /* ../dlls/ntdll/string.c:473 */
+WINAPI int wine32b_ntdll___iscsym(int  c) /* ../dlls/ntdll/string.c:473 */
 {
+	int return_value;
 	TRACE("Enter __iscsym\n");
-	return p__iscsym(c);
+	return_value = p__iscsym(c);
+	TRACE("Leave __iscsym\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll___iscsym(void);  /* ../dlls/ntdll/string.c:473 */
@@ -20489,10 +22351,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll___iscsym,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll___iscsymf(int  c) /* ../dlls/ntdll/string.c:482 */
+WINAPI int wine32b_ntdll___iscsymf(int  c) /* ../dlls/ntdll/string.c:482 */
 {
+	int return_value;
 	TRACE("Enter __iscsymf\n");
-	return p__iscsymf(c);
+	return_value = p__iscsymf(c);
+	TRACE("Leave __iscsymf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll___iscsymf(void);  /* ../dlls/ntdll/string.c:482 */
@@ -20514,10 +22379,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll___iscsymf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll___toascii(int  c) /* ../dlls/ntdll/string.c:464 */
+WINAPI int wine32b_ntdll___toascii(int  c) /* ../dlls/ntdll/string.c:464 */
 {
+	int return_value;
 	TRACE("Enter __toascii\n");
-	return p__toascii(c);
+	return_value = p__toascii(c);
+	TRACE("Leave __toascii\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll___toascii(void);  /* ../dlls/ntdll/string.c:464 */
@@ -20539,10 +22407,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll___toascii,
 	"ret \n"
 )
 
-extern WINAPI LONGLONG wine32b_ntdll__atoi64(char*  str) /* ../dlls/ntdll/string.c:769 */
+WINAPI LONGLONG wine32b_ntdll__atoi64(char*  str) /* ../dlls/ntdll/string.c:769 */
 {
+	LONGLONG return_value;
 	TRACE("Enter _atoi64\n");
-	return p_atoi64(str);
+	return_value = p_atoi64(str);
+	TRACE("Leave _atoi64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__atoi64(void);  /* ../dlls/ntdll/string.c:769 */
@@ -20564,10 +22435,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__atoi64,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll__i64toa(LONGLONG  value, char*  str, int  radix) /* ../dlls/ntdll/string.c:710 */
+WINAPI char* wine32b_ntdll__i64toa(LONGLONG  value, char*  str, int  radix) /* ../dlls/ntdll/string.c:710 */
 {
+	char* return_value;
 	TRACE("Enter _i64toa\n");
-	return p_i64toa(value, str, radix);
+	return_value = p_i64toa(value, str, radix);
+	TRACE("Leave _i64toa\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__i64toa(void);  /* ../dlls/ntdll/string.c:710 */
@@ -20591,10 +22465,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__i64toa,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll__i64tow(LONGLONG  value, LPWSTR  str, INT  radix) /* ../dlls/ntdll/wcstring.c:581 */
+WINAPI LPWSTR wine32b_ntdll__i64tow(LONGLONG  value, LPWSTR  str, INT  radix) /* ../dlls/ntdll/wcstring.c:581 */
 {
+	LPWSTR return_value;
 	TRACE("Enter _i64tow\n");
-	return p_i64tow(value, str, radix);
+	return_value = p_i64tow(value, str, radix);
+	TRACE("Leave _i64tow\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__i64tow(void);  /* ../dlls/ntdll/wcstring.c:581 */
@@ -20618,10 +22495,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__i64tow,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll__itoa(int  value, char*  str, int  radix) /* ../dlls/ntdll/string.c:636 */
+WINAPI char* wine32b_ntdll__itoa(int  value, char*  str, int  radix) /* ../dlls/ntdll/string.c:636 */
 {
+	char* return_value;
 	TRACE("Enter _itoa\n");
-	return p_itoa(value, str, radix);
+	return_value = p_itoa(value, str, radix);
+	TRACE("Leave _itoa\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__itoa(void);  /* ../dlls/ntdll/string.c:636 */
@@ -20645,10 +22525,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__itoa,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll__itow(int  value, LPWSTR  str, INT  radix) /* ../dlls/ntdll/wcstring.c:500 */
+WINAPI LPWSTR wine32b_ntdll__itow(int  value, LPWSTR  str, INT  radix) /* ../dlls/ntdll/wcstring.c:500 */
 {
+	LPWSTR return_value;
 	TRACE("Enter _itow\n");
-	return p_itow(value, str, radix);
+	return_value = p_itow(value, str, radix);
+	TRACE("Leave _itow\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__itow(void);  /* ../dlls/ntdll/wcstring.c:500 */
@@ -20672,10 +22555,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__itow,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_ntdll__lfind(void*  key, void*  base, unsigned int*  nmemb, size_t  size, int (* compar) (void)) /* ../dlls/ntdll/misc.c:324 */
+WINAPI void* wine32b_ntdll__lfind(void*  key, void*  base, unsigned int*  nmemb, size_t  size, int (* compar) (void)) /* ../dlls/ntdll/misc.c:324 */
 {
+	void* return_value;
 	TRACE("Enter _lfind\n");
-	return p_lfind(key, base, nmemb, size, compar);
+	return_value = p_lfind(key, base, nmemb, size, compar);
+	TRACE("Leave _lfind\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__lfind(void);  /* ../dlls/ntdll/misc.c:324 */
@@ -20700,10 +22586,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__lfind,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll__local_unwind(void*  frame, void*  target_ip) /* ../dlls/ntdll/signal_x86_64.c:3992 */
+WINAPI void wine32b_ntdll__local_unwind(void*  frame, void*  target_ip) /* ../dlls/ntdll/signal_x86_64.c:3992 */
 {
 	TRACE("Enter _local_unwind\n");
-	return p_local_unwind(frame, target_ip);
+	p_local_unwind(frame, target_ip);
+	TRACE("Leave _local_unwind\n");
 }
 
 extern WINAPI void wine32a_ntdll__local_unwind(void);  /* ../dlls/ntdll/signal_x86_64.c:3992 */
@@ -20726,10 +22613,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__local_unwind,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll__ltoa(LONG  value, char*  str, int  radix) /* ../dlls/ntdll/string.c:580 */
+WINAPI char* wine32b_ntdll__ltoa(LONG  value, char*  str, int  radix) /* ../dlls/ntdll/string.c:580 */
 {
+	char* return_value;
 	TRACE("Enter _ltoa\n");
-	return p_ltoa(value, str, radix);
+	return_value = p_ltoa(value, str, radix);
+	TRACE("Leave _ltoa\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__ltoa(void);  /* ../dlls/ntdll/string.c:580 */
@@ -20753,10 +22643,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__ltoa,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll__ltow(LONG  value, LPWSTR  str, INT  radix) /* ../dlls/ntdll/wcstring.c:438 */
+WINAPI LPWSTR wine32b_ntdll__ltow(LONG  value, LPWSTR  str, INT  radix) /* ../dlls/ntdll/wcstring.c:438 */
 {
+	LPWSTR return_value;
 	TRACE("Enter _ltow\n");
-	return p_ltow(value, str, radix);
+	return_value = p_ltow(value, str, radix);
+	TRACE("Leave _ltow\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__ltow(void);  /* ../dlls/ntdll/wcstring.c:438 */
@@ -20780,10 +22673,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__ltow,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_ntdll__memccpy(void*  dst, void*  src, int  c, size_t  n) /* ../dlls/ntdll/string.c:214 */
+WINAPI void* wine32b_ntdll__memccpy(void*  dst, void*  src, int  c, size_t  n) /* ../dlls/ntdll/string.c:214 */
 {
+	void* return_value;
 	TRACE("Enter _memccpy\n");
-	return p_memccpy(dst, src, c, n);
+	return_value = p_memccpy(dst, src, c, n);
+	TRACE("Leave _memccpy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__memccpy(void);  /* ../dlls/ntdll/string.c:214 */
@@ -20808,10 +22704,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__memccpy,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll__memicmp(LPCSTR  s1, LPCSTR  s2, DWORD  len) /* ../dlls/ntdll/string.c:247 */
+WINAPI INT wine32b_ntdll__memicmp(LPCSTR  s1, LPCSTR  s2, DWORD  len) /* ../dlls/ntdll/string.c:247 */
 {
+	INT return_value;
 	TRACE("Enter _memicmp\n");
-	return p_memicmp(s1, s2, len);
+	return_value = p_memicmp(s1, s2, len);
+	TRACE("Leave _memicmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__memicmp(void);  /* ../dlls/ntdll/string.c:247 */
@@ -20835,10 +22734,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__memicmp,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll__snprintf(char*  str, SIZE_T  len, char*  format) /* ../dlls/ntdll/printf.c:740 */
+WINAPI int wine32b_ntdll__snprintf(char*  str, SIZE_T  len, char*  format) /* ../dlls/ntdll/printf.c:740 */
 {
+	int return_value;
 	TRACE("Enter _snprintf\n");
-	return p_snprintf(str, len, format);
+	return_value = p_snprintf(str, len, format);
+	TRACE("Leave _snprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__snprintf(void);  /* ../dlls/ntdll/printf.c:740 */
@@ -20862,10 +22764,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__snprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll__snprintf_s(char*  str, SIZE_T  size, SIZE_T  len, char*  format) /* ../dlls/ntdll/printf.c:800 */
+WINAPI int wine32b_ntdll__snprintf_s(char*  str, SIZE_T  size, SIZE_T  len, char*  format) /* ../dlls/ntdll/printf.c:800 */
 {
+	int return_value;
 	TRACE("Enter _snprintf_s\n");
-	return p_snprintf_s(str, size, len, format);
+	return_value = p_snprintf_s(str, size, len, format);
+	TRACE("Leave _snprintf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__snprintf_s(void);  /* ../dlls/ntdll/printf.c:800 */
@@ -20890,10 +22795,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__snprintf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll__snwprintf(WCHAR*  str, SIZE_T  len, WCHAR*  format) /* ../dlls/ntdll/printf.c:755 */
+WINAPI int wine32b_ntdll__snwprintf(WCHAR*  str, SIZE_T  len, WCHAR*  format) /* ../dlls/ntdll/printf.c:755 */
 {
+	int return_value;
 	TRACE("Enter _snwprintf\n");
-	return p_snwprintf(str, len, format);
+	return_value = p_snwprintf(str, len, format);
+	TRACE("Leave _snwprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__snwprintf(void);  /* ../dlls/ntdll/printf.c:755 */
@@ -20917,10 +22825,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__snwprintf,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll__splitpath(char*  inpath, char*  drv, char*  dir, char*  fname, char*  ext) /* ../dlls/ntdll/string.c:1426 */
+WINAPI void wine32b_ntdll__splitpath(char*  inpath, char*  drv, char*  dir, char*  fname, char*  ext) /* ../dlls/ntdll/string.c:1426 */
 {
 	TRACE("Enter _splitpath\n");
-	return p_splitpath(inpath, drv, dir, fname, ext);
+	p_splitpath(inpath, drv, dir, fname, ext);
+	TRACE("Leave _splitpath\n");
 }
 
 extern WINAPI void wine32a_ntdll__splitpath(void);  /* ../dlls/ntdll/string.c:1426 */
@@ -20945,10 +22854,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__splitpath,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll__stricmp(LPCSTR  str1, LPCSTR  str2) /* ../dlls/ntdll/string.c:288 */
+WINAPI int wine32b_ntdll__stricmp(LPCSTR  str1, LPCSTR  str2) /* ../dlls/ntdll/string.c:288 */
 {
+	int return_value;
 	TRACE("Enter _stricmp\n");
-	return p_stricmp(str1, str2);
+	return_value = p_stricmp(str1, str2);
+	TRACE("Leave _stricmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__stricmp(void);  /* ../dlls/ntdll/string.c:288 */
@@ -20971,10 +22883,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__stricmp,
 	"ret \n"
 )
 
-extern WINAPI LPSTR wine32b_ntdll__strlwr(LPSTR  str) /* ../dlls/ntdll/string.c:326 */
+WINAPI LPSTR wine32b_ntdll__strlwr(LPSTR  str) /* ../dlls/ntdll/string.c:326 */
 {
+	LPSTR return_value;
 	TRACE("Enter _strlwr\n");
-	return p_strlwr(str);
+	return_value = p_strlwr(str);
+	TRACE("Leave _strlwr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__strlwr(void);  /* ../dlls/ntdll/string.c:326 */
@@ -20996,10 +22911,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__strlwr,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll__strnicmp(LPCSTR  str1, LPCSTR  str2, size_t  n) /* ../dlls/ntdll/string.c:263 */
+WINAPI int wine32b_ntdll__strnicmp(LPCSTR  str1, LPCSTR  str2, size_t  n) /* ../dlls/ntdll/string.c:263 */
 {
+	int return_value;
 	TRACE("Enter _strnicmp\n");
-	return p_strnicmp(str1, str2, n);
+	return_value = p_strnicmp(str1, str2, n);
+	TRACE("Leave _strnicmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__strnicmp(void);  /* ../dlls/ntdll/string.c:263 */
@@ -21023,10 +22941,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__strnicmp,
 	"ret \n"
 )
 
-extern WINAPI LPSTR wine32b_ntdll__strupr(LPSTR  str) /* ../dlls/ntdll/string.c:306 */
+WINAPI LPSTR wine32b_ntdll__strupr(LPSTR  str) /* ../dlls/ntdll/string.c:306 */
 {
+	LPSTR return_value;
 	TRACE("Enter _strupr\n");
-	return p_strupr(str);
+	return_value = p_strupr(str);
+	TRACE("Leave _strupr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__strupr(void);  /* ../dlls/ntdll/string.c:306 */
@@ -21048,10 +22969,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__strupr,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll__tolower(int  c) /* ../dlls/ntdll/string.c:500 */
+WINAPI int wine32b_ntdll__tolower(int  c) /* ../dlls/ntdll/string.c:500 */
 {
+	int return_value;
 	TRACE("Enter _tolower\n");
-	return p_tolower(c);
+	return_value = p_tolower(c);
+	TRACE("Leave _tolower\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__tolower(void);  /* ../dlls/ntdll/string.c:500 */
@@ -21073,10 +22997,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__tolower,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll__toupper(int  c) /* ../dlls/ntdll/string.c:491 */
+WINAPI int wine32b_ntdll__toupper(int  c) /* ../dlls/ntdll/string.c:491 */
 {
+	int return_value;
 	TRACE("Enter _toupper\n");
-	return p_toupper(c);
+	return_value = p_toupper(c);
+	TRACE("Leave _toupper\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__toupper(void);  /* ../dlls/ntdll/string.c:491 */
@@ -21098,10 +23025,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__toupper,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll__ui64toa(ULONGLONG  value, char*  str, int  radix) /* ../dlls/ntdll/string.c:659 */
+WINAPI char* wine32b_ntdll__ui64toa(ULONGLONG  value, char*  str, int  radix) /* ../dlls/ntdll/string.c:659 */
 {
+	char* return_value;
 	TRACE("Enter _ui64toa\n");
-	return p_ui64toa(value, str, radix);
+	return_value = p_ui64toa(value, str, radix);
+	TRACE("Leave _ui64toa\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__ui64toa(void);  /* ../dlls/ntdll/string.c:659 */
@@ -21125,10 +23055,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__ui64toa,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll__ui64tow(ULONGLONG  value, LPWSTR  str, INT  radix) /* ../dlls/ntdll/wcstring.c:528 */
+WINAPI LPWSTR wine32b_ntdll__ui64tow(ULONGLONG  value, LPWSTR  str, INT  radix) /* ../dlls/ntdll/wcstring.c:528 */
 {
+	LPWSTR return_value;
 	TRACE("Enter _ui64tow\n");
-	return p_ui64tow(value, str, radix);
+	return_value = p_ui64tow(value, str, radix);
+	TRACE("Leave _ui64tow\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__ui64tow(void);  /* ../dlls/ntdll/wcstring.c:528 */
@@ -21152,10 +23085,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__ui64tow,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll__ultoa(ULONG  value, char*  str, int  radix) /* ../dlls/ntdll/string.c:538 */
+WINAPI char* wine32b_ntdll__ultoa(ULONG  value, char*  str, int  radix) /* ../dlls/ntdll/string.c:538 */
 {
+	char* return_value;
 	TRACE("Enter _ultoa\n");
-	return p_ultoa(value, str, radix);
+	return_value = p_ultoa(value, str, radix);
+	TRACE("Leave _ultoa\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__ultoa(void);  /* ../dlls/ntdll/string.c:538 */
@@ -21179,10 +23115,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__ultoa,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll__ultow(ULONG  value, LPWSTR  str, INT  radix) /* ../dlls/ntdll/wcstring.c:394 */
+WINAPI LPWSTR wine32b_ntdll__ultow(ULONG  value, LPWSTR  str, INT  radix) /* ../dlls/ntdll/wcstring.c:394 */
 {
+	LPWSTR return_value;
 	TRACE("Enter _ultow\n");
-	return p_ultow(value, str, radix);
+	return_value = p_ultow(value, str, radix);
+	TRACE("Leave _ultow\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__ultow(void);  /* ../dlls/ntdll/wcstring.c:394 */
@@ -21206,10 +23145,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__ultow,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll__vsnprintf(char*  str, SIZE_T  len, char*  format, __builtin_ms_va_list  args) /* ../dlls/ntdll/printf.c:693 */
+WINAPI int wine32b_ntdll__vsnprintf(char*  str, SIZE_T  len, char*  format, __builtin_ms_va_list  args) /* ../dlls/ntdll/printf.c:693 */
 {
+	int return_value;
 	TRACE("Enter _vsnprintf\n");
-	return p_vsnprintf(str, len, format, args);
+	return_value = p_vsnprintf(str, len, format, args);
+	TRACE("Leave _vsnprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__vsnprintf(void);  /* ../dlls/ntdll/printf.c:693 */
@@ -21234,10 +23176,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__vsnprintf,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll__vsnprintf_s(char*  str, SIZE_T  size, SIZE_T  len, char*  format, __builtin_ms_va_list  args) /* ../dlls/ntdll/printf.c:770 */
+WINAPI int wine32b_ntdll__vsnprintf_s(char*  str, SIZE_T  size, SIZE_T  len, char*  format, __builtin_ms_va_list  args) /* ../dlls/ntdll/printf.c:770 */
 {
+	int return_value;
 	TRACE("Enter _vsnprintf_s\n");
-	return p_vsnprintf_s(str, size, len, format, args);
+	return_value = p_vsnprintf_s(str, size, len, format, args);
+	TRACE("Leave _vsnprintf_s\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__vsnprintf_s(void);  /* ../dlls/ntdll/printf.c:770 */
@@ -21262,10 +23207,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__vsnprintf_s,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll__vsnwprintf(WCHAR*  str, SIZE_T  len, WCHAR*  format, __builtin_ms_va_list  args) /* ../dlls/ntdll/printf.c:721 */
+WINAPI int wine32b_ntdll__vsnwprintf(WCHAR*  str, SIZE_T  len, WCHAR*  format, __builtin_ms_va_list  args) /* ../dlls/ntdll/printf.c:721 */
 {
+	int return_value;
 	TRACE("Enter _vsnwprintf\n");
-	return p_vsnwprintf(str, len, format, args);
+	return_value = p_vsnwprintf(str, len, format, args);
+	TRACE("Leave _vsnwprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__vsnwprintf(void);  /* ../dlls/ntdll/printf.c:721 */
@@ -21290,10 +23238,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__vsnwprintf,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll__wcsicmp(LPCWSTR  str1, LPCWSTR  str2) /* ../dlls/ntdll/wcstring.c:39 */
+WINAPI INT wine32b_ntdll__wcsicmp(LPCWSTR  str1, LPCWSTR  str2) /* ../dlls/ntdll/wcstring.c:39 */
 {
+	INT return_value;
 	TRACE("Enter _wcsicmp\n");
-	return p_wcsicmp(str1, str2);
+	return_value = p_wcsicmp(str1, str2);
+	TRACE("Leave _wcsicmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__wcsicmp(void);  /* ../dlls/ntdll/wcstring.c:39 */
@@ -21316,10 +23267,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__wcsicmp,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll__wcslwr(LPWSTR  str) /* ../dlls/ntdll/wcstring.c:48 */
+WINAPI LPWSTR wine32b_ntdll__wcslwr(LPWSTR  str) /* ../dlls/ntdll/wcstring.c:48 */
 {
+	LPWSTR return_value;
 	TRACE("Enter _wcslwr\n");
-	return p_wcslwr(str);
+	return_value = p_wcslwr(str);
+	TRACE("Leave _wcslwr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__wcslwr(void);  /* ../dlls/ntdll/wcstring.c:48 */
@@ -21341,10 +23295,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__wcslwr,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll__wcsnicmp(LPCWSTR  str1, LPCWSTR  str2, INT  n) /* ../dlls/ntdll/wcstring.c:57 */
+WINAPI INT wine32b_ntdll__wcsnicmp(LPCWSTR  str1, LPCWSTR  str2, INT  n) /* ../dlls/ntdll/wcstring.c:57 */
 {
+	INT return_value;
 	TRACE("Enter _wcsnicmp\n");
-	return p_wcsnicmp(str1, str2, n);
+	return_value = p_wcsnicmp(str1, str2, n);
+	TRACE("Leave _wcsnicmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__wcsnicmp(void);  /* ../dlls/ntdll/wcstring.c:57 */
@@ -21368,10 +23325,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__wcsnicmp,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll__wcsupr(LPWSTR  str) /* ../dlls/ntdll/wcstring.c:66 */
+WINAPI LPWSTR wine32b_ntdll__wcsupr(LPWSTR  str) /* ../dlls/ntdll/wcstring.c:66 */
 {
+	LPWSTR return_value;
 	TRACE("Enter _wcsupr\n");
-	return p_wcsupr(str);
+	return_value = p_wcsupr(str);
+	TRACE("Leave _wcsupr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__wcsupr(void);  /* ../dlls/ntdll/wcstring.c:66 */
@@ -21393,10 +23353,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__wcsupr,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll__wtoi(LPCWSTR  str) /* ../dlls/ntdll/wcstring.c:681 */
+WINAPI int wine32b_ntdll__wtoi(LPCWSTR  str) /* ../dlls/ntdll/wcstring.c:681 */
 {
+	int return_value;
 	TRACE("Enter _wtoi\n");
-	return p_wtoi(str);
+	return_value = p_wtoi(str);
+	TRACE("Leave _wtoi\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__wtoi(void);  /* ../dlls/ntdll/wcstring.c:681 */
@@ -21418,10 +23381,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__wtoi,
 	"ret \n"
 )
 
-extern WINAPI LONGLONG wine32b_ntdll__wtoi64(LPCWSTR  str) /* ../dlls/ntdll/wcstring.c:703 */
+WINAPI LONGLONG wine32b_ntdll__wtoi64(LPCWSTR  str) /* ../dlls/ntdll/wcstring.c:703 */
 {
+	LONGLONG return_value;
 	TRACE("Enter _wtoi64\n");
-	return p_wtoi64(str);
+	return_value = p_wtoi64(str);
+	TRACE("Leave _wtoi64\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__wtoi64(void);  /* ../dlls/ntdll/wcstring.c:703 */
@@ -21443,10 +23409,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__wtoi64,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_ntdll__wtol(LPCWSTR  str) /* ../dlls/ntdll/wcstring.c:640 */
+WINAPI LONG wine32b_ntdll__wtol(LPCWSTR  str) /* ../dlls/ntdll/wcstring.c:640 */
 {
+	LONG return_value;
 	TRACE("Enter _wtol\n");
-	return p_wtol(str);
+	return_value = p_wtol(str);
+	TRACE("Leave _wtol\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll__wtol(void);  /* ../dlls/ntdll/wcstring.c:640 */
@@ -21468,10 +23437,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll__wtol,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_abs(int  i) /* ../dlls/ntdll/misc.c:96 */
+WINAPI int wine32b_ntdll_abs(int  i) /* ../dlls/ntdll/misc.c:96 */
 {
+	int return_value;
 	TRACE("Enter abs\n");
-	return pabs(i);
+	return_value = pabs(i);
+	TRACE("Leave abs\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_abs(void);  /* ../dlls/ntdll/misc.c:96 */
@@ -21493,10 +23465,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_abs,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_ntdll_atan(double  d) /* ../dlls/ntdll/misc.c:112 */
+WINAPI double wine32b_ntdll_atan(double  d) /* ../dlls/ntdll/misc.c:112 */
 {
+	double return_value;
 	TRACE("Enter atan\n");
-	return patan(d);
+	return_value = patan(d);
+	TRACE("Leave atan\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_atan(void);  /* ../dlls/ntdll/misc.c:112 */
@@ -21518,10 +23493,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_atan,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_atoi(char*  nptr) /* ../dlls/ntdll/string.c:797 */
+WINAPI int wine32b_ntdll_atoi(char*  nptr) /* ../dlls/ntdll/string.c:797 */
 {
+	int return_value;
 	TRACE("Enter atoi\n");
-	return patoi(nptr);
+	return_value = patoi(nptr);
+	TRACE("Leave atoi\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_atoi(void);  /* ../dlls/ntdll/string.c:797 */
@@ -21543,10 +23521,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_atoi,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_ntdll_atol(char*  nptr) /* ../dlls/ntdll/string.c:806 */
+WINAPI LONG wine32b_ntdll_atol(char*  nptr) /* ../dlls/ntdll/string.c:806 */
 {
+	LONG return_value;
 	TRACE("Enter atol\n");
-	return patol(nptr);
+	return_value = patol(nptr);
+	TRACE("Leave atol\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_atol(void);  /* ../dlls/ntdll/string.c:806 */
@@ -21568,10 +23549,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_atol,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_ntdll_bsearch(void*  key, void*  base, size_t  nmemb, size_t  size, int (* compar) (void)) /* ../dlls/ntdll/misc.c:300 */
+WINAPI void* wine32b_ntdll_bsearch(void*  key, void*  base, size_t  nmemb, size_t  size, int (* compar) (void)) /* ../dlls/ntdll/misc.c:300 */
 {
+	void* return_value;
 	TRACE("Enter bsearch\n");
-	return pbsearch(key, base, nmemb, size, compar);
+	return_value = pbsearch(key, base, nmemb, size, compar);
+	TRACE("Leave bsearch\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_bsearch(void);  /* ../dlls/ntdll/misc.c:300 */
@@ -21596,10 +23580,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_bsearch,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_ntdll_ceil(double  d) /* ../dlls/ntdll/misc.c:120 */
+WINAPI double wine32b_ntdll_ceil(double  d) /* ../dlls/ntdll/misc.c:120 */
 {
+	double return_value;
 	TRACE("Enter ceil\n");
-	return pceil(d);
+	return_value = pceil(d);
+	TRACE("Leave ceil\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_ceil(void);  /* ../dlls/ntdll/misc.c:120 */
@@ -21621,10 +23608,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_ceil,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_ntdll_cos(double  d) /* ../dlls/ntdll/misc.c:128 */
+WINAPI double wine32b_ntdll_cos(double  d) /* ../dlls/ntdll/misc.c:128 */
 {
+	double return_value;
 	TRACE("Enter cos\n");
-	return pcos(d);
+	return_value = pcos(d);
+	TRACE("Leave cos\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_cos(void);  /* ../dlls/ntdll/misc.c:128 */
@@ -21646,10 +23636,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_cos,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_ntdll_fabs(double  d) /* ../dlls/ntdll/misc.c:136 */
+WINAPI double wine32b_ntdll_fabs(double  d) /* ../dlls/ntdll/misc.c:136 */
 {
+	double return_value;
 	TRACE("Enter fabs\n");
-	return pfabs(d);
+	return_value = pfabs(d);
+	TRACE("Leave fabs\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_fabs(void);  /* ../dlls/ntdll/misc.c:136 */
@@ -21671,10 +23664,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_fabs,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_ntdll_floor(double  d) /* ../dlls/ntdll/misc.c:144 */
+WINAPI double wine32b_ntdll_floor(double  d) /* ../dlls/ntdll/misc.c:144 */
 {
+	double return_value;
 	TRACE("Enter floor\n");
-	return pfloor(d);
+	return_value = pfloor(d);
+	TRACE("Leave floor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_floor(void);  /* ../dlls/ntdll/misc.c:144 */
@@ -21696,10 +23692,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_floor,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_isalnum(int  c) /* ../dlls/ntdll/string.c:356 */
+WINAPI int wine32b_ntdll_isalnum(int  c) /* ../dlls/ntdll/string.c:356 */
 {
+	int return_value;
 	TRACE("Enter isalnum\n");
-	return pisalnum(c);
+	return_value = pisalnum(c);
+	TRACE("Leave isalnum\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_isalnum(void);  /* ../dlls/ntdll/string.c:356 */
@@ -21721,10 +23720,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_isalnum,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_isalpha(int  c) /* ../dlls/ntdll/string.c:365 */
+WINAPI int wine32b_ntdll_isalpha(int  c) /* ../dlls/ntdll/string.c:365 */
 {
+	int return_value;
 	TRACE("Enter isalpha\n");
-	return pisalpha(c);
+	return_value = pisalpha(c);
+	TRACE("Leave isalpha\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_isalpha(void);  /* ../dlls/ntdll/string.c:365 */
@@ -21746,10 +23748,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_isalpha,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_iscntrl(int  c) /* ../dlls/ntdll/string.c:374 */
+WINAPI int wine32b_ntdll_iscntrl(int  c) /* ../dlls/ntdll/string.c:374 */
 {
+	int return_value;
 	TRACE("Enter iscntrl\n");
-	return piscntrl(c);
+	return_value = piscntrl(c);
+	TRACE("Leave iscntrl\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_iscntrl(void);  /* ../dlls/ntdll/string.c:374 */
@@ -21771,10 +23776,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_iscntrl,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_isdigit(int  c) /* ../dlls/ntdll/string.c:383 */
+WINAPI int wine32b_ntdll_isdigit(int  c) /* ../dlls/ntdll/string.c:383 */
 {
+	int return_value;
 	TRACE("Enter isdigit\n");
-	return pisdigit(c);
+	return_value = pisdigit(c);
+	TRACE("Leave isdigit\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_isdigit(void);  /* ../dlls/ntdll/string.c:383 */
@@ -21796,10 +23804,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_isdigit,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_isgraph(int  c) /* ../dlls/ntdll/string.c:392 */
+WINAPI int wine32b_ntdll_isgraph(int  c) /* ../dlls/ntdll/string.c:392 */
 {
+	int return_value;
 	TRACE("Enter isgraph\n");
-	return pisgraph(c);
+	return_value = pisgraph(c);
+	TRACE("Leave isgraph\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_isgraph(void);  /* ../dlls/ntdll/string.c:392 */
@@ -21821,10 +23832,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_isgraph,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_islower(int  c) /* ../dlls/ntdll/string.c:401 */
+WINAPI int wine32b_ntdll_islower(int  c) /* ../dlls/ntdll/string.c:401 */
 {
+	int return_value;
 	TRACE("Enter islower\n");
-	return pislower(c);
+	return_value = pislower(c);
+	TRACE("Leave islower\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_islower(void);  /* ../dlls/ntdll/string.c:401 */
@@ -21846,10 +23860,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_islower,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_isprint(int  c) /* ../dlls/ntdll/string.c:410 */
+WINAPI int wine32b_ntdll_isprint(int  c) /* ../dlls/ntdll/string.c:410 */
 {
+	int return_value;
 	TRACE("Enter isprint\n");
-	return pisprint(c);
+	return_value = pisprint(c);
+	TRACE("Leave isprint\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_isprint(void);  /* ../dlls/ntdll/string.c:410 */
@@ -21871,10 +23888,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_isprint,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_ispunct(int  c) /* ../dlls/ntdll/string.c:419 */
+WINAPI int wine32b_ntdll_ispunct(int  c) /* ../dlls/ntdll/string.c:419 */
 {
+	int return_value;
 	TRACE("Enter ispunct\n");
-	return pispunct(c);
+	return_value = pispunct(c);
+	TRACE("Leave ispunct\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_ispunct(void);  /* ../dlls/ntdll/string.c:419 */
@@ -21896,10 +23916,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_ispunct,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_isspace(int  c) /* ../dlls/ntdll/string.c:428 */
+WINAPI int wine32b_ntdll_isspace(int  c) /* ../dlls/ntdll/string.c:428 */
 {
+	int return_value;
 	TRACE("Enter isspace\n");
-	return pisspace(c);
+	return_value = pisspace(c);
+	TRACE("Leave isspace\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_isspace(void);  /* ../dlls/ntdll/string.c:428 */
@@ -21921,10 +23944,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_isspace,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_isupper(int  c) /* ../dlls/ntdll/string.c:437 */
+WINAPI int wine32b_ntdll_isupper(int  c) /* ../dlls/ntdll/string.c:437 */
 {
+	int return_value;
 	TRACE("Enter isupper\n");
-	return pisupper(c);
+	return_value = pisupper(c);
+	TRACE("Leave isupper\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_isupper(void);  /* ../dlls/ntdll/string.c:437 */
@@ -21946,10 +23972,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_isupper,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_iswalpha(WCHAR  wc) /* ../dlls/ntdll/wcstring.c:314 */
+WINAPI INT wine32b_ntdll_iswalpha(WCHAR  wc) /* ../dlls/ntdll/wcstring.c:314 */
 {
+	INT return_value;
 	TRACE("Enter iswalpha\n");
-	return piswalpha(wc);
+	return_value = piswalpha(wc);
+	TRACE("Leave iswalpha\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_iswalpha(void);  /* ../dlls/ntdll/wcstring.c:314 */
@@ -21971,10 +24000,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_iswalpha,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_iswctype(WCHAR  wc, WCHAR  wct) /* ../dlls/ntdll/wcstring.c:299 */
+WINAPI INT wine32b_ntdll_iswctype(WCHAR  wc, WCHAR  wct) /* ../dlls/ntdll/wcstring.c:299 */
 {
+	INT return_value;
 	TRACE("Enter iswctype\n");
-	return piswctype(wc, wct);
+	return_value = piswctype(wc, wct);
+	TRACE("Leave iswctype\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_iswctype(void);  /* ../dlls/ntdll/wcstring.c:299 */
@@ -21997,10 +24029,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_iswctype,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_iswdigit(WCHAR  wc) /* ../dlls/ntdll/wcstring.c:329 */
+WINAPI INT wine32b_ntdll_iswdigit(WCHAR  wc) /* ../dlls/ntdll/wcstring.c:329 */
 {
+	INT return_value;
 	TRACE("Enter iswdigit\n");
-	return piswdigit(wc);
+	return_value = piswdigit(wc);
+	TRACE("Leave iswdigit\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_iswdigit(void);  /* ../dlls/ntdll/wcstring.c:329 */
@@ -22022,10 +24057,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_iswdigit,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_iswlower(WCHAR  wc) /* ../dlls/ntdll/wcstring.c:344 */
+WINAPI INT wine32b_ntdll_iswlower(WCHAR  wc) /* ../dlls/ntdll/wcstring.c:344 */
 {
+	INT return_value;
 	TRACE("Enter iswlower\n");
-	return piswlower(wc);
+	return_value = piswlower(wc);
+	TRACE("Leave iswlower\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_iswlower(void);  /* ../dlls/ntdll/wcstring.c:344 */
@@ -22047,10 +24085,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_iswlower,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_iswspace(WCHAR  wc) /* ../dlls/ntdll/wcstring.c:359 */
+WINAPI INT wine32b_ntdll_iswspace(WCHAR  wc) /* ../dlls/ntdll/wcstring.c:359 */
 {
+	INT return_value;
 	TRACE("Enter iswspace\n");
-	return piswspace(wc);
+	return_value = piswspace(wc);
+	TRACE("Leave iswspace\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_iswspace(void);  /* ../dlls/ntdll/wcstring.c:359 */
@@ -22072,10 +24113,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_iswspace,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_iswxdigit(WCHAR  wc) /* ../dlls/ntdll/wcstring.c:374 */
+WINAPI INT wine32b_ntdll_iswxdigit(WCHAR  wc) /* ../dlls/ntdll/wcstring.c:374 */
 {
+	INT return_value;
 	TRACE("Enter iswxdigit\n");
-	return piswxdigit(wc);
+	return_value = piswxdigit(wc);
+	TRACE("Leave iswxdigit\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_iswxdigit(void);  /* ../dlls/ntdll/wcstring.c:374 */
@@ -22097,10 +24141,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_iswxdigit,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_isxdigit(int  c) /* ../dlls/ntdll/string.c:446 */
+WINAPI int wine32b_ntdll_isxdigit(int  c) /* ../dlls/ntdll/string.c:446 */
 {
+	int return_value;
 	TRACE("Enter isxdigit\n");
-	return pisxdigit(c);
+	return_value = pisxdigit(c);
+	TRACE("Leave isxdigit\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_isxdigit(void);  /* ../dlls/ntdll/string.c:446 */
@@ -22122,10 +24169,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_isxdigit,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_ntdll_labs(LONG  i) /* ../dlls/ntdll/misc.c:104 */
+WINAPI LONG wine32b_ntdll_labs(LONG  i) /* ../dlls/ntdll/misc.c:104 */
 {
+	LONG return_value;
 	TRACE("Enter labs\n");
-	return plabs(i);
+	return_value = plabs(i);
+	TRACE("Leave labs\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_labs(void);  /* ../dlls/ntdll/misc.c:104 */
@@ -22147,10 +24197,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_labs,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_ntdll_log(double  d) /* ../dlls/ntdll/misc.c:152 */
+WINAPI double wine32b_ntdll_log(double  d) /* ../dlls/ntdll/misc.c:152 */
 {
+	double return_value;
 	TRACE("Enter log\n");
-	return plog(d);
+	return_value = plog(d);
+	TRACE("Leave log\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_log(void);  /* ../dlls/ntdll/misc.c:152 */
@@ -22172,10 +24225,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_log,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_mbstowcs(LPWSTR  dst, LPCSTR  src, INT  n) /* ../dlls/ntdll/wcstring.c:260 */
+WINAPI INT wine32b_ntdll_mbstowcs(LPWSTR  dst, LPCSTR  src, INT  n) /* ../dlls/ntdll/wcstring.c:260 */
 {
+	INT return_value;
 	TRACE("Enter mbstowcs\n");
-	return pmbstowcs(dst, src, n);
+	return_value = pmbstowcs(dst, src, n);
+	TRACE("Leave mbstowcs\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_mbstowcs(void);  /* ../dlls/ntdll/wcstring.c:260 */
@@ -22199,10 +24255,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_mbstowcs,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_ntdll_memchr(void*  ptr, int  c, size_t  n) /* ../dlls/ntdll/string.c:40 */
+WINAPI void* wine32b_ntdll_memchr(void*  ptr, int  c, size_t  n) /* ../dlls/ntdll/string.c:40 */
 {
+	void* return_value;
 	TRACE("Enter memchr\n");
-	return pmemchr(ptr, c, n);
+	return_value = pmemchr(ptr, c, n);
+	TRACE("Leave memchr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_memchr(void);  /* ../dlls/ntdll/string.c:40 */
@@ -22226,10 +24285,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_memchr,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_memcmp(void*  ptr1, void*  ptr2, size_t  n) /* ../dlls/ntdll/string.c:49 */
+WINAPI int wine32b_ntdll_memcmp(void*  ptr1, void*  ptr2, size_t  n) /* ../dlls/ntdll/string.c:49 */
 {
+	int return_value;
 	TRACE("Enter memcmp\n");
-	return pmemcmp(ptr1, ptr2, n);
+	return_value = pmemcmp(ptr1, ptr2, n);
+	TRACE("Leave memcmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_memcmp(void);  /* ../dlls/ntdll/string.c:49 */
@@ -22253,10 +24315,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_memcmp,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_ntdll_memcpy(void*  dst, void*  src, size_t  n) /* ../dlls/ntdll/string.c:61 */
+WINAPI void* wine32b_ntdll_memcpy(void*  dst, void*  src, size_t  n) /* ../dlls/ntdll/string.c:61 */
 {
+	void* return_value;
 	TRACE("Enter memcpy\n");
-	return pmemcpy(dst, src, n);
+	return_value = pmemcpy(dst, src, n);
+	TRACE("Leave memcpy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_memcpy(void);  /* ../dlls/ntdll/string.c:61 */
@@ -22280,10 +24345,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_memcpy,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_ntdll_memmove(void*  dst, void*  src, size_t  n) /* ../dlls/ntdll/string.c:70 */
+WINAPI void* wine32b_ntdll_memmove(void*  dst, void*  src, size_t  n) /* ../dlls/ntdll/string.c:70 */
 {
+	void* return_value;
 	TRACE("Enter memmove\n");
-	return pmemmove(dst, src, n);
+	return_value = pmemmove(dst, src, n);
+	TRACE("Leave memmove\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_memmove(void);  /* ../dlls/ntdll/string.c:70 */
@@ -22307,10 +24375,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_memmove,
 	"ret \n"
 )
 
-extern WINAPI void* wine32b_ntdll_memset(void*  dst, int  c, size_t  n) /* ../dlls/ntdll/string.c:79 */
+WINAPI void* wine32b_ntdll_memset(void*  dst, int  c, size_t  n) /* ../dlls/ntdll/string.c:79 */
 {
+	void* return_value;
 	TRACE("Enter memset\n");
-	return pmemset(dst, c, n);
+	return_value = pmemset(dst, c, n);
+	TRACE("Leave memset\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_memset(void);  /* ../dlls/ntdll/string.c:79 */
@@ -22334,10 +24405,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_memset,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_ntdll_pow(double  x, double  y) /* ../dlls/ntdll/misc.c:160 */
+WINAPI double wine32b_ntdll_pow(double  x, double  y) /* ../dlls/ntdll/misc.c:160 */
 {
+	double return_value;
 	TRACE("Enter pow\n");
-	return ppow(x, y);
+	return_value = ppow(x, y);
+	TRACE("Leave pow\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_pow(void);  /* ../dlls/ntdll/misc.c:160 */
@@ -22360,10 +24434,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_pow,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_qsort(void*  base, size_t  nmemb, size_t  size, int (* compar) (void)) /* ../dlls/ntdll/misc.c:286 */
+WINAPI void wine32b_ntdll_qsort(void*  base, size_t  nmemb, size_t  size, int (* compar) (void)) /* ../dlls/ntdll/misc.c:286 */
 {
 	TRACE("Enter qsort\n");
-	return pqsort(base, nmemb, size, compar);
+	pqsort(base, nmemb, size, compar);
+	TRACE("Leave qsort\n");
 }
 
 extern WINAPI void wine32a_ntdll_qsort(void);  /* ../dlls/ntdll/misc.c:286 */
@@ -22388,10 +24463,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_qsort,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_ntdll_sin(double  d) /* ../dlls/ntdll/misc.c:168 */
+WINAPI double wine32b_ntdll_sin(double  d) /* ../dlls/ntdll/misc.c:168 */
 {
+	double return_value;
 	TRACE("Enter sin\n");
-	return psin(d);
+	return_value = psin(d);
+	TRACE("Leave sin\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_sin(void);  /* ../dlls/ntdll/misc.c:168 */
@@ -22413,10 +24491,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_sin,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_sprintf(char*  str, char*  format) /* ../dlls/ntdll/printf.c:824 */
+WINAPI int wine32b_ntdll_sprintf(char*  str, char*  format) /* ../dlls/ntdll/printf.c:824 */
 {
+	int return_value;
 	TRACE("Enter sprintf\n");
-	return psprintf(str, format);
+	return_value = psprintf(str, format);
+	TRACE("Leave sprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_sprintf(void);  /* ../dlls/ntdll/printf.c:824 */
@@ -22439,10 +24520,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_sprintf,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_ntdll_sqrt(double  d) /* ../dlls/ntdll/misc.c:176 */
+WINAPI double wine32b_ntdll_sqrt(double  d) /* ../dlls/ntdll/misc.c:176 */
 {
+	double return_value;
 	TRACE("Enter sqrt\n");
-	return psqrt(d);
+	return_value = psqrt(d);
+	TRACE("Leave sqrt\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_sqrt(void);  /* ../dlls/ntdll/misc.c:176 */
@@ -22464,10 +24548,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_sqrt,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_sscanf(char*  str, char*  format) /* ../dlls/ntdll/string.c:1400 */
+WINAPI int wine32b_ntdll_sscanf(char*  str, char*  format) /* ../dlls/ntdll/string.c:1400 */
 {
+	int return_value;
 	TRACE("Enter sscanf\n");
-	return psscanf(str, format);
+	return_value = psscanf(str, format);
+	TRACE("Leave sscanf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_sscanf(void);  /* ../dlls/ntdll/string.c:1400 */
@@ -22490,10 +24577,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_sscanf,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll_strcat(char*  dst, char*  src) /* ../dlls/ntdll/string.c:88 */
+WINAPI char* wine32b_ntdll_strcat(char*  dst, char*  src) /* ../dlls/ntdll/string.c:88 */
 {
+	char* return_value;
 	TRACE("Enter strcat\n");
-	return pstrcat(dst, src);
+	return_value = pstrcat(dst, src);
+	TRACE("Leave strcat\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_strcat(void);  /* ../dlls/ntdll/string.c:88 */
@@ -22516,10 +24606,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_strcat,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll_strchr(char*  str, int  c) /* ../dlls/ntdll/string.c:97 */
+WINAPI char* wine32b_ntdll_strchr(char*  str, int  c) /* ../dlls/ntdll/string.c:97 */
 {
+	char* return_value;
 	TRACE("Enter strchr\n");
-	return pstrchr(str, c);
+	return_value = pstrchr(str, c);
+	TRACE("Leave strchr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_strchr(void);  /* ../dlls/ntdll/string.c:97 */
@@ -22542,10 +24635,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_strchr,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_strcmp(char*  str1, char*  str2) /* ../dlls/ntdll/string.c:106 */
+WINAPI int wine32b_ntdll_strcmp(char*  str1, char*  str2) /* ../dlls/ntdll/string.c:106 */
 {
+	int return_value;
 	TRACE("Enter strcmp\n");
-	return pstrcmp(str1, str2);
+	return_value = pstrcmp(str1, str2);
+	TRACE("Leave strcmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_strcmp(void);  /* ../dlls/ntdll/string.c:106 */
@@ -22568,10 +24664,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_strcmp,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll_strcpy(char*  dst, char*  src) /* ../dlls/ntdll/string.c:115 */
+WINAPI char* wine32b_ntdll_strcpy(char*  dst, char*  src) /* ../dlls/ntdll/string.c:115 */
 {
+	char* return_value;
 	TRACE("Enter strcpy\n");
-	return pstrcpy(dst, src);
+	return_value = pstrcpy(dst, src);
+	TRACE("Leave strcpy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_strcpy(void);  /* ../dlls/ntdll/string.c:115 */
@@ -22594,10 +24693,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_strcpy,
 	"ret \n"
 )
 
-extern WINAPI size_t wine32b_ntdll_strcspn(char*  str, char*  reject) /* ../dlls/ntdll/string.c:124 */
+WINAPI size_t wine32b_ntdll_strcspn(char*  str, char*  reject) /* ../dlls/ntdll/string.c:124 */
 {
+	size_t return_value;
 	TRACE("Enter strcspn\n");
-	return pstrcspn(str, reject);
+	return_value = pstrcspn(str, reject);
+	TRACE("Leave strcspn\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_strcspn(void);  /* ../dlls/ntdll/string.c:124 */
@@ -22620,10 +24722,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_strcspn,
 	"ret \n"
 )
 
-extern WINAPI size_t wine32b_ntdll_strlen(char*  str) /* ../dlls/ntdll/string.c:133 */
+WINAPI size_t wine32b_ntdll_strlen(char*  str) /* ../dlls/ntdll/string.c:133 */
 {
+	size_t return_value;
 	TRACE("Enter strlen\n");
-	return pstrlen(str);
+	return_value = pstrlen(str);
+	TRACE("Leave strlen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_strlen(void);  /* ../dlls/ntdll/string.c:133 */
@@ -22645,10 +24750,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_strlen,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll_strncat(char*  dst, char*  src, size_t  len) /* ../dlls/ntdll/string.c:142 */
+WINAPI char* wine32b_ntdll_strncat(char*  dst, char*  src, size_t  len) /* ../dlls/ntdll/string.c:142 */
 {
+	char* return_value;
 	TRACE("Enter strncat\n");
-	return pstrncat(dst, src, len);
+	return_value = pstrncat(dst, src, len);
+	TRACE("Leave strncat\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_strncat(void);  /* ../dlls/ntdll/string.c:142 */
@@ -22672,10 +24780,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_strncat,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_strncmp(char*  str1, char*  str2, size_t  len) /* ../dlls/ntdll/string.c:151 */
+WINAPI int wine32b_ntdll_strncmp(char*  str1, char*  str2, size_t  len) /* ../dlls/ntdll/string.c:151 */
 {
+	int return_value;
 	TRACE("Enter strncmp\n");
-	return pstrncmp(str1, str2, len);
+	return_value = pstrncmp(str1, str2, len);
+	TRACE("Leave strncmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_strncmp(void);  /* ../dlls/ntdll/string.c:151 */
@@ -22699,10 +24810,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_strncmp,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll_strncpy(char*  dst, char*  src, size_t  len) /* ../dlls/ntdll/string.c:160 */
+WINAPI char* wine32b_ntdll_strncpy(char*  dst, char*  src, size_t  len) /* ../dlls/ntdll/string.c:160 */
 {
+	char* return_value;
 	TRACE("Enter strncpy\n");
-	return pstrncpy(dst, src, len);
+	return_value = pstrncpy(dst, src, len);
+	TRACE("Leave strncpy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_strncpy(void);  /* ../dlls/ntdll/string.c:160 */
@@ -22726,10 +24840,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_strncpy,
 	"ret \n"
 )
 
-extern WINAPI size_t wine32b_ntdll_strnlen(char*  str, size_t  len) /* ../dlls/ntdll/string.c:169 */
+WINAPI size_t wine32b_ntdll_strnlen(char*  str, size_t  len) /* ../dlls/ntdll/string.c:169 */
 {
+	size_t return_value;
 	TRACE("Enter strnlen\n");
-	return pstrnlen(str, len);
+	return_value = pstrnlen(str, len);
+	TRACE("Leave strnlen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_strnlen(void);  /* ../dlls/ntdll/string.c:169 */
@@ -22752,10 +24869,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_strnlen,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll_strpbrk(char*  str, char*  accept) /* ../dlls/ntdll/string.c:178 */
+WINAPI char* wine32b_ntdll_strpbrk(char*  str, char*  accept) /* ../dlls/ntdll/string.c:178 */
 {
+	char* return_value;
 	TRACE("Enter strpbrk\n");
-	return pstrpbrk(str, accept);
+	return_value = pstrpbrk(str, accept);
+	TRACE("Leave strpbrk\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_strpbrk(void);  /* ../dlls/ntdll/string.c:178 */
@@ -22778,10 +24898,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_strpbrk,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll_strrchr(char*  str, int  c) /* ../dlls/ntdll/string.c:187 */
+WINAPI char* wine32b_ntdll_strrchr(char*  str, int  c) /* ../dlls/ntdll/string.c:187 */
 {
+	char* return_value;
 	TRACE("Enter strrchr\n");
-	return pstrrchr(str, c);
+	return_value = pstrrchr(str, c);
+	TRACE("Leave strrchr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_strrchr(void);  /* ../dlls/ntdll/string.c:187 */
@@ -22804,10 +24927,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_strrchr,
 	"ret \n"
 )
 
-extern WINAPI size_t wine32b_ntdll_strspn(char*  str, char*  accept) /* ../dlls/ntdll/string.c:196 */
+WINAPI size_t wine32b_ntdll_strspn(char*  str, char*  accept) /* ../dlls/ntdll/string.c:196 */
 {
+	size_t return_value;
 	TRACE("Enter strspn\n");
-	return pstrspn(str, accept);
+	return_value = pstrspn(str, accept);
+	TRACE("Leave strspn\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_strspn(void);  /* ../dlls/ntdll/string.c:196 */
@@ -22830,10 +24956,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_strspn,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll_strstr(char*  haystack, char*  needle) /* ../dlls/ntdll/string.c:205 */
+WINAPI char* wine32b_ntdll_strstr(char*  haystack, char*  needle) /* ../dlls/ntdll/string.c:205 */
 {
+	char* return_value;
 	TRACE("Enter strstr\n");
-	return pstrstr(haystack, needle);
+	return_value = pstrstr(haystack, needle);
+	TRACE("Leave strstr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_strstr(void);  /* ../dlls/ntdll/string.c:205 */
@@ -22856,10 +24985,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_strstr,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_ntdll_strtol(char*  nptr, char**  endptr, int  base) /* ../dlls/ntdll/string.c:509 */
+WINAPI LONG wine32b_ntdll_strtol(char*  nptr, char**  endptr, int  base) /* ../dlls/ntdll/string.c:509 */
 {
+	LONG return_value;
 	TRACE("Enter strtol\n");
-	return pstrtol(nptr, endptr, base);
+	return_value = pstrtol(nptr, endptr, base);
+	TRACE("Leave strtol\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_strtol(void);  /* ../dlls/ntdll/string.c:509 */
@@ -22883,10 +25015,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_strtol,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_strtoul(char*  nptr, char**  endptr, int  base) /* ../dlls/ntdll/string.c:518 */
+WINAPI ULONG wine32b_ntdll_strtoul(char*  nptr, char**  endptr, int  base) /* ../dlls/ntdll/string.c:518 */
 {
+	ULONG return_value;
 	TRACE("Enter strtoul\n");
-	return pstrtoul(nptr, endptr, base);
+	return_value = pstrtoul(nptr, endptr, base);
+	TRACE("Leave strtoul\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_strtoul(void);  /* ../dlls/ntdll/string.c:518 */
@@ -22910,10 +25045,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_strtoul,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_swprintf(WCHAR*  str, WCHAR*  format) /* ../dlls/ntdll/printf.c:839 */
+WINAPI int wine32b_ntdll_swprintf(WCHAR*  str, WCHAR*  format) /* ../dlls/ntdll/printf.c:839 */
 {
+	int return_value;
 	TRACE("Enter swprintf\n");
-	return pswprintf(str, format);
+	return_value = pswprintf(str, format);
+	TRACE("Leave swprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_swprintf(void);  /* ../dlls/ntdll/printf.c:839 */
@@ -22936,10 +25074,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_swprintf,
 	"ret \n"
 )
 
-extern WINAPI double wine32b_ntdll_tan(double  d) /* ../dlls/ntdll/misc.c:184 */
+WINAPI double wine32b_ntdll_tan(double  d) /* ../dlls/ntdll/misc.c:184 */
 {
+	double return_value;
 	TRACE("Enter tan\n");
-	return ptan(d);
+	return_value = ptan(d);
+	TRACE("Leave tan\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_tan(void);  /* ../dlls/ntdll/misc.c:184 */
@@ -22961,10 +25102,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_tan,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_tolower(int  c) /* ../dlls/ntdll/string.c:223 */
+WINAPI int wine32b_ntdll_tolower(int  c) /* ../dlls/ntdll/string.c:223 */
 {
+	int return_value;
 	TRACE("Enter tolower\n");
-	return ptolower(c);
+	return_value = ptolower(c);
+	TRACE("Leave tolower\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_tolower(void);  /* ../dlls/ntdll/string.c:223 */
@@ -22986,10 +25130,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_tolower,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_toupper(int  c) /* ../dlls/ntdll/string.c:337 */
+WINAPI int wine32b_ntdll_toupper(int  c) /* ../dlls/ntdll/string.c:337 */
 {
+	int return_value;
 	TRACE("Enter toupper\n");
-	return ptoupper(c);
+	return_value = ptoupper(c);
+	TRACE("Leave toupper\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_toupper(void);  /* ../dlls/ntdll/string.c:337 */
@@ -23011,10 +25158,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_toupper,
 	"ret \n"
 )
 
-extern WINAPI WCHAR wine32b_ntdll_towlower(WCHAR  ch) /* ../dlls/ntdll/wcstring.c:75 */
+WINAPI WCHAR wine32b_ntdll_towlower(WCHAR  ch) /* ../dlls/ntdll/wcstring.c:75 */
 {
+	WCHAR return_value;
 	TRACE("Enter towlower\n");
-	return ptowlower(ch);
+	return_value = ptowlower(ch);
+	TRACE("Leave towlower\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_towlower(void);  /* ../dlls/ntdll/wcstring.c:75 */
@@ -23036,10 +25186,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_towlower,
 	"ret \n"
 )
 
-extern WINAPI WCHAR wine32b_ntdll_towupper(WCHAR  ch) /* ../dlls/ntdll/wcstring.c:84 */
+WINAPI WCHAR wine32b_ntdll_towupper(WCHAR  ch) /* ../dlls/ntdll/wcstring.c:84 */
 {
+	WCHAR return_value;
 	TRACE("Enter towupper\n");
-	return ptowupper(ch);
+	return_value = ptowupper(ch);
+	TRACE("Leave towupper\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_towupper(void);  /* ../dlls/ntdll/wcstring.c:84 */
@@ -23061,10 +25214,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_towupper,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_vDbgPrintEx(ULONG  id, ULONG  level, LPCSTR  fmt, __builtin_ms_va_list  args) /* ../dlls/ntdll/rtl.c:335 */
+WINAPI NTSTATUS wine32b_ntdll_vDbgPrintEx(ULONG  id, ULONG  level, LPCSTR  fmt, __builtin_ms_va_list  args) /* ../dlls/ntdll/rtl.c:335 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter vDbgPrintEx\n");
-	return pvDbgPrintEx(id, level, fmt, args);
+	return_value = pvDbgPrintEx(id, level, fmt, args);
+	TRACE("Leave vDbgPrintEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_vDbgPrintEx(void);  /* ../dlls/ntdll/rtl.c:335 */
@@ -23089,10 +25245,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_vDbgPrintEx,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_vDbgPrintExWithPrefix(LPCSTR  prefix, ULONG  id, ULONG  level, LPCSTR  fmt, __builtin_ms_va_list  args) /* ../dlls/ntdll/rtl.c:343 */
+WINAPI NTSTATUS wine32b_ntdll_vDbgPrintExWithPrefix(LPCSTR  prefix, ULONG  id, ULONG  level, LPCSTR  fmt, __builtin_ms_va_list  args) /* ../dlls/ntdll/rtl.c:343 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter vDbgPrintExWithPrefix\n");
-	return pvDbgPrintExWithPrefix(prefix, id, level, fmt, args);
+	return_value = pvDbgPrintExWithPrefix(prefix, id, level, fmt, args);
+	TRACE("Leave vDbgPrintExWithPrefix\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_vDbgPrintExWithPrefix(void);  /* ../dlls/ntdll/rtl.c:343 */
@@ -23117,10 +25276,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_vDbgPrintExWithPrefix,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_vsprintf(char*  str, char*  format, __builtin_ms_va_list  args) /* ../dlls/ntdll/printf.c:815 */
+WINAPI int wine32b_ntdll_vsprintf(char*  str, char*  format, __builtin_ms_va_list  args) /* ../dlls/ntdll/printf.c:815 */
 {
+	int return_value;
 	TRACE("Enter vsprintf\n");
-	return pvsprintf(str, format, args);
+	return_value = pvsprintf(str, format, args);
+	TRACE("Leave vsprintf\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_vsprintf(void);  /* ../dlls/ntdll/printf.c:815 */
@@ -23144,10 +25306,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_vsprintf,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll_wcscat(LPWSTR  dst, LPCWSTR  src) /* ../dlls/ntdll/wcstring.c:93 */
+WINAPI LPWSTR wine32b_ntdll_wcscat(LPWSTR  dst, LPCWSTR  src) /* ../dlls/ntdll/wcstring.c:93 */
 {
+	LPWSTR return_value;
 	TRACE("Enter wcscat\n");
-	return pwcscat(dst, src);
+	return_value = pwcscat(dst, src);
+	TRACE("Leave wcscat\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wcscat(void);  /* ../dlls/ntdll/wcstring.c:93 */
@@ -23170,10 +25335,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wcscat,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll_wcschr(LPCWSTR  str, WCHAR  ch) /* ../dlls/ntdll/wcstring.c:102 */
+WINAPI LPWSTR wine32b_ntdll_wcschr(LPCWSTR  str, WCHAR  ch) /* ../dlls/ntdll/wcstring.c:102 */
 {
+	LPWSTR return_value;
 	TRACE("Enter wcschr\n");
-	return pwcschr(str, ch);
+	return_value = pwcschr(str, ch);
+	TRACE("Leave wcschr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wcschr(void);  /* ../dlls/ntdll/wcstring.c:102 */
@@ -23196,10 +25364,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wcschr,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_wcscmp(LPCWSTR  str1, LPCWSTR  str2) /* ../dlls/ntdll/wcstring.c:111 */
+WINAPI INT wine32b_ntdll_wcscmp(LPCWSTR  str1, LPCWSTR  str2) /* ../dlls/ntdll/wcstring.c:111 */
 {
+	INT return_value;
 	TRACE("Enter wcscmp\n");
-	return pwcscmp(str1, str2);
+	return_value = pwcscmp(str1, str2);
+	TRACE("Leave wcscmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wcscmp(void);  /* ../dlls/ntdll/wcstring.c:111 */
@@ -23222,10 +25393,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wcscmp,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll_wcscpy(LPWSTR  dst, LPCWSTR  src) /* ../dlls/ntdll/wcstring.c:120 */
+WINAPI LPWSTR wine32b_ntdll_wcscpy(LPWSTR  dst, LPCWSTR  src) /* ../dlls/ntdll/wcstring.c:120 */
 {
+	LPWSTR return_value;
 	TRACE("Enter wcscpy\n");
-	return pwcscpy(dst, src);
+	return_value = pwcscpy(dst, src);
+	TRACE("Leave wcscpy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wcscpy(void);  /* ../dlls/ntdll/wcstring.c:120 */
@@ -23248,10 +25422,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wcscpy,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_wcscspn(LPCWSTR  str, LPCWSTR  reject) /* ../dlls/ntdll/wcstring.c:129 */
+WINAPI INT wine32b_ntdll_wcscspn(LPCWSTR  str, LPCWSTR  reject) /* ../dlls/ntdll/wcstring.c:129 */
 {
+	INT return_value;
 	TRACE("Enter wcscspn\n");
-	return pwcscspn(str, reject);
+	return_value = pwcscspn(str, reject);
+	TRACE("Leave wcscspn\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wcscspn(void);  /* ../dlls/ntdll/wcstring.c:129 */
@@ -23274,10 +25451,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wcscspn,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_wcslen(LPCWSTR  str) /* ../dlls/ntdll/wcstring.c:138 */
+WINAPI INT wine32b_ntdll_wcslen(LPCWSTR  str) /* ../dlls/ntdll/wcstring.c:138 */
 {
+	INT return_value;
 	TRACE("Enter wcslen\n");
-	return pwcslen(str);
+	return_value = pwcslen(str);
+	TRACE("Leave wcslen\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wcslen(void);  /* ../dlls/ntdll/wcstring.c:138 */
@@ -23299,10 +25479,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wcslen,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll_wcsncat(LPWSTR  s1, LPCWSTR  s2, INT  n) /* ../dlls/ntdll/wcstring.c:147 */
+WINAPI LPWSTR wine32b_ntdll_wcsncat(LPWSTR  s1, LPCWSTR  s2, INT  n) /* ../dlls/ntdll/wcstring.c:147 */
 {
+	LPWSTR return_value;
 	TRACE("Enter wcsncat\n");
-	return pwcsncat(s1, s2, n);
+	return_value = pwcsncat(s1, s2, n);
+	TRACE("Leave wcsncat\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wcsncat(void);  /* ../dlls/ntdll/wcstring.c:147 */
@@ -23326,10 +25509,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wcsncat,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_wcsncmp(LPCWSTR  str1, LPCWSTR  str2, INT  n) /* ../dlls/ntdll/wcstring.c:160 */
+WINAPI INT wine32b_ntdll_wcsncmp(LPCWSTR  str1, LPCWSTR  str2, INT  n) /* ../dlls/ntdll/wcstring.c:160 */
 {
+	INT return_value;
 	TRACE("Enter wcsncmp\n");
-	return pwcsncmp(str1, str2, n);
+	return_value = pwcsncmp(str1, str2, n);
+	TRACE("Leave wcsncmp\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wcsncmp(void);  /* ../dlls/ntdll/wcstring.c:160 */
@@ -23353,10 +25539,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wcsncmp,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll_wcsncpy(LPWSTR  s1, LPCWSTR  s2, INT  n) /* ../dlls/ntdll/wcstring.c:169 */
+WINAPI LPWSTR wine32b_ntdll_wcsncpy(LPWSTR  s1, LPCWSTR  s2, INT  n) /* ../dlls/ntdll/wcstring.c:169 */
 {
+	LPWSTR return_value;
 	TRACE("Enter wcsncpy\n");
-	return pwcsncpy(s1, s2, n);
+	return_value = pwcsncpy(s1, s2, n);
+	TRACE("Leave wcsncpy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wcsncpy(void);  /* ../dlls/ntdll/wcstring.c:169 */
@@ -23380,10 +25569,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wcsncpy,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll_wcspbrk(LPCWSTR  str, LPCWSTR  accept) /* ../dlls/ntdll/wcstring.c:181 */
+WINAPI LPWSTR wine32b_ntdll_wcspbrk(LPCWSTR  str, LPCWSTR  accept) /* ../dlls/ntdll/wcstring.c:181 */
 {
+	LPWSTR return_value;
 	TRACE("Enter wcspbrk\n");
-	return pwcspbrk(str, accept);
+	return_value = pwcspbrk(str, accept);
+	TRACE("Leave wcspbrk\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wcspbrk(void);  /* ../dlls/ntdll/wcstring.c:181 */
@@ -23406,10 +25598,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wcspbrk,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll_wcsrchr(LPWSTR  str, WCHAR  ch) /* ../dlls/ntdll/wcstring.c:190 */
+WINAPI LPWSTR wine32b_ntdll_wcsrchr(LPWSTR  str, WCHAR  ch) /* ../dlls/ntdll/wcstring.c:190 */
 {
+	LPWSTR return_value;
 	TRACE("Enter wcsrchr\n");
-	return pwcsrchr(str, ch);
+	return_value = pwcsrchr(str, ch);
+	TRACE("Leave wcsrchr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wcsrchr(void);  /* ../dlls/ntdll/wcstring.c:190 */
@@ -23432,10 +25627,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wcsrchr,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_wcsspn(LPCWSTR  str, LPCWSTR  accept) /* ../dlls/ntdll/wcstring.c:199 */
+WINAPI INT wine32b_ntdll_wcsspn(LPCWSTR  str, LPCWSTR  accept) /* ../dlls/ntdll/wcstring.c:199 */
 {
+	INT return_value;
 	TRACE("Enter wcsspn\n");
-	return pwcsspn(str, accept);
+	return_value = pwcsspn(str, accept);
+	TRACE("Leave wcsspn\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wcsspn(void);  /* ../dlls/ntdll/wcstring.c:199 */
@@ -23458,10 +25656,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wcsspn,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll_wcsstr(LPCWSTR  str, LPCWSTR  sub) /* ../dlls/ntdll/wcstring.c:208 */
+WINAPI LPWSTR wine32b_ntdll_wcsstr(LPCWSTR  str, LPCWSTR  sub) /* ../dlls/ntdll/wcstring.c:208 */
 {
+	LPWSTR return_value;
 	TRACE("Enter wcsstr\n");
-	return pwcsstr(str, sub);
+	return_value = pwcsstr(str, sub);
+	TRACE("Leave wcsstr\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wcsstr(void);  /* ../dlls/ntdll/wcstring.c:208 */
@@ -23484,10 +25685,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wcsstr,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_ntdll_wcstok(LPWSTR  str, LPCWSTR  delim) /* ../dlls/ntdll/wcstring.c:217 */
+WINAPI LPWSTR wine32b_ntdll_wcstok(LPWSTR  str, LPCWSTR  delim) /* ../dlls/ntdll/wcstring.c:217 */
 {
+	LPWSTR return_value;
 	TRACE("Enter wcstok\n");
-	return pwcstok(str, delim);
+	return_value = pwcstok(str, delim);
+	TRACE("Leave wcstok\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wcstok(void);  /* ../dlls/ntdll/wcstring.c:217 */
@@ -23510,10 +25714,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wcstok,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_ntdll_wcstol(LPCWSTR  s, LPWSTR*  end, INT  base) /* ../dlls/ntdll/wcstring.c:281 */
+WINAPI LONG wine32b_ntdll_wcstol(LPCWSTR  s, LPWSTR*  end, INT  base) /* ../dlls/ntdll/wcstring.c:281 */
 {
+	LONG return_value;
 	TRACE("Enter wcstol\n");
-	return pwcstol(s, end, base);
+	return_value = pwcstol(s, end, base);
+	TRACE("Leave wcstol\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wcstol(void);  /* ../dlls/ntdll/wcstring.c:281 */
@@ -23537,10 +25744,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wcstol,
 	"ret \n"
 )
 
-extern WINAPI INT wine32b_ntdll_wcstombs(LPSTR  dst, LPCWSTR  src, INT  n) /* ../dlls/ntdll/wcstring.c:238 */
+WINAPI INT wine32b_ntdll_wcstombs(LPSTR  dst, LPCWSTR  src, INT  n) /* ../dlls/ntdll/wcstring.c:238 */
 {
+	INT return_value;
 	TRACE("Enter wcstombs\n");
-	return pwcstombs(dst, src, n);
+	return_value = pwcstombs(dst, src, n);
+	TRACE("Leave wcstombs\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wcstombs(void);  /* ../dlls/ntdll/wcstring.c:238 */
@@ -23564,10 +25774,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wcstombs,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_ntdll_wcstoul(LPCWSTR  s, LPWSTR*  end, INT  base) /* ../dlls/ntdll/wcstring.c:290 */
+WINAPI ULONG wine32b_ntdll_wcstoul(LPCWSTR  s, LPWSTR*  end, INT  base) /* ../dlls/ntdll/wcstring.c:290 */
 {
+	ULONG return_value;
 	TRACE("Enter wcstoul\n");
-	return pwcstoul(s, end, base);
+	return_value = pwcstoul(s, end, base);
+	TRACE("Leave wcstoul\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wcstoul(void);  /* ../dlls/ntdll/wcstring.c:290 */
@@ -23591,10 +25804,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wcstoul,
 	"ret \n"
 )
 
-extern WINAPI unsigned int wine32b_ntdll_wine_server_call(void*  req_ptr) /* ../dlls/ntdll/server.c:315 */
+WINAPI unsigned int wine32b_ntdll_wine_server_call(void*  req_ptr) /* ../dlls/ntdll/server.c:315 */
 {
+	unsigned int return_value;
 	TRACE("Enter wine_server_call\n");
-	return pwine_server_call(req_ptr);
+	return_value = pwine_server_call(req_ptr);
+	TRACE("Leave wine_server_call\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wine_server_call(void);  /* ../dlls/ntdll/server.c:315 */
@@ -23616,10 +25832,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wine_server_call,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_wine_server_fd_to_handle(int  fd, unsigned int  access, unsigned int  attributes, HANDLE*  handle) /* ../dlls/ntdll/server.c:1006 */
+WINAPI int wine32b_ntdll_wine_server_fd_to_handle(int  fd, unsigned int  access, unsigned int  attributes, HANDLE*  handle) /* ../dlls/ntdll/server.c:1006 */
 {
+	int return_value;
 	TRACE("Enter wine_server_fd_to_handle\n");
-	return pwine_server_fd_to_handle(fd, access, attributes, handle);
+	return_value = pwine_server_fd_to_handle(fd, access, attributes, handle);
+	TRACE("Leave wine_server_fd_to_handle\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wine_server_fd_to_handle(void);  /* ../dlls/ntdll/server.c:1006 */
@@ -23644,10 +25863,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wine_server_fd_to_handle,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll_wine_server_handle_to_fd(HANDLE  handle, unsigned int  access, int*  unix_fd, unsigned int*  options) /* ../dlls/ntdll/server.c:1039 */
+WINAPI int wine32b_ntdll_wine_server_handle_to_fd(HANDLE  handle, unsigned int  access, int*  unix_fd, unsigned int*  options) /* ../dlls/ntdll/server.c:1039 */
 {
+	int return_value;
 	TRACE("Enter wine_server_handle_to_fd\n");
-	return pwine_server_handle_to_fd(handle, access, unix_fd, options);
+	return_value = pwine_server_handle_to_fd(handle, access, unix_fd, options);
+	TRACE("Leave wine_server_handle_to_fd\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wine_server_handle_to_fd(void);  /* ../dlls/ntdll/server.c:1039 */
@@ -23672,10 +25894,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wine_server_handle_to_fd,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_wine_server_release_fd(HANDLE  handle, int  unix_fd) /* ../dlls/ntdll/server.c:1064 */
+WINAPI void wine32b_ntdll_wine_server_release_fd(HANDLE  handle, int  unix_fd) /* ../dlls/ntdll/server.c:1064 */
 {
 	TRACE("Enter wine_server_release_fd\n");
-	return pwine_server_release_fd(handle, unix_fd);
+	pwine_server_release_fd(handle, unix_fd);
+	TRACE("Leave wine_server_release_fd\n");
 }
 
 extern WINAPI void wine32a_ntdll_wine_server_release_fd(void);  /* ../dlls/ntdll/server.c:1064 */
@@ -23698,10 +25921,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wine_server_release_fd,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_wine_server_send_fd(int  fd) /* ../dlls/ntdll/server.c:710 */
+WINAPI void wine32b_ntdll_wine_server_send_fd(int  fd) /* ../dlls/ntdll/server.c:710 */
 {
 	TRACE("Enter wine_server_send_fd\n");
-	return pwine_server_send_fd(fd);
+	pwine_server_send_fd(fd);
+	TRACE("Leave wine_server_send_fd\n");
 }
 
 extern WINAPI void wine32a_ntdll_wine_server_send_fd(void);  /* ../dlls/ntdll/server.c:710 */
@@ -23723,10 +25947,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wine_server_send_fd,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_ntdll___wine_make_process_system(void) /* ../dlls/ntdll/process.c:110 */
+WINAPI HANDLE wine32b_ntdll___wine_make_process_system(void) /* ../dlls/ntdll/process.c:110 */
 {
+	HANDLE return_value;
 	TRACE("Enter __wine_make_process_system\n");
-	return p__wine_make_process_system();
+	return_value = p__wine_make_process_system();
+	TRACE("Leave __wine_make_process_system\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll___wine_make_process_system(void);  /* ../dlls/ntdll/process.c:110 */
@@ -23747,10 +25974,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll___wine_make_process_system,
 	"ret \n"
 )
 
-extern WINAPI unsigned char wine32b_ntdll___wine_dbg_get_channel_flags(struct __wine_debug_channel*  channel) /* ../dlls/ntdll/debugtools.c:194 */
+WINAPI unsigned char wine32b_ntdll___wine_dbg_get_channel_flags(struct __wine_debug_channel*  channel) /* ../dlls/ntdll/debugtools.c:194 */
 {
+	unsigned char return_value;
 	TRACE("Enter __wine_dbg_get_channel_flags\n");
-	return p__wine_dbg_get_channel_flags(channel);
+	return_value = p__wine_dbg_get_channel_flags(channel);
+	TRACE("Leave __wine_dbg_get_channel_flags\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll___wine_dbg_get_channel_flags(void);  /* ../dlls/ntdll/debugtools.c:194 */
@@ -23772,10 +26002,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll___wine_dbg_get_channel_flags,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll___wine_dbg_header(enum __wine_debug_class  cls, struct __wine_debug_channel*  channel, char*  function) /* ../dlls/ntdll/debugtools.c:253 */
+WINAPI int wine32b_ntdll___wine_dbg_header(enum __wine_debug_class  cls, struct __wine_debug_channel*  channel, char*  function) /* ../dlls/ntdll/debugtools.c:253 */
 {
+	int return_value;
 	TRACE("Enter __wine_dbg_header\n");
-	return p__wine_dbg_header(cls, channel, function);
+	return_value = p__wine_dbg_header(cls, channel, function);
+	TRACE("Leave __wine_dbg_header\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll___wine_dbg_header(void);  /* ../dlls/ntdll/debugtools.c:253 */
@@ -23799,10 +26032,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll___wine_dbg_header,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll___wine_dbg_output(char*  str) /* ../dlls/ntdll/debugtools.c:233 */
+WINAPI int wine32b_ntdll___wine_dbg_output(char*  str) /* ../dlls/ntdll/debugtools.c:233 */
 {
+	int return_value;
 	TRACE("Enter __wine_dbg_output\n");
-	return p__wine_dbg_output(str);
+	return_value = p__wine_dbg_output(str);
+	TRACE("Leave __wine_dbg_output\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll___wine_dbg_output(void);  /* ../dlls/ntdll/debugtools.c:233 */
@@ -23824,10 +26060,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll___wine_dbg_output,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll___wine_dbg_strdup(char*  str) /* ../dlls/ntdll/debugtools.c:218 */
+WINAPI char* wine32b_ntdll___wine_dbg_strdup(char*  str) /* ../dlls/ntdll/debugtools.c:218 */
 {
+	char* return_value;
 	TRACE("Enter __wine_dbg_strdup\n");
-	return p__wine_dbg_strdup(str);
+	return_value = p__wine_dbg_strdup(str);
+	TRACE("Leave __wine_dbg_strdup\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll___wine_dbg_strdup(void);  /* ../dlls/ntdll/debugtools.c:218 */
@@ -23849,10 +26088,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll___wine_dbg_strdup,
 	"ret \n"
 )
 
-extern WINAPI ssize_t wine32b_ntdll___wine_locked_recvmsg(int  fd, struct msghdr*  hdr, int  flags) /* ../dlls/ntdll/virtual.c:2223 */
+WINAPI ssize_t wine32b_ntdll___wine_locked_recvmsg(int  fd, struct msghdr*  hdr, int  flags) /* ../dlls/ntdll/virtual.c:2223 */
 {
+	ssize_t return_value;
 	TRACE("Enter __wine_locked_recvmsg\n");
-	return p__wine_locked_recvmsg(fd, hdr, flags);
+	return_value = p__wine_locked_recvmsg(fd, hdr, flags);
+	TRACE("Leave __wine_locked_recvmsg\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll___wine_locked_recvmsg(void);  /* ../dlls/ntdll/virtual.c:2223 */
@@ -23876,10 +26118,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll___wine_locked_recvmsg,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll_wine_get_version(void) /* ../dlls/ntdll/misc.c:58 */
+WINAPI char* wine32b_ntdll_wine_get_version(void) /* ../dlls/ntdll/misc.c:58 */
 {
+	char* return_value;
 	TRACE("Enter wine_get_version\n");
-	return pwine_get_version();
+	return_value = pwine_get_version();
+	TRACE("Leave wine_get_version\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wine_get_version(void);  /* ../dlls/ntdll/misc.c:58 */
@@ -23900,10 +26145,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wine_get_version,
 	"ret \n"
 )
 
-extern WINAPI char* wine32b_ntdll_wine_get_build_id(void) /* ../dlls/ntdll/misc.c:66 */
+WINAPI char* wine32b_ntdll_wine_get_build_id(void) /* ../dlls/ntdll/misc.c:66 */
 {
+	char* return_value;
 	TRACE("Enter wine_get_build_id\n");
-	return pwine_get_build_id();
+	return_value = pwine_get_build_id();
+	TRACE("Leave wine_get_build_id\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wine_get_build_id(void);  /* ../dlls/ntdll/misc.c:66 */
@@ -23924,10 +26172,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wine_get_build_id,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll_wine_get_host_version(char**  sysname, char**  release) /* ../dlls/ntdll/misc.c:74 */
+WINAPI void wine32b_ntdll_wine_get_host_version(char**  sysname, char**  release) /* ../dlls/ntdll/misc.c:74 */
 {
 	TRACE("Enter wine_get_host_version\n");
-	return pwine_get_host_version(sysname, release);
+	pwine_get_host_version(sysname, release);
+	TRACE("Leave wine_get_host_version\n");
 }
 
 extern WINAPI void wine32a_ntdll_wine_get_host_version(void);  /* ../dlls/ntdll/misc.c:74 */
@@ -23950,10 +26199,11 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wine_get_host_version,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_ntdll___wine_init_codepages(union cptable*  ansi, union cptable*  oem, union cptable*  ucp) /* ../dlls/ntdll/rtlstr.c:59 */
+WINAPI void wine32b_ntdll___wine_init_codepages(union cptable*  ansi, union cptable*  oem, union cptable*  ucp) /* ../dlls/ntdll/rtlstr.c:59 */
 {
 	TRACE("Enter __wine_init_codepages\n");
-	return p__wine_init_codepages(ansi, oem, ucp);
+	p__wine_init_codepages(ansi, oem, ucp);
+	TRACE("Leave __wine_init_codepages\n");
 }
 
 extern WINAPI void wine32a_ntdll___wine_init_codepages(void);  /* ../dlls/ntdll/rtlstr.c:59 */
@@ -23977,10 +26227,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll___wine_init_codepages,
 	"ret \n"
 )
 
-extern WINAPI int wine32b_ntdll___wine_set_signal_handler(unsigned int  sig, wine_signal_handler  wsh) /* ../dlls/ntdll/signal_x86_64.c:3151 */
+WINAPI int wine32b_ntdll___wine_set_signal_handler(unsigned int  sig, wine_signal_handler  wsh) /* ../dlls/ntdll/signal_x86_64.c:3151 */
 {
+	int return_value;
 	TRACE("Enter __wine_set_signal_handler\n");
-	return p__wine_set_signal_handler(sig, wsh);
+	return_value = p__wine_set_signal_handler(sig, wsh);
+	TRACE("Leave __wine_set_signal_handler\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll___wine_set_signal_handler(void);  /* ../dlls/ntdll/signal_x86_64.c:3151 */
@@ -24003,10 +26256,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll___wine_set_signal_handler,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_wine_nt_to_unix_file_name(UNICODE_STRING*  nameW, ANSI_STRING*  unix_name_ret, UINT  disposition, BOOLEAN  check_case) /* ../dlls/ntdll/directory.c:2756 */
+WINAPI NTSTATUS wine32b_ntdll_wine_nt_to_unix_file_name(UNICODE_STRING*  nameW, ANSI_STRING*  unix_name_ret, UINT  disposition, BOOLEAN  check_case) /* ../dlls/ntdll/directory.c:2756 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter wine_nt_to_unix_file_name\n");
-	return pwine_nt_to_unix_file_name(nameW, unix_name_ret, disposition, check_case);
+	return_value = pwine_nt_to_unix_file_name(nameW, unix_name_ret, disposition, check_case);
+	TRACE("Leave wine_nt_to_unix_file_name\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wine_nt_to_unix_file_name(void);  /* ../dlls/ntdll/directory.c:2756 */
@@ -24031,10 +26287,13 @@ __ASM_GLOBAL_FUNC(wine32a_ntdll_wine_nt_to_unix_file_name,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_ntdll_wine_unix_to_nt_file_name(ANSI_STRING*  name, UNICODE_STRING*  nt) /* ../dlls/ntdll/path.c:1075 */
+WINAPI NTSTATUS wine32b_ntdll_wine_unix_to_nt_file_name(ANSI_STRING*  name, UNICODE_STRING*  nt) /* ../dlls/ntdll/path.c:1075 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter wine_unix_to_nt_file_name\n");
-	return pwine_unix_to_nt_file_name(name, nt);
+	return_value = pwine_unix_to_nt_file_name(name, nt);
+	TRACE("Leave wine_unix_to_nt_file_name\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_ntdll_wine_unix_to_nt_file_name(void);  /* ../dlls/ntdll/path.c:1075 */

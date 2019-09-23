@@ -1493,10 +1493,13 @@ static WINAPI ULONG (*pWmiSetSingleItemA)(WMIHANDLE  handle, char*  name, ULONG 
 static WINAPI ULONG (*pWmiSetSingleItemW)(WMIHANDLE  handle, WCHAR*  name, ULONG  id, ULONG  reserved, ULONG  size, void*  buffer);
 static WINAPI DWORD (*pWriteEncryptedFileRaw)(PFE_IMPORT_FUNC  import, PVOID  callback, PVOID  context);
 
-extern WINAPI BOOL wine32b_advapi32_AbortSystemShutdownA(LPSTR  lpMachineName) /* ../dlls/advapi32/advapi.c:189 */
+WINAPI BOOL wine32b_advapi32_AbortSystemShutdownA(LPSTR  lpMachineName) /* ../dlls/advapi32/advapi.c:189 */
 {
+	BOOL return_value;
 	TRACE("Enter AbortSystemShutdownA\n");
-	return pAbortSystemShutdownA(lpMachineName);
+	return_value = pAbortSystemShutdownA(lpMachineName);
+	TRACE("Leave AbortSystemShutdownA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_AbortSystemShutdownA(void);  /* ../dlls/advapi32/advapi.c:189 */
@@ -1518,10 +1521,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_AbortSystemShutdownA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_AbortSystemShutdownW(LPWSTR  lpMachineName) /* ../dlls/advapi32/advapi.c:200 */
+WINAPI BOOL wine32b_advapi32_AbortSystemShutdownW(LPWSTR  lpMachineName) /* ../dlls/advapi32/advapi.c:200 */
 {
+	BOOL return_value;
 	TRACE("Enter AbortSystemShutdownW\n");
-	return pAbortSystemShutdownW(lpMachineName);
+	return_value = pAbortSystemShutdownW(lpMachineName);
+	TRACE("Leave AbortSystemShutdownW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_AbortSystemShutdownW(void);  /* ../dlls/advapi32/advapi.c:200 */
@@ -1543,10 +1549,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_AbortSystemShutdownW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_AccessCheckAndAuditAlarmA(LPCSTR  Subsystem, LPVOID  HandleId, LPSTR  ObjectTypeName, LPSTR  ObjectName, PSECURITY_DESCRIPTOR  SecurityDescriptor, DWORD  DesiredAccess, PGENERIC_MAPPING  GenericMapping, BOOL  ObjectCreation, LPDWORD  GrantedAccess, LPBOOL  AccessStatus, LPBOOL  pfGenerateOnClose) /* ../dlls/advapi32/security.c:1712 */
+WINAPI BOOL wine32b_advapi32_AccessCheckAndAuditAlarmA(LPCSTR  Subsystem, LPVOID  HandleId, LPSTR  ObjectTypeName, LPSTR  ObjectName, PSECURITY_DESCRIPTOR  SecurityDescriptor, DWORD  DesiredAccess, PGENERIC_MAPPING  GenericMapping, BOOL  ObjectCreation, LPDWORD  GrantedAccess, LPBOOL  AccessStatus, LPBOOL  pfGenerateOnClose) /* ../dlls/advapi32/security.c:1712 */
 {
+	BOOL return_value;
 	TRACE("Enter AccessCheckAndAuditAlarmA\n");
-	return pAccessCheckAndAuditAlarmA(Subsystem, HandleId, ObjectTypeName, ObjectName, SecurityDescriptor, DesiredAccess, GenericMapping, ObjectCreation, GrantedAccess, AccessStatus, pfGenerateOnClose);
+	return_value = pAccessCheckAndAuditAlarmA(Subsystem, HandleId, ObjectTypeName, ObjectName, SecurityDescriptor, DesiredAccess, GenericMapping, ObjectCreation, GrantedAccess, AccessStatus, pfGenerateOnClose);
+	TRACE("Leave AccessCheckAndAuditAlarmA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_AccessCheckAndAuditAlarmA(void);  /* ../dlls/advapi32/security.c:1712 */
@@ -1571,10 +1580,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_AccessCheckAndAuditAlarmA,
 	"ret \n"
 )
 
-extern WINAPI BOOLEAN wine32b_advapi32_AuditQuerySystemPolicy(GUID*  guids, ULONG  count, AUDIT_POLICY_INFORMATION**  policy) /* ../dlls/advapi32/lsa.c:1080 */
+WINAPI BOOLEAN wine32b_advapi32_AuditQuerySystemPolicy(GUID*  guids, ULONG  count, AUDIT_POLICY_INFORMATION**  policy) /* ../dlls/advapi32/lsa.c:1080 */
 {
+	BOOLEAN return_value;
 	TRACE("Enter AuditQuerySystemPolicy\n");
-	return pAuditQuerySystemPolicy(guids, count, policy);
+	return_value = pAuditQuerySystemPolicy(guids, count, policy);
+	TRACE("Leave AuditQuerySystemPolicy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_AuditQuerySystemPolicy(void);  /* ../dlls/advapi32/lsa.c:1080 */
@@ -1598,10 +1610,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_AuditQuerySystemPolicy,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_BackupEventLogA(HANDLE  hEventLog, LPCSTR  lpBackupFileName) /* ../dlls/advapi32/eventlog.c:55 */
+WINAPI BOOL wine32b_advapi32_BackupEventLogA(HANDLE  hEventLog, LPCSTR  lpBackupFileName) /* ../dlls/advapi32/eventlog.c:55 */
 {
+	BOOL return_value;
 	TRACE("Enter BackupEventLogA\n");
-	return pBackupEventLogA(hEventLog, lpBackupFileName);
+	return_value = pBackupEventLogA(hEventLog, lpBackupFileName);
+	TRACE("Leave BackupEventLogA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_BackupEventLogA(void);  /* ../dlls/advapi32/eventlog.c:55 */
@@ -1624,10 +1639,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_BackupEventLogA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_BackupEventLogW(HANDLE  hEventLog, LPCWSTR  lpBackupFileName) /* ../dlls/advapi32/eventlog.c:72 */
+WINAPI BOOL wine32b_advapi32_BackupEventLogW(HANDLE  hEventLog, LPCWSTR  lpBackupFileName) /* ../dlls/advapi32/eventlog.c:72 */
 {
+	BOOL return_value;
 	TRACE("Enter BackupEventLogW\n");
-	return pBackupEventLogW(hEventLog, lpBackupFileName);
+	return_value = pBackupEventLogW(hEventLog, lpBackupFileName);
+	TRACE("Leave BackupEventLogW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_BackupEventLogW(void);  /* ../dlls/advapi32/eventlog.c:72 */
@@ -1650,10 +1668,11 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_BackupEventLogW,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_advapi32_BuildExplicitAccessWithNameA(PEXPLICIT_ACCESSA  pExplicitAccess, LPSTR  pTrusteeName, DWORD  AccessPermissions, ACCESS_MODE  AccessMode, DWORD  Inheritance) /* ../dlls/advapi32/security.c:1897 */
+WINAPI void wine32b_advapi32_BuildExplicitAccessWithNameA(PEXPLICIT_ACCESSA  pExplicitAccess, LPSTR  pTrusteeName, DWORD  AccessPermissions, ACCESS_MODE  AccessMode, DWORD  Inheritance) /* ../dlls/advapi32/security.c:1897 */
 {
 	TRACE("Enter BuildExplicitAccessWithNameA\n");
-	return pBuildExplicitAccessWithNameA(pExplicitAccess, pTrusteeName, AccessPermissions, AccessMode, Inheritance);
+	pBuildExplicitAccessWithNameA(pExplicitAccess, pTrusteeName, AccessPermissions, AccessMode, Inheritance);
+	TRACE("Leave BuildExplicitAccessWithNameA\n");
 }
 
 extern WINAPI void wine32a_advapi32_BuildExplicitAccessWithNameA(void);  /* ../dlls/advapi32/security.c:1897 */
@@ -1678,10 +1697,11 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_BuildExplicitAccessWithNameA,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_advapi32_BuildExplicitAccessWithNameW(PEXPLICIT_ACCESSW  pExplicitAccess, LPWSTR  pTrusteeName, DWORD  AccessPermissions, ACCESS_MODE  AccessMode, DWORD  Inheritance) /* ../dlls/advapi32/security.c:1918 */
+WINAPI void wine32b_advapi32_BuildExplicitAccessWithNameW(PEXPLICIT_ACCESSW  pExplicitAccess, LPWSTR  pTrusteeName, DWORD  AccessPermissions, ACCESS_MODE  AccessMode, DWORD  Inheritance) /* ../dlls/advapi32/security.c:1918 */
 {
 	TRACE("Enter BuildExplicitAccessWithNameW\n");
-	return pBuildExplicitAccessWithNameW(pExplicitAccess, pTrusteeName, AccessPermissions, AccessMode, Inheritance);
+	pBuildExplicitAccessWithNameW(pExplicitAccess, pTrusteeName, AccessPermissions, AccessMode, Inheritance);
+	TRACE("Leave BuildExplicitAccessWithNameW\n");
 }
 
 extern WINAPI void wine32a_advapi32_BuildExplicitAccessWithNameW(void);  /* ../dlls/advapi32/security.c:1918 */
@@ -1706,10 +1726,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_BuildExplicitAccessWithNameW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_BuildSecurityDescriptorA(PTRUSTEEA  pOwner, PTRUSTEEA  pGroup, ULONG  cCountOfAccessEntries, PEXPLICIT_ACCESSA  pListOfAccessEntries, ULONG  cCountOfAuditEntries, PEXPLICIT_ACCESSA  pListofAuditEntries, PSECURITY_DESCRIPTOR  pOldSD, PULONG  lpdwBufferLength, PSECURITY_DESCRIPTOR*  pNewSD) /* ../dlls/advapi32/security.c:540 */
+WINAPI DWORD wine32b_advapi32_BuildSecurityDescriptorA(PTRUSTEEA  pOwner, PTRUSTEEA  pGroup, ULONG  cCountOfAccessEntries, PEXPLICIT_ACCESSA  pListOfAccessEntries, ULONG  cCountOfAuditEntries, PEXPLICIT_ACCESSA  pListofAuditEntries, PSECURITY_DESCRIPTOR  pOldSD, PULONG  lpdwBufferLength, PSECURITY_DESCRIPTOR*  pNewSD) /* ../dlls/advapi32/security.c:540 */
 {
+	DWORD return_value;
 	TRACE("Enter BuildSecurityDescriptorA\n");
-	return pBuildSecurityDescriptorA(pOwner, pGroup, cCountOfAccessEntries, pListOfAccessEntries, cCountOfAuditEntries, pListofAuditEntries, pOldSD, lpdwBufferLength, pNewSD);
+	return_value = pBuildSecurityDescriptorA(pOwner, pGroup, cCountOfAccessEntries, pListOfAccessEntries, cCountOfAuditEntries, pListofAuditEntries, pOldSD, lpdwBufferLength, pNewSD);
+	TRACE("Leave BuildSecurityDescriptorA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_BuildSecurityDescriptorA(void);  /* ../dlls/advapi32/security.c:540 */
@@ -1734,10 +1757,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_BuildSecurityDescriptorA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_BuildSecurityDescriptorW(PTRUSTEEW  pOwner, PTRUSTEEW  pGroup, ULONG  cCountOfAccessEntries, PEXPLICIT_ACCESSW  pListOfAccessEntries, ULONG  cCountOfAuditEntries, PEXPLICIT_ACCESSW  pListOfAuditEntries, PSECURITY_DESCRIPTOR  pOldSD, PULONG  lpdwBufferLength, PSECURITY_DESCRIPTOR*  pNewSD) /* ../dlls/advapi32/security.c:563 */
+WINAPI DWORD wine32b_advapi32_BuildSecurityDescriptorW(PTRUSTEEW  pOwner, PTRUSTEEW  pGroup, ULONG  cCountOfAccessEntries, PEXPLICIT_ACCESSW  pListOfAccessEntries, ULONG  cCountOfAuditEntries, PEXPLICIT_ACCESSW  pListOfAuditEntries, PSECURITY_DESCRIPTOR  pOldSD, PULONG  lpdwBufferLength, PSECURITY_DESCRIPTOR*  pNewSD) /* ../dlls/advapi32/security.c:563 */
 {
+	DWORD return_value;
 	TRACE("Enter BuildSecurityDescriptorW\n");
-	return pBuildSecurityDescriptorW(pOwner, pGroup, cCountOfAccessEntries, pListOfAccessEntries, cCountOfAuditEntries, pListOfAuditEntries, pOldSD, lpdwBufferLength, pNewSD);
+	return_value = pBuildSecurityDescriptorW(pOwner, pGroup, cCountOfAccessEntries, pListOfAccessEntries, cCountOfAuditEntries, pListOfAuditEntries, pOldSD, lpdwBufferLength, pNewSD);
+	TRACE("Leave BuildSecurityDescriptorW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_BuildSecurityDescriptorW(void);  /* ../dlls/advapi32/security.c:563 */
@@ -1762,10 +1788,11 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_BuildSecurityDescriptorW,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_advapi32_BuildTrusteeWithNameA(PTRUSTEEA  pTrustee, LPSTR  name) /* ../dlls/advapi32/security.c:2127 */
+WINAPI void wine32b_advapi32_BuildTrusteeWithNameA(PTRUSTEEA  pTrustee, LPSTR  name) /* ../dlls/advapi32/security.c:2127 */
 {
 	TRACE("Enter BuildTrusteeWithNameA\n");
-	return pBuildTrusteeWithNameA(pTrustee, name);
+	pBuildTrusteeWithNameA(pTrustee, name);
+	TRACE("Leave BuildTrusteeWithNameA\n");
 }
 
 extern WINAPI void wine32a_advapi32_BuildTrusteeWithNameA(void);  /* ../dlls/advapi32/security.c:2127 */
@@ -1788,10 +1815,11 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_BuildTrusteeWithNameA,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_advapi32_BuildTrusteeWithNameW(PTRUSTEEW  pTrustee, LPWSTR  name) /* ../dlls/advapi32/security.c:2141 */
+WINAPI void wine32b_advapi32_BuildTrusteeWithNameW(PTRUSTEEW  pTrustee, LPWSTR  name) /* ../dlls/advapi32/security.c:2141 */
 {
 	TRACE("Enter BuildTrusteeWithNameW\n");
-	return pBuildTrusteeWithNameW(pTrustee, name);
+	pBuildTrusteeWithNameW(pTrustee, name);
+	TRACE("Leave BuildTrusteeWithNameW\n");
 }
 
 extern WINAPI void wine32a_advapi32_BuildTrusteeWithNameW(void);  /* ../dlls/advapi32/security.c:2141 */
@@ -1814,10 +1842,11 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_BuildTrusteeWithNameW,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_advapi32_BuildTrusteeWithObjectsAndNameA(PTRUSTEEA  pTrustee, POBJECTS_AND_NAME_A  pObjName, SE_OBJECT_TYPE  ObjectType, LPSTR  ObjectTypeName, LPSTR  InheritedObjectTypeName, LPSTR  Name) /* ../dlls/advapi32/security.c:1939 */
+WINAPI void wine32b_advapi32_BuildTrusteeWithObjectsAndNameA(PTRUSTEEA  pTrustee, POBJECTS_AND_NAME_A  pObjName, SE_OBJECT_TYPE  ObjectType, LPSTR  ObjectTypeName, LPSTR  InheritedObjectTypeName, LPSTR  Name) /* ../dlls/advapi32/security.c:1939 */
 {
 	TRACE("Enter BuildTrusteeWithObjectsAndNameA\n");
-	return pBuildTrusteeWithObjectsAndNameA(pTrustee, pObjName, ObjectType, ObjectTypeName, InheritedObjectTypeName, Name);
+	pBuildTrusteeWithObjectsAndNameA(pTrustee, pObjName, ObjectType, ObjectTypeName, InheritedObjectTypeName, Name);
+	TRACE("Leave BuildTrusteeWithObjectsAndNameA\n");
 }
 
 extern WINAPI void wine32a_advapi32_BuildTrusteeWithObjectsAndNameA(void);  /* ../dlls/advapi32/security.c:1939 */
@@ -1842,10 +1871,11 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_BuildTrusteeWithObjectsAndNameA,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_advapi32_BuildTrusteeWithObjectsAndNameW(PTRUSTEEW  pTrustee, POBJECTS_AND_NAME_W  pObjName, SE_OBJECT_TYPE  ObjectType, LPWSTR  ObjectTypeName, LPWSTR  InheritedObjectTypeName, LPWSTR  Name) /* ../dlls/advapi32/security.c:1975 */
+WINAPI void wine32b_advapi32_BuildTrusteeWithObjectsAndNameW(PTRUSTEEW  pTrustee, POBJECTS_AND_NAME_W  pObjName, SE_OBJECT_TYPE  ObjectType, LPWSTR  ObjectTypeName, LPWSTR  InheritedObjectTypeName, LPWSTR  Name) /* ../dlls/advapi32/security.c:1975 */
 {
 	TRACE("Enter BuildTrusteeWithObjectsAndNameW\n");
-	return pBuildTrusteeWithObjectsAndNameW(pTrustee, pObjName, ObjectType, ObjectTypeName, InheritedObjectTypeName, Name);
+	pBuildTrusteeWithObjectsAndNameW(pTrustee, pObjName, ObjectType, ObjectTypeName, InheritedObjectTypeName, Name);
+	TRACE("Leave BuildTrusteeWithObjectsAndNameW\n");
 }
 
 extern WINAPI void wine32a_advapi32_BuildTrusteeWithObjectsAndNameW(void);  /* ../dlls/advapi32/security.c:1975 */
@@ -1870,10 +1900,11 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_BuildTrusteeWithObjectsAndNameW,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_advapi32_BuildTrusteeWithObjectsAndSidA(PTRUSTEEA  pTrustee, POBJECTS_AND_SID  pObjSid, GUID*  pObjectGuid, GUID*  pInheritedObjectGuid, PSID  pSid) /* ../dlls/advapi32/security.c:2011 */
+WINAPI void wine32b_advapi32_BuildTrusteeWithObjectsAndSidA(PTRUSTEEA  pTrustee, POBJECTS_AND_SID  pObjSid, GUID*  pObjectGuid, GUID*  pInheritedObjectGuid, PSID  pSid) /* ../dlls/advapi32/security.c:2011 */
 {
 	TRACE("Enter BuildTrusteeWithObjectsAndSidA\n");
-	return pBuildTrusteeWithObjectsAndSidA(pTrustee, pObjSid, pObjectGuid, pInheritedObjectGuid, pSid);
+	pBuildTrusteeWithObjectsAndSidA(pTrustee, pObjSid, pObjectGuid, pInheritedObjectGuid, pSid);
+	TRACE("Leave BuildTrusteeWithObjectsAndSidA\n");
 }
 
 extern WINAPI void wine32a_advapi32_BuildTrusteeWithObjectsAndSidA(void);  /* ../dlls/advapi32/security.c:2011 */
@@ -1898,10 +1929,11 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_BuildTrusteeWithObjectsAndSidA,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_advapi32_BuildTrusteeWithObjectsAndSidW(PTRUSTEEW  pTrustee, POBJECTS_AND_SID  pObjSid, GUID*  pObjectGuid, GUID*  pInheritedObjectGuid, PSID  pSid) /* ../dlls/advapi32/security.c:2055 */
+WINAPI void wine32b_advapi32_BuildTrusteeWithObjectsAndSidW(PTRUSTEEW  pTrustee, POBJECTS_AND_SID  pObjSid, GUID*  pObjectGuid, GUID*  pInheritedObjectGuid, PSID  pSid) /* ../dlls/advapi32/security.c:2055 */
 {
 	TRACE("Enter BuildTrusteeWithObjectsAndSidW\n");
-	return pBuildTrusteeWithObjectsAndSidW(pTrustee, pObjSid, pObjectGuid, pInheritedObjectGuid, pSid);
+	pBuildTrusteeWithObjectsAndSidW(pTrustee, pObjSid, pObjectGuid, pInheritedObjectGuid, pSid);
+	TRACE("Leave BuildTrusteeWithObjectsAndSidW\n");
 }
 
 extern WINAPI void wine32a_advapi32_BuildTrusteeWithObjectsAndSidW(void);  /* ../dlls/advapi32/security.c:2055 */
@@ -1926,10 +1958,11 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_BuildTrusteeWithObjectsAndSidW,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_advapi32_BuildTrusteeWithSidA(PTRUSTEEA  pTrustee, PSID  pSid) /* ../dlls/advapi32/security.c:2099 */
+WINAPI void wine32b_advapi32_BuildTrusteeWithSidA(PTRUSTEEA  pTrustee, PSID  pSid) /* ../dlls/advapi32/security.c:2099 */
 {
 	TRACE("Enter BuildTrusteeWithSidA\n");
-	return pBuildTrusteeWithSidA(pTrustee, pSid);
+	pBuildTrusteeWithSidA(pTrustee, pSid);
+	TRACE("Leave BuildTrusteeWithSidA\n");
 }
 
 extern WINAPI void wine32a_advapi32_BuildTrusteeWithSidA(void);  /* ../dlls/advapi32/security.c:2099 */
@@ -1952,10 +1985,11 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_BuildTrusteeWithSidA,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_advapi32_BuildTrusteeWithSidW(PTRUSTEEW  pTrustee, PSID  pSid) /* ../dlls/advapi32/security.c:2113 */
+WINAPI void wine32b_advapi32_BuildTrusteeWithSidW(PTRUSTEEW  pTrustee, PSID  pSid) /* ../dlls/advapi32/security.c:2113 */
 {
 	TRACE("Enter BuildTrusteeWithSidW\n");
-	return pBuildTrusteeWithSidW(pTrustee, pSid);
+	pBuildTrusteeWithSidW(pTrustee, pSid);
+	TRACE("Leave BuildTrusteeWithSidW\n");
 }
 
 extern WINAPI void wine32a_advapi32_BuildTrusteeWithSidW(void);  /* ../dlls/advapi32/security.c:2113 */
@@ -1978,10 +2012,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_BuildTrusteeWithSidW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_ClearEventLogA(HANDLE  hEventLog, LPCSTR  lpBackupFileName) /* ../dlls/advapi32/eventlog.c:112 */
+WINAPI BOOL wine32b_advapi32_ClearEventLogA(HANDLE  hEventLog, LPCSTR  lpBackupFileName) /* ../dlls/advapi32/eventlog.c:112 */
 {
+	BOOL return_value;
 	TRACE("Enter ClearEventLogA\n");
-	return pClearEventLogA(hEventLog, lpBackupFileName);
+	return_value = pClearEventLogA(hEventLog, lpBackupFileName);
+	TRACE("Leave ClearEventLogA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_ClearEventLogA(void);  /* ../dlls/advapi32/eventlog.c:112 */
@@ -2004,10 +2041,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ClearEventLogA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_ClearEventLogW(HANDLE  hEventLog, LPCWSTR  lpBackupFileName) /* ../dlls/advapi32/eventlog.c:129 */
+WINAPI BOOL wine32b_advapi32_ClearEventLogW(HANDLE  hEventLog, LPCWSTR  lpBackupFileName) /* ../dlls/advapi32/eventlog.c:129 */
 {
+	BOOL return_value;
 	TRACE("Enter ClearEventLogW\n");
-	return pClearEventLogW(hEventLog, lpBackupFileName);
+	return_value = pClearEventLogW(hEventLog, lpBackupFileName);
+	TRACE("Leave ClearEventLogW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_ClearEventLogW(void);  /* ../dlls/advapi32/eventlog.c:129 */
@@ -2030,10 +2070,11 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ClearEventLogW,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_advapi32_CloseEncryptedFileRaw(PVOID  context) /* ../dlls/advapi32/crypt.c:345 */
+WINAPI void wine32b_advapi32_CloseEncryptedFileRaw(PVOID  context) /* ../dlls/advapi32/crypt.c:345 */
 {
 	TRACE("Enter CloseEncryptedFileRaw\n");
-	return pCloseEncryptedFileRaw(context);
+	pCloseEncryptedFileRaw(context);
+	TRACE("Leave CloseEncryptedFileRaw\n");
 }
 
 extern WINAPI void wine32a_advapi32_CloseEncryptedFileRaw(void);  /* ../dlls/advapi32/crypt.c:345 */
@@ -2055,10 +2096,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CloseEncryptedFileRaw,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CloseEventLog(HANDLE  hEventLog) /* ../dlls/advapi32/eventlog.c:154 */
+WINAPI BOOL wine32b_advapi32_CloseEventLog(HANDLE  hEventLog) /* ../dlls/advapi32/eventlog.c:154 */
 {
+	BOOL return_value;
 	TRACE("Enter CloseEventLog\n");
-	return pCloseEventLog(hEventLog);
+	return_value = pCloseEventLog(hEventLog);
+	TRACE("Leave CloseEventLog\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CloseEventLog(void);  /* ../dlls/advapi32/eventlog.c:154 */
@@ -2080,10 +2124,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CloseEventLog,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_CloseTrace(TRACEHANDLE  handle) /* ../dlls/advapi32/eventlog.c:825 */
+WINAPI ULONG wine32b_advapi32_CloseTrace(TRACEHANDLE  handle) /* ../dlls/advapi32/eventlog.c:825 */
 {
+	ULONG return_value;
 	TRACE("Enter CloseTrace\n");
-	return pCloseTrace(handle);
+	return_value = pCloseTrace(handle);
+	TRACE("Leave CloseTrace\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CloseTrace(void);  /* ../dlls/advapi32/eventlog.c:825 */
@@ -2105,10 +2152,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CloseTrace,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_CommandLineFromMsiDescriptor(WCHAR*  szDescriptor, WCHAR*  szCommandLine, DWORD*  pcchCommandLine) /* ../dlls/advapi32/advapi.c:323 */
+WINAPI DWORD wine32b_advapi32_CommandLineFromMsiDescriptor(WCHAR*  szDescriptor, WCHAR*  szCommandLine, DWORD*  pcchCommandLine) /* ../dlls/advapi32/advapi.c:323 */
 {
+	DWORD return_value;
 	TRACE("Enter CommandLineFromMsiDescriptor\n");
-	return pCommandLineFromMsiDescriptor(szDescriptor, szCommandLine, pcchCommandLine);
+	return_value = pCommandLineFromMsiDescriptor(szDescriptor, szCommandLine, pcchCommandLine);
+	TRACE("Leave CommandLineFromMsiDescriptor\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CommandLineFromMsiDescriptor(void);  /* ../dlls/advapi32/advapi.c:323 */
@@ -2132,10 +2182,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CommandLineFromMsiDescriptor,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_ControlTraceA(TRACEHANDLE  hSession, LPCSTR  SessionName, PEVENT_TRACE_PROPERTIES  Properties, ULONG  control) /* ../dlls/advapi32/eventlog.c:185 */
+WINAPI ULONG wine32b_advapi32_ControlTraceA(TRACEHANDLE  hSession, LPCSTR  SessionName, PEVENT_TRACE_PROPERTIES  Properties, ULONG  control) /* ../dlls/advapi32/eventlog.c:185 */
 {
+	ULONG return_value;
 	TRACE("Enter ControlTraceA\n");
-	return pControlTraceA(hSession, SessionName, Properties, control);
+	return_value = pControlTraceA(hSession, SessionName, Properties, control);
+	TRACE("Leave ControlTraceA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_ControlTraceA(void);  /* ../dlls/advapi32/eventlog.c:185 */
@@ -2160,10 +2213,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ControlTraceA,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_ControlTraceW(TRACEHANDLE  hSession, LPCWSTR  SessionName, PEVENT_TRACE_PROPERTIES  Properties, ULONG  control) /* ../dlls/advapi32/eventlog.c:173 */
+WINAPI ULONG wine32b_advapi32_ControlTraceW(TRACEHANDLE  hSession, LPCWSTR  SessionName, PEVENT_TRACE_PROPERTIES  Properties, ULONG  control) /* ../dlls/advapi32/eventlog.c:173 */
 {
+	ULONG return_value;
 	TRACE("Enter ControlTraceW\n");
-	return pControlTraceW(hSession, SessionName, Properties, control);
+	return_value = pControlTraceW(hSession, SessionName, Properties, control);
+	TRACE("Leave ControlTraceW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_ControlTraceW(void);  /* ../dlls/advapi32/eventlog.c:173 */
@@ -2188,10 +2244,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ControlTraceW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_ConvertSecurityDescriptorToStringSecurityDescriptorA(PSECURITY_DESCRIPTOR  SecurityDescriptor, DWORD  SDRevision, SECURITY_INFORMATION  Information, LPSTR*  OutputString, PULONG  OutputLen) /* ../dlls/advapi32/security.c:3754 */
+WINAPI BOOL wine32b_advapi32_ConvertSecurityDescriptorToStringSecurityDescriptorA(PSECURITY_DESCRIPTOR  SecurityDescriptor, DWORD  SDRevision, SECURITY_INFORMATION  Information, LPSTR*  OutputString, PULONG  OutputLen) /* ../dlls/advapi32/security.c:3754 */
 {
+	BOOL return_value;
 	TRACE("Enter ConvertSecurityDescriptorToStringSecurityDescriptorA\n");
-	return pConvertSecurityDescriptorToStringSecurityDescriptorA(SecurityDescriptor, SDRevision, Information, OutputString, OutputLen);
+	return_value = pConvertSecurityDescriptorToStringSecurityDescriptorA(SecurityDescriptor, SDRevision, Information, OutputString, OutputLen);
+	TRACE("Leave ConvertSecurityDescriptorToStringSecurityDescriptorA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_ConvertSecurityDescriptorToStringSecurityDescriptorA(void);  /* ../dlls/advapi32/security.c:3754 */
@@ -2216,10 +2275,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ConvertSecurityDescriptorToStringSecurityDesc
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_ConvertSecurityDescriptorToStringSecurityDescriptorW(PSECURITY_DESCRIPTOR  SecurityDescriptor, DWORD  SDRevision, SECURITY_INFORMATION  RequestedInformation, LPWSTR*  OutputString, PULONG  OutputLen) /* ../dlls/advapi32/security.c:3695 */
+WINAPI BOOL wine32b_advapi32_ConvertSecurityDescriptorToStringSecurityDescriptorW(PSECURITY_DESCRIPTOR  SecurityDescriptor, DWORD  SDRevision, SECURITY_INFORMATION  RequestedInformation, LPWSTR*  OutputString, PULONG  OutputLen) /* ../dlls/advapi32/security.c:3695 */
 {
+	BOOL return_value;
 	TRACE("Enter ConvertSecurityDescriptorToStringSecurityDescriptorW\n");
-	return pConvertSecurityDescriptorToStringSecurityDescriptorW(SecurityDescriptor, SDRevision, RequestedInformation, OutputString, OutputLen);
+	return_value = pConvertSecurityDescriptorToStringSecurityDescriptorW(SecurityDescriptor, SDRevision, RequestedInformation, OutputString, OutputLen);
+	TRACE("Leave ConvertSecurityDescriptorToStringSecurityDescriptorW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_ConvertSecurityDescriptorToStringSecurityDescriptorW(void);  /* ../dlls/advapi32/security.c:3695 */
@@ -2244,10 +2306,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ConvertSecurityDescriptorToStringSecurityDesc
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_ConvertSidToStringSidA(PSID  pSid, LPSTR*  pstr) /* ../dlls/advapi32/security.c:3856 */
+WINAPI BOOL wine32b_advapi32_ConvertSidToStringSidA(PSID  pSid, LPSTR*  pstr) /* ../dlls/advapi32/security.c:3856 */
 {
+	BOOL return_value;
 	TRACE("Enter ConvertSidToStringSidA\n");
-	return pConvertSidToStringSidA(pSid, pstr);
+	return_value = pConvertSidToStringSidA(pSid, pstr);
+	TRACE("Leave ConvertSidToStringSidA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_ConvertSidToStringSidA(void);  /* ../dlls/advapi32/security.c:3856 */
@@ -2270,10 +2335,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ConvertSidToStringSidA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_ConvertSidToStringSidW(PSID  pSid, LPWSTR*  pstr) /* ../dlls/advapi32/security.c:3835 */
+WINAPI BOOL wine32b_advapi32_ConvertSidToStringSidW(PSID  pSid, LPWSTR*  pstr) /* ../dlls/advapi32/security.c:3835 */
 {
+	BOOL return_value;
 	TRACE("Enter ConvertSidToStringSidW\n");
-	return pConvertSidToStringSidW(pSid, pstr);
+	return_value = pConvertSidToStringSidW(pSid, pstr);
+	TRACE("Leave ConvertSidToStringSidW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_ConvertSidToStringSidW(void);  /* ../dlls/advapi32/security.c:3835 */
@@ -2296,10 +2364,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ConvertSidToStringSidW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_ConvertStringSecurityDescriptorToSecurityDescriptorA(LPCSTR  StringSecurityDescriptor, DWORD  StringSDRevision, PSECURITY_DESCRIPTOR*  SecurityDescriptor, PULONG  SecurityDescriptorSize) /* ../dlls/advapi32/security.c:3293 */
+WINAPI BOOL wine32b_advapi32_ConvertStringSecurityDescriptorToSecurityDescriptorA(LPCSTR  StringSecurityDescriptor, DWORD  StringSDRevision, PSECURITY_DESCRIPTOR*  SecurityDescriptor, PULONG  SecurityDescriptorSize) /* ../dlls/advapi32/security.c:3293 */
 {
+	BOOL return_value;
 	TRACE("Enter ConvertStringSecurityDescriptorToSecurityDescriptorA\n");
-	return pConvertStringSecurityDescriptorToSecurityDescriptorA(StringSecurityDescriptor, StringSDRevision, SecurityDescriptor, SecurityDescriptorSize);
+	return_value = pConvertStringSecurityDescriptorToSecurityDescriptorA(StringSecurityDescriptor, StringSDRevision, SecurityDescriptor, SecurityDescriptorSize);
+	TRACE("Leave ConvertStringSecurityDescriptorToSecurityDescriptorA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_ConvertStringSecurityDescriptorToSecurityDescriptorA(void);  /* ../dlls/advapi32/security.c:3293 */
@@ -2324,10 +2395,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ConvertStringSecurityDescriptorToSecurityDesc
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_ConvertStringSecurityDescriptorToSecurityDescriptorW(LPCWSTR  StringSecurityDescriptor, DWORD  StringSDRevision, PSECURITY_DESCRIPTOR*  SecurityDescriptor, PULONG  SecurityDescriptorSize) /* ../dlls/advapi32/security.c:3320 */
+WINAPI BOOL wine32b_advapi32_ConvertStringSecurityDescriptorToSecurityDescriptorW(LPCWSTR  StringSecurityDescriptor, DWORD  StringSDRevision, PSECURITY_DESCRIPTOR*  SecurityDescriptor, PULONG  SecurityDescriptorSize) /* ../dlls/advapi32/security.c:3320 */
 {
+	BOOL return_value;
 	TRACE("Enter ConvertStringSecurityDescriptorToSecurityDescriptorW\n");
-	return pConvertStringSecurityDescriptorToSecurityDescriptorW(StringSecurityDescriptor, StringSDRevision, SecurityDescriptor, SecurityDescriptorSize);
+	return_value = pConvertStringSecurityDescriptorToSecurityDescriptorW(StringSecurityDescriptor, StringSDRevision, SecurityDescriptor, SecurityDescriptorSize);
+	TRACE("Leave ConvertStringSecurityDescriptorToSecurityDescriptorW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_ConvertStringSecurityDescriptorToSecurityDescriptorW(void);  /* ../dlls/advapi32/security.c:3320 */
@@ -2352,10 +2426,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ConvertStringSecurityDescriptorToSecurityDesc
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_ConvertStringSidToSidA(LPCSTR  StringSid, PSID*  Sid) /* ../dlls/advapi32/security.c:3807 */
+WINAPI BOOL wine32b_advapi32_ConvertStringSidToSidA(LPCSTR  StringSid, PSID*  Sid) /* ../dlls/advapi32/security.c:3807 */
 {
+	BOOL return_value;
 	TRACE("Enter ConvertStringSidToSidA\n");
-	return pConvertStringSidToSidA(StringSid, Sid);
+	return_value = pConvertStringSidToSidA(StringSid, Sid);
+	TRACE("Leave ConvertStringSidToSidA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_ConvertStringSidToSidA(void);  /* ../dlls/advapi32/security.c:3807 */
@@ -2378,10 +2455,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ConvertStringSidToSidA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_ConvertStringSidToSidW(LPCWSTR  StringSid, PSID*  Sid) /* ../dlls/advapi32/security.c:3783 */
+WINAPI BOOL wine32b_advapi32_ConvertStringSidToSidW(LPCWSTR  StringSid, PSID*  Sid) /* ../dlls/advapi32/security.c:3783 */
 {
+	BOOL return_value;
 	TRACE("Enter ConvertStringSidToSidW\n");
-	return pConvertStringSidToSidW(StringSid, Sid);
+	return_value = pConvertStringSidToSidW(StringSid, Sid);
+	TRACE("Leave ConvertStringSidToSidW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_ConvertStringSidToSidW(void);  /* ../dlls/advapi32/security.c:3783 */
@@ -2404,10 +2484,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ConvertStringSidToSidW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CreateProcessWithLogonW(LPCWSTR  lpUsername, LPCWSTR  lpDomain, LPCWSTR  lpPassword, DWORD  dwLogonFlags, LPCWSTR  lpApplicationName, LPWSTR  lpCommandLine, DWORD  dwCreationFlags, LPVOID  lpEnvironment, LPCWSTR  lpCurrentDirectory, LPSTARTUPINFOW  lpStartupInfo, LPPROCESS_INFORMATION  lpProcessInformation) /* ../dlls/advapi32/security.c:3880 */
+WINAPI BOOL wine32b_advapi32_CreateProcessWithLogonW(LPCWSTR  lpUsername, LPCWSTR  lpDomain, LPCWSTR  lpPassword, DWORD  dwLogonFlags, LPCWSTR  lpApplicationName, LPWSTR  lpCommandLine, DWORD  dwCreationFlags, LPVOID  lpEnvironment, LPCWSTR  lpCurrentDirectory, LPSTARTUPINFOW  lpStartupInfo, LPPROCESS_INFORMATION  lpProcessInformation) /* ../dlls/advapi32/security.c:3880 */
 {
+	BOOL return_value;
 	TRACE("Enter CreateProcessWithLogonW\n");
-	return pCreateProcessWithLogonW(lpUsername, lpDomain, lpPassword, dwLogonFlags, lpApplicationName, lpCommandLine, dwCreationFlags, lpEnvironment, lpCurrentDirectory, lpStartupInfo, lpProcessInformation);
+	return_value = pCreateProcessWithLogonW(lpUsername, lpDomain, lpPassword, dwLogonFlags, lpApplicationName, lpCommandLine, dwCreationFlags, lpEnvironment, lpCurrentDirectory, lpStartupInfo, lpProcessInformation);
+	TRACE("Leave CreateProcessWithLogonW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CreateProcessWithLogonW(void);  /* ../dlls/advapi32/security.c:3880 */
@@ -2432,10 +2515,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CreateProcessWithLogonW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CreateProcessWithTokenW(HANDLE  token, DWORD  logon_flags, LPCWSTR  application_name, LPWSTR  command_line, DWORD  creation_flags, void*  environment, LPCWSTR  current_directory, STARTUPINFOW*  startup_info, PROCESS_INFORMATION*  process_information) /* ../dlls/advapi32/security.c:3892 */
+WINAPI BOOL wine32b_advapi32_CreateProcessWithTokenW(HANDLE  token, DWORD  logon_flags, LPCWSTR  application_name, LPWSTR  command_line, DWORD  creation_flags, void*  environment, LPCWSTR  current_directory, STARTUPINFOW*  startup_info, PROCESS_INFORMATION*  process_information) /* ../dlls/advapi32/security.c:3892 */
 {
+	BOOL return_value;
 	TRACE("Enter CreateProcessWithTokenW\n");
-	return pCreateProcessWithTokenW(token, logon_flags, application_name, command_line, creation_flags, environment, current_directory, startup_info, process_information);
+	return_value = pCreateProcessWithTokenW(token, logon_flags, application_name, command_line, creation_flags, environment, current_directory, startup_info, process_information);
+	TRACE("Leave CreateProcessWithTokenW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CreateProcessWithTokenW(void);  /* ../dlls/advapi32/security.c:3892 */
@@ -2460,10 +2546,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CreateProcessWithTokenW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CredDeleteA(LPCSTR  TargetName, DWORD  Type, DWORD  Flags) /* ../dlls/advapi32/cred.c:1077 */
+WINAPI BOOL wine32b_advapi32_CredDeleteA(LPCSTR  TargetName, DWORD  Type, DWORD  Flags) /* ../dlls/advapi32/cred.c:1077 */
 {
+	BOOL return_value;
 	TRACE("Enter CredDeleteA\n");
-	return pCredDeleteA(TargetName, Type, Flags);
+	return_value = pCredDeleteA(TargetName, Type, Flags);
+	TRACE("Leave CredDeleteA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CredDeleteA(void);  /* ../dlls/advapi32/cred.c:1077 */
@@ -2487,10 +2576,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CredDeleteA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CredDeleteW(LPCWSTR  TargetName, DWORD  Type, DWORD  Flags) /* ../dlls/advapi32/cred.c:1110 */
+WINAPI BOOL wine32b_advapi32_CredDeleteW(LPCWSTR  TargetName, DWORD  Type, DWORD  Flags) /* ../dlls/advapi32/cred.c:1110 */
 {
+	BOOL return_value;
 	TRACE("Enter CredDeleteW\n");
-	return pCredDeleteW(TargetName, Type, Flags);
+	return_value = pCredDeleteW(TargetName, Type, Flags);
+	TRACE("Leave CredDeleteW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CredDeleteW(void);  /* ../dlls/advapi32/cred.c:1110 */
@@ -2514,10 +2606,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CredDeleteW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CredEnumerateA(LPCSTR  Filter, DWORD  Flags, DWORD*  Count, PCREDENTIALA**  Credentials) /* ../dlls/advapi32/cred.c:1171 */
+WINAPI BOOL wine32b_advapi32_CredEnumerateA(LPCSTR  Filter, DWORD  Flags, DWORD*  Count, PCREDENTIALA**  Credentials) /* ../dlls/advapi32/cred.c:1171 */
 {
+	BOOL return_value;
 	TRACE("Enter CredEnumerateA\n");
-	return pCredEnumerateA(Filter, Flags, Count, Credentials);
+	return_value = pCredEnumerateA(Filter, Flags, Count, Credentials);
+	TRACE("Leave CredEnumerateA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CredEnumerateA(void);  /* ../dlls/advapi32/cred.c:1171 */
@@ -2542,10 +2637,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CredEnumerateA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CredEnumerateW(LPCWSTR  Filter, DWORD  Flags, DWORD*  Count, PCREDENTIALW**  Credentials) /* ../dlls/advapi32/cred.c:1234 */
+WINAPI BOOL wine32b_advapi32_CredEnumerateW(LPCWSTR  Filter, DWORD  Flags, DWORD*  Count, PCREDENTIALW**  Credentials) /* ../dlls/advapi32/cred.c:1234 */
 {
+	BOOL return_value;
 	TRACE("Enter CredEnumerateW\n");
-	return pCredEnumerateW(Filter, Flags, Count, Credentials);
+	return_value = pCredEnumerateW(Filter, Flags, Count, Credentials);
+	TRACE("Leave CredEnumerateW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CredEnumerateW(void);  /* ../dlls/advapi32/cred.c:1234 */
@@ -2570,10 +2668,11 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CredEnumerateW,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_advapi32_CredFree(PVOID  Buffer) /* ../dlls/advapi32/cred.c:1340 */
+WINAPI void wine32b_advapi32_CredFree(PVOID  Buffer) /* ../dlls/advapi32/cred.c:1340 */
 {
 	TRACE("Enter CredFree\n");
-	return pCredFree(Buffer);
+	pCredFree(Buffer);
+	TRACE("Leave CredFree\n");
 }
 
 extern WINAPI void wine32a_advapi32_CredFree(void);  /* ../dlls/advapi32/cred.c:1340 */
@@ -2595,10 +2694,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CredFree,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CredGetSessionTypes(DWORD  persistCount, LPDWORD  persists) /* ../dlls/advapi32/cred.c:1865 */
+WINAPI BOOL wine32b_advapi32_CredGetSessionTypes(DWORD  persistCount, LPDWORD  persists) /* ../dlls/advapi32/cred.c:1865 */
 {
+	BOOL return_value;
 	TRACE("Enter CredGetSessionTypes\n");
-	return pCredGetSessionTypes(persistCount, persists);
+	return_value = pCredGetSessionTypes(persistCount, persists);
+	TRACE("Leave CredGetSessionTypes\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CredGetSessionTypes(void);  /* ../dlls/advapi32/cred.c:1865 */
@@ -2621,10 +2723,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CredGetSessionTypes,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CredIsMarshaledCredentialA(LPCSTR  name) /* ../dlls/advapi32/cred.c:2180 */
+WINAPI BOOL wine32b_advapi32_CredIsMarshaledCredentialA(LPCSTR  name) /* ../dlls/advapi32/cred.c:2180 */
 {
+	BOOL return_value;
 	TRACE("Enter CredIsMarshaledCredentialA\n");
-	return pCredIsMarshaledCredentialA(name);
+	return_value = pCredIsMarshaledCredentialA(name);
+	TRACE("Leave CredIsMarshaledCredentialA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CredIsMarshaledCredentialA(void);  /* ../dlls/advapi32/cred.c:2180 */
@@ -2646,10 +2751,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CredIsMarshaledCredentialA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CredIsMarshaledCredentialW(LPCWSTR  name) /* ../dlls/advapi32/cred.c:2146 */
+WINAPI BOOL wine32b_advapi32_CredIsMarshaledCredentialW(LPCWSTR  name) /* ../dlls/advapi32/cred.c:2146 */
 {
+	BOOL return_value;
 	TRACE("Enter CredIsMarshaledCredentialW\n");
-	return pCredIsMarshaledCredentialW(name);
+	return_value = pCredIsMarshaledCredentialW(name);
+	TRACE("Leave CredIsMarshaledCredentialW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CredIsMarshaledCredentialW(void);  /* ../dlls/advapi32/cred.c:2146 */
@@ -2671,10 +2779,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CredIsMarshaledCredentialW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CredMarshalCredentialA(CRED_MARSHAL_TYPE  type, PVOID  cred, LPSTR*  out) /* ../dlls/advapi32/cred.c:1885 */
+WINAPI BOOL wine32b_advapi32_CredMarshalCredentialA(CRED_MARSHAL_TYPE  type, PVOID  cred, LPSTR*  out) /* ../dlls/advapi32/cred.c:1885 */
 {
+	BOOL return_value;
 	TRACE("Enter CredMarshalCredentialA\n");
-	return pCredMarshalCredentialA(type, cred, out);
+	return_value = pCredMarshalCredentialA(type, cred, out);
+	TRACE("Leave CredMarshalCredentialA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CredMarshalCredentialA(void);  /* ../dlls/advapi32/cred.c:1885 */
@@ -2698,10 +2809,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CredMarshalCredentialA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CredMarshalCredentialW(CRED_MARSHAL_TYPE  type, PVOID  cred, LPWSTR*  out) /* ../dlls/advapi32/cred.c:1938 */
+WINAPI BOOL wine32b_advapi32_CredMarshalCredentialW(CRED_MARSHAL_TYPE  type, PVOID  cred, LPWSTR*  out) /* ../dlls/advapi32/cred.c:1938 */
 {
+	BOOL return_value;
 	TRACE("Enter CredMarshalCredentialW\n");
-	return pCredMarshalCredentialW(type, cred, out);
+	return_value = pCredMarshalCredentialW(type, cred, out);
+	TRACE("Leave CredMarshalCredentialW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CredMarshalCredentialW(void);  /* ../dlls/advapi32/cred.c:1938 */
@@ -2725,10 +2839,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CredMarshalCredentialW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CredReadA(LPCSTR  TargetName, DWORD  Type, DWORD  Flags, PCREDENTIALA*  Credential) /* ../dlls/advapi32/cred.c:1348 */
+WINAPI BOOL wine32b_advapi32_CredReadA(LPCSTR  TargetName, DWORD  Type, DWORD  Flags, PCREDENTIALA*  Credential) /* ../dlls/advapi32/cred.c:1348 */
 {
+	BOOL return_value;
 	TRACE("Enter CredReadA\n");
-	return pCredReadA(TargetName, Type, Flags, Credential);
+	return_value = pCredReadA(TargetName, Type, Flags, Credential);
+	TRACE("Leave CredReadA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CredReadA(void);  /* ../dlls/advapi32/cred.c:1348 */
@@ -2753,10 +2870,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CredReadA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CredReadDomainCredentialsA(PCREDENTIAL_TARGET_INFORMATIONA  TargetInformation, DWORD  Flags, DWORD*  Size, PCREDENTIALA**  Credentials) /* ../dlls/advapi32/cred.c:1553 */
+WINAPI BOOL wine32b_advapi32_CredReadDomainCredentialsA(PCREDENTIAL_TARGET_INFORMATIONA  TargetInformation, DWORD  Flags, DWORD*  Size, PCREDENTIALA**  Credentials) /* ../dlls/advapi32/cred.c:1553 */
 {
+	BOOL return_value;
 	TRACE("Enter CredReadDomainCredentialsA\n");
-	return pCredReadDomainCredentialsA(TargetInformation, Flags, Size, Credentials);
+	return_value = pCredReadDomainCredentialsA(TargetInformation, Flags, Size, Credentials);
+	TRACE("Leave CredReadDomainCredentialsA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CredReadDomainCredentialsA(void);  /* ../dlls/advapi32/cred.c:1553 */
@@ -2781,10 +2901,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CredReadDomainCredentialsA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CredReadDomainCredentialsW(PCREDENTIAL_TARGET_INFORMATIONW  TargetInformation, DWORD  Flags, DWORD*  Size, PCREDENTIALW**  Credentials) /* ../dlls/advapi32/cred.c:1699 */
+WINAPI BOOL wine32b_advapi32_CredReadDomainCredentialsW(PCREDENTIAL_TARGET_INFORMATIONW  TargetInformation, DWORD  Flags, DWORD*  Size, PCREDENTIALW**  Credentials) /* ../dlls/advapi32/cred.c:1699 */
 {
+	BOOL return_value;
 	TRACE("Enter CredReadDomainCredentialsW\n");
-	return pCredReadDomainCredentialsW(TargetInformation, Flags, Size, Credentials);
+	return_value = pCredReadDomainCredentialsW(TargetInformation, Flags, Size, Credentials);
+	TRACE("Leave CredReadDomainCredentialsW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CredReadDomainCredentialsW(void);  /* ../dlls/advapi32/cred.c:1699 */
@@ -2809,10 +2932,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CredReadDomainCredentialsW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CredReadW(LPCWSTR  TargetName, DWORD  Type, DWORD  Flags, PCREDENTIALW*  Credential) /* ../dlls/advapi32/cred.c:1395 */
+WINAPI BOOL wine32b_advapi32_CredReadW(LPCWSTR  TargetName, DWORD  Type, DWORD  Flags, PCREDENTIALW*  Credential) /* ../dlls/advapi32/cred.c:1395 */
 {
+	BOOL return_value;
 	TRACE("Enter CredReadW\n");
-	return pCredReadW(TargetName, Type, Flags, Credential);
+	return_value = pCredReadW(TargetName, Type, Flags, Credential);
+	TRACE("Leave CredReadW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CredReadW(void);  /* ../dlls/advapi32/cred.c:1395 */
@@ -2837,10 +2963,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CredReadW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CredUnmarshalCredentialA(LPCSTR  cred, PCRED_MARSHAL_TYPE  type, PVOID*  out) /* ../dlls/advapi32/cred.c:1994 */
+WINAPI BOOL wine32b_advapi32_CredUnmarshalCredentialA(LPCSTR  cred, PCRED_MARSHAL_TYPE  type, PVOID*  out) /* ../dlls/advapi32/cred.c:1994 */
 {
+	BOOL return_value;
 	TRACE("Enter CredUnmarshalCredentialA\n");
-	return pCredUnmarshalCredentialA(cred, type, out);
+	return_value = pCredUnmarshalCredentialA(cred, type, out);
+	TRACE("Leave CredUnmarshalCredentialA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CredUnmarshalCredentialA(void);  /* ../dlls/advapi32/cred.c:1994 */
@@ -2864,10 +2993,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CredUnmarshalCredentialA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CredUnmarshalCredentialW(LPCWSTR  cred, PCRED_MARSHAL_TYPE  type, PVOID*  out) /* ../dlls/advapi32/cred.c:2068 */
+WINAPI BOOL wine32b_advapi32_CredUnmarshalCredentialW(LPCWSTR  cred, PCRED_MARSHAL_TYPE  type, PVOID*  out) /* ../dlls/advapi32/cred.c:2068 */
 {
+	BOOL return_value;
 	TRACE("Enter CredUnmarshalCredentialW\n");
-	return pCredUnmarshalCredentialW(cred, type, out);
+	return_value = pCredUnmarshalCredentialW(cred, type, out);
+	TRACE("Leave CredUnmarshalCredentialW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CredUnmarshalCredentialW(void);  /* ../dlls/advapi32/cred.c:2068 */
@@ -2891,10 +3023,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CredUnmarshalCredentialW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CredWriteA(PCREDENTIALA  Credential, DWORD  Flags) /* ../dlls/advapi32/cred.c:1720 */
+WINAPI BOOL wine32b_advapi32_CredWriteA(PCREDENTIALA  Credential, DWORD  Flags) /* ../dlls/advapi32/cred.c:1720 */
 {
+	BOOL return_value;
 	TRACE("Enter CredWriteA\n");
-	return pCredWriteA(Credential, Flags);
+	return_value = pCredWriteA(Credential, Flags);
+	TRACE("Leave CredWriteA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CredWriteA(void);  /* ../dlls/advapi32/cred.c:1720 */
@@ -2917,10 +3052,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CredWriteA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CredWriteW(PCREDENTIALW  Credential, DWORD  Flags) /* ../dlls/advapi32/cred.c:1754 */
+WINAPI BOOL wine32b_advapi32_CredWriteW(PCREDENTIALW  Credential, DWORD  Flags) /* ../dlls/advapi32/cred.c:1754 */
 {
+	BOOL return_value;
 	TRACE("Enter CredWriteW\n");
-	return pCredWriteW(Credential, Flags);
+	return_value = pCredWriteW(Credential, Flags);
+	TRACE("Leave CredWriteW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CredWriteW(void);  /* ../dlls/advapi32/cred.c:1754 */
@@ -2943,10 +3081,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CredWriteW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptAcquireContextA(HCRYPTPROV*  phProv, LPCSTR  pszContainer, LPCSTR  pszProvider, DWORD  dwProvType, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:577 */
+WINAPI BOOL wine32b_advapi32_CryptAcquireContextA(HCRYPTPROV*  phProv, LPCSTR  pszContainer, LPCSTR  pszProvider, DWORD  dwProvType, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:577 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptAcquireContextA\n");
-	return pCryptAcquireContextA(phProv, pszContainer, pszProvider, dwProvType, dwFlags);
+	return_value = pCryptAcquireContextA(phProv, pszContainer, pszProvider, dwProvType, dwFlags);
+	TRACE("Leave CryptAcquireContextA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptAcquireContextA(void);  /* ../dlls/advapi32/crypt.c:577 */
@@ -2971,10 +3112,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptAcquireContextA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptAcquireContextW(HCRYPTPROV*  phProv, LPCWSTR  pszContainer, LPCWSTR  pszProvider, DWORD  dwProvType, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:365 */
+WINAPI BOOL wine32b_advapi32_CryptAcquireContextW(HCRYPTPROV*  phProv, LPCWSTR  pszContainer, LPCWSTR  pszProvider, DWORD  dwProvType, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:365 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptAcquireContextW\n");
-	return pCryptAcquireContextW(phProv, pszContainer, pszProvider, dwProvType, dwFlags);
+	return_value = pCryptAcquireContextW(phProv, pszContainer, pszProvider, dwProvType, dwFlags);
+	TRACE("Leave CryptAcquireContextW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptAcquireContextW(void);  /* ../dlls/advapi32/crypt.c:365 */
@@ -2999,10 +3143,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptAcquireContextW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptContextAddRef(HCRYPTPROV  hProv, DWORD*  pdwReserved, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:621 */
+WINAPI BOOL wine32b_advapi32_CryptContextAddRef(HCRYPTPROV  hProv, DWORD*  pdwReserved, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:621 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptContextAddRef\n");
-	return pCryptContextAddRef(hProv, pdwReserved, dwFlags);
+	return_value = pCryptContextAddRef(hProv, pdwReserved, dwFlags);
+	TRACE("Leave CryptContextAddRef\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptContextAddRef(void);  /* ../dlls/advapi32/crypt.c:621 */
@@ -3026,10 +3173,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptContextAddRef,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptCreateHash(HCRYPTPROV  hProv, ALG_ID  Algid, HCRYPTKEY  hKey, DWORD  dwFlags, HCRYPTHASH*  phHash) /* ../dlls/advapi32/crypt.c:749 */
+WINAPI BOOL wine32b_advapi32_CryptCreateHash(HCRYPTPROV  hProv, ALG_ID  Algid, HCRYPTKEY  hKey, DWORD  dwFlags, HCRYPTHASH*  phHash) /* ../dlls/advapi32/crypt.c:749 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptCreateHash\n");
-	return pCryptCreateHash(hProv, Algid, hKey, dwFlags, phHash);
+	return_value = pCryptCreateHash(hProv, Algid, hKey, dwFlags, phHash);
+	TRACE("Leave CryptCreateHash\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptCreateHash(void);  /* ../dlls/advapi32/crypt.c:749 */
@@ -3054,10 +3204,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptCreateHash,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptDecrypt(HCRYPTKEY  hKey, HCRYPTHASH  hHash, BOOL  Final, DWORD  dwFlags, BYTE*  pbData, DWORD*  pdwDataLen) /* ../dlls/advapi32/crypt.c:809 */
+WINAPI BOOL wine32b_advapi32_CryptDecrypt(HCRYPTKEY  hKey, HCRYPTHASH  hHash, BOOL  Final, DWORD  dwFlags, BYTE*  pbData, DWORD*  pdwDataLen) /* ../dlls/advapi32/crypt.c:809 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptDecrypt\n");
-	return pCryptDecrypt(hKey, hHash, Final, dwFlags, pbData, pdwDataLen);
+	return_value = pCryptDecrypt(hKey, hHash, Final, dwFlags, pbData, pdwDataLen);
+	TRACE("Leave CryptDecrypt\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptDecrypt(void);  /* ../dlls/advapi32/crypt.c:809 */
@@ -3082,10 +3235,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptDecrypt,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptDeriveKey(HCRYPTPROV  hProv, ALG_ID  Algid, HCRYPTHASH  hBaseData, DWORD  dwFlags, HCRYPTKEY*  phKey) /* ../dlls/advapi32/crypt.c:847 */
+WINAPI BOOL wine32b_advapi32_CryptDeriveKey(HCRYPTPROV  hProv, ALG_ID  Algid, HCRYPTHASH  hBaseData, DWORD  dwFlags, HCRYPTKEY*  phKey) /* ../dlls/advapi32/crypt.c:847 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptDeriveKey\n");
-	return pCryptDeriveKey(hProv, Algid, hBaseData, dwFlags, phKey);
+	return_value = pCryptDeriveKey(hProv, Algid, hBaseData, dwFlags, phKey);
+	TRACE("Leave CryptDeriveKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptDeriveKey(void);  /* ../dlls/advapi32/crypt.c:847 */
@@ -3110,10 +3266,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptDeriveKey,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptDestroyHash(HCRYPTHASH  hHash) /* ../dlls/advapi32/crypt.c:899 */
+WINAPI BOOL wine32b_advapi32_CryptDestroyHash(HCRYPTHASH  hHash) /* ../dlls/advapi32/crypt.c:899 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptDestroyHash\n");
-	return pCryptDestroyHash(hHash);
+	return_value = pCryptDestroyHash(hHash);
+	TRACE("Leave CryptDestroyHash\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptDestroyHash(void);  /* ../dlls/advapi32/crypt.c:899 */
@@ -3135,10 +3294,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptDestroyHash,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptDestroyKey(HCRYPTKEY  hKey) /* ../dlls/advapi32/crypt.c:939 */
+WINAPI BOOL wine32b_advapi32_CryptDestroyKey(HCRYPTKEY  hKey) /* ../dlls/advapi32/crypt.c:939 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptDestroyKey\n");
-	return pCryptDestroyKey(hKey);
+	return_value = pCryptDestroyKey(hKey);
+	TRACE("Leave CryptDestroyKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptDestroyKey(void);  /* ../dlls/advapi32/crypt.c:939 */
@@ -3160,10 +3322,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptDestroyKey,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptDuplicateHash(HCRYPTHASH  hHash, DWORD*  pdwReserved, DWORD  dwFlags, HCRYPTHASH*  phHash) /* ../dlls/advapi32/crypt.c:982 */
+WINAPI BOOL wine32b_advapi32_CryptDuplicateHash(HCRYPTHASH  hHash, DWORD*  pdwReserved, DWORD  dwFlags, HCRYPTHASH*  phHash) /* ../dlls/advapi32/crypt.c:982 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptDuplicateHash\n");
-	return pCryptDuplicateHash(hHash, pdwReserved, dwFlags, phHash);
+	return_value = pCryptDuplicateHash(hHash, pdwReserved, dwFlags, phHash);
+	TRACE("Leave CryptDuplicateHash\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptDuplicateHash(void);  /* ../dlls/advapi32/crypt.c:982 */
@@ -3188,10 +3353,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptDuplicateHash,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptDuplicateKey(HCRYPTKEY  hKey, DWORD*  pdwReserved, DWORD  dwFlags, HCRYPTKEY*  phKey) /* ../dlls/advapi32/crypt.c:1038 */
+WINAPI BOOL wine32b_advapi32_CryptDuplicateKey(HCRYPTKEY  hKey, DWORD*  pdwReserved, DWORD  dwFlags, HCRYPTKEY*  phKey) /* ../dlls/advapi32/crypt.c:1038 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptDuplicateKey\n");
-	return pCryptDuplicateKey(hKey, pdwReserved, dwFlags, phKey);
+	return_value = pCryptDuplicateKey(hKey, pdwReserved, dwFlags, phKey);
+	TRACE("Leave CryptDuplicateKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptDuplicateKey(void);  /* ../dlls/advapi32/crypt.c:1038 */
@@ -3216,10 +3384,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptDuplicateKey,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptEncrypt(HCRYPTKEY  hKey, HCRYPTHASH  hHash, BOOL  Final, DWORD  dwFlags, BYTE*  pbData, DWORD*  pdwDataLen, DWORD  dwBufLen) /* ../dlls/advapi32/crypt.c:1102 */
+WINAPI BOOL wine32b_advapi32_CryptEncrypt(HCRYPTKEY  hKey, HCRYPTHASH  hHash, BOOL  Final, DWORD  dwFlags, BYTE*  pbData, DWORD*  pdwDataLen, DWORD  dwBufLen) /* ../dlls/advapi32/crypt.c:1102 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptEncrypt\n");
-	return pCryptEncrypt(hKey, hHash, Final, dwFlags, pbData, pdwDataLen, dwBufLen);
+	return_value = pCryptEncrypt(hKey, hHash, Final, dwFlags, pbData, pdwDataLen, dwBufLen);
+	TRACE("Leave CryptEncrypt\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptEncrypt(void);  /* ../dlls/advapi32/crypt.c:1102 */
@@ -3244,10 +3415,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptEncrypt,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptEnumProviderTypesA(DWORD  dwIndex, DWORD*  pdwReserved, DWORD  dwFlags, DWORD*  pdwProvType, LPSTR  pszTypeName, DWORD*  pcbTypeName) /* ../dlls/advapi32/crypt.c:1371 */
+WINAPI BOOL wine32b_advapi32_CryptEnumProviderTypesA(DWORD  dwIndex, DWORD*  pdwReserved, DWORD  dwFlags, DWORD*  pdwProvType, LPSTR  pszTypeName, DWORD*  pcbTypeName) /* ../dlls/advapi32/crypt.c:1371 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptEnumProviderTypesA\n");
-	return pCryptEnumProviderTypesA(dwIndex, pdwReserved, dwFlags, pdwProvType, pszTypeName, pcbTypeName);
+	return_value = pCryptEnumProviderTypesA(dwIndex, pdwReserved, dwFlags, pdwProvType, pszTypeName, pcbTypeName);
+	TRACE("Leave CryptEnumProviderTypesA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptEnumProviderTypesA(void);  /* ../dlls/advapi32/crypt.c:1371 */
@@ -3272,10 +3446,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptEnumProviderTypesA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptEnumProviderTypesW(DWORD  dwIndex, DWORD*  pdwReserved, DWORD  dwFlags, DWORD*  pdwProvType, LPWSTR  pszTypeName, DWORD*  pcbTypeName) /* ../dlls/advapi32/crypt.c:1292 */
+WINAPI BOOL wine32b_advapi32_CryptEnumProviderTypesW(DWORD  dwIndex, DWORD*  pdwReserved, DWORD  dwFlags, DWORD*  pdwProvType, LPWSTR  pszTypeName, DWORD*  pcbTypeName) /* ../dlls/advapi32/crypt.c:1292 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptEnumProviderTypesW\n");
-	return pCryptEnumProviderTypesW(dwIndex, pdwReserved, dwFlags, pdwProvType, pszTypeName, pcbTypeName);
+	return_value = pCryptEnumProviderTypesW(dwIndex, pdwReserved, dwFlags, pdwProvType, pszTypeName, pcbTypeName);
+	TRACE("Leave CryptEnumProviderTypesW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptEnumProviderTypesW(void);  /* ../dlls/advapi32/crypt.c:1292 */
@@ -3300,10 +3477,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptEnumProviderTypesW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptEnumProvidersA(DWORD  dwIndex, DWORD*  pdwReserved, DWORD  dwFlags, DWORD*  pdwProvType, LPSTR  pszProvName, DWORD*  pcbProvName) /* ../dlls/advapi32/crypt.c:1237 */
+WINAPI BOOL wine32b_advapi32_CryptEnumProvidersA(DWORD  dwIndex, DWORD*  pdwReserved, DWORD  dwFlags, DWORD*  pdwProvType, LPSTR  pszProvName, DWORD*  pcbProvName) /* ../dlls/advapi32/crypt.c:1237 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptEnumProvidersA\n");
-	return pCryptEnumProvidersA(dwIndex, pdwReserved, dwFlags, pdwProvType, pszProvName, pcbProvName);
+	return_value = pCryptEnumProvidersA(dwIndex, pdwReserved, dwFlags, pdwProvType, pszProvName, pcbProvName);
+	TRACE("Leave CryptEnumProvidersA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptEnumProvidersA(void);  /* ../dlls/advapi32/crypt.c:1237 */
@@ -3328,10 +3508,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptEnumProvidersA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptEnumProvidersW(DWORD  dwIndex, DWORD*  pdwReserved, DWORD  dwFlags, DWORD*  pdwProvType, LPWSTR  pszProvName, DWORD*  pcbProvName) /* ../dlls/advapi32/crypt.c:1145 */
+WINAPI BOOL wine32b_advapi32_CryptEnumProvidersW(DWORD  dwIndex, DWORD*  pdwReserved, DWORD  dwFlags, DWORD*  pdwProvType, LPWSTR  pszProvName, DWORD*  pcbProvName) /* ../dlls/advapi32/crypt.c:1145 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptEnumProvidersW\n");
-	return pCryptEnumProvidersW(dwIndex, pdwReserved, dwFlags, pdwProvType, pszProvName, pcbProvName);
+	return_value = pCryptEnumProvidersW(dwIndex, pdwReserved, dwFlags, pdwProvType, pszProvName, pcbProvName);
+	TRACE("Leave CryptEnumProvidersW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptEnumProvidersW(void);  /* ../dlls/advapi32/crypt.c:1145 */
@@ -3356,10 +3539,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptEnumProvidersW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptExportKey(HCRYPTKEY  hKey, HCRYPTKEY  hExpKey, DWORD  dwBlobType, DWORD  dwFlags, BYTE*  pbData, DWORD*  pdwDataLen) /* ../dlls/advapi32/crypt.c:1425 */
+WINAPI BOOL wine32b_advapi32_CryptExportKey(HCRYPTKEY  hKey, HCRYPTKEY  hExpKey, DWORD  dwBlobType, DWORD  dwFlags, BYTE*  pbData, DWORD*  pdwDataLen) /* ../dlls/advapi32/crypt.c:1425 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptExportKey\n");
-	return pCryptExportKey(hKey, hExpKey, dwBlobType, dwFlags, pbData, pdwDataLen);
+	return_value = pCryptExportKey(hKey, hExpKey, dwBlobType, dwFlags, pbData, pdwDataLen);
+	TRACE("Leave CryptExportKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptExportKey(void);  /* ../dlls/advapi32/crypt.c:1425 */
@@ -3384,10 +3570,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptExportKey,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptGenKey(HCRYPTPROV  hProv, ALG_ID  Algid, DWORD  dwFlags, HCRYPTKEY*  phKey) /* ../dlls/advapi32/crypt.c:1460 */
+WINAPI BOOL wine32b_advapi32_CryptGenKey(HCRYPTPROV  hProv, ALG_ID  Algid, DWORD  dwFlags, HCRYPTKEY*  phKey) /* ../dlls/advapi32/crypt.c:1460 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptGenKey\n");
-	return pCryptGenKey(hProv, Algid, dwFlags, phKey);
+	return_value = pCryptGenKey(hProv, Algid, dwFlags, phKey);
+	TRACE("Leave CryptGenKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptGenKey(void);  /* ../dlls/advapi32/crypt.c:1460 */
@@ -3412,10 +3601,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptGenKey,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptGenRandom(HCRYPTPROV  hProv, DWORD  dwLen, BYTE*  pbBuffer) /* ../dlls/advapi32/crypt.c:709 */
+WINAPI BOOL wine32b_advapi32_CryptGenRandom(HCRYPTPROV  hProv, DWORD  dwLen, BYTE*  pbBuffer) /* ../dlls/advapi32/crypt.c:709 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptGenRandom\n");
-	return pCryptGenRandom(hProv, dwLen, pbBuffer);
+	return_value = pCryptGenRandom(hProv, dwLen, pbBuffer);
+	TRACE("Leave CryptGenRandom\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptGenRandom(void);  /* ../dlls/advapi32/crypt.c:709 */
@@ -3439,10 +3631,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptGenRandom,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptGetDefaultProviderA(DWORD  dwProvType, DWORD*  pdwReserved, DWORD  dwFlags, LPSTR  pszProvName, DWORD*  pcbProvName) /* ../dlls/advapi32/crypt.c:1569 */
+WINAPI BOOL wine32b_advapi32_CryptGetDefaultProviderA(DWORD  dwProvType, DWORD*  pdwReserved, DWORD  dwFlags, LPSTR  pszProvName, DWORD*  pcbProvName) /* ../dlls/advapi32/crypt.c:1569 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptGetDefaultProviderA\n");
-	return pCryptGetDefaultProviderA(dwProvType, pdwReserved, dwFlags, pszProvName, pcbProvName);
+	return_value = pCryptGetDefaultProviderA(dwProvType, pdwReserved, dwFlags, pszProvName, pcbProvName);
+	TRACE("Leave CryptGetDefaultProviderA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptGetDefaultProviderA(void);  /* ../dlls/advapi32/crypt.c:1569 */
@@ -3467,10 +3662,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptGetDefaultProviderA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptGetDefaultProviderW(DWORD  dwProvType, DWORD*  pdwReserved, DWORD  dwFlags, LPWSTR  pszProvName, DWORD*  pcbProvName) /* ../dlls/advapi32/crypt.c:1512 */
+WINAPI BOOL wine32b_advapi32_CryptGetDefaultProviderW(DWORD  dwProvType, DWORD*  pdwReserved, DWORD  dwFlags, LPWSTR  pszProvName, DWORD*  pcbProvName) /* ../dlls/advapi32/crypt.c:1512 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptGetDefaultProviderW\n");
-	return pCryptGetDefaultProviderW(dwProvType, pdwReserved, dwFlags, pszProvName, pcbProvName);
+	return_value = pCryptGetDefaultProviderW(dwProvType, pdwReserved, dwFlags, pszProvName, pcbProvName);
+	TRACE("Leave CryptGetDefaultProviderW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptGetDefaultProviderW(void);  /* ../dlls/advapi32/crypt.c:1512 */
@@ -3495,10 +3693,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptGetDefaultProviderW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptGetHashParam(HCRYPTHASH  hHash, DWORD  dwParam, BYTE*  pbData, DWORD*  pdwDataLen, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:1619 */
+WINAPI BOOL wine32b_advapi32_CryptGetHashParam(HCRYPTHASH  hHash, DWORD  dwParam, BYTE*  pbData, DWORD*  pdwDataLen, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:1619 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptGetHashParam\n");
-	return pCryptGetHashParam(hHash, dwParam, pbData, pdwDataLen, dwFlags);
+	return_value = pCryptGetHashParam(hHash, dwParam, pbData, pdwDataLen, dwFlags);
+	TRACE("Leave CryptGetHashParam\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptGetHashParam(void);  /* ../dlls/advapi32/crypt.c:1619 */
@@ -3523,10 +3724,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptGetHashParam,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptGetKeyParam(HCRYPTKEY  hKey, DWORD  dwParam, BYTE*  pbData, DWORD*  pdwDataLen, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:1658 */
+WINAPI BOOL wine32b_advapi32_CryptGetKeyParam(HCRYPTKEY  hKey, DWORD  dwParam, BYTE*  pbData, DWORD*  pdwDataLen, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:1658 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptGetKeyParam\n");
-	return pCryptGetKeyParam(hKey, dwParam, pbData, pdwDataLen, dwFlags);
+	return_value = pCryptGetKeyParam(hKey, dwParam, pbData, pdwDataLen, dwFlags);
+	TRACE("Leave CryptGetKeyParam\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptGetKeyParam(void);  /* ../dlls/advapi32/crypt.c:1658 */
@@ -3551,10 +3755,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptGetKeyParam,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptGetProvParam(HCRYPTPROV  hProv, DWORD  dwParam, BYTE*  pbData, DWORD*  pdwDataLen, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:1697 */
+WINAPI BOOL wine32b_advapi32_CryptGetProvParam(HCRYPTPROV  hProv, DWORD  dwParam, BYTE*  pbData, DWORD*  pdwDataLen, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:1697 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptGetProvParam\n");
-	return pCryptGetProvParam(hProv, dwParam, pbData, pdwDataLen, dwFlags);
+	return_value = pCryptGetProvParam(hProv, dwParam, pbData, pdwDataLen, dwFlags);
+	TRACE("Leave CryptGetProvParam\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptGetProvParam(void);  /* ../dlls/advapi32/crypt.c:1697 */
@@ -3579,10 +3786,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptGetProvParam,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptGetUserKey(HCRYPTPROV  hProv, DWORD  dwKeySpec, HCRYPTKEY*  phUserKey) /* ../dlls/advapi32/crypt.c:1727 */
+WINAPI BOOL wine32b_advapi32_CryptGetUserKey(HCRYPTPROV  hProv, DWORD  dwKeySpec, HCRYPTKEY*  phUserKey) /* ../dlls/advapi32/crypt.c:1727 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptGetUserKey\n");
-	return pCryptGetUserKey(hProv, dwKeySpec, phUserKey);
+	return_value = pCryptGetUserKey(hProv, dwKeySpec, phUserKey);
+	TRACE("Leave CryptGetUserKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptGetUserKey(void);  /* ../dlls/advapi32/crypt.c:1727 */
@@ -3606,10 +3816,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptGetUserKey,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptHashData(HCRYPTHASH  hHash, BYTE*  pbData, DWORD  dwDataLen, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:1780 */
+WINAPI BOOL wine32b_advapi32_CryptHashData(HCRYPTHASH  hHash, BYTE*  pbData, DWORD  dwDataLen, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:1780 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptHashData\n");
-	return pCryptHashData(hHash, pbData, dwDataLen, dwFlags);
+	return_value = pCryptHashData(hHash, pbData, dwDataLen, dwFlags);
+	TRACE("Leave CryptHashData\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptHashData(void);  /* ../dlls/advapi32/crypt.c:1780 */
@@ -3634,10 +3847,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptHashData,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptHashSessionKey(HCRYPTHASH  hHash, HCRYPTKEY  hKey, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:1817 */
+WINAPI BOOL wine32b_advapi32_CryptHashSessionKey(HCRYPTHASH  hHash, HCRYPTKEY  hKey, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:1817 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptHashSessionKey\n");
-	return pCryptHashSessionKey(hHash, hKey, dwFlags);
+	return_value = pCryptHashSessionKey(hHash, hKey, dwFlags);
+	TRACE("Leave CryptHashSessionKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptHashSessionKey(void);  /* ../dlls/advapi32/crypt.c:1817 */
@@ -3661,10 +3877,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptHashSessionKey,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptImportKey(HCRYPTPROV  hProv, BYTE*  pbData, DWORD  dwDataLen, HCRYPTKEY  hPubKey, DWORD  dwFlags, HCRYPTKEY*  phKey) /* ../dlls/advapi32/crypt.c:1859 */
+WINAPI BOOL wine32b_advapi32_CryptImportKey(HCRYPTPROV  hProv, BYTE*  pbData, DWORD  dwDataLen, HCRYPTKEY  hPubKey, DWORD  dwFlags, HCRYPTKEY*  phKey) /* ../dlls/advapi32/crypt.c:1859 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptImportKey\n");
-	return pCryptImportKey(hProv, pbData, dwDataLen, hPubKey, dwFlags, phKey);
+	return_value = pCryptImportKey(hProv, pbData, dwDataLen, hPubKey, dwFlags, phKey);
+	TRACE("Leave CryptImportKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptImportKey(void);  /* ../dlls/advapi32/crypt.c:1859 */
@@ -3689,10 +3908,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptImportKey,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptReleaseContext(HCRYPTPROV  hProv, ULONG_PTR  dwFlags) /* ../dlls/advapi32/crypt.c:656 */
+WINAPI BOOL wine32b_advapi32_CryptReleaseContext(HCRYPTPROV  hProv, ULONG_PTR  dwFlags) /* ../dlls/advapi32/crypt.c:656 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptReleaseContext\n");
-	return pCryptReleaseContext(hProv, dwFlags);
+	return_value = pCryptReleaseContext(hProv, dwFlags);
+	TRACE("Leave CryptReleaseContext\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptReleaseContext(void);  /* ../dlls/advapi32/crypt.c:656 */
@@ -3715,10 +3937,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptReleaseContext,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptSetHashParam(HCRYPTHASH  hHash, DWORD  dwParam, BYTE*  pbData, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:1979 */
+WINAPI BOOL wine32b_advapi32_CryptSetHashParam(HCRYPTHASH  hHash, DWORD  dwParam, BYTE*  pbData, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:1979 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptSetHashParam\n");
-	return pCryptSetHashParam(hHash, dwParam, pbData, dwFlags);
+	return_value = pCryptSetHashParam(hHash, dwParam, pbData, dwFlags);
+	TRACE("Leave CryptSetHashParam\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptSetHashParam(void);  /* ../dlls/advapi32/crypt.c:1979 */
@@ -3743,10 +3968,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptSetHashParam,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptSetKeyParam(HCRYPTKEY  hKey, DWORD  dwParam, BYTE*  pbData, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:2013 */
+WINAPI BOOL wine32b_advapi32_CryptSetKeyParam(HCRYPTKEY  hKey, DWORD  dwParam, BYTE*  pbData, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:2013 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptSetKeyParam\n");
-	return pCryptSetKeyParam(hKey, dwParam, pbData, dwFlags);
+	return_value = pCryptSetKeyParam(hKey, dwParam, pbData, dwFlags);
+	TRACE("Leave CryptSetKeyParam\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptSetKeyParam(void);  /* ../dlls/advapi32/crypt.c:2013 */
@@ -3771,10 +3999,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptSetKeyParam,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptSetProvParam(HCRYPTPROV  hProv, DWORD  dwParam, BYTE*  pbData, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:2188 */
+WINAPI BOOL wine32b_advapi32_CryptSetProvParam(HCRYPTPROV  hProv, DWORD  dwParam, BYTE*  pbData, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:2188 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptSetProvParam\n");
-	return pCryptSetProvParam(hProv, dwParam, pbData, dwFlags);
+	return_value = pCryptSetProvParam(hProv, dwParam, pbData, dwFlags);
+	TRACE("Leave CryptSetProvParam\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptSetProvParam(void);  /* ../dlls/advapi32/crypt.c:2188 */
@@ -3799,10 +4030,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptSetProvParam,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptSetProviderA(LPCSTR  pszProvName, DWORD  dwProvType) /* ../dlls/advapi32/crypt.c:2045 */
+WINAPI BOOL wine32b_advapi32_CryptSetProviderA(LPCSTR  pszProvName, DWORD  dwProvType) /* ../dlls/advapi32/crypt.c:2045 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptSetProviderA\n");
-	return pCryptSetProviderA(pszProvName, dwProvType);
+	return_value = pCryptSetProviderA(pszProvName, dwProvType);
+	TRACE("Leave CryptSetProviderA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptSetProviderA(void);  /* ../dlls/advapi32/crypt.c:2045 */
@@ -3825,10 +4059,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptSetProviderA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptSetProviderExA(LPCSTR  pszProvName, DWORD  dwProvType, DWORD*  pdwReserved, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:2158 */
+WINAPI BOOL wine32b_advapi32_CryptSetProviderExA(LPCSTR  pszProvName, DWORD  dwProvType, DWORD*  pdwReserved, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:2158 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptSetProviderExA\n");
-	return pCryptSetProviderExA(pszProvName, dwProvType, pdwReserved, dwFlags);
+	return_value = pCryptSetProviderExA(pszProvName, dwProvType, pdwReserved, dwFlags);
+	TRACE("Leave CryptSetProviderExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptSetProviderExA(void);  /* ../dlls/advapi32/crypt.c:2158 */
@@ -3853,10 +4090,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptSetProviderExA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptSetProviderExW(LPCWSTR  pszProvName, DWORD  dwProvType, DWORD*  pdwReserved, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:2077 */
+WINAPI BOOL wine32b_advapi32_CryptSetProviderExW(LPCWSTR  pszProvName, DWORD  dwProvType, DWORD*  pdwReserved, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:2077 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptSetProviderExW\n");
-	return pCryptSetProviderExW(pszProvName, dwProvType, pdwReserved, dwFlags);
+	return_value = pCryptSetProviderExW(pszProvName, dwProvType, pdwReserved, dwFlags);
+	TRACE("Leave CryptSetProviderExW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptSetProviderExW(void);  /* ../dlls/advapi32/crypt.c:2077 */
@@ -3881,10 +4121,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptSetProviderExW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptSetProviderW(LPCWSTR  pszProvName, DWORD  dwProvType) /* ../dlls/advapi32/crypt.c:2056 */
+WINAPI BOOL wine32b_advapi32_CryptSetProviderW(LPCWSTR  pszProvName, DWORD  dwProvType) /* ../dlls/advapi32/crypt.c:2056 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptSetProviderW\n");
-	return pCryptSetProviderW(pszProvName, dwProvType);
+	return_value = pCryptSetProviderW(pszProvName, dwProvType);
+	TRACE("Leave CryptSetProviderW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptSetProviderW(void);  /* ../dlls/advapi32/crypt.c:2056 */
@@ -3907,10 +4150,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptSetProviderW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptSignHashA(HCRYPTHASH  hHash, DWORD  dwKeySpec, LPCSTR  sDescription, DWORD  dwFlags, BYTE*  pbSignature, DWORD*  pdwSigLen) /* ../dlls/advapi32/crypt.c:1948 */
+WINAPI BOOL wine32b_advapi32_CryptSignHashA(HCRYPTHASH  hHash, DWORD  dwKeySpec, LPCSTR  sDescription, DWORD  dwFlags, BYTE*  pbSignature, DWORD*  pdwSigLen) /* ../dlls/advapi32/crypt.c:1948 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptSignHashA\n");
-	return pCryptSignHashA(hHash, dwKeySpec, sDescription, dwFlags, pbSignature, pdwSigLen);
+	return_value = pCryptSignHashA(hHash, dwKeySpec, sDescription, dwFlags, pbSignature, pdwSigLen);
+	TRACE("Leave CryptSignHashA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptSignHashA(void);  /* ../dlls/advapi32/crypt.c:1948 */
@@ -3935,10 +4181,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptSignHashA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptSignHashW(HCRYPTHASH  hHash, DWORD  dwKeySpec, LPCWSTR  sDescription, DWORD  dwFlags, BYTE*  pbSignature, DWORD*  pdwSigLen) /* ../dlls/advapi32/crypt.c:1917 */
+WINAPI BOOL wine32b_advapi32_CryptSignHashW(HCRYPTHASH  hHash, DWORD  dwKeySpec, LPCWSTR  sDescription, DWORD  dwFlags, BYTE*  pbSignature, DWORD*  pdwSigLen) /* ../dlls/advapi32/crypt.c:1917 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptSignHashW\n");
-	return pCryptSignHashW(hHash, dwKeySpec, sDescription, dwFlags, pbSignature, pdwSigLen);
+	return_value = pCryptSignHashW(hHash, dwKeySpec, sDescription, dwFlags, pbSignature, pdwSigLen);
+	TRACE("Leave CryptSignHashW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptSignHashW(void);  /* ../dlls/advapi32/crypt.c:1917 */
@@ -3963,10 +4212,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptSignHashW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptVerifySignatureA(HCRYPTHASH  hHash, BYTE*  pbSignature, DWORD  dwSigLen, HCRYPTKEY  hPubKey, LPCSTR  sDescription, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:2275 */
+WINAPI BOOL wine32b_advapi32_CryptVerifySignatureA(HCRYPTHASH  hHash, BYTE*  pbSignature, DWORD  dwSigLen, HCRYPTKEY  hPubKey, LPCSTR  sDescription, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:2275 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptVerifySignatureA\n");
-	return pCryptVerifySignatureA(hHash, pbSignature, dwSigLen, hPubKey, sDescription, dwFlags);
+	return_value = pCryptVerifySignatureA(hHash, pbSignature, dwSigLen, hPubKey, sDescription, dwFlags);
+	TRACE("Leave CryptVerifySignatureA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptVerifySignatureA(void);  /* ../dlls/advapi32/crypt.c:2275 */
@@ -3991,10 +4243,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptVerifySignatureA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_CryptVerifySignatureW(HCRYPTHASH  hHash, BYTE*  pbSignature, DWORD  dwSigLen, HCRYPTKEY  hPubKey, LPCWSTR  sDescription, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:2247 */
+WINAPI BOOL wine32b_advapi32_CryptVerifySignatureW(HCRYPTHASH  hHash, BYTE*  pbSignature, DWORD  dwSigLen, HCRYPTKEY  hPubKey, LPCWSTR  sDescription, DWORD  dwFlags) /* ../dlls/advapi32/crypt.c:2247 */
 {
+	BOOL return_value;
 	TRACE("Enter CryptVerifySignatureW\n");
-	return pCryptVerifySignatureW(hHash, pbSignature, dwSigLen, hPubKey, sDescription, dwFlags);
+	return_value = pCryptVerifySignatureW(hHash, pbSignature, dwSigLen, hPubKey, sDescription, dwFlags);
+	TRACE("Leave CryptVerifySignatureW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_CryptVerifySignatureW(void);  /* ../dlls/advapi32/crypt.c:2247 */
@@ -4019,10 +4274,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_CryptVerifySignatureW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_DecryptFileA(LPCSTR  lpFileName, DWORD  dwReserved) /* ../dlls/advapi32/security.c:4191 */
+WINAPI BOOL wine32b_advapi32_DecryptFileA(LPCSTR  lpFileName, DWORD  dwReserved) /* ../dlls/advapi32/security.c:4191 */
 {
+	BOOL return_value;
 	TRACE("Enter DecryptFileA\n");
-	return pDecryptFileA(lpFileName, dwReserved);
+	return_value = pDecryptFileA(lpFileName, dwReserved);
+	TRACE("Leave DecryptFileA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_DecryptFileA(void);  /* ../dlls/advapi32/security.c:4191 */
@@ -4045,10 +4303,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_DecryptFileA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_DecryptFileW(LPCWSTR  lpFileName, DWORD  dwReserved) /* ../dlls/advapi32/security.c:4182 */
+WINAPI BOOL wine32b_advapi32_DecryptFileW(LPCWSTR  lpFileName, DWORD  dwReserved) /* ../dlls/advapi32/security.c:4182 */
 {
+	BOOL return_value;
 	TRACE("Enter DecryptFileW\n");
-	return pDecryptFileW(lpFileName, dwReserved);
+	return_value = pDecryptFileW(lpFileName, dwReserved);
+	TRACE("Leave DecryptFileW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_DecryptFileW(void);  /* ../dlls/advapi32/security.c:4182 */
@@ -4071,10 +4332,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_DecryptFileW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_DeregisterEventSource(HANDLE  hEventLog) /* ../dlls/advapi32/eventlog.c:220 */
+WINAPI BOOL wine32b_advapi32_DeregisterEventSource(HANDLE  hEventLog) /* ../dlls/advapi32/eventlog.c:220 */
 {
+	BOOL return_value;
 	TRACE("Enter DeregisterEventSource\n");
-	return pDeregisterEventSource(hEventLog);
+	return_value = pDeregisterEventSource(hEventLog);
+	TRACE("Leave DeregisterEventSource\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_DeregisterEventSource(void);  /* ../dlls/advapi32/eventlog.c:220 */
@@ -4096,10 +4360,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_DeregisterEventSource,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_EnableTrace(ULONG  enable, ULONG  flag, ULONG  level, LPCGUID  guid, TRACEHANDLE  hSession) /* ../dlls/advapi32/eventlog.c:258 */
+WINAPI ULONG wine32b_advapi32_EnableTrace(ULONG  enable, ULONG  flag, ULONG  level, LPCGUID  guid, TRACEHANDLE  hSession) /* ../dlls/advapi32/eventlog.c:258 */
 {
+	ULONG return_value;
 	TRACE("Enter EnableTrace\n");
-	return pEnableTrace(enable, flag, level, guid, hSession);
+	return_value = pEnableTrace(enable, flag, level, guid, hSession);
+	TRACE("Leave EnableTrace\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_EnableTrace(void);  /* ../dlls/advapi32/eventlog.c:258 */
@@ -4124,10 +4391,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_EnableTrace,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_EnableTraceEx(LPCGUID  provider, LPCGUID  source, TRACEHANDLE  hSession, ULONG  enable, UCHAR  level, ULONGLONG  anykeyword, ULONGLONG  allkeyword, ULONG  enableprop, PEVENT_FILTER_DESCRIPTOR  filterdesc) /* ../dlls/advapi32/eventlog.c:229 */
+WINAPI ULONG wine32b_advapi32_EnableTraceEx(LPCGUID  provider, LPCGUID  source, TRACEHANDLE  hSession, ULONG  enable, UCHAR  level, ULONGLONG  anykeyword, ULONGLONG  allkeyword, ULONG  enableprop, PEVENT_FILTER_DESCRIPTOR  filterdesc) /* ../dlls/advapi32/eventlog.c:229 */
 {
+	ULONG return_value;
 	TRACE("Enter EnableTraceEx\n");
-	return pEnableTraceEx(provider, source, hSession, enable, level, anykeyword, allkeyword, enableprop, filterdesc);
+	return_value = pEnableTraceEx(provider, source, hSession, enable, level, anykeyword, allkeyword, enableprop, filterdesc);
+	TRACE("Leave EnableTraceEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_EnableTraceEx(void);  /* ../dlls/advapi32/eventlog.c:229 */
@@ -4152,10 +4422,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_EnableTraceEx,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_EnableTraceEx2(TRACEHANDLE  handle, LPCGUID  provider, ULONG  control, UCHAR  level, ULONGLONG  match_any, ULONGLONG  match_all, ULONG  timeout, PENABLE_TRACE_PARAMETERS  params) /* ../dlls/advapi32/eventlog.c:244 */
+WINAPI ULONG wine32b_advapi32_EnableTraceEx2(TRACEHANDLE  handle, LPCGUID  provider, ULONG  control, UCHAR  level, ULONGLONG  match_any, ULONGLONG  match_all, ULONG  timeout, PENABLE_TRACE_PARAMETERS  params) /* ../dlls/advapi32/eventlog.c:244 */
 {
+	ULONG return_value;
 	TRACE("Enter EnableTraceEx2\n");
-	return pEnableTraceEx2(handle, provider, control, level, match_any, match_all, timeout, params);
+	return_value = pEnableTraceEx2(handle, provider, control, level, match_any, match_all, timeout, params);
+	TRACE("Leave EnableTraceEx2\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_EnableTraceEx2(void);  /* ../dlls/advapi32/eventlog.c:244 */
@@ -4180,10 +4453,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_EnableTraceEx2,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_EncryptFileA(LPCSTR  lpFileName) /* ../dlls/advapi32/security.c:4209 */
+WINAPI BOOL wine32b_advapi32_EncryptFileA(LPCSTR  lpFileName) /* ../dlls/advapi32/security.c:4209 */
 {
+	BOOL return_value;
 	TRACE("Enter EncryptFileA\n");
-	return pEncryptFileA(lpFileName);
+	return_value = pEncryptFileA(lpFileName);
+	TRACE("Leave EncryptFileA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_EncryptFileA(void);  /* ../dlls/advapi32/security.c:4209 */
@@ -4205,10 +4481,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_EncryptFileA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_EncryptFileW(LPCWSTR  lpFileName) /* ../dlls/advapi32/security.c:4200 */
+WINAPI BOOL wine32b_advapi32_EncryptFileW(LPCWSTR  lpFileName) /* ../dlls/advapi32/security.c:4200 */
 {
+	BOOL return_value;
 	TRACE("Enter EncryptFileW\n");
-	return pEncryptFileW(lpFileName);
+	return_value = pEncryptFileW(lpFileName);
+	TRACE("Leave EncryptFileW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_EncryptFileW(void);  /* ../dlls/advapi32/security.c:4200 */
@@ -4230,10 +4509,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_EncryptFileW,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_EnumerateTraceGuids(PTRACE_GUID_PROPERTIES*  propertiesarray, ULONG  arraycount, PULONG  guidcount) /* ../dlls/advapi32/eventlog.c:834 */
+WINAPI ULONG wine32b_advapi32_EnumerateTraceGuids(PTRACE_GUID_PROPERTIES*  propertiesarray, ULONG  arraycount, PULONG  guidcount) /* ../dlls/advapi32/eventlog.c:834 */
 {
+	ULONG return_value;
 	TRACE("Enter EnumerateTraceGuids\n");
-	return pEnumerateTraceGuids(propertiesarray, arraycount, guidcount);
+	return_value = pEnumerateTraceGuids(propertiesarray, arraycount, guidcount);
+	TRACE("Leave EnumerateTraceGuids\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_EnumerateTraceGuids(void);  /* ../dlls/advapi32/eventlog.c:834 */
@@ -4257,10 +4539,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_EnumerateTraceGuids,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_FileEncryptionStatusA(LPCSTR  lpFileName, LPDWORD  lpStatus) /* ../dlls/advapi32/security.c:4230 */
+WINAPI BOOL wine32b_advapi32_FileEncryptionStatusA(LPCSTR  lpFileName, LPDWORD  lpStatus) /* ../dlls/advapi32/security.c:4230 */
 {
+	BOOL return_value;
 	TRACE("Enter FileEncryptionStatusA\n");
-	return pFileEncryptionStatusA(lpFileName, lpStatus);
+	return_value = pFileEncryptionStatusA(lpFileName, lpStatus);
+	TRACE("Leave FileEncryptionStatusA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_FileEncryptionStatusA(void);  /* ../dlls/advapi32/security.c:4230 */
@@ -4283,10 +4568,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_FileEncryptionStatusA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_FileEncryptionStatusW(LPCWSTR  lpFileName, LPDWORD  lpStatus) /* ../dlls/advapi32/security.c:4218 */
+WINAPI BOOL wine32b_advapi32_FileEncryptionStatusW(LPCWSTR  lpFileName, LPDWORD  lpStatus) /* ../dlls/advapi32/security.c:4218 */
 {
+	BOOL return_value;
 	TRACE("Enter FileEncryptionStatusW\n");
-	return pFileEncryptionStatusW(lpFileName, lpStatus);
+	return_value = pFileEncryptionStatusW(lpFileName, lpStatus);
+	TRACE("Leave FileEncryptionStatusW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_FileEncryptionStatusW(void);  /* ../dlls/advapi32/security.c:4218 */
@@ -4309,10 +4597,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_FileEncryptionStatusW,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_FlushTraceA(TRACEHANDLE  hSession, LPCSTR  SessionName, PEVENT_TRACE_PROPERTIES  Properties) /* ../dlls/advapi32/eventlog.c:194 */
+WINAPI ULONG wine32b_advapi32_FlushTraceA(TRACEHANDLE  hSession, LPCSTR  SessionName, PEVENT_TRACE_PROPERTIES  Properties) /* ../dlls/advapi32/eventlog.c:194 */
 {
+	ULONG return_value;
 	TRACE("Enter FlushTraceA\n");
-	return pFlushTraceA(hSession, SessionName, Properties);
+	return_value = pFlushTraceA(hSession, SessionName, Properties);
+	TRACE("Leave FlushTraceA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_FlushTraceA(void);  /* ../dlls/advapi32/eventlog.c:194 */
@@ -4336,10 +4627,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_FlushTraceA,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_FlushTraceW(TRACEHANDLE  hSession, LPCWSTR  SessionName, PEVENT_TRACE_PROPERTIES  Properties) /* ../dlls/advapi32/eventlog.c:202 */
+WINAPI ULONG wine32b_advapi32_FlushTraceW(TRACEHANDLE  hSession, LPCWSTR  SessionName, PEVENT_TRACE_PROPERTIES  Properties) /* ../dlls/advapi32/eventlog.c:202 */
 {
+	ULONG return_value;
 	TRACE("Enter FlushTraceW\n");
-	return pFlushTraceW(hSession, SessionName, Properties);
+	return_value = pFlushTraceW(hSession, SessionName, Properties);
+	TRACE("Leave FlushTraceW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_FlushTraceW(void);  /* ../dlls/advapi32/eventlog.c:202 */
@@ -4363,10 +4657,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_FlushTraceW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_GetAuditedPermissionsFromAclA(PACL  pacl, PTRUSTEEA  pTrustee, PACCESS_MASK  pSuccessfulAuditedRights, PACCESS_MASK  pFailedAuditRights) /* ../dlls/advapi32/security.c:2796 */
+WINAPI DWORD wine32b_advapi32_GetAuditedPermissionsFromAclA(PACL  pacl, PTRUSTEEA  pTrustee, PACCESS_MASK  pSuccessfulAuditedRights, PACCESS_MASK  pFailedAuditRights) /* ../dlls/advapi32/security.c:2796 */
 {
+	DWORD return_value;
 	TRACE("Enter GetAuditedPermissionsFromAclA\n");
-	return pGetAuditedPermissionsFromAclA(pacl, pTrustee, pSuccessfulAuditedRights, pFailedAuditRights);
+	return_value = pGetAuditedPermissionsFromAclA(pacl, pTrustee, pSuccessfulAuditedRights, pFailedAuditRights);
+	TRACE("Leave GetAuditedPermissionsFromAclA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetAuditedPermissionsFromAclA(void);  /* ../dlls/advapi32/security.c:2796 */
@@ -4391,10 +4688,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetAuditedPermissionsFromAclA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_GetAuditedPermissionsFromAclW(PACL  pacl, PTRUSTEEW  pTrustee, PACCESS_MASK  pSuccessfulAuditedRights, PACCESS_MASK  pFailedAuditRights) /* ../dlls/advapi32/security.c:2807 */
+WINAPI DWORD wine32b_advapi32_GetAuditedPermissionsFromAclW(PACL  pacl, PTRUSTEEW  pTrustee, PACCESS_MASK  pSuccessfulAuditedRights, PACCESS_MASK  pFailedAuditRights) /* ../dlls/advapi32/security.c:2807 */
 {
+	DWORD return_value;
 	TRACE("Enter GetAuditedPermissionsFromAclW\n");
-	return pGetAuditedPermissionsFromAclW(pacl, pTrustee, pSuccessfulAuditedRights, pFailedAuditRights);
+	return_value = pGetAuditedPermissionsFromAclW(pacl, pTrustee, pSuccessfulAuditedRights, pFailedAuditRights);
+	TRACE("Leave GetAuditedPermissionsFromAclW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetAuditedPermissionsFromAclW(void);  /* ../dlls/advapi32/security.c:2807 */
@@ -4419,10 +4719,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetAuditedPermissionsFromAclW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_GetCurrentHwProfileA(LPHW_PROFILE_INFOA  pInfo) /* ../dlls/advapi32/advapi.c:134 */
+WINAPI BOOL wine32b_advapi32_GetCurrentHwProfileA(LPHW_PROFILE_INFOA  pInfo) /* ../dlls/advapi32/advapi.c:134 */
 {
+	BOOL return_value;
 	TRACE("Enter GetCurrentHwProfileA\n");
-	return pGetCurrentHwProfileA(pInfo);
+	return_value = pGetCurrentHwProfileA(pInfo);
+	TRACE("Leave GetCurrentHwProfileA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetCurrentHwProfileA(void);  /* ../dlls/advapi32/advapi.c:134 */
@@ -4444,10 +4747,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetCurrentHwProfileA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_GetCurrentHwProfileW(LPHW_PROFILE_INFOW  pInfo) /* ../dlls/advapi32/advapi.c:148 */
+WINAPI BOOL wine32b_advapi32_GetCurrentHwProfileW(LPHW_PROFILE_INFOW  pInfo) /* ../dlls/advapi32/advapi.c:148 */
 {
+	BOOL return_value;
 	TRACE("Enter GetCurrentHwProfileW\n");
-	return pGetCurrentHwProfileW(pInfo);
+	return_value = pGetCurrentHwProfileW(pInfo);
+	TRACE("Leave GetCurrentHwProfileW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetCurrentHwProfileW(void);  /* ../dlls/advapi32/advapi.c:148 */
@@ -4469,10 +4775,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetCurrentHwProfileW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_GetEffectiveRightsFromAclA(PACL  pacl, PTRUSTEEA  pTrustee, PACCESS_MASK  pAccessRights) /* ../dlls/advapi32/security.c:499 */
+WINAPI DWORD wine32b_advapi32_GetEffectiveRightsFromAclA(PACL  pacl, PTRUSTEEA  pTrustee, PACCESS_MASK  pAccessRights) /* ../dlls/advapi32/security.c:499 */
 {
+	DWORD return_value;
 	TRACE("Enter GetEffectiveRightsFromAclA\n");
-	return pGetEffectiveRightsFromAclA(pacl, pTrustee, pAccessRights);
+	return_value = pGetEffectiveRightsFromAclA(pacl, pTrustee, pAccessRights);
+	TRACE("Leave GetEffectiveRightsFromAclA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetEffectiveRightsFromAclA(void);  /* ../dlls/advapi32/security.c:499 */
@@ -4496,10 +4805,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetEffectiveRightsFromAclA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_GetEffectiveRightsFromAclW(PACL  pacl, PTRUSTEEW  pTrustee, PACCESS_MASK  pAccessRights) /* ../dlls/advapi32/security.c:508 */
+WINAPI DWORD wine32b_advapi32_GetEffectiveRightsFromAclW(PACL  pacl, PTRUSTEEW  pTrustee, PACCESS_MASK  pAccessRights) /* ../dlls/advapi32/security.c:508 */
 {
+	DWORD return_value;
 	TRACE("Enter GetEffectiveRightsFromAclW\n");
-	return pGetEffectiveRightsFromAclW(pacl, pTrustee, pAccessRights);
+	return_value = pGetEffectiveRightsFromAclW(pacl, pTrustee, pAccessRights);
+	TRACE("Leave GetEffectiveRightsFromAclW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetEffectiveRightsFromAclW(void);  /* ../dlls/advapi32/security.c:508 */
@@ -4523,10 +4835,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetEffectiveRightsFromAclW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_GetEventLogInformation(HANDLE  hEventLog, DWORD  dwInfoLevel, LPVOID  lpBuffer, DWORD  cbBufSize, LPDWORD  pcbBytesNeeded) /* ../dlls/advapi32/eventlog.c:283 */
+WINAPI BOOL wine32b_advapi32_GetEventLogInformation(HANDLE  hEventLog, DWORD  dwInfoLevel, LPVOID  lpBuffer, DWORD  cbBufSize, LPDWORD  pcbBytesNeeded) /* ../dlls/advapi32/eventlog.c:283 */
 {
+	BOOL return_value;
 	TRACE("Enter GetEventLogInformation\n");
-	return pGetEventLogInformation(hEventLog, dwInfoLevel, lpBuffer, cbBufSize, pcbBytesNeeded);
+	return_value = pGetEventLogInformation(hEventLog, dwInfoLevel, lpBuffer, cbBufSize, pcbBytesNeeded);
+	TRACE("Leave GetEventLogInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetEventLogInformation(void);  /* ../dlls/advapi32/eventlog.c:283 */
@@ -4551,10 +4866,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetEventLogInformation,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_GetExplicitEntriesFromAclA(PACL  pacl, PULONG  pcCountOfExplicitEntries, PEXPLICIT_ACCESSA*  pListOfExplicitEntries) /* ../dlls/advapi32/security.c:2700 */
+WINAPI DWORD wine32b_advapi32_GetExplicitEntriesFromAclA(PACL  pacl, PULONG  pcCountOfExplicitEntries, PEXPLICIT_ACCESSA*  pListOfExplicitEntries) /* ../dlls/advapi32/security.c:2700 */
 {
+	DWORD return_value;
 	TRACE("Enter GetExplicitEntriesFromAclA\n");
-	return pGetExplicitEntriesFromAclA(pacl, pcCountOfExplicitEntries, pListOfExplicitEntries);
+	return_value = pGetExplicitEntriesFromAclA(pacl, pcCountOfExplicitEntries, pListOfExplicitEntries);
+	TRACE("Leave GetExplicitEntriesFromAclA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetExplicitEntriesFromAclA(void);  /* ../dlls/advapi32/security.c:2700 */
@@ -4578,10 +4896,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetExplicitEntriesFromAclA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_GetExplicitEntriesFromAclW(PACL  pacl, PULONG  count, PEXPLICIT_ACCESSW*  list) /* ../dlls/advapi32/security.c:2710 */
+WINAPI DWORD wine32b_advapi32_GetExplicitEntriesFromAclW(PACL  pacl, PULONG  count, PEXPLICIT_ACCESSW*  list) /* ../dlls/advapi32/security.c:2710 */
 {
+	DWORD return_value;
 	TRACE("Enter GetExplicitEntriesFromAclW\n");
-	return pGetExplicitEntriesFromAclW(pacl, count, list);
+	return_value = pGetExplicitEntriesFromAclW(pacl, count, list);
+	TRACE("Leave GetExplicitEntriesFromAclW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetExplicitEntriesFromAclW(void);  /* ../dlls/advapi32/security.c:2710 */
@@ -4605,10 +4926,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetExplicitEntriesFromAclW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_GetFileSecurityA(LPCSTR  lpFileName, SECURITY_INFORMATION  RequestedInformation, PSECURITY_DESCRIPTOR  pSecurityDescriptor, DWORD  nLength, LPDWORD  lpnLengthNeeded) /* ../dlls/advapi32/security.c:1011 */
+WINAPI BOOL wine32b_advapi32_GetFileSecurityA(LPCSTR  lpFileName, SECURITY_INFORMATION  RequestedInformation, PSECURITY_DESCRIPTOR  pSecurityDescriptor, DWORD  nLength, LPDWORD  lpnLengthNeeded) /* ../dlls/advapi32/security.c:1011 */
 {
+	BOOL return_value;
 	TRACE("Enter GetFileSecurityA\n");
-	return pGetFileSecurityA(lpFileName, RequestedInformation, pSecurityDescriptor, nLength, lpnLengthNeeded);
+	return_value = pGetFileSecurityA(lpFileName, RequestedInformation, pSecurityDescriptor, nLength, lpnLengthNeeded);
+	TRACE("Leave GetFileSecurityA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetFileSecurityA(void);  /* ../dlls/advapi32/security.c:1011 */
@@ -4633,10 +4957,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetFileSecurityA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_GetNamedSecurityInfoA(LPSTR  pObjectName, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID*  ppsidOwner, PSID*  ppsidGroup, PACL*  ppDacl, PACL*  ppSacl, PSECURITY_DESCRIPTOR*  ppSecurityDescriptor) /* ../dlls/advapi32/security.c:4070 */
+WINAPI DWORD wine32b_advapi32_GetNamedSecurityInfoA(LPSTR  pObjectName, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID*  ppsidOwner, PSID*  ppsidGroup, PACL*  ppDacl, PACL*  ppSacl, PSECURITY_DESCRIPTOR*  ppSecurityDescriptor) /* ../dlls/advapi32/security.c:4070 */
 {
+	DWORD return_value;
 	TRACE("Enter GetNamedSecurityInfoA\n");
-	return pGetNamedSecurityInfoA(pObjectName, ObjectType, SecurityInfo, ppsidOwner, ppsidGroup, ppDacl, ppSacl, ppSecurityDescriptor);
+	return_value = pGetNamedSecurityInfoA(pObjectName, ObjectType, SecurityInfo, ppsidOwner, ppsidGroup, ppDacl, ppSacl, ppSecurityDescriptor);
+	TRACE("Leave GetNamedSecurityInfoA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetNamedSecurityInfoA(void);  /* ../dlls/advapi32/security.c:4070 */
@@ -4661,10 +4988,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetNamedSecurityInfoA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_GetNamedSecurityInfoExA(LPCSTR  object, SE_OBJECT_TYPE  type, SECURITY_INFORMATION  info, LPCSTR  provider, LPCSTR  property, PACTRL_ACCESSA*  access_list, PACTRL_AUDITA*  audit_list, LPSTR*  owner, LPSTR*  group) /* ../dlls/advapi32/security.c:4170 */
+WINAPI DWORD wine32b_advapi32_GetNamedSecurityInfoExA(LPCSTR  object, SE_OBJECT_TYPE  type, SECURITY_INFORMATION  info, LPCSTR  provider, LPCSTR  property, PACTRL_ACCESSA*  access_list, PACTRL_AUDITA*  audit_list, LPSTR*  owner, LPSTR*  group) /* ../dlls/advapi32/security.c:4170 */
 {
+	DWORD return_value;
 	TRACE("Enter GetNamedSecurityInfoExA\n");
-	return pGetNamedSecurityInfoExA(object, type, info, provider, property, access_list, audit_list, owner, group);
+	return_value = pGetNamedSecurityInfoExA(object, type, info, provider, property, access_list, audit_list, owner, group);
+	TRACE("Leave GetNamedSecurityInfoExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetNamedSecurityInfoExA(void);  /* ../dlls/advapi32/security.c:4170 */
@@ -4689,10 +5019,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetNamedSecurityInfoExA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_GetNamedSecurityInfoExW(LPCWSTR  object, SE_OBJECT_TYPE  type, SECURITY_INFORMATION  info, LPCWSTR  provider, LPCWSTR  property, PACTRL_ACCESSW*  access_list, PACTRL_AUDITW*  audit_list, LPWSTR*  owner, LPWSTR*  group) /* ../dlls/advapi32/security.c:4158 */
+WINAPI DWORD wine32b_advapi32_GetNamedSecurityInfoExW(LPCWSTR  object, SE_OBJECT_TYPE  type, SECURITY_INFORMATION  info, LPCWSTR  provider, LPCWSTR  property, PACTRL_ACCESSW*  access_list, PACTRL_AUDITW*  audit_list, LPWSTR*  owner, LPWSTR*  group) /* ../dlls/advapi32/security.c:4158 */
 {
+	DWORD return_value;
 	TRACE("Enter GetNamedSecurityInfoExW\n");
-	return pGetNamedSecurityInfoExW(object, type, info, provider, property, access_list, audit_list, owner, group);
+	return_value = pGetNamedSecurityInfoExW(object, type, info, provider, property, access_list, audit_list, owner, group);
+	TRACE("Leave GetNamedSecurityInfoExW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetNamedSecurityInfoExW(void);  /* ../dlls/advapi32/security.c:4158 */
@@ -4717,10 +5050,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetNamedSecurityInfoExW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_GetNamedSecurityInfoW(LPWSTR  name, SE_OBJECT_TYPE  type, SECURITY_INFORMATION  info, PSID*  owner, PSID*  group, PACL*  dacl, PACL*  sacl, PSECURITY_DESCRIPTOR*  descriptor) /* ../dlls/advapi32/security.c:4093 */
+WINAPI DWORD wine32b_advapi32_GetNamedSecurityInfoW(LPWSTR  name, SE_OBJECT_TYPE  type, SECURITY_INFORMATION  info, PSID*  owner, PSID*  group, PACL*  dacl, PACL*  sacl, PSECURITY_DESCRIPTOR*  descriptor) /* ../dlls/advapi32/security.c:4093 */
 {
+	DWORD return_value;
 	TRACE("Enter GetNamedSecurityInfoW\n");
-	return pGetNamedSecurityInfoW(name, type, info, owner, group, dacl, sacl, descriptor);
+	return_value = pGetNamedSecurityInfoW(name, type, info, owner, group, dacl, sacl, descriptor);
+	TRACE("Leave GetNamedSecurityInfoW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetNamedSecurityInfoW(void);  /* ../dlls/advapi32/security.c:4093 */
@@ -4745,10 +5081,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetNamedSecurityInfoW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_GetNumberOfEventLogRecords(HANDLE  hEventLog, PDWORD  NumberOfRecords) /* ../dlls/advapi32/eventlog.c:338 */
+WINAPI BOOL wine32b_advapi32_GetNumberOfEventLogRecords(HANDLE  hEventLog, PDWORD  NumberOfRecords) /* ../dlls/advapi32/eventlog.c:338 */
 {
+	BOOL return_value;
 	TRACE("Enter GetNumberOfEventLogRecords\n");
-	return pGetNumberOfEventLogRecords(hEventLog, NumberOfRecords);
+	return_value = pGetNumberOfEventLogRecords(hEventLog, NumberOfRecords);
+	TRACE("Leave GetNumberOfEventLogRecords\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetNumberOfEventLogRecords(void);  /* ../dlls/advapi32/eventlog.c:338 */
@@ -4771,10 +5110,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetNumberOfEventLogRecords,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_GetOldestEventLogRecord(HANDLE  hEventLog, PDWORD  OldestRecord) /* ../dlls/advapi32/eventlog.c:373 */
+WINAPI BOOL wine32b_advapi32_GetOldestEventLogRecord(HANDLE  hEventLog, PDWORD  OldestRecord) /* ../dlls/advapi32/eventlog.c:373 */
 {
+	BOOL return_value;
 	TRACE("Enter GetOldestEventLogRecord\n");
-	return pGetOldestEventLogRecord(hEventLog, OldestRecord);
+	return_value = pGetOldestEventLogRecord(hEventLog, OldestRecord);
+	TRACE("Leave GetOldestEventLogRecord\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetOldestEventLogRecord(void);  /* ../dlls/advapi32/eventlog.c:373 */
@@ -4797,10 +5139,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetOldestEventLogRecord,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_GetSecurityInfo(HANDLE  hObject, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID*  ppsidOwner, PSID*  ppsidGroup, PACL*  ppDacl, PACL*  ppSacl, PSECURITY_DESCRIPTOR*  ppSecurityDescriptor) /* ../dlls/advapi32/security.c:1781 */
+WINAPI DWORD wine32b_advapi32_GetSecurityInfo(HANDLE  hObject, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID*  ppsidOwner, PSID*  ppsidGroup, PACL*  ppDacl, PACL*  ppSacl, PSECURITY_DESCRIPTOR*  ppSecurityDescriptor) /* ../dlls/advapi32/security.c:1781 */
 {
+	DWORD return_value;
 	TRACE("Enter GetSecurityInfo\n");
-	return pGetSecurityInfo(hObject, ObjectType, SecurityInfo, ppsidOwner, ppsidGroup, ppDacl, ppSacl, ppSecurityDescriptor);
+	return_value = pGetSecurityInfo(hObject, ObjectType, SecurityInfo, ppsidOwner, ppsidGroup, ppDacl, ppSacl, ppSecurityDescriptor);
+	TRACE("Leave GetSecurityInfo\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetSecurityInfo(void);  /* ../dlls/advapi32/security.c:1781 */
@@ -4825,10 +5170,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetSecurityInfo,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_GetSecurityInfoExA(HANDLE  hObject, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, LPCSTR  lpProvider, LPCSTR  lpProperty, PACTRL_ACCESSA*  ppAccessList, PACTRL_AUDITA*  ppAuditList, LPSTR*  lppOwner, LPSTR*  lppGroup) /* ../dlls/advapi32/security.c:1869 */
+WINAPI DWORD wine32b_advapi32_GetSecurityInfoExA(HANDLE  hObject, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, LPCSTR  lpProvider, LPCSTR  lpProperty, PACTRL_ACCESSA*  ppAccessList, PACTRL_AUDITA*  ppAuditList, LPSTR*  lppOwner, LPSTR*  lppGroup) /* ../dlls/advapi32/security.c:1869 */
 {
+	DWORD return_value;
 	TRACE("Enter GetSecurityInfoExA\n");
-	return pGetSecurityInfoExA(hObject, ObjectType, SecurityInfo, lpProvider, lpProperty, ppAccessList, ppAuditList, lppOwner, lppGroup);
+	return_value = pGetSecurityInfoExA(hObject, ObjectType, SecurityInfo, lpProvider, lpProperty, ppAccessList, ppAuditList, lppOwner, lppGroup);
+	TRACE("Leave GetSecurityInfoExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetSecurityInfoExA(void);  /* ../dlls/advapi32/security.c:1869 */
@@ -4853,10 +5201,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetSecurityInfoExA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_GetSecurityInfoExW(HANDLE  hObject, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, LPCWSTR  lpProvider, LPCWSTR  lpProperty, PACTRL_ACCESSW*  ppAccessList, PACTRL_AUDITW*  ppAuditList, LPWSTR*  lppOwner, LPWSTR*  lppGroup) /* ../dlls/advapi32/security.c:1883 */
+WINAPI DWORD wine32b_advapi32_GetSecurityInfoExW(HANDLE  hObject, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, LPCWSTR  lpProvider, LPCWSTR  lpProperty, PACTRL_ACCESSW*  ppAccessList, PACTRL_AUDITW*  ppAuditList, LPWSTR*  lppOwner, LPWSTR*  lppGroup) /* ../dlls/advapi32/security.c:1883 */
 {
+	DWORD return_value;
 	TRACE("Enter GetSecurityInfoExW\n");
-	return pGetSecurityInfoExW(hObject, ObjectType, SecurityInfo, lpProvider, lpProperty, ppAccessList, ppAuditList, lppOwner, lppGroup);
+	return_value = pGetSecurityInfoExW(hObject, ObjectType, SecurityInfo, lpProvider, lpProperty, ppAccessList, ppAuditList, lppOwner, lppGroup);
+	TRACE("Leave GetSecurityInfoExW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetSecurityInfoExW(void);  /* ../dlls/advapi32/security.c:1883 */
@@ -4881,10 +5232,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetSecurityInfoExW,
 	"ret \n"
 )
 
-extern WINAPI TRUSTEE_FORM wine32b_advapi32_GetTrusteeFormA(PTRUSTEEA  pTrustee) /* ../dlls/advapi32/security.c:2155 */
+WINAPI TRUSTEE_FORM wine32b_advapi32_GetTrusteeFormA(PTRUSTEEA  pTrustee) /* ../dlls/advapi32/security.c:2155 */
 {
+	TRUSTEE_FORM return_value;
 	TRACE("Enter GetTrusteeFormA\n");
-	return pGetTrusteeFormA(pTrustee);
+	return_value = pGetTrusteeFormA(pTrustee);
+	TRACE("Leave GetTrusteeFormA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetTrusteeFormA(void);  /* ../dlls/advapi32/security.c:2155 */
@@ -4906,10 +5260,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetTrusteeFormA,
 	"ret \n"
 )
 
-extern WINAPI TRUSTEE_FORM wine32b_advapi32_GetTrusteeFormW(PTRUSTEEW  pTrustee) /* ../dlls/advapi32/security.c:2168 */
+WINAPI TRUSTEE_FORM wine32b_advapi32_GetTrusteeFormW(PTRUSTEEW  pTrustee) /* ../dlls/advapi32/security.c:2168 */
 {
+	TRUSTEE_FORM return_value;
 	TRACE("Enter GetTrusteeFormW\n");
-	return pGetTrusteeFormW(pTrustee);
+	return_value = pGetTrusteeFormW(pTrustee);
+	TRACE("Leave GetTrusteeFormW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetTrusteeFormW(void);  /* ../dlls/advapi32/security.c:2168 */
@@ -4931,10 +5288,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetTrusteeFormW,
 	"ret \n"
 )
 
-extern WINAPI LPSTR wine32b_advapi32_GetTrusteeNameA(PTRUSTEEA  pTrustee) /* ../dlls/advapi32/security.c:2181 */
+WINAPI LPSTR wine32b_advapi32_GetTrusteeNameA(PTRUSTEEA  pTrustee) /* ../dlls/advapi32/security.c:2181 */
 {
+	LPSTR return_value;
 	TRACE("Enter GetTrusteeNameA\n");
-	return pGetTrusteeNameA(pTrustee);
+	return_value = pGetTrusteeNameA(pTrustee);
+	TRACE("Leave GetTrusteeNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetTrusteeNameA(void);  /* ../dlls/advapi32/security.c:2181 */
@@ -4956,10 +5316,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetTrusteeNameA,
 	"ret \n"
 )
 
-extern WINAPI LPWSTR wine32b_advapi32_GetTrusteeNameW(PTRUSTEEW  pTrustee) /* ../dlls/advapi32/security.c:2194 */
+WINAPI LPWSTR wine32b_advapi32_GetTrusteeNameW(PTRUSTEEW  pTrustee) /* ../dlls/advapi32/security.c:2194 */
 {
+	LPWSTR return_value;
 	TRACE("Enter GetTrusteeNameW\n");
-	return pGetTrusteeNameW(pTrustee);
+	return_value = pGetTrusteeNameW(pTrustee);
+	TRACE("Leave GetTrusteeNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetTrusteeNameW(void);  /* ../dlls/advapi32/security.c:2194 */
@@ -4981,10 +5344,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetTrusteeNameW,
 	"ret \n"
 )
 
-extern WINAPI TRUSTEE_TYPE wine32b_advapi32_GetTrusteeTypeA(PTRUSTEEA  pTrustee) /* ../dlls/advapi32/security.c:2207 */
+WINAPI TRUSTEE_TYPE wine32b_advapi32_GetTrusteeTypeA(PTRUSTEEA  pTrustee) /* ../dlls/advapi32/security.c:2207 */
 {
+	TRUSTEE_TYPE return_value;
 	TRACE("Enter GetTrusteeTypeA\n");
-	return pGetTrusteeTypeA(pTrustee);
+	return_value = pGetTrusteeTypeA(pTrustee);
+	TRACE("Leave GetTrusteeTypeA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetTrusteeTypeA(void);  /* ../dlls/advapi32/security.c:2207 */
@@ -5006,10 +5372,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetTrusteeTypeA,
 	"ret \n"
 )
 
-extern WINAPI TRUSTEE_TYPE wine32b_advapi32_GetTrusteeTypeW(PTRUSTEEW  pTrustee) /* ../dlls/advapi32/security.c:2220 */
+WINAPI TRUSTEE_TYPE wine32b_advapi32_GetTrusteeTypeW(PTRUSTEEW  pTrustee) /* ../dlls/advapi32/security.c:2220 */
 {
+	TRUSTEE_TYPE return_value;
 	TRACE("Enter GetTrusteeTypeW\n");
-	return pGetTrusteeTypeW(pTrustee);
+	return_value = pGetTrusteeTypeW(pTrustee);
+	TRACE("Leave GetTrusteeTypeW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetTrusteeTypeW(void);  /* ../dlls/advapi32/security.c:2220 */
@@ -5031,10 +5400,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetTrusteeTypeW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_GetUserNameA(LPSTR  lpszName, LPDWORD  lpSize) /* ../dlls/advapi32/advapi.c:57 */
+WINAPI BOOL wine32b_advapi32_GetUserNameA(LPSTR  lpszName, LPDWORD  lpSize) /* ../dlls/advapi32/advapi.c:57 */
 {
+	BOOL return_value;
 	TRACE("Enter GetUserNameA\n");
-	return pGetUserNameA(lpszName, lpSize);
+	return_value = pGetUserNameA(lpszName, lpSize);
+	TRACE("Leave GetUserNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetUserNameA(void);  /* ../dlls/advapi32/advapi.c:57 */
@@ -5057,10 +5429,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetUserNameA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_GetUserNameW(LPWSTR  lpszName, LPDWORD  lpSize) /* ../dlls/advapi32/advapi.c:85 */
+WINAPI BOOL wine32b_advapi32_GetUserNameW(LPWSTR  lpszName, LPDWORD  lpSize) /* ../dlls/advapi32/advapi.c:85 */
 {
+	BOOL return_value;
 	TRACE("Enter GetUserNameW\n");
-	return pGetUserNameW(lpszName, lpSize);
+	return_value = pGetUserNameW(lpszName, lpSize);
+	TRACE("Leave GetUserNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_GetUserNameW(void);  /* ../dlls/advapi32/advapi.c:85 */
@@ -5083,10 +5458,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_GetUserNameW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_InitiateShutdownA(char*  name, char*  message, DWORD  seconds, DWORD  flags, DWORD  reason) /* ../dlls/advapi32/advapi.c:274 */
+WINAPI DWORD wine32b_advapi32_InitiateShutdownA(char*  name, char*  message, DWORD  seconds, DWORD  flags, DWORD  reason) /* ../dlls/advapi32/advapi.c:274 */
 {
+	DWORD return_value;
 	TRACE("Enter InitiateShutdownA\n");
-	return pInitiateShutdownA(name, message, seconds, flags, reason);
+	return_value = pInitiateShutdownA(name, message, seconds, flags, reason);
+	TRACE("Leave InitiateShutdownA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_InitiateShutdownA(void);  /* ../dlls/advapi32/advapi.c:274 */
@@ -5111,10 +5489,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_InitiateShutdownA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_InitiateShutdownW(WCHAR*  name, WCHAR*  message, DWORD  seconds, DWORD  flags, DWORD  reason) /* ../dlls/advapi32/advapi.c:283 */
+WINAPI DWORD wine32b_advapi32_InitiateShutdownW(WCHAR*  name, WCHAR*  message, DWORD  seconds, DWORD  flags, DWORD  reason) /* ../dlls/advapi32/advapi.c:283 */
 {
+	DWORD return_value;
 	TRACE("Enter InitiateShutdownW\n");
-	return pInitiateShutdownW(name, message, seconds, flags, reason);
+	return_value = pInitiateShutdownW(name, message, seconds, flags, reason);
+	TRACE("Leave InitiateShutdownW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_InitiateShutdownW(void);  /* ../dlls/advapi32/advapi.c:283 */
@@ -5139,10 +5520,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_InitiateShutdownW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_InitiateSystemShutdownA(LPSTR  lpMachineName, LPSTR  lpMessage, DWORD  dwTimeout, BOOL  bForceAppsClosed, BOOL  bRebootAfterShutdown) /* ../dlls/advapi32/advapi.c:255 */
+WINAPI BOOL wine32b_advapi32_InitiateSystemShutdownA(LPSTR  lpMachineName, LPSTR  lpMessage, DWORD  dwTimeout, BOOL  bForceAppsClosed, BOOL  bRebootAfterShutdown) /* ../dlls/advapi32/advapi.c:255 */
 {
+	BOOL return_value;
 	TRACE("Enter InitiateSystemShutdownA\n");
-	return pInitiateSystemShutdownA(lpMachineName, lpMessage, dwTimeout, bForceAppsClosed, bRebootAfterShutdown);
+	return_value = pInitiateSystemShutdownA(lpMachineName, lpMessage, dwTimeout, bForceAppsClosed, bRebootAfterShutdown);
+	TRACE("Leave InitiateSystemShutdownA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_InitiateSystemShutdownA(void);  /* ../dlls/advapi32/advapi.c:255 */
@@ -5167,10 +5551,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_InitiateSystemShutdownA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_InitiateSystemShutdownExA(LPSTR  lpMachineName, LPSTR  lpMessage, DWORD  dwTimeout, BOOL  bForceAppsClosed, BOOL  bRebootAfterShutdown, DWORD  dwReason) /* ../dlls/advapi32/advapi.c:230 */
+WINAPI BOOL wine32b_advapi32_InitiateSystemShutdownExA(LPSTR  lpMachineName, LPSTR  lpMessage, DWORD  dwTimeout, BOOL  bForceAppsClosed, BOOL  bRebootAfterShutdown, DWORD  dwReason) /* ../dlls/advapi32/advapi.c:230 */
 {
+	BOOL return_value;
 	TRACE("Enter InitiateSystemShutdownExA\n");
-	return pInitiateSystemShutdownExA(lpMachineName, lpMessage, dwTimeout, bForceAppsClosed, bRebootAfterShutdown, dwReason);
+	return_value = pInitiateSystemShutdownExA(lpMachineName, lpMessage, dwTimeout, bForceAppsClosed, bRebootAfterShutdown, dwReason);
+	TRACE("Leave InitiateSystemShutdownExA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_InitiateSystemShutdownExA(void);  /* ../dlls/advapi32/advapi.c:230 */
@@ -5195,10 +5582,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_InitiateSystemShutdownExA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_InitiateSystemShutdownExW(LPWSTR  lpMachineName, LPWSTR  lpMessage, DWORD  dwTimeout, BOOL  bForceAppsClosed, BOOL  bRebootAfterShutdown, DWORD  dwReason) /* ../dlls/advapi32/advapi.c:245 */
+WINAPI BOOL wine32b_advapi32_InitiateSystemShutdownExW(LPWSTR  lpMachineName, LPWSTR  lpMessage, DWORD  dwTimeout, BOOL  bForceAppsClosed, BOOL  bRebootAfterShutdown, DWORD  dwReason) /* ../dlls/advapi32/advapi.c:245 */
 {
+	BOOL return_value;
 	TRACE("Enter InitiateSystemShutdownExW\n");
-	return pInitiateSystemShutdownExW(lpMachineName, lpMessage, dwTimeout, bForceAppsClosed, bRebootAfterShutdown, dwReason);
+	return_value = pInitiateSystemShutdownExW(lpMachineName, lpMessage, dwTimeout, bForceAppsClosed, bRebootAfterShutdown, dwReason);
+	TRACE("Leave InitiateSystemShutdownExW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_InitiateSystemShutdownExW(void);  /* ../dlls/advapi32/advapi.c:245 */
@@ -5223,10 +5613,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_InitiateSystemShutdownExW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_InitiateSystemShutdownW(LPWSTR  lpMachineName, LPWSTR  lpMessage, DWORD  dwTimeout, BOOL  bForceAppsClosed, BOOL  bRebootAfterShutdown) /* ../dlls/advapi32/advapi.c:263 */
+WINAPI BOOL wine32b_advapi32_InitiateSystemShutdownW(LPWSTR  lpMachineName, LPWSTR  lpMessage, DWORD  dwTimeout, BOOL  bForceAppsClosed, BOOL  bRebootAfterShutdown) /* ../dlls/advapi32/advapi.c:263 */
 {
+	BOOL return_value;
 	TRACE("Enter InitiateSystemShutdownW\n");
-	return pInitiateSystemShutdownW(lpMachineName, lpMessage, dwTimeout, bForceAppsClosed, bRebootAfterShutdown);
+	return_value = pInitiateSystemShutdownW(lpMachineName, lpMessage, dwTimeout, bForceAppsClosed, bRebootAfterShutdown);
+	TRACE("Leave InitiateSystemShutdownW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_InitiateSystemShutdownW(void);  /* ../dlls/advapi32/advapi.c:263 */
@@ -5251,10 +5644,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_InitiateSystemShutdownW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_IsTextUnicode(LPCVOID  buf, INT  len, LPINT  flags) /* ../dlls/advapi32/advapi.c:168 */
+WINAPI BOOL wine32b_advapi32_IsTextUnicode(LPCVOID  buf, INT  len, LPINT  flags) /* ../dlls/advapi32/advapi.c:168 */
 {
+	BOOL return_value;
 	TRACE("Enter IsTextUnicode\n");
-	return pIsTextUnicode(buf, len, flags);
+	return_value = pIsTextUnicode(buf, len, flags);
+	TRACE("Leave IsTextUnicode\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_IsTextUnicode(void);  /* ../dlls/advapi32/advapi.c:168 */
@@ -5278,10 +5674,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_IsTextUnicode,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_LogonUserA(LPCSTR  lpszUsername, LPCSTR  lpszDomain, LPCSTR  lpszPassword, DWORD  dwLogonType, DWORD  dwLogonProvider, PHANDLE  phToken) /* ../dlls/advapi32/advapi.c:289 */
+WINAPI BOOL wine32b_advapi32_LogonUserA(LPCSTR  lpszUsername, LPCSTR  lpszDomain, LPCSTR  lpszPassword, DWORD  dwLogonType, DWORD  dwLogonProvider, PHANDLE  phToken) /* ../dlls/advapi32/advapi.c:289 */
 {
+	BOOL return_value;
 	TRACE("Enter LogonUserA\n");
-	return pLogonUserA(lpszUsername, lpszDomain, lpszPassword, dwLogonType, dwLogonProvider, phToken);
+	return_value = pLogonUserA(lpszUsername, lpszDomain, lpszPassword, dwLogonType, dwLogonProvider, phToken);
+	TRACE("Leave LogonUserA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LogonUserA(void);  /* ../dlls/advapi32/advapi.c:289 */
@@ -5306,10 +5705,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LogonUserA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_LogonUserW(LPCWSTR  lpszUsername, LPCWSTR  lpszDomain, LPCWSTR  lpszPassword, DWORD  dwLogonType, DWORD  dwLogonProvider, PHANDLE  phToken) /* ../dlls/advapi32/advapi.c:311 */
+WINAPI BOOL wine32b_advapi32_LogonUserW(LPCWSTR  lpszUsername, LPCWSTR  lpszDomain, LPCWSTR  lpszPassword, DWORD  dwLogonType, DWORD  dwLogonProvider, PHANDLE  phToken) /* ../dlls/advapi32/advapi.c:311 */
 {
+	BOOL return_value;
 	TRACE("Enter LogonUserW\n");
-	return pLogonUserW(lpszUsername, lpszDomain, lpszPassword, dwLogonType, dwLogonProvider, phToken);
+	return_value = pLogonUserW(lpszUsername, lpszDomain, lpszPassword, dwLogonType, dwLogonProvider, phToken);
+	TRACE("Leave LogonUserW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LogonUserW(void);  /* ../dlls/advapi32/advapi.c:311 */
@@ -5334,10 +5736,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LogonUserW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_LookupAccountNameA(LPCSTR  system, LPCSTR  account, PSID  sid, LPDWORD  cbSid, LPSTR  ReferencedDomainName, LPDWORD  cbReferencedDomainName, PSID_NAME_USE  name_use) /* ../dlls/advapi32/security.c:1356 */
+WINAPI BOOL wine32b_advapi32_LookupAccountNameA(LPCSTR  system, LPCSTR  account, PSID  sid, LPDWORD  cbSid, LPSTR  ReferencedDomainName, LPDWORD  cbReferencedDomainName, PSID_NAME_USE  name_use) /* ../dlls/advapi32/security.c:1356 */
 {
+	BOOL return_value;
 	TRACE("Enter LookupAccountNameA\n");
-	return pLookupAccountNameA(system, account, sid, cbSid, ReferencedDomainName, cbReferencedDomainName, name_use);
+	return_value = pLookupAccountNameA(system, account, sid, cbSid, ReferencedDomainName, cbReferencedDomainName, name_use);
+	TRACE("Leave LookupAccountNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LookupAccountNameA(void);  /* ../dlls/advapi32/security.c:1356 */
@@ -5362,10 +5767,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LookupAccountNameA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_LookupAccountNameW(LPCWSTR  lpSystemName, LPCWSTR  lpAccountName, PSID  Sid, LPDWORD  cbSid, LPWSTR  ReferencedDomainName, LPDWORD  cchReferencedDomainName, PSID_NAME_USE  peUse) /* ../dlls/advapi32/security.c:1669 */
+WINAPI BOOL wine32b_advapi32_LookupAccountNameW(LPCWSTR  lpSystemName, LPCWSTR  lpAccountName, PSID  Sid, LPDWORD  cbSid, LPWSTR  ReferencedDomainName, LPDWORD  cchReferencedDomainName, PSID_NAME_USE  peUse) /* ../dlls/advapi32/security.c:1669 */
 {
+	BOOL return_value;
 	TRACE("Enter LookupAccountNameW\n");
-	return pLookupAccountNameW(lpSystemName, lpAccountName, Sid, cbSid, ReferencedDomainName, cchReferencedDomainName, peUse);
+	return_value = pLookupAccountNameW(lpSystemName, lpAccountName, Sid, cbSid, ReferencedDomainName, cchReferencedDomainName, peUse);
+	TRACE("Leave LookupAccountNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LookupAccountNameW(void);  /* ../dlls/advapi32/security.c:1669 */
@@ -5390,10 +5798,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LookupAccountNameW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_LookupAccountSidA(LPCSTR  system, PSID  sid, LPSTR  account, LPDWORD  accountSize, LPSTR  domain, LPDWORD  domainSize, PSID_NAME_USE  name_use) /* ../dlls/advapi32/security.c:1031 */
+WINAPI BOOL wine32b_advapi32_LookupAccountSidA(LPCSTR  system, PSID  sid, LPSTR  account, LPDWORD  accountSize, LPSTR  domain, LPDWORD  domainSize, PSID_NAME_USE  name_use) /* ../dlls/advapi32/security.c:1031 */
 {
+	BOOL return_value;
 	TRACE("Enter LookupAccountSidA\n");
-	return pLookupAccountSidA(system, sid, account, accountSize, domain, domainSize, name_use);
+	return_value = pLookupAccountSidA(system, sid, account, accountSize, domain, domainSize, name_use);
+	TRACE("Leave LookupAccountSidA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LookupAccountSidA(void);  /* ../dlls/advapi32/security.c:1031 */
@@ -5418,10 +5829,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LookupAccountSidA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_LookupAccountSidLocalA(PSID  sid, LPSTR  account, LPDWORD  accountSize, LPSTR  domain, LPDWORD  domainSize, PSID_NAME_USE  name_use) /* ../dlls/advapi32/security.c:1088 */
+WINAPI BOOL wine32b_advapi32_LookupAccountSidLocalA(PSID  sid, LPSTR  account, LPDWORD  accountSize, LPSTR  domain, LPDWORD  domainSize, PSID_NAME_USE  name_use) /* ../dlls/advapi32/security.c:1088 */
 {
+	BOOL return_value;
 	TRACE("Enter LookupAccountSidLocalA\n");
-	return pLookupAccountSidLocalA(sid, account, accountSize, domain, domainSize, name_use);
+	return_value = pLookupAccountSidLocalA(sid, account, accountSize, domain, domainSize, name_use);
+	TRACE("Leave LookupAccountSidLocalA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LookupAccountSidLocalA(void);  /* ../dlls/advapi32/security.c:1088 */
@@ -5446,10 +5860,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LookupAccountSidLocalA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_LookupAccountSidLocalW(PSID  sid, LPWSTR  account, LPDWORD  accountSize, LPWSTR  domain, LPDWORD  domainSize, PSID_NAME_USE  name_use) /* ../dlls/advapi32/security.c:1279 */
+WINAPI BOOL wine32b_advapi32_LookupAccountSidLocalW(PSID  sid, LPWSTR  account, LPDWORD  accountSize, LPWSTR  domain, LPDWORD  domainSize, PSID_NAME_USE  name_use) /* ../dlls/advapi32/security.c:1279 */
 {
+	BOOL return_value;
 	TRACE("Enter LookupAccountSidLocalW\n");
-	return pLookupAccountSidLocalW(sid, account, accountSize, domain, domainSize, name_use);
+	return_value = pLookupAccountSidLocalW(sid, account, accountSize, domain, domainSize, name_use);
+	TRACE("Leave LookupAccountSidLocalW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LookupAccountSidLocalW(void);  /* ../dlls/advapi32/security.c:1279 */
@@ -5474,10 +5891,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LookupAccountSidLocalW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_LookupAccountSidW(LPCWSTR  system, PSID  sid, LPWSTR  account, LPDWORD  accountSize, LPWSTR  domain, LPDWORD  domainSize, PSID_NAME_USE  name_use) /* ../dlls/advapi32/security.c:1113 */
+WINAPI BOOL wine32b_advapi32_LookupAccountSidW(LPCWSTR  system, PSID  sid, LPWSTR  account, LPDWORD  accountSize, LPWSTR  domain, LPDWORD  domainSize, PSID_NAME_USE  name_use) /* ../dlls/advapi32/security.c:1113 */
 {
+	BOOL return_value;
 	TRACE("Enter LookupAccountSidW\n");
-	return pLookupAccountSidW(system, sid, account, accountSize, domain, domainSize, name_use);
+	return_value = pLookupAccountSidW(system, sid, account, accountSize, domain, domainSize, name_use);
+	TRACE("Leave LookupAccountSidW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LookupAccountSidW(void);  /* ../dlls/advapi32/security.c:1113 */
@@ -5502,10 +5922,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LookupAccountSidW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_LookupPrivilegeDisplayNameA(LPCSTR  lpSystemName, LPCSTR  lpName, LPSTR  lpDisplayName, LPDWORD  cchDisplayName, LPDWORD  lpLanguageId) /* ../dlls/advapi32/security.c:858 */
+WINAPI BOOL wine32b_advapi32_LookupPrivilegeDisplayNameA(LPCSTR  lpSystemName, LPCSTR  lpName, LPSTR  lpDisplayName, LPDWORD  cchDisplayName, LPDWORD  lpLanguageId) /* ../dlls/advapi32/security.c:858 */
 {
+	BOOL return_value;
 	TRACE("Enter LookupPrivilegeDisplayNameA\n");
-	return pLookupPrivilegeDisplayNameA(lpSystemName, lpName, lpDisplayName, cchDisplayName, lpLanguageId);
+	return_value = pLookupPrivilegeDisplayNameA(lpSystemName, lpName, lpDisplayName, cchDisplayName, lpLanguageId);
+	TRACE("Leave LookupPrivilegeDisplayNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LookupPrivilegeDisplayNameA(void);  /* ../dlls/advapi32/security.c:858 */
@@ -5530,10 +5953,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LookupPrivilegeDisplayNameA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_LookupPrivilegeDisplayNameW(LPCWSTR  lpSystemName, LPCWSTR  lpName, LPWSTR  lpDisplayName, LPDWORD  cchDisplayName, LPDWORD  lpLanguageId) /* ../dlls/advapi32/security.c:867 */
+WINAPI BOOL wine32b_advapi32_LookupPrivilegeDisplayNameW(LPCWSTR  lpSystemName, LPCWSTR  lpName, LPWSTR  lpDisplayName, LPDWORD  cchDisplayName, LPDWORD  lpLanguageId) /* ../dlls/advapi32/security.c:867 */
 {
+	BOOL return_value;
 	TRACE("Enter LookupPrivilegeDisplayNameW\n");
-	return pLookupPrivilegeDisplayNameW(lpSystemName, lpName, lpDisplayName, cchDisplayName, lpLanguageId);
+	return_value = pLookupPrivilegeDisplayNameW(lpSystemName, lpName, lpDisplayName, cchDisplayName, lpLanguageId);
+	TRACE("Leave LookupPrivilegeDisplayNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LookupPrivilegeDisplayNameW(void);  /* ../dlls/advapi32/security.c:867 */
@@ -5558,10 +5984,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LookupPrivilegeDisplayNameW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_LookupPrivilegeNameA(LPCSTR  lpSystemName, PLUID  lpLuid, LPSTR  lpName, LPDWORD  cchName) /* ../dlls/advapi32/security.c:882 */
+WINAPI BOOL wine32b_advapi32_LookupPrivilegeNameA(LPCSTR  lpSystemName, PLUID  lpLuid, LPSTR  lpName, LPDWORD  cchName) /* ../dlls/advapi32/security.c:882 */
 {
+	BOOL return_value;
 	TRACE("Enter LookupPrivilegeNameA\n");
-	return pLookupPrivilegeNameA(lpSystemName, lpLuid, lpName, cchName);
+	return_value = pLookupPrivilegeNameA(lpSystemName, lpLuid, lpName, cchName);
+	TRACE("Leave LookupPrivilegeNameA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LookupPrivilegeNameA(void);  /* ../dlls/advapi32/security.c:882 */
@@ -5586,10 +6015,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LookupPrivilegeNameA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_LookupPrivilegeNameW(LPCWSTR  lpSystemName, PLUID  lpLuid, LPWSTR  lpName, LPDWORD  cchName) /* ../dlls/advapi32/security.c:956 */
+WINAPI BOOL wine32b_advapi32_LookupPrivilegeNameW(LPCWSTR  lpSystemName, PLUID  lpLuid, LPWSTR  lpName, LPDWORD  cchName) /* ../dlls/advapi32/security.c:956 */
 {
+	BOOL return_value;
 	TRACE("Enter LookupPrivilegeNameW\n");
-	return pLookupPrivilegeNameW(lpSystemName, lpLuid, lpName, cchName);
+	return_value = pLookupPrivilegeNameW(lpSystemName, lpLuid, lpName, cchName);
+	TRACE("Leave LookupPrivilegeNameW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LookupPrivilegeNameW(void);  /* ../dlls/advapi32/security.c:956 */
@@ -5614,10 +6046,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LookupPrivilegeNameW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_LookupPrivilegeValueA(LPCSTR  lpSystemName, LPCSTR  lpName, PLUID  lpLuid) /* ../dlls/advapi32/security.c:844 */
+WINAPI BOOL wine32b_advapi32_LookupPrivilegeValueA(LPCSTR  lpSystemName, LPCSTR  lpName, PLUID  lpLuid) /* ../dlls/advapi32/security.c:844 */
 {
+	BOOL return_value;
 	TRACE("Enter LookupPrivilegeValueA\n");
-	return pLookupPrivilegeValueA(lpSystemName, lpName, lpLuid);
+	return_value = pLookupPrivilegeValueA(lpSystemName, lpName, lpLuid);
+	TRACE("Leave LookupPrivilegeValueA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LookupPrivilegeValueA(void);  /* ../dlls/advapi32/security.c:844 */
@@ -5641,10 +6076,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LookupPrivilegeValueA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_LookupPrivilegeValueW(LPCWSTR  lpSystemName, LPCWSTR  lpName, PLUID  lpLuid) /* ../dlls/advapi32/security.c:797 */
+WINAPI BOOL wine32b_advapi32_LookupPrivilegeValueW(LPCWSTR  lpSystemName, LPCWSTR  lpName, PLUID  lpLuid) /* ../dlls/advapi32/security.c:797 */
 {
+	BOOL return_value;
 	TRACE("Enter LookupPrivilegeValueW\n");
-	return pLookupPrivilegeValueW(lpSystemName, lpName, lpLuid);
+	return_value = pLookupPrivilegeValueW(lpSystemName, lpName, lpLuid);
+	TRACE("Leave LookupPrivilegeValueW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LookupPrivilegeValueW(void);  /* ../dlls/advapi32/security.c:797 */
@@ -5668,10 +6106,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LookupPrivilegeValueW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_LookupSecurityDescriptorPartsA(TRUSTEEA*  owner, TRUSTEEA*  group, ULONG*  access_count, EXPLICIT_ACCESSA*  access_list, ULONG*  audit_count, EXPLICIT_ACCESSA*  audit_list, SECURITY_DESCRIPTOR*  descriptor) /* ../dlls/advapi32/security.c:4510 */
+WINAPI DWORD wine32b_advapi32_LookupSecurityDescriptorPartsA(TRUSTEEA*  owner, TRUSTEEA*  group, ULONG*  access_count, EXPLICIT_ACCESSA*  access_list, ULONG*  audit_count, EXPLICIT_ACCESSA*  audit_list, SECURITY_DESCRIPTOR*  descriptor) /* ../dlls/advapi32/security.c:4510 */
 {
+	DWORD return_value;
 	TRACE("Enter LookupSecurityDescriptorPartsA\n");
-	return pLookupSecurityDescriptorPartsA(owner, group, access_count, access_list, audit_count, audit_list, descriptor);
+	return_value = pLookupSecurityDescriptorPartsA(owner, group, access_count, access_list, audit_count, audit_list, descriptor);
+	TRACE("Leave LookupSecurityDescriptorPartsA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LookupSecurityDescriptorPartsA(void);  /* ../dlls/advapi32/security.c:4510 */
@@ -5696,10 +6137,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LookupSecurityDescriptorPartsA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_LookupSecurityDescriptorPartsW(TRUSTEEW*  owner, TRUSTEEW*  group, ULONG*  access_count, EXPLICIT_ACCESSW*  access_list, ULONG*  audit_count, EXPLICIT_ACCESSW*  audit_list, SECURITY_DESCRIPTOR*  descriptor) /* ../dlls/advapi32/security.c:4522 */
+WINAPI DWORD wine32b_advapi32_LookupSecurityDescriptorPartsW(TRUSTEEW*  owner, TRUSTEEW*  group, ULONG*  access_count, EXPLICIT_ACCESSW*  access_list, ULONG*  audit_count, EXPLICIT_ACCESSW*  audit_list, SECURITY_DESCRIPTOR*  descriptor) /* ../dlls/advapi32/security.c:4522 */
 {
+	DWORD return_value;
 	TRACE("Enter LookupSecurityDescriptorPartsW\n");
-	return pLookupSecurityDescriptorPartsW(owner, group, access_count, access_list, audit_count, audit_list, descriptor);
+	return_value = pLookupSecurityDescriptorPartsW(owner, group, access_count, access_list, audit_count, audit_list, descriptor);
+	TRACE("Leave LookupSecurityDescriptorPartsW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LookupSecurityDescriptorPartsW(void);  /* ../dlls/advapi32/security.c:4522 */
@@ -5724,10 +6168,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LookupSecurityDescriptorPartsW,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaAddAccountRights(LSA_HANDLE  policy, PSID  sid, PLSA_UNICODE_STRING  rights, ULONG  count) /* ../dlls/advapi32/lsa.c:120 */
+WINAPI NTSTATUS wine32b_advapi32_LsaAddAccountRights(LSA_HANDLE  policy, PSID  sid, PLSA_UNICODE_STRING  rights, ULONG  count) /* ../dlls/advapi32/lsa.c:120 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaAddAccountRights\n");
-	return pLsaAddAccountRights(policy, sid, rights, count);
+	return_value = pLsaAddAccountRights(policy, sid, rights, count);
+	TRACE("Leave LsaAddAccountRights\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaAddAccountRights(void);  /* ../dlls/advapi32/lsa.c:120 */
@@ -5752,10 +6199,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaAddAccountRights,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaClose(LSA_HANDLE  ObjectHandle) /* ../dlls/advapi32/lsa.c:142 */
+WINAPI NTSTATUS wine32b_advapi32_LsaClose(LSA_HANDLE  ObjectHandle) /* ../dlls/advapi32/lsa.c:142 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaClose\n");
-	return pLsaClose(ObjectHandle);
+	return_value = pLsaClose(ObjectHandle);
+	TRACE("Leave LsaClose\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaClose(void);  /* ../dlls/advapi32/lsa.c:142 */
@@ -5777,10 +6227,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaClose,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaCreateTrustedDomainEx(LSA_HANDLE  policy, PTRUSTED_DOMAIN_INFORMATION_EX  domain_info, PTRUSTED_DOMAIN_AUTH_INFORMATION  auth_info, ACCESS_MASK  access, PLSA_HANDLE  domain) /* ../dlls/advapi32/lsa.c:152 */
+WINAPI NTSTATUS wine32b_advapi32_LsaCreateTrustedDomainEx(LSA_HANDLE  policy, PTRUSTED_DOMAIN_INFORMATION_EX  domain_info, PTRUSTED_DOMAIN_AUTH_INFORMATION  auth_info, ACCESS_MASK  access, PLSA_HANDLE  domain) /* ../dlls/advapi32/lsa.c:152 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaCreateTrustedDomainEx\n");
-	return pLsaCreateTrustedDomainEx(policy, domain_info, auth_info, access, domain);
+	return_value = pLsaCreateTrustedDomainEx(policy, domain_info, auth_info, access, domain);
+	TRACE("Leave LsaCreateTrustedDomainEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaCreateTrustedDomainEx(void);  /* ../dlls/advapi32/lsa.c:152 */
@@ -5805,10 +6258,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaCreateTrustedDomainEx,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaDeleteTrustedDomain(LSA_HANDLE  policy, PSID  sid) /* ../dlls/advapi32/lsa.c:168 */
+WINAPI NTSTATUS wine32b_advapi32_LsaDeleteTrustedDomain(LSA_HANDLE  policy, PSID  sid) /* ../dlls/advapi32/lsa.c:168 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaDeleteTrustedDomain\n");
-	return pLsaDeleteTrustedDomain(policy, sid);
+	return_value = pLsaDeleteTrustedDomain(policy, sid);
+	TRACE("Leave LsaDeleteTrustedDomain\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaDeleteTrustedDomain(void);  /* ../dlls/advapi32/lsa.c:168 */
@@ -5831,10 +6287,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaDeleteTrustedDomain,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaEnumerateAccountRights(LSA_HANDLE  policy, PSID  sid, PLSA_UNICODE_STRING*  rights, PULONG  count) /* ../dlls/advapi32/lsa.c:178 */
+WINAPI NTSTATUS wine32b_advapi32_LsaEnumerateAccountRights(LSA_HANDLE  policy, PSID  sid, PLSA_UNICODE_STRING*  rights, PULONG  count) /* ../dlls/advapi32/lsa.c:178 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaEnumerateAccountRights\n");
-	return pLsaEnumerateAccountRights(policy, sid, rights, count);
+	return_value = pLsaEnumerateAccountRights(policy, sid, rights, count);
+	TRACE("Leave LsaEnumerateAccountRights\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaEnumerateAccountRights(void);  /* ../dlls/advapi32/lsa.c:178 */
@@ -5859,10 +6318,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaEnumerateAccountRights,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaEnumerateAccountsWithUserRight(LSA_HANDLE  policy, PLSA_UNICODE_STRING  rights, PVOID*  buffer, PULONG  count) /* ../dlls/advapi32/lsa.c:194 */
+WINAPI NTSTATUS wine32b_advapi32_LsaEnumerateAccountsWithUserRight(LSA_HANDLE  policy, PLSA_UNICODE_STRING  rights, PVOID*  buffer, PULONG  count) /* ../dlls/advapi32/lsa.c:194 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaEnumerateAccountsWithUserRight\n");
-	return pLsaEnumerateAccountsWithUserRight(policy, rights, buffer, count);
+	return_value = pLsaEnumerateAccountsWithUserRight(policy, rights, buffer, count);
+	TRACE("Leave LsaEnumerateAccountsWithUserRight\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaEnumerateAccountsWithUserRight(void);  /* ../dlls/advapi32/lsa.c:194 */
@@ -5887,10 +6349,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaEnumerateAccountsWithUserRight,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaEnumerateTrustedDomains(LSA_HANDLE  PolicyHandle, PLSA_ENUMERATION_HANDLE  EnumerationContext, PVOID*  Buffer, ULONG  PreferredMaximumLength, PULONG  CountReturned) /* ../dlls/advapi32/lsa.c:226 */
+WINAPI NTSTATUS wine32b_advapi32_LsaEnumerateTrustedDomains(LSA_HANDLE  PolicyHandle, PLSA_ENUMERATION_HANDLE  EnumerationContext, PVOID*  Buffer, ULONG  PreferredMaximumLength, PULONG  CountReturned) /* ../dlls/advapi32/lsa.c:226 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaEnumerateTrustedDomains\n");
-	return pLsaEnumerateTrustedDomains(PolicyHandle, EnumerationContext, Buffer, PreferredMaximumLength, CountReturned);
+	return_value = pLsaEnumerateTrustedDomains(PolicyHandle, EnumerationContext, Buffer, PreferredMaximumLength, CountReturned);
+	TRACE("Leave LsaEnumerateTrustedDomains\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaEnumerateTrustedDomains(void);  /* ../dlls/advapi32/lsa.c:226 */
@@ -5915,10 +6380,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaEnumerateTrustedDomains,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaEnumerateTrustedDomainsEx(LSA_HANDLE  policy, PLSA_ENUMERATION_HANDLE  context, PVOID*  buffer, ULONG  length, PULONG  count) /* ../dlls/advapi32/lsa.c:244 */
+WINAPI NTSTATUS wine32b_advapi32_LsaEnumerateTrustedDomainsEx(LSA_HANDLE  policy, PLSA_ENUMERATION_HANDLE  context, PVOID*  buffer, ULONG  length, PULONG  count) /* ../dlls/advapi32/lsa.c:244 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaEnumerateTrustedDomainsEx\n");
-	return pLsaEnumerateTrustedDomainsEx(policy, context, buffer, length, count);
+	return_value = pLsaEnumerateTrustedDomainsEx(policy, context, buffer, length, count);
+	TRACE("Leave LsaEnumerateTrustedDomainsEx\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaEnumerateTrustedDomainsEx(void);  /* ../dlls/advapi32/lsa.c:244 */
@@ -5943,10 +6411,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaEnumerateTrustedDomainsEx,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaFreeMemory(PVOID  Buffer) /* ../dlls/advapi32/lsa.c:269 */
+WINAPI NTSTATUS wine32b_advapi32_LsaFreeMemory(PVOID  Buffer) /* ../dlls/advapi32/lsa.c:269 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaFreeMemory\n");
-	return pLsaFreeMemory(Buffer);
+	return_value = pLsaFreeMemory(Buffer);
+	TRACE("Leave LsaFreeMemory\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaFreeMemory(void);  /* ../dlls/advapi32/lsa.c:269 */
@@ -5968,10 +6439,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaFreeMemory,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaLookupNames(LSA_HANDLE  PolicyHandle, ULONG  Count, PLSA_UNICODE_STRING  Names, PLSA_REFERENCED_DOMAIN_LIST*  ReferencedDomains, PLSA_TRANSLATED_SID*  Sids) /* ../dlls/advapi32/lsa.c:294 */
+WINAPI NTSTATUS wine32b_advapi32_LsaLookupNames(LSA_HANDLE  PolicyHandle, ULONG  Count, PLSA_UNICODE_STRING  Names, PLSA_REFERENCED_DOMAIN_LIST*  ReferencedDomains, PLSA_TRANSLATED_SID*  Sids) /* ../dlls/advapi32/lsa.c:294 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaLookupNames\n");
-	return pLsaLookupNames(PolicyHandle, Count, Names, ReferencedDomains, Sids);
+	return_value = pLsaLookupNames(PolicyHandle, Count, Names, ReferencedDomains, Sids);
+	TRACE("Leave LsaLookupNames\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaLookupNames(void);  /* ../dlls/advapi32/lsa.c:294 */
@@ -5996,10 +6470,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaLookupNames,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaLookupNames2(LSA_HANDLE  policy, ULONG  flags, ULONG  count, PLSA_UNICODE_STRING  names, PLSA_REFERENCED_DOMAIN_LIST*  domains, PLSA_TRANSLATED_SID2*  sids) /* ../dlls/advapi32/lsa.c:373 */
+WINAPI NTSTATUS wine32b_advapi32_LsaLookupNames2(LSA_HANDLE  policy, ULONG  flags, ULONG  count, PLSA_UNICODE_STRING  names, PLSA_REFERENCED_DOMAIN_LIST*  domains, PLSA_TRANSLATED_SID2*  sids) /* ../dlls/advapi32/lsa.c:373 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaLookupNames2\n");
-	return pLsaLookupNames2(policy, flags, count, names, domains, sids);
+	return_value = pLsaLookupNames2(policy, flags, count, names, domains, sids);
+	TRACE("Leave LsaLookupNames2\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaLookupNames2(void);  /* ../dlls/advapi32/lsa.c:373 */
@@ -6024,10 +6501,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaLookupNames2,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaLookupPrivilegeDisplayName(LSA_HANDLE  handle, LSA_UNICODE_STRING*  name, LSA_UNICODE_STRING**  display_name, SHORT*  language) /* ../dlls/advapi32/lsa.c:1068 */
+WINAPI NTSTATUS wine32b_advapi32_LsaLookupPrivilegeDisplayName(LSA_HANDLE  handle, LSA_UNICODE_STRING*  name, LSA_UNICODE_STRING**  display_name, SHORT*  language) /* ../dlls/advapi32/lsa.c:1068 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaLookupPrivilegeDisplayName\n");
-	return pLsaLookupPrivilegeDisplayName(handle, name, display_name, language);
+	return_value = pLsaLookupPrivilegeDisplayName(handle, name, display_name, language);
+	TRACE("Leave LsaLookupPrivilegeDisplayName\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaLookupPrivilegeDisplayName(void);  /* ../dlls/advapi32/lsa.c:1068 */
@@ -6052,10 +6532,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaLookupPrivilegeDisplayName,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaLookupPrivilegeName(LSA_HANDLE  handle, LUID*  luid, LSA_UNICODE_STRING**  name) /* ../dlls/advapi32/lsa.c:1035 */
+WINAPI NTSTATUS wine32b_advapi32_LsaLookupPrivilegeName(LSA_HANDLE  handle, LUID*  luid, LSA_UNICODE_STRING**  name) /* ../dlls/advapi32/lsa.c:1035 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaLookupPrivilegeName\n");
-	return pLsaLookupPrivilegeName(handle, luid, name);
+	return_value = pLsaLookupPrivilegeName(handle, luid, name);
+	TRACE("Leave LsaLookupPrivilegeName\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaLookupPrivilegeName(void);  /* ../dlls/advapi32/lsa.c:1035 */
@@ -6079,10 +6562,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaLookupPrivilegeName,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaLookupSids(LSA_HANDLE  PolicyHandle, ULONG  Count, PSID*  Sids, LSA_REFERENCED_DOMAIN_LIST**  ReferencedDomains, LSA_TRANSLATED_NAME**  Names) /* ../dlls/advapi32/lsa.c:476 */
+WINAPI NTSTATUS wine32b_advapi32_LsaLookupSids(LSA_HANDLE  PolicyHandle, ULONG  Count, PSID*  Sids, LSA_REFERENCED_DOMAIN_LIST**  ReferencedDomains, LSA_TRANSLATED_NAME**  Names) /* ../dlls/advapi32/lsa.c:476 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaLookupSids\n");
-	return pLsaLookupSids(PolicyHandle, Count, Sids, ReferencedDomains, Names);
+	return_value = pLsaLookupSids(PolicyHandle, Count, Sids, ReferencedDomains, Names);
+	TRACE("Leave LsaLookupSids\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaLookupSids(void);  /* ../dlls/advapi32/lsa.c:476 */
@@ -6107,10 +6593,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaLookupSids,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_LsaNtStatusToWinError(NTSTATUS  Status) /* ../dlls/advapi32/lsa.c:628 */
+WINAPI ULONG wine32b_advapi32_LsaNtStatusToWinError(NTSTATUS  Status) /* ../dlls/advapi32/lsa.c:628 */
 {
+	ULONG return_value;
 	TRACE("Enter LsaNtStatusToWinError\n");
-	return pLsaNtStatusToWinError(Status);
+	return_value = pLsaNtStatusToWinError(Status);
+	TRACE("Leave LsaNtStatusToWinError\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaNtStatusToWinError(void);  /* ../dlls/advapi32/lsa.c:628 */
@@ -6132,10 +6621,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaNtStatusToWinError,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaOpenPolicy(PLSA_UNICODE_STRING  SystemName, PLSA_OBJECT_ATTRIBUTES  ObjectAttributes, ACCESS_MASK  DesiredAccess, PLSA_HANDLE  PolicyHandle) /* ../dlls/advapi32/lsa.c:651 */
+WINAPI NTSTATUS wine32b_advapi32_LsaOpenPolicy(PLSA_UNICODE_STRING  SystemName, PLSA_OBJECT_ATTRIBUTES  ObjectAttributes, ACCESS_MASK  DesiredAccess, PLSA_HANDLE  PolicyHandle) /* ../dlls/advapi32/lsa.c:651 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaOpenPolicy\n");
-	return pLsaOpenPolicy(SystemName, ObjectAttributes, DesiredAccess, PolicyHandle);
+	return_value = pLsaOpenPolicy(SystemName, ObjectAttributes, DesiredAccess, PolicyHandle);
+	TRACE("Leave LsaOpenPolicy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaOpenPolicy(void);  /* ../dlls/advapi32/lsa.c:651 */
@@ -6160,10 +6652,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaOpenPolicy,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaOpenTrustedDomainByName(LSA_HANDLE  policy, PLSA_UNICODE_STRING  name, ACCESS_MASK  access, PLSA_HANDLE  handle) /* ../dlls/advapi32/lsa.c:673 */
+WINAPI NTSTATUS wine32b_advapi32_LsaOpenTrustedDomainByName(LSA_HANDLE  policy, PLSA_UNICODE_STRING  name, ACCESS_MASK  access, PLSA_HANDLE  handle) /* ../dlls/advapi32/lsa.c:673 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaOpenTrustedDomainByName\n");
-	return pLsaOpenTrustedDomainByName(policy, name, access, handle);
+	return_value = pLsaOpenTrustedDomainByName(policy, name, access, handle);
+	TRACE("Leave LsaOpenTrustedDomainByName\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaOpenTrustedDomainByName(void);  /* ../dlls/advapi32/lsa.c:673 */
@@ -6188,10 +6683,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaOpenTrustedDomainByName,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaQueryInformationPolicy(LSA_HANDLE  PolicyHandle, POLICY_INFORMATION_CLASS  InformationClass, PVOID*  Buffer) /* ../dlls/advapi32/lsa.c:697 */
+WINAPI NTSTATUS wine32b_advapi32_LsaQueryInformationPolicy(LSA_HANDLE  PolicyHandle, POLICY_INFORMATION_CLASS  InformationClass, PVOID*  Buffer) /* ../dlls/advapi32/lsa.c:697 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaQueryInformationPolicy\n");
-	return pLsaQueryInformationPolicy(PolicyHandle, InformationClass, Buffer);
+	return_value = pLsaQueryInformationPolicy(PolicyHandle, InformationClass, Buffer);
+	TRACE("Leave LsaQueryInformationPolicy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaQueryInformationPolicy(void);  /* ../dlls/advapi32/lsa.c:697 */
@@ -6215,10 +6713,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaQueryInformationPolicy,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaQueryTrustedDomainInfo(LSA_HANDLE  policy, PSID  sid, TRUSTED_INFORMATION_CLASS  class, PVOID*  buffer) /* ../dlls/advapi32/lsa.c:846 */
+WINAPI NTSTATUS wine32b_advapi32_LsaQueryTrustedDomainInfo(LSA_HANDLE  policy, PSID  sid, TRUSTED_INFORMATION_CLASS  class, PVOID*  buffer) /* ../dlls/advapi32/lsa.c:846 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaQueryTrustedDomainInfo\n");
-	return pLsaQueryTrustedDomainInfo(policy, sid, class, buffer);
+	return_value = pLsaQueryTrustedDomainInfo(policy, sid, class, buffer);
+	TRACE("Leave LsaQueryTrustedDomainInfo\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaQueryTrustedDomainInfo(void);  /* ../dlls/advapi32/lsa.c:846 */
@@ -6243,10 +6744,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaQueryTrustedDomainInfo,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaQueryTrustedDomainInfoByName(LSA_HANDLE  policy, PLSA_UNICODE_STRING  name, TRUSTED_INFORMATION_CLASS  class, PVOID*  buffer) /* ../dlls/advapi32/lsa.c:860 */
+WINAPI NTSTATUS wine32b_advapi32_LsaQueryTrustedDomainInfoByName(LSA_HANDLE  policy, PLSA_UNICODE_STRING  name, TRUSTED_INFORMATION_CLASS  class, PVOID*  buffer) /* ../dlls/advapi32/lsa.c:860 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaQueryTrustedDomainInfoByName\n");
-	return pLsaQueryTrustedDomainInfoByName(policy, name, class, buffer);
+	return_value = pLsaQueryTrustedDomainInfoByName(policy, name, class, buffer);
+	TRACE("Leave LsaQueryTrustedDomainInfoByName\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaQueryTrustedDomainInfoByName(void);  /* ../dlls/advapi32/lsa.c:860 */
@@ -6271,10 +6775,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaQueryTrustedDomainInfoByName,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaRegisterPolicyChangeNotification(POLICY_NOTIFICATION_INFORMATION_CLASS  class, HANDLE  event) /* ../dlls/advapi32/lsa.c:874 */
+WINAPI NTSTATUS wine32b_advapi32_LsaRegisterPolicyChangeNotification(POLICY_NOTIFICATION_INFORMATION_CLASS  class, HANDLE  event) /* ../dlls/advapi32/lsa.c:874 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaRegisterPolicyChangeNotification\n");
-	return pLsaRegisterPolicyChangeNotification(class, event);
+	return_value = pLsaRegisterPolicyChangeNotification(class, event);
+	TRACE("Leave LsaRegisterPolicyChangeNotification\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaRegisterPolicyChangeNotification(void);  /* ../dlls/advapi32/lsa.c:874 */
@@ -6297,10 +6804,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaRegisterPolicyChangeNotification,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaRemoveAccountRights(LSA_HANDLE  policy, PSID  sid, BOOLEAN  all, PLSA_UNICODE_STRING  rights, ULONG  count) /* ../dlls/advapi32/lsa.c:886 */
+WINAPI NTSTATUS wine32b_advapi32_LsaRemoveAccountRights(LSA_HANDLE  policy, PSID  sid, BOOLEAN  all, PLSA_UNICODE_STRING  rights, ULONG  count) /* ../dlls/advapi32/lsa.c:886 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaRemoveAccountRights\n");
-	return pLsaRemoveAccountRights(policy, sid, all, rights, count);
+	return_value = pLsaRemoveAccountRights(policy, sid, all, rights, count);
+	TRACE("Leave LsaRemoveAccountRights\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaRemoveAccountRights(void);  /* ../dlls/advapi32/lsa.c:886 */
@@ -6325,10 +6835,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaRemoveAccountRights,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaRetrievePrivateData(LSA_HANDLE  PolicyHandle, PLSA_UNICODE_STRING  KeyName, PLSA_UNICODE_STRING*  PrivateData) /* ../dlls/advapi32/lsa.c:911 */
+WINAPI NTSTATUS wine32b_advapi32_LsaRetrievePrivateData(LSA_HANDLE  PolicyHandle, PLSA_UNICODE_STRING  KeyName, PLSA_UNICODE_STRING*  PrivateData) /* ../dlls/advapi32/lsa.c:911 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaRetrievePrivateData\n");
-	return pLsaRetrievePrivateData(PolicyHandle, KeyName, PrivateData);
+	return_value = pLsaRetrievePrivateData(PolicyHandle, KeyName, PrivateData);
+	TRACE("Leave LsaRetrievePrivateData\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaRetrievePrivateData(void);  /* ../dlls/advapi32/lsa.c:911 */
@@ -6352,10 +6865,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaRetrievePrivateData,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaSetInformationPolicy(LSA_HANDLE  PolicyHandle, POLICY_INFORMATION_CLASS  InformationClass, PVOID  Buffer) /* ../dlls/advapi32/lsa.c:934 */
+WINAPI NTSTATUS wine32b_advapi32_LsaSetInformationPolicy(LSA_HANDLE  PolicyHandle, POLICY_INFORMATION_CLASS  InformationClass, PVOID  Buffer) /* ../dlls/advapi32/lsa.c:934 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaSetInformationPolicy\n");
-	return pLsaSetInformationPolicy(PolicyHandle, InformationClass, Buffer);
+	return_value = pLsaSetInformationPolicy(PolicyHandle, InformationClass, Buffer);
+	TRACE("Leave LsaSetInformationPolicy\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaSetInformationPolicy(void);  /* ../dlls/advapi32/lsa.c:934 */
@@ -6379,10 +6895,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaSetInformationPolicy,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaSetSecret(LSA_HANDLE  SecretHandle, PLSA_UNICODE_STRING  EncryptedCurrentValue, PLSA_UNICODE_STRING  EncryptedOldValue) /* ../dlls/advapi32/lsa.c:958 */
+WINAPI NTSTATUS wine32b_advapi32_LsaSetSecret(LSA_HANDLE  SecretHandle, PLSA_UNICODE_STRING  EncryptedCurrentValue, PLSA_UNICODE_STRING  EncryptedOldValue) /* ../dlls/advapi32/lsa.c:958 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaSetSecret\n");
-	return pLsaSetSecret(SecretHandle, EncryptedCurrentValue, EncryptedOldValue);
+	return_value = pLsaSetSecret(SecretHandle, EncryptedCurrentValue, EncryptedOldValue);
+	TRACE("Leave LsaSetSecret\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaSetSecret(void);  /* ../dlls/advapi32/lsa.c:958 */
@@ -6406,10 +6925,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaSetSecret,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaSetTrustedDomainInfoByName(LSA_HANDLE  policy, PLSA_UNICODE_STRING  name, TRUSTED_INFORMATION_CLASS  class, PVOID  buffer) /* ../dlls/advapi32/lsa.c:972 */
+WINAPI NTSTATUS wine32b_advapi32_LsaSetTrustedDomainInfoByName(LSA_HANDLE  policy, PLSA_UNICODE_STRING  name, TRUSTED_INFORMATION_CLASS  class, PVOID  buffer) /* ../dlls/advapi32/lsa.c:972 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaSetTrustedDomainInfoByName\n");
-	return pLsaSetTrustedDomainInfoByName(policy, name, class, buffer);
+	return_value = pLsaSetTrustedDomainInfoByName(policy, name, class, buffer);
+	TRACE("Leave LsaSetTrustedDomainInfoByName\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaSetTrustedDomainInfoByName(void);  /* ../dlls/advapi32/lsa.c:972 */
@@ -6434,10 +6956,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaSetTrustedDomainInfoByName,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaSetTrustedDomainInformation(LSA_HANDLE  policy, PSID  sid, TRUSTED_INFORMATION_CLASS  class, PVOID  buffer) /* ../dlls/advapi32/lsa.c:986 */
+WINAPI NTSTATUS wine32b_advapi32_LsaSetTrustedDomainInformation(LSA_HANDLE  policy, PSID  sid, TRUSTED_INFORMATION_CLASS  class, PVOID  buffer) /* ../dlls/advapi32/lsa.c:986 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaSetTrustedDomainInformation\n");
-	return pLsaSetTrustedDomainInformation(policy, sid, class, buffer);
+	return_value = pLsaSetTrustedDomainInformation(policy, sid, class, buffer);
+	TRACE("Leave LsaSetTrustedDomainInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaSetTrustedDomainInformation(void);  /* ../dlls/advapi32/lsa.c:986 */
@@ -6462,10 +6987,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaSetTrustedDomainInformation,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaStorePrivateData(LSA_HANDLE  PolicyHandle, PLSA_UNICODE_STRING  KeyName, PLSA_UNICODE_STRING  PrivateData) /* ../dlls/advapi32/lsa.c:1010 */
+WINAPI NTSTATUS wine32b_advapi32_LsaStorePrivateData(LSA_HANDLE  PolicyHandle, PLSA_UNICODE_STRING  KeyName, PLSA_UNICODE_STRING  PrivateData) /* ../dlls/advapi32/lsa.c:1010 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaStorePrivateData\n");
-	return pLsaStorePrivateData(PolicyHandle, KeyName, PrivateData);
+	return_value = pLsaStorePrivateData(PolicyHandle, KeyName, PrivateData);
+	TRACE("Leave LsaStorePrivateData\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaStorePrivateData(void);  /* ../dlls/advapi32/lsa.c:1010 */
@@ -6489,10 +7017,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaStorePrivateData,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_LsaUnregisterPolicyChangeNotification(POLICY_NOTIFICATION_INFORMATION_CLASS  class, HANDLE  event) /* ../dlls/advapi32/lsa.c:1023 */
+WINAPI NTSTATUS wine32b_advapi32_LsaUnregisterPolicyChangeNotification(POLICY_NOTIFICATION_INFORMATION_CLASS  class, HANDLE  event) /* ../dlls/advapi32/lsa.c:1023 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter LsaUnregisterPolicyChangeNotification\n");
-	return pLsaUnregisterPolicyChangeNotification(class, event);
+	return_value = pLsaUnregisterPolicyChangeNotification(class, event);
+	TRACE("Leave LsaUnregisterPolicyChangeNotification\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_LsaUnregisterPolicyChangeNotification(void);  /* ../dlls/advapi32/lsa.c:1023 */
@@ -6515,10 +7046,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_LsaUnregisterPolicyChangeNotification,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_NotifyBootConfigStatus(BOOL  x1) /* ../dlls/advapi32/security.c:1346 */
+WINAPI BOOL wine32b_advapi32_NotifyBootConfigStatus(BOOL  x1) /* ../dlls/advapi32/security.c:1346 */
 {
+	BOOL return_value;
 	TRACE("Enter NotifyBootConfigStatus\n");
-	return pNotifyBootConfigStatus(x1);
+	return_value = pNotifyBootConfigStatus(x1);
+	TRACE("Leave NotifyBootConfigStatus\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_NotifyBootConfigStatus(void);  /* ../dlls/advapi32/security.c:1346 */
@@ -6540,10 +7074,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_NotifyBootConfigStatus,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_NotifyChangeEventLog(HANDLE  hEventLog, HANDLE  hEvent) /* ../dlls/advapi32/eventlog.c:408 */
+WINAPI BOOL wine32b_advapi32_NotifyChangeEventLog(HANDLE  hEventLog, HANDLE  hEvent) /* ../dlls/advapi32/eventlog.c:408 */
 {
+	BOOL return_value;
 	TRACE("Enter NotifyChangeEventLog\n");
-	return pNotifyChangeEventLog(hEventLog, hEvent);
+	return_value = pNotifyChangeEventLog(hEventLog, hEvent);
+	TRACE("Leave NotifyChangeEventLog\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_NotifyChangeEventLog(void);  /* ../dlls/advapi32/eventlog.c:408 */
@@ -6566,10 +7103,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_NotifyChangeEventLog,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_ObjectCloseAuditAlarmA(LPCSTR  SubsystemName, LPVOID  HandleId, BOOL  GenerateOnClose) /* ../dlls/advapi32/security.c:1724 */
+WINAPI BOOL wine32b_advapi32_ObjectCloseAuditAlarmA(LPCSTR  SubsystemName, LPVOID  HandleId, BOOL  GenerateOnClose) /* ../dlls/advapi32/security.c:1724 */
 {
+	BOOL return_value;
 	TRACE("Enter ObjectCloseAuditAlarmA\n");
-	return pObjectCloseAuditAlarmA(SubsystemName, HandleId, GenerateOnClose);
+	return_value = pObjectCloseAuditAlarmA(SubsystemName, HandleId, GenerateOnClose);
+	TRACE("Leave ObjectCloseAuditAlarmA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_ObjectCloseAuditAlarmA(void);  /* ../dlls/advapi32/security.c:1724 */
@@ -6593,10 +7133,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ObjectCloseAuditAlarmA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_ObjectOpenAuditAlarmA(LPCSTR  SubsystemName, LPVOID  HandleId, LPSTR  ObjectTypeName, LPSTR  ObjectName, PSECURITY_DESCRIPTOR  pSecurityDescriptor, HANDLE  ClientToken, DWORD  DesiredAccess, DWORD  GrantedAccess, PPRIVILEGE_SET  Privileges, BOOL  ObjectCreation, BOOL  AccessGranted, LPBOOL  GenerateOnClose) /* ../dlls/advapi32/security.c:1731 */
+WINAPI BOOL wine32b_advapi32_ObjectOpenAuditAlarmA(LPCSTR  SubsystemName, LPVOID  HandleId, LPSTR  ObjectTypeName, LPSTR  ObjectName, PSECURITY_DESCRIPTOR  pSecurityDescriptor, HANDLE  ClientToken, DWORD  DesiredAccess, DWORD  GrantedAccess, PPRIVILEGE_SET  Privileges, BOOL  ObjectCreation, BOOL  AccessGranted, LPBOOL  GenerateOnClose) /* ../dlls/advapi32/security.c:1731 */
 {
+	BOOL return_value;
 	TRACE("Enter ObjectOpenAuditAlarmA\n");
-	return pObjectOpenAuditAlarmA(SubsystemName, HandleId, ObjectTypeName, ObjectName, pSecurityDescriptor, ClientToken, DesiredAccess, GrantedAccess, Privileges, ObjectCreation, AccessGranted, GenerateOnClose);
+	return_value = pObjectOpenAuditAlarmA(SubsystemName, HandleId, ObjectTypeName, ObjectName, pSecurityDescriptor, ClientToken, DesiredAccess, GrantedAccess, Privileges, ObjectCreation, AccessGranted, GenerateOnClose);
+	TRACE("Leave ObjectOpenAuditAlarmA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_ObjectOpenAuditAlarmA(void);  /* ../dlls/advapi32/security.c:1731 */
@@ -6621,10 +7164,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ObjectOpenAuditAlarmA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_ObjectPrivilegeAuditAlarmA(LPCSTR  SubsystemName, LPVOID  HandleId, HANDLE  ClientToken, DWORD  DesiredAccess, PPRIVILEGE_SET  Privileges, BOOL  AccessGranted) /* ../dlls/advapi32/security.c:1744 */
+WINAPI BOOL wine32b_advapi32_ObjectPrivilegeAuditAlarmA(LPCSTR  SubsystemName, LPVOID  HandleId, HANDLE  ClientToken, DWORD  DesiredAccess, PPRIVILEGE_SET  Privileges, BOOL  AccessGranted) /* ../dlls/advapi32/security.c:1744 */
 {
+	BOOL return_value;
 	TRACE("Enter ObjectPrivilegeAuditAlarmA\n");
-	return pObjectPrivilegeAuditAlarmA(SubsystemName, HandleId, ClientToken, DesiredAccess, Privileges, AccessGranted);
+	return_value = pObjectPrivilegeAuditAlarmA(SubsystemName, HandleId, ClientToken, DesiredAccess, Privileges, AccessGranted);
+	TRACE("Leave ObjectPrivilegeAuditAlarmA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_ObjectPrivilegeAuditAlarmA(void);  /* ../dlls/advapi32/security.c:1744 */
@@ -6649,10 +7195,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ObjectPrivilegeAuditAlarmA,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_advapi32_OpenBackupEventLogA(LPCSTR  lpUNCServerName, LPCSTR  lpFileName) /* ../dlls/advapi32/eventlog.c:428 */
+WINAPI HANDLE wine32b_advapi32_OpenBackupEventLogA(LPCSTR  lpUNCServerName, LPCSTR  lpFileName) /* ../dlls/advapi32/eventlog.c:428 */
 {
+	HANDLE return_value;
 	TRACE("Enter OpenBackupEventLogA\n");
-	return pOpenBackupEventLogA(lpUNCServerName, lpFileName);
+	return_value = pOpenBackupEventLogA(lpUNCServerName, lpFileName);
+	TRACE("Leave OpenBackupEventLogA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_OpenBackupEventLogA(void);  /* ../dlls/advapi32/eventlog.c:428 */
@@ -6675,10 +7224,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_OpenBackupEventLogA,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_advapi32_OpenBackupEventLogW(LPCWSTR  lpUNCServerName, LPCWSTR  lpFileName) /* ../dlls/advapi32/eventlog.c:447 */
+WINAPI HANDLE wine32b_advapi32_OpenBackupEventLogW(LPCWSTR  lpUNCServerName, LPCWSTR  lpFileName) /* ../dlls/advapi32/eventlog.c:447 */
 {
+	HANDLE return_value;
 	TRACE("Enter OpenBackupEventLogW\n");
-	return pOpenBackupEventLogW(lpUNCServerName, lpFileName);
+	return_value = pOpenBackupEventLogW(lpUNCServerName, lpFileName);
+	TRACE("Leave OpenBackupEventLogW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_OpenBackupEventLogW(void);  /* ../dlls/advapi32/eventlog.c:447 */
@@ -6701,10 +7253,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_OpenBackupEventLogW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_OpenEncryptedFileRawA(LPCSTR  filename, ULONG  flags, PVOID*  context) /* ../dlls/advapi32/crypt.c:2296 */
+WINAPI DWORD wine32b_advapi32_OpenEncryptedFileRawA(LPCSTR  filename, ULONG  flags, PVOID*  context) /* ../dlls/advapi32/crypt.c:2296 */
 {
+	DWORD return_value;
 	TRACE("Enter OpenEncryptedFileRawA\n");
-	return pOpenEncryptedFileRawA(filename, flags, context);
+	return_value = pOpenEncryptedFileRawA(filename, flags, context);
+	TRACE("Leave OpenEncryptedFileRawA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_OpenEncryptedFileRawA(void);  /* ../dlls/advapi32/crypt.c:2296 */
@@ -6728,10 +7283,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_OpenEncryptedFileRawA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_OpenEncryptedFileRawW(LPCWSTR  filename, ULONG  flags, PVOID*  context) /* ../dlls/advapi32/crypt.c:2315 */
+WINAPI DWORD wine32b_advapi32_OpenEncryptedFileRawW(LPCWSTR  filename, ULONG  flags, PVOID*  context) /* ../dlls/advapi32/crypt.c:2315 */
 {
+	DWORD return_value;
 	TRACE("Enter OpenEncryptedFileRawW\n");
-	return pOpenEncryptedFileRawW(filename, flags, context);
+	return_value = pOpenEncryptedFileRawW(filename, flags, context);
+	TRACE("Leave OpenEncryptedFileRawW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_OpenEncryptedFileRawW(void);  /* ../dlls/advapi32/crypt.c:2315 */
@@ -6755,10 +7313,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_OpenEncryptedFileRawW,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_advapi32_OpenEventLogA(LPCSTR  uncname, LPCSTR  source) /* ../dlls/advapi32/eventlog.c:487 */
+WINAPI HANDLE wine32b_advapi32_OpenEventLogA(LPCSTR  uncname, LPCSTR  source) /* ../dlls/advapi32/eventlog.c:487 */
 {
+	HANDLE return_value;
 	TRACE("Enter OpenEventLogA\n");
-	return pOpenEventLogA(uncname, source);
+	return_value = pOpenEventLogA(uncname, source);
+	TRACE("Leave OpenEventLogA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_OpenEventLogA(void);  /* ../dlls/advapi32/eventlog.c:487 */
@@ -6781,10 +7342,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_OpenEventLogA,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_advapi32_OpenEventLogW(LPCWSTR  uncname, LPCWSTR  source) /* ../dlls/advapi32/eventlog.c:506 */
+WINAPI HANDLE wine32b_advapi32_OpenEventLogW(LPCWSTR  uncname, LPCWSTR  source) /* ../dlls/advapi32/eventlog.c:506 */
 {
+	HANDLE return_value;
 	TRACE("Enter OpenEventLogW\n");
-	return pOpenEventLogW(uncname, source);
+	return_value = pOpenEventLogW(uncname, source);
+	TRACE("Leave OpenEventLogW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_OpenEventLogW(void);  /* ../dlls/advapi32/eventlog.c:506 */
@@ -6807,10 +7371,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_OpenEventLogW,
 	"ret \n"
 )
 
-extern WINAPI TRACEHANDLE wine32b_advapi32_OpenTraceA(PEVENT_TRACE_LOGFILEA  logfile) /* ../dlls/advapi32/eventlog.c:792 */
+WINAPI TRACEHANDLE wine32b_advapi32_OpenTraceA(PEVENT_TRACE_LOGFILEA  logfile) /* ../dlls/advapi32/eventlog.c:792 */
 {
+	TRACEHANDLE return_value;
 	TRACE("Enter OpenTraceA\n");
-	return pOpenTraceA(logfile);
+	return_value = pOpenTraceA(logfile);
+	TRACE("Leave OpenTraceA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_OpenTraceA(void);  /* ../dlls/advapi32/eventlog.c:792 */
@@ -6832,10 +7399,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_OpenTraceA,
 	"ret \n"
 )
 
-extern WINAPI TRACEHANDLE wine32b_advapi32_OpenTraceW(PEVENT_TRACE_LOGFILEW  logfile) /* ../dlls/advapi32/eventlog.c:804 */
+WINAPI TRACEHANDLE wine32b_advapi32_OpenTraceW(PEVENT_TRACE_LOGFILEW  logfile) /* ../dlls/advapi32/eventlog.c:804 */
 {
+	TRACEHANDLE return_value;
 	TRACE("Enter OpenTraceW\n");
-	return pOpenTraceW(logfile);
+	return_value = pOpenTraceW(logfile);
+	TRACE("Leave OpenTraceW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_OpenTraceW(void);  /* ../dlls/advapi32/eventlog.c:804 */
@@ -6857,10 +7427,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_OpenTraceW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_PrivilegedServiceAuditAlarmA(LPCSTR  SubsystemName, LPCSTR  ServiceName, HANDLE  ClientToken, PPRIVILEGE_SET  Privileges, BOOL  AccessGranted) /* ../dlls/advapi32/security.c:1753 */
+WINAPI BOOL wine32b_advapi32_PrivilegedServiceAuditAlarmA(LPCSTR  SubsystemName, LPCSTR  ServiceName, HANDLE  ClientToken, PPRIVILEGE_SET  Privileges, BOOL  AccessGranted) /* ../dlls/advapi32/security.c:1753 */
 {
+	BOOL return_value;
 	TRACE("Enter PrivilegedServiceAuditAlarmA\n");
-	return pPrivilegedServiceAuditAlarmA(SubsystemName, ServiceName, ClientToken, Privileges, AccessGranted);
+	return_value = pPrivilegedServiceAuditAlarmA(SubsystemName, ServiceName, ClientToken, Privileges, AccessGranted);
+	TRACE("Leave PrivilegedServiceAuditAlarmA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_PrivilegedServiceAuditAlarmA(void);  /* ../dlls/advapi32/security.c:1753 */
@@ -6885,10 +7458,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_PrivilegedServiceAuditAlarmA,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_ProcessTrace(PTRACEHANDLE  HandleArray, ULONG  HandleCount, LPFILETIME  StartTime, LPFILETIME  EndTime) /* ../dlls/advapi32/eventlog.c:816 */
+WINAPI ULONG wine32b_advapi32_ProcessTrace(PTRACEHANDLE  HandleArray, ULONG  HandleCount, LPFILETIME  StartTime, LPFILETIME  EndTime) /* ../dlls/advapi32/eventlog.c:816 */
 {
+	ULONG return_value;
 	TRACE("Enter ProcessTrace\n");
-	return pProcessTrace(HandleArray, HandleCount, StartTime, EndTime);
+	return_value = pProcessTrace(HandleArray, HandleCount, StartTime, EndTime);
+	TRACE("Leave ProcessTrace\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_ProcessTrace(void);  /* ../dlls/advapi32/eventlog.c:816 */
@@ -6913,10 +7489,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ProcessTrace,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_QueryAllTracesA(PEVENT_TRACE_PROPERTIES*  parray, ULONG  arraycount, PULONG  psessioncount) /* ../dlls/advapi32/eventlog.c:545 */
+WINAPI ULONG wine32b_advapi32_QueryAllTracesA(PEVENT_TRACE_PROPERTIES*  parray, ULONG  arraycount, PULONG  psessioncount) /* ../dlls/advapi32/eventlog.c:545 */
 {
+	ULONG return_value;
 	TRACE("Enter QueryAllTracesA\n");
-	return pQueryAllTracesA(parray, arraycount, psessioncount);
+	return_value = pQueryAllTracesA(parray, arraycount, psessioncount);
+	TRACE("Leave QueryAllTracesA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_QueryAllTracesA(void);  /* ../dlls/advapi32/eventlog.c:545 */
@@ -6940,10 +7519,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_QueryAllTracesA,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_QueryAllTracesW(PEVENT_TRACE_PROPERTIES*  parray, ULONG  arraycount, PULONG  psessioncount) /* ../dlls/advapi32/eventlog.c:532 */
+WINAPI ULONG wine32b_advapi32_QueryAllTracesW(PEVENT_TRACE_PROPERTIES*  parray, ULONG  arraycount, PULONG  psessioncount) /* ../dlls/advapi32/eventlog.c:532 */
 {
+	ULONG return_value;
 	TRACE("Enter QueryAllTracesW\n");
-	return pQueryAllTracesW(parray, arraycount, psessioncount);
+	return_value = pQueryAllTracesW(parray, arraycount, psessioncount);
+	TRACE("Leave QueryAllTracesW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_QueryAllTracesW(void);  /* ../dlls/advapi32/eventlog.c:532 */
@@ -6967,10 +7549,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_QueryAllTracesW,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_QueryTraceW(TRACEHANDLE  handle, LPCWSTR  sessionname, PEVENT_TRACE_PROPERTIES  properties) /* ../dlls/advapi32/eventlog.c:783 */
+WINAPI ULONG wine32b_advapi32_QueryTraceW(TRACEHANDLE  handle, LPCWSTR  sessionname, PEVENT_TRACE_PROPERTIES  properties) /* ../dlls/advapi32/eventlog.c:783 */
 {
+	ULONG return_value;
 	TRACE("Enter QueryTraceW\n");
-	return pQueryTraceW(handle, sessionname, properties);
+	return_value = pQueryTraceW(handle, sessionname, properties);
+	TRACE("Leave QueryTraceW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_QueryTraceW(void);  /* ../dlls/advapi32/eventlog.c:783 */
@@ -6994,10 +7579,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_QueryTraceW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_QueryWindows31FilesMigration(DWORD  x1) /* ../dlls/advapi32/security.c:1316 */
+WINAPI BOOL wine32b_advapi32_QueryWindows31FilesMigration(DWORD  x1) /* ../dlls/advapi32/security.c:1316 */
 {
+	BOOL return_value;
 	TRACE("Enter QueryWindows31FilesMigration\n");
-	return pQueryWindows31FilesMigration(x1);
+	return_value = pQueryWindows31FilesMigration(x1);
+	TRACE("Leave QueryWindows31FilesMigration\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_QueryWindows31FilesMigration(void);  /* ../dlls/advapi32/security.c:1316 */
@@ -7019,10 +7607,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_QueryWindows31FilesMigration,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_ReadEncryptedFileRaw(PFE_EXPORT_FUNC  export, PVOID  callback, PVOID  context) /* ../dlls/advapi32/crypt.c:2334 */
+WINAPI DWORD wine32b_advapi32_ReadEncryptedFileRaw(PFE_EXPORT_FUNC  export, PVOID  callback, PVOID  context) /* ../dlls/advapi32/crypt.c:2334 */
 {
+	DWORD return_value;
 	TRACE("Enter ReadEncryptedFileRaw\n");
-	return pReadEncryptedFileRaw(export, callback, context);
+	return_value = pReadEncryptedFileRaw(export, callback, context);
+	TRACE("Leave ReadEncryptedFileRaw\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_ReadEncryptedFileRaw(void);  /* ../dlls/advapi32/crypt.c:2334 */
@@ -7046,10 +7637,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ReadEncryptedFileRaw,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_ReadEventLogA(HANDLE  hEventLog, DWORD  dwReadFlags, DWORD  dwRecordOffset, LPVOID  lpBuffer, DWORD  nNumberOfBytesToRead, DWORD*  pnBytesRead, DWORD*  pnMinNumberOfBytesNeeded) /* ../dlls/advapi32/eventlog.c:572 */
+WINAPI BOOL wine32b_advapi32_ReadEventLogA(HANDLE  hEventLog, DWORD  dwReadFlags, DWORD  dwRecordOffset, LPVOID  lpBuffer, DWORD  nNumberOfBytesToRead, DWORD*  pnBytesRead, DWORD*  pnMinNumberOfBytesNeeded) /* ../dlls/advapi32/eventlog.c:572 */
 {
+	BOOL return_value;
 	TRACE("Enter ReadEventLogA\n");
-	return pReadEventLogA(hEventLog, dwReadFlags, dwRecordOffset, lpBuffer, nNumberOfBytesToRead, pnBytesRead, pnMinNumberOfBytesNeeded);
+	return_value = pReadEventLogA(hEventLog, dwReadFlags, dwRecordOffset, lpBuffer, nNumberOfBytesToRead, pnBytesRead, pnMinNumberOfBytesNeeded);
+	TRACE("Leave ReadEventLogA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_ReadEventLogA(void);  /* ../dlls/advapi32/eventlog.c:572 */
@@ -7074,10 +7668,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ReadEventLogA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_ReadEventLogW(HANDLE  hEventLog, DWORD  dwReadFlags, DWORD  dwRecordOffset, LPVOID  lpBuffer, DWORD  nNumberOfBytesToRead, DWORD*  pnBytesRead, DWORD*  pnMinNumberOfBytesNeeded) /* ../dlls/advapi32/eventlog.c:587 */
+WINAPI BOOL wine32b_advapi32_ReadEventLogW(HANDLE  hEventLog, DWORD  dwReadFlags, DWORD  dwRecordOffset, LPVOID  lpBuffer, DWORD  nNumberOfBytesToRead, DWORD*  pnBytesRead, DWORD*  pnMinNumberOfBytesNeeded) /* ../dlls/advapi32/eventlog.c:587 */
 {
+	BOOL return_value;
 	TRACE("Enter ReadEventLogW\n");
-	return pReadEventLogW(hEventLog, dwReadFlags, dwRecordOffset, lpBuffer, nNumberOfBytesToRead, pnBytesRead, pnMinNumberOfBytesNeeded);
+	return_value = pReadEventLogW(hEventLog, dwReadFlags, dwRecordOffset, lpBuffer, nNumberOfBytesToRead, pnBytesRead, pnMinNumberOfBytesNeeded);
+	TRACE("Leave ReadEventLogW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_ReadEventLogW(void);  /* ../dlls/advapi32/eventlog.c:587 */
@@ -7102,10 +7699,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ReadEventLogW,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegConnectRegistryA(LPCSTR  machine, HKEY  hkey, PHKEY  reskey) /* ../dlls/advapi32/registry.c:588 */
+WINAPI LSTATUS wine32b_advapi32_RegConnectRegistryA(LPCSTR  machine, HKEY  hkey, PHKEY  reskey) /* ../dlls/advapi32/registry.c:588 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegConnectRegistryA\n");
-	return pRegConnectRegistryA(machine, hkey, reskey);
+	return_value = pRegConnectRegistryA(machine, hkey, reskey);
+	TRACE("Leave RegConnectRegistryA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegConnectRegistryA(void);  /* ../dlls/advapi32/registry.c:588 */
@@ -7129,10 +7729,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegConnectRegistryA,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegConnectRegistryW(LPCWSTR  lpMachineName, HKEY  hKey, PHKEY  phkResult) /* ../dlls/advapi32/registry.c:548 */
+WINAPI LSTATUS wine32b_advapi32_RegConnectRegistryW(LPCWSTR  lpMachineName, HKEY  hKey, PHKEY  phkResult) /* ../dlls/advapi32/registry.c:548 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegConnectRegistryW\n");
-	return pRegConnectRegistryW(lpMachineName, hKey, phkResult);
+	return_value = pRegConnectRegistryW(lpMachineName, hKey, phkResult);
+	TRACE("Leave RegConnectRegistryW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegConnectRegistryW(void);  /* ../dlls/advapi32/registry.c:548 */
@@ -7156,10 +7759,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegConnectRegistryW,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegCopyTreeA(HKEY  hsrc, char*  subkey, HKEY  hdst) /* ../dlls/advapi32/registry.c:625 */
+WINAPI LSTATUS wine32b_advapi32_RegCopyTreeA(HKEY  hsrc, char*  subkey, HKEY  hdst) /* ../dlls/advapi32/registry.c:625 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegCopyTreeA\n");
-	return pRegCopyTreeA(hsrc, subkey, hdst);
+	return_value = pRegCopyTreeA(hsrc, subkey, hdst);
+	TRACE("Leave RegCopyTreeA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegCopyTreeA(void);  /* ../dlls/advapi32/registry.c:625 */
@@ -7183,10 +7789,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegCopyTreeA,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegCreateKeyA(HKEY  hkey, LPCSTR  lpSubKey, PHKEY  phkResult) /* ../dlls/advapi32/registry.c:84 */
+WINAPI LSTATUS wine32b_advapi32_RegCreateKeyA(HKEY  hkey, LPCSTR  lpSubKey, PHKEY  phkResult) /* ../dlls/advapi32/registry.c:84 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegCreateKeyA\n");
-	return pRegCreateKeyA(hkey, lpSubKey, phkResult);
+	return_value = pRegCreateKeyA(hkey, lpSubKey, phkResult);
+	TRACE("Leave RegCreateKeyA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegCreateKeyA(void);  /* ../dlls/advapi32/registry.c:84 */
@@ -7210,10 +7819,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegCreateKeyA,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegCreateKeyTransactedA(HKEY  hkey, LPCSTR  name, DWORD  reserved, LPSTR  class, DWORD  options, REGSAM  access, SECURITY_ATTRIBUTES*  sa, PHKEY  retkey, LPDWORD  dispos, HANDLE  transaction, PVOID  reserved2) /* ../dlls/advapi32/registry.c:107 */
+WINAPI LSTATUS wine32b_advapi32_RegCreateKeyTransactedA(HKEY  hkey, LPCSTR  name, DWORD  reserved, LPSTR  class, DWORD  options, REGSAM  access, SECURITY_ATTRIBUTES*  sa, PHKEY  retkey, LPDWORD  dispos, HANDLE  transaction, PVOID  reserved2) /* ../dlls/advapi32/registry.c:107 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegCreateKeyTransactedA\n");
-	return pRegCreateKeyTransactedA(hkey, name, reserved, class, options, access, sa, retkey, dispos, transaction, reserved2);
+	return_value = pRegCreateKeyTransactedA(hkey, name, reserved, class, options, access, sa, retkey, dispos, transaction, reserved2);
+	TRACE("Leave RegCreateKeyTransactedA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegCreateKeyTransactedA(void);  /* ../dlls/advapi32/registry.c:107 */
@@ -7238,10 +7850,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegCreateKeyTransactedA,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegCreateKeyTransactedW(HKEY  hkey, LPCWSTR  name, DWORD  reserved, LPWSTR  class, DWORD  options, REGSAM  access, SECURITY_ATTRIBUTES*  sa, PHKEY  retkey, LPDWORD  dispos, HANDLE  transaction, PVOID  reserved2) /* ../dlls/advapi32/registry.c:94 */
+WINAPI LSTATUS wine32b_advapi32_RegCreateKeyTransactedW(HKEY  hkey, LPCWSTR  name, DWORD  reserved, LPWSTR  class, DWORD  options, REGSAM  access, SECURITY_ATTRIBUTES*  sa, PHKEY  retkey, LPDWORD  dispos, HANDLE  transaction, PVOID  reserved2) /* ../dlls/advapi32/registry.c:94 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegCreateKeyTransactedW\n");
-	return pRegCreateKeyTransactedW(hkey, name, reserved, class, options, access, sa, retkey, dispos, transaction, reserved2);
+	return_value = pRegCreateKeyTransactedW(hkey, name, reserved, class, options, access, sa, retkey, dispos, transaction, reserved2);
+	TRACE("Leave RegCreateKeyTransactedW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegCreateKeyTransactedW(void);  /* ../dlls/advapi32/registry.c:94 */
@@ -7266,10 +7881,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegCreateKeyTransactedW,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegCreateKeyW(HKEY  hkey, LPCWSTR  lpSubKey, PHKEY  phkResult) /* ../dlls/advapi32/registry.c:72 */
+WINAPI LSTATUS wine32b_advapi32_RegCreateKeyW(HKEY  hkey, LPCWSTR  lpSubKey, PHKEY  phkResult) /* ../dlls/advapi32/registry.c:72 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegCreateKeyW\n");
-	return pRegCreateKeyW(hkey, lpSubKey, phkResult);
+	return_value = pRegCreateKeyW(hkey, lpSubKey, phkResult);
+	TRACE("Leave RegCreateKeyW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegCreateKeyW(void);  /* ../dlls/advapi32/registry.c:72 */
@@ -7293,10 +7911,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegCreateKeyW,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegDeleteKeyA(HKEY  hkey, LPCSTR  name) /* ../dlls/advapi32/registry.c:340 */
+WINAPI LSTATUS wine32b_advapi32_RegDeleteKeyA(HKEY  hkey, LPCSTR  name) /* ../dlls/advapi32/registry.c:340 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegDeleteKeyA\n");
-	return pRegDeleteKeyA(hkey, name);
+	return_value = pRegDeleteKeyA(hkey, name);
+	TRACE("Leave RegDeleteKeyA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegDeleteKeyA(void);  /* ../dlls/advapi32/registry.c:340 */
@@ -7319,10 +7940,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegDeleteKeyA,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegDeleteKeyW(HKEY  hkey, LPCWSTR  name) /* ../dlls/advapi32/registry.c:316 */
+WINAPI LSTATUS wine32b_advapi32_RegDeleteKeyW(HKEY  hkey, LPCWSTR  name) /* ../dlls/advapi32/registry.c:316 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegDeleteKeyW\n");
-	return pRegDeleteKeyW(hkey, name);
+	return_value = pRegDeleteKeyW(hkey, name);
+	TRACE("Leave RegDeleteKeyW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegDeleteKeyW(void);  /* ../dlls/advapi32/registry.c:316 */
@@ -7345,10 +7969,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegDeleteKeyW,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegDisablePredefinedCache(void) /* ../dlls/advapi32/registry.c:615 */
+WINAPI LSTATUS wine32b_advapi32_RegDisablePredefinedCache(void) /* ../dlls/advapi32/registry.c:615 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegDisablePredefinedCache\n");
-	return pRegDisablePredefinedCache();
+	return_value = pRegDisablePredefinedCache();
+	TRACE("Leave RegDisablePredefinedCache\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegDisablePredefinedCache(void);  /* ../dlls/advapi32/registry.c:615 */
@@ -7369,10 +7996,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegDisablePredefinedCache,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_advapi32_RegDisableReflectionKey(HKEY  base) /* ../dlls/advapi32/registry.c:642 */
+WINAPI LONG wine32b_advapi32_RegDisableReflectionKey(HKEY  base) /* ../dlls/advapi32/registry.c:642 */
 {
+	LONG return_value;
 	TRACE("Enter RegDisableReflectionKey\n");
-	return pRegDisableReflectionKey(base);
+	return_value = pRegDisableReflectionKey(base);
+	TRACE("Leave RegDisableReflectionKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegDisableReflectionKey(void);  /* ../dlls/advapi32/registry.c:642 */
@@ -7394,10 +8024,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegDisableReflectionKey,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegEnumKeyA(HKEY  hkey, DWORD  index, LPSTR  name, DWORD  name_len) /* ../dlls/advapi32/registry.c:191 */
+WINAPI LSTATUS wine32b_advapi32_RegEnumKeyA(HKEY  hkey, DWORD  index, LPSTR  name, DWORD  name_len) /* ../dlls/advapi32/registry.c:191 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegEnumKeyA\n");
-	return pRegEnumKeyA(hkey, index, name, name_len);
+	return_value = pRegEnumKeyA(hkey, index, name, name_len);
+	TRACE("Leave RegEnumKeyA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegEnumKeyA(void);  /* ../dlls/advapi32/registry.c:191 */
@@ -7422,10 +8055,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegEnumKeyA,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegEnumKeyW(HKEY  hkey, DWORD  index, LPWSTR  name, DWORD  name_len) /* ../dlls/advapi32/registry.c:180 */
+WINAPI LSTATUS wine32b_advapi32_RegEnumKeyW(HKEY  hkey, DWORD  index, LPWSTR  name, DWORD  name_len) /* ../dlls/advapi32/registry.c:180 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegEnumKeyW\n");
-	return pRegEnumKeyW(hkey, index, name, name_len);
+	return_value = pRegEnumKeyW(hkey, index, name, name_len);
+	TRACE("Leave RegEnumKeyW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegEnumKeyW(void);  /* ../dlls/advapi32/registry.c:180 */
@@ -7450,10 +8086,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegEnumKeyW,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegOpenKeyA(HKEY  hkey, LPCSTR  name, PHKEY  retkey) /* ../dlls/advapi32/registry.c:150 */
+WINAPI LSTATUS wine32b_advapi32_RegOpenKeyA(HKEY  hkey, LPCSTR  name, PHKEY  retkey) /* ../dlls/advapi32/registry.c:150 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegOpenKeyA\n");
-	return pRegOpenKeyA(hkey, name, retkey);
+	return_value = pRegOpenKeyA(hkey, name, retkey);
+	TRACE("Leave RegOpenKeyA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegOpenKeyA(void);  /* ../dlls/advapi32/registry.c:150 */
@@ -7477,10 +8116,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegOpenKeyA,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegOpenKeyW(HKEY  hkey, LPCWSTR  name, PHKEY  retkey) /* ../dlls/advapi32/registry.c:122 */
+WINAPI LSTATUS wine32b_advapi32_RegOpenKeyW(HKEY  hkey, LPCWSTR  name, PHKEY  retkey) /* ../dlls/advapi32/registry.c:122 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegOpenKeyW\n");
-	return pRegOpenKeyW(hkey, name, retkey);
+	return_value = pRegOpenKeyW(hkey, name, retkey);
+	TRACE("Leave RegOpenKeyW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegOpenKeyW(void);  /* ../dlls/advapi32/registry.c:122 */
@@ -7504,10 +8146,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegOpenKeyW,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegOverridePredefKey(HKEY  hkey, HKEY  override) /* ../dlls/advapi32/registry.c:52 */
+WINAPI LSTATUS wine32b_advapi32_RegOverridePredefKey(HKEY  hkey, HKEY  override) /* ../dlls/advapi32/registry.c:52 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegOverridePredefKey\n");
-	return pRegOverridePredefKey(hkey, override);
+	return_value = pRegOverridePredefKey(hkey, override);
+	TRACE("Leave RegOverridePredefKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegOverridePredefKey(void);  /* ../dlls/advapi32/registry.c:52 */
@@ -7530,10 +8175,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegOverridePredefKey,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegQueryMultipleValuesA(HKEY  hkey, PVALENTA  val_list, DWORD  num_vals, LPSTR  lpValueBuf, LPDWORD  ldwTotsize) /* ../dlls/advapi32/registry.c:214 */
+WINAPI LSTATUS wine32b_advapi32_RegQueryMultipleValuesA(HKEY  hkey, PVALENTA  val_list, DWORD  num_vals, LPSTR  lpValueBuf, LPDWORD  ldwTotsize) /* ../dlls/advapi32/registry.c:214 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegQueryMultipleValuesA\n");
-	return pRegQueryMultipleValuesA(hkey, val_list, num_vals, lpValueBuf, ldwTotsize);
+	return_value = pRegQueryMultipleValuesA(hkey, val_list, num_vals, lpValueBuf, ldwTotsize);
+	TRACE("Leave RegQueryMultipleValuesA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegQueryMultipleValuesA(void);  /* ../dlls/advapi32/registry.c:214 */
@@ -7558,10 +8206,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegQueryMultipleValuesA,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegQueryMultipleValuesW(HKEY  hkey, PVALENTW  val_list, DWORD  num_vals, LPWSTR  lpValueBuf, LPDWORD  ldwTotsize) /* ../dlls/advapi32/registry.c:260 */
+WINAPI LSTATUS wine32b_advapi32_RegQueryMultipleValuesW(HKEY  hkey, PVALENTW  val_list, DWORD  num_vals, LPWSTR  lpValueBuf, LPDWORD  ldwTotsize) /* ../dlls/advapi32/registry.c:260 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegQueryMultipleValuesW\n");
-	return pRegQueryMultipleValuesW(hkey, val_list, num_vals, lpValueBuf, ldwTotsize);
+	return_value = pRegQueryMultipleValuesW(hkey, val_list, num_vals, lpValueBuf, ldwTotsize);
+	TRACE("Leave RegQueryMultipleValuesW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegQueryMultipleValuesW(void);  /* ../dlls/advapi32/registry.c:260 */
@@ -7586,10 +8237,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegQueryMultipleValuesW,
 	"ret \n"
 )
 
-extern WINAPI LONG wine32b_advapi32_RegQueryReflectionKey(HKEY  hkey, BOOL*  is_reflection_disabled) /* ../dlls/advapi32/registry.c:303 */
+WINAPI LONG wine32b_advapi32_RegQueryReflectionKey(HKEY  hkey, BOOL*  is_reflection_disabled) /* ../dlls/advapi32/registry.c:303 */
 {
+	LONG return_value;
 	TRACE("Enter RegQueryReflectionKey\n");
-	return pRegQueryReflectionKey(hkey, is_reflection_disabled);
+	return_value = pRegQueryReflectionKey(hkey, is_reflection_disabled);
+	TRACE("Leave RegQueryReflectionKey\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegQueryReflectionKey(void);  /* ../dlls/advapi32/registry.c:303 */
@@ -7612,10 +8266,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegQueryReflectionKey,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegQueryValueA(HKEY  hkey, LPCSTR  name, LPSTR  data, LPLONG  count) /* ../dlls/advapi32/registry.c:431 */
+WINAPI LSTATUS wine32b_advapi32_RegQueryValueA(HKEY  hkey, LPCSTR  name, LPSTR  data, LPLONG  count) /* ../dlls/advapi32/registry.c:431 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegQueryValueA\n");
-	return pRegQueryValueA(hkey, name, data, count);
+	return_value = pRegQueryValueA(hkey, name, data, count);
+	TRACE("Leave RegQueryValueA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegQueryValueA(void);  /* ../dlls/advapi32/registry.c:431 */
@@ -7640,10 +8297,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegQueryValueA,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegQueryValueW(HKEY  hkey, LPCWSTR  name, LPWSTR  data, LPLONG  count) /* ../dlls/advapi32/registry.c:402 */
+WINAPI LSTATUS wine32b_advapi32_RegQueryValueW(HKEY  hkey, LPCWSTR  name, LPWSTR  data, LPLONG  count) /* ../dlls/advapi32/registry.c:402 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegQueryValueW\n");
-	return pRegQueryValueW(hkey, name, data, count);
+	return_value = pRegQueryValueW(hkey, name, data, count);
+	TRACE("Leave RegQueryValueW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegQueryValueW(void);  /* ../dlls/advapi32/registry.c:402 */
@@ -7668,10 +8328,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegQueryValueW,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegReplaceKeyA(HKEY  hkey, LPCSTR  lpSubKey, LPCSTR  lpNewFile, LPCSTR  lpOldFile) /* ../dlls/advapi32/registry.c:515 */
+WINAPI LSTATUS wine32b_advapi32_RegReplaceKeyA(HKEY  hkey, LPCSTR  lpSubKey, LPCSTR  lpNewFile, LPCSTR  lpOldFile) /* ../dlls/advapi32/registry.c:515 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegReplaceKeyA\n");
-	return pRegReplaceKeyA(hkey, lpSubKey, lpNewFile, lpOldFile);
+	return_value = pRegReplaceKeyA(hkey, lpSubKey, lpNewFile, lpOldFile);
+	TRACE("Leave RegReplaceKeyA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegReplaceKeyA(void);  /* ../dlls/advapi32/registry.c:515 */
@@ -7696,10 +8359,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegReplaceKeyA,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegReplaceKeyW(HKEY  hkey, LPCWSTR  lpSubKey, LPCWSTR  lpNewFile, LPCWSTR  lpOldFile) /* ../dlls/advapi32/registry.c:501 */
+WINAPI LSTATUS wine32b_advapi32_RegReplaceKeyW(HKEY  hkey, LPCWSTR  lpSubKey, LPCWSTR  lpNewFile, LPCWSTR  lpOldFile) /* ../dlls/advapi32/registry.c:501 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegReplaceKeyW\n");
-	return pRegReplaceKeyW(hkey, lpSubKey, lpNewFile, lpOldFile);
+	return_value = pRegReplaceKeyW(hkey, lpSubKey, lpNewFile, lpOldFile);
+	TRACE("Leave RegReplaceKeyW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegReplaceKeyW(void);  /* ../dlls/advapi32/registry.c:501 */
@@ -7724,10 +8390,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegReplaceKeyW,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegSaveKeyA(HKEY  hkey, LPCSTR  file, LPSECURITY_ATTRIBUTES  sa) /* ../dlls/advapi32/registry.c:480 */
+WINAPI LSTATUS wine32b_advapi32_RegSaveKeyA(HKEY  hkey, LPCSTR  file, LPSECURITY_ATTRIBUTES  sa) /* ../dlls/advapi32/registry.c:480 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegSaveKeyA\n");
-	return pRegSaveKeyA(hkey, file, sa);
+	return_value = pRegSaveKeyA(hkey, file, sa);
+	TRACE("Leave RegSaveKeyA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegSaveKeyA(void);  /* ../dlls/advapi32/registry.c:480 */
@@ -7751,10 +8420,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegSaveKeyA,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegSaveKeyW(HKEY  hkey, LPCWSTR  file, LPSECURITY_ATTRIBUTES  sa) /* ../dlls/advapi32/registry.c:469 */
+WINAPI LSTATUS wine32b_advapi32_RegSaveKeyW(HKEY  hkey, LPCWSTR  file, LPSECURITY_ATTRIBUTES  sa) /* ../dlls/advapi32/registry.c:469 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegSaveKeyW\n");
-	return pRegSaveKeyW(hkey, file, sa);
+	return_value = pRegSaveKeyW(hkey, file, sa);
+	TRACE("Leave RegSaveKeyW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegSaveKeyW(void);  /* ../dlls/advapi32/registry.c:469 */
@@ -7778,10 +8450,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegSaveKeyW,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegSetValueA(HKEY  hkey, LPCSTR  subkey, DWORD  type, LPCSTR  data, DWORD  count) /* ../dlls/advapi32/registry.c:376 */
+WINAPI LSTATUS wine32b_advapi32_RegSetValueA(HKEY  hkey, LPCSTR  subkey, DWORD  type, LPCSTR  data, DWORD  count) /* ../dlls/advapi32/registry.c:376 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegSetValueA\n");
-	return pRegSetValueA(hkey, subkey, type, data, count);
+	return_value = pRegSetValueA(hkey, subkey, type, data, count);
+	TRACE("Leave RegSetValueA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegSetValueA(void);  /* ../dlls/advapi32/registry.c:376 */
@@ -7806,10 +8481,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegSetValueA,
 	"ret \n"
 )
 
-extern WINAPI LSTATUS wine32b_advapi32_RegSetValueW(HKEY  hkey, LPCWSTR  subkey, DWORD  type, LPCWSTR  data, DWORD  count) /* ../dlls/advapi32/registry.c:362 */
+WINAPI LSTATUS wine32b_advapi32_RegSetValueW(HKEY  hkey, LPCWSTR  subkey, DWORD  type, LPCWSTR  data, DWORD  count) /* ../dlls/advapi32/registry.c:362 */
 {
+	LSTATUS return_value;
 	TRACE("Enter RegSetValueW\n");
-	return pRegSetValueW(hkey, subkey, type, data, count);
+	return_value = pRegSetValueW(hkey, subkey, type, data, count);
+	TRACE("Leave RegSetValueW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegSetValueW(void);  /* ../dlls/advapi32/registry.c:362 */
@@ -7834,10 +8512,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegSetValueW,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_advapi32_RegisterEventSourceA(LPCSTR  lpUNCServerName, LPCSTR  lpSourceName) /* ../dlls/advapi32/eventlog.c:611 */
+WINAPI HANDLE wine32b_advapi32_RegisterEventSourceA(LPCSTR  lpUNCServerName, LPCSTR  lpSourceName) /* ../dlls/advapi32/eventlog.c:611 */
 {
+	HANDLE return_value;
 	TRACE("Enter RegisterEventSourceA\n");
-	return pRegisterEventSourceA(lpUNCServerName, lpSourceName);
+	return_value = pRegisterEventSourceA(lpUNCServerName, lpSourceName);
+	TRACE("Leave RegisterEventSourceA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegisterEventSourceA(void);  /* ../dlls/advapi32/eventlog.c:611 */
@@ -7860,10 +8541,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegisterEventSourceA,
 	"ret \n"
 )
 
-extern WINAPI HANDLE wine32b_advapi32_RegisterEventSourceW(LPCWSTR  lpUNCServerName, LPCWSTR  lpSourceName) /* ../dlls/advapi32/eventlog.c:632 */
+WINAPI HANDLE wine32b_advapi32_RegisterEventSourceW(LPCWSTR  lpUNCServerName, LPCWSTR  lpSourceName) /* ../dlls/advapi32/eventlog.c:632 */
 {
+	HANDLE return_value;
 	TRACE("Enter RegisterEventSourceW\n");
-	return pRegisterEventSourceW(lpUNCServerName, lpSourceName);
+	return_value = pRegisterEventSourceW(lpUNCServerName, lpSourceName);
+	TRACE("Leave RegisterEventSourceW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_RegisterEventSourceW(void);  /* ../dlls/advapi32/eventlog.c:632 */
@@ -7886,10 +8570,11 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegisterEventSourceW,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_advapi32_RegisterWaitChainCOMCallback(PCOGETCALLSTATE  call_state_cb, PCOGETACTIVATIONSTATE  activation_state_cb) /* ../dlls/advapi32/advapi.c:347 */
+WINAPI void wine32b_advapi32_RegisterWaitChainCOMCallback(PCOGETCALLSTATE  call_state_cb, PCOGETACTIVATIONSTATE  activation_state_cb) /* ../dlls/advapi32/advapi.c:347 */
 {
 	TRACE("Enter RegisterWaitChainCOMCallback\n");
-	return pRegisterWaitChainCOMCallback(call_state_cb, activation_state_cb);
+	pRegisterWaitChainCOMCallback(call_state_cb, activation_state_cb);
+	TRACE("Leave RegisterWaitChainCOMCallback\n");
 }
 
 extern WINAPI void wine32a_advapi32_RegisterWaitChainCOMCallback(void);  /* ../dlls/advapi32/advapi.c:347 */
@@ -7912,10 +8597,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_RegisterWaitChainCOMCallback,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_ReportEventA(HANDLE  hEventLog, WORD  wType, WORD  wCategory, DWORD  dwEventID, PSID  lpUserSid, WORD  wNumStrings, DWORD  dwDataSize, LPCSTR*  lpStrings, LPVOID  lpRawData) /* ../dlls/advapi32/eventlog.c:663 */
+WINAPI BOOL wine32b_advapi32_ReportEventA(HANDLE  hEventLog, WORD  wType, WORD  wCategory, DWORD  dwEventID, PSID  lpUserSid, WORD  wNumStrings, DWORD  dwDataSize, LPCSTR*  lpStrings, LPVOID  lpRawData) /* ../dlls/advapi32/eventlog.c:663 */
 {
+	BOOL return_value;
 	TRACE("Enter ReportEventA\n");
-	return pReportEventA(hEventLog, wType, wCategory, dwEventID, lpUserSid, wNumStrings, dwDataSize, lpStrings, lpRawData);
+	return_value = pReportEventA(hEventLog, wType, wCategory, dwEventID, lpUserSid, wNumStrings, dwDataSize, lpStrings, lpRawData);
+	TRACE("Leave ReportEventA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_ReportEventA(void);  /* ../dlls/advapi32/eventlog.c:663 */
@@ -7940,10 +8628,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ReportEventA,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_ReportEventW(HANDLE  hEventLog, WORD  wType, WORD  wCategory, DWORD  dwEventID, PSID  lpUserSid, WORD  wNumStrings, DWORD  dwDataSize, LPCWSTR*  lpStrings, LPVOID  lpRawData) /* ../dlls/advapi32/eventlog.c:696 */
+WINAPI BOOL wine32b_advapi32_ReportEventW(HANDLE  hEventLog, WORD  wType, WORD  wCategory, DWORD  dwEventID, PSID  lpUserSid, WORD  wNumStrings, DWORD  dwDataSize, LPCWSTR*  lpStrings, LPVOID  lpRawData) /* ../dlls/advapi32/eventlog.c:696 */
 {
+	BOOL return_value;
 	TRACE("Enter ReportEventW\n");
-	return pReportEventW(hEventLog, wType, wCategory, dwEventID, lpUserSid, wNumStrings, dwDataSize, lpStrings, lpRawData);
+	return_value = pReportEventW(hEventLog, wType, wCategory, dwEventID, lpUserSid, wNumStrings, dwDataSize, lpStrings, lpRawData);
+	TRACE("Leave ReportEventW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_ReportEventW(void);  /* ../dlls/advapi32/eventlog.c:696 */
@@ -7968,10 +8659,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_ReportEventW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_SaferCloseLevel(SAFER_LEVEL_HANDLE  handle) /* ../dlls/advapi32/security.c:4454 */
+WINAPI BOOL wine32b_advapi32_SaferCloseLevel(SAFER_LEVEL_HANDLE  handle) /* ../dlls/advapi32/security.c:4454 */
 {
+	BOOL return_value;
 	TRACE("Enter SaferCloseLevel\n");
-	return pSaferCloseLevel(handle);
+	return_value = pSaferCloseLevel(handle);
+	TRACE("Leave SaferCloseLevel\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SaferCloseLevel(void);  /* ../dlls/advapi32/security.c:4454 */
@@ -7993,10 +8687,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SaferCloseLevel,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_SaferComputeTokenFromLevel(SAFER_LEVEL_HANDLE  handle, HANDLE  token, PHANDLE  access_token, DWORD  flags, LPVOID  reserved) /* ../dlls/advapi32/security.c:4442 */
+WINAPI BOOL wine32b_advapi32_SaferComputeTokenFromLevel(SAFER_LEVEL_HANDLE  handle, HANDLE  token, PHANDLE  access_token, DWORD  flags, LPVOID  reserved) /* ../dlls/advapi32/security.c:4442 */
 {
+	BOOL return_value;
 	TRACE("Enter SaferComputeTokenFromLevel\n");
-	return pSaferComputeTokenFromLevel(handle, token, access_token, flags, reserved);
+	return_value = pSaferComputeTokenFromLevel(handle, token, access_token, flags, reserved);
+	TRACE("Leave SaferComputeTokenFromLevel\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SaferComputeTokenFromLevel(void);  /* ../dlls/advapi32/security.c:4442 */
@@ -8021,10 +8718,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SaferComputeTokenFromLevel,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_SaferCreateLevel(DWORD  ScopeId, DWORD  LevelId, DWORD  OpenFlags, SAFER_LEVEL_HANDLE*  LevelHandle, LPVOID  lpReserved) /* ../dlls/advapi32/security.c:4430 */
+WINAPI BOOL wine32b_advapi32_SaferCreateLevel(DWORD  ScopeId, DWORD  LevelId, DWORD  OpenFlags, SAFER_LEVEL_HANDLE*  LevelHandle, LPVOID  lpReserved) /* ../dlls/advapi32/security.c:4430 */
 {
+	BOOL return_value;
 	TRACE("Enter SaferCreateLevel\n");
-	return pSaferCreateLevel(ScopeId, LevelId, OpenFlags, LevelHandle, lpReserved);
+	return_value = pSaferCreateLevel(ScopeId, LevelId, OpenFlags, LevelHandle, lpReserved);
+	TRACE("Leave SaferCreateLevel\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SaferCreateLevel(void);  /* ../dlls/advapi32/security.c:4430 */
@@ -8049,10 +8749,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SaferCreateLevel,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_SaferGetPolicyInformation(DWORD  scope, SAFER_POLICY_INFO_CLASS  class, DWORD  size, PVOID  buffer, PDWORD  required, LPVOID  lpReserved) /* ../dlls/advapi32/security.c:4479 */
+WINAPI BOOL wine32b_advapi32_SaferGetPolicyInformation(DWORD  scope, SAFER_POLICY_INFO_CLASS  class, DWORD  size, PVOID  buffer, PDWORD  required, LPVOID  lpReserved) /* ../dlls/advapi32/security.c:4479 */
 {
+	BOOL return_value;
 	TRACE("Enter SaferGetPolicyInformation\n");
-	return pSaferGetPolicyInformation(scope, class, size, buffer, required, lpReserved);
+	return_value = pSaferGetPolicyInformation(scope, class, size, buffer, required, lpReserved);
+	TRACE("Leave SaferGetPolicyInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SaferGetPolicyInformation(void);  /* ../dlls/advapi32/security.c:4479 */
@@ -8077,10 +8780,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SaferGetPolicyInformation,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_SaferIdentifyLevel(DWORD  count, SAFER_CODE_PROPERTIES*  properties, SAFER_LEVEL_HANDLE*  handle, void*  reserved) /* ../dlls/advapi32/security.c:4489 */
+WINAPI BOOL wine32b_advapi32_SaferIdentifyLevel(DWORD  count, SAFER_CODE_PROPERTIES*  properties, SAFER_LEVEL_HANDLE*  handle, void*  reserved) /* ../dlls/advapi32/security.c:4489 */
 {
+	BOOL return_value;
 	TRACE("Enter SaferIdentifyLevel\n");
-	return pSaferIdentifyLevel(count, properties, handle, reserved);
+	return_value = pSaferIdentifyLevel(count, properties, handle, reserved);
+	TRACE("Leave SaferIdentifyLevel\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SaferIdentifyLevel(void);  /* ../dlls/advapi32/security.c:4489 */
@@ -8105,10 +8811,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SaferIdentifyLevel,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_SaferSetLevelInformation(SAFER_LEVEL_HANDLE  handle, SAFER_OBJECT_INFO_CLASS  infotype, LPVOID  buffer, DWORD  size) /* ../dlls/advapi32/security.c:4500 */
+WINAPI BOOL wine32b_advapi32_SaferSetLevelInformation(SAFER_LEVEL_HANDLE  handle, SAFER_OBJECT_INFO_CLASS  infotype, LPVOID  buffer, DWORD  size) /* ../dlls/advapi32/security.c:4500 */
 {
+	BOOL return_value;
 	TRACE("Enter SaferSetLevelInformation\n");
-	return pSaferSetLevelInformation(handle, infotype, buffer, size);
+	return_value = pSaferSetLevelInformation(handle, infotype, buffer, size);
+	TRACE("Leave SaferSetLevelInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SaferSetLevelInformation(void);  /* ../dlls/advapi32/security.c:4500 */
@@ -8133,10 +8842,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SaferSetLevelInformation,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_SetEntriesInAclA(ULONG  count, PEXPLICIT_ACCESSA  pEntries, PACL  OldAcl, PACL*  NewAcl) /* ../dlls/advapi32/security.c:2349 */
+WINAPI DWORD wine32b_advapi32_SetEntriesInAclA(ULONG  count, PEXPLICIT_ACCESSA  pEntries, PACL  OldAcl, PACL*  NewAcl) /* ../dlls/advapi32/security.c:2349 */
 {
+	DWORD return_value;
 	TRACE("Enter SetEntriesInAclA\n");
-	return pSetEntriesInAclA(count, pEntries, OldAcl, NewAcl);
+	return_value = pSetEntriesInAclA(count, pEntries, OldAcl, NewAcl);
+	TRACE("Leave SetEntriesInAclA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SetEntriesInAclA(void);  /* ../dlls/advapi32/security.c:2349 */
@@ -8161,10 +8873,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SetEntriesInAclA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_SetEntriesInAclW(ULONG  count, PEXPLICIT_ACCESSW  pEntries, PACL  OldAcl, PACL*  NewAcl) /* ../dlls/advapi32/security.c:2407 */
+WINAPI DWORD wine32b_advapi32_SetEntriesInAclW(ULONG  count, PEXPLICIT_ACCESSW  pEntries, PACL  OldAcl, PACL*  NewAcl) /* ../dlls/advapi32/security.c:2407 */
 {
+	DWORD return_value;
 	TRACE("Enter SetEntriesInAclW\n");
-	return pSetEntriesInAclW(count, pEntries, OldAcl, NewAcl);
+	return_value = pSetEntriesInAclW(count, pEntries, OldAcl, NewAcl);
+	TRACE("Leave SetEntriesInAclW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SetEntriesInAclW(void);  /* ../dlls/advapi32/security.c:2407 */
@@ -8189,10 +8904,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SetEntriesInAclW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_SetFileSecurityA(LPCSTR  lpFileName, SECURITY_INFORMATION  RequestedInformation, PSECURITY_DESCRIPTOR  pSecurityDescriptor) /* ../dlls/advapi32/security.c:1295 */
+WINAPI BOOL wine32b_advapi32_SetFileSecurityA(LPCSTR  lpFileName, SECURITY_INFORMATION  RequestedInformation, PSECURITY_DESCRIPTOR  pSecurityDescriptor) /* ../dlls/advapi32/security.c:1295 */
 {
+	BOOL return_value;
 	TRACE("Enter SetFileSecurityA\n");
-	return pSetFileSecurityA(lpFileName, RequestedInformation, pSecurityDescriptor);
+	return_value = pSetFileSecurityA(lpFileName, RequestedInformation, pSecurityDescriptor);
+	TRACE("Leave SetFileSecurityA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SetFileSecurityA(void);  /* ../dlls/advapi32/security.c:1295 */
@@ -8216,10 +8934,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SetFileSecurityA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_SetNamedSecurityInfoA(LPSTR  pObjectName, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID  psidOwner, PSID  psidGroup, PACL  pDacl, PACL  pSacl) /* ../dlls/advapi32/security.c:2623 */
+WINAPI DWORD wine32b_advapi32_SetNamedSecurityInfoA(LPSTR  pObjectName, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID  psidOwner, PSID  psidGroup, PACL  pDacl, PACL  pSacl) /* ../dlls/advapi32/security.c:2623 */
 {
+	DWORD return_value;
 	TRACE("Enter SetNamedSecurityInfoA\n");
-	return pSetNamedSecurityInfoA(pObjectName, ObjectType, SecurityInfo, psidOwner, psidGroup, pDacl, pSacl);
+	return_value = pSetNamedSecurityInfoA(pObjectName, ObjectType, SecurityInfo, psidOwner, psidGroup, pDacl, pSacl);
+	TRACE("Leave SetNamedSecurityInfoA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SetNamedSecurityInfoA(void);  /* ../dlls/advapi32/security.c:2623 */
@@ -8244,10 +8965,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SetNamedSecurityInfoA,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_SetNamedSecurityInfoW(LPWSTR  pObjectName, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID  psidOwner, PSID  psidGroup, PACL  pDacl, PACL  pSacl) /* ../dlls/advapi32/security.c:2645 */
+WINAPI DWORD wine32b_advapi32_SetNamedSecurityInfoW(LPWSTR  pObjectName, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID  psidOwner, PSID  psidGroup, PACL  pDacl, PACL  pSacl) /* ../dlls/advapi32/security.c:2645 */
 {
+	DWORD return_value;
 	TRACE("Enter SetNamedSecurityInfoW\n");
-	return pSetNamedSecurityInfoW(pObjectName, ObjectType, SecurityInfo, psidOwner, psidGroup, pDacl, pSacl);
+	return_value = pSetNamedSecurityInfoW(pObjectName, ObjectType, SecurityInfo, psidOwner, psidGroup, pDacl, pSacl);
+	TRACE("Leave SetNamedSecurityInfoW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SetNamedSecurityInfoW(void);  /* ../dlls/advapi32/security.c:2645 */
@@ -8272,10 +8996,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SetNamedSecurityInfoW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_SetSecurityInfo(HANDLE  handle, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID  psidOwner, PSID  psidGroup, PACL  pDacl, PACL  pSacl) /* ../dlls/advapi32/security.c:4300 */
+WINAPI DWORD wine32b_advapi32_SetSecurityInfo(HANDLE  handle, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID  psidOwner, PSID  psidGroup, PACL  pDacl, PACL  pSacl) /* ../dlls/advapi32/security.c:4300 */
 {
+	DWORD return_value;
 	TRACE("Enter SetSecurityInfo\n");
-	return pSetSecurityInfo(handle, ObjectType, SecurityInfo, psidOwner, psidGroup, pDacl, pSacl);
+	return_value = pSetSecurityInfo(handle, ObjectType, SecurityInfo, psidOwner, psidGroup, pDacl, pSacl);
+	TRACE("Leave SetSecurityInfo\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SetSecurityInfo(void);  /* ../dlls/advapi32/security.c:4300 */
@@ -8300,10 +9027,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SetSecurityInfo,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_StartTraceA(PTRACEHANDLE  pSessionHandle, LPCSTR  SessionName, PEVENT_TRACE_PROPERTIES  Properties) /* ../dlls/advapi32/eventlog.c:749 */
+WINAPI ULONG wine32b_advapi32_StartTraceA(PTRACEHANDLE  pSessionHandle, LPCSTR  SessionName, PEVENT_TRACE_PROPERTIES  Properties) /* ../dlls/advapi32/eventlog.c:749 */
 {
+	ULONG return_value;
 	TRACE("Enter StartTraceA\n");
-	return pStartTraceA(pSessionHandle, SessionName, Properties);
+	return_value = pStartTraceA(pSessionHandle, SessionName, Properties);
+	TRACE("Leave StartTraceA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_StartTraceA(void);  /* ../dlls/advapi32/eventlog.c:749 */
@@ -8327,10 +9057,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_StartTraceA,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_StartTraceW(PTRACEHANDLE  pSessionHandle, LPCWSTR  SessionName, PEVENT_TRACE_PROPERTIES  Properties) /* ../dlls/advapi32/eventlog.c:736 */
+WINAPI ULONG wine32b_advapi32_StartTraceW(PTRACEHANDLE  pSessionHandle, LPCWSTR  SessionName, PEVENT_TRACE_PROPERTIES  Properties) /* ../dlls/advapi32/eventlog.c:736 */
 {
+	ULONG return_value;
 	TRACE("Enter StartTraceW\n");
-	return pStartTraceW(pSessionHandle, SessionName, Properties);
+	return_value = pStartTraceW(pSessionHandle, SessionName, Properties);
+	TRACE("Leave StartTraceW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_StartTraceW(void);  /* ../dlls/advapi32/eventlog.c:736 */
@@ -8354,10 +9087,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_StartTraceW,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_StopTraceA(TRACEHANDLE  session, LPCSTR  session_name, PEVENT_TRACE_PROPERTIES  properties) /* ../dlls/advapi32/eventlog.c:774 */
+WINAPI ULONG wine32b_advapi32_StopTraceA(TRACEHANDLE  session, LPCSTR  session_name, PEVENT_TRACE_PROPERTIES  properties) /* ../dlls/advapi32/eventlog.c:774 */
 {
+	ULONG return_value;
 	TRACE("Enter StopTraceA\n");
-	return pStopTraceA(session, session_name, properties);
+	return_value = pStopTraceA(session, session_name, properties);
+	TRACE("Leave StopTraceA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_StopTraceA(void);  /* ../dlls/advapi32/eventlog.c:774 */
@@ -8381,10 +9117,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_StopTraceA,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_StopTraceW(TRACEHANDLE  session, LPCWSTR  session_name, PEVENT_TRACE_PROPERTIES  properties) /* ../dlls/advapi32/eventlog.c:762 */
+WINAPI ULONG wine32b_advapi32_StopTraceW(TRACEHANDLE  session, LPCWSTR  session_name, PEVENT_TRACE_PROPERTIES  properties) /* ../dlls/advapi32/eventlog.c:762 */
 {
+	ULONG return_value;
 	TRACE("Enter StopTraceW\n");
-	return pStopTraceW(session, session_name, properties);
+	return_value = pStopTraceW(session, session_name, properties);
+	TRACE("Leave StopTraceW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_StopTraceW(void);  /* ../dlls/advapi32/eventlog.c:762 */
@@ -8408,10 +9147,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_StopTraceW,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_SynchronizeWindows31FilesAndWindowsNTRegistry(DWORD  x1, DWORD  x2, DWORD  x3, DWORD  x4) /* ../dlls/advapi32/security.c:1332 */
+WINAPI BOOL wine32b_advapi32_SynchronizeWindows31FilesAndWindowsNTRegistry(DWORD  x1, DWORD  x2, DWORD  x3, DWORD  x4) /* ../dlls/advapi32/security.c:1332 */
 {
+	BOOL return_value;
 	TRACE("Enter SynchronizeWindows31FilesAndWindowsNTRegistry\n");
-	return pSynchronizeWindows31FilesAndWindowsNTRegistry(x1, x2, x3, x4);
+	return_value = pSynchronizeWindows31FilesAndWindowsNTRegistry(x1, x2, x3, x4);
+	TRACE("Leave SynchronizeWindows31FilesAndWindowsNTRegistry\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SynchronizeWindows31FilesAndWindowsNTRegistry(void);  /* ../dlls/advapi32/security.c:1332 */
@@ -8436,10 +9178,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SynchronizeWindows31FilesAndWindowsNTRegistry
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_SystemFunction001(BYTE*  data, BYTE*  key, LPBYTE  output) /* ../dlls/advapi32/crypt_lmhash.c:116 */
+WINAPI NTSTATUS wine32b_advapi32_SystemFunction001(BYTE*  data, BYTE*  key, LPBYTE  output) /* ../dlls/advapi32/crypt_lmhash.c:116 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter SystemFunction001\n");
-	return pSystemFunction001(data, key, output);
+	return_value = pSystemFunction001(data, key, output);
+	TRACE("Leave SystemFunction001\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SystemFunction001(void);  /* ../dlls/advapi32/crypt_lmhash.c:116 */
@@ -8463,10 +9208,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SystemFunction001,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_SystemFunction002(BYTE*  data, BYTE*  key, LPBYTE  output) /* ../dlls/advapi32/crypt_lmhash.c:139 */
+WINAPI NTSTATUS wine32b_advapi32_SystemFunction002(BYTE*  data, BYTE*  key, LPBYTE  output) /* ../dlls/advapi32/crypt_lmhash.c:139 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter SystemFunction002\n");
-	return pSystemFunction002(data, key, output);
+	return_value = pSystemFunction002(data, key, output);
+	TRACE("Leave SystemFunction002\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SystemFunction002(void);  /* ../dlls/advapi32/crypt_lmhash.c:139 */
@@ -8490,10 +9238,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SystemFunction002,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_SystemFunction003(BYTE*  key, LPBYTE  output) /* ../dlls/advapi32/crypt_lmhash.c:161 */
+WINAPI NTSTATUS wine32b_advapi32_SystemFunction003(BYTE*  key, LPBYTE  output) /* ../dlls/advapi32/crypt_lmhash.c:161 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter SystemFunction003\n");
-	return pSystemFunction003(key, output);
+	return_value = pSystemFunction003(key, output);
+	TRACE("Leave SystemFunction003\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SystemFunction003(void);  /* ../dlls/advapi32/crypt_lmhash.c:161 */
@@ -8516,10 +9267,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SystemFunction003,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_SystemFunction004(struct ustring*  in, struct ustring*  key, struct ustring*  out) /* ../dlls/advapi32/crypt_lmhash.c:188 */
+WINAPI NTSTATUS wine32b_advapi32_SystemFunction004(struct ustring*  in, struct ustring*  key, struct ustring*  out) /* ../dlls/advapi32/crypt_lmhash.c:188 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter SystemFunction004\n");
-	return pSystemFunction004(in, key, out);
+	return_value = pSystemFunction004(in, key, out);
+	TRACE("Leave SystemFunction004\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SystemFunction004(void);  /* ../dlls/advapi32/crypt_lmhash.c:188 */
@@ -8543,10 +9297,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SystemFunction004,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_SystemFunction005(struct ustring*  in, struct ustring*  key, struct ustring*  out) /* ../dlls/advapi32/crypt_lmhash.c:247 */
+WINAPI NTSTATUS wine32b_advapi32_SystemFunction005(struct ustring*  in, struct ustring*  key, struct ustring*  out) /* ../dlls/advapi32/crypt_lmhash.c:247 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter SystemFunction005\n");
-	return pSystemFunction005(in, key, out);
+	return_value = pSystemFunction005(in, key, out);
+	TRACE("Leave SystemFunction005\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SystemFunction005(void);  /* ../dlls/advapi32/crypt_lmhash.c:247 */
@@ -8570,10 +9327,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SystemFunction005,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_SystemFunction006(LPCSTR  password, LPSTR  hash) /* ../dlls/advapi32/crypt_lmhash.c:49 */
+WINAPI NTSTATUS wine32b_advapi32_SystemFunction006(LPCSTR  password, LPSTR  hash) /* ../dlls/advapi32/crypt_lmhash.c:49 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter SystemFunction006\n");
-	return pSystemFunction006(password, hash);
+	return_value = pSystemFunction006(password, hash);
+	TRACE("Leave SystemFunction006\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SystemFunction006(void);  /* ../dlls/advapi32/crypt_lmhash.c:49 */
@@ -8596,10 +9356,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SystemFunction006,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_SystemFunction007(UNICODE_STRING*  string, LPBYTE  hash) /* ../dlls/advapi32/crypt.c:2354 */
+WINAPI NTSTATUS wine32b_advapi32_SystemFunction007(UNICODE_STRING*  string, LPBYTE  hash) /* ../dlls/advapi32/crypt.c:2354 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter SystemFunction007\n");
-	return pSystemFunction007(string, hash);
+	return_value = pSystemFunction007(string, hash);
+	TRACE("Leave SystemFunction007\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SystemFunction007(void);  /* ../dlls/advapi32/crypt.c:2354 */
@@ -8622,10 +9385,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SystemFunction007,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_SystemFunction008(BYTE*  challenge, BYTE*  hash, LPBYTE  response) /* ../dlls/advapi32/crypt_lmhash.c:74 */
+WINAPI NTSTATUS wine32b_advapi32_SystemFunction008(BYTE*  challenge, BYTE*  hash, LPBYTE  response) /* ../dlls/advapi32/crypt_lmhash.c:74 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter SystemFunction008\n");
-	return pSystemFunction008(challenge, hash, response);
+	return_value = pSystemFunction008(challenge, hash, response);
+	TRACE("Leave SystemFunction008\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SystemFunction008(void);  /* ../dlls/advapi32/crypt_lmhash.c:74 */
@@ -8649,10 +9415,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SystemFunction008,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_SystemFunction009(BYTE*  challenge, BYTE*  hash, LPBYTE  response) /* ../dlls/advapi32/crypt_lmhash.c:96 */
+WINAPI NTSTATUS wine32b_advapi32_SystemFunction009(BYTE*  challenge, BYTE*  hash, LPBYTE  response) /* ../dlls/advapi32/crypt_lmhash.c:96 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter SystemFunction009\n");
-	return pSystemFunction009(challenge, hash, response);
+	return_value = pSystemFunction009(challenge, hash, response);
+	TRACE("Leave SystemFunction009\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SystemFunction009(void);  /* ../dlls/advapi32/crypt_lmhash.c:96 */
@@ -8676,10 +9445,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SystemFunction009,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_SystemFunction010(LPVOID  unknown, BYTE*  data, LPBYTE  hash) /* ../dlls/advapi32/crypt.c:2382 */
+WINAPI NTSTATUS wine32b_advapi32_SystemFunction010(LPVOID  unknown, BYTE*  data, LPBYTE  hash) /* ../dlls/advapi32/crypt.c:2382 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter SystemFunction010\n");
-	return pSystemFunction010(unknown, data, hash);
+	return_value = pSystemFunction010(unknown, data, hash);
+	TRACE("Leave SystemFunction010\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SystemFunction010(void);  /* ../dlls/advapi32/crypt.c:2382 */
@@ -8703,10 +9475,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SystemFunction010,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_SystemFunction012(BYTE*  in, BYTE*  key, LPBYTE  out) /* ../dlls/advapi32/crypt_lmhash.c:311 */
+WINAPI NTSTATUS wine32b_advapi32_SystemFunction012(BYTE*  in, BYTE*  key, LPBYTE  out) /* ../dlls/advapi32/crypt_lmhash.c:311 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter SystemFunction012\n");
-	return pSystemFunction012(in, key, out);
+	return_value = pSystemFunction012(in, key, out);
+	TRACE("Leave SystemFunction012\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SystemFunction012(void);  /* ../dlls/advapi32/crypt_lmhash.c:311 */
@@ -8730,10 +9505,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SystemFunction012,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_SystemFunction013(BYTE*  in, BYTE*  key, LPBYTE  out) /* ../dlls/advapi32/crypt_lmhash.c:340 */
+WINAPI NTSTATUS wine32b_advapi32_SystemFunction013(BYTE*  in, BYTE*  key, LPBYTE  out) /* ../dlls/advapi32/crypt_lmhash.c:340 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter SystemFunction013\n");
-	return pSystemFunction013(in, key, out);
+	return_value = pSystemFunction013(in, key, out);
+	TRACE("Leave SystemFunction013\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SystemFunction013(void);  /* ../dlls/advapi32/crypt_lmhash.c:340 */
@@ -8757,10 +9535,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SystemFunction013,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_SystemFunction024(BYTE*  in, BYTE*  key, LPBYTE  out) /* ../dlls/advapi32/crypt_lmhash.c:363 */
+WINAPI NTSTATUS wine32b_advapi32_SystemFunction024(BYTE*  in, BYTE*  key, LPBYTE  out) /* ../dlls/advapi32/crypt_lmhash.c:363 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter SystemFunction024\n");
-	return pSystemFunction024(in, key, out);
+	return_value = pSystemFunction024(in, key, out);
+	TRACE("Leave SystemFunction024\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SystemFunction024(void);  /* ../dlls/advapi32/crypt_lmhash.c:363 */
@@ -8784,10 +9565,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SystemFunction024,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_SystemFunction025(BYTE*  in, BYTE*  key, LPBYTE  out) /* ../dlls/advapi32/crypt_lmhash.c:391 */
+WINAPI NTSTATUS wine32b_advapi32_SystemFunction025(BYTE*  in, BYTE*  key, LPBYTE  out) /* ../dlls/advapi32/crypt_lmhash.c:391 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter SystemFunction025\n");
-	return pSystemFunction025(in, key, out);
+	return_value = pSystemFunction025(in, key, out);
+	TRACE("Leave SystemFunction025\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SystemFunction025(void);  /* ../dlls/advapi32/crypt_lmhash.c:391 */
@@ -8811,10 +9595,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SystemFunction025,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_SystemFunction030(LPCVOID  b1, LPCVOID  b2) /* ../dlls/advapi32/crypt.c:2406 */
+WINAPI BOOL wine32b_advapi32_SystemFunction030(LPCVOID  b1, LPCVOID  b2) /* ../dlls/advapi32/crypt.c:2406 */
 {
+	BOOL return_value;
 	TRACE("Enter SystemFunction030\n");
-	return pSystemFunction030(b1, b2);
+	return_value = pSystemFunction030(b1, b2);
+	TRACE("Leave SystemFunction030\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SystemFunction030(void);  /* ../dlls/advapi32/crypt.c:2406 */
@@ -8837,10 +9624,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SystemFunction030,
 	"ret \n"
 )
 
-extern WINAPI NTSTATUS wine32b_advapi32_SystemFunction032(struct ustring*  data, struct ustring*  key) /* ../dlls/advapi32/crypt_arc4.c:97 */
+WINAPI NTSTATUS wine32b_advapi32_SystemFunction032(struct ustring*  data, struct ustring*  key) /* ../dlls/advapi32/crypt_arc4.c:97 */
 {
+	NTSTATUS return_value;
 	TRACE("Enter SystemFunction032\n");
-	return pSystemFunction032(data, key);
+	return_value = pSystemFunction032(data, key);
+	TRACE("Leave SystemFunction032\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SystemFunction032(void);  /* ../dlls/advapi32/crypt_arc4.c:97 */
@@ -8863,10 +9653,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SystemFunction032,
 	"ret \n"
 )
 
-extern WINAPI BOOL wine32b_advapi32_SystemFunction035(LPCSTR  lpszDllFilePath) /* ../dlls/advapi32/crypt.c:2420 */
+WINAPI BOOL wine32b_advapi32_SystemFunction035(LPCSTR  lpszDllFilePath) /* ../dlls/advapi32/crypt.c:2420 */
 {
+	BOOL return_value;
 	TRACE("Enter SystemFunction035\n");
-	return pSystemFunction035(lpszDllFilePath);
+	return_value = pSystemFunction035(lpszDllFilePath);
+	TRACE("Leave SystemFunction035\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_SystemFunction035(void);  /* ../dlls/advapi32/crypt.c:2420 */
@@ -8888,10 +9681,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_SystemFunction035,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_TraceSetInformation(TRACEHANDLE  handle, TRACE_INFO_CLASS  infoclass, void*  info, ULONG  len) /* ../dlls/advapi32/eventlog.c:844 */
+WINAPI ULONG wine32b_advapi32_TraceSetInformation(TRACEHANDLE  handle, TRACE_INFO_CLASS  infoclass, void*  info, ULONG  len) /* ../dlls/advapi32/eventlog.c:844 */
 {
+	ULONG return_value;
 	TRACE("Enter TraceSetInformation\n");
-	return pTraceSetInformation(handle, infoclass, info, len);
+	return_value = pTraceSetInformation(handle, infoclass, info, len);
+	TRACE("Leave TraceSetInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_TraceSetInformation(void);  /* ../dlls/advapi32/eventlog.c:844 */
@@ -8916,10 +9712,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_TraceSetInformation,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_TreeResetNamedSecurityInfoW(LPWSTR  pObjectName, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID  pOwner, PSID  pGroup, PACL  pDacl, PACL  pSacl, BOOL  KeepExplicit, FN_PROGRESS  fnProgress, PROG_INVOKE_SETTING  ProgressInvokeSetting, PVOID  Args) /* ../dlls/advapi32/security.c:4463 */
+WINAPI DWORD wine32b_advapi32_TreeResetNamedSecurityInfoW(LPWSTR  pObjectName, SE_OBJECT_TYPE  ObjectType, SECURITY_INFORMATION  SecurityInfo, PSID  pOwner, PSID  pGroup, PACL  pDacl, PACL  pSacl, BOOL  KeepExplicit, FN_PROGRESS  fnProgress, PROG_INVOKE_SETTING  ProgressInvokeSetting, PVOID  Args) /* ../dlls/advapi32/security.c:4463 */
 {
+	DWORD return_value;
 	TRACE("Enter TreeResetNamedSecurityInfoW\n");
-	return pTreeResetNamedSecurityInfoW(pObjectName, ObjectType, SecurityInfo, pOwner, pGroup, pDacl, pSacl, KeepExplicit, fnProgress, ProgressInvokeSetting, Args);
+	return_value = pTreeResetNamedSecurityInfoW(pObjectName, ObjectType, SecurityInfo, pOwner, pGroup, pDacl, pSacl, KeepExplicit, fnProgress, ProgressInvokeSetting, Args);
+	TRACE("Leave TreeResetNamedSecurityInfoW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_TreeResetNamedSecurityInfoW(void);  /* ../dlls/advapi32/security.c:4463 */
@@ -8944,10 +9743,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_TreeResetNamedSecurityInfoW,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_WmiExecuteMethodA(WMIHANDLE  handle, char*  name, ULONG  method, ULONG  inputsize, void*  inputbuffer, ULONG*  outputsize, void*  outputbuffer) /* ../dlls/advapi32/wmi.c:42 */
+WINAPI ULONG wine32b_advapi32_WmiExecuteMethodA(WMIHANDLE  handle, char*  name, ULONG  method, ULONG  inputsize, void*  inputbuffer, ULONG*  outputsize, void*  outputbuffer) /* ../dlls/advapi32/wmi.c:42 */
 {
+	ULONG return_value;
 	TRACE("Enter WmiExecuteMethodA\n");
-	return pWmiExecuteMethodA(handle, name, method, inputsize, inputbuffer, outputsize, outputbuffer);
+	return_value = pWmiExecuteMethodA(handle, name, method, inputsize, inputbuffer, outputsize, outputbuffer);
+	TRACE("Leave WmiExecuteMethodA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_WmiExecuteMethodA(void);  /* ../dlls/advapi32/wmi.c:42 */
@@ -8972,10 +9774,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_WmiExecuteMethodA,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_WmiExecuteMethodW(WMIHANDLE  handle, WCHAR*  name, ULONG  method, ULONG  inputsize, void*  inputbuffer, ULONG*  outputsize, void*  outputbuffer) /* ../dlls/advapi32/wmi.c:53 */
+WINAPI ULONG wine32b_advapi32_WmiExecuteMethodW(WMIHANDLE  handle, WCHAR*  name, ULONG  method, ULONG  inputsize, void*  inputbuffer, ULONG*  outputsize, void*  outputbuffer) /* ../dlls/advapi32/wmi.c:53 */
 {
+	ULONG return_value;
 	TRACE("Enter WmiExecuteMethodW\n");
-	return pWmiExecuteMethodW(handle, name, method, inputsize, inputbuffer, outputsize, outputbuffer);
+	return_value = pWmiExecuteMethodW(handle, name, method, inputsize, inputbuffer, outputsize, outputbuffer);
+	TRACE("Leave WmiExecuteMethodW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_WmiExecuteMethodW(void);  /* ../dlls/advapi32/wmi.c:53 */
@@ -9000,10 +9805,11 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_WmiExecuteMethodW,
 	"ret \n"
 )
 
-extern WINAPI void wine32b_advapi32_WmiFreeBuffer(void*  buffer) /* ../dlls/advapi32/wmi.c:64 */
+WINAPI void wine32b_advapi32_WmiFreeBuffer(void*  buffer) /* ../dlls/advapi32/wmi.c:64 */
 {
 	TRACE("Enter WmiFreeBuffer\n");
-	return pWmiFreeBuffer(buffer);
+	pWmiFreeBuffer(buffer);
+	TRACE("Leave WmiFreeBuffer\n");
 }
 
 extern WINAPI void wine32a_advapi32_WmiFreeBuffer(void);  /* ../dlls/advapi32/wmi.c:64 */
@@ -9025,10 +9831,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_WmiFreeBuffer,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_WmiMofEnumerateResourcesA(MOFHANDLE  handle, ULONG*  count, MOFRESOURCEINFOA**  resource) /* ../dlls/advapi32/wmi.c:72 */
+WINAPI ULONG wine32b_advapi32_WmiMofEnumerateResourcesA(MOFHANDLE  handle, ULONG*  count, MOFRESOURCEINFOA**  resource) /* ../dlls/advapi32/wmi.c:72 */
 {
+	ULONG return_value;
 	TRACE("Enter WmiMofEnumerateResourcesA\n");
-	return pWmiMofEnumerateResourcesA(handle, count, resource);
+	return_value = pWmiMofEnumerateResourcesA(handle, count, resource);
+	TRACE("Leave WmiMofEnumerateResourcesA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_WmiMofEnumerateResourcesA(void);  /* ../dlls/advapi32/wmi.c:72 */
@@ -9052,10 +9861,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_WmiMofEnumerateResourcesA,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_WmiMofEnumerateResourcesW(MOFHANDLE  handle, ULONG*  count, MOFRESOURCEINFOW**  resource) /* ../dlls/advapi32/wmi.c:81 */
+WINAPI ULONG wine32b_advapi32_WmiMofEnumerateResourcesW(MOFHANDLE  handle, ULONG*  count, MOFRESOURCEINFOW**  resource) /* ../dlls/advapi32/wmi.c:81 */
 {
+	ULONG return_value;
 	TRACE("Enter WmiMofEnumerateResourcesW\n");
-	return pWmiMofEnumerateResourcesW(handle, count, resource);
+	return_value = pWmiMofEnumerateResourcesW(handle, count, resource);
+	TRACE("Leave WmiMofEnumerateResourcesW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_WmiMofEnumerateResourcesW(void);  /* ../dlls/advapi32/wmi.c:81 */
@@ -9079,10 +9891,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_WmiMofEnumerateResourcesW,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_WmiNotificationRegistrationA(GUID*  guid, BOOLEAN  enable, void*  info, ULONG_PTR  context, ULONG  flags) /* ../dlls/advapi32/wmi.c:90 */
+WINAPI ULONG wine32b_advapi32_WmiNotificationRegistrationA(GUID*  guid, BOOLEAN  enable, void*  info, ULONG_PTR  context, ULONG  flags) /* ../dlls/advapi32/wmi.c:90 */
 {
+	ULONG return_value;
 	TRACE("Enter WmiNotificationRegistrationA\n");
-	return pWmiNotificationRegistrationA(guid, enable, info, context, flags);
+	return_value = pWmiNotificationRegistrationA(guid, enable, info, context, flags);
+	TRACE("Leave WmiNotificationRegistrationA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_WmiNotificationRegistrationA(void);  /* ../dlls/advapi32/wmi.c:90 */
@@ -9107,10 +9922,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_WmiNotificationRegistrationA,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_WmiNotificationRegistrationW(GUID*  guid, BOOLEAN  enable, void*  info, ULONG_PTR  context, ULONG  flags) /* ../dlls/advapi32/wmi.c:100 */
+WINAPI ULONG wine32b_advapi32_WmiNotificationRegistrationW(GUID*  guid, BOOLEAN  enable, void*  info, ULONG_PTR  context, ULONG  flags) /* ../dlls/advapi32/wmi.c:100 */
 {
+	ULONG return_value;
 	TRACE("Enter WmiNotificationRegistrationW\n");
-	return pWmiNotificationRegistrationW(guid, enable, info, context, flags);
+	return_value = pWmiNotificationRegistrationW(guid, enable, info, context, flags);
+	TRACE("Leave WmiNotificationRegistrationW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_WmiNotificationRegistrationW(void);  /* ../dlls/advapi32/wmi.c:100 */
@@ -9135,10 +9953,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_WmiNotificationRegistrationW,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_WmiOpenBlock(GUID*  guid, ULONG  access, WMIHANDLE*  handle) /* ../dlls/advapi32/wmi.c:110 */
+WINAPI ULONG wine32b_advapi32_WmiOpenBlock(GUID*  guid, ULONG  access, WMIHANDLE*  handle) /* ../dlls/advapi32/wmi.c:110 */
 {
+	ULONG return_value;
 	TRACE("Enter WmiOpenBlock\n");
-	return pWmiOpenBlock(guid, access, handle);
+	return_value = pWmiOpenBlock(guid, access, handle);
+	TRACE("Leave WmiOpenBlock\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_WmiOpenBlock(void);  /* ../dlls/advapi32/wmi.c:110 */
@@ -9162,10 +9983,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_WmiOpenBlock,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_WmiQueryAllDataA(WMIHANDLE  handle, ULONG*  size, void*  buffer) /* ../dlls/advapi32/wmi.c:119 */
+WINAPI ULONG wine32b_advapi32_WmiQueryAllDataA(WMIHANDLE  handle, ULONG*  size, void*  buffer) /* ../dlls/advapi32/wmi.c:119 */
 {
+	ULONG return_value;
 	TRACE("Enter WmiQueryAllDataA\n");
-	return pWmiQueryAllDataA(handle, size, buffer);
+	return_value = pWmiQueryAllDataA(handle, size, buffer);
+	TRACE("Leave WmiQueryAllDataA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_WmiQueryAllDataA(void);  /* ../dlls/advapi32/wmi.c:119 */
@@ -9189,10 +10013,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_WmiQueryAllDataA,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_WmiQueryAllDataW(WMIHANDLE  handle, ULONG*  size, void*  buffer) /* ../dlls/advapi32/wmi.c:128 */
+WINAPI ULONG wine32b_advapi32_WmiQueryAllDataW(WMIHANDLE  handle, ULONG*  size, void*  buffer) /* ../dlls/advapi32/wmi.c:128 */
 {
+	ULONG return_value;
 	TRACE("Enter WmiQueryAllDataW\n");
-	return pWmiQueryAllDataW(handle, size, buffer);
+	return_value = pWmiQueryAllDataW(handle, size, buffer);
+	TRACE("Leave WmiQueryAllDataW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_WmiQueryAllDataW(void);  /* ../dlls/advapi32/wmi.c:128 */
@@ -9216,10 +10043,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_WmiQueryAllDataW,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_WmiQueryGuidInformation(WMIHANDLE  handle, WMIGUIDINFORMATION*  info) /* ../dlls/advapi32/wmi.c:137 */
+WINAPI ULONG wine32b_advapi32_WmiQueryGuidInformation(WMIHANDLE  handle, WMIGUIDINFORMATION*  info) /* ../dlls/advapi32/wmi.c:137 */
 {
+	ULONG return_value;
 	TRACE("Enter WmiQueryGuidInformation\n");
-	return pWmiQueryGuidInformation(handle, info);
+	return_value = pWmiQueryGuidInformation(handle, info);
+	TRACE("Leave WmiQueryGuidInformation\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_WmiQueryGuidInformation(void);  /* ../dlls/advapi32/wmi.c:137 */
@@ -9242,10 +10072,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_WmiQueryGuidInformation,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_WmiSetSingleInstanceA(WMIHANDLE  handle, char*  name, ULONG  reserved, ULONG  size, void*  buffer) /* ../dlls/advapi32/wmi.c:146 */
+WINAPI ULONG wine32b_advapi32_WmiSetSingleInstanceA(WMIHANDLE  handle, char*  name, ULONG  reserved, ULONG  size, void*  buffer) /* ../dlls/advapi32/wmi.c:146 */
 {
+	ULONG return_value;
 	TRACE("Enter WmiSetSingleInstanceA\n");
-	return pWmiSetSingleInstanceA(handle, name, reserved, size, buffer);
+	return_value = pWmiSetSingleInstanceA(handle, name, reserved, size, buffer);
+	TRACE("Leave WmiSetSingleInstanceA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_WmiSetSingleInstanceA(void);  /* ../dlls/advapi32/wmi.c:146 */
@@ -9270,10 +10103,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_WmiSetSingleInstanceA,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_WmiSetSingleInstanceW(WMIHANDLE  handle, WCHAR*  name, ULONG  reserved, ULONG  size, void*  buffer) /* ../dlls/advapi32/wmi.c:156 */
+WINAPI ULONG wine32b_advapi32_WmiSetSingleInstanceW(WMIHANDLE  handle, WCHAR*  name, ULONG  reserved, ULONG  size, void*  buffer) /* ../dlls/advapi32/wmi.c:156 */
 {
+	ULONG return_value;
 	TRACE("Enter WmiSetSingleInstanceW\n");
-	return pWmiSetSingleInstanceW(handle, name, reserved, size, buffer);
+	return_value = pWmiSetSingleInstanceW(handle, name, reserved, size, buffer);
+	TRACE("Leave WmiSetSingleInstanceW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_WmiSetSingleInstanceW(void);  /* ../dlls/advapi32/wmi.c:156 */
@@ -9298,10 +10134,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_WmiSetSingleInstanceW,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_WmiSetSingleItemA(WMIHANDLE  handle, char*  name, ULONG  id, ULONG  reserved, ULONG  size, void*  buffer) /* ../dlls/advapi32/wmi.c:166 */
+WINAPI ULONG wine32b_advapi32_WmiSetSingleItemA(WMIHANDLE  handle, char*  name, ULONG  id, ULONG  reserved, ULONG  size, void*  buffer) /* ../dlls/advapi32/wmi.c:166 */
 {
+	ULONG return_value;
 	TRACE("Enter WmiSetSingleItemA\n");
-	return pWmiSetSingleItemA(handle, name, id, reserved, size, buffer);
+	return_value = pWmiSetSingleItemA(handle, name, id, reserved, size, buffer);
+	TRACE("Leave WmiSetSingleItemA\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_WmiSetSingleItemA(void);  /* ../dlls/advapi32/wmi.c:166 */
@@ -9326,10 +10165,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_WmiSetSingleItemA,
 	"ret \n"
 )
 
-extern WINAPI ULONG wine32b_advapi32_WmiSetSingleItemW(WMIHANDLE  handle, WCHAR*  name, ULONG  id, ULONG  reserved, ULONG  size, void*  buffer) /* ../dlls/advapi32/wmi.c:176 */
+WINAPI ULONG wine32b_advapi32_WmiSetSingleItemW(WMIHANDLE  handle, WCHAR*  name, ULONG  id, ULONG  reserved, ULONG  size, void*  buffer) /* ../dlls/advapi32/wmi.c:176 */
 {
+	ULONG return_value;
 	TRACE("Enter WmiSetSingleItemW\n");
-	return pWmiSetSingleItemW(handle, name, id, reserved, size, buffer);
+	return_value = pWmiSetSingleItemW(handle, name, id, reserved, size, buffer);
+	TRACE("Leave WmiSetSingleItemW\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_WmiSetSingleItemW(void);  /* ../dlls/advapi32/wmi.c:176 */
@@ -9354,10 +10196,13 @@ __ASM_GLOBAL_FUNC(wine32a_advapi32_WmiSetSingleItemW,
 	"ret \n"
 )
 
-extern WINAPI DWORD wine32b_advapi32_WriteEncryptedFileRaw(PFE_IMPORT_FUNC  import, PVOID  callback, PVOID  context) /* ../dlls/advapi32/crypt.c:2534 */
+WINAPI DWORD wine32b_advapi32_WriteEncryptedFileRaw(PFE_IMPORT_FUNC  import, PVOID  callback, PVOID  context) /* ../dlls/advapi32/crypt.c:2534 */
 {
+	DWORD return_value;
 	TRACE("Enter WriteEncryptedFileRaw\n");
-	return pWriteEncryptedFileRaw(import, callback, context);
+	return_value = pWriteEncryptedFileRaw(import, callback, context);
+	TRACE("Leave WriteEncryptedFileRaw\n");
+	return return_value;
 }
 
 extern WINAPI void wine32a_advapi32_WriteEncryptedFileRaw(void);  /* ../dlls/advapi32/crypt.c:2534 */
