@@ -134,13 +134,12 @@ class TypeChain:
 		is_array = (type.get_array_size() != -1)
 		is_func = ('(*)' in type.spelling)
 
-		func_params = []
-		if node:
-			for n in node.get_children():
-				if n.kind == CursorKind.PARM_DECL:
-					func_params.append(ParamDef(NodeCache(n)))
-
 		if is_func:
+			func_params = []
+			if node:
+				for n in node.get_children():
+					if n.kind == CursorKind.PARM_DECL:
+						func_params.append(ParamDef(NodeCache(n)))
 			self.chainType = TypeChainEnum.Function
 			self.params = func_params
 			self.result = TypeChain(None, type.get_pointee().get_result())
@@ -271,41 +270,6 @@ class DependencyCollection:
 		return self.items.__iter__()
 
 class FunctionItem:
-	def __init__(self):
-		self.name = None
-		self.internalname = None
-		self.relay = False
-		self.relay_dll = None
-		self.callingconvention = None
-		self.return_type = None
-		self.params = None
-		self.file = None
-		self.line = None
-		self.identifier = None
-
-	def parse_from_spec_line(self, line):
-		rows = line.split(' ')
-		self.temp = line
-		self.callingconvention = rows[1]
-		parts = line.replace('(', ')').split(')') # 0 - left side of parameters, 1 - parameters, 2 - right side of parameters
-		self.internalname = self.name = parts[0].strip().split(' ')[-1]
-		self.identifier = self.name
-		if len(parts) < 3:
-			return
-		if parts[2] != "":
-			self.internalname = parts[2].strip()
-			if '.' in self.internalname:
-				nameparts = self.internalname.split('.')
-				self.internalname = nameparts[1]
-				self.relay_dll = nameparts[0]
-				self.relay = True
-		else:
-			if ' -import' in line:
-				self.relay = True
-				self.relay_dll = 'kernelbase'
-
-		if ('@' in self.identifier) or ('$' in self.identifier): # C++ name
-			self.identifier = self.internalname
 
 	def is_empty(self):
 		return self.params == None
@@ -370,71 +334,6 @@ class FunctionCollection:
 
 	def __iter__(self):
 		return self.items.values().__iter__()
-
-class NodeCache:
-	def __init__(self, node):
-		self.node = node;
-		self.kind = node.kind
-		self.has_spelling = False
-		self.has_file = False
-		self.has_file_name = False
-		self.has_type = False
-		self.has_type_spelling = False
-		self.has_location = False
-		self.has_location_file = False
-		self.has_location_line = False
-		self.has_result_type = False
-
-	def get_spelling(self):
-		if not self.has_spelling:
-			self.has_spelling = True
-			self.spelling = self.node.spelling
-		return self.spelling
-
-	def get_kind(self):
-		return self.kind;
-
-	def get_type(self):
-		if not self.has_type:
-			self.has_type = True
-			self.type = self.node.type
-		return self.type
-
-	def get_type_spelling(self):
-		if not self.has_type_spelling:
-			self.has_type_spelling = True
-			type = self.get_type()
-			self.type_spelling = type.spelling
-		return self.type_spelling
-
-	def get_children(self):
-		return self.node.get_children()
-
-	def get_location(self):
-		if not self.has_location:
-			self.has_location = True
-			self.location = self.node.location
-		return self.location
-
-	def get_location_file(self):
-		if not self.has_location_file:
-			self.has_location_file = True
-			location = self.get_location()
-			self.location_file = location.file.name
-		return self.location_file
-
-	def get_location_line(self):
-		if not self.has_location_line:
-			self.has_location_line = True
-			location = self.get_location()
-			self.location_line = location.line
-		return self.location_line
-
-	def get_result_type(self):
-		if not self.has_result_type:
-			self.has_result_type = True
-			self.result_type = self.node.result_type
-		return self.result_type
 
 
 # -------------------- Helper functions --------------------
@@ -565,13 +464,6 @@ def find_all_definitions(node, definitions, funcs, source):
 		definitions.clear_typedef_item()
 
 
-def parse_file(path_file):
-	index = clang.cindex.Index.create()
-	tu = index.parse(path_file,  ["-D_WIN32", "-D__WINESRC__", "-I/usr/lib/clang/8.0.1/include/", "-I../include", "-I/home/fabian/Programming/Wine/wine64/include/", "-fdeclspec", "-Wno-pragma-pack"])
-	if len(tu.diagnostics) > 0:
-		for diag in tu.diagnostics:
-			print(f'\t\t{diag.spelling}  {diag.location.file.name}:{diag.location.line}')
-	return tu.cursor
 
 def handle_dll_source(dll_path, source, funcs, ret_definitions):
 	path_file = dll_path + "/" + source
@@ -583,18 +475,6 @@ def handle_dll_source(dll_path, source, funcs, ret_definitions):
 		find_all_definitions(nodeWrapper, ret_definitions, funcs, source)
 
 def handle_dll(name):
-	print(f'Started {name}')
-	dll_path = "../dlls/" + name
-	path_spec = f'{dll_path}/{name}.spec'
-	path_makefile = dll_path + "/Makefile.in"
-
-	contents_source = []
-	contents_source.append('#include "windows.h"');
-	contents_source.append('#include "wine/asm.h"');
-	contents_source.append('#include "wine/debug.h"')
-	contents_source.append('#include "wine/winethunks.h"')
-	contents_source.append('WINE_DEFAULT_DEBUG_CHANNEL(thunks);')
-	contents_source.append("")
 
 	funcs = FunctionCollection()
 	funcs.load_from_specfile(path_spec)
@@ -677,10 +557,6 @@ def handle_dll(name):
 	contents_source.append('}')
 	contents_source.append("")
 
-	file_source = open(f'../dlls/winethunks/{name}.c', 'w')
-	file_source.write('\n'.join(contents_source))
-	file_source.close()
-	print(f'Finished {name}')
 
 def handle_all_dlls(threads):
 	dlls = []
