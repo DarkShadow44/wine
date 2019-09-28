@@ -466,14 +466,12 @@ def node_is_only_declaration(node):
 	return node != definition;
 
 def find_all_functions(node, funcs, source):
-	if (node.location.file is None or not node.location.file.name.endswith(f'/{source}')):
-		return
 	if node.kind == CursorKind.FUNCTION_DECL and funcs.contains(node.spelling):
+		if (node.location.file is None or not node.location.file.name.endswith(f'/{source}')):
+			return
 		if not node_is_only_declaration(node):
 			func = funcs.get_item(node.spelling)
 			func.fill(node)
-	for c in node.get_children():
-		find_all_functions(c, funcs, source)
 
 def find_all_definitions(node, definitions):
 	if node.kind == CursorKind.STRUCT_DECL or node.kind == CursorKind.UNION_DECL or node.kind == CursorKind.FIELD_DECL or node.kind == CursorKind.ENUM_DECL:
