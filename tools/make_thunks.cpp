@@ -11,11 +11,10 @@ typedef int BOOL;
 typedef struct
 {
 	unsigned line;
-	const char* file;
+	std::string file;
 } clang_location;
 
-
-static const char* clang_str_get(CXString cx_str)
+static const std::string clang_str_get(CXString cx_str)
 {
 	return clang_getCString(cx_str);
 }
@@ -29,6 +28,306 @@ static clang_location clang_location_get(CXSourceLocation cx_location)
 	location.file = clang_str_get(clang_getFileName(file));
 	return location;
 }
+
+CXChildVisitResult functionVisitor(CXCursor cursor, CXCursor parent, CXClientData clientData)
+{
+	std::vector<CXCursor>* children = (std::vector<CXCursor>*)clientData;
+	children->push_back(cursor);
+	return CXChildVisit_Continue;
+}
+
+std::vector<CXCursor> clang_get_children(CXCursor cursor)
+{
+	std::vector<CXCursor> children;
+	clang_visitChildren(cursor, functionVisitor, (CXClientData)&children);
+	return children;
+}
+
+
+
+void replaceAll( std::string &s, const std::string &search, const std::string &replace ) {
+    for( size_t pos = 0; ; pos += replace.length() ) {
+        pos = s.find( search, pos );
+        if( pos == std::string::npos ) break;
+        s.erase( pos, search.length() );
+        s.insert( pos, replace );
+    }
+}
+
+
+
+
+enum TypeChainEnum
+{
+	TypeChainEnum_Array = 1,
+	TypeChainEnum_Normal = 2,
+	TypeChainEnum_Pointer = 3,
+	TypeChainEnum_Function = 4,
+};
+
+
+typedef struct _TypeChain
+{
+	TypeChainEnum chainType;
+	std::vector<struct _ParamDef*> params;
+	struct _TypeChain* result;
+	struct _TypeChain* subType;
+	int arraySize;
+	std::string normal;
+} TypeChain;
+
+
+
+
+enum StructDefEnum
+{
+	StructDefEnum_Field = 1,
+	StructDefEnum_Struct = 2,
+	StructDefEnum_Union = 3,
+	StructDefEnum_Enumeration = 4,
+};
+
+
+typedef struct _StructDef
+{
+	std::string name;
+	TypeChain* type;
+	std::vector<struct _StructDef*> children;
+	StructDefEnum structType;
+	std::string named_type;
+	std::string variable;
+	clang_location location;
+} StructDef;
+
+typedef struct _ParamDef
+{
+	std::string name;
+	TypeChain* type;
+} ParamDef;
+
+typedef struct
+{
+} DependencyCollection;
+
+typedef struct
+{
+} DefinitionCollection;
+
+static TypeChain* TypeChain_init(CXCursor *node, CXType type);
+static std::string TypeChain_tostring(TypeChain* self, std::string variable);
+static void TypeChain_make_dependencies(TypeChain* self, DependencyCollection *dependencies);
+
+static ParamDef* ParamDef_init(CXCursor node)
+{
+	ParamDef *self = new ParamDef();
+	self->name = clang_str_get(clang_getCursorSpelling(node));
+	self->type = TypeChain_init(0, clang_getCursorType(node));
+	return self;
+}
+
+static std::string ParamDef_tostring(ParamDef* self)
+{
+	return TypeChain_tostring(self->type, self->name);
+}
+
+static void ParamDef_make_dependencies(ParamDef* self, DependencyCollection *dependencies)
+{
+	TypeChain_make_dependencies(self->type, dependencies);
+}
+
+
+
+static TypeChain* TypeChain_init(CXCursor *node, CXType type)
+{
+	TypeChain* self = new TypeChain();
+	CXType pointee = clang_getPointeeType(type);
+	BOOL is_pointer = clang_str_get(clang_getTypeSpelling(pointee)) != "";
+	BOOL is_array = clang_getArraySize(type) != -1; 
+	std::string spelling = clang_str_get(clang_getTypeSpelling(type));
+	BOOL is_func = spelling.find("(*)") != std::string::npos;
+
+	if (is_func)
+	{
+		if (node)
+		{
+			std::vector<CXCursor> children = clang_get_children(*node);
+			for (int i = 0; i < children.size(); i++)
+			{
+				CXCursorKind kind = clang_getCursorKind(*node);
+				if (kind == CXCursor_FieldDecl)
+				{
+					self->params.push_back(ParamDef_init(children[i]));
+				}
+			}
+		}
+		self->chainType = TypeChainEnum_Function;
+		self->result = TypeChain_init(0, clang_getResultType(pointee));
+	}
+	else if (is_pointer)
+	{
+		self->chainType = TypeChainEnum_Pointer;
+		self->subType = TypeChain_init(0, pointee);
+	}
+	else if (is_array)
+	{
+		self->chainType = TypeChainEnum_Array;
+		self->subType = TypeChain_init(0, clang_getArrayElementType(type));
+		self->arraySize = clang_getArraySize(type);
+	}
+	else
+	{
+		self->chainType = TypeChainEnum_Normal;
+		replaceAll(spelling, "const ", "");
+		self->normal = spelling;
+	}
+	return self;
+}
+
+static std::string TypeChain_tostring(TypeChain* self, std::string variable)
+{
+	char buffer[500] = {0};
+	if (self->chainType == TypeChainEnum_Pointer)
+	{
+		if (variable == "")
+			sprintf(buffer, "%s*%s", TypeChain_tostring(self->subType, ""), variable.c_str());
+		else
+			sprintf(buffer, "%s* %s", TypeChain_tostring(self->subType, ""), variable.c_str());
+	}
+	else if (self->chainType == TypeChainEnum_Array)
+	{
+		sprintf(buffer, "%s[%d]", TypeChain_tostring(self->subType, variable.c_str()), self->arraySize);
+	}
+	else if (self->chainType == TypeChainEnum_Function)
+	{
+		std::string params;
+		if (self->params.size() == 0)
+		{
+			params = "void";
+		}
+		else
+		{
+			for (int i = 0; i < self->params.size(); i++)
+			{
+				if (i > 0)
+					strcat(buffer, ",");
+				strcat(buffer, ParamDef_tostring(self->params[i]).c_str());
+			}
+			params = buffer;
+		}
+		sprintf(buffer, "%s (*%s) (%s)", TypeChain_tostring(self->result, ""), variable, params.c_str());
+	}
+	else
+	{
+		if (variable == "")
+			sprintf(buffer, "%s%s", self->normal.c_str(), variable.c_str());
+		else
+			sprintf(buffer, "%s %s", self->normal.c_str(), variable.c_str());
+	}
+	return buffer;
+}
+
+static void TypeChain_make_dependencies(TypeChain* self, DependencyCollection *dependencies)
+{
+}
+
+
+
+
+static void StructDef_init(StructDef *self, CXCursor node)
+{
+	self->name = clang_str_get(clang_getCursorSpelling(node)); // TODO check is None
+	CXType type = clang_getCursorType(node);
+	self->type = TypeChain_init(&node, type);
+	CXCursorKind kind = clang_getCursorKind(node);
+	if (kind == CXCursor_StructDecl)
+	{
+		self->structType = StructDefEnum_Struct;
+		self->name += "struct " + self->name;
+	}
+	if (kind == CXCursor_UnionDecl)
+	{
+		self->structType = StructDefEnum_Union;
+		self->name += "union " + self->name;
+	}
+	if (kind == CXCursor_FieldDecl)
+	{
+		self->structType = StructDefEnum_Field;
+	}
+	if (kind == CXCursor_EnumDecl)
+	{
+		self->structType = StructDefEnum_Enumeration;
+		self->name += "enum " + self->name;
+	}
+	self->named_type = clang_str_get(clang_getTypeSpelling(type));
+	self->variable = "";
+	self->location = clang_location_get(clang_getCursorLocation(node));
+}
+
+
+static void StructDef_print_struct(StructDef *self, FILE *file, int depth)
+{
+	char indent[200] = {0};
+	for (int i = 0; i < depth; i++)
+	{
+		strcat(indent, "    ");
+	}
+
+	if (self->structType == StructDefEnum_Struct || self->structType == StructDefEnum_Union || self->structType == StructDefEnum_Enumeration)
+	{
+		fprintf(file, "%s%s /* %s:%s*/\n", indent, self->name, self->location.file, self->location.line);
+		fprintf(file, "%s{\n", indent);
+		for (int i = 0; i < self->children.size(); i++)
+			StructDef_print_struct(self->children[i], file, depth + 1);
+		if (self->structType == StructDefEnum_Enumeration)
+		{
+			std::string name = self->name;
+			replaceAll(name, "enum ", "");
+			fprintf(file, "    %s_DUMMY = 0", name);
+		}
+		fprintf(file, "%s}%s;\n\n", indent, self->variable.c_str());
+	}
+	
+	if (self->structType == StructDefEnum_Field)
+		fprintf(file, "%s%s;\n", indent, TypeChain_tostring(self->type, self->name));
+}
+
+static std::string StructDef_getname(StructDef *self)
+{
+	return self->name;
+}
+
+
+static std::string StructDef_make_declaration(StructDef *self)
+{
+	char buffer[200] = {0};
+	if (self->structType == StructDefEnum_Struct || self->structType == StructDefEnum_Union || self->structType == StructDefEnum_Enumeration)
+		sprintf(buffer, "%s; /* %s:%d */", self->name, self->location.file, self->location.line);
+	return buffer;
+}
+
+
+
+static void StructDef_make_dependencies(StructDef *self, DependencyCollection* dependencies)
+{
+	if (self->structType == StructDefEnum_Field)
+	{
+		TypeChain_make_dependencies(self->type, dependencies);
+	}
+	else
+	{
+		for (int i = 0; i < self->children.size(); i++)
+			StructDef_make_dependencies(self->children[i], dependencies);
+	}
+}
+
+static TypeChain* StructDef_resolve_typedef(StructDef* self, DefinitionCollection* definitions)
+{
+	return self->type;
+}
+
+
+
+
 
 
 static CXCursor parse_file(const char *path_file)
@@ -51,18 +350,13 @@ static CXCursor parse_file(const char *path_file)
 	for (int i = 0; i < len_diagnostics; i++)
 	{
 		CXDiagnostic diagnostic = clang_getDiagnostic(translationUnit, i);
-		const char* spelling = clang_str_get(clang_getDiagnosticSpelling(diagnostic));
+		std::string spelling = clang_str_get(clang_getDiagnosticSpelling(diagnostic));
 		clang_location location = clang_location_get(clang_getDiagnosticLocation(diagnostic));
 
-		printf("\t\t%s %s:%d\n", spelling, location.file, location.line);
+		printf("\t\t%s %s:%d\n", spelling.c_str(), location.file, location.line);
 	}
 
 	return clang_getTranslationUnitCursor(translationUnit);
-}
-
-CXChildVisitResult functionVisitor(CXCursor cursor, CXCursor parent, CXClientData clientData)
-{
-	return CXChildVisit_Continue; // CXChildVisit_Recurse
 }
 
 struct cmp_str
@@ -190,6 +484,7 @@ static void handle_all_dlls()
 		handle_dll(dlls[i]);
 	}
 }
+
 
 int main()
 {
