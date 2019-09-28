@@ -27,6 +27,7 @@
 #include <limits.h>
 #include <stdarg.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include <sys/types.h>
 #ifdef HAVE_SYS_MMAN_H
@@ -944,6 +945,110 @@ jint JNI_OnLoad( JavaVM *vm, void *reserved )
 
 #endif  /* __ANDROID__ */
 
+static void block_address_space(void)
+{
+    void *map;
+    unsigned long size = 1UL << 63UL;
+
+    /* mmap as much as possible. */
+    while(size >= 4096)
+    {
+        do
+        {
+            map = mmap(NULL, size, PROT_NONE, MAP_PRIVATE | MAP_ANON | MAP_NORESERVE, -1, 0);
+        } while(map != (void *)0xffffffffffffffff);
+        size >>= 1;
+    }
+
+    /* It appears that the heap manager has a few pages we can't mmap, but malloc will successfully
+     * allocate from. On my system this gives me about 140kb of memory.
+     *
+     * Trying to malloc without virtual memory available hangs on OSX. We can happily skip it there
+     * because the default malloc zone is placed below 4GB anyway. */
+#ifndef __APPLE__
+    size = 1UL << 63UL;
+    while(size)
+    {
+        do
+        {
+            map = malloc(size);
+        } while(map);
+        size >>= 1;
+    }
+#endif
+}
+
+static char mmap_blocked[0x100000000 / 0x1000];
+
+static void fill_4g_holes(void)
+{
+    unsigned int i;
+
+    /* Try to allocate with both VirtualAlloc and mmap.
+     *
+     * The MacOS loader reserves some areas with sections in the main executable. They are not available for
+     * mmap because it might break the Mac dynamic loader, but Wine will happily remap them with VirtualAlloc.
+     *
+     * However, VirtualAlloc can only allocate on a 16kb granularity, so we'd leave some holes around
+     * things that are already mapped, like ntdll. Those holes would be filled by the address space blocking code
+     * later. Fill them with mmap and free them after the blocking code.
+     *
+     * FIXME: This process is quite slow, especially the mmap part. See if there are ways to speed it up. */
+    for (i = 1; i < ARRAY_SIZE(mmap_blocked); i++)
+    {
+        void *addr;
+
+        addr = mmap((void *)(ULONG_PTR)(i * 0x1000), 0x1000,
+                PROT_NONE, MAP_PRIVATE | MAP_ANON | MAP_NORESERVE, -1, 0);
+
+        if (addr == (void *)(ULONG_PTR)(i * 0x1000))
+            mmap_blocked[i] = TRUE;
+        else if (addr != (void *)0xffffffffffffffff)
+            munmap(addr, 0x1000);
+    }
+}
+
+static void free_4g_holes(BOOL free_high_2_gb)
+{
+    unsigned int i, end;
+
+    if (free_high_2_gb)
+        end = ARRAY_SIZE(mmap_blocked);
+    else
+        end = ARRAY_SIZE(mmap_blocked) / 2;
+
+    for (i = 0; i < end; i++)
+    {
+        if (mmap_blocked[i])
+            munmap((void *)(ULONG_PTR)(i * 0x1000), 0x1000);
+    }
+}
+
+static void limit_address_space(void)
+{
+    int i;
+    static const char* ignored_processes[] = {
+        "C:\\windows\\system32\\wineboot.exe",
+        "C:\\windows\\system32\\winemenubuilder.exe",
+        "C:\\windows\\system32\\services.exe",
+        "C:\\windows\\system32\\plugplay.exe",
+        "C:\\windows\\system32\\winedevice.exe",
+        "C:\\windows\\system32\\explorer.exe",
+    };
+
+    if (__wine_main_argc < 2)
+          return;
+
+    for (i = 0; i < ARRAY_SIZE(ignored_processes); i++)
+    {
+        if (!strcmp (__wine_main_argv[1], ignored_processes[i]))
+            return;
+    }
+
+    fill_4g_holes();
+    block_address_space();
+    free_4g_holes(FALSE);
+}
 /***********************************************************************
  *           wine_init
  *
@@ -971,6 +1076,8 @@ void wine_init( int argc, char *argv[], char *error, int error_size )
     __wine_main_environ = __wine_get_main_environment();
     mmap_init();
 
+    limit_address_space();
+
     for (path = first_dll_path( "ntdll.dll", 0, &context ); path; path = next_dll_path( &context ))
     {
         if ((ntdll = wine_dlopen( path, RTLD_NOW, error, error_size )))
@@ -989,6 +1096,7 @@ void wine_init( int argc, char *argv[], char *error, int error_size )
 #else
     init_func();
 #endif
+    printf("END\n");
 }
 
 
