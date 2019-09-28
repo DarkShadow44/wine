@@ -43,22 +43,22 @@ class StructDefEnum(Enum):
 class StructDef(GenericTypeDef):
 
 	def __init__(self, node):
-		self.name = None if node.spelling == "" else node.spelling
-		self.type = TypeChain(node, node.type)
+		self.name = None if node.get_spelling() == "" else node.get_spelling()
+		self.type = TypeChain(node, node.get_type())
 		self.children = DefinitionCollection()
-		if node.kind == CursorKind.STRUCT_DECL:
+		if node.get_kind() == CursorKind.STRUCT_DECL:
 			self.structType = StructDefEnum.Struct
-		if node.kind == CursorKind.UNION_DECL:
+		if node.get_kind() == CursorKind.UNION_DECL:
 			self.structType = StructDefEnum.Union
-		if node.kind == CursorKind.FIELD_DECL:
+		if node.get_kind() == CursorKind.FIELD_DECL:
 			self.structType = StructDefEnum.Field
-		if node.kind == CursorKind.ENUM_DECL:
+		if node.get_kind() == CursorKind.ENUM_DECL:
 			self.structType = StructDefEnum.Enumeration
-		self.named_type = node.type.spelling
+		self.named_type = node.get_type_spelling()
 		self.set_name(self.name)
 		self.variable = ''
-		self.line = node.location.line
-		self.file = node.location.file.name
+		self.line = node.get_location_line()
+		self.file = node.get_location_file()
 
 	def print_struct(self, lines, depth):
 		indent = ' ' * 4 * depth
@@ -118,8 +118,8 @@ class TypeChainEnum(Enum):
 
 class ParamDef:
 	def __init__(self, node):
-		self.name = node.spelling
-		self.type = TypeChain(None, node.type)
+		self.name = node.get_spelling()
+		self.type = TypeChain(None, node.get_type())
 
 	def tostring(self):
 		name = f' {self.name}' if self.name != '' else ''
@@ -138,7 +138,7 @@ class TypeChain:
 		if node:
 			for n in node.get_children():
 				if n.kind == CursorKind.PARM_DECL:
-					func_params.append(ParamDef(n))
+					func_params.append(ParamDef(NodeCache(n)))
 
 		if is_func:
 			self.chainType = TypeChainEnum.Function
@@ -183,11 +183,11 @@ class TypeChain:
 		return (self.chainType == TypeChainEnum.Normal) and (self.normal == 'void')
 
 class TypeDef(GenericTypeDef):
-	def __init__(self, source, target, location):
+	def __init__(self, source, target, line, file):
 		self.source = source
 		self.target = target
-		self.line = location.line
-		self.file = location.file.name
+		self.line = line
+		self.file = file
 
 	def tostring(self):
 		if self.source.chainType == TypeChainEnum.Function:
@@ -215,8 +215,8 @@ class DefinitionCollection:
 
 	def append_typedef_item(self, node, name):
 		if self.typedef_item is not None:
-			original_cursor = node.underlying_typedef_type.get_declaration()
-			if self.typedef_item.line == original_cursor.location.line:
+			original_cursor = NodeCache(node.node.underlying_typedef_type.get_declaration())
+			if self.typedef_item.line == original_cursor.get_location_line():
 				self.typedef_item.name = name
 				self.append(original_cursor, self.typedef_item)
 			self.typedef_item = None
@@ -239,7 +239,7 @@ class DefinitionCollection:
 		ignored = False
 
 		# Ignore common definitions
-		file = str(node.location.file)
+		file = str(node.get_location_file())
 		ignored_files = ['/winnt.h', '/windef.h', '/winbase.h', '/excpt.h', '/debug.h', '/guiddef.h', '/wingdi.h', '/winnls.h', '/winuser.h', '/wincon.h', '/winnetwk.h', '/verrsrc.h', '/winreg.h']
 		if any(file.endswith(x) for x in ignored_files):
 			ignored = True
@@ -320,10 +320,10 @@ class FunctionItem:
 		self.params = []
 		for child in node.get_children():
 			if child.kind == CursorKind.PARM_DECL:
-				self.params.append(ParamDef(child))
-		self.return_type = TypeChain(None, node.result_type)
-		self.line = node.location.line
-		self.file = node.location.file.name
+				self.params.append(ParamDef(NodeCache(child)))
+		self.return_type = TypeChain(None, node.get_result_type())
+		self.line = node.get_location_line()
+		self.file = node.get_location_file()
 
 	def get_arguments_decl(self):
 		paramList = [param.tostring() for param in self.params]
@@ -370,6 +370,72 @@ class FunctionCollection:
 
 	def __iter__(self):
 		return self.items.values().__iter__()
+
+class NodeCache:
+	def __init__(self, node):
+		self.node = node;
+		self.kind = node.kind
+		self.has_spelling = False
+		self.has_file = False
+		self.has_file_name = False
+		self.has_type = False
+		self.has_type_spelling = False
+		self.has_location = False
+		self.has_location_file = False
+		self.has_location_line = False
+		self.has_result_type = False
+
+	def get_spelling(self):
+		if not self.has_spelling:
+			self.has_spelling = True
+			self.spelling = self.node.spelling
+		return self.spelling
+
+	def get_kind(self):
+		return self.kind;
+
+	def get_type(self):
+		if not self.has_type:
+			self.has_type = True
+			self.type = self.node.type
+		return self.type
+
+	def get_type_spelling(self):
+		if not self.has_type_spelling:
+			self.has_type_spelling = True
+			type = self.get_type()
+			self.type_spelling = type.spelling
+		return self.type_spelling
+
+	def get_children(self):
+		return self.node.get_children()
+
+	def get_location(self):
+		if not self.has_location:
+			self.has_location = True
+			self.location = self.node.location
+		return self.location
+
+	def get_location_file(self):
+		if not self.has_location_file:
+			self.has_location_file = True
+			location = self.get_location()
+			self.location_file = location.file.name
+		return self.location_file
+
+	def get_location_line(self):
+		if not self.has_location_line:
+			self.has_location_line = True
+			location = self.get_location()
+			self.location_line = location.line
+		return self.location_line
+
+	def get_result_type(self):
+		if not self.has_result_type:
+			self.has_result_type = True
+			self.result_type = self.node.result_type
+		return self.result_type
+
 
 # -------------------- Helper functions --------------------
 
@@ -460,26 +526,25 @@ def make_thunk_callingconvention_32_to_64_b(contents_source, dllname, func, defi
 	contents_source.append("")
 
 def node_is_only_declaration(node):
-	definition = node.get_definition();
+	definition = node.node.get_definition();
 	if definition is None:
 		return True;
-	return node != definition;
+	return node.node != definition;
 
-def find_all_functions(node, funcs, source):
-	if node.kind == CursorKind.FUNCTION_DECL and funcs.contains(node.spelling):
-		if (node.location.file is None or not node.location.file.name.endswith(f'/{source}')):
+def find_all_definitions(node, definitions, funcs, source):
+	if node.get_kind() == CursorKind.FUNCTION_DECL and funcs.contains(node.get_spelling()):
+		if (not node.get_location_file().endswith(f'/{source}')):
 			return
 		if not node_is_only_declaration(node):
-			func = funcs.get_item(node.spelling)
+			func = funcs.get_item(node.get_spelling())
 			func.fill(node)
 
-def find_all_definitions(node, definitions):
-	if node.kind == CursorKind.STRUCT_DECL or node.kind == CursorKind.UNION_DECL or node.kind == CursorKind.FIELD_DECL or node.kind == CursorKind.ENUM_DECL:
+	if node.get_kind() == CursorKind.STRUCT_DECL or node.get_kind() == CursorKind.UNION_DECL or node.get_kind() == CursorKind.FIELD_DECL or node.get_kind() == CursorKind.ENUM_DECL:
 		# Check if there is a field whichs type is an anyonymous struct/union
-		if ('anonymous union' in node.type.spelling) or ('anonymous struct' in node.type.spelling):
+		if ('anonymous union' in node.get_type_spelling()) or ('anonymous struct' in node.get_type_spelling()):
 			for child in definitions:
-				if child.named_type == node.type.get_named_type().spelling:
-					child.variable = ' ' + node.spelling
+				if child.named_type == node.get_type().get_named_type().spelling:
+					child.variable = ' ' + node.get_spelling()
 			definitions = DefinitionCollection()
 		else:
 			if not node_is_only_declaration(node):
@@ -488,13 +553,13 @@ def find_all_definitions(node, definitions):
 				definitions = new_parent.children
 
 		for child in node.get_children():
-			find_all_definitions(child, definitions)
-	elif node.kind == CursorKind.TYPEDEF_DECL:
-		type_to = node.spelling
-		type_from = TypeChain(node, node.underlying_typedef_type)
+			find_all_definitions(NodeCache(child), definitions, funcs, source)
+	elif node.get_kind() == CursorKind.TYPEDEF_DECL:
+		type_to = node.get_spelling()
+		type_from = TypeChain(node, node.node.underlying_typedef_type)
 		# Fix anonymous struct/enum/union typedef
 		definitions.append_typedef_item(node, type_from.tostring(""))
-		definition = TypeDef(type_from, type_to, node.location)
+		definition = TypeDef(type_from, type_to, node.get_location_line(), node.get_location_file())
 		definitions.append(node, definition)
 	else:
 		definitions.clear_typedef_item()
@@ -514,8 +579,8 @@ def handle_dll_source(dll_path, source, funcs, ret_definitions):
 	cursor = parse_file(path_file)
 
 	for child in cursor.get_children():
-		find_all_functions(child, funcs, source)
-		find_all_definitions(child, ret_definitions)
+		nodeWrapper = NodeCache(child)
+		find_all_definitions(nodeWrapper, ret_definitions, funcs, source)
 
 def handle_dll(name):
 	print(f'Started {name}')
@@ -620,11 +685,11 @@ def handle_dll(name):
 def handle_all_dlls(threads):
 	dlls = []
 	dlls.append("user32")
-	dlls.append("kernel32")
-	dlls.append("advapi32")
-	dlls.append("msvcrt")
-	dlls.append("ntdll")
-	dlls.append("kernelbase")
+	#dlls.append("kernel32")
+	#dlls.append("advapi32")
+	#dlls.append("msvcrt")
+	#dlls.append("ntdll")
+	#dlls.append("kernelbase")
 
 	if threads > 1:
 		pool = Pool(threads)
