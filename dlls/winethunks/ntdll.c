@@ -790,6 +790,21 @@ struct _SECTION_IMAGE_INFORMATION /* ../include/winternl.h:2001 */
     USHORT DllCharacteristics;
     USHORT Machine;
     BOOLEAN ImageContainsCode;
+    union  /* ../include/winternl.h:2014 */
+    {
+        UCHAR ImageFlags;
+        struct  /* ../include/winternl.h:2017 */
+        {
+            UCHAR ComPlusNativeReady;
+            UCHAR ComPlusILOnly;
+            UCHAR ImageDynamicallyRelocated;
+            UCHAR ImageMappedFlat;
+            UCHAR BaseBelow4gb;
+            UCHAR Reserved;
+        };
+
+    } u;
+
     ULONG LoaderFlags;
     ULONG ImageFileSize;
     ULONG CheckSum;
@@ -860,8 +875,19 @@ struct _COUNTED_REASON_CONTEXT /* ../include/winternl.h:2073 */
 {
     ULONG Version;
     ULONG Flags;
+    union  /* ../include/winternl.h:2077 */
+    {
+        struct  /* ../include/winternl.h:2079 */
+        {
+            UNICODE_STRING ResourceFileName;
+            USHORT ResourceReasonId;
+            ULONG StringCount;
+            UNICODE_STRING* ReasonStrings;
+        };
 };
 
+        UNICODE_STRING SimpleString;
+    } u;
 
 typedef struct _COUNTED_REASON_CONTEXT COUNTED_REASON_CONTEXT; /* ../include/winternl.h:2088 */
 
@@ -1277,8 +1303,14 @@ typedef struct _RTL_AVL_TABLE* PRTL_AVL_TABLE; /* ../include/ddk/ntddk.h:178 */
 struct _DELAYLOAD_PROC_DESCRIPTOR /* ../include/delayloadhandler.h:28 */
 {
     ULONG ImportDescribedByName;
+    union  /* ../include/delayloadhandler.h:31 */
+    {
+        LPCSTR Name;
+        ULONG Ordinal;
+    } Description;
 };
 
+};
 
 typedef struct _DELAYLOAD_PROC_DESCRIPTOR DELAYLOAD_PROC_DESCRIPTOR; /* ../include/delayloadhandler.h:35 */
 

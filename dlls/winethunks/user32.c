@@ -18,6 +18,8 @@ typedef unsigned short UINT16; /* ../include/basetsd.h:83 */
 
 typedef unsigned int UINT32; /* ../include/basetsd.h:84 */
 
+typedef unsigned long UINT64; /* ../include/basetsd.h:97 */
+
 typedef long INT_PTR; /* ../include/basetsd.h:117 */
 
 typedef long LONG_PTR; /* ../include/basetsd.h:118 */
@@ -48,7 +50,6 @@ struct wow_handlers16 /* ../dlls/user32/controls.h:94 */
     void (*free_icon_param) (ULONG_PTR);
 };
 
-
 struct wow_handlers32 /* ../dlls/user32/controls.h:110 */
 {
     LRESULT (*button_proc) (HWND, UINT, WPARAM, LPARAM, BOOL);
@@ -68,7 +69,6 @@ struct wow_handlers32 /* ../dlls/user32/controls.h:110 */
     ULONG_PTR (*set_icon_param) (HICON, ULONG_PTR);
 };
 
-
 struct tagDIALOGINFO /* ../dlls/user32/controls.h:229 */
 {
     HWND hwndFocus;
@@ -80,12 +80,10 @@ struct tagDIALOGINFO /* ../dlls/user32/controls.h:229 */
     UINT flags;
 };
 
-
 struct HCONVLIST__ /* ../include/ddeml.h:305 */
 {
     int unused;
 };
-
 
 typedef struct HCONVLIST__* HCONVLIST; /* ../include/ddeml.h:305 */
 
@@ -94,7 +92,6 @@ struct HCONV__ /* ../include/ddeml.h:306 */
     int unused;
 };
 
-
 typedef struct HCONV__* HCONV; /* ../include/ddeml.h:306 */
 
 struct HSZ__ /* ../include/ddeml.h:307 */
@@ -102,14 +99,12 @@ struct HSZ__ /* ../include/ddeml.h:307 */
     int unused;
 };
 
-
 typedef struct HSZ__* HSZ; /* ../include/ddeml.h:307 */
 
 struct HDDEDATA__ /* ../include/ddeml.h:308 */
 {
     int unused;
 };
-
 
 typedef struct HDDEDATA__* HDDEDATA; /* ../include/ddeml.h:308 */
 
@@ -125,7 +120,6 @@ struct tagCONVCONTEXT /* ../include/ddeml.h:333 */
     DWORD dwSecurity;
     SECURITY_QUALITY_OF_SERVICE qos;
 };
-
 
 typedef struct tagCONVCONTEXT CONVCONTEXT; /* ../include/ddeml.h:342 */
 
@@ -151,7 +145,6 @@ struct tagCONVINFO /* ../include/ddeml.h:344 */
     HWND hwndPartner;
 };
 
-
 typedef struct tagCONVINFO* PCONVINFO; /* ../include/ddeml.h:362 */
 
 typedef UINT16 HANDLE16; /* ../include/wine/windef16.h:37 */
@@ -160,745 +153,745 @@ typedef HANDLE16 HINSTANCE16; /* ../include/wine/windef16.h:86 */
 
 typedef HINSTANCE16 HMODULE16; /* ../include/wine/windef16.h:114 */
 
-static WINAPI HKL (*pActivateKeyboardLayout)(HKL  hLayout, UINT  flags);
-static WINAPI BOOL (*pAddClipboardFormatListener)(HWND  hwnd);
-static WINAPI BOOL (*pAdjustWindowRect)(LPRECT  rect, DWORD  style, BOOL  menu);
-static WINAPI BOOL (*pAdjustWindowRectEx)(LPRECT  rect, DWORD  style, BOOL  menu, DWORD  exStyle);
-static WINAPI BOOL (*pAdjustWindowRectExForDpi)(LPRECT  rect, DWORD  style, BOOL  menu, DWORD  exStyle, UINT  dpi);
-static WINAPI BOOL (*pAlignRects)(LPRECT  rect, DWORD  b, DWORD  c, DWORD  d);
-static WINAPI BOOL (*pAllowSetForegroundWindow)(DWORD  procid);
-static WINAPI BOOL (*pAnimateWindow)(HWND  hwnd, DWORD  dwTime, DWORD  dwFlags);
+static WINAPI HKL (*pActivateKeyboardLayout)(HKL hLayout, UINT flags);
+static WINAPI BOOL (*pAddClipboardFormatListener)(HWND hwnd);
+static WINAPI BOOL (*pAdjustWindowRect)(LPRECT rect, DWORD style, BOOL menu);
+static WINAPI BOOL (*pAdjustWindowRectEx)(LPRECT rect, DWORD style, BOOL menu, DWORD exStyle);
+static WINAPI BOOL (*pAdjustWindowRectExForDpi)(LPRECT rect, DWORD style, BOOL menu, DWORD exStyle, UINT dpi);
+static WINAPI BOOL (*pAlignRects)(LPRECT rect, DWORD b, DWORD c, DWORD d);
+static WINAPI BOOL (*pAllowSetForegroundWindow)(DWORD procid);
+static WINAPI BOOL (*pAnimateWindow)(HWND hwnd, DWORD dwTime, DWORD dwFlags);
 static WINAPI BOOL (*pAnyPopup)(void);
-static WINAPI BOOL (*pAppendMenuA)(HMENU  hMenu, UINT  flags, UINT_PTR  id, LPCSTR  data);
-static WINAPI BOOL (*pAppendMenuW)(HMENU  hMenu, UINT  flags, UINT_PTR  id, LPCWSTR  data);
-static WINAPI BOOL (*pAreDpiAwarenessContextsEqual)(DPI_AWARENESS_CONTEXT  ctx1, DPI_AWARENESS_CONTEXT  ctx2);
-static WINAPI UINT (*pArrangeIconicWindows)(HWND  parent);
-static WINAPI BOOL (*pAttachThreadInput)(DWORD  from, DWORD  to, BOOL  attach);
-static WINAPI HDWP (*pBeginDeferWindowPos)(INT  count);
-static WINAPI HDC (*pBeginPaint)(HWND  hwnd, PAINTSTRUCT*  lps);
-static WINAPI BOOL (*pBlockInput)(BOOL  fBlockIt);
-static WINAPI BOOL (*pBringWindowToTop)(HWND  hwnd);
-static WINAPI LONG (*pBroadcastSystemMessageA)(DWORD  flags, LPDWORD  recipients, UINT  msg, WPARAM  wp, LPARAM  lp);
-static WINAPI LONG (*pBroadcastSystemMessageExA)(DWORD  flags, LPDWORD  recipients, UINT  msg, WPARAM  wp, LPARAM  lp, PBSMINFO  pinfo);
-static WINAPI LONG (*pBroadcastSystemMessageExW)(DWORD  flags, LPDWORD  recipients, UINT  msg, WPARAM  wp, LPARAM  lp, PBSMINFO  pinfo);
-static WINAPI LONG (*pBroadcastSystemMessageW)(DWORD  flags, LPDWORD  recipients, UINT  msg, WPARAM  wp, LPARAM  lp);
-static WINAPI void (*pCalcChildScroll)(HWND  hwnd, INT  scroll);
-static WINAPI DWORD (*pCalcMenuBar)(HWND  hwnd, DWORD  left, DWORD  right, DWORD  top, RECT*  rect);
-static WINAPI BOOL (*pCallMsgFilterA)(LPMSG  msg, INT  code);
-static WINAPI BOOL (*pCallMsgFilterW)(LPMSG  msg, INT  code);
-static WINAPI LRESULT (*pCallNextHookEx)(HHOOK  hhook, INT  code, WPARAM  wparam, LPARAM  lparam);
-static WINAPI LRESULT (*pCallWindowProcA)(WNDPROC  func, HWND  hwnd, UINT  msg, WPARAM  wParam, LPARAM  lParam);
-static WINAPI LRESULT (*pCallWindowProcW)(WNDPROC  func, HWND  hwnd, UINT  msg, WPARAM  wParam, LPARAM  lParam);
-static WINAPI WORD (*pCascadeChildWindows)(HWND  parent, UINT  flags);
-static WINAPI WORD (*pCascadeWindows)(HWND  hwndParent, UINT  wFlags, RECT*  lpRect, UINT  cKids, HWND*  lpKids);
-static WINAPI BOOL (*pChangeClipboardChain)(HWND  hwnd, HWND  next);
-static WINAPI LONG (*pChangeDisplaySettingsA)(LPDEVMODEA  devmode, DWORD  flags);
-static WINAPI LONG (*pChangeDisplaySettingsExA)(LPCSTR  devname, LPDEVMODEA  devmode, HWND  hwnd, DWORD  flags, LPVOID  lparam);
-static WINAPI LONG (*pChangeDisplaySettingsExW)(LPCWSTR  devname, LPDEVMODEW  devmode, HWND  hwnd, DWORD  flags, LPVOID  lparam);
-static WINAPI LONG (*pChangeDisplaySettingsW)(LPDEVMODEW  devmode, DWORD  flags);
-static WINAPI BOOL (*pChangeMenuA)(HMENU  hMenu, UINT  pos, LPCSTR  data, UINT  id, UINT  flags);
-static WINAPI BOOL (*pChangeMenuW)(HMENU  hMenu, UINT  pos, LPCWSTR  data, UINT  id, UINT  flags);
-static WINAPI BOOL (*pChangeWindowMessageFilter)(UINT  message, DWORD  flag);
-static WINAPI BOOL (*pChangeWindowMessageFilterEx)(HWND  hwnd, UINT  message, DWORD  action, CHANGEFILTERSTRUCT*  changefilter);
-static WINAPI LPSTR (*pCharLowerA)(LPSTR  str);
-static WINAPI DWORD (*pCharLowerBuffA)(LPSTR  str, DWORD  len);
-static WINAPI DWORD (*pCharLowerBuffW)(LPWSTR  str, DWORD  len);
-static WINAPI LPWSTR (*pCharLowerW)(LPWSTR  str);
-static WINAPI LPSTR (*pCharNextA)(LPCSTR  ptr);
-static WINAPI LPSTR (*pCharNextExA)(WORD  codepage, LPCSTR  ptr, DWORD  flags);
-static WINAPI LPWSTR (*pCharNextExW)(WORD  codepage, LPCWSTR  ptr, DWORD  flags);
-static WINAPI LPWSTR (*pCharNextW)(LPCWSTR  x);
-static WINAPI LPSTR (*pCharPrevA)(LPCSTR  start, LPCSTR  ptr);
-static WINAPI LPSTR (*pCharPrevExA)(WORD  codepage, LPCSTR  start, LPCSTR  ptr, DWORD  flags);
-static WINAPI LPSTR (*pCharPrevExW)(WORD  codepage, LPCWSTR  start, LPCWSTR  ptr, DWORD  flags);
-static WINAPI LPWSTR (*pCharPrevW)(LPCWSTR  start, LPCWSTR  x);
-static WINAPI BOOL (*pCharToOemA)(LPCSTR  s, LPSTR  d);
-static WINAPI BOOL (*pCharToOemBuffA)(LPCSTR  s, LPSTR  d, DWORD  len);
-static WINAPI BOOL (*pCharToOemBuffW)(LPCWSTR  s, LPSTR  d, DWORD  len);
-static WINAPI BOOL (*pCharToOemW)(LPCWSTR  s, LPSTR  d);
-static WINAPI LPSTR (*pCharUpperA)(LPSTR  str);
-static WINAPI DWORD (*pCharUpperBuffA)(LPSTR  str, DWORD  len);
-static WINAPI DWORD (*pCharUpperBuffW)(LPWSTR  str, DWORD  len);
-static WINAPI LPWSTR (*pCharUpperW)(LPWSTR  str);
-static WINAPI BOOL (*pCheckDlgButton)(HWND  hwnd, INT  id, UINT  check);
-static WINAPI DWORD (*pCheckMenuItem)(HMENU  hMenu, UINT  id, UINT  flags);
-static WINAPI BOOL (*pCheckMenuRadioItem)(HMENU  hMenu, UINT  first, UINT  last, UINT  check, UINT  flags);
-static WINAPI BOOL (*pCheckRadioButton)(HWND  hwndDlg, int  firstID, int  lastID, int  checkID);
-static WINAPI HWND (*pChildWindowFromPoint)(HWND  hwndParent, POINT  pt);
-static WINAPI HWND (*pChildWindowFromPointEx)(HWND  hwndParent, POINT  pt, UINT  uFlags);
-static WINAPI BOOL (*pClientToScreen)(HWND  hwnd, LPPOINT  lppnt);
-static WINAPI BOOL (*pClipCursor)(RECT*  rect);
+static WINAPI BOOL (*pAppendMenuA)(HMENU hMenu, UINT flags, UINT_PTR id, LPCSTR data);
+static WINAPI BOOL (*pAppendMenuW)(HMENU hMenu, UINT flags, UINT_PTR id, LPCWSTR data);
+static WINAPI BOOL (*pAreDpiAwarenessContextsEqual)(DPI_AWARENESS_CONTEXT ctx1, DPI_AWARENESS_CONTEXT ctx2);
+static WINAPI UINT (*pArrangeIconicWindows)(HWND parent);
+static WINAPI BOOL (*pAttachThreadInput)(DWORD from, DWORD to, BOOL attach);
+static WINAPI HDWP (*pBeginDeferWindowPos)(INT count);
+static WINAPI HDC (*pBeginPaint)(HWND hwnd, PAINTSTRUCT* lps);
+static WINAPI BOOL (*pBlockInput)(BOOL fBlockIt);
+static WINAPI BOOL (*pBringWindowToTop)(HWND hwnd);
+static WINAPI LONG (*pBroadcastSystemMessageA)(DWORD flags, LPDWORD recipients, UINT msg, WPARAM wp, LPARAM lp);
+static WINAPI LONG (*pBroadcastSystemMessageExA)(DWORD flags, LPDWORD recipients, UINT msg, WPARAM wp, LPARAM lp, PBSMINFO pinfo);
+static WINAPI LONG (*pBroadcastSystemMessageExW)(DWORD flags, LPDWORD recipients, UINT msg, WPARAM wp, LPARAM lp, PBSMINFO pinfo);
+static WINAPI LONG (*pBroadcastSystemMessageW)(DWORD flags, LPDWORD recipients, UINT msg, WPARAM wp, LPARAM lp);
+static WINAPI void (*pCalcChildScroll)(HWND hwnd, INT scroll);
+static WINAPI DWORD (*pCalcMenuBar)(HWND hwnd, DWORD left, DWORD right, DWORD top, RECT* rect);
+static WINAPI BOOL (*pCallMsgFilterA)(LPMSG msg, INT code);
+static WINAPI BOOL (*pCallMsgFilterW)(LPMSG msg, INT code);
+static WINAPI LRESULT (*pCallNextHookEx)(HHOOK hhook, INT code, WPARAM wparam, LPARAM lparam);
+static WINAPI LRESULT (*pCallWindowProcA)(WNDPROC func, HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+static WINAPI LRESULT (*pCallWindowProcW)(WNDPROC func, HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+static WINAPI WORD (*pCascadeChildWindows)(HWND parent, UINT flags);
+static WINAPI WORD (*pCascadeWindows)(HWND hwndParent, UINT wFlags, RECT* lpRect, UINT cKids, HWND* lpKids);
+static WINAPI BOOL (*pChangeClipboardChain)(HWND hwnd, HWND next);
+static WINAPI LONG (*pChangeDisplaySettingsA)(LPDEVMODEA devmode, DWORD flags);
+static WINAPI LONG (*pChangeDisplaySettingsExA)(LPCSTR devname, LPDEVMODEA devmode, HWND hwnd, DWORD flags, LPVOID lparam);
+static WINAPI LONG (*pChangeDisplaySettingsExW)(LPCWSTR devname, LPDEVMODEW devmode, HWND hwnd, DWORD flags, LPVOID lparam);
+static WINAPI LONG (*pChangeDisplaySettingsW)(LPDEVMODEW devmode, DWORD flags);
+static WINAPI BOOL (*pChangeMenuA)(HMENU hMenu, UINT pos, LPCSTR data, UINT id, UINT flags);
+static WINAPI BOOL (*pChangeMenuW)(HMENU hMenu, UINT pos, LPCWSTR data, UINT id, UINT flags);
+static WINAPI BOOL (*pChangeWindowMessageFilter)(UINT message, DWORD flag);
+static WINAPI BOOL (*pChangeWindowMessageFilterEx)(HWND hwnd, UINT message, DWORD action, CHANGEFILTERSTRUCT* changefilter);
+static WINAPI LPSTR (*pCharLowerA)(LPSTR str);
+static WINAPI DWORD (*pCharLowerBuffA)(LPSTR str, DWORD len);
+static WINAPI DWORD (*pCharLowerBuffW)(LPWSTR str, DWORD len);
+static WINAPI LPWSTR (*pCharLowerW)(LPWSTR str);
+static WINAPI LPSTR (*pCharNextA)(LPCSTR ptr);
+static WINAPI LPSTR (*pCharNextExA)(WORD codepage, LPCSTR ptr, DWORD flags);
+static WINAPI LPWSTR (*pCharNextExW)(WORD codepage, LPCWSTR ptr, DWORD flags);
+static WINAPI LPWSTR (*pCharNextW)(LPCWSTR x);
+static WINAPI LPSTR (*pCharPrevA)(LPCSTR start, LPCSTR ptr);
+static WINAPI LPSTR (*pCharPrevExA)(WORD codepage, LPCSTR start, LPCSTR ptr, DWORD flags);
+static WINAPI LPSTR (*pCharPrevExW)(WORD codepage, LPCWSTR start, LPCWSTR ptr, DWORD flags);
+static WINAPI LPWSTR (*pCharPrevW)(LPCWSTR start, LPCWSTR x);
+static WINAPI BOOL (*pCharToOemA)(LPCSTR s, LPSTR d);
+static WINAPI BOOL (*pCharToOemBuffA)(LPCSTR s, LPSTR d, DWORD len);
+static WINAPI BOOL (*pCharToOemBuffW)(LPCWSTR s, LPSTR d, DWORD len);
+static WINAPI BOOL (*pCharToOemW)(LPCWSTR s, LPSTR d);
+static WINAPI LPSTR (*pCharUpperA)(LPSTR str);
+static WINAPI DWORD (*pCharUpperBuffA)(LPSTR str, DWORD len);
+static WINAPI DWORD (*pCharUpperBuffW)(LPWSTR str, DWORD len);
+static WINAPI LPWSTR (*pCharUpperW)(LPWSTR str);
+static WINAPI BOOL (*pCheckDlgButton)(HWND hwnd, INT id, UINT check);
+static WINAPI DWORD (*pCheckMenuItem)(HMENU hMenu, UINT id, UINT flags);
+static WINAPI BOOL (*pCheckMenuRadioItem)(HMENU hMenu, UINT first, UINT last, UINT check, UINT flags);
+static WINAPI BOOL (*pCheckRadioButton)(HWND hwndDlg, int firstID, int lastID, int checkID);
+static WINAPI HWND (*pChildWindowFromPoint)(HWND hwndParent, POINT pt);
+static WINAPI HWND (*pChildWindowFromPointEx)(HWND hwndParent, POINT pt, UINT uFlags);
+static WINAPI BOOL (*pClientToScreen)(HWND hwnd, LPPOINT lppnt);
+static WINAPI BOOL (*pClipCursor)(RECT* rect);
 static WINAPI BOOL (*pCloseClipboard)(void);
-static WINAPI BOOL (*pCloseDesktop)(HDESK  handle);
-static WINAPI BOOL (*pCloseTouchInputHandle)(HTOUCHINPUT  handle);
-static WINAPI BOOL (*pCloseWindow)(HWND  hwnd);
-static WINAPI BOOL (*pCloseWindowStation)(HWINSTA  handle);
-static WINAPI INT (*pCopyAcceleratorTableA)(HACCEL  src, LPACCEL  dst, INT  count);
-static WINAPI INT (*pCopyAcceleratorTableW)(HACCEL  src, LPACCEL  dst, INT  count);
-static WINAPI HICON (*pCopyIcon)(HICON  hIcon);
-static WINAPI HANDLE (*pCopyImage)(HANDLE  hnd, UINT  type, INT  desiredx, INT  desiredy, UINT  flags);
-static WINAPI BOOL (*pCopyRect)(RECT*  dest, RECT*  src);
+static WINAPI BOOL (*pCloseDesktop)(HDESK handle);
+static WINAPI BOOL (*pCloseTouchInputHandle)(HTOUCHINPUT handle);
+static WINAPI BOOL (*pCloseWindow)(HWND hwnd);
+static WINAPI BOOL (*pCloseWindowStation)(HWINSTA handle);
+static WINAPI INT (*pCopyAcceleratorTableA)(HACCEL src, LPACCEL dst, INT count);
+static WINAPI INT (*pCopyAcceleratorTableW)(HACCEL src, LPACCEL dst, INT count);
+static WINAPI HICON (*pCopyIcon)(HICON hIcon);
+static WINAPI HANDLE (*pCopyImage)(HANDLE hnd, UINT type, INT desiredx, INT desiredy, UINT flags);
+static WINAPI BOOL (*pCopyRect)(RECT* dest, RECT* src);
 static WINAPI INT (*pCountClipboardFormats)(void);
-static WINAPI HACCEL (*pCreateAcceleratorTableA)(LPACCEL  lpaccel, INT  count);
-static WINAPI HACCEL (*pCreateAcceleratorTableW)(LPACCEL  lpaccel, INT  count);
-static WINAPI BOOL (*pCreateCaret)(HWND  hwnd, HBITMAP  bitmap, INT  width, INT  height);
-static WINAPI HCURSOR (*pCreateCursor)(HINSTANCE  hInstance, INT  xHotSpot, INT  yHotSpot, INT  nWidth, INT  nHeight, LPCVOID  lpANDbits, LPCVOID  lpXORbits);
-static WINAPI HDESK (*pCreateDesktopA)(LPCSTR  name, LPCSTR  device, LPDEVMODEA  devmode, DWORD  flags, ACCESS_MASK  access, LPSECURITY_ATTRIBUTES  sa);
-static WINAPI HDESK (*pCreateDesktopW)(LPCWSTR  name, LPCWSTR  device, LPDEVMODEW  devmode, DWORD  flags, ACCESS_MASK  access, LPSECURITY_ATTRIBUTES  sa);
-static WINAPI HWND (*pCreateDialogIndirectParamA)(HINSTANCE  hInst, LPCDLGTEMPLATEA  dlgTemplate, HWND  owner, DLGPROC  dlgProc, LPARAM  param);
-static WINAPI HWND (*pCreateDialogIndirectParamAorW)(HINSTANCE  hInst, LPCVOID  dlgTemplate, HWND  owner, DLGPROC  dlgProc, LPARAM  param, DWORD  flags);
-static WINAPI HWND (*pCreateDialogIndirectParamW)(HINSTANCE  hInst, LPCDLGTEMPLATEW  dlgTemplate, HWND  owner, DLGPROC  dlgProc, LPARAM  param);
-static WINAPI HWND (*pCreateDialogParamA)(HINSTANCE  hInst, LPCSTR  name, HWND  owner, DLGPROC  dlgProc, LPARAM  param);
-static WINAPI HWND (*pCreateDialogParamW)(HINSTANCE  hInst, LPCWSTR  name, HWND  owner, DLGPROC  dlgProc, LPARAM  param);
-static WINAPI HICON (*pCreateIcon)(HINSTANCE  hInstance, INT  nWidth, INT  nHeight, BYTE  bPlanes, BYTE  bBitsPixel, LPCVOID  lpANDbits, LPCVOID  lpXORbits);
-static WINAPI HICON (*pCreateIconFromResource)(LPBYTE  bits, UINT  cbSize, BOOL  bIcon, DWORD  dwVersion);
-static WINAPI HICON (*pCreateIconFromResourceEx)(LPBYTE  bits, UINT  cbSize, BOOL  bIcon, DWORD  dwVersion, INT  width, INT  height, UINT  cFlag);
-static WINAPI HICON (*pCreateIconIndirect)(PICONINFO  iconinfo);
-static WINAPI HWND (*pCreateMDIWindowA)(LPCSTR  lpClassName, LPCSTR  lpWindowName, DWORD  dwStyle, INT  X, INT  Y, INT  nWidth, INT  nHeight, HWND  hWndParent, HINSTANCE  hInstance, LPARAM  lParam);
-static WINAPI HWND (*pCreateMDIWindowW)(LPCWSTR  lpClassName, LPCWSTR  lpWindowName, DWORD  dwStyle, INT  X, INT  Y, INT  nWidth, INT  nHeight, HWND  hWndParent, HINSTANCE  hInstance, LPARAM  lParam);
+static WINAPI HACCEL (*pCreateAcceleratorTableA)(LPACCEL lpaccel, INT count);
+static WINAPI HACCEL (*pCreateAcceleratorTableW)(LPACCEL lpaccel, INT count);
+static WINAPI BOOL (*pCreateCaret)(HWND hwnd, HBITMAP bitmap, INT width, INT height);
+static WINAPI HCURSOR (*pCreateCursor)(HINSTANCE hInstance, INT xHotSpot, INT yHotSpot, INT nWidth, INT nHeight, LPCVOID lpANDbits, LPCVOID lpXORbits);
+static WINAPI HDESK (*pCreateDesktopA)(LPCSTR name, LPCSTR device, LPDEVMODEA devmode, DWORD flags, ACCESS_MASK access, LPSECURITY_ATTRIBUTES sa);
+static WINAPI HDESK (*pCreateDesktopW)(LPCWSTR name, LPCWSTR device, LPDEVMODEW devmode, DWORD flags, ACCESS_MASK access, LPSECURITY_ATTRIBUTES sa);
+static WINAPI HWND (*pCreateDialogIndirectParamA)(HINSTANCE hInst, LPCDLGTEMPLATEA dlgTemplate, HWND owner, DLGPROC dlgProc, LPARAM param);
+static WINAPI HWND (*pCreateDialogIndirectParamAorW)(HINSTANCE hInst, LPCVOID dlgTemplate, HWND owner, DLGPROC dlgProc, LPARAM param, DWORD flags);
+static WINAPI HWND (*pCreateDialogIndirectParamW)(HINSTANCE hInst, LPCDLGTEMPLATEW dlgTemplate, HWND owner, DLGPROC dlgProc, LPARAM param);
+static WINAPI HWND (*pCreateDialogParamA)(HINSTANCE hInst, LPCSTR name, HWND owner, DLGPROC dlgProc, LPARAM param);
+static WINAPI HWND (*pCreateDialogParamW)(HINSTANCE hInst, LPCWSTR name, HWND owner, DLGPROC dlgProc, LPARAM param);
+static WINAPI HICON (*pCreateIcon)(HINSTANCE hInstance, INT nWidth, INT nHeight, BYTE bPlanes, BYTE bBitsPixel, LPCVOID lpANDbits, LPCVOID lpXORbits);
+static WINAPI HICON (*pCreateIconFromResource)(LPBYTE bits, UINT cbSize, BOOL bIcon, DWORD dwVersion);
+static WINAPI HICON (*pCreateIconFromResourceEx)(LPBYTE bits, UINT cbSize, BOOL bIcon, DWORD dwVersion, INT width, INT height, UINT cFlag);
+static WINAPI HICON (*pCreateIconIndirect)(PICONINFO iconinfo);
+static WINAPI HWND (*pCreateMDIWindowA)(LPCSTR lpClassName, LPCSTR lpWindowName, DWORD dwStyle, INT X, INT Y, INT nWidth, INT nHeight, HWND hWndParent, HINSTANCE hInstance, LPARAM lParam);
+static WINAPI HWND (*pCreateMDIWindowW)(LPCWSTR lpClassName, LPCWSTR lpWindowName, DWORD dwStyle, INT X, INT Y, INT nWidth, INT nHeight, HWND hWndParent, HINSTANCE hInstance, LPARAM lParam);
 static WINAPI HMENU (*pCreateMenu)(void);
 static WINAPI HMENU (*pCreatePopupMenu)(void);
-static WINAPI HWND (*pCreateWindowExA)(DWORD  exStyle, LPCSTR  className, LPCSTR  windowName, DWORD  style, INT  x, INT  y, INT  width, INT  height, HWND  parent, HMENU  menu, HINSTANCE  instance, LPVOID  data);
-static WINAPI HWND (*pCreateWindowExW)(DWORD  exStyle, LPCWSTR  className, LPCWSTR  windowName, DWORD  style, INT  x, INT  y, INT  width, INT  height, HWND  parent, HMENU  menu, HINSTANCE  instance, LPVOID  data);
-static WINAPI HWINSTA (*pCreateWindowStationA)(LPCSTR  name, DWORD  flags, ACCESS_MASK  access, LPSECURITY_ATTRIBUTES  sa);
-static WINAPI HWINSTA (*pCreateWindowStationW)(LPCWSTR  name, DWORD  flags, ACCESS_MASK  access, LPSECURITY_ATTRIBUTES  sa);
-static WINAPI BOOL (*pDdeAbandonTransaction)(DWORD  idInst, HCONV  hConv, DWORD  idTransaction);
-static WINAPI LPBYTE (*pDdeAccessData)(HDDEDATA  hData, LPDWORD  pcbDataSize);
-static WINAPI HDDEDATA (*pDdeAddData)(HDDEDATA  hData, LPBYTE  pSrc, DWORD  cb, DWORD  cbOff);
-static WINAPI HDDEDATA (*pDdeClientTransaction)(LPBYTE  pData, DWORD  cbData, HCONV  hConv, HSZ  hszItem, UINT  wFmt, UINT  wType, DWORD  dwTimeout, LPDWORD  pdwResult);
-static WINAPI INT (*pDdeCmpStringHandles)(HSZ  hsz1, HSZ  hsz2);
-static WINAPI HCONV (*pDdeConnect)(DWORD  idInst, HSZ  hszService, HSZ  hszTopic, PCONVCONTEXT  pCC);
-static WINAPI HCONVLIST (*pDdeConnectList)(DWORD  idInst, HSZ  hszService, HSZ  hszTopic, HCONVLIST  hConvList, PCONVCONTEXT  pCC);
-static WINAPI HDDEDATA (*pDdeCreateDataHandle)(DWORD  idInst, LPBYTE  pSrc, DWORD  cb, DWORD  cbOff, HSZ  hszItem, UINT  wFmt, UINT  afCmd);
-static WINAPI HSZ (*pDdeCreateStringHandleA)(DWORD  idInst, LPCSTR  psz, INT  codepage);
-static WINAPI HSZ (*pDdeCreateStringHandleW)(DWORD  idInst, LPCWSTR  psz, INT  codepage);
-static WINAPI BOOL (*pDdeDisconnect)(HCONV  hConv);
-static WINAPI BOOL (*pDdeDisconnectList)(HCONVLIST  hConvList);
-static WINAPI BOOL (*pDdeEnableCallback)(DWORD  idInst, HCONV  hConv, UINT  wCmd);
-static WINAPI BOOL (*pDdeFreeDataHandle)(HDDEDATA  hData);
-static WINAPI BOOL (*pDdeFreeStringHandle)(DWORD  idInst, HSZ  hsz);
-static WINAPI DWORD (*pDdeGetData)(HDDEDATA  hData, LPBYTE  pDst, DWORD  cbMax, DWORD  cbOff);
-static WINAPI UINT (*pDdeGetLastError)(DWORD  idInst);
-static WINAPI BOOL (*pDdeImpersonateClient)(HCONV  hConv);
-static WINAPI UINT (*pDdeInitializeA)(LPDWORD  pidInst, PFNCALLBACK  pfnCallback, DWORD  afCmd, DWORD  ulRes);
-static WINAPI UINT (*pDdeInitializeW)(LPDWORD  pidInst, PFNCALLBACK  pfnCallback, DWORD  afCmd, DWORD  ulRes);
-static WINAPI BOOL (*pDdeKeepStringHandle)(DWORD  idInst, HSZ  hsz);
-static WINAPI HDDEDATA (*pDdeNameService)(DWORD  idInst, HSZ  hsz1, HSZ  hsz2, UINT  afCmd);
-static WINAPI BOOL (*pDdePostAdvise)(DWORD  idInst, HSZ  hszTopic, HSZ  hszItem);
-static WINAPI UINT (*pDdeQueryConvInfo)(HCONV  hConv, DWORD  id, PCONVINFO  lpConvInfo);
-static WINAPI HCONV (*pDdeQueryNextServer)(HCONVLIST  hConvList, HCONV  hConvPrev);
-static WINAPI DWORD (*pDdeQueryStringA)(DWORD  idInst, HSZ  hsz, LPSTR  psz, DWORD  cchMax, INT  iCodePage);
-static WINAPI DWORD (*pDdeQueryStringW)(DWORD  idInst, HSZ  hsz, LPWSTR  psz, DWORD  cchMax, INT  iCodePage);
-static WINAPI HCONV (*pDdeReconnect)(HCONV  hConv);
-static WINAPI BOOL (*pDdeSetQualityOfService)(HWND  hwndClient, SECURITY_QUALITY_OF_SERVICE*  pqosNew, PSECURITY_QUALITY_OF_SERVICE  pqosPrev);
-static WINAPI BOOL (*pDdeSetUserHandle)(HCONV  hConv, DWORD  id, DWORD  hUser);
-static WINAPI BOOL (*pDdeUnaccessData)(HDDEDATA  hData);
-static WINAPI BOOL (*pDdeUninitialize)(DWORD  idInst);
-static WINAPI LRESULT (*pDefDlgProcA)(HWND  hwnd, UINT  msg, WPARAM  wParam, LPARAM  lParam);
-static WINAPI LRESULT (*pDefDlgProcW)(HWND  hwnd, UINT  msg, WPARAM  wParam, LPARAM  lParam);
-static WINAPI LRESULT (*pDefFrameProcA)(HWND  hwnd, HWND  hwndMDIClient, UINT  message, WPARAM  wParam, LPARAM  lParam);
-static WINAPI LRESULT (*pDefFrameProcW)(HWND  hwnd, HWND  hwndMDIClient, UINT  message, WPARAM  wParam, LPARAM  lParam);
-static WINAPI LRESULT (*pDefMDIChildProcA)(HWND  hwnd, UINT  message, WPARAM  wParam, LPARAM  lParam);
-static WINAPI LRESULT (*pDefMDIChildProcW)(HWND  hwnd, UINT  message, WPARAM  wParam, LPARAM  lParam);
-static WINAPI LRESULT (*pDefRawInputProc)(RAWINPUT**  data, INT  data_count, UINT  header_size);
-static WINAPI LRESULT (*pDefWindowProcA)(HWND  hwnd, UINT  msg, WPARAM  wParam, LPARAM  lParam);
-static WINAPI LRESULT (*pDefWindowProcW)(HWND  hwnd, UINT  msg, WPARAM  wParam, LPARAM  lParam);
-static WINAPI HDWP (*pDeferWindowPos)(HDWP  hdwp, HWND  hwnd, HWND  hwndAfter, INT  x, INT  y, INT  cx, INT  cy, UINT  flags);
-static WINAPI BOOL (*pDeleteMenu)(HMENU  hMenu, UINT  id, UINT  flags);
-static WINAPI BOOL (*pDeregisterShellHookWindow)(HWND  hWnd);
-static WINAPI BOOL (*pDestroyAcceleratorTable)(HACCEL  handle);
+static WINAPI HWND (*pCreateWindowExA)(DWORD exStyle, LPCSTR className, LPCSTR windowName, DWORD style, INT x, INT y, INT width, INT height, HWND parent, HMENU menu, HINSTANCE instance, LPVOID data);
+static WINAPI HWND (*pCreateWindowExW)(DWORD exStyle, LPCWSTR className, LPCWSTR windowName, DWORD style, INT x, INT y, INT width, INT height, HWND parent, HMENU menu, HINSTANCE instance, LPVOID data);
+static WINAPI HWINSTA (*pCreateWindowStationA)(LPCSTR name, DWORD flags, ACCESS_MASK access, LPSECURITY_ATTRIBUTES sa);
+static WINAPI HWINSTA (*pCreateWindowStationW)(LPCWSTR name, DWORD flags, ACCESS_MASK access, LPSECURITY_ATTRIBUTES sa);
+static WINAPI BOOL (*pDdeAbandonTransaction)(DWORD idInst, HCONV hConv, DWORD idTransaction);
+static WINAPI LPBYTE (*pDdeAccessData)(HDDEDATA hData, LPDWORD pcbDataSize);
+static WINAPI HDDEDATA (*pDdeAddData)(HDDEDATA hData, LPBYTE pSrc, DWORD cb, DWORD cbOff);
+static WINAPI HDDEDATA (*pDdeClientTransaction)(LPBYTE pData, DWORD cbData, HCONV hConv, HSZ hszItem, UINT wFmt, UINT wType, DWORD dwTimeout, LPDWORD pdwResult);
+static WINAPI INT (*pDdeCmpStringHandles)(HSZ hsz1, HSZ hsz2);
+static WINAPI HCONV (*pDdeConnect)(DWORD idInst, HSZ hszService, HSZ hszTopic, PCONVCONTEXT pCC);
+static WINAPI HCONVLIST (*pDdeConnectList)(DWORD idInst, HSZ hszService, HSZ hszTopic, HCONVLIST hConvList, PCONVCONTEXT pCC);
+static WINAPI HDDEDATA (*pDdeCreateDataHandle)(DWORD idInst, LPBYTE pSrc, DWORD cb, DWORD cbOff, HSZ hszItem, UINT wFmt, UINT afCmd);
+static WINAPI HSZ (*pDdeCreateStringHandleA)(DWORD idInst, LPCSTR psz, INT codepage);
+static WINAPI HSZ (*pDdeCreateStringHandleW)(DWORD idInst, LPCWSTR psz, INT codepage);
+static WINAPI BOOL (*pDdeDisconnect)(HCONV hConv);
+static WINAPI BOOL (*pDdeDisconnectList)(HCONVLIST hConvList);
+static WINAPI BOOL (*pDdeEnableCallback)(DWORD idInst, HCONV hConv, UINT wCmd);
+static WINAPI BOOL (*pDdeFreeDataHandle)(HDDEDATA hData);
+static WINAPI BOOL (*pDdeFreeStringHandle)(DWORD idInst, HSZ hsz);
+static WINAPI DWORD (*pDdeGetData)(HDDEDATA hData, LPBYTE pDst, DWORD cbMax, DWORD cbOff);
+static WINAPI UINT (*pDdeGetLastError)(DWORD idInst);
+static WINAPI BOOL (*pDdeImpersonateClient)(HCONV hConv);
+static WINAPI UINT (*pDdeInitializeA)(LPDWORD pidInst, PFNCALLBACK pfnCallback, DWORD afCmd, DWORD ulRes);
+static WINAPI UINT (*pDdeInitializeW)(LPDWORD pidInst, PFNCALLBACK pfnCallback, DWORD afCmd, DWORD ulRes);
+static WINAPI BOOL (*pDdeKeepStringHandle)(DWORD idInst, HSZ hsz);
+static WINAPI HDDEDATA (*pDdeNameService)(DWORD idInst, HSZ hsz1, HSZ hsz2, UINT afCmd);
+static WINAPI BOOL (*pDdePostAdvise)(DWORD idInst, HSZ hszTopic, HSZ hszItem);
+static WINAPI UINT (*pDdeQueryConvInfo)(HCONV hConv, DWORD id, PCONVINFO lpConvInfo);
+static WINAPI HCONV (*pDdeQueryNextServer)(HCONVLIST hConvList, HCONV hConvPrev);
+static WINAPI DWORD (*pDdeQueryStringA)(DWORD idInst, HSZ hsz, LPSTR psz, DWORD cchMax, INT iCodePage);
+static WINAPI DWORD (*pDdeQueryStringW)(DWORD idInst, HSZ hsz, LPWSTR psz, DWORD cchMax, INT iCodePage);
+static WINAPI HCONV (*pDdeReconnect)(HCONV hConv);
+static WINAPI BOOL (*pDdeSetQualityOfService)(HWND hwndClient, SECURITY_QUALITY_OF_SERVICE* pqosNew, PSECURITY_QUALITY_OF_SERVICE pqosPrev);
+static WINAPI BOOL (*pDdeSetUserHandle)(HCONV hConv, DWORD id, DWORD hUser);
+static WINAPI BOOL (*pDdeUnaccessData)(HDDEDATA hData);
+static WINAPI BOOL (*pDdeUninitialize)(DWORD idInst);
+static WINAPI LRESULT (*pDefDlgProcA)(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+static WINAPI LRESULT (*pDefDlgProcW)(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+static WINAPI LRESULT (*pDefFrameProcA)(HWND hwnd, HWND hwndMDIClient, UINT message, WPARAM wParam, LPARAM lParam);
+static WINAPI LRESULT (*pDefFrameProcW)(HWND hwnd, HWND hwndMDIClient, UINT message, WPARAM wParam, LPARAM lParam);
+static WINAPI LRESULT (*pDefMDIChildProcA)(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
+static WINAPI LRESULT (*pDefMDIChildProcW)(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
+static WINAPI LRESULT (*pDefRawInputProc)(RAWINPUT** data, INT data_count, UINT header_size);
+static WINAPI LRESULT (*pDefWindowProcA)(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+static WINAPI LRESULT (*pDefWindowProcW)(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+static WINAPI HDWP (*pDeferWindowPos)(HDWP hdwp, HWND hwnd, HWND hwndAfter, INT x, INT y, INT cx, INT cy, UINT flags);
+static WINAPI BOOL (*pDeleteMenu)(HMENU hMenu, UINT id, UINT flags);
+static WINAPI BOOL (*pDeregisterShellHookWindow)(HWND hWnd);
+static WINAPI BOOL (*pDestroyAcceleratorTable)(HACCEL handle);
 static WINAPI BOOL (*pDestroyCaret)(void);
-static WINAPI BOOL (*pDestroyCursor)(HCURSOR  hCursor);
-static WINAPI BOOL (*pDestroyIcon)(HICON  hIcon);
-static WINAPI BOOL (*pDestroyMenu)(HMENU  hMenu);
-static WINAPI BOOL (*pDestroyWindow)(HWND  hwnd);
-static WINAPI INT_PTR (*pDialogBoxIndirectParamA)(HINSTANCE  hInstance, LPCDLGTEMPLATEA  template, HWND  owner, DLGPROC  dlgProc, LPARAM  param);
-static WINAPI INT_PTR (*pDialogBoxIndirectParamAorW)(HINSTANCE  hInstance, LPCVOID  template, HWND  owner, DLGPROC  dlgProc, LPARAM  param, DWORD  flags);
-static WINAPI INT_PTR (*pDialogBoxIndirectParamW)(HINSTANCE  hInstance, LPCDLGTEMPLATEW  template, HWND  owner, DLGPROC  dlgProc, LPARAM  param);
-static WINAPI INT_PTR (*pDialogBoxParamA)(HINSTANCE  hInst, LPCSTR  name, HWND  owner, DLGPROC  dlgProc, LPARAM  param);
-static WINAPI INT_PTR (*pDialogBoxParamW)(HINSTANCE  hInst, LPCWSTR  name, HWND  owner, DLGPROC  dlgProc, LPARAM  param);
+static WINAPI BOOL (*pDestroyCursor)(HCURSOR hCursor);
+static WINAPI BOOL (*pDestroyIcon)(HICON hIcon);
+static WINAPI BOOL (*pDestroyMenu)(HMENU hMenu);
+static WINAPI BOOL (*pDestroyWindow)(HWND hwnd);
+static WINAPI INT_PTR (*pDialogBoxIndirectParamA)(HINSTANCE hInstance, LPCDLGTEMPLATEA template, HWND owner, DLGPROC dlgProc, LPARAM param);
+static WINAPI INT_PTR (*pDialogBoxIndirectParamAorW)(HINSTANCE hInstance, LPCVOID template, HWND owner, DLGPROC dlgProc, LPARAM param, DWORD flags);
+static WINAPI INT_PTR (*pDialogBoxIndirectParamW)(HINSTANCE hInstance, LPCDLGTEMPLATEW template, HWND owner, DLGPROC dlgProc, LPARAM param);
+static WINAPI INT_PTR (*pDialogBoxParamA)(HINSTANCE hInst, LPCSTR name, HWND owner, DLGPROC dlgProc, LPARAM param);
+static WINAPI INT_PTR (*pDialogBoxParamW)(HINSTANCE hInst, LPCWSTR name, HWND owner, DLGPROC dlgProc, LPARAM param);
 static WINAPI void (*pDisableProcessWindowsGhosting)(void);
-static WINAPI LRESULT (*pDispatchMessageA)(MSG*  msg);
-static WINAPI LRESULT (*pDispatchMessageW)(MSG*  msg);
-static WINAPI LONG (*pDisplayConfigGetDeviceInfo)(DISPLAYCONFIG_DEVICE_INFO_HEADER*  packet);
-static WINAPI INT (*pDlgDirListA)(HWND  hDlg, LPSTR  spec, INT  idLBox, INT  idStatic, UINT  attrib);
-static WINAPI INT (*pDlgDirListComboBoxA)(HWND  hDlg, LPSTR  spec, INT  idCBox, INT  idStatic, UINT  attrib);
-static WINAPI INT (*pDlgDirListComboBoxW)(HWND  hDlg, LPWSTR  spec, INT  idCBox, INT  idStatic, UINT  attrib);
-static WINAPI INT (*pDlgDirListW)(HWND  hDlg, LPWSTR  spec, INT  idLBox, INT  idStatic, UINT  attrib);
-static WINAPI BOOL (*pDlgDirSelectComboBoxExA)(HWND  hwnd, LPSTR  str, INT  len, INT  id);
-static WINAPI BOOL (*pDlgDirSelectComboBoxExW)(HWND  hwnd, LPWSTR  str, INT  len, INT  id);
-static WINAPI BOOL (*pDlgDirSelectExA)(HWND  hwnd, LPSTR  str, INT  len, INT  id);
-static WINAPI BOOL (*pDlgDirSelectExW)(HWND  hwnd, LPWSTR  str, INT  len, INT  id);
-static WINAPI BOOL (*pDragDetect)(HWND  hWnd, POINT  pt);
-static WINAPI BOOL (*pDrawAnimatedRects)(HWND  hwnd, INT  idAni, RECT*  lprcFrom, RECT*  lprcTo);
-static WINAPI BOOL (*pDrawCaption)(HWND  hwnd, HDC  hdc, RECT*  lpRect, UINT  uFlags);
-static WINAPI BOOL (*pDrawCaptionTempA)(HWND  hwnd, HDC  hdc, RECT*  rect, HFONT  hFont, HICON  hIcon, LPCSTR  str, UINT  uFlags);
-static WINAPI BOOL (*pDrawCaptionTempW)(HWND  hwnd, HDC  hdc, RECT*  rect, HFONT  hFont, HICON  hIcon, LPCWSTR  str, UINT  uFlags);
-static WINAPI BOOL (*pDrawEdge)(HDC  hdc, LPRECT  rc, UINT  edge, UINT  flags);
-static WINAPI BOOL (*pDrawFocusRect)(HDC  hdc, RECT*  rc);
-static WINAPI BOOL (*pDrawFrameControl)(HDC  hdc, LPRECT  rc, UINT  uType, UINT  uState);
-static WINAPI BOOL (*pDrawIcon)(HDC  hdc, INT  x, INT  y, HICON  hIcon);
-static WINAPI BOOL (*pDrawIconEx)(HDC  hdc, INT  x0, INT  y0, HICON  hIcon, INT  cxWidth, INT  cyWidth, UINT  istep, HBRUSH  hbr, UINT  flags);
-static WINAPI BOOL (*pDrawMenuBar)(HWND  hWnd);
-static WINAPI DWORD (*pDrawMenuBarTemp)(HWND  hwnd, HDC  hDC, LPRECT  lprect, HMENU  hMenu, HFONT  hFont);
-static WINAPI BOOL (*pDrawStateA)(HDC  hdc, HBRUSH  hbr, DRAWSTATEPROC  func, LPARAM  ldata, WPARAM  wdata, INT  x, INT  y, INT  cx, INT  cy, UINT  flags);
-static WINAPI BOOL (*pDrawStateW)(HDC  hdc, HBRUSH  hbr, DRAWSTATEPROC  func, LPARAM  ldata, WPARAM  wdata, INT  x, INT  y, INT  cx, INT  cy, UINT  flags);
-static WINAPI INT (*pDrawTextA)(HDC  hdc, LPCSTR  str, INT  count, LPRECT  rect, UINT  flags);
-static WINAPI INT (*pDrawTextExA)(HDC  hdc, LPSTR  str, INT  count, LPRECT  rect, UINT  flags, LPDRAWTEXTPARAMS  dtp);
-static WINAPI INT (*pDrawTextExW)(HDC  hdc, LPWSTR  str, INT  i_count, LPRECT  rect, UINT  flags, LPDRAWTEXTPARAMS  dtp);
-static WINAPI INT (*pDrawTextW)(HDC  hdc, LPCWSTR  str, INT  count, LPRECT  rect, UINT  flags);
-static WINAPI LRESULT (*pEditWndProc)(HWND  hwnd, UINT  msg, WPARAM  wParam, LPARAM  lParam);
+static WINAPI LRESULT (*pDispatchMessageA)(MSG* msg);
+static WINAPI LRESULT (*pDispatchMessageW)(MSG* msg);
+static WINAPI LONG (*pDisplayConfigGetDeviceInfo)(DISPLAYCONFIG_DEVICE_INFO_HEADER* packet);
+static WINAPI INT (*pDlgDirListA)(HWND hDlg, LPSTR spec, INT idLBox, INT idStatic, UINT attrib);
+static WINAPI INT (*pDlgDirListComboBoxA)(HWND hDlg, LPSTR spec, INT idCBox, INT idStatic, UINT attrib);
+static WINAPI INT (*pDlgDirListComboBoxW)(HWND hDlg, LPWSTR spec, INT idCBox, INT idStatic, UINT attrib);
+static WINAPI INT (*pDlgDirListW)(HWND hDlg, LPWSTR spec, INT idLBox, INT idStatic, UINT attrib);
+static WINAPI BOOL (*pDlgDirSelectComboBoxExA)(HWND hwnd, LPSTR str, INT len, INT id);
+static WINAPI BOOL (*pDlgDirSelectComboBoxExW)(HWND hwnd, LPWSTR str, INT len, INT id);
+static WINAPI BOOL (*pDlgDirSelectExA)(HWND hwnd, LPSTR str, INT len, INT id);
+static WINAPI BOOL (*pDlgDirSelectExW)(HWND hwnd, LPWSTR str, INT len, INT id);
+static WINAPI BOOL (*pUserClientDllInitialize)(HINSTANCE inst, DWORD reason, LPVOID reserved);
+static WINAPI BOOL (*pDragDetect)(HWND hWnd, POINT pt);
+static WINAPI BOOL (*pDrawAnimatedRects)(HWND hwnd, INT idAni, RECT* lprcFrom, RECT* lprcTo);
+static WINAPI BOOL (*pDrawCaption)(HWND hwnd, HDC hdc, RECT* lpRect, UINT uFlags);
+static WINAPI BOOL (*pDrawCaptionTempA)(HWND hwnd, HDC hdc, RECT* rect, HFONT hFont, HICON hIcon, LPCSTR str, UINT uFlags);
+static WINAPI BOOL (*pDrawCaptionTempW)(HWND hwnd, HDC hdc, RECT* rect, HFONT hFont, HICON hIcon, LPCWSTR str, UINT uFlags);
+static WINAPI BOOL (*pDrawEdge)(HDC hdc, LPRECT rc, UINT edge, UINT flags);
+static WINAPI BOOL (*pDrawFocusRect)(HDC hdc, RECT* rc);
+static WINAPI BOOL (*pDrawFrameControl)(HDC hdc, LPRECT rc, UINT uType, UINT uState);
+static WINAPI BOOL (*pDrawIcon)(HDC hdc, INT x, INT y, HICON hIcon);
+static WINAPI BOOL (*pDrawIconEx)(HDC hdc, INT x0, INT y0, HICON hIcon, INT cxWidth, INT cyWidth, UINT istep, HBRUSH hbr, UINT flags);
+static WINAPI BOOL (*pDrawMenuBar)(HWND hWnd);
+static WINAPI DWORD (*pDrawMenuBarTemp)(HWND hwnd, HDC hDC, LPRECT lprect, HMENU hMenu, HFONT hFont);
+static WINAPI BOOL (*pDrawStateA)(HDC hdc, HBRUSH hbr, DRAWSTATEPROC func, LPARAM ldata, WPARAM wdata, INT x, INT y, INT cx, INT cy, UINT flags);
+static WINAPI BOOL (*pDrawStateW)(HDC hdc, HBRUSH hbr, DRAWSTATEPROC func, LPARAM ldata, WPARAM wdata, INT x, INT y, INT cx, INT cy, UINT flags);
+static WINAPI INT (*pDrawTextA)(HDC hdc, LPCSTR str, INT count, LPRECT rect, UINT flags);
+static WINAPI INT (*pDrawTextExA)(HDC hdc, LPSTR str, INT count, LPRECT rect, UINT flags, LPDRAWTEXTPARAMS dtp);
+static WINAPI INT (*pDrawTextExW)(HDC hdc, LPWSTR str, INT i_count, LPRECT rect, UINT flags, LPDRAWTEXTPARAMS dtp);
+static WINAPI INT (*pDrawTextW)(HDC hdc, LPCWSTR str, INT count, LPRECT rect, UINT flags);
+static WINAPI LRESULT (*pEditWndProc)(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 static WINAPI BOOL (*pEmptyClipboard)(void);
-static WINAPI BOOL (*pEnableMenuItem)(HMENU  hMenu, UINT  id, UINT  wFlags);
-static WINAPI BOOL (*pEnableMouseInPointer)(BOOL  enable);
-static WINAPI BOOL (*pEnableScrollBar)(HWND  hwnd, UINT  nBar, UINT  flags);
-static WINAPI BOOL (*pEnableWindow)(HWND  hwnd, BOOL  enable);
-static WINAPI BOOL (*pEndDeferWindowPos)(HDWP  hdwp);
-static WINAPI BOOL (*pEndDialog)(HWND  hwnd, INT_PTR  retval);
+static WINAPI BOOL (*pEnableMenuItem)(HMENU hMenu, UINT id, UINT wFlags);
+static WINAPI BOOL (*pEnableMouseInPointer)(BOOL enable);
+static WINAPI BOOL (*pEnableScrollBar)(HWND hwnd, UINT nBar, UINT flags);
+static WINAPI BOOL (*pEnableWindow)(HWND hwnd, BOOL enable);
+static WINAPI BOOL (*pEndDeferWindowPos)(HDWP hdwp);
+static WINAPI BOOL (*pEndDialog)(HWND hwnd, INT_PTR retval);
 static WINAPI BOOL (*pEndMenu)(void);
-static WINAPI BOOL (*pEndPaint)(HWND  hwnd, PAINTSTRUCT*  lps);
-static WINAPI BOOL (*pEnumChildWindows)(HWND  parent, WNDENUMPROC  func, LPARAM  lParam);
-static WINAPI UINT (*pEnumClipboardFormats)(UINT  format);
-static WINAPI BOOL (*pEnumDesktopWindows)(HDESK  desktop, WNDENUMPROC  func, LPARAM  lparam);
-static WINAPI BOOL (*pEnumDesktopsA)(HWINSTA  winsta, DESKTOPENUMPROCA  func, LPARAM  lparam);
-static WINAPI BOOL (*pEnumDesktopsW)(HWINSTA  winsta, DESKTOPENUMPROCW  func, LPARAM  lparam);
-static WINAPI BOOL (*pEnumDisplayDevicesA)(LPCSTR  device, DWORD  index, DISPLAY_DEVICEA*  info, DWORD  flags);
-static WINAPI BOOL (*pEnumDisplayDevicesW)(LPCWSTR  device, DWORD  index, DISPLAY_DEVICEW*  info, DWORD  flags);
-static WINAPI BOOL (*pEnumDisplayMonitors)(HDC  hdc, LPRECT  rect, MONITORENUMPROC  proc, LPARAM  lp);
-static WINAPI BOOL (*pEnumDisplaySettingsA)(LPCSTR  name, DWORD  n, LPDEVMODEA  devmode);
-static WINAPI BOOL (*pEnumDisplaySettingsExA)(LPCSTR  lpszDeviceName, DWORD  iModeNum, LPDEVMODEA  lpDevMode, DWORD  dwFlags);
-static WINAPI BOOL (*pEnumDisplaySettingsExW)(LPCWSTR  lpszDeviceName, DWORD  iModeNum, LPDEVMODEW  lpDevMode, DWORD  dwFlags);
-static WINAPI BOOL (*pEnumDisplaySettingsW)(LPCWSTR  name, DWORD  n, LPDEVMODEW  devmode);
-static WINAPI INT (*pEnumPropsA)(HWND  hwnd, PROPENUMPROCA  func);
-static WINAPI INT (*pEnumPropsExA)(HWND  hwnd, PROPENUMPROCEXA  func, LPARAM  lParam);
-static WINAPI INT (*pEnumPropsExW)(HWND  hwnd, PROPENUMPROCEXW  func, LPARAM  lParam);
-static WINAPI INT (*pEnumPropsW)(HWND  hwnd, PROPENUMPROCW  func);
-static WINAPI BOOL (*pEnumThreadWindows)(DWORD  id, WNDENUMPROC  func, LPARAM  lParam);
-static WINAPI BOOL (*pEnumWindowStationsA)(WINSTAENUMPROCA  func, LPARAM  lparam);
-static WINAPI BOOL (*pEnumWindowStationsW)(WINSTAENUMPROCW  func, LPARAM  lparam);
-static WINAPI BOOL (*pEnumWindows)(WNDENUMPROC  lpEnumFunc, LPARAM  lParam);
-static WINAPI BOOL (*pEqualRect)(RECT*  rect1, RECT*  rect2);
-static WINAPI INT (*pExcludeUpdateRgn)(HDC  hdc, HWND  hwnd);
-static WINAPI BOOL (*pExitWindowsEx)(UINT  flags, DWORD  reason);
-static WINAPI INT (*pFillRect)(HDC  hdc, RECT*  rect, HBRUSH  hbrush);
-static WINAPI HWND (*pFindWindowA)(LPCSTR  className, LPCSTR  title);
-static WINAPI HWND (*pFindWindowExA)(HWND  parent, HWND  child, LPCSTR  className, LPCSTR  title);
-static WINAPI HWND (*pFindWindowExW)(HWND  parent, HWND  child, LPCWSTR  className, LPCWSTR  title);
-static WINAPI HWND (*pFindWindowW)(LPCWSTR  className, LPCWSTR  title);
-static WINAPI BOOL (*pFlashWindow)(HWND  hWnd, BOOL  bInvert);
-static WINAPI BOOL (*pFlashWindowEx)(PFLASHWINFO  pfinfo);
-static WINAPI INT (*pFrameRect)(HDC  hdc, RECT*  rect, HBRUSH  hbrush);
-static WINAPI BOOL (*pFreeDDElParam)(UINT  msg, LPARAM  lParam);
+static WINAPI BOOL (*pEndPaint)(HWND hwnd, PAINTSTRUCT* lps);
+static WINAPI BOOL (*pEnumChildWindows)(HWND parent, WNDENUMPROC func, LPARAM lParam);
+static WINAPI UINT (*pEnumClipboardFormats)(UINT format);
+static WINAPI BOOL (*pEnumDesktopWindows)(HDESK desktop, WNDENUMPROC func, LPARAM lparam);
+static WINAPI BOOL (*pEnumDesktopsA)(HWINSTA winsta, DESKTOPENUMPROCA func, LPARAM lparam);
+static WINAPI BOOL (*pEnumDesktopsW)(HWINSTA winsta, DESKTOPENUMPROCW func, LPARAM lparam);
+static WINAPI BOOL (*pEnumDisplayDevicesA)(LPCSTR device, DWORD index, DISPLAY_DEVICEA* info, DWORD flags);
+static WINAPI BOOL (*pEnumDisplayDevicesW)(LPCWSTR device, DWORD index, DISPLAY_DEVICEW* info, DWORD flags);
+static WINAPI BOOL (*pEnumDisplayMonitors)(HDC hdc, LPRECT rect, MONITORENUMPROC proc, LPARAM lp);
+static WINAPI BOOL (*pEnumDisplaySettingsA)(LPCSTR name, DWORD n, LPDEVMODEA devmode);
+static WINAPI BOOL (*pEnumDisplaySettingsExA)(LPCSTR lpszDeviceName, DWORD iModeNum, LPDEVMODEA lpDevMode, DWORD dwFlags);
+static WINAPI BOOL (*pEnumDisplaySettingsExW)(LPCWSTR lpszDeviceName, DWORD iModeNum, LPDEVMODEW lpDevMode, DWORD dwFlags);
+static WINAPI BOOL (*pEnumDisplaySettingsW)(LPCWSTR name, DWORD n, LPDEVMODEW devmode);
+static WINAPI INT (*pEnumPropsA)(HWND hwnd, PROPENUMPROCA func);
+static WINAPI INT (*pEnumPropsExA)(HWND hwnd, PROPENUMPROCEXA func, LPARAM lParam);
+static WINAPI INT (*pEnumPropsExW)(HWND hwnd, PROPENUMPROCEXW func, LPARAM lParam);
+static WINAPI INT (*pEnumPropsW)(HWND hwnd, PROPENUMPROCW func);
+static WINAPI BOOL (*pEnumThreadWindows)(DWORD id, WNDENUMPROC func, LPARAM lParam);
+static WINAPI BOOL (*pEnumWindowStationsA)(WINSTAENUMPROCA func, LPARAM lparam);
+static WINAPI BOOL (*pEnumWindowStationsW)(WINSTAENUMPROCW func, LPARAM lparam);
+static WINAPI BOOL (*pEnumWindows)(WNDENUMPROC lpEnumFunc, LPARAM lParam);
+static WINAPI BOOL (*pEqualRect)(RECT* rect1, RECT* rect2);
+static WINAPI INT (*pExcludeUpdateRgn)(HDC hdc, HWND hwnd);
+static WINAPI BOOL (*pExitWindowsEx)(UINT flags, DWORD reason);
+static WINAPI INT (*pFillRect)(HDC hdc, RECT* rect, HBRUSH hbrush);
+static WINAPI HWND (*pFindWindowA)(LPCSTR className, LPCSTR title);
+static WINAPI HWND (*pFindWindowExA)(HWND parent, HWND child, LPCSTR className, LPCSTR title);
+static WINAPI HWND (*pFindWindowExW)(HWND parent, HWND child, LPCWSTR className, LPCWSTR title);
+static WINAPI HWND (*pFindWindowW)(LPCWSTR className, LPCWSTR title);
+static WINAPI BOOL (*pFlashWindow)(HWND hWnd, BOOL bInvert);
+static WINAPI BOOL (*pFlashWindowEx)(PFLASHWINFO pfinfo);
+static WINAPI INT (*pFrameRect)(HDC hdc, RECT* rect, HBRUSH hbrush);
+static WINAPI BOOL (*pFreeDDElParam)(UINT msg, LPARAM lParam);
 static WINAPI HWND (*pGetActiveWindow)(void);
-static WINAPI BOOL (*pGetAltTabInfoA)(HWND  hwnd, int  iItem, PALTTABINFO  pati, LPSTR  pszItemText, UINT  cchItemText);
-static WINAPI BOOL (*pGetAltTabInfoW)(HWND  hwnd, int  iItem, PALTTABINFO  pati, LPWSTR  pszItemText, UINT  cchItemText);
-static WINAPI HWND (*pGetAncestor)(HWND  hwnd, UINT  type);
-static WINAPI DWORD (*pGetAppCompatFlags)(HTASK  hTask);
-static WINAPI DWORD (*pGetAppCompatFlags2)(HTASK  hTask);
-static WINAPI SHORT (*pGetAsyncKeyState)(INT  key);
-static WINAPI BOOL (*pGetAutoRotationState)(AR_STATE*  state);
-static WINAPI DPI_AWARENESS (*pGetAwarenessFromDpiAwarenessContext)(DPI_AWARENESS_CONTEXT  context);
+static WINAPI BOOL (*pGetAltTabInfoA)(HWND hwnd, int iItem, PALTTABINFO pati, LPSTR pszItemText, UINT cchItemText);
+static WINAPI BOOL (*pGetAltTabInfoW)(HWND hwnd, int iItem, PALTTABINFO pati, LPWSTR pszItemText, UINT cchItemText);
+static WINAPI HWND (*pGetAncestor)(HWND hwnd, UINT type);
+static WINAPI DWORD (*pGetAppCompatFlags)(HTASK hTask);
+static WINAPI DWORD (*pGetAppCompatFlags2)(HTASK hTask);
+static WINAPI SHORT (*pGetAsyncKeyState)(INT key);
+static WINAPI BOOL (*pGetAutoRotationState)(AR_STATE* state);
+static WINAPI DPI_AWARENESS (*pGetAwarenessFromDpiAwarenessContext)(DPI_AWARENESS_CONTEXT context);
 static WINAPI HWND (*pGetCapture)(void);
 static WINAPI UINT (*pGetCaretBlinkTime)(void);
-static WINAPI BOOL (*pGetCaretPos)(LPPOINT  pt);
-static WINAPI BOOL (*pGetClassInfoA)(HINSTANCE  hInstance, LPCSTR  name, WNDCLASSA*  wc);
-static WINAPI BOOL (*pGetClassInfoExA)(HINSTANCE  hInstance, LPCSTR  name, WNDCLASSEXA*  wc);
-static WINAPI BOOL (*pGetClassInfoExW)(HINSTANCE  hInstance, LPCWSTR  name, WNDCLASSEXW*  wc);
-static WINAPI BOOL (*pGetClassInfoW)(HINSTANCE  hInstance, LPCWSTR  name, WNDCLASSW*  wc);
-static WINAPI DWORD (*pGetClassLongA)(HWND  hwnd, INT  offset);
-static WINAPI DWORD (*pGetClassLongW)(HWND  hwnd, INT  offset);
-static WINAPI ULONG_PTR (*pGetClassLongPtrA)(HWND  hwnd, INT  offset);
-static WINAPI ULONG_PTR (*pGetClassLongPtrW)(HWND  hwnd, INT  offset);
-static WINAPI INT (*pGetClassNameA)(HWND  hwnd, LPSTR  buffer, INT  count);
-static WINAPI INT (*pGetClassNameW)(HWND  hwnd, LPWSTR  buffer, INT  count);
-static WINAPI WORD (*pGetClassWord)(HWND  hwnd, INT  offset);
-static WINAPI BOOL (*pGetClientRect)(HWND  hwnd, LPRECT  rect);
-static WINAPI BOOL (*pGetClipCursor)(RECT*  rect);
-static WINAPI HANDLE (*pGetClipboardData)(UINT  format);
-static WINAPI INT (*pGetClipboardFormatNameA)(UINT  format, LPSTR  buffer, INT  maxlen);
-static WINAPI INT (*pGetClipboardFormatNameW)(UINT  format, LPWSTR  buffer, INT  maxlen);
+static WINAPI BOOL (*pGetCaretPos)(LPPOINT pt);
+static WINAPI BOOL (*pGetClassInfoA)(HINSTANCE hInstance, LPCSTR name, WNDCLASSA* wc);
+static WINAPI BOOL (*pGetClassInfoExA)(HINSTANCE hInstance, LPCSTR name, WNDCLASSEXA* wc);
+static WINAPI BOOL (*pGetClassInfoExW)(HINSTANCE hInstance, LPCWSTR name, WNDCLASSEXW* wc);
+static WINAPI BOOL (*pGetClassInfoW)(HINSTANCE hInstance, LPCWSTR name, WNDCLASSW* wc);
+static WINAPI DWORD (*pGetClassLongA)(HWND hwnd, INT offset);
+static WINAPI ULONG_PTR (*pGetClassLongPtrA)(HWND hwnd, INT offset);
+static WINAPI ULONG_PTR (*pGetClassLongPtrW)(HWND hwnd, INT offset);
+static WINAPI DWORD (*pGetClassLongW)(HWND hwnd, INT offset);
+static WINAPI INT (*pGetClassNameA)(HWND hwnd, LPSTR buffer, INT count);
+static WINAPI INT (*pGetClassNameW)(HWND hwnd, LPWSTR buffer, INT count);
+static WINAPI WORD (*pGetClassWord)(HWND hwnd, INT offset);
+static WINAPI BOOL (*pGetClientRect)(HWND hwnd, LPRECT rect);
+static WINAPI BOOL (*pGetClipCursor)(RECT* rect);
+static WINAPI HANDLE (*pGetClipboardData)(UINT format);
+static WINAPI INT (*pGetClipboardFormatNameA)(UINT format, LPSTR buffer, INT maxlen);
+static WINAPI INT (*pGetClipboardFormatNameW)(UINT format, LPWSTR buffer, INT maxlen);
 static WINAPI HWND (*pGetClipboardOwner)(void);
 static WINAPI DWORD (*pGetClipboardSequenceNumber)(void);
 static WINAPI HWND (*pGetClipboardViewer)(void);
-static WINAPI BOOL (*pGetComboBoxInfo)(HWND  hwndCombo, PCOMBOBOXINFO  pcbi);
-static WINAPI BOOL (*pGetCurrentInputMessageSource)(INPUT_MESSAGE_SOURCE*  source);
+static WINAPI BOOL (*pGetComboBoxInfo)(HWND hwndCombo, PCOMBOBOXINFO pcbi);
+static WINAPI BOOL (*pGetCurrentInputMessageSource)(INPUT_MESSAGE_SOURCE* source);
 static WINAPI HCURSOR (*pGetCursor)(void);
-static WINAPI HCURSOR (*pGetCursorFrameInfo)(HCURSOR  hCursor, DWORD  reserved, DWORD  istep, DWORD*  rate_jiffies, DWORD*  num_steps);
-static WINAPI BOOL (*pGetCursorInfo)(PCURSORINFO  pci);
-static WINAPI BOOL (*pGetCursorPos)(POINT*  pt);
-static WINAPI HDC (*pGetDC)(HWND  hwnd);
-static WINAPI HDC (*pGetDCEx)(HWND  hwnd, HRGN  hrgnClip, DWORD  flags);
+static WINAPI HCURSOR (*pGetCursorFrameInfo)(HCURSOR hCursor, DWORD reserved, DWORD istep, DWORD* rate_jiffies, DWORD* num_steps);
+static WINAPI BOOL (*pGetCursorInfo)(PCURSORINFO pci);
+static WINAPI BOOL (*pGetCursorPos)(POINT* pt);
+static WINAPI HDC (*pGetDC)(HWND hwnd);
+static WINAPI HDC (*pGetDCEx)(HWND hwnd, HRGN hrgnClip, DWORD flags);
 static WINAPI HWND (*pGetDesktopWindow)(void);
 static WINAPI DWORD (*pGetDialogBaseUnits)(void);
-static WINAPI BOOL (*pGetDisplayAutoRotationPreferences)(ORIENTATION_PREFERENCE*  orientation);
-static WINAPI LONG (*pGetDisplayConfigBufferSizes)(UINT32  flags, UINT32*  num_path_info, UINT32*  num_mode_info);
-static WINAPI INT (*pGetDlgCtrlID)(HWND  hwnd);
-static WINAPI HWND (*pGetDlgItem)(HWND  hwndDlg, INT  id);
-static WINAPI UINT (*pGetDlgItemInt)(HWND  hwnd, INT  id, BOOL*  translated, BOOL  fSigned);
-static WINAPI UINT (*pGetDlgItemTextA)(HWND  hwnd, INT  id, LPSTR  str, INT  len);
-static WINAPI UINT (*pGetDlgItemTextW)(HWND  hwnd, INT  id, LPWSTR  str, INT  len);
+static WINAPI BOOL (*pGetDisplayAutoRotationPreferences)(ORIENTATION_PREFERENCE* orientation);
+static WINAPI LONG (*pGetDisplayConfigBufferSizes)(UINT32 flags, UINT32* num_path_info, UINT32* num_mode_info);
+static WINAPI INT (*pGetDlgCtrlID)(HWND hwnd);
+static WINAPI HWND (*pGetDlgItem)(HWND hwndDlg, INT id);
+static WINAPI UINT (*pGetDlgItemInt)(HWND hwnd, INT id, BOOL* translated, BOOL fSigned);
+static WINAPI UINT (*pGetDlgItemTextA)(HWND hwnd, INT id, LPSTR str, INT len);
+static WINAPI UINT (*pGetDlgItemTextW)(HWND hwnd, INT id, LPWSTR str, INT len);
 static WINAPI UINT (*pGetDoubleClickTime)(void);
-static WINAPI BOOL (*pGetDpiForMonitorInternal)(HMONITOR  monitor, UINT  type, UINT*  x, UINT*  y);
+static WINAPI BOOL (*pGetDpiForMonitorInternal)(HMONITOR monitor, UINT type, UINT* x, UINT* y);
 static WINAPI UINT (*pGetDpiForSystem)(void);
-static WINAPI UINT (*pGetDpiForWindow)(HWND  hwnd);
+static WINAPI UINT (*pGetDpiForWindow)(HWND hwnd);
 static WINAPI HWND (*pGetFocus)(void);
 static WINAPI HWND (*pGetForegroundWindow)(void);
-static WINAPI BOOL (*pGetGestureConfig)(HWND  hwnd, DWORD  reserved, DWORD  flags, UINT*  count, GESTURECONFIG*  config, UINT  size);
-static WINAPI BOOL (*pGetGestureInfo)(HGESTUREINFO  handle, PGESTUREINFO  ptr);
-static WINAPI BOOL (*pGetGUIThreadInfo)(DWORD  id, GUITHREADINFO*  info);
-static WINAPI DWORD (*pGetGuiResources)(HANDLE  hProcess, DWORD  uiFlags);
-static WINAPI BOOL (*pGetIconInfo)(HICON  hIcon, PICONINFO  iconinfo);
-static WINAPI BOOL (*pGetIconInfoExA)(HICON  icon, ICONINFOEXA*  info);
-static WINAPI BOOL (*pGetIconInfoExW)(HICON  icon, ICONINFOEXW*  info);
+static WINAPI BOOL (*pGetGUIThreadInfo)(DWORD id, GUITHREADINFO* info);
+static WINAPI BOOL (*pGetGestureConfig)(HWND hwnd, DWORD reserved, DWORD flags, UINT* count, GESTURECONFIG* config, UINT size);
+static WINAPI BOOL (*pGetGestureInfo)(HGESTUREINFO handle, PGESTUREINFO ptr);
+static WINAPI DWORD (*pGetGuiResources)(HANDLE hProcess, DWORD uiFlags);
+static WINAPI BOOL (*pGetIconInfo)(HICON hIcon, PICONINFO iconinfo);
+static WINAPI BOOL (*pGetIconInfoExA)(HICON icon, ICONINFOEXA* info);
+static WINAPI BOOL (*pGetIconInfoExW)(HICON icon, ICONINFOEXW* info);
 static WINAPI BOOL (*pGetInputState)(void);
-static WINAPI UINT (*pGetInternalWindowPos)(HWND  hwnd, LPRECT  rectWnd, LPPOINT  ptIcon);
+static WINAPI UINT (*pGetInternalWindowPos)(HWND hwnd, LPRECT rectWnd, LPPOINT ptIcon);
 static WINAPI UINT (*pGetKBCodePage)(void);
-static WINAPI INT (*pGetKeyNameTextA)(LONG  lParam, LPSTR  lpBuffer, INT  nSize);
-static WINAPI INT (*pGetKeyNameTextW)(LONG  lParam, LPWSTR  lpBuffer, INT  nSize);
-static WINAPI SHORT (*pGetKeyState)(INT  vkey);
-static WINAPI HKL (*pGetKeyboardLayout)(DWORD  thread_id);
-static WINAPI UINT (*pGetKeyboardLayoutList)(INT  nBuff, HKL*  layouts);
-static WINAPI BOOL (*pGetKeyboardLayoutNameA)(LPSTR  pszKLID);
-static WINAPI BOOL (*pGetKeyboardLayoutNameW)(LPWSTR  pwszKLID);
-static WINAPI BOOL (*pGetKeyboardState)(LPBYTE  state);
-static WINAPI INT (*pGetKeyboardType)(INT  nTypeFlag);
-static WINAPI HWND (*pGetLastActivePopup)(HWND  hwnd);
-static WINAPI BOOL (*pGetLastInputInfo)(PLASTINPUTINFO  plii);
-static WINAPI BOOL (*pGetLayeredWindowAttributes)(HWND  hwnd, COLORREF*  key, BYTE*  alpha, DWORD*  flags);
-static WINAPI DWORD (*pGetListBoxInfo)(HWND  hwnd);
-static WINAPI HMENU (*pGetMenu)(HWND  hWnd);
-static WINAPI BOOL (*pGetMenuBarInfo)(HWND  hwnd, LONG  idObject, LONG  idItem, PMENUBARINFO  pmbi);
+static WINAPI INT (*pGetKeyNameTextA)(LONG lParam, LPSTR lpBuffer, INT nSize);
+static WINAPI INT (*pGetKeyNameTextW)(LONG lParam, LPWSTR lpBuffer, INT nSize);
+static WINAPI SHORT (*pGetKeyState)(INT vkey);
+static WINAPI HKL (*pGetKeyboardLayout)(DWORD thread_id);
+static WINAPI UINT (*pGetKeyboardLayoutList)(INT nBuff, HKL* layouts);
+static WINAPI BOOL (*pGetKeyboardLayoutNameA)(LPSTR pszKLID);
+static WINAPI BOOL (*pGetKeyboardLayoutNameW)(LPWSTR pwszKLID);
+static WINAPI BOOL (*pGetKeyboardState)(LPBYTE state);
+static WINAPI INT (*pGetKeyboardType)(INT nTypeFlag);
+static WINAPI HWND (*pGetLastActivePopup)(HWND hwnd);
+static WINAPI BOOL (*pGetLastInputInfo)(PLASTINPUTINFO plii);
+static WINAPI BOOL (*pGetLayeredWindowAttributes)(HWND hwnd, COLORREF* key, BYTE* alpha, DWORD* flags);
+static WINAPI DWORD (*pGetListBoxInfo)(HWND hwnd);
+static WINAPI HMENU (*pGetMenu)(HWND hWnd);
+static WINAPI BOOL (*pGetMenuBarInfo)(HWND hwnd, LONG idObject, LONG idItem, PMENUBARINFO pmbi);
 static WINAPI DWORD (*pGetMenuCheckMarkDimensions)(void);
-static WINAPI DWORD (*pGetMenuContextHelpId)(HMENU  hMenu);
-static WINAPI UINT (*pGetMenuDefaultItem)(HMENU  hmenu, UINT  bypos, UINT  flags);
-static WINAPI BOOL (*pGetMenuInfo)(HMENU  hMenu, LPMENUINFO  lpmi);
-static WINAPI INT (*pGetMenuItemCount)(HMENU  hMenu);
-static WINAPI UINT (*pGetMenuItemID)(HMENU  hMenu, INT  nPos);
-static WINAPI BOOL (*pGetMenuItemInfoA)(HMENU  hmenu, UINT  item, BOOL  bypos, LPMENUITEMINFOA  lpmii);
-static WINAPI BOOL (*pGetMenuItemInfoW)(HMENU  hmenu, UINT  item, BOOL  bypos, LPMENUITEMINFOW  lpmii);
-static WINAPI BOOL (*pGetMenuItemRect)(HWND  hwnd, HMENU  hMenu, UINT  uItem, RECT*  rect);
-static WINAPI UINT (*pGetMenuState)(HMENU  hMenu, UINT  wItemID, UINT  wFlags);
-static WINAPI INT (*pGetMenuStringA)(HMENU  hMenu, UINT  wItemID, LPSTR  str, INT  nMaxSiz, UINT  wFlags);
-static WINAPI INT (*pGetMenuStringW)(HMENU  hMenu, UINT  wItemID, LPWSTR  str, INT  nMaxSiz, UINT  wFlags);
-static WINAPI BOOL (*pGetMessageA)(MSG*  msg, HWND  hwnd, UINT  first, UINT  last);
+static WINAPI DWORD (*pGetMenuContextHelpId)(HMENU hMenu);
+static WINAPI UINT (*pGetMenuDefaultItem)(HMENU hmenu, UINT bypos, UINT flags);
+static WINAPI BOOL (*pGetMenuInfo)(HMENU hMenu, LPMENUINFO lpmi);
+static WINAPI INT (*pGetMenuItemCount)(HMENU hMenu);
+static WINAPI UINT (*pGetMenuItemID)(HMENU hMenu, INT nPos);
+static WINAPI BOOL (*pGetMenuItemInfoA)(HMENU hmenu, UINT item, BOOL bypos, LPMENUITEMINFOA lpmii);
+static WINAPI BOOL (*pGetMenuItemInfoW)(HMENU hmenu, UINT item, BOOL bypos, LPMENUITEMINFOW lpmii);
+static WINAPI BOOL (*pGetMenuItemRect)(HWND hwnd, HMENU hMenu, UINT uItem, RECT* rect);
+static WINAPI UINT (*pGetMenuState)(HMENU hMenu, UINT wItemID, UINT wFlags);
+static WINAPI INT (*pGetMenuStringA)(HMENU hMenu, UINT wItemID, LPSTR str, INT nMaxSiz, UINT wFlags);
+static WINAPI INT (*pGetMenuStringW)(HMENU hMenu, UINT wItemID, LPWSTR str, INT nMaxSiz, UINT wFlags);
+static WINAPI BOOL (*pGetMessageA)(MSG* msg, HWND hwnd, UINT first, UINT last);
 static WINAPI LPARAM (*pGetMessageExtraInfo)(void);
 static WINAPI DWORD (*pGetMessagePos)(void);
 static WINAPI LONG (*pGetMessageTime)(void);
-static WINAPI BOOL (*pGetMessageW)(MSG*  msg, HWND  hwnd, UINT  first, UINT  last);
-static WINAPI BOOL (*pGetMonitorInfoA)(HMONITOR  monitor, LPMONITORINFO  info);
-static WINAPI BOOL (*pGetMonitorInfoW)(HMONITOR  monitor, LPMONITORINFO  info);
-static WINAPI int (*pGetMouseMovePointsEx)(UINT  size, LPMOUSEMOVEPOINT  ptin, LPMOUSEMOVEPOINT  ptout, int  count, DWORD  res);
-static WINAPI HWND (*pGetNextDlgGroupItem)(HWND  hwndDlg, HWND  hwndCtrl, BOOL  fPrevious);
-static WINAPI HWND (*pGetNextDlgTabItem)(HWND  hwndDlg, HWND  hwndCtrl, BOOL  fPrevious);
+static WINAPI BOOL (*pGetMessageW)(MSG* msg, HWND hwnd, UINT first, UINT last);
+static WINAPI BOOL (*pGetMonitorInfoA)(HMONITOR monitor, LPMONITORINFO info);
+static WINAPI BOOL (*pGetMonitorInfoW)(HMONITOR monitor, LPMONITORINFO info);
+static WINAPI int (*pGetMouseMovePointsEx)(UINT size, LPMOUSEMOVEPOINT ptin, LPMOUSEMOVEPOINT ptout, int count, DWORD res);
+static WINAPI HWND (*pGetNextDlgGroupItem)(HWND hwndDlg, HWND hwndCtrl, BOOL fPrevious);
+static WINAPI HWND (*pGetNextDlgTabItem)(HWND hwndDlg, HWND hwndCtrl, BOOL fPrevious);
 static WINAPI HWND (*pGetOpenClipboardWindow)(void);
-static WINAPI HWND (*pGetParent)(HWND  hwnd);
-static WINAPI BOOL (*pGetPhysicalCursorPos)(POINT*  point);
-static WINAPI BOOL (*pGetPointerDevices)(UINT32*  device_count, POINTER_DEVICE_INFO*  devices);
-static WINAPI BOOL (*pGetPointerType)(UINT32  id, POINTER_INPUT_TYPE*  type);
-static WINAPI INT (*pGetPriorityClipboardFormat)(UINT*  list, INT  nCount);
-static WINAPI BOOL (*pGetProcessDefaultLayout)(DWORD*  layout);
-static WINAPI BOOL (*pGetProcessDpiAwarenessInternal)(HANDLE  process, DPI_AWARENESS*  awareness);
+static WINAPI HWND (*pGetParent)(HWND hwnd);
+static WINAPI BOOL (*pGetPhysicalCursorPos)(POINT* point);
+static WINAPI BOOL (*pGetPointerDevices)(UINT32* device_count, POINTER_DEVICE_INFO* devices);
+static WINAPI BOOL (*pGetPointerType)(UINT32 id, POINTER_INPUT_TYPE* type);
+static WINAPI INT (*pGetPriorityClipboardFormat)(UINT* list, INT nCount);
+static WINAPI BOOL (*pGetProcessDefaultLayout)(DWORD* layout);
+static WINAPI BOOL (*pGetProcessDpiAwarenessInternal)(HANDLE process, DPI_AWARENESS* awareness);
 static WINAPI HWINSTA (*pGetProcessWindowStation)(void);
 static WINAPI HWND (*pGetProgmanWindow)(void);
-static WINAPI HANDLE (*pGetPropA)(HWND  hwnd, LPCSTR  str);
-static WINAPI HANDLE (*pGetPropW)(HWND  hwnd, LPCWSTR  str);
-static WINAPI DWORD (*pGetQueueStatus)(UINT  flags);
-static WINAPI UINT (*pGetRawInputBuffer)(RAWINPUT*  data, UINT*  data_size, UINT  header_size);
-static WINAPI UINT (*pGetRawInputData)(HRAWINPUT  rawinput, UINT  command, void*  data, UINT*  data_size, UINT  header_size);
-static WINAPI UINT (*pGetRawInputDeviceInfoA)(HANDLE  device, UINT  command, void*  data, UINT*  data_size);
-static WINAPI UINT (*pGetRawInputDeviceInfoW)(HANDLE  device, UINT  command, void*  data, UINT*  data_size);
-static WINAPI UINT (*pGetRawInputDeviceList)(RAWINPUTDEVICELIST*  devices, UINT*  device_count, UINT  size);
-static WINAPI UINT (*pGetRegisteredRawInputDevices)(RAWINPUTDEVICE*  devices, UINT*  device_count, UINT  size);
-static WINAPI BOOL (*pGetScrollBarInfo)(HWND  hwnd, LONG  idObject, LPSCROLLBARINFO  info);
-static WINAPI BOOL (*pGetScrollInfo)(HWND  hwnd, INT  nBar, LPSCROLLINFO  info);
-static WINAPI INT (*pGetScrollPos)(HWND  hwnd, INT  nBar);
-static WINAPI BOOL (*pGetScrollRange)(HWND  hwnd, INT  nBar, LPINT  lpMin, LPINT  lpMax);
+static WINAPI HANDLE (*pGetPropA)(HWND hwnd, LPCSTR str);
+static WINAPI HANDLE (*pGetPropW)(HWND hwnd, LPCWSTR str);
+static WINAPI DWORD (*pGetQueueStatus)(UINT flags);
+static WINAPI UINT (*pGetRawInputBuffer)(RAWINPUT* data, UINT* data_size, UINT header_size);
+static WINAPI UINT (*pGetRawInputData)(HRAWINPUT rawinput, UINT command, void* data, UINT* data_size, UINT header_size);
+static WINAPI UINT (*pGetRawInputDeviceInfoA)(HANDLE device, UINT command, void* data, UINT* data_size);
+static WINAPI UINT (*pGetRawInputDeviceInfoW)(HANDLE device, UINT command, void* data, UINT* data_size);
+static WINAPI UINT (*pGetRawInputDeviceList)(RAWINPUTDEVICELIST* devices, UINT* device_count, UINT size);
+static WINAPI UINT (*pGetRegisteredRawInputDevices)(RAWINPUTDEVICE* devices, UINT* device_count, UINT size);
+static WINAPI BOOL (*pGetScrollBarInfo)(HWND hwnd, LONG idObject, LPSCROLLBARINFO info);
+static WINAPI BOOL (*pGetScrollInfo)(HWND hwnd, INT nBar, LPSCROLLINFO info);
+static WINAPI INT (*pGetScrollPos)(HWND hwnd, INT nBar);
+static WINAPI BOOL (*pGetScrollRange)(HWND hwnd, INT nBar, LPINT lpMin, LPINT lpMax);
 static WINAPI HWND (*pGetShellWindow)(void);
-static WINAPI HMENU (*pGetSubMenu)(HMENU  hMenu, INT  nPos);
-static WINAPI COLORREF (*pGetSysColor)(INT  nIndex);
-static WINAPI HBRUSH (*pGetSysColorBrush)(INT  index);
-static WINAPI HMENU (*pGetSystemMenu)(HWND  hWnd, BOOL  bRevert);
-static WINAPI INT (*pGetSystemMetrics)(INT  index);
-static WINAPI INT (*pGetSystemMetricsForDpi)(INT  index, UINT  dpi);
-static WINAPI DWORD (*pGetTabbedTextExtentA)(HDC  hdc, LPCSTR  lpstr, INT  count, INT  cTabStops, INT*  lpTabPos);
-static WINAPI DWORD (*pGetTabbedTextExtentW)(HDC  hdc, LPCWSTR  lpstr, INT  count, INT  cTabStops, INT*  lpTabPos);
+static WINAPI HMENU (*pGetSubMenu)(HMENU hMenu, INT nPos);
+static WINAPI COLORREF (*pGetSysColor)(INT nIndex);
+static WINAPI HBRUSH (*pGetSysColorBrush)(INT index);
+static WINAPI HMENU (*pGetSystemMenu)(HWND hWnd, BOOL bRevert);
+static WINAPI INT (*pGetSystemMetrics)(INT index);
+static WINAPI INT (*pGetSystemMetricsForDpi)(INT index, UINT dpi);
+static WINAPI DWORD (*pGetTabbedTextExtentA)(HDC hdc, LPCSTR lpstr, INT count, INT cTabStops, INT* lpTabPos);
+static WINAPI DWORD (*pGetTabbedTextExtentW)(HDC hdc, LPCWSTR lpstr, INT count, INT cTabStops, INT* lpTabPos);
 static WINAPI HWND (*pGetTaskmanWindow)(void);
-static WINAPI HDESK (*pGetThreadDesktop)(DWORD  thread);
+static WINAPI HDESK (*pGetThreadDesktop)(DWORD thread);
 static WINAPI DPI_AWARENESS_CONTEXT (*pGetThreadDpiAwarenessContext)(void);
-static WINAPI BOOL (*pGetTitleBarInfo)(HWND  hwnd, PTITLEBARINFO  tbi);
-static WINAPI HWND (*pGetTopWindow)(HWND  hwnd);
-static WINAPI BOOL (*pGetTouchInputInfo)(HTOUCHINPUT  handle, UINT  count, TOUCHINPUT*  ptr, int  size);
-static WINAPI BOOL (*pGetUpdateRect)(HWND  hwnd, LPRECT  rect, BOOL  erase);
-static WINAPI INT (*pGetUpdateRgn)(HWND  hwnd, HRGN  hrgn, BOOL  erase);
-static WINAPI BOOL (*pGetUpdatedClipboardFormats)(UINT*  formats, UINT  size, UINT*  out_size);
-static WINAPI BOOL (*pGetUserObjectInformationA)(HANDLE  handle, INT  index, LPVOID  info, DWORD  len, LPDWORD  needed);
-static WINAPI BOOL (*pGetUserObjectInformationW)(HANDLE  handle, INT  index, LPVOID  info, DWORD  len, LPDWORD  needed);
-static WINAPI BOOL (*pGetUserObjectSecurity)(HANDLE  handle, PSECURITY_INFORMATION  info, PSECURITY_DESCRIPTOR  sid, DWORD  len, LPDWORD  needed);
-static WINAPI HWND (*pGetWindow)(HWND  hwnd, UINT  rel);
-static WINAPI DWORD (*pGetWindowContextHelpId)(HWND  hwnd);
-static WINAPI HDC (*pGetWindowDC)(HWND  hwnd);
-static WINAPI BOOL (*pGetWindowDisplayAffinity)(HWND  hwnd, DWORD*  affinity);
-static WINAPI DPI_AWARENESS_CONTEXT (*pGetWindowDpiAwarenessContext)(HWND  hwnd);
-static WINAPI BOOL (*pGetWindowInfo)(HWND  hwnd, PWINDOWINFO  pwi);
-static WINAPI LONG (*pGetWindowLongA)(HWND  hwnd, INT  offset);
-static WINAPI LONG_PTR (*pGetWindowLongPtrA)(HWND  hwnd, INT  offset);
-static WINAPI LONG_PTR (*pGetWindowLongPtrW)(HWND  hwnd, INT  offset);
-static WINAPI LONG (*pGetWindowLongW)(HWND  hwnd, INT  offset);
-static WINAPI UINT (*pGetWindowModuleFileNameA)(HWND  hwnd, LPSTR  module, UINT  size);
-static WINAPI UINT (*pGetWindowModuleFileNameW)(HWND  hwnd, LPWSTR  module, UINT  size);
-static WINAPI BOOL (*pGetWindowPlacement)(HWND  hwnd, WINDOWPLACEMENT*  wndpl);
-static WINAPI BOOL (*pGetWindowRect)(HWND  hwnd, LPRECT  rect);
-static WINAPI INT (*pGetWindowRgn)(HWND  hwnd, HRGN  hrgn);
-static WINAPI INT (*pGetWindowRgnBox)(HWND  hwnd, LPRECT  prect);
-static WINAPI INT (*pGetWindowTextA)(HWND  hwnd, LPSTR  lpString, INT  nMaxCount);
-static WINAPI INT (*pGetWindowTextLengthA)(HWND  hwnd);
-static WINAPI INT (*pGetWindowTextLengthW)(HWND  hwnd);
-static WINAPI INT (*pGetWindowTextW)(HWND  hwnd, LPWSTR  lpString, INT  nMaxCount);
-static WINAPI DWORD (*pGetWindowThreadProcessId)(HWND  hwnd, LPDWORD  process);
-static WINAPI WORD (*pGetWindowWord)(HWND  hwnd, INT  offset);
-static WINAPI BOOL (*pGrayStringA)(HDC  hdc, HBRUSH  hbr, GRAYSTRINGPROC  gsprc, LPARAM  lParam, INT  cch, INT  x, INT  y, INT  cx, INT  cy);
-static WINAPI BOOL (*pGrayStringW)(HDC  hdc, HBRUSH  hbr, GRAYSTRINGPROC  gsprc, LPARAM  lParam, INT  cch, INT  x, INT  y, INT  cx, INT  cy);
-static WINAPI BOOL (*pHideCaret)(HWND  hwnd);
-static WINAPI BOOL (*pHiliteMenuItem)(HWND  hWnd, HMENU  hMenu, UINT  wItemID, UINT  wHilite);
-static WINAPI BOOL (*pImpersonateDdeClientWindow)(HWND  hWndClient, HWND  hWndServer);
+static WINAPI BOOL (*pGetTitleBarInfo)(HWND hwnd, PTITLEBARINFO tbi);
+static WINAPI HWND (*pGetTopWindow)(HWND hwnd);
+static WINAPI BOOL (*pGetTouchInputInfo)(HTOUCHINPUT handle, UINT count, TOUCHINPUT* ptr, int size);
+static WINAPI BOOL (*pGetUpdateRect)(HWND hwnd, LPRECT rect, BOOL erase);
+static WINAPI INT (*pGetUpdateRgn)(HWND hwnd, HRGN hrgn, BOOL erase);
+static WINAPI BOOL (*pGetUpdatedClipboardFormats)(UINT* formats, UINT size, UINT* out_size);
+static WINAPI BOOL (*pGetUserObjectInformationA)(HANDLE handle, INT index, LPVOID info, DWORD len, LPDWORD needed);
+static WINAPI BOOL (*pGetUserObjectInformationW)(HANDLE handle, INT index, LPVOID info, DWORD len, LPDWORD needed);
+static WINAPI BOOL (*pGetUserObjectSecurity)(HANDLE handle, PSECURITY_INFORMATION info, PSECURITY_DESCRIPTOR sid, DWORD len, LPDWORD needed);
+static WINAPI HWND (*pGetWindow)(HWND hwnd, UINT rel);
+static WINAPI DWORD (*pGetWindowContextHelpId)(HWND hwnd);
+static WINAPI HDC (*pGetWindowDC)(HWND hwnd);
+static WINAPI BOOL (*pGetWindowDisplayAffinity)(HWND hwnd, DWORD* affinity);
+static WINAPI DPI_AWARENESS_CONTEXT (*pGetWindowDpiAwarenessContext)(HWND hwnd);
+static WINAPI BOOL (*pGetWindowInfo)(HWND hwnd, PWINDOWINFO pwi);
+static WINAPI LONG (*pGetWindowLongA)(HWND hwnd, INT offset);
+static WINAPI LONG_PTR (*pGetWindowLongPtrA)(HWND hwnd, INT offset);
+static WINAPI LONG_PTR (*pGetWindowLongPtrW)(HWND hwnd, INT offset);
+static WINAPI LONG (*pGetWindowLongW)(HWND hwnd, INT offset);
+static WINAPI UINT (*pGetWindowModuleFileNameA)(HWND hwnd, LPSTR module, UINT size);
+static WINAPI UINT (*pGetWindowModuleFileNameW)(HWND hwnd, LPWSTR module, UINT size);
+static WINAPI BOOL (*pGetWindowPlacement)(HWND hwnd, WINDOWPLACEMENT* wndpl);
+static WINAPI BOOL (*pGetWindowRect)(HWND hwnd, LPRECT rect);
+static WINAPI INT (*pGetWindowRgn)(HWND hwnd, HRGN hrgn);
+static WINAPI INT (*pGetWindowRgnBox)(HWND hwnd, LPRECT prect);
+static WINAPI INT (*pGetWindowTextA)(HWND hwnd, LPSTR lpString, INT nMaxCount);
+static WINAPI INT (*pGetWindowTextLengthA)(HWND hwnd);
+static WINAPI INT (*pGetWindowTextLengthW)(HWND hwnd);
+static WINAPI INT (*pGetWindowTextW)(HWND hwnd, LPWSTR lpString, INT nMaxCount);
+static WINAPI DWORD (*pGetWindowThreadProcessId)(HWND hwnd, LPDWORD process);
+static WINAPI WORD (*pGetWindowWord)(HWND hwnd, INT offset);
+static WINAPI BOOL (*pGrayStringA)(HDC hdc, HBRUSH hbr, GRAYSTRINGPROC gsprc, LPARAM lParam, INT cch, INT x, INT y, INT cx, INT cy);
+static WINAPI BOOL (*pGrayStringW)(HDC hdc, HBRUSH hbr, GRAYSTRINGPROC gsprc, LPARAM lParam, INT cch, INT x, INT y, INT cx, INT cy);
+static WINAPI BOOL (*pHideCaret)(HWND hwnd);
+static WINAPI BOOL (*pHiliteMenuItem)(HWND hWnd, HMENU hMenu, UINT wItemID, UINT wHilite);
+static WINAPI BOOL (*pImpersonateDdeClientWindow)(HWND hWndClient, HWND hWndServer);
 static WINAPI BOOL (*pInSendMessage)(void);
-static WINAPI DWORD (*pInSendMessageEx)(LPVOID  reserved);
-static WINAPI BOOL (*pInflateRect)(LPRECT  rect, INT  x, INT  y);
-static WINAPI BOOL (*pInsertMenuA)(HMENU  hMenu, UINT  pos, UINT  flags, UINT_PTR  id, LPCSTR  str);
-static WINAPI BOOL (*pInsertMenuItemA)(HMENU  hMenu, UINT  uItem, BOOL  bypos, MENUITEMINFOA*  lpmii);
-static WINAPI BOOL (*pInsertMenuItemW)(HMENU  hMenu, UINT  uItem, BOOL  bypos, MENUITEMINFOW*  lpmii);
-static WINAPI BOOL (*pInsertMenuW)(HMENU  hMenu, UINT  pos, UINT  flags, UINT_PTR  id, LPCWSTR  str);
-static WINAPI INT (*pInternalGetWindowText)(HWND  hwnd, LPWSTR  lpString, INT  nMaxCount);
-static WINAPI BOOL (*pIntersectRect)(LPRECT  dest, RECT*  src1, RECT*  src2);
-static WINAPI BOOL (*pInvalidateRect)(HWND  hwnd, RECT*  rect, BOOL  erase);
-static WINAPI BOOL (*pInvalidateRgn)(HWND  hwnd, HRGN  hrgn, BOOL  erase);
-static WINAPI BOOL (*pInvertRect)(HDC  hdc, RECT*  rect);
-static WINAPI BOOL (*pIsCharAlphaA)(CHAR  x);
-static WINAPI BOOL (*pIsCharAlphaNumericA)(CHAR  x);
-static WINAPI BOOL (*pIsCharAlphaNumericW)(WCHAR  ch);
-static WINAPI BOOL (*pIsCharAlphaW)(WCHAR  ch);
-static WINAPI BOOL (*pIsCharLowerA)(CHAR  x);
-static WINAPI BOOL (*pIsCharLowerW)(WCHAR  ch);
-static WINAPI BOOL (*pIsCharUpperA)(CHAR  x);
-static WINAPI BOOL (*pIsCharUpperW)(WCHAR  ch);
-static WINAPI BOOL (*pIsChild)(HWND  parent, HWND  child);
-static WINAPI BOOL (*pIsClipboardFormatAvailable)(UINT  format);
-static WINAPI BOOL (*pIsDialogMessageA)(HWND  hwndDlg, LPMSG  pmsg);
-static WINAPI BOOL (*pIsDialogMessageW)(HWND  hwndDlg, LPMSG  msg);
-static WINAPI UINT (*pIsDlgButtonChecked)(HWND  hwnd, int  id);
-static WINAPI BOOL (*pIsGUIThread)(BOOL  convert);
-static WINAPI BOOL (*pIsHungAppWindow)(HWND  hWnd);
-static WINAPI BOOL (*pIsIconic)(HWND  hWnd);
-static WINAPI BOOL (*pIsMenu)(HMENU  hmenu);
+static WINAPI DWORD (*pInSendMessageEx)(LPVOID reserved);
+static WINAPI BOOL (*pInflateRect)(LPRECT rect, INT x, INT y);
+static WINAPI BOOL (*pInsertMenuA)(HMENU hMenu, UINT pos, UINT flags, UINT_PTR id, LPCSTR str);
+static WINAPI BOOL (*pInsertMenuItemA)(HMENU hMenu, UINT uItem, BOOL bypos, MENUITEMINFOA* lpmii);
+static WINAPI BOOL (*pInsertMenuItemW)(HMENU hMenu, UINT uItem, BOOL bypos, MENUITEMINFOW* lpmii);
+static WINAPI BOOL (*pInsertMenuW)(HMENU hMenu, UINT pos, UINT flags, UINT_PTR id, LPCWSTR str);
+static WINAPI INT (*pInternalGetWindowText)(HWND hwnd, LPWSTR lpString, INT nMaxCount);
+static WINAPI BOOL (*pIntersectRect)(LPRECT dest, RECT* src1, RECT* src2);
+static WINAPI BOOL (*pInvalidateRect)(HWND hwnd, RECT* rect, BOOL erase);
+static WINAPI BOOL (*pInvalidateRgn)(HWND hwnd, HRGN hrgn, BOOL erase);
+static WINAPI BOOL (*pInvertRect)(HDC hdc, RECT* rect);
+static WINAPI BOOL (*pIsCharAlphaA)(CHAR x);
+static WINAPI BOOL (*pIsCharAlphaNumericA)(CHAR x);
+static WINAPI BOOL (*pIsCharAlphaNumericW)(WCHAR ch);
+static WINAPI BOOL (*pIsCharAlphaW)(WCHAR ch);
+static WINAPI BOOL (*pIsCharLowerA)(CHAR x);
+static WINAPI BOOL (*pIsCharLowerW)(WCHAR ch);
+static WINAPI BOOL (*pIsCharUpperA)(CHAR x);
+static WINAPI BOOL (*pIsCharUpperW)(WCHAR ch);
+static WINAPI BOOL (*pIsChild)(HWND parent, HWND child);
+static WINAPI BOOL (*pIsClipboardFormatAvailable)(UINT format);
+static WINAPI BOOL (*pIsDialogMessageA)(HWND hwndDlg, LPMSG pmsg);
+static WINAPI BOOL (*pIsDialogMessageW)(HWND hwndDlg, LPMSG msg);
+static WINAPI UINT (*pIsDlgButtonChecked)(HWND hwnd, int id);
+static WINAPI BOOL (*pIsGUIThread)(BOOL convert);
+static WINAPI BOOL (*pIsHungAppWindow)(HWND hWnd);
+static WINAPI BOOL (*pIsIconic)(HWND hWnd);
+static WINAPI BOOL (*pIsMenu)(HMENU hmenu);
 static WINAPI BOOL (*pIsProcessDPIAware)(void);
-static WINAPI BOOL (*pIsRectEmpty)(RECT*  rect);
-static WINAPI BOOL (*pIsTouchWindow)(HWND  hwnd, PULONG  flags);
-static WINAPI BOOL (*pIsValidDpiAwarenessContext)(DPI_AWARENESS_CONTEXT  context);
-static WINAPI BOOL (*pIsWinEventHookInstalled)(DWORD  dwEvent);
-static WINAPI BOOL (*pIsWindow)(HWND  hwnd);
-static WINAPI BOOL (*pIsWindowEnabled)(HWND  hWnd);
-static WINAPI BOOL (*pIsWindowRedirectedForPrint)(HWND  hwnd);
-static WINAPI BOOL (*pIsWindowUnicode)(HWND  hwnd);
-static WINAPI BOOL (*pIsWindowVisible)(HWND  hwnd);
-static WINAPI BOOL (*pIsZoomed)(HWND  hWnd);
-static WINAPI BOOL (*pKillSystemTimer)(HWND  hwnd, UINT_PTR  id);
-static WINAPI BOOL (*pKillTimer)(HWND  hwnd, UINT_PTR  id);
-static WINAPI HACCEL (*pLoadAcceleratorsA)(HINSTANCE  instance, LPCSTR  lpTableName);
-static WINAPI HACCEL (*pLoadAcceleratorsW)(HINSTANCE  instance, LPCWSTR  name);
-static WINAPI HBITMAP (*pLoadBitmapA)(HINSTANCE  instance, LPCSTR  name);
-static WINAPI HBITMAP (*pLoadBitmapW)(HINSTANCE  instance, LPCWSTR  name);
-static WINAPI HCURSOR (*pLoadCursorA)(HINSTANCE  hInstance, LPCSTR  name);
-static WINAPI HCURSOR (*pLoadCursorFromFileA)(LPCSTR  name);
-static WINAPI HCURSOR (*pLoadCursorFromFileW)(LPCWSTR  name);
-static WINAPI HCURSOR (*pLoadCursorW)(HINSTANCE  hInstance, LPCWSTR  name);
-static WINAPI HICON (*pLoadIconA)(HINSTANCE  hInstance, LPCSTR  name);
-static WINAPI HICON (*pLoadIconW)(HINSTANCE  hInstance, LPCWSTR  name);
-static WINAPI HANDLE (*pLoadImageA)(HINSTANCE  hinst, LPCSTR  name, UINT  type, INT  desiredx, INT  desiredy, UINT  loadflags);
-static WINAPI HANDLE (*pLoadImageW)(HINSTANCE  hinst, LPCWSTR  name, UINT  type, INT  desiredx, INT  desiredy, UINT  loadflags);
-static WINAPI HKL (*pLoadKeyboardLayoutA)(LPCSTR  pwszKLID, UINT  Flags);
-static WINAPI HKL (*pLoadKeyboardLayoutW)(LPCWSTR  pwszKLID, UINT  Flags);
+static WINAPI BOOL (*pIsRectEmpty)(RECT* rect);
+static WINAPI BOOL (*pIsTouchWindow)(HWND hwnd, PULONG flags);
+static WINAPI BOOL (*pIsValidDpiAwarenessContext)(DPI_AWARENESS_CONTEXT context);
+static WINAPI BOOL (*pIsWinEventHookInstalled)(DWORD dwEvent);
+static WINAPI BOOL (*pIsWindow)(HWND hwnd);
+static WINAPI BOOL (*pIsWindowEnabled)(HWND hWnd);
+static WINAPI BOOL (*pIsWindowRedirectedForPrint)(HWND hwnd);
+static WINAPI BOOL (*pIsWindowUnicode)(HWND hwnd);
+static WINAPI BOOL (*pIsWindowVisible)(HWND hwnd);
+static WINAPI BOOL (*pIsZoomed)(HWND hWnd);
+static WINAPI BOOL (*pKillSystemTimer)(HWND hwnd, UINT_PTR id);
+static WINAPI BOOL (*pKillTimer)(HWND hwnd, UINT_PTR id);
+static WINAPI HACCEL (*pLoadAcceleratorsA)(HINSTANCE instance, LPCSTR lpTableName);
+static WINAPI HACCEL (*pLoadAcceleratorsW)(HINSTANCE instance, LPCWSTR name);
+static WINAPI HBITMAP (*pLoadBitmapA)(HINSTANCE instance, LPCSTR name);
+static WINAPI HBITMAP (*pLoadBitmapW)(HINSTANCE instance, LPCWSTR name);
+static WINAPI HCURSOR (*pLoadCursorA)(HINSTANCE hInstance, LPCSTR name);
+static WINAPI HCURSOR (*pLoadCursorFromFileA)(LPCSTR name);
+static WINAPI HCURSOR (*pLoadCursorFromFileW)(LPCWSTR name);
+static WINAPI HCURSOR (*pLoadCursorW)(HINSTANCE hInstance, LPCWSTR name);
+static WINAPI HICON (*pLoadIconA)(HINSTANCE hInstance, LPCSTR name);
+static WINAPI HICON (*pLoadIconW)(HINSTANCE hInstance, LPCWSTR name);
+static WINAPI HANDLE (*pLoadImageA)(HINSTANCE hinst, LPCSTR name, UINT type, INT desiredx, INT desiredy, UINT loadflags);
+static WINAPI HANDLE (*pLoadImageW)(HINSTANCE hinst, LPCWSTR name, UINT type, INT desiredx, INT desiredy, UINT loadflags);
+static WINAPI HKL (*pLoadKeyboardLayoutA)(LPCSTR pwszKLID, UINT Flags);
+static WINAPI HKL (*pLoadKeyboardLayoutW)(LPCWSTR pwszKLID, UINT Flags);
 static WINAPI void (*pLoadLocalFonts)(void);
-static WINAPI HMENU (*pLoadMenuA)(HINSTANCE  instance, LPCSTR  name);
-static WINAPI HMENU (*pLoadMenuIndirectA)(LPCVOID  template);
-static WINAPI HMENU (*pLoadMenuIndirectW)(LPCVOID  template);
-static WINAPI HMENU (*pLoadMenuW)(HINSTANCE  instance, LPCWSTR  name);
-static WINAPI INT (*pLoadStringA)(HINSTANCE  instance, UINT  resource_id, LPSTR  buffer, INT  buflen);
-static WINAPI INT (*pLoadStringW)(HINSTANCE  instance, UINT  resource_id, LPWSTR  buffer, INT  buflen);
-static WINAPI BOOL (*pLockSetForegroundWindow)(UINT  lockcode);
-static WINAPI BOOL (*pLockWindowUpdate)(HWND  hwnd);
+static WINAPI HMENU (*pLoadMenuA)(HINSTANCE instance, LPCSTR name);
+static WINAPI HMENU (*pLoadMenuIndirectA)(LPCVOID template);
+static WINAPI HMENU (*pLoadMenuIndirectW)(LPCVOID template);
+static WINAPI HMENU (*pLoadMenuW)(HINSTANCE instance, LPCWSTR name);
+static WINAPI INT (*pLoadStringA)(HINSTANCE instance, UINT resource_id, LPSTR buffer, INT buflen);
+static WINAPI INT (*pLoadStringW)(HINSTANCE instance, UINT resource_id, LPWSTR buffer, INT buflen);
+static WINAPI BOOL (*pLockSetForegroundWindow)(UINT lockcode);
+static WINAPI BOOL (*pLockWindowUpdate)(HWND hwnd);
 static WINAPI BOOL (*pLockWorkStation)(void);
-static WINAPI BOOL (*pLogicalToPhysicalPoint)(HWND  hwnd, POINT*  point);
-static WINAPI BOOL (*pLogicalToPhysicalPointForPerMonitorDPI)(HWND  hwnd, POINT*  pt);
-static WINAPI INT (*pLookupIconIdFromDirectory)(LPBYTE  dir, BOOL  bIcon);
-static WINAPI INT (*pLookupIconIdFromDirectoryEx)(LPBYTE  xdir, BOOL  bIcon, INT  width, INT  height, UINT  cFlag);
-static WINAPI BOOL (*pMapDialogRect)(HWND  hwnd, LPRECT  rect);
-static WINAPI UINT (*pMapVirtualKeyA)(UINT  code, UINT  maptype);
-static WINAPI UINT (*pMapVirtualKeyExA)(UINT  code, UINT  maptype, HKL  hkl);
-static WINAPI UINT (*pMapVirtualKeyExW)(UINT  code, UINT  maptype, HKL  hkl);
-static WINAPI UINT (*pMapVirtualKeyW)(UINT  code, UINT  maptype);
-static WINAPI INT (*pMapWindowPoints)(HWND  hwndFrom, HWND  hwndTo, LPPOINT  lppt, UINT  count);
-static WINAPI INT (*pMenuItemFromPoint)(HWND  hWnd, HMENU  hMenu, POINT  ptScreen);
-static WINAPI BOOL (*pMessageBeep)(UINT  i);
-static WINAPI INT (*pMessageBoxA)(HWND  hWnd, LPCSTR  text, LPCSTR  title, UINT  type);
-static WINAPI INT (*pMessageBoxExA)(HWND  hWnd, LPCSTR  text, LPCSTR  title, UINT  type, WORD  langid);
-static WINAPI INT (*pMessageBoxExW)(HWND  hWnd, LPCWSTR  text, LPCWSTR  title, UINT  type, WORD  langid);
-static WINAPI INT (*pMessageBoxIndirectA)(LPMSGBOXPARAMSA  msgbox);
-static WINAPI INT (*pMessageBoxIndirectW)(LPMSGBOXPARAMSW  msgbox);
-static WINAPI INT (*pMessageBoxTimeoutA)(HWND  hWnd, LPCSTR  text, LPCSTR  title, UINT  type, WORD  langid, DWORD  timeout);
-static WINAPI INT (*pMessageBoxTimeoutW)(HWND  hWnd, LPCWSTR  text, LPCWSTR  title, UINT  type, WORD  langid, DWORD  timeout);
-static WINAPI INT (*pMessageBoxW)(HWND  hwnd, LPCWSTR  text, LPCWSTR  title, UINT  type);
-static WINAPI BOOL (*pModifyMenuA)(HMENU  hMenu, UINT  pos, UINT  flags, UINT_PTR  id, LPCSTR  str);
-static WINAPI BOOL (*pModifyMenuW)(HMENU  hMenu, UINT  pos, UINT  flags, UINT_PTR  id, LPCWSTR  str);
-static WINAPI HMONITOR (*pMonitorFromPoint)(POINT  pt, DWORD  flags);
-static WINAPI HMONITOR (*pMonitorFromRect)(RECT*  rect, DWORD  flags);
-static WINAPI HMONITOR (*pMonitorFromWindow)(HWND  hWnd, DWORD  dwFlags);
-static WINAPI BOOL (*pMoveWindow)(HWND  hwnd, INT  x, INT  y, INT  cx, INT  cy, BOOL  repaint);
-static WINAPI DWORD (*pMsgWaitForMultipleObjects)(DWORD  count, HANDLE*  handles, BOOL  wait_all, DWORD  timeout, DWORD  mask);
-static WINAPI DWORD (*pMsgWaitForMultipleObjectsEx)(DWORD  count, HANDLE*  pHandles, DWORD  timeout, DWORD  mask, DWORD  flags);
-static WINAPI void (*pNotifyWinEvent)(DWORD  event, HWND  hwnd, LONG  object_id, LONG  child_id);
-static WINAPI DWORD (*pOemKeyScan)(WORD  oem);
-static WINAPI BOOL (*pOemToCharA)(LPCSTR  s, LPSTR  d);
-static WINAPI BOOL (*pOemToCharBuffA)(LPCSTR  s, LPSTR  d, DWORD  len);
-static WINAPI BOOL (*pOemToCharBuffW)(LPCSTR  s, LPWSTR  d, DWORD  len);
-static WINAPI BOOL (*pOemToCharW)(LPCSTR  s, LPWSTR  d);
-static WINAPI BOOL (*pOffsetRect)(LPRECT  rect, INT  x, INT  y);
-static WINAPI BOOL (*pOpenClipboard)(HWND  hwnd);
-static WINAPI HDESK (*pOpenDesktopA)(LPCSTR  name, DWORD  flags, BOOL  inherit, ACCESS_MASK  access);
-static WINAPI HDESK (*pOpenDesktopW)(LPCWSTR  name, DWORD  flags, BOOL  inherit, ACCESS_MASK  access);
-static WINAPI BOOL (*pOpenIcon)(HWND  hwnd);
-static WINAPI HDESK (*pOpenInputDesktop)(DWORD  flags, BOOL  inherit, ACCESS_MASK  access);
-static WINAPI HWINSTA (*pOpenWindowStationA)(LPCSTR  name, BOOL  inherit, ACCESS_MASK  access);
-static WINAPI HWINSTA (*pOpenWindowStationW)(LPCWSTR  name, BOOL  inherit, ACCESS_MASK  access);
-static WINAPI LPARAM (*pPackDDElParam)(UINT  msg, UINT_PTR  uiLo, UINT_PTR  uiHi);
-static WINAPI BOOL (*pPaintDesktop)(HDC  hdc);
-static WINAPI BOOL (*pPeekMessageA)(MSG*  msg, HWND  hwnd, UINT  first, UINT  last, UINT  flags);
-static WINAPI BOOL (*pPeekMessageW)(MSG*  msg_out, HWND  hwnd, UINT  first, UINT  last, UINT  flags);
-static WINAPI BOOL (*pPhysicalToLogicalPoint)(HWND  hwnd, POINT*  point);
-static WINAPI BOOL (*pPhysicalToLogicalPointForPerMonitorDPI)(HWND  hwnd, POINT*  pt);
-static WINAPI BOOL (*pPostMessageA)(HWND  hwnd, UINT  msg, WPARAM  wparam, LPARAM  lparam);
-static WINAPI BOOL (*pPostMessageW)(HWND  hwnd, UINT  msg, WPARAM  wparam, LPARAM  lparam);
-static WINAPI void (*pPostQuitMessage)(INT  exit_code);
-static WINAPI BOOL (*pPostThreadMessageA)(DWORD  thread, UINT  msg, WPARAM  wparam, LPARAM  lparam);
-static WINAPI BOOL (*pPostThreadMessageW)(DWORD  thread, UINT  msg, WPARAM  wparam, LPARAM  lparam);
-static WINAPI BOOL (*pPrintWindow)(HWND  hwnd, HDC  hdcBlt, UINT  nFlags);
-static WINAPI UINT (*pPrivateExtractIconExA)(LPCSTR  lpstrFile, int  nIndex, HICON*  phIconLarge, HICON*  phIconSmall, UINT  nIcons);
-static WINAPI UINT (*pPrivateExtractIconExW)(LPCWSTR  lpwstrFile, int  nIndex, HICON*  phIconLarge, HICON*  phIconSmall, UINT  nIcons);
-static WINAPI UINT (*pPrivateExtractIconsA)(LPCSTR  lpstrFile, int  nIndex, int  sizeX, int  sizeY, HICON*  phicon, UINT*  piconid, UINT  nIcons, UINT  flags);
-static WINAPI UINT (*pPrivateExtractIconsW)(LPCWSTR  lpwstrFile, int  nIndex, int  sizeX, int  sizeY, HICON*  phicon, UINT*  pIconId, UINT  nIcons, UINT  flags);
-static WINAPI BOOL (*pPtInRect)(RECT*  rect, POINT  pt);
-static WINAPI LONG (*pQueryDisplayConfig)(UINT32  flags, UINT32*  numpathelements, DISPLAYCONFIG_PATH_INFO*  pathinfo, UINT32*  numinfoelements, DISPLAYCONFIG_MODE_INFO*  modeinfo, DISPLAYCONFIG_TOPOLOGY_ID*  topologyid);
-static WINAPI HWND (*pRealChildWindowFromPoint)(HWND  hwndParent, POINT  pt);
-static WINAPI UINT (*pRealGetWindowClassA)(HWND  hwnd, LPSTR  buffer, UINT  count);
-static WINAPI UINT (*pRealGetWindowClassW)(HWND  hwnd, LPWSTR  buffer, UINT  count);
-static WINAPI BOOL (*pRedrawWindow)(HWND  hwnd, RECT*  rect, HRGN  hrgn, UINT  flags);
-static WINAPI ATOM (*pRegisterClassA)(WNDCLASSA*  wc);
-static WINAPI ATOM (*pRegisterClassExA)(WNDCLASSEXA*  wc);
-static WINAPI ATOM (*pRegisterClassExW)(WNDCLASSEXW*  wc);
-static WINAPI ATOM (*pRegisterClassW)(WNDCLASSW*  wc);
-static WINAPI UINT (*pRegisterClipboardFormatA)(LPCSTR  name);
-static WINAPI UINT (*pRegisterClipboardFormatW)(LPCWSTR  name);
-static WINAPI HDEVNOTIFY (*pRegisterDeviceNotificationA)(HANDLE  hnd, LPVOID  notifyfilter, DWORD  flags);
-static WINAPI HDEVNOTIFY (*pRegisterDeviceNotificationW)(HANDLE  hRecipient, LPVOID  pNotificationFilter, DWORD  dwFlags);
-static WINAPI BOOL (*pRegisterHotKey)(HWND  hwnd, INT  id, UINT  modifiers, UINT  vk);
-static WINAPI DWORD (*pRegisterLogonProcess)(HANDLE  hprocess, BOOL  x);
-static WINAPI BOOL (*pRegisterPointerDeviceNotifications)(HWND  hwnd, BOOL  notifyrange);
-static WINAPI HPOWERNOTIFY (*pRegisterPowerSettingNotification)(HANDLE  recipient, GUID*  guid, DWORD  flags);
-static WINAPI BOOL (*pRegisterRawInputDevices)(RAWINPUTDEVICE*  devices, UINT  device_count, UINT  size);
-static WINAPI int (*pRegisterServicesProcess)(DWORD  ServicesProcessId);
-static WINAPI BOOL (*pRegisterShellHookWindow)(HWND  hWnd);
-static WINAPI void (*pRegisterSystemThread)(DWORD  flags, DWORD  reserved);
-static WINAPI DWORD (*pRegisterTasklist)(DWORD  x);
-static WINAPI BOOL (*pRegisterTouchHitTestingWindow)(HWND  hwnd, ULONG  value);
-static WINAPI BOOL (*pRegisterTouchWindow)(HWND  hwnd, ULONG  flags);
-static WINAPI UINT (*pRegisterWindowMessageA)(LPCSTR  str);
-static WINAPI UINT (*pRegisterWindowMessageW)(LPCWSTR  str);
+static WINAPI BOOL (*pLogicalToPhysicalPoint)(HWND hwnd, POINT* point);
+static WINAPI BOOL (*pLogicalToPhysicalPointForPerMonitorDPI)(HWND hwnd, POINT* pt);
+static WINAPI INT (*pLookupIconIdFromDirectory)(LPBYTE dir, BOOL bIcon);
+static WINAPI INT (*pLookupIconIdFromDirectoryEx)(LPBYTE xdir, BOOL bIcon, INT width, INT height, UINT cFlag);
+static WINAPI BOOL (*pMapDialogRect)(HWND hwnd, LPRECT rect);
+static WINAPI UINT (*pMapVirtualKeyA)(UINT code, UINT maptype);
+static WINAPI UINT (*pMapVirtualKeyExA)(UINT code, UINT maptype, HKL hkl);
+static WINAPI UINT (*pMapVirtualKeyExW)(UINT code, UINT maptype, HKL hkl);
+static WINAPI UINT (*pMapVirtualKeyW)(UINT code, UINT maptype);
+static WINAPI INT (*pMapWindowPoints)(HWND hwndFrom, HWND hwndTo, LPPOINT lppt, UINT count);
+static WINAPI INT (*pMenuItemFromPoint)(HWND hWnd, HMENU hMenu, POINT ptScreen);
+static WINAPI BOOL (*pMessageBeep)(UINT i);
+static WINAPI INT (*pMessageBoxA)(HWND hWnd, LPCSTR text, LPCSTR title, UINT type);
+static WINAPI INT (*pMessageBoxExA)(HWND hWnd, LPCSTR text, LPCSTR title, UINT type, WORD langid);
+static WINAPI INT (*pMessageBoxExW)(HWND hWnd, LPCWSTR text, LPCWSTR title, UINT type, WORD langid);
+static WINAPI INT (*pMessageBoxIndirectA)(LPMSGBOXPARAMSA msgbox);
+static WINAPI INT (*pMessageBoxIndirectW)(LPMSGBOXPARAMSW msgbox);
+static WINAPI INT (*pMessageBoxTimeoutA)(HWND hWnd, LPCSTR text, LPCSTR title, UINT type, WORD langid, DWORD timeout);
+static WINAPI INT (*pMessageBoxTimeoutW)(HWND hWnd, LPCWSTR text, LPCWSTR title, UINT type, WORD langid, DWORD timeout);
+static WINAPI INT (*pMessageBoxW)(HWND hwnd, LPCWSTR text, LPCWSTR title, UINT type);
+static WINAPI BOOL (*pModifyMenuA)(HMENU hMenu, UINT pos, UINT flags, UINT_PTR id, LPCSTR str);
+static WINAPI BOOL (*pModifyMenuW)(HMENU hMenu, UINT pos, UINT flags, UINT_PTR id, LPCWSTR str);
+static WINAPI HMONITOR (*pMonitorFromPoint)(POINT pt, DWORD flags);
+static WINAPI HMONITOR (*pMonitorFromRect)(RECT* rect, DWORD flags);
+static WINAPI HMONITOR (*pMonitorFromWindow)(HWND hWnd, DWORD dwFlags);
+static WINAPI BOOL (*pMoveWindow)(HWND hwnd, INT x, INT y, INT cx, INT cy, BOOL repaint);
+static WINAPI DWORD (*pMsgWaitForMultipleObjects)(DWORD count, HANDLE* handles, BOOL wait_all, DWORD timeout, DWORD mask);
+static WINAPI DWORD (*pMsgWaitForMultipleObjectsEx)(DWORD count, HANDLE* pHandles, DWORD timeout, DWORD mask, DWORD flags);
+static WINAPI void (*pNotifyWinEvent)(DWORD event, HWND hwnd, LONG object_id, LONG child_id);
+static WINAPI DWORD (*pOemKeyScan)(WORD oem);
+static WINAPI BOOL (*pOemToCharA)(LPCSTR s, LPSTR d);
+static WINAPI BOOL (*pOemToCharBuffA)(LPCSTR s, LPSTR d, DWORD len);
+static WINAPI BOOL (*pOemToCharBuffW)(LPCSTR s, LPWSTR d, DWORD len);
+static WINAPI BOOL (*pOemToCharW)(LPCSTR s, LPWSTR d);
+static WINAPI BOOL (*pOffsetRect)(LPRECT rect, INT x, INT y);
+static WINAPI BOOL (*pOpenClipboard)(HWND hwnd);
+static WINAPI HDESK (*pOpenDesktopA)(LPCSTR name, DWORD flags, BOOL inherit, ACCESS_MASK access);
+static WINAPI HDESK (*pOpenDesktopW)(LPCWSTR name, DWORD flags, BOOL inherit, ACCESS_MASK access);
+static WINAPI BOOL (*pOpenIcon)(HWND hwnd);
+static WINAPI HDESK (*pOpenInputDesktop)(DWORD flags, BOOL inherit, ACCESS_MASK access);
+static WINAPI HWINSTA (*pOpenWindowStationA)(LPCSTR name, BOOL inherit, ACCESS_MASK access);
+static WINAPI HWINSTA (*pOpenWindowStationW)(LPCWSTR name, BOOL inherit, ACCESS_MASK access);
+static WINAPI LPARAM (*pPackDDElParam)(UINT msg, UINT_PTR uiLo, UINT_PTR uiHi);
+static WINAPI BOOL (*pPaintDesktop)(HDC hdc);
+static WINAPI BOOL (*pPeekMessageA)(MSG* msg, HWND hwnd, UINT first, UINT last, UINT flags);
+static WINAPI BOOL (*pPeekMessageW)(MSG* msg_out, HWND hwnd, UINT first, UINT last, UINT flags);
+static WINAPI BOOL (*pPhysicalToLogicalPoint)(HWND hwnd, POINT* point);
+static WINAPI BOOL (*pPhysicalToLogicalPointForPerMonitorDPI)(HWND hwnd, POINT* pt);
+static WINAPI BOOL (*pPostMessageA)(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
+static WINAPI BOOL (*pPostMessageW)(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
+static WINAPI void (*pPostQuitMessage)(INT exit_code);
+static WINAPI BOOL (*pPostThreadMessageA)(DWORD thread, UINT msg, WPARAM wparam, LPARAM lparam);
+static WINAPI BOOL (*pPostThreadMessageW)(DWORD thread, UINT msg, WPARAM wparam, LPARAM lparam);
+static WINAPI BOOL (*pPrintWindow)(HWND hwnd, HDC hdcBlt, UINT nFlags);
+static WINAPI UINT (*pPrivateExtractIconExA)(LPCSTR lpstrFile, int nIndex, HICON* phIconLarge, HICON* phIconSmall, UINT nIcons);
+static WINAPI UINT (*pPrivateExtractIconExW)(LPCWSTR lpwstrFile, int nIndex, HICON* phIconLarge, HICON* phIconSmall, UINT nIcons);
+static WINAPI UINT (*pPrivateExtractIconsA)(LPCSTR lpstrFile, int nIndex, int sizeX, int sizeY, HICON* phicon, UINT* piconid, UINT nIcons, UINT flags);
+static WINAPI UINT (*pPrivateExtractIconsW)(LPCWSTR lpwstrFile, int nIndex, int sizeX, int sizeY, HICON* phicon, UINT* pIconId, UINT nIcons, UINT flags);
+static WINAPI BOOL (*pPtInRect)(RECT* rect, POINT pt);
+static WINAPI LONG (*pQueryDisplayConfig)(UINT32 flags, UINT32* numpathelements, DISPLAYCONFIG_PATH_INFO* pathinfo, UINT32* numinfoelements, DISPLAYCONFIG_MODE_INFO* modeinfo, DISPLAYCONFIG_TOPOLOGY_ID* topologyid);
+static WINAPI HWND (*pRealChildWindowFromPoint)(HWND hwndParent, POINT pt);
+static WINAPI UINT (*pRealGetWindowClassA)(HWND hwnd, LPSTR buffer, UINT count);
+static WINAPI UINT (*pRealGetWindowClassW)(HWND hwnd, LPWSTR buffer, UINT count);
+static WINAPI BOOL (*pRedrawWindow)(HWND hwnd, RECT* rect, HRGN hrgn, UINT flags);
+static WINAPI ATOM (*pRegisterClassA)(WNDCLASSA* wc);
+static WINAPI ATOM (*pRegisterClassExA)(WNDCLASSEXA* wc);
+static WINAPI ATOM (*pRegisterClassExW)(WNDCLASSEXW* wc);
+static WINAPI ATOM (*pRegisterClassW)(WNDCLASSW* wc);
+static WINAPI UINT (*pRegisterClipboardFormatA)(LPCSTR name);
+static WINAPI UINT (*pRegisterClipboardFormatW)(LPCWSTR name);
+static WINAPI HDEVNOTIFY (*pRegisterDeviceNotificationA)(HANDLE hnd, LPVOID notifyfilter, DWORD flags);
+static WINAPI HDEVNOTIFY (*pRegisterDeviceNotificationW)(HANDLE hRecipient, LPVOID pNotificationFilter, DWORD dwFlags);
+static WINAPI BOOL (*pRegisterHotKey)(HWND hwnd, INT id, UINT modifiers, UINT vk);
+static WINAPI DWORD (*pRegisterLogonProcess)(HANDLE hprocess, BOOL x);
+static WINAPI BOOL (*pRegisterPointerDeviceNotifications)(HWND hwnd, BOOL notifyrange);
+static WINAPI HPOWERNOTIFY (*pRegisterPowerSettingNotification)(HANDLE recipient, GUID* guid, DWORD flags);
+static WINAPI BOOL (*pRegisterRawInputDevices)(RAWINPUTDEVICE* devices, UINT device_count, UINT size);
+static WINAPI int (*pRegisterServicesProcess)(DWORD ServicesProcessId);
+static WINAPI BOOL (*pRegisterShellHookWindow)(HWND hWnd);
+static WINAPI void (*pRegisterSystemThread)(DWORD flags, DWORD reserved);
+static WINAPI DWORD (*pRegisterTasklist)(DWORD x);
+static WINAPI BOOL (*pRegisterTouchHitTestingWindow)(HWND hwnd, ULONG value);
+static WINAPI BOOL (*pRegisterTouchWindow)(HWND hwnd, ULONG flags);
+static WINAPI UINT (*pRegisterWindowMessageA)(LPCSTR str);
+static WINAPI UINT (*pRegisterWindowMessageW)(LPCWSTR str);
 static WINAPI BOOL (*pReleaseCapture)(void);
-static WINAPI INT (*pReleaseDC)(HWND  hwnd, HDC  hdc);
-static WINAPI BOOL (*pRemoveClipboardFormatListener)(HWND  hwnd);
-static WINAPI BOOL (*pRemoveMenu)(HMENU  hMenu, UINT  id, UINT  flags);
-static WINAPI HANDLE (*pRemovePropA)(HWND  hwnd, LPCSTR  str);
-static WINAPI HANDLE (*pRemovePropW)(HWND  hwnd, LPCWSTR  str);
-static WINAPI BOOL (*pReplyMessage)(LRESULT  result);
-static WINAPI LPARAM (*pReuseDDElParam)(LPARAM  lParam, UINT  msgIn, UINT  msgOut, UINT_PTR  uiLo, UINT_PTR  uiHi);
-static WINAPI BOOL (*pScreenToClient)(HWND  hwnd, LPPOINT  lppnt);
-static WINAPI void (*pScrollChildren)(HWND  hWnd, UINT  uMsg, WPARAM  wParam, LPARAM  lParam);
-static WINAPI BOOL (*pScrollDC)(HDC  hdc, INT  dx, INT  dy, RECT*  scroll, RECT*  clip, HRGN  ret_update_rgn, LPRECT  update_rect);
-static WINAPI BOOL (*pScrollWindow)(HWND  hwnd, INT  dx, INT  dy, RECT*  rect, RECT*  clipRect);
-static WINAPI INT (*pScrollWindowEx)(HWND  hwnd, INT  dx, INT  dy, RECT*  rect, RECT*  clipRect, HRGN  hrgnUpdate, LPRECT  rcUpdate, UINT  flags);
-static WINAPI LRESULT (*pSendDlgItemMessageA)(HWND  hwnd, INT  id, UINT  msg, WPARAM  wParam, LPARAM  lParam);
-static WINAPI LRESULT (*pSendDlgItemMessageW)(HWND  hwnd, INT  id, UINT  msg, WPARAM  wParam, LPARAM  lParam);
-static WINAPI LRESULT (*pSendIMEMessageExA)(HWND  hwnd, LPARAM  lparam);
-static WINAPI LRESULT (*pSendIMEMessageExW)(HWND  hwnd, LPARAM  lparam);
-static WINAPI UINT (*pSendInput)(UINT  count, LPINPUT  inputs, int  size);
-static WINAPI LRESULT (*pSendMessageA)(HWND  hwnd, UINT  msg, WPARAM  wparam, LPARAM  lparam);
-static WINAPI BOOL (*pSendMessageCallbackA)(HWND  hwnd, UINT  msg, WPARAM  wparam, LPARAM  lparam, SENDASYNCPROC  callback, ULONG_PTR  data);
-static WINAPI BOOL (*pSendMessageCallbackW)(HWND  hwnd, UINT  msg, WPARAM  wparam, LPARAM  lparam, SENDASYNCPROC  callback, ULONG_PTR  data);
-static WINAPI LRESULT (*pSendMessageTimeoutA)(HWND  hwnd, UINT  msg, WPARAM  wparam, LPARAM  lparam, UINT  flags, UINT  timeout, PDWORD_PTR  res_ptr);
-static WINAPI LRESULT (*pSendMessageTimeoutW)(HWND  hwnd, UINT  msg, WPARAM  wparam, LPARAM  lparam, UINT  flags, UINT  timeout, PDWORD_PTR  res_ptr);
-static WINAPI LRESULT (*pSendMessageW)(HWND  hwnd, UINT  msg, WPARAM  wparam, LPARAM  lparam);
-static WINAPI BOOL (*pSendNotifyMessageA)(HWND  hwnd, UINT  msg, WPARAM  wparam, LPARAM  lparam);
-static WINAPI BOOL (*pSendNotifyMessageW)(HWND  hwnd, UINT  msg, WPARAM  wparam, LPARAM  lparam);
-static WINAPI HWND (*pSetActiveWindow)(HWND  hwnd);
-static WINAPI HWND (*pSetCapture)(HWND  hwnd);
-static WINAPI BOOL (*pSetCaretBlinkTime)(UINT  msecs);
-static WINAPI BOOL (*pSetCaretPos)(INT  x, INT  y);
-static WINAPI DWORD (*pSetClassLongA)(HWND  hwnd, INT  offset, LONG  newval);
-static WINAPI ULONG_PTR (*pSetClassLongPtrA)(HWND  hwnd, INT  offset, LONG_PTR  newval);
-static WINAPI ULONG_PTR (*pSetClassLongPtrW)(HWND  hwnd, INT  offset, LONG_PTR  newval);
-static WINAPI DWORD (*pSetClassLongW)(HWND  hwnd, INT  offset, LONG  newval);
-static WINAPI WORD (*pSetClassWord)(HWND  hwnd, INT  offset, WORD  newval);
-static WINAPI HANDLE (*pSetClipboardData)(UINT  format, HANDLE  data);
-static WINAPI HWND (*pSetClipboardViewer)(HWND  hwnd);
-static WINAPI UINT_PTR (*pSetCoalescableTimer)(HWND  hwnd, UINT_PTR  id, UINT  timeout, TIMERPROC  proc, ULONG  tolerance);
-static WINAPI HCURSOR (*pSetCursor)(HCURSOR  hCursor);
-static WINAPI BOOL (*pSetCursorPos)(INT  x, INT  y);
-static WINAPI void (*pSetDebugErrorLevel)(DWORD  dwLevel);
-static WINAPI BOOL (*pSetDeskWallPaper)(LPCSTR  filename);
-static WINAPI BOOL (*pSetDlgItemInt)(HWND  hwnd, INT  id, UINT  value, BOOL  fSigned);
-static WINAPI BOOL (*pSetDlgItemTextA)(HWND  hwnd, INT  id, LPCSTR  lpString);
-static WINAPI BOOL (*pSetDlgItemTextW)(HWND  hwnd, INT  id, LPCWSTR  lpString);
-static WINAPI BOOL (*pSetDoubleClickTime)(UINT  interval);
-static WINAPI HWND (*pSetFocus)(HWND  hwnd);
-static WINAPI BOOL (*pSetForegroundWindow)(HWND  hwnd);
-static WINAPI BOOL (*pSetGestureConfig)(HWND  hwnd, DWORD  reserved, UINT  id, PGESTURECONFIG  config, UINT  size);
-static WINAPI void (*pSetInternalWindowPos)(HWND  hwnd, UINT  showCmd, LPRECT  rect, LPPOINT  pt);
-static WINAPI BOOL (*pSetKeyboardState)(LPBYTE  state);
-static WINAPI void (*pSetLastErrorEx)(DWORD  error, DWORD  type);
-static WINAPI BOOL (*pSetLayeredWindowAttributes)(HWND  hwnd, COLORREF  key, BYTE  alpha, DWORD  flags);
-static WINAPI DWORD (*pSetLogonNotifyWindow)(HWINSTA  hwinsta, HWND  hwnd);
-static WINAPI BOOL (*pSetMenu)(HWND  hWnd, HMENU  hMenu);
-static WINAPI BOOL (*pSetMenuContextHelpId)(HMENU  hMenu, DWORD  dwContextHelpID);
-static WINAPI BOOL (*pSetMenuDefaultItem)(HMENU  hmenu, UINT  uItem, UINT  bypos);
-static WINAPI BOOL (*pSetMenuInfo)(HMENU  hMenu, LPCMENUINFO  lpmi);
-static WINAPI BOOL (*pSetMenuItemBitmaps)(HMENU  hMenu, UINT  nPos, UINT  wFlags, HBITMAP  hNewUnCheck, HBITMAP  hNewCheck);
-static WINAPI BOOL (*pSetMenuItemInfoA)(HMENU  hmenu, UINT  item, BOOL  bypos, MENUITEMINFOA*  lpmii);
-static WINAPI BOOL (*pSetMenuItemInfoW)(HMENU  hmenu, UINT  item, BOOL  bypos, MENUITEMINFOW*  lpmii);
-static WINAPI LPARAM (*pSetMessageExtraInfo)(LPARAM  lParam);
-static WINAPI BOOL (*pSetMessageQueue)(INT  size);
-static WINAPI HWND (*pSetParent)(HWND  hwnd, HWND  parent);
-static WINAPI BOOL (*pSetPhysicalCursorPos)(INT  x, INT  y);
+static WINAPI INT (*pReleaseDC)(HWND hwnd, HDC hdc);
+static WINAPI BOOL (*pRemoveClipboardFormatListener)(HWND hwnd);
+static WINAPI BOOL (*pRemoveMenu)(HMENU hMenu, UINT id, UINT flags);
+static WINAPI HANDLE (*pRemovePropA)(HWND hwnd, LPCSTR str);
+static WINAPI HANDLE (*pRemovePropW)(HWND hwnd, LPCWSTR str);
+static WINAPI BOOL (*pReplyMessage)(LRESULT result);
+static WINAPI LPARAM (*pReuseDDElParam)(LPARAM lParam, UINT msgIn, UINT msgOut, UINT_PTR uiLo, UINT_PTR uiHi);
+static WINAPI BOOL (*pScreenToClient)(HWND hwnd, LPPOINT lppnt);
+static WINAPI void (*pScrollChildren)(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+static WINAPI BOOL (*pScrollDC)(HDC hdc, INT dx, INT dy, RECT* scroll, RECT* clip, HRGN ret_update_rgn, LPRECT update_rect);
+static WINAPI BOOL (*pScrollWindow)(HWND hwnd, INT dx, INT dy, RECT* rect, RECT* clipRect);
+static WINAPI INT (*pScrollWindowEx)(HWND hwnd, INT dx, INT dy, RECT* rect, RECT* clipRect, HRGN hrgnUpdate, LPRECT rcUpdate, UINT flags);
+static WINAPI LRESULT (*pSendDlgItemMessageA)(HWND hwnd, INT id, UINT msg, WPARAM wParam, LPARAM lParam);
+static WINAPI LRESULT (*pSendDlgItemMessageW)(HWND hwnd, INT id, UINT msg, WPARAM wParam, LPARAM lParam);
+static WINAPI LRESULT (*pSendIMEMessageExA)(HWND hwnd, LPARAM lparam);
+static WINAPI LRESULT (*pSendIMEMessageExW)(HWND hwnd, LPARAM lparam);
+static WINAPI UINT (*pSendInput)(UINT count, LPINPUT inputs, int size);
+static WINAPI LRESULT (*pSendMessageA)(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
+static WINAPI BOOL (*pSendMessageCallbackA)(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam, SENDASYNCPROC callback, ULONG_PTR data);
+static WINAPI BOOL (*pSendMessageCallbackW)(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam, SENDASYNCPROC callback, ULONG_PTR data);
+static WINAPI LRESULT (*pSendMessageTimeoutA)(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam, UINT flags, UINT timeout, PDWORD_PTR res_ptr);
+static WINAPI LRESULT (*pSendMessageTimeoutW)(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam, UINT flags, UINT timeout, PDWORD_PTR res_ptr);
+static WINAPI LRESULT (*pSendMessageW)(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
+static WINAPI BOOL (*pSendNotifyMessageA)(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
+static WINAPI BOOL (*pSendNotifyMessageW)(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
+static WINAPI HWND (*pSetActiveWindow)(HWND hwnd);
+static WINAPI HWND (*pSetCapture)(HWND hwnd);
+static WINAPI BOOL (*pSetCaretBlinkTime)(UINT msecs);
+static WINAPI BOOL (*pSetCaretPos)(INT x, INT y);
+static WINAPI DWORD (*pSetClassLongA)(HWND hwnd, INT offset, LONG newval);
+static WINAPI ULONG_PTR (*pSetClassLongPtrA)(HWND hwnd, INT offset, LONG_PTR newval);
+static WINAPI ULONG_PTR (*pSetClassLongPtrW)(HWND hwnd, INT offset, LONG_PTR newval);
+static WINAPI DWORD (*pSetClassLongW)(HWND hwnd, INT offset, LONG newval);
+static WINAPI WORD (*pSetClassWord)(HWND hwnd, INT offset, WORD newval);
+static WINAPI HANDLE (*pSetClipboardData)(UINT format, HANDLE data);
+static WINAPI HWND (*pSetClipboardViewer)(HWND hwnd);
+static WINAPI UINT_PTR (*pSetCoalescableTimer)(HWND hwnd, UINT_PTR id, UINT timeout, TIMERPROC proc, ULONG tolerance);
+static WINAPI HCURSOR (*pSetCursor)(HCURSOR hCursor);
+static WINAPI BOOL (*pSetCursorPos)(INT x, INT y);
+static WINAPI void (*pSetDebugErrorLevel)(DWORD dwLevel);
+static WINAPI BOOL (*pSetDeskWallPaper)(LPCSTR filename);
+static WINAPI BOOL (*pSetDlgItemInt)(HWND hwnd, INT id, UINT value, BOOL fSigned);
+static WINAPI BOOL (*pSetDlgItemTextA)(HWND hwnd, INT id, LPCSTR lpString);
+static WINAPI BOOL (*pSetDlgItemTextW)(HWND hwnd, INT id, LPCWSTR lpString);
+static WINAPI BOOL (*pSetDoubleClickTime)(UINT interval);
+static WINAPI HWND (*pSetFocus)(HWND hwnd);
+static WINAPI BOOL (*pSetForegroundWindow)(HWND hwnd);
+static WINAPI BOOL (*pSetGestureConfig)(HWND hwnd, DWORD reserved, UINT id, PGESTURECONFIG config, UINT size);
+static WINAPI void (*pSetInternalWindowPos)(HWND hwnd, UINT showCmd, LPRECT rect, LPPOINT pt);
+static WINAPI BOOL (*pSetKeyboardState)(LPBYTE state);
+static WINAPI void (*pSetLastErrorEx)(DWORD error, DWORD type);
+static WINAPI BOOL (*pSetLayeredWindowAttributes)(HWND hwnd, COLORREF key, BYTE alpha, DWORD flags);
+static WINAPI DWORD (*pSetLogonNotifyWindow)(HWINSTA hwinsta, HWND hwnd);
+static WINAPI BOOL (*pSetMenu)(HWND hWnd, HMENU hMenu);
+static WINAPI BOOL (*pSetMenuContextHelpId)(HMENU hMenu, DWORD dwContextHelpID);
+static WINAPI BOOL (*pSetMenuDefaultItem)(HMENU hmenu, UINT uItem, UINT bypos);
+static WINAPI BOOL (*pSetMenuInfo)(HMENU hMenu, LPCMENUINFO lpmi);
+static WINAPI BOOL (*pSetMenuItemBitmaps)(HMENU hMenu, UINT nPos, UINT wFlags, HBITMAP hNewUnCheck, HBITMAP hNewCheck);
+static WINAPI BOOL (*pSetMenuItemInfoA)(HMENU hmenu, UINT item, BOOL bypos, MENUITEMINFOA* lpmii);
+static WINAPI BOOL (*pSetMenuItemInfoW)(HMENU hmenu, UINT item, BOOL bypos, MENUITEMINFOW* lpmii);
+static WINAPI LPARAM (*pSetMessageExtraInfo)(LPARAM lParam);
+static WINAPI BOOL (*pSetMessageQueue)(INT size);
+static WINAPI HWND (*pSetParent)(HWND hwnd, HWND parent);
+static WINAPI BOOL (*pSetPhysicalCursorPos)(INT x, INT y);
 static WINAPI BOOL (*pSetProcessDPIAware)(void);
-static WINAPI BOOL (*pSetProcessDefaultLayout)(DWORD  layout);
-static WINAPI BOOL (*pSetProcessDpiAwarenessContext)(DPI_AWARENESS_CONTEXT  context);
-static WINAPI BOOL (*pSetProcessDpiAwarenessInternal)(DPI_AWARENESS  awareness);
-static WINAPI BOOL (*pSetProcessWindowStation)(HWINSTA  handle);
-static WINAPI HWND (*pSetProgmanWindow)(HWND  hwnd);
-static WINAPI BOOL (*pSetPropA)(HWND  hwnd, LPCSTR  str, HANDLE  handle);
-static WINAPI BOOL (*pSetPropW)(HWND  hwnd, LPCWSTR  str, HANDLE  handle);
-static WINAPI BOOL (*pSetRect)(LPRECT  rect, INT  left, INT  top, INT  right, INT  bottom);
-static WINAPI BOOL (*pSetRectEmpty)(LPRECT  rect);
-static WINAPI INT (*pSetScrollInfo)(HWND  hwnd, INT  nBar, SCROLLINFO*  info, BOOL  bRedraw);
-static WINAPI INT (*pSetScrollPos)(HWND  hwnd, INT  nBar, INT  nPos, BOOL  bRedraw);
-static WINAPI BOOL (*pSetScrollRange)(HWND  hwnd, INT  nBar, INT  minVal, INT  maxVal, BOOL  bRedraw);
-static WINAPI BOOL (*pSetShellWindow)(HWND  hwndShell);
-static WINAPI BOOL (*pSetShellWindowEx)(HWND  hwndShell, HWND  hwndListView);
-static WINAPI BOOL (*pSetSysColors)(INT  count, INT*  colors, COLORREF*  values);
-static WINAPI DWORD_PTR (*pSetSysColorsTemp)(COLORREF*  pPens, HBRUSH*  pBrushes, DWORD_PTR  n);
-static WINAPI BOOL (*pSetSystemCursor)(HCURSOR  hcur, DWORD  id);
-static WINAPI BOOL (*pSetSystemMenu)(HWND  hwnd, HMENU  hMenu);
-static WINAPI UINT_PTR (*pSetSystemTimer)(HWND  hwnd, UINT_PTR  id, UINT  timeout, TIMERPROC  proc);
-static WINAPI HWND (*pSetTaskmanWindow)(HWND  hwnd);
-static WINAPI BOOL (*pSetThreadDesktop)(HDESK  handle);
-static WINAPI DPI_AWARENESS_CONTEXT (*pSetThreadDpiAwarenessContext)(DPI_AWARENESS_CONTEXT  context);
-static WINAPI UINT_PTR (*pSetTimer)(HWND  hwnd, UINT_PTR  id, UINT  timeout, TIMERPROC  proc);
-static WINAPI BOOL (*pSetUserObjectInformationA)(HANDLE  handle, INT  index, LPVOID  info, DWORD  len);
-static WINAPI BOOL (*pSetUserObjectInformationW)(HANDLE  handle, INT  index, LPVOID  info, DWORD  len);
-static WINAPI BOOL (*pSetUserObjectSecurity)(HANDLE  handle, PSECURITY_INFORMATION  info, PSECURITY_DESCRIPTOR  sid);
-static WINAPI HWINEVENTHOOK (*pSetWinEventHook)(DWORD  event_min, DWORD  event_max, HMODULE  inst, WINEVENTPROC  proc, DWORD  pid, DWORD  tid, DWORD  flags);
-static WINAPI BOOL (*pSetWindowCompositionAttribute)(HWND  hwnd, void*  data);
-static WINAPI BOOL (*pSetWindowContextHelpId)(HWND  hwnd, DWORD  id);
-static WINAPI BOOL (*pSetWindowDisplayAffinity)(HWND  hwnd, DWORD  affinity);
-static WINAPI LONG (*pSetWindowLongA)(HWND  hwnd, INT  offset, LONG  newval);
-static WINAPI LONG_PTR (*pSetWindowLongPtrA)(HWND  hwnd, INT  offset, LONG_PTR  newval);
-static WINAPI LONG_PTR (*pSetWindowLongPtrW)(HWND  hwnd, INT  offset, LONG_PTR  newval);
-static WINAPI LONG (*pSetWindowLongW)(HWND  hwnd, INT  offset, LONG  newval);
-static WINAPI BOOL (*pSetWindowPlacement)(HWND  hwnd, WINDOWPLACEMENT*  wpl);
-static WINAPI BOOL (*pSetWindowPos)(HWND  hwnd, HWND  hwndInsertAfter, INT  x, INT  y, INT  cx, INT  cy, UINT  flags);
-static WINAPI INT (*pSetWindowRgn)(HWND  hwnd, HRGN  hrgn, BOOL  bRedraw);
-static WINAPI DWORD (*pSetWindowStationUser)(DWORD  x1, DWORD  x2);
-static WINAPI BOOL (*pSetWindowTextA)(HWND  hwnd, LPCSTR  lpString);
-static WINAPI BOOL (*pSetWindowTextW)(HWND  hwnd, LPCWSTR  lpString);
-static WINAPI WORD (*pSetWindowWord)(HWND  hwnd, INT  offset, WORD  newval);
-static WINAPI HHOOK (*pSetWindowsHookA)(INT  id, HOOKPROC  proc);
-static WINAPI HHOOK (*pSetWindowsHookExA)(INT  id, HOOKPROC  proc, HINSTANCE  inst, DWORD  tid);
-static WINAPI HHOOK (*pSetWindowsHookExW)(INT  id, HOOKPROC  proc, HINSTANCE  inst, DWORD  tid);
-static WINAPI HHOOK (*pSetWindowsHookW)(INT  id, HOOKPROC  proc);
-static WINAPI BOOL (*pShowCaret)(HWND  hwnd);
-static WINAPI INT (*pShowCursor)(BOOL  bShow);
-static WINAPI BOOL (*pShowOwnedPopups)(HWND  owner, BOOL  fShow);
-static WINAPI BOOL (*pShowScrollBar)(HWND  hwnd, INT  nBar, BOOL  fShow);
-static WINAPI BOOL (*pShowWindow)(HWND  hwnd, INT  cmd);
-static WINAPI BOOL (*pShowWindowAsync)(HWND  hwnd, INT  cmd);
-static WINAPI BOOL (*pShutdownBlockReasonCreate)(HWND  hwnd, LPCWSTR  reason);
-static WINAPI BOOL (*pShutdownBlockReasonDestroy)(HWND  hwnd);
-static WINAPI BOOL (*pSubtractRect)(LPRECT  dest, RECT*  src1, RECT*  src2);
-static WINAPI BOOL (*pSwapMouseButton)(BOOL  fSwap);
-static WINAPI BOOL (*pSwitchDesktop)(HDESK  hDesktop);
-static WINAPI void (*pSwitchToThisWindow)(HWND  hwnd, BOOL  alt_tab);
-static WINAPI BOOL (*pSystemParametersInfoA)(UINT  uiAction, UINT  uiParam, PVOID  pvParam, UINT  fuWinIni);
-static WINAPI BOOL (*pSystemParametersInfoForDpi)(UINT  action, UINT  val, PVOID  ptr, UINT  winini, UINT  dpi);
-static WINAPI BOOL (*pSystemParametersInfoW)(UINT  uiAction, UINT  uiParam, PVOID  pvParam, UINT  fWinIni);
-static WINAPI LONG (*pTabbedTextOutA)(HDC  hdc, INT  x, INT  y, LPCSTR  lpstr, INT  count, INT  cTabStops, INT*  lpTabPos, INT  nTabOrg);
-static WINAPI LONG (*pTabbedTextOutW)(HDC  hdc, INT  x, INT  y, LPCWSTR  str, INT  count, INT  cTabStops, INT*  lpTabPos, INT  nTabOrg);
-static WINAPI WORD (*pTileChildWindows)(HWND  parent, UINT  flags);
-static WINAPI WORD (*pTileWindows)(HWND  hwndParent, UINT  wFlags, RECT*  lpRect, UINT  cKids, HWND*  lpKids);
-static WINAPI INT (*pToAscii)(UINT  virtKey, UINT  scanCode, BYTE*  lpKeyState, LPWORD  lpChar, UINT  flags);
-static WINAPI INT (*pToAsciiEx)(UINT  virtKey, UINT  scanCode, BYTE*  lpKeyState, LPWORD  lpChar, UINT  flags, HKL  dwhkl);
-static WINAPI INT (*pToUnicode)(UINT  virtKey, UINT  scanCode, BYTE*  lpKeyState, LPWSTR  lpwStr, int  size, UINT  flags);
-static WINAPI INT (*pToUnicodeEx)(UINT  virtKey, UINT  scanCode, BYTE*  lpKeyState, LPWSTR  lpwStr, int  size, UINT  flags, HKL  hkl);
-static WINAPI BOOL (*pTrackMouseEvent)(TRACKMOUSEEVENT*  ptme);
-static WINAPI BOOL (*pTrackPopupMenu)(HMENU  hMenu, UINT  wFlags, INT  x, INT  y, INT  nReserved, HWND  hWnd, RECT*  lpRect);
-static WINAPI BOOL (*pTrackPopupMenuEx)(HMENU  hMenu, UINT  wFlags, INT  x, INT  y, HWND  hWnd, LPTPMPARAMS  lpTpm);
-static WINAPI INT (*pTranslateAcceleratorA)(HWND  hWnd, HACCEL  hAccel, LPMSG  msg);
-static WINAPI INT (*pTranslateAcceleratorW)(HWND  hWnd, HACCEL  hAccel, LPMSG  msg);
-static WINAPI BOOL (*pTranslateMDISysAccel)(HWND  hwndClient, LPMSG  msg);
-static WINAPI BOOL (*pTranslateMessage)(MSG*  msg);
-static WINAPI BOOL (*pUnhookWinEvent)(HWINEVENTHOOK  hEventHook);
-static WINAPI BOOL (*pUnhookWindowsHook)(INT  id, HOOKPROC  proc);
-static WINAPI BOOL (*pUnhookWindowsHookEx)(HHOOK  hhook);
-static WINAPI BOOL (*pUnionRect)(LPRECT  dest, RECT*  src1, RECT*  src2);
-static WINAPI BOOL (*pUnloadKeyboardLayout)(HKL  hkl);
-static WINAPI BOOL (*pUnpackDDElParam)(UINT  msg, LPARAM  lParam, PUINT_PTR  uiLo, PUINT_PTR  uiHi);
-static WINAPI BOOL (*pUnregisterClassA)(LPCSTR  className, HINSTANCE  hInstance);
-static WINAPI BOOL (*pUnregisterClassW)(LPCWSTR  className, HINSTANCE  hInstance);
-static WINAPI BOOL (*pUnregisterDeviceNotification)(HDEVNOTIFY  hnd);
-static WINAPI BOOL (*pUnregisterHotKey)(HWND  hwnd, INT  id);
-static WINAPI BOOL (*pUnregisterPowerSettingNotification)(HPOWERNOTIFY  handle);
-static WINAPI BOOL (*pUnregisterTouchWindow)(HWND  hwnd);
-static WINAPI BOOL (*pUpdateLayeredWindow)(HWND  hwnd, HDC  hdcDst, POINT*  pptDst, SIZE*  psize, HDC  hdcSrc, POINT*  pptSrc, COLORREF  crKey, BLENDFUNCTION*  pblend, DWORD  flags);
-static WINAPI BOOL (*pUpdateLayeredWindowIndirect)(HWND  hwnd, UPDATELAYEREDWINDOWINFO*  info);
-static WINAPI BOOL (*pUpdateWindow)(HWND  hwnd);
-static WINAPI BOOL (*pUser32InitializeImmEntryTable)(DWORD  magic);
-static WINAPI BOOL (*pUserClientDllInitialize)(HINSTANCE  inst, DWORD  reason, LPVOID  reserved);
-static WINAPI BOOL (*pUserHandleGrantAccess)(HANDLE  handle, HANDLE  job, BOOL  grant);
-static WINAPI UINT (*pUserRealizePalette)(HDC  hDC);
-static WINAPI void (*pUserRegisterWowHandlers)(struct wow_handlers16*  new, struct wow_handlers32*  orig);
-static WINAPI WORD (*pUserSignalProc)(UINT  uCode, DWORD  dwThreadOrProcessID, DWORD  dwFlags, HMODULE16  hModule);
-static WINAPI BOOL (*pValidateRect)(HWND  hwnd, RECT*  rect);
-static WINAPI BOOL (*pValidateRgn)(HWND  hwnd, HRGN  hrgn);
-static WINAPI SHORT (*pVkKeyScanA)(CHAR  cChar);
-static WINAPI WORD (*pVkKeyScanExA)(CHAR  cChar, HKL  dwhkl);
-static WINAPI WORD (*pVkKeyScanExW)(WCHAR  cChar, HKL  dwhkl);
-static WINAPI SHORT (*pVkKeyScanW)(WCHAR  cChar);
-static WINAPI BOOL (*pWINNLSEnableIME)(HWND  hwnd, BOOL  enable);
-static WINAPI BOOL (*pWINNLSGetEnableStatus)(HWND  hwnd);
-static WINAPI UINT (*pWINNLSGetIMEHotkey)(HWND  hwnd);
-static WINAPI DWORD (*pWaitForInputIdle)(HANDLE  hProcess, DWORD  dwTimeOut);
+static WINAPI BOOL (*pSetProcessDefaultLayout)(DWORD layout);
+static WINAPI BOOL (*pSetProcessDpiAwarenessContext)(DPI_AWARENESS_CONTEXT context);
+static WINAPI BOOL (*pSetProcessDpiAwarenessInternal)(DPI_AWARENESS awareness);
+static WINAPI BOOL (*pSetProcessWindowStation)(HWINSTA handle);
+static WINAPI HWND (*pSetProgmanWindow)(HWND hwnd);
+static WINAPI BOOL (*pSetPropA)(HWND hwnd, LPCSTR str, HANDLE handle);
+static WINAPI BOOL (*pSetPropW)(HWND hwnd, LPCWSTR str, HANDLE handle);
+static WINAPI BOOL (*pSetRect)(LPRECT rect, INT left, INT top, INT right, INT bottom);
+static WINAPI BOOL (*pSetRectEmpty)(LPRECT rect);
+static WINAPI INT (*pSetScrollInfo)(HWND hwnd, INT nBar, SCROLLINFO* info, BOOL bRedraw);
+static WINAPI INT (*pSetScrollPos)(HWND hwnd, INT nBar, INT nPos, BOOL bRedraw);
+static WINAPI BOOL (*pSetScrollRange)(HWND hwnd, INT nBar, INT minVal, INT maxVal, BOOL bRedraw);
+static WINAPI BOOL (*pSetShellWindow)(HWND hwndShell);
+static WINAPI BOOL (*pSetShellWindowEx)(HWND hwndShell, HWND hwndListView);
+static WINAPI BOOL (*pSetSysColors)(INT count, INT* colors, COLORREF* values);
+static WINAPI DWORD_PTR (*pSetSysColorsTemp)(COLORREF* pPens, HBRUSH* pBrushes, DWORD_PTR n);
+static WINAPI BOOL (*pSetSystemCursor)(HCURSOR hcur, DWORD id);
+static WINAPI BOOL (*pSetSystemMenu)(HWND hwnd, HMENU hMenu);
+static WINAPI UINT_PTR (*pSetSystemTimer)(HWND hwnd, UINT_PTR id, UINT timeout, TIMERPROC proc);
+static WINAPI HWND (*pSetTaskmanWindow)(HWND hwnd);
+static WINAPI BOOL (*pSetThreadDesktop)(HDESK handle);
+static WINAPI DPI_AWARENESS_CONTEXT (*pSetThreadDpiAwarenessContext)(DPI_AWARENESS_CONTEXT context);
+static WINAPI UINT_PTR (*pSetTimer)(HWND hwnd, UINT_PTR id, UINT timeout, TIMERPROC proc);
+static WINAPI BOOL (*pSetUserObjectInformationA)(HANDLE handle, INT index, LPVOID info, DWORD len);
+static WINAPI BOOL (*pSetUserObjectInformationW)(HANDLE handle, INT index, LPVOID info, DWORD len);
+static WINAPI BOOL (*pSetUserObjectSecurity)(HANDLE handle, PSECURITY_INFORMATION info, PSECURITY_DESCRIPTOR sid);
+static WINAPI HWINEVENTHOOK (*pSetWinEventHook)(DWORD event_min, DWORD event_max, HMODULE inst, WINEVENTPROC proc, DWORD pid, DWORD tid, DWORD flags);
+static WINAPI BOOL (*pSetWindowCompositionAttribute)(HWND hwnd, void* data);
+static WINAPI BOOL (*pSetWindowContextHelpId)(HWND hwnd, DWORD id);
+static WINAPI BOOL (*pSetWindowDisplayAffinity)(HWND hwnd, DWORD affinity);
+static WINAPI LONG (*pSetWindowLongA)(HWND hwnd, INT offset, LONG newval);
+static WINAPI LONG_PTR (*pSetWindowLongPtrA)(HWND hwnd, INT offset, LONG_PTR newval);
+static WINAPI LONG_PTR (*pSetWindowLongPtrW)(HWND hwnd, INT offset, LONG_PTR newval);
+static WINAPI LONG (*pSetWindowLongW)(HWND hwnd, INT offset, LONG newval);
+static WINAPI BOOL (*pSetWindowPlacement)(HWND hwnd, WINDOWPLACEMENT* wpl);
+static WINAPI BOOL (*pSetWindowPos)(HWND hwnd, HWND hwndInsertAfter, INT x, INT y, INT cx, INT cy, UINT flags);
+static WINAPI INT (*pSetWindowRgn)(HWND hwnd, HRGN hrgn, BOOL bRedraw);
+static WINAPI DWORD (*pSetWindowStationUser)(DWORD x1, DWORD x2);
+static WINAPI BOOL (*pSetWindowTextA)(HWND hwnd, LPCSTR lpString);
+static WINAPI BOOL (*pSetWindowTextW)(HWND hwnd, LPCWSTR lpString);
+static WINAPI WORD (*pSetWindowWord)(HWND hwnd, INT offset, WORD newval);
+static WINAPI HHOOK (*pSetWindowsHookA)(INT id, HOOKPROC proc);
+static WINAPI HHOOK (*pSetWindowsHookExA)(INT id, HOOKPROC proc, HINSTANCE inst, DWORD tid);
+static WINAPI HHOOK (*pSetWindowsHookExW)(INT id, HOOKPROC proc, HINSTANCE inst, DWORD tid);
+static WINAPI HHOOK (*pSetWindowsHookW)(INT id, HOOKPROC proc);
+static WINAPI BOOL (*pShowCaret)(HWND hwnd);
+static WINAPI INT (*pShowCursor)(BOOL bShow);
+static WINAPI BOOL (*pShowOwnedPopups)(HWND owner, BOOL fShow);
+static WINAPI BOOL (*pShowScrollBar)(HWND hwnd, INT nBar, BOOL fShow);
+static WINAPI BOOL (*pShowWindow)(HWND hwnd, INT cmd);
+static WINAPI BOOL (*pShowWindowAsync)(HWND hwnd, INT cmd);
+static WINAPI BOOL (*pShutdownBlockReasonCreate)(HWND hwnd, LPCWSTR reason);
+static WINAPI BOOL (*pShutdownBlockReasonDestroy)(HWND hwnd);
+static WINAPI BOOL (*pSubtractRect)(LPRECT dest, RECT* src1, RECT* src2);
+static WINAPI BOOL (*pSwapMouseButton)(BOOL fSwap);
+static WINAPI BOOL (*pSwitchDesktop)(HDESK hDesktop);
+static WINAPI void (*pSwitchToThisWindow)(HWND hwnd, BOOL alt_tab);
+static WINAPI BOOL (*pSystemParametersInfoA)(UINT uiAction, UINT uiParam, PVOID pvParam, UINT fuWinIni);
+static WINAPI BOOL (*pSystemParametersInfoForDpi)(UINT action, UINT val, PVOID ptr, UINT winini, UINT dpi);
+static WINAPI BOOL (*pSystemParametersInfoW)(UINT uiAction, UINT uiParam, PVOID pvParam, UINT fWinIni);
+static WINAPI LONG (*pTabbedTextOutA)(HDC hdc, INT x, INT y, LPCSTR lpstr, INT count, INT cTabStops, INT* lpTabPos, INT nTabOrg);
+static WINAPI LONG (*pTabbedTextOutW)(HDC hdc, INT x, INT y, LPCWSTR str, INT count, INT cTabStops, INT* lpTabPos, INT nTabOrg);
+static WINAPI WORD (*pTileChildWindows)(HWND parent, UINT flags);
+static WINAPI WORD (*pTileWindows)(HWND hwndParent, UINT wFlags, RECT* lpRect, UINT cKids, HWND* lpKids);
+static WINAPI INT (*pToAscii)(UINT virtKey, UINT scanCode, BYTE* lpKeyState, LPWORD lpChar, UINT flags);
+static WINAPI INT (*pToAsciiEx)(UINT virtKey, UINT scanCode, BYTE* lpKeyState, LPWORD lpChar, UINT flags, HKL dwhkl);
+static WINAPI INT (*pToUnicode)(UINT virtKey, UINT scanCode, BYTE* lpKeyState, LPWSTR lpwStr, int size, UINT flags);
+static WINAPI INT (*pToUnicodeEx)(UINT virtKey, UINT scanCode, BYTE* lpKeyState, LPWSTR lpwStr, int size, UINT flags, HKL hkl);
+static WINAPI BOOL (*pTrackMouseEvent)(TRACKMOUSEEVENT* ptme);
+static WINAPI BOOL (*pTrackPopupMenu)(HMENU hMenu, UINT wFlags, INT x, INT y, INT nReserved, HWND hWnd, RECT* lpRect);
+static WINAPI BOOL (*pTrackPopupMenuEx)(HMENU hMenu, UINT wFlags, INT x, INT y, HWND hWnd, LPTPMPARAMS lpTpm);
+static WINAPI INT (*pTranslateAcceleratorA)(HWND hWnd, HACCEL hAccel, LPMSG msg);
+static WINAPI INT (*pTranslateAcceleratorW)(HWND hWnd, HACCEL hAccel, LPMSG msg);
+static WINAPI BOOL (*pTranslateMDISysAccel)(HWND hwndClient, LPMSG msg);
+static WINAPI BOOL (*pTranslateMessage)(MSG* msg);
+static WINAPI BOOL (*pUnhookWinEvent)(HWINEVENTHOOK hEventHook);
+static WINAPI BOOL (*pUnhookWindowsHook)(INT id, HOOKPROC proc);
+static WINAPI BOOL (*pUnhookWindowsHookEx)(HHOOK hhook);
+static WINAPI BOOL (*pUnionRect)(LPRECT dest, RECT* src1, RECT* src2);
+static WINAPI BOOL (*pUnloadKeyboardLayout)(HKL hkl);
+static WINAPI BOOL (*pUnpackDDElParam)(UINT msg, LPARAM lParam, PUINT_PTR uiLo, PUINT_PTR uiHi);
+static WINAPI BOOL (*pUnregisterClassA)(LPCSTR className, HINSTANCE hInstance);
+static WINAPI BOOL (*pUnregisterClassW)(LPCWSTR className, HINSTANCE hInstance);
+static WINAPI BOOL (*pUnregisterDeviceNotification)(HDEVNOTIFY hnd);
+static WINAPI BOOL (*pUnregisterHotKey)(HWND hwnd, INT id);
+static WINAPI BOOL (*pUnregisterPowerSettingNotification)(HPOWERNOTIFY handle);
+static WINAPI BOOL (*pUnregisterTouchWindow)(HWND hwnd);
+static WINAPI BOOL (*pUpdateLayeredWindow)(HWND hwnd, HDC hdcDst, POINT* pptDst, SIZE* psize, HDC hdcSrc, POINT* pptSrc, COLORREF crKey, BLENDFUNCTION* pblend, DWORD flags);
+static WINAPI BOOL (*pUpdateLayeredWindowIndirect)(HWND hwnd, UPDATELAYEREDWINDOWINFO* info);
+static WINAPI BOOL (*pUpdateWindow)(HWND hwnd);
+static WINAPI BOOL (*pUser32InitializeImmEntryTable)(DWORD magic);
+static WINAPI BOOL (*pUserHandleGrantAccess)(HANDLE handle, HANDLE job, BOOL grant);
+static WINAPI UINT (*pUserRealizePalette)(HDC hDC);
+static WINAPI void (*pUserRegisterWowHandlers)(struct wow_handlers16* new, struct wow_handlers32* orig);
+static WINAPI WORD (*pUserSignalProc)(UINT uCode, DWORD dwThreadOrProcessID, DWORD dwFlags, HMODULE16 hModule);
+static WINAPI BOOL (*pValidateRect)(HWND hwnd, RECT* rect);
+static WINAPI BOOL (*pValidateRgn)(HWND hwnd, HRGN hrgn);
+static WINAPI SHORT (*pVkKeyScanA)(CHAR cChar);
+static WINAPI WORD (*pVkKeyScanExA)(CHAR cChar, HKL dwhkl);
+static WINAPI WORD (*pVkKeyScanExW)(WCHAR cChar, HKL dwhkl);
+static WINAPI SHORT (*pVkKeyScanW)(WCHAR cChar);
+static WINAPI BOOL (*pWINNLSEnableIME)(HWND hwnd, BOOL enable);
+static WINAPI BOOL (*pWINNLSGetEnableStatus)(HWND hwnd);
+static WINAPI UINT (*pWINNLSGetIMEHotkey)(HWND hwnd);
+static WINAPI DWORD (*pWaitForInputIdle)(HANDLE hProcess, DWORD dwTimeOut);
 static WINAPI BOOL (*pWaitMessage)(void);
-static WINAPI BOOL (*pWinHelpA)(HWND  hWnd, LPCSTR  lpHelpFile, UINT  wCommand, ULONG_PTR  dwData);
-static WINAPI BOOL (*pWinHelpW)(HWND  hWnd, LPCWSTR  helpFile, UINT  command, ULONG_PTR  dwData);
-static WINAPI HWND (*pWindowFromDC)(HDC  hdc);
-static WINAPI HWND (*pWindowFromPoint)(POINT  pt);
-static WINAPI void (*pkeybd_event)(BYTE  bVk, BYTE  bScan, DWORD  dwFlags, ULONG_PTR  dwExtraInfo);
-static WINAPI void (*pmouse_event)(DWORD  dwFlags, DWORD  dx, DWORD  dy, DWORD  dwData, ULONG_PTR  dwExtraInfo);
-static WINAPI INT (*pwsprintfA)(LPSTR  buffer, LPCSTR  spec);
-static WINAPI INT (*pwsprintfW)(LPWSTR  buffer, LPCWSTR  spec);
-static WINAPI INT (*pwvsprintfA)(LPSTR  buffer, LPCSTR  spec, __builtin_ms_va_list  args);
-static WINAPI INT (*pwvsprintfW)(LPWSTR  buffer, LPCWSTR  spec, __builtin_ms_va_list  args);
-static WINAPI BOOL (*p__wine_send_input)(HWND  hwnd, INPUT*  input);
-static WINAPI BOOL (*p__wine_set_pixel_format)(HWND  hwnd, int  format);
+static WINAPI BOOL (*pWinHelpA)(HWND hWnd, LPCSTR lpHelpFile, UINT wCommand, ULONG_PTR dwData);
+static WINAPI BOOL (*pWinHelpW)(HWND hWnd, LPCWSTR helpFile, UINT command, ULONG_PTR dwData);
+static WINAPI HWND (*pWindowFromDC)(HDC hdc);
+static WINAPI HWND (*pWindowFromPoint)(POINT pt);
+static WINAPI BOOL (*p__wine_send_input)(HWND hwnd, INPUT* input);
+static WINAPI BOOL (*p__wine_set_pixel_format)(HWND hwnd, int format);
+static WINAPI void (*pkeybd_event)(BYTE bVk, BYTE bScan, DWORD dwFlags, ULONG_PTR dwExtraInfo);
+static WINAPI void (*pmouse_event)(DWORD dwFlags, DWORD dx, DWORD dy, DWORD dwData, ULONG_PTR dwExtraInfo);
+static WINAPI INT (*pwsprintfA)(LPSTR buffer, LPCSTR spec);
+static WINAPI INT (*pwsprintfW)(LPWSTR buffer, LPCWSTR spec);
+static WINAPI INT (*pwvsprintfA)(LPSTR buffer, LPCSTR spec, __builtin_ms_va_list args);
+static WINAPI INT (*pwvsprintfW)(LPWSTR buffer, LPCWSTR spec, __builtin_ms_va_list args);
 
-WINAPI HKL wine32b_user32_ActivateKeyboardLayout(HKL  hLayout, UINT  flags) /* ../dlls/user32/input.c:899 */
+WINAPI HKL wine32b_user32_ActivateKeyboardLayout(HKL hLayout, UINT flags) /* ../dlls/user32/input.c:899 */
 {
 	HKL return_value;
 	TRACE("Enter ActivateKeyboardLayout\n");
@@ -909,6 +902,7 @@ WINAPI HKL wine32b_user32_ActivateKeyboardLayout(HKL  hLayout, UINT  flags) /* .
 
 extern WINAPI void wine32a_user32_ActivateKeyboardLayout(void);  /* ../dlls/user32/input.c:899 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ActivateKeyboardLayout,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -927,7 +921,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ActivateKeyboardLayout,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_AddClipboardFormatListener(HWND  hwnd) /* ../dlls/user32/clipboard.c:1143 */
+WINAPI BOOL wine32b_user32_AddClipboardFormatListener(HWND hwnd) /* ../dlls/user32/clipboard.c:1143 */
 {
 	BOOL return_value;
 	TRACE("Enter AddClipboardFormatListener\n");
@@ -938,6 +932,7 @@ WINAPI BOOL wine32b_user32_AddClipboardFormatListener(HWND  hwnd) /* ../dlls/use
 
 extern WINAPI void wine32a_user32_AddClipboardFormatListener(void);  /* ../dlls/user32/clipboard.c:1143 */
 __ASM_GLOBAL_FUNC(wine32a_user32_AddClipboardFormatListener,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -955,7 +950,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_AddClipboardFormatListener,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_AdjustWindowRect(LPRECT  rect, DWORD  style, BOOL  menu) /* ../dlls/user32/nonclient.c:305 */
+WINAPI BOOL wine32b_user32_AdjustWindowRect(LPRECT rect, DWORD style, BOOL menu) /* ../dlls/user32/nonclient.c:305 */
 {
 	BOOL return_value;
 	TRACE("Enter AdjustWindowRect\n");
@@ -966,6 +961,7 @@ WINAPI BOOL wine32b_user32_AdjustWindowRect(LPRECT  rect, DWORD  style, BOOL  me
 
 extern WINAPI void wine32a_user32_AdjustWindowRect(void);  /* ../dlls/user32/nonclient.c:305 */
 __ASM_GLOBAL_FUNC(wine32a_user32_AdjustWindowRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -985,7 +981,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_AdjustWindowRect,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_AdjustWindowRectEx(LPRECT  rect, DWORD  style, BOOL  menu, DWORD  exStyle) /* ../dlls/user32/nonclient.c:314 */
+WINAPI BOOL wine32b_user32_AdjustWindowRectEx(LPRECT rect, DWORD style, BOOL menu, DWORD exStyle) /* ../dlls/user32/nonclient.c:314 */
 {
 	BOOL return_value;
 	TRACE("Enter AdjustWindowRectEx\n");
@@ -996,6 +992,7 @@ WINAPI BOOL wine32b_user32_AdjustWindowRectEx(LPRECT  rect, DWORD  style, BOOL  
 
 extern WINAPI void wine32a_user32_AdjustWindowRectEx(void);  /* ../dlls/user32/nonclient.c:314 */
 __ASM_GLOBAL_FUNC(wine32a_user32_AdjustWindowRectEx,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1016,7 +1013,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_AdjustWindowRectEx,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_AdjustWindowRectExForDpi(LPRECT  rect, DWORD  style, BOOL  menu, DWORD  exStyle, UINT  dpi) /* ../dlls/user32/nonclient.c:331 */
+WINAPI BOOL wine32b_user32_AdjustWindowRectExForDpi(LPRECT rect, DWORD style, BOOL menu, DWORD exStyle, UINT dpi) /* ../dlls/user32/nonclient.c:331 */
 {
 	BOOL return_value;
 	TRACE("Enter AdjustWindowRectExForDpi\n");
@@ -1027,6 +1024,7 @@ WINAPI BOOL wine32b_user32_AdjustWindowRectExForDpi(LPRECT  rect, DWORD  style, 
 
 extern WINAPI void wine32a_user32_AdjustWindowRectExForDpi(void);  /* ../dlls/user32/nonclient.c:331 */
 __ASM_GLOBAL_FUNC(wine32a_user32_AdjustWindowRectExForDpi,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1047,7 +1045,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_AdjustWindowRectExForDpi,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_AlignRects(LPRECT  rect, DWORD  b, DWORD  c, DWORD  d) /* ../dlls/user32/misc.c:366 */
+WINAPI BOOL wine32b_user32_AlignRects(LPRECT rect, DWORD b, DWORD c, DWORD d) /* ../dlls/user32/misc.c:366 */
 {
 	BOOL return_value;
 	TRACE("Enter AlignRects\n");
@@ -1058,6 +1056,7 @@ WINAPI BOOL wine32b_user32_AlignRects(LPRECT  rect, DWORD  b, DWORD  c, DWORD  d
 
 extern WINAPI void wine32a_user32_AlignRects(void);  /* ../dlls/user32/misc.c:366 */
 __ASM_GLOBAL_FUNC(wine32a_user32_AlignRects,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1078,7 +1077,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_AlignRects,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_AllowSetForegroundWindow(DWORD  procid) /* ../dlls/user32/winpos.c:640 */
+WINAPI BOOL wine32b_user32_AllowSetForegroundWindow(DWORD procid) /* ../dlls/user32/winpos.c:640 */
 {
 	BOOL return_value;
 	TRACE("Enter AllowSetForegroundWindow\n");
@@ -1089,6 +1088,7 @@ WINAPI BOOL wine32b_user32_AllowSetForegroundWindow(DWORD  procid) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_AllowSetForegroundWindow(void);  /* ../dlls/user32/winpos.c:640 */
 __ASM_GLOBAL_FUNC(wine32a_user32_AllowSetForegroundWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1106,7 +1106,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_AllowSetForegroundWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_AnimateWindow(HWND  hwnd, DWORD  dwTime, DWORD  dwFlags) /* ../dlls/user32/winpos.c:1469 */
+WINAPI BOOL wine32b_user32_AnimateWindow(HWND hwnd, DWORD dwTime, DWORD dwFlags) /* ../dlls/user32/winpos.c:1469 */
 {
 	BOOL return_value;
 	TRACE("Enter AnimateWindow\n");
@@ -1117,6 +1117,7 @@ WINAPI BOOL wine32b_user32_AnimateWindow(HWND  hwnd, DWORD  dwTime, DWORD  dwFla
 
 extern WINAPI void wine32a_user32_AnimateWindow(void);  /* ../dlls/user32/winpos.c:1469 */
 __ASM_GLOBAL_FUNC(wine32a_user32_AnimateWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1147,6 +1148,7 @@ WINAPI BOOL wine32b_user32_AnyPopup(void) /* ../dlls/user32/win.c:3629 */
 
 extern WINAPI void wine32a_user32_AnyPopup(void);  /* ../dlls/user32/win.c:3629 */
 __ASM_GLOBAL_FUNC(wine32a_user32_AnyPopup,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -1163,7 +1165,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_AnyPopup,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_AppendMenuA(HMENU  hMenu, UINT  flags, UINT_PTR  id, LPCSTR  data) /* ../dlls/user32/menu.c:4059 */
+WINAPI BOOL wine32b_user32_AppendMenuA(HMENU hMenu, UINT flags, UINT_PTR id, LPCSTR data) /* ../dlls/user32/menu.c:4059 */
 {
 	BOOL return_value;
 	TRACE("Enter AppendMenuA\n");
@@ -1174,6 +1176,7 @@ WINAPI BOOL wine32b_user32_AppendMenuA(HMENU  hMenu, UINT  flags, UINT_PTR  id, 
 
 extern WINAPI void wine32a_user32_AppendMenuA(void);  /* ../dlls/user32/menu.c:4059 */
 __ASM_GLOBAL_FUNC(wine32a_user32_AppendMenuA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1194,7 +1197,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_AppendMenuA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_AppendMenuW(HMENU  hMenu, UINT  flags, UINT_PTR  id, LPCWSTR  data) /* ../dlls/user32/menu.c:4069 */
+WINAPI BOOL wine32b_user32_AppendMenuW(HMENU hMenu, UINT flags, UINT_PTR id, LPCWSTR data) /* ../dlls/user32/menu.c:4069 */
 {
 	BOOL return_value;
 	TRACE("Enter AppendMenuW\n");
@@ -1205,6 +1208,7 @@ WINAPI BOOL wine32b_user32_AppendMenuW(HMENU  hMenu, UINT  flags, UINT_PTR  id, 
 
 extern WINAPI void wine32a_user32_AppendMenuW(void);  /* ../dlls/user32/menu.c:4069 */
 __ASM_GLOBAL_FUNC(wine32a_user32_AppendMenuW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1225,7 +1229,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_AppendMenuW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_AreDpiAwarenessContextsEqual(DPI_AWARENESS_CONTEXT  ctx1, DPI_AWARENESS_CONTEXT  ctx2) /* ../dlls/user32/sysparams.c:3465 */
+WINAPI BOOL wine32b_user32_AreDpiAwarenessContextsEqual(DPI_AWARENESS_CONTEXT ctx1, DPI_AWARENESS_CONTEXT ctx2) /* ../dlls/user32/sysparams.c:3465 */
 {
 	BOOL return_value;
 	TRACE("Enter AreDpiAwarenessContextsEqual\n");
@@ -1236,6 +1240,7 @@ WINAPI BOOL wine32b_user32_AreDpiAwarenessContextsEqual(DPI_AWARENESS_CONTEXT  c
 
 extern WINAPI void wine32a_user32_AreDpiAwarenessContextsEqual(void);  /* ../dlls/user32/sysparams.c:3465 */
 __ASM_GLOBAL_FUNC(wine32a_user32_AreDpiAwarenessContextsEqual,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1254,7 +1259,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_AreDpiAwarenessContextsEqual,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_ArrangeIconicWindows(HWND  parent) /* ../dlls/user32/winpos.c:2540 */
+WINAPI UINT wine32b_user32_ArrangeIconicWindows(HWND parent) /* ../dlls/user32/winpos.c:2540 */
 {
 	UINT return_value;
 	TRACE("Enter ArrangeIconicWindows\n");
@@ -1265,6 +1270,7 @@ WINAPI UINT wine32b_user32_ArrangeIconicWindows(HWND  parent) /* ../dlls/user32/
 
 extern WINAPI void wine32a_user32_ArrangeIconicWindows(void);  /* ../dlls/user32/winpos.c:2540 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ArrangeIconicWindows,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1282,7 +1288,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ArrangeIconicWindows,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_AttachThreadInput(DWORD  from, DWORD  to, BOOL  attach) /* ../dlls/user32/input.c:531 */
+WINAPI BOOL wine32b_user32_AttachThreadInput(DWORD from, DWORD to, BOOL attach) /* ../dlls/user32/input.c:531 */
 {
 	BOOL return_value;
 	TRACE("Enter AttachThreadInput\n");
@@ -1293,6 +1299,7 @@ WINAPI BOOL wine32b_user32_AttachThreadInput(DWORD  from, DWORD  to, BOOL  attac
 
 extern WINAPI void wine32a_user32_AttachThreadInput(void);  /* ../dlls/user32/input.c:531 */
 __ASM_GLOBAL_FUNC(wine32a_user32_AttachThreadInput,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1312,7 +1319,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_AttachThreadInput,
 	"ret \n"
 )
 
-WINAPI HDWP wine32b_user32_BeginDeferWindowPos(INT  count) /* ../dlls/user32/winpos.c:2385 */
+WINAPI HDWP wine32b_user32_BeginDeferWindowPos(INT count) /* ../dlls/user32/winpos.c:2385 */
 {
 	HDWP return_value;
 	TRACE("Enter BeginDeferWindowPos\n");
@@ -1323,6 +1330,7 @@ WINAPI HDWP wine32b_user32_BeginDeferWindowPos(INT  count) /* ../dlls/user32/win
 
 extern WINAPI void wine32a_user32_BeginDeferWindowPos(void);  /* ../dlls/user32/winpos.c:2385 */
 __ASM_GLOBAL_FUNC(wine32a_user32_BeginDeferWindowPos,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1340,7 +1348,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_BeginDeferWindowPos,
 	"ret \n"
 )
 
-WINAPI HDC wine32b_user32_BeginPaint(HWND  hwnd, PAINTSTRUCT*  lps) /* ../dlls/user32/painting.c:939 */
+WINAPI HDC wine32b_user32_BeginPaint(HWND hwnd, PAINTSTRUCT* lps) /* ../dlls/user32/painting.c:939 */
 {
 	HDC return_value;
 	TRACE("Enter BeginPaint\n");
@@ -1351,6 +1359,7 @@ WINAPI HDC wine32b_user32_BeginPaint(HWND  hwnd, PAINTSTRUCT*  lps) /* ../dlls/u
 
 extern WINAPI void wine32a_user32_BeginPaint(void);  /* ../dlls/user32/painting.c:939 */
 __ASM_GLOBAL_FUNC(wine32a_user32_BeginPaint,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1369,7 +1378,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_BeginPaint,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_BlockInput(BOOL  fBlockIt) /* ../dlls/user32/input.c:909 */
+WINAPI BOOL wine32b_user32_BlockInput(BOOL fBlockIt) /* ../dlls/user32/input.c:909 */
 {
 	BOOL return_value;
 	TRACE("Enter BlockInput\n");
@@ -1380,6 +1389,7 @@ WINAPI BOOL wine32b_user32_BlockInput(BOOL  fBlockIt) /* ../dlls/user32/input.c:
 
 extern WINAPI void wine32a_user32_BlockInput(void);  /* ../dlls/user32/input.c:909 */
 __ASM_GLOBAL_FUNC(wine32a_user32_BlockInput,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1397,7 +1407,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_BlockInput,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_BringWindowToTop(HWND  hwnd) /* ../dlls/user32/winpos.c:662 */
+WINAPI BOOL wine32b_user32_BringWindowToTop(HWND hwnd) /* ../dlls/user32/winpos.c:662 */
 {
 	BOOL return_value;
 	TRACE("Enter BringWindowToTop\n");
@@ -1408,6 +1418,7 @@ WINAPI BOOL wine32b_user32_BringWindowToTop(HWND  hwnd) /* ../dlls/user32/winpos
 
 extern WINAPI void wine32a_user32_BringWindowToTop(void);  /* ../dlls/user32/winpos.c:662 */
 __ASM_GLOBAL_FUNC(wine32a_user32_BringWindowToTop,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1425,7 +1436,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_BringWindowToTop,
 	"ret \n"
 )
 
-WINAPI LONG wine32b_user32_BroadcastSystemMessageA(DWORD  flags, LPDWORD  recipients, UINT  msg, WPARAM  wp, LPARAM  lp) /* ../dlls/user32/message.c:4385 */
+WINAPI LONG wine32b_user32_BroadcastSystemMessageA(DWORD flags, LPDWORD recipients, UINT msg, WPARAM wp, LPARAM lp) /* ../dlls/user32/message.c:4385 */
 {
 	LONG return_value;
 	TRACE("Enter BroadcastSystemMessageA\n");
@@ -1436,6 +1447,7 @@ WINAPI LONG wine32b_user32_BroadcastSystemMessageA(DWORD  flags, LPDWORD  recipi
 
 extern WINAPI void wine32a_user32_BroadcastSystemMessageA(void);  /* ../dlls/user32/message.c:4385 */
 __ASM_GLOBAL_FUNC(wine32a_user32_BroadcastSystemMessageA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1456,7 +1468,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_BroadcastSystemMessageA,
 	"ret \n"
 )
 
-WINAPI LONG wine32b_user32_BroadcastSystemMessageExA(DWORD  flags, LPDWORD  recipients, UINT  msg, WPARAM  wp, LPARAM  lp, PBSMINFO  pinfo) /* ../dlls/user32/message.c:4402 */
+WINAPI LONG wine32b_user32_BroadcastSystemMessageExA(DWORD flags, LPDWORD recipients, UINT msg, WPARAM wp, LPARAM lp, PBSMINFO pinfo) /* ../dlls/user32/message.c:4402 */
 {
 	LONG return_value;
 	TRACE("Enter BroadcastSystemMessageExA\n");
@@ -1467,6 +1479,7 @@ WINAPI LONG wine32b_user32_BroadcastSystemMessageExA(DWORD  flags, LPDWORD  reci
 
 extern WINAPI void wine32a_user32_BroadcastSystemMessageExA(void);  /* ../dlls/user32/message.c:4402 */
 __ASM_GLOBAL_FUNC(wine32a_user32_BroadcastSystemMessageExA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1487,7 +1500,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_BroadcastSystemMessageExA,
 	"ret \n"
 )
 
-WINAPI LONG wine32b_user32_BroadcastSystemMessageExW(DWORD  flags, LPDWORD  recipients, UINT  msg, WPARAM  wp, LPARAM  lp, PBSMINFO  pinfo) /* ../dlls/user32/message.c:4412 */
+WINAPI LONG wine32b_user32_BroadcastSystemMessageExW(DWORD flags, LPDWORD recipients, UINT msg, WPARAM wp, LPARAM lp, PBSMINFO pinfo) /* ../dlls/user32/message.c:4412 */
 {
 	LONG return_value;
 	TRACE("Enter BroadcastSystemMessageExW\n");
@@ -1498,6 +1511,7 @@ WINAPI LONG wine32b_user32_BroadcastSystemMessageExW(DWORD  flags, LPDWORD  reci
 
 extern WINAPI void wine32a_user32_BroadcastSystemMessageExW(void);  /* ../dlls/user32/message.c:4412 */
 __ASM_GLOBAL_FUNC(wine32a_user32_BroadcastSystemMessageExW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1518,7 +1532,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_BroadcastSystemMessageExW,
 	"ret \n"
 )
 
-WINAPI LONG wine32b_user32_BroadcastSystemMessageW(DWORD  flags, LPDWORD  recipients, UINT  msg, WPARAM  wp, LPARAM  lp) /* ../dlls/user32/message.c:4394 */
+WINAPI LONG wine32b_user32_BroadcastSystemMessageW(DWORD flags, LPDWORD recipients, UINT msg, WPARAM wp, LPARAM lp) /* ../dlls/user32/message.c:4394 */
 {
 	LONG return_value;
 	TRACE("Enter BroadcastSystemMessageW\n");
@@ -1529,6 +1543,7 @@ WINAPI LONG wine32b_user32_BroadcastSystemMessageW(DWORD  flags, LPDWORD  recipi
 
 extern WINAPI void wine32a_user32_BroadcastSystemMessageW(void);  /* ../dlls/user32/message.c:4394 */
 __ASM_GLOBAL_FUNC(wine32a_user32_BroadcastSystemMessageW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1549,7 +1564,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_BroadcastSystemMessageW,
 	"ret \n"
 )
 
-WINAPI void wine32b_user32_CalcChildScroll(HWND  hwnd, INT  scroll) /* ../dlls/user32/mdi.c:1686 */
+WINAPI void wine32b_user32_CalcChildScroll(HWND hwnd, INT scroll) /* ../dlls/user32/mdi.c:1686 */
 {
 	TRACE("Enter CalcChildScroll\n");
 	pCalcChildScroll(hwnd, scroll);
@@ -1558,6 +1573,7 @@ WINAPI void wine32b_user32_CalcChildScroll(HWND  hwnd, INT  scroll) /* ../dlls/u
 
 extern WINAPI void wine32a_user32_CalcChildScroll(void);  /* ../dlls/user32/mdi.c:1686 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CalcChildScroll,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1576,7 +1592,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CalcChildScroll,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_CalcMenuBar(HWND  hwnd, DWORD  left, DWORD  right, DWORD  top, RECT*  rect) /* ../dlls/user32/menu.c:5498 */
+WINAPI DWORD wine32b_user32_CalcMenuBar(HWND hwnd, DWORD left, DWORD right, DWORD top, RECT* rect) /* ../dlls/user32/menu.c:5498 */
 {
 	DWORD return_value;
 	TRACE("Enter CalcMenuBar\n");
@@ -1587,6 +1603,7 @@ WINAPI DWORD wine32b_user32_CalcMenuBar(HWND  hwnd, DWORD  left, DWORD  right, D
 
 extern WINAPI void wine32a_user32_CalcMenuBar(void);  /* ../dlls/user32/menu.c:5498 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CalcMenuBar,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1607,7 +1624,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CalcMenuBar,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_CallMsgFilterA(LPMSG  msg, INT  code) /* ../dlls/user32/hook.c:667 */
+WINAPI BOOL wine32b_user32_CallMsgFilterA(LPMSG msg, INT code) /* ../dlls/user32/hook.c:667 */
 {
 	BOOL return_value;
 	TRACE("Enter CallMsgFilterA\n");
@@ -1618,6 +1635,7 @@ WINAPI BOOL wine32b_user32_CallMsgFilterA(LPMSG  msg, INT  code) /* ../dlls/user
 
 extern WINAPI void wine32a_user32_CallMsgFilterA(void);  /* ../dlls/user32/hook.c:667 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CallMsgFilterA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1636,7 +1654,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CallMsgFilterA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_CallMsgFilterW(LPMSG  msg, INT  code) /* ../dlls/user32/hook.c:677 */
+WINAPI BOOL wine32b_user32_CallMsgFilterW(LPMSG msg, INT code) /* ../dlls/user32/hook.c:677 */
 {
 	BOOL return_value;
 	TRACE("Enter CallMsgFilterW\n");
@@ -1647,6 +1665,7 @@ WINAPI BOOL wine32b_user32_CallMsgFilterW(LPMSG  msg, INT  code) /* ../dlls/user
 
 extern WINAPI void wine32a_user32_CallMsgFilterW(void);  /* ../dlls/user32/hook.c:677 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CallMsgFilterW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1665,7 +1684,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CallMsgFilterW,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_CallNextHookEx(HHOOK  hhook, INT  code, WPARAM  wparam, LPARAM  lparam) /* ../dlls/user32/hook.c:604 */
+WINAPI LRESULT wine32b_user32_CallNextHookEx(HHOOK hhook, INT code, WPARAM wparam, LPARAM lparam) /* ../dlls/user32/hook.c:604 */
 {
 	LRESULT return_value;
 	TRACE("Enter CallNextHookEx\n");
@@ -1676,6 +1695,7 @@ WINAPI LRESULT wine32b_user32_CallNextHookEx(HHOOK  hhook, INT  code, WPARAM  wp
 
 extern WINAPI void wine32a_user32_CallNextHookEx(void);  /* ../dlls/user32/hook.c:604 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CallNextHookEx,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1696,7 +1716,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CallNextHookEx,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_CallWindowProcA(WNDPROC  func, HWND  hwnd, UINT  msg, WPARAM  wParam, LPARAM  lParam) /* ../dlls/user32/winproc.c:991 */
+WINAPI LRESULT wine32b_user32_CallWindowProcA(WNDPROC func, HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) /* ../dlls/user32/winproc.c:991 */
 {
 	LRESULT return_value;
 	TRACE("Enter CallWindowProcA\n");
@@ -1707,6 +1727,7 @@ WINAPI LRESULT wine32b_user32_CallWindowProcA(WNDPROC  func, HWND  hwnd, UINT  m
 
 extern WINAPI void wine32a_user32_CallWindowProcA(void);  /* ../dlls/user32/winproc.c:991 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CallWindowProcA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1727,7 +1748,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CallWindowProcA,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_CallWindowProcW(WNDPROC  func, HWND  hwnd, UINT  msg, WPARAM  wParam, LPARAM  lParam) /* ../dlls/user32/winproc.c:1021 */
+WINAPI LRESULT wine32b_user32_CallWindowProcW(WNDPROC func, HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) /* ../dlls/user32/winproc.c:1021 */
 {
 	LRESULT return_value;
 	TRACE("Enter CallWindowProcW\n");
@@ -1738,6 +1759,7 @@ WINAPI LRESULT wine32b_user32_CallWindowProcW(WNDPROC  func, HWND  hwnd, UINT  m
 
 extern WINAPI void wine32a_user32_CallWindowProcW(void);  /* ../dlls/user32/winproc.c:1021 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CallWindowProcW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1758,7 +1780,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CallWindowProcW,
 	"ret \n"
 )
 
-WINAPI WORD wine32b_user32_CascadeChildWindows(HWND  parent, UINT  flags) /* ../dlls/user32/mdi.c:1858 */
+WINAPI WORD wine32b_user32_CascadeChildWindows(HWND parent, UINT flags) /* ../dlls/user32/mdi.c:1858 */
 {
 	WORD return_value;
 	TRACE("Enter CascadeChildWindows\n");
@@ -1769,6 +1791,7 @@ WINAPI WORD wine32b_user32_CascadeChildWindows(HWND  parent, UINT  flags) /* ../
 
 extern WINAPI void wine32a_user32_CascadeChildWindows(void);  /* ../dlls/user32/mdi.c:1858 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CascadeChildWindows,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1787,7 +1810,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CascadeChildWindows,
 	"ret \n"
 )
 
-WINAPI WORD wine32b_user32_CascadeWindows(HWND  hwndParent, UINT  wFlags, RECT*  lpRect, UINT  cKids, HWND*  lpKids) /* ../dlls/user32/mdi.c:1847 */
+WINAPI WORD wine32b_user32_CascadeWindows(HWND hwndParent, UINT wFlags, RECT* lpRect, UINT cKids, HWND* lpKids) /* ../dlls/user32/mdi.c:1847 */
 {
 	WORD return_value;
 	TRACE("Enter CascadeWindows\n");
@@ -1798,6 +1821,7 @@ WINAPI WORD wine32b_user32_CascadeWindows(HWND  hwndParent, UINT  wFlags, RECT* 
 
 extern WINAPI void wine32a_user32_CascadeWindows(void);  /* ../dlls/user32/mdi.c:1847 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CascadeWindows,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1818,7 +1842,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CascadeWindows,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ChangeClipboardChain(HWND  hwnd, HWND  next) /* ../dlls/user32/clipboard.c:851 */
+WINAPI BOOL wine32b_user32_ChangeClipboardChain(HWND hwnd, HWND next) /* ../dlls/user32/clipboard.c:851 */
 {
 	BOOL return_value;
 	TRACE("Enter ChangeClipboardChain\n");
@@ -1829,6 +1853,7 @@ WINAPI BOOL wine32b_user32_ChangeClipboardChain(HWND  hwnd, HWND  next) /* ../dl
 
 extern WINAPI void wine32a_user32_ChangeClipboardChain(void);  /* ../dlls/user32/clipboard.c:851 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ChangeClipboardChain,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1847,7 +1872,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ChangeClipboardChain,
 	"ret \n"
 )
 
-WINAPI LONG wine32b_user32_ChangeDisplaySettingsA(LPDEVMODEA  devmode, DWORD  flags) /* ../dlls/user32/sysparams.c:3150 */
+WINAPI LONG wine32b_user32_ChangeDisplaySettingsA(LPDEVMODEA devmode, DWORD flags) /* ../dlls/user32/sysparams.c:3150 */
 {
 	LONG return_value;
 	TRACE("Enter ChangeDisplaySettingsA\n");
@@ -1858,6 +1883,7 @@ WINAPI LONG wine32b_user32_ChangeDisplaySettingsA(LPDEVMODEA  devmode, DWORD  fl
 
 extern WINAPI void wine32a_user32_ChangeDisplaySettingsA(void);  /* ../dlls/user32/sysparams.c:3150 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ChangeDisplaySettingsA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1876,7 +1902,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ChangeDisplaySettingsA,
 	"ret \n"
 )
 
-WINAPI LONG wine32b_user32_ChangeDisplaySettingsExA(LPCSTR  devname, LPDEVMODEA  devmode, HWND  hwnd, DWORD  flags, LPVOID  lparam) /* ../dlls/user32/sysparams.c:3172 */
+WINAPI LONG wine32b_user32_ChangeDisplaySettingsExA(LPCSTR devname, LPDEVMODEA devmode, HWND hwnd, DWORD flags, LPVOID lparam) /* ../dlls/user32/sysparams.c:3172 */
 {
 	LONG return_value;
 	TRACE("Enter ChangeDisplaySettingsExA\n");
@@ -1887,6 +1913,7 @@ WINAPI LONG wine32b_user32_ChangeDisplaySettingsExA(LPCSTR  devname, LPDEVMODEA 
 
 extern WINAPI void wine32a_user32_ChangeDisplaySettingsExA(void);  /* ../dlls/user32/sysparams.c:3172 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ChangeDisplaySettingsExA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1907,7 +1934,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ChangeDisplaySettingsExA,
 	"ret \n"
 )
 
-WINAPI LONG wine32b_user32_ChangeDisplaySettingsExW(LPCWSTR  devname, LPDEVMODEW  devmode, HWND  hwnd, DWORD  flags, LPVOID  lparam) /* ../dlls/user32/sysparams.c:3207 */
+WINAPI LONG wine32b_user32_ChangeDisplaySettingsExW(LPCWSTR devname, LPDEVMODEW devmode, HWND hwnd, DWORD flags, LPVOID lparam) /* ../dlls/user32/sysparams.c:3207 */
 {
 	LONG return_value;
 	TRACE("Enter ChangeDisplaySettingsExW\n");
@@ -1918,6 +1945,7 @@ WINAPI LONG wine32b_user32_ChangeDisplaySettingsExW(LPCWSTR  devname, LPDEVMODEW
 
 extern WINAPI void wine32a_user32_ChangeDisplaySettingsExW(void);  /* ../dlls/user32/sysparams.c:3207 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ChangeDisplaySettingsExW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1938,7 +1966,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ChangeDisplaySettingsExW,
 	"ret \n"
 )
 
-WINAPI LONG wine32b_user32_ChangeDisplaySettingsW(LPDEVMODEW  devmode, DWORD  flags) /* ../dlls/user32/sysparams.c:3161 */
+WINAPI LONG wine32b_user32_ChangeDisplaySettingsW(LPDEVMODEW devmode, DWORD flags) /* ../dlls/user32/sysparams.c:3161 */
 {
 	LONG return_value;
 	TRACE("Enter ChangeDisplaySettingsW\n");
@@ -1949,6 +1977,7 @@ WINAPI LONG wine32b_user32_ChangeDisplaySettingsW(LPDEVMODEW  devmode, DWORD  fl
 
 extern WINAPI void wine32a_user32_ChangeDisplaySettingsW(void);  /* ../dlls/user32/sysparams.c:3161 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ChangeDisplaySettingsW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1967,7 +1996,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ChangeDisplaySettingsW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ChangeMenuA(HMENU  hMenu, UINT  pos, LPCSTR  data, UINT  id, UINT  flags) /* ../dlls/user32/menu.c:3665 */
+WINAPI BOOL wine32b_user32_ChangeMenuA(HMENU hMenu, UINT pos, LPCSTR data, UINT id, UINT flags) /* ../dlls/user32/menu.c:3665 */
 {
 	BOOL return_value;
 	TRACE("Enter ChangeMenuA\n");
@@ -1978,6 +2007,7 @@ WINAPI BOOL wine32b_user32_ChangeMenuA(HMENU  hMenu, UINT  pos, LPCSTR  data, UI
 
 extern WINAPI void wine32a_user32_ChangeMenuA(void);  /* ../dlls/user32/menu.c:3665 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ChangeMenuA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -1998,7 +2028,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ChangeMenuA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ChangeMenuW(HMENU  hMenu, UINT  pos, LPCWSTR  data, UINT  id, UINT  flags) /* ../dlls/user32/menu.c:3685 */
+WINAPI BOOL wine32b_user32_ChangeMenuW(HMENU hMenu, UINT pos, LPCWSTR data, UINT id, UINT flags) /* ../dlls/user32/menu.c:3685 */
 {
 	BOOL return_value;
 	TRACE("Enter ChangeMenuW\n");
@@ -2009,6 +2039,7 @@ WINAPI BOOL wine32b_user32_ChangeMenuW(HMENU  hMenu, UINT  pos, LPCWSTR  data, U
 
 extern WINAPI void wine32a_user32_ChangeMenuW(void);  /* ../dlls/user32/menu.c:3685 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ChangeMenuW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2029,7 +2060,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ChangeMenuW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ChangeWindowMessageFilter(UINT  message, DWORD  flag) /* ../dlls/user32/message.c:4660 */
+WINAPI BOOL wine32b_user32_ChangeWindowMessageFilter(UINT message, DWORD flag) /* ../dlls/user32/message.c:4660 */
 {
 	BOOL return_value;
 	TRACE("Enter ChangeWindowMessageFilter\n");
@@ -2040,6 +2071,7 @@ WINAPI BOOL wine32b_user32_ChangeWindowMessageFilter(UINT  message, DWORD  flag)
 
 extern WINAPI void wine32a_user32_ChangeWindowMessageFilter(void);  /* ../dlls/user32/message.c:4660 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ChangeWindowMessageFilter,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2058,7 +2090,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ChangeWindowMessageFilter,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ChangeWindowMessageFilterEx(HWND  hwnd, UINT  message, DWORD  action, CHANGEFILTERSTRUCT*  changefilter) /* ../dlls/user32/message.c:4669 */
+WINAPI BOOL wine32b_user32_ChangeWindowMessageFilterEx(HWND hwnd, UINT message, DWORD action, CHANGEFILTERSTRUCT* changefilter) /* ../dlls/user32/message.c:4669 */
 {
 	BOOL return_value;
 	TRACE("Enter ChangeWindowMessageFilterEx\n");
@@ -2069,6 +2101,7 @@ WINAPI BOOL wine32b_user32_ChangeWindowMessageFilterEx(HWND  hwnd, UINT  message
 
 extern WINAPI void wine32a_user32_ChangeWindowMessageFilterEx(void);  /* ../dlls/user32/message.c:4669 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ChangeWindowMessageFilterEx,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2089,7 +2122,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ChangeWindowMessageFilterEx,
 	"ret \n"
 )
 
-WINAPI LPSTR wine32b_user32_CharLowerA(LPSTR  str) /* ../dlls/user32/lstr.c:239 */
+WINAPI LPSTR wine32b_user32_CharLowerA(LPSTR str) /* ../dlls/user32/lstr.c:239 */
 {
 	LPSTR return_value;
 	TRACE("Enter CharLowerA\n");
@@ -2100,6 +2133,7 @@ WINAPI LPSTR wine32b_user32_CharLowerA(LPSTR  str) /* ../dlls/user32/lstr.c:239 
 
 extern WINAPI void wine32a_user32_CharLowerA(void);  /* ../dlls/user32/lstr.c:239 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CharLowerA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2117,7 +2151,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CharLowerA,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_CharLowerBuffA(LPSTR  str, DWORD  len) /* ../dlls/user32/lstr.c:329 */
+WINAPI DWORD wine32b_user32_CharLowerBuffA(LPSTR str, DWORD len) /* ../dlls/user32/lstr.c:329 */
 {
 	DWORD return_value;
 	TRACE("Enter CharLowerBuffA\n");
@@ -2128,6 +2162,7 @@ WINAPI DWORD wine32b_user32_CharLowerBuffA(LPSTR  str, DWORD  len) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_CharLowerBuffA(void);  /* ../dlls/user32/lstr.c:329 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CharLowerBuffA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2146,7 +2181,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CharLowerBuffA,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_CharLowerBuffW(LPWSTR  str, DWORD  len) /* ../dlls/user32/lstr.c:354 */
+WINAPI DWORD wine32b_user32_CharLowerBuffW(LPWSTR str, DWORD len) /* ../dlls/user32/lstr.c:354 */
 {
 	DWORD return_value;
 	TRACE("Enter CharLowerBuffW\n");
@@ -2157,6 +2192,7 @@ WINAPI DWORD wine32b_user32_CharLowerBuffW(LPWSTR  str, DWORD  len) /* ../dlls/u
 
 extern WINAPI void wine32a_user32_CharLowerBuffW(void);  /* ../dlls/user32/lstr.c:354 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CharLowerBuffW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2175,7 +2211,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CharLowerBuffW,
 	"ret \n"
 )
 
-WINAPI LPWSTR wine32b_user32_CharLowerW(LPWSTR  str) /* ../dlls/user32/lstr.c:291 */
+WINAPI LPWSTR wine32b_user32_CharLowerW(LPWSTR str) /* ../dlls/user32/lstr.c:291 */
 {
 	LPWSTR return_value;
 	TRACE("Enter CharLowerW\n");
@@ -2186,6 +2222,7 @@ WINAPI LPWSTR wine32b_user32_CharLowerW(LPWSTR  str) /* ../dlls/user32/lstr.c:29
 
 extern WINAPI void wine32a_user32_CharLowerW(void);  /* ../dlls/user32/lstr.c:291 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CharLowerW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2203,7 +2240,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CharLowerW,
 	"ret \n"
 )
 
-WINAPI LPSTR wine32b_user32_CharNextA(LPCSTR  ptr) /* ../dlls/user32/lstr.c:44 */
+WINAPI LPSTR wine32b_user32_CharNextA(LPCSTR ptr) /* ../dlls/user32/lstr.c:44 */
 {
 	LPSTR return_value;
 	TRACE("Enter CharNextA\n");
@@ -2214,6 +2251,7 @@ WINAPI LPSTR wine32b_user32_CharNextA(LPCSTR  ptr) /* ../dlls/user32/lstr.c:44 *
 
 extern WINAPI void wine32a_user32_CharNextA(void);  /* ../dlls/user32/lstr.c:44 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CharNextA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2231,7 +2269,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CharNextA,
 	"ret \n"
 )
 
-WINAPI LPSTR wine32b_user32_CharNextExA(WORD  codepage, LPCSTR  ptr, DWORD  flags) /* ../dlls/user32/lstr.c:55 */
+WINAPI LPSTR wine32b_user32_CharNextExA(WORD codepage, LPCSTR ptr, DWORD flags) /* ../dlls/user32/lstr.c:55 */
 {
 	LPSTR return_value;
 	TRACE("Enter CharNextExA\n");
@@ -2242,6 +2280,7 @@ WINAPI LPSTR wine32b_user32_CharNextExA(WORD  codepage, LPCSTR  ptr, DWORD  flag
 
 extern WINAPI void wine32a_user32_CharNextExA(void);  /* ../dlls/user32/lstr.c:55 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CharNextExA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2261,7 +2300,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CharNextExA,
 	"ret \n"
 )
 
-WINAPI LPWSTR wine32b_user32_CharNextExW(WORD  codepage, LPCWSTR  ptr, DWORD  flags) /* ../dlls/user32/lstr.c:66 */
+WINAPI LPWSTR wine32b_user32_CharNextExW(WORD codepage, LPCWSTR ptr, DWORD flags) /* ../dlls/user32/lstr.c:66 */
 {
 	LPWSTR return_value;
 	TRACE("Enter CharNextExW\n");
@@ -2272,6 +2311,7 @@ WINAPI LPWSTR wine32b_user32_CharNextExW(WORD  codepage, LPCWSTR  ptr, DWORD  fl
 
 extern WINAPI void wine32a_user32_CharNextExW(void);  /* ../dlls/user32/lstr.c:66 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CharNextExW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2291,7 +2331,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CharNextExW,
 	"ret \n"
 )
 
-WINAPI LPWSTR wine32b_user32_CharNextW(LPCWSTR  x) /* ../dlls/user32/lstr.c:76 */
+WINAPI LPWSTR wine32b_user32_CharNextW(LPCWSTR x) /* ../dlls/user32/lstr.c:76 */
 {
 	LPWSTR return_value;
 	TRACE("Enter CharNextW\n");
@@ -2302,6 +2342,7 @@ WINAPI LPWSTR wine32b_user32_CharNextW(LPCWSTR  x) /* ../dlls/user32/lstr.c:76 *
 
 extern WINAPI void wine32a_user32_CharNextW(void);  /* ../dlls/user32/lstr.c:76 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CharNextW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2319,7 +2360,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CharNextW,
 	"ret \n"
 )
 
-WINAPI LPSTR wine32b_user32_CharPrevA(LPCSTR  start, LPCSTR  ptr) /* ../dlls/user32/lstr.c:87 */
+WINAPI LPSTR wine32b_user32_CharPrevA(LPCSTR start, LPCSTR ptr) /* ../dlls/user32/lstr.c:87 */
 {
 	LPSTR return_value;
 	TRACE("Enter CharPrevA\n");
@@ -2330,6 +2371,7 @@ WINAPI LPSTR wine32b_user32_CharPrevA(LPCSTR  start, LPCSTR  ptr) /* ../dlls/use
 
 extern WINAPI void wine32a_user32_CharPrevA(void);  /* ../dlls/user32/lstr.c:87 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CharPrevA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2348,7 +2390,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CharPrevA,
 	"ret \n"
 )
 
-WINAPI LPSTR wine32b_user32_CharPrevExA(WORD  codepage, LPCSTR  start, LPCSTR  ptr, DWORD  flags) /* ../dlls/user32/lstr.c:102 */
+WINAPI LPSTR wine32b_user32_CharPrevExA(WORD codepage, LPCSTR start, LPCSTR ptr, DWORD flags) /* ../dlls/user32/lstr.c:102 */
 {
 	LPSTR return_value;
 	TRACE("Enter CharPrevExA\n");
@@ -2359,6 +2401,7 @@ WINAPI LPSTR wine32b_user32_CharPrevExA(WORD  codepage, LPCSTR  start, LPCSTR  p
 
 extern WINAPI void wine32a_user32_CharPrevExA(void);  /* ../dlls/user32/lstr.c:102 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CharPrevExA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2379,7 +2422,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CharPrevExA,
 	"ret \n"
 )
 
-WINAPI LPSTR wine32b_user32_CharPrevExW(WORD  codepage, LPCWSTR  start, LPCWSTR  ptr, DWORD  flags) /* ../dlls/user32/lstr.c:117 */
+WINAPI LPSTR wine32b_user32_CharPrevExW(WORD codepage, LPCWSTR start, LPCWSTR ptr, DWORD flags) /* ../dlls/user32/lstr.c:117 */
 {
 	LPSTR return_value;
 	TRACE("Enter CharPrevExW\n");
@@ -2390,6 +2433,7 @@ WINAPI LPSTR wine32b_user32_CharPrevExW(WORD  codepage, LPCWSTR  start, LPCWSTR 
 
 extern WINAPI void wine32a_user32_CharPrevExW(void);  /* ../dlls/user32/lstr.c:117 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CharPrevExW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2410,7 +2454,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CharPrevExW,
 	"ret \n"
 )
 
-WINAPI LPWSTR wine32b_user32_CharPrevW(LPCWSTR  start, LPCWSTR  x) /* ../dlls/user32/lstr.c:127 */
+WINAPI LPWSTR wine32b_user32_CharPrevW(LPCWSTR start, LPCWSTR x) /* ../dlls/user32/lstr.c:127 */
 {
 	LPWSTR return_value;
 	TRACE("Enter CharPrevW\n");
@@ -2421,6 +2465,7 @@ WINAPI LPWSTR wine32b_user32_CharPrevW(LPCWSTR  start, LPCWSTR  x) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_CharPrevW(void);  /* ../dlls/user32/lstr.c:127 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CharPrevW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2439,7 +2484,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CharPrevW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_CharToOemA(LPCSTR  s, LPSTR  d) /* ../dlls/user32/lstr.c:137 */
+WINAPI BOOL wine32b_user32_CharToOemA(LPCSTR s, LPSTR d) /* ../dlls/user32/lstr.c:137 */
 {
 	BOOL return_value;
 	TRACE("Enter CharToOemA\n");
@@ -2450,6 +2495,7 @@ WINAPI BOOL wine32b_user32_CharToOemA(LPCSTR  s, LPSTR  d) /* ../dlls/user32/lst
 
 extern WINAPI void wine32a_user32_CharToOemA(void);  /* ../dlls/user32/lstr.c:137 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CharToOemA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2468,7 +2514,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CharToOemA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_CharToOemBuffA(LPCSTR  s, LPSTR  d, DWORD  len) /* ../dlls/user32/lstr.c:147 */
+WINAPI BOOL wine32b_user32_CharToOemBuffA(LPCSTR s, LPSTR d, DWORD len) /* ../dlls/user32/lstr.c:147 */
 {
 	BOOL return_value;
 	TRACE("Enter CharToOemBuffA\n");
@@ -2479,6 +2525,7 @@ WINAPI BOOL wine32b_user32_CharToOemBuffA(LPCSTR  s, LPSTR  d, DWORD  len) /* ..
 
 extern WINAPI void wine32a_user32_CharToOemBuffA(void);  /* ../dlls/user32/lstr.c:147 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CharToOemBuffA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2498,7 +2545,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CharToOemBuffA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_CharToOemBuffW(LPCWSTR  s, LPSTR  d, DWORD  len) /* ../dlls/user32/lstr.c:167 */
+WINAPI BOOL wine32b_user32_CharToOemBuffW(LPCWSTR s, LPSTR d, DWORD len) /* ../dlls/user32/lstr.c:167 */
 {
 	BOOL return_value;
 	TRACE("Enter CharToOemBuffW\n");
@@ -2509,6 +2556,7 @@ WINAPI BOOL wine32b_user32_CharToOemBuffW(LPCWSTR  s, LPSTR  d, DWORD  len) /* .
 
 extern WINAPI void wine32a_user32_CharToOemBuffW(void);  /* ../dlls/user32/lstr.c:167 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CharToOemBuffW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2528,7 +2576,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CharToOemBuffW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_CharToOemW(LPCWSTR  s, LPSTR  d) /* ../dlls/user32/lstr.c:178 */
+WINAPI BOOL wine32b_user32_CharToOemW(LPCWSTR s, LPSTR d) /* ../dlls/user32/lstr.c:178 */
 {
 	BOOL return_value;
 	TRACE("Enter CharToOemW\n");
@@ -2539,6 +2587,7 @@ WINAPI BOOL wine32b_user32_CharToOemW(LPCWSTR  s, LPSTR  d) /* ../dlls/user32/ls
 
 extern WINAPI void wine32a_user32_CharToOemW(void);  /* ../dlls/user32/lstr.c:178 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CharToOemW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2557,7 +2606,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CharToOemW,
 	"ret \n"
 )
 
-WINAPI LPSTR wine32b_user32_CharUpperA(LPSTR  str) /* ../dlls/user32/lstr.c:265 */
+WINAPI LPSTR wine32b_user32_CharUpperA(LPSTR str) /* ../dlls/user32/lstr.c:265 */
 {
 	LPSTR return_value;
 	TRACE("Enter CharUpperA\n");
@@ -2568,6 +2617,7 @@ WINAPI LPSTR wine32b_user32_CharUpperA(LPSTR  str) /* ../dlls/user32/lstr.c:265 
 
 extern WINAPI void wine32a_user32_CharUpperA(void);  /* ../dlls/user32/lstr.c:265 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CharUpperA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2585,7 +2635,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CharUpperA,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_CharUpperBuffA(LPSTR  str, DWORD  len) /* ../dlls/user32/lstr.c:364 */
+WINAPI DWORD wine32b_user32_CharUpperBuffA(LPSTR str, DWORD len) /* ../dlls/user32/lstr.c:364 */
 {
 	DWORD return_value;
 	TRACE("Enter CharUpperBuffA\n");
@@ -2596,6 +2646,7 @@ WINAPI DWORD wine32b_user32_CharUpperBuffA(LPSTR  str, DWORD  len) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_CharUpperBuffA(void);  /* ../dlls/user32/lstr.c:364 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CharUpperBuffA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2614,7 +2665,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CharUpperBuffA,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_CharUpperBuffW(LPWSTR  str, DWORD  len) /* ../dlls/user32/lstr.c:389 */
+WINAPI DWORD wine32b_user32_CharUpperBuffW(LPWSTR str, DWORD len) /* ../dlls/user32/lstr.c:389 */
 {
 	DWORD return_value;
 	TRACE("Enter CharUpperBuffW\n");
@@ -2625,6 +2676,7 @@ WINAPI DWORD wine32b_user32_CharUpperBuffW(LPWSTR  str, DWORD  len) /* ../dlls/u
 
 extern WINAPI void wine32a_user32_CharUpperBuffW(void);  /* ../dlls/user32/lstr.c:389 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CharUpperBuffW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2643,7 +2695,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CharUpperBuffW,
 	"ret \n"
 )
 
-WINAPI LPWSTR wine32b_user32_CharUpperW(LPWSTR  str) /* ../dlls/user32/lstr.c:310 */
+WINAPI LPWSTR wine32b_user32_CharUpperW(LPWSTR str) /* ../dlls/user32/lstr.c:310 */
 {
 	LPWSTR return_value;
 	TRACE("Enter CharUpperW\n");
@@ -2654,6 +2706,7 @@ WINAPI LPWSTR wine32b_user32_CharUpperW(LPWSTR  str) /* ../dlls/user32/lstr.c:31
 
 extern WINAPI void wine32a_user32_CharUpperW(void);  /* ../dlls/user32/lstr.c:310 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CharUpperW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2671,7 +2724,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CharUpperW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_CheckDlgButton(HWND  hwnd, INT  id, UINT  check) /* ../dlls/user32/dialog.c:1455 */
+WINAPI BOOL wine32b_user32_CheckDlgButton(HWND hwnd, INT id, UINT check) /* ../dlls/user32/dialog.c:1455 */
 {
 	BOOL return_value;
 	TRACE("Enter CheckDlgButton\n");
@@ -2682,6 +2735,7 @@ WINAPI BOOL wine32b_user32_CheckDlgButton(HWND  hwnd, INT  id, UINT  check) /* .
 
 extern WINAPI void wine32a_user32_CheckDlgButton(void);  /* ../dlls/user32/dialog.c:1455 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CheckDlgButton,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2701,7 +2755,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CheckDlgButton,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_CheckMenuItem(HMENU  hMenu, UINT  id, UINT  flags) /* ../dlls/user32/menu.c:3705 */
+WINAPI DWORD wine32b_user32_CheckMenuItem(HMENU hMenu, UINT id, UINT flags) /* ../dlls/user32/menu.c:3705 */
 {
 	DWORD return_value;
 	TRACE("Enter CheckMenuItem\n");
@@ -2712,6 +2766,7 @@ WINAPI DWORD wine32b_user32_CheckMenuItem(HMENU  hMenu, UINT  id, UINT  flags) /
 
 extern WINAPI void wine32a_user32_CheckMenuItem(void);  /* ../dlls/user32/menu.c:3705 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CheckMenuItem,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2731,7 +2786,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CheckMenuItem,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_CheckMenuRadioItem(HMENU  hMenu, UINT  first, UINT  last, UINT  check, UINT  flags) /* ../dlls/user32/menu.c:5256 */
+WINAPI BOOL wine32b_user32_CheckMenuRadioItem(HMENU hMenu, UINT first, UINT last, UINT check, UINT flags) /* ../dlls/user32/menu.c:5256 */
 {
 	BOOL return_value;
 	TRACE("Enter CheckMenuRadioItem\n");
@@ -2742,6 +2797,7 @@ WINAPI BOOL wine32b_user32_CheckMenuRadioItem(HMENU  hMenu, UINT  first, UINT  l
 
 extern WINAPI void wine32a_user32_CheckMenuRadioItem(void);  /* ../dlls/user32/menu.c:5256 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CheckMenuRadioItem,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2762,7 +2818,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CheckMenuRadioItem,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_CheckRadioButton(HWND  hwndDlg, int  firstID, int  lastID, int  checkID) /* ../dlls/user32/dialog.c:1502 */
+WINAPI BOOL wine32b_user32_CheckRadioButton(HWND hwndDlg, int firstID, int lastID, int checkID) /* ../dlls/user32/dialog.c:1502 */
 {
 	BOOL return_value;
 	TRACE("Enter CheckRadioButton\n");
@@ -2773,6 +2829,7 @@ WINAPI BOOL wine32b_user32_CheckRadioButton(HWND  hwndDlg, int  firstID, int  la
 
 extern WINAPI void wine32a_user32_CheckRadioButton(void);  /* ../dlls/user32/dialog.c:1502 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CheckRadioButton,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2793,7 +2850,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CheckRadioButton,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_ChildWindowFromPoint(HWND  hwndParent, POINT  pt) /* ../dlls/user32/winpos.c:348 */
+WINAPI HWND wine32b_user32_ChildWindowFromPoint(HWND hwndParent, POINT pt) /* ../dlls/user32/winpos.c:348 */
 {
 	HWND return_value;
 	TRACE("Enter ChildWindowFromPoint\n");
@@ -2804,6 +2861,7 @@ WINAPI HWND wine32b_user32_ChildWindowFromPoint(HWND  hwndParent, POINT  pt) /* 
 
 extern WINAPI void wine32a_user32_ChildWindowFromPoint(void);  /* ../dlls/user32/winpos.c:348 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ChildWindowFromPoint,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2822,7 +2880,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ChildWindowFromPoint,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_ChildWindowFromPointEx(HWND  hwndParent, POINT  pt, UINT  uFlags) /* ../dlls/user32/winpos.c:364 */
+WINAPI HWND wine32b_user32_ChildWindowFromPointEx(HWND hwndParent, POINT pt, UINT uFlags) /* ../dlls/user32/winpos.c:364 */
 {
 	HWND return_value;
 	TRACE("Enter ChildWindowFromPointEx\n");
@@ -2833,6 +2891,7 @@ WINAPI HWND wine32b_user32_ChildWindowFromPointEx(HWND  hwndParent, POINT  pt, U
 
 extern WINAPI void wine32a_user32_ChildWindowFromPointEx(void);  /* ../dlls/user32/winpos.c:364 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ChildWindowFromPointEx,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2852,7 +2911,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ChildWindowFromPointEx,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ClientToScreen(HWND  hwnd, LPPOINT  lppnt) /* ../dlls/user32/winpos.c:580 */
+WINAPI BOOL wine32b_user32_ClientToScreen(HWND hwnd, LPPOINT lppnt) /* ../dlls/user32/winpos.c:580 */
 {
 	BOOL return_value;
 	TRACE("Enter ClientToScreen\n");
@@ -2863,6 +2922,7 @@ WINAPI BOOL wine32b_user32_ClientToScreen(HWND  hwnd, LPPOINT  lppnt) /* ../dlls
 
 extern WINAPI void wine32a_user32_ClientToScreen(void);  /* ../dlls/user32/winpos.c:580 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ClientToScreen,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2881,7 +2941,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ClientToScreen,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ClipCursor(RECT*  rect) /* ../dlls/user32/cursoricon.c:2117 */
+WINAPI BOOL wine32b_user32_ClipCursor(RECT* rect) /* ../dlls/user32/cursoricon.c:2117 */
 {
 	BOOL return_value;
 	TRACE("Enter ClipCursor\n");
@@ -2892,6 +2952,7 @@ WINAPI BOOL wine32b_user32_ClipCursor(RECT*  rect) /* ../dlls/user32/cursoricon.
 
 extern WINAPI void wine32a_user32_ClipCursor(void);  /* ../dlls/user32/cursoricon.c:2117 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ClipCursor,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2920,6 +2981,7 @@ WINAPI BOOL wine32b_user32_CloseClipboard(void) /* ../dlls/user32/clipboard.c:71
 
 extern WINAPI void wine32a_user32_CloseClipboard(void);  /* ../dlls/user32/clipboard.c:716 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CloseClipboard,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -2936,7 +2998,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CloseClipboard,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_CloseDesktop(HDESK  handle) /* ../dlls/user32/winstation.c:383 */
+WINAPI BOOL wine32b_user32_CloseDesktop(HDESK handle) /* ../dlls/user32/winstation.c:383 */
 {
 	BOOL return_value;
 	TRACE("Enter CloseDesktop\n");
@@ -2947,6 +3009,7 @@ WINAPI BOOL wine32b_user32_CloseDesktop(HDESK  handle) /* ../dlls/user32/winstat
 
 extern WINAPI void wine32a_user32_CloseDesktop(void);  /* ../dlls/user32/winstation.c:383 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CloseDesktop,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2964,7 +3027,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CloseDesktop,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_CloseTouchInputHandle(HTOUCHINPUT  handle) /* ../dlls/user32/win.c:4173 */
+WINAPI BOOL wine32b_user32_CloseTouchInputHandle(HTOUCHINPUT handle) /* ../dlls/user32/win.c:4173 */
 {
 	BOOL return_value;
 	TRACE("Enter CloseTouchInputHandle\n");
@@ -2975,6 +3038,7 @@ WINAPI BOOL wine32b_user32_CloseTouchInputHandle(HTOUCHINPUT  handle) /* ../dlls
 
 extern WINAPI void wine32a_user32_CloseTouchInputHandle(void);  /* ../dlls/user32/win.c:4173 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CloseTouchInputHandle,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -2992,7 +3056,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CloseTouchInputHandle,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_CloseWindow(HWND  hwnd) /* ../dlls/user32/win.c:1938 */
+WINAPI BOOL wine32b_user32_CloseWindow(HWND hwnd) /* ../dlls/user32/win.c:1938 */
 {
 	BOOL return_value;
 	TRACE("Enter CloseWindow\n");
@@ -3003,6 +3067,7 @@ WINAPI BOOL wine32b_user32_CloseWindow(HWND  hwnd) /* ../dlls/user32/win.c:1938 
 
 extern WINAPI void wine32a_user32_CloseWindow(void);  /* ../dlls/user32/win.c:1938 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CloseWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3020,7 +3085,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CloseWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_CloseWindowStation(HWINSTA  handle) /* ../dlls/user32/winstation.c:179 */
+WINAPI BOOL wine32b_user32_CloseWindowStation(HWINSTA handle) /* ../dlls/user32/winstation.c:179 */
 {
 	BOOL return_value;
 	TRACE("Enter CloseWindowStation\n");
@@ -3031,6 +3096,7 @@ WINAPI BOOL wine32b_user32_CloseWindowStation(HWINSTA  handle) /* ../dlls/user32
 
 extern WINAPI void wine32a_user32_CloseWindowStation(void);  /* ../dlls/user32/winstation.c:179 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CloseWindowStation,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3048,7 +3114,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CloseWindowStation,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_CopyAcceleratorTableA(HACCEL  src, LPACCEL  dst, INT  count) /* ../dlls/user32/resource.c:103 */
+WINAPI INT wine32b_user32_CopyAcceleratorTableA(HACCEL src, LPACCEL dst, INT count) /* ../dlls/user32/resource.c:103 */
 {
 	INT return_value;
 	TRACE("Enter CopyAcceleratorTableA\n");
@@ -3059,6 +3125,7 @@ WINAPI INT wine32b_user32_CopyAcceleratorTableA(HACCEL  src, LPACCEL  dst, INT  
 
 extern WINAPI void wine32a_user32_CopyAcceleratorTableA(void);  /* ../dlls/user32/resource.c:103 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CopyAcceleratorTableA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3078,7 +3145,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CopyAcceleratorTableA,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_CopyAcceleratorTableW(HACCEL  src, LPACCEL  dst, INT  count) /* ../dlls/user32/resource.c:123 */
+WINAPI INT wine32b_user32_CopyAcceleratorTableW(HACCEL src, LPACCEL dst, INT count) /* ../dlls/user32/resource.c:123 */
 {
 	INT return_value;
 	TRACE("Enter CopyAcceleratorTableW\n");
@@ -3089,6 +3156,7 @@ WINAPI INT wine32b_user32_CopyAcceleratorTableW(HACCEL  src, LPACCEL  dst, INT  
 
 extern WINAPI void wine32a_user32_CopyAcceleratorTableW(void);  /* ../dlls/user32/resource.c:123 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CopyAcceleratorTableW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3108,7 +3176,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CopyAcceleratorTableW,
 	"ret \n"
 )
 
-WINAPI HICON wine32b_user32_CopyIcon(HICON  hIcon) /* ../dlls/user32/cursoricon.c:1950 */
+WINAPI HICON wine32b_user32_CopyIcon(HICON hIcon) /* ../dlls/user32/cursoricon.c:1950 */
 {
 	HICON return_value;
 	TRACE("Enter CopyIcon\n");
@@ -3119,6 +3187,7 @@ WINAPI HICON wine32b_user32_CopyIcon(HICON  hIcon) /* ../dlls/user32/cursoricon.
 
 extern WINAPI void wine32a_user32_CopyIcon(void);  /* ../dlls/user32/cursoricon.c:1950 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CopyIcon,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3136,7 +3205,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CopyIcon,
 	"ret \n"
 )
 
-WINAPI HANDLE wine32b_user32_CopyImage(HANDLE  hnd, UINT  type, INT  desiredx, INT  desiredy, UINT  flags) /* ../dlls/user32/cursoricon.c:3095 */
+WINAPI HANDLE wine32b_user32_CopyImage(HANDLE hnd, UINT type, INT desiredx, INT desiredy, UINT flags) /* ../dlls/user32/cursoricon.c:3095 */
 {
 	HANDLE return_value;
 	TRACE("Enter CopyImage\n");
@@ -3147,6 +3216,7 @@ WINAPI HANDLE wine32b_user32_CopyImage(HANDLE  hnd, UINT  type, INT  desiredx, I
 
 extern WINAPI void wine32a_user32_CopyImage(void);  /* ../dlls/user32/cursoricon.c:3095 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CopyImage,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3167,7 +3237,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CopyImage,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_CopyRect(RECT*  dest, RECT*  src) /* ../dlls/user32/uitools.c:1273 */
+WINAPI BOOL wine32b_user32_CopyRect(RECT* dest, RECT* src) /* ../dlls/user32/uitools.c:1273 */
 {
 	BOOL return_value;
 	TRACE("Enter CopyRect\n");
@@ -3178,6 +3248,7 @@ WINAPI BOOL wine32b_user32_CopyRect(RECT*  dest, RECT*  src) /* ../dlls/user32/u
 
 extern WINAPI void wine32a_user32_CopyRect(void);  /* ../dlls/user32/uitools.c:1273 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CopyRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3207,6 +3278,7 @@ WINAPI INT wine32b_user32_CountClipboardFormats(void) /* ../dlls/user32/clipboar
 
 extern WINAPI void wine32a_user32_CountClipboardFormats(void);  /* ../dlls/user32/clipboard.c:935 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CountClipboardFormats,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -3223,7 +3295,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CountClipboardFormats,
 	"ret \n"
 )
 
-WINAPI HACCEL wine32b_user32_CreateAcceleratorTableA(LPACCEL  lpaccel, INT  count) /* ../dlls/user32/resource.c:152 */
+WINAPI HACCEL wine32b_user32_CreateAcceleratorTableA(LPACCEL lpaccel, INT count) /* ../dlls/user32/resource.c:152 */
 {
 	HACCEL return_value;
 	TRACE("Enter CreateAcceleratorTableA\n");
@@ -3234,6 +3306,7 @@ WINAPI HACCEL wine32b_user32_CreateAcceleratorTableA(LPACCEL  lpaccel, INT  coun
 
 extern WINAPI void wine32a_user32_CreateAcceleratorTableA(void);  /* ../dlls/user32/resource.c:152 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateAcceleratorTableA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3252,7 +3325,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreateAcceleratorTableA,
 	"ret \n"
 )
 
-WINAPI HACCEL wine32b_user32_CreateAcceleratorTableW(LPACCEL  lpaccel, INT  count) /* ../dlls/user32/resource.c:186 */
+WINAPI HACCEL wine32b_user32_CreateAcceleratorTableW(LPACCEL lpaccel, INT count) /* ../dlls/user32/resource.c:186 */
 {
 	HACCEL return_value;
 	TRACE("Enter CreateAcceleratorTableW\n");
@@ -3263,6 +3336,7 @@ WINAPI HACCEL wine32b_user32_CreateAcceleratorTableW(LPACCEL  lpaccel, INT  coun
 
 extern WINAPI void wine32a_user32_CreateAcceleratorTableW(void);  /* ../dlls/user32/resource.c:186 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateAcceleratorTableW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3281,7 +3355,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreateAcceleratorTableW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_CreateCaret(HWND  hwnd, HBITMAP  bitmap, INT  width, INT  height) /* ../dlls/user32/caret.c:109 */
+WINAPI BOOL wine32b_user32_CreateCaret(HWND hwnd, HBITMAP bitmap, INT width, INT height) /* ../dlls/user32/caret.c:109 */
 {
 	BOOL return_value;
 	TRACE("Enter CreateCaret\n");
@@ -3292,6 +3366,7 @@ WINAPI BOOL wine32b_user32_CreateCaret(HWND  hwnd, HBITMAP  bitmap, INT  width, 
 
 extern WINAPI void wine32a_user32_CreateCaret(void);  /* ../dlls/user32/caret.c:109 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateCaret,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3312,7 +3387,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreateCaret,
 	"ret \n"
 )
 
-WINAPI HCURSOR wine32b_user32_CreateCursor(HINSTANCE  hInstance, INT  xHotSpot, INT  yHotSpot, INT  nWidth, INT  nHeight, LPCVOID  lpANDbits, LPCVOID  lpXORbits) /* ../dlls/user32/cursoricon.c:1875 */
+WINAPI HCURSOR wine32b_user32_CreateCursor(HINSTANCE hInstance, INT xHotSpot, INT yHotSpot, INT nWidth, INT nHeight, LPCVOID lpANDbits, LPCVOID lpXORbits) /* ../dlls/user32/cursoricon.c:1875 */
 {
 	HCURSOR return_value;
 	TRACE("Enter CreateCursor\n");
@@ -3323,6 +3398,7 @@ WINAPI HCURSOR wine32b_user32_CreateCursor(HINSTANCE  hInstance, INT  xHotSpot, 
 
 extern WINAPI void wine32a_user32_CreateCursor(void);  /* ../dlls/user32/cursoricon.c:1875 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateCursor,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3343,7 +3419,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreateCursor,
 	"ret \n"
 )
 
-WINAPI HDESK wine32b_user32_CreateDesktopA(LPCSTR  name, LPCSTR  device, LPDEVMODEA  devmode, DWORD  flags, ACCESS_MASK  access, LPSECURITY_ATTRIBUTES  sa) /* ../dlls/user32/winstation.c:275 */
+WINAPI HDESK wine32b_user32_CreateDesktopA(LPCSTR name, LPCSTR device, LPDEVMODEA devmode, DWORD flags, ACCESS_MASK access, LPSECURITY_ATTRIBUTES sa) /* ../dlls/user32/winstation.c:275 */
 {
 	HDESK return_value;
 	TRACE("Enter CreateDesktopA\n");
@@ -3354,6 +3430,7 @@ WINAPI HDESK wine32b_user32_CreateDesktopA(LPCSTR  name, LPCSTR  device, LPDEVMO
 
 extern WINAPI void wine32a_user32_CreateDesktopA(void);  /* ../dlls/user32/winstation.c:275 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateDesktopA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3374,7 +3451,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreateDesktopA,
 	"ret \n"
 )
 
-WINAPI HDESK wine32b_user32_CreateDesktopW(LPCWSTR  name, LPCWSTR  device, LPDEVMODEW  devmode, DWORD  flags, ACCESS_MASK  access, LPSECURITY_ATTRIBUTES  sa) /* ../dlls/user32/winstation.c:299 */
+WINAPI HDESK wine32b_user32_CreateDesktopW(LPCWSTR name, LPCWSTR device, LPDEVMODEW devmode, DWORD flags, ACCESS_MASK access, LPSECURITY_ATTRIBUTES sa) /* ../dlls/user32/winstation.c:299 */
 {
 	HDESK return_value;
 	TRACE("Enter CreateDesktopW\n");
@@ -3385,6 +3462,7 @@ WINAPI HDESK wine32b_user32_CreateDesktopW(LPCWSTR  name, LPCWSTR  device, LPDEV
 
 extern WINAPI void wine32a_user32_CreateDesktopW(void);  /* ../dlls/user32/winstation.c:299 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateDesktopW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3405,7 +3483,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreateDesktopW,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_CreateDialogIndirectParamA(HINSTANCE  hInst, LPCDLGTEMPLATEA  dlgTemplate, HWND  owner, DLGPROC  dlgProc, LPARAM  param) /* ../dlls/user32/dialog.c:757 */
+WINAPI HWND wine32b_user32_CreateDialogIndirectParamA(HINSTANCE hInst, LPCDLGTEMPLATEA dlgTemplate, HWND owner, DLGPROC dlgProc, LPARAM param) /* ../dlls/user32/dialog.c:757 */
 {
 	HWND return_value;
 	TRACE("Enter CreateDialogIndirectParamA\n");
@@ -3416,6 +3494,7 @@ WINAPI HWND wine32b_user32_CreateDialogIndirectParamA(HINSTANCE  hInst, LPCDLGTE
 
 extern WINAPI void wine32a_user32_CreateDialogIndirectParamA(void);  /* ../dlls/user32/dialog.c:757 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateDialogIndirectParamA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3436,7 +3515,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreateDialogIndirectParamA,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_CreateDialogIndirectParamAorW(HINSTANCE  hInst, LPCVOID  dlgTemplate, HWND  owner, DLGPROC  dlgProc, LPARAM  param, DWORD  flags) /* ../dlls/user32/dialog.c:747 */
+WINAPI HWND wine32b_user32_CreateDialogIndirectParamAorW(HINSTANCE hInst, LPCVOID dlgTemplate, HWND owner, DLGPROC dlgProc, LPARAM param, DWORD flags) /* ../dlls/user32/dialog.c:747 */
 {
 	HWND return_value;
 	TRACE("Enter CreateDialogIndirectParamAorW\n");
@@ -3447,6 +3526,7 @@ WINAPI HWND wine32b_user32_CreateDialogIndirectParamAorW(HINSTANCE  hInst, LPCVO
 
 extern WINAPI void wine32a_user32_CreateDialogIndirectParamAorW(void);  /* ../dlls/user32/dialog.c:747 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateDialogIndirectParamAorW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3467,7 +3547,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreateDialogIndirectParamAorW,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_CreateDialogIndirectParamW(HINSTANCE  hInst, LPCDLGTEMPLATEW  dlgTemplate, HWND  owner, DLGPROC  dlgProc, LPARAM  param) /* ../dlls/user32/dialog.c:766 */
+WINAPI HWND wine32b_user32_CreateDialogIndirectParamW(HINSTANCE hInst, LPCDLGTEMPLATEW dlgTemplate, HWND owner, DLGPROC dlgProc, LPARAM param) /* ../dlls/user32/dialog.c:766 */
 {
 	HWND return_value;
 	TRACE("Enter CreateDialogIndirectParamW\n");
@@ -3478,6 +3558,7 @@ WINAPI HWND wine32b_user32_CreateDialogIndirectParamW(HINSTANCE  hInst, LPCDLGTE
 
 extern WINAPI void wine32a_user32_CreateDialogIndirectParamW(void);  /* ../dlls/user32/dialog.c:766 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateDialogIndirectParamW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3498,7 +3579,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreateDialogIndirectParamW,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_CreateDialogParamA(HINSTANCE  hInst, LPCSTR  name, HWND  owner, DLGPROC  dlgProc, LPARAM  param) /* ../dlls/user32/dialog.c:717 */
+WINAPI HWND wine32b_user32_CreateDialogParamA(HINSTANCE hInst, LPCSTR name, HWND owner, DLGPROC dlgProc, LPARAM param) /* ../dlls/user32/dialog.c:717 */
 {
 	HWND return_value;
 	TRACE("Enter CreateDialogParamA\n");
@@ -3509,6 +3590,7 @@ WINAPI HWND wine32b_user32_CreateDialogParamA(HINSTANCE  hInst, LPCSTR  name, HW
 
 extern WINAPI void wine32a_user32_CreateDialogParamA(void);  /* ../dlls/user32/dialog.c:717 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateDialogParamA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3529,7 +3611,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreateDialogParamA,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_CreateDialogParamW(HINSTANCE  hInst, LPCWSTR  name, HWND  owner, DLGPROC  dlgProc, LPARAM  param) /* ../dlls/user32/dialog.c:732 */
+WINAPI HWND wine32b_user32_CreateDialogParamW(HINSTANCE hInst, LPCWSTR name, HWND owner, DLGPROC dlgProc, LPARAM param) /* ../dlls/user32/dialog.c:732 */
 {
 	HWND return_value;
 	TRACE("Enter CreateDialogParamW\n");
@@ -3540,6 +3622,7 @@ WINAPI HWND wine32b_user32_CreateDialogParamW(HINSTANCE  hInst, LPCWSTR  name, H
 
 extern WINAPI void wine32a_user32_CreateDialogParamW(void);  /* ../dlls/user32/dialog.c:732 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateDialogParamW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3560,7 +3643,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreateDialogParamW,
 	"ret \n"
 )
 
-WINAPI HICON wine32b_user32_CreateIcon(HINSTANCE  hInstance, INT  nWidth, INT  nHeight, BYTE  bPlanes, BYTE  bBitsPixel, LPCVOID  lpANDbits, LPCVOID  lpXORbits) /* ../dlls/user32/cursoricon.c:1917 */
+WINAPI HICON wine32b_user32_CreateIcon(HINSTANCE hInstance, INT nWidth, INT nHeight, BYTE bPlanes, BYTE bBitsPixel, LPCVOID lpANDbits, LPCVOID lpXORbits) /* ../dlls/user32/cursoricon.c:1917 */
 {
 	HICON return_value;
 	TRACE("Enter CreateIcon\n");
@@ -3571,6 +3654,7 @@ WINAPI HICON wine32b_user32_CreateIcon(HINSTANCE  hInstance, INT  nWidth, INT  n
 
 extern WINAPI void wine32a_user32_CreateIcon(void);  /* ../dlls/user32/cursoricon.c:1917 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateIcon,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3591,7 +3675,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreateIcon,
 	"ret \n"
 )
 
-WINAPI HICON wine32b_user32_CreateIconFromResource(LPBYTE  bits, UINT  cbSize, BOOL  bIcon, DWORD  dwVersion) /* ../dlls/user32/cursoricon.c:1710 */
+WINAPI HICON wine32b_user32_CreateIconFromResource(LPBYTE bits, UINT cbSize, BOOL bIcon, DWORD dwVersion) /* ../dlls/user32/cursoricon.c:1710 */
 {
 	HICON return_value;
 	TRACE("Enter CreateIconFromResource\n");
@@ -3602,6 +3686,7 @@ WINAPI HICON wine32b_user32_CreateIconFromResource(LPBYTE  bits, UINT  cbSize, B
 
 extern WINAPI void wine32a_user32_CreateIconFromResource(void);  /* ../dlls/user32/cursoricon.c:1710 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateIconFromResource,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3622,7 +3707,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreateIconFromResource,
 	"ret \n"
 )
 
-WINAPI HICON wine32b_user32_CreateIconFromResourceEx(LPBYTE  bits, UINT  cbSize, BOOL  bIcon, DWORD  dwVersion, INT  width, INT  height, UINT  cFlag) /* ../dlls/user32/cursoricon.c:1663 */
+WINAPI HICON wine32b_user32_CreateIconFromResourceEx(LPBYTE bits, UINT cbSize, BOOL bIcon, DWORD dwVersion, INT width, INT height, UINT cFlag) /* ../dlls/user32/cursoricon.c:1663 */
 {
 	HICON return_value;
 	TRACE("Enter CreateIconFromResourceEx\n");
@@ -3633,6 +3718,7 @@ WINAPI HICON wine32b_user32_CreateIconFromResourceEx(LPBYTE  bits, UINT  cbSize,
 
 extern WINAPI void wine32a_user32_CreateIconFromResourceEx(void);  /* ../dlls/user32/cursoricon.c:1663 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateIconFromResourceEx,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3653,7 +3739,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreateIconFromResourceEx,
 	"ret \n"
 )
 
-WINAPI HICON wine32b_user32_CreateIconIndirect(PICONINFO  iconinfo) /* ../dlls/user32/cursoricon.c:2522 */
+WINAPI HICON wine32b_user32_CreateIconIndirect(PICONINFO iconinfo) /* ../dlls/user32/cursoricon.c:2522 */
 {
 	HICON return_value;
 	TRACE("Enter CreateIconIndirect\n");
@@ -3664,6 +3750,7 @@ WINAPI HICON wine32b_user32_CreateIconIndirect(PICONINFO  iconinfo) /* ../dlls/u
 
 extern WINAPI void wine32a_user32_CreateIconIndirect(void);  /* ../dlls/user32/cursoricon.c:2522 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateIconIndirect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3681,7 +3768,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreateIconIndirect,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_CreateMDIWindowA(LPCSTR  lpClassName, LPCSTR  lpWindowName, DWORD  dwStyle, INT  X, INT  Y, INT  nWidth, INT  nHeight, HWND  hWndParent, HINSTANCE  hInstance, LPARAM  lParam) /* ../dlls/user32/mdi.c:1593 */
+WINAPI HWND wine32b_user32_CreateMDIWindowA(LPCSTR lpClassName, LPCSTR lpWindowName, DWORD dwStyle, INT X, INT Y, INT nWidth, INT nHeight, HWND hWndParent, HINSTANCE hInstance, LPARAM lParam) /* ../dlls/user32/mdi.c:1593 */
 {
 	HWND return_value;
 	TRACE("Enter CreateMDIWindowA\n");
@@ -3692,6 +3779,7 @@ WINAPI HWND wine32b_user32_CreateMDIWindowA(LPCSTR  lpClassName, LPCSTR  lpWindo
 
 extern WINAPI void wine32a_user32_CreateMDIWindowA(void);  /* ../dlls/user32/mdi.c:1593 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateMDIWindowA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3712,7 +3800,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreateMDIWindowA,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_CreateMDIWindowW(LPCWSTR  lpClassName, LPCWSTR  lpWindowName, DWORD  dwStyle, INT  X, INT  Y, INT  nWidth, INT  nHeight, HWND  hWndParent, HINSTANCE  hInstance, LPARAM  lParam) /* ../dlls/user32/mdi.c:1621 */
+WINAPI HWND wine32b_user32_CreateMDIWindowW(LPCWSTR lpClassName, LPCWSTR lpWindowName, DWORD dwStyle, INT X, INT Y, INT nWidth, INT nHeight, HWND hWndParent, HINSTANCE hInstance, LPARAM lParam) /* ../dlls/user32/mdi.c:1621 */
 {
 	HWND return_value;
 	TRACE("Enter CreateMDIWindowW\n");
@@ -3723,6 +3811,7 @@ WINAPI HWND wine32b_user32_CreateMDIWindowW(LPCWSTR  lpClassName, LPCWSTR  lpWin
 
 extern WINAPI void wine32a_user32_CreateMDIWindowW(void);  /* ../dlls/user32/mdi.c:1621 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateMDIWindowW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3754,6 +3843,7 @@ WINAPI HMENU wine32b_user32_CreateMenu(void) /* ../dlls/user32/menu.c:4248 */
 
 extern WINAPI void wine32a_user32_CreateMenu(void);  /* ../dlls/user32/menu.c:4248 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateMenu,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -3781,6 +3871,7 @@ WINAPI HMENU wine32b_user32_CreatePopupMenu(void) /* ../dlls/user32/menu.c:4193 
 
 extern WINAPI void wine32a_user32_CreatePopupMenu(void);  /* ../dlls/user32/menu.c:4193 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreatePopupMenu,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -3797,7 +3888,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreatePopupMenu,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_CreateWindowExA(DWORD  exStyle, LPCSTR  className, LPCSTR  windowName, DWORD  style, INT  x, INT  y, INT  width, INT  height, HWND  parent, HMENU  menu, HINSTANCE  instance, LPVOID  data) /* ../dlls/user32/win.c:1740 */
+WINAPI HWND wine32b_user32_CreateWindowExA(DWORD exStyle, LPCSTR className, LPCSTR windowName, DWORD style, INT x, INT y, INT width, INT height, HWND parent, HMENU menu, HINSTANCE instance, LPVOID data) /* ../dlls/user32/win.c:1740 */
 {
 	HWND return_value;
 	TRACE("Enter CreateWindowExA\n");
@@ -3808,6 +3899,7 @@ WINAPI HWND wine32b_user32_CreateWindowExA(DWORD  exStyle, LPCSTR  className, LP
 
 extern WINAPI void wine32a_user32_CreateWindowExA(void);  /* ../dlls/user32/win.c:1740 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateWindowExA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3828,7 +3920,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreateWindowExA,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_CreateWindowExW(DWORD  exStyle, LPCWSTR  className, LPCWSTR  windowName, DWORD  style, INT  x, INT  y, INT  width, INT  height, HWND  parent, HMENU  menu, HINSTANCE  instance, LPVOID  data) /* ../dlls/user32/win.c:1777 */
+WINAPI HWND wine32b_user32_CreateWindowExW(DWORD exStyle, LPCWSTR className, LPCWSTR windowName, DWORD style, INT x, INT y, INT width, INT height, HWND parent, HMENU menu, HINSTANCE instance, LPVOID data) /* ../dlls/user32/win.c:1777 */
 {
 	HWND return_value;
 	TRACE("Enter CreateWindowExW\n");
@@ -3839,6 +3931,7 @@ WINAPI HWND wine32b_user32_CreateWindowExW(DWORD  exStyle, LPCWSTR  className, L
 
 extern WINAPI void wine32a_user32_CreateWindowExW(void);  /* ../dlls/user32/win.c:1777 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateWindowExW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3859,7 +3952,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreateWindowExW,
 	"ret \n"
 )
 
-WINAPI HWINSTA wine32b_user32_CreateWindowStationA(LPCSTR  name, DWORD  flags, ACCESS_MASK  access, LPSECURITY_ATTRIBUTES  sa) /* ../dlls/user32/winstation.c:86 */
+WINAPI HWINSTA wine32b_user32_CreateWindowStationA(LPCSTR name, DWORD flags, ACCESS_MASK access, LPSECURITY_ATTRIBUTES sa) /* ../dlls/user32/winstation.c:86 */
 {
 	HWINSTA return_value;
 	TRACE("Enter CreateWindowStationA\n");
@@ -3870,6 +3963,7 @@ WINAPI HWINSTA wine32b_user32_CreateWindowStationA(LPCSTR  name, DWORD  flags, A
 
 extern WINAPI void wine32a_user32_CreateWindowStationA(void);  /* ../dlls/user32/winstation.c:86 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateWindowStationA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3890,7 +3984,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreateWindowStationA,
 	"ret \n"
 )
 
-WINAPI HWINSTA wine32b_user32_CreateWindowStationW(LPCWSTR  name, DWORD  flags, ACCESS_MASK  access, LPSECURITY_ATTRIBUTES  sa) /* ../dlls/user32/winstation.c:105 */
+WINAPI HWINSTA wine32b_user32_CreateWindowStationW(LPCWSTR name, DWORD flags, ACCESS_MASK access, LPSECURITY_ATTRIBUTES sa) /* ../dlls/user32/winstation.c:105 */
 {
 	HWINSTA return_value;
 	TRACE("Enter CreateWindowStationW\n");
@@ -3901,6 +3995,7 @@ WINAPI HWINSTA wine32b_user32_CreateWindowStationW(LPCWSTR  name, DWORD  flags, 
 
 extern WINAPI void wine32a_user32_CreateWindowStationW(void);  /* ../dlls/user32/winstation.c:105 */
 __ASM_GLOBAL_FUNC(wine32a_user32_CreateWindowStationW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3921,7 +4016,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_CreateWindowStationW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DdeAbandonTransaction(DWORD  idInst, HCONV  hConv, DWORD  idTransaction) /* ../dlls/user32/dde_client.c:1235 */
+WINAPI BOOL wine32b_user32_DdeAbandonTransaction(DWORD idInst, HCONV hConv, DWORD idTransaction) /* ../dlls/user32/dde_client.c:1235 */
 {
 	BOOL return_value;
 	TRACE("Enter DdeAbandonTransaction\n");
@@ -3932,6 +4027,7 @@ WINAPI BOOL wine32b_user32_DdeAbandonTransaction(DWORD  idInst, HCONV  hConv, DW
 
 extern WINAPI void wine32a_user32_DdeAbandonTransaction(void);  /* ../dlls/user32/dde_client.c:1235 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeAbandonTransaction,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3951,7 +4047,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeAbandonTransaction,
 	"ret \n"
 )
 
-WINAPI LPBYTE wine32b_user32_DdeAccessData(HDDEDATA  hData, LPDWORD  pcbDataSize) /* ../dlls/user32/dde_misc.c:1435 */
+WINAPI LPBYTE wine32b_user32_DdeAccessData(HDDEDATA hData, LPDWORD pcbDataSize) /* ../dlls/user32/dde_misc.c:1435 */
 {
 	LPBYTE return_value;
 	TRACE("Enter DdeAccessData\n");
@@ -3962,6 +4058,7 @@ WINAPI LPBYTE wine32b_user32_DdeAccessData(HDDEDATA  hData, LPDWORD  pcbDataSize
 
 extern WINAPI void wine32a_user32_DdeAccessData(void);  /* ../dlls/user32/dde_misc.c:1435 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeAccessData,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -3980,7 +4077,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeAccessData,
 	"ret \n"
 )
 
-WINAPI HDDEDATA wine32b_user32_DdeAddData(HDDEDATA  hData, LPBYTE  pSrc, DWORD  cb, DWORD  cbOff) /* ../dlls/user32/dde_misc.c:1353 */
+WINAPI HDDEDATA wine32b_user32_DdeAddData(HDDEDATA hData, LPBYTE pSrc, DWORD cb, DWORD cbOff) /* ../dlls/user32/dde_misc.c:1353 */
 {
 	HDDEDATA return_value;
 	TRACE("Enter DdeAddData\n");
@@ -3991,6 +4088,7 @@ WINAPI HDDEDATA wine32b_user32_DdeAddData(HDDEDATA  hData, LPBYTE  pSrc, DWORD  
 
 extern WINAPI void wine32a_user32_DdeAddData(void);  /* ../dlls/user32/dde_misc.c:1353 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeAddData,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4011,7 +4109,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeAddData,
 	"ret \n"
 )
 
-WINAPI HDDEDATA wine32b_user32_DdeClientTransaction(LPBYTE  pData, DWORD  cbData, HCONV  hConv, HSZ  hszItem, UINT  wFmt, UINT  wType, DWORD  dwTimeout, LPDWORD  pdwResult) /* ../dlls/user32/dde_client.c:1133 */
+WINAPI HDDEDATA wine32b_user32_DdeClientTransaction(LPBYTE pData, DWORD cbData, HCONV hConv, HSZ hszItem, UINT wFmt, UINT wType, DWORD dwTimeout, LPDWORD pdwResult) /* ../dlls/user32/dde_client.c:1133 */
 {
 	HDDEDATA return_value;
 	TRACE("Enter DdeClientTransaction\n");
@@ -4022,6 +4120,7 @@ WINAPI HDDEDATA wine32b_user32_DdeClientTransaction(LPBYTE  pData, DWORD  cbData
 
 extern WINAPI void wine32a_user32_DdeClientTransaction(void);  /* ../dlls/user32/dde_client.c:1133 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeClientTransaction,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4042,7 +4141,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeClientTransaction,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_DdeCmpStringHandles(HSZ  hsz1, HSZ  hsz2) /* ../dlls/user32/dde_misc.c:698 */
+WINAPI INT wine32b_user32_DdeCmpStringHandles(HSZ hsz1, HSZ hsz2) /* ../dlls/user32/dde_misc.c:698 */
 {
 	INT return_value;
 	TRACE("Enter DdeCmpStringHandles\n");
@@ -4053,6 +4152,7 @@ WINAPI INT wine32b_user32_DdeCmpStringHandles(HSZ  hsz1, HSZ  hsz2) /* ../dlls/u
 
 extern WINAPI void wine32a_user32_DdeCmpStringHandles(void);  /* ../dlls/user32/dde_misc.c:698 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeCmpStringHandles,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4071,7 +4171,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeCmpStringHandles,
 	"ret \n"
 )
 
-WINAPI HCONV wine32b_user32_DdeConnect(DWORD  idInst, HSZ  hszService, HSZ  hszTopic, PCONVCONTEXT  pCC) /* ../dlls/user32/dde_client.c:95 */
+WINAPI HCONV wine32b_user32_DdeConnect(DWORD idInst, HSZ hszService, HSZ hszTopic, PCONVCONTEXT pCC) /* ../dlls/user32/dde_client.c:95 */
 {
 	HCONV return_value;
 	TRACE("Enter DdeConnect\n");
@@ -4082,6 +4182,7 @@ WINAPI HCONV wine32b_user32_DdeConnect(DWORD  idInst, HSZ  hszService, HSZ  hszT
 
 extern WINAPI void wine32a_user32_DdeConnect(void);  /* ../dlls/user32/dde_client.c:95 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeConnect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4102,7 +4203,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeConnect,
 	"ret \n"
 )
 
-WINAPI HCONVLIST wine32b_user32_DdeConnectList(DWORD  idInst, HSZ  hszService, HSZ  hszTopic, HCONVLIST  hConvList, PCONVCONTEXT  pCC) /* ../dlls/user32/dde_client.c:59 */
+WINAPI HCONVLIST wine32b_user32_DdeConnectList(DWORD idInst, HSZ hszService, HSZ hszTopic, HCONVLIST hConvList, PCONVCONTEXT pCC) /* ../dlls/user32/dde_client.c:59 */
 {
 	HCONVLIST return_value;
 	TRACE("Enter DdeConnectList\n");
@@ -4113,6 +4214,7 @@ WINAPI HCONVLIST wine32b_user32_DdeConnectList(DWORD  idInst, HSZ  hszService, H
 
 extern WINAPI void wine32a_user32_DdeConnectList(void);  /* ../dlls/user32/dde_client.c:59 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeConnectList,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4133,7 +4235,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeConnectList,
 	"ret \n"
 )
 
-WINAPI HDDEDATA wine32b_user32_DdeCreateDataHandle(DWORD  idInst, LPBYTE  pSrc, DWORD  cb, DWORD  cbOff, HSZ  hszItem, UINT  wFmt, UINT  afCmd) /* ../dlls/user32/dde_misc.c:1288 */
+WINAPI HDDEDATA wine32b_user32_DdeCreateDataHandle(DWORD idInst, LPBYTE pSrc, DWORD cb, DWORD cbOff, HSZ hszItem, UINT wFmt, UINT afCmd) /* ../dlls/user32/dde_misc.c:1288 */
 {
 	HDDEDATA return_value;
 	TRACE("Enter DdeCreateDataHandle\n");
@@ -4144,6 +4246,7 @@ WINAPI HDDEDATA wine32b_user32_DdeCreateDataHandle(DWORD  idInst, LPBYTE  pSrc, 
 
 extern WINAPI void wine32a_user32_DdeCreateDataHandle(void);  /* ../dlls/user32/dde_misc.c:1288 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeCreateDataHandle,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4164,7 +4267,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeCreateDataHandle,
 	"ret \n"
 )
 
-WINAPI HSZ wine32b_user32_DdeCreateStringHandleA(DWORD  idInst, LPCSTR  psz, INT  codepage) /* ../dlls/user32/dde_misc.c:590 */
+WINAPI HSZ wine32b_user32_DdeCreateStringHandleA(DWORD idInst, LPCSTR psz, INT codepage) /* ../dlls/user32/dde_misc.c:590 */
 {
 	HSZ return_value;
 	TRACE("Enter DdeCreateStringHandleA\n");
@@ -4175,6 +4278,7 @@ WINAPI HSZ wine32b_user32_DdeCreateStringHandleA(DWORD  idInst, LPCSTR  psz, INT
 
 extern WINAPI void wine32a_user32_DdeCreateStringHandleA(void);  /* ../dlls/user32/dde_misc.c:590 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeCreateStringHandleA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4194,7 +4298,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeCreateStringHandleA,
 	"ret \n"
 )
 
-WINAPI HSZ wine32b_user32_DdeCreateStringHandleW(DWORD  idInst, LPCWSTR  psz, INT  codepage) /* ../dlls/user32/dde_misc.c:621 */
+WINAPI HSZ wine32b_user32_DdeCreateStringHandleW(DWORD idInst, LPCWSTR psz, INT codepage) /* ../dlls/user32/dde_misc.c:621 */
 {
 	HSZ return_value;
 	TRACE("Enter DdeCreateStringHandleW\n");
@@ -4205,6 +4309,7 @@ WINAPI HSZ wine32b_user32_DdeCreateStringHandleW(DWORD  idInst, LPCWSTR  psz, IN
 
 extern WINAPI void wine32a_user32_DdeCreateStringHandleW(void);  /* ../dlls/user32/dde_misc.c:621 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeCreateStringHandleW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4224,7 +4329,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeCreateStringHandleW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DdeDisconnect(HCONV  hConv) /* ../dlls/user32/dde_client.c:1374 */
+WINAPI BOOL wine32b_user32_DdeDisconnect(HCONV hConv) /* ../dlls/user32/dde_client.c:1374 */
 {
 	BOOL return_value;
 	TRACE("Enter DdeDisconnect\n");
@@ -4235,6 +4340,7 @@ WINAPI BOOL wine32b_user32_DdeDisconnect(HCONV  hConv) /* ../dlls/user32/dde_cli
 
 extern WINAPI void wine32a_user32_DdeDisconnect(void);  /* ../dlls/user32/dde_client.c:1374 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeDisconnect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4252,7 +4358,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeDisconnect,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DdeDisconnectList(HCONVLIST  hConvList) /* ../dlls/user32/dde_client.c:86 */
+WINAPI BOOL wine32b_user32_DdeDisconnectList(HCONVLIST hConvList) /* ../dlls/user32/dde_client.c:86 */
 {
 	BOOL return_value;
 	TRACE("Enter DdeDisconnectList\n");
@@ -4263,6 +4369,7 @@ WINAPI BOOL wine32b_user32_DdeDisconnectList(HCONVLIST  hConvList) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_DdeDisconnectList(void);  /* ../dlls/user32/dde_client.c:86 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeDisconnectList,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4280,7 +4387,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeDisconnectList,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DdeEnableCallback(DWORD  idInst, HCONV  hConv, UINT  wCmd) /* ../dlls/user32/dde_misc.c:2191 */
+WINAPI BOOL wine32b_user32_DdeEnableCallback(DWORD idInst, HCONV hConv, UINT wCmd) /* ../dlls/user32/dde_misc.c:2191 */
 {
 	BOOL return_value;
 	TRACE("Enter DdeEnableCallback\n");
@@ -4291,6 +4398,7 @@ WINAPI BOOL wine32b_user32_DdeEnableCallback(DWORD  idInst, HCONV  hConv, UINT  
 
 extern WINAPI void wine32a_user32_DdeEnableCallback(void);  /* ../dlls/user32/dde_misc.c:2191 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeEnableCallback,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4310,7 +4418,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeEnableCallback,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DdeFreeDataHandle(HDDEDATA  hData) /* ../dlls/user32/dde_misc.c:1474 */
+WINAPI BOOL wine32b_user32_DdeFreeDataHandle(HDDEDATA hData) /* ../dlls/user32/dde_misc.c:1474 */
 {
 	BOOL return_value;
 	TRACE("Enter DdeFreeDataHandle\n");
@@ -4321,6 +4429,7 @@ WINAPI BOOL wine32b_user32_DdeFreeDataHandle(HDDEDATA  hData) /* ../dlls/user32/
 
 extern WINAPI void wine32a_user32_DdeFreeDataHandle(void);  /* ../dlls/user32/dde_misc.c:1474 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeFreeDataHandle,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4338,7 +4447,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeFreeDataHandle,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DdeFreeStringHandle(DWORD  idInst, HSZ  hsz) /* ../dlls/user32/dde_misc.c:644 */
+WINAPI BOOL wine32b_user32_DdeFreeStringHandle(DWORD idInst, HSZ hsz) /* ../dlls/user32/dde_misc.c:644 */
 {
 	BOOL return_value;
 	TRACE("Enter DdeFreeStringHandle\n");
@@ -4349,6 +4458,7 @@ WINAPI BOOL wine32b_user32_DdeFreeStringHandle(DWORD  idInst, HSZ  hsz) /* ../dl
 
 extern WINAPI void wine32a_user32_DdeFreeStringHandle(void);  /* ../dlls/user32/dde_misc.c:644 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeFreeStringHandle,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4367,7 +4477,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeFreeStringHandle,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_DdeGetData(HDDEDATA  hData, LPBYTE  pDst, DWORD  cbMax, DWORD  cbOff) /* ../dlls/user32/dde_misc.c:1392 */
+WINAPI DWORD wine32b_user32_DdeGetData(HDDEDATA hData, LPBYTE pDst, DWORD cbMax, DWORD cbOff) /* ../dlls/user32/dde_misc.c:1392 */
 {
 	DWORD return_value;
 	TRACE("Enter DdeGetData\n");
@@ -4378,6 +4488,7 @@ WINAPI DWORD wine32b_user32_DdeGetData(HDDEDATA  hData, LPBYTE  pDst, DWORD  cbM
 
 extern WINAPI void wine32a_user32_DdeGetData(void);  /* ../dlls/user32/dde_misc.c:1392 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeGetData,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4398,7 +4509,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeGetData,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_DdeGetLastError(DWORD  idInst) /* ../dlls/user32/dde_misc.c:266 */
+WINAPI UINT wine32b_user32_DdeGetLastError(DWORD idInst) /* ../dlls/user32/dde_misc.c:266 */
 {
 	UINT return_value;
 	TRACE("Enter DdeGetLastError\n");
@@ -4409,6 +4520,7 @@ WINAPI UINT wine32b_user32_DdeGetLastError(DWORD  idInst) /* ../dlls/user32/dde_
 
 extern WINAPI void wine32a_user32_DdeGetLastError(void);  /* ../dlls/user32/dde_misc.c:266 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeGetLastError,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4426,7 +4538,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeGetLastError,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DdeImpersonateClient(HCONV  hConv) /* ../dlls/user32/dde_client.c:1423 */
+WINAPI BOOL wine32b_user32_DdeImpersonateClient(HCONV hConv) /* ../dlls/user32/dde_client.c:1423 */
 {
 	BOOL return_value;
 	TRACE("Enter DdeImpersonateClient\n");
@@ -4437,6 +4549,7 @@ WINAPI BOOL wine32b_user32_DdeImpersonateClient(HCONV  hConv) /* ../dlls/user32/
 
 extern WINAPI void wine32a_user32_DdeImpersonateClient(void);  /* ../dlls/user32/dde_client.c:1423 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeImpersonateClient,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4454,7 +4567,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeImpersonateClient,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_DdeInitializeA(LPDWORD  pidInst, PFNCALLBACK  pfnCallback, DWORD  afCmd, DWORD  ulRes) /* ../dlls/user32/dde_misc.c:1088 */
+WINAPI UINT wine32b_user32_DdeInitializeA(LPDWORD pidInst, PFNCALLBACK pfnCallback, DWORD afCmd, DWORD ulRes) /* ../dlls/user32/dde_misc.c:1088 */
 {
 	UINT return_value;
 	TRACE("Enter DdeInitializeA\n");
@@ -4465,6 +4578,7 @@ WINAPI UINT wine32b_user32_DdeInitializeA(LPDWORD  pidInst, PFNCALLBACK  pfnCall
 
 extern WINAPI void wine32a_user32_DdeInitializeA(void);  /* ../dlls/user32/dde_misc.c:1088 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeInitializeA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4485,7 +4599,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeInitializeA,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_DdeInitializeW(LPDWORD  pidInst, PFNCALLBACK  pfnCallback, DWORD  afCmd, DWORD  ulRes) /* ../dlls/user32/dde_misc.c:1108 */
+WINAPI UINT wine32b_user32_DdeInitializeW(LPDWORD pidInst, PFNCALLBACK pfnCallback, DWORD afCmd, DWORD ulRes) /* ../dlls/user32/dde_misc.c:1108 */
 {
 	UINT return_value;
 	TRACE("Enter DdeInitializeW\n");
@@ -4496,6 +4610,7 @@ WINAPI UINT wine32b_user32_DdeInitializeW(LPDWORD  pidInst, PFNCALLBACK  pfnCall
 
 extern WINAPI void wine32a_user32_DdeInitializeW(void);  /* ../dlls/user32/dde_misc.c:1108 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeInitializeW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4516,7 +4631,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeInitializeW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DdeKeepStringHandle(DWORD  idInst, HSZ  hsz) /* ../dlls/user32/dde_misc.c:667 */
+WINAPI BOOL wine32b_user32_DdeKeepStringHandle(DWORD idInst, HSZ hsz) /* ../dlls/user32/dde_misc.c:667 */
 {
 	BOOL return_value;
 	TRACE("Enter DdeKeepStringHandle\n");
@@ -4527,6 +4642,7 @@ WINAPI BOOL wine32b_user32_DdeKeepStringHandle(DWORD  idInst, HSZ  hsz) /* ../dl
 
 extern WINAPI void wine32a_user32_DdeKeepStringHandle(void);  /* ../dlls/user32/dde_misc.c:667 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeKeepStringHandle,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4545,7 +4661,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeKeepStringHandle,
 	"ret \n"
 )
 
-WINAPI HDDEDATA wine32b_user32_DdeNameService(DWORD  idInst, HSZ  hsz1, HSZ  hsz2, UINT  afCmd) /* ../dlls/user32/dde_server.c:166 */
+WINAPI HDDEDATA wine32b_user32_DdeNameService(DWORD idInst, HSZ hsz1, HSZ hsz2, UINT afCmd) /* ../dlls/user32/dde_server.c:166 */
 {
 	HDDEDATA return_value;
 	TRACE("Enter DdeNameService\n");
@@ -4556,6 +4672,7 @@ WINAPI HDDEDATA wine32b_user32_DdeNameService(DWORD  idInst, HSZ  hsz1, HSZ  hsz
 
 extern WINAPI void wine32a_user32_DdeNameService(void);  /* ../dlls/user32/dde_server.c:166 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeNameService,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4576,7 +4693,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeNameService,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DdePostAdvise(DWORD  idInst, HSZ  hszTopic, HSZ  hszItem) /* ../dlls/user32/dde_server.c:61 */
+WINAPI BOOL wine32b_user32_DdePostAdvise(DWORD idInst, HSZ hszTopic, HSZ hszItem) /* ../dlls/user32/dde_server.c:61 */
 {
 	BOOL return_value;
 	TRACE("Enter DdePostAdvise\n");
@@ -4587,6 +4704,7 @@ WINAPI BOOL wine32b_user32_DdePostAdvise(DWORD  idInst, HSZ  hszTopic, HSZ  hszI
 
 extern WINAPI void wine32a_user32_DdePostAdvise(void);  /* ../dlls/user32/dde_server.c:61 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdePostAdvise,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4606,7 +4724,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdePostAdvise,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_DdeQueryConvInfo(HCONV  hConv, DWORD  id, PCONVINFO  lpConvInfo) /* ../dlls/user32/dde_misc.c:2439 */
+WINAPI UINT wine32b_user32_DdeQueryConvInfo(HCONV hConv, DWORD id, PCONVINFO lpConvInfo) /* ../dlls/user32/dde_misc.c:2439 */
 {
 	UINT return_value;
 	TRACE("Enter DdeQueryConvInfo\n");
@@ -4617,6 +4735,7 @@ WINAPI UINT wine32b_user32_DdeQueryConvInfo(HCONV  hConv, DWORD  id, PCONVINFO  
 
 extern WINAPI void wine32a_user32_DdeQueryConvInfo(void);  /* ../dlls/user32/dde_misc.c:2439 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeQueryConvInfo,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4636,7 +4755,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeQueryConvInfo,
 	"ret \n"
 )
 
-WINAPI HCONV wine32b_user32_DdeQueryNextServer(HCONVLIST  hConvList, HCONV  hConvPrev) /* ../dlls/user32/dde_client.c:69 */
+WINAPI HCONV wine32b_user32_DdeQueryNextServer(HCONVLIST hConvList, HCONV hConvPrev) /* ../dlls/user32/dde_client.c:69 */
 {
 	HCONV return_value;
 	TRACE("Enter DdeQueryNextServer\n");
@@ -4647,6 +4766,7 @@ WINAPI HCONV wine32b_user32_DdeQueryNextServer(HCONVLIST  hConvList, HCONV  hCon
 
 extern WINAPI void wine32a_user32_DdeQueryNextServer(void);  /* ../dlls/user32/dde_client.c:69 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeQueryNextServer,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4665,7 +4785,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeQueryNextServer,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_DdeQueryStringA(DWORD  idInst, HSZ  hsz, LPSTR  psz, DWORD  cchMax, INT  iCodePage) /* ../dlls/user32/dde_misc.c:514 */
+WINAPI DWORD wine32b_user32_DdeQueryStringA(DWORD idInst, HSZ hsz, LPSTR psz, DWORD cchMax, INT iCodePage) /* ../dlls/user32/dde_misc.c:514 */
 {
 	DWORD return_value;
 	TRACE("Enter DdeQueryStringA\n");
@@ -4676,6 +4796,7 @@ WINAPI DWORD wine32b_user32_DdeQueryStringA(DWORD  idInst, HSZ  hsz, LPSTR  psz,
 
 extern WINAPI void wine32a_user32_DdeQueryStringA(void);  /* ../dlls/user32/dde_misc.c:514 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeQueryStringA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4696,7 +4817,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeQueryStringA,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_DdeQueryStringW(DWORD  idInst, HSZ  hsz, LPWSTR  psz, DWORD  cchMax, INT  iCodePage) /* ../dlls/user32/dde_misc.c:538 */
+WINAPI DWORD wine32b_user32_DdeQueryStringW(DWORD idInst, HSZ hsz, LPWSTR psz, DWORD cchMax, INT iCodePage) /* ../dlls/user32/dde_misc.c:538 */
 {
 	DWORD return_value;
 	TRACE("Enter DdeQueryStringW\n");
@@ -4707,6 +4828,7 @@ WINAPI DWORD wine32b_user32_DdeQueryStringW(DWORD  idInst, HSZ  hsz, LPWSTR  psz
 
 extern WINAPI void wine32a_user32_DdeQueryStringW(void);  /* ../dlls/user32/dde_misc.c:538 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeQueryStringW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4727,7 +4849,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeQueryStringW,
 	"ret \n"
 )
 
-WINAPI HCONV wine32b_user32_DdeReconnect(HCONV  hConv) /* ../dlls/user32/dde_client.c:223 */
+WINAPI HCONV wine32b_user32_DdeReconnect(HCONV hConv) /* ../dlls/user32/dde_client.c:223 */
 {
 	HCONV return_value;
 	TRACE("Enter DdeReconnect\n");
@@ -4738,6 +4860,7 @@ WINAPI HCONV wine32b_user32_DdeReconnect(HCONV  hConv) /* ../dlls/user32/dde_cli
 
 extern WINAPI void wine32a_user32_DdeReconnect(void);  /* ../dlls/user32/dde_client.c:223 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeReconnect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4755,7 +4878,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeReconnect,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DdeSetQualityOfService(HWND  hwndClient, SECURITY_QUALITY_OF_SERVICE*  pqosNew, PSECURITY_QUALITY_OF_SERVICE  pqosPrev) /* ../dlls/user32/dde_misc.c:244 */
+WINAPI BOOL wine32b_user32_DdeSetQualityOfService(HWND hwndClient, SECURITY_QUALITY_OF_SERVICE* pqosNew, PSECURITY_QUALITY_OF_SERVICE pqosPrev) /* ../dlls/user32/dde_misc.c:244 */
 {
 	BOOL return_value;
 	TRACE("Enter DdeSetQualityOfService\n");
@@ -4766,6 +4889,7 @@ WINAPI BOOL wine32b_user32_DdeSetQualityOfService(HWND  hwndClient, SECURITY_QUA
 
 extern WINAPI void wine32a_user32_DdeSetQualityOfService(void);  /* ../dlls/user32/dde_misc.c:244 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeSetQualityOfService,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4785,7 +4909,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeSetQualityOfService,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DdeSetUserHandle(HCONV  hConv, DWORD  id, DWORD  hUser) /* ../dlls/user32/dde_misc.c:2327 */
+WINAPI BOOL wine32b_user32_DdeSetUserHandle(HCONV hConv, DWORD id, DWORD hUser) /* ../dlls/user32/dde_misc.c:2327 */
 {
 	BOOL return_value;
 	TRACE("Enter DdeSetUserHandle\n");
@@ -4796,6 +4920,7 @@ WINAPI BOOL wine32b_user32_DdeSetUserHandle(HCONV  hConv, DWORD  id, DWORD  hUse
 
 extern WINAPI void wine32a_user32_DdeSetUserHandle(void);  /* ../dlls/user32/dde_misc.c:2327 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeSetUserHandle,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4815,7 +4940,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeSetUserHandle,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DdeUnaccessData(HDDEDATA  hData) /* ../dlls/user32/dde_misc.c:1460 */
+WINAPI BOOL wine32b_user32_DdeUnaccessData(HDDEDATA hData) /* ../dlls/user32/dde_misc.c:1460 */
 {
 	BOOL return_value;
 	TRACE("Enter DdeUnaccessData\n");
@@ -4826,6 +4951,7 @@ WINAPI BOOL wine32b_user32_DdeUnaccessData(HDDEDATA  hData) /* ../dlls/user32/dd
 
 extern WINAPI void wine32a_user32_DdeUnaccessData(void);  /* ../dlls/user32/dde_misc.c:1460 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeUnaccessData,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4843,7 +4969,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeUnaccessData,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DdeUninitialize(DWORD  idInst) /* ../dlls/user32/dde_misc.c:1125 */
+WINAPI BOOL wine32b_user32_DdeUninitialize(DWORD idInst) /* ../dlls/user32/dde_misc.c:1125 */
 {
 	BOOL return_value;
 	TRACE("Enter DdeUninitialize\n");
@@ -4854,6 +4980,7 @@ WINAPI BOOL wine32b_user32_DdeUninitialize(DWORD  idInst) /* ../dlls/user32/dde_
 
 extern WINAPI void wine32a_user32_DdeUninitialize(void);  /* ../dlls/user32/dde_misc.c:1125 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DdeUninitialize,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4871,7 +4998,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DdeUninitialize,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_DefDlgProcA(HWND  hwnd, UINT  msg, WPARAM  wParam, LPARAM  lParam) /* ../dlls/user32/defdlg.c:360 */
+WINAPI LRESULT wine32b_user32_DefDlgProcA(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) /* ../dlls/user32/defdlg.c:360 */
 {
 	LRESULT return_value;
 	TRACE("Enter DefDlgProcA\n");
@@ -4882,6 +5009,7 @@ WINAPI LRESULT wine32b_user32_DefDlgProcA(HWND  hwnd, UINT  msg, WPARAM  wParam,
 
 extern WINAPI void wine32a_user32_DefDlgProcA(void);  /* ../dlls/user32/defdlg.c:360 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DefDlgProcA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4902,7 +5030,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DefDlgProcA,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_DefDlgProcW(HWND  hwnd, UINT  msg, WPARAM  wParam, LPARAM  lParam) /* ../dlls/user32/defdlg.c:418 */
+WINAPI LRESULT wine32b_user32_DefDlgProcW(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) /* ../dlls/user32/defdlg.c:418 */
 {
 	LRESULT return_value;
 	TRACE("Enter DefDlgProcW\n");
@@ -4913,6 +5041,7 @@ WINAPI LRESULT wine32b_user32_DefDlgProcW(HWND  hwnd, UINT  msg, WPARAM  wParam,
 
 extern WINAPI void wine32a_user32_DefDlgProcW(void);  /* ../dlls/user32/defdlg.c:418 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DefDlgProcW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4933,7 +5062,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DefDlgProcW,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_DefFrameProcA(HWND  hwnd, HWND  hwndMDIClient, UINT  message, WPARAM  wParam, LPARAM  lParam) /* ../dlls/user32/mdi.c:1260 */
+WINAPI LRESULT wine32b_user32_DefFrameProcA(HWND hwnd, HWND hwndMDIClient, UINT message, WPARAM wParam, LPARAM lParam) /* ../dlls/user32/mdi.c:1260 */
 {
 	LRESULT return_value;
 	TRACE("Enter DefFrameProcA\n");
@@ -4944,6 +5073,7 @@ WINAPI LRESULT wine32b_user32_DefFrameProcA(HWND  hwnd, HWND  hwndMDIClient, UIN
 
 extern WINAPI void wine32a_user32_DefFrameProcA(void);  /* ../dlls/user32/mdi.c:1260 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DefFrameProcA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4964,7 +5094,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DefFrameProcA,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_DefFrameProcW(HWND  hwnd, HWND  hwndMDIClient, UINT  message, WPARAM  wParam, LPARAM  lParam) /* ../dlls/user32/mdi.c:1292 */
+WINAPI LRESULT wine32b_user32_DefFrameProcW(HWND hwnd, HWND hwndMDIClient, UINT message, WPARAM wParam, LPARAM lParam) /* ../dlls/user32/mdi.c:1292 */
 {
 	LRESULT return_value;
 	TRACE("Enter DefFrameProcW\n");
@@ -4975,6 +5105,7 @@ WINAPI LRESULT wine32b_user32_DefFrameProcW(HWND  hwnd, HWND  hwndMDIClient, UIN
 
 extern WINAPI void wine32a_user32_DefFrameProcW(void);  /* ../dlls/user32/mdi.c:1292 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DefFrameProcW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -4995,7 +5126,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DefFrameProcW,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_DefMDIChildProcA(HWND  hwnd, UINT  message, WPARAM  wParam, LPARAM  lParam) /* ../dlls/user32/mdi.c:1389 */
+WINAPI LRESULT wine32b_user32_DefMDIChildProcA(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam) /* ../dlls/user32/mdi.c:1389 */
 {
 	LRESULT return_value;
 	TRACE("Enter DefMDIChildProcA\n");
@@ -5006,6 +5137,7 @@ WINAPI LRESULT wine32b_user32_DefMDIChildProcA(HWND  hwnd, UINT  message, WPARAM
 
 extern WINAPI void wine32a_user32_DefMDIChildProcA(void);  /* ../dlls/user32/mdi.c:1389 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DefMDIChildProcA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5026,7 +5158,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DefMDIChildProcA,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_DefMDIChildProcW(HWND  hwnd, UINT  message, WPARAM  wParam, LPARAM  lParam) /* ../dlls/user32/mdi.c:1429 */
+WINAPI LRESULT wine32b_user32_DefMDIChildProcW(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam) /* ../dlls/user32/mdi.c:1429 */
 {
 	LRESULT return_value;
 	TRACE("Enter DefMDIChildProcW\n");
@@ -5037,6 +5169,7 @@ WINAPI LRESULT wine32b_user32_DefMDIChildProcW(HWND  hwnd, UINT  message, WPARAM
 
 extern WINAPI void wine32a_user32_DefMDIChildProcW(void);  /* ../dlls/user32/mdi.c:1429 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DefMDIChildProcW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5057,7 +5190,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DefMDIChildProcW,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_DefRawInputProc(RAWINPUT**  data, INT  data_count, UINT  header_size) /* ../dlls/user32/rawinput.c:497 */
+WINAPI LRESULT wine32b_user32_DefRawInputProc(RAWINPUT** data, INT data_count, UINT header_size) /* ../dlls/user32/rawinput.c:497 */
 {
 	LRESULT return_value;
 	TRACE("Enter DefRawInputProc\n");
@@ -5068,6 +5201,7 @@ WINAPI LRESULT wine32b_user32_DefRawInputProc(RAWINPUT**  data, INT  data_count,
 
 extern WINAPI void wine32a_user32_DefRawInputProc(void);  /* ../dlls/user32/rawinput.c:497 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DefRawInputProc,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5087,7 +5221,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DefRawInputProc,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_DefWindowProcA(HWND  hwnd, UINT  msg, WPARAM  wParam, LPARAM  lParam) /* ../dlls/user32/defwnd.c:779 */
+WINAPI LRESULT wine32b_user32_DefWindowProcA(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) /* ../dlls/user32/defwnd.c:779 */
 {
 	LRESULT return_value;
 	TRACE("Enter DefWindowProcA\n");
@@ -5098,6 +5232,7 @@ WINAPI LRESULT wine32b_user32_DefWindowProcA(HWND  hwnd, UINT  msg, WPARAM  wPar
 
 extern WINAPI void wine32a_user32_DefWindowProcA(void);  /* ../dlls/user32/defwnd.c:779 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DefWindowProcA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5118,7 +5253,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DefWindowProcA,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_DefWindowProcW(HWND  hwnd, UINT  msg, WPARAM  wParam, LPARAM  lParam) /* ../dlls/user32/defwnd.c:961 */
+WINAPI LRESULT wine32b_user32_DefWindowProcW(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) /* ../dlls/user32/defwnd.c:961 */
 {
 	LRESULT return_value;
 	TRACE("Enter DefWindowProcW\n");
@@ -5129,6 +5264,7 @@ WINAPI LRESULT wine32b_user32_DefWindowProcW(HWND  hwnd, UINT  msg, WPARAM  wPar
 
 extern WINAPI void wine32a_user32_DefWindowProcW(void);  /* ../dlls/user32/defwnd.c:961 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DefWindowProcW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5149,7 +5285,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DefWindowProcW,
 	"ret \n"
 )
 
-WINAPI HDWP wine32b_user32_DeferWindowPos(HDWP  hdwp, HWND  hwnd, HWND  hwndAfter, INT  x, INT  y, INT  cx, INT  cy, UINT  flags) /* ../dlls/user32/winpos.c:2421 */
+WINAPI HDWP wine32b_user32_DeferWindowPos(HDWP hdwp, HWND hwnd, HWND hwndAfter, INT x, INT y, INT cx, INT cy, UINT flags) /* ../dlls/user32/winpos.c:2421 */
 {
 	HDWP return_value;
 	TRACE("Enter DeferWindowPos\n");
@@ -5160,6 +5296,7 @@ WINAPI HDWP wine32b_user32_DeferWindowPos(HDWP  hdwp, HWND  hwnd, HWND  hwndAfte
 
 extern WINAPI void wine32a_user32_DeferWindowPos(void);  /* ../dlls/user32/winpos.c:2421 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DeferWindowPos,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5180,7 +5317,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DeferWindowPos,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DeleteMenu(HMENU  hMenu, UINT  id, UINT  flags) /* ../dlls/user32/menu.c:4119 */
+WINAPI BOOL wine32b_user32_DeleteMenu(HMENU hMenu, UINT id, UINT flags) /* ../dlls/user32/menu.c:4119 */
 {
 	BOOL return_value;
 	TRACE("Enter DeleteMenu\n");
@@ -5191,6 +5328,7 @@ WINAPI BOOL wine32b_user32_DeleteMenu(HMENU  hMenu, UINT  id, UINT  flags) /* ..
 
 extern WINAPI void wine32a_user32_DeleteMenu(void);  /* ../dlls/user32/menu.c:4119 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DeleteMenu,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5210,7 +5348,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DeleteMenu,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DeregisterShellHookWindow(HWND  hWnd) /* ../dlls/user32/misc.c:275 */
+WINAPI BOOL wine32b_user32_DeregisterShellHookWindow(HWND hWnd) /* ../dlls/user32/misc.c:275 */
 {
 	BOOL return_value;
 	TRACE("Enter DeregisterShellHookWindow\n");
@@ -5221,6 +5359,7 @@ WINAPI BOOL wine32b_user32_DeregisterShellHookWindow(HWND  hWnd) /* ../dlls/user
 
 extern WINAPI void wine32a_user32_DeregisterShellHookWindow(void);  /* ../dlls/user32/misc.c:275 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DeregisterShellHookWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5238,7 +5377,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DeregisterShellHookWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DestroyAcceleratorTable(HACCEL  handle) /* ../dlls/user32/resource.c:223 */
+WINAPI BOOL wine32b_user32_DestroyAcceleratorTable(HACCEL handle) /* ../dlls/user32/resource.c:223 */
 {
 	BOOL return_value;
 	TRACE("Enter DestroyAcceleratorTable\n");
@@ -5249,6 +5388,7 @@ WINAPI BOOL wine32b_user32_DestroyAcceleratorTable(HACCEL  handle) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_DestroyAcceleratorTable(void);  /* ../dlls/user32/resource.c:223 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DestroyAcceleratorTable,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5277,6 +5417,7 @@ WINAPI BOOL wine32b_user32_DestroyCaret(void) /* ../dlls/user32/caret.c:203 */
 
 extern WINAPI void wine32a_user32_DestroyCaret(void);  /* ../dlls/user32/caret.c:203 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DestroyCaret,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -5293,7 +5434,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DestroyCaret,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DestroyCursor(HCURSOR  hCursor) /* ../dlls/user32/cursoricon.c:2019 */
+WINAPI BOOL wine32b_user32_DestroyCursor(HCURSOR hCursor) /* ../dlls/user32/cursoricon.c:2019 */
 {
 	BOOL return_value;
 	TRACE("Enter DestroyCursor\n");
@@ -5304,6 +5445,7 @@ WINAPI BOOL wine32b_user32_DestroyCursor(HCURSOR  hCursor) /* ../dlls/user32/cur
 
 extern WINAPI void wine32a_user32_DestroyCursor(void);  /* ../dlls/user32/cursoricon.c:2019 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DestroyCursor,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5321,7 +5463,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DestroyCursor,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DestroyIcon(HICON  hIcon) /* ../dlls/user32/cursoricon.c:1998 */
+WINAPI BOOL wine32b_user32_DestroyIcon(HICON hIcon) /* ../dlls/user32/cursoricon.c:1998 */
 {
 	BOOL return_value;
 	TRACE("Enter DestroyIcon\n");
@@ -5332,6 +5474,7 @@ WINAPI BOOL wine32b_user32_DestroyIcon(HICON  hIcon) /* ../dlls/user32/cursorico
 
 extern WINAPI void wine32a_user32_DestroyIcon(void);  /* ../dlls/user32/cursoricon.c:1998 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DestroyIcon,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5349,7 +5492,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DestroyIcon,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DestroyMenu(HMENU  hMenu) /* ../dlls/user32/menu.c:4268 */
+WINAPI BOOL wine32b_user32_DestroyMenu(HMENU hMenu) /* ../dlls/user32/menu.c:4268 */
 {
 	BOOL return_value;
 	TRACE("Enter DestroyMenu\n");
@@ -5360,6 +5503,7 @@ WINAPI BOOL wine32b_user32_DestroyMenu(HMENU  hMenu) /* ../dlls/user32/menu.c:42
 
 extern WINAPI void wine32a_user32_DestroyMenu(void);  /* ../dlls/user32/menu.c:4268 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DestroyMenu,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5377,7 +5521,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DestroyMenu,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DestroyWindow(HWND  hwnd) /* ../dlls/user32/win.c:1848 */
+WINAPI BOOL wine32b_user32_DestroyWindow(HWND hwnd) /* ../dlls/user32/win.c:1848 */
 {
 	BOOL return_value;
 	TRACE("Enter DestroyWindow\n");
@@ -5388,6 +5532,7 @@ WINAPI BOOL wine32b_user32_DestroyWindow(HWND  hwnd) /* ../dlls/user32/win.c:184
 
 extern WINAPI void wine32a_user32_DestroyWindow(void);  /* ../dlls/user32/win.c:1848 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DestroyWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5405,7 +5550,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DestroyWindow,
 	"ret \n"
 )
 
-WINAPI INT_PTR wine32b_user32_DialogBoxIndirectParamA(HINSTANCE  hInstance, LPCDLGTEMPLATEA  template, HWND  owner, DLGPROC  dlgProc, LPARAM  param) /* ../dlls/user32/dialog.c:887 */
+WINAPI INT_PTR wine32b_user32_DialogBoxIndirectParamA(HINSTANCE hInstance, LPCDLGTEMPLATEA template, HWND owner, DLGPROC dlgProc, LPARAM param) /* ../dlls/user32/dialog.c:887 */
 {
 	INT_PTR return_value;
 	TRACE("Enter DialogBoxIndirectParamA\n");
@@ -5416,6 +5561,7 @@ WINAPI INT_PTR wine32b_user32_DialogBoxIndirectParamA(HINSTANCE  hInstance, LPCD
 
 extern WINAPI void wine32a_user32_DialogBoxIndirectParamA(void);  /* ../dlls/user32/dialog.c:887 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DialogBoxIndirectParamA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5436,7 +5582,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DialogBoxIndirectParamA,
 	"ret \n"
 )
 
-WINAPI INT_PTR wine32b_user32_DialogBoxIndirectParamAorW(HINSTANCE  hInstance, LPCVOID  template, HWND  owner, DLGPROC  dlgProc, LPARAM  param, DWORD  flags) /* ../dlls/user32/dialog.c:875 */
+WINAPI INT_PTR wine32b_user32_DialogBoxIndirectParamAorW(HINSTANCE hInstance, LPCVOID template, HWND owner, DLGPROC dlgProc, LPARAM param, DWORD flags) /* ../dlls/user32/dialog.c:875 */
 {
 	INT_PTR return_value;
 	TRACE("Enter DialogBoxIndirectParamAorW\n");
@@ -5447,6 +5593,7 @@ WINAPI INT_PTR wine32b_user32_DialogBoxIndirectParamAorW(HINSTANCE  hInstance, L
 
 extern WINAPI void wine32a_user32_DialogBoxIndirectParamAorW(void);  /* ../dlls/user32/dialog.c:875 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DialogBoxIndirectParamAorW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5467,7 +5614,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DialogBoxIndirectParamAorW,
 	"ret \n"
 )
 
-WINAPI INT_PTR wine32b_user32_DialogBoxIndirectParamW(HINSTANCE  hInstance, LPCDLGTEMPLATEW  template, HWND  owner, DLGPROC  dlgProc, LPARAM  param) /* ../dlls/user32/dialog.c:897 */
+WINAPI INT_PTR wine32b_user32_DialogBoxIndirectParamW(HINSTANCE hInstance, LPCDLGTEMPLATEW template, HWND owner, DLGPROC dlgProc, LPARAM param) /* ../dlls/user32/dialog.c:897 */
 {
 	INT_PTR return_value;
 	TRACE("Enter DialogBoxIndirectParamW\n");
@@ -5478,6 +5625,7 @@ WINAPI INT_PTR wine32b_user32_DialogBoxIndirectParamW(HINSTANCE  hInstance, LPCD
 
 extern WINAPI void wine32a_user32_DialogBoxIndirectParamW(void);  /* ../dlls/user32/dialog.c:897 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DialogBoxIndirectParamW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5498,7 +5646,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DialogBoxIndirectParamW,
 	"ret \n"
 )
 
-WINAPI INT_PTR wine32b_user32_DialogBoxParamA(HINSTANCE  hInst, LPCSTR  name, HWND  owner, DLGPROC  dlgProc, LPARAM  param) /* ../dlls/user32/dialog.c:837 */
+WINAPI INT_PTR wine32b_user32_DialogBoxParamA(HINSTANCE hInst, LPCSTR name, HWND owner, DLGPROC dlgProc, LPARAM param) /* ../dlls/user32/dialog.c:837 */
 {
 	INT_PTR return_value;
 	TRACE("Enter DialogBoxParamA\n");
@@ -5509,6 +5657,7 @@ WINAPI INT_PTR wine32b_user32_DialogBoxParamA(HINSTANCE  hInst, LPCSTR  name, HW
 
 extern WINAPI void wine32a_user32_DialogBoxParamA(void);  /* ../dlls/user32/dialog.c:837 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DialogBoxParamA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5529,7 +5678,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DialogBoxParamA,
 	"ret \n"
 )
 
-WINAPI INT_PTR wine32b_user32_DialogBoxParamW(HINSTANCE  hInst, LPCWSTR  name, HWND  owner, DLGPROC  dlgProc, LPARAM  param) /* ../dlls/user32/dialog.c:856 */
+WINAPI INT_PTR wine32b_user32_DialogBoxParamW(HINSTANCE hInst, LPCWSTR name, HWND owner, DLGPROC dlgProc, LPARAM param) /* ../dlls/user32/dialog.c:856 */
 {
 	INT_PTR return_value;
 	TRACE("Enter DialogBoxParamW\n");
@@ -5540,6 +5689,7 @@ WINAPI INT_PTR wine32b_user32_DialogBoxParamW(HINSTANCE  hInst, LPCWSTR  name, H
 
 extern WINAPI void wine32a_user32_DialogBoxParamW(void);  /* ../dlls/user32/dialog.c:856 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DialogBoxParamW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5569,6 +5719,7 @@ WINAPI void wine32b_user32_DisableProcessWindowsGhosting(void) /* ../dlls/user32
 
 extern WINAPI void wine32a_user32_DisableProcessWindowsGhosting(void);  /* ../dlls/user32/misc.c:475 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DisableProcessWindowsGhosting,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -5585,7 +5736,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DisableProcessWindowsGhosting,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_DispatchMessageA(MSG*  msg) /* ../dlls/user32/message.c:3957 */
+WINAPI LRESULT wine32b_user32_DispatchMessageA(MSG* msg) /* ../dlls/user32/message.c:3957 */
 {
 	LRESULT return_value;
 	TRACE("Enter DispatchMessageA\n");
@@ -5596,6 +5747,7 @@ WINAPI LRESULT wine32b_user32_DispatchMessageA(MSG*  msg) /* ../dlls/user32/mess
 
 extern WINAPI void wine32a_user32_DispatchMessageA(void);  /* ../dlls/user32/message.c:3957 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DispatchMessageA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5613,7 +5765,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DispatchMessageA,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_DispatchMessageW(MSG*  msg) /* ../dlls/user32/message.c:4028 */
+WINAPI LRESULT wine32b_user32_DispatchMessageW(MSG* msg) /* ../dlls/user32/message.c:4028 */
 {
 	LRESULT return_value;
 	TRACE("Enter DispatchMessageW\n");
@@ -5624,6 +5776,7 @@ WINAPI LRESULT wine32b_user32_DispatchMessageW(MSG*  msg) /* ../dlls/user32/mess
 
 extern WINAPI void wine32a_user32_DispatchMessageW(void);  /* ../dlls/user32/message.c:4028 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DispatchMessageW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5641,7 +5794,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DispatchMessageW,
 	"ret \n"
 )
 
-WINAPI LONG wine32b_user32_DisplayConfigGetDeviceInfo(DISPLAYCONFIG_DEVICE_INFO_HEADER*  packet) /* ../dlls/user32/sysparams.c:3217 */
+WINAPI LONG wine32b_user32_DisplayConfigGetDeviceInfo(DISPLAYCONFIG_DEVICE_INFO_HEADER* packet) /* ../dlls/user32/sysparams.c:3217 */
 {
 	LONG return_value;
 	TRACE("Enter DisplayConfigGetDeviceInfo\n");
@@ -5652,6 +5805,7 @@ WINAPI LONG wine32b_user32_DisplayConfigGetDeviceInfo(DISPLAYCONFIG_DEVICE_INFO_
 
 extern WINAPI void wine32a_user32_DisplayConfigGetDeviceInfo(void);  /* ../dlls/user32/sysparams.c:3217 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DisplayConfigGetDeviceInfo,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5669,7 +5823,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DisplayConfigGetDeviceInfo,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_DlgDirListA(HWND  hDlg, LPSTR  spec, INT  idLBox, INT  idStatic, UINT  attrib) /* ../dlls/user32/dialog.c:1972 */
+WINAPI INT wine32b_user32_DlgDirListA(HWND hDlg, LPSTR spec, INT idLBox, INT idStatic, UINT attrib) /* ../dlls/user32/dialog.c:1972 */
 {
 	INT return_value;
 	TRACE("Enter DlgDirListA\n");
@@ -5680,6 +5834,7 @@ WINAPI INT wine32b_user32_DlgDirListA(HWND  hDlg, LPSTR  spec, INT  idLBox, INT 
 
 extern WINAPI void wine32a_user32_DlgDirListA(void);  /* ../dlls/user32/dialog.c:1972 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DlgDirListA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5700,7 +5855,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DlgDirListA,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_DlgDirListComboBoxA(HWND  hDlg, LPSTR  spec, INT  idCBox, INT  idStatic, UINT  attrib) /* ../dlls/user32/dialog.c:1992 */
+WINAPI INT wine32b_user32_DlgDirListComboBoxA(HWND hDlg, LPSTR spec, INT idCBox, INT idStatic, UINT attrib) /* ../dlls/user32/dialog.c:1992 */
 {
 	INT return_value;
 	TRACE("Enter DlgDirListComboBoxA\n");
@@ -5711,6 +5866,7 @@ WINAPI INT wine32b_user32_DlgDirListComboBoxA(HWND  hDlg, LPSTR  spec, INT  idCB
 
 extern WINAPI void wine32a_user32_DlgDirListComboBoxA(void);  /* ../dlls/user32/dialog.c:1992 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DlgDirListComboBoxA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5731,7 +5887,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DlgDirListComboBoxA,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_DlgDirListComboBoxW(HWND  hDlg, LPWSTR  spec, INT  idCBox, INT  idStatic, UINT  attrib) /* ../dlls/user32/dialog.c:2002 */
+WINAPI INT wine32b_user32_DlgDirListComboBoxW(HWND hDlg, LPWSTR spec, INT idCBox, INT idStatic, UINT attrib) /* ../dlls/user32/dialog.c:2002 */
 {
 	INT return_value;
 	TRACE("Enter DlgDirListComboBoxW\n");
@@ -5742,6 +5898,7 @@ WINAPI INT wine32b_user32_DlgDirListComboBoxW(HWND  hDlg, LPWSTR  spec, INT  idC
 
 extern WINAPI void wine32a_user32_DlgDirListComboBoxW(void);  /* ../dlls/user32/dialog.c:2002 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DlgDirListComboBoxW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5762,7 +5919,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DlgDirListComboBoxW,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_DlgDirListW(HWND  hDlg, LPWSTR  spec, INT  idLBox, INT  idStatic, UINT  attrib) /* ../dlls/user32/dialog.c:1982 */
+WINAPI INT wine32b_user32_DlgDirListW(HWND hDlg, LPWSTR spec, INT idLBox, INT idStatic, UINT attrib) /* ../dlls/user32/dialog.c:1982 */
 {
 	INT return_value;
 	TRACE("Enter DlgDirListW\n");
@@ -5773,6 +5930,7 @@ WINAPI INT wine32b_user32_DlgDirListW(HWND  hDlg, LPWSTR  spec, INT  idLBox, INT
 
 extern WINAPI void wine32a_user32_DlgDirListW(void);  /* ../dlls/user32/dialog.c:1982 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DlgDirListW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5793,7 +5951,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DlgDirListW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DlgDirSelectComboBoxExA(HWND  hwnd, LPSTR  str, INT  len, INT  id) /* ../dlls/user32/dialog.c:1952 */
+WINAPI BOOL wine32b_user32_DlgDirSelectComboBoxExA(HWND hwnd, LPSTR str, INT len, INT id) /* ../dlls/user32/dialog.c:1952 */
 {
 	BOOL return_value;
 	TRACE("Enter DlgDirSelectComboBoxExA\n");
@@ -5804,6 +5962,7 @@ WINAPI BOOL wine32b_user32_DlgDirSelectComboBoxExA(HWND  hwnd, LPSTR  str, INT  
 
 extern WINAPI void wine32a_user32_DlgDirSelectComboBoxExA(void);  /* ../dlls/user32/dialog.c:1952 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DlgDirSelectComboBoxExA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5824,7 +5983,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DlgDirSelectComboBoxExA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DlgDirSelectComboBoxExW(HWND  hwnd, LPWSTR  str, INT  len, INT  id) /* ../dlls/user32/dialog.c:1962 */
+WINAPI BOOL wine32b_user32_DlgDirSelectComboBoxExW(HWND hwnd, LPWSTR str, INT len, INT id) /* ../dlls/user32/dialog.c:1962 */
 {
 	BOOL return_value;
 	TRACE("Enter DlgDirSelectComboBoxExW\n");
@@ -5835,6 +5994,7 @@ WINAPI BOOL wine32b_user32_DlgDirSelectComboBoxExW(HWND  hwnd, LPWSTR  str, INT 
 
 extern WINAPI void wine32a_user32_DlgDirSelectComboBoxExW(void);  /* ../dlls/user32/dialog.c:1962 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DlgDirSelectComboBoxExW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5855,7 +6015,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DlgDirSelectComboBoxExW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DlgDirSelectExA(HWND  hwnd, LPSTR  str, INT  len, INT  id) /* ../dlls/user32/dialog.c:1934 */
+WINAPI BOOL wine32b_user32_DlgDirSelectExA(HWND hwnd, LPSTR str, INT len, INT id) /* ../dlls/user32/dialog.c:1934 */
 {
 	BOOL return_value;
 	TRACE("Enter DlgDirSelectExA\n");
@@ -5866,6 +6026,7 @@ WINAPI BOOL wine32b_user32_DlgDirSelectExA(HWND  hwnd, LPSTR  str, INT  len, INT
 
 extern WINAPI void wine32a_user32_DlgDirSelectExA(void);  /* ../dlls/user32/dialog.c:1934 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DlgDirSelectExA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5886,7 +6047,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DlgDirSelectExA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DlgDirSelectExW(HWND  hwnd, LPWSTR  str, INT  len, INT  id) /* ../dlls/user32/dialog.c:1943 */
+WINAPI BOOL wine32b_user32_DlgDirSelectExW(HWND hwnd, LPWSTR str, INT len, INT id) /* ../dlls/user32/dialog.c:1943 */
 {
 	BOOL return_value;
 	TRACE("Enter DlgDirSelectExW\n");
@@ -5897,6 +6058,7 @@ WINAPI BOOL wine32b_user32_DlgDirSelectExW(HWND  hwnd, LPWSTR  str, INT  len, IN
 
 extern WINAPI void wine32a_user32_DlgDirSelectExW(void);  /* ../dlls/user32/dialog.c:1943 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DlgDirSelectExW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5917,7 +6079,38 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DlgDirSelectExW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DragDetect(HWND  hWnd, POINT  pt) /* ../dlls/user32/win.c:3760 */
+WINAPI BOOL wine32b_user32_UserClientDllInitialize(HINSTANCE inst, DWORD reason, LPVOID reserved) /* ../dlls/user32/user_main.c:396 */
+{
+	BOOL return_value;
+	TRACE("Enter UserClientDllInitialize\n");
+	return_value = pUserClientDllInitialize(inst, reason, reserved);
+	TRACE("Leave UserClientDllInitialize\n");
+	return return_value;
+}
+
+extern WINAPI void wine32a_user32_UserClientDllInitialize(void);  /* ../dlls/user32/user_main.c:396 */
+__ASM_GLOBAL_FUNC(wine32a_user32_UserClientDllInitialize,
+
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"movl 0x1C(%rsp), %r8d \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32_UserClientDllInitialize") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $12, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+WINAPI BOOL wine32b_user32_DragDetect(HWND hWnd, POINT pt) /* ../dlls/user32/win.c:3760 */
 {
 	BOOL return_value;
 	TRACE("Enter DragDetect\n");
@@ -5928,6 +6121,7 @@ WINAPI BOOL wine32b_user32_DragDetect(HWND  hWnd, POINT  pt) /* ../dlls/user32/w
 
 extern WINAPI void wine32a_user32_DragDetect(void);  /* ../dlls/user32/win.c:3760 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DragDetect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5946,7 +6140,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DragDetect,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DrawAnimatedRects(HWND  hwnd, INT  idAni, RECT*  lprcFrom, RECT*  lprcTo) /* ../dlls/user32/uitools.c:1517 */
+WINAPI BOOL wine32b_user32_DrawAnimatedRects(HWND hwnd, INT idAni, RECT* lprcFrom, RECT* lprcTo) /* ../dlls/user32/uitools.c:1517 */
 {
 	BOOL return_value;
 	TRACE("Enter DrawAnimatedRects\n");
@@ -5957,6 +6151,7 @@ WINAPI BOOL wine32b_user32_DrawAnimatedRects(HWND  hwnd, INT  idAni, RECT*  lprc
 
 extern WINAPI void wine32a_user32_DrawAnimatedRects(void);  /* ../dlls/user32/uitools.c:1517 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DrawAnimatedRects,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -5977,7 +6172,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DrawAnimatedRects,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DrawCaption(HWND  hwnd, HDC  hdc, RECT*  lpRect, UINT  uFlags) /* ../dlls/user32/nonclient.c:182 */
+WINAPI BOOL wine32b_user32_DrawCaption(HWND hwnd, HDC hdc, RECT* lpRect, UINT uFlags) /* ../dlls/user32/nonclient.c:182 */
 {
 	BOOL return_value;
 	TRACE("Enter DrawCaption\n");
@@ -5988,6 +6183,7 @@ WINAPI BOOL wine32b_user32_DrawCaption(HWND  hwnd, HDC  hdc, RECT*  lpRect, UINT
 
 extern WINAPI void wine32a_user32_DrawCaption(void);  /* ../dlls/user32/nonclient.c:182 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DrawCaption,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6008,7 +6204,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DrawCaption,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DrawCaptionTempA(HWND  hwnd, HDC  hdc, RECT*  rect, HFONT  hFont, HICON  hIcon, LPCSTR  str, UINT  uFlags) /* ../dlls/user32/nonclient.c:191 */
+WINAPI BOOL wine32b_user32_DrawCaptionTempA(HWND hwnd, HDC hdc, RECT* rect, HFONT hFont, HICON hIcon, LPCSTR str, UINT uFlags) /* ../dlls/user32/nonclient.c:191 */
 {
 	BOOL return_value;
 	TRACE("Enter DrawCaptionTempA\n");
@@ -6019,6 +6215,7 @@ WINAPI BOOL wine32b_user32_DrawCaptionTempA(HWND  hwnd, HDC  hdc, RECT*  rect, H
 
 extern WINAPI void wine32a_user32_DrawCaptionTempA(void);  /* ../dlls/user32/nonclient.c:191 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DrawCaptionTempA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6039,7 +6236,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DrawCaptionTempA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DrawCaptionTempW(HWND  hwnd, HDC  hdc, RECT*  rect, HFONT  hFont, HICON  hIcon, LPCWSTR  str, UINT  uFlags) /* ../dlls/user32/nonclient.c:215 */
+WINAPI BOOL wine32b_user32_DrawCaptionTempW(HWND hwnd, HDC hdc, RECT* rect, HFONT hFont, HICON hIcon, LPCWSTR str, UINT uFlags) /* ../dlls/user32/nonclient.c:215 */
 {
 	BOOL return_value;
 	TRACE("Enter DrawCaptionTempW\n");
@@ -6050,6 +6247,7 @@ WINAPI BOOL wine32b_user32_DrawCaptionTempW(HWND  hwnd, HDC  hdc, RECT*  rect, H
 
 extern WINAPI void wine32a_user32_DrawCaptionTempW(void);  /* ../dlls/user32/nonclient.c:215 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DrawCaptionTempW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6070,7 +6268,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DrawCaptionTempW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DrawEdge(HDC  hdc, LPRECT  rc, UINT  edge, UINT  flags) /* ../dlls/user32/uitools.c:597 */
+WINAPI BOOL wine32b_user32_DrawEdge(HDC hdc, LPRECT rc, UINT edge, UINT flags) /* ../dlls/user32/uitools.c:597 */
 {
 	BOOL return_value;
 	TRACE("Enter DrawEdge\n");
@@ -6081,6 +6279,7 @@ WINAPI BOOL wine32b_user32_DrawEdge(HDC  hdc, LPRECT  rc, UINT  edge, UINT  flag
 
 extern WINAPI void wine32a_user32_DrawEdge(void);  /* ../dlls/user32/uitools.c:597 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DrawEdge,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6101,7 +6300,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DrawEdge,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DrawFocusRect(HDC  hdc, RECT*  rc) /* ../dlls/user32/uitools.c:1487 */
+WINAPI BOOL wine32b_user32_DrawFocusRect(HDC hdc, RECT* rc) /* ../dlls/user32/uitools.c:1487 */
 {
 	BOOL return_value;
 	TRACE("Enter DrawFocusRect\n");
@@ -6112,6 +6311,7 @@ WINAPI BOOL wine32b_user32_DrawFocusRect(HDC  hdc, RECT*  rc) /* ../dlls/user32/
 
 extern WINAPI void wine32a_user32_DrawFocusRect(void);  /* ../dlls/user32/uitools.c:1487 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DrawFocusRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6130,7 +6330,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DrawFocusRect,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DrawFrameControl(HDC  hdc, LPRECT  rc, UINT  uType, UINT  uState) /* ../dlls/user32/uitools.c:1221 */
+WINAPI BOOL wine32b_user32_DrawFrameControl(HDC hdc, LPRECT rc, UINT uType, UINT uState) /* ../dlls/user32/uitools.c:1221 */
 {
 	BOOL return_value;
 	TRACE("Enter DrawFrameControl\n");
@@ -6141,6 +6341,7 @@ WINAPI BOOL wine32b_user32_DrawFrameControl(HDC  hdc, LPRECT  rc, UINT  uType, U
 
 extern WINAPI void wine32a_user32_DrawFrameControl(void);  /* ../dlls/user32/uitools.c:1221 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DrawFrameControl,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6161,7 +6362,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DrawFrameControl,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DrawIcon(HDC  hdc, INT  x, INT  y, HICON  hIcon) /* ../dlls/user32/cursoricon.c:2027 */
+WINAPI BOOL wine32b_user32_DrawIcon(HDC hdc, INT x, INT y, HICON hIcon) /* ../dlls/user32/cursoricon.c:2027 */
 {
 	BOOL return_value;
 	TRACE("Enter DrawIcon\n");
@@ -6172,6 +6373,7 @@ WINAPI BOOL wine32b_user32_DrawIcon(HDC  hdc, INT  x, INT  y, HICON  hIcon) /* .
 
 extern WINAPI void wine32a_user32_DrawIcon(void);  /* ../dlls/user32/cursoricon.c:2027 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DrawIcon,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6192,7 +6394,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DrawIcon,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DrawIconEx(HDC  hdc, INT  x0, INT  y0, HICON  hIcon, INT  cxWidth, INT  cyWidth, UINT  istep, HBRUSH  hbr, UINT  flags) /* ../dlls/user32/cursoricon.c:2633 */
+WINAPI BOOL wine32b_user32_DrawIconEx(HDC hdc, INT x0, INT y0, HICON hIcon, INT cxWidth, INT cyWidth, UINT istep, HBRUSH hbr, UINT flags) /* ../dlls/user32/cursoricon.c:2633 */
 {
 	BOOL return_value;
 	TRACE("Enter DrawIconEx\n");
@@ -6203,6 +6405,7 @@ WINAPI BOOL wine32b_user32_DrawIconEx(HDC  hdc, INT  x0, INT  y0, HICON  hIcon, 
 
 extern WINAPI void wine32a_user32_DrawIconEx(void);  /* ../dlls/user32/cursoricon.c:2633 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DrawIconEx,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6223,7 +6426,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DrawIconEx,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DrawMenuBar(HWND  hWnd) /* ../dlls/user32/menu.c:4531 */
+WINAPI BOOL wine32b_user32_DrawMenuBar(HWND hWnd) /* ../dlls/user32/menu.c:4531 */
 {
 	BOOL return_value;
 	TRACE("Enter DrawMenuBar\n");
@@ -6234,6 +6437,7 @@ WINAPI BOOL wine32b_user32_DrawMenuBar(HWND  hWnd) /* ../dlls/user32/menu.c:4531
 
 extern WINAPI void wine32a_user32_DrawMenuBar(void);  /* ../dlls/user32/menu.c:4531 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DrawMenuBar,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6251,7 +6455,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DrawMenuBar,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_DrawMenuBarTemp(HWND  hwnd, HDC  hDC, LPRECT  lprect, HMENU  hMenu, HFONT  hFont) /* ../dlls/user32/menu.c:4564 */
+WINAPI DWORD wine32b_user32_DrawMenuBarTemp(HWND hwnd, HDC hDC, LPRECT lprect, HMENU hMenu, HFONT hFont) /* ../dlls/user32/menu.c:4564 */
 {
 	DWORD return_value;
 	TRACE("Enter DrawMenuBarTemp\n");
@@ -6262,6 +6466,7 @@ WINAPI DWORD wine32b_user32_DrawMenuBarTemp(HWND  hwnd, HDC  hDC, LPRECT  lprect
 
 extern WINAPI void wine32a_user32_DrawMenuBarTemp(void);  /* ../dlls/user32/menu.c:4564 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DrawMenuBarTemp,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6282,7 +6487,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DrawMenuBarTemp,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DrawStateA(HDC  hdc, HBRUSH  hbr, DRAWSTATEPROC  func, LPARAM  ldata, WPARAM  wdata, INT  x, INT  y, INT  cx, INT  cy, UINT  flags) /* ../dlls/user32/uitools.c:1739 */
+WINAPI BOOL wine32b_user32_DrawStateA(HDC hdc, HBRUSH hbr, DRAWSTATEPROC func, LPARAM ldata, WPARAM wdata, INT x, INT y, INT cx, INT cy, UINT flags) /* ../dlls/user32/uitools.c:1739 */
 {
 	BOOL return_value;
 	TRACE("Enter DrawStateA\n");
@@ -6293,6 +6498,7 @@ WINAPI BOOL wine32b_user32_DrawStateA(HDC  hdc, HBRUSH  hbr, DRAWSTATEPROC  func
 
 extern WINAPI void wine32a_user32_DrawStateA(void);  /* ../dlls/user32/uitools.c:1739 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DrawStateA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6313,7 +6519,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DrawStateA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_DrawStateW(HDC  hdc, HBRUSH  hbr, DRAWSTATEPROC  func, LPARAM  ldata, WPARAM  wdata, INT  x, INT  y, INT  cx, INT  cy, UINT  flags) /* ../dlls/user32/uitools.c:1749 */
+WINAPI BOOL wine32b_user32_DrawStateW(HDC hdc, HBRUSH hbr, DRAWSTATEPROC func, LPARAM ldata, WPARAM wdata, INT x, INT y, INT cx, INT cy, UINT flags) /* ../dlls/user32/uitools.c:1749 */
 {
 	BOOL return_value;
 	TRACE("Enter DrawStateW\n");
@@ -6324,6 +6530,7 @@ WINAPI BOOL wine32b_user32_DrawStateW(HDC  hdc, HBRUSH  hbr, DRAWSTATEPROC  func
 
 extern WINAPI void wine32a_user32_DrawStateW(void);  /* ../dlls/user32/uitools.c:1749 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DrawStateW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6344,7 +6551,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DrawStateW,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_DrawTextA(HDC  hdc, LPCSTR  str, INT  count, LPRECT  rect, UINT  flags) /* ../dlls/user32/text.c:1173 */
+WINAPI INT wine32b_user32_DrawTextA(HDC hdc, LPCSTR str, INT count, LPRECT rect, UINT flags) /* ../dlls/user32/text.c:1173 */
 {
 	INT return_value;
 	TRACE("Enter DrawTextA\n");
@@ -6355,6 +6562,7 @@ WINAPI INT wine32b_user32_DrawTextA(HDC  hdc, LPCSTR  str, INT  count, LPRECT  r
 
 extern WINAPI void wine32a_user32_DrawTextA(void);  /* ../dlls/user32/text.c:1173 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DrawTextA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6375,7 +6583,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DrawTextA,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_DrawTextExA(HDC  hdc, LPSTR  str, INT  count, LPRECT  rect, UINT  flags, LPDRAWTEXTPARAMS  dtp) /* ../dlls/user32/text.c:1082 */
+WINAPI INT wine32b_user32_DrawTextExA(HDC hdc, LPSTR str, INT count, LPRECT rect, UINT flags, LPDRAWTEXTPARAMS dtp) /* ../dlls/user32/text.c:1082 */
 {
 	INT return_value;
 	TRACE("Enter DrawTextExA\n");
@@ -6386,6 +6594,7 @@ WINAPI INT wine32b_user32_DrawTextExA(HDC  hdc, LPSTR  str, INT  count, LPRECT  
 
 extern WINAPI void wine32a_user32_DrawTextExA(void);  /* ../dlls/user32/text.c:1082 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DrawTextExA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6406,7 +6615,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DrawTextExA,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_DrawTextExW(HDC  hdc, LPWSTR  str, INT  i_count, LPRECT  rect, UINT  flags, LPDRAWTEXTPARAMS  dtp) /* ../dlls/user32/text.c:870 */
+WINAPI INT wine32b_user32_DrawTextExW(HDC hdc, LPWSTR str, INT i_count, LPRECT rect, UINT flags, LPDRAWTEXTPARAMS dtp) /* ../dlls/user32/text.c:870 */
 {
 	INT return_value;
 	TRACE("Enter DrawTextExW\n");
@@ -6417,6 +6626,7 @@ WINAPI INT wine32b_user32_DrawTextExW(HDC  hdc, LPWSTR  str, INT  i_count, LPREC
 
 extern WINAPI void wine32a_user32_DrawTextExW(void);  /* ../dlls/user32/text.c:870 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DrawTextExW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6437,7 +6647,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DrawTextExW,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_DrawTextW(HDC  hdc, LPCWSTR  str, INT  count, LPRECT  rect, UINT  flags) /* ../dlls/user32/text.c:1156 */
+WINAPI INT wine32b_user32_DrawTextW(HDC hdc, LPCWSTR str, INT count, LPRECT rect, UINT flags) /* ../dlls/user32/text.c:1156 */
 {
 	INT return_value;
 	TRACE("Enter DrawTextW\n");
@@ -6448,6 +6658,7 @@ WINAPI INT wine32b_user32_DrawTextW(HDC  hdc, LPCWSTR  str, INT  count, LPRECT  
 
 extern WINAPI void wine32a_user32_DrawTextW(void);  /* ../dlls/user32/text.c:1156 */
 __ASM_GLOBAL_FUNC(wine32a_user32_DrawTextW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6468,7 +6679,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_DrawTextW,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_EditWndProc(HWND  hwnd, UINT  msg, WPARAM  wParam, LPARAM  lParam) /* ../dlls/user32/winproc.c:1115 */
+WINAPI LRESULT wine32b_user32_EditWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) /* ../dlls/user32/winproc.c:1115 */
 {
 	LRESULT return_value;
 	TRACE("Enter EditWndProc\n");
@@ -6479,6 +6690,7 @@ WINAPI LRESULT wine32b_user32_EditWndProc(HWND  hwnd, UINT  msg, WPARAM  wParam,
 
 extern WINAPI void wine32a_user32_EditWndProc(void);  /* ../dlls/user32/winproc.c:1115 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EditWndProc,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6510,6 +6722,7 @@ WINAPI BOOL wine32b_user32_EmptyClipboard(void) /* ../dlls/user32/clipboard.c:74
 
 extern WINAPI void wine32a_user32_EmptyClipboard(void);  /* ../dlls/user32/clipboard.c:742 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EmptyClipboard,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -6526,7 +6739,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EmptyClipboard,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EnableMenuItem(HMENU  hMenu, UINT  id, UINT  wFlags) /* ../dlls/user32/menu.c:3727 */
+WINAPI BOOL wine32b_user32_EnableMenuItem(HMENU hMenu, UINT id, UINT wFlags) /* ../dlls/user32/menu.c:3727 */
 {
 	BOOL return_value;
 	TRACE("Enter EnableMenuItem\n");
@@ -6537,6 +6750,7 @@ WINAPI BOOL wine32b_user32_EnableMenuItem(HMENU  hMenu, UINT  id, UINT  wFlags) 
 
 extern WINAPI void wine32a_user32_EnableMenuItem(void);  /* ../dlls/user32/menu.c:3727 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnableMenuItem,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6556,7 +6770,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnableMenuItem,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EnableMouseInPointer(BOOL  enable) /* ../dlls/user32/input.c:1296 */
+WINAPI BOOL wine32b_user32_EnableMouseInPointer(BOOL enable) /* ../dlls/user32/input.c:1296 */
 {
 	BOOL return_value;
 	TRACE("Enter EnableMouseInPointer\n");
@@ -6567,6 +6781,7 @@ WINAPI BOOL wine32b_user32_EnableMouseInPointer(BOOL  enable) /* ../dlls/user32/
 
 extern WINAPI void wine32a_user32_EnableMouseInPointer(void);  /* ../dlls/user32/input.c:1296 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnableMouseInPointer,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6584,7 +6799,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnableMouseInPointer,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EnableScrollBar(HWND  hwnd, UINT  nBar, UINT  flags) /* ../dlls/user32/scroll.c:2034 */
+WINAPI BOOL wine32b_user32_EnableScrollBar(HWND hwnd, UINT nBar, UINT flags) /* ../dlls/user32/scroll.c:2034 */
 {
 	BOOL return_value;
 	TRACE("Enter EnableScrollBar\n");
@@ -6595,6 +6810,7 @@ WINAPI BOOL wine32b_user32_EnableScrollBar(HWND  hwnd, UINT  nBar, UINT  flags) 
 
 extern WINAPI void wine32a_user32_EnableScrollBar(void);  /* ../dlls/user32/scroll.c:2034 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnableScrollBar,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6614,7 +6830,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnableScrollBar,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EnableWindow(HWND  hwnd, BOOL  enable) /* ../dlls/user32/win.c:2158 */
+WINAPI BOOL wine32b_user32_EnableWindow(HWND hwnd, BOOL enable) /* ../dlls/user32/win.c:2158 */
 {
 	BOOL return_value;
 	TRACE("Enter EnableWindow\n");
@@ -6625,6 +6841,7 @@ WINAPI BOOL wine32b_user32_EnableWindow(HWND  hwnd, BOOL  enable) /* ../dlls/use
 
 extern WINAPI void wine32a_user32_EnableWindow(void);  /* ../dlls/user32/win.c:2158 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnableWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6643,7 +6860,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnableWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EndDeferWindowPos(HDWP  hdwp) /* ../dlls/user32/winpos.c:2505 */
+WINAPI BOOL wine32b_user32_EndDeferWindowPos(HDWP hdwp) /* ../dlls/user32/winpos.c:2505 */
 {
 	BOOL return_value;
 	TRACE("Enter EndDeferWindowPos\n");
@@ -6654,6 +6871,7 @@ WINAPI BOOL wine32b_user32_EndDeferWindowPos(HDWP  hdwp) /* ../dlls/user32/winpo
 
 extern WINAPI void wine32a_user32_EndDeferWindowPos(void);  /* ../dlls/user32/winpos.c:2505 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EndDeferWindowPos,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6671,7 +6889,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EndDeferWindowPos,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EndDialog(HWND  hwnd, INT_PTR  retval) /* ../dlls/user32/dialog.c:906 */
+WINAPI BOOL wine32b_user32_EndDialog(HWND hwnd, INT_PTR retval) /* ../dlls/user32/dialog.c:906 */
 {
 	BOOL return_value;
 	TRACE("Enter EndDialog\n");
@@ -6682,6 +6900,7 @@ WINAPI BOOL wine32b_user32_EndDialog(HWND  hwnd, INT_PTR  retval) /* ../dlls/use
 
 extern WINAPI void wine32a_user32_EndDialog(void);  /* ../dlls/user32/dialog.c:906 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EndDialog,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6711,6 +6930,7 @@ WINAPI BOOL wine32b_user32_EndMenu(void) /* ../dlls/user32/menu.c:4621 */
 
 extern WINAPI void wine32a_user32_EndMenu(void);  /* ../dlls/user32/menu.c:4621 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EndMenu,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -6727,7 +6947,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EndMenu,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EndPaint(HWND  hwnd, PAINTSTRUCT*  lps) /* ../dlls/user32/painting.c:970 */
+WINAPI BOOL wine32b_user32_EndPaint(HWND hwnd, PAINTSTRUCT* lps) /* ../dlls/user32/painting.c:970 */
 {
 	BOOL return_value;
 	TRACE("Enter EndPaint\n");
@@ -6738,6 +6958,7 @@ WINAPI BOOL wine32b_user32_EndPaint(HWND  hwnd, PAINTSTRUCT*  lps) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_EndPaint(void);  /* ../dlls/user32/painting.c:970 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EndPaint,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6756,7 +6977,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EndPaint,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EnumChildWindows(HWND  parent, WNDENUMPROC  func, LPARAM  lParam) /* ../dlls/user32/win.c:3612 */
+WINAPI BOOL wine32b_user32_EnumChildWindows(HWND parent, WNDENUMPROC func, LPARAM lParam) /* ../dlls/user32/win.c:3612 */
 {
 	BOOL return_value;
 	TRACE("Enter EnumChildWindows\n");
@@ -6767,6 +6988,7 @@ WINAPI BOOL wine32b_user32_EnumChildWindows(HWND  parent, WNDENUMPROC  func, LPA
 
 extern WINAPI void wine32a_user32_EnumChildWindows(void);  /* ../dlls/user32/win.c:3612 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnumChildWindows,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6786,7 +7008,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnumChildWindows,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_EnumClipboardFormats(UINT  format) /* ../dlls/user32/clipboard.c:956 */
+WINAPI UINT wine32b_user32_EnumClipboardFormats(UINT format) /* ../dlls/user32/clipboard.c:956 */
 {
 	UINT return_value;
 	TRACE("Enter EnumClipboardFormats\n");
@@ -6797,6 +7019,7 @@ WINAPI UINT wine32b_user32_EnumClipboardFormats(UINT  format) /* ../dlls/user32/
 
 extern WINAPI void wine32a_user32_EnumClipboardFormats(void);  /* ../dlls/user32/clipboard.c:956 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnumClipboardFormats,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6814,7 +7037,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnumClipboardFormats,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EnumDesktopWindows(HDESK  desktop, WNDENUMPROC  func, LPARAM  lparam) /* ../dlls/user32/win.c:3538 */
+WINAPI BOOL wine32b_user32_EnumDesktopWindows(HDESK desktop, WNDENUMPROC func, LPARAM lparam) /* ../dlls/user32/win.c:3538 */
 {
 	BOOL return_value;
 	TRACE("Enter EnumDesktopWindows\n");
@@ -6825,6 +7048,7 @@ WINAPI BOOL wine32b_user32_EnumDesktopWindows(HDESK  desktop, WNDENUMPROC  func,
 
 extern WINAPI void wine32a_user32_EnumDesktopWindows(void);  /* ../dlls/user32/win.c:3538 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnumDesktopWindows,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6844,7 +7068,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnumDesktopWindows,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EnumDesktopsA(HWINSTA  winsta, DESKTOPENUMPROCA  func, LPARAM  lparam) /* ../dlls/user32/winstation.c:441 */
+WINAPI BOOL wine32b_user32_EnumDesktopsA(HWINSTA winsta, DESKTOPENUMPROCA func, LPARAM lparam) /* ../dlls/user32/winstation.c:441 */
 {
 	BOOL return_value;
 	TRACE("Enter EnumDesktopsA\n");
@@ -6855,6 +7079,7 @@ WINAPI BOOL wine32b_user32_EnumDesktopsA(HWINSTA  winsta, DESKTOPENUMPROCA  func
 
 extern WINAPI void wine32a_user32_EnumDesktopsA(void);  /* ../dlls/user32/winstation.c:441 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnumDesktopsA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6874,7 +7099,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnumDesktopsA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EnumDesktopsW(HWINSTA  winsta, DESKTOPENUMPROCW  func, LPARAM  lparam) /* ../dlls/user32/winstation.c:453 */
+WINAPI BOOL wine32b_user32_EnumDesktopsW(HWINSTA winsta, DESKTOPENUMPROCW func, LPARAM lparam) /* ../dlls/user32/winstation.c:453 */
 {
 	BOOL return_value;
 	TRACE("Enter EnumDesktopsW\n");
@@ -6885,6 +7110,7 @@ WINAPI BOOL wine32b_user32_EnumDesktopsW(HWINSTA  winsta, DESKTOPENUMPROCW  func
 
 extern WINAPI void wine32a_user32_EnumDesktopsW(void);  /* ../dlls/user32/winstation.c:453 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnumDesktopsW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6904,7 +7130,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnumDesktopsW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EnumDisplayDevicesA(LPCSTR  device, DWORD  index, DISPLAY_DEVICEA*  info, DWORD  flags) /* ../dlls/user32/sysparams.c:4013 */
+WINAPI BOOL wine32b_user32_EnumDisplayDevicesA(LPCSTR device, DWORD index, DISPLAY_DEVICEA* info, DWORD flags) /* ../dlls/user32/sysparams.c:4013 */
 {
 	BOOL return_value;
 	TRACE("Enter EnumDisplayDevicesA\n");
@@ -6915,6 +7141,7 @@ WINAPI BOOL wine32b_user32_EnumDisplayDevicesA(LPCSTR  device, DWORD  index, DIS
 
 extern WINAPI void wine32a_user32_EnumDisplayDevicesA(void);  /* ../dlls/user32/sysparams.c:4013 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnumDisplayDevicesA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6935,7 +7162,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnumDisplayDevicesA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EnumDisplayDevicesW(LPCWSTR  device, DWORD  index, DISPLAY_DEVICEW*  info, DWORD  flags) /* ../dlls/user32/sysparams.c:4046 */
+WINAPI BOOL wine32b_user32_EnumDisplayDevicesW(LPCWSTR device, DWORD index, DISPLAY_DEVICEW* info, DWORD flags) /* ../dlls/user32/sysparams.c:4046 */
 {
 	BOOL return_value;
 	TRACE("Enter EnumDisplayDevicesW\n");
@@ -6946,6 +7173,7 @@ WINAPI BOOL wine32b_user32_EnumDisplayDevicesW(LPCWSTR  device, DWORD  index, DI
 
 extern WINAPI void wine32a_user32_EnumDisplayDevicesW(void);  /* ../dlls/user32/sysparams.c:4046 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnumDisplayDevicesW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6966,7 +7194,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnumDisplayDevicesW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EnumDisplayMonitors(HDC  hdc, LPRECT  rect, MONITORENUMPROC  proc, LPARAM  lp) /* ../dlls/user32/sysparams.c:3987 */
+WINAPI BOOL wine32b_user32_EnumDisplayMonitors(HDC hdc, LPRECT rect, MONITORENUMPROC proc, LPARAM lp) /* ../dlls/user32/sysparams.c:3987 */
 {
 	BOOL return_value;
 	TRACE("Enter EnumDisplayMonitors\n");
@@ -6977,6 +7205,7 @@ WINAPI BOOL wine32b_user32_EnumDisplayMonitors(HDC  hdc, LPRECT  rect, MONITOREN
 
 extern WINAPI void wine32a_user32_EnumDisplayMonitors(void);  /* ../dlls/user32/sysparams.c:3987 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnumDisplayMonitors,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -6997,7 +7226,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnumDisplayMonitors,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EnumDisplaySettingsA(LPCSTR  name, DWORD  n, LPDEVMODEA  devmode) /* ../dlls/user32/sysparams.c:3239 */
+WINAPI BOOL wine32b_user32_EnumDisplaySettingsA(LPCSTR name, DWORD n, LPDEVMODEA devmode) /* ../dlls/user32/sysparams.c:3239 */
 {
 	BOOL return_value;
 	TRACE("Enter EnumDisplaySettingsA\n");
@@ -7008,6 +7237,7 @@ WINAPI BOOL wine32b_user32_EnumDisplaySettingsA(LPCSTR  name, DWORD  n, LPDEVMOD
 
 extern WINAPI void wine32a_user32_EnumDisplaySettingsA(void);  /* ../dlls/user32/sysparams.c:3239 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnumDisplaySettingsA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7027,7 +7257,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnumDisplaySettingsA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EnumDisplaySettingsExA(LPCSTR  lpszDeviceName, DWORD  iModeNum, LPDEVMODEA  lpDevMode, DWORD  dwFlags) /* ../dlls/user32/sysparams.c:3248 */
+WINAPI BOOL wine32b_user32_EnumDisplaySettingsExA(LPCSTR lpszDeviceName, DWORD iModeNum, LPDEVMODEA lpDevMode, DWORD dwFlags) /* ../dlls/user32/sysparams.c:3248 */
 {
 	BOOL return_value;
 	TRACE("Enter EnumDisplaySettingsExA\n");
@@ -7038,6 +7268,7 @@ WINAPI BOOL wine32b_user32_EnumDisplaySettingsExA(LPCSTR  lpszDeviceName, DWORD 
 
 extern WINAPI void wine32a_user32_EnumDisplaySettingsExA(void);  /* ../dlls/user32/sysparams.c:3248 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnumDisplaySettingsExA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7058,7 +7289,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnumDisplaySettingsExA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EnumDisplaySettingsExW(LPCWSTR  lpszDeviceName, DWORD  iModeNum, LPDEVMODEW  lpDevMode, DWORD  dwFlags) /* ../dlls/user32/sysparams.c:3287 */
+WINAPI BOOL wine32b_user32_EnumDisplaySettingsExW(LPCWSTR lpszDeviceName, DWORD iModeNum, LPDEVMODEW lpDevMode, DWORD dwFlags) /* ../dlls/user32/sysparams.c:3287 */
 {
 	BOOL return_value;
 	TRACE("Enter EnumDisplaySettingsExW\n");
@@ -7069,6 +7300,7 @@ WINAPI BOOL wine32b_user32_EnumDisplaySettingsExW(LPCWSTR  lpszDeviceName, DWORD
 
 extern WINAPI void wine32a_user32_EnumDisplaySettingsExW(void);  /* ../dlls/user32/sysparams.c:3287 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnumDisplaySettingsExW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7089,7 +7321,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnumDisplaySettingsExW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EnumDisplaySettingsW(LPCWSTR  name, DWORD  n, LPDEVMODEW  devmode) /* ../dlls/user32/sysparams.c:3230 */
+WINAPI BOOL wine32b_user32_EnumDisplaySettingsW(LPCWSTR name, DWORD n, LPDEVMODEW devmode) /* ../dlls/user32/sysparams.c:3230 */
 {
 	BOOL return_value;
 	TRACE("Enter EnumDisplaySettingsW\n");
@@ -7100,6 +7332,7 @@ WINAPI BOOL wine32b_user32_EnumDisplaySettingsW(LPCWSTR  name, DWORD  n, LPDEVMO
 
 extern WINAPI void wine32a_user32_EnumDisplaySettingsW(void);  /* ../dlls/user32/sysparams.c:3230 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnumDisplaySettingsW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7119,7 +7352,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnumDisplaySettingsW,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_EnumPropsA(HWND  hwnd, PROPENUMPROCA  func) /* ../dlls/user32/property.c:99 */
+WINAPI INT wine32b_user32_EnumPropsA(HWND hwnd, PROPENUMPROCA func) /* ../dlls/user32/property.c:99 */
 {
 	INT return_value;
 	TRACE("Enter EnumPropsA\n");
@@ -7130,6 +7363,7 @@ WINAPI INT wine32b_user32_EnumPropsA(HWND  hwnd, PROPENUMPROCA  func) /* ../dlls
 
 extern WINAPI void wine32a_user32_EnumPropsA(void);  /* ../dlls/user32/property.c:99 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnumPropsA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7148,7 +7382,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnumPropsA,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_EnumPropsExA(HWND  hwnd, PROPENUMPROCEXA  func, LPARAM  lParam) /* ../dlls/user32/property.c:215 */
+WINAPI INT wine32b_user32_EnumPropsExA(HWND hwnd, PROPENUMPROCEXA func, LPARAM lParam) /* ../dlls/user32/property.c:215 */
 {
 	INT return_value;
 	TRACE("Enter EnumPropsExA\n");
@@ -7159,6 +7393,7 @@ WINAPI INT wine32b_user32_EnumPropsExA(HWND  hwnd, PROPENUMPROCEXA  func, LPARAM
 
 extern WINAPI void wine32a_user32_EnumPropsExA(void);  /* ../dlls/user32/property.c:215 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnumPropsExA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7178,7 +7413,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnumPropsExA,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_EnumPropsExW(HWND  hwnd, PROPENUMPROCEXW  func, LPARAM  lParam) /* ../dlls/user32/property.c:237 */
+WINAPI INT wine32b_user32_EnumPropsExW(HWND hwnd, PROPENUMPROCEXW func, LPARAM lParam) /* ../dlls/user32/property.c:237 */
 {
 	INT return_value;
 	TRACE("Enter EnumPropsExW\n");
@@ -7189,6 +7424,7 @@ WINAPI INT wine32b_user32_EnumPropsExW(HWND  hwnd, PROPENUMPROCEXW  func, LPARAM
 
 extern WINAPI void wine32a_user32_EnumPropsExW(void);  /* ../dlls/user32/property.c:237 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnumPropsExW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7208,7 +7444,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnumPropsExW,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_EnumPropsW(HWND  hwnd, PROPENUMPROCW  func) /* ../dlls/user32/property.c:108 */
+WINAPI INT wine32b_user32_EnumPropsW(HWND hwnd, PROPENUMPROCW func) /* ../dlls/user32/property.c:108 */
 {
 	INT return_value;
 	TRACE("Enter EnumPropsW\n");
@@ -7219,6 +7455,7 @@ WINAPI INT wine32b_user32_EnumPropsW(HWND  hwnd, PROPENUMPROCW  func) /* ../dlls
 
 extern WINAPI void wine32a_user32_EnumPropsW(void);  /* ../dlls/user32/property.c:108 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnumPropsW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7237,7 +7474,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnumPropsW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EnumThreadWindows(DWORD  id, WNDENUMPROC  func, LPARAM  lParam) /* ../dlls/user32/win.c:3516 */
+WINAPI BOOL wine32b_user32_EnumThreadWindows(DWORD id, WNDENUMPROC func, LPARAM lParam) /* ../dlls/user32/win.c:3516 */
 {
 	BOOL return_value;
 	TRACE("Enter EnumThreadWindows\n");
@@ -7248,6 +7485,7 @@ WINAPI BOOL wine32b_user32_EnumThreadWindows(DWORD  id, WNDENUMPROC  func, LPARA
 
 extern WINAPI void wine32a_user32_EnumThreadWindows(void);  /* ../dlls/user32/win.c:3516 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnumThreadWindows,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7267,7 +7505,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnumThreadWindows,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EnumWindowStationsA(WINSTAENUMPROCA  func, LPARAM  lparam) /* ../dlls/user32/winstation.c:229 */
+WINAPI BOOL wine32b_user32_EnumWindowStationsA(WINSTAENUMPROCA func, LPARAM lparam) /* ../dlls/user32/winstation.c:229 */
 {
 	BOOL return_value;
 	TRACE("Enter EnumWindowStationsA\n");
@@ -7278,6 +7516,7 @@ WINAPI BOOL wine32b_user32_EnumWindowStationsA(WINSTAENUMPROCA  func, LPARAM  lp
 
 extern WINAPI void wine32a_user32_EnumWindowStationsA(void);  /* ../dlls/user32/winstation.c:229 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnumWindowStationsA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7296,7 +7535,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnumWindowStationsA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EnumWindowStationsW(WINSTAENUMPROCW  func, LPARAM  lparam) /* ../dlls/user32/winstation.c:241 */
+WINAPI BOOL wine32b_user32_EnumWindowStationsW(WINSTAENUMPROCW func, LPARAM lparam) /* ../dlls/user32/winstation.c:241 */
 {
 	BOOL return_value;
 	TRACE("Enter EnumWindowStationsW\n");
@@ -7307,6 +7546,7 @@ WINAPI BOOL wine32b_user32_EnumWindowStationsW(WINSTAENUMPROCW  func, LPARAM  lp
 
 extern WINAPI void wine32a_user32_EnumWindowStationsW(void);  /* ../dlls/user32/winstation.c:241 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnumWindowStationsW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7325,7 +7565,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnumWindowStationsW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EnumWindows(WNDENUMPROC  lpEnumFunc, LPARAM  lParam) /* ../dlls/user32/win.c:3486 */
+WINAPI BOOL wine32b_user32_EnumWindows(WNDENUMPROC lpEnumFunc, LPARAM lParam) /* ../dlls/user32/win.c:3486 */
 {
 	BOOL return_value;
 	TRACE("Enter EnumWindows\n");
@@ -7336,6 +7576,7 @@ WINAPI BOOL wine32b_user32_EnumWindows(WNDENUMPROC  lpEnumFunc, LPARAM  lParam) 
 
 extern WINAPI void wine32a_user32_EnumWindows(void);  /* ../dlls/user32/win.c:3486 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EnumWindows,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7354,7 +7595,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EnumWindows,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_EqualRect(RECT*  rect1, RECT*  rect2) /* ../dlls/user32/uitools.c:1386 */
+WINAPI BOOL wine32b_user32_EqualRect(RECT* rect1, RECT* rect2) /* ../dlls/user32/uitools.c:1386 */
 {
 	BOOL return_value;
 	TRACE("Enter EqualRect\n");
@@ -7365,6 +7606,7 @@ WINAPI BOOL wine32b_user32_EqualRect(RECT*  rect1, RECT*  rect2) /* ../dlls/user
 
 extern WINAPI void wine32a_user32_EqualRect(void);  /* ../dlls/user32/uitools.c:1386 */
 __ASM_GLOBAL_FUNC(wine32a_user32_EqualRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7383,7 +7625,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_EqualRect,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_ExcludeUpdateRgn(HDC  hdc, HWND  hwnd) /* ../dlls/user32/painting.c:1441 */
+WINAPI INT wine32b_user32_ExcludeUpdateRgn(HDC hdc, HWND hwnd) /* ../dlls/user32/painting.c:1441 */
 {
 	INT return_value;
 	TRACE("Enter ExcludeUpdateRgn\n");
@@ -7394,6 +7636,7 @@ WINAPI INT wine32b_user32_ExcludeUpdateRgn(HDC  hdc, HWND  hwnd) /* ../dlls/user
 
 extern WINAPI void wine32a_user32_ExcludeUpdateRgn(void);  /* ../dlls/user32/painting.c:1441 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ExcludeUpdateRgn,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7412,7 +7655,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ExcludeUpdateRgn,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ExitWindowsEx(UINT  flags, DWORD  reason) /* ../dlls/user32/user_main.c:426 */
+WINAPI BOOL wine32b_user32_ExitWindowsEx(UINT flags, DWORD reason) /* ../dlls/user32/user_main.c:426 */
 {
 	BOOL return_value;
 	TRACE("Enter ExitWindowsEx\n");
@@ -7423,6 +7666,7 @@ WINAPI BOOL wine32b_user32_ExitWindowsEx(UINT  flags, DWORD  reason) /* ../dlls/
 
 extern WINAPI void wine32a_user32_ExitWindowsEx(void);  /* ../dlls/user32/user_main.c:426 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ExitWindowsEx,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7441,7 +7685,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ExitWindowsEx,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_FillRect(HDC  hdc, RECT*  rect, HBRUSH  hbrush) /* ../dlls/user32/uitools.c:1437 */
+WINAPI INT wine32b_user32_FillRect(HDC hdc, RECT* rect, HBRUSH hbrush) /* ../dlls/user32/uitools.c:1437 */
 {
 	INT return_value;
 	TRACE("Enter FillRect\n");
@@ -7452,6 +7696,7 @@ WINAPI INT wine32b_user32_FillRect(HDC  hdc, RECT*  rect, HBRUSH  hbrush) /* ../
 
 extern WINAPI void wine32a_user32_FillRect(void);  /* ../dlls/user32/uitools.c:1437 */
 __ASM_GLOBAL_FUNC(wine32a_user32_FillRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7471,7 +7716,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_FillRect,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_FindWindowA(LPCSTR  className, LPCSTR  title) /* ../dlls/user32/win.c:2014 */
+WINAPI HWND wine32b_user32_FindWindowA(LPCSTR className, LPCSTR title) /* ../dlls/user32/win.c:2014 */
 {
 	HWND return_value;
 	TRACE("Enter FindWindowA\n");
@@ -7482,6 +7727,7 @@ WINAPI HWND wine32b_user32_FindWindowA(LPCSTR  className, LPCSTR  title) /* ../d
 
 extern WINAPI void wine32a_user32_FindWindowA(void);  /* ../dlls/user32/win.c:2014 */
 __ASM_GLOBAL_FUNC(wine32a_user32_FindWindowA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7500,7 +7746,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_FindWindowA,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_FindWindowExA(HWND  parent, HWND  child, LPCSTR  className, LPCSTR  title) /* ../dlls/user32/win.c:2025 */
+WINAPI HWND wine32b_user32_FindWindowExA(HWND parent, HWND child, LPCSTR className, LPCSTR title) /* ../dlls/user32/win.c:2025 */
 {
 	HWND return_value;
 	TRACE("Enter FindWindowExA\n");
@@ -7511,6 +7757,7 @@ WINAPI HWND wine32b_user32_FindWindowExA(HWND  parent, HWND  child, LPCSTR  clas
 
 extern WINAPI void wine32a_user32_FindWindowExA(void);  /* ../dlls/user32/win.c:2025 */
 __ASM_GLOBAL_FUNC(wine32a_user32_FindWindowExA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7531,7 +7778,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_FindWindowExA,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_FindWindowExW(HWND  parent, HWND  child, LPCWSTR  className, LPCWSTR  title) /* ../dlls/user32/win.c:1960 */
+WINAPI HWND wine32b_user32_FindWindowExW(HWND parent, HWND child, LPCWSTR className, LPCWSTR title) /* ../dlls/user32/win.c:1960 */
 {
 	HWND return_value;
 	TRACE("Enter FindWindowExW\n");
@@ -7542,6 +7789,7 @@ WINAPI HWND wine32b_user32_FindWindowExW(HWND  parent, HWND  child, LPCWSTR  cla
 
 extern WINAPI void wine32a_user32_FindWindowExW(void);  /* ../dlls/user32/win.c:1960 */
 __ASM_GLOBAL_FUNC(wine32a_user32_FindWindowExW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7562,7 +7810,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_FindWindowExW,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_FindWindowW(LPCWSTR  className, LPCWSTR  title) /* ../dlls/user32/win.c:2056 */
+WINAPI HWND wine32b_user32_FindWindowW(LPCWSTR className, LPCWSTR title) /* ../dlls/user32/win.c:2056 */
 {
 	HWND return_value;
 	TRACE("Enter FindWindowW\n");
@@ -7573,6 +7821,7 @@ WINAPI HWND wine32b_user32_FindWindowW(LPCWSTR  className, LPCWSTR  title) /* ..
 
 extern WINAPI void wine32a_user32_FindWindowW(void);  /* ../dlls/user32/win.c:2056 */
 __ASM_GLOBAL_FUNC(wine32a_user32_FindWindowW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7591,7 +7840,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_FindWindowW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_FlashWindow(HWND  hWnd, BOOL  bInvert) /* ../dlls/user32/win.c:3649 */
+WINAPI BOOL wine32b_user32_FlashWindow(HWND hWnd, BOOL bInvert) /* ../dlls/user32/win.c:3649 */
 {
 	BOOL return_value;
 	TRACE("Enter FlashWindow\n");
@@ -7602,6 +7851,7 @@ WINAPI BOOL wine32b_user32_FlashWindow(HWND  hWnd, BOOL  bInvert) /* ../dlls/use
 
 extern WINAPI void wine32a_user32_FlashWindow(void);  /* ../dlls/user32/win.c:3649 */
 __ASM_GLOBAL_FUNC(wine32a_user32_FlashWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7620,7 +7870,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_FlashWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_FlashWindowEx(PFLASHWINFO  pfinfo) /* ../dlls/user32/win.c:3664 */
+WINAPI BOOL wine32b_user32_FlashWindowEx(PFLASHWINFO pfinfo) /* ../dlls/user32/win.c:3664 */
 {
 	BOOL return_value;
 	TRACE("Enter FlashWindowEx\n");
@@ -7631,6 +7881,7 @@ WINAPI BOOL wine32b_user32_FlashWindowEx(PFLASHWINFO  pfinfo) /* ../dlls/user32/
 
 extern WINAPI void wine32a_user32_FlashWindowEx(void);  /* ../dlls/user32/win.c:3664 */
 __ASM_GLOBAL_FUNC(wine32a_user32_FlashWindowEx,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7648,7 +7899,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_FlashWindowEx,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_FrameRect(HDC  hdc, RECT*  rect, HBRUSH  hbrush) /* ../dlls/user32/uitools.c:1464 */
+WINAPI INT wine32b_user32_FrameRect(HDC hdc, RECT* rect, HBRUSH hbrush) /* ../dlls/user32/uitools.c:1464 */
 {
 	INT return_value;
 	TRACE("Enter FrameRect\n");
@@ -7659,6 +7910,7 @@ WINAPI INT wine32b_user32_FrameRect(HDC  hdc, RECT*  rect, HBRUSH  hbrush) /* ..
 
 extern WINAPI void wine32a_user32_FrameRect(void);  /* ../dlls/user32/uitools.c:1464 */
 __ASM_GLOBAL_FUNC(wine32a_user32_FrameRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7678,7 +7930,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_FrameRect,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_FreeDDElParam(UINT  msg, LPARAM  lParam) /* ../dlls/user32/dde_misc.c:160 */
+WINAPI BOOL wine32b_user32_FreeDDElParam(UINT msg, LPARAM lParam) /* ../dlls/user32/dde_misc.c:160 */
 {
 	BOOL return_value;
 	TRACE("Enter FreeDDElParam\n");
@@ -7689,6 +7941,7 @@ WINAPI BOOL wine32b_user32_FreeDDElParam(UINT  msg, LPARAM  lParam) /* ../dlls/u
 
 extern WINAPI void wine32a_user32_FreeDDElParam(void);  /* ../dlls/user32/dde_misc.c:160 */
 __ASM_GLOBAL_FUNC(wine32a_user32_FreeDDElParam,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7718,6 +7971,7 @@ WINAPI HWND wine32b_user32_GetActiveWindow(void) /* ../dlls/user32/focus.c:332 *
 
 extern WINAPI void wine32a_user32_GetActiveWindow(void);  /* ../dlls/user32/focus.c:332 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetActiveWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -7734,7 +7988,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetActiveWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetAltTabInfoA(HWND  hwnd, int  iItem, PALTTABINFO  pati, LPSTR  pszItemText, UINT  cchItemText) /* ../dlls/user32/misc.c:185 */
+WINAPI BOOL wine32b_user32_GetAltTabInfoA(HWND hwnd, int iItem, PALTTABINFO pati, LPSTR pszItemText, UINT cchItemText) /* ../dlls/user32/misc.c:185 */
 {
 	BOOL return_value;
 	TRACE("Enter GetAltTabInfoA\n");
@@ -7745,6 +7999,7 @@ WINAPI BOOL wine32b_user32_GetAltTabInfoA(HWND  hwnd, int  iItem, PALTTABINFO  p
 
 extern WINAPI void wine32a_user32_GetAltTabInfoA(void);  /* ../dlls/user32/misc.c:185 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetAltTabInfoA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7765,7 +8020,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetAltTabInfoA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetAltTabInfoW(HWND  hwnd, int  iItem, PALTTABINFO  pati, LPWSTR  pszItemText, UINT  cchItemText) /* ../dlls/user32/misc.c:194 */
+WINAPI BOOL wine32b_user32_GetAltTabInfoW(HWND hwnd, int iItem, PALTTABINFO pati, LPWSTR pszItemText, UINT cchItemText) /* ../dlls/user32/misc.c:194 */
 {
 	BOOL return_value;
 	TRACE("Enter GetAltTabInfoW\n");
@@ -7776,6 +8031,7 @@ WINAPI BOOL wine32b_user32_GetAltTabInfoW(HWND  hwnd, int  iItem, PALTTABINFO  p
 
 extern WINAPI void wine32a_user32_GetAltTabInfoW(void);  /* ../dlls/user32/misc.c:194 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetAltTabInfoW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7796,7 +8052,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetAltTabInfoW,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_GetAncestor(HWND  hwnd, UINT  type) /* ../dlls/user32/win.c:3105 */
+WINAPI HWND wine32b_user32_GetAncestor(HWND hwnd, UINT type) /* ../dlls/user32/win.c:3105 */
 {
 	HWND return_value;
 	TRACE("Enter GetAncestor\n");
@@ -7807,6 +8063,7 @@ WINAPI HWND wine32b_user32_GetAncestor(HWND  hwnd, UINT  type) /* ../dlls/user32
 
 extern WINAPI void wine32a_user32_GetAncestor(void);  /* ../dlls/user32/win.c:3105 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetAncestor,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7825,7 +8082,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetAncestor,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_GetAppCompatFlags(HTASK  hTask) /* ../dlls/user32/misc.c:347 */
+WINAPI DWORD wine32b_user32_GetAppCompatFlags(HTASK hTask) /* ../dlls/user32/misc.c:347 */
 {
 	DWORD return_value;
 	TRACE("Enter GetAppCompatFlags\n");
@@ -7836,6 +8093,7 @@ WINAPI DWORD wine32b_user32_GetAppCompatFlags(HTASK  hTask) /* ../dlls/user32/mi
 
 extern WINAPI void wine32a_user32_GetAppCompatFlags(void);  /* ../dlls/user32/misc.c:347 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetAppCompatFlags,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7853,7 +8111,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetAppCompatFlags,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_GetAppCompatFlags2(HTASK  hTask) /* ../dlls/user32/misc.c:356 */
+WINAPI DWORD wine32b_user32_GetAppCompatFlags2(HTASK hTask) /* ../dlls/user32/misc.c:356 */
 {
 	DWORD return_value;
 	TRACE("Enter GetAppCompatFlags2\n");
@@ -7864,6 +8122,7 @@ WINAPI DWORD wine32b_user32_GetAppCompatFlags2(HTASK  hTask) /* ../dlls/user32/m
 
 extern WINAPI void wine32a_user32_GetAppCompatFlags2(void);  /* ../dlls/user32/misc.c:356 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetAppCompatFlags2,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7881,7 +8140,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetAppCompatFlags2,
 	"ret \n"
 )
 
-WINAPI SHORT wine32b_user32_GetAsyncKeyState(INT  key) /* ../dlls/user32/input.c:393 */
+WINAPI SHORT wine32b_user32_GetAsyncKeyState(INT key) /* ../dlls/user32/input.c:393 */
 {
 	SHORT return_value;
 	TRACE("Enter GetAsyncKeyState\n");
@@ -7892,6 +8151,7 @@ WINAPI SHORT wine32b_user32_GetAsyncKeyState(INT  key) /* ../dlls/user32/input.c
 
 extern WINAPI void wine32a_user32_GetAsyncKeyState(void);  /* ../dlls/user32/input.c:393 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetAsyncKeyState,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7909,7 +8169,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetAsyncKeyState,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetAutoRotationState(AR_STATE*  state) /* ../dlls/user32/sysparams.c:4263 */
+WINAPI BOOL wine32b_user32_GetAutoRotationState(AR_STATE* state) /* ../dlls/user32/sysparams.c:4263 */
 {
 	BOOL return_value;
 	TRACE("Enter GetAutoRotationState\n");
@@ -7920,6 +8180,7 @@ WINAPI BOOL wine32b_user32_GetAutoRotationState(AR_STATE*  state) /* ../dlls/use
 
 extern WINAPI void wine32a_user32_GetAutoRotationState(void);  /* ../dlls/user32/sysparams.c:4263 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetAutoRotationState,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7937,7 +8198,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetAutoRotationState,
 	"ret \n"
 )
 
-WINAPI DPI_AWARENESS wine32b_user32_GetAwarenessFromDpiAwarenessContext(DPI_AWARENESS_CONTEXT  context) /* ../dlls/user32/sysparams.c:3475 */
+WINAPI DPI_AWARENESS wine32b_user32_GetAwarenessFromDpiAwarenessContext(DPI_AWARENESS_CONTEXT context) /* ../dlls/user32/sysparams.c:3475 */
 {
 	DPI_AWARENESS return_value;
 	TRACE("Enter GetAwarenessFromDpiAwarenessContext\n");
@@ -7948,6 +8209,7 @@ WINAPI DPI_AWARENESS wine32b_user32_GetAwarenessFromDpiAwarenessContext(DPI_AWAR
 
 extern WINAPI void wine32a_user32_GetAwarenessFromDpiAwarenessContext(void);  /* ../dlls/user32/sysparams.c:3475 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetAwarenessFromDpiAwarenessContext,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -7976,6 +8238,7 @@ WINAPI HWND wine32b_user32_GetCapture(void) /* ../dlls/user32/input.c:366 */
 
 extern WINAPI void wine32a_user32_GetCapture(void);  /* ../dlls/user32/input.c:366 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetCapture,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -8003,6 +8266,7 @@ WINAPI UINT wine32b_user32_GetCaretBlinkTime(void) /* ../dlls/user32/caret.c:406
 
 extern WINAPI void wine32a_user32_GetCaretBlinkTime(void);  /* ../dlls/user32/caret.c:406 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetCaretBlinkTime,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -8019,7 +8283,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetCaretBlinkTime,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetCaretPos(LPPOINT  pt) /* ../dlls/user32/caret.c:367 */
+WINAPI BOOL wine32b_user32_GetCaretPos(LPPOINT pt) /* ../dlls/user32/caret.c:367 */
 {
 	BOOL return_value;
 	TRACE("Enter GetCaretPos\n");
@@ -8030,6 +8294,7 @@ WINAPI BOOL wine32b_user32_GetCaretPos(LPPOINT  pt) /* ../dlls/user32/caret.c:36
 
 extern WINAPI void wine32a_user32_GetCaretPos(void);  /* ../dlls/user32/caret.c:367 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetCaretPos,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8047,7 +8312,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetCaretPos,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetClassInfoA(HINSTANCE  hInstance, LPCSTR  name, WNDCLASSA*  wc) /* ../dlls/user32/class.c:1261 */
+WINAPI BOOL wine32b_user32_GetClassInfoA(HINSTANCE hInstance, LPCSTR name, WNDCLASSA* wc) /* ../dlls/user32/class.c:1261 */
 {
 	BOOL return_value;
 	TRACE("Enter GetClassInfoA\n");
@@ -8058,6 +8323,7 @@ WINAPI BOOL wine32b_user32_GetClassInfoA(HINSTANCE  hInstance, LPCSTR  name, WND
 
 extern WINAPI void wine32a_user32_GetClassInfoA(void);  /* ../dlls/user32/class.c:1261 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetClassInfoA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8077,7 +8343,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetClassInfoA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetClassInfoExA(HINSTANCE  hInstance, LPCSTR  name, WNDCLASSEXA*  wc) /* ../dlls/user32/class.c:1311 */
+WINAPI BOOL wine32b_user32_GetClassInfoExA(HINSTANCE hInstance, LPCSTR name, WNDCLASSEXA* wc) /* ../dlls/user32/class.c:1311 */
 {
 	BOOL return_value;
 	TRACE("Enter GetClassInfoExA\n");
@@ -8088,6 +8354,7 @@ WINAPI BOOL wine32b_user32_GetClassInfoExA(HINSTANCE  hInstance, LPCSTR  name, W
 
 extern WINAPI void wine32a_user32_GetClassInfoExA(void);  /* ../dlls/user32/class.c:1311 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetClassInfoExA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8107,7 +8374,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetClassInfoExA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetClassInfoExW(HINSTANCE  hInstance, LPCWSTR  name, WNDCLASSEXW*  wc) /* ../dlls/user32/class.c:1362 */
+WINAPI BOOL wine32b_user32_GetClassInfoExW(HINSTANCE hInstance, LPCWSTR name, WNDCLASSEXW* wc) /* ../dlls/user32/class.c:1362 */
 {
 	BOOL return_value;
 	TRACE("Enter GetClassInfoExW\n");
@@ -8118,6 +8385,7 @@ WINAPI BOOL wine32b_user32_GetClassInfoExW(HINSTANCE  hInstance, LPCWSTR  name, 
 
 extern WINAPI void wine32a_user32_GetClassInfoExW(void);  /* ../dlls/user32/class.c:1362 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetClassInfoExW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8137,7 +8405,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetClassInfoExW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetClassInfoW(HINSTANCE  hInstance, LPCWSTR  name, WNDCLASSW*  wc) /* ../dlls/user32/class.c:1286 */
+WINAPI BOOL wine32b_user32_GetClassInfoW(HINSTANCE hInstance, LPCWSTR name, WNDCLASSW* wc) /* ../dlls/user32/class.c:1286 */
 {
 	BOOL return_value;
 	TRACE("Enter GetClassInfoW\n");
@@ -8148,6 +8416,7 @@ WINAPI BOOL wine32b_user32_GetClassInfoW(HINSTANCE  hInstance, LPCWSTR  name, WN
 
 extern WINAPI void wine32a_user32_GetClassInfoW(void);  /* ../dlls/user32/class.c:1286 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetClassInfoW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8167,7 +8436,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetClassInfoW,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_GetClassLongA(HWND  hwnd, INT  offset) /* ../dlls/user32/class.c:1006 */
+WINAPI DWORD wine32b_user32_GetClassLongA(HWND hwnd, INT offset) /* ../dlls/user32/class.c:1006 */
 {
 	DWORD return_value;
 	TRACE("Enter GetClassLongA\n");
@@ -8178,6 +8447,7 @@ WINAPI DWORD wine32b_user32_GetClassLongA(HWND  hwnd, INT  offset) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_GetClassLongA(void);  /* ../dlls/user32/class.c:1006 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetClassLongA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8196,36 +8466,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetClassLongA,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_GetClassLongW(HWND  hwnd, INT  offset) /* ../dlls/user32/class.c:996 */
-{
-	DWORD return_value;
-	TRACE("Enter GetClassLongW\n");
-	return_value = pGetClassLongW(hwnd, offset);
-	TRACE("Leave GetClassLongW\n");
-	return return_value;
-}
-
-extern WINAPI void wine32a_user32_GetClassLongW(void);  /* ../dlls/user32/class.c:996 */
-__ASM_GLOBAL_FUNC(wine32a_user32_GetClassLongW,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_user32_GetClassLongW") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-WINAPI ULONG_PTR wine32b_user32_GetClassLongPtrA(HWND  hwnd, INT  offset) /* ../dlls/user32/class.c:1460 */
+WINAPI ULONG_PTR wine32b_user32_GetClassLongPtrA(HWND hwnd, INT offset) /* ../dlls/user32/class.c:1460 */
 {
 	ULONG_PTR return_value;
 	TRACE("Enter GetClassLongPtrA\n");
@@ -8236,6 +8477,7 @@ WINAPI ULONG_PTR wine32b_user32_GetClassLongPtrA(HWND  hwnd, INT  offset) /* ../
 
 extern WINAPI void wine32a_user32_GetClassLongPtrA(void);  /* ../dlls/user32/class.c:1460 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetClassLongPtrA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8254,7 +8496,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetClassLongPtrA,
 	"ret \n"
 )
 
-WINAPI ULONG_PTR wine32b_user32_GetClassLongPtrW(HWND  hwnd, INT  offset) /* ../dlls/user32/class.c:1468 */
+WINAPI ULONG_PTR wine32b_user32_GetClassLongPtrW(HWND hwnd, INT offset) /* ../dlls/user32/class.c:1468 */
 {
 	ULONG_PTR return_value;
 	TRACE("Enter GetClassLongPtrW\n");
@@ -8265,6 +8507,7 @@ WINAPI ULONG_PTR wine32b_user32_GetClassLongPtrW(HWND  hwnd, INT  offset) /* ../
 
 extern WINAPI void wine32a_user32_GetClassLongPtrW(void);  /* ../dlls/user32/class.c:1468 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetClassLongPtrW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8283,7 +8526,37 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetClassLongPtrW,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetClassNameA(HWND  hwnd, LPSTR  buffer, INT  count) /* ../dlls/user32/class.c:1178 */
+WINAPI DWORD wine32b_user32_GetClassLongW(HWND hwnd, INT offset) /* ../dlls/user32/class.c:996 */
+{
+	DWORD return_value;
+	TRACE("Enter GetClassLongW\n");
+	return_value = pGetClassLongW(hwnd, offset);
+	TRACE("Leave GetClassLongW\n");
+	return return_value;
+}
+
+extern WINAPI void wine32a_user32_GetClassLongW(void);  /* ../dlls/user32/class.c:996 */
+__ASM_GLOBAL_FUNC(wine32a_user32_GetClassLongW,
+
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32_GetClassLongW") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $8, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+WINAPI INT wine32b_user32_GetClassNameA(HWND hwnd, LPSTR buffer, INT count) /* ../dlls/user32/class.c:1178 */
 {
 	INT return_value;
 	TRACE("Enter GetClassNameA\n");
@@ -8294,6 +8567,7 @@ WINAPI INT wine32b_user32_GetClassNameA(HWND  hwnd, LPSTR  buffer, INT  count) /
 
 extern WINAPI void wine32a_user32_GetClassNameA(void);  /* ../dlls/user32/class.c:1178 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetClassNameA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8313,7 +8587,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetClassNameA,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetClassNameW(HWND  hwnd, LPWSTR  buffer, INT  count) /* ../dlls/user32/class.c:1194 */
+WINAPI INT wine32b_user32_GetClassNameW(HWND hwnd, LPWSTR buffer, INT count) /* ../dlls/user32/class.c:1194 */
 {
 	INT return_value;
 	TRACE("Enter GetClassNameW\n");
@@ -8324,6 +8598,7 @@ WINAPI INT wine32b_user32_GetClassNameW(HWND  hwnd, LPWSTR  buffer, INT  count) 
 
 extern WINAPI void wine32a_user32_GetClassNameW(void);  /* ../dlls/user32/class.c:1194 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetClassNameW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8343,7 +8618,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetClassNameW,
 	"ret \n"
 )
 
-WINAPI WORD wine32b_user32_GetClassWord(HWND  hwnd, INT  offset) /* ../dlls/user32/class.c:821 */
+WINAPI WORD wine32b_user32_GetClassWord(HWND hwnd, INT offset) /* ../dlls/user32/class.c:821 */
 {
 	WORD return_value;
 	TRACE("Enter GetClassWord\n");
@@ -8354,6 +8629,7 @@ WINAPI WORD wine32b_user32_GetClassWord(HWND  hwnd, INT  offset) /* ../dlls/user
 
 extern WINAPI void wine32a_user32_GetClassWord(void);  /* ../dlls/user32/class.c:821 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetClassWord,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8372,7 +8648,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetClassWord,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetClientRect(HWND  hwnd, LPRECT  rect) /* ../dlls/user32/winpos.c:234 */
+WINAPI BOOL wine32b_user32_GetClientRect(HWND hwnd, LPRECT rect) /* ../dlls/user32/winpos.c:234 */
 {
 	BOOL return_value;
 	TRACE("Enter GetClientRect\n");
@@ -8383,6 +8659,7 @@ WINAPI BOOL wine32b_user32_GetClientRect(HWND  hwnd, LPRECT  rect) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_GetClientRect(void);  /* ../dlls/user32/winpos.c:234 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetClientRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8401,7 +8678,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetClientRect,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetClipCursor(RECT*  rect) /* ../dlls/user32/cursoricon.c:2166 */
+WINAPI BOOL wine32b_user32_GetClipCursor(RECT* rect) /* ../dlls/user32/cursoricon.c:2166 */
 {
 	BOOL return_value;
 	TRACE("Enter GetClipCursor\n");
@@ -8412,6 +8689,7 @@ WINAPI BOOL wine32b_user32_GetClipCursor(RECT*  rect) /* ../dlls/user32/cursoric
 
 extern WINAPI void wine32a_user32_GetClipCursor(void);  /* ../dlls/user32/cursoricon.c:2166 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetClipCursor,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8429,7 +8707,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetClipCursor,
 	"ret \n"
 )
 
-WINAPI HANDLE wine32b_user32_GetClipboardData(UINT  format) /* ../dlls/user32/clipboard.c:1030 */
+WINAPI HANDLE wine32b_user32_GetClipboardData(UINT format) /* ../dlls/user32/clipboard.c:1030 */
 {
 	HANDLE return_value;
 	TRACE("Enter GetClipboardData\n");
@@ -8440,6 +8718,7 @@ WINAPI HANDLE wine32b_user32_GetClipboardData(UINT  format) /* ../dlls/user32/cl
 
 extern WINAPI void wine32a_user32_GetClipboardData(void);  /* ../dlls/user32/clipboard.c:1030 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetClipboardData,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8457,7 +8736,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetClipboardData,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetClipboardFormatNameA(UINT  format, LPSTR  buffer, INT  maxlen) /* ../dlls/user32/clipboard.c:677 */
+WINAPI INT wine32b_user32_GetClipboardFormatNameA(UINT format, LPSTR buffer, INT maxlen) /* ../dlls/user32/clipboard.c:677 */
 {
 	INT return_value;
 	TRACE("Enter GetClipboardFormatNameA\n");
@@ -8468,6 +8747,7 @@ WINAPI INT wine32b_user32_GetClipboardFormatNameA(UINT  format, LPSTR  buffer, I
 
 extern WINAPI void wine32a_user32_GetClipboardFormatNameA(void);  /* ../dlls/user32/clipboard.c:677 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetClipboardFormatNameA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8487,7 +8767,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetClipboardFormatNameA,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetClipboardFormatNameW(UINT  format, LPWSTR  buffer, INT  maxlen) /* ../dlls/user32/clipboard.c:667 */
+WINAPI INT wine32b_user32_GetClipboardFormatNameW(UINT format, LPWSTR buffer, INT maxlen) /* ../dlls/user32/clipboard.c:667 */
 {
 	INT return_value;
 	TRACE("Enter GetClipboardFormatNameW\n");
@@ -8498,6 +8778,7 @@ WINAPI INT wine32b_user32_GetClipboardFormatNameW(UINT  format, LPWSTR  buffer, 
 
 extern WINAPI void wine32a_user32_GetClipboardFormatNameW(void);  /* ../dlls/user32/clipboard.c:667 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetClipboardFormatNameW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8528,6 +8809,7 @@ WINAPI HWND wine32b_user32_GetClipboardOwner(void) /* ../dlls/user32/clipboard.c
 
 extern WINAPI void wine32a_user32_GetClipboardOwner(void);  /* ../dlls/user32/clipboard.c:769 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetClipboardOwner,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -8555,6 +8837,7 @@ WINAPI DWORD wine32b_user32_GetClipboardSequenceNumber(void) /* ../dlls/user32/c
 
 extern WINAPI void wine32a_user32_GetClipboardSequenceNumber(void);  /* ../dlls/user32/clipboard.c:1126 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetClipboardSequenceNumber,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -8582,6 +8865,7 @@ WINAPI HWND wine32b_user32_GetClipboardViewer(void) /* ../dlls/user32/clipboard.
 
 extern WINAPI void wine32a_user32_GetClipboardViewer(void);  /* ../dlls/user32/clipboard.c:832 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetClipboardViewer,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -8598,7 +8882,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetClipboardViewer,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetComboBoxInfo(HWND  hwndCombo, PCOMBOBOXINFO  pcbi) /* ../dlls/user32/combo.c:2181 */
+WINAPI BOOL wine32b_user32_GetComboBoxInfo(HWND hwndCombo, PCOMBOBOXINFO pcbi) /* ../dlls/user32/combo.c:2181 */
 {
 	BOOL return_value;
 	TRACE("Enter GetComboBoxInfo\n");
@@ -8609,6 +8893,7 @@ WINAPI BOOL wine32b_user32_GetComboBoxInfo(HWND  hwndCombo, PCOMBOBOXINFO  pcbi)
 
 extern WINAPI void wine32a_user32_GetComboBoxInfo(void);  /* ../dlls/user32/combo.c:2181 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetComboBoxInfo,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8627,7 +8912,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetComboBoxInfo,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetCurrentInputMessageSource(INPUT_MESSAGE_SOURCE*  source) /* ../dlls/user32/message.c:4151 */
+WINAPI BOOL wine32b_user32_GetCurrentInputMessageSource(INPUT_MESSAGE_SOURCE* source) /* ../dlls/user32/message.c:4151 */
 {
 	BOOL return_value;
 	TRACE("Enter GetCurrentInputMessageSource\n");
@@ -8638,6 +8923,7 @@ WINAPI BOOL wine32b_user32_GetCurrentInputMessageSource(INPUT_MESSAGE_SOURCE*  s
 
 extern WINAPI void wine32a_user32_GetCurrentInputMessageSource(void);  /* ../dlls/user32/message.c:4151 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetCurrentInputMessageSource,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8666,6 +8952,7 @@ WINAPI HCURSOR wine32b_user32_GetCursor(void) /* ../dlls/user32/cursoricon.c:209
 
 extern WINAPI void wine32a_user32_GetCursor(void);  /* ../dlls/user32/cursoricon.c:2099 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetCursor,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -8682,7 +8969,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetCursor,
 	"ret \n"
 )
 
-WINAPI HCURSOR wine32b_user32_GetCursorFrameInfo(HCURSOR  hCursor, DWORD  reserved, DWORD  istep, DWORD*  rate_jiffies, DWORD*  num_steps) /* ../dlls/user32/cursoricon.c:2323 */
+WINAPI HCURSOR wine32b_user32_GetCursorFrameInfo(HCURSOR hCursor, DWORD reserved, DWORD istep, DWORD* rate_jiffies, DWORD* num_steps) /* ../dlls/user32/cursoricon.c:2323 */
 {
 	HCURSOR return_value;
 	TRACE("Enter GetCursorFrameInfo\n");
@@ -8693,6 +8980,7 @@ WINAPI HCURSOR wine32b_user32_GetCursorFrameInfo(HCURSOR  hCursor, DWORD  reserv
 
 extern WINAPI void wine32a_user32_GetCursorFrameInfo(void);  /* ../dlls/user32/cursoricon.c:2323 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetCursorFrameInfo,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8713,7 +9001,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetCursorFrameInfo,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetCursorInfo(PCURSORINFO  pci) /* ../dlls/user32/input.c:285 */
+WINAPI BOOL wine32b_user32_GetCursorInfo(PCURSORINFO pci) /* ../dlls/user32/input.c:285 */
 {
 	BOOL return_value;
 	TRACE("Enter GetCursorInfo\n");
@@ -8724,6 +9012,7 @@ WINAPI BOOL wine32b_user32_GetCursorInfo(PCURSORINFO  pci) /* ../dlls/user32/inp
 
 extern WINAPI void wine32a_user32_GetCursorInfo(void);  /* ../dlls/user32/input.c:285 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetCursorInfo,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8741,7 +9030,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetCursorInfo,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetCursorPos(POINT*  pt) /* ../dlls/user32/input.c:250 */
+WINAPI BOOL wine32b_user32_GetCursorPos(POINT* pt) /* ../dlls/user32/input.c:250 */
 {
 	BOOL return_value;
 	TRACE("Enter GetCursorPos\n");
@@ -8752,6 +9041,7 @@ WINAPI BOOL wine32b_user32_GetCursorPos(POINT*  pt) /* ../dlls/user32/input.c:25
 
 extern WINAPI void wine32a_user32_GetCursorPos(void);  /* ../dlls/user32/input.c:250 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetCursorPos,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8769,7 +9059,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetCursorPos,
 	"ret \n"
 )
 
-WINAPI HDC wine32b_user32_GetDC(HWND  hwnd) /* ../dlls/user32/painting.c:1135 */
+WINAPI HDC wine32b_user32_GetDC(HWND hwnd) /* ../dlls/user32/painting.c:1135 */
 {
 	HDC return_value;
 	TRACE("Enter GetDC\n");
@@ -8780,6 +9070,7 @@ WINAPI HDC wine32b_user32_GetDC(HWND  hwnd) /* ../dlls/user32/painting.c:1135 */
 
 extern WINAPI void wine32a_user32_GetDC(void);  /* ../dlls/user32/painting.c:1135 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetDC,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8797,7 +9088,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetDC,
 	"ret \n"
 )
 
-WINAPI HDC wine32b_user32_GetDCEx(HWND  hwnd, HRGN  hrgnClip, DWORD  flags) /* ../dlls/user32/painting.c:983 */
+WINAPI HDC wine32b_user32_GetDCEx(HWND hwnd, HRGN hrgnClip, DWORD flags) /* ../dlls/user32/painting.c:983 */
 {
 	HDC return_value;
 	TRACE("Enter GetDCEx\n");
@@ -8808,6 +9099,7 @@ WINAPI HDC wine32b_user32_GetDCEx(HWND  hwnd, HRGN  hrgnClip, DWORD  flags) /* .
 
 extern WINAPI void wine32a_user32_GetDCEx(void);  /* ../dlls/user32/painting.c:983 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetDCEx,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8838,6 +9130,7 @@ WINAPI HWND wine32b_user32_GetDesktopWindow(void) /* ../dlls/user32/win.c:2065 *
 
 extern WINAPI void wine32a_user32_GetDesktopWindow(void);  /* ../dlls/user32/win.c:2065 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetDesktopWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -8865,6 +9158,7 @@ WINAPI DWORD wine32b_user32_GetDialogBaseUnits(void) /* ../dlls/user32/dialog.c:
 
 extern WINAPI void wine32a_user32_GetDialogBaseUnits(void);  /* ../dlls/user32/dialog.c:1519 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetDialogBaseUnits,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -8881,7 +9175,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetDialogBaseUnits,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetDisplayAutoRotationPreferences(ORIENTATION_PREFERENCE*  orientation) /* ../dlls/user32/sysparams.c:4280 */
+WINAPI BOOL wine32b_user32_GetDisplayAutoRotationPreferences(ORIENTATION_PREFERENCE* orientation) /* ../dlls/user32/sysparams.c:4280 */
 {
 	BOOL return_value;
 	TRACE("Enter GetDisplayAutoRotationPreferences\n");
@@ -8892,6 +9186,7 @@ WINAPI BOOL wine32b_user32_GetDisplayAutoRotationPreferences(ORIENTATION_PREFERE
 
 extern WINAPI void wine32a_user32_GetDisplayAutoRotationPreferences(void);  /* ../dlls/user32/sysparams.c:4280 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetDisplayAutoRotationPreferences,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8909,7 +9204,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetDisplayAutoRotationPreferences,
 	"ret \n"
 )
 
-WINAPI LONG wine32b_user32_GetDisplayConfigBufferSizes(UINT32  flags, UINT32*  num_path_info, UINT32*  num_mode_info) /* ../dlls/user32/misc.c:551 */
+WINAPI LONG wine32b_user32_GetDisplayConfigBufferSizes(UINT32 flags, UINT32* num_path_info, UINT32* num_mode_info) /* ../dlls/user32/misc.c:551 */
 {
 	LONG return_value;
 	TRACE("Enter GetDisplayConfigBufferSizes\n");
@@ -8920,6 +9215,7 @@ WINAPI LONG wine32b_user32_GetDisplayConfigBufferSizes(UINT32  flags, UINT32*  n
 
 extern WINAPI void wine32a_user32_GetDisplayConfigBufferSizes(void);  /* ../dlls/user32/misc.c:551 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetDisplayConfigBufferSizes,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8939,7 +9235,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetDisplayConfigBufferSizes,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetDlgCtrlID(HWND  hwnd) /* ../dlls/user32/dialog.c:1316 */
+WINAPI INT wine32b_user32_GetDlgCtrlID(HWND hwnd) /* ../dlls/user32/dialog.c:1316 */
 {
 	INT return_value;
 	TRACE("Enter GetDlgCtrlID\n");
@@ -8950,6 +9246,7 @@ WINAPI INT wine32b_user32_GetDlgCtrlID(HWND  hwnd) /* ../dlls/user32/dialog.c:13
 
 extern WINAPI void wine32a_user32_GetDlgCtrlID(void);  /* ../dlls/user32/dialog.c:1316 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetDlgCtrlID,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8967,7 +9264,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetDlgCtrlID,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_GetDlgItem(HWND  hwndDlg, INT  id) /* ../dlls/user32/dialog.c:1325 */
+WINAPI HWND wine32b_user32_GetDlgItem(HWND hwndDlg, INT id) /* ../dlls/user32/dialog.c:1325 */
 {
 	HWND return_value;
 	TRACE("Enter GetDlgItem\n");
@@ -8978,6 +9275,7 @@ WINAPI HWND wine32b_user32_GetDlgItem(HWND  hwndDlg, INT  id) /* ../dlls/user32/
 
 extern WINAPI void wine32a_user32_GetDlgItem(void);  /* ../dlls/user32/dialog.c:1325 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetDlgItem,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -8996,7 +9294,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetDlgItem,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_GetDlgItemInt(HWND  hwnd, INT  id, BOOL*  translated, BOOL  fSigned) /* ../dlls/user32/dialog.c:1422 */
+WINAPI UINT wine32b_user32_GetDlgItemInt(HWND hwnd, INT id, BOOL* translated, BOOL fSigned) /* ../dlls/user32/dialog.c:1422 */
 {
 	UINT return_value;
 	TRACE("Enter GetDlgItemInt\n");
@@ -9007,6 +9305,7 @@ WINAPI UINT wine32b_user32_GetDlgItemInt(HWND  hwnd, INT  id, BOOL*  translated,
 
 extern WINAPI void wine32a_user32_GetDlgItemInt(void);  /* ../dlls/user32/dialog.c:1422 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetDlgItemInt,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9027,7 +9326,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetDlgItemInt,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_GetDlgItemTextA(HWND  hwnd, INT  id, LPSTR  str, INT  len) /* ../dlls/user32/dialog.c:1385 */
+WINAPI UINT wine32b_user32_GetDlgItemTextA(HWND hwnd, INT id, LPSTR str, INT len) /* ../dlls/user32/dialog.c:1385 */
 {
 	UINT return_value;
 	TRACE("Enter GetDlgItemTextA\n");
@@ -9038,6 +9337,7 @@ WINAPI UINT wine32b_user32_GetDlgItemTextA(HWND  hwnd, INT  id, LPSTR  str, INT 
 
 extern WINAPI void wine32a_user32_GetDlgItemTextA(void);  /* ../dlls/user32/dialog.c:1385 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetDlgItemTextA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9058,7 +9358,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetDlgItemTextA,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_GetDlgItemTextW(HWND  hwnd, INT  id, LPWSTR  str, INT  len) /* ../dlls/user32/dialog.c:1396 */
+WINAPI UINT wine32b_user32_GetDlgItemTextW(HWND hwnd, INT id, LPWSTR str, INT len) /* ../dlls/user32/dialog.c:1396 */
 {
 	UINT return_value;
 	TRACE("Enter GetDlgItemTextW\n");
@@ -9069,6 +9369,7 @@ WINAPI UINT wine32b_user32_GetDlgItemTextW(HWND  hwnd, INT  id, LPWSTR  str, INT
 
 extern WINAPI void wine32a_user32_GetDlgItemTextW(void);  /* ../dlls/user32/dialog.c:1396 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetDlgItemTextW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9100,6 +9401,7 @@ WINAPI UINT wine32b_user32_GetDoubleClickTime(void) /* ../dlls/user32/sysparams.
 
 extern WINAPI void wine32a_user32_GetDoubleClickTime(void);  /* ../dlls/user32/sysparams.c:3024 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetDoubleClickTime,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -9116,7 +9418,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetDoubleClickTime,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetDpiForMonitorInternal(HMONITOR  monitor, UINT  type, UINT*  x, UINT*  y) /* ../dlls/user32/sysparams.c:3533 */
+WINAPI BOOL wine32b_user32_GetDpiForMonitorInternal(HMONITOR monitor, UINT type, UINT* x, UINT* y) /* ../dlls/user32/sysparams.c:3533 */
 {
 	BOOL return_value;
 	TRACE("Enter GetDpiForMonitorInternal\n");
@@ -9127,6 +9429,7 @@ WINAPI BOOL wine32b_user32_GetDpiForMonitorInternal(HMONITOR  monitor, UINT  typ
 
 extern WINAPI void wine32a_user32_GetDpiForMonitorInternal(void);  /* ../dlls/user32/sysparams.c:3533 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetDpiForMonitorInternal,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9158,6 +9461,7 @@ WINAPI UINT wine32b_user32_GetDpiForSystem(void) /* ../dlls/user32/sysparams.c:3
 
 extern WINAPI void wine32a_user32_GetDpiForSystem(void);  /* ../dlls/user32/sysparams.c:3524 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetDpiForSystem,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -9174,7 +9478,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetDpiForSystem,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_GetDpiForWindow(HWND  hwnd) /* ../dlls/user32/win.c:2270 */
+WINAPI UINT wine32b_user32_GetDpiForWindow(HWND hwnd) /* ../dlls/user32/win.c:2270 */
 {
 	UINT return_value;
 	TRACE("Enter GetDpiForWindow\n");
@@ -9185,6 +9489,7 @@ WINAPI UINT wine32b_user32_GetDpiForWindow(HWND  hwnd) /* ../dlls/user32/win.c:2
 
 extern WINAPI void wine32a_user32_GetDpiForWindow(void);  /* ../dlls/user32/win.c:2270 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetDpiForWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9213,6 +9518,7 @@ WINAPI HWND wine32b_user32_GetFocus(void) /* ../dlls/user32/focus.c:349 */
 
 extern WINAPI void wine32a_user32_GetFocus(void);  /* ../dlls/user32/focus.c:349 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetFocus,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -9240,6 +9546,7 @@ WINAPI HWND wine32b_user32_GetForegroundWindow(void) /* ../dlls/user32/focus.c:3
 
 extern WINAPI void wine32a_user32_GetForegroundWindow(void);  /* ../dlls/user32/focus.c:366 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetForegroundWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -9256,7 +9563,37 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetForegroundWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetGestureConfig(HWND  hwnd, DWORD  reserved, DWORD  flags, UINT*  count, GESTURECONFIG*  config, UINT  size) /* ../dlls/user32/misc.c:513 */
+WINAPI BOOL wine32b_user32_GetGUIThreadInfo(DWORD id, GUITHREADINFO* info) /* ../dlls/user32/message.c:4604 */
+{
+	BOOL return_value;
+	TRACE("Enter GetGUIThreadInfo\n");
+	return_value = pGetGUIThreadInfo(id, info);
+	TRACE("Leave GetGUIThreadInfo\n");
+	return return_value;
+}
+
+extern WINAPI void wine32a_user32_GetGUIThreadInfo(void);  /* ../dlls/user32/message.c:4604 */
+__ASM_GLOBAL_FUNC(wine32a_user32_GetGUIThreadInfo,
+
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32_GetGUIThreadInfo") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $8, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+WINAPI BOOL wine32b_user32_GetGestureConfig(HWND hwnd, DWORD reserved, DWORD flags, UINT* count, GESTURECONFIG* config, UINT size) /* ../dlls/user32/misc.c:513 */
 {
 	BOOL return_value;
 	TRACE("Enter GetGestureConfig\n");
@@ -9267,6 +9604,7 @@ WINAPI BOOL wine32b_user32_GetGestureConfig(HWND  hwnd, DWORD  reserved, DWORD  
 
 extern WINAPI void wine32a_user32_GetGestureConfig(void);  /* ../dlls/user32/misc.c:513 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetGestureConfig,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9287,7 +9625,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetGestureConfig,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetGestureInfo(HGESTUREINFO  handle, PGESTUREINFO  ptr) /* ../dlls/user32/win.c:4193 */
+WINAPI BOOL wine32b_user32_GetGestureInfo(HGESTUREINFO handle, PGESTUREINFO ptr) /* ../dlls/user32/win.c:4193 */
 {
 	BOOL return_value;
 	TRACE("Enter GetGestureInfo\n");
@@ -9298,6 +9636,7 @@ WINAPI BOOL wine32b_user32_GetGestureInfo(HGESTUREINFO  handle, PGESTUREINFO  pt
 
 extern WINAPI void wine32a_user32_GetGestureInfo(void);  /* ../dlls/user32/win.c:4193 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetGestureInfo,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9316,36 +9655,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetGestureInfo,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetGUIThreadInfo(DWORD  id, GUITHREADINFO*  info) /* ../dlls/user32/message.c:4604 */
-{
-	BOOL return_value;
-	TRACE("Enter GetGUIThreadInfo\n");
-	return_value = pGetGUIThreadInfo(id, info);
-	TRACE("Leave GetGUIThreadInfo\n");
-	return return_value;
-}
-
-extern WINAPI void wine32a_user32_GetGUIThreadInfo(void);  /* ../dlls/user32/message.c:4604 */
-__ASM_GLOBAL_FUNC(wine32a_user32_GetGUIThreadInfo,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_user32_GetGUIThreadInfo") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-WINAPI DWORD wine32b_user32_GetGuiResources(HANDLE  hProcess, DWORD  uiFlags) /* ../dlls/user32/resource.c:326 */
+WINAPI DWORD wine32b_user32_GetGuiResources(HANDLE hProcess, DWORD uiFlags) /* ../dlls/user32/resource.c:326 */
 {
 	DWORD return_value;
 	TRACE("Enter GetGuiResources\n");
@@ -9356,6 +9666,7 @@ WINAPI DWORD wine32b_user32_GetGuiResources(HANDLE  hProcess, DWORD  uiFlags) /*
 
 extern WINAPI void wine32a_user32_GetGuiResources(void);  /* ../dlls/user32/resource.c:326 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetGuiResources,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9374,7 +9685,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetGuiResources,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetIconInfo(HICON  hIcon, PICONINFO  iconinfo) /* ../dlls/user32/cursoricon.c:2386 */
+WINAPI BOOL wine32b_user32_GetIconInfo(HICON hIcon, PICONINFO iconinfo) /* ../dlls/user32/cursoricon.c:2386 */
 {
 	BOOL return_value;
 	TRACE("Enter GetIconInfo\n");
@@ -9385,6 +9696,7 @@ WINAPI BOOL wine32b_user32_GetIconInfo(HICON  hIcon, PICONINFO  iconinfo) /* ../
 
 extern WINAPI void wine32a_user32_GetIconInfo(void);  /* ../dlls/user32/cursoricon.c:2386 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetIconInfo,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9403,7 +9715,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetIconInfo,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetIconInfoExA(HICON  icon, ICONINFOEXA*  info) /* ../dlls/user32/cursoricon.c:2403 */
+WINAPI BOOL wine32b_user32_GetIconInfoExA(HICON icon, ICONINFOEXA* info) /* ../dlls/user32/cursoricon.c:2403 */
 {
 	BOOL return_value;
 	TRACE("Enter GetIconInfoExA\n");
@@ -9414,6 +9726,7 @@ WINAPI BOOL wine32b_user32_GetIconInfoExA(HICON  icon, ICONINFOEXA*  info) /* ..
 
 extern WINAPI void wine32a_user32_GetIconInfoExA(void);  /* ../dlls/user32/cursoricon.c:2403 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetIconInfoExA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9432,7 +9745,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetIconInfoExA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetIconInfoExW(HICON  icon, ICONINFOEXW*  info) /* ../dlls/user32/cursoricon.c:2428 */
+WINAPI BOOL wine32b_user32_GetIconInfoExW(HICON icon, ICONINFOEXW* info) /* ../dlls/user32/cursoricon.c:2428 */
 {
 	BOOL return_value;
 	TRACE("Enter GetIconInfoExW\n");
@@ -9443,6 +9756,7 @@ WINAPI BOOL wine32b_user32_GetIconInfoExW(HICON  icon, ICONINFOEXW*  info) /* ..
 
 extern WINAPI void wine32a_user32_GetIconInfoExW(void);  /* ../dlls/user32/cursoricon.c:2428 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetIconInfoExW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9472,6 +9786,7 @@ WINAPI BOOL wine32b_user32_GetInputState(void) /* ../dlls/user32/input.c:482 */
 
 extern WINAPI void wine32a_user32_GetInputState(void);  /* ../dlls/user32/input.c:482 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetInputState,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -9488,7 +9803,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetInputState,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_GetInternalWindowPos(HWND  hwnd, LPRECT  rectWnd, LPPOINT  ptIcon) /* ../dlls/user32/winpos.c:1241 */
+WINAPI UINT wine32b_user32_GetInternalWindowPos(HWND hwnd, LPRECT rectWnd, LPPOINT ptIcon) /* ../dlls/user32/winpos.c:1241 */
 {
 	UINT return_value;
 	TRACE("Enter GetInternalWindowPos\n");
@@ -9499,6 +9814,7 @@ WINAPI UINT wine32b_user32_GetInternalWindowPos(HWND  hwnd, LPRECT  rectWnd, LPP
 
 extern WINAPI void wine32a_user32_GetInternalWindowPos(void);  /* ../dlls/user32/winpos.c:1241 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetInternalWindowPos,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9529,6 +9845,7 @@ WINAPI UINT wine32b_user32_GetKBCodePage(void) /* ../dlls/user32/input.c:777 */
 
 extern WINAPI void wine32a_user32_GetKBCodePage(void);  /* ../dlls/user32/input.c:777 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetKBCodePage,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -9545,7 +9862,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetKBCodePage,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetKeyNameTextA(LONG  lParam, LPSTR  lpBuffer, INT  nSize) /* ../dlls/user32/input.c:822 */
+WINAPI INT wine32b_user32_GetKeyNameTextA(LONG lParam, LPSTR lpBuffer, INT nSize) /* ../dlls/user32/input.c:822 */
 {
 	INT return_value;
 	TRACE("Enter GetKeyNameTextA\n");
@@ -9556,6 +9873,7 @@ WINAPI INT wine32b_user32_GetKeyNameTextA(LONG  lParam, LPSTR  lpBuffer, INT  nS
 
 extern WINAPI void wine32a_user32_GetKeyNameTextA(void);  /* ../dlls/user32/input.c:822 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetKeyNameTextA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9575,7 +9893,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetKeyNameTextA,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetKeyNameTextW(LONG  lParam, LPWSTR  lpBuffer, INT  nSize) /* ../dlls/user32/input.c:846 */
+WINAPI INT wine32b_user32_GetKeyNameTextW(LONG lParam, LPWSTR lpBuffer, INT nSize) /* ../dlls/user32/input.c:846 */
 {
 	INT return_value;
 	TRACE("Enter GetKeyNameTextW\n");
@@ -9586,6 +9904,7 @@ WINAPI INT wine32b_user32_GetKeyNameTextW(LONG  lParam, LPWSTR  lpBuffer, INT  n
 
 extern WINAPI void wine32a_user32_GetKeyNameTextW(void);  /* ../dlls/user32/input.c:846 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetKeyNameTextW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9605,7 +9924,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetKeyNameTextW,
 	"ret \n"
 )
 
-WINAPI SHORT wine32b_user32_GetKeyState(INT  vkey) /* ../dlls/user32/input.c:554 */
+WINAPI SHORT wine32b_user32_GetKeyState(INT vkey) /* ../dlls/user32/input.c:554 */
 {
 	SHORT return_value;
 	TRACE("Enter GetKeyState\n");
@@ -9616,6 +9935,7 @@ WINAPI SHORT wine32b_user32_GetKeyState(INT  vkey) /* ../dlls/user32/input.c:554
 
 extern WINAPI void wine32a_user32_GetKeyState(void);  /* ../dlls/user32/input.c:554 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetKeyState,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9633,7 +9953,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetKeyState,
 	"ret \n"
 )
 
-WINAPI HKL wine32b_user32_GetKeyboardLayout(DWORD  thread_id) /* ../dlls/user32/input.c:789 */
+WINAPI HKL wine32b_user32_GetKeyboardLayout(DWORD thread_id) /* ../dlls/user32/input.c:789 */
 {
 	HKL return_value;
 	TRACE("Enter GetKeyboardLayout\n");
@@ -9644,6 +9964,7 @@ WINAPI HKL wine32b_user32_GetKeyboardLayout(DWORD  thread_id) /* ../dlls/user32/
 
 extern WINAPI void wine32a_user32_GetKeyboardLayout(void);  /* ../dlls/user32/input.c:789 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetKeyboardLayout,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9661,7 +9982,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetKeyboardLayout,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_GetKeyboardLayoutList(INT  nBuff, HKL*  layouts) /* ../dlls/user32/input.c:923 */
+WINAPI UINT wine32b_user32_GetKeyboardLayoutList(INT nBuff, HKL* layouts) /* ../dlls/user32/input.c:923 */
 {
 	UINT return_value;
 	TRACE("Enter GetKeyboardLayoutList\n");
@@ -9672,6 +9993,7 @@ WINAPI UINT wine32b_user32_GetKeyboardLayoutList(INT  nBuff, HKL*  layouts) /* .
 
 extern WINAPI void wine32a_user32_GetKeyboardLayoutList(void);  /* ../dlls/user32/input.c:923 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetKeyboardLayoutList,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9690,7 +10012,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetKeyboardLayoutList,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetKeyboardLayoutNameA(LPSTR  pszKLID) /* ../dlls/user32/input.c:797 */
+WINAPI BOOL wine32b_user32_GetKeyboardLayoutNameA(LPSTR pszKLID) /* ../dlls/user32/input.c:797 */
 {
 	BOOL return_value;
 	TRACE("Enter GetKeyboardLayoutNameA\n");
@@ -9701,6 +10023,7 @@ WINAPI BOOL wine32b_user32_GetKeyboardLayoutNameA(LPSTR  pszKLID) /* ../dlls/use
 
 extern WINAPI void wine32a_user32_GetKeyboardLayoutNameA(void);  /* ../dlls/user32/input.c:797 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetKeyboardLayoutNameA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9718,7 +10041,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetKeyboardLayoutNameA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetKeyboardLayoutNameW(LPWSTR  pwszKLID) /* ../dlls/user32/input.c:809 */
+WINAPI BOOL wine32b_user32_GetKeyboardLayoutNameW(LPWSTR pwszKLID) /* ../dlls/user32/input.c:809 */
 {
 	BOOL return_value;
 	TRACE("Enter GetKeyboardLayoutNameW\n");
@@ -9729,6 +10052,7 @@ WINAPI BOOL wine32b_user32_GetKeyboardLayoutNameW(LPWSTR  pwszKLID) /* ../dlls/u
 
 extern WINAPI void wine32a_user32_GetKeyboardLayoutNameW(void);  /* ../dlls/user32/input.c:809 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetKeyboardLayoutNameW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9746,7 +10070,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetKeyboardLayoutNameW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetKeyboardState(LPBYTE  state) /* ../dlls/user32/input.c:573 */
+WINAPI BOOL wine32b_user32_GetKeyboardState(LPBYTE state) /* ../dlls/user32/input.c:573 */
 {
 	BOOL return_value;
 	TRACE("Enter GetKeyboardState\n");
@@ -9757,6 +10081,7 @@ WINAPI BOOL wine32b_user32_GetKeyboardState(LPBYTE  state) /* ../dlls/user32/inp
 
 extern WINAPI void wine32a_user32_GetKeyboardState(void);  /* ../dlls/user32/input.c:573 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetKeyboardState,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9774,7 +10099,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetKeyboardState,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetKeyboardType(INT  nTypeFlag) /* ../dlls/user32/input.c:690 */
+WINAPI INT wine32b_user32_GetKeyboardType(INT nTypeFlag) /* ../dlls/user32/input.c:690 */
 {
 	INT return_value;
 	TRACE("Enter GetKeyboardType\n");
@@ -9785,6 +10110,7 @@ WINAPI INT wine32b_user32_GetKeyboardType(INT  nTypeFlag) /* ../dlls/user32/inpu
 
 extern WINAPI void wine32a_user32_GetKeyboardType(void);  /* ../dlls/user32/input.c:690 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetKeyboardType,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9802,7 +10128,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetKeyboardType,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_GetLastActivePopup(HWND  hwnd) /* ../dlls/user32/win.c:3452 */
+WINAPI HWND wine32b_user32_GetLastActivePopup(HWND hwnd) /* ../dlls/user32/win.c:3452 */
 {
 	HWND return_value;
 	TRACE("Enter GetLastActivePopup\n");
@@ -9813,6 +10139,7 @@ WINAPI HWND wine32b_user32_GetLastActivePopup(HWND  hwnd) /* ../dlls/user32/win.
 
 extern WINAPI void wine32a_user32_GetLastActivePopup(void);  /* ../dlls/user32/win.c:3452 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetLastActivePopup,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9830,7 +10157,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetLastActivePopup,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetLastInputInfo(PLASTINPUTINFO  plii) /* ../dlls/user32/input.c:502 */
+WINAPI BOOL wine32b_user32_GetLastInputInfo(PLASTINPUTINFO plii) /* ../dlls/user32/input.c:502 */
 {
 	BOOL return_value;
 	TRACE("Enter GetLastInputInfo\n");
@@ -9841,6 +10168,7 @@ WINAPI BOOL wine32b_user32_GetLastInputInfo(PLASTINPUTINFO  plii) /* ../dlls/use
 
 extern WINAPI void wine32a_user32_GetLastInputInfo(void);  /* ../dlls/user32/input.c:502 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetLastInputInfo,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9858,7 +10186,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetLastInputInfo,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetLayeredWindowAttributes(HWND  hwnd, COLORREF*  key, BYTE*  alpha, DWORD*  flags) /* ../dlls/user32/win.c:3928 */
+WINAPI BOOL wine32b_user32_GetLayeredWindowAttributes(HWND hwnd, COLORREF* key, BYTE* alpha, DWORD* flags) /* ../dlls/user32/win.c:3928 */
 {
 	BOOL return_value;
 	TRACE("Enter GetLayeredWindowAttributes\n");
@@ -9869,6 +10197,7 @@ WINAPI BOOL wine32b_user32_GetLayeredWindowAttributes(HWND  hwnd, COLORREF*  key
 
 extern WINAPI void wine32a_user32_GetLayeredWindowAttributes(void);  /* ../dlls/user32/win.c:3928 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetLayeredWindowAttributes,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9889,7 +10218,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetLayeredWindowAttributes,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_GetListBoxInfo(HWND  hwnd) /* ../dlls/user32/listbox.c:3263 */
+WINAPI DWORD wine32b_user32_GetListBoxInfo(HWND hwnd) /* ../dlls/user32/listbox.c:3263 */
 {
 	DWORD return_value;
 	TRACE("Enter GetListBoxInfo\n");
@@ -9900,6 +10229,7 @@ WINAPI DWORD wine32b_user32_GetListBoxInfo(HWND  hwnd) /* ../dlls/user32/listbox
 
 extern WINAPI void wine32a_user32_GetListBoxInfo(void);  /* ../dlls/user32/listbox.c:3263 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetListBoxInfo,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9917,7 +10247,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetListBoxInfo,
 	"ret \n"
 )
 
-WINAPI HMENU wine32b_user32_GetMenu(HWND  hWnd) /* ../dlls/user32/menu.c:4362 */
+WINAPI HMENU wine32b_user32_GetMenu(HWND hWnd) /* ../dlls/user32/menu.c:4362 */
 {
 	HMENU return_value;
 	TRACE("Enter GetMenu\n");
@@ -9928,6 +10258,7 @@ WINAPI HMENU wine32b_user32_GetMenu(HWND  hWnd) /* ../dlls/user32/menu.c:4362 */
 
 extern WINAPI void wine32a_user32_GetMenu(void);  /* ../dlls/user32/menu.c:4362 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMenu,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9945,7 +10276,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetMenu,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetMenuBarInfo(HWND  hwnd, LONG  idObject, LONG  idItem, PMENUBARINFO  pmbi) /* ../dlls/user32/menu.c:4372 */
+WINAPI BOOL wine32b_user32_GetMenuBarInfo(HWND hwnd, LONG idObject, LONG idItem, PMENUBARINFO pmbi) /* ../dlls/user32/menu.c:4372 */
 {
 	BOOL return_value;
 	TRACE("Enter GetMenuBarInfo\n");
@@ -9956,6 +10287,7 @@ WINAPI BOOL wine32b_user32_GetMenuBarInfo(HWND  hwnd, LONG  idObject, LONG  idIt
 
 extern WINAPI void wine32a_user32_GetMenuBarInfo(void);  /* ../dlls/user32/menu.c:4372 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuBarInfo,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -9987,6 +10319,7 @@ WINAPI DWORD wine32b_user32_GetMenuCheckMarkDimensions(void) /* ../dlls/user32/m
 
 extern WINAPI void wine32a_user32_GetMenuCheckMarkDimensions(void);  /* ../dlls/user32/menu.c:4209 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuCheckMarkDimensions,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -10003,7 +10336,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuCheckMarkDimensions,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_GetMenuContextHelpId(HMENU  hMenu) /* ../dlls/user32/menu.c:5460 */
+WINAPI DWORD wine32b_user32_GetMenuContextHelpId(HMENU hMenu) /* ../dlls/user32/menu.c:5460 */
 {
 	DWORD return_value;
 	TRACE("Enter GetMenuContextHelpId\n");
@@ -10014,6 +10347,7 @@ WINAPI DWORD wine32b_user32_GetMenuContextHelpId(HMENU  hMenu) /* ../dlls/user32
 
 extern WINAPI void wine32a_user32_GetMenuContextHelpId(void);  /* ../dlls/user32/menu.c:5460 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuContextHelpId,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10031,7 +10365,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuContextHelpId,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_GetMenuDefaultItem(HMENU  hmenu, UINT  bypos, UINT  flags) /* ../dlls/user32/menu.c:5166 */
+WINAPI UINT wine32b_user32_GetMenuDefaultItem(HMENU hmenu, UINT bypos, UINT flags) /* ../dlls/user32/menu.c:5166 */
 {
 	UINT return_value;
 	TRACE("Enter GetMenuDefaultItem\n");
@@ -10042,6 +10376,7 @@ WINAPI UINT wine32b_user32_GetMenuDefaultItem(HMENU  hmenu, UINT  bypos, UINT  f
 
 extern WINAPI void wine32a_user32_GetMenuDefaultItem(void);  /* ../dlls/user32/menu.c:5166 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuDefaultItem,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10061,7 +10396,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuDefaultItem,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetMenuInfo(HMENU  hMenu, LPMENUINFO  lpmi) /* ../dlls/user32/menu.c:5407 */
+WINAPI BOOL wine32b_user32_GetMenuInfo(HMENU hMenu, LPMENUINFO lpmi) /* ../dlls/user32/menu.c:5407 */
 {
 	BOOL return_value;
 	TRACE("Enter GetMenuInfo\n");
@@ -10072,6 +10407,7 @@ WINAPI BOOL wine32b_user32_GetMenuInfo(HMENU  hMenu, LPMENUINFO  lpmi) /* ../dll
 
 extern WINAPI void wine32a_user32_GetMenuInfo(void);  /* ../dlls/user32/menu.c:5407 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuInfo,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10090,7 +10426,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuInfo,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetMenuItemCount(HMENU  hMenu) /* ../dlls/user32/menu.c:3923 */
+WINAPI INT wine32b_user32_GetMenuItemCount(HMENU hMenu) /* ../dlls/user32/menu.c:3923 */
 {
 	INT return_value;
 	TRACE("Enter GetMenuItemCount\n");
@@ -10101,6 +10437,7 @@ WINAPI INT wine32b_user32_GetMenuItemCount(HMENU  hMenu) /* ../dlls/user32/menu.
 
 extern WINAPI void wine32a_user32_GetMenuItemCount(void);  /* ../dlls/user32/menu.c:3923 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuItemCount,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10118,7 +10455,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuItemCount,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_GetMenuItemID(HMENU  hMenu, INT  nPos) /* ../dlls/user32/menu.c:3940 */
+WINAPI UINT wine32b_user32_GetMenuItemID(HMENU hMenu, INT nPos) /* ../dlls/user32/menu.c:3940 */
 {
 	UINT return_value;
 	TRACE("Enter GetMenuItemID\n");
@@ -10129,6 +10466,7 @@ WINAPI UINT wine32b_user32_GetMenuItemID(HMENU  hMenu, INT  nPos) /* ../dlls/use
 
 extern WINAPI void wine32a_user32_GetMenuItemID(void);  /* ../dlls/user32/menu.c:3940 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuItemID,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10147,7 +10485,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuItemID,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetMenuItemInfoA(HMENU  hmenu, UINT  item, BOOL  bypos, LPMENUITEMINFOA  lpmii) /* ../dlls/user32/menu.c:4849 */
+WINAPI BOOL wine32b_user32_GetMenuItemInfoA(HMENU hmenu, UINT item, BOOL bypos, LPMENUITEMINFOA lpmii) /* ../dlls/user32/menu.c:4849 */
 {
 	BOOL return_value;
 	TRACE("Enter GetMenuItemInfoA\n");
@@ -10158,6 +10496,7 @@ WINAPI BOOL wine32b_user32_GetMenuItemInfoA(HMENU  hmenu, UINT  item, BOOL  bypo
 
 extern WINAPI void wine32a_user32_GetMenuItemInfoA(void);  /* ../dlls/user32/menu.c:4849 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuItemInfoA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10178,7 +10517,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuItemInfoA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetMenuItemInfoW(HMENU  hmenu, UINT  item, BOOL  bypos, LPMENUITEMINFOW  lpmii) /* ../dlls/user32/menu.c:4871 */
+WINAPI BOOL wine32b_user32_GetMenuItemInfoW(HMENU hmenu, UINT item, BOOL bypos, LPMENUITEMINFOW lpmii) /* ../dlls/user32/menu.c:4871 */
 {
 	BOOL return_value;
 	TRACE("Enter GetMenuItemInfoW\n");
@@ -10189,6 +10528,7 @@ WINAPI BOOL wine32b_user32_GetMenuItemInfoW(HMENU  hmenu, UINT  item, BOOL  bypo
 
 extern WINAPI void wine32a_user32_GetMenuItemInfoW(void);  /* ../dlls/user32/menu.c:4871 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuItemInfoW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10209,7 +10549,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuItemInfoW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetMenuItemRect(HWND  hwnd, HMENU  hMenu, UINT  uItem, RECT*  rect) /* ../dlls/user32/menu.c:5311 */
+WINAPI BOOL wine32b_user32_GetMenuItemRect(HWND hwnd, HMENU hMenu, UINT uItem, RECT* rect) /* ../dlls/user32/menu.c:5311 */
 {
 	BOOL return_value;
 	TRACE("Enter GetMenuItemRect\n");
@@ -10220,6 +10560,7 @@ WINAPI BOOL wine32b_user32_GetMenuItemRect(HWND  hwnd, HMENU  hMenu, UINT  uItem
 
 extern WINAPI void wine32a_user32_GetMenuItemRect(void);  /* ../dlls/user32/menu.c:5311 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuItemRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10240,7 +10581,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuItemRect,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_GetMenuState(HMENU  hMenu, UINT  wItemID, UINT  wFlags) /* ../dlls/user32/menu.c:3886 */
+WINAPI UINT wine32b_user32_GetMenuState(HMENU hMenu, UINT wItemID, UINT wFlags) /* ../dlls/user32/menu.c:3886 */
 {
 	UINT return_value;
 	TRACE("Enter GetMenuState\n");
@@ -10251,6 +10592,7 @@ WINAPI UINT wine32b_user32_GetMenuState(HMENU  hMenu, UINT  wItemID, UINT  wFlag
 
 extern WINAPI void wine32a_user32_GetMenuState(void);  /* ../dlls/user32/menu.c:3886 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuState,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10270,7 +10612,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuState,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetMenuStringA(HMENU  hMenu, UINT  wItemID, LPSTR  str, INT  nMaxSiz, UINT  wFlags) /* ../dlls/user32/menu.c:3774 */
+WINAPI INT wine32b_user32_GetMenuStringA(HMENU hMenu, UINT wItemID, LPSTR str, INT nMaxSiz, UINT wFlags) /* ../dlls/user32/menu.c:3774 */
 {
 	INT return_value;
 	TRACE("Enter GetMenuStringA\n");
@@ -10281,6 +10623,7 @@ WINAPI INT wine32b_user32_GetMenuStringA(HMENU  hMenu, UINT  wItemID, LPSTR  str
 
 extern WINAPI void wine32a_user32_GetMenuStringA(void);  /* ../dlls/user32/menu.c:3774 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuStringA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10301,7 +10644,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuStringA,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetMenuStringW(HMENU  hMenu, UINT  wItemID, LPWSTR  str, INT  nMaxSiz, UINT  wFlags) /* ../dlls/user32/menu.c:3817 */
+WINAPI INT wine32b_user32_GetMenuStringW(HMENU hMenu, UINT wItemID, LPWSTR str, INT nMaxSiz, UINT wFlags) /* ../dlls/user32/menu.c:3817 */
 {
 	INT return_value;
 	TRACE("Enter GetMenuStringW\n");
@@ -10312,6 +10655,7 @@ WINAPI INT wine32b_user32_GetMenuStringW(HMENU  hMenu, UINT  wItemID, LPWSTR  st
 
 extern WINAPI void wine32a_user32_GetMenuStringW(void);  /* ../dlls/user32/menu.c:3817 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuStringW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10332,7 +10676,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetMenuStringW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetMessageA(MSG*  msg, HWND  hwnd, UINT  first, UINT  last) /* ../dlls/user32/message.c:3866 */
+WINAPI BOOL wine32b_user32_GetMessageA(MSG* msg, HWND hwnd, UINT first, UINT last) /* ../dlls/user32/message.c:3866 */
 {
 	BOOL return_value;
 	TRACE("Enter GetMessageA\n");
@@ -10343,6 +10687,7 @@ WINAPI BOOL wine32b_user32_GetMessageA(MSG*  msg, HWND  hwnd, UINT  first, UINT 
 
 extern WINAPI void wine32a_user32_GetMessageA(void);  /* ../dlls/user32/message.c:3866 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMessageA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10374,6 +10719,7 @@ WINAPI LPARAM wine32b_user32_GetMessageExtraInfo(void) /* ../dlls/user32/message
 
 extern WINAPI void wine32a_user32_GetMessageExtraInfo(void);  /* ../dlls/user32/message.c:4130 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMessageExtraInfo,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -10401,6 +10747,7 @@ WINAPI DWORD wine32b_user32_GetMessagePos(void) /* ../dlls/user32/message.c:4099
 
 extern WINAPI void wine32a_user32_GetMessagePos(void);  /* ../dlls/user32/message.c:4099 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMessagePos,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -10428,6 +10775,7 @@ WINAPI LONG wine32b_user32_GetMessageTime(void) /* ../dlls/user32/message.c:4120
 
 extern WINAPI void wine32a_user32_GetMessageTime(void);  /* ../dlls/user32/message.c:4120 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMessageTime,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -10444,7 +10792,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetMessageTime,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetMessageW(MSG*  msg, HWND  hwnd, UINT  first, UINT  last) /* ../dlls/user32/message.c:3834 */
+WINAPI BOOL wine32b_user32_GetMessageW(MSG* msg, HWND hwnd, UINT first, UINT last) /* ../dlls/user32/message.c:3834 */
 {
 	BOOL return_value;
 	TRACE("Enter GetMessageW\n");
@@ -10455,6 +10803,7 @@ WINAPI BOOL wine32b_user32_GetMessageW(MSG*  msg, HWND  hwnd, UINT  first, UINT 
 
 extern WINAPI void wine32a_user32_GetMessageW(void);  /* ../dlls/user32/message.c:3834 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMessageW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10475,7 +10824,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetMessageW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetMonitorInfoA(HMONITOR  monitor, LPMONITORINFO  info) /* ../dlls/user32/sysparams.c:3861 */
+WINAPI BOOL wine32b_user32_GetMonitorInfoA(HMONITOR monitor, LPMONITORINFO info) /* ../dlls/user32/sysparams.c:3861 */
 {
 	BOOL return_value;
 	TRACE("Enter GetMonitorInfoA\n");
@@ -10486,6 +10835,7 @@ WINAPI BOOL wine32b_user32_GetMonitorInfoA(HMONITOR  monitor, LPMONITORINFO  inf
 
 extern WINAPI void wine32a_user32_GetMonitorInfoA(void);  /* ../dlls/user32/sysparams.c:3861 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMonitorInfoA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10504,7 +10854,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetMonitorInfoA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetMonitorInfoW(HMONITOR  monitor, LPMONITORINFO  info) /* ../dlls/user32/sysparams.c:3885 */
+WINAPI BOOL wine32b_user32_GetMonitorInfoW(HMONITOR monitor, LPMONITORINFO info) /* ../dlls/user32/sysparams.c:3885 */
 {
 	BOOL return_value;
 	TRACE("Enter GetMonitorInfoW\n");
@@ -10515,6 +10865,7 @@ WINAPI BOOL wine32b_user32_GetMonitorInfoW(HMONITOR  monitor, LPMONITORINFO  inf
 
 extern WINAPI void wine32a_user32_GetMonitorInfoW(void);  /* ../dlls/user32/sysparams.c:3885 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMonitorInfoW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10533,7 +10884,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetMonitorInfoW,
 	"ret \n"
 )
 
-WINAPI int wine32b_user32_GetMouseMovePointsEx(UINT  size, LPMOUSEMOVEPOINT  ptin, LPMOUSEMOVEPOINT  ptout, int  count, DWORD  res) /* ../dlls/user32/input.c:1275 */
+WINAPI int wine32b_user32_GetMouseMovePointsEx(UINT size, LPMOUSEMOVEPOINT ptin, LPMOUSEMOVEPOINT ptout, int count, DWORD res) /* ../dlls/user32/input.c:1275 */
 {
 	int return_value;
 	TRACE("Enter GetMouseMovePointsEx\n");
@@ -10544,6 +10895,7 @@ WINAPI int wine32b_user32_GetMouseMovePointsEx(UINT  size, LPMOUSEMOVEPOINT  pti
 
 extern WINAPI void wine32a_user32_GetMouseMovePointsEx(void);  /* ../dlls/user32/input.c:1275 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetMouseMovePointsEx,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10564,7 +10916,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetMouseMovePointsEx,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_GetNextDlgGroupItem(HWND  hwndDlg, HWND  hwndCtrl, BOOL  fPrevious) /* ../dlls/user32/dialog.c:1564 */
+WINAPI HWND wine32b_user32_GetNextDlgGroupItem(HWND hwndDlg, HWND hwndCtrl, BOOL fPrevious) /* ../dlls/user32/dialog.c:1564 */
 {
 	HWND return_value;
 	TRACE("Enter GetNextDlgGroupItem\n");
@@ -10575,6 +10927,7 @@ WINAPI HWND wine32b_user32_GetNextDlgGroupItem(HWND  hwndDlg, HWND  hwndCtrl, BO
 
 extern WINAPI void wine32a_user32_GetNextDlgGroupItem(void);  /* ../dlls/user32/dialog.c:1564 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetNextDlgGroupItem,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10594,7 +10947,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetNextDlgGroupItem,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_GetNextDlgTabItem(HWND  hwndDlg, HWND  hwndCtrl, BOOL  fPrevious) /* ../dlls/user32/dialog.c:1732 */
+WINAPI HWND wine32b_user32_GetNextDlgTabItem(HWND hwndDlg, HWND hwndCtrl, BOOL fPrevious) /* ../dlls/user32/dialog.c:1732 */
 {
 	HWND return_value;
 	TRACE("Enter GetNextDlgTabItem\n");
@@ -10605,6 +10958,7 @@ WINAPI HWND wine32b_user32_GetNextDlgTabItem(HWND  hwndDlg, HWND  hwndCtrl, BOOL
 
 extern WINAPI void wine32a_user32_GetNextDlgTabItem(void);  /* ../dlls/user32/dialog.c:1732 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetNextDlgTabItem,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10635,6 +10989,7 @@ WINAPI HWND wine32b_user32_GetOpenClipboardWindow(void) /* ../dlls/user32/clipbo
 
 extern WINAPI void wine32a_user32_GetOpenClipboardWindow(void);  /* ../dlls/user32/clipboard.c:788 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetOpenClipboardWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -10651,7 +11006,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetOpenClipboardWindow,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_GetParent(HWND  hwnd) /* ../dlls/user32/win.c:3064 */
+WINAPI HWND wine32b_user32_GetParent(HWND hwnd) /* ../dlls/user32/win.c:3064 */
 {
 	HWND return_value;
 	TRACE("Enter GetParent\n");
@@ -10662,6 +11017,7 @@ WINAPI HWND wine32b_user32_GetParent(HWND  hwnd) /* ../dlls/user32/win.c:3064 */
 
 extern WINAPI void wine32a_user32_GetParent(void);  /* ../dlls/user32/win.c:3064 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetParent,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10679,7 +11035,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetParent,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetPhysicalCursorPos(POINT*  point) /* ../dlls/user32/sysparams.c:4292 */
+WINAPI BOOL wine32b_user32_GetPhysicalCursorPos(POINT* point) /* ../dlls/user32/sysparams.c:4292 */
 {
 	BOOL return_value;
 	TRACE("Enter GetPhysicalCursorPos\n");
@@ -10690,6 +11046,7 @@ WINAPI BOOL wine32b_user32_GetPhysicalCursorPos(POINT*  point) /* ../dlls/user32
 
 extern WINAPI void wine32a_user32_GetPhysicalCursorPos(void);  /* ../dlls/user32/sysparams.c:4292 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetPhysicalCursorPos,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10707,7 +11064,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetPhysicalCursorPos,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetPointerDevices(UINT32*  device_count, POINTER_DEVICE_INFO*  devices) /* ../dlls/user32/misc.c:575 */
+WINAPI BOOL wine32b_user32_GetPointerDevices(UINT32* device_count, POINTER_DEVICE_INFO* devices) /* ../dlls/user32/misc.c:575 */
 {
 	BOOL return_value;
 	TRACE("Enter GetPointerDevices\n");
@@ -10718,6 +11075,7 @@ WINAPI BOOL wine32b_user32_GetPointerDevices(UINT32*  device_count, POINTER_DEVI
 
 extern WINAPI void wine32a_user32_GetPointerDevices(void);  /* ../dlls/user32/misc.c:575 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetPointerDevices,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10736,7 +11094,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetPointerDevices,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetPointerType(UINT32  id, POINTER_INPUT_TYPE*  type) /* ../dlls/user32/misc.c:601 */
+WINAPI BOOL wine32b_user32_GetPointerType(UINT32 id, POINTER_INPUT_TYPE* type) /* ../dlls/user32/misc.c:601 */
 {
 	BOOL return_value;
 	TRACE("Enter GetPointerType\n");
@@ -10747,6 +11105,7 @@ WINAPI BOOL wine32b_user32_GetPointerType(UINT32  id, POINTER_INPUT_TYPE*  type)
 
 extern WINAPI void wine32a_user32_GetPointerType(void);  /* ../dlls/user32/misc.c:601 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetPointerType,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10765,7 +11124,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetPointerType,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetPriorityClipboardFormat(UINT*  list, INT  nCount) /* ../dlls/user32/clipboard.c:1106 */
+WINAPI INT wine32b_user32_GetPriorityClipboardFormat(UINT* list, INT nCount) /* ../dlls/user32/clipboard.c:1106 */
 {
 	INT return_value;
 	TRACE("Enter GetPriorityClipboardFormat\n");
@@ -10776,6 +11135,7 @@ WINAPI INT wine32b_user32_GetPriorityClipboardFormat(UINT*  list, INT  nCount) /
 
 extern WINAPI void wine32a_user32_GetPriorityClipboardFormat(void);  /* ../dlls/user32/clipboard.c:1106 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetPriorityClipboardFormat,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10794,7 +11154,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetPriorityClipboardFormat,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetProcessDefaultLayout(DWORD*  layout) /* ../dlls/user32/win.c:4041 */
+WINAPI BOOL wine32b_user32_GetProcessDefaultLayout(DWORD* layout) /* ../dlls/user32/win.c:4041 */
 {
 	BOOL return_value;
 	TRACE("Enter GetProcessDefaultLayout\n");
@@ -10805,6 +11165,7 @@ WINAPI BOOL wine32b_user32_GetProcessDefaultLayout(DWORD*  layout) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_GetProcessDefaultLayout(void);  /* ../dlls/user32/win.c:4041 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetProcessDefaultLayout,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10822,7 +11183,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetProcessDefaultLayout,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetProcessDpiAwarenessInternal(HANDLE  process, DPI_AWARENESS*  awareness) /* ../dlls/user32/sysparams.c:3434 */
+WINAPI BOOL wine32b_user32_GetProcessDpiAwarenessInternal(HANDLE process, DPI_AWARENESS* awareness) /* ../dlls/user32/sysparams.c:3434 */
 {
 	BOOL return_value;
 	TRACE("Enter GetProcessDpiAwarenessInternal\n");
@@ -10833,6 +11194,7 @@ WINAPI BOOL wine32b_user32_GetProcessDpiAwarenessInternal(HANDLE  process, DPI_A
 
 extern WINAPI void wine32a_user32_GetProcessDpiAwarenessInternal(void);  /* ../dlls/user32/sysparams.c:3434 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetProcessDpiAwarenessInternal,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10862,6 +11224,7 @@ WINAPI HWINSTA wine32b_user32_GetProcessWindowStation(void) /* ../dlls/user32/wi
 
 extern WINAPI void wine32a_user32_GetProcessWindowStation(void);  /* ../dlls/user32/winstation.c:195 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetProcessWindowStation,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -10889,6 +11252,7 @@ WINAPI HWND wine32b_user32_GetProgmanWindow(void) /* ../dlls/user32/focus.c:470 
 
 extern WINAPI void wine32a_user32_GetProgmanWindow(void);  /* ../dlls/user32/focus.c:470 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetProgmanWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -10905,7 +11269,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetProgmanWindow,
 	"ret \n"
 )
 
-WINAPI HANDLE wine32b_user32_GetPropA(HWND  hwnd, LPCSTR  str) /* ../dlls/user32/property.c:117 */
+WINAPI HANDLE wine32b_user32_GetPropA(HWND hwnd, LPCSTR str) /* ../dlls/user32/property.c:117 */
 {
 	HANDLE return_value;
 	TRACE("Enter GetPropA\n");
@@ -10916,6 +11280,7 @@ WINAPI HANDLE wine32b_user32_GetPropA(HWND  hwnd, LPCSTR  str) /* ../dlls/user32
 
 extern WINAPI void wine32a_user32_GetPropA(void);  /* ../dlls/user32/property.c:117 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetPropA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10934,7 +11299,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetPropA,
 	"ret \n"
 )
 
-WINAPI HANDLE wine32b_user32_GetPropW(HWND  hwnd, LPCWSTR  str) /* ../dlls/user32/property.c:130 */
+WINAPI HANDLE wine32b_user32_GetPropW(HWND hwnd, LPCWSTR str) /* ../dlls/user32/property.c:130 */
 {
 	HANDLE return_value;
 	TRACE("Enter GetPropW\n");
@@ -10945,6 +11310,7 @@ WINAPI HANDLE wine32b_user32_GetPropW(HWND  hwnd, LPCWSTR  str) /* ../dlls/user3
 
 extern WINAPI void wine32a_user32_GetPropW(void);  /* ../dlls/user32/property.c:130 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetPropW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10963,7 +11329,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetPropW,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_GetQueueStatus(UINT  flags) /* ../dlls/user32/input.c:456 */
+WINAPI DWORD wine32b_user32_GetQueueStatus(UINT flags) /* ../dlls/user32/input.c:456 */
 {
 	DWORD return_value;
 	TRACE("Enter GetQueueStatus\n");
@@ -10974,6 +11340,7 @@ WINAPI DWORD wine32b_user32_GetQueueStatus(UINT  flags) /* ../dlls/user32/input.
 
 extern WINAPI void wine32a_user32_GetQueueStatus(void);  /* ../dlls/user32/input.c:456 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetQueueStatus,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -10991,7 +11358,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetQueueStatus,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_GetRawInputBuffer(RAWINPUT*  data, UINT*  data_size, UINT  header_size) /* ../dlls/user32/rawinput.c:352 */
+WINAPI UINT wine32b_user32_GetRawInputBuffer(RAWINPUT* data, UINT* data_size, UINT header_size) /* ../dlls/user32/rawinput.c:352 */
 {
 	UINT return_value;
 	TRACE("Enter GetRawInputBuffer\n");
@@ -11002,6 +11369,7 @@ WINAPI UINT wine32b_user32_GetRawInputBuffer(RAWINPUT*  data, UINT*  data_size, 
 
 extern WINAPI void wine32a_user32_GetRawInputBuffer(void);  /* ../dlls/user32/rawinput.c:352 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetRawInputBuffer,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11021,7 +11389,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetRawInputBuffer,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_GetRawInputData(HRAWINPUT  rawinput, UINT  command, void*  data, UINT*  data_size, UINT  header_size) /* ../dlls/user32/rawinput.c:309 */
+WINAPI UINT wine32b_user32_GetRawInputData(HRAWINPUT rawinput, UINT command, void* data, UINT* data_size, UINT header_size) /* ../dlls/user32/rawinput.c:309 */
 {
 	UINT return_value;
 	TRACE("Enter GetRawInputData\n");
@@ -11032,6 +11400,7 @@ WINAPI UINT wine32b_user32_GetRawInputData(HRAWINPUT  rawinput, UINT  command, v
 
 extern WINAPI void wine32a_user32_GetRawInputData(void);  /* ../dlls/user32/rawinput.c:309 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetRawInputData,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11052,7 +11421,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetRawInputData,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_GetRawInputDeviceInfoA(HANDLE  device, UINT  command, void*  data, UINT*  data_size) /* ../dlls/user32/rawinput.c:362 */
+WINAPI UINT wine32b_user32_GetRawInputDeviceInfoA(HANDLE device, UINT command, void* data, UINT* data_size) /* ../dlls/user32/rawinput.c:362 */
 {
 	UINT return_value;
 	TRACE("Enter GetRawInputDeviceInfoA\n");
@@ -11063,6 +11432,7 @@ WINAPI UINT wine32b_user32_GetRawInputDeviceInfoA(HANDLE  device, UINT  command,
 
 extern WINAPI void wine32a_user32_GetRawInputDeviceInfoA(void);  /* ../dlls/user32/rawinput.c:362 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetRawInputDeviceInfoA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11083,7 +11453,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetRawInputDeviceInfoA,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_GetRawInputDeviceInfoW(HANDLE  device, UINT  command, void*  data, UINT*  data_size) /* ../dlls/user32/rawinput.c:400 */
+WINAPI UINT wine32b_user32_GetRawInputDeviceInfoW(HANDLE device, UINT command, void* data, UINT* data_size) /* ../dlls/user32/rawinput.c:400 */
 {
 	UINT return_value;
 	TRACE("Enter GetRawInputDeviceInfoW\n");
@@ -11094,6 +11464,7 @@ WINAPI UINT wine32b_user32_GetRawInputDeviceInfoW(HANDLE  device, UINT  command,
 
 extern WINAPI void wine32a_user32_GetRawInputDeviceInfoW(void);  /* ../dlls/user32/rawinput.c:400 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetRawInputDeviceInfoW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11114,7 +11485,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetRawInputDeviceInfoW,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_GetRawInputDeviceList(RAWINPUTDEVICELIST*  devices, UINT*  device_count, UINT  size) /* ../dlls/user32/rawinput.c:203 */
+WINAPI UINT wine32b_user32_GetRawInputDeviceList(RAWINPUTDEVICELIST* devices, UINT* device_count, UINT size) /* ../dlls/user32/rawinput.c:203 */
 {
 	UINT return_value;
 	TRACE("Enter GetRawInputDeviceList\n");
@@ -11125,6 +11496,7 @@ WINAPI UINT wine32b_user32_GetRawInputDeviceList(RAWINPUTDEVICELIST*  devices, U
 
 extern WINAPI void wine32a_user32_GetRawInputDeviceList(void);  /* ../dlls/user32/rawinput.c:203 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetRawInputDeviceList,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11144,7 +11516,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetRawInputDeviceList,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_GetRegisteredRawInputDevices(RAWINPUTDEVICE*  devices, UINT*  device_count, UINT  size) /* ../dlls/user32/rawinput.c:486 */
+WINAPI UINT wine32b_user32_GetRegisteredRawInputDevices(RAWINPUTDEVICE* devices, UINT* device_count, UINT size) /* ../dlls/user32/rawinput.c:486 */
 {
 	UINT return_value;
 	TRACE("Enter GetRegisteredRawInputDevices\n");
@@ -11155,6 +11527,7 @@ WINAPI UINT wine32b_user32_GetRegisteredRawInputDevices(RAWINPUTDEVICE*  devices
 
 extern WINAPI void wine32a_user32_GetRegisteredRawInputDevices(void);  /* ../dlls/user32/rawinput.c:486 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetRegisteredRawInputDevices,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11174,7 +11547,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetRegisteredRawInputDevices,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetScrollBarInfo(HWND  hwnd, LONG  idObject, LPSCROLLBARINFO  info) /* ../dlls/user32/scroll.c:1824 */
+WINAPI BOOL wine32b_user32_GetScrollBarInfo(HWND hwnd, LONG idObject, LPSCROLLBARINFO info) /* ../dlls/user32/scroll.c:1824 */
 {
 	BOOL return_value;
 	TRACE("Enter GetScrollBarInfo\n");
@@ -11185,6 +11558,7 @@ WINAPI BOOL wine32b_user32_GetScrollBarInfo(HWND  hwnd, LONG  idObject, LPSCROLL
 
 extern WINAPI void wine32a_user32_GetScrollBarInfo(void);  /* ../dlls/user32/scroll.c:1824 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetScrollBarInfo,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11204,7 +11578,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetScrollBarInfo,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetScrollInfo(HWND  hwnd, INT  nBar, LPSCROLLINFO  info) /* ../dlls/user32/scroll.c:1796 */
+WINAPI BOOL wine32b_user32_GetScrollInfo(HWND hwnd, INT nBar, LPSCROLLINFO info) /* ../dlls/user32/scroll.c:1796 */
 {
 	BOOL return_value;
 	TRACE("Enter GetScrollInfo\n");
@@ -11215,6 +11589,7 @@ WINAPI BOOL wine32b_user32_GetScrollInfo(HWND  hwnd, INT  nBar, LPSCROLLINFO  in
 
 extern WINAPI void wine32a_user32_GetScrollInfo(void);  /* ../dlls/user32/scroll.c:1796 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetScrollInfo,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11234,7 +11609,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetScrollInfo,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetScrollPos(HWND  hwnd, INT  nBar) /* ../dlls/user32/scroll.c:1887 */
+WINAPI INT wine32b_user32_GetScrollPos(HWND hwnd, INT nBar) /* ../dlls/user32/scroll.c:1887 */
 {
 	INT return_value;
 	TRACE("Enter GetScrollPos\n");
@@ -11245,6 +11620,7 @@ WINAPI INT wine32b_user32_GetScrollPos(HWND  hwnd, INT  nBar) /* ../dlls/user32/
 
 extern WINAPI void wine32a_user32_GetScrollPos(void);  /* ../dlls/user32/scroll.c:1887 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetScrollPos,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11263,7 +11639,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetScrollPos,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetScrollRange(HWND  hwnd, INT  nBar, LPINT  lpMin, LPINT  lpMax) /* ../dlls/user32/scroll.c:1946 */
+WINAPI BOOL wine32b_user32_GetScrollRange(HWND hwnd, INT nBar, LPINT lpMin, LPINT lpMax) /* ../dlls/user32/scroll.c:1946 */
 {
 	BOOL return_value;
 	TRACE("Enter GetScrollRange\n");
@@ -11274,6 +11650,7 @@ WINAPI BOOL wine32b_user32_GetScrollRange(HWND  hwnd, INT  nBar, LPINT  lpMin, L
 
 extern WINAPI void wine32a_user32_GetScrollRange(void);  /* ../dlls/user32/scroll.c:1946 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetScrollRange,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11305,6 +11682,7 @@ WINAPI HWND wine32b_user32_GetShellWindow(void) /* ../dlls/user32/focus.c:435 */
 
 extern WINAPI void wine32a_user32_GetShellWindow(void);  /* ../dlls/user32/focus.c:435 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetShellWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -11321,7 +11699,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetShellWindow,
 	"ret \n"
 )
 
-WINAPI HMENU wine32b_user32_GetSubMenu(HMENU  hMenu, INT  nPos) /* ../dlls/user32/menu.c:4509 */
+WINAPI HMENU wine32b_user32_GetSubMenu(HMENU hMenu, INT nPos) /* ../dlls/user32/menu.c:4509 */
 {
 	HMENU return_value;
 	TRACE("Enter GetSubMenu\n");
@@ -11332,6 +11710,7 @@ WINAPI HMENU wine32b_user32_GetSubMenu(HMENU  hMenu, INT  nPos) /* ../dlls/user3
 
 extern WINAPI void wine32a_user32_GetSubMenu(void);  /* ../dlls/user32/menu.c:4509 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetSubMenu,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11350,7 +11729,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetSubMenu,
 	"ret \n"
 )
 
-WINAPI COLORREF wine32b_user32_GetSysColor(INT  nIndex) /* ../dlls/user32/sysparams.c:3037 */
+WINAPI COLORREF wine32b_user32_GetSysColor(INT nIndex) /* ../dlls/user32/sysparams.c:3037 */
 {
 	COLORREF return_value;
 	TRACE("Enter GetSysColor\n");
@@ -11361,6 +11740,7 @@ WINAPI COLORREF wine32b_user32_GetSysColor(INT  nIndex) /* ../dlls/user32/syspar
 
 extern WINAPI void wine32a_user32_GetSysColor(void);  /* ../dlls/user32/sysparams.c:3037 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetSysColor,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11378,7 +11758,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetSysColor,
 	"ret \n"
 )
 
-WINAPI HBRUSH wine32b_user32_GetSysColorBrush(INT  index) /* ../dlls/user32/sysparams.c:3084 */
+WINAPI HBRUSH wine32b_user32_GetSysColorBrush(INT index) /* ../dlls/user32/sysparams.c:3084 */
 {
 	HBRUSH return_value;
 	TRACE("Enter GetSysColorBrush\n");
@@ -11389,6 +11769,7 @@ WINAPI HBRUSH wine32b_user32_GetSysColorBrush(INT  index) /* ../dlls/user32/sysp
 
 extern WINAPI void wine32a_user32_GetSysColorBrush(void);  /* ../dlls/user32/sysparams.c:3084 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetSysColorBrush,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11406,7 +11787,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetSysColorBrush,
 	"ret \n"
 )
 
-WINAPI HMENU wine32b_user32_GetSystemMenu(HWND  hWnd, BOOL  bRevert) /* ../dlls/user32/menu.c:4303 */
+WINAPI HMENU wine32b_user32_GetSystemMenu(HWND hWnd, BOOL bRevert) /* ../dlls/user32/menu.c:4303 */
 {
 	HMENU return_value;
 	TRACE("Enter GetSystemMenu\n");
@@ -11417,6 +11798,7 @@ WINAPI HMENU wine32b_user32_GetSystemMenu(HWND  hWnd, BOOL  bRevert) /* ../dlls/
 
 extern WINAPI void wine32a_user32_GetSystemMenu(void);  /* ../dlls/user32/menu.c:4303 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetSystemMenu,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11435,7 +11817,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetSystemMenu,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetSystemMetrics(INT  index) /* ../dlls/user32/sysparams.c:2647 */
+WINAPI INT wine32b_user32_GetSystemMetrics(INT index) /* ../dlls/user32/sysparams.c:2647 */
 {
 	INT return_value;
 	TRACE("Enter GetSystemMetrics\n");
@@ -11446,6 +11828,7 @@ WINAPI INT wine32b_user32_GetSystemMetrics(INT  index) /* ../dlls/user32/syspara
 
 extern WINAPI void wine32a_user32_GetSystemMetrics(void);  /* ../dlls/user32/sysparams.c:2647 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetSystemMetrics,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11463,7 +11846,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetSystemMetrics,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetSystemMetricsForDpi(INT  index, UINT  dpi) /* ../dlls/user32/sysparams.c:2899 */
+WINAPI INT wine32b_user32_GetSystemMetricsForDpi(INT index, UINT dpi) /* ../dlls/user32/sysparams.c:2899 */
 {
 	INT return_value;
 	TRACE("Enter GetSystemMetricsForDpi\n");
@@ -11474,6 +11857,7 @@ WINAPI INT wine32b_user32_GetSystemMetricsForDpi(INT  index, UINT  dpi) /* ../dl
 
 extern WINAPI void wine32a_user32_GetSystemMetricsForDpi(void);  /* ../dlls/user32/sysparams.c:2899 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetSystemMetricsForDpi,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11492,7 +11876,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetSystemMetricsForDpi,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_GetTabbedTextExtentA(HDC  hdc, LPCSTR  lpstr, INT  count, INT  cTabStops, INT*  lpTabPos) /* ../dlls/user32/text.c:1465 */
+WINAPI DWORD wine32b_user32_GetTabbedTextExtentA(HDC hdc, LPCSTR lpstr, INT count, INT cTabStops, INT* lpTabPos) /* ../dlls/user32/text.c:1465 */
 {
 	DWORD return_value;
 	TRACE("Enter GetTabbedTextExtentA\n");
@@ -11503,6 +11887,7 @@ WINAPI DWORD wine32b_user32_GetTabbedTextExtentA(HDC  hdc, LPCSTR  lpstr, INT  c
 
 extern WINAPI void wine32a_user32_GetTabbedTextExtentA(void);  /* ../dlls/user32/text.c:1465 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetTabbedTextExtentA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11523,7 +11908,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetTabbedTextExtentA,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_GetTabbedTextExtentW(HDC  hdc, LPCWSTR  lpstr, INT  count, INT  cTabStops, INT*  lpTabPos) /* ../dlls/user32/text.c:1482 */
+WINAPI DWORD wine32b_user32_GetTabbedTextExtentW(HDC hdc, LPCWSTR lpstr, INT count, INT cTabStops, INT* lpTabPos) /* ../dlls/user32/text.c:1482 */
 {
 	DWORD return_value;
 	TRACE("Enter GetTabbedTextExtentW\n");
@@ -11534,6 +11919,7 @@ WINAPI DWORD wine32b_user32_GetTabbedTextExtentW(HDC  hdc, LPCWSTR  lpstr, INT  
 
 extern WINAPI void wine32a_user32_GetTabbedTextExtentW(void);  /* ../dlls/user32/text.c:1482 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetTabbedTextExtentW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11565,6 +11951,7 @@ WINAPI HWND wine32b_user32_GetTaskmanWindow(void) /* ../dlls/user32/focus.c:506 
 
 extern WINAPI void wine32a_user32_GetTaskmanWindow(void);  /* ../dlls/user32/focus.c:506 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetTaskmanWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -11581,7 +11968,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetTaskmanWindow,
 	"ret \n"
 )
 
-WINAPI HDESK wine32b_user32_GetThreadDesktop(DWORD  thread) /* ../dlls/user32/winstation.c:399 */
+WINAPI HDESK wine32b_user32_GetThreadDesktop(DWORD thread) /* ../dlls/user32/winstation.c:399 */
 {
 	HDESK return_value;
 	TRACE("Enter GetThreadDesktop\n");
@@ -11592,6 +11979,7 @@ WINAPI HDESK wine32b_user32_GetThreadDesktop(DWORD  thread) /* ../dlls/user32/wi
 
 extern WINAPI void wine32a_user32_GetThreadDesktop(void);  /* ../dlls/user32/winstation.c:399 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetThreadDesktop,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11620,6 +12008,7 @@ WINAPI DPI_AWARENESS_CONTEXT wine32b_user32_GetThreadDpiAwarenessContext(void) /
 
 extern WINAPI void wine32a_user32_GetThreadDpiAwarenessContext(void);  /* ../dlls/user32/sysparams.c:3557 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetThreadDpiAwarenessContext,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -11636,7 +12025,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetThreadDpiAwarenessContext,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetTitleBarInfo(HWND  hwnd, PTITLEBARINFO  tbi) /* ../dlls/user32/nonclient.c:1608 */
+WINAPI BOOL wine32b_user32_GetTitleBarInfo(HWND hwnd, PTITLEBARINFO tbi) /* ../dlls/user32/nonclient.c:1608 */
 {
 	BOOL return_value;
 	TRACE("Enter GetTitleBarInfo\n");
@@ -11647,6 +12036,7 @@ WINAPI BOOL wine32b_user32_GetTitleBarInfo(HWND  hwnd, PTITLEBARINFO  tbi) /* ..
 
 extern WINAPI void wine32a_user32_GetTitleBarInfo(void);  /* ../dlls/user32/nonclient.c:1608 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetTitleBarInfo,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11665,7 +12055,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetTitleBarInfo,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_GetTopWindow(HWND  hwnd) /* ../dlls/user32/win.c:3346 */
+WINAPI HWND wine32b_user32_GetTopWindow(HWND hwnd) /* ../dlls/user32/win.c:3346 */
 {
 	HWND return_value;
 	TRACE("Enter GetTopWindow\n");
@@ -11676,6 +12066,7 @@ WINAPI HWND wine32b_user32_GetTopWindow(HWND  hwnd) /* ../dlls/user32/win.c:3346
 
 extern WINAPI void wine32a_user32_GetTopWindow(void);  /* ../dlls/user32/win.c:3346 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetTopWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11693,7 +12084,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetTopWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetTouchInputInfo(HTOUCHINPUT  handle, UINT  count, TOUCHINPUT*  ptr, int  size) /* ../dlls/user32/win.c:4183 */
+WINAPI BOOL wine32b_user32_GetTouchInputInfo(HTOUCHINPUT handle, UINT count, TOUCHINPUT* ptr, int size) /* ../dlls/user32/win.c:4183 */
 {
 	BOOL return_value;
 	TRACE("Enter GetTouchInputInfo\n");
@@ -11704,6 +12095,7 @@ WINAPI BOOL wine32b_user32_GetTouchInputInfo(HTOUCHINPUT  handle, UINT  count, T
 
 extern WINAPI void wine32a_user32_GetTouchInputInfo(void);  /* ../dlls/user32/win.c:4183 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetTouchInputInfo,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11724,7 +12116,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetTouchInputInfo,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetUpdateRect(HWND  hwnd, LPRECT  rect, BOOL  erase) /* ../dlls/user32/painting.c:1403 */
+WINAPI BOOL wine32b_user32_GetUpdateRect(HWND hwnd, LPRECT rect, BOOL erase) /* ../dlls/user32/painting.c:1403 */
 {
 	BOOL return_value;
 	TRACE("Enter GetUpdateRect\n");
@@ -11735,6 +12127,7 @@ WINAPI BOOL wine32b_user32_GetUpdateRect(HWND  hwnd, LPRECT  rect, BOOL  erase) 
 
 extern WINAPI void wine32a_user32_GetUpdateRect(void);  /* ../dlls/user32/painting.c:1403 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetUpdateRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11754,7 +12147,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetUpdateRect,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetUpdateRgn(HWND  hwnd, HRGN  hrgn, BOOL  erase) /* ../dlls/user32/painting.c:1373 */
+WINAPI INT wine32b_user32_GetUpdateRgn(HWND hwnd, HRGN hrgn, BOOL erase) /* ../dlls/user32/painting.c:1373 */
 {
 	INT return_value;
 	TRACE("Enter GetUpdateRgn\n");
@@ -11765,6 +12158,7 @@ WINAPI INT wine32b_user32_GetUpdateRgn(HWND  hwnd, HRGN  hrgn, BOOL  erase) /* .
 
 extern WINAPI void wine32a_user32_GetUpdateRgn(void);  /* ../dlls/user32/painting.c:1373 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetUpdateRgn,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11784,7 +12178,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetUpdateRgn,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetUpdatedClipboardFormats(UINT*  formats, UINT  size, UINT*  out_size) /* ../dlls/user32/clipboard.c:1001 */
+WINAPI BOOL wine32b_user32_GetUpdatedClipboardFormats(UINT* formats, UINT size, UINT* out_size) /* ../dlls/user32/clipboard.c:1001 */
 {
 	BOOL return_value;
 	TRACE("Enter GetUpdatedClipboardFormats\n");
@@ -11795,6 +12189,7 @@ WINAPI BOOL wine32b_user32_GetUpdatedClipboardFormats(UINT*  formats, UINT  size
 
 extern WINAPI void wine32a_user32_GetUpdatedClipboardFormats(void);  /* ../dlls/user32/clipboard.c:1001 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetUpdatedClipboardFormats,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11814,7 +12209,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetUpdatedClipboardFormats,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetUserObjectInformationA(HANDLE  handle, INT  index, LPVOID  info, DWORD  len, LPDWORD  needed) /* ../dlls/user32/winstation.c:516 */
+WINAPI BOOL wine32b_user32_GetUserObjectInformationA(HANDLE handle, INT index, LPVOID info, DWORD len, LPDWORD needed) /* ../dlls/user32/winstation.c:516 */
 {
 	BOOL return_value;
 	TRACE("Enter GetUserObjectInformationA\n");
@@ -11825,6 +12220,7 @@ WINAPI BOOL wine32b_user32_GetUserObjectInformationA(HANDLE  handle, INT  index,
 
 extern WINAPI void wine32a_user32_GetUserObjectInformationA(void);  /* ../dlls/user32/winstation.c:516 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetUserObjectInformationA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11845,7 +12241,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetUserObjectInformationA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetUserObjectInformationW(HANDLE  handle, INT  index, LPVOID  info, DWORD  len, LPDWORD  needed) /* ../dlls/user32/winstation.c:546 */
+WINAPI BOOL wine32b_user32_GetUserObjectInformationW(HANDLE handle, INT index, LPVOID info, DWORD len, LPDWORD needed) /* ../dlls/user32/winstation.c:546 */
 {
 	BOOL return_value;
 	TRACE("Enter GetUserObjectInformationW\n");
@@ -11856,6 +12252,7 @@ WINAPI BOOL wine32b_user32_GetUserObjectInformationW(HANDLE  handle, INT  index,
 
 extern WINAPI void wine32a_user32_GetUserObjectInformationW(void);  /* ../dlls/user32/winstation.c:546 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetUserObjectInformationW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11876,7 +12273,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetUserObjectInformationW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetUserObjectSecurity(HANDLE  handle, PSECURITY_INFORMATION  info, PSECURITY_DESCRIPTOR  sid, DWORD  len, LPDWORD  needed) /* ../dlls/user32/winstation.c:674 */
+WINAPI BOOL wine32b_user32_GetUserObjectSecurity(HANDLE handle, PSECURITY_INFORMATION info, PSECURITY_DESCRIPTOR sid, DWORD len, LPDWORD needed) /* ../dlls/user32/winstation.c:674 */
 {
 	BOOL return_value;
 	TRACE("Enter GetUserObjectSecurity\n");
@@ -11887,6 +12284,7 @@ WINAPI BOOL wine32b_user32_GetUserObjectSecurity(HANDLE  handle, PSECURITY_INFOR
 
 extern WINAPI void wine32a_user32_GetUserObjectSecurity(void);  /* ../dlls/user32/winstation.c:674 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetUserObjectSecurity,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11907,7 +12305,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetUserObjectSecurity,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_GetWindow(HWND  hwnd, UINT  rel) /* ../dlls/user32/win.c:3356 */
+WINAPI HWND wine32b_user32_GetWindow(HWND hwnd, UINT rel) /* ../dlls/user32/win.c:3356 */
 {
 	HWND return_value;
 	TRACE("Enter GetWindow\n");
@@ -11918,6 +12316,7 @@ WINAPI HWND wine32b_user32_GetWindow(HWND  hwnd, UINT  rel) /* ../dlls/user32/wi
 
 extern WINAPI void wine32a_user32_GetWindow(void);  /* ../dlls/user32/win.c:3356 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11936,7 +12335,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindow,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_GetWindowContextHelpId(HWND  hwnd) /* ../dlls/user32/win.c:3723 */
+WINAPI DWORD wine32b_user32_GetWindowContextHelpId(HWND hwnd) /* ../dlls/user32/win.c:3723 */
 {
 	DWORD return_value;
 	TRACE("Enter GetWindowContextHelpId\n");
@@ -11947,6 +12346,7 @@ WINAPI DWORD wine32b_user32_GetWindowContextHelpId(HWND  hwnd) /* ../dlls/user32
 
 extern WINAPI void wine32a_user32_GetWindowContextHelpId(void);  /* ../dlls/user32/win.c:3723 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowContextHelpId,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11964,7 +12364,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowContextHelpId,
 	"ret \n"
 )
 
-WINAPI HDC wine32b_user32_GetWindowDC(HWND  hwnd) /* ../dlls/user32/painting.c:1145 */
+WINAPI HDC wine32b_user32_GetWindowDC(HWND hwnd) /* ../dlls/user32/painting.c:1145 */
 {
 	HDC return_value;
 	TRACE("Enter GetWindowDC\n");
@@ -11975,6 +12375,7 @@ WINAPI HDC wine32b_user32_GetWindowDC(HWND  hwnd) /* ../dlls/user32/painting.c:1
 
 extern WINAPI void wine32a_user32_GetWindowDC(void);  /* ../dlls/user32/painting.c:1145 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowDC,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -11992,7 +12393,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowDC,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetWindowDisplayAffinity(HWND  hwnd, DWORD*  affinity) /* ../dlls/user32/win.c:4203 */
+WINAPI BOOL wine32b_user32_GetWindowDisplayAffinity(HWND hwnd, DWORD* affinity) /* ../dlls/user32/win.c:4203 */
 {
 	BOOL return_value;
 	TRACE("Enter GetWindowDisplayAffinity\n");
@@ -12003,6 +12404,7 @@ WINAPI BOOL wine32b_user32_GetWindowDisplayAffinity(HWND  hwnd, DWORD*  affinity
 
 extern WINAPI void wine32a_user32_GetWindowDisplayAffinity(void);  /* ../dlls/user32/win.c:4203 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowDisplayAffinity,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12021,7 +12423,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowDisplayAffinity,
 	"ret \n"
 )
 
-WINAPI DPI_AWARENESS_CONTEXT wine32b_user32_GetWindowDpiAwarenessContext(HWND  hwnd) /* ../dlls/user32/win.c:2238 */
+WINAPI DPI_AWARENESS_CONTEXT wine32b_user32_GetWindowDpiAwarenessContext(HWND hwnd) /* ../dlls/user32/win.c:2238 */
 {
 	DPI_AWARENESS_CONTEXT return_value;
 	TRACE("Enter GetWindowDpiAwarenessContext\n");
@@ -12032,6 +12434,7 @@ WINAPI DPI_AWARENESS_CONTEXT wine32b_user32_GetWindowDpiAwarenessContext(HWND  h
 
 extern WINAPI void wine32a_user32_GetWindowDpiAwarenessContext(void);  /* ../dlls/user32/win.c:2238 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowDpiAwarenessContext,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12049,7 +12452,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowDpiAwarenessContext,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetWindowInfo(HWND  hwnd, PWINDOWINFO  pwi) /* ../dlls/user32/win.c:3846 */
+WINAPI BOOL wine32b_user32_GetWindowInfo(HWND hwnd, PWINDOWINFO pwi) /* ../dlls/user32/win.c:3846 */
 {
 	BOOL return_value;
 	TRACE("Enter GetWindowInfo\n");
@@ -12060,6 +12463,7 @@ WINAPI BOOL wine32b_user32_GetWindowInfo(HWND  hwnd, PWINDOWINFO  pwi) /* ../dll
 
 extern WINAPI void wine32a_user32_GetWindowInfo(void);  /* ../dlls/user32/win.c:3846 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowInfo,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12078,7 +12482,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowInfo,
 	"ret \n"
 )
 
-WINAPI LONG wine32b_user32_GetWindowLongA(HWND  hwnd, INT  offset) /* ../dlls/user32/win.c:2692 */
+WINAPI LONG wine32b_user32_GetWindowLongA(HWND hwnd, INT offset) /* ../dlls/user32/win.c:2692 */
 {
 	LONG return_value;
 	TRACE("Enter GetWindowLongA\n");
@@ -12089,6 +12493,7 @@ WINAPI LONG wine32b_user32_GetWindowLongA(HWND  hwnd, INT  offset) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_GetWindowLongA(void);  /* ../dlls/user32/win.c:2692 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowLongA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12107,7 +12512,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowLongA,
 	"ret \n"
 )
 
-WINAPI LONG_PTR wine32b_user32_GetWindowLongPtrA(HWND  hwnd, INT  offset) /* ../dlls/user32/win.c:4129 */
+WINAPI LONG_PTR wine32b_user32_GetWindowLongPtrA(HWND hwnd, INT offset) /* ../dlls/user32/win.c:4129 */
 {
 	LONG_PTR return_value;
 	TRACE("Enter GetWindowLongPtrA\n");
@@ -12118,6 +12523,7 @@ WINAPI LONG_PTR wine32b_user32_GetWindowLongPtrA(HWND  hwnd, INT  offset) /* ../
 
 extern WINAPI void wine32a_user32_GetWindowLongPtrA(void);  /* ../dlls/user32/win.c:4129 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowLongPtrA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12136,7 +12542,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowLongPtrA,
 	"ret \n"
 )
 
-WINAPI LONG_PTR wine32b_user32_GetWindowLongPtrW(HWND  hwnd, INT  offset) /* ../dlls/user32/win.c:4121 */
+WINAPI LONG_PTR wine32b_user32_GetWindowLongPtrW(HWND hwnd, INT offset) /* ../dlls/user32/win.c:4121 */
 {
 	LONG_PTR return_value;
 	TRACE("Enter GetWindowLongPtrW\n");
@@ -12147,6 +12553,7 @@ WINAPI LONG_PTR wine32b_user32_GetWindowLongPtrW(HWND  hwnd, INT  offset) /* ../
 
 extern WINAPI void wine32a_user32_GetWindowLongPtrW(void);  /* ../dlls/user32/win.c:4121 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowLongPtrW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12165,7 +12572,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowLongPtrW,
 	"ret \n"
 )
 
-WINAPI LONG wine32b_user32_GetWindowLongW(HWND  hwnd, INT  offset) /* ../dlls/user32/win.c:2713 */
+WINAPI LONG wine32b_user32_GetWindowLongW(HWND hwnd, INT offset) /* ../dlls/user32/win.c:2713 */
 {
 	LONG return_value;
 	TRACE("Enter GetWindowLongW\n");
@@ -12176,6 +12583,7 @@ WINAPI LONG wine32b_user32_GetWindowLongW(HWND  hwnd, INT  offset) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_GetWindowLongW(void);  /* ../dlls/user32/win.c:2713 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowLongW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12194,7 +12602,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowLongW,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_GetWindowModuleFileNameA(HWND  hwnd, LPSTR  module, UINT  size) /* ../dlls/user32/win.c:3800 */
+WINAPI UINT wine32b_user32_GetWindowModuleFileNameA(HWND hwnd, LPSTR module, UINT size) /* ../dlls/user32/win.c:3800 */
 {
 	UINT return_value;
 	TRACE("Enter GetWindowModuleFileNameA\n");
@@ -12205,6 +12613,7 @@ WINAPI UINT wine32b_user32_GetWindowModuleFileNameA(HWND  hwnd, LPSTR  module, U
 
 extern WINAPI void wine32a_user32_GetWindowModuleFileNameA(void);  /* ../dlls/user32/win.c:3800 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowModuleFileNameA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12224,7 +12633,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowModuleFileNameA,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_GetWindowModuleFileNameW(HWND  hwnd, LPWSTR  module, UINT  size) /* ../dlls/user32/win.c:3822 */
+WINAPI UINT wine32b_user32_GetWindowModuleFileNameW(HWND hwnd, LPWSTR module, UINT size) /* ../dlls/user32/win.c:3822 */
 {
 	UINT return_value;
 	TRACE("Enter GetWindowModuleFileNameW\n");
@@ -12235,6 +12644,7 @@ WINAPI UINT wine32b_user32_GetWindowModuleFileNameW(HWND  hwnd, LPWSTR  module, 
 
 extern WINAPI void wine32a_user32_GetWindowModuleFileNameW(void);  /* ../dlls/user32/win.c:3822 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowModuleFileNameW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12254,7 +12664,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowModuleFileNameW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetWindowPlacement(HWND  hwnd, WINDOWPLACEMENT*  wndpl) /* ../dlls/user32/winpos.c:1263 */
+WINAPI BOOL wine32b_user32_GetWindowPlacement(HWND hwnd, WINDOWPLACEMENT* wndpl) /* ../dlls/user32/winpos.c:1263 */
 {
 	BOOL return_value;
 	TRACE("Enter GetWindowPlacement\n");
@@ -12265,6 +12675,7 @@ WINAPI BOOL wine32b_user32_GetWindowPlacement(HWND  hwnd, WINDOWPLACEMENT*  wndp
 
 extern WINAPI void wine32a_user32_GetWindowPlacement(void);  /* ../dlls/user32/winpos.c:1263 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowPlacement,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12283,7 +12694,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowPlacement,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GetWindowRect(HWND  hwnd, LPRECT  rect) /* ../dlls/user32/winpos.c:97 */
+WINAPI BOOL wine32b_user32_GetWindowRect(HWND hwnd, LPRECT rect) /* ../dlls/user32/winpos.c:97 */
 {
 	BOOL return_value;
 	TRACE("Enter GetWindowRect\n");
@@ -12294,6 +12705,7 @@ WINAPI BOOL wine32b_user32_GetWindowRect(HWND  hwnd, LPRECT  rect) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_GetWindowRect(void);  /* ../dlls/user32/winpos.c:97 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12312,7 +12724,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowRect,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetWindowRgn(HWND  hwnd, HRGN  hrgn) /* ../dlls/user32/winpos.c:108 */
+WINAPI INT wine32b_user32_GetWindowRgn(HWND hwnd, HRGN hrgn) /* ../dlls/user32/winpos.c:108 */
 {
 	INT return_value;
 	TRACE("Enter GetWindowRgn\n");
@@ -12323,6 +12735,7 @@ WINAPI INT wine32b_user32_GetWindowRgn(HWND  hwnd, HRGN  hrgn) /* ../dlls/user32
 
 extern WINAPI void wine32a_user32_GetWindowRgn(void);  /* ../dlls/user32/winpos.c:108 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowRgn,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12341,7 +12754,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowRgn,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetWindowRgnBox(HWND  hwnd, LPRECT  prect) /* ../dlls/user32/winpos.c:157 */
+WINAPI INT wine32b_user32_GetWindowRgnBox(HWND hwnd, LPRECT prect) /* ../dlls/user32/winpos.c:157 */
 {
 	INT return_value;
 	TRACE("Enter GetWindowRgnBox\n");
@@ -12352,6 +12765,7 @@ WINAPI INT wine32b_user32_GetWindowRgnBox(HWND  hwnd, LPRECT  prect) /* ../dlls/
 
 extern WINAPI void wine32a_user32_GetWindowRgnBox(void);  /* ../dlls/user32/winpos.c:157 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowRgnBox,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12370,7 +12784,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowRgnBox,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetWindowTextA(HWND  hwnd, LPSTR  lpString, INT  nMaxCount) /* ../dlls/user32/win.c:2869 */
+WINAPI INT wine32b_user32_GetWindowTextA(HWND hwnd, LPSTR lpString, INT nMaxCount) /* ../dlls/user32/win.c:2869 */
 {
 	INT return_value;
 	TRACE("Enter GetWindowTextA\n");
@@ -12381,6 +12795,7 @@ WINAPI INT wine32b_user32_GetWindowTextA(HWND  hwnd, LPSTR  lpString, INT  nMaxC
 
 extern WINAPI void wine32a_user32_GetWindowTextA(void);  /* ../dlls/user32/win.c:2869 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowTextA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12400,7 +12815,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowTextA,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetWindowTextLengthA(HWND  hwnd) /* ../dlls/user32/win.c:2972 */
+WINAPI INT wine32b_user32_GetWindowTextLengthA(HWND hwnd) /* ../dlls/user32/win.c:2972 */
 {
 	INT return_value;
 	TRACE("Enter GetWindowTextLengthA\n");
@@ -12411,6 +12826,7 @@ WINAPI INT wine32b_user32_GetWindowTextLengthA(HWND  hwnd) /* ../dlls/user32/win
 
 extern WINAPI void wine32a_user32_GetWindowTextLengthA(void);  /* ../dlls/user32/win.c:2972 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowTextLengthA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12428,7 +12844,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowTextLengthA,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetWindowTextLengthW(HWND  hwnd) /* ../dlls/user32/win.c:2986 */
+WINAPI INT wine32b_user32_GetWindowTextLengthW(HWND hwnd) /* ../dlls/user32/win.c:2986 */
 {
 	INT return_value;
 	TRACE("Enter GetWindowTextLengthW\n");
@@ -12439,6 +12855,7 @@ WINAPI INT wine32b_user32_GetWindowTextLengthW(HWND  hwnd) /* ../dlls/user32/win
 
 extern WINAPI void wine32a_user32_GetWindowTextLengthW(void);  /* ../dlls/user32/win.c:2986 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowTextLengthW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12456,7 +12873,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowTextLengthW,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_GetWindowTextW(HWND  hwnd, LPWSTR  lpString, INT  nMaxCount) /* ../dlls/user32/win.c:2918 */
+WINAPI INT wine32b_user32_GetWindowTextW(HWND hwnd, LPWSTR lpString, INT nMaxCount) /* ../dlls/user32/win.c:2918 */
 {
 	INT return_value;
 	TRACE("Enter GetWindowTextW\n");
@@ -12467,6 +12884,7 @@ WINAPI INT wine32b_user32_GetWindowTextW(HWND  hwnd, LPWSTR  lpString, INT  nMax
 
 extern WINAPI void wine32a_user32_GetWindowTextW(void);  /* ../dlls/user32/win.c:2918 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowTextW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12486,7 +12904,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowTextW,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_GetWindowThreadProcessId(HWND  hwnd, LPDWORD  process) /* ../dlls/user32/win.c:3026 */
+WINAPI DWORD wine32b_user32_GetWindowThreadProcessId(HWND hwnd, LPDWORD process) /* ../dlls/user32/win.c:3026 */
 {
 	DWORD return_value;
 	TRACE("Enter GetWindowThreadProcessId\n");
@@ -12497,6 +12915,7 @@ WINAPI DWORD wine32b_user32_GetWindowThreadProcessId(HWND  hwnd, LPDWORD  proces
 
 extern WINAPI void wine32a_user32_GetWindowThreadProcessId(void);  /* ../dlls/user32/win.c:3026 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowThreadProcessId,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12515,7 +12934,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowThreadProcessId,
 	"ret \n"
 )
 
-WINAPI WORD wine32b_user32_GetWindowWord(HWND  hwnd, INT  offset) /* ../dlls/user32/win.c:2668 */
+WINAPI WORD wine32b_user32_GetWindowWord(HWND hwnd, INT offset) /* ../dlls/user32/win.c:2668 */
 {
 	WORD return_value;
 	TRACE("Enter GetWindowWord\n");
@@ -12526,6 +12945,7 @@ WINAPI WORD wine32b_user32_GetWindowWord(HWND  hwnd, INT  offset) /* ../dlls/use
 
 extern WINAPI void wine32a_user32_GetWindowWord(void);  /* ../dlls/user32/win.c:2668 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowWord,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12544,7 +12964,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GetWindowWord,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GrayStringA(HDC  hdc, HBRUSH  hbr, GRAYSTRINGPROC  gsprc, LPARAM  lParam, INT  cch, INT  x, INT  y, INT  cx, INT  cy) /* ../dlls/user32/text.c:1265 */
+WINAPI BOOL wine32b_user32_GrayStringA(HDC hdc, HBRUSH hbr, GRAYSTRINGPROC gsprc, LPARAM lParam, INT cch, INT x, INT y, INT cx, INT cy) /* ../dlls/user32/text.c:1265 */
 {
 	BOOL return_value;
 	TRACE("Enter GrayStringA\n");
@@ -12555,6 +12975,7 @@ WINAPI BOOL wine32b_user32_GrayStringA(HDC  hdc, HBRUSH  hbr, GRAYSTRINGPROC  gs
 
 extern WINAPI void wine32a_user32_GrayStringA(void);  /* ../dlls/user32/text.c:1265 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GrayStringA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12575,7 +12996,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GrayStringA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_GrayStringW(HDC  hdc, HBRUSH  hbr, GRAYSTRINGPROC  gsprc, LPARAM  lParam, INT  cch, INT  x, INT  y, INT  cx, INT  cy) /* ../dlls/user32/text.c:1285 */
+WINAPI BOOL wine32b_user32_GrayStringW(HDC hdc, HBRUSH hbr, GRAYSTRINGPROC gsprc, LPARAM lParam, INT cch, INT x, INT y, INT cx, INT cy) /* ../dlls/user32/text.c:1285 */
 {
 	BOOL return_value;
 	TRACE("Enter GrayStringW\n");
@@ -12586,6 +13007,7 @@ WINAPI BOOL wine32b_user32_GrayStringW(HDC  hdc, HBRUSH  hbr, GRAYSTRINGPROC  gs
 
 extern WINAPI void wine32a_user32_GrayStringW(void);  /* ../dlls/user32/text.c:1285 */
 __ASM_GLOBAL_FUNC(wine32a_user32_GrayStringW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12606,7 +13028,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_GrayStringW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_HideCaret(HWND  hwnd) /* ../dlls/user32/caret.c:289 */
+WINAPI BOOL wine32b_user32_HideCaret(HWND hwnd) /* ../dlls/user32/caret.c:289 */
 {
 	BOOL return_value;
 	TRACE("Enter HideCaret\n");
@@ -12617,6 +13039,7 @@ WINAPI BOOL wine32b_user32_HideCaret(HWND  hwnd) /* ../dlls/user32/caret.c:289 *
 
 extern WINAPI void wine32a_user32_HideCaret(void);  /* ../dlls/user32/caret.c:289 */
 __ASM_GLOBAL_FUNC(wine32a_user32_HideCaret,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12634,7 +13057,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_HideCaret,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_HiliteMenuItem(HWND  hWnd, HMENU  hMenu, UINT  wItemID, UINT  wHilite) /* ../dlls/user32/menu.c:3857 */
+WINAPI BOOL wine32b_user32_HiliteMenuItem(HWND hWnd, HMENU hMenu, UINT wItemID, UINT wHilite) /* ../dlls/user32/menu.c:3857 */
 {
 	BOOL return_value;
 	TRACE("Enter HiliteMenuItem\n");
@@ -12645,6 +13068,7 @@ WINAPI BOOL wine32b_user32_HiliteMenuItem(HWND  hWnd, HMENU  hMenu, UINT  wItemI
 
 extern WINAPI void wine32a_user32_HiliteMenuItem(void);  /* ../dlls/user32/menu.c:3857 */
 __ASM_GLOBAL_FUNC(wine32a_user32_HiliteMenuItem,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12665,7 +13089,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_HiliteMenuItem,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ImpersonateDdeClientWindow(HWND  hWndClient, HWND  hWndServer) /* ../dlls/user32/dde_misc.c:234 */
+WINAPI BOOL wine32b_user32_ImpersonateDdeClientWindow(HWND hWndClient, HWND hWndServer) /* ../dlls/user32/dde_misc.c:234 */
 {
 	BOOL return_value;
 	TRACE("Enter ImpersonateDdeClientWindow\n");
@@ -12676,6 +13100,7 @@ WINAPI BOOL wine32b_user32_ImpersonateDdeClientWindow(HWND  hWndClient, HWND  hW
 
 extern WINAPI void wine32a_user32_ImpersonateDdeClientWindow(void);  /* ../dlls/user32/dde_misc.c:234 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ImpersonateDdeClientWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12705,6 +13130,7 @@ WINAPI BOOL wine32b_user32_InSendMessage(void) /* ../dlls/user32/message.c:3636 
 
 extern WINAPI void wine32a_user32_InSendMessage(void);  /* ../dlls/user32/message.c:3636 */
 __ASM_GLOBAL_FUNC(wine32a_user32_InSendMessage,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -12721,7 +13147,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_InSendMessage,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_InSendMessageEx(LPVOID  reserved) /* ../dlls/user32/message.c:3645 */
+WINAPI DWORD wine32b_user32_InSendMessageEx(LPVOID reserved) /* ../dlls/user32/message.c:3645 */
 {
 	DWORD return_value;
 	TRACE("Enter InSendMessageEx\n");
@@ -12732,6 +13158,7 @@ WINAPI DWORD wine32b_user32_InSendMessageEx(LPVOID  reserved) /* ../dlls/user32/
 
 extern WINAPI void wine32a_user32_InSendMessageEx(void);  /* ../dlls/user32/message.c:3645 */
 __ASM_GLOBAL_FUNC(wine32a_user32_InSendMessageEx,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12749,7 +13176,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_InSendMessageEx,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_InflateRect(LPRECT  rect, INT  x, INT  y) /* ../dlls/user32/uitools.c:1321 */
+WINAPI BOOL wine32b_user32_InflateRect(LPRECT rect, INT x, INT y) /* ../dlls/user32/uitools.c:1321 */
 {
 	BOOL return_value;
 	TRACE("Enter InflateRect\n");
@@ -12760,6 +13187,7 @@ WINAPI BOOL wine32b_user32_InflateRect(LPRECT  rect, INT  x, INT  y) /* ../dlls/
 
 extern WINAPI void wine32a_user32_InflateRect(void);  /* ../dlls/user32/uitools.c:1321 */
 __ASM_GLOBAL_FUNC(wine32a_user32_InflateRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12779,7 +13207,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_InflateRect,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_InsertMenuA(HMENU  hMenu, UINT  pos, UINT  flags, UINT_PTR  id, LPCSTR  str) /* ../dlls/user32/menu.c:4035 */
+WINAPI BOOL wine32b_user32_InsertMenuA(HMENU hMenu, UINT pos, UINT flags, UINT_PTR id, LPCSTR str) /* ../dlls/user32/menu.c:4035 */
 {
 	BOOL return_value;
 	TRACE("Enter InsertMenuA\n");
@@ -12790,6 +13218,7 @@ WINAPI BOOL wine32b_user32_InsertMenuA(HMENU  hMenu, UINT  pos, UINT  flags, UIN
 
 extern WINAPI void wine32a_user32_InsertMenuA(void);  /* ../dlls/user32/menu.c:4035 */
 __ASM_GLOBAL_FUNC(wine32a_user32_InsertMenuA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12810,7 +13239,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_InsertMenuA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_InsertMenuItemA(HMENU  hMenu, UINT  uItem, BOOL  bypos, MENUITEMINFOA*  lpmii) /* ../dlls/user32/menu.c:5208 */
+WINAPI BOOL wine32b_user32_InsertMenuItemA(HMENU hMenu, UINT uItem, BOOL bypos, MENUITEMINFOA* lpmii) /* ../dlls/user32/menu.c:5208 */
 {
 	BOOL return_value;
 	TRACE("Enter InsertMenuItemA\n");
@@ -12821,6 +13250,7 @@ WINAPI BOOL wine32b_user32_InsertMenuItemA(HMENU  hMenu, UINT  uItem, BOOL  bypo
 
 extern WINAPI void wine32a_user32_InsertMenuItemA(void);  /* ../dlls/user32/menu.c:5208 */
 __ASM_GLOBAL_FUNC(wine32a_user32_InsertMenuItemA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12841,7 +13271,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_InsertMenuItemA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_InsertMenuItemW(HMENU  hMenu, UINT  uItem, BOOL  bypos, MENUITEMINFOW*  lpmii) /* ../dlls/user32/menu.c:5232 */
+WINAPI BOOL wine32b_user32_InsertMenuItemW(HMENU hMenu, UINT uItem, BOOL bypos, MENUITEMINFOW* lpmii) /* ../dlls/user32/menu.c:5232 */
 {
 	BOOL return_value;
 	TRACE("Enter InsertMenuItemW\n");
@@ -12852,6 +13282,7 @@ WINAPI BOOL wine32b_user32_InsertMenuItemW(HMENU  hMenu, UINT  uItem, BOOL  bypo
 
 extern WINAPI void wine32a_user32_InsertMenuItemW(void);  /* ../dlls/user32/menu.c:5232 */
 __ASM_GLOBAL_FUNC(wine32a_user32_InsertMenuItemW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12872,7 +13303,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_InsertMenuItemW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_InsertMenuW(HMENU  hMenu, UINT  pos, UINT  flags, UINT_PTR  id, LPCWSTR  str) /* ../dlls/user32/menu.c:4000 */
+WINAPI BOOL wine32b_user32_InsertMenuW(HMENU hMenu, UINT pos, UINT flags, UINT_PTR id, LPCWSTR str) /* ../dlls/user32/menu.c:4000 */
 {
 	BOOL return_value;
 	TRACE("Enter InsertMenuW\n");
@@ -12883,6 +13314,7 @@ WINAPI BOOL wine32b_user32_InsertMenuW(HMENU  hMenu, UINT  pos, UINT  flags, UIN
 
 extern WINAPI void wine32a_user32_InsertMenuW(void);  /* ../dlls/user32/menu.c:4000 */
 __ASM_GLOBAL_FUNC(wine32a_user32_InsertMenuW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12903,7 +13335,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_InsertMenuW,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_InternalGetWindowText(HWND  hwnd, LPWSTR  lpString, INT  nMaxCount) /* ../dlls/user32/win.c:2894 */
+WINAPI INT wine32b_user32_InternalGetWindowText(HWND hwnd, LPWSTR lpString, INT nMaxCount) /* ../dlls/user32/win.c:2894 */
 {
 	INT return_value;
 	TRACE("Enter InternalGetWindowText\n");
@@ -12914,6 +13346,7 @@ WINAPI INT wine32b_user32_InternalGetWindowText(HWND  hwnd, LPWSTR  lpString, IN
 
 extern WINAPI void wine32a_user32_InternalGetWindowText(void);  /* ../dlls/user32/win.c:2894 */
 __ASM_GLOBAL_FUNC(wine32a_user32_InternalGetWindowText,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12933,7 +13366,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_InternalGetWindowText,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IntersectRect(LPRECT  dest, RECT*  src1, RECT*  src2) /* ../dlls/user32/uitools.c:1335 */
+WINAPI BOOL wine32b_user32_IntersectRect(LPRECT dest, RECT* src1, RECT* src2) /* ../dlls/user32/uitools.c:1335 */
 {
 	BOOL return_value;
 	TRACE("Enter IntersectRect\n");
@@ -12944,6 +13377,7 @@ WINAPI BOOL wine32b_user32_IntersectRect(LPRECT  dest, RECT*  src1, RECT*  src2)
 
 extern WINAPI void wine32a_user32_IntersectRect(void);  /* ../dlls/user32/uitools.c:1335 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IntersectRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12963,7 +13397,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IntersectRect,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_InvalidateRect(HWND  hwnd, RECT*  rect, BOOL  erase) /* ../dlls/user32/painting.c:1321 */
+WINAPI BOOL wine32b_user32_InvalidateRect(HWND hwnd, RECT* rect, BOOL erase) /* ../dlls/user32/painting.c:1321 */
 {
 	BOOL return_value;
 	TRACE("Enter InvalidateRect\n");
@@ -12974,6 +13408,7 @@ WINAPI BOOL wine32b_user32_InvalidateRect(HWND  hwnd, RECT*  rect, BOOL  erase) 
 
 extern WINAPI void wine32a_user32_InvalidateRect(void);  /* ../dlls/user32/painting.c:1321 */
 __ASM_GLOBAL_FUNC(wine32a_user32_InvalidateRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -12993,7 +13428,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_InvalidateRect,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_InvalidateRgn(HWND  hwnd, HRGN  hrgn, BOOL  erase) /* ../dlls/user32/painting.c:1303 */
+WINAPI BOOL wine32b_user32_InvalidateRgn(HWND hwnd, HRGN hrgn, BOOL erase) /* ../dlls/user32/painting.c:1303 */
 {
 	BOOL return_value;
 	TRACE("Enter InvalidateRgn\n");
@@ -13004,6 +13439,7 @@ WINAPI BOOL wine32b_user32_InvalidateRgn(HWND  hwnd, HRGN  hrgn, BOOL  erase) /*
 
 extern WINAPI void wine32a_user32_InvalidateRgn(void);  /* ../dlls/user32/painting.c:1303 */
 __ASM_GLOBAL_FUNC(wine32a_user32_InvalidateRgn,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13023,7 +13459,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_InvalidateRgn,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_InvertRect(HDC  hdc, RECT*  rect) /* ../dlls/user32/uitools.c:1454 */
+WINAPI BOOL wine32b_user32_InvertRect(HDC hdc, RECT* rect) /* ../dlls/user32/uitools.c:1454 */
 {
 	BOOL return_value;
 	TRACE("Enter InvertRect\n");
@@ -13034,6 +13470,7 @@ WINAPI BOOL wine32b_user32_InvertRect(HDC  hdc, RECT*  rect) /* ../dlls/user32/u
 
 extern WINAPI void wine32a_user32_InvertRect(void);  /* ../dlls/user32/uitools.c:1454 */
 __ASM_GLOBAL_FUNC(wine32a_user32_InvertRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13052,7 +13489,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_InvertRect,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsCharAlphaA(CHAR  x) /* ../dlls/user32/lstr.c:466 */
+WINAPI BOOL wine32b_user32_IsCharAlphaA(CHAR x) /* ../dlls/user32/lstr.c:466 */
 {
 	BOOL return_value;
 	TRACE("Enter IsCharAlphaA\n");
@@ -13063,6 +13500,7 @@ WINAPI BOOL wine32b_user32_IsCharAlphaA(CHAR  x) /* ../dlls/user32/lstr.c:466 */
 
 extern WINAPI void wine32a_user32_IsCharAlphaA(void);  /* ../dlls/user32/lstr.c:466 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsCharAlphaA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13080,7 +13518,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsCharAlphaA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsCharAlphaNumericA(CHAR  x) /* ../dlls/user32/lstr.c:444 */
+WINAPI BOOL wine32b_user32_IsCharAlphaNumericA(CHAR x) /* ../dlls/user32/lstr.c:444 */
 {
 	BOOL return_value;
 	TRACE("Enter IsCharAlphaNumericA\n");
@@ -13091,6 +13529,7 @@ WINAPI BOOL wine32b_user32_IsCharAlphaNumericA(CHAR  x) /* ../dlls/user32/lstr.c
 
 extern WINAPI void wine32a_user32_IsCharAlphaNumericA(void);  /* ../dlls/user32/lstr.c:444 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsCharAlphaNumericA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13108,7 +13547,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsCharAlphaNumericA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsCharAlphaNumericW(WCHAR  ch) /* ../dlls/user32/lstr.c:455 */
+WINAPI BOOL wine32b_user32_IsCharAlphaNumericW(WCHAR ch) /* ../dlls/user32/lstr.c:455 */
 {
 	BOOL return_value;
 	TRACE("Enter IsCharAlphaNumericW\n");
@@ -13119,6 +13558,7 @@ WINAPI BOOL wine32b_user32_IsCharAlphaNumericW(WCHAR  ch) /* ../dlls/user32/lstr
 
 extern WINAPI void wine32a_user32_IsCharAlphaNumericW(void);  /* ../dlls/user32/lstr.c:455 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsCharAlphaNumericW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13136,7 +13576,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsCharAlphaNumericW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsCharAlphaW(WCHAR  ch) /* ../dlls/user32/lstr.c:477 */
+WINAPI BOOL wine32b_user32_IsCharAlphaW(WCHAR ch) /* ../dlls/user32/lstr.c:477 */
 {
 	BOOL return_value;
 	TRACE("Enter IsCharAlphaW\n");
@@ -13147,6 +13587,7 @@ WINAPI BOOL wine32b_user32_IsCharAlphaW(WCHAR  ch) /* ../dlls/user32/lstr.c:477 
 
 extern WINAPI void wine32a_user32_IsCharAlphaW(void);  /* ../dlls/user32/lstr.c:477 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsCharAlphaW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13164,7 +13605,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsCharAlphaW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsCharLowerA(CHAR  x) /* ../dlls/user32/lstr.c:400 */
+WINAPI BOOL wine32b_user32_IsCharLowerA(CHAR x) /* ../dlls/user32/lstr.c:400 */
 {
 	BOOL return_value;
 	TRACE("Enter IsCharLowerA\n");
@@ -13175,6 +13616,7 @@ WINAPI BOOL wine32b_user32_IsCharLowerA(CHAR  x) /* ../dlls/user32/lstr.c:400 */
 
 extern WINAPI void wine32a_user32_IsCharLowerA(void);  /* ../dlls/user32/lstr.c:400 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsCharLowerA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13192,7 +13634,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsCharLowerA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsCharLowerW(WCHAR  ch) /* ../dlls/user32/lstr.c:411 */
+WINAPI BOOL wine32b_user32_IsCharLowerW(WCHAR ch) /* ../dlls/user32/lstr.c:411 */
 {
 	BOOL return_value;
 	TRACE("Enter IsCharLowerW\n");
@@ -13203,6 +13645,7 @@ WINAPI BOOL wine32b_user32_IsCharLowerW(WCHAR  ch) /* ../dlls/user32/lstr.c:411 
 
 extern WINAPI void wine32a_user32_IsCharLowerW(void);  /* ../dlls/user32/lstr.c:411 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsCharLowerW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13220,7 +13663,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsCharLowerW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsCharUpperA(CHAR  x) /* ../dlls/user32/lstr.c:422 */
+WINAPI BOOL wine32b_user32_IsCharUpperA(CHAR x) /* ../dlls/user32/lstr.c:422 */
 {
 	BOOL return_value;
 	TRACE("Enter IsCharUpperA\n");
@@ -13231,6 +13674,7 @@ WINAPI BOOL wine32b_user32_IsCharUpperA(CHAR  x) /* ../dlls/user32/lstr.c:422 */
 
 extern WINAPI void wine32a_user32_IsCharUpperA(void);  /* ../dlls/user32/lstr.c:422 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsCharUpperA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13248,7 +13692,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsCharUpperA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsCharUpperW(WCHAR  ch) /* ../dlls/user32/lstr.c:433 */
+WINAPI BOOL wine32b_user32_IsCharUpperW(WCHAR ch) /* ../dlls/user32/lstr.c:433 */
 {
 	BOOL return_value;
 	TRACE("Enter IsCharUpperW\n");
@@ -13259,6 +13703,7 @@ WINAPI BOOL wine32b_user32_IsCharUpperW(WCHAR  ch) /* ../dlls/user32/lstr.c:433 
 
 extern WINAPI void wine32a_user32_IsCharUpperW(void);  /* ../dlls/user32/lstr.c:433 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsCharUpperW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13276,7 +13721,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsCharUpperW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsChild(HWND  parent, HWND  child) /* ../dlls/user32/win.c:3268 */
+WINAPI BOOL wine32b_user32_IsChild(HWND parent, HWND child) /* ../dlls/user32/win.c:3268 */
 {
 	BOOL return_value;
 	TRACE("Enter IsChild\n");
@@ -13287,6 +13732,7 @@ WINAPI BOOL wine32b_user32_IsChild(HWND  parent, HWND  child) /* ../dlls/user32/
 
 extern WINAPI void wine32a_user32_IsChild(void);  /* ../dlls/user32/win.c:3268 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsChild,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13305,7 +13751,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsChild,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsClipboardFormatAvailable(UINT  format) /* ../dlls/user32/clipboard.c:979 */
+WINAPI BOOL wine32b_user32_IsClipboardFormatAvailable(UINT format) /* ../dlls/user32/clipboard.c:979 */
 {
 	BOOL return_value;
 	TRACE("Enter IsClipboardFormatAvailable\n");
@@ -13316,6 +13762,7 @@ WINAPI BOOL wine32b_user32_IsClipboardFormatAvailable(UINT  format) /* ../dlls/u
 
 extern WINAPI void wine32a_user32_IsClipboardFormatAvailable(void);  /* ../dlls/user32/clipboard.c:979 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsClipboardFormatAvailable,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13333,7 +13780,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsClipboardFormatAvailable,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsDialogMessageA(HWND  hwndDlg, LPMSG  pmsg) /* ../dlls/user32/message.c:3879 */
+WINAPI BOOL wine32b_user32_IsDialogMessageA(HWND hwndDlg, LPMSG pmsg) /* ../dlls/user32/message.c:3879 */
 {
 	BOOL return_value;
 	TRACE("Enter IsDialogMessageA\n");
@@ -13344,6 +13791,7 @@ WINAPI BOOL wine32b_user32_IsDialogMessageA(HWND  hwndDlg, LPMSG  pmsg) /* ../dl
 
 extern WINAPI void wine32a_user32_IsDialogMessageA(void);  /* ../dlls/user32/message.c:3879 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsDialogMessageA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13362,7 +13810,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsDialogMessageA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsDialogMessageW(HWND  hwndDlg, LPMSG  msg) /* ../dlls/user32/dialog.c:1159 */
+WINAPI BOOL wine32b_user32_IsDialogMessageW(HWND hwndDlg, LPMSG msg) /* ../dlls/user32/dialog.c:1159 */
 {
 	BOOL return_value;
 	TRACE("Enter IsDialogMessageW\n");
@@ -13373,6 +13821,7 @@ WINAPI BOOL wine32b_user32_IsDialogMessageW(HWND  hwndDlg, LPMSG  msg) /* ../dll
 
 extern WINAPI void wine32a_user32_IsDialogMessageW(void);  /* ../dlls/user32/dialog.c:1159 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsDialogMessageW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13391,7 +13840,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsDialogMessageW,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_IsDlgButtonChecked(HWND  hwnd, int  id) /* ../dlls/user32/dialog.c:1465 */
+WINAPI UINT wine32b_user32_IsDlgButtonChecked(HWND hwnd, int id) /* ../dlls/user32/dialog.c:1465 */
 {
 	UINT return_value;
 	TRACE("Enter IsDlgButtonChecked\n");
@@ -13402,6 +13851,7 @@ WINAPI UINT wine32b_user32_IsDlgButtonChecked(HWND  hwnd, int  id) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_IsDlgButtonChecked(void);  /* ../dlls/user32/dialog.c:1465 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsDlgButtonChecked,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13420,7 +13870,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsDlgButtonChecked,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsGUIThread(BOOL  convert) /* ../dlls/user32/message.c:4594 */
+WINAPI BOOL wine32b_user32_IsGUIThread(BOOL convert) /* ../dlls/user32/message.c:4594 */
 {
 	BOOL return_value;
 	TRACE("Enter IsGUIThread\n");
@@ -13431,6 +13881,7 @@ WINAPI BOOL wine32b_user32_IsGUIThread(BOOL  convert) /* ../dlls/user32/message.
 
 extern WINAPI void wine32a_user32_IsGUIThread(void);  /* ../dlls/user32/message.c:4594 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsGUIThread,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13448,7 +13899,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsGUIThread,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsHungAppWindow(HWND  hWnd) /* ../dlls/user32/message.c:4644 */
+WINAPI BOOL wine32b_user32_IsHungAppWindow(HWND hWnd) /* ../dlls/user32/message.c:4644 */
 {
 	BOOL return_value;
 	TRACE("Enter IsHungAppWindow\n");
@@ -13459,6 +13910,7 @@ WINAPI BOOL wine32b_user32_IsHungAppWindow(HWND  hWnd) /* ../dlls/user32/message
 
 extern WINAPI void wine32a_user32_IsHungAppWindow(void);  /* ../dlls/user32/message.c:4644 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsHungAppWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13476,7 +13928,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsHungAppWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsIconic(HWND  hWnd) /* ../dlls/user32/winpos.c:622 */
+WINAPI BOOL wine32b_user32_IsIconic(HWND hWnd) /* ../dlls/user32/winpos.c:622 */
 {
 	BOOL return_value;
 	TRACE("Enter IsIconic\n");
@@ -13487,6 +13939,7 @@ WINAPI BOOL wine32b_user32_IsIconic(HWND  hWnd) /* ../dlls/user32/winpos.c:622 *
 
 extern WINAPI void wine32a_user32_IsIconic(void);  /* ../dlls/user32/winpos.c:622 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsIconic,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13504,7 +13957,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsIconic,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsMenu(HMENU  hmenu) /* ../dlls/user32/menu.c:4714 */
+WINAPI BOOL wine32b_user32_IsMenu(HMENU hmenu) /* ../dlls/user32/menu.c:4714 */
 {
 	BOOL return_value;
 	TRACE("Enter IsMenu\n");
@@ -13515,6 +13968,7 @@ WINAPI BOOL wine32b_user32_IsMenu(HMENU  hmenu) /* ../dlls/user32/menu.c:4714 */
 
 extern WINAPI void wine32a_user32_IsMenu(void);  /* ../dlls/user32/menu.c:4714 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsMenu,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13543,6 +13997,7 @@ WINAPI BOOL wine32b_user32_IsProcessDPIAware(void) /* ../dlls/user32/sysparams.c
 
 extern WINAPI void wine32a_user32_IsProcessDPIAware(void);  /* ../dlls/user32/sysparams.c:3516 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsProcessDPIAware,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -13559,7 +14014,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsProcessDPIAware,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsRectEmpty(RECT*  rect) /* ../dlls/user32/uitools.c:1286 */
+WINAPI BOOL wine32b_user32_IsRectEmpty(RECT* rect) /* ../dlls/user32/uitools.c:1286 */
 {
 	BOOL return_value;
 	TRACE("Enter IsRectEmpty\n");
@@ -13570,6 +14025,7 @@ WINAPI BOOL wine32b_user32_IsRectEmpty(RECT*  rect) /* ../dlls/user32/uitools.c:
 
 extern WINAPI void wine32a_user32_IsRectEmpty(void);  /* ../dlls/user32/uitools.c:1286 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsRectEmpty,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13587,7 +14043,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsRectEmpty,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsTouchWindow(HWND  hwnd, PULONG  flags) /* ../dlls/user32/misc.c:533 */
+WINAPI BOOL wine32b_user32_IsTouchWindow(HWND hwnd, PULONG flags) /* ../dlls/user32/misc.c:533 */
 {
 	BOOL return_value;
 	TRACE("Enter IsTouchWindow\n");
@@ -13598,6 +14054,7 @@ WINAPI BOOL wine32b_user32_IsTouchWindow(HWND  hwnd, PULONG  flags) /* ../dlls/u
 
 extern WINAPI void wine32a_user32_IsTouchWindow(void);  /* ../dlls/user32/misc.c:533 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsTouchWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13616,7 +14073,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsTouchWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsValidDpiAwarenessContext(DPI_AWARENESS_CONTEXT  context) /* ../dlls/user32/sysparams.c:3498 */
+WINAPI BOOL wine32b_user32_IsValidDpiAwarenessContext(DPI_AWARENESS_CONTEXT context) /* ../dlls/user32/sysparams.c:3498 */
 {
 	BOOL return_value;
 	TRACE("Enter IsValidDpiAwarenessContext\n");
@@ -13627,6 +14084,7 @@ WINAPI BOOL wine32b_user32_IsValidDpiAwarenessContext(DPI_AWARENESS_CONTEXT  con
 
 extern WINAPI void wine32a_user32_IsValidDpiAwarenessContext(void);  /* ../dlls/user32/sysparams.c:3498 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsValidDpiAwarenessContext,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13644,7 +14102,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsValidDpiAwarenessContext,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsWinEventHookInstalled(DWORD  dwEvent) /* ../dlls/user32/hook.c:961 */
+WINAPI BOOL wine32b_user32_IsWinEventHookInstalled(DWORD dwEvent) /* ../dlls/user32/hook.c:961 */
 {
 	BOOL return_value;
 	TRACE("Enter IsWinEventHookInstalled\n");
@@ -13655,6 +14113,7 @@ WINAPI BOOL wine32b_user32_IsWinEventHookInstalled(DWORD  dwEvent) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_IsWinEventHookInstalled(void);  /* ../dlls/user32/hook.c:961 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsWinEventHookInstalled,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13672,7 +14131,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsWinEventHookInstalled,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsWindow(HWND  hwnd) /* ../dlls/user32/win.c:2998 */
+WINAPI BOOL wine32b_user32_IsWindow(HWND hwnd) /* ../dlls/user32/win.c:2998 */
 {
 	BOOL return_value;
 	TRACE("Enter IsWindow\n");
@@ -13683,6 +14142,7 @@ WINAPI BOOL wine32b_user32_IsWindow(HWND  hwnd) /* ../dlls/user32/win.c:2998 */
 
 extern WINAPI void wine32a_user32_IsWindow(void);  /* ../dlls/user32/win.c:2998 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13700,7 +14160,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsWindowEnabled(HWND  hWnd) /* ../dlls/user32/win.c:2195 */
+WINAPI BOOL wine32b_user32_IsWindowEnabled(HWND hWnd) /* ../dlls/user32/win.c:2195 */
 {
 	BOOL return_value;
 	TRACE("Enter IsWindowEnabled\n");
@@ -13711,6 +14171,7 @@ WINAPI BOOL wine32b_user32_IsWindowEnabled(HWND  hWnd) /* ../dlls/user32/win.c:2
 
 extern WINAPI void wine32a_user32_IsWindowEnabled(void);  /* ../dlls/user32/win.c:2195 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsWindowEnabled,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13728,7 +14189,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsWindowEnabled,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsWindowRedirectedForPrint(HWND  hwnd) /* ../dlls/user32/misc.c:542 */
+WINAPI BOOL wine32b_user32_IsWindowRedirectedForPrint(HWND hwnd) /* ../dlls/user32/misc.c:542 */
 {
 	BOOL return_value;
 	TRACE("Enter IsWindowRedirectedForPrint\n");
@@ -13739,6 +14200,7 @@ WINAPI BOOL wine32b_user32_IsWindowRedirectedForPrint(HWND  hwnd) /* ../dlls/use
 
 extern WINAPI void wine32a_user32_IsWindowRedirectedForPrint(void);  /* ../dlls/user32/misc.c:542 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsWindowRedirectedForPrint,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13756,7 +14218,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsWindowRedirectedForPrint,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsWindowUnicode(HWND  hwnd) /* ../dlls/user32/win.c:2208 */
+WINAPI BOOL wine32b_user32_IsWindowUnicode(HWND hwnd) /* ../dlls/user32/win.c:2208 */
 {
 	BOOL return_value;
 	TRACE("Enter IsWindowUnicode\n");
@@ -13767,6 +14229,7 @@ WINAPI BOOL wine32b_user32_IsWindowUnicode(HWND  hwnd) /* ../dlls/user32/win.c:2
 
 extern WINAPI void wine32a_user32_IsWindowUnicode(void);  /* ../dlls/user32/win.c:2208 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsWindowUnicode,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13784,7 +14247,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsWindowUnicode,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsWindowVisible(HWND  hwnd) /* ../dlls/user32/win.c:3294 */
+WINAPI BOOL wine32b_user32_IsWindowVisible(HWND hwnd) /* ../dlls/user32/win.c:3294 */
 {
 	BOOL return_value;
 	TRACE("Enter IsWindowVisible\n");
@@ -13795,6 +14258,7 @@ WINAPI BOOL wine32b_user32_IsWindowVisible(HWND  hwnd) /* ../dlls/user32/win.c:3
 
 extern WINAPI void wine32a_user32_IsWindowVisible(void);  /* ../dlls/user32/win.c:3294 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsWindowVisible,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13812,7 +14276,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsWindowVisible,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_IsZoomed(HWND  hWnd) /* ../dlls/user32/winpos.c:631 */
+WINAPI BOOL wine32b_user32_IsZoomed(HWND hWnd) /* ../dlls/user32/winpos.c:631 */
 {
 	BOOL return_value;
 	TRACE("Enter IsZoomed\n");
@@ -13823,6 +14287,7 @@ WINAPI BOOL wine32b_user32_IsZoomed(HWND  hWnd) /* ../dlls/user32/winpos.c:631 *
 
 extern WINAPI void wine32a_user32_IsZoomed(void);  /* ../dlls/user32/winpos.c:631 */
 __ASM_GLOBAL_FUNC(wine32a_user32_IsZoomed,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13840,7 +14305,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_IsZoomed,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_KillSystemTimer(HWND  hwnd, UINT_PTR  id) /* ../dlls/user32/message.c:4575 */
+WINAPI BOOL wine32b_user32_KillSystemTimer(HWND hwnd, UINT_PTR id) /* ../dlls/user32/message.c:4575 */
 {
 	BOOL return_value;
 	TRACE("Enter KillSystemTimer\n");
@@ -13851,6 +14316,7 @@ WINAPI BOOL wine32b_user32_KillSystemTimer(HWND  hwnd, UINT_PTR  id) /* ../dlls/
 
 extern WINAPI void wine32a_user32_KillSystemTimer(void);  /* ../dlls/user32/message.c:4575 */
 __ASM_GLOBAL_FUNC(wine32a_user32_KillSystemTimer,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13869,7 +14335,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_KillSystemTimer,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_KillTimer(HWND  hwnd, UINT_PTR  id) /* ../dlls/user32/message.c:4556 */
+WINAPI BOOL wine32b_user32_KillTimer(HWND hwnd, UINT_PTR id) /* ../dlls/user32/message.c:4556 */
 {
 	BOOL return_value;
 	TRACE("Enter KillTimer\n");
@@ -13880,6 +14346,7 @@ WINAPI BOOL wine32b_user32_KillTimer(HWND  hwnd, UINT_PTR  id) /* ../dlls/user32
 
 extern WINAPI void wine32a_user32_KillTimer(void);  /* ../dlls/user32/message.c:4556 */
 __ASM_GLOBAL_FUNC(wine32a_user32_KillTimer,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13898,7 +14365,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_KillTimer,
 	"ret \n"
 )
 
-WINAPI HACCEL wine32b_user32_LoadAcceleratorsA(HINSTANCE  instance, LPCSTR  lpTableName) /* ../dlls/user32/resource.c:82 */
+WINAPI HACCEL wine32b_user32_LoadAcceleratorsA(HINSTANCE instance, LPCSTR lpTableName) /* ../dlls/user32/resource.c:82 */
 {
 	HACCEL return_value;
 	TRACE("Enter LoadAcceleratorsA\n");
@@ -13909,6 +14376,7 @@ WINAPI HACCEL wine32b_user32_LoadAcceleratorsA(HINSTANCE  instance, LPCSTR  lpTa
 
 extern WINAPI void wine32a_user32_LoadAcceleratorsA(void);  /* ../dlls/user32/resource.c:82 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LoadAcceleratorsA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13927,7 +14395,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LoadAcceleratorsA,
 	"ret \n"
 )
 
-WINAPI HACCEL wine32b_user32_LoadAcceleratorsW(HINSTANCE  instance, LPCWSTR  name) /* ../dlls/user32/resource.c:57 */
+WINAPI HACCEL wine32b_user32_LoadAcceleratorsW(HINSTANCE instance, LPCWSTR name) /* ../dlls/user32/resource.c:57 */
 {
 	HACCEL return_value;
 	TRACE("Enter LoadAcceleratorsW\n");
@@ -13938,6 +14406,7 @@ WINAPI HACCEL wine32b_user32_LoadAcceleratorsW(HINSTANCE  instance, LPCWSTR  nam
 
 extern WINAPI void wine32a_user32_LoadAcceleratorsW(void);  /* ../dlls/user32/resource.c:57 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LoadAcceleratorsW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13956,7 +14425,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LoadAcceleratorsW,
 	"ret \n"
 )
 
-WINAPI HBITMAP wine32b_user32_LoadBitmapA(HINSTANCE  instance, LPCSTR  name) /* ../dlls/user32/cursoricon.c:3312 */
+WINAPI HBITMAP wine32b_user32_LoadBitmapA(HINSTANCE instance, LPCSTR name) /* ../dlls/user32/cursoricon.c:3312 */
 {
 	HBITMAP return_value;
 	TRACE("Enter LoadBitmapA\n");
@@ -13967,6 +14436,7 @@ WINAPI HBITMAP wine32b_user32_LoadBitmapA(HINSTANCE  instance, LPCSTR  name) /* 
 
 extern WINAPI void wine32a_user32_LoadBitmapA(void);  /* ../dlls/user32/cursoricon.c:3312 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LoadBitmapA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -13985,7 +14455,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LoadBitmapA,
 	"ret \n"
 )
 
-WINAPI HBITMAP wine32b_user32_LoadBitmapW(HINSTANCE  instance, LPCWSTR  name) /* ../dlls/user32/cursoricon.c:3300 */
+WINAPI HBITMAP wine32b_user32_LoadBitmapW(HINSTANCE instance, LPCWSTR name) /* ../dlls/user32/cursoricon.c:3300 */
 {
 	HBITMAP return_value;
 	TRACE("Enter LoadBitmapW\n");
@@ -13996,6 +14466,7 @@ WINAPI HBITMAP wine32b_user32_LoadBitmapW(HINSTANCE  instance, LPCWSTR  name) /*
 
 extern WINAPI void wine32a_user32_LoadBitmapW(void);  /* ../dlls/user32/cursoricon.c:3300 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LoadBitmapW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14014,7 +14485,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LoadBitmapW,
 	"ret \n"
 )
 
-WINAPI HCURSOR wine32b_user32_LoadCursorA(HINSTANCE  hInstance, LPCSTR  name) /* ../dlls/user32/cursoricon.c:2253 */
+WINAPI HCURSOR wine32b_user32_LoadCursorA(HINSTANCE hInstance, LPCSTR name) /* ../dlls/user32/cursoricon.c:2253 */
 {
 	HCURSOR return_value;
 	TRACE("Enter LoadCursorA\n");
@@ -14025,6 +14496,7 @@ WINAPI HCURSOR wine32b_user32_LoadCursorA(HINSTANCE  hInstance, LPCSTR  name) /*
 
 extern WINAPI void wine32a_user32_LoadCursorA(void);  /* ../dlls/user32/cursoricon.c:2253 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LoadCursorA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14043,7 +14515,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LoadCursorA,
 	"ret \n"
 )
 
-WINAPI HCURSOR wine32b_user32_LoadCursorFromFileA(LPCSTR  name) /* ../dlls/user32/cursoricon.c:2275 */
+WINAPI HCURSOR wine32b_user32_LoadCursorFromFileA(LPCSTR name) /* ../dlls/user32/cursoricon.c:2275 */
 {
 	HCURSOR return_value;
 	TRACE("Enter LoadCursorFromFileA\n");
@@ -14054,6 +14526,7 @@ WINAPI HCURSOR wine32b_user32_LoadCursorFromFileA(LPCSTR  name) /* ../dlls/user3
 
 extern WINAPI void wine32a_user32_LoadCursorFromFileA(void);  /* ../dlls/user32/cursoricon.c:2275 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LoadCursorFromFileA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14071,7 +14544,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LoadCursorFromFileA,
 	"ret \n"
 )
 
-WINAPI HCURSOR wine32b_user32_LoadCursorFromFileW(LPCWSTR  name) /* ../dlls/user32/cursoricon.c:2264 */
+WINAPI HCURSOR wine32b_user32_LoadCursorFromFileW(LPCWSTR name) /* ../dlls/user32/cursoricon.c:2264 */
 {
 	HCURSOR return_value;
 	TRACE("Enter LoadCursorFromFileW\n");
@@ -14082,6 +14555,7 @@ WINAPI HCURSOR wine32b_user32_LoadCursorFromFileW(LPCWSTR  name) /* ../dlls/user
 
 extern WINAPI void wine32a_user32_LoadCursorFromFileW(void);  /* ../dlls/user32/cursoricon.c:2264 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LoadCursorFromFileW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14099,7 +14573,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LoadCursorFromFileW,
 	"ret \n"
 )
 
-WINAPI HCURSOR wine32b_user32_LoadCursorW(HINSTANCE  hInstance, LPCWSTR  name) /* ../dlls/user32/cursoricon.c:2242 */
+WINAPI HCURSOR wine32b_user32_LoadCursorW(HINSTANCE hInstance, LPCWSTR name) /* ../dlls/user32/cursoricon.c:2242 */
 {
 	HCURSOR return_value;
 	TRACE("Enter LoadCursorW\n");
@@ -14110,6 +14584,7 @@ WINAPI HCURSOR wine32b_user32_LoadCursorW(HINSTANCE  hInstance, LPCWSTR  name) /
 
 extern WINAPI void wine32a_user32_LoadCursorW(void);  /* ../dlls/user32/cursoricon.c:2242 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LoadCursorW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14128,7 +14603,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LoadCursorW,
 	"ret \n"
 )
 
-WINAPI HICON wine32b_user32_LoadIconA(HINSTANCE  hInstance, LPCSTR  name) /* ../dlls/user32/cursoricon.c:2297 */
+WINAPI HICON wine32b_user32_LoadIconA(HINSTANCE hInstance, LPCSTR name) /* ../dlls/user32/cursoricon.c:2297 */
 {
 	HICON return_value;
 	TRACE("Enter LoadIconA\n");
@@ -14139,6 +14614,7 @@ WINAPI HICON wine32b_user32_LoadIconA(HINSTANCE  hInstance, LPCSTR  name) /* ../
 
 extern WINAPI void wine32a_user32_LoadIconA(void);  /* ../dlls/user32/cursoricon.c:2297 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LoadIconA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14157,7 +14633,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LoadIconA,
 	"ret \n"
 )
 
-WINAPI HICON wine32b_user32_LoadIconW(HINSTANCE  hInstance, LPCWSTR  name) /* ../dlls/user32/cursoricon.c:2286 */
+WINAPI HICON wine32b_user32_LoadIconW(HINSTANCE hInstance, LPCWSTR name) /* ../dlls/user32/cursoricon.c:2286 */
 {
 	HICON return_value;
 	TRACE("Enter LoadIconW\n");
@@ -14168,6 +14644,7 @@ WINAPI HICON wine32b_user32_LoadIconW(HINSTANCE  hInstance, LPCWSTR  name) /* ..
 
 extern WINAPI void wine32a_user32_LoadIconW(void);  /* ../dlls/user32/cursoricon.c:2286 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LoadIconW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14186,7 +14663,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LoadIconW,
 	"ret \n"
 )
 
-WINAPI HANDLE wine32b_user32_LoadImageA(HINSTANCE  hinst, LPCSTR  name, UINT  type, INT  desiredx, INT  desiredy, UINT  loadflags) /* ../dlls/user32/cursoricon.c:2998 */
+WINAPI HANDLE wine32b_user32_LoadImageA(HINSTANCE hinst, LPCSTR name, UINT type, INT desiredx, INT desiredy, UINT loadflags) /* ../dlls/user32/cursoricon.c:2998 */
 {
 	HANDLE return_value;
 	TRACE("Enter LoadImageA\n");
@@ -14197,6 +14674,7 @@ WINAPI HANDLE wine32b_user32_LoadImageA(HINSTANCE  hinst, LPCSTR  name, UINT  ty
 
 extern WINAPI void wine32a_user32_LoadImageA(void);  /* ../dlls/user32/cursoricon.c:2998 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LoadImageA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14217,7 +14695,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LoadImageA,
 	"ret \n"
 )
 
-WINAPI HANDLE wine32b_user32_LoadImageW(HINSTANCE  hinst, LPCWSTR  name, UINT  type, INT  desiredx, INT  desiredy, UINT  loadflags) /* ../dlls/user32/cursoricon.c:3040 */
+WINAPI HANDLE wine32b_user32_LoadImageW(HINSTANCE hinst, LPCWSTR name, UINT type, INT desiredx, INT desiredy, UINT loadflags) /* ../dlls/user32/cursoricon.c:3040 */
 {
 	HANDLE return_value;
 	TRACE("Enter LoadImageW\n");
@@ -14228,6 +14706,7 @@ WINAPI HANDLE wine32b_user32_LoadImageW(HINSTANCE  hinst, LPCWSTR  name, UINT  t
 
 extern WINAPI void wine32a_user32_LoadImageW(void);  /* ../dlls/user32/cursoricon.c:3040 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LoadImageW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14248,7 +14727,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LoadImageW,
 	"ret \n"
 )
 
-WINAPI HKL wine32b_user32_LoadKeyboardLayoutA(LPCSTR  pwszKLID, UINT  Flags) /* ../dlls/user32/input.c:1007 */
+WINAPI HKL wine32b_user32_LoadKeyboardLayoutA(LPCSTR pwszKLID, UINT Flags) /* ../dlls/user32/input.c:1007 */
 {
 	HKL return_value;
 	TRACE("Enter LoadKeyboardLayoutA\n");
@@ -14259,6 +14738,7 @@ WINAPI HKL wine32b_user32_LoadKeyboardLayoutA(LPCSTR  pwszKLID, UINT  Flags) /* 
 
 extern WINAPI void wine32a_user32_LoadKeyboardLayoutA(void);  /* ../dlls/user32/input.c:1007 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LoadKeyboardLayoutA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14277,7 +14757,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LoadKeyboardLayoutA,
 	"ret \n"
 )
 
-WINAPI HKL wine32b_user32_LoadKeyboardLayoutW(LPCWSTR  pwszKLID, UINT  Flags) /* ../dlls/user32/input.c:997 */
+WINAPI HKL wine32b_user32_LoadKeyboardLayoutW(LPCWSTR pwszKLID, UINT Flags) /* ../dlls/user32/input.c:997 */
 {
 	HKL return_value;
 	TRACE("Enter LoadKeyboardLayoutW\n");
@@ -14288,6 +14768,7 @@ WINAPI HKL wine32b_user32_LoadKeyboardLayoutW(LPCWSTR  pwszKLID, UINT  Flags) /*
 
 extern WINAPI void wine32a_user32_LoadKeyboardLayoutW(void);  /* ../dlls/user32/input.c:997 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LoadKeyboardLayoutW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14315,6 +14796,7 @@ WINAPI void wine32b_user32_LoadLocalFonts(void) /* ../dlls/user32/misc.c:379 */
 
 extern WINAPI void wine32a_user32_LoadLocalFonts(void);  /* ../dlls/user32/misc.c:379 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LoadLocalFonts,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -14331,7 +14813,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LoadLocalFonts,
 	"ret \n"
 )
 
-WINAPI HMENU wine32b_user32_LoadMenuA(HINSTANCE  instance, LPCSTR  name) /* ../dlls/user32/menu.c:4642 */
+WINAPI HMENU wine32b_user32_LoadMenuA(HINSTANCE instance, LPCSTR name) /* ../dlls/user32/menu.c:4642 */
 {
 	HMENU return_value;
 	TRACE("Enter LoadMenuA\n");
@@ -14342,6 +14824,7 @@ WINAPI HMENU wine32b_user32_LoadMenuA(HINSTANCE  instance, LPCSTR  name) /* ../d
 
 extern WINAPI void wine32a_user32_LoadMenuA(void);  /* ../dlls/user32/menu.c:4642 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LoadMenuA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14360,7 +14843,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LoadMenuA,
 	"ret \n"
 )
 
-WINAPI HMENU wine32b_user32_LoadMenuIndirectA(LPCVOID  template) /* ../dlls/user32/menu.c:4705 */
+WINAPI HMENU wine32b_user32_LoadMenuIndirectA(LPCVOID template) /* ../dlls/user32/menu.c:4705 */
 {
 	HMENU return_value;
 	TRACE("Enter LoadMenuIndirectA\n");
@@ -14371,6 +14854,7 @@ WINAPI HMENU wine32b_user32_LoadMenuIndirectA(LPCVOID  template) /* ../dlls/user
 
 extern WINAPI void wine32a_user32_LoadMenuIndirectA(void);  /* ../dlls/user32/menu.c:4705 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LoadMenuIndirectA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14388,7 +14872,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LoadMenuIndirectA,
 	"ret \n"
 )
 
-WINAPI HMENU wine32b_user32_LoadMenuIndirectW(LPCVOID  template) /* ../dlls/user32/menu.c:4664 */
+WINAPI HMENU wine32b_user32_LoadMenuIndirectW(LPCVOID template) /* ../dlls/user32/menu.c:4664 */
 {
 	HMENU return_value;
 	TRACE("Enter LoadMenuIndirectW\n");
@@ -14399,6 +14883,7 @@ WINAPI HMENU wine32b_user32_LoadMenuIndirectW(LPCVOID  template) /* ../dlls/user
 
 extern WINAPI void wine32a_user32_LoadMenuIndirectW(void);  /* ../dlls/user32/menu.c:4664 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LoadMenuIndirectW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14416,7 +14901,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LoadMenuIndirectW,
 	"ret \n"
 )
 
-WINAPI HMENU wine32b_user32_LoadMenuW(HINSTANCE  instance, LPCWSTR  name) /* ../dlls/user32/menu.c:4653 */
+WINAPI HMENU wine32b_user32_LoadMenuW(HINSTANCE instance, LPCWSTR name) /* ../dlls/user32/menu.c:4653 */
 {
 	HMENU return_value;
 	TRACE("Enter LoadMenuW\n");
@@ -14427,6 +14912,7 @@ WINAPI HMENU wine32b_user32_LoadMenuW(HINSTANCE  instance, LPCWSTR  name) /* ../
 
 extern WINAPI void wine32a_user32_LoadMenuW(void);  /* ../dlls/user32/menu.c:4653 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LoadMenuW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14445,7 +14931,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LoadMenuW,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_LoadStringA(HINSTANCE  instance, UINT  resource_id, LPSTR  buffer, INT  buflen) /* ../dlls/user32/resource.c:294 */
+WINAPI INT wine32b_user32_LoadStringA(HINSTANCE instance, UINT resource_id, LPSTR buffer, INT buflen) /* ../dlls/user32/resource.c:294 */
 {
 	INT return_value;
 	TRACE("Enter LoadStringA\n");
@@ -14456,6 +14942,7 @@ WINAPI INT wine32b_user32_LoadStringA(HINSTANCE  instance, UINT  resource_id, LP
 
 extern WINAPI void wine32a_user32_LoadStringA(void);  /* ../dlls/user32/resource.c:294 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LoadStringA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14476,7 +14963,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LoadStringA,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_LoadStringW(HINSTANCE  instance, UINT  resource_id, LPWSTR  buffer, INT  buflen) /* ../dlls/user32/resource.c:239 */
+WINAPI INT wine32b_user32_LoadStringW(HINSTANCE instance, UINT resource_id, LPWSTR buffer, INT buflen) /* ../dlls/user32/resource.c:239 */
 {
 	INT return_value;
 	TRACE("Enter LoadStringW\n");
@@ -14487,6 +14974,7 @@ WINAPI INT wine32b_user32_LoadStringW(HINSTANCE  instance, UINT  resource_id, LP
 
 extern WINAPI void wine32a_user32_LoadStringW(void);  /* ../dlls/user32/resource.c:239 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LoadStringW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14507,7 +14995,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LoadStringW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_LockSetForegroundWindow(UINT  lockcode) /* ../dlls/user32/winpos.c:651 */
+WINAPI BOOL wine32b_user32_LockSetForegroundWindow(UINT lockcode) /* ../dlls/user32/winpos.c:651 */
 {
 	BOOL return_value;
 	TRACE("Enter LockSetForegroundWindow\n");
@@ -14518,6 +15006,7 @@ WINAPI BOOL wine32b_user32_LockSetForegroundWindow(UINT  lockcode) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_LockSetForegroundWindow(void);  /* ../dlls/user32/winpos.c:651 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LockSetForegroundWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14535,7 +15024,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LockSetForegroundWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_LockWindowUpdate(HWND  hwnd) /* ../dlls/user32/painting.c:1197 */
+WINAPI BOOL wine32b_user32_LockWindowUpdate(HWND hwnd) /* ../dlls/user32/painting.c:1197 */
 {
 	BOOL return_value;
 	TRACE("Enter LockWindowUpdate\n");
@@ -14546,6 +15035,7 @@ WINAPI BOOL wine32b_user32_LockWindowUpdate(HWND  hwnd) /* ../dlls/user32/painti
 
 extern WINAPI void wine32a_user32_LockWindowUpdate(void);  /* ../dlls/user32/painting.c:1197 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LockWindowUpdate,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14574,6 +15064,7 @@ WINAPI BOOL wine32b_user32_LockWorkStation(void) /* ../dlls/user32/user_main.c:4
 
 extern WINAPI void wine32a_user32_LockWorkStation(void);  /* ../dlls/user32/user_main.c:470 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LockWorkStation,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -14590,7 +15081,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LockWorkStation,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_LogicalToPhysicalPoint(HWND  hwnd, POINT*  point) /* ../dlls/user32/sysparams.c:4308 */
+WINAPI BOOL wine32b_user32_LogicalToPhysicalPoint(HWND hwnd, POINT* point) /* ../dlls/user32/sysparams.c:4308 */
 {
 	BOOL return_value;
 	TRACE("Enter LogicalToPhysicalPoint\n");
@@ -14601,6 +15092,7 @@ WINAPI BOOL wine32b_user32_LogicalToPhysicalPoint(HWND  hwnd, POINT*  point) /* 
 
 extern WINAPI void wine32a_user32_LogicalToPhysicalPoint(void);  /* ../dlls/user32/sysparams.c:4308 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LogicalToPhysicalPoint,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14619,7 +15111,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LogicalToPhysicalPoint,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_LogicalToPhysicalPointForPerMonitorDPI(HWND  hwnd, POINT*  pt) /* ../dlls/user32/sysparams.c:3593 */
+WINAPI BOOL wine32b_user32_LogicalToPhysicalPointForPerMonitorDPI(HWND hwnd, POINT* pt) /* ../dlls/user32/sysparams.c:3593 */
 {
 	BOOL return_value;
 	TRACE("Enter LogicalToPhysicalPointForPerMonitorDPI\n");
@@ -14630,6 +15122,7 @@ WINAPI BOOL wine32b_user32_LogicalToPhysicalPointForPerMonitorDPI(HWND  hwnd, PO
 
 extern WINAPI void wine32a_user32_LogicalToPhysicalPointForPerMonitorDPI(void);  /* ../dlls/user32/sysparams.c:3593 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LogicalToPhysicalPointForPerMonitorDPI,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14648,7 +15141,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LogicalToPhysicalPointForPerMonitorDPI,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_LookupIconIdFromDirectory(LPBYTE  dir, BOOL  bIcon) /* ../dlls/user32/cursoricon.c:2234 */
+WINAPI INT wine32b_user32_LookupIconIdFromDirectory(LPBYTE dir, BOOL bIcon) /* ../dlls/user32/cursoricon.c:2234 */
 {
 	INT return_value;
 	TRACE("Enter LookupIconIdFromDirectory\n");
@@ -14659,6 +15152,7 @@ WINAPI INT wine32b_user32_LookupIconIdFromDirectory(LPBYTE  dir, BOOL  bIcon) /*
 
 extern WINAPI void wine32a_user32_LookupIconIdFromDirectory(void);  /* ../dlls/user32/cursoricon.c:2234 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LookupIconIdFromDirectory,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14677,7 +15171,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LookupIconIdFromDirectory,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_LookupIconIdFromDirectoryEx(LPBYTE  xdir, BOOL  bIcon, INT  width, INT  height, UINT  cFlag) /* ../dlls/user32/cursoricon.c:2210 */
+WINAPI INT wine32b_user32_LookupIconIdFromDirectoryEx(LPBYTE xdir, BOOL bIcon, INT width, INT height, UINT cFlag) /* ../dlls/user32/cursoricon.c:2210 */
 {
 	INT return_value;
 	TRACE("Enter LookupIconIdFromDirectoryEx\n");
@@ -14688,6 +15182,7 @@ WINAPI INT wine32b_user32_LookupIconIdFromDirectoryEx(LPBYTE  xdir, BOOL  bIcon,
 
 extern WINAPI void wine32a_user32_LookupIconIdFromDirectoryEx(void);  /* ../dlls/user32/cursoricon.c:2210 */
 __ASM_GLOBAL_FUNC(wine32a_user32_LookupIconIdFromDirectoryEx,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14708,7 +15203,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_LookupIconIdFromDirectoryEx,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_MapDialogRect(HWND  hwnd, LPRECT  rect) /* ../dlls/user32/dialog.c:1543 */
+WINAPI BOOL wine32b_user32_MapDialogRect(HWND hwnd, LPRECT rect) /* ../dlls/user32/dialog.c:1543 */
 {
 	BOOL return_value;
 	TRACE("Enter MapDialogRect\n");
@@ -14719,6 +15214,7 @@ WINAPI BOOL wine32b_user32_MapDialogRect(HWND  hwnd, LPRECT  rect) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_MapDialogRect(void);  /* ../dlls/user32/dialog.c:1543 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MapDialogRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14737,7 +15233,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MapDialogRect,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_MapVirtualKeyA(UINT  code, UINT  maptype) /* ../dlls/user32/input.c:732 */
+WINAPI UINT wine32b_user32_MapVirtualKeyA(UINT code, UINT maptype) /* ../dlls/user32/input.c:732 */
 {
 	UINT return_value;
 	TRACE("Enter MapVirtualKeyA\n");
@@ -14748,6 +15244,7 @@ WINAPI UINT wine32b_user32_MapVirtualKeyA(UINT  code, UINT  maptype) /* ../dlls/
 
 extern WINAPI void wine32a_user32_MapVirtualKeyA(void);  /* ../dlls/user32/input.c:732 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MapVirtualKeyA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14766,7 +15263,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MapVirtualKeyA,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_MapVirtualKeyExA(UINT  code, UINT  maptype, HKL  hkl) /* ../dlls/user32/input.c:748 */
+WINAPI UINT wine32b_user32_MapVirtualKeyExA(UINT code, UINT maptype, HKL hkl) /* ../dlls/user32/input.c:748 */
 {
 	UINT return_value;
 	TRACE("Enter MapVirtualKeyExA\n");
@@ -14777,6 +15274,7 @@ WINAPI UINT wine32b_user32_MapVirtualKeyExA(UINT  code, UINT  maptype, HKL  hkl)
 
 extern WINAPI void wine32a_user32_MapVirtualKeyExA(void);  /* ../dlls/user32/input.c:748 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MapVirtualKeyExA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14796,7 +15294,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MapVirtualKeyExA,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_MapVirtualKeyExW(UINT  code, UINT  maptype, HKL  hkl) /* ../dlls/user32/input.c:767 */
+WINAPI UINT wine32b_user32_MapVirtualKeyExW(UINT code, UINT maptype, HKL hkl) /* ../dlls/user32/input.c:767 */
 {
 	UINT return_value;
 	TRACE("Enter MapVirtualKeyExW\n");
@@ -14807,6 +15305,7 @@ WINAPI UINT wine32b_user32_MapVirtualKeyExW(UINT  code, UINT  maptype, HKL  hkl)
 
 extern WINAPI void wine32a_user32_MapVirtualKeyExW(void);  /* ../dlls/user32/input.c:767 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MapVirtualKeyExW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14826,7 +15325,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MapVirtualKeyExW,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_MapVirtualKeyW(UINT  code, UINT  maptype) /* ../dlls/user32/input.c:740 */
+WINAPI UINT wine32b_user32_MapVirtualKeyW(UINT code, UINT maptype) /* ../dlls/user32/input.c:740 */
 {
 	UINT return_value;
 	TRACE("Enter MapVirtualKeyW\n");
@@ -14837,6 +15336,7 @@ WINAPI UINT wine32b_user32_MapVirtualKeyW(UINT  code, UINT  maptype) /* ../dlls/
 
 extern WINAPI void wine32a_user32_MapVirtualKeyW(void);  /* ../dlls/user32/input.c:740 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MapVirtualKeyW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14855,7 +15355,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MapVirtualKeyW,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_MapWindowPoints(HWND  hwndFrom, HWND  hwndTo, LPPOINT  lppt, UINT  count) /* ../dlls/user32/winpos.c:553 */
+WINAPI INT wine32b_user32_MapWindowPoints(HWND hwndFrom, HWND hwndTo, LPPOINT lppt, UINT count) /* ../dlls/user32/winpos.c:553 */
 {
 	INT return_value;
 	TRACE("Enter MapWindowPoints\n");
@@ -14866,6 +15366,7 @@ WINAPI INT wine32b_user32_MapWindowPoints(HWND  hwndFrom, HWND  hwndTo, LPPOINT 
 
 extern WINAPI void wine32a_user32_MapWindowPoints(void);  /* ../dlls/user32/winpos.c:553 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MapWindowPoints,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14886,7 +15387,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MapWindowPoints,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_MenuItemFromPoint(HWND  hWnd, HMENU  hMenu, POINT  ptScreen) /* ../dlls/user32/menu.c:5479 */
+WINAPI INT wine32b_user32_MenuItemFromPoint(HWND hWnd, HMENU hMenu, POINT ptScreen) /* ../dlls/user32/menu.c:5479 */
 {
 	INT return_value;
 	TRACE("Enter MenuItemFromPoint\n");
@@ -14897,6 +15398,7 @@ WINAPI INT wine32b_user32_MenuItemFromPoint(HWND  hWnd, HMENU  hMenu, POINT  ptS
 
 extern WINAPI void wine32a_user32_MenuItemFromPoint(void);  /* ../dlls/user32/menu.c:5479 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MenuItemFromPoint,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14916,7 +15418,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MenuItemFromPoint,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_MessageBeep(UINT  i) /* ../dlls/user32/message.c:4469 */
+WINAPI BOOL wine32b_user32_MessageBeep(UINT i) /* ../dlls/user32/message.c:4469 */
 {
 	BOOL return_value;
 	TRACE("Enter MessageBeep\n");
@@ -14927,6 +15429,7 @@ WINAPI BOOL wine32b_user32_MessageBeep(UINT  i) /* ../dlls/user32/message.c:4469
 
 extern WINAPI void wine32a_user32_MessageBeep(void);  /* ../dlls/user32/message.c:4469 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MessageBeep,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14944,7 +15447,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MessageBeep,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_MessageBoxA(HWND  hWnd, LPCSTR  text, LPCSTR  title, UINT  type) /* ../dlls/user32/msgbox.c:386 */
+WINAPI INT wine32b_user32_MessageBoxA(HWND hWnd, LPCSTR text, LPCSTR title, UINT type) /* ../dlls/user32/msgbox.c:386 */
 {
 	INT return_value;
 	TRACE("Enter MessageBoxA\n");
@@ -14955,6 +15458,7 @@ WINAPI INT wine32b_user32_MessageBoxA(HWND  hWnd, LPCSTR  text, LPCSTR  title, U
 
 extern WINAPI void wine32a_user32_MessageBoxA(void);  /* ../dlls/user32/msgbox.c:386 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MessageBoxA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -14975,7 +15479,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MessageBoxA,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_MessageBoxExA(HWND  hWnd, LPCSTR  text, LPCSTR  title, UINT  type, WORD  langid) /* ../dlls/user32/msgbox.c:404 */
+WINAPI INT wine32b_user32_MessageBoxExA(HWND hWnd, LPCSTR text, LPCSTR title, UINT type, WORD langid) /* ../dlls/user32/msgbox.c:404 */
 {
 	INT return_value;
 	TRACE("Enter MessageBoxExA\n");
@@ -14986,6 +15490,7 @@ WINAPI INT wine32b_user32_MessageBoxExA(HWND  hWnd, LPCSTR  text, LPCSTR  title,
 
 extern WINAPI void wine32a_user32_MessageBoxExA(void);  /* ../dlls/user32/msgbox.c:404 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MessageBoxExA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15006,7 +15511,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MessageBoxExA,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_MessageBoxExW(HWND  hWnd, LPCWSTR  text, LPCWSTR  title, UINT  type, WORD  langid) /* ../dlls/user32/msgbox.c:426 */
+WINAPI INT wine32b_user32_MessageBoxExW(HWND hWnd, LPCWSTR text, LPCWSTR title, UINT type, WORD langid) /* ../dlls/user32/msgbox.c:426 */
 {
 	INT return_value;
 	TRACE("Enter MessageBoxExW\n");
@@ -15017,6 +15522,7 @@ WINAPI INT wine32b_user32_MessageBoxExW(HWND  hWnd, LPCWSTR  text, LPCWSTR  titl
 
 extern WINAPI void wine32a_user32_MessageBoxExW(void);  /* ../dlls/user32/msgbox.c:426 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MessageBoxExW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15037,7 +15543,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MessageBoxExW,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_MessageBoxIndirectA(LPMSGBOXPARAMSA  msgbox) /* ../dlls/user32/msgbox.c:468 */
+WINAPI INT wine32b_user32_MessageBoxIndirectA(LPMSGBOXPARAMSA msgbox) /* ../dlls/user32/msgbox.c:468 */
 {
 	INT return_value;
 	TRACE("Enter MessageBoxIndirectA\n");
@@ -15048,6 +15554,7 @@ WINAPI INT wine32b_user32_MessageBoxIndirectA(LPMSGBOXPARAMSA  msgbox) /* ../dll
 
 extern WINAPI void wine32a_user32_MessageBoxIndirectA(void);  /* ../dlls/user32/msgbox.c:468 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MessageBoxIndirectA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15065,7 +15572,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MessageBoxIndirectA,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_MessageBoxIndirectW(LPMSGBOXPARAMSW  msgbox) /* ../dlls/user32/msgbox.c:515 */
+WINAPI INT wine32b_user32_MessageBoxIndirectW(LPMSGBOXPARAMSW msgbox) /* ../dlls/user32/msgbox.c:515 */
 {
 	INT return_value;
 	TRACE("Enter MessageBoxIndirectW\n");
@@ -15076,6 +15583,7 @@ WINAPI INT wine32b_user32_MessageBoxIndirectW(LPMSGBOXPARAMSW  msgbox) /* ../dll
 
 extern WINAPI void wine32a_user32_MessageBoxIndirectW(void);  /* ../dlls/user32/msgbox.c:515 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MessageBoxIndirectW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15093,7 +15601,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MessageBoxIndirectW,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_MessageBoxTimeoutA(HWND  hWnd, LPCSTR  text, LPCSTR  title, UINT  type, WORD  langid, DWORD  timeout) /* ../dlls/user32/msgbox.c:448 */
+WINAPI INT wine32b_user32_MessageBoxTimeoutA(HWND hWnd, LPCSTR text, LPCSTR title, UINT type, WORD langid, DWORD timeout) /* ../dlls/user32/msgbox.c:448 */
 {
 	INT return_value;
 	TRACE("Enter MessageBoxTimeoutA\n");
@@ -15104,6 +15612,7 @@ WINAPI INT wine32b_user32_MessageBoxTimeoutA(HWND  hWnd, LPCSTR  text, LPCSTR  t
 
 extern WINAPI void wine32a_user32_MessageBoxTimeoutA(void);  /* ../dlls/user32/msgbox.c:448 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MessageBoxTimeoutA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15124,7 +15633,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MessageBoxTimeoutA,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_MessageBoxTimeoutW(HWND  hWnd, LPCWSTR  text, LPCWSTR  title, UINT  type, WORD  langid, DWORD  timeout) /* ../dlls/user32/msgbox.c:458 */
+WINAPI INT wine32b_user32_MessageBoxTimeoutW(HWND hWnd, LPCWSTR text, LPCWSTR title, UINT type, WORD langid, DWORD timeout) /* ../dlls/user32/msgbox.c:458 */
 {
 	INT return_value;
 	TRACE("Enter MessageBoxTimeoutW\n");
@@ -15135,6 +15644,7 @@ WINAPI INT wine32b_user32_MessageBoxTimeoutW(HWND  hWnd, LPCWSTR  text, LPCWSTR 
 
 extern WINAPI void wine32a_user32_MessageBoxTimeoutW(void);  /* ../dlls/user32/msgbox.c:458 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MessageBoxTimeoutW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15155,7 +15665,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MessageBoxTimeoutW,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_MessageBoxW(HWND  hwnd, LPCWSTR  text, LPCWSTR  title, UINT  type) /* ../dlls/user32/msgbox.c:395 */
+WINAPI INT wine32b_user32_MessageBoxW(HWND hwnd, LPCWSTR text, LPCWSTR title, UINT type) /* ../dlls/user32/msgbox.c:395 */
 {
 	INT return_value;
 	TRACE("Enter MessageBoxW\n");
@@ -15166,6 +15676,7 @@ WINAPI INT wine32b_user32_MessageBoxW(HWND  hwnd, LPCWSTR  text, LPCWSTR  title,
 
 extern WINAPI void wine32a_user32_MessageBoxW(void);  /* ../dlls/user32/msgbox.c:395 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MessageBoxW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15186,7 +15697,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MessageBoxW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ModifyMenuA(HMENU  hMenu, UINT  pos, UINT  flags, UINT_PTR  id, LPCSTR  str) /* ../dlls/user32/menu.c:4169 */
+WINAPI BOOL wine32b_user32_ModifyMenuA(HMENU hMenu, UINT pos, UINT flags, UINT_PTR id, LPCSTR str) /* ../dlls/user32/menu.c:4169 */
 {
 	BOOL return_value;
 	TRACE("Enter ModifyMenuA\n");
@@ -15197,6 +15708,7 @@ WINAPI BOOL wine32b_user32_ModifyMenuA(HMENU  hMenu, UINT  pos, UINT  flags, UIN
 
 extern WINAPI void wine32a_user32_ModifyMenuA(void);  /* ../dlls/user32/menu.c:4169 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ModifyMenuA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15217,7 +15729,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ModifyMenuA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ModifyMenuW(HMENU  hMenu, UINT  pos, UINT  flags, UINT_PTR  id, LPCWSTR  str) /* ../dlls/user32/menu.c:4139 */
+WINAPI BOOL wine32b_user32_ModifyMenuW(HMENU hMenu, UINT pos, UINT flags, UINT_PTR id, LPCWSTR str) /* ../dlls/user32/menu.c:4139 */
 {
 	BOOL return_value;
 	TRACE("Enter ModifyMenuW\n");
@@ -15228,6 +15740,7 @@ WINAPI BOOL wine32b_user32_ModifyMenuW(HMENU  hMenu, UINT  pos, UINT  flags, UIN
 
 extern WINAPI void wine32a_user32_ModifyMenuW(void);  /* ../dlls/user32/menu.c:4139 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ModifyMenuW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15248,7 +15761,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ModifyMenuW,
 	"ret \n"
 )
 
-WINAPI HMONITOR wine32b_user32_MonitorFromPoint(POINT  pt, DWORD  flags) /* ../dlls/user32/sysparams.c:3711 */
+WINAPI HMONITOR wine32b_user32_MonitorFromPoint(POINT pt, DWORD flags) /* ../dlls/user32/sysparams.c:3711 */
 {
 	HMONITOR return_value;
 	TRACE("Enter MonitorFromPoint\n");
@@ -15259,6 +15772,7 @@ WINAPI HMONITOR wine32b_user32_MonitorFromPoint(POINT  pt, DWORD  flags) /* ../d
 
 extern WINAPI void wine32a_user32_MonitorFromPoint(void);  /* ../dlls/user32/sysparams.c:3711 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MonitorFromPoint,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15277,7 +15791,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MonitorFromPoint,
 	"ret \n"
 )
 
-WINAPI HMONITOR wine32b_user32_MonitorFromRect(RECT*  rect, DWORD  flags) /* ../dlls/user32/sysparams.c:3680 */
+WINAPI HMONITOR wine32b_user32_MonitorFromRect(RECT* rect, DWORD flags) /* ../dlls/user32/sysparams.c:3680 */
 {
 	HMONITOR return_value;
 	TRACE("Enter MonitorFromRect\n");
@@ -15288,6 +15802,7 @@ WINAPI HMONITOR wine32b_user32_MonitorFromRect(RECT*  rect, DWORD  flags) /* ../
 
 extern WINAPI void wine32a_user32_MonitorFromRect(void);  /* ../dlls/user32/sysparams.c:3680 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MonitorFromRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15306,7 +15821,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MonitorFromRect,
 	"ret \n"
 )
 
-WINAPI HMONITOR wine32b_user32_MonitorFromWindow(HWND  hWnd, DWORD  dwFlags) /* ../dlls/user32/sysparams.c:3722 */
+WINAPI HMONITOR wine32b_user32_MonitorFromWindow(HWND hWnd, DWORD dwFlags) /* ../dlls/user32/sysparams.c:3722 */
 {
 	HMONITOR return_value;
 	TRACE("Enter MonitorFromWindow\n");
@@ -15317,6 +15832,7 @@ WINAPI HMONITOR wine32b_user32_MonitorFromWindow(HWND  hWnd, DWORD  dwFlags) /* 
 
 extern WINAPI void wine32a_user32_MonitorFromWindow(void);  /* ../dlls/user32/sysparams.c:3722 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MonitorFromWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15335,7 +15851,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MonitorFromWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_MoveWindow(HWND  hwnd, INT  x, INT  y, INT  cx, INT  cy, BOOL  repaint) /* ../dlls/user32/winpos.c:671 */
+WINAPI BOOL wine32b_user32_MoveWindow(HWND hwnd, INT x, INT y, INT cx, INT cy, BOOL repaint) /* ../dlls/user32/winpos.c:671 */
 {
 	BOOL return_value;
 	TRACE("Enter MoveWindow\n");
@@ -15346,6 +15862,7 @@ WINAPI BOOL wine32b_user32_MoveWindow(HWND  hwnd, INT  x, INT  y, INT  cx, INT  
 
 extern WINAPI void wine32a_user32_MoveWindow(void);  /* ../dlls/user32/winpos.c:671 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MoveWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15366,7 +15883,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MoveWindow,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_MsgWaitForMultipleObjects(DWORD  count, HANDLE*  handles, BOOL  wait_all, DWORD  timeout, DWORD  mask) /* ../dlls/user32/message.c:4198 */
+WINAPI DWORD wine32b_user32_MsgWaitForMultipleObjects(DWORD count, HANDLE* handles, BOOL wait_all, DWORD timeout, DWORD mask) /* ../dlls/user32/message.c:4198 */
 {
 	DWORD return_value;
 	TRACE("Enter MsgWaitForMultipleObjects\n");
@@ -15377,6 +15894,7 @@ WINAPI DWORD wine32b_user32_MsgWaitForMultipleObjects(DWORD  count, HANDLE*  han
 
 extern WINAPI void wine32a_user32_MsgWaitForMultipleObjects(void);  /* ../dlls/user32/message.c:4198 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MsgWaitForMultipleObjects,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15397,7 +15915,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MsgWaitForMultipleObjects,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_MsgWaitForMultipleObjectsEx(DWORD  count, HANDLE*  pHandles, DWORD  timeout, DWORD  mask, DWORD  flags) /* ../dlls/user32/message.c:4174 */
+WINAPI DWORD wine32b_user32_MsgWaitForMultipleObjectsEx(DWORD count, HANDLE* pHandles, DWORD timeout, DWORD mask, DWORD flags) /* ../dlls/user32/message.c:4174 */
 {
 	DWORD return_value;
 	TRACE("Enter MsgWaitForMultipleObjectsEx\n");
@@ -15408,6 +15926,7 @@ WINAPI DWORD wine32b_user32_MsgWaitForMultipleObjectsEx(DWORD  count, HANDLE*  p
 
 extern WINAPI void wine32a_user32_MsgWaitForMultipleObjectsEx(void);  /* ../dlls/user32/message.c:4174 */
 __ASM_GLOBAL_FUNC(wine32a_user32_MsgWaitForMultipleObjectsEx,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15428,7 +15947,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_MsgWaitForMultipleObjectsEx,
 	"ret \n"
 )
 
-WINAPI void wine32b_user32_NotifyWinEvent(DWORD  event, HWND  hwnd, LONG  object_id, LONG  child_id) /* ../dlls/user32/hook.c:876 */
+WINAPI void wine32b_user32_NotifyWinEvent(DWORD event, HWND hwnd, LONG object_id, LONG child_id) /* ../dlls/user32/hook.c:876 */
 {
 	TRACE("Enter NotifyWinEvent\n");
 	pNotifyWinEvent(event, hwnd, object_id, child_id);
@@ -15437,6 +15956,7 @@ WINAPI void wine32b_user32_NotifyWinEvent(DWORD  event, HWND  hwnd, LONG  object
 
 extern WINAPI void wine32a_user32_NotifyWinEvent(void);  /* ../dlls/user32/hook.c:876 */
 __ASM_GLOBAL_FUNC(wine32a_user32_NotifyWinEvent,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15457,7 +15977,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_NotifyWinEvent,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_OemKeyScan(WORD  oem) /* ../dlls/user32/input.c:669 */
+WINAPI DWORD wine32b_user32_OemKeyScan(WORD oem) /* ../dlls/user32/input.c:669 */
 {
 	DWORD return_value;
 	TRACE("Enter OemKeyScan\n");
@@ -15468,6 +15988,7 @@ WINAPI DWORD wine32b_user32_OemKeyScan(WORD  oem) /* ../dlls/user32/input.c:669 
 
 extern WINAPI void wine32a_user32_OemKeyScan(void);  /* ../dlls/user32/input.c:669 */
 __ASM_GLOBAL_FUNC(wine32a_user32_OemKeyScan,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15485,7 +16006,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_OemKeyScan,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_OemToCharA(LPCSTR  s, LPSTR  d) /* ../dlls/user32/lstr.c:188 */
+WINAPI BOOL wine32b_user32_OemToCharA(LPCSTR s, LPSTR d) /* ../dlls/user32/lstr.c:188 */
 {
 	BOOL return_value;
 	TRACE("Enter OemToCharA\n");
@@ -15496,6 +16017,7 @@ WINAPI BOOL wine32b_user32_OemToCharA(LPCSTR  s, LPSTR  d) /* ../dlls/user32/lst
 
 extern WINAPI void wine32a_user32_OemToCharA(void);  /* ../dlls/user32/lstr.c:188 */
 __ASM_GLOBAL_FUNC(wine32a_user32_OemToCharA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15514,7 +16036,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_OemToCharA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_OemToCharBuffA(LPCSTR  s, LPSTR  d, DWORD  len) /* ../dlls/user32/lstr.c:198 */
+WINAPI BOOL wine32b_user32_OemToCharBuffA(LPCSTR s, LPSTR d, DWORD len) /* ../dlls/user32/lstr.c:198 */
 {
 	BOOL return_value;
 	TRACE("Enter OemToCharBuffA\n");
@@ -15525,6 +16047,7 @@ WINAPI BOOL wine32b_user32_OemToCharBuffA(LPCSTR  s, LPSTR  d, DWORD  len) /* ..
 
 extern WINAPI void wine32a_user32_OemToCharBuffA(void);  /* ../dlls/user32/lstr.c:198 */
 __ASM_GLOBAL_FUNC(wine32a_user32_OemToCharBuffA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15544,7 +16067,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_OemToCharBuffA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_OemToCharBuffW(LPCSTR  s, LPWSTR  d, DWORD  len) /* ../dlls/user32/lstr.c:218 */
+WINAPI BOOL wine32b_user32_OemToCharBuffW(LPCSTR s, LPWSTR d, DWORD len) /* ../dlls/user32/lstr.c:218 */
 {
 	BOOL return_value;
 	TRACE("Enter OemToCharBuffW\n");
@@ -15555,6 +16078,7 @@ WINAPI BOOL wine32b_user32_OemToCharBuffW(LPCSTR  s, LPWSTR  d, DWORD  len) /* .
 
 extern WINAPI void wine32a_user32_OemToCharBuffW(void);  /* ../dlls/user32/lstr.c:218 */
 __ASM_GLOBAL_FUNC(wine32a_user32_OemToCharBuffW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15574,7 +16098,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_OemToCharBuffW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_OemToCharW(LPCSTR  s, LPWSTR  d) /* ../dlls/user32/lstr.c:229 */
+WINAPI BOOL wine32b_user32_OemToCharW(LPCSTR s, LPWSTR d) /* ../dlls/user32/lstr.c:229 */
 {
 	BOOL return_value;
 	TRACE("Enter OemToCharW\n");
@@ -15585,6 +16109,7 @@ WINAPI BOOL wine32b_user32_OemToCharW(LPCSTR  s, LPWSTR  d) /* ../dlls/user32/ls
 
 extern WINAPI void wine32a_user32_OemToCharW(void);  /* ../dlls/user32/lstr.c:229 */
 __ASM_GLOBAL_FUNC(wine32a_user32_OemToCharW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15603,7 +16128,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_OemToCharW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_OffsetRect(LPRECT  rect, INT  x, INT  y) /* ../dlls/user32/uitools.c:1307 */
+WINAPI BOOL wine32b_user32_OffsetRect(LPRECT rect, INT x, INT y) /* ../dlls/user32/uitools.c:1307 */
 {
 	BOOL return_value;
 	TRACE("Enter OffsetRect\n");
@@ -15614,6 +16139,7 @@ WINAPI BOOL wine32b_user32_OffsetRect(LPRECT  rect, INT  x, INT  y) /* ../dlls/u
 
 extern WINAPI void wine32a_user32_OffsetRect(void);  /* ../dlls/user32/uitools.c:1307 */
 __ASM_GLOBAL_FUNC(wine32a_user32_OffsetRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15633,7 +16159,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_OffsetRect,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_OpenClipboard(HWND  hwnd) /* ../dlls/user32/clipboard.c:687 */
+WINAPI BOOL wine32b_user32_OpenClipboard(HWND hwnd) /* ../dlls/user32/clipboard.c:687 */
 {
 	BOOL return_value;
 	TRACE("Enter OpenClipboard\n");
@@ -15644,6 +16170,7 @@ WINAPI BOOL wine32b_user32_OpenClipboard(HWND  hwnd) /* ../dlls/user32/clipboard
 
 extern WINAPI void wine32a_user32_OpenClipboard(void);  /* ../dlls/user32/clipboard.c:687 */
 __ASM_GLOBAL_FUNC(wine32a_user32_OpenClipboard,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15661,7 +16188,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_OpenClipboard,
 	"ret \n"
 )
 
-WINAPI HDESK wine32b_user32_OpenDesktopA(LPCSTR  name, DWORD  flags, BOOL  inherit, ACCESS_MASK  access) /* ../dlls/user32/winstation.c:333 */
+WINAPI HDESK wine32b_user32_OpenDesktopA(LPCSTR name, DWORD flags, BOOL inherit, ACCESS_MASK access) /* ../dlls/user32/winstation.c:333 */
 {
 	HDESK return_value;
 	TRACE("Enter OpenDesktopA\n");
@@ -15672,6 +16199,7 @@ WINAPI HDESK wine32b_user32_OpenDesktopA(LPCSTR  name, DWORD  flags, BOOL  inher
 
 extern WINAPI void wine32a_user32_OpenDesktopA(void);  /* ../dlls/user32/winstation.c:333 */
 __ASM_GLOBAL_FUNC(wine32a_user32_OpenDesktopA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15692,7 +16220,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_OpenDesktopA,
 	"ret \n"
 )
 
-WINAPI HDESK wine32b_user32_OpenDesktopW(LPCWSTR  name, DWORD  flags, BOOL  inherit, ACCESS_MASK  access) /* ../dlls/user32/winstation.c:374 */
+WINAPI HDESK wine32b_user32_OpenDesktopW(LPCWSTR name, DWORD flags, BOOL inherit, ACCESS_MASK access) /* ../dlls/user32/winstation.c:374 */
 {
 	HDESK return_value;
 	TRACE("Enter OpenDesktopW\n");
@@ -15703,6 +16231,7 @@ WINAPI HDESK wine32b_user32_OpenDesktopW(LPCWSTR  name, DWORD  flags, BOOL  inhe
 
 extern WINAPI void wine32a_user32_OpenDesktopW(void);  /* ../dlls/user32/winstation.c:374 */
 __ASM_GLOBAL_FUNC(wine32a_user32_OpenDesktopW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15723,7 +16252,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_OpenDesktopW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_OpenIcon(HWND  hwnd) /* ../dlls/user32/win.c:1949 */
+WINAPI BOOL wine32b_user32_OpenIcon(HWND hwnd) /* ../dlls/user32/win.c:1949 */
 {
 	BOOL return_value;
 	TRACE("Enter OpenIcon\n");
@@ -15734,6 +16263,7 @@ WINAPI BOOL wine32b_user32_OpenIcon(HWND  hwnd) /* ../dlls/user32/win.c:1949 */
 
 extern WINAPI void wine32a_user32_OpenIcon(void);  /* ../dlls/user32/win.c:1949 */
 __ASM_GLOBAL_FUNC(wine32a_user32_OpenIcon,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15751,7 +16281,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_OpenIcon,
 	"ret \n"
 )
 
-WINAPI HDESK wine32b_user32_OpenInputDesktop(DWORD  flags, BOOL  inherit, ACCESS_MASK  access) /* ../dlls/user32/winstation.c:491 */
+WINAPI HDESK wine32b_user32_OpenInputDesktop(DWORD flags, BOOL inherit, ACCESS_MASK access) /* ../dlls/user32/winstation.c:491 */
 {
 	HDESK return_value;
 	TRACE("Enter OpenInputDesktop\n");
@@ -15762,6 +16292,7 @@ WINAPI HDESK wine32b_user32_OpenInputDesktop(DWORD  flags, BOOL  inherit, ACCESS
 
 extern WINAPI void wine32a_user32_OpenInputDesktop(void);  /* ../dlls/user32/winstation.c:491 */
 __ASM_GLOBAL_FUNC(wine32a_user32_OpenInputDesktop,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15781,7 +16312,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_OpenInputDesktop,
 	"ret \n"
 )
 
-WINAPI HWINSTA wine32b_user32_OpenWindowStationA(LPCSTR  name, BOOL  inherit, ACCESS_MASK  access) /* ../dlls/user32/winstation.c:136 */
+WINAPI HWINSTA wine32b_user32_OpenWindowStationA(LPCSTR name, BOOL inherit, ACCESS_MASK access) /* ../dlls/user32/winstation.c:136 */
 {
 	HWINSTA return_value;
 	TRACE("Enter OpenWindowStationA\n");
@@ -15792,6 +16323,7 @@ WINAPI HWINSTA wine32b_user32_OpenWindowStationA(LPCSTR  name, BOOL  inherit, AC
 
 extern WINAPI void wine32a_user32_OpenWindowStationA(void);  /* ../dlls/user32/winstation.c:136 */
 __ASM_GLOBAL_FUNC(wine32a_user32_OpenWindowStationA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15811,7 +16343,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_OpenWindowStationA,
 	"ret \n"
 )
 
-WINAPI HWINSTA wine32b_user32_OpenWindowStationW(LPCWSTR  name, BOOL  inherit, ACCESS_MASK  access) /* ../dlls/user32/winstation.c:154 */
+WINAPI HWINSTA wine32b_user32_OpenWindowStationW(LPCWSTR name, BOOL inherit, ACCESS_MASK access) /* ../dlls/user32/winstation.c:154 */
 {
 	HWINSTA return_value;
 	TRACE("Enter OpenWindowStationW\n");
@@ -15822,6 +16354,7 @@ WINAPI HWINSTA wine32b_user32_OpenWindowStationW(LPCWSTR  name, BOOL  inherit, A
 
 extern WINAPI void wine32a_user32_OpenWindowStationW(void);  /* ../dlls/user32/winstation.c:154 */
 __ASM_GLOBAL_FUNC(wine32a_user32_OpenWindowStationW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15841,7 +16374,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_OpenWindowStationW,
 	"ret \n"
 )
 
-WINAPI LPARAM wine32b_user32_PackDDElParam(UINT  msg, UINT_PTR  uiLo, UINT_PTR  uiHi) /* ../dlls/user32/dde_misc.c:76 */
+WINAPI LPARAM wine32b_user32_PackDDElParam(UINT msg, UINT_PTR uiLo, UINT_PTR uiHi) /* ../dlls/user32/dde_misc.c:76 */
 {
 	LPARAM return_value;
 	TRACE("Enter PackDDElParam\n");
@@ -15852,6 +16385,7 @@ WINAPI LPARAM wine32b_user32_PackDDElParam(UINT  msg, UINT_PTR  uiLo, UINT_PTR  
 
 extern WINAPI void wine32a_user32_PackDDElParam(void);  /* ../dlls/user32/dde_misc.c:76 */
 __ASM_GLOBAL_FUNC(wine32a_user32_PackDDElParam,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15871,7 +16405,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_PackDDElParam,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_PaintDesktop(HDC  hdc) /* ../dlls/user32/desktop.c:141 */
+WINAPI BOOL wine32b_user32_PaintDesktop(HDC hdc) /* ../dlls/user32/desktop.c:141 */
 {
 	BOOL return_value;
 	TRACE("Enter PaintDesktop\n");
@@ -15882,6 +16416,7 @@ WINAPI BOOL wine32b_user32_PaintDesktop(HDC  hdc) /* ../dlls/user32/desktop.c:14
 
 extern WINAPI void wine32a_user32_PaintDesktop(void);  /* ../dlls/user32/desktop.c:141 */
 __ASM_GLOBAL_FUNC(wine32a_user32_PaintDesktop,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15899,7 +16434,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_PaintDesktop,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_PeekMessageA(MSG*  msg, HWND  hwnd, UINT  first, UINT  last, UINT  flags) /* ../dlls/user32/message.c:3822 */
+WINAPI BOOL wine32b_user32_PeekMessageA(MSG* msg, HWND hwnd, UINT first, UINT last, UINT flags) /* ../dlls/user32/message.c:3822 */
 {
 	BOOL return_value;
 	TRACE("Enter PeekMessageA\n");
@@ -15910,6 +16445,7 @@ WINAPI BOOL wine32b_user32_PeekMessageA(MSG*  msg, HWND  hwnd, UINT  first, UINT
 
 extern WINAPI void wine32a_user32_PeekMessageA(void);  /* ../dlls/user32/message.c:3822 */
 __ASM_GLOBAL_FUNC(wine32a_user32_PeekMessageA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15930,7 +16466,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_PeekMessageA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_PeekMessageW(MSG*  msg_out, HWND  hwnd, UINT  first, UINT  last, UINT  flags) /* ../dlls/user32/message.c:3786 */
+WINAPI BOOL wine32b_user32_PeekMessageW(MSG* msg_out, HWND hwnd, UINT first, UINT last, UINT flags) /* ../dlls/user32/message.c:3786 */
 {
 	BOOL return_value;
 	TRACE("Enter PeekMessageW\n");
@@ -15941,6 +16477,7 @@ WINAPI BOOL wine32b_user32_PeekMessageW(MSG*  msg_out, HWND  hwnd, UINT  first, 
 
 extern WINAPI void wine32a_user32_PeekMessageW(void);  /* ../dlls/user32/message.c:3786 */
 __ASM_GLOBAL_FUNC(wine32a_user32_PeekMessageW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15961,7 +16498,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_PeekMessageW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_PhysicalToLogicalPoint(HWND  hwnd, POINT*  point) /* ../dlls/user32/sysparams.c:4316 */
+WINAPI BOOL wine32b_user32_PhysicalToLogicalPoint(HWND hwnd, POINT* point) /* ../dlls/user32/sysparams.c:4316 */
 {
 	BOOL return_value;
 	TRACE("Enter PhysicalToLogicalPoint\n");
@@ -15972,6 +16509,7 @@ WINAPI BOOL wine32b_user32_PhysicalToLogicalPoint(HWND  hwnd, POINT*  point) /* 
 
 extern WINAPI void wine32a_user32_PhysicalToLogicalPoint(void);  /* ../dlls/user32/sysparams.c:4316 */
 __ASM_GLOBAL_FUNC(wine32a_user32_PhysicalToLogicalPoint,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -15990,7 +16528,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_PhysicalToLogicalPoint,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_PhysicalToLogicalPointForPerMonitorDPI(HWND  hwnd, POINT*  pt) /* ../dlls/user32/sysparams.c:3606 */
+WINAPI BOOL wine32b_user32_PhysicalToLogicalPointForPerMonitorDPI(HWND hwnd, POINT* pt) /* ../dlls/user32/sysparams.c:3606 */
 {
 	BOOL return_value;
 	TRACE("Enter PhysicalToLogicalPointForPerMonitorDPI\n");
@@ -16001,6 +16539,7 @@ WINAPI BOOL wine32b_user32_PhysicalToLogicalPointForPerMonitorDPI(HWND  hwnd, PO
 
 extern WINAPI void wine32a_user32_PhysicalToLogicalPointForPerMonitorDPI(void);  /* ../dlls/user32/sysparams.c:3606 */
 __ASM_GLOBAL_FUNC(wine32a_user32_PhysicalToLogicalPointForPerMonitorDPI,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16019,7 +16558,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_PhysicalToLogicalPointForPerMonitorDPI,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_PostMessageA(HWND  hwnd, UINT  msg, WPARAM  wparam, LPARAM  lparam) /* ../dlls/user32/message.c:3657 */
+WINAPI BOOL wine32b_user32_PostMessageA(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) /* ../dlls/user32/message.c:3657 */
 {
 	BOOL return_value;
 	TRACE("Enter PostMessageA\n");
@@ -16030,6 +16569,7 @@ WINAPI BOOL wine32b_user32_PostMessageA(HWND  hwnd, UINT  msg, WPARAM  wparam, L
 
 extern WINAPI void wine32a_user32_PostMessageA(void);  /* ../dlls/user32/message.c:3657 */
 __ASM_GLOBAL_FUNC(wine32a_user32_PostMessageA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16050,7 +16590,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_PostMessageA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_PostMessageW(HWND  hwnd, UINT  msg, WPARAM  wparam, LPARAM  lparam) /* ../dlls/user32/message.c:3667 */
+WINAPI BOOL wine32b_user32_PostMessageW(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) /* ../dlls/user32/message.c:3667 */
 {
 	BOOL return_value;
 	TRACE("Enter PostMessageW\n");
@@ -16061,6 +16601,7 @@ WINAPI BOOL wine32b_user32_PostMessageW(HWND  hwnd, UINT  msg, WPARAM  wparam, L
 
 extern WINAPI void wine32a_user32_PostMessageW(void);  /* ../dlls/user32/message.c:3667 */
 __ASM_GLOBAL_FUNC(wine32a_user32_PostMessageW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16081,7 +16622,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_PostMessageW,
 	"ret \n"
 )
 
-WINAPI void wine32b_user32_PostQuitMessage(INT  exit_code) /* ../dlls/user32/message.c:3757 */
+WINAPI void wine32b_user32_PostQuitMessage(INT exit_code) /* ../dlls/user32/message.c:3757 */
 {
 	TRACE("Enter PostQuitMessage\n");
 	pPostQuitMessage(exit_code);
@@ -16090,6 +16631,7 @@ WINAPI void wine32b_user32_PostQuitMessage(INT  exit_code) /* ../dlls/user32/mes
 
 extern WINAPI void wine32a_user32_PostQuitMessage(void);  /* ../dlls/user32/message.c:3757 */
 __ASM_GLOBAL_FUNC(wine32a_user32_PostQuitMessage,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16107,7 +16649,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_PostQuitMessage,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_PostThreadMessageA(DWORD  thread, UINT  msg, WPARAM  wparam, LPARAM  lparam) /* ../dlls/user32/message.c:3707 */
+WINAPI BOOL wine32b_user32_PostThreadMessageA(DWORD thread, UINT msg, WPARAM wparam, LPARAM lparam) /* ../dlls/user32/message.c:3707 */
 {
 	BOOL return_value;
 	TRACE("Enter PostThreadMessageA\n");
@@ -16118,6 +16660,7 @@ WINAPI BOOL wine32b_user32_PostThreadMessageA(DWORD  thread, UINT  msg, WPARAM  
 
 extern WINAPI void wine32a_user32_PostThreadMessageA(void);  /* ../dlls/user32/message.c:3707 */
 __ASM_GLOBAL_FUNC(wine32a_user32_PostThreadMessageA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16138,7 +16681,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_PostThreadMessageA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_PostThreadMessageW(DWORD  thread, UINT  msg, WPARAM  wparam, LPARAM  lparam) /* ../dlls/user32/message.c:3717 */
+WINAPI BOOL wine32b_user32_PostThreadMessageW(DWORD thread, UINT msg, WPARAM wparam, LPARAM lparam) /* ../dlls/user32/message.c:3717 */
 {
 	BOOL return_value;
 	TRACE("Enter PostThreadMessageW\n");
@@ -16149,6 +16692,7 @@ WINAPI BOOL wine32b_user32_PostThreadMessageW(DWORD  thread, UINT  msg, WPARAM  
 
 extern WINAPI void wine32a_user32_PostThreadMessageW(void);  /* ../dlls/user32/message.c:3717 */
 __ASM_GLOBAL_FUNC(wine32a_user32_PostThreadMessageW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16169,7 +16713,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_PostThreadMessageW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_PrintWindow(HWND  hwnd, HDC  hdcBlt, UINT  nFlags) /* ../dlls/user32/painting.c:1762 */
+WINAPI BOOL wine32b_user32_PrintWindow(HWND hwnd, HDC hdcBlt, UINT nFlags) /* ../dlls/user32/painting.c:1762 */
 {
 	BOOL return_value;
 	TRACE("Enter PrintWindow\n");
@@ -16180,6 +16724,7 @@ WINAPI BOOL wine32b_user32_PrintWindow(HWND  hwnd, HDC  hdcBlt, UINT  nFlags) /*
 
 extern WINAPI void wine32a_user32_PrintWindow(void);  /* ../dlls/user32/painting.c:1762 */
 __ASM_GLOBAL_FUNC(wine32a_user32_PrintWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16199,7 +16744,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_PrintWindow,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_PrivateExtractIconExA(LPCSTR  lpstrFile, int  nIndex, HICON*  phIconLarge, HICON*  phIconSmall, UINT  nIcons) /* ../dlls/user32/exticon.c:672 */
+WINAPI UINT wine32b_user32_PrivateExtractIconExA(LPCSTR lpstrFile, int nIndex, HICON* phIconLarge, HICON* phIconSmall, UINT nIcons) /* ../dlls/user32/exticon.c:672 */
 {
 	UINT return_value;
 	TRACE("Enter PrivateExtractIconExA\n");
@@ -16210,6 +16755,7 @@ WINAPI UINT wine32b_user32_PrivateExtractIconExA(LPCSTR  lpstrFile, int  nIndex,
 
 extern WINAPI void wine32a_user32_PrivateExtractIconExA(void);  /* ../dlls/user32/exticon.c:672 */
 __ASM_GLOBAL_FUNC(wine32a_user32_PrivateExtractIconExA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16230,7 +16776,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_PrivateExtractIconExA,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_PrivateExtractIconExW(LPCWSTR  lpwstrFile, int  nIndex, HICON*  phIconLarge, HICON*  phIconSmall, UINT  nIcons) /* ../dlls/user32/exticon.c:618 */
+WINAPI UINT wine32b_user32_PrivateExtractIconExW(LPCWSTR lpwstrFile, int nIndex, HICON* phIconLarge, HICON* phIconSmall, UINT nIcons) /* ../dlls/user32/exticon.c:618 */
 {
 	UINT return_value;
 	TRACE("Enter PrivateExtractIconExW\n");
@@ -16241,6 +16787,7 @@ WINAPI UINT wine32b_user32_PrivateExtractIconExW(LPCWSTR  lpwstrFile, int  nInde
 
 extern WINAPI void wine32a_user32_PrivateExtractIconExW(void);  /* ../dlls/user32/exticon.c:618 */
 __ASM_GLOBAL_FUNC(wine32a_user32_PrivateExtractIconExW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16261,7 +16808,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_PrivateExtractIconExW,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_PrivateExtractIconsA(LPCSTR  lpstrFile, int  nIndex, int  sizeX, int  sizeY, HICON*  phicon, UINT*  piconid, UINT  nIcons, UINT  flags) /* ../dlls/user32/exticon.c:592 */
+WINAPI UINT wine32b_user32_PrivateExtractIconsA(LPCSTR lpstrFile, int nIndex, int sizeX, int sizeY, HICON* phicon, UINT* piconid, UINT nIcons, UINT flags) /* ../dlls/user32/exticon.c:592 */
 {
 	UINT return_value;
 	TRACE("Enter PrivateExtractIconsA\n");
@@ -16272,6 +16819,7 @@ WINAPI UINT wine32b_user32_PrivateExtractIconsA(LPCSTR  lpstrFile, int  nIndex, 
 
 extern WINAPI void wine32a_user32_PrivateExtractIconsA(void);  /* ../dlls/user32/exticon.c:592 */
 __ASM_GLOBAL_FUNC(wine32a_user32_PrivateExtractIconsA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16292,7 +16840,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_PrivateExtractIconsA,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_PrivateExtractIconsW(LPCWSTR  lpwstrFile, int  nIndex, int  sizeX, int  sizeY, HICON*  phicon, UINT*  pIconId, UINT  nIcons, UINT  flags) /* ../dlls/user32/exticon.c:568 */
+WINAPI UINT wine32b_user32_PrivateExtractIconsW(LPCWSTR lpwstrFile, int nIndex, int sizeX, int sizeY, HICON* phicon, UINT* pIconId, UINT nIcons, UINT flags) /* ../dlls/user32/exticon.c:568 */
 {
 	UINT return_value;
 	TRACE("Enter PrivateExtractIconsW\n");
@@ -16303,6 +16851,7 @@ WINAPI UINT wine32b_user32_PrivateExtractIconsW(LPCWSTR  lpwstrFile, int  nIndex
 
 extern WINAPI void wine32a_user32_PrivateExtractIconsW(void);  /* ../dlls/user32/exticon.c:568 */
 __ASM_GLOBAL_FUNC(wine32a_user32_PrivateExtractIconsW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16323,7 +16872,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_PrivateExtractIconsW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_PtInRect(RECT*  rect, POINT  pt) /* ../dlls/user32/uitools.c:1296 */
+WINAPI BOOL wine32b_user32_PtInRect(RECT* rect, POINT pt) /* ../dlls/user32/uitools.c:1296 */
 {
 	BOOL return_value;
 	TRACE("Enter PtInRect\n");
@@ -16334,6 +16883,7 @@ WINAPI BOOL wine32b_user32_PtInRect(RECT*  rect, POINT  pt) /* ../dlls/user32/ui
 
 extern WINAPI void wine32a_user32_PtInRect(void);  /* ../dlls/user32/uitools.c:1296 */
 __ASM_GLOBAL_FUNC(wine32a_user32_PtInRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16352,7 +16902,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_PtInRect,
 	"ret \n"
 )
 
-WINAPI LONG wine32b_user32_QueryDisplayConfig(UINT32  flags, UINT32*  numpathelements, DISPLAYCONFIG_PATH_INFO*  pathinfo, UINT32*  numinfoelements, DISPLAYCONFIG_MODE_INFO*  modeinfo, DISPLAYCONFIG_TOPOLOGY_ID*  topologyid) /* ../dlls/user32/misc.c:246 */
+WINAPI LONG wine32b_user32_QueryDisplayConfig(UINT32 flags, UINT32* numpathelements, DISPLAYCONFIG_PATH_INFO* pathinfo, UINT32* numinfoelements, DISPLAYCONFIG_MODE_INFO* modeinfo, DISPLAYCONFIG_TOPOLOGY_ID* topologyid) /* ../dlls/user32/misc.c:246 */
 {
 	LONG return_value;
 	TRACE("Enter QueryDisplayConfig\n");
@@ -16363,6 +16913,7 @@ WINAPI LONG wine32b_user32_QueryDisplayConfig(UINT32  flags, UINT32*  numpathele
 
 extern WINAPI void wine32a_user32_QueryDisplayConfig(void);  /* ../dlls/user32/misc.c:246 */
 __ASM_GLOBAL_FUNC(wine32a_user32_QueryDisplayConfig,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16383,7 +16934,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_QueryDisplayConfig,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_RealChildWindowFromPoint(HWND  hwndParent, POINT  pt) /* ../dlls/user32/winpos.c:356 */
+WINAPI HWND wine32b_user32_RealChildWindowFromPoint(HWND hwndParent, POINT pt) /* ../dlls/user32/winpos.c:356 */
 {
 	HWND return_value;
 	TRACE("Enter RealChildWindowFromPoint\n");
@@ -16394,6 +16945,7 @@ WINAPI HWND wine32b_user32_RealChildWindowFromPoint(HWND  hwndParent, POINT  pt)
 
 extern WINAPI void wine32a_user32_RealChildWindowFromPoint(void);  /* ../dlls/user32/winpos.c:356 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RealChildWindowFromPoint,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16412,7 +16964,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RealChildWindowFromPoint,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_RealGetWindowClassA(HWND  hwnd, LPSTR  buffer, UINT  count) /* ../dlls/user32/class.c:1243 */
+WINAPI UINT wine32b_user32_RealGetWindowClassA(HWND hwnd, LPSTR buffer, UINT count) /* ../dlls/user32/class.c:1243 */
 {
 	UINT return_value;
 	TRACE("Enter RealGetWindowClassA\n");
@@ -16423,6 +16975,7 @@ WINAPI UINT wine32b_user32_RealGetWindowClassA(HWND  hwnd, LPSTR  buffer, UINT  
 
 extern WINAPI void wine32a_user32_RealGetWindowClassA(void);  /* ../dlls/user32/class.c:1243 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RealGetWindowClassA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16442,7 +16995,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RealGetWindowClassA,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_RealGetWindowClassW(HWND  hwnd, LPWSTR  buffer, UINT  count) /* ../dlls/user32/class.c:1252 */
+WINAPI UINT wine32b_user32_RealGetWindowClassW(HWND hwnd, LPWSTR buffer, UINT count) /* ../dlls/user32/class.c:1252 */
 {
 	UINT return_value;
 	TRACE("Enter RealGetWindowClassW\n");
@@ -16453,6 +17006,7 @@ WINAPI UINT wine32b_user32_RealGetWindowClassW(HWND  hwnd, LPWSTR  buffer, UINT 
 
 extern WINAPI void wine32a_user32_RealGetWindowClassW(void);  /* ../dlls/user32/class.c:1252 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RealGetWindowClassW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16472,7 +17026,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RealGetWindowClassW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_RedrawWindow(HWND  hwnd, RECT*  rect, HRGN  hrgn, UINT  flags) /* ../dlls/user32/painting.c:1228 */
+WINAPI BOOL wine32b_user32_RedrawWindow(HWND hwnd, RECT* rect, HRGN hrgn, UINT flags) /* ../dlls/user32/painting.c:1228 */
 {
 	BOOL return_value;
 	TRACE("Enter RedrawWindow\n");
@@ -16483,6 +17037,7 @@ WINAPI BOOL wine32b_user32_RedrawWindow(HWND  hwnd, RECT*  rect, HRGN  hrgn, UIN
 
 extern WINAPI void wine32a_user32_RedrawWindow(void);  /* ../dlls/user32/painting.c:1228 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RedrawWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16503,7 +17058,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RedrawWindow,
 	"ret \n"
 )
 
-WINAPI ATOM wine32b_user32_RegisterClassA(WNDCLASSA*  wc) /* ../dlls/user32/class.c:625 */
+WINAPI ATOM wine32b_user32_RegisterClassA(WNDCLASSA* wc) /* ../dlls/user32/class.c:625 */
 {
 	ATOM return_value;
 	TRACE("Enter RegisterClassA\n");
@@ -16514,6 +17069,7 @@ WINAPI ATOM wine32b_user32_RegisterClassA(WNDCLASSA*  wc) /* ../dlls/user32/clas
 
 extern WINAPI void wine32a_user32_RegisterClassA(void);  /* ../dlls/user32/class.c:625 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RegisterClassA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16531,7 +17087,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterClassA,
 	"ret \n"
 )
 
-WINAPI ATOM wine32b_user32_RegisterClassExA(WNDCLASSEXA*  wc) /* ../dlls/user32/class.c:673 */
+WINAPI ATOM wine32b_user32_RegisterClassExA(WNDCLASSEXA* wc) /* ../dlls/user32/class.c:673 */
 {
 	ATOM return_value;
 	TRACE("Enter RegisterClassExA\n");
@@ -16542,6 +17098,7 @@ WINAPI ATOM wine32b_user32_RegisterClassExA(WNDCLASSEXA*  wc) /* ../dlls/user32/
 
 extern WINAPI void wine32a_user32_RegisterClassExA(void);  /* ../dlls/user32/class.c:673 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RegisterClassExA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16559,7 +17116,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterClassExA,
 	"ret \n"
 )
 
-WINAPI ATOM wine32b_user32_RegisterClassExW(WNDCLASSEXW*  wc) /* ../dlls/user32/class.c:731 */
+WINAPI ATOM wine32b_user32_RegisterClassExW(WNDCLASSEXW* wc) /* ../dlls/user32/class.c:731 */
 {
 	ATOM return_value;
 	TRACE("Enter RegisterClassExW\n");
@@ -16570,6 +17127,7 @@ WINAPI ATOM wine32b_user32_RegisterClassExW(WNDCLASSEXW*  wc) /* ../dlls/user32/
 
 extern WINAPI void wine32a_user32_RegisterClassExW(void);  /* ../dlls/user32/class.c:731 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RegisterClassExW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16587,7 +17145,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterClassExW,
 	"ret \n"
 )
 
-WINAPI ATOM wine32b_user32_RegisterClassW(WNDCLASSW*  wc) /* ../dlls/user32/class.c:650 */
+WINAPI ATOM wine32b_user32_RegisterClassW(WNDCLASSW* wc) /* ../dlls/user32/class.c:650 */
 {
 	ATOM return_value;
 	TRACE("Enter RegisterClassW\n");
@@ -16598,6 +17156,7 @@ WINAPI ATOM wine32b_user32_RegisterClassW(WNDCLASSW*  wc) /* ../dlls/user32/clas
 
 extern WINAPI void wine32a_user32_RegisterClassW(void);  /* ../dlls/user32/class.c:650 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RegisterClassW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16615,7 +17174,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterClassW,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_RegisterClipboardFormatA(LPCSTR  name) /* ../dlls/user32/clipboard.c:658 */
+WINAPI UINT wine32b_user32_RegisterClipboardFormatA(LPCSTR name) /* ../dlls/user32/clipboard.c:658 */
 {
 	UINT return_value;
 	TRACE("Enter RegisterClipboardFormatA\n");
@@ -16626,6 +17185,7 @@ WINAPI UINT wine32b_user32_RegisterClipboardFormatA(LPCSTR  name) /* ../dlls/use
 
 extern WINAPI void wine32a_user32_RegisterClipboardFormatA(void);  /* ../dlls/user32/clipboard.c:658 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RegisterClipboardFormatA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16643,7 +17203,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterClipboardFormatA,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_RegisterClipboardFormatW(LPCWSTR  name) /* ../dlls/user32/clipboard.c:649 */
+WINAPI UINT wine32b_user32_RegisterClipboardFormatW(LPCWSTR name) /* ../dlls/user32/clipboard.c:649 */
 {
 	UINT return_value;
 	TRACE("Enter RegisterClipboardFormatW\n");
@@ -16654,6 +17214,7 @@ WINAPI UINT wine32b_user32_RegisterClipboardFormatW(LPCWSTR  name) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_RegisterClipboardFormatW(void);  /* ../dlls/user32/clipboard.c:649 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RegisterClipboardFormatW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16671,7 +17232,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterClipboardFormatW,
 	"ret \n"
 )
 
-WINAPI HDEVNOTIFY wine32b_user32_RegisterDeviceNotificationA(HANDLE  hnd, LPVOID  notifyfilter, DWORD  flags) /* ../dlls/user32/misc.c:297 */
+WINAPI HDEVNOTIFY wine32b_user32_RegisterDeviceNotificationA(HANDLE hnd, LPVOID notifyfilter, DWORD flags) /* ../dlls/user32/misc.c:297 */
 {
 	HDEVNOTIFY return_value;
 	TRACE("Enter RegisterDeviceNotificationA\n");
@@ -16682,6 +17243,7 @@ WINAPI HDEVNOTIFY wine32b_user32_RegisterDeviceNotificationA(HANDLE  hnd, LPVOID
 
 extern WINAPI void wine32a_user32_RegisterDeviceNotificationA(void);  /* ../dlls/user32/misc.c:297 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RegisterDeviceNotificationA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16701,7 +17263,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterDeviceNotificationA,
 	"ret \n"
 )
 
-WINAPI HDEVNOTIFY wine32b_user32_RegisterDeviceNotificationW(HANDLE  hRecipient, LPVOID  pNotificationFilter, DWORD  dwFlags) /* ../dlls/user32/misc.c:327 */
+WINAPI HDEVNOTIFY wine32b_user32_RegisterDeviceNotificationW(HANDLE hRecipient, LPVOID pNotificationFilter, DWORD dwFlags) /* ../dlls/user32/misc.c:327 */
 {
 	HDEVNOTIFY return_value;
 	TRACE("Enter RegisterDeviceNotificationW\n");
@@ -16712,6 +17274,7 @@ WINAPI HDEVNOTIFY wine32b_user32_RegisterDeviceNotificationW(HANDLE  hRecipient,
 
 extern WINAPI void wine32a_user32_RegisterDeviceNotificationW(void);  /* ../dlls/user32/misc.c:327 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RegisterDeviceNotificationW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16731,7 +17294,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterDeviceNotificationW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_RegisterHotKey(HWND  hwnd, INT  id, UINT  modifiers, UINT  vk) /* ../dlls/user32/input.c:934 */
+WINAPI BOOL wine32b_user32_RegisterHotKey(HWND hwnd, INT id, UINT modifiers, UINT vk) /* ../dlls/user32/input.c:934 */
 {
 	BOOL return_value;
 	TRACE("Enter RegisterHotKey\n");
@@ -16742,6 +17305,7 @@ WINAPI BOOL wine32b_user32_RegisterHotKey(HWND  hwnd, INT  id, UINT  modifiers, 
 
 extern WINAPI void wine32a_user32_RegisterHotKey(void);  /* ../dlls/user32/input.c:934 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RegisterHotKey,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16762,7 +17326,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterHotKey,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_RegisterLogonProcess(HANDLE  hprocess, BOOL  x) /* ../dlls/user32/misc.c:228 */
+WINAPI DWORD wine32b_user32_RegisterLogonProcess(HANDLE hprocess, BOOL x) /* ../dlls/user32/misc.c:228 */
 {
 	DWORD return_value;
 	TRACE("Enter RegisterLogonProcess\n");
@@ -16773,6 +17337,7 @@ WINAPI DWORD wine32b_user32_RegisterLogonProcess(HANDLE  hprocess, BOOL  x) /* .
 
 extern WINAPI void wine32a_user32_RegisterLogonProcess(void);  /* ../dlls/user32/misc.c:228 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RegisterLogonProcess,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16791,7 +17356,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterLogonProcess,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_RegisterPointerDeviceNotifications(HWND  hwnd, BOOL  notifyrange) /* ../dlls/user32/misc.c:566 */
+WINAPI BOOL wine32b_user32_RegisterPointerDeviceNotifications(HWND hwnd, BOOL notifyrange) /* ../dlls/user32/misc.c:566 */
 {
 	BOOL return_value;
 	TRACE("Enter RegisterPointerDeviceNotifications\n");
@@ -16802,6 +17367,7 @@ WINAPI BOOL wine32b_user32_RegisterPointerDeviceNotifications(HWND  hwnd, BOOL  
 
 extern WINAPI void wine32a_user32_RegisterPointerDeviceNotifications(void);  /* ../dlls/user32/misc.c:566 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RegisterPointerDeviceNotifications,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16820,7 +17386,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterPointerDeviceNotifications,
 	"ret \n"
 )
 
-WINAPI HPOWERNOTIFY wine32b_user32_RegisterPowerSettingNotification(HANDLE  recipient, GUID*  guid, DWORD  flags) /* ../dlls/user32/misc.c:495 */
+WINAPI HPOWERNOTIFY wine32b_user32_RegisterPowerSettingNotification(HANDLE recipient, GUID* guid, DWORD flags) /* ../dlls/user32/misc.c:495 */
 {
 	HPOWERNOTIFY return_value;
 	TRACE("Enter RegisterPowerSettingNotification\n");
@@ -16831,6 +17397,7 @@ WINAPI HPOWERNOTIFY wine32b_user32_RegisterPowerSettingNotification(HANDLE  reci
 
 extern WINAPI void wine32a_user32_RegisterPowerSettingNotification(void);  /* ../dlls/user32/misc.c:495 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RegisterPowerSettingNotification,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16850,7 +17417,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterPowerSettingNotification,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_RegisterRawInputDevices(RAWINPUTDEVICE*  devices, UINT  device_count, UINT  size) /* ../dlls/user32/rawinput.c:253 */
+WINAPI BOOL wine32b_user32_RegisterRawInputDevices(RAWINPUTDEVICE* devices, UINT device_count, UINT size) /* ../dlls/user32/rawinput.c:253 */
 {
 	BOOL return_value;
 	TRACE("Enter RegisterRawInputDevices\n");
@@ -16861,6 +17428,7 @@ WINAPI BOOL wine32b_user32_RegisterRawInputDevices(RAWINPUTDEVICE*  devices, UIN
 
 extern WINAPI void wine32a_user32_RegisterRawInputDevices(void);  /* ../dlls/user32/rawinput.c:253 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RegisterRawInputDevices,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16880,7 +17448,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterRawInputDevices,
 	"ret \n"
 )
 
-WINAPI int wine32b_user32_RegisterServicesProcess(DWORD  ServicesProcessId) /* ../dlls/user32/user_main.c:480 */
+WINAPI int wine32b_user32_RegisterServicesProcess(DWORD ServicesProcessId) /* ../dlls/user32/user_main.c:480 */
 {
 	int return_value;
 	TRACE("Enter RegisterServicesProcess\n");
@@ -16891,6 +17459,7 @@ WINAPI int wine32b_user32_RegisterServicesProcess(DWORD  ServicesProcessId) /* .
 
 extern WINAPI void wine32a_user32_RegisterServicesProcess(void);  /* ../dlls/user32/user_main.c:480 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RegisterServicesProcess,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16908,7 +17477,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterServicesProcess,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_RegisterShellHookWindow(HWND  hWnd) /* ../dlls/user32/misc.c:265 */
+WINAPI BOOL wine32b_user32_RegisterShellHookWindow(HWND hWnd) /* ../dlls/user32/misc.c:265 */
 {
 	BOOL return_value;
 	TRACE("Enter RegisterShellHookWindow\n");
@@ -16919,6 +17488,7 @@ WINAPI BOOL wine32b_user32_RegisterShellHookWindow(HWND  hWnd) /* ../dlls/user32
 
 extern WINAPI void wine32a_user32_RegisterShellHookWindow(void);  /* ../dlls/user32/misc.c:265 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RegisterShellHookWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16936,7 +17506,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterShellHookWindow,
 	"ret \n"
 )
 
-WINAPI void wine32b_user32_RegisterSystemThread(DWORD  flags, DWORD  reserved) /* ../dlls/user32/misc.c:257 */
+WINAPI void wine32b_user32_RegisterSystemThread(DWORD flags, DWORD reserved) /* ../dlls/user32/misc.c:257 */
 {
 	TRACE("Enter RegisterSystemThread\n");
 	pRegisterSystemThread(flags, reserved);
@@ -16945,6 +17515,7 @@ WINAPI void wine32b_user32_RegisterSystemThread(DWORD  flags, DWORD  reserved) /
 
 extern WINAPI void wine32a_user32_RegisterSystemThread(void);  /* ../dlls/user32/misc.c:257 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RegisterSystemThread,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16963,7 +17534,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterSystemThread,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_RegisterTasklist(DWORD  x) /* ../dlls/user32/misc.c:285 */
+WINAPI DWORD wine32b_user32_RegisterTasklist(DWORD x) /* ../dlls/user32/misc.c:285 */
 {
 	DWORD return_value;
 	TRACE("Enter RegisterTasklist\n");
@@ -16974,6 +17545,7 @@ WINAPI DWORD wine32b_user32_RegisterTasklist(DWORD  x) /* ../dlls/user32/misc.c:
 
 extern WINAPI void wine32a_user32_RegisterTasklist(void);  /* ../dlls/user32/misc.c:285 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RegisterTasklist,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -16991,7 +17563,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterTasklist,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_RegisterTouchHitTestingWindow(HWND  hwnd, ULONG  value) /* ../dlls/user32/misc.c:592 */
+WINAPI BOOL wine32b_user32_RegisterTouchHitTestingWindow(HWND hwnd, ULONG value) /* ../dlls/user32/misc.c:592 */
 {
 	BOOL return_value;
 	TRACE("Enter RegisterTouchHitTestingWindow\n");
@@ -17002,6 +17574,7 @@ WINAPI BOOL wine32b_user32_RegisterTouchHitTestingWindow(HWND  hwnd, ULONG  valu
 
 extern WINAPI void wine32a_user32_RegisterTouchHitTestingWindow(void);  /* ../dlls/user32/misc.c:592 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RegisterTouchHitTestingWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17020,7 +17593,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterTouchHitTestingWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_RegisterTouchWindow(HWND  hwnd, ULONG  flags) /* ../dlls/user32/win.c:4153 */
+WINAPI BOOL wine32b_user32_RegisterTouchWindow(HWND hwnd, ULONG flags) /* ../dlls/user32/win.c:4153 */
 {
 	BOOL return_value;
 	TRACE("Enter RegisterTouchWindow\n");
@@ -17031,6 +17604,7 @@ WINAPI BOOL wine32b_user32_RegisterTouchWindow(HWND  hwnd, ULONG  flags) /* ../d
 
 extern WINAPI void wine32a_user32_RegisterTouchWindow(void);  /* ../dlls/user32/win.c:4153 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RegisterTouchWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17049,7 +17623,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterTouchWindow,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_RegisterWindowMessageA(LPCSTR  str) /* ../dlls/user32/message.c:4263 */
+WINAPI UINT wine32b_user32_RegisterWindowMessageA(LPCSTR str) /* ../dlls/user32/message.c:4263 */
 {
 	UINT return_value;
 	TRACE("Enter RegisterWindowMessageA\n");
@@ -17060,6 +17634,7 @@ WINAPI UINT wine32b_user32_RegisterWindowMessageA(LPCSTR  str) /* ../dlls/user32
 
 extern WINAPI void wine32a_user32_RegisterWindowMessageA(void);  /* ../dlls/user32/message.c:4263 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RegisterWindowMessageA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17077,7 +17652,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RegisterWindowMessageA,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_RegisterWindowMessageW(LPCWSTR  str) /* ../dlls/user32/message.c:4274 */
+WINAPI UINT wine32b_user32_RegisterWindowMessageW(LPCWSTR str) /* ../dlls/user32/message.c:4274 */
 {
 	UINT return_value;
 	TRACE("Enter RegisterWindowMessageW\n");
@@ -17088,6 +17663,7 @@ WINAPI UINT wine32b_user32_RegisterWindowMessageW(LPCWSTR  str) /* ../dlls/user3
 
 extern WINAPI void wine32a_user32_RegisterWindowMessageW(void);  /* ../dlls/user32/message.c:4274 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RegisterWindowMessageW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17116,6 +17692,7 @@ WINAPI BOOL wine32b_user32_ReleaseCapture(void) /* ../dlls/user32/input.c:352 */
 
 extern WINAPI void wine32a_user32_ReleaseCapture(void);  /* ../dlls/user32/input.c:352 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ReleaseCapture,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -17132,7 +17709,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ReleaseCapture,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_ReleaseDC(HWND  hwnd, HDC  hdc) /* ../dlls/user32/painting.c:1160 */
+WINAPI INT wine32b_user32_ReleaseDC(HWND hwnd, HDC hdc) /* ../dlls/user32/painting.c:1160 */
 {
 	INT return_value;
 	TRACE("Enter ReleaseDC\n");
@@ -17143,6 +17720,7 @@ WINAPI INT wine32b_user32_ReleaseDC(HWND  hwnd, HDC  hdc) /* ../dlls/user32/pain
 
 extern WINAPI void wine32a_user32_ReleaseDC(void);  /* ../dlls/user32/painting.c:1160 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ReleaseDC,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17161,7 +17739,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ReleaseDC,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_RemoveClipboardFormatListener(HWND  hwnd) /* ../dlls/user32/clipboard.c:1159 */
+WINAPI BOOL wine32b_user32_RemoveClipboardFormatListener(HWND hwnd) /* ../dlls/user32/clipboard.c:1159 */
 {
 	BOOL return_value;
 	TRACE("Enter RemoveClipboardFormatListener\n");
@@ -17172,6 +17750,7 @@ WINAPI BOOL wine32b_user32_RemoveClipboardFormatListener(HWND  hwnd) /* ../dlls/
 
 extern WINAPI void wine32a_user32_RemoveClipboardFormatListener(void);  /* ../dlls/user32/clipboard.c:1159 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RemoveClipboardFormatListener,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17189,7 +17768,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RemoveClipboardFormatListener,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_RemoveMenu(HMENU  hMenu, UINT  id, UINT  flags) /* ../dlls/user32/menu.c:4079 */
+WINAPI BOOL wine32b_user32_RemoveMenu(HMENU hMenu, UINT id, UINT flags) /* ../dlls/user32/menu.c:4079 */
 {
 	BOOL return_value;
 	TRACE("Enter RemoveMenu\n");
@@ -17200,6 +17779,7 @@ WINAPI BOOL wine32b_user32_RemoveMenu(HMENU  hMenu, UINT  id, UINT  flags) /* ..
 
 extern WINAPI void wine32a_user32_RemoveMenu(void);  /* ../dlls/user32/menu.c:4079 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RemoveMenu,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17219,7 +17799,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RemoveMenu,
 	"ret \n"
 )
 
-WINAPI HANDLE wine32b_user32_RemovePropA(HWND  hwnd, LPCSTR  str) /* ../dlls/user32/property.c:182 */
+WINAPI HANDLE wine32b_user32_RemovePropA(HWND hwnd, LPCSTR str) /* ../dlls/user32/property.c:182 */
 {
 	HANDLE return_value;
 	TRACE("Enter RemovePropA\n");
@@ -17230,6 +17810,7 @@ WINAPI HANDLE wine32b_user32_RemovePropA(HWND  hwnd, LPCSTR  str) /* ../dlls/use
 
 extern WINAPI void wine32a_user32_RemovePropA(void);  /* ../dlls/user32/property.c:182 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RemovePropA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17248,7 +17829,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RemovePropA,
 	"ret \n"
 )
 
-WINAPI HANDLE wine32b_user32_RemovePropW(HWND  hwnd, LPCWSTR  str) /* ../dlls/user32/property.c:195 */
+WINAPI HANDLE wine32b_user32_RemovePropW(HWND hwnd, LPCWSTR str) /* ../dlls/user32/property.c:195 */
 {
 	HANDLE return_value;
 	TRACE("Enter RemovePropW\n");
@@ -17259,6 +17840,7 @@ WINAPI HANDLE wine32b_user32_RemovePropW(HWND  hwnd, LPCWSTR  str) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_RemovePropW(void);  /* ../dlls/user32/property.c:195 */
 __ASM_GLOBAL_FUNC(wine32a_user32_RemovePropW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17277,7 +17859,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_RemovePropW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ReplyMessage(LRESULT  result) /* ../dlls/user32/message.c:3623 */
+WINAPI BOOL wine32b_user32_ReplyMessage(LRESULT result) /* ../dlls/user32/message.c:3623 */
 {
 	BOOL return_value;
 	TRACE("Enter ReplyMessage\n");
@@ -17288,6 +17870,7 @@ WINAPI BOOL wine32b_user32_ReplyMessage(LRESULT  result) /* ../dlls/user32/messa
 
 extern WINAPI void wine32a_user32_ReplyMessage(void);  /* ../dlls/user32/message.c:3623 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ReplyMessage,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17305,7 +17888,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ReplyMessage,
 	"ret \n"
 )
 
-WINAPI LPARAM wine32b_user32_ReuseDDElParam(LPARAM  lParam, UINT  msgIn, UINT  msgOut, UINT_PTR  uiLo, UINT_PTR  uiHi) /* ../dlls/user32/dde_misc.c:184 */
+WINAPI LPARAM wine32b_user32_ReuseDDElParam(LPARAM lParam, UINT msgIn, UINT msgOut, UINT_PTR uiLo, UINT_PTR uiHi) /* ../dlls/user32/dde_misc.c:184 */
 {
 	LPARAM return_value;
 	TRACE("Enter ReuseDDElParam\n");
@@ -17316,6 +17899,7 @@ WINAPI LPARAM wine32b_user32_ReuseDDElParam(LPARAM  lParam, UINT  msgIn, UINT  m
 
 extern WINAPI void wine32a_user32_ReuseDDElParam(void);  /* ../dlls/user32/dde_misc.c:184 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ReuseDDElParam,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17336,7 +17920,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ReuseDDElParam,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ScreenToClient(HWND  hwnd, LPPOINT  lppnt) /* ../dlls/user32/winpos.c:601 */
+WINAPI BOOL wine32b_user32_ScreenToClient(HWND hwnd, LPPOINT lppnt) /* ../dlls/user32/winpos.c:601 */
 {
 	BOOL return_value;
 	TRACE("Enter ScreenToClient\n");
@@ -17347,6 +17931,7 @@ WINAPI BOOL wine32b_user32_ScreenToClient(HWND  hwnd, LPPOINT  lppnt) /* ../dlls
 
 extern WINAPI void wine32a_user32_ScreenToClient(void);  /* ../dlls/user32/winpos.c:601 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ScreenToClient,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17365,7 +17950,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ScreenToClient,
 	"ret \n"
 )
 
-WINAPI void wine32b_user32_ScrollChildren(HWND  hWnd, UINT  uMsg, WPARAM  wParam, LPARAM  lParam) /* ../dlls/user32/mdi.c:1758 */
+WINAPI void wine32b_user32_ScrollChildren(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) /* ../dlls/user32/mdi.c:1758 */
 {
 	TRACE("Enter ScrollChildren\n");
 	pScrollChildren(hWnd, uMsg, wParam, lParam);
@@ -17374,6 +17959,7 @@ WINAPI void wine32b_user32_ScrollChildren(HWND  hWnd, UINT  uMsg, WPARAM  wParam
 
 extern WINAPI void wine32a_user32_ScrollChildren(void);  /* ../dlls/user32/mdi.c:1758 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ScrollChildren,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17394,7 +17980,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ScrollChildren,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ScrollDC(HDC  hdc, INT  dx, INT  dy, RECT*  scroll, RECT*  clip, HRGN  ret_update_rgn, LPRECT  update_rect) /* ../dlls/user32/painting.c:1653 */
+WINAPI BOOL wine32b_user32_ScrollDC(HDC hdc, INT dx, INT dy, RECT* scroll, RECT* clip, HRGN ret_update_rgn, LPRECT update_rect) /* ../dlls/user32/painting.c:1653 */
 {
 	BOOL return_value;
 	TRACE("Enter ScrollDC\n");
@@ -17405,6 +17991,7 @@ WINAPI BOOL wine32b_user32_ScrollDC(HDC  hdc, INT  dx, INT  dy, RECT*  scroll, R
 
 extern WINAPI void wine32a_user32_ScrollDC(void);  /* ../dlls/user32/painting.c:1653 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ScrollDC,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17425,7 +18012,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ScrollDC,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ScrollWindow(HWND  hwnd, INT  dx, INT  dy, RECT*  rect, RECT*  clipRect) /* ../dlls/user32/painting.c:1638 */
+WINAPI BOOL wine32b_user32_ScrollWindow(HWND hwnd, INT dx, INT dy, RECT* rect, RECT* clipRect) /* ../dlls/user32/painting.c:1638 */
 {
 	BOOL return_value;
 	TRACE("Enter ScrollWindow\n");
@@ -17436,6 +18023,7 @@ WINAPI BOOL wine32b_user32_ScrollWindow(HWND  hwnd, INT  dx, INT  dy, RECT*  rec
 
 extern WINAPI void wine32a_user32_ScrollWindow(void);  /* ../dlls/user32/painting.c:1638 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ScrollWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17456,7 +18044,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ScrollWindow,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_ScrollWindowEx(HWND  hwnd, INT  dx, INT  dy, RECT*  rect, RECT*  clipRect, HRGN  hrgnUpdate, LPRECT  rcUpdate, UINT  flags) /* ../dlls/user32/painting.c:1626 */
+WINAPI INT wine32b_user32_ScrollWindowEx(HWND hwnd, INT dx, INT dy, RECT* rect, RECT* clipRect, HRGN hrgnUpdate, LPRECT rcUpdate, UINT flags) /* ../dlls/user32/painting.c:1626 */
 {
 	INT return_value;
 	TRACE("Enter ScrollWindowEx\n");
@@ -17467,6 +18055,7 @@ WINAPI INT wine32b_user32_ScrollWindowEx(HWND  hwnd, INT  dx, INT  dy, RECT*  re
 
 extern WINAPI void wine32a_user32_ScrollWindowEx(void);  /* ../dlls/user32/painting.c:1626 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ScrollWindowEx,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17487,7 +18076,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ScrollWindowEx,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_SendDlgItemMessageA(HWND  hwnd, INT  id, UINT  msg, WPARAM  wParam, LPARAM  lParam) /* ../dlls/user32/dialog.c:1343 */
+WINAPI LRESULT wine32b_user32_SendDlgItemMessageA(HWND hwnd, INT id, UINT msg, WPARAM wParam, LPARAM lParam) /* ../dlls/user32/dialog.c:1343 */
 {
 	LRESULT return_value;
 	TRACE("Enter SendDlgItemMessageA\n");
@@ -17498,6 +18087,7 @@ WINAPI LRESULT wine32b_user32_SendDlgItemMessageA(HWND  hwnd, INT  id, UINT  msg
 
 extern WINAPI void wine32a_user32_SendDlgItemMessageA(void);  /* ../dlls/user32/dialog.c:1343 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SendDlgItemMessageA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17518,7 +18108,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SendDlgItemMessageA,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_SendDlgItemMessageW(HWND  hwnd, INT  id, UINT  msg, WPARAM  wParam, LPARAM  lParam) /* ../dlls/user32/dialog.c:1355 */
+WINAPI LRESULT wine32b_user32_SendDlgItemMessageW(HWND hwnd, INT id, UINT msg, WPARAM wParam, LPARAM lParam) /* ../dlls/user32/dialog.c:1355 */
 {
 	LRESULT return_value;
 	TRACE("Enter SendDlgItemMessageW\n");
@@ -17529,6 +18119,7 @@ WINAPI LRESULT wine32b_user32_SendDlgItemMessageW(HWND  hwnd, INT  id, UINT  msg
 
 extern WINAPI void wine32a_user32_SendDlgItemMessageW(void);  /* ../dlls/user32/dialog.c:1355 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SendDlgItemMessageW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17549,7 +18140,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SendDlgItemMessageW,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_SendIMEMessageExA(HWND  hwnd, LPARAM  lparam) /* ../dlls/user32/misc.c:453 */
+WINAPI LRESULT wine32b_user32_SendIMEMessageExA(HWND hwnd, LPARAM lparam) /* ../dlls/user32/misc.c:453 */
 {
 	LRESULT return_value;
 	TRACE("Enter SendIMEMessageExA\n");
@@ -17560,6 +18151,7 @@ WINAPI LRESULT wine32b_user32_SendIMEMessageExA(HWND  hwnd, LPARAM  lparam) /* .
 
 extern WINAPI void wine32a_user32_SendIMEMessageExA(void);  /* ../dlls/user32/misc.c:453 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SendIMEMessageExA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17578,7 +18170,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SendIMEMessageExA,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_SendIMEMessageExW(HWND  hwnd, LPARAM  lparam) /* ../dlls/user32/misc.c:464 */
+WINAPI LRESULT wine32b_user32_SendIMEMessageExW(HWND hwnd, LPARAM lparam) /* ../dlls/user32/misc.c:464 */
 {
 	LRESULT return_value;
 	TRACE("Enter SendIMEMessageExW\n");
@@ -17589,6 +18181,7 @@ WINAPI LRESULT wine32b_user32_SendIMEMessageExW(HWND  hwnd, LPARAM  lparam) /* .
 
 extern WINAPI void wine32a_user32_SendIMEMessageExW(void);  /* ../dlls/user32/misc.c:464 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SendIMEMessageExW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17607,7 +18200,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SendIMEMessageExW,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_SendInput(UINT  count, LPINPUT  inputs, int  size) /* ../dlls/user32/input.c:183 */
+WINAPI UINT wine32b_user32_SendInput(UINT count, LPINPUT inputs, int size) /* ../dlls/user32/input.c:183 */
 {
 	UINT return_value;
 	TRACE("Enter SendInput\n");
@@ -17618,6 +18211,7 @@ WINAPI UINT wine32b_user32_SendInput(UINT  count, LPINPUT  inputs, int  size) /*
 
 extern WINAPI void wine32a_user32_SendInput(void);  /* ../dlls/user32/input.c:183 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SendInput,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17637,7 +18231,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SendInput,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_SendMessageA(HWND  hwnd, UINT  msg, WPARAM  wparam, LPARAM  lparam) /* ../dlls/user32/message.c:3497 */
+WINAPI LRESULT wine32b_user32_SendMessageA(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) /* ../dlls/user32/message.c:3497 */
 {
 	LRESULT return_value;
 	TRACE("Enter SendMessageA\n");
@@ -17648,6 +18242,7 @@ WINAPI LRESULT wine32b_user32_SendMessageA(HWND  hwnd, UINT  msg, WPARAM  wparam
 
 extern WINAPI void wine32a_user32_SendMessageA(void);  /* ../dlls/user32/message.c:3497 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SendMessageA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17668,7 +18263,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SendMessageA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SendMessageCallbackA(HWND  hwnd, UINT  msg, WPARAM  wparam, LPARAM  lparam, SENDASYNCPROC  callback, ULONG_PTR  data) /* ../dlls/user32/message.c:3568 */
+WINAPI BOOL wine32b_user32_SendMessageCallbackA(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam, SENDASYNCPROC callback, ULONG_PTR data) /* ../dlls/user32/message.c:3568 */
 {
 	BOOL return_value;
 	TRACE("Enter SendMessageCallbackA\n");
@@ -17679,6 +18274,7 @@ WINAPI BOOL wine32b_user32_SendMessageCallbackA(HWND  hwnd, UINT  msg, WPARAM  w
 
 extern WINAPI void wine32a_user32_SendMessageCallbackA(void);  /* ../dlls/user32/message.c:3568 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SendMessageCallbackA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17699,7 +18295,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SendMessageCallbackA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SendMessageCallbackW(HWND  hwnd, UINT  msg, WPARAM  wparam, LPARAM  lparam, SENDASYNCPROC  callback, ULONG_PTR  data) /* ../dlls/user32/message.c:3596 */
+WINAPI BOOL wine32b_user32_SendMessageCallbackW(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam, SENDASYNCPROC callback, ULONG_PTR data) /* ../dlls/user32/message.c:3596 */
 {
 	BOOL return_value;
 	TRACE("Enter SendMessageCallbackW\n");
@@ -17710,6 +18306,7 @@ WINAPI BOOL wine32b_user32_SendMessageCallbackW(HWND  hwnd, UINT  msg, WPARAM  w
 
 extern WINAPI void wine32a_user32_SendMessageCallbackW(void);  /* ../dlls/user32/message.c:3596 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SendMessageCallbackW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17730,7 +18327,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SendMessageCallbackW,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_SendMessageTimeoutA(HWND  hwnd, UINT  msg, WPARAM  wparam, LPARAM  lparam, UINT  flags, UINT  timeout, PDWORD_PTR  res_ptr) /* ../dlls/user32/message.c:3455 */
+WINAPI LRESULT wine32b_user32_SendMessageTimeoutA(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam, UINT flags, UINT timeout, PDWORD_PTR res_ptr) /* ../dlls/user32/message.c:3455 */
 {
 	LRESULT return_value;
 	TRACE("Enter SendMessageTimeoutA\n");
@@ -17741,6 +18338,7 @@ WINAPI LRESULT wine32b_user32_SendMessageTimeoutA(HWND  hwnd, UINT  msg, WPARAM 
 
 extern WINAPI void wine32a_user32_SendMessageTimeoutA(void);  /* ../dlls/user32/message.c:3455 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SendMessageTimeoutA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17761,7 +18359,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SendMessageTimeoutA,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_SendMessageTimeoutW(HWND  hwnd, UINT  msg, WPARAM  wparam, LPARAM  lparam, UINT  flags, UINT  timeout, PDWORD_PTR  res_ptr) /* ../dlls/user32/message.c:3436 */
+WINAPI LRESULT wine32b_user32_SendMessageTimeoutW(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam, UINT flags, UINT timeout, PDWORD_PTR res_ptr) /* ../dlls/user32/message.c:3436 */
 {
 	LRESULT return_value;
 	TRACE("Enter SendMessageTimeoutW\n");
@@ -17772,6 +18370,7 @@ WINAPI LRESULT wine32b_user32_SendMessageTimeoutW(HWND  hwnd, UINT  msg, WPARAM 
 
 extern WINAPI void wine32a_user32_SendMessageTimeoutW(void);  /* ../dlls/user32/message.c:3436 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SendMessageTimeoutW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17792,7 +18391,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SendMessageTimeoutW,
 	"ret \n"
 )
 
-WINAPI LRESULT wine32b_user32_SendMessageW(HWND  hwnd, UINT  msg, WPARAM  wparam, LPARAM  lparam) /* ../dlls/user32/message.c:3476 */
+WINAPI LRESULT wine32b_user32_SendMessageW(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) /* ../dlls/user32/message.c:3476 */
 {
 	LRESULT return_value;
 	TRACE("Enter SendMessageW\n");
@@ -17803,6 +18402,7 @@ WINAPI LRESULT wine32b_user32_SendMessageW(HWND  hwnd, UINT  msg, WPARAM  wparam
 
 extern WINAPI void wine32a_user32_SendMessageW(void);  /* ../dlls/user32/message.c:3476 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SendMessageW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17823,7 +18423,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SendMessageW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SendNotifyMessageA(HWND  hwnd, UINT  msg, WPARAM  wparam, LPARAM  lparam) /* ../dlls/user32/message.c:3519 */
+WINAPI BOOL wine32b_user32_SendNotifyMessageA(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) /* ../dlls/user32/message.c:3519 */
 {
 	BOOL return_value;
 	TRACE("Enter SendNotifyMessageA\n");
@@ -17834,6 +18434,7 @@ WINAPI BOOL wine32b_user32_SendNotifyMessageA(HWND  hwnd, UINT  msg, WPARAM  wpa
 
 extern WINAPI void wine32a_user32_SendNotifyMessageA(void);  /* ../dlls/user32/message.c:3519 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SendNotifyMessageA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17854,7 +18455,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SendNotifyMessageA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SendNotifyMessageW(HWND  hwnd, UINT  msg, WPARAM  wparam, LPARAM  lparam) /* ../dlls/user32/message.c:3544 */
+WINAPI BOOL wine32b_user32_SendNotifyMessageW(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) /* ../dlls/user32/message.c:3544 */
 {
 	BOOL return_value;
 	TRACE("Enter SendNotifyMessageW\n");
@@ -17865,6 +18466,7 @@ WINAPI BOOL wine32b_user32_SendNotifyMessageW(HWND  hwnd, UINT  msg, WPARAM  wpa
 
 extern WINAPI void wine32a_user32_SendNotifyMessageW(void);  /* ../dlls/user32/message.c:3544 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SendNotifyMessageW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17885,7 +18487,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SendNotifyMessageW,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_SetActiveWindow(HWND  hwnd) /* ../dlls/user32/focus.c:230 */
+WINAPI HWND wine32b_user32_SetActiveWindow(HWND hwnd) /* ../dlls/user32/focus.c:230 */
 {
 	HWND return_value;
 	TRACE("Enter SetActiveWindow\n");
@@ -17896,6 +18498,7 @@ WINAPI HWND wine32b_user32_SetActiveWindow(HWND  hwnd) /* ../dlls/user32/focus.c
 
 extern WINAPI void wine32a_user32_SetActiveWindow(void);  /* ../dlls/user32/focus.c:230 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetActiveWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17913,7 +18516,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetActiveWindow,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_SetCapture(HWND  hwnd) /* ../dlls/user32/input.c:340 */
+WINAPI HWND wine32b_user32_SetCapture(HWND hwnd) /* ../dlls/user32/input.c:340 */
 {
 	HWND return_value;
 	TRACE("Enter SetCapture\n");
@@ -17924,6 +18527,7 @@ WINAPI HWND wine32b_user32_SetCapture(HWND  hwnd) /* ../dlls/user32/input.c:340 
 
 extern WINAPI void wine32a_user32_SetCapture(void);  /* ../dlls/user32/input.c:340 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetCapture,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17941,7 +18545,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetCapture,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetCaretBlinkTime(UINT  msecs) /* ../dlls/user32/caret.c:393 */
+WINAPI BOOL wine32b_user32_SetCaretBlinkTime(UINT msecs) /* ../dlls/user32/caret.c:393 */
 {
 	BOOL return_value;
 	TRACE("Enter SetCaretBlinkTime\n");
@@ -17952,6 +18556,7 @@ WINAPI BOOL wine32b_user32_SetCaretBlinkTime(UINT  msecs) /* ../dlls/user32/care
 
 extern WINAPI void wine32a_user32_SetCaretBlinkTime(void);  /* ../dlls/user32/caret.c:393 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetCaretBlinkTime,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17969,7 +18574,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetCaretBlinkTime,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetCaretPos(INT  x, INT  y) /* ../dlls/user32/caret.c:244 */
+WINAPI BOOL wine32b_user32_SetCaretPos(INT x, INT y) /* ../dlls/user32/caret.c:244 */
 {
 	BOOL return_value;
 	TRACE("Enter SetCaretPos\n");
@@ -17980,6 +18585,7 @@ WINAPI BOOL wine32b_user32_SetCaretPos(INT  x, INT  y) /* ../dlls/user32/caret.c
 
 extern WINAPI void wine32a_user32_SetCaretPos(void);  /* ../dlls/user32/caret.c:244 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetCaretPos,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -17998,7 +18604,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetCaretPos,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_SetClassLongA(HWND  hwnd, INT  offset, LONG  newval) /* ../dlls/user32/class.c:1169 */
+WINAPI DWORD wine32b_user32_SetClassLongA(HWND hwnd, INT offset, LONG newval) /* ../dlls/user32/class.c:1169 */
 {
 	DWORD return_value;
 	TRACE("Enter SetClassLongA\n");
@@ -18009,6 +18615,7 @@ WINAPI DWORD wine32b_user32_SetClassLongA(HWND  hwnd, INT  offset, LONG  newval)
 
 extern WINAPI void wine32a_user32_SetClassLongA(void);  /* ../dlls/user32/class.c:1169 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetClassLongA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18028,7 +18635,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetClassLongA,
 	"ret \n"
 )
 
-WINAPI ULONG_PTR wine32b_user32_SetClassLongPtrA(HWND  hwnd, INT  offset, LONG_PTR  newval) /* ../dlls/user32/class.c:1484 */
+WINAPI ULONG_PTR wine32b_user32_SetClassLongPtrA(HWND hwnd, INT offset, LONG_PTR newval) /* ../dlls/user32/class.c:1484 */
 {
 	ULONG_PTR return_value;
 	TRACE("Enter SetClassLongPtrA\n");
@@ -18039,6 +18646,7 @@ WINAPI ULONG_PTR wine32b_user32_SetClassLongPtrA(HWND  hwnd, INT  offset, LONG_P
 
 extern WINAPI void wine32a_user32_SetClassLongPtrA(void);  /* ../dlls/user32/class.c:1484 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetClassLongPtrA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18058,7 +18666,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetClassLongPtrA,
 	"ret \n"
 )
 
-WINAPI ULONG_PTR wine32b_user32_SetClassLongPtrW(HWND  hwnd, INT  offset, LONG_PTR  newval) /* ../dlls/user32/class.c:1476 */
+WINAPI ULONG_PTR wine32b_user32_SetClassLongPtrW(HWND hwnd, INT offset, LONG_PTR newval) /* ../dlls/user32/class.c:1476 */
 {
 	ULONG_PTR return_value;
 	TRACE("Enter SetClassLongPtrW\n");
@@ -18069,6 +18677,7 @@ WINAPI ULONG_PTR wine32b_user32_SetClassLongPtrW(HWND  hwnd, INT  offset, LONG_P
 
 extern WINAPI void wine32a_user32_SetClassLongPtrW(void);  /* ../dlls/user32/class.c:1476 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetClassLongPtrW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18088,7 +18697,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetClassLongPtrW,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_SetClassLongW(HWND  hwnd, INT  offset, LONG  newval) /* ../dlls/user32/class.c:1160 */
+WINAPI DWORD wine32b_user32_SetClassLongW(HWND hwnd, INT offset, LONG newval) /* ../dlls/user32/class.c:1160 */
 {
 	DWORD return_value;
 	TRACE("Enter SetClassLongW\n");
@@ -18099,6 +18708,7 @@ WINAPI DWORD wine32b_user32_SetClassLongW(HWND  hwnd, INT  offset, LONG  newval)
 
 extern WINAPI void wine32a_user32_SetClassLongW(void);  /* ../dlls/user32/class.c:1160 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetClassLongW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18118,7 +18728,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetClassLongW,
 	"ret \n"
 )
 
-WINAPI WORD wine32b_user32_SetClassWord(HWND  hwnd, INT  offset, WORD  newval) /* ../dlls/user32/class.c:1015 */
+WINAPI WORD wine32b_user32_SetClassWord(HWND hwnd, INT offset, WORD newval) /* ../dlls/user32/class.c:1015 */
 {
 	WORD return_value;
 	TRACE("Enter SetClassWord\n");
@@ -18129,6 +18739,7 @@ WINAPI WORD wine32b_user32_SetClassWord(HWND  hwnd, INT  offset, WORD  newval) /
 
 extern WINAPI void wine32a_user32_SetClassWord(void);  /* ../dlls/user32/class.c:1015 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetClassWord,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18148,7 +18759,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetClassWord,
 	"ret \n"
 )
 
-WINAPI HANDLE wine32b_user32_SetClipboardData(UINT  format, HANDLE  data) /* ../dlls/user32/clipboard.c:878 */
+WINAPI HANDLE wine32b_user32_SetClipboardData(UINT format, HANDLE data) /* ../dlls/user32/clipboard.c:878 */
 {
 	HANDLE return_value;
 	TRACE("Enter SetClipboardData\n");
@@ -18159,6 +18770,7 @@ WINAPI HANDLE wine32b_user32_SetClipboardData(UINT  format, HANDLE  data) /* ../
 
 extern WINAPI void wine32a_user32_SetClipboardData(void);  /* ../dlls/user32/clipboard.c:878 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetClipboardData,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18177,7 +18789,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetClipboardData,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_SetClipboardViewer(HWND  hwnd) /* ../dlls/user32/clipboard.c:807 */
+WINAPI HWND wine32b_user32_SetClipboardViewer(HWND hwnd) /* ../dlls/user32/clipboard.c:807 */
 {
 	HWND return_value;
 	TRACE("Enter SetClipboardViewer\n");
@@ -18188,6 +18800,7 @@ WINAPI HWND wine32b_user32_SetClipboardViewer(HWND  hwnd) /* ../dlls/user32/clip
 
 extern WINAPI void wine32a_user32_SetClipboardViewer(void);  /* ../dlls/user32/clipboard.c:807 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetClipboardViewer,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18205,7 +18818,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetClipboardViewer,
 	"ret \n"
 )
 
-WINAPI UINT_PTR wine32b_user32_SetCoalescableTimer(HWND  hwnd, UINT_PTR  id, UINT  timeout, TIMERPROC  proc, ULONG  tolerance) /* ../dlls/user32/message.c:4481 */
+WINAPI UINT_PTR wine32b_user32_SetCoalescableTimer(HWND hwnd, UINT_PTR id, UINT timeout, TIMERPROC proc, ULONG tolerance) /* ../dlls/user32/message.c:4481 */
 {
 	UINT_PTR return_value;
 	TRACE("Enter SetCoalescableTimer\n");
@@ -18216,6 +18829,7 @@ WINAPI UINT_PTR wine32b_user32_SetCoalescableTimer(HWND  hwnd, UINT_PTR  id, UIN
 
 extern WINAPI void wine32a_user32_SetCoalescableTimer(void);  /* ../dlls/user32/message.c:4481 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetCoalescableTimer,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18236,7 +18850,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetCoalescableTimer,
 	"ret \n"
 )
 
-WINAPI HCURSOR wine32b_user32_SetCursor(HCURSOR  hCursor) /* ../dlls/user32/cursoricon.c:2040 */
+WINAPI HCURSOR wine32b_user32_SetCursor(HCURSOR hCursor) /* ../dlls/user32/cursoricon.c:2040 */
 {
 	HCURSOR return_value;
 	TRACE("Enter SetCursor\n");
@@ -18247,6 +18861,7 @@ WINAPI HCURSOR wine32b_user32_SetCursor(HCURSOR  hCursor) /* ../dlls/user32/curs
 
 extern WINAPI void wine32a_user32_SetCursor(void);  /* ../dlls/user32/cursoricon.c:2040 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetCursor,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18264,7 +18879,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetCursor,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetCursorPos(INT  x, INT  y) /* ../dlls/user32/input.c:309 */
+WINAPI BOOL wine32b_user32_SetCursorPos(INT x, INT y) /* ../dlls/user32/input.c:309 */
 {
 	BOOL return_value;
 	TRACE("Enter SetCursorPos\n");
@@ -18275,6 +18890,7 @@ WINAPI BOOL wine32b_user32_SetCursorPos(INT  x, INT  y) /* ../dlls/user32/input.
 
 extern WINAPI void wine32a_user32_SetCursorPos(void);  /* ../dlls/user32/input.c:309 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetCursorPos,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18293,7 +18909,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetCursorPos,
 	"ret \n"
 )
 
-WINAPI void wine32b_user32_SetDebugErrorLevel(DWORD  dwLevel) /* ../dlls/user32/misc.c:210 */
+WINAPI void wine32b_user32_SetDebugErrorLevel(DWORD dwLevel) /* ../dlls/user32/misc.c:210 */
 {
 	TRACE("Enter SetDebugErrorLevel\n");
 	pSetDebugErrorLevel(dwLevel);
@@ -18302,6 +18918,7 @@ WINAPI void wine32b_user32_SetDebugErrorLevel(DWORD  dwLevel) /* ../dlls/user32/
 
 extern WINAPI void wine32a_user32_SetDebugErrorLevel(void);  /* ../dlls/user32/misc.c:210 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetDebugErrorLevel,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18319,7 +18936,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetDebugErrorLevel,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetDeskWallPaper(LPCSTR  filename) /* ../dlls/user32/desktop.c:199 */
+WINAPI BOOL wine32b_user32_SetDeskWallPaper(LPCSTR filename) /* ../dlls/user32/desktop.c:199 */
 {
 	BOOL return_value;
 	TRACE("Enter SetDeskWallPaper\n");
@@ -18330,6 +18947,7 @@ WINAPI BOOL wine32b_user32_SetDeskWallPaper(LPCSTR  filename) /* ../dlls/user32/
 
 extern WINAPI void wine32a_user32_SetDeskWallPaper(void);  /* ../dlls/user32/desktop.c:199 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetDeskWallPaper,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18347,7 +18965,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetDeskWallPaper,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetDlgItemInt(HWND  hwnd, INT  id, UINT  value, BOOL  fSigned) /* ../dlls/user32/dialog.c:1407 */
+WINAPI BOOL wine32b_user32_SetDlgItemInt(HWND hwnd, INT id, UINT value, BOOL fSigned) /* ../dlls/user32/dialog.c:1407 */
 {
 	BOOL return_value;
 	TRACE("Enter SetDlgItemInt\n");
@@ -18358,6 +18976,7 @@ WINAPI BOOL wine32b_user32_SetDlgItemInt(HWND  hwnd, INT  id, UINT  value, BOOL 
 
 extern WINAPI void wine32a_user32_SetDlgItemInt(void);  /* ../dlls/user32/dialog.c:1407 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetDlgItemInt,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18378,7 +18997,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetDlgItemInt,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetDlgItemTextA(HWND  hwnd, INT  id, LPCSTR  lpString) /* ../dlls/user32/dialog.c:1367 */
+WINAPI BOOL wine32b_user32_SetDlgItemTextA(HWND hwnd, INT id, LPCSTR lpString) /* ../dlls/user32/dialog.c:1367 */
 {
 	BOOL return_value;
 	TRACE("Enter SetDlgItemTextA\n");
@@ -18389,6 +19008,7 @@ WINAPI BOOL wine32b_user32_SetDlgItemTextA(HWND  hwnd, INT  id, LPCSTR  lpString
 
 extern WINAPI void wine32a_user32_SetDlgItemTextA(void);  /* ../dlls/user32/dialog.c:1367 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetDlgItemTextA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18408,7 +19028,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetDlgItemTextA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetDlgItemTextW(HWND  hwnd, INT  id, LPCWSTR  lpString) /* ../dlls/user32/dialog.c:1376 */
+WINAPI BOOL wine32b_user32_SetDlgItemTextW(HWND hwnd, INT id, LPCWSTR lpString) /* ../dlls/user32/dialog.c:1376 */
 {
 	BOOL return_value;
 	TRACE("Enter SetDlgItemTextW\n");
@@ -18419,6 +19039,7 @@ WINAPI BOOL wine32b_user32_SetDlgItemTextW(HWND  hwnd, INT  id, LPCWSTR  lpStrin
 
 extern WINAPI void wine32a_user32_SetDlgItemTextW(void);  /* ../dlls/user32/dialog.c:1376 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetDlgItemTextW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18438,7 +19059,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetDlgItemTextW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetDoubleClickTime(UINT  interval) /* ../dlls/user32/sysparams.c:3015 */
+WINAPI BOOL wine32b_user32_SetDoubleClickTime(UINT interval) /* ../dlls/user32/sysparams.c:3015 */
 {
 	BOOL return_value;
 	TRACE("Enter SetDoubleClickTime\n");
@@ -18449,6 +19070,7 @@ WINAPI BOOL wine32b_user32_SetDoubleClickTime(UINT  interval) /* ../dlls/user32/
 
 extern WINAPI void wine32a_user32_SetDoubleClickTime(void);  /* ../dlls/user32/sysparams.c:3015 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetDoubleClickTime,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18466,7 +19088,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetDoubleClickTime,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_SetFocus(HWND  hwnd) /* ../dlls/user32/focus.c:260 */
+WINAPI HWND wine32b_user32_SetFocus(HWND hwnd) /* ../dlls/user32/focus.c:260 */
 {
 	HWND return_value;
 	TRACE("Enter SetFocus\n");
@@ -18477,6 +19099,7 @@ WINAPI HWND wine32b_user32_SetFocus(HWND  hwnd) /* ../dlls/user32/focus.c:260 */
 
 extern WINAPI void wine32a_user32_SetFocus(void);  /* ../dlls/user32/focus.c:260 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetFocus,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18494,7 +19117,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetFocus,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetForegroundWindow(HWND  hwnd) /* ../dlls/user32/focus.c:320 */
+WINAPI BOOL wine32b_user32_SetForegroundWindow(HWND hwnd) /* ../dlls/user32/focus.c:320 */
 {
 	BOOL return_value;
 	TRACE("Enter SetForegroundWindow\n");
@@ -18505,6 +19128,7 @@ WINAPI BOOL wine32b_user32_SetForegroundWindow(HWND  hwnd) /* ../dlls/user32/foc
 
 extern WINAPI void wine32a_user32_SetForegroundWindow(void);  /* ../dlls/user32/focus.c:320 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetForegroundWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18522,7 +19146,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetForegroundWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetGestureConfig(HWND  hwnd, DWORD  reserved, UINT  id, PGESTURECONFIG  config, UINT  size) /* ../dlls/user32/misc.c:523 */
+WINAPI BOOL wine32b_user32_SetGestureConfig(HWND hwnd, DWORD reserved, UINT id, PGESTURECONFIG config, UINT size) /* ../dlls/user32/misc.c:523 */
 {
 	BOOL return_value;
 	TRACE("Enter SetGestureConfig\n");
@@ -18533,6 +19157,7 @@ WINAPI BOOL wine32b_user32_SetGestureConfig(HWND  hwnd, DWORD  reserved, UINT  i
 
 extern WINAPI void wine32a_user32_SetGestureConfig(void);  /* ../dlls/user32/misc.c:523 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetGestureConfig,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18553,7 +19178,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetGestureConfig,
 	"ret \n"
 )
 
-WINAPI void wine32b_user32_SetInternalWindowPos(HWND  hwnd, UINT  showCmd, LPRECT  rect, LPPOINT  pt) /* ../dlls/user32/winpos.c:1492 */
+WINAPI void wine32b_user32_SetInternalWindowPos(HWND hwnd, UINT showCmd, LPRECT rect, LPPOINT pt) /* ../dlls/user32/winpos.c:1492 */
 {
 	TRACE("Enter SetInternalWindowPos\n");
 	pSetInternalWindowPos(hwnd, showCmd, rect, pt);
@@ -18562,6 +19187,7 @@ WINAPI void wine32b_user32_SetInternalWindowPos(HWND  hwnd, UINT  showCmd, LPREC
 
 extern WINAPI void wine32a_user32_SetInternalWindowPos(void);  /* ../dlls/user32/winpos.c:1492 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetInternalWindowPos,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18582,7 +19208,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetInternalWindowPos,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetKeyboardState(LPBYTE  state) /* ../dlls/user32/input.c:595 */
+WINAPI BOOL wine32b_user32_SetKeyboardState(LPBYTE state) /* ../dlls/user32/input.c:595 */
 {
 	BOOL return_value;
 	TRACE("Enter SetKeyboardState\n");
@@ -18593,6 +19219,7 @@ WINAPI BOOL wine32b_user32_SetKeyboardState(LPBYTE  state) /* ../dlls/user32/inp
 
 extern WINAPI void wine32a_user32_SetKeyboardState(void);  /* ../dlls/user32/input.c:595 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetKeyboardState,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18610,7 +19237,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetKeyboardState,
 	"ret \n"
 )
 
-WINAPI void wine32b_user32_SetLastErrorEx(DWORD  error, DWORD  type) /* ../dlls/user32/misc.c:163 */
+WINAPI void wine32b_user32_SetLastErrorEx(DWORD error, DWORD type) /* ../dlls/user32/misc.c:163 */
 {
 	TRACE("Enter SetLastErrorEx\n");
 	pSetLastErrorEx(error, type);
@@ -18619,6 +19246,7 @@ WINAPI void wine32b_user32_SetLastErrorEx(DWORD  error, DWORD  type) /* ../dlls/
 
 extern WINAPI void wine32a_user32_SetLastErrorEx(void);  /* ../dlls/user32/misc.c:163 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetLastErrorEx,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18637,7 +19265,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetLastErrorEx,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetLayeredWindowAttributes(HWND  hwnd, COLORREF  key, BYTE  alpha, DWORD  flags) /* ../dlls/user32/win.c:3899 */
+WINAPI BOOL wine32b_user32_SetLayeredWindowAttributes(HWND hwnd, COLORREF key, BYTE alpha, DWORD flags) /* ../dlls/user32/win.c:3899 */
 {
 	BOOL return_value;
 	TRACE("Enter SetLayeredWindowAttributes\n");
@@ -18648,6 +19276,7 @@ WINAPI BOOL wine32b_user32_SetLayeredWindowAttributes(HWND  hwnd, COLORREF  key,
 
 extern WINAPI void wine32a_user32_SetLayeredWindowAttributes(void);  /* ../dlls/user32/win.c:3899 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetLayeredWindowAttributes,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18668,7 +19297,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetLayeredWindowAttributes,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_SetLogonNotifyWindow(HWINSTA  hwinsta, HWND  hwnd) /* ../dlls/user32/misc.c:237 */
+WINAPI DWORD wine32b_user32_SetLogonNotifyWindow(HWINSTA hwinsta, HWND hwnd) /* ../dlls/user32/misc.c:237 */
 {
 	DWORD return_value;
 	TRACE("Enter SetLogonNotifyWindow\n");
@@ -18679,6 +19308,7 @@ WINAPI DWORD wine32b_user32_SetLogonNotifyWindow(HWINSTA  hwinsta, HWND  hwnd) /
 
 extern WINAPI void wine32a_user32_SetLogonNotifyWindow(void);  /* ../dlls/user32/misc.c:237 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetLogonNotifyWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18697,7 +19327,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetLogonNotifyWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetMenu(HWND  hWnd, HMENU  hMenu) /* ../dlls/user32/menu.c:4495 */
+WINAPI BOOL wine32b_user32_SetMenu(HWND hWnd, HMENU hMenu) /* ../dlls/user32/menu.c:4495 */
 {
 	BOOL return_value;
 	TRACE("Enter SetMenu\n");
@@ -18708,6 +19338,7 @@ WINAPI BOOL wine32b_user32_SetMenu(HWND  hWnd, HMENU  hMenu) /* ../dlls/user32/m
 
 extern WINAPI void wine32a_user32_SetMenu(void);  /* ../dlls/user32/menu.c:4495 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetMenu,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18726,7 +19357,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetMenu,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetMenuContextHelpId(HMENU  hMenu, DWORD  dwContextHelpID) /* ../dlls/user32/menu.c:5441 */
+WINAPI BOOL wine32b_user32_SetMenuContextHelpId(HMENU hMenu, DWORD dwContextHelpID) /* ../dlls/user32/menu.c:5441 */
 {
 	BOOL return_value;
 	TRACE("Enter SetMenuContextHelpId\n");
@@ -18737,6 +19368,7 @@ WINAPI BOOL wine32b_user32_SetMenuContextHelpId(HMENU  hMenu, DWORD  dwContextHe
 
 extern WINAPI void wine32a_user32_SetMenuContextHelpId(void);  /* ../dlls/user32/menu.c:5441 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetMenuContextHelpId,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18755,7 +19387,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetMenuContextHelpId,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetMenuDefaultItem(HMENU  hmenu, UINT  uItem, UINT  bypos) /* ../dlls/user32/menu.c:5149 */
+WINAPI BOOL wine32b_user32_SetMenuDefaultItem(HMENU hmenu, UINT uItem, UINT bypos) /* ../dlls/user32/menu.c:5149 */
 {
 	BOOL return_value;
 	TRACE("Enter SetMenuDefaultItem\n");
@@ -18766,6 +19398,7 @@ WINAPI BOOL wine32b_user32_SetMenuDefaultItem(HMENU  hmenu, UINT  uItem, UINT  b
 
 extern WINAPI void wine32a_user32_SetMenuDefaultItem(void);  /* ../dlls/user32/menu.c:5149 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetMenuDefaultItem,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18785,7 +19418,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetMenuDefaultItem,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetMenuInfo(HMENU  hMenu, LPCMENUINFO  lpmi) /* ../dlls/user32/menu.c:5385 */
+WINAPI BOOL wine32b_user32_SetMenuInfo(HMENU hMenu, LPCMENUINFO lpmi) /* ../dlls/user32/menu.c:5385 */
 {
 	BOOL return_value;
 	TRACE("Enter SetMenuInfo\n");
@@ -18796,6 +19429,7 @@ WINAPI BOOL wine32b_user32_SetMenuInfo(HMENU  hMenu, LPCMENUINFO  lpmi) /* ../dl
 
 extern WINAPI void wine32a_user32_SetMenuInfo(void);  /* ../dlls/user32/menu.c:5385 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetMenuInfo,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18814,7 +19448,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetMenuInfo,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetMenuItemBitmaps(HMENU  hMenu, UINT  nPos, UINT  wFlags, HBITMAP  hNewUnCheck, HBITMAP  hNewCheck) /* ../dlls/user32/menu.c:4218 */
+WINAPI BOOL wine32b_user32_SetMenuItemBitmaps(HMENU hMenu, UINT nPos, UINT wFlags, HBITMAP hNewUnCheck, HBITMAP hNewCheck) /* ../dlls/user32/menu.c:4218 */
 {
 	BOOL return_value;
 	TRACE("Enter SetMenuItemBitmaps\n");
@@ -18825,6 +19459,7 @@ WINAPI BOOL wine32b_user32_SetMenuItemBitmaps(HMENU  hMenu, UINT  nPos, UINT  wF
 
 extern WINAPI void wine32a_user32_SetMenuItemBitmaps(void);  /* ../dlls/user32/menu.c:4218 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetMenuItemBitmaps,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18845,7 +19480,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetMenuItemBitmaps,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetMenuItemInfoA(HMENU  hmenu, UINT  item, BOOL  bypos, MENUITEMINFOA*  lpmii) /* ../dlls/user32/menu.c:5057 */
+WINAPI BOOL wine32b_user32_SetMenuItemInfoA(HMENU hmenu, UINT item, BOOL bypos, MENUITEMINFOA* lpmii) /* ../dlls/user32/menu.c:5057 */
 {
 	BOOL return_value;
 	TRACE("Enter SetMenuItemInfoA\n");
@@ -18856,6 +19491,7 @@ WINAPI BOOL wine32b_user32_SetMenuItemInfoA(HMENU  hmenu, UINT  item, BOOL  bypo
 
 extern WINAPI void wine32a_user32_SetMenuItemInfoA(void);  /* ../dlls/user32/menu.c:5057 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetMenuItemInfoA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18876,7 +19512,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetMenuItemInfoA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetMenuItemInfoW(HMENU  hmenu, UINT  item, BOOL  bypos, MENUITEMINFOW*  lpmii) /* ../dlls/user32/menu.c:5083 */
+WINAPI BOOL wine32b_user32_SetMenuItemInfoW(HMENU hmenu, UINT item, BOOL bypos, MENUITEMINFOW* lpmii) /* ../dlls/user32/menu.c:5083 */
 {
 	BOOL return_value;
 	TRACE("Enter SetMenuItemInfoW\n");
@@ -18887,6 +19523,7 @@ WINAPI BOOL wine32b_user32_SetMenuItemInfoW(HMENU  hmenu, UINT  item, BOOL  bypo
 
 extern WINAPI void wine32a_user32_SetMenuItemInfoW(void);  /* ../dlls/user32/menu.c:5083 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetMenuItemInfoW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18907,7 +19544,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetMenuItemInfoW,
 	"ret \n"
 )
 
-WINAPI LPARAM wine32b_user32_SetMessageExtraInfo(LPARAM  lParam) /* ../dlls/user32/message.c:4139 */
+WINAPI LPARAM wine32b_user32_SetMessageExtraInfo(LPARAM lParam) /* ../dlls/user32/message.c:4139 */
 {
 	LPARAM return_value;
 	TRACE("Enter SetMessageExtraInfo\n");
@@ -18918,6 +19555,7 @@ WINAPI LPARAM wine32b_user32_SetMessageExtraInfo(LPARAM  lParam) /* ../dlls/user
 
 extern WINAPI void wine32a_user32_SetMessageExtraInfo(void);  /* ../dlls/user32/message.c:4139 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetMessageExtraInfo,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18935,7 +19573,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetMessageExtraInfo,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetMessageQueue(INT  size) /* ../dlls/user32/message.c:4459 */
+WINAPI BOOL wine32b_user32_SetMessageQueue(INT size) /* ../dlls/user32/message.c:4459 */
 {
 	BOOL return_value;
 	TRACE("Enter SetMessageQueue\n");
@@ -18946,6 +19584,7 @@ WINAPI BOOL wine32b_user32_SetMessageQueue(INT  size) /* ../dlls/user32/message.
 
 extern WINAPI void wine32a_user32_SetMessageQueue(void);  /* ../dlls/user32/message.c:4459 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetMessageQueue,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18963,7 +19602,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetMessageQueue,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_SetParent(HWND  hwnd, HWND  parent) /* ../dlls/user32/win.c:3166 */
+WINAPI HWND wine32b_user32_SetParent(HWND hwnd, HWND parent) /* ../dlls/user32/win.c:3166 */
 {
 	HWND return_value;
 	TRACE("Enter SetParent\n");
@@ -18974,6 +19613,7 @@ WINAPI HWND wine32b_user32_SetParent(HWND  hwnd, HWND  parent) /* ../dlls/user32
 
 extern WINAPI void wine32a_user32_SetParent(void);  /* ../dlls/user32/win.c:3166 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetParent,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -18992,7 +19632,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetParent,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetPhysicalCursorPos(INT  x, INT  y) /* ../dlls/user32/sysparams.c:4300 */
+WINAPI BOOL wine32b_user32_SetPhysicalCursorPos(INT x, INT y) /* ../dlls/user32/sysparams.c:4300 */
 {
 	BOOL return_value;
 	TRACE("Enter SetPhysicalCursorPos\n");
@@ -19003,6 +19643,7 @@ WINAPI BOOL wine32b_user32_SetPhysicalCursorPos(INT  x, INT  y) /* ../dlls/user3
 
 extern WINAPI void wine32a_user32_SetPhysicalCursorPos(void);  /* ../dlls/user32/sysparams.c:4300 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetPhysicalCursorPos,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19032,6 +19673,7 @@ WINAPI BOOL wine32b_user32_SetProcessDPIAware(void) /* ../dlls/user32/sysparams.
 
 extern WINAPI void wine32a_user32_SetProcessDPIAware(void);  /* ../dlls/user32/sysparams.c:3506 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetProcessDPIAware,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -19048,7 +19690,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetProcessDPIAware,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetProcessDefaultLayout(DWORD  layout) /* ../dlls/user32/win.c:4093 */
+WINAPI BOOL wine32b_user32_SetProcessDefaultLayout(DWORD layout) /* ../dlls/user32/win.c:4093 */
 {
 	BOOL return_value;
 	TRACE("Enter SetProcessDefaultLayout\n");
@@ -19059,6 +19701,7 @@ WINAPI BOOL wine32b_user32_SetProcessDefaultLayout(DWORD  layout) /* ../dlls/use
 
 extern WINAPI void wine32a_user32_SetProcessDefaultLayout(void);  /* ../dlls/user32/win.c:4093 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetProcessDefaultLayout,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19076,7 +19719,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetProcessDefaultLayout,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT  context) /* ../dlls/user32/sysparams.c:3412 */
+WINAPI BOOL wine32b_user32_SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT context) /* ../dlls/user32/sysparams.c:3412 */
 {
 	BOOL return_value;
 	TRACE("Enter SetProcessDpiAwarenessContext\n");
@@ -19087,6 +19730,7 @@ WINAPI BOOL wine32b_user32_SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT  
 
 extern WINAPI void wine32a_user32_SetProcessDpiAwarenessContext(void);  /* ../dlls/user32/sysparams.c:3412 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetProcessDpiAwarenessContext,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19104,7 +19748,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetProcessDpiAwarenessContext,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetProcessDpiAwarenessInternal(DPI_AWARENESS  awareness) /* ../dlls/user32/sysparams.c:3448 */
+WINAPI BOOL wine32b_user32_SetProcessDpiAwarenessInternal(DPI_AWARENESS awareness) /* ../dlls/user32/sysparams.c:3448 */
 {
 	BOOL return_value;
 	TRACE("Enter SetProcessDpiAwarenessInternal\n");
@@ -19115,6 +19759,7 @@ WINAPI BOOL wine32b_user32_SetProcessDpiAwarenessInternal(DPI_AWARENESS  awarene
 
 extern WINAPI void wine32a_user32_SetProcessDpiAwarenessInternal(void);  /* ../dlls/user32/sysparams.c:3448 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetProcessDpiAwarenessInternal,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19132,7 +19777,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetProcessDpiAwarenessInternal,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetProcessWindowStation(HWINSTA  handle) /* ../dlls/user32/winstation.c:212 */
+WINAPI BOOL wine32b_user32_SetProcessWindowStation(HWINSTA handle) /* ../dlls/user32/winstation.c:212 */
 {
 	BOOL return_value;
 	TRACE("Enter SetProcessWindowStation\n");
@@ -19143,6 +19788,7 @@ WINAPI BOOL wine32b_user32_SetProcessWindowStation(HWINSTA  handle) /* ../dlls/u
 
 extern WINAPI void wine32a_user32_SetProcessWindowStation(void);  /* ../dlls/user32/winstation.c:212 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetProcessWindowStation,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19160,7 +19806,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetProcessWindowStation,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_SetProgmanWindow(HWND  hwnd) /* ../dlls/user32/focus.c:454 */
+WINAPI HWND wine32b_user32_SetProgmanWindow(HWND hwnd) /* ../dlls/user32/focus.c:454 */
 {
 	HWND return_value;
 	TRACE("Enter SetProgmanWindow\n");
@@ -19171,6 +19817,7 @@ WINAPI HWND wine32b_user32_SetProgmanWindow(HWND  hwnd) /* ../dlls/user32/focus.
 
 extern WINAPI void wine32a_user32_SetProgmanWindow(void);  /* ../dlls/user32/focus.c:454 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetProgmanWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19188,7 +19835,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetProgmanWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetPropA(HWND  hwnd, LPCSTR  str, HANDLE  handle) /* ../dlls/user32/property.c:149 */
+WINAPI BOOL wine32b_user32_SetPropA(HWND hwnd, LPCSTR str, HANDLE handle) /* ../dlls/user32/property.c:149 */
 {
 	BOOL return_value;
 	TRACE("Enter SetPropA\n");
@@ -19199,6 +19846,7 @@ WINAPI BOOL wine32b_user32_SetPropA(HWND  hwnd, LPCSTR  str, HANDLE  handle) /* 
 
 extern WINAPI void wine32a_user32_SetPropA(void);  /* ../dlls/user32/property.c:149 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetPropA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19218,7 +19866,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetPropA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetPropW(HWND  hwnd, LPCWSTR  str, HANDLE  handle) /* ../dlls/user32/property.c:162 */
+WINAPI BOOL wine32b_user32_SetPropW(HWND hwnd, LPCWSTR str, HANDLE handle) /* ../dlls/user32/property.c:162 */
 {
 	BOOL return_value;
 	TRACE("Enter SetPropW\n");
@@ -19229,6 +19877,7 @@ WINAPI BOOL wine32b_user32_SetPropW(HWND  hwnd, LPCWSTR  str, HANDLE  handle) /*
 
 extern WINAPI void wine32a_user32_SetPropW(void);  /* ../dlls/user32/property.c:162 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetPropW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19248,7 +19897,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetPropW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetRect(LPRECT  rect, INT  left, INT  top, INT  right, INT  bottom) /* ../dlls/user32/uitools.c:1247 */
+WINAPI BOOL wine32b_user32_SetRect(LPRECT rect, INT left, INT top, INT right, INT bottom) /* ../dlls/user32/uitools.c:1247 */
 {
 	BOOL return_value;
 	TRACE("Enter SetRect\n");
@@ -19259,6 +19908,7 @@ WINAPI BOOL wine32b_user32_SetRect(LPRECT  rect, INT  left, INT  top, INT  right
 
 extern WINAPI void wine32a_user32_SetRect(void);  /* ../dlls/user32/uitools.c:1247 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19279,7 +19929,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetRect,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetRectEmpty(LPRECT  rect) /* ../dlls/user32/uitools.c:1262 */
+WINAPI BOOL wine32b_user32_SetRectEmpty(LPRECT rect) /* ../dlls/user32/uitools.c:1262 */
 {
 	BOOL return_value;
 	TRACE("Enter SetRectEmpty\n");
@@ -19290,6 +19940,7 @@ WINAPI BOOL wine32b_user32_SetRectEmpty(LPRECT  rect) /* ../dlls/user32/uitools.
 
 extern WINAPI void wine32a_user32_SetRectEmpty(void);  /* ../dlls/user32/uitools.c:1262 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetRectEmpty,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19307,7 +19958,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetRectEmpty,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_SetScrollInfo(HWND  hwnd, INT  nBar, SCROLLINFO*  info, BOOL  bRedraw) /* ../dlls/user32/scroll.c:1626 */
+WINAPI INT wine32b_user32_SetScrollInfo(HWND hwnd, INT nBar, SCROLLINFO* info, BOOL bRedraw) /* ../dlls/user32/scroll.c:1626 */
 {
 	INT return_value;
 	TRACE("Enter SetScrollInfo\n");
@@ -19318,6 +19969,7 @@ WINAPI INT wine32b_user32_SetScrollInfo(HWND  hwnd, INT  nBar, SCROLLINFO*  info
 
 extern WINAPI void wine32a_user32_SetScrollInfo(void);  /* ../dlls/user32/scroll.c:1626 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetScrollInfo,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19338,7 +19990,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetScrollInfo,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_SetScrollPos(HWND  hwnd, INT  nBar, INT  nPos, BOOL  bRedraw) /* ../dlls/user32/scroll.c:1855 */
+WINAPI INT wine32b_user32_SetScrollPos(HWND hwnd, INT nBar, INT nPos, BOOL bRedraw) /* ../dlls/user32/scroll.c:1855 */
 {
 	INT return_value;
 	TRACE("Enter SetScrollPos\n");
@@ -19349,6 +20001,7 @@ WINAPI INT wine32b_user32_SetScrollPos(HWND  hwnd, INT  nBar, INT  nPos, BOOL  b
 
 extern WINAPI void wine32a_user32_SetScrollPos(void);  /* ../dlls/user32/scroll.c:1855 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetScrollPos,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19369,7 +20022,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetScrollPos,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetScrollRange(HWND  hwnd, INT  nBar, INT  minVal, INT  maxVal, BOOL  bRedraw) /* ../dlls/user32/scroll.c:1917 */
+WINAPI BOOL wine32b_user32_SetScrollRange(HWND hwnd, INT nBar, INT minVal, INT maxVal, BOOL bRedraw) /* ../dlls/user32/scroll.c:1917 */
 {
 	BOOL return_value;
 	TRACE("Enter SetScrollRange\n");
@@ -19380,6 +20033,7 @@ WINAPI BOOL wine32b_user32_SetScrollRange(HWND  hwnd, INT  nBar, INT  minVal, IN
 
 extern WINAPI void wine32a_user32_SetScrollRange(void);  /* ../dlls/user32/scroll.c:1917 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetScrollRange,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19400,7 +20054,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetScrollRange,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetShellWindow(HWND  hwndShell) /* ../dlls/user32/focus.c:426 */
+WINAPI BOOL wine32b_user32_SetShellWindow(HWND hwndShell) /* ../dlls/user32/focus.c:426 */
 {
 	BOOL return_value;
 	TRACE("Enter SetShellWindow\n");
@@ -19411,6 +20065,7 @@ WINAPI BOOL wine32b_user32_SetShellWindow(HWND  hwndShell) /* ../dlls/user32/foc
 
 extern WINAPI void wine32a_user32_SetShellWindow(void);  /* ../dlls/user32/focus.c:426 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetShellWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19428,7 +20083,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetShellWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetShellWindowEx(HWND  hwndShell, HWND  hwndListView) /* ../dlls/user32/focus.c:391 */
+WINAPI BOOL wine32b_user32_SetShellWindowEx(HWND hwndShell, HWND hwndListView) /* ../dlls/user32/focus.c:391 */
 {
 	BOOL return_value;
 	TRACE("Enter SetShellWindowEx\n");
@@ -19439,6 +20094,7 @@ WINAPI BOOL wine32b_user32_SetShellWindowEx(HWND  hwndShell, HWND  hwndListView)
 
 extern WINAPI void wine32a_user32_SetShellWindowEx(void);  /* ../dlls/user32/focus.c:391 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetShellWindowEx,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19457,7 +20113,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetShellWindowEx,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetSysColors(INT  count, INT*  colors, COLORREF*  values) /* ../dlls/user32/sysparams.c:3050 */
+WINAPI BOOL wine32b_user32_SetSysColors(INT count, INT* colors, COLORREF* values) /* ../dlls/user32/sysparams.c:3050 */
 {
 	BOOL return_value;
 	TRACE("Enter SetSysColors\n");
@@ -19468,6 +20124,7 @@ WINAPI BOOL wine32b_user32_SetSysColors(INT  count, INT*  colors, COLORREF*  val
 
 extern WINAPI void wine32a_user32_SetSysColors(void);  /* ../dlls/user32/sysparams.c:3050 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetSysColors,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19487,7 +20144,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetSysColors,
 	"ret \n"
 )
 
-WINAPI DWORD_PTR wine32b_user32_SetSysColorsTemp(COLORREF*  pPens, HBRUSH*  pBrushes, DWORD_PTR  n) /* ../dlls/user32/sysparams.c:3074 */
+WINAPI DWORD_PTR wine32b_user32_SetSysColorsTemp(COLORREF* pPens, HBRUSH* pBrushes, DWORD_PTR n) /* ../dlls/user32/sysparams.c:3074 */
 {
 	DWORD_PTR return_value;
 	TRACE("Enter SetSysColorsTemp\n");
@@ -19498,6 +20155,7 @@ WINAPI DWORD_PTR wine32b_user32_SetSysColorsTemp(COLORREF*  pPens, HBRUSH*  pBru
 
 extern WINAPI void wine32a_user32_SetSysColorsTemp(void);  /* ../dlls/user32/sysparams.c:3074 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetSysColorsTemp,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19517,7 +20175,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetSysColorsTemp,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetSystemCursor(HCURSOR  hcur, DWORD  id) /* ../dlls/user32/cursoricon.c:2200 */
+WINAPI BOOL wine32b_user32_SetSystemCursor(HCURSOR hcur, DWORD id) /* ../dlls/user32/cursoricon.c:2200 */
 {
 	BOOL return_value;
 	TRACE("Enter SetSystemCursor\n");
@@ -19528,6 +20186,7 @@ WINAPI BOOL wine32b_user32_SetSystemCursor(HCURSOR  hcur, DWORD  id) /* ../dlls/
 
 extern WINAPI void wine32a_user32_SetSystemCursor(void);  /* ../dlls/user32/cursoricon.c:2200 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetSystemCursor,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19546,7 +20205,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetSystemCursor,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetSystemMenu(HWND  hwnd, HMENU  hMenu) /* ../dlls/user32/menu.c:4344 */
+WINAPI BOOL wine32b_user32_SetSystemMenu(HWND hwnd, HMENU hMenu) /* ../dlls/user32/menu.c:4344 */
 {
 	BOOL return_value;
 	TRACE("Enter SetSystemMenu\n");
@@ -19557,6 +20216,7 @@ WINAPI BOOL wine32b_user32_SetSystemMenu(HWND  hwnd, HMENU  hMenu) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_SetSystemMenu(void);  /* ../dlls/user32/menu.c:4344 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetSystemMenu,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19575,7 +20235,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetSystemMenu,
 	"ret \n"
 )
 
-WINAPI UINT_PTR wine32b_user32_SetSystemTimer(HWND  hwnd, UINT_PTR  id, UINT  timeout, TIMERPROC  proc) /* ../dlls/user32/message.c:4523 */
+WINAPI UINT_PTR wine32b_user32_SetSystemTimer(HWND hwnd, UINT_PTR id, UINT timeout, TIMERPROC proc) /* ../dlls/user32/message.c:4523 */
 {
 	UINT_PTR return_value;
 	TRACE("Enter SetSystemTimer\n");
@@ -19586,6 +20246,7 @@ WINAPI UINT_PTR wine32b_user32_SetSystemTimer(HWND  hwnd, UINT_PTR  id, UINT  ti
 
 extern WINAPI void wine32a_user32_SetSystemTimer(void);  /* ../dlls/user32/message.c:4523 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetSystemTimer,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19606,7 +20267,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetSystemTimer,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_SetTaskmanWindow(HWND  hwnd) /* ../dlls/user32/focus.c:491 */
+WINAPI HWND wine32b_user32_SetTaskmanWindow(HWND hwnd) /* ../dlls/user32/focus.c:491 */
 {
 	HWND return_value;
 	TRACE("Enter SetTaskmanWindow\n");
@@ -19617,6 +20278,7 @@ WINAPI HWND wine32b_user32_SetTaskmanWindow(HWND  hwnd) /* ../dlls/user32/focus.
 
 extern WINAPI void wine32a_user32_SetTaskmanWindow(void);  /* ../dlls/user32/focus.c:491 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetTaskmanWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19634,7 +20296,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetTaskmanWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetThreadDesktop(HDESK  handle) /* ../dlls/user32/winstation.c:416 */
+WINAPI BOOL wine32b_user32_SetThreadDesktop(HDESK handle) /* ../dlls/user32/winstation.c:416 */
 {
 	BOOL return_value;
 	TRACE("Enter SetThreadDesktop\n");
@@ -19645,6 +20307,7 @@ WINAPI BOOL wine32b_user32_SetThreadDesktop(HDESK  handle) /* ../dlls/user32/win
 
 extern WINAPI void wine32a_user32_SetThreadDesktop(void);  /* ../dlls/user32/winstation.c:416 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetThreadDesktop,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19662,7 +20325,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetThreadDesktop,
 	"ret \n"
 )
 
-WINAPI DPI_AWARENESS_CONTEXT wine32b_user32_SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT  context) /* ../dlls/user32/sysparams.c:3569 */
+WINAPI DPI_AWARENESS_CONTEXT wine32b_user32_SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT context) /* ../dlls/user32/sysparams.c:3569 */
 {
 	DPI_AWARENESS_CONTEXT return_value;
 	TRACE("Enter SetThreadDpiAwarenessContext\n");
@@ -19673,6 +20336,7 @@ WINAPI DPI_AWARENESS_CONTEXT wine32b_user32_SetThreadDpiAwarenessContext(DPI_AWA
 
 extern WINAPI void wine32a_user32_SetThreadDpiAwarenessContext(void);  /* ../dlls/user32/sysparams.c:3569 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetThreadDpiAwarenessContext,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19690,7 +20354,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetThreadDpiAwarenessContext,
 	"ret \n"
 )
 
-WINAPI UINT_PTR wine32b_user32_SetTimer(HWND  hwnd, UINT_PTR  id, UINT  timeout, TIMERPROC  proc) /* ../dlls/user32/message.c:4514 */
+WINAPI UINT_PTR wine32b_user32_SetTimer(HWND hwnd, UINT_PTR id, UINT timeout, TIMERPROC proc) /* ../dlls/user32/message.c:4514 */
 {
 	UINT_PTR return_value;
 	TRACE("Enter SetTimer\n");
@@ -19701,6 +20365,7 @@ WINAPI UINT_PTR wine32b_user32_SetTimer(HWND  hwnd, UINT_PTR  id, UINT  timeout,
 
 extern WINAPI void wine32a_user32_SetTimer(void);  /* ../dlls/user32/message.c:4514 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetTimer,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19721,7 +20386,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetTimer,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetUserObjectInformationA(HANDLE  handle, INT  index, LPVOID  info, DWORD  len) /* ../dlls/user32/winstation.c:639 */
+WINAPI BOOL wine32b_user32_SetUserObjectInformationA(HANDLE handle, INT index, LPVOID info, DWORD len) /* ../dlls/user32/winstation.c:639 */
 {
 	BOOL return_value;
 	TRACE("Enter SetUserObjectInformationA\n");
@@ -19732,6 +20397,7 @@ WINAPI BOOL wine32b_user32_SetUserObjectInformationA(HANDLE  handle, INT  index,
 
 extern WINAPI void wine32a_user32_SetUserObjectInformationA(void);  /* ../dlls/user32/winstation.c:639 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetUserObjectInformationA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19752,7 +20418,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetUserObjectInformationA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetUserObjectInformationW(HANDLE  handle, INT  index, LPVOID  info, DWORD  len) /* ../dlls/user32/winstation.c:648 */
+WINAPI BOOL wine32b_user32_SetUserObjectInformationW(HANDLE handle, INT index, LPVOID info, DWORD len) /* ../dlls/user32/winstation.c:648 */
 {
 	BOOL return_value;
 	TRACE("Enter SetUserObjectInformationW\n");
@@ -19763,6 +20429,7 @@ WINAPI BOOL wine32b_user32_SetUserObjectInformationW(HANDLE  handle, INT  index,
 
 extern WINAPI void wine32a_user32_SetUserObjectInformationW(void);  /* ../dlls/user32/winstation.c:648 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetUserObjectInformationW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19783,7 +20450,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetUserObjectInformationW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetUserObjectSecurity(HANDLE  handle, PSECURITY_INFORMATION  info, PSECURITY_DESCRIPTOR  sid) /* ../dlls/user32/winstation.c:691 */
+WINAPI BOOL wine32b_user32_SetUserObjectSecurity(HANDLE handle, PSECURITY_INFORMATION info, PSECURITY_DESCRIPTOR sid) /* ../dlls/user32/winstation.c:691 */
 {
 	BOOL return_value;
 	TRACE("Enter SetUserObjectSecurity\n");
@@ -19794,6 +20461,7 @@ WINAPI BOOL wine32b_user32_SetUserObjectSecurity(HANDLE  handle, PSECURITY_INFOR
 
 extern WINAPI void wine32a_user32_SetUserObjectSecurity(void);  /* ../dlls/user32/winstation.c:691 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetUserObjectSecurity,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19813,7 +20481,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetUserObjectSecurity,
 	"ret \n"
 )
 
-WINAPI HWINEVENTHOOK wine32b_user32_SetWinEventHook(DWORD  event_min, DWORD  event_max, HMODULE  inst, WINEVENTPROC  proc, DWORD  pid, DWORD  tid, DWORD  flags) /* ../dlls/user32/hook.c:702 */
+WINAPI HWINEVENTHOOK wine32b_user32_SetWinEventHook(DWORD event_min, DWORD event_max, HMODULE inst, WINEVENTPROC proc, DWORD pid, DWORD tid, DWORD flags) /* ../dlls/user32/hook.c:702 */
 {
 	HWINEVENTHOOK return_value;
 	TRACE("Enter SetWinEventHook\n");
@@ -19824,6 +20492,7 @@ WINAPI HWINEVENTHOOK wine32b_user32_SetWinEventHook(DWORD  event_min, DWORD  eve
 
 extern WINAPI void wine32a_user32_SetWinEventHook(void);  /* ../dlls/user32/hook.c:702 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetWinEventHook,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19844,7 +20513,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetWinEventHook,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetWindowCompositionAttribute(HWND  hwnd, void*  data) /* ../dlls/user32/win.c:4237 */
+WINAPI BOOL wine32b_user32_SetWindowCompositionAttribute(HWND hwnd, void* data) /* ../dlls/user32/win.c:4237 */
 {
 	BOOL return_value;
 	TRACE("Enter SetWindowCompositionAttribute\n");
@@ -19855,6 +20524,7 @@ WINAPI BOOL wine32b_user32_SetWindowCompositionAttribute(HWND  hwnd, void*  data
 
 extern WINAPI void wine32a_user32_SetWindowCompositionAttribute(void);  /* ../dlls/user32/win.c:4237 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowCompositionAttribute,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19873,7 +20543,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowCompositionAttribute,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetWindowContextHelpId(HWND  hwnd, DWORD  id) /* ../dlls/user32/win.c:3742 */
+WINAPI BOOL wine32b_user32_SetWindowContextHelpId(HWND hwnd, DWORD id) /* ../dlls/user32/win.c:3742 */
 {
 	BOOL return_value;
 	TRACE("Enter SetWindowContextHelpId\n");
@@ -19884,6 +20554,7 @@ WINAPI BOOL wine32b_user32_SetWindowContextHelpId(HWND  hwnd, DWORD  id) /* ../d
 
 extern WINAPI void wine32a_user32_SetWindowContextHelpId(void);  /* ../dlls/user32/win.c:3742 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowContextHelpId,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19902,7 +20573,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowContextHelpId,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetWindowDisplayAffinity(HWND  hwnd, DWORD  affinity) /* ../dlls/user32/win.c:4220 */
+WINAPI BOOL wine32b_user32_SetWindowDisplayAffinity(HWND hwnd, DWORD affinity) /* ../dlls/user32/win.c:4220 */
 {
 	BOOL return_value;
 	TRACE("Enter SetWindowDisplayAffinity\n");
@@ -19913,6 +20584,7 @@ WINAPI BOOL wine32b_user32_SetWindowDisplayAffinity(HWND  hwnd, DWORD  affinity)
 
 extern WINAPI void wine32a_user32_SetWindowDisplayAffinity(void);  /* ../dlls/user32/win.c:4220 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowDisplayAffinity,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19931,7 +20603,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowDisplayAffinity,
 	"ret \n"
 )
 
-WINAPI LONG wine32b_user32_SetWindowLongA(HWND  hwnd, INT  offset, LONG  newval) /* ../dlls/user32/win.c:2760 */
+WINAPI LONG wine32b_user32_SetWindowLongA(HWND hwnd, INT offset, LONG newval) /* ../dlls/user32/win.c:2760 */
 {
 	LONG return_value;
 	TRACE("Enter SetWindowLongA\n");
@@ -19942,6 +20614,7 @@ WINAPI LONG wine32b_user32_SetWindowLongA(HWND  hwnd, INT  offset, LONG  newval)
 
 extern WINAPI void wine32a_user32_SetWindowLongA(void);  /* ../dlls/user32/win.c:2760 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowLongA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19961,7 +20634,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowLongA,
 	"ret \n"
 )
 
-WINAPI LONG_PTR wine32b_user32_SetWindowLongPtrA(HWND  hwnd, INT  offset, LONG_PTR  newval) /* ../dlls/user32/win.c:4145 */
+WINAPI LONG_PTR wine32b_user32_SetWindowLongPtrA(HWND hwnd, INT offset, LONG_PTR newval) /* ../dlls/user32/win.c:4145 */
 {
 	LONG_PTR return_value;
 	TRACE("Enter SetWindowLongPtrA\n");
@@ -19972,6 +20645,7 @@ WINAPI LONG_PTR wine32b_user32_SetWindowLongPtrA(HWND  hwnd, INT  offset, LONG_P
 
 extern WINAPI void wine32a_user32_SetWindowLongPtrA(void);  /* ../dlls/user32/win.c:4145 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowLongPtrA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -19991,7 +20665,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowLongPtrA,
 	"ret \n"
 )
 
-WINAPI LONG_PTR wine32b_user32_SetWindowLongPtrW(HWND  hwnd, INT  offset, LONG_PTR  newval) /* ../dlls/user32/win.c:4137 */
+WINAPI LONG_PTR wine32b_user32_SetWindowLongPtrW(HWND hwnd, INT offset, LONG_PTR newval) /* ../dlls/user32/win.c:4137 */
 {
 	LONG_PTR return_value;
 	TRACE("Enter SetWindowLongPtrW\n");
@@ -20002,6 +20676,7 @@ WINAPI LONG_PTR wine32b_user32_SetWindowLongPtrW(HWND  hwnd, INT  offset, LONG_P
 
 extern WINAPI void wine32a_user32_SetWindowLongPtrW(void);  /* ../dlls/user32/win.c:4137 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowLongPtrW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20021,7 +20696,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowLongPtrW,
 	"ret \n"
 )
 
-WINAPI LONG wine32b_user32_SetWindowLongW(HWND  hwnd, INT  offset, LONG  newval) /* ../dlls/user32/win.c:2844 */
+WINAPI LONG wine32b_user32_SetWindowLongW(HWND hwnd, INT offset, LONG newval) /* ../dlls/user32/win.c:2844 */
 {
 	LONG return_value;
 	TRACE("Enter SetWindowLongW\n");
@@ -20032,6 +20707,7 @@ WINAPI LONG wine32b_user32_SetWindowLongW(HWND  hwnd, INT  offset, LONG  newval)
 
 extern WINAPI void wine32a_user32_SetWindowLongW(void);  /* ../dlls/user32/win.c:2844 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowLongW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20051,7 +20727,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowLongW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetWindowPlacement(HWND  hwnd, WINDOWPLACEMENT*  wpl) /* ../dlls/user32/winpos.c:1455 */
+WINAPI BOOL wine32b_user32_SetWindowPlacement(HWND hwnd, WINDOWPLACEMENT* wpl) /* ../dlls/user32/winpos.c:1455 */
 {
 	BOOL return_value;
 	TRACE("Enter SetWindowPlacement\n");
@@ -20062,6 +20738,7 @@ WINAPI BOOL wine32b_user32_SetWindowPlacement(HWND  hwnd, WINDOWPLACEMENT*  wpl)
 
 extern WINAPI void wine32a_user32_SetWindowPlacement(void);  /* ../dlls/user32/winpos.c:1455 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowPlacement,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20080,7 +20757,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowPlacement,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetWindowPos(HWND  hwnd, HWND  hwndInsertAfter, INT  x, INT  y, INT  cx, INT  cy, UINT  flags) /* ../dlls/user32/winpos.c:2350 */
+WINAPI BOOL wine32b_user32_SetWindowPos(HWND hwnd, HWND hwndInsertAfter, INT x, INT y, INT cx, INT cy, UINT flags) /* ../dlls/user32/winpos.c:2350 */
 {
 	BOOL return_value;
 	TRACE("Enter SetWindowPos\n");
@@ -20091,6 +20768,7 @@ WINAPI BOOL wine32b_user32_SetWindowPos(HWND  hwnd, HWND  hwndInsertAfter, INT  
 
 extern WINAPI void wine32a_user32_SetWindowPos(void);  /* ../dlls/user32/winpos.c:2350 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowPos,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20111,7 +20789,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowPos,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_SetWindowRgn(HWND  hwnd, HRGN  hrgn, BOOL  bRedraw) /* ../dlls/user32/winpos.c:178 */
+WINAPI INT wine32b_user32_SetWindowRgn(HWND hwnd, HRGN hrgn, BOOL bRedraw) /* ../dlls/user32/winpos.c:178 */
 {
 	INT return_value;
 	TRACE("Enter SetWindowRgn\n");
@@ -20122,6 +20800,7 @@ WINAPI INT wine32b_user32_SetWindowRgn(HWND  hwnd, HRGN  hrgn, BOOL  bRedraw) /*
 
 extern WINAPI void wine32a_user32_SetWindowRgn(void);  /* ../dlls/user32/winpos.c:178 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowRgn,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20141,7 +20820,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowRgn,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_SetWindowStationUser(DWORD  x1, DWORD  x2) /* ../dlls/user32/misc.c:219 */
+WINAPI DWORD wine32b_user32_SetWindowStationUser(DWORD x1, DWORD x2) /* ../dlls/user32/misc.c:219 */
 {
 	DWORD return_value;
 	TRACE("Enter SetWindowStationUser\n");
@@ -20152,6 +20831,7 @@ WINAPI DWORD wine32b_user32_SetWindowStationUser(DWORD  x1, DWORD  x2) /* ../dll
 
 extern WINAPI void wine32a_user32_SetWindowStationUser(void);  /* ../dlls/user32/misc.c:219 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowStationUser,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20170,7 +20850,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowStationUser,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetWindowTextA(HWND  hwnd, LPCSTR  lpString) /* ../dlls/user32/win.c:2938 */
+WINAPI BOOL wine32b_user32_SetWindowTextA(HWND hwnd, LPCSTR lpString) /* ../dlls/user32/win.c:2938 */
 {
 	BOOL return_value;
 	TRACE("Enter SetWindowTextA\n");
@@ -20181,6 +20861,7 @@ WINAPI BOOL wine32b_user32_SetWindowTextA(HWND  hwnd, LPCSTR  lpString) /* ../dl
 
 extern WINAPI void wine32a_user32_SetWindowTextA(void);  /* ../dlls/user32/win.c:2938 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowTextA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20199,7 +20880,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowTextA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SetWindowTextW(HWND  hwnd, LPCWSTR  lpString) /* ../dlls/user32/win.c:2955 */
+WINAPI BOOL wine32b_user32_SetWindowTextW(HWND hwnd, LPCWSTR lpString) /* ../dlls/user32/win.c:2955 */
 {
 	BOOL return_value;
 	TRACE("Enter SetWindowTextW\n");
@@ -20210,6 +20891,7 @@ WINAPI BOOL wine32b_user32_SetWindowTextW(HWND  hwnd, LPCWSTR  lpString) /* ../d
 
 extern WINAPI void wine32a_user32_SetWindowTextW(void);  /* ../dlls/user32/win.c:2955 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowTextW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20228,7 +20910,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowTextW,
 	"ret \n"
 )
 
-WINAPI WORD wine32b_user32_SetWindowWord(HWND  hwnd, INT  offset, WORD  newval) /* ../dlls/user32/win.c:2734 */
+WINAPI WORD wine32b_user32_SetWindowWord(HWND hwnd, INT offset, WORD newval) /* ../dlls/user32/win.c:2734 */
 {
 	WORD return_value;
 	TRACE("Enter SetWindowWord\n");
@@ -20239,6 +20921,7 @@ WINAPI WORD wine32b_user32_SetWindowWord(HWND  hwnd, INT  offset, WORD  newval) 
 
 extern WINAPI void wine32a_user32_SetWindowWord(void);  /* ../dlls/user32/win.c:2734 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowWord,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20258,7 +20941,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowWord,
 	"ret \n"
 )
 
-WINAPI HHOOK wine32b_user32_SetWindowsHookA(INT  id, HOOKPROC  proc) /* ../dlls/user32/hook.c:525 */
+WINAPI HHOOK wine32b_user32_SetWindowsHookA(INT id, HOOKPROC proc) /* ../dlls/user32/hook.c:525 */
 {
 	HHOOK return_value;
 	TRACE("Enter SetWindowsHookA\n");
@@ -20269,6 +20952,7 @@ WINAPI HHOOK wine32b_user32_SetWindowsHookA(INT  id, HOOKPROC  proc) /* ../dlls/
 
 extern WINAPI void wine32a_user32_SetWindowsHookA(void);  /* ../dlls/user32/hook.c:525 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowsHookA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20287,7 +20971,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowsHookA,
 	"ret \n"
 )
 
-WINAPI HHOOK wine32b_user32_SetWindowsHookExA(INT  id, HOOKPROC  proc, HINSTANCE  inst, DWORD  tid) /* ../dlls/user32/hook.c:543 */
+WINAPI HHOOK wine32b_user32_SetWindowsHookExA(INT id, HOOKPROC proc, HINSTANCE inst, DWORD tid) /* ../dlls/user32/hook.c:543 */
 {
 	HHOOK return_value;
 	TRACE("Enter SetWindowsHookExA\n");
@@ -20298,6 +20982,7 @@ WINAPI HHOOK wine32b_user32_SetWindowsHookExA(INT  id, HOOKPROC  proc, HINSTANCE
 
 extern WINAPI void wine32a_user32_SetWindowsHookExA(void);  /* ../dlls/user32/hook.c:543 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowsHookExA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20318,7 +21003,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowsHookExA,
 	"ret \n"
 )
 
-WINAPI HHOOK wine32b_user32_SetWindowsHookExW(INT  id, HOOKPROC  proc, HINSTANCE  inst, DWORD  tid) /* ../dlls/user32/hook.c:551 */
+WINAPI HHOOK wine32b_user32_SetWindowsHookExW(INT id, HOOKPROC proc, HINSTANCE inst, DWORD tid) /* ../dlls/user32/hook.c:551 */
 {
 	HHOOK return_value;
 	TRACE("Enter SetWindowsHookExW\n");
@@ -20329,6 +21014,7 @@ WINAPI HHOOK wine32b_user32_SetWindowsHookExW(INT  id, HOOKPROC  proc, HINSTANCE
 
 extern WINAPI void wine32a_user32_SetWindowsHookExW(void);  /* ../dlls/user32/hook.c:551 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowsHookExW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20349,7 +21035,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowsHookExW,
 	"ret \n"
 )
 
-WINAPI HHOOK wine32b_user32_SetWindowsHookW(INT  id, HOOKPROC  proc) /* ../dlls/user32/hook.c:534 */
+WINAPI HHOOK wine32b_user32_SetWindowsHookW(INT id, HOOKPROC proc) /* ../dlls/user32/hook.c:534 */
 {
 	HHOOK return_value;
 	TRACE("Enter SetWindowsHookW\n");
@@ -20360,6 +21046,7 @@ WINAPI HHOOK wine32b_user32_SetWindowsHookW(INT  id, HOOKPROC  proc) /* ../dlls/
 
 extern WINAPI void wine32a_user32_SetWindowsHookW(void);  /* ../dlls/user32/hook.c:534 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowsHookW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20378,7 +21065,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SetWindowsHookW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ShowCaret(HWND  hwnd) /* ../dlls/user32/caret.c:329 */
+WINAPI BOOL wine32b_user32_ShowCaret(HWND hwnd) /* ../dlls/user32/caret.c:329 */
 {
 	BOOL return_value;
 	TRACE("Enter ShowCaret\n");
@@ -20389,6 +21076,7 @@ WINAPI BOOL wine32b_user32_ShowCaret(HWND  hwnd) /* ../dlls/user32/caret.c:329 *
 
 extern WINAPI void wine32a_user32_ShowCaret(void);  /* ../dlls/user32/caret.c:329 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ShowCaret,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20406,7 +21094,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ShowCaret,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_ShowCursor(BOOL  bShow) /* ../dlls/user32/cursoricon.c:2072 */
+WINAPI INT wine32b_user32_ShowCursor(BOOL bShow) /* ../dlls/user32/cursoricon.c:2072 */
 {
 	INT return_value;
 	TRACE("Enter ShowCursor\n");
@@ -20417,6 +21105,7 @@ WINAPI INT wine32b_user32_ShowCursor(BOOL  bShow) /* ../dlls/user32/cursoricon.c
 
 extern WINAPI void wine32a_user32_ShowCursor(void);  /* ../dlls/user32/cursoricon.c:2072 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ShowCursor,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20434,7 +21123,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ShowCursor,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ShowOwnedPopups(HWND  owner, BOOL  fShow) /* ../dlls/user32/win.c:3414 */
+WINAPI BOOL wine32b_user32_ShowOwnedPopups(HWND owner, BOOL fShow) /* ../dlls/user32/win.c:3414 */
 {
 	BOOL return_value;
 	TRACE("Enter ShowOwnedPopups\n");
@@ -20445,6 +21134,7 @@ WINAPI BOOL wine32b_user32_ShowOwnedPopups(HWND  owner, BOOL  fShow) /* ../dlls/
 
 extern WINAPI void wine32a_user32_ShowOwnedPopups(void);  /* ../dlls/user32/win.c:3414 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ShowOwnedPopups,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20463,7 +21153,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ShowOwnedPopups,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ShowScrollBar(HWND  hwnd, INT  nBar, BOOL  fShow) /* ../dlls/user32/scroll.c:2018 */
+WINAPI BOOL wine32b_user32_ShowScrollBar(HWND hwnd, INT nBar, BOOL fShow) /* ../dlls/user32/scroll.c:2018 */
 {
 	BOOL return_value;
 	TRACE("Enter ShowScrollBar\n");
@@ -20474,6 +21164,7 @@ WINAPI BOOL wine32b_user32_ShowScrollBar(HWND  hwnd, INT  nBar, BOOL  fShow) /* 
 
 extern WINAPI void wine32a_user32_ShowScrollBar(void);  /* ../dlls/user32/scroll.c:2018 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ShowScrollBar,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20493,7 +21184,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ShowScrollBar,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ShowWindow(HWND  hwnd, INT  cmd) /* ../dlls/user32/winpos.c:1219 */
+WINAPI BOOL wine32b_user32_ShowWindow(HWND hwnd, INT cmd) /* ../dlls/user32/winpos.c:1219 */
 {
 	BOOL return_value;
 	TRACE("Enter ShowWindow\n");
@@ -20504,6 +21195,7 @@ WINAPI BOOL wine32b_user32_ShowWindow(HWND  hwnd, INT  cmd) /* ../dlls/user32/wi
 
 extern WINAPI void wine32a_user32_ShowWindow(void);  /* ../dlls/user32/winpos.c:1219 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ShowWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20522,7 +21214,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ShowWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ShowWindowAsync(HWND  hwnd, INT  cmd) /* ../dlls/user32/winpos.c:1199 */
+WINAPI BOOL wine32b_user32_ShowWindowAsync(HWND hwnd, INT cmd) /* ../dlls/user32/winpos.c:1199 */
 {
 	BOOL return_value;
 	TRACE("Enter ShowWindowAsync\n");
@@ -20533,6 +21225,7 @@ WINAPI BOOL wine32b_user32_ShowWindowAsync(HWND  hwnd, INT  cmd) /* ../dlls/user
 
 extern WINAPI void wine32a_user32_ShowWindowAsync(void);  /* ../dlls/user32/winpos.c:1199 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ShowWindowAsync,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20551,7 +21244,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ShowWindowAsync,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ShutdownBlockReasonCreate(HWND  hwnd, LPCWSTR  reason) /* ../dlls/user32/user_main.c:489 */
+WINAPI BOOL wine32b_user32_ShutdownBlockReasonCreate(HWND hwnd, LPCWSTR reason) /* ../dlls/user32/user_main.c:489 */
 {
 	BOOL return_value;
 	TRACE("Enter ShutdownBlockReasonCreate\n");
@@ -20562,6 +21255,7 @@ WINAPI BOOL wine32b_user32_ShutdownBlockReasonCreate(HWND  hwnd, LPCWSTR  reason
 
 extern WINAPI void wine32a_user32_ShutdownBlockReasonCreate(void);  /* ../dlls/user32/user_main.c:489 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ShutdownBlockReasonCreate,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20580,7 +21274,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ShutdownBlockReasonCreate,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ShutdownBlockReasonDestroy(HWND  hwnd) /* ../dlls/user32/user_main.c:499 */
+WINAPI BOOL wine32b_user32_ShutdownBlockReasonDestroy(HWND hwnd) /* ../dlls/user32/user_main.c:499 */
 {
 	BOOL return_value;
 	TRACE("Enter ShutdownBlockReasonDestroy\n");
@@ -20591,6 +21285,7 @@ WINAPI BOOL wine32b_user32_ShutdownBlockReasonDestroy(HWND  hwnd) /* ../dlls/use
 
 extern WINAPI void wine32a_user32_ShutdownBlockReasonDestroy(void);  /* ../dlls/user32/user_main.c:499 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ShutdownBlockReasonDestroy,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20608,7 +21303,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ShutdownBlockReasonDestroy,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SubtractRect(LPRECT  dest, RECT*  src1, RECT*  src2) /* ../dlls/user32/uitools.c:1397 */
+WINAPI BOOL wine32b_user32_SubtractRect(LPRECT dest, RECT* src1, RECT* src2) /* ../dlls/user32/uitools.c:1397 */
 {
 	BOOL return_value;
 	TRACE("Enter SubtractRect\n");
@@ -20619,6 +21314,7 @@ WINAPI BOOL wine32b_user32_SubtractRect(LPRECT  dest, RECT*  src1, RECT*  src2) 
 
 extern WINAPI void wine32a_user32_SubtractRect(void);  /* ../dlls/user32/uitools.c:1397 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SubtractRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20638,7 +21334,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SubtractRect,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SwapMouseButton(BOOL  fSwap) /* ../dlls/user32/sysparams.c:3004 */
+WINAPI BOOL wine32b_user32_SwapMouseButton(BOOL fSwap) /* ../dlls/user32/sysparams.c:3004 */
 {
 	BOOL return_value;
 	TRACE("Enter SwapMouseButton\n");
@@ -20649,6 +21345,7 @@ WINAPI BOOL wine32b_user32_SwapMouseButton(BOOL  fSwap) /* ../dlls/user32/syspar
 
 extern WINAPI void wine32a_user32_SwapMouseButton(void);  /* ../dlls/user32/sysparams.c:3004 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SwapMouseButton,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20666,7 +21363,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SwapMouseButton,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SwitchDesktop(HDESK  hDesktop) /* ../dlls/user32/win.c:3869 */
+WINAPI BOOL wine32b_user32_SwitchDesktop(HDESK hDesktop) /* ../dlls/user32/win.c:3869 */
 {
 	BOOL return_value;
 	TRACE("Enter SwitchDesktop\n");
@@ -20677,6 +21374,7 @@ WINAPI BOOL wine32b_user32_SwitchDesktop(HDESK  hDesktop) /* ../dlls/user32/win.
 
 extern WINAPI void wine32a_user32_SwitchDesktop(void);  /* ../dlls/user32/win.c:3869 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SwitchDesktop,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20694,7 +21392,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SwitchDesktop,
 	"ret \n"
 )
 
-WINAPI void wine32b_user32_SwitchToThisWindow(HWND  hwnd, BOOL  alt_tab) /* ../dlls/user32/winpos.c:87 */
+WINAPI void wine32b_user32_SwitchToThisWindow(HWND hwnd, BOOL alt_tab) /* ../dlls/user32/winpos.c:87 */
 {
 	TRACE("Enter SwitchToThisWindow\n");
 	pSwitchToThisWindow(hwnd, alt_tab);
@@ -20703,6 +21401,7 @@ WINAPI void wine32b_user32_SwitchToThisWindow(HWND  hwnd, BOOL  alt_tab) /* ../d
 
 extern WINAPI void wine32a_user32_SwitchToThisWindow(void);  /* ../dlls/user32/winpos.c:87 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SwitchToThisWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20721,7 +21420,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SwitchToThisWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SystemParametersInfoA(UINT  uiAction, UINT  uiParam, PVOID  pvParam, UINT  fuWinIni) /* ../dlls/user32/sysparams.c:2508 */
+WINAPI BOOL wine32b_user32_SystemParametersInfoA(UINT uiAction, UINT uiParam, PVOID pvParam, UINT fuWinIni) /* ../dlls/user32/sysparams.c:2508 */
 {
 	BOOL return_value;
 	TRACE("Enter SystemParametersInfoA\n");
@@ -20732,6 +21431,7 @@ WINAPI BOOL wine32b_user32_SystemParametersInfoA(UINT  uiAction, UINT  uiParam, 
 
 extern WINAPI void wine32a_user32_SystemParametersInfoA(void);  /* ../dlls/user32/sysparams.c:2508 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SystemParametersInfoA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20752,7 +21452,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SystemParametersInfoA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SystemParametersInfoForDpi(UINT  action, UINT  val, PVOID  ptr, UINT  winini, UINT  dpi) /* ../dlls/user32/sysparams.c:1601 */
+WINAPI BOOL wine32b_user32_SystemParametersInfoForDpi(UINT action, UINT val, PVOID ptr, UINT winini, UINT dpi) /* ../dlls/user32/sysparams.c:1601 */
 {
 	BOOL return_value;
 	TRACE("Enter SystemParametersInfoForDpi\n");
@@ -20763,6 +21463,7 @@ WINAPI BOOL wine32b_user32_SystemParametersInfoForDpi(UINT  action, UINT  val, P
 
 extern WINAPI void wine32a_user32_SystemParametersInfoForDpi(void);  /* ../dlls/user32/sysparams.c:1601 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SystemParametersInfoForDpi,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20783,7 +21484,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SystemParametersInfoForDpi,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_SystemParametersInfoW(UINT  uiAction, UINT  uiParam, PVOID  pvParam, UINT  fWinIni) /* ../dlls/user32/sysparams.c:1676 */
+WINAPI BOOL wine32b_user32_SystemParametersInfoW(UINT uiAction, UINT uiParam, PVOID pvParam, UINT fWinIni) /* ../dlls/user32/sysparams.c:1676 */
 {
 	BOOL return_value;
 	TRACE("Enter SystemParametersInfoW\n");
@@ -20794,6 +21495,7 @@ WINAPI BOOL wine32b_user32_SystemParametersInfoW(UINT  uiAction, UINT  uiParam, 
 
 extern WINAPI void wine32a_user32_SystemParametersInfoW(void);  /* ../dlls/user32/sysparams.c:1676 */
 __ASM_GLOBAL_FUNC(wine32a_user32_SystemParametersInfoW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20814,7 +21516,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_SystemParametersInfoW,
 	"ret \n"
 )
 
-WINAPI LONG wine32b_user32_TabbedTextOutA(HDC  hdc, INT  x, INT  y, LPCSTR  lpstr, INT  count, INT  cTabStops, INT*  lpTabPos, INT  nTabOrg) /* ../dlls/user32/text.c:1412 */
+WINAPI LONG wine32b_user32_TabbedTextOutA(HDC hdc, INT x, INT y, LPCSTR lpstr, INT count, INT cTabStops, INT* lpTabPos, INT nTabOrg) /* ../dlls/user32/text.c:1412 */
 {
 	LONG return_value;
 	TRACE("Enter TabbedTextOutA\n");
@@ -20825,6 +21527,7 @@ WINAPI LONG wine32b_user32_TabbedTextOutA(HDC  hdc, INT  x, INT  y, LPCSTR  lpst
 
 extern WINAPI void wine32a_user32_TabbedTextOutA(void);  /* ../dlls/user32/text.c:1412 */
 __ASM_GLOBAL_FUNC(wine32a_user32_TabbedTextOutA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20845,7 +21548,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_TabbedTextOutA,
 	"ret \n"
 )
 
-WINAPI LONG wine32b_user32_TabbedTextOutW(HDC  hdc, INT  x, INT  y, LPCWSTR  str, INT  count, INT  cTabStops, INT*  lpTabPos, INT  nTabOrg) /* ../dlls/user32/text.c:1454 */
+WINAPI LONG wine32b_user32_TabbedTextOutW(HDC hdc, INT x, INT y, LPCWSTR str, INT count, INT cTabStops, INT* lpTabPos, INT nTabOrg) /* ../dlls/user32/text.c:1454 */
 {
 	LONG return_value;
 	TRACE("Enter TabbedTextOutW\n");
@@ -20856,6 +21559,7 @@ WINAPI LONG wine32b_user32_TabbedTextOutW(HDC  hdc, INT  x, INT  y, LPCWSTR  str
 
 extern WINAPI void wine32a_user32_TabbedTextOutW(void);  /* ../dlls/user32/text.c:1454 */
 __ASM_GLOBAL_FUNC(wine32a_user32_TabbedTextOutW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20876,7 +21580,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_TabbedTextOutW,
 	"ret \n"
 )
 
-WINAPI WORD wine32b_user32_TileChildWindows(HWND  parent, UINT  flags) /* ../dlls/user32/mdi.c:1883 */
+WINAPI WORD wine32b_user32_TileChildWindows(HWND parent, UINT flags) /* ../dlls/user32/mdi.c:1883 */
 {
 	WORD return_value;
 	TRACE("Enter TileChildWindows\n");
@@ -20887,6 +21591,7 @@ WINAPI WORD wine32b_user32_TileChildWindows(HWND  parent, UINT  flags) /* ../dll
 
 extern WINAPI void wine32a_user32_TileChildWindows(void);  /* ../dlls/user32/mdi.c:1883 */
 __ASM_GLOBAL_FUNC(wine32a_user32_TileChildWindows,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20905,7 +21610,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_TileChildWindows,
 	"ret \n"
 )
 
-WINAPI WORD wine32b_user32_TileWindows(HWND  hwndParent, UINT  wFlags, RECT*  lpRect, UINT  cKids, HWND*  lpKids) /* ../dlls/user32/mdi.c:1872 */
+WINAPI WORD wine32b_user32_TileWindows(HWND hwndParent, UINT wFlags, RECT* lpRect, UINT cKids, HWND* lpKids) /* ../dlls/user32/mdi.c:1872 */
 {
 	WORD return_value;
 	TRACE("Enter TileWindows\n");
@@ -20916,6 +21621,7 @@ WINAPI WORD wine32b_user32_TileWindows(HWND  hwndParent, UINT  wFlags, RECT*  lp
 
 extern WINAPI void wine32a_user32_TileWindows(void);  /* ../dlls/user32/mdi.c:1872 */
 __ASM_GLOBAL_FUNC(wine32a_user32_TileWindows,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20936,7 +21642,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_TileWindows,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_ToAscii(UINT  virtKey, UINT  scanCode, BYTE*  lpKeyState, LPWORD  lpChar, UINT  flags) /* ../dlls/user32/input.c:874 */
+WINAPI INT wine32b_user32_ToAscii(UINT virtKey, UINT scanCode, BYTE* lpKeyState, LPWORD lpChar, UINT flags) /* ../dlls/user32/input.c:874 */
 {
 	INT return_value;
 	TRACE("Enter ToAscii\n");
@@ -20947,6 +21653,7 @@ WINAPI INT wine32b_user32_ToAscii(UINT  virtKey, UINT  scanCode, BYTE*  lpKeySta
 
 extern WINAPI void wine32a_user32_ToAscii(void);  /* ../dlls/user32/input.c:874 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ToAscii,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20967,7 +21674,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ToAscii,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_ToAsciiEx(UINT  virtKey, UINT  scanCode, BYTE*  lpKeyState, LPWORD  lpChar, UINT  flags, HKL  dwhkl) /* ../dlls/user32/input.c:883 */
+WINAPI INT wine32b_user32_ToAsciiEx(UINT virtKey, UINT scanCode, BYTE* lpKeyState, LPWORD lpChar, UINT flags, HKL dwhkl) /* ../dlls/user32/input.c:883 */
 {
 	INT return_value;
 	TRACE("Enter ToAsciiEx\n");
@@ -20978,6 +21685,7 @@ WINAPI INT wine32b_user32_ToAsciiEx(UINT  virtKey, UINT  scanCode, BYTE*  lpKeyS
 
 extern WINAPI void wine32a_user32_ToAsciiEx(void);  /* ../dlls/user32/input.c:883 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ToAsciiEx,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -20998,7 +21706,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ToAsciiEx,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_ToUnicode(UINT  virtKey, UINT  scanCode, BYTE*  lpKeyState, LPWSTR  lpwStr, int  size, UINT  flags) /* ../dlls/user32/input.c:855 */
+WINAPI INT wine32b_user32_ToUnicode(UINT virtKey, UINT scanCode, BYTE* lpKeyState, LPWSTR lpwStr, int size, UINT flags) /* ../dlls/user32/input.c:855 */
 {
 	INT return_value;
 	TRACE("Enter ToUnicode\n");
@@ -21009,6 +21717,7 @@ WINAPI INT wine32b_user32_ToUnicode(UINT  virtKey, UINT  scanCode, BYTE*  lpKeyS
 
 extern WINAPI void wine32a_user32_ToUnicode(void);  /* ../dlls/user32/input.c:855 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ToUnicode,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21029,7 +21738,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ToUnicode,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_ToUnicodeEx(UINT  virtKey, UINT  scanCode, BYTE*  lpKeyState, LPWSTR  lpwStr, int  size, UINT  flags, HKL  hkl) /* ../dlls/user32/input.c:864 */
+WINAPI INT wine32b_user32_ToUnicodeEx(UINT virtKey, UINT scanCode, BYTE* lpKeyState, LPWSTR lpwStr, int size, UINT flags, HKL hkl) /* ../dlls/user32/input.c:864 */
 {
 	INT return_value;
 	TRACE("Enter ToUnicodeEx\n");
@@ -21040,6 +21749,7 @@ WINAPI INT wine32b_user32_ToUnicodeEx(UINT  virtKey, UINT  scanCode, BYTE*  lpKe
 
 extern WINAPI void wine32a_user32_ToUnicodeEx(void);  /* ../dlls/user32/input.c:864 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ToUnicodeEx,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21060,7 +21770,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ToUnicodeEx,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_TrackMouseEvent(TRACKMOUSEEVENT*  ptme) /* ../dlls/user32/input.c:1175 */
+WINAPI BOOL wine32b_user32_TrackMouseEvent(TRACKMOUSEEVENT* ptme) /* ../dlls/user32/input.c:1175 */
 {
 	BOOL return_value;
 	TRACE("Enter TrackMouseEvent\n");
@@ -21071,6 +21781,7 @@ WINAPI BOOL wine32b_user32_TrackMouseEvent(TRACKMOUSEEVENT*  ptme) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_TrackMouseEvent(void);  /* ../dlls/user32/input.c:1175 */
 __ASM_GLOBAL_FUNC(wine32a_user32_TrackMouseEvent,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21088,7 +21799,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_TrackMouseEvent,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_TrackPopupMenu(HMENU  hMenu, UINT  wFlags, INT  x, INT  y, INT  nReserved, HWND  hWnd, RECT*  lpRect) /* ../dlls/user32/menu.c:3562 */
+WINAPI BOOL wine32b_user32_TrackPopupMenu(HMENU hMenu, UINT wFlags, INT x, INT y, INT nReserved, HWND hWnd, RECT* lpRect) /* ../dlls/user32/menu.c:3562 */
 {
 	BOOL return_value;
 	TRACE("Enter TrackPopupMenu\n");
@@ -21099,6 +21810,7 @@ WINAPI BOOL wine32b_user32_TrackPopupMenu(HMENU  hMenu, UINT  wFlags, INT  x, IN
 
 extern WINAPI void wine32a_user32_TrackPopupMenu(void);  /* ../dlls/user32/menu.c:3562 */
 __ASM_GLOBAL_FUNC(wine32a_user32_TrackPopupMenu,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21119,7 +21831,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_TrackPopupMenu,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_TrackPopupMenuEx(HMENU  hMenu, UINT  wFlags, INT  x, INT  y, HWND  hWnd, LPTPMPARAMS  lpTpm) /* ../dlls/user32/menu.c:3498 */
+WINAPI BOOL wine32b_user32_TrackPopupMenuEx(HMENU hMenu, UINT wFlags, INT x, INT y, HWND hWnd, LPTPMPARAMS lpTpm) /* ../dlls/user32/menu.c:3498 */
 {
 	BOOL return_value;
 	TRACE("Enter TrackPopupMenuEx\n");
@@ -21130,6 +21842,7 @@ WINAPI BOOL wine32b_user32_TrackPopupMenuEx(HMENU  hMenu, UINT  wFlags, INT  x, 
 
 extern WINAPI void wine32a_user32_TrackPopupMenuEx(void);  /* ../dlls/user32/menu.c:3498 */
 __ASM_GLOBAL_FUNC(wine32a_user32_TrackPopupMenuEx,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21150,7 +21863,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_TrackPopupMenuEx,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_TranslateAcceleratorA(HWND  hWnd, HACCEL  hAccel, LPMSG  msg) /* ../dlls/user32/menu.c:5673 */
+WINAPI INT wine32b_user32_TranslateAcceleratorA(HWND hWnd, HACCEL hAccel, LPMSG msg) /* ../dlls/user32/menu.c:5673 */
 {
 	INT return_value;
 	TRACE("Enter TranslateAcceleratorA\n");
@@ -21161,6 +21874,7 @@ WINAPI INT wine32b_user32_TranslateAcceleratorA(HWND  hWnd, HACCEL  hAccel, LPMS
 
 extern WINAPI void wine32a_user32_TranslateAcceleratorA(void);  /* ../dlls/user32/menu.c:5673 */
 __ASM_GLOBAL_FUNC(wine32a_user32_TranslateAcceleratorA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21180,7 +21894,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_TranslateAcceleratorA,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_TranslateAcceleratorW(HWND  hWnd, HACCEL  hAccel, LPMSG  msg) /* ../dlls/user32/menu.c:5700 */
+WINAPI INT wine32b_user32_TranslateAcceleratorW(HWND hWnd, HACCEL hAccel, LPMSG msg) /* ../dlls/user32/menu.c:5700 */
 {
 	INT return_value;
 	TRACE("Enter TranslateAcceleratorW\n");
@@ -21191,6 +21905,7 @@ WINAPI INT wine32b_user32_TranslateAcceleratorW(HWND  hWnd, HACCEL  hAccel, LPMS
 
 extern WINAPI void wine32a_user32_TranslateAcceleratorW(void);  /* ../dlls/user32/menu.c:5700 */
 __ASM_GLOBAL_FUNC(wine32a_user32_TranslateAcceleratorW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21210,7 +21925,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_TranslateAcceleratorW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_TranslateMDISysAccel(HWND  hwndClient, LPMSG  msg) /* ../dlls/user32/mdi.c:1645 */
+WINAPI BOOL wine32b_user32_TranslateMDISysAccel(HWND hwndClient, LPMSG msg) /* ../dlls/user32/mdi.c:1645 */
 {
 	BOOL return_value;
 	TRACE("Enter TranslateMDISysAccel\n");
@@ -21221,6 +21936,7 @@ WINAPI BOOL wine32b_user32_TranslateMDISysAccel(HWND  hwndClient, LPMSG  msg) /*
 
 extern WINAPI void wine32a_user32_TranslateMDISysAccel(void);  /* ../dlls/user32/mdi.c:1645 */
 __ASM_GLOBAL_FUNC(wine32a_user32_TranslateMDISysAccel,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21239,7 +21955,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_TranslateMDISysAccel,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_TranslateMessage(MSG*  msg) /* ../dlls/user32/message.c:3903 */
+WINAPI BOOL wine32b_user32_TranslateMessage(MSG* msg) /* ../dlls/user32/message.c:3903 */
 {
 	BOOL return_value;
 	TRACE("Enter TranslateMessage\n");
@@ -21250,6 +21966,7 @@ WINAPI BOOL wine32b_user32_TranslateMessage(MSG*  msg) /* ../dlls/user32/message
 
 extern WINAPI void wine32a_user32_TranslateMessage(void);  /* ../dlls/user32/message.c:3903 */
 __ASM_GLOBAL_FUNC(wine32a_user32_TranslateMessage,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21267,7 +21984,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_TranslateMessage,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_UnhookWinEvent(HWINEVENTHOOK  hEventHook) /* ../dlls/user32/hook.c:776 */
+WINAPI BOOL wine32b_user32_UnhookWinEvent(HWINEVENTHOOK hEventHook) /* ../dlls/user32/hook.c:776 */
 {
 	BOOL return_value;
 	TRACE("Enter UnhookWinEvent\n");
@@ -21278,6 +21995,7 @@ WINAPI BOOL wine32b_user32_UnhookWinEvent(HWINEVENTHOOK  hEventHook) /* ../dlls/
 
 extern WINAPI void wine32a_user32_UnhookWinEvent(void);  /* ../dlls/user32/hook.c:776 */
 __ASM_GLOBAL_FUNC(wine32a_user32_UnhookWinEvent,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21295,7 +22013,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_UnhookWinEvent,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_UnhookWindowsHook(INT  id, HOOKPROC  proc) /* ../dlls/user32/hook.c:560 */
+WINAPI BOOL wine32b_user32_UnhookWindowsHook(INT id, HOOKPROC proc) /* ../dlls/user32/hook.c:560 */
 {
 	BOOL return_value;
 	TRACE("Enter UnhookWindowsHook\n");
@@ -21306,6 +22024,7 @@ WINAPI BOOL wine32b_user32_UnhookWindowsHook(INT  id, HOOKPROC  proc) /* ../dlls
 
 extern WINAPI void wine32a_user32_UnhookWindowsHook(void);  /* ../dlls/user32/hook.c:560 */
 __ASM_GLOBAL_FUNC(wine32a_user32_UnhookWindowsHook,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21324,7 +22043,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_UnhookWindowsHook,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_UnhookWindowsHookEx(HHOOK  hhook) /* ../dlls/user32/hook.c:584 */
+WINAPI BOOL wine32b_user32_UnhookWindowsHookEx(HHOOK hhook) /* ../dlls/user32/hook.c:584 */
 {
 	BOOL return_value;
 	TRACE("Enter UnhookWindowsHookEx\n");
@@ -21335,6 +22054,7 @@ WINAPI BOOL wine32b_user32_UnhookWindowsHookEx(HHOOK  hhook) /* ../dlls/user32/h
 
 extern WINAPI void wine32a_user32_UnhookWindowsHookEx(void);  /* ../dlls/user32/hook.c:584 */
 __ASM_GLOBAL_FUNC(wine32a_user32_UnhookWindowsHookEx,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21352,7 +22072,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_UnhookWindowsHookEx,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_UnionRect(LPRECT  dest, RECT*  src1, RECT*  src2) /* ../dlls/user32/uitools.c:1356 */
+WINAPI BOOL wine32b_user32_UnionRect(LPRECT dest, RECT* src1, RECT* src2) /* ../dlls/user32/uitools.c:1356 */
 {
 	BOOL return_value;
 	TRACE("Enter UnionRect\n");
@@ -21363,6 +22083,7 @@ WINAPI BOOL wine32b_user32_UnionRect(LPRECT  dest, RECT*  src1, RECT*  src2) /* 
 
 extern WINAPI void wine32a_user32_UnionRect(void);  /* ../dlls/user32/uitools.c:1356 */
 __ASM_GLOBAL_FUNC(wine32a_user32_UnionRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21382,7 +22103,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_UnionRect,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_UnloadKeyboardLayout(HKL  hkl) /* ../dlls/user32/input.c:1024 */
+WINAPI BOOL wine32b_user32_UnloadKeyboardLayout(HKL hkl) /* ../dlls/user32/input.c:1024 */
 {
 	BOOL return_value;
 	TRACE("Enter UnloadKeyboardLayout\n");
@@ -21393,6 +22114,7 @@ WINAPI BOOL wine32b_user32_UnloadKeyboardLayout(HKL  hkl) /* ../dlls/user32/inpu
 
 extern WINAPI void wine32a_user32_UnloadKeyboardLayout(void);  /* ../dlls/user32/input.c:1024 */
 __ASM_GLOBAL_FUNC(wine32a_user32_UnloadKeyboardLayout,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21410,7 +22132,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_UnloadKeyboardLayout,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_UnpackDDElParam(UINT  msg, LPARAM  lParam, PUINT_PTR  uiLo, PUINT_PTR  uiHi) /* ../dlls/user32/dde_misc.c:118 */
+WINAPI BOOL wine32b_user32_UnpackDDElParam(UINT msg, LPARAM lParam, PUINT_PTR uiLo, PUINT_PTR uiHi) /* ../dlls/user32/dde_misc.c:118 */
 {
 	BOOL return_value;
 	TRACE("Enter UnpackDDElParam\n");
@@ -21421,6 +22143,7 @@ WINAPI BOOL wine32b_user32_UnpackDDElParam(UINT  msg, LPARAM  lParam, PUINT_PTR 
 
 extern WINAPI void wine32a_user32_UnpackDDElParam(void);  /* ../dlls/user32/dde_misc.c:118 */
 __ASM_GLOBAL_FUNC(wine32a_user32_UnpackDDElParam,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21441,7 +22164,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_UnpackDDElParam,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_UnregisterClassA(LPCSTR  className, HINSTANCE  hInstance) /* ../dlls/user32/class.c:781 */
+WINAPI BOOL wine32b_user32_UnregisterClassA(LPCSTR className, HINSTANCE hInstance) /* ../dlls/user32/class.c:781 */
 {
 	BOOL return_value;
 	TRACE("Enter UnregisterClassA\n");
@@ -21452,6 +22175,7 @@ WINAPI BOOL wine32b_user32_UnregisterClassA(LPCSTR  className, HINSTANCE  hInsta
 
 extern WINAPI void wine32a_user32_UnregisterClassA(void);  /* ../dlls/user32/class.c:781 */
 __ASM_GLOBAL_FUNC(wine32a_user32_UnregisterClassA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21470,7 +22194,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_UnregisterClassA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_UnregisterClassW(LPCWSTR  className, HINSTANCE  hInstance) /* ../dlls/user32/class.c:797 */
+WINAPI BOOL wine32b_user32_UnregisterClassW(LPCWSTR className, HINSTANCE hInstance) /* ../dlls/user32/class.c:797 */
 {
 	BOOL return_value;
 	TRACE("Enter UnregisterClassW\n");
@@ -21481,6 +22205,7 @@ WINAPI BOOL wine32b_user32_UnregisterClassW(LPCWSTR  className, HINSTANCE  hInst
 
 extern WINAPI void wine32a_user32_UnregisterClassW(void);  /* ../dlls/user32/class.c:797 */
 __ASM_GLOBAL_FUNC(wine32a_user32_UnregisterClassW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21499,7 +22224,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_UnregisterClassW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_UnregisterDeviceNotification(HDEVNOTIFY  hnd) /* ../dlls/user32/misc.c:338 */
+WINAPI BOOL wine32b_user32_UnregisterDeviceNotification(HDEVNOTIFY hnd) /* ../dlls/user32/misc.c:338 */
 {
 	BOOL return_value;
 	TRACE("Enter UnregisterDeviceNotification\n");
@@ -21510,6 +22235,7 @@ WINAPI BOOL wine32b_user32_UnregisterDeviceNotification(HDEVNOTIFY  hnd) /* ../d
 
 extern WINAPI void wine32a_user32_UnregisterDeviceNotification(void);  /* ../dlls/user32/misc.c:338 */
 __ASM_GLOBAL_FUNC(wine32a_user32_UnregisterDeviceNotification,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21527,7 +22253,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_UnregisterDeviceNotification,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_UnregisterHotKey(HWND  hwnd, INT  id) /* ../dlls/user32/input.c:969 */
+WINAPI BOOL wine32b_user32_UnregisterHotKey(HWND hwnd, INT id) /* ../dlls/user32/input.c:969 */
 {
 	BOOL return_value;
 	TRACE("Enter UnregisterHotKey\n");
@@ -21538,6 +22264,7 @@ WINAPI BOOL wine32b_user32_UnregisterHotKey(HWND  hwnd, INT  id) /* ../dlls/user
 
 extern WINAPI void wine32a_user32_UnregisterHotKey(void);  /* ../dlls/user32/input.c:969 */
 __ASM_GLOBAL_FUNC(wine32a_user32_UnregisterHotKey,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21556,7 +22283,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_UnregisterHotKey,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_UnregisterPowerSettingNotification(HPOWERNOTIFY  handle) /* ../dlls/user32/misc.c:504 */
+WINAPI BOOL wine32b_user32_UnregisterPowerSettingNotification(HPOWERNOTIFY handle) /* ../dlls/user32/misc.c:504 */
 {
 	BOOL return_value;
 	TRACE("Enter UnregisterPowerSettingNotification\n");
@@ -21567,6 +22294,7 @@ WINAPI BOOL wine32b_user32_UnregisterPowerSettingNotification(HPOWERNOTIFY  hand
 
 extern WINAPI void wine32a_user32_UnregisterPowerSettingNotification(void);  /* ../dlls/user32/misc.c:504 */
 __ASM_GLOBAL_FUNC(wine32a_user32_UnregisterPowerSettingNotification,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21584,7 +22312,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_UnregisterPowerSettingNotification,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_UnregisterTouchWindow(HWND  hwnd) /* ../dlls/user32/win.c:4163 */
+WINAPI BOOL wine32b_user32_UnregisterTouchWindow(HWND hwnd) /* ../dlls/user32/win.c:4163 */
 {
 	BOOL return_value;
 	TRACE("Enter UnregisterTouchWindow\n");
@@ -21595,6 +22323,7 @@ WINAPI BOOL wine32b_user32_UnregisterTouchWindow(HWND  hwnd) /* ../dlls/user32/w
 
 extern WINAPI void wine32a_user32_UnregisterTouchWindow(void);  /* ../dlls/user32/win.c:4163 */
 __ASM_GLOBAL_FUNC(wine32a_user32_UnregisterTouchWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21612,7 +22341,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_UnregisterTouchWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_UpdateLayeredWindow(HWND  hwnd, HDC  hdcDst, POINT*  pptDst, SIZE*  psize, HDC  hdcSrc, POINT*  pptSrc, COLORREF  crKey, BLENDFUNCTION*  pblend, DWORD  flags) /* ../dlls/user32/win.c:4011 */
+WINAPI BOOL wine32b_user32_UpdateLayeredWindow(HWND hwnd, HDC hdcDst, POINT* pptDst, SIZE* psize, HDC hdcSrc, POINT* pptSrc, COLORREF crKey, BLENDFUNCTION* pblend, DWORD flags) /* ../dlls/user32/win.c:4011 */
 {
 	BOOL return_value;
 	TRACE("Enter UpdateLayeredWindow\n");
@@ -21623,6 +22352,7 @@ WINAPI BOOL wine32b_user32_UpdateLayeredWindow(HWND  hwnd, HDC  hdcDst, POINT*  
 
 extern WINAPI void wine32a_user32_UpdateLayeredWindow(void);  /* ../dlls/user32/win.c:4011 */
 __ASM_GLOBAL_FUNC(wine32a_user32_UpdateLayeredWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21643,7 +22373,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_UpdateLayeredWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_UpdateLayeredWindowIndirect(HWND  hwnd, UPDATELAYEREDWINDOWINFO*  info) /* ../dlls/user32/win.c:3951 */
+WINAPI BOOL wine32b_user32_UpdateLayeredWindowIndirect(HWND hwnd, UPDATELAYEREDWINDOWINFO* info) /* ../dlls/user32/win.c:3951 */
 {
 	BOOL return_value;
 	TRACE("Enter UpdateLayeredWindowIndirect\n");
@@ -21654,6 +22384,7 @@ WINAPI BOOL wine32b_user32_UpdateLayeredWindowIndirect(HWND  hwnd, UPDATELAYERED
 
 extern WINAPI void wine32a_user32_UpdateLayeredWindowIndirect(void);  /* ../dlls/user32/win.c:3951 */
 __ASM_GLOBAL_FUNC(wine32a_user32_UpdateLayeredWindowIndirect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21672,7 +22403,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_UpdateLayeredWindowIndirect,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_UpdateWindow(HWND  hwnd) /* ../dlls/user32/painting.c:1288 */
+WINAPI BOOL wine32b_user32_UpdateWindow(HWND hwnd) /* ../dlls/user32/painting.c:1288 */
 {
 	BOOL return_value;
 	TRACE("Enter UpdateWindow\n");
@@ -21683,6 +22414,7 @@ WINAPI BOOL wine32b_user32_UpdateWindow(HWND  hwnd) /* ../dlls/user32/painting.c
 
 extern WINAPI void wine32a_user32_UpdateWindow(void);  /* ../dlls/user32/painting.c:1288 */
 __ASM_GLOBAL_FUNC(wine32a_user32_UpdateWindow,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21700,7 +22432,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_UpdateWindow,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_User32InitializeImmEntryTable(DWORD  magic) /* ../dlls/user32/misc.c:389 */
+WINAPI BOOL wine32b_user32_User32InitializeImmEntryTable(DWORD magic) /* ../dlls/user32/misc.c:389 */
 {
 	BOOL return_value;
 	TRACE("Enter User32InitializeImmEntryTable\n");
@@ -21711,6 +22443,7 @@ WINAPI BOOL wine32b_user32_User32InitializeImmEntryTable(DWORD  magic) /* ../dll
 
 extern WINAPI void wine32a_user32_User32InitializeImmEntryTable(void);  /* ../dlls/user32/misc.c:389 */
 __ASM_GLOBAL_FUNC(wine32a_user32_User32InitializeImmEntryTable,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21728,37 +22461,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_User32InitializeImmEntryTable,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_UserClientDllInitialize(HINSTANCE  inst, DWORD  reason, LPVOID  reserved) /* ../dlls/user32/user_main.c:396 */
-{
-	BOOL return_value;
-	TRACE("Enter UserClientDllInitialize\n");
-	return_value = pUserClientDllInitialize(inst, reason, reserved);
-	TRACE("Leave UserClientDllInitialize\n");
-	return return_value;
-}
-
-extern WINAPI void wine32a_user32_UserClientDllInitialize(void);  /* ../dlls/user32/user_main.c:396 */
-__ASM_GLOBAL_FUNC(wine32a_user32_UserClientDllInitialize,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"movl 0x1C(%rsp), %r8d \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_user32_UserClientDllInitialize") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $12, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-WINAPI BOOL wine32b_user32_UserHandleGrantAccess(HANDLE  handle, HANDLE  job, BOOL  grant) /* ../dlls/user32/misc.c:486 */
+WINAPI BOOL wine32b_user32_UserHandleGrantAccess(HANDLE handle, HANDLE job, BOOL grant) /* ../dlls/user32/misc.c:486 */
 {
 	BOOL return_value;
 	TRACE("Enter UserHandleGrantAccess\n");
@@ -21769,6 +22472,7 @@ WINAPI BOOL wine32b_user32_UserHandleGrantAccess(HANDLE  handle, HANDLE  job, BO
 
 extern WINAPI void wine32a_user32_UserHandleGrantAccess(void);  /* ../dlls/user32/misc.c:486 */
 __ASM_GLOBAL_FUNC(wine32a_user32_UserHandleGrantAccess,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21788,7 +22492,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_UserHandleGrantAccess,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_UserRealizePalette(HDC  hDC) /* ../dlls/user32/user_main.c:124 */
+WINAPI UINT wine32b_user32_UserRealizePalette(HDC hDC) /* ../dlls/user32/user_main.c:124 */
 {
 	UINT return_value;
 	TRACE("Enter UserRealizePalette\n");
@@ -21799,6 +22503,7 @@ WINAPI UINT wine32b_user32_UserRealizePalette(HDC  hDC) /* ../dlls/user32/user_m
 
 extern WINAPI void wine32a_user32_UserRealizePalette(void);  /* ../dlls/user32/user_main.c:124 */
 __ASM_GLOBAL_FUNC(wine32a_user32_UserRealizePalette,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21816,7 +22521,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_UserRealizePalette,
 	"ret \n"
 )
 
-WINAPI void wine32b_user32_UserRegisterWowHandlers(struct wow_handlers16*  new, struct wow_handlers32*  orig) /* ../dlls/user32/winproc.c:1179 */
+WINAPI void wine32b_user32_UserRegisterWowHandlers(struct wow_handlers16* new, struct wow_handlers32* orig) /* ../dlls/user32/winproc.c:1179 */
 {
 	TRACE("Enter UserRegisterWowHandlers\n");
 	pUserRegisterWowHandlers(new, orig);
@@ -21825,6 +22530,7 @@ WINAPI void wine32b_user32_UserRegisterWowHandlers(struct wow_handlers16*  new, 
 
 extern WINAPI void wine32a_user32_UserRegisterWowHandlers(void);  /* ../dlls/user32/winproc.c:1179 */
 __ASM_GLOBAL_FUNC(wine32a_user32_UserRegisterWowHandlers,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21843,7 +22549,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_UserRegisterWowHandlers,
 	"ret \n"
 )
 
-WINAPI WORD wine32b_user32_UserSignalProc(UINT  uCode, DWORD  dwThreadOrProcessID, DWORD  dwFlags, HMODULE16  hModule) /* ../dlls/user32/misc.c:145 */
+WINAPI WORD wine32b_user32_UserSignalProc(UINT uCode, DWORD dwThreadOrProcessID, DWORD dwFlags, HMODULE16 hModule) /* ../dlls/user32/misc.c:145 */
 {
 	WORD return_value;
 	TRACE("Enter UserSignalProc\n");
@@ -21854,6 +22560,7 @@ WINAPI WORD wine32b_user32_UserSignalProc(UINT  uCode, DWORD  dwThreadOrProcessI
 
 extern WINAPI void wine32a_user32_UserSignalProc(void);  /* ../dlls/user32/misc.c:145 */
 __ASM_GLOBAL_FUNC(wine32a_user32_UserSignalProc,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21874,7 +22581,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_UserSignalProc,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ValidateRect(HWND  hwnd, RECT*  rect) /* ../dlls/user32/painting.c:1356 */
+WINAPI BOOL wine32b_user32_ValidateRect(HWND hwnd, RECT* rect) /* ../dlls/user32/painting.c:1356 */
 {
 	BOOL return_value;
 	TRACE("Enter ValidateRect\n");
@@ -21885,6 +22592,7 @@ WINAPI BOOL wine32b_user32_ValidateRect(HWND  hwnd, RECT*  rect) /* ../dlls/user
 
 extern WINAPI void wine32a_user32_ValidateRect(void);  /* ../dlls/user32/painting.c:1356 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ValidateRect,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21903,7 +22611,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ValidateRect,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_ValidateRgn(HWND  hwnd, HRGN  hrgn) /* ../dlls/user32/painting.c:1338 */
+WINAPI BOOL wine32b_user32_ValidateRgn(HWND hwnd, HRGN hrgn) /* ../dlls/user32/painting.c:1338 */
 {
 	BOOL return_value;
 	TRACE("Enter ValidateRgn\n");
@@ -21914,6 +22622,7 @@ WINAPI BOOL wine32b_user32_ValidateRgn(HWND  hwnd, HRGN  hrgn) /* ../dlls/user32
 
 extern WINAPI void wine32a_user32_ValidateRgn(void);  /* ../dlls/user32/painting.c:1338 */
 __ASM_GLOBAL_FUNC(wine32a_user32_ValidateRgn,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21932,7 +22641,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_ValidateRgn,
 	"ret \n"
 )
 
-WINAPI SHORT wine32b_user32_VkKeyScanA(CHAR  cChar) /* ../dlls/user32/input.c:627 */
+WINAPI SHORT wine32b_user32_VkKeyScanA(CHAR cChar) /* ../dlls/user32/input.c:627 */
 {
 	SHORT return_value;
 	TRACE("Enter VkKeyScanA\n");
@@ -21943,6 +22652,7 @@ WINAPI SHORT wine32b_user32_VkKeyScanA(CHAR  cChar) /* ../dlls/user32/input.c:62
 
 extern WINAPI void wine32a_user32_VkKeyScanA(void);  /* ../dlls/user32/input.c:627 */
 __ASM_GLOBAL_FUNC(wine32a_user32_VkKeyScanA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21960,7 +22670,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_VkKeyScanA,
 	"ret \n"
 )
 
-WINAPI WORD wine32b_user32_VkKeyScanExA(CHAR  cChar, HKL  dwhkl) /* ../dlls/user32/input.c:648 */
+WINAPI WORD wine32b_user32_VkKeyScanExA(CHAR cChar, HKL dwhkl) /* ../dlls/user32/input.c:648 */
 {
 	WORD return_value;
 	TRACE("Enter VkKeyScanExA\n");
@@ -21971,6 +22681,7 @@ WINAPI WORD wine32b_user32_VkKeyScanExA(CHAR  cChar, HKL  dwhkl) /* ../dlls/user
 
 extern WINAPI void wine32a_user32_VkKeyScanExA(void);  /* ../dlls/user32/input.c:648 */
 __ASM_GLOBAL_FUNC(wine32a_user32_VkKeyScanExA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -21989,7 +22700,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_VkKeyScanExA,
 	"ret \n"
 )
 
-WINAPI WORD wine32b_user32_VkKeyScanExW(WCHAR  cChar, HKL  dwhkl) /* ../dlls/user32/input.c:661 */
+WINAPI WORD wine32b_user32_VkKeyScanExW(WCHAR cChar, HKL dwhkl) /* ../dlls/user32/input.c:661 */
 {
 	WORD return_value;
 	TRACE("Enter VkKeyScanExW\n");
@@ -22000,6 +22711,7 @@ WINAPI WORD wine32b_user32_VkKeyScanExW(WCHAR  cChar, HKL  dwhkl) /* ../dlls/use
 
 extern WINAPI void wine32a_user32_VkKeyScanExW(void);  /* ../dlls/user32/input.c:661 */
 __ASM_GLOBAL_FUNC(wine32a_user32_VkKeyScanExW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -22018,7 +22730,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_VkKeyScanExW,
 	"ret \n"
 )
 
-WINAPI SHORT wine32b_user32_VkKeyScanW(WCHAR  cChar) /* ../dlls/user32/input.c:640 */
+WINAPI SHORT wine32b_user32_VkKeyScanW(WCHAR cChar) /* ../dlls/user32/input.c:640 */
 {
 	SHORT return_value;
 	TRACE("Enter VkKeyScanW\n");
@@ -22029,6 +22741,7 @@ WINAPI SHORT wine32b_user32_VkKeyScanW(WCHAR  cChar) /* ../dlls/user32/input.c:6
 
 extern WINAPI void wine32a_user32_VkKeyScanW(void);  /* ../dlls/user32/input.c:640 */
 __ASM_GLOBAL_FUNC(wine32a_user32_VkKeyScanW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -22046,7 +22759,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_VkKeyScanW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_WINNLSEnableIME(HWND  hwnd, BOOL  enable) /* ../dlls/user32/misc.c:433 */
+WINAPI BOOL wine32b_user32_WINNLSEnableIME(HWND hwnd, BOOL enable) /* ../dlls/user32/misc.c:433 */
 {
 	BOOL return_value;
 	TRACE("Enter WINNLSEnableIME\n");
@@ -22057,6 +22770,7 @@ WINAPI BOOL wine32b_user32_WINNLSEnableIME(HWND  hwnd, BOOL  enable) /* ../dlls/
 
 extern WINAPI void wine32a_user32_WINNLSEnableIME(void);  /* ../dlls/user32/misc.c:433 */
 __ASM_GLOBAL_FUNC(wine32a_user32_WINNLSEnableIME,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -22075,7 +22789,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_WINNLSEnableIME,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_WINNLSGetEnableStatus(HWND  hwnd) /* ../dlls/user32/misc.c:443 */
+WINAPI BOOL wine32b_user32_WINNLSGetEnableStatus(HWND hwnd) /* ../dlls/user32/misc.c:443 */
 {
 	BOOL return_value;
 	TRACE("Enter WINNLSGetEnableStatus\n");
@@ -22086,6 +22800,7 @@ WINAPI BOOL wine32b_user32_WINNLSGetEnableStatus(HWND  hwnd) /* ../dlls/user32/m
 
 extern WINAPI void wine32a_user32_WINNLSGetEnableStatus(void);  /* ../dlls/user32/misc.c:443 */
 __ASM_GLOBAL_FUNC(wine32a_user32_WINNLSGetEnableStatus,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -22103,7 +22818,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_WINNLSGetEnableStatus,
 	"ret \n"
 )
 
-WINAPI UINT wine32b_user32_WINNLSGetIMEHotkey(HWND  hwnd) /* ../dlls/user32/misc.c:423 */
+WINAPI UINT wine32b_user32_WINNLSGetIMEHotkey(HWND hwnd) /* ../dlls/user32/misc.c:423 */
 {
 	UINT return_value;
 	TRACE("Enter WINNLSGetIMEHotkey\n");
@@ -22114,6 +22829,7 @@ WINAPI UINT wine32b_user32_WINNLSGetIMEHotkey(HWND  hwnd) /* ../dlls/user32/misc
 
 extern WINAPI void wine32a_user32_WINNLSGetIMEHotkey(void);  /* ../dlls/user32/misc.c:423 */
 __ASM_GLOBAL_FUNC(wine32a_user32_WINNLSGetIMEHotkey,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -22131,7 +22847,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_WINNLSGetIMEHotkey,
 	"ret \n"
 )
 
-WINAPI DWORD wine32b_user32_WaitForInputIdle(HANDLE  hProcess, DWORD  dwTimeOut) /* ../dlls/user32/message.c:4209 */
+WINAPI DWORD wine32b_user32_WaitForInputIdle(HANDLE hProcess, DWORD dwTimeOut) /* ../dlls/user32/message.c:4209 */
 {
 	DWORD return_value;
 	TRACE("Enter WaitForInputIdle\n");
@@ -22142,6 +22858,7 @@ WINAPI DWORD wine32b_user32_WaitForInputIdle(HANDLE  hProcess, DWORD  dwTimeOut)
 
 extern WINAPI void wine32a_user32_WaitForInputIdle(void);  /* ../dlls/user32/message.c:4209 */
 __ASM_GLOBAL_FUNC(wine32a_user32_WaitForInputIdle,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -22171,6 +22888,7 @@ WINAPI BOOL wine32b_user32_WaitMessage(void) /* ../dlls/user32/message.c:4165 */
 
 extern WINAPI void wine32a_user32_WaitMessage(void);  /* ../dlls/user32/message.c:4165 */
 __ASM_GLOBAL_FUNC(wine32a_user32_WaitMessage,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"sub $0x100, %rsp \n"
@@ -22187,7 +22905,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_WaitMessage,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_WinHelpA(HWND  hWnd, LPCSTR  lpHelpFile, UINT  wCommand, ULONG_PTR  dwData) /* ../dlls/user32/winhelp.c:77 */
+WINAPI BOOL wine32b_user32_WinHelpA(HWND hWnd, LPCSTR lpHelpFile, UINT wCommand, ULONG_PTR dwData) /* ../dlls/user32/winhelp.c:77 */
 {
 	BOOL return_value;
 	TRACE("Enter WinHelpA\n");
@@ -22198,6 +22916,7 @@ WINAPI BOOL wine32b_user32_WinHelpA(HWND  hWnd, LPCSTR  lpHelpFile, UINT  wComma
 
 extern WINAPI void wine32a_user32_WinHelpA(void);  /* ../dlls/user32/winhelp.c:77 */
 __ASM_GLOBAL_FUNC(wine32a_user32_WinHelpA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -22218,7 +22937,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_WinHelpA,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32_WinHelpW(HWND  hWnd, LPCWSTR  helpFile, UINT  command, ULONG_PTR  dwData) /* ../dlls/user32/winhelp.c:169 */
+WINAPI BOOL wine32b_user32_WinHelpW(HWND hWnd, LPCWSTR helpFile, UINT command, ULONG_PTR dwData) /* ../dlls/user32/winhelp.c:169 */
 {
 	BOOL return_value;
 	TRACE("Enter WinHelpW\n");
@@ -22229,6 +22948,7 @@ WINAPI BOOL wine32b_user32_WinHelpW(HWND  hWnd, LPCWSTR  helpFile, UINT  command
 
 extern WINAPI void wine32a_user32_WinHelpW(void);  /* ../dlls/user32/winhelp.c:169 */
 __ASM_GLOBAL_FUNC(wine32a_user32_WinHelpW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -22249,7 +22969,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_WinHelpW,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_WindowFromDC(HDC  hdc) /* ../dlls/user32/painting.c:1169 */
+WINAPI HWND wine32b_user32_WindowFromDC(HDC hdc) /* ../dlls/user32/painting.c:1169 */
 {
 	HWND return_value;
 	TRACE("Enter WindowFromDC\n");
@@ -22260,6 +22980,7 @@ WINAPI HWND wine32b_user32_WindowFromDC(HDC  hdc) /* ../dlls/user32/painting.c:1
 
 extern WINAPI void wine32a_user32_WindowFromDC(void);  /* ../dlls/user32/painting.c:1169 */
 __ASM_GLOBAL_FUNC(wine32a_user32_WindowFromDC,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -22277,7 +22998,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_WindowFromDC,
 	"ret \n"
 )
 
-WINAPI HWND wine32b_user32_WindowFromPoint(POINT  pt) /* ../dlls/user32/winpos.c:338 */
+WINAPI HWND wine32b_user32_WindowFromPoint(POINT pt) /* ../dlls/user32/winpos.c:338 */
 {
 	HWND return_value;
 	TRACE("Enter WindowFromPoint\n");
@@ -22288,6 +23009,7 @@ WINAPI HWND wine32b_user32_WindowFromPoint(POINT  pt) /* ../dlls/user32/winpos.c
 
 extern WINAPI void wine32a_user32_WindowFromPoint(void);  /* ../dlls/user32/winpos.c:338 */
 __ASM_GLOBAL_FUNC(wine32a_user32_WindowFromPoint,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -22305,7 +23027,67 @@ __ASM_GLOBAL_FUNC(wine32a_user32_WindowFromPoint,
 	"ret \n"
 )
 
-WINAPI void wine32b_user32_keybd_event(BYTE  bVk, BYTE  bScan, DWORD  dwFlags, ULONG_PTR  dwExtraInfo) /* ../dlls/user32/input.c:213 */
+WINAPI BOOL wine32b_user32___wine_send_input(HWND hwnd, INPUT* input) /* ../dlls/user32/input.c:125 */
+{
+	BOOL return_value;
+	TRACE("Enter __wine_send_input\n");
+	return_value = p__wine_send_input(hwnd, input);
+	TRACE("Leave __wine_send_input\n");
+	return return_value;
+}
+
+extern WINAPI void wine32a_user32___wine_send_input(void);  /* ../dlls/user32/input.c:125 */
+__ASM_GLOBAL_FUNC(wine32a_user32___wine_send_input,
+
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32___wine_send_input") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $8, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+WINAPI BOOL wine32b_user32___wine_set_pixel_format(HWND hwnd, int format) /* ../dlls/user32/win.c:3879 */
+{
+	BOOL return_value;
+	TRACE("Enter __wine_set_pixel_format\n");
+	return_value = p__wine_set_pixel_format(hwnd, format);
+	TRACE("Leave __wine_set_pixel_format\n");
+	return return_value;
+}
+
+extern WINAPI void wine32a_user32___wine_set_pixel_format(void);  /* ../dlls/user32/win.c:3879 */
+__ASM_GLOBAL_FUNC(wine32a_user32___wine_set_pixel_format,
+
+	"push %rbp \n"
+	"mov %rsp, %rbp \n"
+	"movl 0x14(%rsp), %ecx \n"
+	"movl 0x18(%rsp), %edx \n"
+	"sub $0x100, %rsp \n"
+	"call " __ASM_NAME("wine32b_user32___wine_set_pixel_format") "\n"
+	"add $0x100, %rsp \n"
+	"pop %rbp \n"
+	"movl 0x00(%rsp), %ecx \n"
+	"movl 0x04(%rsp), %edx \n"
+	"movl 0x08(%rsp), %r8d \n"
+	"addq $8, %rsp \n"
+	"movl %ecx, 0x00(%rsp) \n"
+	"movl %edx, 0x04(%rsp) \n"
+	"movl %r8d, 0x08(%rsp) \n"
+	"ret \n"
+)
+
+WINAPI void wine32b_user32_keybd_event(BYTE bVk, BYTE bScan, DWORD dwFlags, ULONG_PTR dwExtraInfo) /* ../dlls/user32/input.c:213 */
 {
 	TRACE("Enter keybd_event\n");
 	pkeybd_event(bVk, bScan, dwFlags, dwExtraInfo);
@@ -22314,6 +23096,7 @@ WINAPI void wine32b_user32_keybd_event(BYTE  bVk, BYTE  bScan, DWORD  dwFlags, U
 
 extern WINAPI void wine32a_user32_keybd_event(void);  /* ../dlls/user32/input.c:213 */
 __ASM_GLOBAL_FUNC(wine32a_user32_keybd_event,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -22334,7 +23117,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_keybd_event,
 	"ret \n"
 )
 
-WINAPI void wine32b_user32_mouse_event(DWORD  dwFlags, DWORD  dx, DWORD  dy, DWORD  dwData, ULONG_PTR  dwExtraInfo) /* ../dlls/user32/input.c:231 */
+WINAPI void wine32b_user32_mouse_event(DWORD dwFlags, DWORD dx, DWORD dy, DWORD dwData, ULONG_PTR dwExtraInfo) /* ../dlls/user32/input.c:231 */
 {
 	TRACE("Enter mouse_event\n");
 	pmouse_event(dwFlags, dx, dy, dwData, dwExtraInfo);
@@ -22343,6 +23126,7 @@ WINAPI void wine32b_user32_mouse_event(DWORD  dwFlags, DWORD  dx, DWORD  dy, DWO
 
 extern WINAPI void wine32a_user32_mouse_event(void);  /* ../dlls/user32/input.c:231 */
 __ASM_GLOBAL_FUNC(wine32a_user32_mouse_event,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -22363,7 +23147,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_mouse_event,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_wsprintfA(LPSTR  buffer, LPCSTR  spec) /* ../dlls/user32/wsprintf.c:543 */
+WINAPI INT wine32b_user32_wsprintfA(LPSTR buffer, LPCSTR spec) /* ../dlls/user32/wsprintf.c:543 */
 {
 	INT return_value;
 	TRACE("Enter wsprintfA\n");
@@ -22374,6 +23158,7 @@ WINAPI INT wine32b_user32_wsprintfA(LPSTR  buffer, LPCSTR  spec) /* ../dlls/user
 
 extern WINAPI void wine32a_user32_wsprintfA(void);  /* ../dlls/user32/wsprintf.c:543 */
 __ASM_GLOBAL_FUNC(wine32a_user32_wsprintfA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -22392,7 +23177,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_wsprintfA,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_wsprintfW(LPWSTR  buffer, LPCWSTR  spec) /* ../dlls/user32/wsprintf.c:558 */
+WINAPI INT wine32b_user32_wsprintfW(LPWSTR buffer, LPCWSTR spec) /* ../dlls/user32/wsprintf.c:558 */
 {
 	INT return_value;
 	TRACE("Enter wsprintfW\n");
@@ -22403,6 +23188,7 @@ WINAPI INT wine32b_user32_wsprintfW(LPWSTR  buffer, LPCWSTR  spec) /* ../dlls/us
 
 extern WINAPI void wine32a_user32_wsprintfW(void);  /* ../dlls/user32/wsprintf.c:558 */
 __ASM_GLOBAL_FUNC(wine32a_user32_wsprintfW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -22421,7 +23207,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_wsprintfW,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_wvsprintfA(LPSTR  buffer, LPCSTR  spec, __builtin_ms_va_list  args) /* ../dlls/user32/wsprintf.c:523 */
+WINAPI INT wine32b_user32_wvsprintfA(LPSTR buffer, LPCSTR spec, __builtin_ms_va_list args) /* ../dlls/user32/wsprintf.c:523 */
 {
 	INT return_value;
 	TRACE("Enter wvsprintfA\n");
@@ -22432,6 +23218,7 @@ WINAPI INT wine32b_user32_wvsprintfA(LPSTR  buffer, LPCSTR  spec, __builtin_ms_v
 
 extern WINAPI void wine32a_user32_wvsprintfA(void);  /* ../dlls/user32/wsprintf.c:523 */
 __ASM_GLOBAL_FUNC(wine32a_user32_wvsprintfA,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -22451,7 +23238,7 @@ __ASM_GLOBAL_FUNC(wine32a_user32_wvsprintfA,
 	"ret \n"
 )
 
-WINAPI INT wine32b_user32_wvsprintfW(LPWSTR  buffer, LPCWSTR  spec, __builtin_ms_va_list  args) /* ../dlls/user32/wsprintf.c:533 */
+WINAPI INT wine32b_user32_wvsprintfW(LPWSTR buffer, LPCWSTR spec, __builtin_ms_va_list args) /* ../dlls/user32/wsprintf.c:533 */
 {
 	INT return_value;
 	TRACE("Enter wvsprintfW\n");
@@ -22462,6 +23249,7 @@ WINAPI INT wine32b_user32_wvsprintfW(LPWSTR  buffer, LPCWSTR  spec, __builtin_ms
 
 extern WINAPI void wine32a_user32_wvsprintfW(void);  /* ../dlls/user32/wsprintf.c:533 */
 __ASM_GLOBAL_FUNC(wine32a_user32_wvsprintfW,
+
 	"push %rbp \n"
 	"mov %rsp, %rbp \n"
 	"movl 0x14(%rsp), %ecx \n"
@@ -22481,70 +23269,11 @@ __ASM_GLOBAL_FUNC(wine32a_user32_wvsprintfW,
 	"ret \n"
 )
 
-WINAPI BOOL wine32b_user32___wine_send_input(HWND  hwnd, INPUT*  input) /* ../dlls/user32/input.c:125 */
-{
-	BOOL return_value;
-	TRACE("Enter __wine_send_input\n");
-	return_value = p__wine_send_input(hwnd, input);
-	TRACE("Leave __wine_send_input\n");
-	return return_value;
-}
-
-extern WINAPI void wine32a_user32___wine_send_input(void);  /* ../dlls/user32/input.c:125 */
-__ASM_GLOBAL_FUNC(wine32a_user32___wine_send_input,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_user32___wine_send_input") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
-WINAPI BOOL wine32b_user32___wine_set_pixel_format(HWND  hwnd, int  format) /* ../dlls/user32/win.c:3879 */
-{
-	BOOL return_value;
-	TRACE("Enter __wine_set_pixel_format\n");
-	return_value = p__wine_set_pixel_format(hwnd, format);
-	TRACE("Leave __wine_set_pixel_format\n");
-	return return_value;
-}
-
-extern WINAPI void wine32a_user32___wine_set_pixel_format(void);  /* ../dlls/user32/win.c:3879 */
-__ASM_GLOBAL_FUNC(wine32a_user32___wine_set_pixel_format,
-	"push %rbp \n"
-	"mov %rsp, %rbp \n"
-	"movl 0x14(%rsp), %ecx \n"
-	"movl 0x18(%rsp), %edx \n"
-	"sub $0x100, %rsp \n"
-	"call " __ASM_NAME("wine32b_user32___wine_set_pixel_format") "\n"
-	"add $0x100, %rsp \n"
-	"pop %rbp \n"
-	"movl 0x00(%rsp), %ecx \n"
-	"movl 0x04(%rsp), %edx \n"
-	"movl 0x08(%rsp), %r8d \n"
-	"addq $8, %rsp \n"
-	"movl %ecx, 0x00(%rsp) \n"
-	"movl %edx, 0x04(%rsp) \n"
-	"movl %r8d, 0x08(%rsp) \n"
-	"ret \n"
-)
-
 static BOOL initialized = FALSE;
 
 void wine_thunk_initialize_user32(void)
 {
-	HMODULE library = GetModuleHandleA("user32.dll");
-	pActivateKeyboardLayout = (void *)GetProcAddress(library, "ActivateKeyboardLayout");
+	HMODULE library = GetModuleHandleA("user32.dll");	pActivateKeyboardLayout = (void *)GetProcAddress(library, "ActivateKeyboardLayout");
 	pAddClipboardFormatListener = (void *)GetProcAddress(library, "AddClipboardFormatListener");
 	pAdjustWindowRect = (void *)GetProcAddress(library, "AdjustWindowRect");
 	pAdjustWindowRectEx = (void *)GetProcAddress(library, "AdjustWindowRectEx");
@@ -22713,6 +23442,7 @@ void wine_thunk_initialize_user32(void)
 	pDlgDirSelectComboBoxExW = (void *)GetProcAddress(library, "DlgDirSelectComboBoxExW");
 	pDlgDirSelectExA = (void *)GetProcAddress(library, "DlgDirSelectExA");
 	pDlgDirSelectExW = (void *)GetProcAddress(library, "DlgDirSelectExW");
+	pUserClientDllInitialize = (void *)GetProcAddress(library, "UserClientDllInitialize");
 	pDragDetect = (void *)GetProcAddress(library, "DragDetect");
 	pDrawAnimatedRects = (void *)GetProcAddress(library, "DrawAnimatedRects");
 	pDrawCaption = (void *)GetProcAddress(library, "DrawCaption");
@@ -22790,9 +23520,9 @@ void wine_thunk_initialize_user32(void)
 	pGetClassInfoExW = (void *)GetProcAddress(library, "GetClassInfoExW");
 	pGetClassInfoW = (void *)GetProcAddress(library, "GetClassInfoW");
 	pGetClassLongA = (void *)GetProcAddress(library, "GetClassLongA");
-	pGetClassLongW = (void *)GetProcAddress(library, "GetClassLongW");
 	pGetClassLongPtrA = (void *)GetProcAddress(library, "GetClassLongPtrA");
 	pGetClassLongPtrW = (void *)GetProcAddress(library, "GetClassLongPtrW");
+	pGetClassLongW = (void *)GetProcAddress(library, "GetClassLongW");
 	pGetClassNameA = (void *)GetProcAddress(library, "GetClassNameA");
 	pGetClassNameW = (void *)GetProcAddress(library, "GetClassNameW");
 	pGetClassWord = (void *)GetProcAddress(library, "GetClassWord");
@@ -22827,9 +23557,9 @@ void wine_thunk_initialize_user32(void)
 	pGetDpiForWindow = (void *)GetProcAddress(library, "GetDpiForWindow");
 	pGetFocus = (void *)GetProcAddress(library, "GetFocus");
 	pGetForegroundWindow = (void *)GetProcAddress(library, "GetForegroundWindow");
+	pGetGUIThreadInfo = (void *)GetProcAddress(library, "GetGUIThreadInfo");
 	pGetGestureConfig = (void *)GetProcAddress(library, "GetGestureConfig");
 	pGetGestureInfo = (void *)GetProcAddress(library, "GetGestureInfo");
-	pGetGUIThreadInfo = (void *)GetProcAddress(library, "GetGUIThreadInfo");
 	pGetGuiResources = (void *)GetProcAddress(library, "GetGuiResources");
 	pGetIconInfo = (void *)GetProcAddress(library, "GetIconInfo");
 	pGetIconInfoExA = (void *)GetProcAddress(library, "GetIconInfoExA");
@@ -23253,7 +23983,6 @@ void wine_thunk_initialize_user32(void)
 	pUpdateLayeredWindowIndirect = (void *)GetProcAddress(library, "UpdateLayeredWindowIndirect");
 	pUpdateWindow = (void *)GetProcAddress(library, "UpdateWindow");
 	pUser32InitializeImmEntryTable = (void *)GetProcAddress(library, "User32InitializeImmEntryTable");
-	pUserClientDllInitialize = (void *)GetProcAddress(library, "UserClientDllInitialize");
 	pUserHandleGrantAccess = (void *)GetProcAddress(library, "UserHandleGrantAccess");
 	pUserRealizePalette = (void *)GetProcAddress(library, "UserRealizePalette");
 	pUserRegisterWowHandlers = (void *)GetProcAddress(library, "UserRegisterWowHandlers");
@@ -23273,14 +24002,14 @@ void wine_thunk_initialize_user32(void)
 	pWinHelpW = (void *)GetProcAddress(library, "WinHelpW");
 	pWindowFromDC = (void *)GetProcAddress(library, "WindowFromDC");
 	pWindowFromPoint = (void *)GetProcAddress(library, "WindowFromPoint");
+	p__wine_send_input = (void *)GetProcAddress(library, "__wine_send_input");
+	p__wine_set_pixel_format = (void *)GetProcAddress(library, "__wine_set_pixel_format");
 	pkeybd_event = (void *)GetProcAddress(library, "keybd_event");
 	pmouse_event = (void *)GetProcAddress(library, "mouse_event");
 	pwsprintfA = (void *)GetProcAddress(library, "wsprintfA");
 	pwsprintfW = (void *)GetProcAddress(library, "wsprintfW");
 	pwvsprintfA = (void *)GetProcAddress(library, "wvsprintfA");
 	pwvsprintfW = (void *)GetProcAddress(library, "wvsprintfW");
-	p__wine_send_input = (void *)GetProcAddress(library, "__wine_send_input");
-	p__wine_set_pixel_format = (void *)GetProcAddress(library, "__wine_set_pixel_format");
 	initialized = TRUE;
 }
 
@@ -23627,6 +24356,8 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_DlgDirSelectExA;
 	if (func == pDlgDirSelectExW)
 		return wine32a_user32_DlgDirSelectExW;
+	if (func == pUserClientDllInitialize)
+		return wine32a_user32_UserClientDllInitialize;
 	if (func == pDragDetect)
 		return wine32a_user32_DragDetect;
 	if (func == pDrawAnimatedRects)
@@ -23781,12 +24512,12 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_GetClassInfoW;
 	if (func == pGetClassLongA)
 		return wine32a_user32_GetClassLongA;
-	if (func == pGetClassLongW)
-		return wine32a_user32_GetClassLongW;
 	if (func == pGetClassLongPtrA)
 		return wine32a_user32_GetClassLongPtrA;
 	if (func == pGetClassLongPtrW)
 		return wine32a_user32_GetClassLongPtrW;
+	if (func == pGetClassLongW)
+		return wine32a_user32_GetClassLongW;
 	if (func == pGetClassNameA)
 		return wine32a_user32_GetClassNameA;
 	if (func == pGetClassNameW)
@@ -23855,12 +24586,12 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_GetFocus;
 	if (func == pGetForegroundWindow)
 		return wine32a_user32_GetForegroundWindow;
+	if (func == pGetGUIThreadInfo)
+		return wine32a_user32_GetGUIThreadInfo;
 	if (func == pGetGestureConfig)
 		return wine32a_user32_GetGestureConfig;
 	if (func == pGetGestureInfo)
 		return wine32a_user32_GetGestureInfo;
-	if (func == pGetGUIThreadInfo)
-		return wine32a_user32_GetGUIThreadInfo;
 	if (func == pGetGuiResources)
 		return wine32a_user32_GetGuiResources;
 	if (func == pGetIconInfo)
@@ -24707,8 +25438,6 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_UpdateWindow;
 	if (func == pUser32InitializeImmEntryTable)
 		return wine32a_user32_User32InitializeImmEntryTable;
-	if (func == pUserClientDllInitialize)
-		return wine32a_user32_UserClientDllInitialize;
 	if (func == pUserHandleGrantAccess)
 		return wine32a_user32_UserHandleGrantAccess;
 	if (func == pUserRealizePalette)
@@ -24747,6 +25476,10 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_WindowFromDC;
 	if (func == pWindowFromPoint)
 		return wine32a_user32_WindowFromPoint;
+	if (func == p__wine_send_input)
+		return wine32a_user32___wine_send_input;
+	if (func == p__wine_set_pixel_format)
+		return wine32a_user32___wine_set_pixel_format;
 	if (func == pkeybd_event)
 		return wine32a_user32_keybd_event;
 	if (func == pmouse_event)
@@ -24759,10 +25492,7 @@ void* wine_thunk_get_for_user32(void *func)
 		return wine32a_user32_wvsprintfA;
 	if (func == pwvsprintfW)
 		return wine32a_user32_wvsprintfW;
-	if (func == p__wine_send_input)
-		return wine32a_user32___wine_send_input;
-	if (func == p__wine_set_pixel_format)
-		return wine32a_user32___wine_set_pixel_format;
 
 	return NULL;
 }
+

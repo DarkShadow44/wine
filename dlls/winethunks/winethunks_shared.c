@@ -47,5 +47,4 @@ WINAPI void wine_thunk_initialize_any(const char *dll)
 		wine_thunk_initialize_ntdll();
 	if (!strcasecmp("kernelbase.dll", dll))
 		wine_thunk_initialize_kernelbase();
-
 }

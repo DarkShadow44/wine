@@ -153,6 +153,7 @@ typedef struct
 typedef struct _DefinitionCollection
 {
     std::map<std::string, GenericDef*> items;
+    std::vector<GenericDef*> items_ordered;
     std::map<std::string, BOOL> ignored_items;
     GenericDef* typedef_item;
     struct _DefinitionCollection *children;
@@ -226,12 +227,12 @@ static void GenericDef_make_dependencies(GenericDef* self, DependencyCollection 
 static std::string GenericDef_getname(GenericDef* self);
 static void DependencyCollection_append(DependencyCollection* self, std::string item)
 {
-    if (std::find(self->items.begin(), self->items.end(), item) != self->items.end())
+    if (std::find(self->items.begin(), self->items.end(), item) == self->items.end())
     {
         self->items.push_back(item);
-        for (std::pair<std::string, GenericDef*> element : self->definitions->items)
+        for (unsigned i = 0; i < self->definitions->items_ordered.size(); i++)
         {
-            GenericDef *definition = element.second;
+            GenericDef *definition = self->definitions->items_ordered[i];
             if (GenericDef_getname(definition) == item)
                 GenericDef_make_dependencies(definition, self);
         }        
@@ -256,8 +257,8 @@ static TypeChain* TypeChain_init(CXCursor *node, CXType type)
             std::vector<CXCursor> children = clang_get_children(*node);
             for (unsigned i = 0; i < children.size(); i++)
             {
-                CXCursorKind kind = clang_getCursorKind(*node);
-                if (kind == CXCursor_FieldDecl)
+                CXCursorKind kind = clang_getCursorKind(children[i]);
+                if (kind == CXCursor_ParmDecl)
                 {
                     self->params.push_back(ParamDef_init(children[i]));
                 }
@@ -312,7 +313,7 @@ static std::string TypeChain_tostring(TypeChain* self, std::string variable)
             for (unsigned i = 0; i < self->params.size(); i++)
             {
                 if (i > 0)
-                    strcat(buffer, ",");
+                    strcat(buffer, ", ");
                 strcat(buffer, ParamDef_tostring(self->params[i]).c_str());
             }
             params = buffer;
@@ -367,9 +368,9 @@ static TypeDef* TypeDef_init(TypeChain *source, std::string target, clang_locati
 static void TypeDef_print_struct(TypeDef *self, FILE *file, int depth)
 {
     if (self->source->chainType == TypeChainEnum_Function)
-        fprintf(file, "typedef %s; /* %s:%d */\n", TypeChain_tostring(self->source, self->target).c_str(), self->location.file.c_str(), self->location.line);
+        fprintf(file, "typedef %s; /* %s:%d */\n\n", TypeChain_tostring(self->source, self->target).c_str(), self->location.file.c_str(), self->location.line);
     else
-        fprintf(file, "typedef %s %s; /* %s:%d */\n", TypeChain_tostring(self->source, "").c_str(), self->target.c_str(), self->location.file.c_str(), self->location.line);
+        fprintf(file, "typedef %s %s; /* %s:%d */\n\n", TypeChain_tostring(self->source, "").c_str(), self->target.c_str(), self->location.file.c_str(), self->location.line);
 }
 
 static std::string TypeDef_getname(TypeDef*  self)
@@ -431,12 +432,12 @@ static StructDef* StructDef_init(CXCursor node)
     if (kind == CXCursor_StructDecl)
     {
         self->structType = StructDefEnum_Struct;
-        self->name += "struct " + self->name;
+        self->name = "struct " + self->name;
     }
     if (kind == CXCursor_UnionDecl)
     {
         self->structType = StructDefEnum_Union;
-        self->name += "union " + self->name;
+        self->name = "union " + self->name;
     }
     if (kind == CXCursor_FieldDecl)
     {
@@ -445,7 +446,7 @@ static StructDef* StructDef_init(CXCursor node)
     if (kind == CXCursor_EnumDecl)
     {
         self->structType = StructDefEnum_Enumeration;
-        self->name += "enum " + self->name;
+        self->name = "enum " + self->name;
     }
     self->named_type = clang_str_get(clang_getTypeSpelling(type));
     self->variable = "";
@@ -464,15 +465,15 @@ static void StructDef_print_struct(StructDef *self, FILE *file, int depth)
 
     if (self->structType == StructDefEnum_Struct || self->structType == StructDefEnum_Union || self->structType == StructDefEnum_Enumeration)
     {
-        fprintf(file, "%s%s /* %s:%d*/\n", indent, self->name.c_str(), self->location.file.c_str(), self->location.line);
+        fprintf(file, "%s%s /* %s:%d */\n", indent, self->name.c_str(), self->location.file.c_str(), self->location.line);
         fprintf(file, "%s{\n", indent);
-        for (std::pair<std::string, GenericDef*> element : self->children->items)
-            StructDef_print_struct(element.second->structDef, file, depth + 1);
+        for (unsigned i = 0; i < self->children->items_ordered.size(); i++)
+            StructDef_print_struct(self->children->items_ordered[i]->structDef, file, depth + 1);
         if (self->structType == StructDefEnum_Enumeration)
         {
             std::string name = self->name;
             replaceAll(name, "enum ", "");
-            fprintf(file, "    %s_DUMMY = 0", name.c_str());
+            fprintf(file, "    %s_DUMMY = 0\n", name.c_str());
         }
         fprintf(file, "%s}%s;\n\n", indent, self->variable.c_str());
     }
@@ -505,8 +506,8 @@ static void StructDef_make_dependencies(StructDef *self, DependencyCollection* d
     }
     else
     {
-        for (std::pair<std::string, GenericDef*> element : self->children->items)
-            StructDef_make_dependencies(element.second->structDef, dependencies);
+        for (unsigned i = 0; i < self->children->items_ordered.size(); i++)
+            StructDef_make_dependencies(self->children->items_ordered[i]->structDef, dependencies);
     }
 }
 
@@ -590,6 +591,7 @@ static void DefinitionCollection_append(DefinitionCollection* self, CXCursor nod
         if (ignored)
             self->ignored_items[name] = 1;
         self->items[name] = new_definition;
+        self->items_ordered.push_back(new_definition);
     }
 }
     
@@ -690,7 +692,7 @@ static std::string FunctionItem_get_arguments_decl(FunctionItem* self)
     for (unsigned i = 0; i < self->params.size(); i++)
     {
         if (i > 0)
-            strcat(buffer, ",");
+            strcat(buffer, ", ");
         strcat(buffer, ParamDef_tostring(self->params[i]).c_str());
     }
     return buffer;
@@ -706,7 +708,7 @@ static std::string FunctionItem_get_arguments_calling(FunctionItem* self)
     for (unsigned i = 0; i < self->params.size(); i++)
     {
         if (i > 0)
-            strcat(buffer, ",");
+            strcat(buffer, ", ");
         strcat(buffer, self->params[i]->name.c_str());
     }
     return buffer;
@@ -960,7 +962,7 @@ static void make_thunk_callingconvention_32_to_64_b(FILE* file, std::string dlln
     TypeChain* return_base_type = DefinitionCollection_resolve_typedefs(definitions, func->return_type);
     fprintf(file, "WINAPI %s wine32b_%s_%s(%s) /* %s:%d */\n{\n", TypeChain_tostring(func->return_type, "").c_str(), dllname.c_str(), funcname.c_str(), arguments_decl.c_str(), func->location.file.c_str(), func->location.line);
     if (has_return)
-        fprintf(file, "\t%s;", return_type.c_str());
+        fprintf(file, "\t%s;\n", return_type.c_str());
     fprintf(file, "\tTRACE(\"Enter %s\\n\");\n", funcname.c_str());
     if (has_return)
         fprintf(file, "\treturn_value = p%s(%s);\n", funcname.c_str(), arguments_calling.c_str());
@@ -1019,9 +1021,9 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
         if (type_spelling.find("anonymous union") != std::string::npos || type_spelling.find("anonymous struct") != std::string::npos)
         {
             std::string named_type = clang_str_get(clang_getTypeSpelling(clang_Type_getNamedType(clang_getCursorType(node))));
-            for (std::pair<std::string, GenericDef*> element : definitions->items)
+            for (unsigned i = 0; i < definitions->items_ordered.size(); i++)
             {
-                GenericDef* child = element.second;
+                GenericDef* child = definitions->items_ordered[i];
                 if (GenericDef_get_named_type(child) == named_type)
                     GenericDef_set_variable(child, " " + spelling);
             }
@@ -1140,9 +1142,9 @@ static void handle_dll(const char* name)
     }
     std::vector<GenericDef*> usedDefinitions;
     
-    for (std::pair<std::string, GenericDef*> element : definitionCollection->items)
+    for (unsigned i = 0; i < definitionCollection->items_ordered.size(); i++)
     {
-        GenericDef* definition = element.second;
+        GenericDef* definition = definitionCollection->items_ordered[i];
         std::string definition_name = GenericDef_getname(definition);
         BOOL in_dependencies = std::find(dependencies->items.begin(), dependencies->items.end(), definition_name) != dependencies->items.end();
         if (in_dependencies && !DefinitionCollection_is_ignored(definitionCollection, definition_name))
@@ -1258,14 +1260,12 @@ static void handle_all_dlls()
 {
     const char* dlls[] = {
         "user32",
+        "kernel32",
+        "advapi32",
+        "msvcrt",
+        "ntdll",
+        "kernelbase",
     };
-    
-    /*    dlls.append("user32")
-    #dlls.append("kernel32")
-    #dlls.append("advapi32")
-    #dlls.append("msvcrt")
-    #dlls.append("ntdll")
-    #dlls.append("kernelbase")*/
 
     for (unsigned i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
     {
@@ -1275,7 +1275,7 @@ static void handle_all_dlls()
     FILE* file_shared = fopen("../dlls/winethunks/winethunks_shared.c", "w");
     FILE* file_makefile = fopen("../dlls/winethunks/Makefile.in", "w");
     
-    fprintf(file_shared, "#include <windows.h>'\n\n");
+    fprintf(file_shared, "#include <windows.h>\n\n");
 
     for (unsigned i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
     {
@@ -1293,7 +1293,7 @@ static void handle_all_dlls()
         fprintf(file_shared, "\t\treturn ret;\n");
     }
     fprintf(file_shared, "\n");
-    fprintf(file_shared, "\treturn func;");
+    fprintf(file_shared, "\treturn func;\n");
     fprintf(file_shared, "}\n\n");
 
     for (unsigned i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
@@ -1313,17 +1313,16 @@ static void handle_all_dlls()
     fprintf(file_shared, "}\n");
 
     // Make makefile
-    fprintf(file_shared, "MODULE    = winethunks.dll\n");
-    fprintf(file_shared, "IMPORTLIB = winethunks\n");
-    fprintf(file_shared, "\n");
-    fprintf(file_shared, "C_SRCS = \\\n");
+    fprintf(file_makefile, "MODULE    = winethunks.dll\n");
+    fprintf(file_makefile, "IMPORTLIB = winethunks\n");
+    fprintf(file_makefile, "\n");
+    fprintf(file_makefile, "C_SRCS = \\\n");
     for (unsigned i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
     {
-        fprintf(file_shared, "\t%s.c \\\n", dlls[i]);
+        fprintf(file_makefile, "\t%s.c \\\n", dlls[i]);
     }
-    fprintf(file_shared, "\twinethunks_shared.c \\\n");
-    fprintf(file_shared, "\twinethunks_main.c\n");
-    fprintf(file_shared, "\n");
+    fprintf(file_makefile, "\twinethunks_shared.c \\\n");
+    fprintf(file_makefile, "\twinethunks_main.c\n");
 
     fclose(file_makefile);
     fclose(file_shared);
