@@ -1183,8 +1183,64 @@ static void handle_dll(const char* name)
 			make_thunk_callingconvention_32_to_64_a(file_source, name, func);
 		}
 	}
+	
+	// Make init function
+	fprintf(file_source, "static BOOL initialized = FALSE;\n\n");
+	fprintf(file_source, "void wine_thunk_initialize_%s(void)\n", name);
+	fprintf(file_source, "{\n");
+	fprintf(file_source, "\tHMODULE library = GetModuleHandleA(\"%s.dll\");", name);
+	
+	std::map<std::string, BOOL> libs;
+	for (std::pair<std::string, FunctionItem*> element : funcs->items)
+	{
+		FunctionItem* func = element.second;
+		if (func->relay && libs.count(func->relay_dll) == 0)
+			libs[func->relay_dll] = 1;
+	}
+	for (std::pair<std::string, BOOL> element : libs)
+	{
+		std::string lib = element.first;
+		fprintf(file_source, "\tHMODULE library_%s = GetModuleHandleA(\"%s.dll\");\n", lib.c_str(), lib.c_str());
+	}
+	   
+	for (std::pair<std::string, FunctionItem*> element : funcs->items)
+	{
+		FunctionItem* func = element.second;
+		if (!FunctionItem_is_empty(func))
+		{
+			fprintf(file_source, "\tp%s = (void *)GetProcAddress(library, \"{func.name}\");\n", func->identifier, func->name);
+		}
+		if (func->relay)
+		{
+			fprintf(file_source, "\tp%s = (void *)GetProcAddress(library, \"%s\");\n", func->identifier.c_str(), func->name.c_str());
+			fprintf(file_source, "\tpext%s = (void *)GetProcAddress(library_%s, \"%s\");\n", func->identifier.c_str(), func->relay_dll.c_str(), func->internalname.c_str());
+		}
+	}
+	fprintf(file_source, "\tinitialized = TRUE;\n");
+	fprintf(file_source, "}\n\n");
 
-
+	// Make get function
+	fprintf(file_source, "void* wine_thunk_get_for_%s(void *func)\n", name);
+	fprintf(file_source, "{\n");
+	fprintf(file_source, "\tif (!initialized)\n");
+	fprintf(file_source, "\t\treturn NULL;\n\n");
+	for (std::pair<std::string, FunctionItem*> element : funcs->items)
+	{
+		FunctionItem* func = element.second;
+		if (!FunctionItem_is_empty(func))
+		{
+			fprintf(file_source, "\tif (func == p%s)\n", func->identifier.c_str());
+			fprintf(file_source, "\t\treturn wine32a_%s_%s;\n", name, func->identifier.c_str());
+		}
+		if (func->relay)
+		{
+			fprintf(file_source, "\tif (func == p%s && func != pext%s)\n", func->identifier.c_str(), func->identifier.c_str());
+			fprintf(file_source, "\t\treturn wine_thunk_get_for_any(pext%s);\n", func->identifier.c_str());
+		}
+	}
+	fprintf(file_source, "\n");
+	fprintf(file_source, "\treturn NULL;\n");
+	fprintf(file_source, "}\n\n");
 
 	fclose(file_source);
 	printf("Finished %s\n", name);
