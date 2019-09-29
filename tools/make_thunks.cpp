@@ -114,15 +114,19 @@ typedef struct
 
 
 
-std::string trim(const std::string& str)
+static void trim(std::string& str)
 {
-    size_t first = str.find_first_not_of(' ');
-    if (std::string::npos == first)
+    // trim trailing spaces
+    size_t endpos = str.find_last_not_of(" \t");
+    size_t startpos = str.find_first_not_of(" \t");
+    if( std::string::npos != endpos )
     {
-        return str;
+        str = str.substr( 0, endpos+1 );
+        str = str.substr( startpos );
     }
-    size_t last = str.find_last_not_of(' ');
-    return str.substr(first, (last - first + 1));
+    else {
+        str.erase(std::remove(std::begin(str), std::end(str), ' '), std::end(str));
+    }
 }
 std::vector<std::string> split(const std::string &s, char delim) {
 	std::vector<std::string> elems;
@@ -407,7 +411,14 @@ static TypeChain* TypeDef_resolve_typedef(TypeDef* self, DefinitionCollection* d
 	return DefinitionCollection_resolve_typedefs(definitions, self->source);
 }
 
+static DefinitionCollection* DefinitionCollection_init(void)
+{
+        DefinitionCollection* self = new DefinitionCollection();
 
+        self->typedef_item = 0;
+
+        return self;
+}
 
 static StructDef* StructDef_init(CXCursor node)
 {
@@ -416,6 +427,7 @@ static StructDef* StructDef_init(CXCursor node)
 	CXType type = clang_getCursorType(node);
 	self->type = TypeChain_init(&node, type);
 	CXCursorKind kind = clang_getCursorKind(node);
+	self->children = DefinitionCollection_init();
 	if (kind == CXCursor_StructDecl)
 	{
 		self->structType = StructDefEnum_Struct;
@@ -516,14 +528,6 @@ static GenericDef* GenericDef_init(void* def, BOOL isStruct)
 	return self;
 }
 
-static DefinitionCollection* DefinitionCollection_init(void)
-{
-	DefinitionCollection* self = new DefinitionCollection();
-	
-	self->typedef_item = 0;
-	
-	return self;
-}
 
 static std::string GenericDef_getname(GenericDef* self)
 {
@@ -742,7 +746,7 @@ static void FunctionItem_parse_from_spec_line(FunctionItem* function_item, std::
 	std::replace(line.begin(), line.end(), '(', ')');
 	std::vector<std::string> parts = split(line, ')'); //  0 - left side of parameters, 1 - parameters, 2 - right side of parameters
 	
-	parts[0] = trim(parts[0]);
+	trim(parts[0]);
 	std::vector<std::string> parts_0_split = split(parts[0], ' ');
 	function_item->internalname = parts_0_split[parts_0_split.size() - 1];
 	function_item->name = function_item->internalname;
@@ -753,7 +757,8 @@ static void FunctionItem_parse_from_spec_line(FunctionItem* function_item, std::
 	
 	if (parts[2].length() > 0)
 	{
-		function_item->internalname = trim(parts[2]);
+	    trim(parts[2]);
+		function_item->internalname = parts[2];
 		if (function_item->internalname.find(".") != std::string::npos)
 		{
 			std::vector<std::string> nameparts = split(function_item->internalname, '.');
@@ -869,7 +874,7 @@ std::vector<std::string> get_makefile_sources(std::string path)
     std::string str; 
     while (std::getline(filex, str))
     {
-        str = trim(str);
+        trim(str);
 		lines.push_back(str);
     }
 
@@ -888,7 +893,7 @@ std::vector<std::string> get_makefile_sources(std::string path)
 			std::string file;
 			std::vector<std::string> splits = split(line, '\\');
 			file = splits[0];
-			file = trim(file);
+			trim(file);
 			if (file != "")
 				sources.push_back(file);
 			if (!hasEnding(line, "\\"))
@@ -1086,16 +1091,18 @@ static void GenericDef_print_struct(GenericDef* self, FILE *file, int depth)
 
 static void handle_dll(const char* name)
 {
-	char path_source[255];
+    char path_dll[255];
+    char path_source[255];
 	char path_spec[255];
 	char path_makefile[255];
 	FILE* file_source;
 
 	printf("Started %s\n", name);
 
+	sprintf(path_dll, "../dlls/%s", name);
 	sprintf(path_source, "../dlls/winethunks/%s.c", name);
 	sprintf(path_spec, "../dlls/%s/%s.spec", name, name);
-	sprintf(path_makefile, "../dlls/%s/makefile.in", name);
+	sprintf(path_makefile, "../dlls/%s/Makefile.in", name);
 
 	file_source = fopen(path_source, "w");
 	
@@ -1118,8 +1125,8 @@ static void handle_dll(const char* name)
 		std::string source = sources[i];
 		//if not source.endswith("version.c"):
 		//	continue
-		printf("\tAt %s/%s", name, source.c_str());
-		handle_dll_source(path_source, source, funcs, definitionCollection);
+		printf("\tAt %s/%s\n", name, source.c_str());
+		handle_dll_source(path_dll, source, funcs, definitionCollection);
 	}
 	
 	// Make dependencies
