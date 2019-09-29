@@ -1,14 +1,4 @@
 
-
-def handle_dll_source(dll_path, source, funcs, ret_definitions):
-	path_file = dll_path + "/" + source
-
-	cursor = parse_file(path_file)
-
-	for child in cursor.get_children():
-		nodeWrapper = NodeCache(child)
-		find_all_definitions(nodeWrapper, ret_definitions, funcs, source)
-
 def handle_dll(name):
 
 	funcs = FunctionCollection()

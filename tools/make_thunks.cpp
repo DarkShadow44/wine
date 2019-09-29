@@ -820,7 +820,7 @@ static void FunctionCollection_load_from_specfile(FunctionCollection* self, std:
 
 
 
-static CXCursor parse_file(const char *path_file)
+static CXCursor parse_file(std::string path_file)
 {
 	CXIndex index = clang_createIndex( 0, 1 );
 	CXTranslationUnit translationUnit;
@@ -834,7 +834,7 @@ static CXCursor parse_file(const char *path_file)
 		"-Wno-pragma-pack"
 	};
 
-	translationUnit = clang_parseTranslationUnit(index, path_file, arguments, sizeof(arguments)/sizeof(*arguments), 0, 0, CXTranslationUnit_None);
+	translationUnit = clang_parseTranslationUnit(index, path_file.c_str(), arguments, sizeof(arguments)/sizeof(*arguments), 0, 0, CXTranslationUnit_None);
 
 	int len_diagnostics = clang_getNumDiagnostics(translationUnit);
 	for (int i = 0; i < len_diagnostics; i++)
@@ -1052,6 +1052,22 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
 		DefinitionCollection_clear_typedef_item(definitions);
 	}
 }
+
+
+
+static void handle_dll_source(std::string dll_path, std::string source, FunctionCollection* funcs, DefinitionCollection* ret_definitions)
+{
+	std::string path_file = dll_path + "/" + source;
+
+	CXCursor cursor = parse_file(path_file);
+
+	std::vector<CXCursor> children = clang_get_children(cursor);
+	for (int i = 0; i < children.size(); i++)
+	{
+		find_all_definitions(children[i], ret_definitions, funcs, source);
+	}
+}
+
 
 
 static void handle_dll(const char* dll)
