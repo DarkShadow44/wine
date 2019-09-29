@@ -1,32 +1,8 @@
 
 def handle_dll(name):
 
-	funcs = FunctionCollection()
-	funcs.load_from_specfile(path_spec)
-	sources = get_makefile_sources(path_makefile)
 
-	# Read files
-	definitionCollection = DefinitionCollection()
-	for source in sources:
-		#if not source.endswith("version.c"):
-		#	continue
-		print(f'\tAt {name}/{source}')
-		handle_dll_source(dll_path, source, funcs, definitionCollection)
-
-	# Make dependencies
-	dependencies = DependencyCollection(definitionCollection)
-	for func in funcs:
-		if not func.is_empty():
-			func.make_dependencies(dependencies)
-	usedDefinitions = [definition for definition in definitionCollection if ((definition.getname() in dependencies) and (not definitionCollection.is_ignored(definition.getname())))]
-	for definition in usedDefinitions:
-		declaration = definition.make_declaration()
-		if declaration is not None:
-			contents_source.append(declaration)
-	contents_source.append("")
-	for definition in usedDefinitions:
-		contents_source.append(definition.tostring())
-		contents_source.append("")
+	
 
 	# Make function pointers
 	for func in funcs:

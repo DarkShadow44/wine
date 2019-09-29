@@ -360,14 +360,12 @@ static TypeDef* TypeDef_init(TypeChain *source, std::string target, clang_locati
 }
 
 
-static std::string TypeDef_tostring(TypeDef* self)
+static void TypeDef_print_struct(TypeDef *self, FILE *file, int depth)
 {
-	char buffer[200];
 	if (self->source->chainType == TypeChainEnum_Function)
-		sprintf(buffer, "typedef %s; /* %s:%d */", TypeChain_tostring(self->source, self->target), self->location.file, self->location.line);
+		fprintf(file, "typedef %s; /* %s:%d */\n", TypeChain_tostring(self->source, self->target), self->location.file, self->location.line);
 	else
-		sprintf(buffer, "typedef %s %s; /* %s:%d */", TypeChain_tostring(self->source, ""), self->target.c_str(), self->location.file, self->location.line);
-	return buffer;
+		fprintf(file, "typedef %s %s; /* %s:%d */\n", TypeChain_tostring(self->source, ""), self->target.c_str(), self->location.file, self->location.line);
 }
 
 static std::string TypeDef_getname(TypeDef*  self)
@@ -375,7 +373,7 @@ static std::string TypeDef_getname(TypeDef*  self)
 	return self->target;
 }
 
-static std::string TypeDef_declaration(TypeDef*  self)
+static std::string TypeDef_make_declaration(TypeDef*  self)
 {
 	return "";
 }
@@ -471,7 +469,7 @@ static void StructDef_print_struct(StructDef *self, FILE *file, int depth)
 		fprintf(file, "%s%s;\n", indent, TypeChain_tostring(self->type, self->name));
 }
 
-static std::string StructDef_getname(StructDef *self)
+static std::string StructDef_getname(StructDef* self)
 {
 	return self->name;
 }
@@ -1068,20 +1066,36 @@ static void handle_dll_source(std::string dll_path, std::string source, Function
 	}
 }
 
+static std::string GenericDef_make_declaration(GenericDef* self)
+{
+	if (self->isStruct)
+		return StructDef_make_declaration(self->structDef);
+	else
+		return TypeDef_make_declaration(self->typeDef);
+}
 
 
-static void handle_dll(const char* dll)
+static void GenericDef_print_struct(GenericDef* self, FILE *file, int depth)
+{
+	if (self->isStruct)
+		StructDef_print_struct(self->structDef, file, depth);
+	else
+		TypeDef_print_struct(self->typeDef, file, depth);
+}
+
+
+static void handle_dll(const char* name)
 {
 	char path_source[255];
 	char path_spec[255];
 	char path_makefile[255];
 	FILE* file_source;
 
-	printf("Started %s\n", dll);
+	printf("Started %s\n", name);
 
-	sprintf(path_source, "../dlls/winethunks/%s.c", dll);
-	sprintf(path_spec, "../dlls/%s/%s.spec", dll, dll);
-	sprintf(path_makefile, "../dlls/%s/makefile.in", dll);
+	sprintf(path_source, "../dlls/winethunks/%s.c", name);
+	sprintf(path_spec, "../dlls/%s/%s.spec", name, name);
+	sprintf(path_makefile, "../dlls/%s/makefile.in", name);
 
 	file_source = fopen(path_source, "w");
 	
@@ -1090,9 +1104,59 @@ static void handle_dll(const char* dll)
 	fprintf(file_source, "#include \"wine/debug.h\"\n");
 	fprintf(file_source, "#include \"wine/winethunks.h\"\n");
 	fprintf(file_source, "WINE_DEFAULT_DEBUG_CHANNEL(thunks);\n\n");
+	
+	
+	
+	FunctionCollection* funcs = FunctionCollection_init();
+	FunctionCollection_load_from_specfile(funcs, path_spec);
+	std::vector<std::string> sources = get_makefile_sources(path_makefile);
+
+	// Read files
+	DefinitionCollection* definitionCollection = DefinitionCollection_init();
+	for (int i = 0; i < sources.size(); i++)
+	{
+		std::string source = sources[i];
+		//if not source.endswith("version.c"):
+		//	continue
+		printf("\tAt %s/%s", name, source.c_str());
+		handle_dll_source(path_source, source, funcs, definitionCollection);
+	}
+	
+	// Make dependencies
+	DependencyCollection* dependencies = DependencyCollection_init(definitionCollection);
+	for (std::pair<std::string, FunctionItem*> element : funcs->items)
+	{
+		FunctionItem* func = element.second;
+		if (!FunctionItem_is_empty(func))
+			FunctionItem_make_dependencies(func, dependencies);
+	}
+	std::vector<GenericDef*> usedDefinitions;
+	
+	for (std::pair<std::string, GenericDef*> element : definitionCollection->items)
+	{
+		GenericDef* definition = element.second;
+		std::string definition_name = GenericDef_getname(definition);
+		BOOL in_dependencies = std::find(dependencies->items.begin(), dependencies->items.end(), definition_name) != dependencies->items.end();
+		if (in_dependencies && !DefinitionCollection_is_ignored(definitionCollection, definition_name))
+			usedDefinitions.push_back(definition);
+	}
+
+	for (int i = 0; i < usedDefinitions.size(); i++)
+	{
+		GenericDef* definition = usedDefinitions[i];
+		std::string declaration = GenericDef_make_declaration(definition);
+		if (declaration != "")
+			fprintf(file_source, "%s\n", declaration.c_str());
+	}
+	fprintf(file_source, "\n");
+	for (int i = 0; i < usedDefinitions.size(); i++)
+	{
+		GenericDef* definition = usedDefinitions[i];
+		GenericDef_print_struct(definition, file_source, 0);
+	}
 
 	fclose(file_source);
-	printf("Finished %s\n", dll);
+	printf("Finished %s\n", name);
 }
 
 static void handle_all_dlls()
