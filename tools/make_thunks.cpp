@@ -102,6 +102,7 @@ typedef struct _StructDef
     StructDefEnum structType;
     std::string named_type;
     std::string variable;
+    TypeChain* variable_type;
     clang_location location;
 } StructDef;
 
@@ -155,7 +156,6 @@ typedef struct _DefinitionCollection
     std::map<std::string, GenericDef*> items;
     std::vector<GenericDef*> items_ordered;
     std::map<std::string, BOOL> ignored_items;
-    GenericDef* typedef_item;
     struct _DefinitionCollection *children;
 } DefinitionCollection;
 
@@ -184,7 +184,7 @@ typedef struct
     std::map<std::string, FunctionItem*> items;
 } FunctionCollection;
 
-static TypeChain* TypeChain_init(CXCursor *node, CXType type);
+static TypeChain* TypeChain_init(CXCursor *node, CXType type, BOOL ignore_normal);
 static std::string TypeChain_tostring(TypeChain* self, std::string variable);
 static void TypeChain_make_dependencies(TypeChain* self, DependencyCollection *dependencies);
 
@@ -192,7 +192,7 @@ static ParamDef* ParamDef_init(CXCursor node)
 {
     ParamDef *self = new ParamDef();
     self->name = clang_str_get(clang_getCursorSpelling(node));
-    self->type = TypeChain_init(0, clang_getCursorType(node));
+    self->type = TypeChain_init(0, clang_getCursorType(node), 0);
     return self;
 }
 
@@ -241,7 +241,7 @@ static void DependencyCollection_append(DependencyCollection* self, std::string 
 
 
 
-static TypeChain* TypeChain_init(CXCursor *node, CXType type)
+static TypeChain* TypeChain_init(CXCursor *node, CXType type, BOOL ignore_normal)
 {
     TypeChain* self = new TypeChain();
     CXType pointee = clang_getPointeeType(type);
@@ -265,24 +265,25 @@ static TypeChain* TypeChain_init(CXCursor *node, CXType type)
             }
         }
         self->chainType = TypeChainEnum_Function;
-        self->result = TypeChain_init(0, clang_getResultType(pointee));
+        self->result = TypeChain_init(0, clang_getResultType(pointee), ignore_normal);
     }
     else if (is_pointer)
     {
         self->chainType = TypeChainEnum_Pointer;
-        self->subType = TypeChain_init(0, pointee);
+        self->subType = TypeChain_init(0, pointee, ignore_normal);
     }
     else if (is_array)
     {
         self->chainType = TypeChainEnum_Array;
-        self->subType = TypeChain_init(0, clang_getArrayElementType(type));
+        self->subType = TypeChain_init(0, clang_getArrayElementType(type), ignore_normal);
         self->arraySize = clang_getArraySize(type);
     }
     else
     {
         self->chainType = TypeChainEnum_Normal;
         replaceAll(spelling, "const ", "");
-        self->normal = spelling;
+        if (!ignore_normal)
+            self->normal = spelling;
     }
     return self;
 }
@@ -392,19 +393,6 @@ static void TypeDef_make_dependencies(TypeDef* self, DependencyCollection *depen
     TypeChain_make_dependencies(self->source, dependencies);
 }
 
-static clang_location GenericDef_get_location(GenericDef* self)
-{
-    if (self->isStruct)
-        return self->structDef->location;
-    else
-        return self->typeDef->location;
-}
-
-static void GenericDef_set_name(GenericDef* self, std::string name)
-{
-    if (self->isStruct)
-        self->structDef->name = name;
-}
 
 static TypeChain* DefinitionCollection_resolve_typedefs(DefinitionCollection* self, TypeChain* type);
 static TypeChain* TypeDef_resolve_typedef(TypeDef* self, DefinitionCollection* definitions)
@@ -416,17 +404,17 @@ static DefinitionCollection* DefinitionCollection_init(void)
 {
         DefinitionCollection* self = new DefinitionCollection();
 
-        self->typedef_item = 0;
-
         return self;
 }
 
-static StructDef* StructDef_init(CXCursor node)
+static StructDef* StructDef_init(CXCursor node, std::string typedef_name)
 {
     StructDef *self = new StructDef();
-    self->name = clang_str_get(clang_getCursorSpelling(node)); // TODO check is None
+    self->name = clang_str_get(clang_getCursorSpelling(node));
+    if (typedef_name != "")
+        self->name = typedef_name;
     CXType type = clang_getCursorType(node);
-    self->type = TypeChain_init(&node, type);
+    self->type = TypeChain_init(&node, type, 0);
     CXCursorKind kind = clang_getCursorKind(node);
     self->children = DefinitionCollection_init();
     if (kind == CXCursor_StructDecl)
@@ -449,7 +437,7 @@ static StructDef* StructDef_init(CXCursor node)
         self->name = "enum " + self->name;
     }
     self->named_type = clang_str_get(clang_getTypeSpelling(type));
-    self->variable = "";
+    self->variable_type = 0;
     self->location = clang_location_get(clang_getCursorLocation(node));
     return self;
 }
@@ -475,7 +463,10 @@ static void StructDef_print_struct(StructDef *self, FILE *file, int depth)
             replaceAll(name, "enum ", "");
             fprintf(file, "    %s_DUMMY = 0\n", name.c_str());
         }
-        fprintf(file, "%s}%s;\n\n", indent, self->variable.c_str());
+        if (self->variable != "")
+            fprintf(file, "%s}%s;\n\n", indent, TypeChain_tostring(self->variable_type, self->variable).c_str());
+        else
+            fprintf(file, "%s};\n\n", indent);
     }
     
     if (self->structType == StructDefEnum_Field)
@@ -556,7 +547,7 @@ static void DefinitionCollection_append(DefinitionCollection* self, CXCursor nod
     BOOL ignored = 0;
 
     // Ignore common definitions
-    std::string file = clang_location_get(clang_getCursorLocation(node)).file;
+    clang_location location = clang_location_get(clang_getCursorLocation(node));
     const char* ignored_files[] = {
         "/winnt.h",
         "/windef.h",
@@ -574,16 +565,12 @@ static void DefinitionCollection_append(DefinitionCollection* self, CXCursor nod
     };
     for (unsigned i = 0; i < sizeof(ignored_files)/sizeof(*ignored_files); i++)
     {
-        if (hasEnding(file, ignored_files[i]))
+        if (hasEnding(location.file, ignored_files[i]))
             ignored = 1;
     }
 
     std::string name = GenericDef_getname(new_definition);
-    if (name == "")
-    {
-        self->typedef_item = new_definition; // Store (anyonymous struct/enum/union) item for following typedef
-    }
-    else
+    if (name != "")
     {
         // Only add each definition once
         if (self->items.count(name) > 0)
@@ -596,32 +583,10 @@ static void DefinitionCollection_append(DefinitionCollection* self, CXCursor nod
 }
     
 
-static void DefinitionCollection_append_typedef_item(DefinitionCollection* self, CXCursor node, std::string name)
-{
-    if (self->typedef_item != 0)
-    {
-        CXCursor original_cursor = clang_getTypeDeclaration(clang_getTypedefDeclUnderlyingType(node));
-        clang_location location = GenericDef_get_location(self->typedef_item);
-        if (location.line == clang_location_get(clang_getCursorLocation(node)).line)
-        {
-            GenericDef_set_name(self->typedef_item, name);
-            DefinitionCollection_append(self, original_cursor, self->typedef_item);
-        }
-        self->typedef_item = 0;
-    }
-}
-
-
 
 static BOOL DefinitionCollection_is_ignored(DefinitionCollection* self, std::string name)
 {
     return self->ignored_items.count(name) > 0;
-}
-
-
-static void DefinitionCollection_clear_typedef_item(DefinitionCollection* self)
-{
-    self->typedef_item = 0;
 }
 
 static TypeChain* GenericDef_resolve_typedef(GenericDef* self, DefinitionCollection* definitions)
@@ -678,7 +643,7 @@ static void FunctionItem_fill(FunctionItem* self, CXCursor node)
         if (clang_getCursorKind(child) == CXCursor_ParmDecl)
             self->params.push_back(ParamDef_init(child));
     }
-    self->return_type = TypeChain_init(0, clang_getCursorResultType(node));
+    self->return_type = TypeChain_init(0, clang_getCursorResultType(node), 0);
     self->location = clang_location_get(clang_getCursorLocation(node));
 }
 
@@ -990,13 +955,27 @@ static std::string GenericDef_get_named_type(GenericDef* self)
         return "";
 }
 
-static void GenericDef_set_variable(GenericDef* self, std::string variable)
+static void GenericDef_set_variable(GenericDef* self, CXType variable_type, std::string variable)
 {
     if (self->isStruct)
-        self->structDef->variable = variable;;
+    {
+        self->structDef->variable_type = TypeChain_init(0, variable_type, 1);
+        self->structDef->variable = variable;
+    }
 }
 
-static void find_all_definitions(CXCursor node, DefinitionCollection* definitions, FunctionCollection* funcs, std::string source)
+static CXType resolve_type(CXType type)
+{
+    CXType pointee = clang_getPointeeType(type);
+    BOOL is_pointer = clang_str_get(clang_getTypeSpelling(pointee)) != "";
+    if (is_pointer)
+        return resolve_type(pointee);
+    if (clang_getArraySize(type) != -1)
+        return resolve_type(clang_getArrayElementType(type));
+    return type;
+}
+
+static void find_all_definitions(CXCursor node, DefinitionCollection* definitions, FunctionCollection* funcs, std::string source, std::string typedef_name)
 {
     CXCursorKind kind = clang_getCursorKind(node);
     std::string spelling = clang_str_get(clang_getCursorSpelling(node));
@@ -1017,15 +996,16 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
 
     if (kind == CXCursor_StructDecl || kind == CXCursor_UnionDecl || kind == CXCursor_FieldDecl || kind == CXCursor_EnumDecl)
     {
-        // Check if there is a field whichs type is an anyonymous struct/union
+        // Check if there is a field whichs type is an anonymous struct/union
         if (type_spelling.find("anonymous union") != std::string::npos || type_spelling.find("anonymous struct") != std::string::npos)
         {
-            std::string named_type = clang_str_get(clang_getTypeSpelling(clang_Type_getNamedType(clang_getCursorType(node))));
+            CXType structType = resolve_type(clang_getCursorType(node));
+            std::string named_type = clang_str_get(clang_getTypeSpelling(clang_Type_getNamedType(structType)));
             for (unsigned i = 0; i < definitions->items_ordered.size(); i++)
             {
                 GenericDef* child = definitions->items_ordered[i];
                 if (GenericDef_get_named_type(child) == named_type)
-                    GenericDef_set_variable(child, " " + spelling);
+                    GenericDef_set_variable(child, clang_getCursorType(node), spelling);
             }
             definitions = DefinitionCollection_init();
         }
@@ -1033,7 +1013,7 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
         {
             if (!node_is_only_declaration(node))
             {
-                GenericDef* new_parent = GenericDef_init(StructDef_init(node), 1);
+                GenericDef* new_parent = GenericDef_init(StructDef_init(node, typedef_name), 1);
                 DefinitionCollection_append(definitions, node, new_parent);
                 definitions = new_parent->structDef->children;
             }
@@ -1042,20 +1022,19 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
         std::vector<CXCursor> children = clang_get_children(node);
         for (unsigned i = 0; i < children.size(); i++)
         {
-            find_all_definitions(children[i], definitions, funcs, source);
+            find_all_definitions(children[i], definitions, funcs, source, "");
         }
     }
     else if (kind == CXCursor_TypedefDecl)
     {
-        TypeChain* type_from = TypeChain_init(&node, clang_getTypedefDeclUnderlyingType(node));
-        // Fix anonymous struct/enum/union typedef
-        DefinitionCollection_append_typedef_item(definitions, node, TypeChain_tostring(type_from, ""));
+        TypeChain* type_from = TypeChain_init(&node, clang_getTypedefDeclUnderlyingType(node), 0);
         GenericDef* definition = GenericDef_init(TypeDef_init(type_from, spelling, location), 0);
         DefinitionCollection_append(definitions, node, definition);
-    }
-    else
-    {
-        DefinitionCollection_clear_typedef_item(definitions);
+        std::vector<CXCursor> children = clang_get_children(node);
+        for (unsigned i = 0; i < children.size(); i++)
+        {
+           find_all_definitions(children[i], definitions, funcs, source, spelling);
+        }
     }
 }
 
@@ -1070,7 +1049,7 @@ static void handle_dll_source(std::string dll_path, std::string source, Function
     std::vector<CXCursor> children = clang_get_children(cursor);
     for (unsigned i = 0; i < children.size(); i++)
     {
-        find_all_definitions(children[i], ret_definitions, funcs, source);
+        find_all_definitions(children[i], ret_definitions, funcs, source, "");
     }
 }
 
