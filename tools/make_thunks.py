@@ -1,38 +1,4 @@
 
-def find_all_definitions(node, definitions, funcs, source):
-	if node.get_kind() == CursorKind.FUNCTION_DECL and funcs.contains(node.get_spelling()):
-		if (not node.get_location_file().endswith(f'/{source}')):
-			return
-		if not node_is_only_declaration(node):
-			func = funcs.get_item(node.get_spelling())
-			func.fill(node)
-
-	if node.get_kind() == CursorKind.STRUCT_DECL or node.get_kind() == CursorKind.UNION_DECL or node.get_kind() == CursorKind.FIELD_DECL or node.get_kind() == CursorKind.ENUM_DECL:
-		# Check if there is a field whichs type is an anyonymous struct/union
-		if ('anonymous union' in node.get_type_spelling()) or ('anonymous struct' in node.get_type_spelling()):
-			for child in definitions:
-				if child.named_type == node.get_type().get_named_type().spelling:
-					child.variable = ' ' + node.get_spelling()
-			definitions = DefinitionCollection()
-		else:
-			if not node_is_only_declaration(node):
-				new_parent = StructDef(node)
-				definitions.append(node, new_parent)
-				definitions = new_parent.children
-
-		for child in node.get_children():
-			find_all_definitions(NodeCache(child), definitions, funcs, source)
-	elif node.get_kind() == CursorKind.TYPEDEF_DECL:
-		type_to = node.get_spelling()
-		type_from = TypeChain(node, node.node.underlying_typedef_type)
-		# Fix anonymous struct/enum/union typedef
-		definitions.append_typedef_item(node, type_from.tostring(""))
-		definition = TypeDef(type_from, type_to, node.get_location_line(), node.get_location_file())
-		definitions.append(node, definition)
-	else:
-		definitions.clear_typedef_item()
-
-
 
 def handle_dll_source(dll_path, source, funcs, ret_definitions):
 	path_file = dll_path + "/" + source
