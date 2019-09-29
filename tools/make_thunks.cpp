@@ -1251,22 +1251,78 @@ static void handle_all_dlls()
 	const char* dlls[] = {
 		"user32",
 	};
+	
+	/*	dlls.append("user32")
+	#dlls.append("kernel32")
+	#dlls.append("advapi32")
+	#dlls.append("msvcrt")
+	#dlls.append("ntdll")
+	#dlls.append("kernelbase")*/
 
 	for (int i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
 	{
 		handle_dll(dlls[i]);
 	}
-}
+	
+	FILE* file_shared = fopen("../dlls/winethunks/winethunks_shared.c", "w");
+	FILE* file_makefile = fopen("../dlls/winethunks/Makefile.in", "w");
+	
+	fprintf(file_shared, "#include <windows.h>'\n\n");
 
+	for (int i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
+	{
+		fprintf(file_shared, "void* wine_thunk_get_for_%s(void *func);\n", dlls[i]);
+	}
+	fprintf(file_shared, "\n");
+
+	// wine_thunk_get_for_any
+	fprintf(file_shared, "WINAPI void *wine_thunk_get_for_any(void *func)\n");
+	fprintf(file_shared, "{\n");
+	fprintf(file_shared, "\tvoid *ret;\n");
+	for (int i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
+	{
+		fprintf(file_shared, "\tif ((ret = wine_thunk_get_for_%s(func)) != NULL)\n", dlls[i]);
+		fprintf(file_shared, "\t\treturn ret;\n");
+	}
+	fprintf(file_shared, "\n");
+	fprintf(file_shared, "\treturn func;");
+	fprintf(file_shared, "}\n\n");
+
+	for (int i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
+	{
+		fprintf(file_shared, "void* wine_thunk_initialize_%s(void);\n", dlls[i]);
+	}
+	fprintf(file_shared, "\n");
+
+	// wine_thunk_initialize_dll
+	fprintf(file_shared, "WINAPI void wine_thunk_initialize_any(const char *dll)\n");
+	fprintf(file_shared, "{\n");
+	for (int i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
+	{
+		fprintf(file_shared, "\tif (!strcasecmp(\"%s.dll\", dll))\n", dlls[i]);
+		fprintf(file_shared, "\t\twine_thunk_initialize_%s();\n", dlls[i]);
+	}
+	fprintf(file_shared, "}\n");
+
+	// Make makefile
+	fprintf(file_shared, "MODULE    = winethunks.dll\n");
+	fprintf(file_shared, "IMPORTLIB = winethunks\n");
+	fprintf(file_shared, "\n");
+	fprintf(file_shared, "C_SRCS = \\\n");
+	for (int i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
+	{
+		fprintf(file_shared, "\t%s.c \\\n", dlls[i]);
+	}
+	fprintf(file_shared, "\twinethunks_shared.c \\\n");
+	fprintf(file_shared, "\twinethunks_main.c\n");
+	fprintf(file_shared, "\n");
+
+	fclose(file_makefile);
+	fclose(file_shared);
+}
 
 int main()
 {
 	handle_all_dlls();
-	CXCursor cursor = parse_file("");
-	
-	clang_visitChildren(cursor, functionVisitor, 0);
-	
-	
-	
 	return 0;
 }
