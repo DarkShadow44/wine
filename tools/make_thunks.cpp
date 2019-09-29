@@ -5,6 +5,7 @@
 #include <vector>
 #include <sstream>
 #include <algorithm>
+#include <fstream>
 
 typedef int BOOL;
 
@@ -65,6 +66,11 @@ enum TypeChainEnum
 	TypeChainEnum_Function = 4,
 };
 
+typedef struct _ParamDef
+{
+	std::string name;
+	struct _TypeChain* type;
+} ParamDef;
 
 typedef struct _TypeChain
 {
@@ -99,19 +105,78 @@ typedef struct _StructDef
 	clang_location location;
 } StructDef;
 
-typedef struct _ParamDef
+typedef struct
 {
-	std::string name;
-	TypeChain* type;
-} ParamDef;
+	TypeChain *source;
+	std::string target;
+	clang_location location;
+} TypeDef;
+
+
+
+std::string trim(const std::string& str)
+{
+    size_t first = str.find_first_not_of(' ');
+    if (std::string::npos == first)
+    {
+        return str;
+    }
+    size_t last = str.find_last_not_of(' ');
+    return str.substr(first, (last - first + 1));
+}
+std::vector<std::string> split(const std::string &s, char delim) {
+	std::vector<std::string> elems;
+    std::stringstream ss(s);
+    std::string item;
+    while (std::getline(ss, item, delim)) {
+        elems.push_back(item);
+    }
+	return elems;
+}
+
+
 
 typedef struct
 {
+	BOOL isStruct;
+	union
+	{
+		StructDef* structDef;
+		TypeDef* typeDef;
+	};
+} GenericDef;
+
+typedef struct
+{
+	std::map<std::string, GenericDef*> items;
+	std::map<std::string, BOOL> ignored_items;
+	GenericDef* typedef_item;
+} DefinitionCollection;
+
+typedef struct
+{
+	DefinitionCollection* definitions;
+	std::vector<std::string> items;
 } DependencyCollection;
 
+typedef struct 
+{
+	std::vector<ParamDef*> params;
+	clang_location location;
+	BOOL isEmpty;
+	TypeChain *return_type;
+	std::string name;
+	std::string internalname;
+	BOOL relay;
+	std::string relay_dll;
+	std::string callingconvention;
+	std::string identifier;
+} FunctionItem;
+
 typedef struct
 {
-} DefinitionCollection;
+	std::map<std::string, FunctionItem*> items;
+} FunctionCollection;
 
 static TypeChain* TypeChain_init(CXCursor *node, CXType type);
 static std::string TypeChain_tostring(TypeChain* self, std::string variable);
@@ -133,6 +198,39 @@ static std::string ParamDef_tostring(ParamDef* self)
 static void ParamDef_make_dependencies(ParamDef* self, DependencyCollection *dependencies)
 {
 	TypeChain_make_dependencies(self->type, dependencies);
+}
+
+
+static DependencyCollection* DependencyCollection_init(DefinitionCollection* definitions)
+{
+	DependencyCollection* self = new DependencyCollection();
+	self->definitions = definitions;
+	return self;
+}
+
+static void StructDef_make_dependencies(StructDef *self, DependencyCollection* dependencies);
+static void TypeDef_make_dependencies(TypeDef* self, DependencyCollection *dependencies);
+
+static void GenericDef_make_dependencies(GenericDef* self, DependencyCollection *dependencies)
+{
+	if (self->isStruct)
+		StructDef_make_dependencies(self->structDef, dependencies);
+	else
+		TypeDef_make_dependencies(self->typeDef, dependencies);
+}
+static std::string GenericDef_getname(GenericDef* self);
+static void DependencyCollection_append(DependencyCollection* self, std::string item)
+{
+	if (std::find(self->items.begin(), self->items.end(), item) != self->items.end())
+	{
+		self->items.push_back(item);
+		for (std::pair<std::string, GenericDef*> element : self->definitions->items)
+		{
+			GenericDef *definition = element.second;
+			if (GenericDef_getname(definition) == item)
+				GenericDef_make_dependencies(definition, self);
+		}		
+	}
 }
 
 
@@ -228,8 +326,88 @@ static std::string TypeChain_tostring(TypeChain* self, std::string variable)
 
 static void TypeChain_make_dependencies(TypeChain* self, DependencyCollection *dependencies)
 {
+	if (self->chainType == TypeChainEnum_Pointer || self->chainType == TypeChainEnum_Array)
+	{
+		TypeChain_make_dependencies(self->subType, dependencies);
+	}
+	else if (self->chainType == TypeChainEnum_Function)
+	{
+		for (int i = 0; i < self->params.size(); i++)
+			ParamDef_make_dependencies(self->params[i], dependencies);
+		TypeChain_make_dependencies(self->result, dependencies);
+	}
+	else
+	{
+		DependencyCollection_append(dependencies, self->normal);
+	}
 }
 
+static BOOL TypeChain_is_void(TypeChain* self)
+{
+	return (self->chainType == TypeChainEnum_Normal) && (self->normal == "void");
+}
+
+static TypeDef* TypeDef_init(TypeChain *source, std::string target, int line, std::string file)
+{
+	TypeDef* self = new TypeDef();
+	
+	self->source = source;
+	self->target = target;
+	self->location.line = line;
+	self->location.file = file;
+	
+	return self;
+}
+
+
+static std::string TypeDef_tostring(TypeDef* self)
+{
+	char buffer[200];
+	if (self->source->chainType == TypeChainEnum_Function)
+		sprintf(buffer, "typedef %s; /* %s:%d */", TypeChain_tostring(self->source, self->target), self->location.file, self->location.line);
+	else
+		sprintf(buffer, "typedef %s %s; /* %s:%d */", TypeChain_tostring(self->source, ""), self->target.c_str(), self->location.file, self->location.line);
+	return buffer;
+}
+
+static std::string TypeDef_getname(TypeDef*  self)
+{
+	return self->target;
+}
+
+static std::string TypeDef_declaration(TypeDef*  self)
+{
+	return "";
+}
+
+
+
+	
+
+static void TypeDef_make_dependencies(TypeDef* self, DependencyCollection *dependencies)
+{
+	TypeChain_make_dependencies(self->source, dependencies);
+}
+
+static clang_location GenericDef_get_location(GenericDef* self)
+{
+	if (self->isStruct)
+		return self->structDef->location;
+	else
+		return self->typeDef->location;
+}
+
+static void GenericDef_set_name(GenericDef* self, std::string name)
+{
+	if (self->isStruct)
+		self->structDef->name = name;
+}
+
+static TypeChain* DefinitionCollection_resolve_typedefs(DefinitionCollection* self, TypeChain* type);
+static TypeChain* TypeDef_resolve_typedef(TypeDef* self, DefinitionCollection* definitions)
+{
+	return DefinitionCollection_resolve_typedefs(definitions, self->source);
+}
 
 
 
@@ -326,85 +504,238 @@ static TypeChain* StructDef_resolve_typedef(StructDef* self, DefinitionCollectio
 }
 
 
-
-
-
-
-static CXCursor parse_file(const char *path_file)
+static GenericDef* GenericDef_init(void* def, BOOL isStruct)
 {
-	CXIndex index = clang_createIndex( 0, 1 );
-	CXTranslationUnit translationUnit;
-	const char* arguments[] = {
-		"-D_WIN32",
-		"-D__WINESRC__",
-		"-I/usr/lib/clang/8.0.1/include/",
-		"-I../include",
-		"-I/home/fabian/Programming/Wine/wine64/include/",
-		"-fdeclspec",
-		"-Wno-pragma-pack"
+	GenericDef* self = new GenericDef();
+	self->isStruct = isStruct;
+	if (isStruct)
+		self->structDef = (StructDef*)def;
+	else
+		self->typeDef = (TypeDef*)def;
+	
+	return self;
+}
+
+static DefinitionCollection* DefinitionCollection_init(void)
+{
+	DefinitionCollection* self = new DefinitionCollection();
+	
+	self->typedef_item = 0;
+	
+	return self;
+}
+
+static std::string GenericDef_getname(GenericDef* self)
+{
+	if (self->isStruct)
+		return StructDef_getname(self->structDef);
+	else
+		return TypeDef_getname(self->typeDef);
+}
+
+bool hasEnding (std::string const &fullString, std::string const &ending) {
+    if (fullString.length() >= ending.length()) {
+        return (0 == fullString.compare (fullString.length() - ending.length(), ending.length(), ending));
+    } else {
+        return false;
+    }
+}
+
+bool hasStart(std::string mainStr, std::string toMatch)
+{
+	return mainStr.find(toMatch) == 0;
+}
+
+static void DefinitionCollection_append(DefinitionCollection* self, CXCursor node, GenericDef* new_definition)
+{
+	BOOL ignored = 0;
+
+	// Ignore common definitions
+	std::string file = clang_location_get(clang_getCursorLocation(node)).file;
+	const char* ignored_files[] = {
+		"/winnt.h",
+		"/windef.h",
+		"/winbase.h",
+		"/excpt.h",
+		"/debug.h",
+		"/guiddef.h",
+		"/wingdi.h",
+		"/winnls.h",
+		"/winuser.h",
+		"/wincon.h",
+		"/winnetwk.h",
+		"/verrsrc.h",
+		"/winreg.h"
 	};
-
-	translationUnit = clang_parseTranslationUnit(index, path_file, arguments, sizeof(arguments)/sizeof(*arguments), 0, 0, CXTranslationUnit_None);
-
-	int len_diagnostics = clang_getNumDiagnostics(translationUnit);
-	for (int i = 0; i < len_diagnostics; i++)
+	for (int i = 0; i < sizeof(ignored_files)/sizeof(*ignored_files); i++)
 	{
-		CXDiagnostic diagnostic = clang_getDiagnostic(translationUnit, i);
-		std::string spelling = clang_str_get(clang_getDiagnosticSpelling(diagnostic));
-		clang_location location = clang_location_get(clang_getDiagnosticLocation(diagnostic));
-
-		printf("\t\t%s %s:%d\n", spelling.c_str(), location.file, location.line);
+		if (hasEnding(file, ignored_files[i]))
+			ignored = 1;
 	}
 
-	return clang_getTranslationUnitCursor(translationUnit);
+	std::string name = GenericDef_getname(new_definition);
+	if (name == "")
+	{
+		self->typedef_item = new_definition; // Store (anyonymous struct/enum/union) item for following typedef
+	}
+	else
+	{
+		// Only add each definition once
+		if (self->items.count(name) > 0)
+			return;
+		if (ignored)
+			self->ignored_items[name] = 1;
+		self->items[name] = new_definition;
+	}
 }
+	
 
-struct cmp_str
+static void DefinitionCollection_append_typedef_item(DefinitionCollection* self, CXCursor node, std::string name)
 {
-   bool operator()(char const *a, char const *b) const
-   {
-      return std::strcmp(a, b) < 0;
-   }
-};
-
-
-typedef struct 
-{
-	std::string name;
-	std::string internalname;
-	BOOL relay;
-	std::string relay_dll;
-	std::string callingconvention;
-	void* return_type;
-	void* params;
-	std::string file;
-	int line;
-	std::string identifier;
-} function_item_info;
-
-std::vector<std::string> split(const std::string &s, char delim) {
-	std::vector<std::string> elems;
-    std::stringstream ss(s);
-    std::string item;
-    while (std::getline(ss, item, delim)) {
-        elems.push_back(item);
-    }
-	return elems;
-}
-
-std::string trim(const std::string& str)
-{
-    size_t first = str.find_first_not_of(' ');
-    if (std::string::npos == first)
-    {
-        return str;
-    }
-    size_t last = str.find_last_not_of(' ');
-    return str.substr(first, (last - first + 1));
+	if (self->typedef_item != 0)
+	{
+		CXCursor original_cursor = clang_getTypeDeclaration(clang_getTypedefDeclUnderlyingType(node));
+		clang_location location = GenericDef_get_location(self->typedef_item);
+		if (location.line == clang_location_get(clang_getCursorLocation(node)).line)
+		{
+			GenericDef_set_name(self->typedef_item, name);
+			DefinitionCollection_append(self, original_cursor, self->typedef_item);
+		}
+		self->typedef_item = 0;
+	}
 }
 
 
-static void function_item_parse_from_spec_line(function_item_info* function_item, std::string line)
+
+static BOOL DefinitionCollection_is_ignored(DefinitionCollection* self, std::string name)
+{
+	return self->ignored_items.count(name) > 0;
+}
+
+
+static void DefinitionCollection_clear_typedef_item(DefinitionCollection* self)
+{
+	self->typedef_item = 0;
+}
+
+static TypeChain* GenericDef_resolve_typedef(GenericDef* self, DefinitionCollection* definitions)
+{
+	if (self->isStruct)
+		return StructDef_resolve_typedef(self->structDef, definitions);
+	else
+		return TypeDef_resolve_typedef(self->typeDef, definitions);
+}
+
+
+
+static TypeChain* DefinitionCollection_resolve_typedefs(DefinitionCollection* self, TypeChain* type)
+{
+	if (type->chainType != TypeChainEnum_Normal)
+		return type;
+	std::string name = type->normal;
+	if (self->items.count(name) > 0)
+		return GenericDef_resolve_typedef(self->items[name], self);
+	return type;
+}
+
+
+static FunctionItem* FunctionItem_init()
+{
+	FunctionItem* self = new FunctionItem();
+	self->isEmpty = 1;
+	self->return_type = 0;
+	return self;
+}
+
+static BOOL FunctionItem_is_empty(FunctionItem *self)
+{
+	return self->isEmpty;
+}
+
+
+static void FunctionItem_make_dependencies(FunctionItem* self, DependencyCollection* dependencies)
+{
+	if (self->return_type != 0)
+		TypeChain_make_dependencies(self->return_type, dependencies);
+	for (int i = 0; i < self->params.size(); i++)
+		ParamDef_make_dependencies(self->params[i], dependencies);
+}
+
+
+static void FunctionItem_fill(FunctionItem* self, CXCursor node)
+{
+	self->isEmpty = 0;
+	std::vector<CXCursor> children = clang_get_children(node);
+	for (int i = 0; i < children.size(); i++)
+	{
+		CXCursor child = children[i];
+		if (clang_getCursorKind(child) == CXCursor_ParmDecl)
+			self->params.push_back(ParamDef_init(child));
+	}
+	self->return_type = TypeChain_init(0, clang_getCursorResultType(node));
+	self->location = clang_location_get(clang_getCursorLocation(node));
+}
+
+static std::string FunctionItem_get_arguments_decl(FunctionItem* self)
+{
+	if (self->params.size() == 0)
+		return "void";
+
+	char buffer[500] = {0};
+	
+	for (int i = 0; i < self->params.size(); i++)
+	{
+		if (i > 0)
+			strcat(buffer, ",");
+		strcat(buffer, ParamDef_tostring(self->params[i]).c_str());
+	}
+	return buffer;
+}
+
+static std::string FunctionItem_get_arguments_calling(FunctionItem* self)
+{
+	if (self->params.size() == 0)
+		return "";
+
+	char buffer[500] = {0};
+	
+	for (int i = 0; i < self->params.size(); i++)
+	{
+		if (i > 0)
+			strcat(buffer, ",");
+		strcat(buffer, self->params[i]->name.c_str());
+	}
+	return buffer;
+}
+
+
+static FunctionCollection* FunctionCollection_init(void)
+{
+	return new FunctionCollection();
+}
+
+
+static BOOL FunctionCollection_contains(FunctionCollection* self, std::string name)
+{
+	return self->items.count(name) > 0;
+}
+
+
+static FunctionItem* FunctionCollection_get_item(FunctionCollection* self, std::string name)
+{
+	return self->items[name];
+}
+
+
+static void FunctionCollection_dump_items(FunctionCollection* self)
+{
+	for (std::pair<std::string, FunctionItem*> element : self->items)
+	{
+		FunctionItem *func = element.second;
+		printf("%s - %s(%s) - relay: %d\n", func->callingconvention.c_str(), func->name.c_str(), func->internalname.c_str(), func->relay);
+	}
+}
+static void FunctionItem_parse_from_spec_line(FunctionItem* function_item, std::string line)
 {
 	std::vector<std::string> rows = split(line, ' ');
 	function_item->callingconvention = rows[1];
@@ -446,6 +777,172 @@ static void function_item_parse_from_spec_line(function_item_info* function_item
 	}
 }
 
+
+
+static void FunctionCollection_load_from_specfile(FunctionCollection* self, std::string path)
+{
+	std::vector<std::string> lines;
+	std::ifstream file(path);
+    std::string str; 
+    while (std::getline(file, str))
+    {
+        trim(str);
+		lines.push_back(str);
+    }
+	
+	std::vector<FunctionItem*> items_temp;
+	std::vector<std::string> all_names;
+	for (int i = 0; i < lines.size(); i++)
+	{
+		std::string line = lines[i];
+		if (line == "" || line[0] == '#')
+			continue;
+		if (line.find(" -private") != std::string::npos)
+			continue;
+		FunctionItem* item = FunctionItem_init();
+		FunctionItem_parse_from_spec_line(item, line);
+		items_temp.push_back(item);
+		all_names.push_back(item->name);
+	}
+	
+	for (int i = 0; i < items_temp.size(); i++)
+	{
+		FunctionItem* item = items_temp[i];
+		BOOL is_in_names = (item->internalname != item->name)  &&  (std::find(all_names.begin(), all_names.end(), item->internalname) != all_names.end());
+		if (item->relay || is_in_names) // A relay might have the same item.internalname as an already existing function
+			self->items["relay_" + item->name] = item;
+		else
+			self->items[item->internalname] = item;
+	}
+}
+
+
+
+static CXCursor parse_file(const char *path_file)
+{
+	CXIndex index = clang_createIndex( 0, 1 );
+	CXTranslationUnit translationUnit;
+	const char* arguments[] = {
+		"-D_WIN32",
+		"-D__WINESRC__",
+		"-I/usr/lib/clang/8.0.1/include/",
+		"-I../include",
+		"-I/home/fabian/Programming/Wine/wine64/include/",
+		"-fdeclspec",
+		"-Wno-pragma-pack"
+	};
+
+	translationUnit = clang_parseTranslationUnit(index, path_file, arguments, sizeof(arguments)/sizeof(*arguments), 0, 0, CXTranslationUnit_None);
+
+	int len_diagnostics = clang_getNumDiagnostics(translationUnit);
+	for (int i = 0; i < len_diagnostics; i++)
+	{
+		CXDiagnostic diagnostic = clang_getDiagnostic(translationUnit, i);
+		std::string spelling = clang_str_get(clang_getDiagnosticSpelling(diagnostic));
+		clang_location location = clang_location_get(clang_getDiagnosticLocation(diagnostic));
+
+		printf("\t\t%s %s:%d\n", spelling.c_str(), location.file, location.line);
+	}
+
+	return clang_getTranslationUnitCursor(translationUnit);
+}
+
+struct cmp_str
+{
+   bool operator()(char const *a, char const *b) const
+   {
+      return std::strcmp(a, b) < 0;
+   }
+};
+
+
+
+
+/* Helper functions */
+
+// Get all the sources inside a Makefile.in TODO: need parent sources
+std::vector<std::string> get_makefile_sources(std::string path)
+{
+	std::vector<std::string> sources;
+	std::vector<std::string> lines;
+	std::ifstream filex(path);
+    std::string str; 
+    while (std::getline(filex, str))
+    {
+        str = trim(str);
+		lines.push_back(str);
+    }
+
+	BOOL doadd = 0;
+	for(int i = 0; i < lines.size(); i++)
+	{
+		std::string line = lines[i];
+		if (hasStart(line, "C_SRCS"))
+		{
+			std::vector<std::string> splits = split(line, '=');
+			line = splits[1];
+			doadd = 1;
+		}
+		if (doadd)
+		{
+			std::string file;
+			std::vector<std::string> splits = split(line, '\\');
+			file = splits[0];
+			file = trim(file);
+			if (file != "")
+				sources.push_back(file);
+			if (!hasEnding(line, "\\"))
+				doadd = 0;
+		}
+	}
+	return sources;
+}
+
+// Stacklayout in function
+// 8 - own stackframe
+// 8 - ret to stub
+// 4 - ret to calling function
+// 4 - param 1
+// 4 - param 2
+// ...
+static void make_thunk_callingconvention_32_to_64_a(FILE* file, std::string dllname, FunctionItem* func)
+{
+	std::string funcname = func->identifier;
+	int num_params = func->params.size();
+	fprintf(file, "extern WINAPI void wine32a_%s_%s(void);  /* %s:%d */\n", dllname.c_str(), funcname.c_str(), func->location.file, func->location.line);
+	fprintf(file, "__ASM_GLOBAL_FUNC(wine32a_%s_%s,\n\n", dllname.c_str(), funcname.c_str());
+	//Setup own stackframe
+	fprintf(file, "\t\"push %%rbp \\n\"\n");
+	fprintf(file, "\t\"mov %%rsp, %%rbp \\n\"\n");
+	// Convert params from 32bit convention to 64bit convention
+	if (num_params >= 1)
+		fprintf(file, "\t\"movl 0x14(%%rsp), %%ecx \\n\"\n");
+	if (num_params >= 2)
+		fprintf(file, "\t\"movl 0x18(%%rsp), %%edx \\n\"\n");
+	if (num_params >= 3)
+		fprintf(file, "\t\"movl 0x1C(%%rsp), %%r8d \\n\"\n");
+	if (num_params >= 4)
+		fprintf(file, "\t\"movl 0x20(%%rsp), %%r9d \\n\"\n");
+	// Call actual function, give it a bit space...
+	fprintf(file, "\t\"sub $0x100, %%rsp \\n\"\n");
+	fprintf(file, "\t\"call \" __ASM_NAME(\"wine32b_%s_%s\") \"\\n\"\n", dllname.c_str(), funcname.c_str());
+	fprintf(file, "\t\"add $0x100, %%rsp \\n\"\n"),
+	// Reset own stackframe
+	fprintf(file, "\t\"pop %%rbp \\n\"\n");
+	// Backup our 2 return addresses
+	fprintf(file, "\t\"movl 0x00(%%rsp), %%ecx \\n\"\n");
+	fprintf(file, "\t\"movl 0x04(%%rsp), %%edx \\n\"\n");
+	fprintf(file, "\t\"movl 0x08(%%rsp), %%r8d \\n\"\n");
+	// Clean stack like the caller expects
+	fprintf(file, "\t\"addq $%d, %%rsp \\n\"\n", num_params * 4);
+	// Restore our 2 return addresses
+	fprintf(file, "\t\"movl %%ecx, 0x00(%%rsp) \\n\"\n");
+	fprintf(file, "\t\"movl %%edx, 0x04(%%rsp) \\n\"\n");
+	fprintf(file, "\t\"movl %%r8d, 0x08(%%rsp) \\n\"\n");
+	// Return
+	fprintf(file, "\t\"ret \\n\"\n)\n\n");
+}
+
 static void handle_dll(const char* dll)
 {
 	char path_source[255];
@@ -466,8 +963,6 @@ static void handle_dll(const char* dll)
 	fprintf(file_source, "#include \"wine/debug.h\"\n");
 	fprintf(file_source, "#include \"wine/winethunks.h\"\n");
 	fprintf(file_source, "WINE_DEFAULT_DEBUG_CHANNEL(thunks);\n\n");
-
-	std::map<const char*, function_item_info, cmp_str> functions;
 
 	fclose(file_source);
 	printf("Finished %s\n", dll);
