@@ -254,7 +254,7 @@ static TypeChain* TypeChain_init(CXCursor *node, CXType type)
         if (node)
         {
             std::vector<CXCursor> children = clang_get_children(*node);
-            for (int i = 0; i < children.size(); i++)
+            for (unsigned i = 0; i < children.size(); i++)
             {
                 CXCursorKind kind = clang_getCursorKind(*node);
                 if (kind == CXCursor_FieldDecl)
@@ -292,13 +292,13 @@ static std::string TypeChain_tostring(TypeChain* self, std::string variable)
     if (self->chainType == TypeChainEnum_Pointer)
     {
         if (variable == "")
-            sprintf(buffer, "%s*%s", TypeChain_tostring(self->subType, ""), variable.c_str());
+            sprintf(buffer, "%s*%s", TypeChain_tostring(self->subType, "").c_str(), variable.c_str());
         else
-            sprintf(buffer, "%s* %s", TypeChain_tostring(self->subType, ""), variable.c_str());
+            sprintf(buffer, "%s* %s", TypeChain_tostring(self->subType, "").c_str(), variable.c_str());
     }
     else if (self->chainType == TypeChainEnum_Array)
     {
-        sprintf(buffer, "%s[%d]", TypeChain_tostring(self->subType, variable.c_str()), self->arraySize);
+        sprintf(buffer, "%s[%d]", TypeChain_tostring(self->subType, variable.c_str()).c_str(), self->arraySize);
     }
     else if (self->chainType == TypeChainEnum_Function)
     {
@@ -309,7 +309,7 @@ static std::string TypeChain_tostring(TypeChain* self, std::string variable)
         }
         else
         {
-            for (int i = 0; i < self->params.size(); i++)
+            for (unsigned i = 0; i < self->params.size(); i++)
             {
                 if (i > 0)
                     strcat(buffer, ",");
@@ -317,7 +317,7 @@ static std::string TypeChain_tostring(TypeChain* self, std::string variable)
             }
             params = buffer;
         }
-        sprintf(buffer, "%s (*%s) (%s)", TypeChain_tostring(self->result, ""), variable, params.c_str());
+        sprintf(buffer, "%s (*%s) (%s)", TypeChain_tostring(self->result, "").c_str(), variable.c_str(), params.c_str());
     }
     else
     {
@@ -337,7 +337,7 @@ static void TypeChain_make_dependencies(TypeChain* self, DependencyCollection *d
     }
     else if (self->chainType == TypeChainEnum_Function)
     {
-        for (int i = 0; i < self->params.size(); i++)
+        for (unsigned i = 0; i < self->params.size(); i++)
             ParamDef_make_dependencies(self->params[i], dependencies);
         TypeChain_make_dependencies(self->result, dependencies);
     }
@@ -367,9 +367,9 @@ static TypeDef* TypeDef_init(TypeChain *source, std::string target, clang_locati
 static void TypeDef_print_struct(TypeDef *self, FILE *file, int depth)
 {
     if (self->source->chainType == TypeChainEnum_Function)
-        fprintf(file, "typedef %s; /* %s:%d */\n", TypeChain_tostring(self->source, self->target), self->location.file, self->location.line);
+        fprintf(file, "typedef %s; /* %s:%d */\n", TypeChain_tostring(self->source, self->target).c_str(), self->location.file.c_str(), self->location.line);
     else
-        fprintf(file, "typedef %s %s; /* %s:%d */\n", TypeChain_tostring(self->source, ""), self->target.c_str(), self->location.file, self->location.line);
+        fprintf(file, "typedef %s %s; /* %s:%d */\n", TypeChain_tostring(self->source, "").c_str(), self->target.c_str(), self->location.file.c_str(), self->location.line);
 }
 
 static std::string TypeDef_getname(TypeDef*  self)
@@ -464,7 +464,7 @@ static void StructDef_print_struct(StructDef *self, FILE *file, int depth)
 
     if (self->structType == StructDefEnum_Struct || self->structType == StructDefEnum_Union || self->structType == StructDefEnum_Enumeration)
     {
-        fprintf(file, "%s%s /* %s:%s*/\n", indent, self->name, self->location.file, self->location.line);
+        fprintf(file, "%s%s /* %s:%d*/\n", indent, self->name.c_str(), self->location.file.c_str(), self->location.line);
         fprintf(file, "%s{\n", indent);
         for (std::pair<std::string, GenericDef*> element : self->children->items)
             StructDef_print_struct(element.second->structDef, file, depth + 1);
@@ -472,13 +472,13 @@ static void StructDef_print_struct(StructDef *self, FILE *file, int depth)
         {
             std::string name = self->name;
             replaceAll(name, "enum ", "");
-            fprintf(file, "    %s_DUMMY = 0", name);
+            fprintf(file, "    %s_DUMMY = 0", name.c_str());
         }
         fprintf(file, "%s}%s;\n\n", indent, self->variable.c_str());
     }
     
     if (self->structType == StructDefEnum_Field)
-        fprintf(file, "%s%s;\n", indent, TypeChain_tostring(self->type, self->name));
+        fprintf(file, "%s%s;\n", indent, TypeChain_tostring(self->type, self->name).c_str());
 }
 
 static std::string StructDef_getname(StructDef* self)
@@ -491,7 +491,7 @@ static std::string StructDef_make_declaration(StructDef *self)
 {
     char buffer[200] = {0};
     if (self->structType == StructDefEnum_Struct || self->structType == StructDefEnum_Union || self->structType == StructDefEnum_Enumeration)
-        sprintf(buffer, "%s; /* %s:%d */", self->name, self->location.file, self->location.line);
+        sprintf(buffer, "%s; /* %s:%d */", self->name.c_str(), self->location.file.c_str(), self->location.line);
     return buffer;
 }
 
@@ -571,7 +571,7 @@ static void DefinitionCollection_append(DefinitionCollection* self, CXCursor nod
         "/verrsrc.h",
         "/winreg.h"
     };
-    for (int i = 0; i < sizeof(ignored_files)/sizeof(*ignored_files); i++)
+    for (unsigned i = 0; i < sizeof(ignored_files)/sizeof(*ignored_files); i++)
     {
         if (hasEnding(file, ignored_files[i]))
             ignored = 1;
@@ -661,7 +661,7 @@ static void FunctionItem_make_dependencies(FunctionItem* self, DependencyCollect
 {
     if (self->return_type != 0)
         TypeChain_make_dependencies(self->return_type, dependencies);
-    for (int i = 0; i < self->params.size(); i++)
+    for (unsigned i = 0; i < self->params.size(); i++)
         ParamDef_make_dependencies(self->params[i], dependencies);
 }
 
@@ -670,7 +670,7 @@ static void FunctionItem_fill(FunctionItem* self, CXCursor node)
 {
     self->isEmpty = 0;
     std::vector<CXCursor> children = clang_get_children(node);
-    for (int i = 0; i < children.size(); i++)
+    for (unsigned i = 0; i < children.size(); i++)
     {
         CXCursor child = children[i];
         if (clang_getCursorKind(child) == CXCursor_ParmDecl)
@@ -687,7 +687,7 @@ static std::string FunctionItem_get_arguments_decl(FunctionItem* self)
 
     char buffer[500] = {0};
     
-    for (int i = 0; i < self->params.size(); i++)
+    for (unsigned i = 0; i < self->params.size(); i++)
     {
         if (i > 0)
             strcat(buffer, ",");
@@ -703,7 +703,7 @@ static std::string FunctionItem_get_arguments_calling(FunctionItem* self)
 
     char buffer[500] = {0};
     
-    for (int i = 0; i < self->params.size(); i++)
+    for (unsigned i = 0; i < self->params.size(); i++)
     {
         if (i > 0)
             strcat(buffer, ",");
@@ -730,7 +730,7 @@ static FunctionItem* FunctionCollection_get_item(FunctionCollection* self, std::
     return self->items[name];
 }
 
-
+/*
 static void FunctionCollection_dump_items(FunctionCollection* self)
 {
     for (std::pair<std::string, FunctionItem*> element : self->items)
@@ -738,7 +738,8 @@ static void FunctionCollection_dump_items(FunctionCollection* self)
         FunctionItem *func = element.second;
         printf("%s - %s(%s) - relay: %d\n", func->callingconvention.c_str(), func->name.c_str(), func->internalname.c_str(), func->relay);
     }
-}
+}*/
+
 static void FunctionItem_parse_from_spec_line(FunctionItem* function_item, std::string line)
 {
     std::vector<std::string> rows = split(line, ' ');
@@ -797,7 +798,7 @@ static void FunctionCollection_load_from_specfile(FunctionCollection* self, std:
     
     std::vector<FunctionItem*> items_temp;
     std::vector<std::string> all_names;
-    for (int i = 0; i < lines.size(); i++)
+    for (unsigned i = 0; i < lines.size(); i++)
     {
         std::string line = lines[i];
         if (line == "" || line[0] == '#')
@@ -810,7 +811,7 @@ static void FunctionCollection_load_from_specfile(FunctionCollection* self, std:
         all_names.push_back(item->name);
     }
     
-    for (int i = 0; i < items_temp.size(); i++)
+    for (unsigned i = 0; i < items_temp.size(); i++)
     {
         FunctionItem* item = items_temp[i];
         BOOL is_in_names = (item->internalname != item->name)  &&  (std::find(all_names.begin(), all_names.end(), item->internalname) != all_names.end());
@@ -839,14 +840,14 @@ static CXCursor parse_file(std::string path_file)
 
     translationUnit = clang_parseTranslationUnit(index, path_file.c_str(), arguments, sizeof(arguments)/sizeof(*arguments), 0, 0, CXTranslationUnit_None);
 
-    int len_diagnostics = clang_getNumDiagnostics(translationUnit);
-    for (int i = 0; i < len_diagnostics; i++)
+    unsigned len_diagnostics = clang_getNumDiagnostics(translationUnit);
+    for (unsigned i = 0; i < len_diagnostics; i++)
     {
         CXDiagnostic diagnostic = clang_getDiagnostic(translationUnit, i);
         std::string spelling = clang_str_get(clang_getDiagnosticSpelling(diagnostic));
         clang_location location = clang_location_get(clang_getDiagnosticLocation(diagnostic));
 
-        printf("\t\t%s %s:%d\n", spelling.c_str(), location.file, location.line);
+        printf("\t\t%s %s:%d\n", spelling.c_str(), location.file.c_str(), location.line);
     }
 
     return clang_getTranslationUnitCursor(translationUnit);
@@ -879,7 +880,7 @@ std::vector<std::string> get_makefile_sources(std::string path)
     }
 
     BOOL doadd = 0;
-    for(int i = 0; i < lines.size(); i++)
+    for(unsigned i = 0; i < lines.size(); i++)
     {
         std::string line = lines[i];
         if (hasStart(line, "C_SRCS"))
@@ -914,7 +915,7 @@ static void make_thunk_callingconvention_32_to_64_a(FILE* file, std::string dlln
 {
     std::string funcname = func->identifier;
     int num_params = func->params.size();
-    fprintf(file, "extern WINAPI void wine32a_%s_%s(void);  /* %s:%d */\n", dllname.c_str(), funcname.c_str(), func->location.file, func->location.line);
+    fprintf(file, "extern WINAPI void wine32a_%s_%s(void);  /* %s:%d */\n", dllname.c_str(), funcname.c_str(), func->location.file.c_str(), func->location.line);
     fprintf(file, "__ASM_GLOBAL_FUNC(wine32a_%s_%s,\n\n", dllname.c_str(), funcname.c_str());
     //Setup own stackframe
     fprintf(file, "\t\"push %%rbp \\n\"\n");
@@ -957,7 +958,7 @@ static void make_thunk_callingconvention_32_to_64_b(FILE* file, std::string dlln
     std::string return_type = TypeChain_tostring(func->return_type, "return_value");
     BOOL has_return = !TypeChain_is_void(func->return_type);
     TypeChain* return_base_type = DefinitionCollection_resolve_typedefs(definitions, func->return_type);
-    fprintf(file, "WINAPI %s wine32b_%s_%s(%s) /* %s:%d */\n{\n", TypeChain_tostring(func->return_type, ""), dllname.c_str(), funcname.c_str(), arguments_decl.c_str(), func->location.file, func->location.line);
+    fprintf(file, "WINAPI %s wine32b_%s_%s(%s) /* %s:%d */\n{\n", TypeChain_tostring(func->return_type, "").c_str(), dllname.c_str(), funcname.c_str(), arguments_decl.c_str(), func->location.file.c_str(), func->location.line);
     if (has_return)
         fprintf(file, "\t%s;", return_type.c_str());
     fprintf(file, "\tTRACE(\"Enter %s\\n\");\n", funcname.c_str());
@@ -1037,7 +1038,7 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
         }
 
         std::vector<CXCursor> children = clang_get_children(node);
-        for(int i = 0; i < children.size(); i++)
+        for (unsigned i = 0; i < children.size(); i++)
         {
             find_all_definitions(children[i], definitions, funcs, source);
         }
@@ -1065,7 +1066,7 @@ static void handle_dll_source(std::string dll_path, std::string source, Function
     CXCursor cursor = parse_file(path_file);
 
     std::vector<CXCursor> children = clang_get_children(cursor);
-    for (int i = 0; i < children.size(); i++)
+    for (unsigned i = 0; i < children.size(); i++)
     {
         find_all_definitions(children[i], ret_definitions, funcs, source);
     }
@@ -1120,7 +1121,7 @@ static void handle_dll(const char* name)
 
     // Read files
     DefinitionCollection* definitionCollection = DefinitionCollection_init();
-    for (int i = 0; i < sources.size(); i++)
+    for (unsigned i = 0; i < sources.size(); i++)
     {
         std::string source = sources[i];
         //if not source.endswith("version.c"):
@@ -1148,7 +1149,7 @@ static void handle_dll(const char* name)
             usedDefinitions.push_back(definition);
     }
 
-    for (int i = 0; i < usedDefinitions.size(); i++)
+    for (unsigned i = 0; i < usedDefinitions.size(); i++)
     {
         GenericDef* definition = usedDefinitions[i];
         std::string declaration = GenericDef_make_declaration(definition);
@@ -1156,7 +1157,7 @@ static void handle_dll(const char* name)
             fprintf(file_source, "%s\n", declaration.c_str());
     }
     fprintf(file_source, "\n");
-    for (int i = 0; i < usedDefinitions.size(); i++)
+    for (unsigned i = 0; i < usedDefinitions.size(); i++)
     {
         GenericDef* definition = usedDefinitions[i];
         GenericDef_print_struct(definition, file_source, 0);
@@ -1170,7 +1171,7 @@ static void handle_dll(const char* name)
         if (!FunctionItem_is_empty(func))
         {
             std::string arguments = FunctionItem_get_arguments_decl(func);
-            fprintf(file_source, "static WINAPI %s (*p%s)(%s);\n", TypeChain_tostring(func->return_type, ""), func->identifier, arguments);
+            fprintf(file_source, "static WINAPI %s (*p%s)(%s);\n", TypeChain_tostring(func->return_type, "").c_str(), func->identifier.c_str(), arguments.c_str());
         }
         if (func->relay)
         {
@@ -1215,7 +1216,7 @@ static void handle_dll(const char* name)
         FunctionItem* func = element.second;
         if (!FunctionItem_is_empty(func))
         {
-            fprintf(file_source, "\tp%s = (void *)GetProcAddress(library, \"{func.name}\");\n", func->identifier, func->name);
+            fprintf(file_source, "\tp%s = (void *)GetProcAddress(library, \"%s\");\n", func->identifier.c_str(), func->name.c_str());
         }
         if (func->relay)
         {
@@ -1266,7 +1267,7 @@ static void handle_all_dlls()
     #dlls.append("ntdll")
     #dlls.append("kernelbase")*/
 
-    for (int i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
+    for (unsigned i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
     {
         handle_dll(dlls[i]);
     }
@@ -1276,7 +1277,7 @@ static void handle_all_dlls()
     
     fprintf(file_shared, "#include <windows.h>'\n\n");
 
-    for (int i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
+    for (unsigned i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
     {
         fprintf(file_shared, "void* wine_thunk_get_for_%s(void *func);\n", dlls[i]);
     }
@@ -1286,7 +1287,7 @@ static void handle_all_dlls()
     fprintf(file_shared, "WINAPI void *wine_thunk_get_for_any(void *func)\n");
     fprintf(file_shared, "{\n");
     fprintf(file_shared, "\tvoid *ret;\n");
-    for (int i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
+    for (unsigned i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
     {
         fprintf(file_shared, "\tif ((ret = wine_thunk_get_for_%s(func)) != NULL)\n", dlls[i]);
         fprintf(file_shared, "\t\treturn ret;\n");
@@ -1295,7 +1296,7 @@ static void handle_all_dlls()
     fprintf(file_shared, "\treturn func;");
     fprintf(file_shared, "}\n\n");
 
-    for (int i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
+    for (unsigned i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
     {
         fprintf(file_shared, "void* wine_thunk_initialize_%s(void);\n", dlls[i]);
     }
@@ -1304,7 +1305,7 @@ static void handle_all_dlls()
     // wine_thunk_initialize_dll
     fprintf(file_shared, "WINAPI void wine_thunk_initialize_any(const char *dll)\n");
     fprintf(file_shared, "{\n");
-    for (int i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
+    for (unsigned i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
     {
         fprintf(file_shared, "\tif (!strcasecmp(\"%s.dll\", dll))\n", dlls[i]);
         fprintf(file_shared, "\t\twine_thunk_initialize_%s();\n", dlls[i]);
@@ -1316,7 +1317,7 @@ static void handle_all_dlls()
     fprintf(file_shared, "IMPORTLIB = winethunks\n");
     fprintf(file_shared, "\n");
     fprintf(file_shared, "C_SRCS = \\\n");
-    for (int i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
+    for (unsigned i = 0; i < sizeof(dlls)/sizeof(*dlls); i++)
     {
         fprintf(file_shared, "\t%s.c \\\n", dlls[i]);
     }

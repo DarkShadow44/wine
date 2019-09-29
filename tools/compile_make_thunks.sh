@@ -1,2 +1,2 @@
 #!/bin/bash
-g++ make_thunks.cpp -lclang -o make_thunks
+g++ make_thunks.cpp -O0 -g -lclang -o make_thunks -Wall -Werror
