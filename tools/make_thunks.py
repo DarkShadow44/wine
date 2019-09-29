@@ -1,26 +1,6 @@
 
 def handle_dll(name):
 
-
-	
-
-	# Make function pointers
-	for func in funcs:
-		if not func.is_empty():
-			arguments = func.get_arguments_decl()
-			contents_source.append(f'static WINAPI {func.return_type.tostring("")} (*p{func.identifier})({arguments});')
-		if func.relay:
-			contents_source.append(f'static void* p{func.identifier};')
-			contents_source.append(f'static void* pext{func.identifier};')
-	contents_source.append("")
-
-	# Add thunks
-	for func in funcs:
-		if not func.is_empty():
-			# print(node.displayname + " " + str(node.location.file) + ":" + str(node.location.line) )
-			make_thunk_callingconvention_32_to_64_b(contents_source, name, func, definitionCollection)
-			make_thunk_callingconvention_32_to_64_a(contents_source, name, func)
-
 	# Make init function
 	contents_source.append('static BOOL initialized = FALSE;')
 	contents_source.append("")

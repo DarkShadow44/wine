@@ -1154,6 +1154,37 @@ static void handle_dll(const char* name)
 		GenericDef* definition = usedDefinitions[i];
 		GenericDef_print_struct(definition, file_source, 0);
 	}
+	
+	
+	// Make function pointers
+	for (std::pair<std::string, FunctionItem*> element : funcs->items)
+	{
+		FunctionItem* func = element.second;
+		if (!FunctionItem_is_empty(func))
+		{
+			std::string arguments = FunctionItem_get_arguments_decl(func);
+			fprintf(file_source, "static WINAPI %s (*p%s)(%s);\n", TypeChain_tostring(func->return_type, ""), func->identifier, arguments);
+		}
+		if (func->relay)
+		{
+			fprintf(file_source, "static void* p%s;\n", func->identifier.c_str());
+			fprintf(file_source, "static void* pext%s;\n", func->identifier.c_str());
+		}
+	}
+	fprintf(file_source, "\n");
+	
+	// Add thunks
+	for (std::pair<std::string, FunctionItem*> element : funcs->items)
+	{
+		FunctionItem* func = element.second;
+		if (!FunctionItem_is_empty(func))
+		{
+			make_thunk_callingconvention_32_to_64_b(file_source, name, func, definitionCollection);
+			make_thunk_callingconvention_32_to_64_a(file_source, name, func);
+		}
+	}
+
+
 
 	fclose(file_source);
 	printf("Finished %s\n", name);
