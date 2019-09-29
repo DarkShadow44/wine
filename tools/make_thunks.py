@@ -1,34 +1,4 @@
 
-def make_thunk_callingconvention_32_to_64_b(contents_source, dllname, func, definitions):
-	funcname = func.identifier
-	arguments_decl = func.get_arguments_decl()
-	arguments_calling = func.get_arguments_calling()
-	return_type = func.return_type.tostring('return_value')
-	has_return = not func.return_type.is_void()
-	return_base_type = definitions.resolve_typedefs(func.return_type)
-	contents_source.append(f'WINAPI {func.return_type.tostring("")} wine32b_{dllname}_{funcname}({arguments_decl}) /* {func.file}:{func.line} */')
-	contents_source.append('{')
-	if has_return:
-		contents_source.append(f'\t{return_type};');
-	contents_source.append(f'\tTRACE("Enter {funcname}\\n");')
-	if has_return:
-		contents_source.append(f'\treturn_value = p{funcname}({arguments_calling});')
-	else:
-		contents_source.append(f'\tp{funcname}({arguments_calling});')
-	if (return_base_type.chainType == TypeChainEnum.Function):
-		contents_source.append('\treturn_value = wine_make_thunk_function_alloc(return_value);')
-	contents_source.append(f'\tTRACE("Leave {funcname}\\n");')
-	if has_return:
-		contents_source.append('\treturn return_value;')
-	contents_source.append('}')
-	contents_source.append("")
-
-def node_is_only_declaration(node):
-	definition = node.node.get_definition();
-	if definition is None:
-		return True;
-	return node.node != definition;
-
 def find_all_definitions(node, definitions, funcs, source):
 	if node.get_kind() == CursorKind.FUNCTION_DECL and funcs.contains(node.get_spelling()):
 		if (not node.get_location_file().endswith(f'/{source}')):

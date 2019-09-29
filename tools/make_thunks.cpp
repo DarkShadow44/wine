@@ -943,6 +943,37 @@ static void make_thunk_callingconvention_32_to_64_a(FILE* file, std::string dlln
 	fprintf(file, "\t\"ret \\n\"\n)\n\n");
 }
 
+
+static void make_thunk_callingconvention_32_to_64_b(FILE* file, std::string dllname, FunctionItem* func, DefinitionCollection* definitions)
+{
+	std::string funcname = func->identifier;
+	std::string arguments_decl = FunctionItem_get_arguments_decl(func);
+	std::string arguments_calling = FunctionItem_get_arguments_calling(func);
+	std::string return_type = TypeChain_tostring(func->return_type, "return_value");
+	BOOL has_return = !TypeChain_is_void(func->return_type);
+	TypeChain* return_base_type = DefinitionCollection_resolve_typedefs(definitions, func->return_type);
+	fprintf(file, "WINAPI %s wine32b_%s_%s(%s) /* %s:%d */\n{\n", TypeChain_tostring(func->return_type, ""), dllname.c_str(), funcname.c_str(), arguments_decl.c_str(), func->location.file, func->location.line);
+	if (has_return)
+		fprintf(file, "\t%s;", return_type.c_str());
+	fprintf(file, "\tTRACE(\"Enter %s\\n\");\n", funcname.c_str());
+	if (has_return)
+		fprintf(file, "\treturn_value = p%s(%s);\n", funcname.c_str(), arguments_calling.c_str());
+	else
+		fprintf(file, "\tp%s(%s);\n", funcname.c_str(), arguments_calling.c_str());
+	if (return_base_type->chainType == TypeChainEnum_Function)
+		fprintf(file, "\treturn_value = wine_make_thunk_function_alloc(return_value);\n");
+	fprintf(file, "\tTRACE(\"Leave %s\\n\");\n", funcname.c_str());
+	if (has_return)
+		fprintf(file, "\treturn return_value;\n");
+	fprintf(file, "}\n\n");
+}
+
+BOOL node_is_only_declaration(CXCursor node)
+{
+	CXCursor definition = clang_getCursorDefinition(node);
+	return !clang_equalCursors(node, definition);
+}
+
 static void handle_dll(const char* dll)
 {
 	char path_source[255];
