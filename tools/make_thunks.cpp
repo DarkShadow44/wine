@@ -1307,6 +1307,29 @@ static void handle_all_dlls()
     fclose(file_shared);
 }
 
+static void run_test()
+{
+    FILE* file_test = fopen("make_thunks.test.out", "w");
+    CXCursor cursor = parse_file("make_thunks.test.c");
+
+
+    FunctionCollection* funcs = FunctionCollection_init();
+    DefinitionCollection* definitionCollection = DefinitionCollection_init();
+
+    std::vector<CXCursor> children = clang_get_children(cursor);
+    for (unsigned i = 0; i < children.size(); i++)
+    {
+        find_all_definitions(children[i], definitionCollection, funcs, "make_thunks.test.c", "");
+    }
+
+    for (unsigned i = 0; i < definitionCollection->items_ordered.size(); i++)
+    {
+        GenericDef* definition = definitionCollection->items_ordered[i];
+        GenericDef_print_struct(definition, file_test, 0);
+    }
+    fclose(file_test);
+}
+
 static void print_help(void)
 {
     printf(
@@ -1395,6 +1418,11 @@ int main (int argc, const char*argv[])
     if (opt_a)
     {
         handle_all_dlls();
+    }
+
+    if (opt_test)
+    {
+        run_test();
     }
 
     return 0;
