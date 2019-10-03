@@ -74,3 +74,9 @@ struct s8
 
 	int f3;
 };
+
+typedef enum e1
+{
+    e1_v1 = 0,
+	e1_v2 = 1,
+} e1;

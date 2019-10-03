@@ -75,6 +75,11 @@ struct s8 /* make_thunks.test.c:65 */
     int f3;
 };
 
+typedef enum e1 /* make_thunks.test.c:78 */
+{
+    e1_DUMMY = 0
+}  e1;
+
 
 
 
@@ -95,4 +100,6 @@ struct s8 /* make_thunks.test.c:65 */
 *s4
 *struct s5
 *struct s8
+*enum e1
+*e1
 */

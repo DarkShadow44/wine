@@ -112,6 +112,7 @@ typedef struct _StructDef
     clang_location location;
     std::vector<TypeDefTarget> typedef_targets;
     BOOL is_anonymous;
+    std::string typedef_dependency; /* When type is StructDefEnum_TypedefStruct, name of the original struct */
 } StructDef;
 
 
@@ -1009,7 +1010,7 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
             CXCursor child = children[i];
             CXCursorKind childkind = clang_getCursorKind(child);
             // Fill in variables only for struct/union
-            if (childkind != CXCursor_StructDecl && childkind != CXCursor_UnionDecl)
+            if (childkind != CXCursor_StructDecl && childkind != CXCursor_UnionDecl && childkind != CXCursor_EnumDecl)
                 continue;
             std::string struct_name = get_cursor_spelling(child);
             if (struct_name == "")
@@ -1018,6 +1019,7 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
             if (definitions->items.count(struct_name) > 0)
             {
                 StructDef *def = definitions->items[struct_name];
+                type_def->typedef_dependency = struct_name;
                 TypeChain* subTypeChain = TypeChain_init(&child, clang_getTypedefDeclUnderlyingType(node), 0);
                 TypeChain_fill_typedef_name(subTypeChain, "");
                 TypeDefTarget target;
@@ -1102,7 +1104,25 @@ static void handle_dll(const char* name)
         std::string definition_name = StructDef_getname(definition);
         BOOL in_dependencies = std::find(dependencies->items.begin(), dependencies->items.end(), definition_name) != dependencies->items.end();
         if (in_dependencies && !DefinitionCollection_is_ignored(definitionCollection, definition_name))
-            usedDefinitions.push_back(definition);
+        {
+            if (definition->structType == StructDefEnum_TypedefStruct)
+            {
+                StructDef *originalStruct = definitionCollection->items[definition->typedef_dependency];
+                if (originalStruct == 0)
+                {
+                    int k = 0;
+                }
+                /* Add original struct, if not exists */
+                if (std::find(usedDefinitions.begin(), usedDefinitions.end(), originalStruct) == usedDefinitions.end())
+                {
+                    usedDefinitions.push_back(originalStruct);
+                }
+            }
+            else
+            {
+                usedDefinitions.push_back(definition);
+            }
+        }
     }
 
     for (unsigned i = 0; i < usedDefinitions.size(); i++)
