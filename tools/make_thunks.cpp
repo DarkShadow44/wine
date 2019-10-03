@@ -91,8 +91,7 @@ enum StructDefEnum
     StructDefEnum_Struct = 2,
     StructDefEnum_Union = 3,
     StructDefEnum_Enumeration = 4,
-    StructDefEnum_TypedefSimple = 5,
-    StructDefEnum_TypedefStruct = 6, /* Only used for dependency management */
+    StructDefEnum_Typedef = 5,
 };
 
 typedef struct
@@ -423,13 +422,11 @@ static StructDef* StructDef_init(CXCursor node)
     if (kind == CXCursor_TypedefDecl)
     {
         CXType resolved_type = resolve_type(type);
-        if (resolved_type.kind == CXType_Elaborated) // struct or union
+        self->structType = StructDefEnum_Typedef;
+        if (resolved_type.kind != CXType_Elaborated) // not struct or union
         {
-            self->structType = StructDefEnum_TypedefStruct;
-        }
-        else
-        {
-            self->structType = StructDefEnum_TypedefSimple;
+            self->structType = StructDefEnum_Typedef;
+            self->is_delayed_typedef_struct = 1;
             TypeDefTarget target;
             target.name = self->name;
             target.type = 0;
@@ -491,16 +488,10 @@ static void StructDef_print_struct(StructDef *self, FILE *file, int depth)
         fprintf(file, "%s%s;\n", indent, TypeChain_tostring(self->type, self->name).c_str());
 
     /* Typedef for struct not part of struct itself */
-    if (self->structType == StructDefEnum_TypedefStruct && self->is_delayed_typedef_struct)
+    if (self->structType == StructDefEnum_Typedef&& self->is_delayed_typedef_struct)
     {
         fprintf(file, "typedef %s; /* %s:%d */\n\n", TypeChain_tostring(self->type, self->name.c_str()).c_str(), self->location.file.c_str(), self->location.line);
     }
-
-    if (self->structType == StructDefEnum_TypedefSimple)
-    {
-        fprintf(file, "typedef %s; /* %s:%d */\n\n", TypeChain_tostring(self->type, self->name.c_str()).c_str(), self->location.file.c_str(), self->location.line);
-    }
-    /* Ignore StructDefEnum_TypeDefStruct here */
 }
 
 static std::string StructDef_getname(StructDef* self)
@@ -527,7 +518,7 @@ static void StructDef_make_dependencies(StructDef *self, DependencyCollection* d
     {
         TypeChain_make_dependencies(self->type, dependencies);
     }
-    else if (self->structType == StructDefEnum_TypedefStruct || self->structType == StructDefEnum_TypedefSimple)
+    else if (self->structType == StructDefEnum_Typedef)
     {
         DependencyCollection_append(dependencies, self->typedef_dependency);
         TypeChain_make_dependencies(self->type, dependencies);
@@ -543,7 +534,7 @@ static TypeChain* DefinitionCollection_resolve_typedefs(DefinitionCollection* se
 
 static TypeChain* StructDef_resolve_typedef(StructDef* self, DefinitionCollection* definitions)
 {
-    if (self->structType == StructDefEnum_TypedefStruct || self->structType == StructDefEnum_TypedefSimple)
+    if (self->structType == StructDefEnum_Typedef)
     {
         return DefinitionCollection_resolve_typedefs(definitions, self->type);
     }
@@ -1076,7 +1067,7 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
             typedef_type = resolve_type(typedef_type);
             type_def->typedef_dependency = clang_str_get(clang_getTypeSpelling(typedef_type));
         }
-        // Add StructDefEnum_TypedefSimple entry or dummy StructDefEnum_TypedefStruct.
+
         DefinitionCollection_append(definitions, node, type_def);
     }
 }
@@ -1153,7 +1144,7 @@ static void handle_dll(const char* name)
         BOOL in_dependencies = std::find(dependencies->items.begin(), dependencies->items.end(), definition_name) != dependencies->items.end();
         if (in_dependencies && !DefinitionCollection_is_ignored(definitionCollection, definition_name))
         {
-            if (definition->structType == StructDefEnum_TypedefStruct && !definition->is_delayed_typedef_struct)
+            if (definition->structType == StructDefEnum_Typedef && !definition->is_delayed_typedef_struct)
             {
                 StructDef *originalStruct = definitionCollection->items[definition->typedef_dependency];
                 if (std::find(usedDefinitions.begin(), usedDefinitions.end(), originalStruct) == usedDefinitions.end())
