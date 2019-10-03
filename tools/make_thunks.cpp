@@ -1307,8 +1307,95 @@ static void handle_all_dlls()
     fclose(file_shared);
 }
 
-int main()
+static void print_help(void)
 {
-    handle_all_dlls();
+    printf(
+        "Usage: ./make_thunks MODE [options]\n"
+        "\n"
+        "Processing modes Options:\n"
+        "-h, --help                      Display this help."
+        "-a, --generate-thunks-all       Generate all thunks, including the Makefile and shared components.\n"
+        "-u, --update-thunks             Regenerate the thunks for a single dll, without touching the Makefile or shared components.\n"
+        "-f, --fixup-sources             Fixup the wine sources to work with wine-pure. All structures need to have a 32bit layout.\n"
+        "--test                          Run the tests\n"
+        "\n"
+        "Options:\n"
+        "-t NUMBER, --threads NUMBER     Number of threads to use (default 4). To disable threading, set to 1.\n"
+
+    );
+}
+
+int main (int argc, const char*argv[])
+{
+    int i;
+    BOOL opt_a = 0, opt_u = 0, opt_f = 0, opt_test = 0;
+    int num_modes = 0;
+    int opt_t = 4;
+
+    for (i = 1; i < argc; i++)
+    {
+        if (!strcmp(argv[i], "--test"))
+        {
+            opt_test = 1;
+        }
+        else if (!strcmp(argv[i], "-h") || !strcmp(argv[i], "--help"))
+        {
+            print_help();
+            return 0;
+        }
+        else if (!strcmp(argv[i], "-a") || !strcmp(argv[i], "--generate-thunks-all"))
+        {
+            opt_a = 1;
+        }
+        else if (!strcmp(argv[i], "-u") || !strcmp(argv[i], "--update-thunks"))
+        {
+            opt_u = 1;
+        }
+        else if (!strcmp(argv[i], "-f") || !strcmp(argv[i], "--fixup-sources"))
+        {
+            opt_f = 1;
+        }
+        else if (!strcmp(argv[i], "-t") || !strcmp(argv[i], "--threads"))
+        {
+            i++;
+            if (i >= argc)
+            {
+                printf("Missing parameter to -t\n");
+                return -1;
+            }
+            opt_t = atoi(argv[i]);
+            if (opt_t < 1)
+            {
+                printf("Please set threads to use to a number > 0\n");
+                return -1;
+            }
+        }
+        else
+        {
+            printf("Unknown option %s\n", argv[i]);
+            return -1;
+        }
+    }
+
+    if (opt_a)
+        num_modes++;
+    if (opt_f)
+        num_modes++;
+    if (opt_u)
+        num_modes++;
+    if (opt_test)
+        num_modes++;
+
+    if (num_modes != 1)
+    {
+        printf("Please select exactly one processing mode. See -h for help.\n");
+        return -1;
+    }
+
+    if (opt_a)
+    {
+        handle_all_dlls();
+    }
+
     return 0;
 }
