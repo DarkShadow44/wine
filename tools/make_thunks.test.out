@@ -1,0 +1,65 @@
+struct s1 /* make_thunks.test.c:2 */
+{
+    int f1;
+    long f2;
+    char* f3;
+    void (*f4) (struct s1* param1, int param2, int* param3[4]);
+};
+
+typedef struct /* make_thunks.test.c:10 */
+{
+    int f1;
+}  s2, * s2b,  s2c[4];
+
+typedef struct s3 /* make_thunks.test.c:15 */
+{
+    int f1;
+}  s4;
+
+struct s5 /* make_thunks.test.c:20 */
+{
+    int f1;
+    struct s6 /* make_thunks.test.c:23 */
+    {
+        int ff1;
+        int ff2;
+    };
+
+    struct s6 f2;
+    struct /* make_thunks.test.c:29 */
+    {
+        int f3;
+        int f4;
+    };
+
+    struct /* make_thunks.test.c:35 */
+    {
+        int ff1;
+        int ff2;
+    } f5;
+
+    union s7 /* make_thunks.test.c:41 */
+    {
+        int ff1;
+        int ff2;
+    };
+
+    union s7 f6;
+    char f7;
+    union /* make_thunks.test.c:49 */
+    {
+        int f8;
+        int f9;
+    };
+
+};
+
+struct s8 /* make_thunks.test.c:56 */
+{
+    struct /* make_thunks.test.c:58 */
+    {
+        int ff1;
+    } f2[40];
+
+};
+

@@ -91,8 +91,14 @@ enum StructDefEnum
     StructDefEnum_Struct = 2,
     StructDefEnum_Union = 3,
     StructDefEnum_Enumeration = 4,
+    StructDefEnum_SimpleType = 5,
 };
 
+typedef struct
+{
+    std::string name;
+    TypeChain* type;
+} TypeDefTarget;
 
 typedef struct _StructDef
 {
@@ -100,19 +106,12 @@ typedef struct _StructDef
     TypeChain* type;
     struct _DefinitionCollection* children;
     StructDefEnum structType;
-    std::string named_type;
     std::string variable;
     TypeChain* variable_type;
     clang_location location;
+    std::vector<TypeDefTarget> typedef_targets;
+    BOOL is_anonymous;
 } StructDef;
-
-typedef struct
-{
-    TypeChain *source;
-    std::string target;
-    clang_location location;
-} TypeDef;
-
 
 
 static void trim(std::string& str)
@@ -139,22 +138,10 @@ std::vector<std::string> split(const std::string &s, char delim) {
     return elems;
 }
 
-
-
-typedef struct
-{
-    BOOL isStruct;
-    union
-    {
-        StructDef* structDef;
-        TypeDef* typeDef;
-    };
-} GenericDef;
-
 typedef struct _DefinitionCollection
 {
-    std::map<std::string, GenericDef*> items;
-    std::vector<GenericDef*> items_ordered;
+    std::map<std::string, StructDef*> items;
+    std::vector<StructDef*> items_ordered;
     std::map<std::string, BOOL> ignored_items;
     struct _DefinitionCollection *children;
 } DefinitionCollection;
@@ -215,16 +202,7 @@ static DependencyCollection* DependencyCollection_init(DefinitionCollection* def
 }
 
 static void StructDef_make_dependencies(StructDef *self, DependencyCollection* dependencies);
-static void TypeDef_make_dependencies(TypeDef* self, DependencyCollection *dependencies);
-
-static void GenericDef_make_dependencies(GenericDef* self, DependencyCollection *dependencies)
-{
-    if (self->isStruct)
-        StructDef_make_dependencies(self->structDef, dependencies);
-    else
-        TypeDef_make_dependencies(self->typeDef, dependencies);
-}
-static std::string GenericDef_getname(GenericDef* self);
+static std::string StructDef_getname(StructDef* self);
 static void DependencyCollection_append(DependencyCollection* self, std::string item)
 {
     if (std::find(self->items.begin(), self->items.end(), item) == self->items.end())
@@ -232,9 +210,9 @@ static void DependencyCollection_append(DependencyCollection* self, std::string 
         self->items.push_back(item);
         for (unsigned i = 0; i < self->definitions->items_ordered.size(); i++)
         {
-            GenericDef *definition = self->definitions->items_ordered[i];
-            if (GenericDef_getname(definition) == item)
-                GenericDef_make_dependencies(definition, self);
+            StructDef *definition = self->definitions->items_ordered[i];
+            if (StructDef_getname(definition) == item)
+                StructDef_make_dependencies(definition, self);
         }        
     }
 }
@@ -354,52 +332,6 @@ static BOOL TypeChain_is_void(TypeChain* self)
     return (self->chainType == TypeChainEnum_Normal) && (self->normal == "void");
 }
 
-static TypeDef* TypeDef_init(TypeChain *source, std::string target, clang_location location)
-{
-    TypeDef* self = new TypeDef();
-    
-    self->source = source;
-    self->target = target;
-    self->location = location;
-    
-    return self;
-}
-
-
-static void TypeDef_print_struct(TypeDef *self, FILE *file, int depth)
-{
-    if (self->source->chainType == TypeChainEnum_Function)
-        fprintf(file, "typedef %s; /* %s:%d */\n\n", TypeChain_tostring(self->source, self->target).c_str(), self->location.file.c_str(), self->location.line);
-    else
-        fprintf(file, "typedef %s %s; /* %s:%d */\n\n", TypeChain_tostring(self->source, "").c_str(), self->target.c_str(), self->location.file.c_str(), self->location.line);
-}
-
-static std::string TypeDef_getname(TypeDef*  self)
-{
-    return self->target;
-}
-
-static std::string TypeDef_make_declaration(TypeDef*  self)
-{
-    return "";
-}
-
-
-
-    
-
-static void TypeDef_make_dependencies(TypeDef* self, DependencyCollection *dependencies)
-{
-    TypeChain_make_dependencies(self->source, dependencies);
-}
-
-
-static TypeChain* DefinitionCollection_resolve_typedefs(DefinitionCollection* self, TypeChain* type);
-static TypeChain* TypeDef_resolve_typedef(TypeDef* self, DefinitionCollection* definitions)
-{
-    return DefinitionCollection_resolve_typedefs(definitions, self->source);
-}
-
 static DefinitionCollection* DefinitionCollection_init(void)
 {
         DefinitionCollection* self = new DefinitionCollection();
@@ -407,25 +339,63 @@ static DefinitionCollection* DefinitionCollection_init(void)
         return self;
 }
 
-static StructDef* StructDef_init(CXCursor node, std::string typedef_name)
+static std::string get_anonymous_name(CXCursor cursor)
+{
+    clang_location location = clang_location_get(clang_getCursorLocation(cursor));
+    char new_name[200] = {0};
+    sprintf(new_name, "__anonymous_%s_%d", location.file.c_str(), location.line);
+    return new_name;
+}
+
+static std::string get_cursor_spelling(CXCursor node)
+{
+    std::string ret = clang_str_get(clang_getCursorSpelling(node));
+    CXCursorKind kind = clang_getCursorKind(node);
+
+    if (ret == "")
+        return "";
+
+    if (kind == CXCursor_StructDecl)
+    {
+        return "struct " + ret;
+    }
+    if (kind == CXCursor_UnionDecl)
+    {
+        return "union " + ret;
+    }
+    if (kind == CXCursor_EnumDecl)
+    {
+        return "enum " + ret;
+    }
+    return ret;
+}
+
+static StructDef* StructDef_init(CXCursor node)
 {
     StructDef *self = new StructDef();
-    self->name = clang_str_get(clang_getCursorSpelling(node));
-    if (typedef_name != "")
-        self->name = typedef_name;
-    CXType type = clang_getCursorType(node);
-    self->type = TypeChain_init(&node, type, 0);
     CXCursorKind kind = clang_getCursorKind(node);
+    self->location = clang_location_get(clang_getCursorLocation(node));
+    self->name = get_cursor_spelling(node);
+    self->is_anonymous = 0;
+    if (self->name == "")
+    {
+        self->is_anonymous = 1;
+        self->name = get_anonymous_name(node);
+    }
+    CXType type = clang_getCursorType(node);
+    if (kind == CXCursor_TypedefDecl)
+    {
+        type = clang_getTypedefDeclUnderlyingType(node);
+    }
+    self->type = TypeChain_init(&node, type, 0);
     self->children = DefinitionCollection_init();
     if (kind == CXCursor_StructDecl)
     {
         self->structType = StructDefEnum_Struct;
-        self->name = "struct " + self->name;
     }
     if (kind == CXCursor_UnionDecl)
     {
         self->structType = StructDefEnum_Union;
-        self->name = "union " + self->name;
     }
     if (kind == CXCursor_FieldDecl)
     {
@@ -434,11 +404,23 @@ static StructDef* StructDef_init(CXCursor node, std::string typedef_name)
     if (kind == CXCursor_EnumDecl)
     {
         self->structType = StructDefEnum_Enumeration;
-        self->name = "enum " + self->name;
     }
-    self->named_type = clang_str_get(clang_getTypeSpelling(type));
+    if (kind == CXCursor_TypedefDecl)
+    {
+        if (type.kind == CXType_Complex) // struct or union
+        {
+
+        }
+        else
+        {
+            self->structType = StructDefEnum_SimpleType;
+            TypeDefTarget target;
+            target.name = self->name;
+            target.type = 0;
+            self->typedef_targets.push_back(target);
+        }
+    }
     self->variable_type = 0;
-    self->location = clang_location_get(clang_getCursorLocation(node));
     return self;
 }
 
@@ -453,24 +435,48 @@ static void StructDef_print_struct(StructDef *self, FILE *file, int depth)
 
     if (self->structType == StructDefEnum_Struct || self->structType == StructDefEnum_Union || self->structType == StructDefEnum_Enumeration)
     {
-        fprintf(file, "%s%s /* %s:%d */\n", indent, self->name.c_str(), self->location.file.c_str(), self->location.line);
+        if (self->typedef_targets.size() > 0)
+            fprintf(file, "typedef ");
+        std::string name = self->name;
+        if (self->is_anonymous)
+        {
+            if (self->structType == StructDefEnum_Struct)
+                name = "struct";
+            if (self->structType == StructDefEnum_Union)
+                name = "union";
+        }
+        fprintf(file, "%s%s /* %s:%d */\n", indent, name.c_str(), self->location.file.c_str(), self->location.line);
         fprintf(file, "%s{\n", indent);
         for (unsigned i = 0; i < self->children->items_ordered.size(); i++)
-            StructDef_print_struct(self->children->items_ordered[i]->structDef, file, depth + 1);
+            StructDef_print_struct(self->children->items_ordered[i], file, depth + 1);
         if (self->structType == StructDefEnum_Enumeration)
         {
             std::string name = self->name;
             replaceAll(name, "enum ", "");
             fprintf(file, "    %s_DUMMY = 0\n", name.c_str());
         }
+
+        // Last line
+        fprintf(file, "%s}", indent);
         if (self->variable != "")
-            fprintf(file, "%s}%s;\n\n", indent, TypeChain_tostring(self->variable_type, self->variable).c_str());
-        else
-            fprintf(file, "%s};\n\n", indent);
+            fprintf(file, "%s", TypeChain_tostring(self->variable_type, self->variable).c_str());
+        for (unsigned i = 0; i < self->typedef_targets.size(); i++)
+        {
+            TypeDefTarget *target = &self->typedef_targets[i];
+            if (i > 0)
+                fprintf(file, ",");
+            fprintf(file, " %s", TypeChain_tostring(target->type, target->name).c_str());
+        }
+        fprintf(file, ";\n\n");
     }
     
     if (self->structType == StructDefEnum_Field)
         fprintf(file, "%s%s;\n", indent, TypeChain_tostring(self->type, self->name).c_str());
+
+    if (self->structType == StructDefEnum_SimpleType)
+    {
+        fprintf(file, "typedef %s; /* %s: %d */\n", TypeChain_tostring(self->type, self->name.c_str()).c_str(), self->location.file.c_str(), self->location.line);
+    }
 }
 
 static std::string StructDef_getname(StructDef* self)
@@ -498,35 +504,13 @@ static void StructDef_make_dependencies(StructDef *self, DependencyCollection* d
     else
     {
         for (unsigned i = 0; i < self->children->items_ordered.size(); i++)
-            StructDef_make_dependencies(self->children->items_ordered[i]->structDef, dependencies);
+            StructDef_make_dependencies(self->children->items_ordered[i], dependencies);
     }
 }
 
 static TypeChain* StructDef_resolve_typedef(StructDef* self, DefinitionCollection* definitions)
 {
     return self->type;
-}
-
-
-static GenericDef* GenericDef_init(void* def, BOOL isStruct)
-{
-    GenericDef* self = new GenericDef();
-    self->isStruct = isStruct;
-    if (isStruct)
-        self->structDef = (StructDef*)def;
-    else
-        self->typeDef = (TypeDef*)def;
-    
-    return self;
-}
-
-
-static std::string GenericDef_getname(GenericDef* self)
-{
-    if (self->isStruct)
-        return StructDef_getname(self->structDef);
-    else
-        return TypeDef_getname(self->typeDef);
 }
 
 bool hasEnding (std::string const &fullString, std::string const &ending) {
@@ -542,7 +526,7 @@ bool hasStart(std::string mainStr, std::string toMatch)
     return mainStr.find(toMatch) == 0;
 }
 
-static void DefinitionCollection_append(DefinitionCollection* self, CXCursor node, GenericDef* new_definition)
+static void DefinitionCollection_append(DefinitionCollection* self, CXCursor node, StructDef* new_definition)
 {
     BOOL ignored = 0;
 
@@ -569,7 +553,7 @@ static void DefinitionCollection_append(DefinitionCollection* self, CXCursor nod
             ignored = 1;
     }
 
-    std::string name = GenericDef_getname(new_definition);
+    std::string name = StructDef_getname(new_definition);
     if (name != "")
     {
         // Only add each definition once
@@ -589,15 +573,6 @@ static BOOL DefinitionCollection_is_ignored(DefinitionCollection* self, std::str
     return self->ignored_items.count(name) > 0;
 }
 
-static TypeChain* GenericDef_resolve_typedef(GenericDef* self, DefinitionCollection* definitions)
-{
-    if (self->isStruct)
-        return StructDef_resolve_typedef(self->structDef, definitions);
-    else
-        return TypeDef_resolve_typedef(self->typeDef, definitions);
-}
-
-
 
 static TypeChain* DefinitionCollection_resolve_typedefs(DefinitionCollection* self, TypeChain* type)
 {
@@ -605,7 +580,7 @@ static TypeChain* DefinitionCollection_resolve_typedefs(DefinitionCollection* se
         return type;
     std::string name = type->normal;
     if (self->items.count(name) > 0)
-        return GenericDef_resolve_typedef(self->items[name], self);
+        return StructDef_resolve_typedef(self->items[name], self);
     return type;
 }
 
@@ -697,15 +672,6 @@ static FunctionItem* FunctionCollection_get_item(FunctionCollection* self, std::
     return self->items[name];
 }
 
-/*
-static void FunctionCollection_dump_items(FunctionCollection* self)
-{
-    for (std::pair<std::string, FunctionItem*> element : self->items)
-    {
-        FunctionItem *func = element.second;
-        printf("%s - %s(%s) - relay: %d\n", func->callingconvention.c_str(), func->name.c_str(), func->internalname.c_str(), func->relay);
-    }
-}*/
 
 static void FunctionItem_parse_from_spec_line(FunctionItem* function_item, std::string line)
 {
@@ -947,21 +913,10 @@ BOOL node_is_only_declaration(CXCursor node)
     return !clang_equalCursors(node, definition);
 }
 
-static std::string GenericDef_get_named_type(GenericDef* self)
+static void StructDef_set_variable(StructDef* self, CXType variable_type, std::string variable)
 {
-    if (self->isStruct)
-        return self->structDef->named_type;
-    else
-        return "";
-}
-
-static void GenericDef_set_variable(GenericDef* self, CXType variable_type, std::string variable)
-{
-    if (self->isStruct)
-    {
-        self->structDef->variable_type = TypeChain_init(0, variable_type, 1);
-        self->structDef->variable = variable;
-    }
+    self->variable_type = TypeChain_init(0, variable_type, 1);
+    self->variable = variable;
 }
 
 static CXType resolve_type(CXType type)
@@ -975,7 +930,19 @@ static CXType resolve_type(CXType type)
     return type;
 }
 
-static void find_all_definitions(CXCursor node, DefinitionCollection* definitions, FunctionCollection* funcs, std::string source, std::string typedef_name)
+static void TypeChain_fill_typedef_name(TypeChain* self, std::string name)
+{
+    if (self->chainType == TypeChainEnum_Normal)
+    {
+        self->normal = name;
+    }
+    else
+    {
+        TypeChain_fill_typedef_name(self->subType, name);
+    }
+}
+
+static void find_all_definitions(CXCursor node, DefinitionCollection* definitions, FunctionCollection* funcs, std::string source)
 {
     CXCursorKind kind = clang_getCursorKind(node);
     std::string spelling = clang_str_get(clang_getCursorSpelling(node));
@@ -996,16 +963,17 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
 
     if (kind == CXCursor_StructDecl || kind == CXCursor_UnionDecl || kind == CXCursor_FieldDecl || kind == CXCursor_EnumDecl)
     {
+        CXType type = resolve_type(clang_getCursorType(node));
+        CXCursor structCursor = clang_getTypeDeclaration(type);
         // Check if there is a field whichs type is an anonymous struct/union
         if (type_spelling.find("anonymous union") != std::string::npos || type_spelling.find("anonymous struct") != std::string::npos)
         {
-            CXType structType = resolve_type(clang_getCursorType(node));
-            std::string named_type = clang_str_get(clang_getTypeSpelling(clang_Type_getNamedType(structType)));
+            std::string anon_name = get_anonymous_name(structCursor);
             for (unsigned i = 0; i < definitions->items_ordered.size(); i++)
             {
-                GenericDef* child = definitions->items_ordered[i];
-                if (GenericDef_get_named_type(child) == named_type)
-                    GenericDef_set_variable(child, clang_getCursorType(node), spelling);
+                StructDef* child = definitions->items_ordered[i];
+                if (child->name == anon_name)
+                    StructDef_set_variable(child, clang_getCursorType(node), spelling);
             }
             definitions = DefinitionCollection_init();
         }
@@ -1013,27 +981,45 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
         {
             if (!node_is_only_declaration(node))
             {
-                GenericDef* new_parent = GenericDef_init(StructDef_init(node, typedef_name), 1);
+                StructDef* new_parent = StructDef_init(node);
                 DefinitionCollection_append(definitions, node, new_parent);
-                definitions = new_parent->structDef->children;
+                definitions = new_parent->children;
             }
         }
 
         std::vector<CXCursor> children = clang_get_children(node);
         for (unsigned i = 0; i < children.size(); i++)
         {
-            find_all_definitions(children[i], definitions, funcs, source, "");
+            find_all_definitions(children[i], definitions, funcs, source);
         }
     }
     else if (kind == CXCursor_TypedefDecl)
     {
-        TypeChain* type_from = TypeChain_init(&node, clang_getTypedefDeclUnderlyingType(node), 0);
-        GenericDef* definition = GenericDef_init(TypeDef_init(type_from, spelling, location), 0);
-        DefinitionCollection_append(definitions, node, definition);
+        StructDef* type_def = StructDef_init(node);
         std::vector<CXCursor> children = clang_get_children(node);
+        BOOL added_child = 0;
         for (unsigned i = 0; i < children.size(); i++)
         {
-           find_all_definitions(children[i], definitions, funcs, source, spelling);
+            CXCursor child = children[i];
+            std::string struct_name = get_cursor_spelling(child);
+            if (struct_name == "")
+                struct_name = get_anonymous_name(child);
+            added_child = 1;
+
+            if (definitions->items.count(struct_name) > 0)
+            {
+                StructDef *def = definitions->items[struct_name];
+                TypeChain* subTypeChain = TypeChain_init(&child, clang_getTypedefDeclUnderlyingType(node), 0);
+                TypeChain_fill_typedef_name(subTypeChain, "");
+                TypeDefTarget target;
+                target.name = spelling;
+                target.type = subTypeChain;
+                def->typedef_targets.push_back(target);
+            }
+        }
+        if (!added_child)
+        {
+            DefinitionCollection_append(definitions, node, type_def);
         }
     }
 }
@@ -1049,27 +1035,9 @@ static void handle_dll_source(std::string dll_path, std::string source, Function
     std::vector<CXCursor> children = clang_get_children(cursor);
     for (unsigned i = 0; i < children.size(); i++)
     {
-        find_all_definitions(children[i], ret_definitions, funcs, source, "");
+        find_all_definitions(children[i], ret_definitions, funcs, source);
     }
 }
-
-static std::string GenericDef_make_declaration(GenericDef* self)
-{
-    if (self->isStruct)
-        return StructDef_make_declaration(self->structDef);
-    else
-        return TypeDef_make_declaration(self->typeDef);
-}
-
-
-static void GenericDef_print_struct(GenericDef* self, FILE *file, int depth)
-{
-    if (self->isStruct)
-        StructDef_print_struct(self->structDef, file, depth);
-    else
-        TypeDef_print_struct(self->typeDef, file, depth);
-}
-
 
 static void handle_dll(const char* name)
 {
@@ -1119,12 +1087,12 @@ static void handle_dll(const char* name)
         if (!FunctionItem_is_empty(func))
             FunctionItem_make_dependencies(func, dependencies);
     }
-    std::vector<GenericDef*> usedDefinitions;
+    std::vector<StructDef*> usedDefinitions;
     
     for (unsigned i = 0; i < definitionCollection->items_ordered.size(); i++)
     {
-        GenericDef* definition = definitionCollection->items_ordered[i];
-        std::string definition_name = GenericDef_getname(definition);
+        StructDef* definition = definitionCollection->items_ordered[i];
+        std::string definition_name = StructDef_getname(definition);
         BOOL in_dependencies = std::find(dependencies->items.begin(), dependencies->items.end(), definition_name) != dependencies->items.end();
         if (in_dependencies && !DefinitionCollection_is_ignored(definitionCollection, definition_name))
             usedDefinitions.push_back(definition);
@@ -1132,16 +1100,16 @@ static void handle_dll(const char* name)
 
     for (unsigned i = 0; i < usedDefinitions.size(); i++)
     {
-        GenericDef* definition = usedDefinitions[i];
-        std::string declaration = GenericDef_make_declaration(definition);
+        StructDef* definition = usedDefinitions[i];
+        std::string declaration = StructDef_make_declaration(definition);
         if (declaration != "")
             fprintf(file_source, "%s\n", declaration.c_str());
     }
     fprintf(file_source, "\n");
     for (unsigned i = 0; i < usedDefinitions.size(); i++)
     {
-        GenericDef* definition = usedDefinitions[i];
-        GenericDef_print_struct(definition, file_source, 0);
+        StructDef* definition = usedDefinitions[i];
+        StructDef_print_struct(definition, file_source, 0);
     }
     
     
@@ -1319,13 +1287,13 @@ static void run_test()
     std::vector<CXCursor> children = clang_get_children(cursor);
     for (unsigned i = 0; i < children.size(); i++)
     {
-        find_all_definitions(children[i], definitionCollection, funcs, "make_thunks.test.c", "");
+        find_all_definitions(children[i], definitionCollection, funcs, "make_thunks.test.c");
     }
 
     for (unsigned i = 0; i < definitionCollection->items_ordered.size(); i++)
     {
-        GenericDef* definition = definitionCollection->items_ordered[i];
-        GenericDef_print_struct(definition, file_test, 0);
+        StructDef* definition = definitionCollection->items_ordered[i];
+        StructDef_print_struct(definition, file_test, 0);
     }
     fclose(file_test);
 }

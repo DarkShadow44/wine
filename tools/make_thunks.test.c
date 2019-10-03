@@ -10,7 +10,7 @@ struct s1
 typedef struct
 {
 	int f1;
-} s2, *s2b;
+} s2, *s2b, s2c[4];
 
 typedef struct s3
 {
