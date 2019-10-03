@@ -520,6 +520,10 @@ static void StructDef_make_dependencies(StructDef *self, DependencyCollection* d
     {
         TypeChain_make_dependencies(self->type, dependencies);
     }
+    else if (self->structType == StructDefEnum_TypedefStruct)
+    {
+        TypeChain_make_dependencies(self->type, dependencies);
+    }
     else
     {
         for (unsigned i = 0; i < self->children->items_ordered.size(); i++)
@@ -975,6 +979,7 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
         CXType type = resolve_type(clang_getCursorType(node));
         CXCursor structCursor = clang_getTypeDeclaration(type);
         // Check if there is a field whichs type is an anonymous struct/union
+        BOOL fixed_variable = 0; /* Can't properly detect if is field with custom struct, or just field with existing struct */
         if (kind == CXCursor_FieldDecl && (type.kind == CXType_Elaborated))
         {
             std::string struct_name = get_cursor_spelling(structCursor);
@@ -984,10 +989,14 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
             {
                 StructDef* child = definitions->items_ordered[i];
                 if (child->name == struct_name)
+                {
+                    fixed_variable = 1;
                     StructDef_set_variable(child, clang_getCursorType(node), spelling);
+                }
             }
-            definitions = DefinitionCollection_init();
         }
+        if (fixed_variable)
+            definitions = DefinitionCollection_init();
         else
         {
             if (!node_is_only_declaration(node))

@@ -80,3 +80,8 @@ typedef enum e1
     e1_v1 = 0,
 	e1_v2 = 1,
 } e1;
+
+struct s10
+{
+	struct s10* f1[1];
+};
