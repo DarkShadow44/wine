@@ -75,3 +75,24 @@ struct s8 /* make_thunks.test.c:65 */
     int f3;
 };
 
+
+
+
+/* Definitions:
+*int2
+*func1
+*func2
+*struct s1
+*__anonymous_make_thunks.test.c_14
+*s2
+*s2b
+*s2c
+*__anonymous_make_thunks.test.c_19
+*u1
+*u1b
+*u1c
+*struct s3
+*s4
+*struct s5
+*struct s8
+*/

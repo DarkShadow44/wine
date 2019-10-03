@@ -1302,6 +1302,13 @@ static void run_test()
         StructDef* definition = definitionCollection->items_ordered[i];
         StructDef_print_struct(definition, file_test, 0);
     }
+    fprintf(file_test, "\n\n\n/* Definitions:\n");
+    for (unsigned i = 0; i < definitionCollection->items_ordered.size(); i++)
+    {
+        StructDef* definition = definitionCollection->items_ordered[i];
+        fprintf(file_test, "*%s\n", definition->name.c_str());
+    }
+    fprintf(file_test, "*/\n");
     fclose(file_test);
 }
 
