@@ -1,0 +1,50 @@
+__ptr32 patch:
+- https://reviews.llvm.org/D66827
+- https://reviews.llvm.org/p/akhuang/
+- https://bugs.llvm.org/show_bug.cgi?id=42359
+
+
+make_thunks tasks:
+- support bitfields
+- write tests for everything covered (struct/union parsing)
+- commandline option to limit to one dll (for testing)
+- commandline to run tests
+- commandline to fixup sources
+- fixup sources (only change structs that can be passed over API) (Add __ptr32 to pointers and function pointers) (find all long (and definition), need to fix those too)
+- refactor
+- convert to clean C
+- cleanu
+- document, comment
+- multithreading
+- commandline for multithreading
+- Support cdecl
+- Support functions with more than 4 parameters
+- Support thiscall
+- Support interfaces (fixup vtbl)
+- Returned function pointer in parameter, or in struct in parameter
+- check if 32bit structure is same as 64bit (alignment)
+
+
+Wine pure tasks:
+- stack not too high?
+- must compile wine-pure programs (e.g. regedit.exe) as 32bit?
+- mixed mode needs to work!
+- GDT on Mac
+- Get kernel32_test to work
+- detect if function pointer is thunk
+- callbacks
+- find void ** (might be interface)
+- updating GDT data enough? or need LGDT?
+- where to make the cut? and why?
+- MacOS catalina selectors, need to be dynamic not hardcoded in wine-pure code
+- Linux/Mac dump GDT (SGDT) - GDT is per CPU ?!
+
+
+
+Could be useful:
+- diff hangover wine against vanilla
+- diff qemu against vanilla
+
+
+32bit dlls		->								thunk							-> cocreateobject (64bit)	->			thunk		-> GetDllObject (32bit)
+function(32bit)	<- remove 64->32 converter thunk / add 32->64 converter thunk	<- function(64bit)			<- add converter thunk  <- function(32bit)

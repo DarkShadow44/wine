@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 
 # pprint(dir())
-# TODO bitfields, parallelize single source file
-# commandline option to limit to source and dll
-# refactor and document...
 
 import sys
 import clang.cindex
