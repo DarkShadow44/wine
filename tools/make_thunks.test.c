@@ -1,3 +1,6 @@
+typedef int int2;
+typedef void (*func1)(int*[4]);
+
 /* Normal struct */
 struct s1
 {

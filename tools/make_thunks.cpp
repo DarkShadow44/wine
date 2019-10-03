@@ -1006,10 +1006,10 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
             std::string struct_name = get_cursor_spelling(child);
             if (struct_name == "")
                 struct_name = get_anonymous_name(child);
-            added_child = 1;
 
             if (definitions->items.count(struct_name) > 0)
             {
+                added_child = 1;
                 StructDef *def = definitions->items[struct_name];
                 TypeChain* subTypeChain = TypeChain_init(&child, clang_getTypedefDeclUnderlyingType(node), 0);
                 TypeChain_fill_typedef_name(subTypeChain, "");
