@@ -1,5 +1,6 @@
 typedef int int2;
 typedef void (*func1)(int*[4]);
+typedef int2 (*func2)(int*[4]); /* Caused crashes */
 
 /* Normal struct */
 struct s1
@@ -14,6 +15,11 @@ typedef struct
 {
 	int f1;
 } s2, *s2b, s2c[4];
+
+typedef union
+{
+	int f1;
+} u1, *u1b, u1c[4];
 
 typedef struct s3
 {

@@ -1,6 +1,7 @@
 typedef int int2; /* make_thunks.test.c: 1 */
 typedef void (*func1) (int*[4]); /* make_thunks.test.c: 2 */
-struct s1 /* make_thunks.test.c:5 */
+typedef int2 (*func2) (int*[4]); /* make_thunks.test.c: 3 */
+struct s1 /* make_thunks.test.c:6 */
 {
     int f1;
     long f2;
@@ -8,45 +9,50 @@ struct s1 /* make_thunks.test.c:5 */
     void (*f4) (struct s1* param1, int param2, int* param3[4]);
 };
 
-typedef struct /* make_thunks.test.c:13 */
+typedef struct /* make_thunks.test.c:14 */
 {
     int f1;
 }  s2, * s2b,  s2c[4];
 
-typedef struct s3 /* make_thunks.test.c:18 */
+typedef union /* make_thunks.test.c:19 */
+{
+    int f1;
+}  u1, * u1b,  u1c[4];
+
+typedef struct s3 /* make_thunks.test.c:24 */
 {
     int f1;
 }  s4;
 
-struct s5 /* make_thunks.test.c:23 */
+struct s5 /* make_thunks.test.c:29 */
 {
     int f1;
-    struct s6 /* make_thunks.test.c:26 */
+    struct s6 /* make_thunks.test.c:32 */
     {
         int ff1;
         int ff2;
     } f2;
 
-    struct /* make_thunks.test.c:32 */
+    struct /* make_thunks.test.c:38 */
     {
         int f3;
         int f4;
     };
 
-    struct /* make_thunks.test.c:38 */
+    struct /* make_thunks.test.c:44 */
     {
         int ff1;
         int ff2;
     } f5;
 
-    union s7 /* make_thunks.test.c:44 */
+    union s7 /* make_thunks.test.c:50 */
     {
         int ff1;
         int ff2;
     } f6;
 
     char f7;
-    union /* make_thunks.test.c:52 */
+    union /* make_thunks.test.c:58 */
     {
         int f8;
         int f9;
@@ -54,10 +60,10 @@ struct s5 /* make_thunks.test.c:23 */
 
 };
 
-struct s8 /* make_thunks.test.c:59 */
+struct s8 /* make_thunks.test.c:65 */
 {
     int f1;
-    struct /* make_thunks.test.c:63 */
+    struct /* make_thunks.test.c:69 */
     {
         int ff1;
         int ff2;

@@ -1003,6 +1003,10 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
         for (unsigned i = 0; i < children.size(); i++)
         {
             CXCursor child = children[i];
+            CXCursorKind childkind = clang_getCursorKind(child);
+            // Fill in variables only for struct/union
+            if (childkind != CXCursor_StructDecl && childkind != CXCursor_UnionDecl)
+                continue;
             std::string struct_name = get_cursor_spelling(child);
             if (struct_name == "")
                 struct_name = get_anonymous_name(child);
