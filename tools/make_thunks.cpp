@@ -439,6 +439,7 @@ static StructDef* StructDef_init(CXCursor node)
     return self;
 }
 
+static int enum_number = 0;
 
 static void StructDef_print_struct(StructDef *self, FILE *file, int depth)
 {
@@ -459,6 +460,8 @@ static void StructDef_print_struct(StructDef *self, FILE *file, int depth)
                 name = "struct";
             if (self->structType == StructDefEnum_Union)
                 name = "union";
+            if (self->structType == StructDefEnum_Enumeration)
+                name = "enum";
         }
         fprintf(file, "%s%s /* %s:%d */\n", indent, name.c_str(), self->location.file.c_str(), self->location.line);
         fprintf(file, "%s{\n", indent);
@@ -466,9 +469,7 @@ static void StructDef_print_struct(StructDef *self, FILE *file, int depth)
             StructDef_print_struct(self->children->items_ordered[i], file, depth + 1);
         if (self->structType == StructDefEnum_Enumeration)
         {
-            std::string name = self->name;
-            replaceAll(name, "enum ", "");
-            fprintf(file, "    %s_DUMMY = 0\n", name.c_str());
+            fprintf(file, "    DUMMY%d = 0\n", enum_number++);
         }
 
         // Last line
@@ -504,6 +505,8 @@ static std::string StructDef_getname(StructDef* self)
 static std::string StructDef_make_declaration(StructDef *self)
 {
     char buffer[200] = {0};
+    if (self->is_anonymous)
+        return "";
     if (self->structType == StructDefEnum_Struct || self->structType == StructDefEnum_Union || self->structType == StructDefEnum_Enumeration)
         sprintf(buffer, "%s; /* %s:%d */", self->name.c_str(), self->location.file.c_str(), self->location.line);
     return buffer;
@@ -1025,7 +1028,19 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
                 TypeDefTarget target;
                 target.name = spelling;
                 target.type = subTypeChain;
-                def->typedef_targets.push_back(target);
+
+                BOOL exists = 0;
+                for (unsigned t = 0; t < def->typedef_targets.size(); t++)
+                {
+                    if (def->typedef_targets[t].name == spelling)
+                        exists = 1;
+                }
+
+                if (!exists)
+                {
+                    def->typedef_targets.push_back(target);
+                }
+
             }
         }
         // Add StructDefEnum_TypedefSimple entry or dummy StructDefEnum_TypedefStruct.
@@ -1233,11 +1248,11 @@ static void handle_dll(const char* name)
 static void handle_all_dlls()
 {
     const char* dlls[] = {
-        "user32",
+       /* "user32",
         "kernel32",
         "advapi32",
         "msvcrt",
-        "ntdll",
+        "ntdll",*/
         "kernelbase",
     };
 
