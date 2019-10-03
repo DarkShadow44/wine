@@ -1,6 +1,9 @@
-typedef int int2; /* make_thunks.test.c: 1 */
-typedef void (*func1) (int*[4]); /* make_thunks.test.c: 2 */
-typedef int2 (*func2) (int*[4]); /* make_thunks.test.c: 3 */
+typedef int int2; /* make_thunks.test.c:1 */
+
+typedef void (*func1) (int*[4]); /* make_thunks.test.c:2 */
+
+typedef int2 (*func2) (int*[4]); /* make_thunks.test.c:3 */
+
 struct s1 /* make_thunks.test.c:6 */
 {
     int f1;

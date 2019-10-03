@@ -91,7 +91,8 @@ enum StructDefEnum
     StructDefEnum_Struct = 2,
     StructDefEnum_Union = 3,
     StructDefEnum_Enumeration = 4,
-    StructDefEnum_SimpleType = 5,
+    StructDefEnum_TypedefSimple = 5,
+    StructDefEnum_TypedefStruct = 6, /* Only used for dependency management */
 };
 
 typedef struct
@@ -370,6 +371,18 @@ static std::string get_cursor_spelling(CXCursor node)
     return ret;
 }
 
+
+static CXType resolve_type(CXType type)
+{
+    CXType pointee = clang_getPointeeType(type);
+    BOOL is_pointer = clang_str_get(clang_getTypeSpelling(pointee)) != "";
+    if (is_pointer)
+        return resolve_type(pointee);
+    if (clang_getArraySize(type) != -1)
+        return resolve_type(clang_getArrayElementType(type));
+    return type;
+}
+
 static StructDef* StructDef_init(CXCursor node)
 {
     StructDef *self = new StructDef();
@@ -407,13 +420,14 @@ static StructDef* StructDef_init(CXCursor node)
     }
     if (kind == CXCursor_TypedefDecl)
     {
-        if (type.kind == CXType_Complex) // struct or union
+        CXType resolved_type = resolve_type(type);
+        if (resolved_type.kind == CXType_Elaborated) // struct or union
         {
-
+            self->structType = StructDefEnum_TypedefStruct;
         }
         else
         {
-            self->structType = StructDefEnum_SimpleType;
+            self->structType = StructDefEnum_TypedefSimple;
             TypeDefTarget target;
             target.name = self->name;
             target.type = 0;
@@ -473,10 +487,11 @@ static void StructDef_print_struct(StructDef *self, FILE *file, int depth)
     if (self->structType == StructDefEnum_Field)
         fprintf(file, "%s%s;\n", indent, TypeChain_tostring(self->type, self->name).c_str());
 
-    if (self->structType == StructDefEnum_SimpleType)
+    if (self->structType == StructDefEnum_TypedefSimple)
     {
-        fprintf(file, "typedef %s; /* %s: %d */\n", TypeChain_tostring(self->type, self->name.c_str()).c_str(), self->location.file.c_str(), self->location.line);
+        fprintf(file, "typedef %s; /* %s:%d */\n\n", TypeChain_tostring(self->type, self->name.c_str()).c_str(), self->location.file.c_str(), self->location.line);
     }
+    /* Ignore StructDefEnum_TypeDefStruct here */
 }
 
 static std::string StructDef_getname(StructDef* self)
@@ -919,16 +934,6 @@ static void StructDef_set_variable(StructDef* self, CXType variable_type, std::s
     self->variable = variable;
 }
 
-static CXType resolve_type(CXType type)
-{
-    CXType pointee = clang_getPointeeType(type);
-    BOOL is_pointer = clang_str_get(clang_getTypeSpelling(pointee)) != "";
-    if (is_pointer)
-        return resolve_type(pointee);
-    if (clang_getArraySize(type) != -1)
-        return resolve_type(clang_getArrayElementType(type));
-    return type;
-}
 
 static void TypeChain_fill_typedef_name(TypeChain* self, std::string name)
 {
@@ -999,7 +1004,6 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
     {
         StructDef* type_def = StructDef_init(node);
         std::vector<CXCursor> children = clang_get_children(node);
-        BOOL added_child = 0;
         for (unsigned i = 0; i < children.size(); i++)
         {
             CXCursor child = children[i];
@@ -1013,7 +1017,6 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
 
             if (definitions->items.count(struct_name) > 0)
             {
-                added_child = 1;
                 StructDef *def = definitions->items[struct_name];
                 TypeChain* subTypeChain = TypeChain_init(&child, clang_getTypedefDeclUnderlyingType(node), 0);
                 TypeChain_fill_typedef_name(subTypeChain, "");
@@ -1023,10 +1026,8 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
                 def->typedef_targets.push_back(target);
             }
         }
-        if (!added_child)
-        {
-            DefinitionCollection_append(definitions, node, type_def);
-        }
+        // Add StructDefEnum_TypedefSimple entry or dummy StructDefEnum_TypedefStruct.
+        DefinitionCollection_append(definitions, node, type_def);
     }
 }
 
