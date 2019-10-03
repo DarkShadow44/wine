@@ -9,12 +9,8 @@ enum AppPolicyProcessTerminationMethod; /* ../include/appmodel.h:25 */
 enum AppPolicyThreadInitializationType; /* ../include/appmodel.h:31 */
 enum AppPolicyShowDeveloperDiagnostic; /* ../include/appmodel.h:37 */
 enum AppPolicyWindowingModel; /* ../include/appmodel.h:43 */
-enum SHREGDEL_FLAGS; /* ../include/shlwapi.h:133 */
-enum SHREGENUM_FLAGS; /* ../include/shlwapi.h:141 */
-enum URLIS; /* ../include/shlwapi.h:624 */
 struct tagPARSEDURLA; /* ../include/shlwapi.h:736 */
 struct tagPARSEDURLW; /* ../include/shlwapi.h:745 */
-struct QITAB; /* ../include/shlwapi.h:1128 */
 struct _PERF_COUNTERSET_INFO; /* ../include/perflib.h:30 */
 struct _PERF_COUNTERSET_INSTANCE; /* ../include/perflib.h:37 */
 struct _PROVIDER_CONTEXT; /* ../include/perflib.h:45 */
@@ -39,7 +35,7 @@ typedef ULONG_PTR KAFFINITY; /* ../include/basetsd.h:266 */
 
 typedef LONG NTSTATUS; /* ../include/winternl.h:38 */
 
-struct _CREATEFILE2_EXTENDED_PARAMETERS /* ../include/fileapi.h:26 */
+typedef struct _CREATEFILE2_EXTENDED_PARAMETERS /* ../include/fileapi.h:26 */
 {
     DWORD dwSize;
     DWORD dwFileAttributes;
@@ -47,64 +43,48 @@ struct _CREATEFILE2_EXTENDED_PARAMETERS /* ../include/fileapi.h:26 */
     DWORD dwSecurityQosFlags;
     LPSECURITY_ATTRIBUTES lpSecurityAttributes;
     HANDLE hTemplateFile;
-};
+}  CREATEFILE2_EXTENDED_PARAMETERS, * PCREATEFILE2_EXTENDED_PARAMETERS, * LPCREATEFILE2_EXTENDED_PARAMETERS;
 
-typedef struct _CREATEFILE2_EXTENDED_PARAMETERS CREATEFILE2_EXTENDED_PARAMETERS; /* ../include/fileapi.h:33 */
-
-enum AppPolicyProcessTerminationMethod /* ../include/appmodel.h:25 */
+typedef enum AppPolicyProcessTerminationMethod /* ../include/appmodel.h:25 */
 {
-    AppPolicyProcessTerminationMethod_DUMMY = 0
-};
+    DUMMY43 = 0
+}  AppPolicyProcessTerminationMethod;
 
-typedef enum AppPolicyProcessTerminationMethod AppPolicyProcessTerminationMethod; /* ../include/appmodel.h:29 */
-
-enum AppPolicyThreadInitializationType /* ../include/appmodel.h:31 */
+typedef enum AppPolicyThreadInitializationType /* ../include/appmodel.h:31 */
 {
-    AppPolicyThreadInitializationType_DUMMY = 0
-};
+    DUMMY44 = 0
+}  AppPolicyThreadInitializationType;
 
-typedef enum AppPolicyThreadInitializationType AppPolicyThreadInitializationType; /* ../include/appmodel.h:35 */
-
-enum AppPolicyShowDeveloperDiagnostic /* ../include/appmodel.h:37 */
+typedef enum AppPolicyShowDeveloperDiagnostic /* ../include/appmodel.h:37 */
 {
-    AppPolicyShowDeveloperDiagnostic_DUMMY = 0
-};
+    DUMMY45 = 0
+}  AppPolicyShowDeveloperDiagnostic;
 
-typedef enum AppPolicyShowDeveloperDiagnostic AppPolicyShowDeveloperDiagnostic; /* ../include/appmodel.h:41 */
-
-enum AppPolicyWindowingModel /* ../include/appmodel.h:43 */
+typedef enum AppPolicyWindowingModel /* ../include/appmodel.h:43 */
 {
-    AppPolicyWindowingModel_DUMMY = 0
-};
+    DUMMY46 = 0
+}  AppPolicyWindowingModel;
 
-typedef enum AppPolicyWindowingModel AppPolicyWindowingModel; /* ../include/appmodel.h:49 */
-
-typedef enum SHREGDEL_FLAGS SHREGDEL_FLAGS; /* ../include/shlwapi.h:139 */
-
-enum SHREGDEL_FLAGS /* ../include/shlwapi.h:133 */
+typedef enum /* ../include/shlwapi.h:133 */
 {
-    SHREGDEL_FLAGS_DUMMY = 0
-};
+    DUMMY47 = 0
+}  SHREGDEL_FLAGS;
 
-typedef enum SHREGENUM_FLAGS SHREGENUM_FLAGS; /* ../include/shlwapi.h:147 */
-
-enum SHREGENUM_FLAGS /* ../include/shlwapi.h:141 */
+typedef enum /* ../include/shlwapi.h:141 */
 {
-    SHREGENUM_FLAGS_DUMMY = 0
-};
+    DUMMY48 = 0
+}  SHREGENUM_FLAGS;
 
 typedef HANDLE HUSKEY; /* ../include/shlwapi.h:155 */
 
 typedef HUSKEY* PHUSKEY; /* ../include/shlwapi.h:156 */
 
-typedef enum URLIS URLIS; /* ../include/shlwapi.h:632 */
-
-enum URLIS /* ../include/shlwapi.h:624 */
+typedef enum /* ../include/shlwapi.h:624 */
 {
-    URLIS_DUMMY = 0
-};
+    DUMMY49 = 0
+}  URLIS;
 
-struct tagPARSEDURLA /* ../include/shlwapi.h:736 */
+typedef struct tagPARSEDURLA /* ../include/shlwapi.h:736 */
 {
     DWORD cbSize;
     LPCSTR pszProtocol;
@@ -112,11 +92,9 @@ struct tagPARSEDURLA /* ../include/shlwapi.h:736 */
     LPCSTR pszSuffix;
     UINT cchSuffix;
     UINT nScheme;
-};
+}  PARSEDURLA, * PPARSEDURLA;
 
-typedef struct tagPARSEDURLA PARSEDURLA; /* ../include/shlwapi.h:743 */
-
-struct tagPARSEDURLW /* ../include/shlwapi.h:745 */
+typedef struct tagPARSEDURLW /* ../include/shlwapi.h:745 */
 {
     DWORD cbSize;
     LPCWSTR pszProtocol;
@@ -124,17 +102,13 @@ struct tagPARSEDURLW /* ../include/shlwapi.h:745 */
     LPCWSTR pszSuffix;
     UINT cchSuffix;
     UINT nScheme;
-};
+}  PARSEDURLW, * PPARSEDURLW;
 
-typedef struct tagPARSEDURLW PARSEDURLW; /* ../include/shlwapi.h:752 */
-
-typedef struct QITAB QITAB; /* ../include/shlwapi.h:1132 */
-
-struct QITAB /* ../include/shlwapi.h:1128 */
+typedef struct /* ../include/shlwapi.h:1128 */
 {
     IID* piid;
     int dwOffset;
-};
+}  QITAB, * LPQITAB;
 
 typedef LPVOID (*PERF_MEM_ALLOC) (SIZE_T, LPVOID); /* ../include/perflib.h:26 */
 
@@ -142,28 +116,24 @@ typedef void (*PERF_MEM_FREE) (LPVOID, LPVOID); /* ../include/perflib.h:27 */
 
 typedef ULONG (*PERFLIBREQUEST) (ULONG, PVOID, ULONG); /* ../include/perflib.h:28 */
 
-struct _PERF_COUNTERSET_INFO /* ../include/perflib.h:30 */
+typedef struct _PERF_COUNTERSET_INFO /* ../include/perflib.h:30 */
 {
     GUID CounterSetGuid;
     GUID ProviderGuid;
     ULONG NumCounters;
     ULONG InstanceType;
-};
+}  PERF_COUNTERSET_INFO, * PPERF_COUNTERSET_INFO;
 
-typedef struct _PERF_COUNTERSET_INFO* PPERF_COUNTERSET_INFO; /* ../include/perflib.h:35 */
-
-struct _PERF_COUNTERSET_INSTANCE /* ../include/perflib.h:37 */
+typedef struct _PERF_COUNTERSET_INSTANCE /* ../include/perflib.h:37 */
 {
     GUID CounterSetGuid;
     ULONG dwSize;
     ULONG InstanceId;
     ULONG InstanceNameOffset;
     ULONG InstanceNameSize;
-};
+}  PERF_COUNTERSET_INSTANCE, * PPERF_COUNTERSET_INSTANCE;
 
-typedef struct _PERF_COUNTERSET_INSTANCE* PPERF_COUNTERSET_INSTANCE; /* ../include/perflib.h:43 */
-
-struct _PROVIDER_CONTEXT /* ../include/perflib.h:45 */
+typedef struct _PROVIDER_CONTEXT /* ../include/perflib.h:45 */
 {
     DWORD ContextSize;
     DWORD Reserved;
@@ -171,9 +141,7 @@ struct _PROVIDER_CONTEXT /* ../include/perflib.h:45 */
     PERF_MEM_ALLOC MemAllocRoutine;
     PERF_MEM_FREE MemFreeRoutine;
     LPVOID pMemContext;
-};
-
-typedef struct _PROVIDER_CONTEXT* PPERF_PROVIDER_CONTEXT; /* ../include/perflib.h:52 */
+}  PERF_PROVIDER_CONTEXT, * PPERF_PROVIDER_CONTEXT;
 
 struct proc_thread_attr /* ../dlls/kernelbase/process.c:699 */
 {

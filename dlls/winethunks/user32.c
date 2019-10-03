@@ -69,7 +69,7 @@ struct wow_handlers32 /* ../dlls/user32/controls.h:110 */
     ULONG_PTR (*set_icon_param) (HICON, ULONG_PTR);
 };
 
-struct tagDIALOGINFO /* ../dlls/user32/controls.h:229 */
+typedef struct tagDIALOGINFO /* ../dlls/user32/controls.h:229 */
 {
     HWND hwndFocus;
     HFONT hUserFont;
@@ -78,39 +78,31 @@ struct tagDIALOGINFO /* ../dlls/user32/controls.h:229 */
     UINT yBaseUnit;
     INT idResult;
     UINT flags;
-};
+}  DIALOGINFO;
 
-struct HCONVLIST__ /* ../include/ddeml.h:305 */
+typedef struct HCONVLIST__ /* ../include/ddeml.h:305 */
 {
     int unused;
-};
+} * HCONVLIST;
 
-typedef struct HCONVLIST__* HCONVLIST; /* ../include/ddeml.h:305 */
-
-struct HCONV__ /* ../include/ddeml.h:306 */
+typedef struct HCONV__ /* ../include/ddeml.h:306 */
 {
     int unused;
-};
+} * HCONV;
 
-typedef struct HCONV__* HCONV; /* ../include/ddeml.h:306 */
-
-struct HSZ__ /* ../include/ddeml.h:307 */
+typedef struct HSZ__ /* ../include/ddeml.h:307 */
 {
     int unused;
-};
+} * HSZ;
 
-typedef struct HSZ__* HSZ; /* ../include/ddeml.h:307 */
-
-struct HDDEDATA__ /* ../include/ddeml.h:308 */
+typedef struct HDDEDATA__ /* ../include/ddeml.h:308 */
 {
     int unused;
-};
-
-typedef struct HDDEDATA__* HDDEDATA; /* ../include/ddeml.h:308 */
+} * HDDEDATA;
 
 typedef HDDEDATA (*PFNCALLBACK) (UINT, UINT, HCONV, HSZ, HSZ, HDDEDATA, ULONG_PTR, ULONG_PTR); /* ../include/ddeml.h:318 */
 
-struct tagCONVCONTEXT /* ../include/ddeml.h:333 */
+typedef struct tagCONVCONTEXT /* ../include/ddeml.h:333 */
 {
     UINT cb;
     UINT wFlags;
@@ -119,13 +111,9 @@ struct tagCONVCONTEXT /* ../include/ddeml.h:333 */
     DWORD dwLangID;
     DWORD dwSecurity;
     SECURITY_QUALITY_OF_SERVICE qos;
-};
+}  CONVCONTEXT, * PCONVCONTEXT;
 
-typedef struct tagCONVCONTEXT CONVCONTEXT; /* ../include/ddeml.h:342 */
-
-typedef struct tagCONVCONTEXT* PCONVCONTEXT; /* ../include/ddeml.h:342 */
-
-struct tagCONVINFO /* ../include/ddeml.h:344 */
+typedef struct tagCONVINFO /* ../include/ddeml.h:344 */
 {
     DWORD cb;
     DWORD_PTR hUser;
@@ -143,9 +131,7 @@ struct tagCONVINFO /* ../include/ddeml.h:344 */
     CONVCONTEXT ConvCtxt;
     HWND hwnd;
     HWND hwndPartner;
-};
-
-typedef struct tagCONVINFO* PCONVINFO; /* ../include/ddeml.h:362 */
+}  CONVINFO, * PCONVINFO;
 
 typedef UINT16 HANDLE16; /* ../include/wine/windef16.h:37 */
 

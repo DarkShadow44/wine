@@ -113,6 +113,7 @@ typedef struct _StructDef
     std::vector<TypeDefTarget> typedef_targets;
     BOOL is_anonymous;
     std::string typedef_dependency; /* When type is StructDefEnum_TypedefStruct, name of the original struct */
+    BOOL is_delayed_typedef_struct;
 } StructDef;
 
 
@@ -489,6 +490,12 @@ static void StructDef_print_struct(StructDef *self, FILE *file, int depth)
     if (self->structType == StructDefEnum_Field)
         fprintf(file, "%s%s;\n", indent, TypeChain_tostring(self->type, self->name).c_str());
 
+    /* Typedef for struct not part of struct itself */
+    if (self->structType == StructDefEnum_TypedefStruct && self->is_delayed_typedef_struct)
+    {
+        fprintf(file, "typedef %s; /* %s:%d */\n\n", TypeChain_tostring(self->type, self->name.c_str()).c_str(), self->location.file.c_str(), self->location.line);
+    }
+
     if (self->structType == StructDefEnum_TypedefSimple)
     {
         fprintf(file, "typedef %s; /* %s:%d */\n\n", TypeChain_tostring(self->type, self->name.c_str()).c_str(), self->location.file.c_str(), self->location.line);
@@ -520,8 +527,9 @@ static void StructDef_make_dependencies(StructDef *self, DependencyCollection* d
     {
         TypeChain_make_dependencies(self->type, dependencies);
     }
-    else if (self->structType == StructDefEnum_TypedefStruct)
+    else if (self->structType == StructDefEnum_TypedefStruct || self->structType == StructDefEnum_TypedefSimple)
     {
+        DependencyCollection_append(dependencies, self->typedef_dependency);
         TypeChain_make_dependencies(self->type, dependencies);
     }
     else
@@ -531,8 +539,14 @@ static void StructDef_make_dependencies(StructDef *self, DependencyCollection* d
     }
 }
 
+static TypeChain* DefinitionCollection_resolve_typedefs(DefinitionCollection* self, TypeChain* type);
+
 static TypeChain* StructDef_resolve_typedef(StructDef* self, DefinitionCollection* definitions)
 {
+    if (self->structType == StructDefEnum_TypedefStruct || self->structType == StructDefEnum_TypedefSimple)
+    {
+        return DefinitionCollection_resolve_typedefs(definitions, self->type);
+    }
     return self->type;
 }
 
@@ -1016,6 +1030,7 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
     else if (kind == CXCursor_TypedefDecl)
     {
         StructDef* type_def = StructDef_init(node);
+        type_def->is_delayed_typedef_struct = 1;
         std::vector<CXCursor> children = clang_get_children(node);
         for (unsigned i = 0; i < children.size(); i++)
         {
@@ -1031,6 +1046,8 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
             if (definitions->items.count(struct_name) > 0)
             {
                 StructDef *def = definitions->items[struct_name];
+
+                type_def->is_delayed_typedef_struct = 0;
                 type_def->typedef_dependency = struct_name;
                 TypeChain* subTypeChain = TypeChain_init(&child, clang_getTypedefDeclUnderlyingType(node), 0);
                 TypeChain_fill_typedef_name(subTypeChain, "");
@@ -1051,6 +1068,13 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
                 }
 
             }
+        }
+
+        if (type_def->is_delayed_typedef_struct)
+        {
+            CXType typedef_type = clang_getTypedefDeclUnderlyingType(node);
+            typedef_type = resolve_type(typedef_type);
+            type_def->typedef_dependency = clang_str_get(clang_getTypeSpelling(typedef_type));
         }
         // Add StructDefEnum_TypedefSimple entry or dummy StructDefEnum_TypedefStruct.
         DefinitionCollection_append(definitions, node, type_def);
@@ -1129,23 +1153,15 @@ static void handle_dll(const char* name)
         BOOL in_dependencies = std::find(dependencies->items.begin(), dependencies->items.end(), definition_name) != dependencies->items.end();
         if (in_dependencies && !DefinitionCollection_is_ignored(definitionCollection, definition_name))
         {
-            if (definition->structType == StructDefEnum_TypedefStruct)
+            if (definition->structType == StructDefEnum_TypedefStruct && !definition->is_delayed_typedef_struct)
             {
                 StructDef *originalStruct = definitionCollection->items[definition->typedef_dependency];
-                if (originalStruct == 0)
-                {
-                    int k = 0;
-                }
-                /* Add original struct, if not exists */
                 if (std::find(usedDefinitions.begin(), usedDefinitions.end(), originalStruct) == usedDefinitions.end())
                 {
                     usedDefinitions.push_back(originalStruct);
                 }
             }
-            else
-            {
-                usedDefinitions.push_back(definition);
-            }
+            usedDefinitions.push_back(definition);
         }
     }
 
@@ -1257,11 +1273,11 @@ static void handle_dll(const char* name)
 static void handle_all_dlls()
 {
     const char* dlls[] = {
-       /* "user32",
-        "kernel32",
+        "ntdll",
         "advapi32",
+        "user32",
+        "kernel32",
         "msvcrt",
-        "ntdll",*/
         "kernelbase",
     };
 

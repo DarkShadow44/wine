@@ -13,10 +13,6 @@ struct _CREDENTIALW; /* ../include/wincred.h:82 */
 struct _CREDENTIAL_TARGET_INFORMATIONA; /* ../include/wincred.h:101 */
 struct _CREDENTIAL_TARGET_INFORMATIONW; /* ../include/wincred.h:115 */
 enum _CRED_MARSHAL_TYPE; /* ../include/wincred.h:153 */
-enum POLICY_INFORMATION_CLASS; /* ../include/ntsecapi.h:189 */
-struct LSA_TRANSLATED_NAME; /* ../include/ntsecapi.h:267 */
-struct LSA_TRUST_INFORMATION; /* ../include/ntsecapi.h:274 */
-struct LSA_REFERENCED_DOMAIN_LIST; /* ../include/ntsecapi.h:280 */
 struct _LSA_TRANSLATED_SID; /* ../include/ntsecapi.h:286 */
 struct _TRUSTED_DOMAIN_INFORMATION_EX; /* ../include/ntsecapi.h:293 */
 struct _LSA_AUTH_INFORMATION; /* ../include/ntsecapi.h:303 */
@@ -62,8 +58,6 @@ struct _ACTRL_PROPERTY_ENTRYW; /* ../include/accctrl.h:216 */
 struct _ACTRL_ALISTA; /* ../include/accctrl.h:226 */
 struct _ACTRL_ALISTW; /* ../include/accctrl.h:232 */
 enum _PROGRESS_INVOKE_SETTING; /* ../include/accctrl.h:422 */
-struct MOFRESOURCEINFOA; /* ../include/wmium.h:38 */
-struct MOFRESOURCEINFOW; /* ../include/wmium.h:46 */
 struct _WMIGUIDINFORMATION; /* ../include/wmium.h:67 */
 
 typedef unsigned long ULONG64; /* ../include/basetsd.h:99 */
@@ -74,18 +68,14 @@ typedef ULONG_PTR DWORD_PTR; /* ../include/basetsd.h:121 */
 
 typedef LONG NTSTATUS; /* ../include/winternl.h:38 */
 
-struct _UNICODE_STRING /* ../include/winternl.h:65 */
+typedef struct _UNICODE_STRING /* ../include/winternl.h:65 */
 {
     USHORT Length;
     USHORT MaximumLength;
     PWSTR Buffer;
-};
+}  UNICODE_STRING, * PUNICODE_STRING;
 
-typedef struct _UNICODE_STRING UNICODE_STRING; /* ../include/winternl.h:69 */
-
-typedef struct _UNICODE_STRING* PUNICODE_STRING; /* ../include/winternl.h:69 */
-
-struct _OBJECT_ATTRIBUTES /* ../include/winternl.h:1205 */
+typedef struct _OBJECT_ATTRIBUTES /* ../include/winternl.h:1205 */
 {
     ULONG Length;
     HANDLE RootDirectory;
@@ -93,31 +83,25 @@ struct _OBJECT_ATTRIBUTES /* ../include/winternl.h:1205 */
     ULONG Attributes;
     PVOID SecurityDescriptor;
     PVOID SecurityQualityOfService;
-};
+}  OBJECT_ATTRIBUTES, * POBJECT_ATTRIBUTES;
 
-typedef struct _OBJECT_ATTRIBUTES OBJECT_ATTRIBUTES; /* ../include/winternl.h:1212 */
-
-struct _CREDENTIAL_ATTRIBUTEA /* ../include/wincred.h:47 */
+typedef struct _CREDENTIAL_ATTRIBUTEA /* ../include/wincred.h:47 */
 {
     LPSTR Keyword;
     DWORD Flags;
     DWORD ValueSize;
     LPBYTE Value;
-};
+}  CREDENTIAL_ATTRIBUTEA, * PCREDENTIAL_ATTRIBUTEA;
 
-typedef struct _CREDENTIAL_ATTRIBUTEA* PCREDENTIAL_ATTRIBUTEA; /* ../include/wincred.h:53 */
-
-struct _CREDENTIAL_ATTRIBUTEW /* ../include/wincred.h:55 */
+typedef struct _CREDENTIAL_ATTRIBUTEW /* ../include/wincred.h:55 */
 {
     LPWSTR Keyword;
     DWORD Flags;
     DWORD ValueSize;
     LPBYTE Value;
-};
+}  CREDENTIAL_ATTRIBUTEW, * PCREDENTIAL_ATTRIBUTEW;
 
-typedef struct _CREDENTIAL_ATTRIBUTEW* PCREDENTIAL_ATTRIBUTEW; /* ../include/wincred.h:61 */
-
-struct _CREDENTIALA /* ../include/wincred.h:66 */
+typedef struct _CREDENTIALA /* ../include/wincred.h:66 */
 {
     DWORD Flags;
     DWORD Type;
@@ -131,11 +115,9 @@ struct _CREDENTIALA /* ../include/wincred.h:66 */
     PCREDENTIAL_ATTRIBUTEA Attributes;
     LPSTR TargetAlias;
     LPSTR UserName;
-};
+}  CREDENTIALA, * PCREDENTIALA;
 
-typedef struct _CREDENTIALA* PCREDENTIALA; /* ../include/wincred.h:80 */
-
-struct _CREDENTIALW /* ../include/wincred.h:82 */
+typedef struct _CREDENTIALW /* ../include/wincred.h:82 */
 {
     DWORD Flags;
     DWORD Type;
@@ -149,11 +131,9 @@ struct _CREDENTIALW /* ../include/wincred.h:82 */
     PCREDENTIAL_ATTRIBUTEW Attributes;
     LPWSTR TargetAlias;
     LPWSTR UserName;
-};
+}  CREDENTIALW, * PCREDENTIALW;
 
-typedef struct _CREDENTIALW* PCREDENTIALW; /* ../include/wincred.h:96 */
-
-struct _CREDENTIAL_TARGET_INFORMATIONA /* ../include/wincred.h:101 */
+typedef struct _CREDENTIAL_TARGET_INFORMATIONA /* ../include/wincred.h:101 */
 {
     LPSTR TargetName;
     LPSTR NetbiosServerName;
@@ -165,11 +145,9 @@ struct _CREDENTIAL_TARGET_INFORMATIONA /* ../include/wincred.h:101 */
     DWORD Flags;
     DWORD CredTypeCount;
     LPDWORD CredTypes;
-};
+}  CREDENTIAL_TARGET_INFORMATIONA, * PCREDENTIAL_TARGET_INFORMATIONA;
 
-typedef struct _CREDENTIAL_TARGET_INFORMATIONA* PCREDENTIAL_TARGET_INFORMATIONA; /* ../include/wincred.h:113 */
-
-struct _CREDENTIAL_TARGET_INFORMATIONW /* ../include/wincred.h:115 */
+typedef struct _CREDENTIAL_TARGET_INFORMATIONW /* ../include/wincred.h:115 */
 {
     LPWSTR TargetName;
     LPWSTR NetbiosServerName;
@@ -181,18 +159,12 @@ struct _CREDENTIAL_TARGET_INFORMATIONW /* ../include/wincred.h:115 */
     DWORD Flags;
     DWORD CredTypeCount;
     LPDWORD CredTypes;
-};
+}  CREDENTIAL_TARGET_INFORMATIONW, * PCREDENTIAL_TARGET_INFORMATIONW;
 
-typedef struct _CREDENTIAL_TARGET_INFORMATIONW* PCREDENTIAL_TARGET_INFORMATIONW; /* ../include/wincred.h:127 */
-
-enum _CRED_MARSHAL_TYPE /* ../include/wincred.h:153 */
+typedef enum _CRED_MARSHAL_TYPE /* ../include/wincred.h:153 */
 {
-    _CRED_MARSHAL_TYPE_DUMMY = 0
-};
-
-typedef enum _CRED_MARSHAL_TYPE CRED_MARSHAL_TYPE; /* ../include/wincred.h:158 */
-
-typedef enum _CRED_MARSHAL_TYPE* PCRED_MARSHAL_TYPE; /* ../include/wincred.h:158 */
+    DUMMY29 = 0
+}  CRED_MARSHAL_TYPE, * PCRED_MARSHAL_TYPE;
 
 typedef HRESULT (*PCOGETCALLSTATE) (int, PULONG); /* ../include/wct.h:22 */
 
@@ -210,50 +182,38 @@ typedef PVOID* PLSA_HANDLE; /* ../include/ntsecapi.h:185 */
 
 typedef ULONG* PLSA_ENUMERATION_HANDLE; /* ../include/ntsecapi.h:186 */
 
-typedef enum POLICY_INFORMATION_CLASS POLICY_INFORMATION_CLASS; /* ../include/ntsecapi.h:203 */
-
-enum POLICY_INFORMATION_CLASS /* ../include/ntsecapi.h:189 */
+typedef enum /* ../include/ntsecapi.h:189 */
 {
-    POLICY_INFORMATION_CLASS_DUMMY = 0
-};
+    DUMMY30 = 0
+}  POLICY_INFORMATION_CLASS, * PPOLICY_INFORMATION_CLASS;
 
-typedef struct LSA_TRANSLATED_NAME LSA_TRANSLATED_NAME; /* ../include/ntsecapi.h:272 */
-
-struct LSA_TRANSLATED_NAME /* ../include/ntsecapi.h:267 */
+typedef struct /* ../include/ntsecapi.h:267 */
 {
     SID_NAME_USE Use;
     LSA_UNICODE_STRING Name;
     LONG DomainIndex;
-};
+}  LSA_TRANSLATED_NAME, * PLSA_TRANSLATED_NAME;
 
-struct LSA_TRUST_INFORMATION /* ../include/ntsecapi.h:274 */
+typedef struct /* ../include/ntsecapi.h:274 */
 {
     LSA_UNICODE_STRING Name;
     PSID Sid;
-};
+}  LSA_TRUST_INFORMATION, * PLSA_TRUST_INFORMATION;
 
-typedef struct LSA_TRUST_INFORMATION* PLSA_TRUST_INFORMATION; /* ../include/ntsecapi.h:278 */
-
-typedef struct LSA_REFERENCED_DOMAIN_LIST LSA_REFERENCED_DOMAIN_LIST; /* ../include/ntsecapi.h:284 */
-
-struct LSA_REFERENCED_DOMAIN_LIST /* ../include/ntsecapi.h:280 */
+typedef struct /* ../include/ntsecapi.h:280 */
 {
     ULONG Entries;
     PLSA_TRUST_INFORMATION Domains;
-};
+}  LSA_REFERENCED_DOMAIN_LIST, * PLSA_REFERENCED_DOMAIN_LIST;
 
-typedef struct LSA_REFERENCED_DOMAIN_LIST* PLSA_REFERENCED_DOMAIN_LIST; /* ../include/ntsecapi.h:284 */
-
-struct _LSA_TRANSLATED_SID /* ../include/ntsecapi.h:286 */
+typedef struct _LSA_TRANSLATED_SID /* ../include/ntsecapi.h:286 */
 {
     SID_NAME_USE Use;
     ULONG RelativeId;
     LONG DomainIndex;
-};
+}  LSA_TRANSLATED_SID, * PLSA_TRANSLATED_SID;
 
-typedef struct _LSA_TRANSLATED_SID* PLSA_TRANSLATED_SID; /* ../include/ntsecapi.h:291 */
-
-struct _TRUSTED_DOMAIN_INFORMATION_EX /* ../include/ntsecapi.h:293 */
+typedef struct _TRUSTED_DOMAIN_INFORMATION_EX /* ../include/ntsecapi.h:293 */
 {
     LSA_UNICODE_STRING Name;
     LSA_UNICODE_STRING FlatName;
@@ -261,21 +221,17 @@ struct _TRUSTED_DOMAIN_INFORMATION_EX /* ../include/ntsecapi.h:293 */
     ULONG TrustDirection;
     ULONG TrustType;
     ULONG TrustAttributes;
-};
+}  TRUSTED_DOMAIN_INFORMATION_EX, * PTRUSTED_DOMAIN_INFORMATION_EX;
 
-typedef struct _TRUSTED_DOMAIN_INFORMATION_EX* PTRUSTED_DOMAIN_INFORMATION_EX; /* ../include/ntsecapi.h:301 */
-
-struct _LSA_AUTH_INFORMATION /* ../include/ntsecapi.h:303 */
+typedef struct _LSA_AUTH_INFORMATION /* ../include/ntsecapi.h:303 */
 {
     LARGE_INTEGER LastUpdateTime;
     ULONG AuthType;
     ULONG AuthInfoLength;
     PUCHAR AuthInfo;
-};
+}  LSA_AUTH_INFORMATION, * PLSA_AUTH_INFORMATION;
 
-typedef struct _LSA_AUTH_INFORMATION* PLSA_AUTH_INFORMATION; /* ../include/ntsecapi.h:309 */
-
-struct _TRUSTED_DOMAIN_AUTH_INFORMATION /* ../include/ntsecapi.h:311 */
+typedef struct _TRUSTED_DOMAIN_AUTH_INFORMATION /* ../include/ntsecapi.h:311 */
 {
     ULONG IncomingAuthInfos;
     PLSA_AUTH_INFORMATION IncomingAuthenticationInformation;
@@ -283,42 +239,32 @@ struct _TRUSTED_DOMAIN_AUTH_INFORMATION /* ../include/ntsecapi.h:311 */
     ULONG OutgoingAuthInfos;
     PLSA_AUTH_INFORMATION OutgoingAuthenticationInformation;
     PLSA_AUTH_INFORMATION OutgoingPreviousAuthenticationInformation;
-};
+}  TRUSTED_DOMAIN_AUTH_INFORMATION, * PTRUSTED_DOMAIN_AUTH_INFORMATION;
 
-typedef struct _TRUSTED_DOMAIN_AUTH_INFORMATION* PTRUSTED_DOMAIN_AUTH_INFORMATION; /* ../include/ntsecapi.h:319 */
-
-struct _LSA_TRANSLATED_SID2 /* ../include/ntsecapi.h:321 */
+typedef struct _LSA_TRANSLATED_SID2 /* ../include/ntsecapi.h:321 */
 {
     SID_NAME_USE Use;
     PSID Sid;
     LONG DomainIndex;
     ULONG Flags;
-};
+}  LSA_TRANSLATED_SID2, * PLSA_TRANSLATED_SID2;
 
-typedef struct _LSA_TRANSLATED_SID2* PLSA_TRANSLATED_SID2; /* ../include/ntsecapi.h:327 */
-
-enum _TRUSTED_INFORMATION_CLASS /* ../include/ntsecapi.h:329 */
+typedef enum _TRUSTED_INFORMATION_CLASS /* ../include/ntsecapi.h:329 */
 {
-    _TRUSTED_INFORMATION_CLASS_DUMMY = 0
-};
+    DUMMY31 = 0
+}  TRUSTED_INFORMATION_CLASS, * PTRUSTED_INFORMATION_CLASS;
 
-typedef enum _TRUSTED_INFORMATION_CLASS TRUSTED_INFORMATION_CLASS; /* ../include/ntsecapi.h:339 */
-
-enum _POLICY_NOTIFICATION_INFORMATION_CLASS /* ../include/ntsecapi.h:341 */
+typedef enum _POLICY_NOTIFICATION_INFORMATION_CLASS /* ../include/ntsecapi.h:341 */
 {
-    _POLICY_NOTIFICATION_INFORMATION_CLASS_DUMMY = 0
-};
+    DUMMY32 = 0
+}  POLICY_NOTIFICATION_INFORMATION_CLASS, * PPOLICY_NOTIFICATION_INFORMATION_CLASS;
 
-typedef enum _POLICY_NOTIFICATION_INFORMATION_CLASS POLICY_NOTIFICATION_INFORMATION_CLASS; /* ../include/ntsecapi.h:350 */
-
-struct _AUDIT_POLICY_INFORMATION /* ../include/ntsecapi.h:352 */
+typedef struct _AUDIT_POLICY_INFORMATION /* ../include/ntsecapi.h:352 */
 {
     GUID AuditSubCategoryGuid;
     ULONG AuditingInformation;
     GUID AuditCategoryGuid;
-};
-
-typedef struct _AUDIT_POLICY_INFORMATION AUDIT_POLICY_INFORMATION; /* ../include/ntsecapi.h:357 */
+}  AUDIT_POLICY_INFORMATION, * PAUDIT_POLICY_INFORMATION;
 
 typedef unsigned int ALG_ID; /* ../include/wincrypt.h:38 */
 
@@ -335,14 +281,14 @@ struct ustring /* ../dlls/advapi32/crypt.h:94 */
     unsigned char* Buffer;
 };
 
-struct _WNODE_HEADER /* ../include/wmistr.h:54 */
+typedef struct _WNODE_HEADER /* ../include/wmistr.h:54 */
 {
     ULONG BufferSize;
     ULONG ProvicerId;
-    union  /* ../include/wmistr.h:58 */
+    union /* ../include/wmistr.h:58 */
     {
         ULONG64 HistoricalContext;
-        struct  /* ../include/wmistr.h:61 */
+        struct /* ../include/wmistr.h:61 */
         {
             ULONG Version;
             ULONG Linkage;
@@ -350,12 +296,16 @@ struct _WNODE_HEADER /* ../include/wmistr.h:54 */
 
     };
 
+    union /* ../include/wmistr.h:68 */
+    {
+        HANDLE KernelHandle;
+        LARGE_INTEGER TimeStamp;
+    };
+
     GUID Guid;
     ULONG ClientContext;
     ULONG Flags;
-};
-
-typedef struct _WNODE_HEADER WNODE_HEADER; /* ../include/wmistr.h:76 */
+}  WNODE_HEADER, * PWNODE_HEADER;
 
 typedef ULONG64 TRACEHANDLE; /* ../include/evntrace.h:70 */
 
@@ -369,7 +319,7 @@ typedef ULONG (*PEVENT_TRACE_BUFFER_CALLBACKA) (PEVENT_TRACE_LOGFILEA); /* ../in
 
 typedef ULONG (*PEVENT_TRACE_BUFFER_CALLBACKW) (PEVENT_TRACE_LOGFILEW); /* ../include/evntrace.h:79 */
 
-struct _TRACE_GUID_PROPERTIES /* ../include/evntrace.h:89 */
+typedef struct _TRACE_GUID_PROPERTIES /* ../include/evntrace.h:89 */
 {
     GUID Guid;
     ULONG GuidType;
@@ -377,17 +327,15 @@ struct _TRACE_GUID_PROPERTIES /* ../include/evntrace.h:89 */
     ULONG EnableLevel;
     ULONG EnableFlags;
     BOOLEAN IsEnable;
-};
+}  TRACE_GUID_PROPERTIES, * PTRACE_GUID_PROPERTIES;
 
-typedef struct _TRACE_GUID_PROPERTIES* PTRACE_GUID_PROPERTIES; /* ../include/evntrace.h:96 */
-
-struct _EVENT_TRACE_HEADER /* ../include/evntrace.h:98 */
+typedef struct _EVENT_TRACE_HEADER /* ../include/evntrace.h:98 */
 {
     USHORT Size;
-    union  /* ../include/evntrace.h:101 */
+    union /* ../include/evntrace.h:101 */
     {
         USHORT FieldTypeFlags;
-        struct  /* ../include/evntrace.h:104 */
+        struct /* ../include/evntrace.h:104 */
         {
             UCHAR HeaderType;
             UCHAR MarkerFlags;
@@ -395,14 +343,46 @@ struct _EVENT_TRACE_HEADER /* ../include/evntrace.h:98 */
 
     };
 
+    union /* ../include/evntrace.h:110 */
+    {
+        ULONG Version;
+        struct /* ../include/evntrace.h:113 */
+        {
+            UCHAR Type;
+            UCHAR Level;
+            USHORT Version;
+        } Class;
+
+    };
+
     ULONG ThreadId;
     ULONG ProcessId;
     LARGE_INTEGER TimeStamp;
-};
+    union /* ../include/evntrace.h:123 */
+    {
+        GUID Guid;
+        ULONGLONG GuidPtr;
+    };
 
-typedef struct _EVENT_TRACE_HEADER EVENT_TRACE_HEADER; /* ../include/evntrace.h:141 */
+    union /* ../include/evntrace.h:128 */
+    {
+        struct /* ../include/evntrace.h:130 */
+        {
+            ULONG ClientContext;
+            ULONG Flags;
+        };
 
-struct _EVENT_TRACE /* ../include/evntrace.h:143 */
+        struct /* ../include/evntrace.h:135 */
+        {
+            ULONG KernelTime;
+            ULONG UserTime;
+        };
+
+    };
+
+}  EVENT_TRACE_HEADER, * PEVENT_TRACE_HEADER;
+
+typedef struct _EVENT_TRACE /* ../include/evntrace.h:143 */
 {
     EVENT_TRACE_HEADER Header;
     ULONG InstanceId;
@@ -411,21 +391,17 @@ struct _EVENT_TRACE /* ../include/evntrace.h:143 */
     PVOID MofData;
     ULONG MofLength;
     ULONG ClientContext;
-};
-
-typedef struct _EVENT_TRACE EVENT_TRACE; /* ../include/evntrace.h:152 */
-
-typedef struct _EVENT_TRACE* PEVENT_TRACE; /* ../include/evntrace.h:152 */
+}  EVENT_TRACE, * PEVENT_TRACE;
 
 typedef void (*PEVENT_CALLBACK) (PEVENT_TRACE); /* ../include/evntrace.h:154 */
 
-struct _TRACE_LOGFILE_HEADER /* ../include/evntrace.h:156 */
+typedef struct _TRACE_LOGFILE_HEADER /* ../include/evntrace.h:156 */
 {
     ULONG BufferSize;
-    union  /* ../include/evntrace.h:159 */
+    union /* ../include/evntrace.h:159 */
     {
         ULONG Version;
-        struct  /* ../include/evntrace.h:162 */
+        struct /* ../include/evntrace.h:162 */
         {
             UCHAR MajorVersion;
             UCHAR MinorVersion;
@@ -442,6 +418,19 @@ struct _TRACE_LOGFILE_HEADER /* ../include/evntrace.h:156 */
     ULONG MaximumFileSize;
     ULONG LogFileMode;
     ULONG BuffersWritten;
+    union /* ../include/evntrace.h:177 */
+    {
+        GUID LogInstanceGuid;
+        struct /* ../include/evntrace.h:180 */
+        {
+            ULONG StartBuffers;
+            ULONG PointerSize;
+            ULONG EventsLost;
+            ULONG CpuSpeedInMHZ;
+        };
+
+    };
+
     LPWSTR LoggerName;
     LPWSTR LogFileName;
     TIME_ZONE_INFORMATION TimeZone;
@@ -450,9 +439,7 @@ struct _TRACE_LOGFILE_HEADER /* ../include/evntrace.h:156 */
     LARGE_INTEGER StartTime;
     ULONG ReservedTime;
     ULONG BuffersLost;
-};
-
-typedef struct _TRACE_LOGFILE_HEADER TRACE_LOGFILE_HEADER; /* ../include/evntrace.h:196 */
+}  TRACE_LOGFILE_HEADER, * PTRACE_LOGFILE_HEADER;
 
 struct _EVENT_TRACE_LOGFILEW /* ../include/evntrace.h:198 */
 {
@@ -486,7 +473,7 @@ struct _EVENT_TRACE_LOGFILEA /* ../include/evntrace.h:214 */
     PVOID Context;
 };
 
-struct _EVENT_TRACE_PROPERTIES /* ../include/evntrace.h:230 */
+typedef struct _EVENT_TRACE_PROPERTIES /* ../include/evntrace.h:230 */
 {
     WNODE_HEADER Wnode;
     ULONG BufferSize;
@@ -506,11 +493,9 @@ struct _EVENT_TRACE_PROPERTIES /* ../include/evntrace.h:230 */
     HANDLE LoggerThreadId;
     ULONG LogFileNameOffset;
     ULONG LoggerNameOffset;
-};
+}  EVENT_TRACE_PROPERTIES, * PEVENT_TRACE_PROPERTIES;
 
-typedef struct _EVENT_TRACE_PROPERTIES* PEVENT_TRACE_PROPERTIES; /* ../include/evntrace.h:250 */
-
-struct _ENABLE_TRACE_PARAMETERS /* ../include/evntrace.h:252 */
+typedef struct _ENABLE_TRACE_PARAMETERS /* ../include/evntrace.h:252 */
 {
     ULONG Version;
     ULONG EnableProperty;
@@ -518,34 +503,26 @@ struct _ENABLE_TRACE_PARAMETERS /* ../include/evntrace.h:252 */
     GUID SourceId;
     struct _EVENT_FILTER_DESCRIPTOR* EnableFilterDesc;
     ULONG FilterDescCount;
-};
+}  ENABLE_TRACE_PARAMETERS, * PENABLE_TRACE_PARAMETERS;
 
-typedef struct _ENABLE_TRACE_PARAMETERS* PENABLE_TRACE_PARAMETERS; /* ../include/evntrace.h:260 */
-
-enum _TRACE_QUERY_INFO_CLASS /* ../include/evntrace.h:262 */
+typedef enum _TRACE_QUERY_INFO_CLASS /* ../include/evntrace.h:262 */
 {
-    _TRACE_QUERY_INFO_CLASS_DUMMY = 0
-};
+    DUMMY33 = 0
+}  TRACE_QUERY_INFO_CLASS,  TRACE_INFO_CLASS;
 
-typedef enum _TRACE_QUERY_INFO_CLASS TRACE_INFO_CLASS; /* ../include/evntrace.h:285 */
-
-struct _EVENT_FILTER_DESCRIPTOR /* ../include/evntprov.h:52 */
+typedef struct _EVENT_FILTER_DESCRIPTOR /* ../include/evntprov.h:52 */
 {
     ULONGLONG Ptr;
     ULONG Size;
     ULONG Type;
-};
+}  EVENT_FILTER_DESCRIPTOR, * PEVENT_FILTER_DESCRIPTOR;
 
-typedef struct _EVENT_FILTER_DESCRIPTOR* PEVENT_FILTER_DESCRIPTOR; /* ../include/evntprov.h:58 */
-
-struct SAFER_LEVEL_HANDLE__ /* ../include/winsafer.h:31 */
+typedef struct SAFER_LEVEL_HANDLE__ /* ../include/winsafer.h:31 */
 {
     int unused;
-};
+} * SAFER_LEVEL_HANDLE;
 
-typedef struct SAFER_LEVEL_HANDLE__* SAFER_LEVEL_HANDLE; /* ../include/winsafer.h:31 */
-
-struct _SAFER_CODE_PROPERTIES_V2 /* ../include/winsafer.h:41 */
+typedef struct _SAFER_CODE_PROPERTIES_V2 /* ../include/winsafer.h:41 */
 {
     DWORD cbSize;
     DWORD dwCheckFlags;
@@ -564,152 +541,110 @@ struct _SAFER_CODE_PROPERTIES_V2 /* ../include/winsafer.h:41 */
     LPCWSTR PackageName;
     ULONG64 PackageVersion;
     BOOL PackageIsFramework;
-};
-
-typedef struct _SAFER_CODE_PROPERTIES_V2 SAFER_CODE_PROPERTIES_V2; /* ../include/winsafer.h:59 */
+}  SAFER_CODE_PROPERTIES_V2, * PSAFER_CODE_PROPERTIES_V2;
 
 typedef SAFER_CODE_PROPERTIES_V2 SAFER_CODE_PROPERTIES; /* ../include/winsafer.h:61 */
 
-enum _SAFER_POLICY_INFO_CLASS /* ../include/winsafer.h:75 */
+typedef enum _SAFER_POLICY_INFO_CLASS /* ../include/winsafer.h:75 */
 {
-    _SAFER_POLICY_INFO_CLASS_DUMMY = 0
-};
+    DUMMY34 = 0
+}  SAFER_POLICY_INFO_CLASS;
 
-typedef enum _SAFER_POLICY_INFO_CLASS SAFER_POLICY_INFO_CLASS; /* ../include/winsafer.h:81 */
-
-enum _SAFER_OBJECT_INFO_CLASS /* ../include/winsafer.h:83 */
+typedef enum _SAFER_OBJECT_INFO_CLASS /* ../include/winsafer.h:83 */
 {
-    _SAFER_OBJECT_INFO_CLASS_DUMMY = 0
-};
+    DUMMY35 = 0
+}  SAFER_OBJECT_INFO_CLASS;
 
-typedef enum _SAFER_OBJECT_INFO_CLASS SAFER_OBJECT_INFO_CLASS; /* ../include/winsafer.h:100 */
-
-enum _SE_OBJECT_TYPE /* ../include/accctrl.h:28 */
+typedef enum _SE_OBJECT_TYPE /* ../include/accctrl.h:28 */
 {
-    _SE_OBJECT_TYPE_DUMMY = 0
-};
+    DUMMY36 = 0
+}  SE_OBJECT_TYPE;
 
-typedef enum _SE_OBJECT_TYPE SE_OBJECT_TYPE; /* ../include/accctrl.h:43 */
-
-enum _TRUSTEE_TYPE /* ../include/accctrl.h:45 */
+typedef enum _TRUSTEE_TYPE /* ../include/accctrl.h:45 */
 {
-    _TRUSTEE_TYPE_DUMMY = 0
-};
+    DUMMY37 = 0
+}  TRUSTEE_TYPE;
 
-typedef enum _TRUSTEE_TYPE TRUSTEE_TYPE; /* ../include/accctrl.h:56 */
-
-enum _TRUSTEE_FORM /* ../include/accctrl.h:58 */
+typedef enum _TRUSTEE_FORM /* ../include/accctrl.h:58 */
 {
-    _TRUSTEE_FORM_DUMMY = 0
-};
+    DUMMY38 = 0
+}  TRUSTEE_FORM;
 
-typedef enum _TRUSTEE_FORM TRUSTEE_FORM; /* ../include/accctrl.h:65 */
-
-enum _MULTIPLE_TRUSTEE_OPERATION /* ../include/accctrl.h:67 */
+typedef enum _MULTIPLE_TRUSTEE_OPERATION /* ../include/accctrl.h:67 */
 {
-    _MULTIPLE_TRUSTEE_OPERATION_DUMMY = 0
-};
+    DUMMY39 = 0
+}  MULTIPLE_TRUSTEE_OPERATION;
 
-typedef enum _MULTIPLE_TRUSTEE_OPERATION MULTIPLE_TRUSTEE_OPERATION; /* ../include/accctrl.h:71 */
-
-struct _OBJECTS_AND_SID /* ../include/accctrl.h:73 */
+typedef struct _OBJECTS_AND_SID /* ../include/accctrl.h:73 */
 {
     DWORD ObjectsPresent;
     GUID ObjectTypeGuid;
     GUID InheritedObjectTypeGuid;
     SID* pSid;
-};
+}  OBJECTS_AND_SID, * POBJECTS_AND_SID;
 
-typedef struct _OBJECTS_AND_SID* POBJECTS_AND_SID; /* ../include/accctrl.h:79 */
-
-struct _OBJECTS_AND_NAME_A /* ../include/accctrl.h:81 */
+typedef struct _OBJECTS_AND_NAME_A /* ../include/accctrl.h:81 */
 {
     DWORD ObjectsPresent;
     SE_OBJECT_TYPE ObjectType;
     LPSTR ObjectTypeName;
     LPSTR InheritedObjectTypeName;
     LPSTR ptstrName;
-};
+}  OBJECTS_AND_NAME_A, * POBJECTS_AND_NAME_A;
 
-typedef struct _OBJECTS_AND_NAME_A* POBJECTS_AND_NAME_A; /* ../include/accctrl.h:88 */
-
-struct _OBJECTS_AND_NAME_W /* ../include/accctrl.h:90 */
+typedef struct _OBJECTS_AND_NAME_W /* ../include/accctrl.h:90 */
 {
     DWORD ObjectsPresent;
     SE_OBJECT_TYPE ObjectType;
     LPWSTR ObjectTypeName;
     LPWSTR InheritedObjectTypeName;
     LPWSTR ptstrName;
-};
+}  OBJECTS_AND_NAME_W, * POBJECTS_AND_NAME_W;
 
-typedef struct _OBJECTS_AND_NAME_W* POBJECTS_AND_NAME_W; /* ../include/accctrl.h:97 */
-
-struct _TRUSTEE_A /* ../include/accctrl.h:102 */
+typedef struct _TRUSTEE_A /* ../include/accctrl.h:102 */
 {
     struct _TRUSTEE_A* pMultipleTrustee;
     MULTIPLE_TRUSTEE_OPERATION MultipleTrusteeOperation;
     TRUSTEE_FORM TrusteeForm;
     TRUSTEE_TYPE TrusteeType;
     LPSTR ptstrName;
-};
+}  TRUSTEE_A, * PTRUSTEE_A,  TRUSTEEA, * PTRUSTEEA;
 
-typedef struct _TRUSTEE_A TRUSTEE_A; /* ../include/accctrl.h:109 */
-
-typedef struct _TRUSTEE_A TRUSTEEA; /* ../include/accctrl.h:109 */
-
-typedef struct _TRUSTEE_A* PTRUSTEEA; /* ../include/accctrl.h:109 */
-
-struct _TRUSTEE_W /* ../include/accctrl.h:111 */
+typedef struct _TRUSTEE_W /* ../include/accctrl.h:111 */
 {
     struct _TRUSTEE_W* pMultipleTrustee;
     MULTIPLE_TRUSTEE_OPERATION MultipleTrusteeOperation;
     TRUSTEE_FORM TrusteeForm;
     TRUSTEE_TYPE TrusteeType;
     LPWSTR ptstrName;
-};
+}  TRUSTEE_W, * PTRUSTEE_W,  TRUSTEEW, * PTRUSTEEW;
 
-typedef struct _TRUSTEE_W TRUSTEE_W; /* ../include/accctrl.h:118 */
-
-typedef struct _TRUSTEE_W TRUSTEEW; /* ../include/accctrl.h:118 */
-
-typedef struct _TRUSTEE_W* PTRUSTEEW; /* ../include/accctrl.h:118 */
-
-enum _ACCESS_MODE /* ../include/accctrl.h:125 */
+typedef enum _ACCESS_MODE /* ../include/accctrl.h:125 */
 {
-    _ACCESS_MODE_DUMMY = 0
-};
+    DUMMY40 = 0
+}  ACCESS_MODE;
 
-typedef enum _ACCESS_MODE ACCESS_MODE; /* ../include/accctrl.h:134 */
-
-struct _EXPLICIT_ACCESS_A /* ../include/accctrl.h:146 */
+typedef struct _EXPLICIT_ACCESS_A /* ../include/accctrl.h:146 */
 {
     DWORD grfAccessPermissions;
     ACCESS_MODE grfAccessMode;
     DWORD grfInheritance;
     TRUSTEE_A Trustee;
-};
+}  EXPLICIT_ACCESS_A, * PEXPLICIT_ACCESS_A,  EXPLICIT_ACCESSA, * PEXPLICIT_ACCESSA;
 
-typedef struct _EXPLICIT_ACCESS_A EXPLICIT_ACCESSA; /* ../include/accctrl.h:152 */
-
-typedef struct _EXPLICIT_ACCESS_A* PEXPLICIT_ACCESSA; /* ../include/accctrl.h:152 */
-
-struct _EXPLICIT_ACCESS_W /* ../include/accctrl.h:154 */
+typedef struct _EXPLICIT_ACCESS_W /* ../include/accctrl.h:154 */
 {
     DWORD grfAccessPermissions;
     ACCESS_MODE grfAccessMode;
     DWORD grfInheritance;
     TRUSTEE_W Trustee;
-};
-
-typedef struct _EXPLICIT_ACCESS_W EXPLICIT_ACCESSW; /* ../include/accctrl.h:160 */
-
-typedef struct _EXPLICIT_ACCESS_W* PEXPLICIT_ACCESSW; /* ../include/accctrl.h:160 */
+}  EXPLICIT_ACCESS_W, * PEXPLICIT_ACCESS_W,  EXPLICIT_ACCESSW, * PEXPLICIT_ACCESSW;
 
 typedef ULONG ACCESS_RIGHTS; /* ../include/accctrl.h:167 */
 
 typedef ULONG INHERIT_FLAGS; /* ../include/accctrl.h:168 */
 
-struct _ACTRL_ACCESS_ENTRYA /* ../include/accctrl.h:170 */
+typedef struct _ACTRL_ACCESS_ENTRYA /* ../include/accctrl.h:170 */
 {
     TRUSTEE_A Trustee;
     ULONG fAccessFlags;
@@ -717,11 +652,9 @@ struct _ACTRL_ACCESS_ENTRYA /* ../include/accctrl.h:170 */
     ACCESS_RIGHTS ProvSpecificAccess;
     INHERIT_FLAGS Inheritance;
     LPSTR lpInheritProperty;
-};
+}  ACTRL_ACCESS_ENTRYA, * PACTRL_ACCESS_ENTRYA;
 
-typedef struct _ACTRL_ACCESS_ENTRYA ACTRL_ACCESS_ENTRYA; /* ../include/accctrl.h:178 */
-
-struct _ACTRL_ACCESS_ENTRYW /* ../include/accctrl.h:180 */
+typedef struct _ACTRL_ACCESS_ENTRYW /* ../include/accctrl.h:180 */
 {
     TRUSTEE_W Trustee;
     ULONG fAccessFlags;
@@ -729,72 +662,50 @@ struct _ACTRL_ACCESS_ENTRYW /* ../include/accctrl.h:180 */
     ACCESS_RIGHTS ProvSpecificAccess;
     INHERIT_FLAGS Inheritance;
     LPWSTR lpInheritProperty;
-};
+}  ACTRL_ACCESS_ENTRYW, * PACTRL_ACCESS_ENTRYW;
 
-typedef struct _ACTRL_ACCESS_ENTRYW ACTRL_ACCESS_ENTRYW; /* ../include/accctrl.h:188 */
-
-struct _ACTRL_ACCESS_ENTRY_LISTA /* ../include/accctrl.h:194 */
+typedef struct _ACTRL_ACCESS_ENTRY_LISTA /* ../include/accctrl.h:194 */
 {
     ULONG cEntries;
     ACTRL_ACCESS_ENTRYA* pAccessList;
-};
+}  ACTRL_ACCESS_ENTRY_LISTA, * PACTRL_ACCESS_ENTRY_LISTA;
 
-typedef struct _ACTRL_ACCESS_ENTRY_LISTA* PACTRL_ACCESS_ENTRY_LISTA; /* ../include/accctrl.h:198 */
-
-struct _ACTRL_ACCESS_ENTRY_LISTW /* ../include/accctrl.h:200 */
+typedef struct _ACTRL_ACCESS_ENTRY_LISTW /* ../include/accctrl.h:200 */
 {
     ULONG cEntries;
     ACTRL_ACCESS_ENTRYW* pAccessList;
-};
+}  ACTRL_ACCESS_ENTRY_LISTW, * PACTRL_ACCESS_ENTRY_LISTW;
 
-typedef struct _ACTRL_ACCESS_ENTRY_LISTW* PACTRL_ACCESS_ENTRY_LISTW; /* ../include/accctrl.h:204 */
-
-struct _ACTRL_PROPERTY_ENTRYA /* ../include/accctrl.h:209 */
+typedef struct _ACTRL_PROPERTY_ENTRYA /* ../include/accctrl.h:209 */
 {
     LPSTR lpProperty;
     PACTRL_ACCESS_ENTRY_LISTA pAccessEntryList;
     ULONG fListFlags;
-};
+}  ACTRL_PROPERTY_ENTRYA, * PACTRL_PROPERTY_ENTRYA;
 
-typedef struct _ACTRL_PROPERTY_ENTRYA* PACTRL_PROPERTY_ENTRYA; /* ../include/accctrl.h:214 */
-
-struct _ACTRL_PROPERTY_ENTRYW /* ../include/accctrl.h:216 */
+typedef struct _ACTRL_PROPERTY_ENTRYW /* ../include/accctrl.h:216 */
 {
     LPWSTR lpProperty;
     PACTRL_ACCESS_ENTRY_LISTW pAccessEntryList;
     ULONG fListFlags;
-};
+}  ACTRL_PROPERTY_ENTRYW, * PACTRL_PROPERTY_ENTRYW;
 
-typedef struct _ACTRL_PROPERTY_ENTRYW* PACTRL_PROPERTY_ENTRYW; /* ../include/accctrl.h:221 */
-
-struct _ACTRL_ALISTA /* ../include/accctrl.h:226 */
+typedef struct _ACTRL_ALISTA /* ../include/accctrl.h:226 */
 {
     ULONG cEntries;
     PACTRL_PROPERTY_ENTRYA pPropertyAccessList;
-};
+}  ACTRL_ACCESSA, * PACTRL_ACCESSA,  ACTRL_AUDITA, * PACTRL_AUDITA;
 
-typedef struct _ACTRL_ALISTA* PACTRL_ACCESSA; /* ../include/accctrl.h:230 */
-
-typedef struct _ACTRL_ALISTA* PACTRL_AUDITA; /* ../include/accctrl.h:230 */
-
-struct _ACTRL_ALISTW /* ../include/accctrl.h:232 */
+typedef struct _ACTRL_ALISTW /* ../include/accctrl.h:232 */
 {
     ULONG cEntries;
     PACTRL_PROPERTY_ENTRYW pPropertyAccessList;
-};
+}  ACTRL_ACCESSW, * PACTRL_ACCESSW,  ACTRL_AUDITW, * PACTRL_AUDITW;
 
-typedef struct _ACTRL_ALISTW* PACTRL_ACCESSW; /* ../include/accctrl.h:236 */
-
-typedef struct _ACTRL_ALISTW* PACTRL_AUDITW; /* ../include/accctrl.h:236 */
-
-enum _PROGRESS_INVOKE_SETTING /* ../include/accctrl.h:422 */
+typedef enum _PROGRESS_INVOKE_SETTING /* ../include/accctrl.h:422 */
 {
-    _PROGRESS_INVOKE_SETTING_DUMMY = 0
-};
-
-typedef enum _PROGRESS_INVOKE_SETTING PROG_INVOKE_SETTING; /* ../include/accctrl.h:428 */
-
-typedef enum _PROGRESS_INVOKE_SETTING* PPROG_INVOKE_SETTING; /* ../include/accctrl.h:428 */
+    DUMMY41 = 0
+}  PROG_INVOKE_SETTING, * PPROG_INVOKE_SETTING;
 
 typedef void (*FN_PROGRESS) (LPWSTR, DWORD, PPROG_INVOKE_SETTING, PVOID, BOOL); /* ../include/aclapi.h:29 */
 
@@ -802,34 +713,28 @@ typedef PVOID WMIHANDLE; /* ../include/wmium.h:32 */
 
 typedef PVOID MOFHANDLE; /* ../include/wmium.h:32 */
 
-typedef struct MOFRESOURCEINFOA MOFRESOURCEINFOA; /* ../include/wmium.h:44 */
-
-struct MOFRESOURCEINFOA /* ../include/wmium.h:38 */
+typedef struct /* ../include/wmium.h:38 */
 {
     char* ImagePath;
     char* ResourceName;
     ULONG ResourceSize;
     UCHAR* ResourceBuffer;
-};
+}  MOFRESOURCEINFOA, * PMOFRESOURCEINFOA;
 
-typedef struct MOFRESOURCEINFOW MOFRESOURCEINFOW; /* ../include/wmium.h:52 */
-
-struct MOFRESOURCEINFOW /* ../include/wmium.h:46 */
+typedef struct /* ../include/wmium.h:46 */
 {
     WCHAR* ImagePath;
     WCHAR* ResourceName;
     ULONG ResourceSize;
     UCHAR* ResourceBuffer;
-};
+}  MOFRESOURCEINFOW, * PMOFRESOURCEINFOW;
 
-struct _WMIGUIDINFORMATION /* ../include/wmium.h:67 */
+typedef struct _WMIGUIDINFORMATION /* ../include/wmium.h:67 */
 {
     ULONG Size;
     BOOLEAN IsExpensive;
     BOOLEAN IsEventOnly;
-};
-
-typedef struct _WMIGUIDINFORMATION WMIGUIDINFORMATION; /* ../include/wmium.h:72 */
+}  WMIGUIDINFORMATION, * PWMIGUIDINFORMATION;
 
 static WINAPI BOOL (*pAbortSystemShutdownA)(LPSTR lpMachineName);
 static WINAPI BOOL (*pAbortSystemShutdownW)(LPWSTR lpMachineName);

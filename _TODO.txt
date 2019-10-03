@@ -48,3 +48,7 @@ Could be useful:
 
 32bit dlls		->								thunk							-> cocreateobject (64bit)	->			thunk		-> GetDllObject (32bit)
 function(32bit)	<- remove 64->32 converter thunk / add 32->64 converter thunk	<- function(64bit)			<- add converter thunk  <- function(32bit)
+
+
+dependency tests
+

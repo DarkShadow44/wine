@@ -4,15 +4,12 @@
 #include "wine/winethunks.h"
 WINE_DEFAULT_DEBUG_CHANNEL(thunks);
 
-struct MSVCRT__LDOUBLE; /* ../dlls/msvcrt/msvcrt.h:106 */
 struct MSVCRT_tm; /* ../dlls/msvcrt/msvcrt.h:108 */
 struct MSVCRT_tagLC_ID; /* ../dlls/msvcrt/msvcrt.h:120 */
-struct MSVCRT___lc_time_data; /* ../dlls/msvcrt/msvcrt.h:126 */
 struct MSVCRT_threadlocaleinfostruct; /* ../dlls/msvcrt/msvcrt.h:165 */
 struct MSVCRT_threadmbcinfostruct; /* ../dlls/msvcrt/msvcrt.h:194 */
 struct MSVCRT_localeinfo_struct; /* ../dlls/msvcrt/msvcrt.h:207 */
 struct _frame_info; /* ../dlls/msvcrt/msvcrt.h:220 */
-struct cxx_frame_info; /* ../dlls/msvcrt/msvcrt.h:226 */
 struct MSVCRT___timeb32; /* ../dlls/msvcrt/msvcrt.h:405 */
 struct MSVCRT___timeb64; /* ../dlls/msvcrt/msvcrt.h:412 */
 struct MSVCRT__iobuf; /* ../dlls/msvcrt/msvcrt.h:419 */
@@ -35,11 +32,8 @@ struct MSVCRT___utimbuf32; /* ../dlls/msvcrt/msvcrt.h:663 */
 struct MSVCRT___utimbuf64; /* ../dlls/msvcrt/msvcrt.h:669 */
 struct MSVCRT__stat64i32; /* ../dlls/msvcrt/msvcrt.h:708 */
 struct MSVCRT__stat64; /* ../dlls/msvcrt/msvcrt.h:722 */
-struct MSVCRT__CRT_FLOAT; /* ../dlls/msvcrt/msvcrt.h:1210 */
-struct MSVCRT__CRT_DOUBLE; /* ../dlls/msvcrt/msvcrt.h:1215 */
 struct __type_info; /* ../dlls/msvcrt/cppexcept.h:36 */
 struct __exception; /* ../dlls/msvcrt/cppexcept.h:44 */
-struct cxx_exception_type; /* ../dlls/msvcrt/cppexcept.h:118 */
 struct _I10_OUTPUT_DATA; /* ../dlls/msvcrt/string.c:1786 */
 
 typedef unsigned long ULONG64; /* ../include/basetsd.h:99 */
@@ -94,12 +88,10 @@ typedef unsigned int (*MSVCRT__beginthreadex_start_routine_t) (void*); /* ../dll
 
 typedef int (*MSVCRT__onexit_t) (void); /* ../dlls/msvcrt/msvcrt.h:101 */
 
-typedef struct MSVCRT__LDOUBLE MSVCRT__LDOUBLE; /* ../dlls/msvcrt/msvcrt.h:106 */
-
-struct MSVCRT__LDOUBLE /* ../dlls/msvcrt/msvcrt.h:106 */
+typedef struct /* ../dlls/msvcrt/msvcrt.h:106 */
 {
     ULONG x80[3];
-};
+}  MSVCRT__LDOUBLE;
 
 struct MSVCRT_tm /* ../dlls/msvcrt/msvcrt.h:108 */
 {
@@ -114,23 +106,19 @@ struct MSVCRT_tm /* ../dlls/msvcrt/msvcrt.h:108 */
     int tm_isdst;
 };
 
-struct MSVCRT_tagLC_ID /* ../dlls/msvcrt/msvcrt.h:120 */
+typedef struct MSVCRT_tagLC_ID /* ../dlls/msvcrt/msvcrt.h:120 */
 {
     unsigned short wLanguage;
     unsigned short wCountry;
     unsigned short wCodePage;
-};
+}  MSVCRT_LC_ID, * MSVCRT_LPLC_ID;
 
-typedef struct MSVCRT_tagLC_ID MSVCRT_LC_ID; /* ../dlls/msvcrt/msvcrt.h:124 */
-
-typedef struct MSVCRT___lc_time_data MSVCRT___lc_time_data; /* ../dlls/msvcrt/msvcrt.h:163 */
-
-struct MSVCRT___lc_time_data /* ../dlls/msvcrt/msvcrt.h:126 */
+typedef struct /* ../dlls/msvcrt/msvcrt.h:126 */
 {
-    union  /* ../dlls/msvcrt/msvcrt.h:127 */
+    union /* ../dlls/msvcrt/msvcrt.h:127 */
     {
         char* str[43];
-        struct  /* ../dlls/msvcrt/msvcrt.h:129 */
+        struct /* ../dlls/msvcrt/msvcrt.h:129 */
         {
             char* short_wday[7];
             char* wday[7];
@@ -147,17 +135,35 @@ struct MSVCRT___lc_time_data /* ../dlls/msvcrt/msvcrt.h:126 */
 
     LCID lcid;
     int unk[2];
-    char data[1];
-};
+    union /* ../dlls/msvcrt/msvcrt.h:145 */
+    {
+        MSVCRT_wchar_t* wstr[43];
+        struct /* ../dlls/msvcrt/msvcrt.h:147 */
+        {
+            MSVCRT_wchar_t* short_wday[7];
+            MSVCRT_wchar_t* wday[7];
+            MSVCRT_wchar_t* short_mon[12];
+            MSVCRT_wchar_t* mon[12];
+            MSVCRT_wchar_t* am;
+            MSVCRT_wchar_t* pm;
+            MSVCRT_wchar_t* short_date;
+            MSVCRT_wchar_t* date;
+            MSVCRT_wchar_t* time;
+        } names;
 
-struct MSVCRT_threadlocaleinfostruct /* ../dlls/msvcrt/msvcrt.h:165 */
+    } wstr;
+
+    char data[1];
+}  MSVCRT___lc_time_data;
+
+typedef struct MSVCRT_threadlocaleinfostruct /* ../dlls/msvcrt/msvcrt.h:165 */
 {
     int refcount;
     unsigned int lc_codepage;
     unsigned int lc_collate_cp;
     MSVCRT_ulong lc_handle[6];
     MSVCRT_LC_ID lc_id[6];
-    struct  /* ../dlls/msvcrt/msvcrt.h:171 */
+    struct /* ../dlls/msvcrt/msvcrt.h:171 */
     {
         char* locale;
         MSVCRT_wchar_t* wlocale;
@@ -177,9 +183,9 @@ struct MSVCRT_threadlocaleinfostruct /* ../dlls/msvcrt/msvcrt.h:165 */
     unsigned char* pclmap;
     unsigned char* pcumap;
     MSVCRT___lc_time_data* lc_time_curr;
-};
+}  MSVCRT_threadlocinfo;
 
-struct MSVCRT_threadmbcinfostruct /* ../dlls/msvcrt/msvcrt.h:194 */
+typedef struct MSVCRT_threadmbcinfostruct /* ../dlls/msvcrt/msvcrt.h:194 */
 {
     int refcount;
     int mbcodepage;
@@ -188,36 +194,30 @@ struct MSVCRT_threadmbcinfostruct /* ../dlls/msvcrt/msvcrt.h:194 */
     unsigned short mbulinfo[6];
     unsigned char mbctype[257];
     unsigned char mbcasemap[256];
-};
+}  MSVCRT_threadmbcinfo;
 
 typedef struct MSVCRT_threadlocaleinfostruct* MSVCRT_pthreadlocinfo; /* ../dlls/msvcrt/msvcrt.h:204 */
 
 typedef struct MSVCRT_threadmbcinfostruct* MSVCRT_pthreadmbcinfo; /* ../dlls/msvcrt/msvcrt.h:205 */
 
-struct MSVCRT_localeinfo_struct /* ../dlls/msvcrt/msvcrt.h:207 */
+typedef struct MSVCRT_localeinfo_struct /* ../dlls/msvcrt/msvcrt.h:207 */
 {
     MSVCRT_pthreadlocinfo locinfo;
     MSVCRT_pthreadmbcinfo mbcinfo;
-};
+}  MSVCRT__locale_tstruct, * MSVCRT__locale_t;
 
-typedef struct MSVCRT_localeinfo_struct* MSVCRT__locale_t; /* ../dlls/msvcrt/msvcrt.h:211 */
-
-struct _frame_info /* ../dlls/msvcrt/msvcrt.h:220 */
+typedef struct _frame_info /* ../dlls/msvcrt/msvcrt.h:220 */
 {
     void* object;
     struct _frame_info* next;
-};
+}  frame_info;
 
-typedef struct _frame_info frame_info; /* ../dlls/msvcrt/msvcrt.h:224 */
-
-typedef struct cxx_frame_info cxx_frame_info; /* ../dlls/msvcrt/msvcrt.h:231 */
-
-struct cxx_frame_info /* ../dlls/msvcrt/msvcrt.h:226 */
+typedef struct /* ../dlls/msvcrt/msvcrt.h:226 */
 {
     frame_info frame_info;
     EXCEPTION_RECORD* rec;
     CONTEXT* context;
-};
+}  cxx_frame_info;
 
 typedef void* (*malloc_func_t) (MSVCRT_size_t); /* ../dlls/msvcrt/msvcrt.h:339 */
 
@@ -290,21 +290,17 @@ struct MSVCRT__complex /* ../dlls/msvcrt/msvcrt.h:471 */
     double y;
 };
 
-struct MSVCRT__div_t /* ../dlls/msvcrt/msvcrt.h:477 */
+typedef struct MSVCRT__div_t /* ../dlls/msvcrt/msvcrt.h:477 */
 {
     int quot;
     int rem;
-};
+}  MSVCRT_div_t;
 
-typedef struct MSVCRT__div_t MSVCRT_div_t; /* ../dlls/msvcrt/msvcrt.h:480 */
-
-struct MSVCRT__ldiv_t /* ../dlls/msvcrt/msvcrt.h:482 */
+typedef struct MSVCRT__ldiv_t /* ../dlls/msvcrt/msvcrt.h:482 */
 {
     MSVCRT_long quot;
     MSVCRT_long rem;
-};
-
-typedef struct MSVCRT__ldiv_t MSVCRT_ldiv_t; /* ../dlls/msvcrt/msvcrt.h:485 */
+}  MSVCRT_ldiv_t;
 
 struct MSVCRT__heapinfo /* ../dlls/msvcrt/msvcrt.h:492 */
 {
@@ -456,51 +452,41 @@ struct MSVCRT__stat64 /* ../dlls/msvcrt/msvcrt.h:722 */
 
 typedef void (*MSVCRT___sighandler_t) (int); /* ../dlls/msvcrt/msvcrt.h:997 */
 
-typedef struct MSVCRT__CRT_FLOAT MSVCRT__CRT_FLOAT; /* ../dlls/msvcrt/msvcrt.h:1213 */
-
-struct MSVCRT__CRT_FLOAT /* ../dlls/msvcrt/msvcrt.h:1210 */
+typedef struct /* ../dlls/msvcrt/msvcrt.h:1210 */
 {
     float f;
-};
+}  MSVCRT__CRT_FLOAT;
 
-typedef struct MSVCRT__CRT_DOUBLE MSVCRT__CRT_DOUBLE; /* ../dlls/msvcrt/msvcrt.h:1218 */
-
-struct MSVCRT__CRT_DOUBLE /* ../dlls/msvcrt/msvcrt.h:1215 */
+typedef struct /* ../dlls/msvcrt/msvcrt.h:1215 */
 {
     double x;
-};
+}  MSVCRT__CRT_DOUBLE;
 
 typedef LONG NTSTATUS; /* ../include/winternl.h:38 */
 
 typedef void (*vtable_ptr) (void); /* ../dlls/msvcrt/cppexcept.h:33 */
 
-struct __type_info /* ../dlls/msvcrt/cppexcept.h:36 */
+typedef struct __type_info /* ../dlls/msvcrt/cppexcept.h:36 */
 {
     vtable_ptr* vtable;
     char* name;
     char mangled[64];
-};
+}  type_info;
 
-typedef struct __type_info type_info; /* ../dlls/msvcrt/cppexcept.h:41 */
-
-struct __exception /* ../dlls/msvcrt/cppexcept.h:44 */
+typedef struct __exception /* ../dlls/msvcrt/cppexcept.h:44 */
 {
     vtable_ptr* vtable;
     char* name;
     BOOL do_free;
-};
+}  exception;
 
-typedef struct __exception exception; /* ../dlls/msvcrt/cppexcept.h:49 */
-
-typedef struct cxx_exception_type cxx_exception_type; /* ../dlls/msvcrt/cppexcept.h:124 */
-
-struct cxx_exception_type /* ../dlls/msvcrt/cppexcept.h:118 */
+typedef struct /* ../dlls/msvcrt/cppexcept.h:118 */
 {
     UINT flags;
     unsigned int destructor;
     unsigned int custom_handler;
     unsigned int type_info_table;
-};
+}  cxx_exception_type;
 
 typedef exception bad_cast; /* ../dlls/msvcrt/cpp.c:44 */
 

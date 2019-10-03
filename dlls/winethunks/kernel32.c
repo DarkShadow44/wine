@@ -46,16 +46,14 @@ typedef ULONG_PTR KAFFINITY; /* ../include/basetsd.h:266 */
 
 typedef void* DLL_DIRECTORY_COOKIE; /* ../include/libloaderapi.h:26 */
 
-struct _MODULEINFO /* ../include/psapi.h:28 */
+typedef struct _MODULEINFO /* ../include/psapi.h:28 */
 {
     LPVOID lpBaseOfDll;
     DWORD SizeOfImage;
     LPVOID EntryPoint;
-};
+}  MODULEINFO, * LPMODULEINFO;
 
-typedef struct _MODULEINFO MODULEINFO; /* ../include/psapi.h:32 */
-
-struct _PROCESS_MEMORY_COUNTERS /* ../include/psapi.h:34 */
+typedef struct _PROCESS_MEMORY_COUNTERS /* ../include/psapi.h:34 */
 {
     DWORD cb;
     DWORD PageFaultCount;
@@ -67,32 +65,24 @@ struct _PROCESS_MEMORY_COUNTERS /* ../include/psapi.h:34 */
     SIZE_T QuotaNonPagedPoolUsage;
     SIZE_T PagefileUsage;
     SIZE_T PeakPagefileUsage;
-};
-
-typedef struct _PROCESS_MEMORY_COUNTERS PROCESS_MEMORY_COUNTERS; /* ../include/psapi.h:45 */
+}  PROCESS_MEMORY_COUNTERS;
 
 typedef PROCESS_MEMORY_COUNTERS* PPROCESS_MEMORY_COUNTERS; /* ../include/psapi.h:46 */
 
-struct _PSAPI_WS_WATCH_INFORMATION /* ../include/psapi.h:48 */
+typedef struct _PSAPI_WS_WATCH_INFORMATION /* ../include/psapi.h:48 */
 {
     LPVOID FaultingPc;
     LPVOID FaultingVa;
-};
+}  PSAPI_WS_WATCH_INFORMATION, * PPSAPI_WS_WATCH_INFORMATION;
 
-typedef struct _PSAPI_WS_WATCH_INFORMATION PSAPI_WS_WATCH_INFORMATION; /* ../include/psapi.h:51 */
-
-typedef struct _PSAPI_WS_WATCH_INFORMATION* PPSAPI_WS_WATCH_INFORMATION; /* ../include/psapi.h:51 */
-
-struct _PSAPI_WS_WATCH_INFORMATION_EX /* ../include/psapi.h:53 */
+typedef struct _PSAPI_WS_WATCH_INFORMATION_EX /* ../include/psapi.h:53 */
 {
     PSAPI_WS_WATCH_INFORMATION BasicInfo;
     ULONG_PTR FaultingThreadId;
     ULONG_PTR Flags;
-};
+}  PSAPI_WS_WATCH_INFORMATION_EX, * PPSAPI_WS_WATCH_INFORMATION_EX;
 
-typedef struct _PSAPI_WS_WATCH_INFORMATION_EX PSAPI_WS_WATCH_INFORMATION_EX; /* ../include/psapi.h:57 */
-
-struct _PERFORMANCE_INFORMATION /* ../include/psapi.h:59 */
+typedef struct _PERFORMANCE_INFORMATION /* ../include/psapi.h:59 */
 {
     DWORD cb;
     SIZE_T CommitTotal;
@@ -108,26 +98,22 @@ struct _PERFORMANCE_INFORMATION /* ../include/psapi.h:59 */
     DWORD HandleCount;
     DWORD ProcessCount;
     DWORD ThreadCount;
-};
+}  PERFORMANCE_INFORMATION, * PPERFORMANCE_INFORMATION;
 
-typedef struct _PERFORMANCE_INFORMATION* PPERFORMANCE_INFORMATION; /* ../include/psapi.h:74 */
-
-struct _ENUM_PAGE_FILE_INFORMATION /* ../include/psapi.h:76 */
+typedef struct _ENUM_PAGE_FILE_INFORMATION /* ../include/psapi.h:76 */
 {
     DWORD cb;
     DWORD Reserved;
     SIZE_T TotalSize;
     SIZE_T TotalInUse;
     SIZE_T PeakUsage;
-};
-
-typedef struct _ENUM_PAGE_FILE_INFORMATION* PENUM_PAGE_FILE_INFORMATION; /* ../include/psapi.h:82 */
+}  ENUM_PAGE_FILE_INFORMATION, * PENUM_PAGE_FILE_INFORMATION;
 
 typedef BOOL (*PENUM_PAGE_FILE_CALLBACKA) (LPVOID, PENUM_PAGE_FILE_INFORMATION, LPCSTR); /* ../include/psapi.h:84 */
 
 typedef BOOL (*PENUM_PAGE_FILE_CALLBACKW) (LPVOID, PENUM_PAGE_FILE_INFORMATION, LPCWSTR); /* ../include/psapi.h:85 */
 
-struct tagTHREADENTRY32 /* ../include/tlhelp32.h:43 */
+typedef struct tagTHREADENTRY32 /* ../include/tlhelp32.h:43 */
 {
     DWORD dwSize;
     DWORD cntUsage;
@@ -136,11 +122,9 @@ struct tagTHREADENTRY32 /* ../include/tlhelp32.h:43 */
     LONG tpBasePri;
     LONG tpDeltaPri;
     DWORD dwFlags;
-};
+}  THREADENTRY32, * PTHREADENTRY32, * LPTHREADENTRY32;
 
-typedef struct tagTHREADENTRY32* LPTHREADENTRY32; /* ../include/tlhelp32.h:52 */
-
-struct tagPROCESSENTRY32 /* ../include/tlhelp32.h:61 */
+typedef struct tagPROCESSENTRY32 /* ../include/tlhelp32.h:61 */
 {
     DWORD dwSize;
     DWORD cntUsage;
@@ -152,11 +136,9 @@ struct tagPROCESSENTRY32 /* ../include/tlhelp32.h:61 */
     LONG pcPriClassBase;
     DWORD dwFlags;
     char szExeFile[260];
-};
+}  PROCESSENTRY32, * PPROCESSENTRY32, * LPPROCESSENTRY32;
 
-typedef struct tagPROCESSENTRY32* LPPROCESSENTRY32; /* ../include/tlhelp32.h:73 */
-
-struct tagPROCESSENTRY32W /* ../include/tlhelp32.h:75 */
+typedef struct tagPROCESSENTRY32W /* ../include/tlhelp32.h:75 */
 {
     DWORD dwSize;
     DWORD cntUsage;
@@ -168,11 +150,9 @@ struct tagPROCESSENTRY32W /* ../include/tlhelp32.h:75 */
     LONG pcPriClassBase;
     DWORD dwFlags;
     WCHAR szExeFile[260];
-};
+}  PROCESSENTRY32W, * PPROCESSENTRY32W, * LPPROCESSENTRY32W;
 
-typedef struct tagPROCESSENTRY32W* LPPROCESSENTRY32W; /* ../include/tlhelp32.h:87 */
-
-struct tagMODULEENTRY32 /* ../include/tlhelp32.h:108 */
+typedef struct tagMODULEENTRY32 /* ../include/tlhelp32.h:108 */
 {
     DWORD dwSize;
     DWORD th32ModuleID;
@@ -184,11 +164,9 @@ struct tagMODULEENTRY32 /* ../include/tlhelp32.h:108 */
     HMODULE hModule;
     char szModule[256];
     char szExePath[260];
-};
+}  MODULEENTRY32, * PMODULEENTRY32, * LPMODULEENTRY32;
 
-typedef struct tagMODULEENTRY32* LPMODULEENTRY32; /* ../include/tlhelp32.h:120 */
-
-struct tagMODULEENTRY32W /* ../include/tlhelp32.h:122 */
+typedef struct tagMODULEENTRY32W /* ../include/tlhelp32.h:122 */
 {
     DWORD dwSize;
     DWORD th32ModuleID;
@@ -200,26 +178,20 @@ struct tagMODULEENTRY32W /* ../include/tlhelp32.h:122 */
     HMODULE hModule;
     WCHAR szModule[256];
     WCHAR szExePath[260];
-};
+}  MODULEENTRY32W, * PMODULEENTRY32W, * LPMODULEENTRY32W;
 
-typedef struct tagMODULEENTRY32W* LPMODULEENTRY32W; /* ../include/tlhelp32.h:134 */
-
-struct tagHEAPLIST32 /* ../include/tlhelp32.h:149 */
+typedef struct tagHEAPLIST32 /* ../include/tlhelp32.h:149 */
 {
     SIZE_T dwSize;
     DWORD th32ProcessID;
     ULONG_PTR th32HeapID;
     DWORD dwFlags;
-};
+}  HEAPLIST32, * PHEAPLIST32, * LPHEAPLIST32;
 
-typedef struct tagHEAPLIST32* LPHEAPLIST32; /* ../include/tlhelp32.h:155 */
-
-enum _WER_REGISTER_FILE_TYPE /* ../include/werapi.h:83 */
+typedef enum _WER_REGISTER_FILE_TYPE /* ../include/werapi.h:83 */
 {
-    _WER_REGISTER_FILE_TYPE_DUMMY = 0
-};
-
-typedef enum _WER_REGISTER_FILE_TYPE WER_REGISTER_FILE_TYPE; /* ../include/werapi.h:88 */
+    DUMMY42 = 0
+}  WER_REGISTER_FILE_TYPE;
 
 static WINAPI ATOM (*pAddAtomA)(LPCSTR str);
 static WINAPI ATOM (*pAddAtomW)(LPCWSTR str);

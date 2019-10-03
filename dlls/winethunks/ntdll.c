@@ -37,7 +37,6 @@ enum _THREADINFOCLASS; /* ../include/winternl.h:976 */
 enum _MEMORY_INFORMATION_CLASS; /* ../include/winternl.h:1041 */
 enum _MUTANT_INFORMATION_CLASS; /* ../include/winternl.h:1053 */
 enum _TIMER_INFORMATION_CLASS; /* ../include/winternl.h:1064 */
-enum DOS_PATHNAME_TYPE; /* ../include/winternl.h:1077 */
 struct _IO_STATUS_BLOCK; /* ../include/winternl.h:1111 */
 struct _OBJECT_ATTRIBUTES; /* ../include/winternl.h:1205 */
 struct _RTL_HEAP_DEFINITION; /* ../include/winternl.h:1272 */
@@ -83,15 +82,13 @@ struct assembly_version; /* ../dlls/ntdll/actctx.c:132 */
 struct assembly_identity; /* ../dlls/ntdll/actctx.c:140 */
 struct strsection_header; /* ../dlls/ntdll/actctx.c:152 */
 struct guidsection_header; /* ../dlls/ntdll/actctx.c:174 */
+struct progids; /* ../dlls/ntdll/actctx.c:430 */
 struct entity; /* ../dlls/ntdll/actctx.c:437 */
 struct entity_array; /* ../dlls/ntdll/actctx.c:494 */
 struct dll_redirect; /* ../dlls/ntdll/actctx.c:501 */
 enum assembly_type; /* ../dlls/ntdll/actctx.c:508 */
 struct assembly; /* ../dlls/ntdll/actctx.c:515 */
 struct _ACTIVATION_CONTEXT; /* ../dlls/ntdll/actctx.c:543 */
-struct SHA_CTX; /* ../dlls/ntdll/crypt.c:29 */
-struct MD4_CTX; /* ../dlls/ntdll/crypt.c:222 */
-struct MD5_CTX; /* ../dlls/ntdll/crypt.c:464 */
 struct msghdr; /* /usr/include/bits/socket.h:257 */
 struct _RTL_BALANCED_LINKS; /* ../include/ddk/ntddk.h:143 */
 enum _RTL_GENERIC_COMPARE_RESULTS; /* ../include/ddk/ntddk.h:154 */
@@ -99,7 +96,6 @@ struct _RTL_AVL_TABLE; /* ../include/ddk/ntddk.h:166 */
 struct _DELAYLOAD_PROC_DESCRIPTOR; /* ../include/delayloadhandler.h:28 */
 struct _DELAYLOAD_INFO; /* ../include/delayloadhandler.h:37 */
 struct _RTL_UNLOAD_EVENT_TRACE; /* ../dlls/ntdll/loader.c:166 */
-enum WMIDPREQUESTCODE; /* ../include/wmistr.h:40 */
 struct _TRACE_GUID_REGISTRATION; /* ../include/evntrace.h:83 */
 struct _EVENT_TRACE_HEADER; /* ../include/evntrace.h:98 */
 struct _EVENT_DATA_DESCRIPTOR; /* ../include/evntprov.h:31 */
@@ -125,21 +121,19 @@ typedef __ssize_t ssize_t; /* /usr/include/sys/types.h:108 */
 
 typedef __socklen_t socklen_t; /* /usr/include/unistd.h:274 */
 
-enum _EVENT_TYPE /* ../include/ntdef.h:26 */
+typedef enum _EVENT_TYPE /* ../include/ntdef.h:26 */
 {
-    _EVENT_TYPE_DUMMY = 0
-};
+    DUMMY0 = 0
+}  EVENT_TYPE;
 
-typedef enum _EVENT_TYPE EVENT_TYPE; /* ../include/ntdef.h:29 */
-
-enum _TIMER_TYPE /* ../include/ntdef.h:31 */
+typedef enum _TIMER_TYPE /* ../include/ntdef.h:31 */
 {
-    _TIMER_TYPE_DUMMY = 0
-};
-
-typedef enum _TIMER_TYPE TIMER_TYPE; /* ../include/ntdef.h:34 */
+    DUMMY1 = 0
+}  TIMER_TYPE;
 
 typedef unsigned long ULONG64; /* ../include/basetsd.h:99 */
+
+typedef unsigned long* PULONG64; /* ../include/basetsd.h:99 */
 
 typedef unsigned long DWORD64; /* ../include/basetsd.h:100 */
 
@@ -161,16 +155,12 @@ typedef char* PCSZ; /* ../include/winternl.h:41 */
 
 typedef short CSHORT; /* ../include/winternl.h:43 */
 
-struct _STRING /* ../include/winternl.h:48 */
+typedef struct _STRING /* ../include/winternl.h:48 */
 {
     USHORT Length;
     USHORT MaximumLength;
     PCHAR Buffer;
-};
-
-typedef struct _STRING STRING; /* ../include/winternl.h:52 */
-
-typedef struct _STRING* PSTRING; /* ../include/winternl.h:52 */
+}  STRING, * PSTRING;
 
 typedef STRING ANSI_STRING; /* ../include/winternl.h:55 */
 
@@ -180,20 +170,16 @@ typedef STRING* PCANSI_STRING; /* ../include/winternl.h:57 */
 
 typedef STRING OEM_STRING; /* ../include/winternl.h:59 */
 
-struct _UNICODE_STRING /* ../include/winternl.h:65 */
+typedef struct _UNICODE_STRING /* ../include/winternl.h:65 */
 {
     USHORT Length;
     USHORT MaximumLength;
     PWSTR Buffer;
-};
-
-typedef struct _UNICODE_STRING UNICODE_STRING; /* ../include/winternl.h:69 */
-
-typedef struct _UNICODE_STRING* PUNICODE_STRING; /* ../include/winternl.h:69 */
+}  UNICODE_STRING, * PUNICODE_STRING;
 
 typedef UNICODE_STRING* PCUNICODE_STRING; /* ../include/winternl.h:72 */
 
-struct _RTL_SYSTEM_TIME /* ../include/winternl.h:97 */
+typedef struct _RTL_SYSTEM_TIME /* ../include/winternl.h:97 */
 {
     WORD wYear;
     WORD wMonth;
@@ -203,11 +189,9 @@ struct _RTL_SYSTEM_TIME /* ../include/winternl.h:97 */
     WORD wMinute;
     WORD wSecond;
     WORD wMilliseconds;
-};
+}  RTL_SYSTEM_TIME, * PRTL_SYSTEM_TIME;
 
-typedef struct _RTL_SYSTEM_TIME RTL_SYSTEM_TIME; /* ../include/winternl.h:106 */
-
-struct _RTL_TIME_ZONE_INFORMATION /* ../include/winternl.h:108 */
+typedef struct _RTL_TIME_ZONE_INFORMATION /* ../include/winternl.h:108 */
 {
     LONG Bias;
     WCHAR StandardName[32];
@@ -216,11 +200,9 @@ struct _RTL_TIME_ZONE_INFORMATION /* ../include/winternl.h:108 */
     WCHAR DaylightName[32];
     RTL_SYSTEM_TIME DaylightDate;
     LONG DaylightBias;
-};
+}  RTL_TIME_ZONE_INFORMATION, * PRTL_TIME_ZONE_INFORMATION;
 
-typedef struct _RTL_TIME_ZONE_INFORMATION RTL_TIME_ZONE_INFORMATION; /* ../include/winternl.h:116 */
-
-struct _RTL_TIME_DYNAMIC_ZONE_INFORMATION /* ../include/winternl.h:118 */
+typedef struct _RTL_TIME_DYNAMIC_ZONE_INFORMATION /* ../include/winternl.h:118 */
 {
     LONG Bias;
     WCHAR StandardName[32];
@@ -231,66 +213,50 @@ struct _RTL_TIME_DYNAMIC_ZONE_INFORMATION /* ../include/winternl.h:118 */
     LONG DaylightBias;
     WCHAR TimeZoneKeyName[128];
     BOOLEAN DynamicDaylightTimeDisabled;
-};
+}  RTL_DYNAMIC_TIME_ZONE_INFORMATION, * PRTL_DYNAMIC_TIME_ZONE_INFORMATION;
 
-typedef struct _RTL_TIME_DYNAMIC_ZONE_INFORMATION RTL_DYNAMIC_TIME_ZONE_INFORMATION; /* ../include/winternl.h:129 */
-
-struct _CLIENT_ID /* ../include/winternl.h:131 */
+typedef struct _CLIENT_ID /* ../include/winternl.h:131 */
 {
     HANDLE UniqueProcess;
     HANDLE UniqueThread;
-};
+}  CLIENT_ID, * PCLIENT_ID;
 
-typedef struct _CLIENT_ID CLIENT_ID; /* ../include/winternl.h:135 */
-
-struct _CURDIR /* ../include/winternl.h:137 */
+typedef struct _CURDIR /* ../include/winternl.h:137 */
 {
     UNICODE_STRING DosPath;
     PVOID Handle;
-};
+}  CURDIR, * PCURDIR;
 
-typedef struct _CURDIR CURDIR; /* ../include/winternl.h:141 */
-
-struct RTL_DRIVE_LETTER_CURDIR /* ../include/winternl.h:143 */
+typedef struct RTL_DRIVE_LETTER_CURDIR /* ../include/winternl.h:143 */
 {
     USHORT Flags;
     USHORT Length;
     ULONG TimeStamp;
     UNICODE_STRING DosPath;
-};
+}  RTL_DRIVE_LETTER_CURDIR, * PRTL_DRIVE_LETTER_CURDIR;
 
-typedef struct RTL_DRIVE_LETTER_CURDIR RTL_DRIVE_LETTER_CURDIR; /* ../include/winternl.h:149 */
-
-struct _RTL_RELATIVE_NAME /* ../include/winternl.h:151 */
+typedef struct _RTL_RELATIVE_NAME /* ../include/winternl.h:151 */
 {
     UNICODE_STRING RelativeName;
     HANDLE ContainerDirectory;
     void* CurDirRef;
-};
+}  RTL_RELATIVE_NAME, * PRTL_RELATIVE_NAME;
 
-typedef struct _RTL_RELATIVE_NAME RTL_RELATIVE_NAME; /* ../include/winternl.h:156 */
-
-struct tagRTL_BITMAP /* ../include/winternl.h:158 */
+typedef struct tagRTL_BITMAP /* ../include/winternl.h:158 */
 {
     ULONG SizeOfBitMap;
     PULONG Buffer;
-};
-
-typedef struct tagRTL_BITMAP RTL_BITMAP; /* ../include/winternl.h:161 */
-
-typedef struct tagRTL_BITMAP* PRTL_BITMAP; /* ../include/winternl.h:161 */
+}  RTL_BITMAP, * PRTL_BITMAP;
 
 typedef RTL_BITMAP* PCRTL_BITMAP; /* ../include/winternl.h:163 */
 
-struct tagRTL_BITMAP_RUN /* ../include/winternl.h:165 */
+typedef struct tagRTL_BITMAP_RUN /* ../include/winternl.h:165 */
 {
     ULONG StartingIndex;
     ULONG NumberOfBits;
-};
+}  RTL_BITMAP_RUN, * PRTL_BITMAP_RUN;
 
-typedef struct tagRTL_BITMAP_RUN* PRTL_BITMAP_RUN; /* ../include/winternl.h:168 */
-
-struct _RTL_USER_PROCESS_PARAMETERS /* ../include/winternl.h:172 */
+typedef struct _RTL_USER_PROCESS_PARAMETERS /* ../include/winternl.h:172 */
 {
     ULONG AllocationSize;
     ULONG Size;
@@ -320,13 +286,9 @@ struct _RTL_USER_PROCESS_PARAMETERS /* ../include/winternl.h:172 */
     UNICODE_STRING ShellInfo;
     UNICODE_STRING RuntimeInfo;
     RTL_DRIVE_LETTER_CURDIR DLCurrentDirectory[32];
-};
+}  RTL_USER_PROCESS_PARAMETERS, * PRTL_USER_PROCESS_PARAMETERS;
 
-typedef struct _RTL_USER_PROCESS_PARAMETERS RTL_USER_PROCESS_PARAMETERS; /* ../include/winternl.h:202 */
-
-typedef struct _RTL_USER_PROCESS_PARAMETERS* PRTL_USER_PROCESS_PARAMETERS; /* ../include/winternl.h:202 */
-
-struct _PEB_LDR_DATA /* ../include/winternl.h:207 */
+typedef struct _PEB_LDR_DATA /* ../include/winternl.h:207 */
 {
     ULONG Length;
     BOOLEAN Initialized;
@@ -335,28 +297,22 @@ struct _PEB_LDR_DATA /* ../include/winternl.h:207 */
     LIST_ENTRY InMemoryOrderModuleList;
     LIST_ENTRY InInitializationOrderModuleList;
     PVOID EntryInProgress;
-};
+}  PEB_LDR_DATA, * PPEB_LDR_DATA;
 
-typedef struct _PEB_LDR_DATA* PPEB_LDR_DATA; /* ../include/winternl.h:216 */
-
-struct _TEB_ACTIVE_FRAME_CONTEXT /* ../include/winternl.h:240 */
+typedef struct _TEB_ACTIVE_FRAME_CONTEXT /* ../include/winternl.h:240 */
 {
     ULONG Flags;
     char* FrameName;
-};
+}  TEB_ACTIVE_FRAME_CONTEXT, * PTEB_ACTIVE_FRAME_CONTEXT;
 
-typedef struct _TEB_ACTIVE_FRAME_CONTEXT TEB_ACTIVE_FRAME_CONTEXT; /* ../include/winternl.h:244 */
-
-struct _TEB_ACTIVE_FRAME /* ../include/winternl.h:252 */
+typedef struct _TEB_ACTIVE_FRAME /* ../include/winternl.h:252 */
 {
     ULONG Flags;
     struct _TEB_ACTIVE_FRAME* Previous;
     TEB_ACTIVE_FRAME_CONTEXT* Context;
-};
+}  TEB_ACTIVE_FRAME, * PTEB_ACTIVE_FRAME;
 
-typedef struct _TEB_ACTIVE_FRAME TEB_ACTIVE_FRAME; /* ../include/winternl.h:257 */
-
-struct _PEB /* ../include/winternl.h:271 */
+typedef struct _PEB /* ../include/winternl.h:271 */
 {
     BOOLEAN InheritedAddressSpace;
     BOOLEAN ReadImageFileExecOptions;
@@ -426,29 +382,23 @@ struct _PEB /* ../include/winternl.h:271 */
     LIST_ENTRY FlsListHead;
     PRTL_BITMAP FlsBitmap;
     ULONG FlsBitmapBits[4];
-};
+}  PEB, * PPEB;
 
-typedef struct _PEB PEB; /* ../include/winternl.h:341 */
-
-enum _FILE_INFORMATION_CLASS /* ../include/winternl.h:424 */
+typedef enum _FILE_INFORMATION_CLASS /* ../include/winternl.h:424 */
 {
-    _FILE_INFORMATION_CLASS_DUMMY = 0
-};
+    DUMMY2 = 0
+}  FILE_INFORMATION_CLASS, * PFILE_INFORMATION_CLASS;
 
-typedef enum _FILE_INFORMATION_CLASS FILE_INFORMATION_CLASS; /* ../include/winternl.h:489 */
-
-struct _FILE_BASIC_INFORMATION /* ../include/winternl.h:590 */
+typedef struct _FILE_BASIC_INFORMATION /* ../include/winternl.h:590 */
 {
     LARGE_INTEGER CreationTime;
     LARGE_INTEGER LastAccessTime;
     LARGE_INTEGER LastWriteTime;
     LARGE_INTEGER ChangeTime;
     ULONG FileAttributes;
-};
+}  FILE_BASIC_INFORMATION, * PFILE_BASIC_INFORMATION;
 
-typedef struct _FILE_BASIC_INFORMATION FILE_BASIC_INFORMATION; /* ../include/winternl.h:596 */
-
-struct _FILE_NETWORK_OPEN_INFORMATION /* ../include/winternl.h:673 */
+typedef struct _FILE_NETWORK_OPEN_INFORMATION /* ../include/winternl.h:673 */
 {
     LARGE_INTEGER CreationTime;
     LARGE_INTEGER LastAccessTime;
@@ -457,112 +407,82 @@ struct _FILE_NETWORK_OPEN_INFORMATION /* ../include/winternl.h:673 */
     LARGE_INTEGER AllocationSize;
     LARGE_INTEGER EndOfFile;
     ULONG FileAttributes;
-};
+}  FILE_NETWORK_OPEN_INFORMATION, * PFILE_NETWORK_OPEN_INFORMATION;
 
-typedef struct _FILE_NETWORK_OPEN_INFORMATION FILE_NETWORK_OPEN_INFORMATION; /* ../include/winternl.h:681 */
-
-enum _FSINFOCLASS /* ../include/winternl.h:793 */
+typedef enum _FSINFOCLASS /* ../include/winternl.h:793 */
 {
-    _FSINFOCLASS_DUMMY = 0
-};
+    DUMMY3 = 0
+}  FS_INFORMATION_CLASS, * PFS_INFORMATION_CLASS;
 
-typedef enum _FSINFOCLASS FS_INFORMATION_CLASS; /* ../include/winternl.h:803 */
-
-enum _KEY_INFORMATION_CLASS /* ../include/winternl.h:805 */
+typedef enum _KEY_INFORMATION_CLASS /* ../include/winternl.h:805 */
 {
-    _KEY_INFORMATION_CLASS_DUMMY = 0
-};
+    DUMMY4 = 0
+}  KEY_INFORMATION_CLASS;
 
-typedef enum _KEY_INFORMATION_CLASS KEY_INFORMATION_CLASS; /* ../include/winternl.h:815 */
-
-enum _KEY_VALUE_INFORMATION_CLASS /* ../include/winternl.h:817 */
+typedef enum _KEY_VALUE_INFORMATION_CLASS /* ../include/winternl.h:817 */
 {
-    _KEY_VALUE_INFORMATION_CLASS_DUMMY = 0
-};
+    DUMMY5 = 0
+}  KEY_VALUE_INFORMATION_CLASS;
 
-typedef enum _KEY_VALUE_INFORMATION_CLASS KEY_VALUE_INFORMATION_CLASS; /* ../include/winternl.h:823 */
-
-enum _OBJECT_INFORMATION_CLASS /* ../include/winternl.h:825 */
+typedef enum _OBJECT_INFORMATION_CLASS /* ../include/winternl.h:825 */
 {
-    _OBJECT_INFORMATION_CLASS_DUMMY = 0
-};
+    DUMMY6 = 0
+}  OBJECT_INFORMATION_CLASS, * POBJECT_INFORMATION_CLASS;
 
-typedef enum _OBJECT_INFORMATION_CLASS OBJECT_INFORMATION_CLASS; /* ../include/winternl.h:831 */
-
-enum _PROCESSINFOCLASS /* ../include/winternl.h:833 */
+typedef enum _PROCESSINFOCLASS /* ../include/winternl.h:833 */
 {
-    _PROCESSINFOCLASS_DUMMY = 0
-};
+    DUMMY7 = 0
+}  PROCESSINFOCLASS,  PROCESS_INFORMATION_CLASS;
 
-typedef enum _PROCESSINFOCLASS PROCESSINFOCLASS; /* ../include/winternl.h:878 */
-
-enum _SECTION_INHERIT /* ../include/winternl.h:885 */
+typedef enum _SECTION_INHERIT /* ../include/winternl.h:885 */
 {
-    _SECTION_INHERIT_DUMMY = 0
-};
+    DUMMY8 = 0
+}  SECTION_INHERIT;
 
-typedef enum _SECTION_INHERIT SECTION_INHERIT; /* ../include/winternl.h:888 */
-
-enum _SYSTEM_INFORMATION_CLASS /* ../include/winternl.h:890 */
+typedef enum _SYSTEM_INFORMATION_CLASS /* ../include/winternl.h:890 */
 {
-    _SYSTEM_INFORMATION_CLASS_DUMMY = 0
-};
+    DUMMY9 = 0
+}  SYSTEM_INFORMATION_CLASS, * PSYSTEM_INFORMATION_CLASS;
 
-typedef enum _SYSTEM_INFORMATION_CLASS SYSTEM_INFORMATION_CLASS; /* ../include/winternl.h:974 */
-
-enum _THREADINFOCLASS /* ../include/winternl.h:976 */
+typedef enum _THREADINFOCLASS /* ../include/winternl.h:976 */
 {
-    _THREADINFOCLASS_DUMMY = 0
-};
+    DUMMY10 = 0
+}  THREADINFOCLASS;
 
-typedef enum _THREADINFOCLASS THREADINFOCLASS; /* ../include/winternl.h:1012 */
-
-enum _MEMORY_INFORMATION_CLASS /* ../include/winternl.h:1041 */
+typedef enum _MEMORY_INFORMATION_CLASS /* ../include/winternl.h:1041 */
 {
-    _MEMORY_INFORMATION_CLASS_DUMMY = 0
-};
+    DUMMY11 = 0
+}  MEMORY_INFORMATION_CLASS;
 
-typedef enum _MEMORY_INFORMATION_CLASS MEMORY_INFORMATION_CLASS; /* ../include/winternl.h:1046 */
-
-enum _MUTANT_INFORMATION_CLASS /* ../include/winternl.h:1053 */
+typedef enum _MUTANT_INFORMATION_CLASS /* ../include/winternl.h:1053 */
 {
-    _MUTANT_INFORMATION_CLASS_DUMMY = 0
-};
+    DUMMY12 = 0
+}  MUTANT_INFORMATION_CLASS, * PMUTANT_INFORMATION_CLASS;
 
-typedef enum _MUTANT_INFORMATION_CLASS MUTANT_INFORMATION_CLASS; /* ../include/winternl.h:1056 */
-
-enum _TIMER_INFORMATION_CLASS /* ../include/winternl.h:1064 */
+typedef enum _TIMER_INFORMATION_CLASS /* ../include/winternl.h:1064 */
 {
-    _TIMER_INFORMATION_CLASS_DUMMY = 0
-};
+    DUMMY13 = 0
+}  TIMER_INFORMATION_CLASS;
 
-typedef enum _TIMER_INFORMATION_CLASS TIMER_INFORMATION_CLASS; /* ../include/winternl.h:1067 */
-
-typedef enum DOS_PATHNAME_TYPE DOS_PATHNAME_TYPE; /* ../include/winternl.h:1087 */
-
-enum DOS_PATHNAME_TYPE /* ../include/winternl.h:1077 */
+typedef enum /* ../include/winternl.h:1077 */
 {
-    DOS_PATHNAME_TYPE_DUMMY = 0
-};
+    DUMMY14 = 0
+}  DOS_PATHNAME_TYPE;
 
-struct _IO_STATUS_BLOCK /* ../include/winternl.h:1111 */
+typedef struct _IO_STATUS_BLOCK /* ../include/winternl.h:1111 */
 {
-    union  /* ../include/winternl.h:1112 */
+    union /* ../include/winternl.h:1112 */
     {
         NTSTATUS Status;
         PVOID Pointer;
     } u;
 
     ULONG_PTR Information;
-};
-
-typedef struct _IO_STATUS_BLOCK IO_STATUS_BLOCK; /* ../include/winternl.h:1118 */
-
-typedef struct _IO_STATUS_BLOCK* PIO_STATUS_BLOCK; /* ../include/winternl.h:1118 */
+}  IO_STATUS_BLOCK, * PIO_STATUS_BLOCK;
 
 typedef void (*PIO_APC_ROUTINE) (PVOID, PIO_STATUS_BLOCK, ULONG); /* ../include/winternl.h:1120 */
 
-struct _OBJECT_ATTRIBUTES /* ../include/winternl.h:1205 */
+typedef struct _OBJECT_ATTRIBUTES /* ../include/winternl.h:1205 */
 {
     ULONG Length;
     HANDLE RootDirectory;
@@ -570,21 +490,15 @@ struct _OBJECT_ATTRIBUTES /* ../include/winternl.h:1205 */
     ULONG Attributes;
     PVOID SecurityDescriptor;
     PVOID SecurityQualityOfService;
-};
+}  OBJECT_ATTRIBUTES, * POBJECT_ATTRIBUTES;
 
-typedef struct _OBJECT_ATTRIBUTES OBJECT_ATTRIBUTES; /* ../include/winternl.h:1212 */
-
-typedef struct _OBJECT_ATTRIBUTES* POBJECT_ATTRIBUTES; /* ../include/winternl.h:1212 */
-
-struct _RTL_HEAP_DEFINITION /* ../include/winternl.h:1272 */
+typedef struct _RTL_HEAP_DEFINITION /* ../include/winternl.h:1272 */
 {
     ULONG Length;
     ULONG Unknown[11];
-};
+}  RTL_HEAP_DEFINITION, * PRTL_HEAP_DEFINITION;
 
-typedef struct _RTL_HEAP_DEFINITION* PRTL_HEAP_DEFINITION; /* ../include/winternl.h:1276 */
-
-struct _RTL_RWLOCK /* ../include/winternl.h:1278 */
+typedef struct _RTL_RWLOCK /* ../include/winternl.h:1278 */
 {
     RTL_CRITICAL_SECTION rtlCS;
     HANDLE hSharedReleaseSemaphore;
@@ -595,11 +509,9 @@ struct _RTL_RWLOCK /* ../include/winternl.h:1278 */
     HANDLE hOwningThreadId;
     DWORD dwTimeoutBoost;
     PVOID pDebugInfo;
-};
+}  RTL_RWLOCK, * LPRTL_RWLOCK;
 
-typedef struct _RTL_RWLOCK* LPRTL_RWLOCK; /* ../include/winternl.h:1291 */
-
-struct _TIME_FIELDS /* ../include/winternl.h:1604 */
+typedef struct _TIME_FIELDS /* ../include/winternl.h:1604 */
 {
     CSHORT Year;
     CSHORT Month;
@@ -609,20 +521,16 @@ struct _TIME_FIELDS /* ../include/winternl.h:1604 */
     CSHORT Second;
     CSHORT Milliseconds;
     CSHORT Weekday;
-};
+}  TIME_FIELDS, * PTIME_FIELDS;
 
-typedef struct _TIME_FIELDS* PTIME_FIELDS; /* ../include/winternl.h:1613 */
-
-struct _LDR_RESOURCE_INFO /* ../include/winternl.h:1623 */
+typedef struct _LDR_RESOURCE_INFO /* ../include/winternl.h:1623 */
 {
     ULONG_PTR Type;
     ULONG_PTR Name;
     ULONG Language;
-};
+}  LDR_RESOURCE_INFO, * PLDR_RESOURCE_INFO;
 
-typedef struct _LDR_RESOURCE_INFO LDR_RESOURCE_INFO; /* ../include/winternl.h:1628 */
-
-struct _DEBUG_BUFFER /* ../include/winternl.h:1633 */
+typedef struct _DEBUG_BUFFER /* ../include/winternl.h:1633 */
 {
     HANDLE SectionHandle;
     PVOID SectionBase;
@@ -640,29 +548,23 @@ struct _DEBUG_BUFFER /* ../include/winternl.h:1633 */
     PVOID HeapInformation;
     PVOID LockInformation;
     PVOID Reserved[8];
-};
-
-typedef struct _DEBUG_BUFFER* PDEBUG_BUFFER; /* ../include/winternl.h:1650 */
+}  DEBUG_BUFFER, * PDEBUG_BUFFER;
 
 typedef unsigned short RTL_ATOM; /* ../include/winternl.h:1708 */
 
 typedef struct atom_table* RTL_ATOM_TABLE; /* ../include/winternl.h:1714 */
 
-enum _ATOM_INFORMATION_CLASS /* ../include/winternl.h:1716 */
+typedef enum _ATOM_INFORMATION_CLASS /* ../include/winternl.h:1716 */
 {
-    _ATOM_INFORMATION_CLASS_DUMMY = 0
-};
+    DUMMY15 = 0
+}  ATOM_INFORMATION_CLASS;
 
-typedef enum _ATOM_INFORMATION_CLASS ATOM_INFORMATION_CLASS; /* ../include/winternl.h:1719 */
-
-struct _RTL_HANDLE /* ../include/winternl.h:1729 */
+typedef struct _RTL_HANDLE /* ../include/winternl.h:1729 */
 {
     struct _RTL_HANDLE* Next;
-};
+}  RTL_HANDLE;
 
-typedef struct _RTL_HANDLE RTL_HANDLE; /* ../include/winternl.h:1732 */
-
-struct _RTL_HANDLE_TABLE /* ../include/winternl.h:1735 */
+typedef struct _RTL_HANDLE_TABLE /* ../include/winternl.h:1735 */
 {
     ULONG MaxHandleCount;
     ULONG HandleSize;
@@ -671,9 +573,7 @@ struct _RTL_HANDLE_TABLE /* ../include/winternl.h:1735 */
     PVOID FirstHandle;
     PVOID ReservedMemory;
     PVOID MaxHandle;
-};
-
-typedef struct _RTL_HANDLE_TABLE RTL_HANDLE_TABLE; /* ../include/winternl.h:1744 */
+}  RTL_HANDLE_TABLE;
 
 typedef void (*PNTAPCFUNC) (ULONG_PTR, ULONG_PTR, ULONG_PTR); /* ../include/winternl.h:1842 */
 
@@ -685,7 +585,7 @@ typedef void (*RTL_WAITORTIMERCALLBACKFUNC) (PVOID, BOOLEAN); /* ../include/wint
 
 typedef NTSTATUS (*PRTL_QUERY_REGISTRY_ROUTINE) (PCWSTR ValueName, ULONG ValueType, PVOID ValueData, ULONG ValueLength, PVOID Context, PVOID EntryContext); /* ../include/winternl.h:1941 */
 
-struct _RTL_QUERY_REGISTRY_TABLE /* ../include/winternl.h:1948 */
+typedef struct _RTL_QUERY_REGISTRY_TABLE /* ../include/winternl.h:1948 */
 {
     PRTL_QUERY_REGISTRY_ROUTINE QueryRoutine;
     ULONG Flags;
@@ -694,46 +594,36 @@ struct _RTL_QUERY_REGISTRY_TABLE /* ../include/winternl.h:1948 */
     ULONG DefaultType;
     PVOID DefaultData;
     ULONG DefaultLength;
-};
+}  RTL_QUERY_REGISTRY_TABLE, * PRTL_QUERY_REGISTRY_TABLE;
 
-typedef struct _RTL_QUERY_REGISTRY_TABLE* PRTL_QUERY_REGISTRY_TABLE; /* ../include/winternl.h:1957 */
-
-struct _KEY_MULTIPLE_VALUE_INFORMATION /* ../include/winternl.h:1959 */
+typedef struct _KEY_MULTIPLE_VALUE_INFORMATION /* ../include/winternl.h:1959 */
 {
     PUNICODE_STRING ValueName;
     ULONG DataLength;
     ULONG DataOffset;
     ULONG Type;
-};
-
-typedef struct _KEY_MULTIPLE_VALUE_INFORMATION* PKEY_MULTIPLE_VALUE_INFORMATION; /* ../include/winternl.h:1965 */
+}  KEY_MULTIPLE_VALUE_INFORMATION, * PKEY_MULTIPLE_VALUE_INFORMATION;
 
 typedef void (*PRTL_OVERLAPPED_COMPLETION_ROUTINE) (DWORD, DWORD, LPVOID); /* ../include/winternl.h:1967 */
 
 typedef void (*PTIMER_APC_ROUTINE) (PVOID, ULONG, LONG); /* ../include/winternl.h:1969 */
 
-enum _EVENT_INFORMATION_CLASS /* ../include/winternl.h:1971 */
+typedef enum _EVENT_INFORMATION_CLASS /* ../include/winternl.h:1971 */
 {
-    _EVENT_INFORMATION_CLASS_DUMMY = 0
-};
+    DUMMY16 = 0
+}  EVENT_INFORMATION_CLASS, * PEVENT_INFORMATION_CLASS;
 
-typedef enum _EVENT_INFORMATION_CLASS EVENT_INFORMATION_CLASS; /* ../include/winternl.h:1973 */
-
-enum _SEMAPHORE_INFORMATION_CLASS /* ../include/winternl.h:1980 */
+typedef enum _SEMAPHORE_INFORMATION_CLASS /* ../include/winternl.h:1980 */
 {
-    _SEMAPHORE_INFORMATION_CLASS_DUMMY = 0
-};
+    DUMMY17 = 0
+}  SEMAPHORE_INFORMATION_CLASS, * PSEMAPHORE_INFORMATION_CLASS;
 
-typedef enum _SEMAPHORE_INFORMATION_CLASS SEMAPHORE_INFORMATION_CLASS; /* ../include/winternl.h:1982 */
-
-enum _SECTION_INFORMATION_CLASS /* ../include/winternl.h:1989 */
+typedef enum _SECTION_INFORMATION_CLASS /* ../include/winternl.h:1989 */
 {
-    _SECTION_INFORMATION_CLASS_DUMMY = 0
-};
+    DUMMY18 = 0
+}  SECTION_INFORMATION_CLASS;
 
-typedef enum _SECTION_INFORMATION_CLASS SECTION_INFORMATION_CLASS; /* ../include/winternl.h:1993 */
-
-struct _SECTION_IMAGE_INFORMATION /* ../include/winternl.h:2001 */
+typedef struct _SECTION_IMAGE_INFORMATION /* ../include/winternl.h:2001 */
 {
     PVOID TransferAddress;
     ULONG ZeroBits;
@@ -747,10 +637,10 @@ struct _SECTION_IMAGE_INFORMATION /* ../include/winternl.h:2001 */
     USHORT DllCharacteristics;
     USHORT Machine;
     BOOLEAN ImageContainsCode;
-    union  /* ../include/winternl.h:2014 */
+    union /* ../include/winternl.h:2014 */
     {
         UCHAR ImageFlags;
-        struct  /* ../include/winternl.h:2017 */
+        struct /* ../include/winternl.h:2017 */
         {
             UCHAR ComPlusNativeReady;
             UCHAR ComPlusILOnly;
@@ -765,11 +655,9 @@ struct _SECTION_IMAGE_INFORMATION /* ../include/winternl.h:2001 */
     ULONG LoaderFlags;
     ULONG ImageFileSize;
     ULONG CheckSum;
-};
+}  SECTION_IMAGE_INFORMATION, * PSECTION_IMAGE_INFORMATION;
 
-typedef struct _SECTION_IMAGE_INFORMATION SECTION_IMAGE_INFORMATION; /* ../include/winternl.h:2030 */
-
-struct _LPC_SECTION_WRITE /* ../include/winternl.h:2032 */
+typedef struct _LPC_SECTION_WRITE /* ../include/winternl.h:2032 */
 {
     ULONG Length;
     HANDLE SectionHandle;
@@ -777,20 +665,16 @@ struct _LPC_SECTION_WRITE /* ../include/winternl.h:2032 */
     ULONG ViewSize;
     PVOID ViewBase;
     PVOID TargetViewBase;
-};
+}  LPC_SECTION_WRITE, * PLPC_SECTION_WRITE;
 
-typedef struct _LPC_SECTION_WRITE* PLPC_SECTION_WRITE; /* ../include/winternl.h:2039 */
-
-struct _LPC_SECTION_READ /* ../include/winternl.h:2041 */
+typedef struct _LPC_SECTION_READ /* ../include/winternl.h:2041 */
 {
     ULONG Length;
     ULONG ViewSize;
     PVOID ViewBase;
-};
+}  LPC_SECTION_READ, * PLPC_SECTION_READ;
 
-typedef struct _LPC_SECTION_READ* PLPC_SECTION_READ; /* ../include/winternl.h:2045 */
-
-struct _LPC_MESSAGE /* ../include/winternl.h:2047 */
+typedef struct _LPC_MESSAGE /* ../include/winternl.h:2047 */
 {
     USHORT DataSize;
     USHORT MessageSize;
@@ -800,35 +684,29 @@ struct _LPC_MESSAGE /* ../include/winternl.h:2047 */
     ULONG_PTR MessageId;
     ULONG_PTR SectionSize;
     UCHAR Data[1];
-};
+}  LPC_MESSAGE, * PLPC_MESSAGE;
 
-typedef struct _LPC_MESSAGE* PLPC_MESSAGE; /* ../include/winternl.h:2056 */
-
-struct _RTL_USER_PROCESS_INFORMATION /* ../include/winternl.h:2058 */
+typedef struct _RTL_USER_PROCESS_INFORMATION /* ../include/winternl.h:2058 */
 {
     ULONG Length;
     HANDLE Process;
     HANDLE Thread;
     CLIENT_ID ClientId;
     SECTION_IMAGE_INFORMATION ImageInformation;
-};
+}  RTL_USER_PROCESS_INFORMATION, * PRTL_USER_PROCESS_INFORMATION;
 
-typedef struct _RTL_USER_PROCESS_INFORMATION RTL_USER_PROCESS_INFORMATION; /* ../include/winternl.h:2065 */
-
-enum _SHUTDOWN_ACTION /* ../include/winternl.h:2067 */
+typedef enum _SHUTDOWN_ACTION /* ../include/winternl.h:2067 */
 {
-    _SHUTDOWN_ACTION_DUMMY = 0
-};
+    DUMMY19 = 0
+}  SHUTDOWN_ACTION, * PSHUTDOWN_ACTION;
 
-typedef enum _SHUTDOWN_ACTION SHUTDOWN_ACTION; /* ../include/winternl.h:2071 */
-
-struct _COUNTED_REASON_CONTEXT /* ../include/winternl.h:2073 */
+typedef struct _COUNTED_REASON_CONTEXT /* ../include/winternl.h:2073 */
 {
     ULONG Version;
     ULONG Flags;
-    union  /* ../include/winternl.h:2077 */
+    union /* ../include/winternl.h:2077 */
     {
-        struct  /* ../include/winternl.h:2079 */
+        struct /* ../include/winternl.h:2079 */
         {
             UNICODE_STRING ResourceFileName;
             USHORT ResourceReasonId;
@@ -839,74 +717,56 @@ struct _COUNTED_REASON_CONTEXT /* ../include/winternl.h:2073 */
         UNICODE_STRING SimpleString;
     } u;
 
-};
+}  COUNTED_REASON_CONTEXT, * PCOUNTED_REASON_CONTEXT;
 
-typedef struct _COUNTED_REASON_CONTEXT COUNTED_REASON_CONTEXT; /* ../include/winternl.h:2088 */
-
-enum _KPROFILE_SOURCE /* ../include/winternl.h:2090 */
+typedef enum _KPROFILE_SOURCE /* ../include/winternl.h:2090 */
 {
-    _KPROFILE_SOURCE_DUMMY = 0
-};
+    DUMMY20 = 0
+}  KPROFILE_SOURCE, * PKPROFILE_SOURCE;
 
-typedef enum _KPROFILE_SOURCE KPROFILE_SOURCE; /* ../include/winternl.h:2116 */
-
-struct _DIRECTORY_BASIC_INFORMATION /* ../include/winternl.h:2118 */
+typedef struct _DIRECTORY_BASIC_INFORMATION /* ../include/winternl.h:2118 */
 {
     UNICODE_STRING ObjectName;
     UNICODE_STRING ObjectTypeName;
-};
+}  DIRECTORY_BASIC_INFORMATION, * PDIRECTORY_BASIC_INFORMATION;
 
-typedef struct _DIRECTORY_BASIC_INFORMATION* PDIRECTORY_BASIC_INFORMATION; /* ../include/winternl.h:2121 */
-
-struct _INITIAL_TEB /* ../include/winternl.h:2123 */
+typedef struct _INITIAL_TEB /* ../include/winternl.h:2123 */
 {
     void* OldStackBase;
     void* OldStackLimit;
     void* StackBase;
     void* StackLimit;
     void* DeallocationStack;
-};
+}  INITIAL_TEB, * PINITIAL_TEB;
 
-typedef struct _INITIAL_TEB INITIAL_TEB; /* ../include/winternl.h:2129 */
-
-enum _IO_COMPLETION_INFORMATION_CLASS /* ../include/winternl.h:2135 */
+typedef enum _IO_COMPLETION_INFORMATION_CLASS /* ../include/winternl.h:2135 */
 {
-    _IO_COMPLETION_INFORMATION_CLASS_DUMMY = 0
-};
+    DUMMY21 = 0
+}  IO_COMPLETION_INFORMATION_CLASS, * PIO_COMPLETION_INFORMATION_CLASS;
 
-typedef enum _IO_COMPLETION_INFORMATION_CLASS IO_COMPLETION_INFORMATION_CLASS; /* ../include/winternl.h:2137 */
-
-struct _FILE_IO_COMPLETION_INFORMATION /* ../include/winternl.h:2148 */
+typedef struct _FILE_IO_COMPLETION_INFORMATION /* ../include/winternl.h:2148 */
 {
     ULONG_PTR CompletionKey;
     ULONG_PTR CompletionValue;
     IO_STATUS_BLOCK IoStatusBlock;
-};
+}  FILE_IO_COMPLETION_INFORMATION, * PFILE_IO_COMPLETION_INFORMATION;
 
-typedef struct _FILE_IO_COMPLETION_INFORMATION FILE_IO_COMPLETION_INFORMATION; /* ../include/winternl.h:2152 */
-
-enum _HARDERROR_RESPONSE_OPTION /* ../include/winternl.h:2154 */
+typedef enum _HARDERROR_RESPONSE_OPTION /* ../include/winternl.h:2154 */
 {
-    _HARDERROR_RESPONSE_OPTION_DUMMY = 0
-};
+    DUMMY22 = 0
+}  HARDERROR_RESPONSE_OPTION, * PHARDERROR_RESPONSE_OPTION;
 
-typedef enum _HARDERROR_RESPONSE_OPTION HARDERROR_RESPONSE_OPTION; /* ../include/winternl.h:2162 */
-
-enum _HARDERROR_RESPONSE /* ../include/winternl.h:2164 */
+typedef enum _HARDERROR_RESPONSE /* ../include/winternl.h:2164 */
 {
-    _HARDERROR_RESPONSE_DUMMY = 0
-};
+    DUMMY23 = 0
+}  HARDERROR_RESPONSE, * PHARDERROR_RESPONSE;
 
-typedef enum _HARDERROR_RESPONSE* PHARDERROR_RESPONSE; /* ../include/winternl.h:2174 */
-
-enum _SYSDBG_COMMAND /* ../include/winternl.h:2176 */
+typedef enum _SYSDBG_COMMAND /* ../include/winternl.h:2176 */
 {
-    _SYSDBG_COMMAND_DUMMY = 0
-};
+    DUMMY24 = 0
+}  SYSDBG_COMMAND, * PSYSDBG_COMMAND;
 
-typedef enum _SYSDBG_COMMAND SYSDBG_COMMAND; /* ../include/winternl.h:2197 */
-
-struct _LDR_MODULE /* ../include/winternl.h:2205 */
+typedef struct _LDR_MODULE /* ../include/winternl.h:2205 */
 {
     LIST_ENTRY InLoadOrderModuleList;
     LIST_ENTRY InMemoryOrderModuleList;
@@ -923,45 +783,35 @@ struct _LDR_MODULE /* ../include/winternl.h:2205 */
     ULONG CheckSum;
     ULONG TimeDateStamp;
     HANDLE ActivationContext;
-};
+}  LDR_MODULE, * PLDR_MODULE;
 
-typedef struct _LDR_MODULE LDR_MODULE; /* ../include/winternl.h:2222 */
-
-typedef struct _LDR_MODULE* PLDR_MODULE; /* ../include/winternl.h:2222 */
-
-struct _LDR_DLL_LOADED_NOTIFICATION_DATA /* ../include/winternl.h:2224 */
+typedef struct _LDR_DLL_LOADED_NOTIFICATION_DATA /* ../include/winternl.h:2224 */
 {
     ULONG Flags;
     UNICODE_STRING* FullDllName;
     UNICODE_STRING* BaseDllName;
     void* DllBase;
     ULONG SizeOfImage;
-};
+}  LDR_DLL_LOADED_NOTIFICATION_DATA, * PLDR_DLL_LOADED_NOTIFICATION_DATA;
 
-typedef struct _LDR_DLL_LOADED_NOTIFICATION_DATA LDR_DLL_LOADED_NOTIFICATION_DATA; /* ../include/winternl.h:2231 */
-
-struct _LDR_DLL_UNLOADED_NOTIFICATION_DATA /* ../include/winternl.h:2233 */
+typedef struct _LDR_DLL_UNLOADED_NOTIFICATION_DATA /* ../include/winternl.h:2233 */
 {
     ULONG Flags;
     UNICODE_STRING* FullDllName;
     UNICODE_STRING* BaseDllName;
     void* DllBase;
     ULONG SizeOfImage;
-};
+}  LDR_DLL_UNLOADED_NOTIFICATION_DATA, * PLDR_DLL_UNLOADED_NOTIFICATION_DATA;
 
-typedef struct _LDR_DLL_UNLOADED_NOTIFICATION_DATA LDR_DLL_UNLOADED_NOTIFICATION_DATA; /* ../include/winternl.h:2240 */
-
-union _LDR_DLL_NOTIFICATION_DATA /* ../include/winternl.h:2242 */
+typedef union _LDR_DLL_NOTIFICATION_DATA /* ../include/winternl.h:2242 */
 {
     LDR_DLL_LOADED_NOTIFICATION_DATA Loaded;
     LDR_DLL_UNLOADED_NOTIFICATION_DATA Unloaded;
-};
-
-typedef union _LDR_DLL_NOTIFICATION_DATA LDR_DLL_NOTIFICATION_DATA; /* ../include/winternl.h:2246 */
+}  LDR_DLL_NOTIFICATION_DATA, * PLDR_DLL_NOTIFICATION_DATA;
 
 typedef void (*PLDR_DLL_NOTIFICATION_FUNCTION) (ULONG, LDR_DLL_NOTIFICATION_DATA*, void*); /* ../include/winternl.h:2248 */
 
-struct _SYSTEM_MODULE /* ../include/winternl.h:2272 */
+typedef struct _SYSTEM_MODULE /* ../include/winternl.h:2272 */
 {
     PVOID Reserved1;
     PVOID Reserved2;
@@ -973,17 +823,13 @@ struct _SYSTEM_MODULE /* ../include/winternl.h:2272 */
     WORD Unknown;
     WORD NameOffset;
     BYTE Name[256];
-};
+}  SYSTEM_MODULE, * PSYSTEM_MODULE;
 
-typedef struct _SYSTEM_MODULE SYSTEM_MODULE; /* ../include/winternl.h:2284 */
-
-struct _SYSTEM_MODULE_INFORMATION /* ../include/winternl.h:2286 */
+typedef struct _SYSTEM_MODULE_INFORMATION /* ../include/winternl.h:2286 */
 {
     ULONG ModulesCount;
     SYSTEM_MODULE Modules[1];
-};
-
-typedef struct _SYSTEM_MODULE_INFORMATION* PSYSTEM_MODULE_INFORMATION; /* ../include/winternl.h:2290 */
+}  SYSTEM_MODULE_INFORMATION, * PSYSTEM_MODULE_INFORMATION;
 
 typedef LONG (*PRTL_EXCEPTION_FILTER) (PEXCEPTION_POINTERS); /* ../include/winternl.h:2299 */
 
@@ -1072,12 +918,19 @@ struct guidsection_header /* ../dlls/ntdll/actctx.c:174 */
     ULONG names_len;
 };
 
+struct progids /* ../dlls/ntdll/actctx.c:430 */
+{
+    WCHAR** progids;
+    unsigned int num;
+    unsigned int allocated;
+};
+
 struct entity /* ../dlls/ntdll/actctx.c:437 */
 {
     DWORD kind;
-    union  /* ../dlls/ntdll/actctx.c:440 */
+    union /* ../dlls/ntdll/actctx.c:440 */
     {
-        struct  /* ../dlls/ntdll/actctx.c:442 */
+        struct /* ../dlls/ntdll/actctx.c:442 */
         {
             WCHAR* tlbid;
             WCHAR* helpdir;
@@ -1085,6 +938,53 @@ struct entity /* ../dlls/ntdll/actctx.c:437 */
             WORD major;
             WORD minor;
         } typelib;
+
+        struct /* ../dlls/ntdll/actctx.c:450 */
+        {
+            WCHAR* clsid;
+            WCHAR* tlbid;
+            WCHAR* progid;
+            WCHAR* name;
+            WCHAR* version;
+            DWORD model;
+            DWORD miscstatus;
+            DWORD miscstatuscontent;
+            DWORD miscstatusthumbnail;
+            DWORD miscstatusicon;
+            DWORD miscstatusdocprint;
+            struct progids progids;
+        } comclass;
+
+        struct /* ../dlls/ntdll/actctx.c:465 */
+        {
+            WCHAR* iid;
+            WCHAR* base;
+            WCHAR* tlib;
+            WCHAR* name;
+            WCHAR* ps32;
+            DWORD mask;
+            ULONG nummethods;
+        } ifaceps;
+
+        struct /* ../dlls/ntdll/actctx.c:474 */
+        {
+            WCHAR* name;
+            BOOL versioned;
+        } class;
+
+        struct /* ../dlls/ntdll/actctx.c:479 */
+        {
+            WCHAR* name;
+            WCHAR* clsid;
+            WCHAR* version;
+        } clrsurrogate;
+
+        struct /* ../dlls/ntdll/actctx.c:485 */
+        {
+            WCHAR* name;
+            WCHAR* value;
+            WCHAR* ns;
+        } settings;
 
     } u;
 
@@ -1106,7 +1006,7 @@ struct dll_redirect /* ../dlls/ntdll/actctx.c:501 */
 
 enum assembly_type /* ../dlls/ntdll/actctx.c:508 */
 {
-    assembly_type_DUMMY = 0
+    DUMMY25 = 0
 };
 
 struct assembly /* ../dlls/ntdll/actctx.c:515 */
@@ -1126,7 +1026,7 @@ struct assembly /* ../dlls/ntdll/actctx.c:515 */
     ULONG ui_access;
 };
 
-struct _ACTIVATION_CONTEXT /* ../dlls/ntdll/actctx.c:543 */
+typedef struct _ACTIVATION_CONTEXT /* ../dlls/ntdll/actctx.c:543 */
 {
     ULONG magic;
     int ref_count;
@@ -1143,37 +1043,31 @@ struct _ACTIVATION_CONTEXT /* ../dlls/ntdll/actctx.c:543 */
     struct guidsection_header* comserver_section;
     struct guidsection_header* ifaceps_section;
     struct guidsection_header* clrsurrogate_section;
-};
+}  ACTIVATION_CONTEXT;
 
-struct SHA_CTX /* ../dlls/ntdll/crypt.c:29 */
+typedef struct /* ../dlls/ntdll/crypt.c:29 */
 {
     ULONG Unknown[6];
     ULONG State[5];
     ULONG Count[2];
     UCHAR Buffer[64];
-};
+}  SHA_CTX, * PSHA_CTX;
 
-typedef struct SHA_CTX* PSHA_CTX; /* ../dlls/ntdll/crypt.c:34 */
-
-typedef struct MD4_CTX MD4_CTX; /* ../dlls/ntdll/crypt.c:228 */
-
-struct MD4_CTX /* ../dlls/ntdll/crypt.c:222 */
+typedef struct /* ../dlls/ntdll/crypt.c:222 */
 {
     unsigned int buf[4];
     unsigned int i[2];
     unsigned char in[64];
     unsigned char digest[16];
-};
+}  MD4_CTX;
 
-typedef struct MD5_CTX MD5_CTX; /* ../dlls/ntdll/crypt.c:470 */
-
-struct MD5_CTX /* ../dlls/ntdll/crypt.c:464 */
+typedef struct /* ../dlls/ntdll/crypt.c:464 */
 {
     unsigned int i[2];
     unsigned int buf[4];
     unsigned char in[64];
     unsigned char digest[16];
-};
+}  MD5_CTX;
 
 struct msghdr /* /usr/include/bits/socket.h:257 */
 {
@@ -1186,25 +1080,21 @@ struct msghdr /* /usr/include/bits/socket.h:257 */
     int msg_flags;
 };
 
-struct _RTL_BALANCED_LINKS /* ../include/ddk/ntddk.h:143 */
+typedef struct _RTL_BALANCED_LINKS /* ../include/ddk/ntddk.h:143 */
 {
     struct _RTL_BALANCED_LINKS* Parent;
     struct _RTL_BALANCED_LINKS* LeftChild;
     struct _RTL_BALANCED_LINKS* RightChild;
     CHAR Balance;
     UCHAR Reserved[3];
-};
-
-typedef struct _RTL_BALANCED_LINKS RTL_BALANCED_LINKS; /* ../include/ddk/ntddk.h:149 */
+}  RTL_BALANCED_LINKS;
 
 typedef RTL_BALANCED_LINKS* PRTL_BALANCED_LINKS; /* ../include/ddk/ntddk.h:150 */
 
-enum _RTL_GENERIC_COMPARE_RESULTS /* ../include/ddk/ntddk.h:154 */
+typedef enum _RTL_GENERIC_COMPARE_RESULTS /* ../include/ddk/ntddk.h:154 */
 {
-    _RTL_GENERIC_COMPARE_RESULTS_DUMMY = 0
-};
-
-typedef enum _RTL_GENERIC_COMPARE_RESULTS RTL_GENERIC_COMPARE_RESULTS; /* ../include/ddk/ntddk.h:158 */
+    DUMMY26 = 0
+}  RTL_GENERIC_COMPARE_RESULTS;
 
 typedef RTL_GENERIC_COMPARE_RESULTS (*PRTL_AVL_COMPARE_ROUTINE) (struct _RTL_AVL_TABLE*, void*, void*); /* ../include/ddk/ntddk.h:160 */
 
@@ -1212,7 +1102,7 @@ typedef void (*PRTL_AVL_ALLOCATE_ROUTINE) (struct _RTL_AVL_TABLE*, LONG); /* ../
 
 typedef void (*PRTL_AVL_FREE_ROUTINE) (struct _RTL_AVL_TABLE*, void* buffer); /* ../include/ddk/ntddk.h:164 */
 
-struct _RTL_AVL_TABLE /* ../include/ddk/ntddk.h:166 */
+typedef struct _RTL_AVL_TABLE /* ../include/ddk/ntddk.h:166 */
 {
     RTL_BALANCED_LINKS BalancedRoot;
     void* OrderedPointer;
@@ -1225,24 +1115,20 @@ struct _RTL_AVL_TABLE /* ../include/ddk/ntddk.h:166 */
     PRTL_AVL_ALLOCATE_ROUTINE AllocateRoutine;
     PRTL_AVL_FREE_ROUTINE FreeRoutine;
     void* TableContext;
-};
+}  RTL_AVL_TABLE, * PRTL_AVL_TABLE;
 
-typedef struct _RTL_AVL_TABLE* PRTL_AVL_TABLE; /* ../include/ddk/ntddk.h:178 */
-
-struct _DELAYLOAD_PROC_DESCRIPTOR /* ../include/delayloadhandler.h:28 */
+typedef struct _DELAYLOAD_PROC_DESCRIPTOR /* ../include/delayloadhandler.h:28 */
 {
     ULONG ImportDescribedByName;
-    union  /* ../include/delayloadhandler.h:31 */
+    union /* ../include/delayloadhandler.h:31 */
     {
         LPCSTR Name;
         ULONG Ordinal;
     } Description;
 
-};
+}  DELAYLOAD_PROC_DESCRIPTOR, * PDELAYLOAD_PROC_DESCRIPTOR;
 
-typedef struct _DELAYLOAD_PROC_DESCRIPTOR DELAYLOAD_PROC_DESCRIPTOR; /* ../include/delayloadhandler.h:35 */
-
-struct _DELAYLOAD_INFO /* ../include/delayloadhandler.h:37 */
+typedef struct _DELAYLOAD_INFO /* ../include/delayloadhandler.h:37 */
 {
     ULONG Size;
     PCIMAGE_DELAYLOAD_DESCRIPTOR DelayloadDescriptor;
@@ -1252,9 +1138,7 @@ struct _DELAYLOAD_INFO /* ../include/delayloadhandler.h:37 */
     PVOID TargetModuleBase;
     PVOID Unused;
     ULONG LastError;
-};
-
-typedef struct _DELAYLOAD_INFO* PDELAYLOAD_INFO; /* ../include/delayloadhandler.h:47 */
+}  DELAYLOAD_INFO, * PDELAYLOAD_INFO;
 
 typedef PVOID (*PDELAYLOAD_FAILURE_DLL_CALLBACK) (ULONG, PDELAYLOAD_INFO); /* ../include/delayloadhandler.h:49 */
 
@@ -1262,7 +1146,7 @@ typedef PVOID (*PDELAYLOAD_FAILURE_SYSTEM_ROUTINE) (LPCSTR, LPCSTR); /* ../inclu
 
 typedef void (*LDRENUMPROC) (LDR_MODULE*, void*, BOOLEAN*); /* ../dlls/ntdll/loader.c:66 */
 
-struct _RTL_UNLOAD_EVENT_TRACE /* ../dlls/ntdll/loader.c:166 */
+typedef struct _RTL_UNLOAD_EVENT_TRACE /* ../dlls/ntdll/loader.c:166 */
 {
     void* BaseAddress;
     SIZE_T SizeOfImage;
@@ -1270,36 +1154,30 @@ struct _RTL_UNLOAD_EVENT_TRACE /* ../dlls/ntdll/loader.c:166 */
     ULONG TimeDateStamp;
     ULONG CheckSum;
     WCHAR ImageName[32];
-};
+}  RTL_UNLOAD_EVENT_TRACE, * PRTL_UNLOAD_EVENT_TRACE;
 
-typedef struct _RTL_UNLOAD_EVENT_TRACE RTL_UNLOAD_EVENT_TRACE; /* ../dlls/ntdll/loader.c:174 */
-
-typedef enum WMIDPREQUESTCODE WMIDPREQUESTCODE; /* ../include/wmistr.h:52 */
-
-enum WMIDPREQUESTCODE /* ../include/wmistr.h:40 */
+typedef enum /* ../include/wmistr.h:40 */
 {
-    WMIDPREQUESTCODE_DUMMY = 0
-};
+    DUMMY27 = 0
+}  WMIDPREQUESTCODE;
 
 typedef ULONG64 TRACEHANDLE; /* ../include/evntrace.h:70 */
 
 typedef ULONG (*WMIDPREQUEST) (WMIDPREQUESTCODE, PVOID, ULONG*, PVOID); /* ../include/evntrace.h:81 */
 
-struct _TRACE_GUID_REGISTRATION /* ../include/evntrace.h:83 */
+typedef struct _TRACE_GUID_REGISTRATION /* ../include/evntrace.h:83 */
 {
     LPCGUID Guid;
     HANDLE RegHandle;
-};
+}  TRACE_GUID_REGISTRATION, * PTRACE_GUID_REGISTRATION;
 
-typedef struct _TRACE_GUID_REGISTRATION TRACE_GUID_REGISTRATION; /* ../include/evntrace.h:87 */
-
-struct _EVENT_TRACE_HEADER /* ../include/evntrace.h:98 */
+typedef struct _EVENT_TRACE_HEADER /* ../include/evntrace.h:98 */
 {
     USHORT Size;
-    union  /* ../include/evntrace.h:101 */
+    union /* ../include/evntrace.h:101 */
     {
         USHORT FieldTypeFlags;
-        struct  /* ../include/evntrace.h:104 */
+        struct /* ../include/evntrace.h:104 */
         {
             UCHAR HeaderType;
             UCHAR MarkerFlags;
@@ -1307,29 +1185,57 @@ struct _EVENT_TRACE_HEADER /* ../include/evntrace.h:98 */
 
     };
 
+    union /* ../include/evntrace.h:110 */
+    {
+        ULONG Version;
+        struct /* ../include/evntrace.h:113 */
+        {
+            UCHAR Type;
+            UCHAR Level;
+            USHORT Version;
+        } Class;
+
+    };
+
     ULONG ThreadId;
     ULONG ProcessId;
     LARGE_INTEGER TimeStamp;
-};
+    union /* ../include/evntrace.h:123 */
+    {
+        GUID Guid;
+        ULONGLONG GuidPtr;
+    };
 
-typedef struct _EVENT_TRACE_HEADER* PEVENT_TRACE_HEADER; /* ../include/evntrace.h:141 */
+    union /* ../include/evntrace.h:128 */
+    {
+        struct /* ../include/evntrace.h:130 */
+        {
+            ULONG ClientContext;
+            ULONG Flags;
+        };
+
+        struct /* ../include/evntrace.h:135 */
+        {
+            ULONG KernelTime;
+            ULONG UserTime;
+        };
+
+    };
+
+}  EVENT_TRACE_HEADER, * PEVENT_TRACE_HEADER;
 
 typedef ULONGLONG REGHANDLE; /* ../include/evntprov.h:29 */
 
 typedef ULONGLONG* PREGHANDLE; /* ../include/evntprov.h:29 */
 
-struct _EVENT_DATA_DESCRIPTOR /* ../include/evntprov.h:31 */
+typedef struct _EVENT_DATA_DESCRIPTOR /* ../include/evntprov.h:31 */
 {
     ULONGLONG Ptr;
     ULONG Size;
     ULONG Reserved;
-};
+}  EVENT_DATA_DESCRIPTOR, * PEVENT_DATA_DESCRIPTOR;
 
-typedef struct _EVENT_DATA_DESCRIPTOR EVENT_DATA_DESCRIPTOR; /* ../include/evntprov.h:36 */
-
-typedef struct _EVENT_DATA_DESCRIPTOR* PEVENT_DATA_DESCRIPTOR; /* ../include/evntprov.h:36 */
-
-struct _EVENT_DESCRIPTOR /* ../include/evntprov.h:38 */
+typedef struct _EVENT_DESCRIPTOR /* ../include/evntprov.h:38 */
 {
     USHORT Id;
     UCHAR Version;
@@ -1338,35 +1244,29 @@ struct _EVENT_DESCRIPTOR /* ../include/evntprov.h:38 */
     UCHAR Opcode;
     USHORT Task;
     ULONGLONG Keyword;
-};
-
-typedef struct _EVENT_DESCRIPTOR EVENT_DESCRIPTOR; /* ../include/evntprov.h:47 */
+}  EVENT_DESCRIPTOR;
 
 typedef EVENT_DESCRIPTOR* PCEVENT_DESCRIPTOR; /* ../include/evntprov.h:50 */
 
-struct _EVENT_FILTER_DESCRIPTOR /* ../include/evntprov.h:52 */
+typedef struct _EVENT_FILTER_DESCRIPTOR /* ../include/evntprov.h:52 */
 {
     ULONGLONG Ptr;
     ULONG Size;
     ULONG Type;
-};
-
-typedef struct _EVENT_FILTER_DESCRIPTOR* PEVENT_FILTER_DESCRIPTOR; /* ../include/evntprov.h:58 */
+}  EVENT_FILTER_DESCRIPTOR, * PEVENT_FILTER_DESCRIPTOR;
 
 typedef void (*PENABLECALLBACK) (LPCGUID, ULONG, UCHAR, ULONGLONG, ULONGLONG, PEVENT_FILTER_DESCRIPTOR, PVOID); /* ../include/evntprov.h:60 */
 
-enum _EVENT_INFO_CLASS /* ../include/evntprov.h:62 */
+typedef enum _EVENT_INFO_CLASS /* ../include/evntprov.h:62 */
 {
-    _EVENT_INFO_CLASS_DUMMY = 0
-};
+    DUMMY28 = 0
+}  EVENT_INFO_CLASS;
 
-typedef enum _EVENT_INFO_CLASS EVENT_INFO_CLASS; /* ../include/evntprov.h:68 */
-
-struct WS_in_addr /* ../include/inaddr.h:29 */
+typedef struct WS_in_addr /* ../include/inaddr.h:29 */
 {
-    union  /* ../include/inaddr.h:31 */
+    union /* ../include/inaddr.h:31 */
     {
-        struct  /* ../include/inaddr.h:32 */
+        struct /* ../include/inaddr.h:32 */
         {
             UCHAR s_b1;
             UCHAR s_b2;
@@ -1374,24 +1274,26 @@ struct WS_in_addr /* ../include/inaddr.h:29 */
             UCHAR s_b4;
         } S_un_b;
 
+        struct /* ../include/inaddr.h:35 */
+        {
+            USHORT s_w1;
+            USHORT s_w2;
+        } S_un_w;
+
         ULONG S_addr;
     } S_un;
 
-};
+}  IN_ADDR, * PIN_ADDR, * LPIN_ADDR;
 
-typedef struct WS_in_addr IN_ADDR; /* ../include/inaddr.h:40 */
-
-struct WS_in6_addr /* ../include/in6addr.h:28 */
+typedef struct WS_in6_addr /* ../include/in6addr.h:28 */
 {
-    union  /* ../include/in6addr.h:29 */
+    union /* ../include/in6addr.h:29 */
     {
         UCHAR Byte[16];
         USHORT Word[8];
     } u;
 
-};
-
-typedef struct WS_in6_addr IN6_ADDR; /* ../include/in6addr.h:33 */
+}  IN6_ADDR, * PIN6_ADDR, * LPIN6_ADDR;
 
 typedef int (*wine_signal_handler) (unsigned int sig); /* ../dlls/ntdll/signal_x86_64.c:298 */
 
