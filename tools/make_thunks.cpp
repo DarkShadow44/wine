@@ -966,13 +966,15 @@ static void find_all_definitions(CXCursor node, DefinitionCollection* definition
         CXType type = resolve_type(clang_getCursorType(node));
         CXCursor structCursor = clang_getTypeDeclaration(type);
         // Check if there is a field whichs type is an anonymous struct/union
-        if (type_spelling.find("anonymous union") != std::string::npos || type_spelling.find("anonymous struct") != std::string::npos)
+        if (kind == CXCursor_FieldDecl && (type.kind == CXType_Elaborated))
         {
-            std::string anon_name = get_anonymous_name(structCursor);
+            std::string struct_name = get_cursor_spelling(structCursor);
+            if (struct_name == "")
+                struct_name = get_anonymous_name(structCursor);
             for (unsigned i = 0; i < definitions->items_ordered.size(); i++)
             {
                 StructDef* child = definitions->items_ordered[i];
-                if (child->name == anon_name)
+                if (child->name == struct_name)
                     StructDef_set_variable(child, clang_getCursorType(node), spelling);
             }
             definitions = DefinitionCollection_init();

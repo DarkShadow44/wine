@@ -23,9 +23,8 @@ struct s5 /* make_thunks.test.c:20 */
     {
         int ff1;
         int ff2;
-    };
+    } f2;
 
-    struct s6 f2;
     struct /* make_thunks.test.c:29 */
     {
         int f3;
@@ -42,9 +41,8 @@ struct s5 /* make_thunks.test.c:20 */
     {
         int ff1;
         int ff2;
-    };
+    } f6;
 
-    union s7 f6;
     char f7;
     union /* make_thunks.test.c:49 */
     {
@@ -56,10 +54,13 @@ struct s5 /* make_thunks.test.c:20 */
 
 struct s8 /* make_thunks.test.c:56 */
 {
-    struct /* make_thunks.test.c:58 */
+    int f1;
+    struct /* make_thunks.test.c:60 */
     {
         int ff1;
+        int ff2;
     } f2[40];
 
+    int f3;
 };
 
